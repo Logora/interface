@@ -1,0 +1,8 @@
+@import '~@logora/debate.styles.spacing/_spacing.scss';
+
+.errorContainer {
+  width: 100%;
+  height: fit-content;
+  text-align: center;
+  @include pt(4, xs);
+}

@@ -1,0 +1,1 @@
+export { StandardErrorBoundary as default } from './StandardErrorBoundary';

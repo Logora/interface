@@ -9,6 +9,12 @@
  */
 
 {
+    "error/standard_error_boundary": {
+        "scope": "logora.debate",
+        "version": "0.0.3",
+        "mainFile": "index.js",
+        "rootDir": "src/components/error/standard_error_boundary"
+    },
     "styles/display": {
         "scope": "logora.debate",
         "version": "0.0.6",

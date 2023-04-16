@@ -1,0 +1,26 @@
+---
+description: A simple error boundary component.
+labels: ['error', 'error-boundary']
+---
+
+import { StandardErrorBoundary } from './StandardErrorBoundary';
+
+This component can be wrapped around other components to catch errors so as not to crash the whole app.
+
+An _errorMessage_ prop can be passed to customize the error message displayed.
+
+### Component usage
+```js
+import StandardErrorBoundary from '@logora/debate.error.standard_error_boundary';
+```
+```js
+    <StandardErrorBoundary errorMessage={"My custom error message !"}>
+        <div>No error</div>
+    </StandardErrorBoundary>
+```
+
+### Properties
+| **Name**      | **Type** | **Required** | **Default** | **Description** |
+| ----------- | ----------- | :-----------: | ----------- | ----------- |
+| <font color='#4646c6'>hideMessage</font> | <font color="#397300">boolean</font> | &cross; | false | <font color="grey">*if true, will not show anything on error*</font> |
+| <font color='#4646c6'>errorMessage</font> | <font color="#397300">string</font> | &cross; | - | <font color="grey">*custom error message displayed when error caught*</font> |
