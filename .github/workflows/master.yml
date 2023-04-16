@@ -10,6 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       BIT_TOKEN: ${{ secrets.BIT_TOKEN }}
+
     steps:
       - uses: actions/checkout@v2
 
