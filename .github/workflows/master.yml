@@ -30,12 +30,9 @@ jobs:
           bit config set anonymous_reporting false
           bit config set user.token $BIT_TOKEN
 
-          bit -v && bit import
-
+          bit install
           bit status
           bit test
-      - name: Install packages using bit
-        run: bit install
       - name: Hard-tag pending components
         run: bit tag --persist
       - name: Export components
@@ -46,4 +43,4 @@ jobs:
           git config --global user.email '${{ github.actor }}@users.noreply.github.com'
           git add .bitmap
           git diff-index --quiet HEAD || git commit -m "update .bitmap with new component versions (automated). --skip-ci"
-          git push
+          git diff-index --quiet HEAD || git push
