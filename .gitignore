@@ -1,0 +1,26 @@
+*.log
+.DS_Store
+node_modules
+.cache
+.parcel-cache
+dist
+
+.idea/
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn Integrity file
+.yarn-integrity
+
+# dotenv environment variables file
+.env
+.env.test
+
+
+# bit directories
+.bit/
+.bit.cache/
+bit-*.tar.gz
+.yarn/
+public/bit/

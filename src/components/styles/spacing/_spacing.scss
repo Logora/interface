@@ -1,0 +1,127 @@
+@import '~@logora/debate.styles.display/_display.scss';
+
+$spacer: 1em !default;
+$spacers: () !default;
+$spacers: map-merge(
+        (
+                0: 0,
+                1: ($spacer * .25),
+                1.5: ($spacer * 0.325),
+                2: ($spacer * .5),
+                2.5: ($spacer * 0.75),
+                3: $spacer,
+                4: ($spacer * 1.5),
+                5: ($spacer * 3)
+        ),
+        $spacers
+);
+
+@mixin m($value, $breakpoint) {
+  @include media-breakpoint-up($breakpoint) {
+    margin: map-get($spacers, $value) !important;
+  }
+}
+
+@mixin mt($value, $breakpoint) {
+  @include media-breakpoint-up($breakpoint) {
+    margin-top: map-get($spacers, $value) !important;
+  }
+}
+
+@mixin ml($value, $breakpoint) {
+  @include media-breakpoint-up($breakpoint) {
+    margin-left: map-get($spacers, $value) !important;
+  }
+}
+
+@mixin mb($value, $breakpoint) {
+  @include media-breakpoint-up($breakpoint) {
+    margin-bottom: map-get($spacers, $value) !important;
+  }
+}
+
+@mixin mr($value, $breakpoint) {
+  @include media-breakpoint-up($breakpoint) {
+    margin-right: map-get($spacers, $value) !important;
+  }
+}
+
+@mixin my($value, $breakpoint) {
+  @include mt($value, $breakpoint);
+  @include mb($value, $breakpoint);
+}
+
+@mixin mx($value, $breakpoint) {
+  @include mr($value, $breakpoint);
+  @include ml($value, $breakpoint);
+}
+
+// PADDINGS
+
+@mixin p($value, $breakpoint) {
+  @include media-breakpoint-up($breakpoint) {
+    padding: map-get($spacers, $value) !important;
+  }
+}
+
+@mixin pt($value, $breakpoint) {
+  @include media-breakpoint-up($breakpoint) {
+    padding-top: map-get($spacers, $value) !important;
+  }
+}
+
+@mixin pl($value, $breakpoint) {
+  @include media-breakpoint-up($breakpoint) {
+    padding-left: map-get($spacers, $value) !important;
+  }
+}
+
+@mixin pb($value, $breakpoint) {
+  @include media-breakpoint-up($breakpoint) {
+    padding-bottom: map-get($spacers, $value) !important;
+  }
+}
+
+@mixin pr($value, $breakpoint) {
+  @include media-breakpoint-up($breakpoint) {
+    padding-right: map-get($spacers, $value) !important;
+  }
+}
+
+@mixin py($value, $breakpoint) {
+  @include pt($value, $breakpoint);
+  @include pb($value, $breakpoint);
+}
+
+@mixin px($value, $breakpoint) {
+  @include pr($value, $breakpoint);
+  @include pl($value, $breakpoint);
+}
+
+// AUTO MARGINS
+
+@mixin mt-auto($breakpoint) {
+  margin-top: auto !important;
+}
+
+@mixin mb-auto($breakpoint) {
+  margin-bottom: auto !important;
+}
+
+@mixin mr-auto($breakpoint) {
+  margin-right: auto !important;
+}
+
+@mixin ml-auto($breakpoint) {
+  margin-left: auto !important;
+}
+
+@mixin mx-auto($breakpoint) {
+  @include mr-auto($breakpoint);
+  @include ml-auto($breakpoint);
+}
+
+@mixin my-auto($breakpoint) {
+  @include mt-auto($breakpoint);
+  @include mb-auto($breakpoint);
+}

@@ -1,0 +1,67 @@
+@import '~@logora/debate.styles.display/_display.scss';
+
+// Flex variation
+//
+// Custom styles for additional flex alignment options.
+
+@mixin flex-direction($value, $breakpoint) {
+  @include media-breakpoint-up($breakpoint) {
+    flex-direction: $value !important;
+  }
+}
+
+@mixin flex-wrap($breakpoint) {
+  @include media-breakpoint-up($breakpoint) {
+    flex-wrap: wrap !important;
+  }
+}
+
+@mixin flex-nowrap ($breakpoint) {
+  @include media-breakpoint-up($breakpoint) {
+    flex-wrap: nowrap !important;
+  }
+}
+
+@mixin flex-wrap-reverse ($breakpoint) {
+  @include media-breakpoint-up($breakpoint) {
+    flex-wrap: wrap-reverse !important;
+  }
+}
+
+@mixin flex-fill ($breakpoint) {
+  @include media-breakpoint-up($breakpoint) {
+    flex: 1 1 auto !important;
+  }
+}
+
+@mixin justify-content($value, $breakpoint) {
+  @include media-breakpoint-up($breakpoint) {
+    justify-content: $value !important;
+  }
+}
+
+@mixin align-items($value, $breakpoint) {
+  @include media-breakpoint-up($breakpoint) {
+    align-items: $value !important;
+  }
+}
+
+@mixin align-content($value, $breakpoint) {
+  @include media-breakpoint-up($breakpoint) {
+    align-content: $value !important;
+  }
+}
+
+@mixin align-self($value, $breakpoint) {
+  @include media-breakpoint-up($breakpoint) {
+    align-self: $value !important;
+  }
+}
+
+// ORDERS
+
+@mixin order($value, $breakpoint) {
+  @include media-breakpoint-up($breakpoint) {
+    order: $value;
+  }
+}

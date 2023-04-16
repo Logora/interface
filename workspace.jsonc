@@ -1,0 +1,52 @@
+/**
+ * this is the main configuration file of your bit workspace.
+ * for full documentation, please see: https://bit.dev/docs/workspace/workspace-configuration
+ **/{
+  "$schema": "https://static.bit.dev/teambit/schemas/schema.json",
+  "teambit.workspace/workspace": {
+    "name": "Logora",
+    "icon": "https://logora.fr/assets/logora-logo-3f7b41aec2d1ae4d6582ba3f7be5f73b42b086e49d69f46ae387b006c41e7046.png",
+    /**
+     * default directory to place a component during `bit import` and `bit create`.
+     * the following placeholders are available:
+     * name - component name includes namespace, e.g. 'ui/button'.
+     * scopeId - full scope-id includes the owner, e.g. 'teambit.compilation'.
+     * scope - scope name only, e.g. 'compilation'.
+     * owner - owner name in bit.dev, e.g. 'teambit'.
+     **/
+    "defaultDirectory": "src/components/{name}",
+    "defaultScope": "logora.debate"
+  },
+  "teambit.dependencies/dependency-resolver": {
+    "packageManager": "teambit.dependencies/yarn",
+    "policy": {
+      "dependencies": {},
+      "peerDependencies": {
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "react-router": "^5.3.4",
+        "react-router-dom": "^5.3.4"
+      }
+    },
+    "linkCoreAspects": true,
+    "installFromBitDevRegistry": false
+  },
+  /**
+   * workspace variants allow to set different subsets of configuration for components in your
+   * workspace. this is extremely useful for upgrading, aligning and building components with a new
+   * set of dependencies. a rule can be a directory or a component-id/namespace, in which case,
+   * wrap the rule with curly brackets (e.g. `"{ui/*}": {}`)
+   * see https://bit.dev/docs/workspace/variants for more info.
+   **/
+  "teambit.workspace/variants": {
+    "*": {
+      "teambit.react/react": {},
+      "teambit.component/dev-files": {
+        "devFilePatterns": [
+          "**/*.story.+(js|ts|jsx|tsx)",
+          "**/*.dev.jsx"
+        ]
+      }
+    }
+  }
+}

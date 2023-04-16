@@ -1,0 +1,63 @@
+---
+description: SASS variable declaration for the theme.
+---
+
+## Component usage
+```scss
+    @import '~@logora/debate.styles.theme/_theme.scss';
+```
+
+## Description
+
+This SASS file contains several variables used for defining colors, fonts, borders and other styles. Here is a brief explanation of what each variable represents:
+
+### Colors
+
+- *$for-primary*: Represents the primary color for "for" elements (defaults to `#cc6a6d`).
+- *$against-primary*: Represents the primary color for "against" elements (defaults to `#7980bb`).
+- *$first-position-color-primary*: Represents the primary color for the first position (defaults to `#cc6a6d`).
+- *$second-position-color-primary*: Represents the primary color for the second position (defaults to `#7980bb`).
+- *$third-position-color-primary*: Represents the primary color for the third position (defaults to `#9b9b9b).
+- *$call-primary*: Represents the primary color for call to action elements (defaults to `#434343`).
+- *$info-primary*: Represents the primary color for information elements (defaults to `#4485C3`).
+- *$success-primary*: Represents the primary color for success elements (defaults to `#4d9e33`).
+- *$cancel-primary*: Represents the primary color for cancel elements (defaults to `#c73c49`).
+- *$connected-green*: Represents the color for the connected pin element (defaults to `#80d764`).
+- *$announcement-primary*: Represents the primary color for announcement elements (defaults to `#cce5ff`).
+- *$announcement-text-primary*: Represents the primary color for announcement text (defaults to `#004085`).
+- *$background-color-primary*: Represents the primary background color (defaults to `white`).
+- *$background-color-secondary*: Represents the secondary background color (defaults to `#E8E8E8`).
+- *$text-primary*: Represents the primary text color (defaults to `#222222`).
+- *$text-secondary*: Represents the secondary text color (defaults to `#777777`).
+- *$text-tertiary*: Represents the tertiary text color (defaults to `#fafafa`).
+- *$darken-text-tertiary*: Represents a slightly darker version of the tertiary text color (defaults to `darken(#fafafa, 5%)`).
+- *$darkest-text-tertiary*: Represents the darkest version of the tertiary text color (defaults to `darken(#fafafa, 20%)`).
+- *$tag-border-color*: Represents the color for tag borders (defaults to `$call-primary`).
+- *$tag-text-color*: Represents the color for tag text (defaults to `$call-primary`).
+
+### Fonts
+
+- *$font-family*: Represents the font family used throughout the website (defaults to `Montserrat`).
+- *$title-font-family*: Represents the font family used for titles (defaults to `$font-family`).
+- *$font-size-large*: Represents the font size for large text (defaults to `18px`).
+- *$font-size-normal*: Represents the font size for normal text (defaults to `16px`).
+- *$font-size-small*: Represents the font size for small text (defaults to `14px`).
+- *$font-size-extra-small*: Represents the font size for extra small text (defaults to `12px`).
+- *$font-weight-normal*: Represents the font weight for normal text (defaults to `400`).
+- *$font-weight-bold*: Represents the font weight for bold text (defaults to `700`).
+- *$line-height*: Defines the line height used for text (defaults to `1.3`).
+
+### Borders
+
+- *$box-border*: defines the border style for boxes, default is `1px solid rgba(7,42,68, 0.1)`.
+- *$box-border-radius*: defines the border radius for boxes, default is `6px`.
+
+### Shadows
+
+- *$box-shadow*: defines the box shadow for boxes, default is `0px 2px 5px rgba(7,42,68, 0.1)`.
+- *$button-box-shadow*: defines the box shadow for buttons, default is `1.5px 1.5px 1.5px 0 rgba(0, 0, 0, 0.07)`.
+
+### Layouts
+
+- *$layout-mobile-margin*: defines the horizontal margin for the mobile layout, default is `0`.
+- *$layout-max-width*: defines the maximum width for the layout, default is `1400px`.

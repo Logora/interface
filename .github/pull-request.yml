@@ -1,0 +1,31 @@
+name: Bit build and test CI
+
+on:
+  pull_request:
+    branches: [master]
+
+jobs:
+  bit-build-and-test:
+    runs-on: ubuntu-latest
+    env:
+      BIT_TOKEN: ${{ secrets.BIT_TOKEN }}
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Install bit-bin
+        run: sudo npm install bit-bin -g
+
+      - name: Bit build & Bit test
+        run: |
+          bit config set analytics_reporting false
+          bit config set anonymous_reporting false
+          bit config set user.token $BIT_TOKEN
+          bit config 
+
+          bit -v && bit import
+
+          bit status
+          bit test
