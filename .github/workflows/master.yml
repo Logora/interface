@@ -45,5 +45,5 @@ jobs:
           git config --global user.name '${{ github.actor }}'
           git config --global user.email '${{ github.actor }}@users.noreply.github.com'
           git add .bitmap
-          git commit -m "update .bitmap with new component versions (automated). --skip-ci"
+          git diff-index --quiet HEAD || git commit -m "update .bitmap with new component versions (automated). --skip-ci"
           git push
