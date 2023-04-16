@@ -1,0 +1,232 @@
+---
+description: A self validating form component with context.
+labels: ['form', 'context']
+---
+
+import { useEffect, useState, useCallback } from 'react';
+import { Form } from './form';
+import { useForm } from './use-form';
+
+This component is used to create self validated forms.
+It can be used to wrap form elements and thus provide them with a context which holds validation hooks that can be used by the nested elements.
+
+### The `useForm` hook:
+
+The `Form` exposes a `useForm` hook, which allows nested form elements to listen and interact with the form's context.
+
+```ts
+export type FormContextProps<T extends Record<string, any> = any> = {
+  onValidate?: (name: string, message: string | undefined) => void;
+  onBlur?: (event: FocusEvent<HTMLFormElement> | PartilaEvent) => void;
+  onChange?: (event: ChangeEvent<HTMLFormElement> | PartilaEvent) => void;
+  initialValues?: T;
+  loading?: boolean;
+  errors?: Record<keyof T, ErrorMessage>;
+  values?: T;
+};
+```
+
+### The `extractFormData` method:
+
+When submitting the form, you can use the `extractFormData` method for extracting the form's values and using them outside of the form.
+
+Just pass the `onSubmit` event.
+
+```ts
+function MyForm() {
+  function onSubmit(e) {
+    const data = extractFormData(e);
+    ...
+  }
+  <Form onSubmit={onSubmit}>
+    ...
+  </Form>
+}
+
+```
+
+### Create your own input:
+
+This input uses `useForm` directly to get the methods, `values` and `errors`.
+Further down is an example for when you want to create your own validation hook.
+
+:::note
+Each form element which is nested in the form needs a `name`, which is used as the key for the individual validation of that element.
+:::
+
+```ts live
+() => {
+  function EmailInputExample(props) {
+    const [message, setMessage] = useState(undefined);
+    const { onChange, onBlur, onValidate, values, errors } = useForm();
+
+    // get the value of the input by the `name` passed to it.
+    const value = values && values[props.name];
+
+    useEffect(() => {
+      // run any validations on the value in the input
+      // and update the message to be shown.
+      if (!value || value === '') return;
+
+      const emailRegEx = /\S+@\S+\.\S+/;
+      if (!emailRegEx.test(value)) {
+        return setMessage('Email should have only valid chars');
+      }
+      setMessage(undefined);
+    }, [value]);
+
+    useEffect(() => {
+      // update the form validation when changing error message
+      onValidate && onValidate(props.name, message);
+    }, [message, onValidate]);
+
+    return (
+      <>
+        <input required {...props} onChange={onChange} onBlur={onBlur} />
+        <div>{errors[props.name]}</div>
+      </>
+    );
+  }
+
+  return (
+    <Form>
+      <EmailInputExample
+        placeholder='input example'
+        name='input-example'
+        required
+      />
+      <Button />
+    </Form>
+  );
+
+  function Button() {
+    const { errors = {} } = useForm();
+    const isDisabled = Object.keys(errors).length > 0;
+    return <button disabled={isDisabled}>submit</button>;
+  }
+};
+```
+
+### Create a validation hook:
+
+This example creates a `useEmail` hook that is separate form the input.
+That way it can be used separately from the UI and reused anywhere.
+
+```ts
+function useEmail(name) {
+  const [message, setMessage] = useState(undefined);
+  const { onValidate, values, ...rest } = useForm();
+
+  // get the value of the input by the `name` passed to it.
+  const value = values && values[name];
+
+  useEffect(() => {
+    // run any validations on the value in the input and update the message to be shown.
+    if (!value || value === '') return;
+
+    const emailRegEx = /\S+@\S+\.\S+/;
+    if (!emailRegEx.test(value)) {
+      return setMessage('Email should have only valid chars');
+    }
+    setMessage(undefined);
+  }, [value]);
+
+  useEffect(() => {
+    // update the form validation when changing error message
+    onValidate && onValidate(name, message);
+  }, [message, onValidate]);
+
+  const handleBlur = useCallback(
+    ({ value, required, ...rest }) => {
+      if (!value || value === '') {
+        setMessage('Required');
+      }
+    },
+    [value]
+  );
+
+  return { message, handleBlur, value, ...rest };
+}
+```
+
+See it in action:
+
+```ts live
+() => {
+  // useEmail is a validation hook that can be exportred separately to it's own component.
+  function useEmail(name) {
+    const [message, setMessage] = useState(undefined);
+    const { onValidate, values, ...rest } = useForm();
+
+    // get the value of the input by the `name` passed to it.
+    const value = values && values[name];
+
+    useEffect(() => {
+      // run any validations on the value in the input and update the message to be shown.
+      if (!value || value === '') return;
+
+      const emailRegEx = /\S+@\S+\.\S+/;
+      if (!emailRegEx.test(value)) {
+        return setMessage('Email should have only valid chars');
+      }
+      setMessage(undefined);
+    }, [value]);
+
+    useEffect(() => {
+      // update the form validation when changing error message
+      onValidate && onValidate(name, message);
+    }, [message, onValidate]);
+
+    const handleBlur = useCallback(
+      ({ value, required, ...rest }) => {
+        if (!value || value === '') {
+          setMessage('Required');
+        }
+      },
+      [value]
+    );
+
+    return { message, handleBlur, value, ...rest };
+  }
+
+  // this input uses the `useEmail` hook
+
+  function EmailInputExample(props) {
+    const { message, handleBlur, onChange } = useEmail(props.name);
+    return (
+      <>
+        <input
+          required
+          {...props}
+          onChange={onChange}
+          onBlur={(e) => {
+            handleBlur({ name: e.target.name, value: e.target.value });
+          }}
+        />
+        <div>{message}</div>
+      </>
+    );
+  }
+
+  return (
+    <Form>
+      <EmailInputExample
+        placeholder='input example'
+        name='input-example'
+        required
+      />
+      <Button />
+    </Form>
+  );
+
+  function Button() {
+    const { errors = {} } = useForm();
+    const isDisabled = Object.keys(errors).length > 0;
+    return <button disabled={isDisabled}>submit</button>;
+  }
+};
+```
+
+:::note
+Also note how the `Button` at the bottom of the example uses the `useForm` hook to check if the form has any errors which should prevent it from submitting the form.
+:::

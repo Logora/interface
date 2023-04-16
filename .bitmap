@@ -15,6 +15,12 @@
         "mainFile": "index.js",
         "rootDir": "src/components/error/standard_error_boundary"
     },
+    "forms/form": {
+        "scope": "logora.debate",
+        "version": "0.0.2",
+        "mainFile": "index.js",
+        "rootDir": "src/components/forms/form"
+    },
     "styles/display": {
         "scope": "logora.debate",
         "version": "0.0.6",
@@ -32,6 +38,12 @@
         "version": "0.0.6",
         "mainFile": "_spacing.scss",
         "rootDir": "src/components/styles/spacing"
+    },
+    "styles/tabs": {
+        "scope": "logora.debate",
+        "version": "0.0.4",
+        "mainFile": "_tabs.scss",
+        "rootDir": "src/components/styles/tabs"
     },
     "styles/theme": {
         "scope": "logora.debate",

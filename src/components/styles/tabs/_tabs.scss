@@ -1,0 +1,130 @@
+@import '~@logora/debate.styles.theme/_theme.scss';
+@import '~@logora/debate.styles.display/_display.scss';
+
+.navTabs {
+    display: flex;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    padding-left: 0;
+    margin-bottom: 0;
+    border-bottom: 0 !important;
+    list-style: none;
+
+    overflow-x: scroll;
+    overflow-y: hidden;
+
+    scrollbar-width: none;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+
+    @include media-breakpoint-down(xs) {
+        font-size: $font-size-normal;
+    }
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    .navItem {
+        margin-bottom: -1px;
+    }
+
+    .navLink {
+        border: 1px solid transparent;
+        border-top-left-radius: $box-border-radius;
+        border-top-right-radius: $box-border-radius;
+
+        &:hover, &:focus {
+            border-color: #e9ecef #e9ecef #dee2e6;
+        }
+
+        &.disabled {
+            color: #6c757d;
+            background-color: transparent;
+            border-color: transparent;
+        }
+    }
+
+    .navLink.active,
+    .navItem.show .navLink {
+        color: #495057;
+        background-color: white;
+        border-color: #dee2e6 #dee2e6 white;
+    }
+}
+
+.navLink {
+    display: block;
+    padding: .5em 1em;
+
+    @include media-breakpoint-down(xs) {
+        padding: .5em 0.75em;
+    }
+
+    &:hover, &:focus{
+        text-decoration: none;
+    }
+
+    // Disabled state lightens text
+    &.disabled {
+        color: #6c757d;
+        pointer-events: none;
+        cursor: default;
+    }
+}
+
+.tabContent {
+    > .tabPane {
+        display: none;
+    }
+    > .active {
+        display: block;
+    }
+}
+
+.navTabs .navItem {
+    cursor: pointer;
+    position: relative;
+}
+
+.navLink.active, .navLink:focus, .navLink.active:hover {
+    background: transparent;
+    border-width: 0 !important;
+}
+
+.navLink {
+    border: none !important;
+    color: $text-secondary;
+    outline: 0;
+}
+
+.navLink.active, .navLink:hover { 
+    border: none !important; 
+    color: $text-primary !important; 
+    background: transparent; 
+    font-weight: $font-weight-bold; 
+}
+
+.navLink::after { 
+    content: ""; 
+    background-color: $call-primary;
+    height: 4px;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: -1px;
+    transition: all 250ms ease 0s;
+    transform: scale(0);
+ }
+
+.navLink.active::after, .navTabs > .navItem:hover > .navLink::after { 
+    transform: scale(1); 
+}
+
+.navLink.active:hover { 
+    background: transparent; 
+}
+
+.tabPane {
+    padding: 10px 0;
+    min-height: 50vh;
+}

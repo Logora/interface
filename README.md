@@ -3,6 +3,9 @@
 ---
 Design system for [Logora](https://logora.fr) made with React and using [Bit](https://bit.dev)
 
+View all components [here](https://bit.cloud/logora/debate/)
+
+
 ## Install
 
 ```bash
