@@ -61,6 +61,7 @@ __metadata:
     "@types/node": 12.20.4
     "@types/react": ^17.0.8
     "@types/react-dom": ^17.0.5
+    classnames: ^2.3.1
     core-js: ^3.0.0
     react: ^16.8.0 || ^17.0.0
     react-dom: ^16.8.0 || ^17.0.0
@@ -262,6 +263,13 @@ __metadata:
     ansi-styles: ^4.1.0
     supports-color: ^7.1.0
   checksum: fe75c9d5c76a7a98d45495b91b2172fa3b7a09e0cc9370e5c8feb1c567b85c4288e2b3fded7cfdd7359ac28d6b3844feb8b82b8686842e93d23c827c417e83fc
+  languageName: node
+  linkType: hard
+
+"classnames@npm:^2.3.1":
+  version: 2.3.2
+  resolution: "classnames@npm:2.3.2"
+  checksum: 2c62199789618d95545c872787137262e741f9db13328e216b093eea91c85ef2bfb152c1f9e63027204e2559a006a92eb74147d46c800a9f96297ae1d9f96f4e
   languageName: node
   linkType: hard
 
@@ -493,6 +501,12 @@ __metadata:
   languageName: node
   linkType: hard
 
+"hidden-30841f@workspace:src/components/input/checkbox/hidden":
+  version: 0.0.0-use.local
+  resolution: "hidden-30841f@workspace:src/components/input/checkbox/hidden"
+  languageName: unknown
+  linkType: soft
+
 "history@npm:^4.9.0":
   version: 4.10.1
   resolution: "history@npm:4.10.1"
@@ -515,6 +529,12 @@ __metadata:
   checksum: b1538270429b13901ee586aa44f4cc3ecd8831c061d06cb8322e50ea17b3f5ce4d0e2e66394761e6c8e152cd8c34fb3b4b690116c6ce2bd45b18c746516cb9e8
   languageName: node
   linkType: hard
+
+"indicator-f4a977@workspace:src/components/input/checkbox/indicator":
+  version: 0.0.0-use.local
+  resolution: "indicator-f4a977@workspace:src/components/input/checkbox/indicator"
+  languageName: unknown
+  linkType: soft
 
 "internal-slot@npm:^1.0.4":
   version: 1.0.5
@@ -693,6 +713,12 @@ __metadata:
   checksum: 8a95213a5a77deb6cbe94d86340e8d9ace2b93bc367790b260101d2f36a2eaf4e4e22d9fa9cf459b38af3a32fb4190e638024cf82ec95ef708680e405ea7cc78
   languageName: node
   linkType: hard
+
+"label-54fe1c@workspace:src/components/input/checkbox/label":
+  version: 0.0.0-use.local
+  resolution: "label-54fe1c@workspace:src/components/input/checkbox/label"
+  languageName: unknown
+  linkType: soft
 
 "link-b5813c@workspace:src/components/action/link":
   version: 0.0.0-use.local
@@ -998,6 +1024,12 @@ __metadata:
   checksum: da62c4acac565902f0624b123eed6dd3509bc9a8d30c06e017104bedcf5d35810da8ff72864400ad19c5c7806fc0a8323c68baf3e326af7cb7d969f846100d71
   languageName: node
   linkType: hard
+
+"toggle-9b9f77@workspace:src/components/input/toggle":
+  version: 0.0.0-use.local
+  resolution: "toggle-9b9f77@workspace:src/components/input/toggle"
+  languageName: unknown
+  linkType: soft
 
 "user_content_skeleton-068543@workspace:src/components/skeleton/user_content_skeleton":
   version: 0.0.0-use.local

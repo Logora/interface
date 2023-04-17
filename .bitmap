@@ -27,6 +27,30 @@
         "mainFile": "index.js",
         "rootDir": "src/components/forms/form"
     },
+    "input/checkbox/hidden": {
+        "scope": "logora.debate",
+        "version": "0.0.2",
+        "mainFile": "index.js",
+        "rootDir": "src/components/input/checkbox/hidden"
+    },
+    "input/checkbox/indicator": {
+        "scope": "logora.debate",
+        "version": "0.0.2",
+        "mainFile": "index.js",
+        "rootDir": "src/components/input/checkbox/indicator"
+    },
+    "input/checkbox/label": {
+        "scope": "logora.debate",
+        "version": "0.0.2",
+        "mainFile": "index.js",
+        "rootDir": "src/components/input/checkbox/label"
+    },
+    "input/toggle": {
+        "scope": "logora.debate",
+        "version": "0.0.1",
+        "mainFile": "index.js",
+        "rootDir": "src/components/input/toggle"
+    },
     "section/section_box": {
         "scope": "logora.debate",
         "version": "0.0.11",

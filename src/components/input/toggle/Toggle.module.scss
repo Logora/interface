@@ -1,0 +1,66 @@
+@import '~@logora/debate.styles.theme/_theme.scss';
+@import '~@logora/debate.styles.spacing/_spacing.scss';
+
+.toggle {
+  display: inline-block;
+  width: 2em;
+  min-width: 2em;
+  height: 1em;
+  font-size: $font-size-normal;
+}
+
+.toggleContainer {
+  display: flex;
+}
+
+.toggleLabel {
+  @include ml(2, xs);
+}
+
+.slider {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: inline-block;
+  cursor: pointer;
+  background-color: #babec9;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  border-radius: 1em;
+  &:hover {
+    background-color: #878c9a;
+  }
+}
+
+.slider:before {
+  position: absolute;
+  content: '';
+  height: 0.75em;
+  width: 0.75em;
+  left: 0.125em;
+  bottom: 0.125em;
+  background-color: white !important;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:disabled + .slider {
+  background-color: #ededed !important;
+  cursor: not-allowed;
+}
+
+input:checked + .slider {
+  background-color: $call-primary !important;
+}
+
+input:checked:disabled + .slider {
+  background-color: #eceaff !important;
+}
+
+input:checked + .slider:before {
+  transform: translateX(1em);
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 0 0.125em #eceaff;
+}
