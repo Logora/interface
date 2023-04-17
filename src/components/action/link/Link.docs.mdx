@@ -1,0 +1,30 @@
+---
+description: A link component without style.
+labels: ['link', 'router']
+---
+
+import { Link } from './Link';
+import { MemoryRouter } from "react-router";
+
+A component that renders a link. Link uses react-router's Link component by default. If the _external_ prop is set to _true_, a simple anchor will be used, without the router.
+
+_to_ prop can be a string, an object or a function, as per react-router documentation : https://v5.reactrouter.com/web/api/Link
+
+### Component usage
+```js
+<MemoryRouter>
+    <Link 
+        to={link}
+        className={classNameToPass}
+    >
+        Link !
+    </Link>
+</MemoryRouter>
+```
+
+### Properties
+| **Name**      | **Type** | **Required** | **Default** | **Description** |
+| ----------- | ----------- | :-----------: | ----------- | ----------- |
+| <font color='#4646c6'>to</font> | <font color="#397300">string</font> | &check; | - | <font color="grey">*href or object passed to react-router*</font> |
+| <font color='#4646c6'>className</font> | <font color="#397300">string</font> | &check; | - | <font color="grey">*link class name*</font> |
+| <font color='#4646c6'>external</font> | <font color="#397300">boolean</font> | &cross; | false | <font color="grey">*if _true_, will render a plain anchor tag instead of react-router's Link*</font> |
