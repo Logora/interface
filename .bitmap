@@ -21,6 +21,18 @@
         "mainFile": "index.js",
         "rootDir": "src/components/forms/form"
     },
+    "skeleton/box_skeleton": {
+        "scope": "logora.debate",
+        "version": "0.0.1",
+        "mainFile": "index.js",
+        "rootDir": "src/components/skeleton/box_skeleton"
+    },
+    "skeleton/user_content_skeleton": {
+        "scope": "logora.debate",
+        "version": "0.0.2",
+        "mainFile": "index.js",
+        "rootDir": "src/components/skeleton/user_content_skeleton"
+    },
     "styles/display": {
         "scope": "logora.debate",
         "version": "0.0.6",

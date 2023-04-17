@@ -1,0 +1,1 @@
+export { UserContentSkeleton as default } from './UserContentSkeleton';

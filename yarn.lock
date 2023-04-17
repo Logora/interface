@@ -64,6 +64,7 @@ __metadata:
     core-js: ^3.0.0
     react: ^16.8.0 || ^17.0.0
     react-dom: ^16.8.0 || ^17.0.0
+    react-loading-skeleton: ^3.0.2
     react-router: ^5.3.4
     react-router-dom: ^5.3.4
   peerDependencies:
@@ -226,6 +227,12 @@ __metadata:
   checksum: 20eb47b3cefd7db027b9bbb993c658abd36d4edd3fe1060e83699a03ee275b0c9b216cc076ff3f2db29073225fb70e7613987af14269ac1fe2a19803ccc97f1a
   languageName: node
   linkType: hard
+
+"box_skeleton-a11637@workspace:src/components/skeleton/box_skeleton":
+  version: 0.0.0-use.local
+  resolution: "box_skeleton-a11637@workspace:src/components/skeleton/box_skeleton"
+  languageName: unknown
+  linkType: soft
 
 "call-bind@npm:^1.0.0, call-bind@npm:^1.0.2":
   version: 1.0.2
@@ -808,6 +815,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-loading-skeleton@npm:^3.0.2":
+  version: 3.2.1
+  resolution: "react-loading-skeleton@npm:3.2.1"
+  peerDependencies:
+    react: ">=16.8.0"
+  checksum: e65cdfecedd4292c51556d44b4de298f35c6f4979d075ec9af75d1b23aece14c0e40d3b6cd07f77cd0d67e0880c83e4c54eb1fb960f69b7f34a960fabab64403
+  languageName: node
+  linkType: hard
+
 "react-router-dom@npm:^5.3.4":
   version: 5.3.4
   resolution: "react-router-dom@npm:5.3.4"
@@ -964,6 +980,12 @@ __metadata:
   checksum: da62c4acac565902f0624b123eed6dd3509bc9a8d30c06e017104bedcf5d35810da8ff72864400ad19c5c7806fc0a8323c68baf3e326af7cb7d969f846100d71
   languageName: node
   linkType: hard
+
+"user_content_skeleton-068543@workspace:src/components/skeleton/user_content_skeleton":
+  version: 0.0.0-use.local
+  resolution: "user_content_skeleton-068543@workspace:src/components/skeleton/user_content_skeleton"
+  languageName: unknown
+  linkType: soft
 
 "value-equal@npm:^1.0.1":
   version: 1.0.1
