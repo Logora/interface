@@ -27,6 +27,18 @@
         "mainFile": "index.js",
         "rootDir": "src/components/forms/form"
     },
+    "section/section_box": {
+        "scope": "logora.debate",
+        "version": "0.0.11",
+        "mainFile": "index.js",
+        "rootDir": "src/components/section/section_box"
+    },
+    "section/section_header": {
+        "scope": "logora.debate",
+        "version": "0.0.10",
+        "mainFile": "index.js",
+        "rootDir": "src/components/section/section_header"
+    },
     "skeleton/box_skeleton": {
         "scope": "logora.debate",
         "version": "0.0.2",

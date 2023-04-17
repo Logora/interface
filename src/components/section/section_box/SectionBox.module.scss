@@ -1,0 +1,12 @@
+@import '~@logora/debate.styles.theme/_theme.scss';
+@import '~@logora/debate.styles.spacing/_spacing.scss';
+
+.sectionBoxContainer {
+    @include p(3, xs);
+    @include my(4, xs);
+    color: $text-primary;
+    box-shadow: $box-shadow;
+    border: $box-border;
+    color: $text-primary;
+    border-radius: $box-border-radius;
+}

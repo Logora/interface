@@ -911,6 +911,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"section_box-1e8645@workspace:src/components/section/section_box":
+  version: 0.0.0-use.local
+  resolution: "section_box-1e8645@workspace:src/components/section/section_box"
+  languageName: unknown
+  linkType: soft
+
+"section_header-196a52@workspace:src/components/section/section_header":
+  version: 0.0.0-use.local
+  resolution: "section_header-196a52@workspace:src/components/section/section_header"
+  languageName: unknown
+  linkType: soft
+
 "side-channel@npm:^1.0.4":
   version: 1.0.4
   resolution: "side-channel@npm:1.0.4"
