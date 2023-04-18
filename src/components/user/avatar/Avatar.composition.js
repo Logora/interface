@@ -14,10 +14,43 @@ export const DefaultAvatar = () => {
     );
 };
 
+export const AvatarSmall = () => {
+    return (
+        <IntlProvider>
+            <Avatar avatarUrl={avatarUrl} userName={userName} size={"small"} />
+        </IntlProvider>
+    );
+};
+
+export const AvatarLarge = () => {
+    return (
+        <IntlProvider>
+            <Avatar avatarUrl={avatarUrl} userName={userName} size={"large"} />
+        </IntlProvider>
+    );
+};
+
 export const AvatarOnline = () => {
     return (
         <IntlProvider>
             <Avatar avatarUrl={avatarUrl} userName={userName} isOnline />
+        </IntlProvider>
+    );
+};
+
+
+export const AvatarSmallOnline = () => {
+    return (
+        <IntlProvider>
+            <Avatar avatarUrl={avatarUrl} userName={userName} size={"small"} isOnline />
+        </IntlProvider>
+    );
+};
+
+export const AvatarLargeOnline = () => {
+    return (
+        <IntlProvider>
+            <Avatar avatarUrl={avatarUrl} userName={userName} size={"large"} isOnline />
         </IntlProvider>
     );
 };

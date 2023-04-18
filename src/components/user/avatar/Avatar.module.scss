@@ -6,8 +6,6 @@
 
 .avatarBox {
     position: relative;
-    height: 40px !important;
-    width: 40px !important;
 }
 
 .onlinePin {
@@ -31,3 +29,15 @@
     overflow: hidden;
 }
 
+.small {
+    height: 25px !important;
+    width: 25px !important;
+}
+.normal {
+    height: 40px !important;
+    width: 40px !important;
+}
+.large {
+    height: 60px !important;
+    width: 60px !important;
+}

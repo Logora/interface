@@ -16,7 +16,7 @@ describe('Avatar', () => {
         className: 'custom-class',
     };
 
-    it('renders user profile picture with alt text', () => {
+    it('renders user profile picture with alt text and default size', () => {
         render(
             <IntlProvider locale="en" messages={messages}>
                 <Avatar {...defaultProps} />
@@ -72,5 +72,35 @@ describe('Avatar', () => {
         );
         const onlineTooltip = screen.queryByText('John is here');
         expect(onlineTooltip).not.toBeInTheDocument();
+    });
+
+    it('renders user profile picture with alt text and small size', () => {
+        const props = { ...defaultProps, size: 'small' };
+        render(
+          <IntlProvider locale="en" messages={messages}>
+            <Avatar {...props} />
+          </IntlProvider>
+        );
+        const avatarImg = screen.getByAltText("John's avatar picture");
+        expect(avatarImg).toBeInTheDocument();
+        expect(avatarImg).toHaveAttribute('src', 'https://example.com/avatar.jpg');
+        expect(avatarImg).toHaveAttribute('height', '25');
+        expect(avatarImg).toHaveAttribute('width', '25');
+        expect(avatarImg).toHaveClass('custom-class');
+    });
+
+    it('renders user profile picture with alt text and large size', () => {
+        const props = { ...defaultProps, size: 'large' };
+        render(
+          <IntlProvider locale="en" messages={messages}>
+            <Avatar {...props} />
+          </IntlProvider>
+        );
+        const avatarImg = screen.getByAltText("John's avatar picture");
+        expect(avatarImg).toBeInTheDocument();
+        expect(avatarImg).toHaveAttribute('src', 'https://example.com/avatar.jpg');
+        expect(avatarImg).toHaveAttribute('height', '60');
+        expect(avatarImg).toHaveAttribute('width', '60');
+        expect(avatarImg).toHaveClass('custom-class');
     });
 });

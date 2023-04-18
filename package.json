@@ -29,7 +29,10 @@
   "homepage": "https://github.com/Logora/ui#readme",
   "dependencies": {
     "classnames": "^2.3.2",
-    "react-intl": "^6.1.2"
+    "react-intl": "^6.1.2",
+    "react-loading-skeleton": "^3.0.2",
+    "react-router": "^5.3.4",
+    "react-router-dom": "^5.3.4"
   },
   "devDependencies": {
     "@testing-library/react": "^12.1.4",
