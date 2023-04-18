@@ -1,0 +1,40 @@
+---
+description: A user avatar component with online pin.
+tags: ['avatar', 'user', 'image']
+---
+
+import { Avatar } from './Avatar';
+
+The `Avatar` component is used to display a user's avatar image, along with an optional online status indicator. 
+It is built using React and `react-intl` for internationalization support.
+
+
+### Component usage
+```js
+import { Avatar } from '@logora/debate.user.avatar';
+```
+```jsx
+import { Avatar } from './Avatar';
+import { IntlProvider } from 'react-intl';
+
+const userAvatar = {
+  avatarUrl: 'https://example.com/avatar.jpg',
+  userName: 'John',
+  isOnline: true,
+  className: 'custom-class',
+};
+
+<IntlProvider>
+    <Avatar {...userAvatar} />
+</IntlProvider>
+```
+
+### Properties
+
+| Prop name | Type   | Required | Default | Description                                                |
+|-----------|--------|----------|---------|------------------------------------------------------------|
+| avatarUrl | string | Yes      | -       | The URL of the user's avatar image.                         |
+| userName  | string | Yes      | -       | The name of the user associated with the avatar image.      |
+| isOnline  | bool   | No       | false   | Determines whether to display an online status indicator.  |
+| className | string | No       | -       | Additional CSS class names to apply to the avatar container.|
+| ...rest   | any    | No       | -       | Additional props to apply to the avatar image.              |

@@ -1,0 +1,33 @@
+@import '~@logora/debate.styles.theme/_theme.scss';
+
+.avatarContainer {
+    display: flex !important;
+}
+
+.avatarBox {
+    position: relative;
+    height: 40px !important;
+    width: 40px !important;
+}
+
+.onlinePin {
+    content: "";
+    position: absolute;
+    background: $connected-green;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    bottom: 0;
+    right: 0;
+    height: 25%;
+    width: 25%;
+}
+
+.avatarImage {
+    height: 40px !important;
+    width: 40px !important;
+    object-fit: cover;
+    max-width: none;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
