@@ -7,14 +7,22 @@ export const DefaultUserContentSkeleton = () => {
     );
 };
 
-export const DefaultUserContentSkeletonWithoutBody = () => {
+export const UserContentSkeletonWithoutBody = () => {
     return (
         <UserContentSkeleton hideBody />
     );
 };
 
-export const DefaultUserContentSkeletonWithoutAnimation = () => {
+export const UserContentSkeletonWithoutAnimation = () => {
     return (
         <UserContentSkeleton enableAnimation={false} />
+    );
+};
+
+export const UserContentSkeletonWithChildren = () => {
+    return (
+        <UserContentSkeleton>
+            <div>Some content</div>
+        </UserContentSkeleton>
     );
 };

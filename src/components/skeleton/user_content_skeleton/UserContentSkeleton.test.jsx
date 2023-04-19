@@ -36,4 +36,14 @@ describe('UserContentSkeleton', () => {
             expect(item).toHaveStyle('--pseudo-element-display: none');
         });
     });
+
+    it('displays children if passed', () => {
+        const { getByTestId, getByText } = render(
+            <UserContentSkeleton enableAnimation={false}>
+                <div>My child</div>
+            </UserContentSkeleton>
+        );
+        expect(getByTestId('user-content-skeleton')).toBeTruthy();
+        expect(getByText('My child')).toBeTruthy();
+    });
 });

@@ -11,7 +11,9 @@ A skeleton for user content loading.
 import UserContentSkeleton from '@logora/debate.skeleton.user_content_skeleton';
 ```
 ```js
-<UserContentSkeleton />
+<UserContentSkeleton>
+    <div>Loading</div>
+</UserContentSkeleton>
 ```
 
 ### Properties
@@ -19,3 +21,5 @@ import UserContentSkeleton from '@logora/debate.skeleton.user_content_skeleton';
 | ----------- | ----------- | :-----------: | ----------- | ----------- |
 | <font color='#4646c6'>enableAnimation</font> | <font color="#397300">boolean</font> | &cross; | true | <font color="grey">*Enable skeleton animation*</font> |
 | <font color='#4646c6'>hideBody</font> | <font color="#397300">boolean</font> | &cross; | false | <font color="grey">*Hide skeleton body*</font> |
+| <font color='#4646c6'>hideBody</font> | <font color="#397300">boolean</font> | &cross; | false | <font color="grey">*Hide skeleton body*</font> |
+| <font color='#4646c6'>children</font> | <font color="#397300">React component</font> | &cross; | false | <font color="grey">*Children displayed at the center of the skeleton*</font> |

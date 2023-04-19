@@ -1,11 +1,12 @@
 import React from "react";
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
+import styles from './UserContentSkeleton.module.scss';
 
 export const UserContentSkeleton = (props) => {
   return (
     <div style={{ marginTop: "1em" }} data-testid={"user-content-skeleton"}>
-      <div style={{ marginRight:".325em" }}>
+      <div className={styles.skeletonContainer} style={{ marginRight:".325em" }}>
         <div style={{ display: "flex", flexDirection: "row", justifycontent: "flex-start" }}>
           <Skeleton enableAnimation={props.enableAnimation} circle={true} height={60} width={60} />
           <div style={{ display: "flex", flexDirection: "column", justifycontent: "flex-start", width: "100%", margin: "5px" }}>
@@ -20,6 +21,11 @@ export const UserContentSkeleton = (props) => {
             </div>
             <Skeleton enableAnimation={props.enableAnimation} />
           </>
+        }
+        { props.children &&
+          <div className={styles.childrenLayer}>
+            { props.children }
+          </div>
         }
       </div>
     </div>
