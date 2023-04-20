@@ -112,8 +112,8 @@
         "rootDir": "src/components/text/expandable_text"
     },
     "text/read_more": {
-        "scope": "",
-        "version": "",
+        "scope": "logora.debate",
+        "version": "0.0.1",
         "mainFile": "index.js",
         "rootDir": "src/components/text/read_more"
     },
