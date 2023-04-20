@@ -32,9 +32,10 @@ jobs:
 
           bit install
           bit status
-          bit test --all
-      - name: Hard-tag pending components
-        run: bit tag --persist
+      - name: Test components
+        run: bit test --all
+      - name: Tag components
+        run: bit tag
       - name: Export components
         run: bit export
       - name: Commit changes made to .bitmap
@@ -42,5 +43,5 @@ jobs:
           git config --global user.name '${{ github.actor }}'
           git config --global user.email '${{ github.actor }}@users.noreply.github.com'
           git add .bitmap
-          git diff-index --quiet HEAD || git commit -m "update .bitmap with new component versions (automated). --skip-ci"
-          git diff-index --quiet HEAD || git push
+          git commit -m "update .bitmap with new component versions (automated). --skip-ci"
+          git push
