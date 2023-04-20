@@ -23,18 +23,9 @@
     },
     "expandable_text": {
         "scope": "",
-        "version": "",
+        "version": "0.0.1",
         "mainFile": "index.js",
-        "rootDir": "src/components/text/expandable_text",
-        "config": {
-            "teambit.dependencies/dependency-resolver": {
-                "policy": {
-                    "dependencies": {
-                        "@logora/debate.icons": "0.0.1"
-                    }
-                }
-            }
-        }
+        "rootDir": "src/components/text/expandable_text"
     },
     "forms/form": {
         "scope": "logora.debate",
