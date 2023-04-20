@@ -1,0 +1,56 @@
+@import '~@logora/debate.styles.theme/_theme.scss';
+
+.container {
+    position: relative;
+}
+
+.contentMask {
+    overflow: hidden;
+}
+
+.linkContainer {
+    bottom: -35px;
+    display: flex;
+    flex-direction: row;
+    left: 0;
+    position: absolute;
+    right: 0;
+    width: 100%;
+    z-index: 1;
+    height: 100%;
+    justify-content: center;
+    align-items: flex-end;
+    span {
+        font-size: $font-size-small;
+    }
+    &:hover {
+        cursor: pointer;
+        color: black;
+    }
+}
+
+.link {
+    position: relative;
+    border-bottom: 1px solid black;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    z-index: 10;
+	margin: 0.5em;
+    width: max-content;
+	svg {
+        transform: rotate(-90deg);
+		transition: transform .5s;
+	}
+    span {
+        padding-right: 5px;
+    }
+}
+
+.linkExpanded {
+    @extend .link;
+    svg {
+        transform: rotate(90deg);
+        transition: transform .5s;
+    }
+}

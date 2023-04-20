@@ -1,0 +1,39 @@
+---
+description: An expandable text component.
+---
+
+import { ExpandableText } from './ExpandableText';
+
+A component that displays text and can be expanded to show the full text.
+
+### Component usage
+```js
+<ExpandableText
+    expandable
+    expandText="Read more"
+    collapseText="Read less"
+    maxHeight="100"
+    showIcon
+    backgroundColor="#ffffff"
+    onCollapse={() => {}}
+    onExpand={() => {}}
+>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
+    nisi ut aliquip ex ea commodo consequat.
+</ExpandableText>
+```
+
+### Properties
+| **Name**      | **Type** | **Required** | **Default** | **Description** |
+| ----------- | ----------- | ----------- | ----------- | ----------- |
+| <font color='#4646c6'>expandable</font> | <font color="#397300">boolean</font> | &cross; | true | <font color="grey">*whether the text should be expandable*</font> |
+| <font color='#4646c6'>expandText</font> | <font color="#397300">string</font> | &cross; | "Read more" | <font color="grey">*text for the expand button*</font> |
+| <font color='#4646c6'>collapseText</font> | <font color="#397300">string</font> | &cross; | "Read less" | <font color="grey">*text for the collapse button*</font> |
+| <font color='#4646c6'>className</font> | <font color="#397300">string</font> | &cross; | - | <font color="grey">*className to be applied to the expandable button text*</font> |
+| <font color='#4646c6'>maxHeight</font> | <font color="#397300">string</font> | &cross; | "100" | <font color="grey">*maximum height of the expandable text*</font> |
+| <font color='#4646c6'>showIcon</font> | <font color="#397300">boolean</font> | &cross; | true | <font color="grey">*whether an icon should be displayed next to the expand/collapse actions*</font> |
+| <font color='#4646c6'>backgroundColor</font> | <font color="#397300">string</font> | &cross; | "#ffffff" | <font color="grey">*background color of the expandable text*</font> |
+| <font color='#4646c6'>onCollapse</font> | <font color="#397300">function</font> | &cross; | () => {} | <font color="grey">*callback function when text is collapsed*</font> |
+| <font color='#4646c6'>onExpand</font> | <font color="#397300">function</font> | &cross; | () => {} | <font color="grey">*callback function when text is expanded*</font> |

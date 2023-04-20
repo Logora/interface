@@ -32,12 +32,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:7.20.0":
-  version: 7.20.0
-  resolution: "@babel/runtime@npm:7.20.0"
+"@babel/runtime@npm:7.12.18":
+  version: 7.12.18
+  resolution: "@babel/runtime@npm:7.12.18"
   dependencies:
-    regenerator-runtime: ^0.13.10
-  checksum: 637fca51db34f3a59d329b7e0d01163769fe94915fdb04e4ac4ba62de9f1ca637ce3a564fe3b0166ccdd7f02f14b6a5707ee3e550b3e01c72327c6620d8e6a8b
+    regenerator-runtime: ^0.13.4
+  checksum: 0ba38dc8d478584b0b5fb15fc2b7855f9f20561917bd434a66429d55d1165199d6161bc5fb087b87254712827f63561ff5196df66701e5647d67c7d0f557569a
   languageName: node
   linkType: hard
 
@@ -50,7 +50,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@faker-js/faker@npm:^7.6.0":
+"@faker-js/faker@npm:>=7.6.0 <8.0.0":
   version: 7.6.0
   resolution: "@faker-js/faker@npm:7.6.0"
   checksum: 942af6221774e8c98a0eb6bc75265e05fb81a941170377666c3439aab9495dd321d6beedc5406f07e6ad44262b3e43c20961f666d116ad150b78e7437dd1bb2b
@@ -97,25 +97,25 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@formatjs/intl-displaynames@npm:6.3.0":
-  version: 6.3.0
-  resolution: "@formatjs/intl-displaynames@npm:6.3.0"
+"@formatjs/intl-displaynames@npm:6.3.1":
+  version: 6.3.1
+  resolution: "@formatjs/intl-displaynames@npm:6.3.1"
   dependencies:
     "@formatjs/ecma402-abstract": 1.14.3
     "@formatjs/intl-localematcher": 0.2.32
     tslib: ^2.4.0
-  checksum: 0574271f2a95e97d750b3d3418af12fbde3ec9ba40c3365e4f819b0a311cc0040e909545af354abf86024e2f27ccee6b21736af381b22e3b18447d9c38118e8a
+  checksum: a8f43cda125adf8ac34d890f6b2c8b77525d5dd1452fecc5053b16dc40142d5b00b4f0dfc26c73fdf03b38e84ed2936fe4eb453414f611f79e260374f8afb642
   languageName: node
   linkType: hard
 
-"@formatjs/intl-listformat@npm:7.2.0":
-  version: 7.2.0
-  resolution: "@formatjs/intl-listformat@npm:7.2.0"
+"@formatjs/intl-listformat@npm:7.2.1":
+  version: 7.2.1
+  resolution: "@formatjs/intl-listformat@npm:7.2.1"
   dependencies:
     "@formatjs/ecma402-abstract": 1.14.3
     "@formatjs/intl-localematcher": 0.2.32
     tslib: ^2.4.0
-  checksum: b7ce3fac54de28ac1d9c22597dd74ee05d077c56c1e0797b83763646776974c45ad49862763179fed357664078b71d5fb9f8453f2a6c2f090bef65a6107bb243
+  checksum: 3ad407b430015711a302a2c8b1799368abfeb8ff2d66c6027aea89ef3ef196dc2afa5f8357408d9578345502021ace78277766f075af65730817ff5352bf48a0
   languageName: node
   linkType: hard
 
@@ -128,15 +128,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@formatjs/intl@npm:2.7.0":
-  version: 2.7.0
-  resolution: "@formatjs/intl@npm:2.7.0"
+"@formatjs/intl@npm:2.7.1":
+  version: 2.7.1
+  resolution: "@formatjs/intl@npm:2.7.1"
   dependencies:
     "@formatjs/ecma402-abstract": 1.14.3
     "@formatjs/fast-memoize": 2.0.1
     "@formatjs/icu-messageformat-parser": 2.3.1
-    "@formatjs/intl-displaynames": 6.3.0
-    "@formatjs/intl-listformat": 7.2.0
+    "@formatjs/intl-displaynames": 6.3.1
+    "@formatjs/intl-listformat": 7.2.1
     intl-messageformat: 10.3.4
     tslib: ^2.4.0
   peerDependencies:
@@ -144,7 +144,7 @@ __metadata:
   peerDependenciesMeta:
     typescript:
       optional: true
-  checksum: 46fffe2744fb8e41f9bbe9e4c6d5386a14d1e45245f0d3bb9ab901f9e93c906def409069b4ff4ddc5e30353e84d84ab6b8c69e116ff819385a4d28e00c29aabc
+  checksum: 1b8f05f9ba13b315c6439feb7503a1f58a9f4698108fbf804d6ca529a4c90d0d229c78514e0bb2e610e1588680970c4af30d96feabe5811c7172f9dad1a78f21
   languageName: node
   linkType: hard
 
@@ -223,28 +223,28 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@logora/ui@workspace:."
   dependencies:
-    "@babel/runtime": 7.20.0
-    "@faker-js/faker": ^7.6.0
+    "@babel/runtime": 7.12.18
+    "@faker-js/faker": ">=7.6.0 <8.0.0"
     "@logora/debate.tools.tooltip": 0.0.5
     "@testing-library/dom": ^9.2.0
-    "@testing-library/react": ^12.1.4
+    "@testing-library/react": ">=12.1.4 <13.0.0"
     "@testing-library/user-event": ^12.1.4
-    "@types/jest": ^26.0.0
+    "@types/jest": ">=26.0.0 <27.0.0"
     "@types/node": 12.20.4
-    "@types/react": ^17.0.8
-    "@types/react-dom": ^17.0.5
+    "@types/react": ">=17.0.8 <18.0.0"
+    "@types/react-dom": ">=17.0.5 <18.0.0"
     "@types/testing-library__jest-dom": 5.9.5
-    classnames: ^2.3.2
-    core-js: ^3.0.0
-    react: ^16.8.0 || ^17.0.0
-    react-dom: ^16.8.0 || ^17.0.0
+    classnames: ">=2.3.2 <3.0.0"
+    core-js: ">=3.0.0 <4.0.0"
+    react: ^18.2.0
+    react-dom: ^18.2.0
     react-intl: ^6.1.2
-    react-loading-skeleton: ^3.0.2
+    react-loading-skeleton: ">=3.0.2 <4.0.0"
     react-router: ^5.3.4
     react-router-dom: ^5.3.4
   peerDependencies:
-    react: ^16.8.0 || ^17.0.0
-    react-dom: ^16.8.0 || ^17.0.0
+    react: ^18.2.0
+    react-dom: ^18.2.0
     react-router: ^5.3.4
     react-router-dom: ^5.3.4
   languageName: unknown
@@ -289,7 +289,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@testing-library/react@npm:^12.1.4":
+"@testing-library/react@npm:>=12.1.4 <13.0.0":
   version: 12.1.5
   resolution: "@testing-library/react@npm:12.1.5"
   dependencies:
@@ -357,16 +357,16 @@ __metadata:
   linkType: hard
 
 "@types/jest@npm:*":
-  version: 29.5.0
-  resolution: "@types/jest@npm:29.5.0"
+  version: 29.5.1
+  resolution: "@types/jest@npm:29.5.1"
   dependencies:
     expect: ^29.0.0
     pretty-format: ^29.0.0
-  checksum: cd877e5c56d299cceb8bfdcbb1a77723c706750dd3c3bc47403bc3599b8faff590a3b009c68bb5b11bf7a8c77d1fb01de5e124329b4a08e65f1cdda28b0ecdb8
+  checksum: 0a22491dec86333c0e92b897be2c809c922a7b2b0aa5604ac369810d6b2360908b4a3f2c6892e8a237a54fa1f10ecefe0e823ec5fcb7915195af4dfe88d2197e
   languageName: node
   linkType: hard
 
-"@types/jest@npm:^26.0.0":
+"@types/jest@npm:>=26.0.0 <27.0.0":
   version: 26.0.24
   resolution: "@types/jest@npm:26.0.24"
   dependencies:
@@ -377,9 +377,9 @@ __metadata:
   linkType: hard
 
 "@types/node@npm:*":
-  version: 18.15.11
-  resolution: "@types/node@npm:18.15.11"
-  checksum: 977b4ad04708897ff0eb049ecf82246d210939c82461922d20f7d2dcfd81bbc661582ba3af28869210f7e8b1934529dcd46bff7d448551400f9d48b9d3bddec3
+  version: 18.15.12
+  resolution: "@types/node@npm:18.15.12"
+  checksum: dff7596db8d0a18bcd8da542dc62ed4377cba39546ff53baaa06d106f1482bc3e4e5e03644f5d1e3cef0904ffbe8ebbc244b2b0851f8025ab2a3959ee0ace58f
   languageName: node
   linkType: hard
 
@@ -397,7 +397,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-dom@npm:<18.0.0, @types/react-dom@npm:^17.0.5":
+"@types/react-dom@npm:<18.0.0, @types/react-dom@npm:>=17.0.5 <18.0.0":
   version: 17.0.19
   resolution: "@types/react-dom@npm:17.0.19"
   dependencies:
@@ -417,7 +417,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:^17, @types/react@npm:^17.0.8":
+"@types/react@npm:>=17.0.8 <18.0.0, @types/react@npm:^17":
   version: 17.0.58
   resolution: "@types/react@npm:17.0.58"
   dependencies:
@@ -527,12 +527,18 @@ __metadata:
 "avatar-e1a0ae@workspace:src/components/user/avatar":
   version: 0.0.0-use.local
   resolution: "avatar-e1a0ae@workspace:src/components/user/avatar"
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0
+    react-dom: ^16.8.0 || ^17.0.0
   languageName: unknown
   linkType: soft
 
 "box_skeleton-a11637@workspace:src/components/skeleton/box_skeleton":
   version: 0.0.0-use.local
   resolution: "box_skeleton-a11637@workspace:src/components/skeleton/box_skeleton"
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0
+    react-dom: ^16.8.0 || ^17.0.0
   languageName: unknown
   linkType: soft
 
@@ -583,7 +589,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"classnames@npm:^2.3.1, classnames@npm:^2.3.2":
+"classnames@npm:>=2.3.2 <3.0.0, classnames@npm:^2.3.1":
   version: 2.3.2
   resolution: "classnames@npm:2.3.2"
   checksum: 2c62199789618d95545c872787137262e741f9db13328e216b093eea91c85ef2bfb152c1f9e63027204e2559a006a92eb74147d46c800a9f96297ae1d9f96f4e
@@ -622,7 +628,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"core-js@npm:^3.0.0":
+"core-js@npm:>=3.0.0 <4.0.0, core-js@npm:^3.0.0":
   version: 3.30.1
   resolution: "core-js@npm:3.30.1"
   checksum: 6d4a00b488694d4c715c424e15dfef31433ac7aa395c39c518a0cfacec918ada1c716fed74682033197e0164e23bbf38bfd598ee9a239c4aaa590ab1ba862ac8
@@ -661,7 +667,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"define-properties@npm:^1.1.3, define-properties@npm:^1.1.4":
+"define-properties@npm:^1.1.3, define-properties@npm:^1.1.4, define-properties@npm:^1.2.0":
   version: 1.2.0
   resolution: "define-properties@npm:1.2.0"
   dependencies:
@@ -688,6 +694,9 @@ __metadata:
 "display-100652@workspace:src/components/styles/display":
   version: 0.0.0-use.local
   resolution: "display-100652@workspace:src/components/styles/display"
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0
+    react-dom: ^16.8.0 || ^17.0.0
   languageName: unknown
   linkType: soft
 
@@ -729,6 +738,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"expandable_text-b7c0b7@workspace:src/components/text/expandable_text":
+  version: 0.0.0-use.local
+  resolution: "expandable_text-b7c0b7@workspace:src/components/text/expandable_text"
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0
+    react-dom: ^16.8.0 || ^17.0.0
+  languageName: unknown
+  linkType: soft
+
 "expect@npm:^29.0.0":
   version: 29.5.0
   resolution: "expect@npm:29.5.0"
@@ -754,6 +772,9 @@ __metadata:
 "flex-39962c@workspace:src/components/styles/flex":
   version: 0.0.0-use.local
   resolution: "flex-39962c@workspace:src/components/styles/flex"
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0
+    react-dom: ^16.8.0 || ^17.0.0
   languageName: unknown
   linkType: soft
 
@@ -769,6 +790,9 @@ __metadata:
 "form-5e6a8d@workspace:src/components/forms/form":
   version: 0.0.0-use.local
   resolution: "form-5e6a8d@workspace:src/components/forms/form"
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0
+    react-dom: ^16.8.0 || ^17.0.0
   languageName: unknown
   linkType: soft
 
@@ -779,7 +803,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"functions-have-names@npm:^1.2.2":
+"functions-have-names@npm:^1.2.3":
   version: 1.2.3
   resolution: "functions-have-names@npm:1.2.3"
   checksum: c3f1f5ba20f4e962efb71344ce0a40722163e85bee2101ce25f88214e78182d2d2476aa85ef37950c579eb6cf6ee811c17b3101bb84004bb75655f3e33f3fdb5
@@ -871,6 +895,9 @@ __metadata:
 "hidden-30841f@workspace:src/components/input/checkbox/hidden":
   version: 0.0.0-use.local
   resolution: "hidden-30841f@workspace:src/components/input/checkbox/hidden"
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0
+    react-dom: ^16.8.0 || ^17.0.0
   languageName: unknown
   linkType: soft
 
@@ -900,6 +927,9 @@ __metadata:
 "indicator-f4a977@workspace:src/components/input/checkbox/indicator":
   version: 0.0.0-use.local
   resolution: "indicator-f4a977@workspace:src/components/input/checkbox/indicator"
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0
+    react-dom: ^16.8.0 || ^17.0.0
   languageName: unknown
   linkType: soft
 
@@ -1184,12 +1214,18 @@ __metadata:
 "label-54fe1c@workspace:src/components/input/checkbox/label":
   version: 0.0.0-use.local
   resolution: "label-54fe1c@workspace:src/components/input/checkbox/label"
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0
+    react-dom: ^16.8.0 || ^17.0.0
   languageName: unknown
   linkType: soft
 
 "link-b5813c@workspace:src/components/action/link":
   version: 0.0.0-use.local
   resolution: "link-b5813c@workspace:src/components/action/link"
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0
+    react-dom: ^16.8.0 || ^17.0.0
   languageName: unknown
   linkType: soft
 
@@ -1327,28 +1363,27 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-dom@npm:^16.8.0 || ^17.0.0":
-  version: 17.0.2
-  resolution: "react-dom@npm:17.0.2"
+"react-dom@npm:^18.2.0":
+  version: 18.2.0
+  resolution: "react-dom@npm:18.2.0"
   dependencies:
     loose-envify: ^1.1.0
-    object-assign: ^4.1.1
-    scheduler: ^0.20.2
+    scheduler: ^0.23.0
   peerDependencies:
-    react: 17.0.2
-  checksum: 1c1eaa3bca7c7228d24b70932e3d7c99e70d1d04e13bb0843bbf321582bc25d7961d6b8a6978a58a598af2af496d1cedcfb1bf65f6b0960a0a8161cb8dab743c
+    react: ^18.2.0
+  checksum: 7d323310bea3a91be2965f9468d552f201b1c27891e45ddc2d6b8f717680c95a75ae0bc1e3f5cf41472446a2589a75aed4483aee8169287909fcd59ad149e8cc
   languageName: node
   linkType: hard
 
 "react-intl@npm:^6.1.2":
-  version: 6.4.0
-  resolution: "react-intl@npm:6.4.0"
+  version: 6.4.1
+  resolution: "react-intl@npm:6.4.1"
   dependencies:
     "@formatjs/ecma402-abstract": 1.14.3
     "@formatjs/icu-messageformat-parser": 2.3.1
-    "@formatjs/intl": 2.7.0
-    "@formatjs/intl-displaynames": 6.3.0
-    "@formatjs/intl-listformat": 7.2.0
+    "@formatjs/intl": 2.7.1
+    "@formatjs/intl-displaynames": 6.3.1
+    "@formatjs/intl-listformat": 7.2.1
     "@types/hoist-non-react-statics": ^3.3.1
     "@types/react": 16 || 17 || 18
     hoist-non-react-statics: ^3.3.2
@@ -1360,7 +1395,7 @@ __metadata:
   peerDependenciesMeta:
     typescript:
       optional: true
-  checksum: 423b3ec7422b0202d8b726affce828fc1a2c0c9e9465bec684ca3d192844438a8004769b1bb2cce6ac8dbd097171e37d85cfcb08238151ce45762039036bf26d
+  checksum: 87571e56312fc1578ef609d38705836007f95e4c883be05142d09737c901e1f09c16eb3c7068a9a623506569f392bbc1040bd44553b2323f58f0826399e5d238
   languageName: node
   linkType: hard
 
@@ -1385,7 +1420,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-loading-skeleton@npm:^3.0.2":
+"react-loading-skeleton@npm:>=3.0.2 <4.0.0":
   version: 3.2.1
   resolution: "react-loading-skeleton@npm:3.2.1"
   peerDependencies:
@@ -1430,17 +1465,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react@npm:^16.8.0 || ^17.0.0":
-  version: 17.0.2
-  resolution: "react@npm:17.0.2"
+"react@npm:^18.2.0":
+  version: 18.2.0
+  resolution: "react@npm:18.2.0"
   dependencies:
     loose-envify: ^1.1.0
-    object-assign: ^4.1.1
-  checksum: b254cc17ce3011788330f7bbf383ab653c6848902d7936a87b09d835d091e3f295f7e9dd1597c6daac5dc80f90e778c8230218ba8ad599f74adcc11e33b9d61b
+  checksum: 88e38092da8839b830cda6feef2e8505dec8ace60579e46aa5490fc3dc9bba0bd50336507dc166f43e3afc1c42939c09fe33b25fae889d6f402721dcd78fca1b
   languageName: node
   linkType: hard
 
-"regenerator-runtime@npm:^0.13.10, regenerator-runtime@npm:^0.13.11":
+"regenerator-runtime@npm:^0.13.11, regenerator-runtime@npm:^0.13.4":
   version: 0.13.11
   resolution: "regenerator-runtime@npm:0.13.11"
   checksum: 27481628d22a1c4e3ff551096a683b424242a216fee44685467307f14d58020af1e19660bf2e26064de946bad7eff28950eae9f8209d55723e2d9351e632bbb4
@@ -1448,13 +1482,13 @@ __metadata:
   linkType: hard
 
 "regexp.prototype.flags@npm:^1.4.3":
-  version: 1.4.3
-  resolution: "regexp.prototype.flags@npm:1.4.3"
+  version: 1.5.0
+  resolution: "regexp.prototype.flags@npm:1.5.0"
   dependencies:
     call-bind: ^1.0.2
-    define-properties: ^1.1.3
-    functions-have-names: ^1.2.2
-  checksum: 51228bae732592adb3ededd5e15426be25f289e9c4ef15212f4da73f4ec3919b6140806374b8894036a86020d054a8d2657d3fee6bb9b4d35d8939c20030b7a6
+    define-properties: ^1.2.0
+    functions-have-names: ^1.2.3
+  checksum: c541687cdbdfff1b9a07f6e44879f82c66bbf07665f9a7544c5fd16acdb3ec8d1436caab01662d2fbcad403f3499d49ab0b77fbc7ef29ef961d98cc4bc9755b4
   languageName: node
   linkType: hard
 
@@ -1465,25 +1499,30 @@ __metadata:
   languageName: node
   linkType: hard
 
-"scheduler@npm:^0.20.2":
-  version: 0.20.2
-  resolution: "scheduler@npm:0.20.2"
+"scheduler@npm:^0.23.0":
+  version: 0.23.0
+  resolution: "scheduler@npm:0.23.0"
   dependencies:
     loose-envify: ^1.1.0
-    object-assign: ^4.1.1
-  checksum: c4b35cf967c8f0d3e65753252d0f260271f81a81e427241295c5a7b783abf4ea9e905f22f815ab66676f5313be0a25f47be582254db8f9241b259213e999b8fc
+  checksum: d79192eeaa12abef860c195ea45d37cbf2bbf5f66e3c4dcd16f54a7da53b17788a70d109ee3d3dde1a0fd50e6a8fc171f4300356c5aee4fc0171de526bf35f8a
   languageName: node
   linkType: hard
 
 "section_box-1e8645@workspace:src/components/section/section_box":
   version: 0.0.0-use.local
   resolution: "section_box-1e8645@workspace:src/components/section/section_box"
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0
+    react-dom: ^16.8.0 || ^17.0.0
   languageName: unknown
   linkType: soft
 
 "section_header-196a52@workspace:src/components/section/section_header":
   version: 0.0.0-use.local
   resolution: "section_header-196a52@workspace:src/components/section/section_header"
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0
+    react-dom: ^16.8.0 || ^17.0.0
   languageName: unknown
   linkType: soft
 
@@ -1508,6 +1547,9 @@ __metadata:
 "spacing-44d24d@workspace:src/components/styles/spacing":
   version: 0.0.0-use.local
   resolution: "spacing-44d24d@workspace:src/components/styles/spacing"
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0
+    react-dom: ^16.8.0 || ^17.0.0
   languageName: unknown
   linkType: soft
 
@@ -1523,6 +1565,9 @@ __metadata:
 "standard_error_boundary-f3d28c@workspace:src/components/error/standard_error_boundary":
   version: 0.0.0-use.local
   resolution: "standard_error_boundary-f3d28c@workspace:src/components/error/standard_error_boundary"
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0
+    react-dom: ^16.8.0 || ^17.0.0
   languageName: unknown
   linkType: soft
 
@@ -1556,12 +1601,18 @@ __metadata:
 "tabs-a31bc6@workspace:src/components/styles/tabs":
   version: 0.0.0-use.local
   resolution: "tabs-a31bc6@workspace:src/components/styles/tabs"
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0
+    react-dom: ^16.8.0 || ^17.0.0
   languageName: unknown
   linkType: soft
 
 "theme-17e024@workspace:src/components/styles/theme":
   version: 0.0.0-use.local
   resolution: "theme-17e024@workspace:src/components/styles/theme"
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0
+    react-dom: ^16.8.0 || ^17.0.0
   languageName: unknown
   linkType: soft
 
@@ -1591,6 +1642,9 @@ __metadata:
 "toggle-9b9f77@workspace:src/components/input/toggle":
   version: 0.0.0-use.local
   resolution: "toggle-9b9f77@workspace:src/components/input/toggle"
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0
+    react-dom: ^16.8.0 || ^17.0.0
   languageName: unknown
   linkType: soft
 
@@ -1604,6 +1658,9 @@ __metadata:
 "user_content_skeleton-068543@workspace:src/components/skeleton/user_content_skeleton":
   version: 0.0.0-use.local
   resolution: "user_content_skeleton-068543@workspace:src/components/skeleton/user_content_skeleton"
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0
+    react-dom: ^16.8.0 || ^17.0.0
   languageName: unknown
   linkType: soft
 
