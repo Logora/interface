@@ -25,7 +25,16 @@
         "scope": "",
         "version": "",
         "mainFile": "index.js",
-        "rootDir": "src/components/text/expandable_text"
+        "rootDir": "src/components/text/expandable_text",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "dependencies": {
+                        "@logora/debate.icons": "0.0.1"
+                    }
+                }
+            }
+        }
     },
     "forms/form": {
         "scope": "logora.debate",

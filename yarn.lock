@@ -193,6 +193,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@logora/debate.icons@npm:0.0.1":
+  version: 0.0.1
+  resolution: "@logora/debate.icons@npm:0.0.1::__archiveUrl=https%3A%2F%2Fnode.bit.cloud%2F%40logora%2Fdebate.icons%2F-%2F%40logora-debate.icons-0.0.1.tgz"
+  dependencies:
+    core-js: ^3.0.0
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0
+    react-dom: ^16.8.0 || ^17.0.0
+  checksum: 08096948693436359c89d0b01d48b5e08242f05f1ffc5cacd66e1d9344af0b30cacea6c500070fbd473d776fb945305f4a0a8315a5d03a6b84fe8bfe0a8f9b48
+  languageName: node
+  linkType: hard
+
 "@logora/debate.styles.theme@npm:0.0.8":
   version: 0.0.8
   resolution: "@logora/debate.styles.theme@npm:0.0.8::__archiveUrl=https%3A%2F%2Fnode.bit.cloud%2F%40logora%2Fdebate.styles.theme%2F-%2F%40logora-debate.styles.theme-0.0.8.tgz"
@@ -225,6 +237,7 @@ __metadata:
   dependencies:
     "@babel/runtime": 7.12.18
     "@faker-js/faker": ">=7.6.0 <8.0.0"
+    "@logora/debate.icons": 0.0.1
     "@logora/debate.tools.tooltip": 0.0.5
     "@testing-library/dom": ^9.2.0
     "@testing-library/react": ">=12.1.4 <13.0.0"
