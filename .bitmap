@@ -21,12 +21,6 @@
         "mainFile": "index.js",
         "rootDir": "src/components/error/standard_error_boundary"
     },
-    "expandable_text": {
-        "scope": "",
-        "version": "0.0.1",
-        "mainFile": "index.js",
-        "rootDir": "src/components/text/expandable_text"
-    },
     "forms/form": {
         "scope": "logora.debate",
         "version": "0.0.2",
@@ -110,6 +104,12 @@
         "version": "0.0.8",
         "mainFile": "_theme.scss",
         "rootDir": "src/components/styles/theme"
+    },
+    "text/expandable_text": {
+        "scope": "",
+        "version": "",
+        "mainFile": "index.js",
+        "rootDir": "src/components/text/expandable_text"
     },
     "user/avatar": {
         "scope": "logora.debate",
