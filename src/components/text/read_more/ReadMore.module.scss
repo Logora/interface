@@ -1,0 +1,19 @@
+@import '~@logora/debate.styles.theme/_theme.scss';
+
+.readMoreElement {
+    font-weight: $font-weight-bold;
+    text-decoration: none;
+    color: $text-primary;
+    cursor: pointer;
+}
+
+.contentBody {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.nextLine {
+    display: block;
+    width: 100%;
+}

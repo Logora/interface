@@ -111,6 +111,12 @@
         "mainFile": "index.js",
         "rootDir": "src/components/text/expandable_text"
     },
+    "text/read_more": {
+        "scope": "",
+        "version": "",
+        "mainFile": "index.js",
+        "rootDir": "src/components/text/read_more"
+    },
     "user/avatar": {
         "scope": "logora.debate",
         "version": "0.0.3",
