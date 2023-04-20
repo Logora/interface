@@ -33,10 +33,10 @@ export const ReadMore = (props) => {
     
     return (
         <div>
-            <span className={{[styles.contentBody]: lineCount}} style={lineCount ? lineClampingStyle : {}}>
+            <span className={lineCount ? styles.contentBody : {}} style={lineCount ? lineClampingStyle : {}}>
                 { lineCount ? content : formatContent(content) }
             </span>
-            <span className={{ [styles.nextLine]: nextLine }} style={ nextLine ? nextLineStyle : {}}>
+            <span className={nextLine ? styles.nextLine : {}} style={ nextLine ? nextLineStyle : {}}>
                 { readMoreUrl ?
                     <Link 
                         to={readMoreUrl} 
