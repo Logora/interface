@@ -28,4 +28,4 @@ jobs:
           bit -v && bit import
 
           bit status
-          bit test
+          bit test --all

@@ -32,7 +32,7 @@ jobs:
 
           bit install
           bit status
-          bit test
+          bit test --all
       - name: Hard-tag pending components
         run: bit tag --persist
       - name: Export components
