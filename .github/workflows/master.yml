@@ -18,6 +18,8 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18.x
+      - name: Add scoped component registry
+        run: npm config set '@logora:registry' https://node.bit.cloud
       - name: Install Bit Version Manager
         run: npm i -g @teambit/bvm
       - name: Install latest Bit version
