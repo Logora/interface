@@ -32,7 +32,8 @@
     "react-intl": "^6.1.2",
     "react-loading-skeleton": "^3.0.2",
     "react-router": "^5.3.4",
-    "react-router-dom": "^5.3.4"
+    "react-router-dom": "^5.3.4",
+    "@logora/debate.icons": "^0.0.1"
   },
   "devDependencies": {
     "@testing-library/react": "^12.1.4",
