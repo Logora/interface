@@ -4,6 +4,7 @@ import { faker } from '@faker-js/faker';
 import { IntlProvider } from 'react-intl';
 
 let text = faker.lorem.paragraph(35);
+let url = faker.internet.url();
 
 export const DefaultReadMore = () => {
     return (
@@ -11,7 +12,7 @@ export const DefaultReadMore = () => {
             <ReadMore 
                 content={text}
                 contentCharCount={250}
-                readMoreUrl={"https://google.fr"}
+                readMoreUrl={url}
             />
         </IntlProvider>
     )
@@ -23,7 +24,7 @@ export const LineClampedReadMore = () => {
             <ReadMore 
                 content={text}
                 contentCharCount={250}
-                readMoreUrl={"https://google.fr"}
+                readMoreUrl={url}
                 lineCount={3}
             />
         </IntlProvider>
@@ -36,7 +37,7 @@ export const NextLineReadMore = () => {
             <ReadMore 
                 content={text}
                 contentCharCount={250}
-                readMoreUrl={"https://google.fr"}
+                readMoreUrl={url}
                 nextLine={true}
                 nextLineSpacing={30}
             />
