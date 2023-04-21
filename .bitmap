@@ -40,8 +40,8 @@
         "rootDir": "src/components/hooks/use_css_theme"
     },
     "information/embed_header": {
-        "scope": "",
-        "version": "",
+        "scope": "logora.debate",
+        "version": "0.0.1",
         "mainFile": "index.js",
         "rootDir": "src/components/information/embed_header"
     },
