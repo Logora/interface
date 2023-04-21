@@ -193,7 +193,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@logora/debate.icons@npm:0.0.1":
+"@logora/debate.icons@npm:^0.0.1":
   version: 0.0.1
   resolution: "@logora/debate.icons@npm:0.0.1::__archiveUrl=https%3A%2F%2Fnode.bit.cloud%2F%40logora%2Fdebate.icons%2F-%2F%40logora-debate.icons-0.0.1.tgz"
   dependencies:
@@ -237,7 +237,7 @@ __metadata:
   dependencies:
     "@babel/runtime": 7.20.0
     "@faker-js/faker": ^7.6.0
-    "@logora/debate.icons": 0.0.1
+    "@logora/debate.icons": ^0.0.1
     "@logora/debate.tools.tooltip": 0.0.5
     "@testing-library/dom": ^9.2.0
     "@testing-library/react": ^12.1.4
@@ -1459,6 +1459,12 @@ __metadata:
   languageName: node
   linkType: hard
 
+"read_more-cde56f@workspace:src/components/text/read_more":
+  version: 0.0.0-use.local
+  resolution: "read_more-cde56f@workspace:src/components/text/read_more"
+  languageName: unknown
+  linkType: soft
+
 "regenerator-runtime@npm:^0.13.10, regenerator-runtime@npm:^0.13.11":
   version: 0.13.11
   resolution: "regenerator-runtime@npm:0.13.11"
@@ -1619,6 +1625,12 @@ __metadata:
   checksum: ae3ed5f9ce29932d049908ebfdf21b3a003a85653a9a140d614da6b767a93ef94f460e52c3d787f0e4f383546981713f165037dc2274df212ea9f8a4541004e1
   languageName: node
   linkType: hard
+
+"use_css_theme-8882df@workspace:src/components/hooks/use_css_theme":
+  version: 0.0.0-use.local
+  resolution: "use_css_theme-8882df@workspace:src/components/hooks/use_css_theme"
+  languageName: unknown
+  linkType: soft
 
 "user_content_skeleton-068543@workspace:src/components/skeleton/user_content_skeleton":
   version: 0.0.0-use.local

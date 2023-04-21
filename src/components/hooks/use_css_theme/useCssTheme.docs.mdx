@@ -1,0 +1,34 @@
+---
+description: A React hook for applying CSS variables to a specified element.
+labels: ['theme', 'css-theme', 'css-variables']
+---
+
+A React hook for applying CSS variables to a specified element.
+Provided theme can be in camel-case or kebab-case.
+
+### Component usage 
+
+```js
+import { useCssTheme } from '@logora/debate.hooks.useCssTheme';
+
+function MyStyledComponent() {
+  const theme = {
+    primaryColor: 'red',
+    secondaryColor: 'blue',
+    fontSize: '16px',
+  };
+
+  useCSSTheme(theme, 'my-root');
+
+  return <div id="my-root">Hello World</div>;
+}
+```
+
+
+### Properties
+
+| Name       | Type   | Required | Default | Description                                                   |
+| ---------- | ------ | -------- | ------- | ------------------------------------------------------------- |
+| `theme`    | object | Yes      | -       | An object containing CSS variable names and their corresponding values. |
+| `rootId`   | string | Yes      | -       | The id of the root element to which the CSS variables should be applied. |
+| `camelCase`| boolean| No       | true    | Determines if the theme should be converted from camel-case to kebab-case. |

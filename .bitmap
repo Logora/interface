@@ -27,6 +27,12 @@
         "mainFile": "index.js",
         "rootDir": "src/components/forms/form"
     },
+    "hooks/use_css_theme": {
+        "scope": "",
+        "version": "",
+        "mainFile": "index.js",
+        "rootDir": "src/components/hooks/use_css_theme"
+    },
     "input/checkbox/hidden": {
         "scope": "logora.debate",
         "version": "0.0.3",
