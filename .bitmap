@@ -130,8 +130,8 @@
         "rootDir": "src/components/text/read_more"
     },
     "tools/scroll_to_top": {
-        "scope": "",
-        "version": "",
+        "scope": "logora.debate",
+        "version": "0.0.1",
         "mainFile": "index.js",
         "rootDir": "src/components/tools/scroll_to_top"
     },
