@@ -35,7 +35,7 @@
     },
     "hooks/use_css_theme": {
         "scope": "logora.debate",
-        "version": "0.0.2",
+        "version": "0.0.3",
         "mainFile": "index.js",
         "rootDir": "src/components/hooks/use_css_theme"
     },
