@@ -103,6 +103,9 @@
 
 .debateLink {
     background: #FFF !important;
+    text-decoration: none !important;
+    color: $call-primary;
+    font-weight: $font-weight-bold;
     &:hover {
         background: #FFF !important;
         text-decoration: underline !important;
