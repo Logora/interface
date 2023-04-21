@@ -129,6 +129,12 @@
         "mainFile": "index.js",
         "rootDir": "src/components/text/read_more"
     },
+    "tools/scroll_to_top": {
+        "scope": "",
+        "version": "",
+        "mainFile": "index.js",
+        "rootDir": "src/components/tools/scroll_to_top"
+    },
     "user/avatar": {
         "scope": "logora.debate",
         "version": "0.0.3",

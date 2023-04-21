@@ -1,0 +1,28 @@
+---
+description: A component to scroll to the top of an element.
+labels: ['scroll', 'top-scroll']
+---
+
+import { ScrollToTop } from './ScrollToTop';
+import { BrowserRouter } from "react-router-dom";
+
+A component to scroll to the top of an element.
+
+It must be inside a router from react-router.
+
+### Component usage
+```js
+    import ScrollToTop from '@logora/debate.tools.scroll_to_top';
+```
+```js
+<BrowserRouter>
+    <ScrollToTop elementId="toTheTop">
+        <div id="toTheTop">You will be at the top of this element.</div>
+    </ScrollToTop>
+</BrowserRouter>
+```
+
+### Properties
+| **Name**      | **Type** | **Required** | **Default** | **Description** |
+| ----------- | ----------- | :-----------: | ----------- | ----------- |
+| <font color='#4646c6'>elementId</font> | <font color="#397300">string</font> | &check; | - | <font color="grey">*scroll to this element id*</font> |
