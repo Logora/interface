@@ -1,69 +1,78 @@
 import React from 'react';
 import { ReadMore } from './ReadMore';
 import { faker } from '@faker-js/faker';
-import { IntlProvider } from 'react-intl';
 
 let text = faker.lorem.paragraph(35);
 let url = faker.internet.url();
 
 export const DefaultReadMore = () => {
     return (
-        <IntlProvider locale='en'>
-            <ReadMore 
-                content={text}
-                contentCharCount={250}
-                readMoreUrl={url}
-            />
-        </IntlProvider>
+        <ReadMore 
+            content={text}
+            contentCharCount={250}
+            to={url}
+            readMoreText="Read more"
+            readLessText="Read less"
+            target="_top"
+            external
+        />
     )
 }
 
 export const LineClampedReadMore = () => {
     return (
-        <IntlProvider locale='en'>
-            <ReadMore 
-                content={text}
-                contentCharCount={250}
-                readMoreUrl={url}
-                lineCount={3}
-            />
-        </IntlProvider>
+        <ReadMore 
+            content={text}
+            contentCharCount={250}
+            to={url}
+            lineCount={3}
+            readMoreText="Read more"
+            readLessText="Read less"
+            target="_top"
+            external
+        />
     )
 }
 
 export const NextLineReadMore = () => {
     return (
-        <IntlProvider locale='en'>
-            <ReadMore 
-                content={text}
-                contentCharCount={250}
-                readMoreUrl={url}
-                nextLine={true}
-                nextLineSpacing={30}
-            />
-        </IntlProvider>
+        <ReadMore 
+            content={text}
+            contentCharCount={250}
+            to={url}
+            nextLine={true}
+            nextLineSpacing={30}
+            readMoreText="Read more"
+            readLessText="Read less"
+            target="_top"
+            external
+        />
     )
 }
 
 export const ButtonReadMore = () => {
     return (
-        <IntlProvider locale='en'>
-            <ReadMore 
-                content={text}
-                contentCharCount={250}
-            />
-        </IntlProvider>
+        <ReadMore 
+            content={text}
+            contentCharCount={250}
+            readMoreText="Read more"
+            readLessText="Read less"
+            target="_top"
+            external
+        />
     )
 }
 
 export const ButtonNextLineReadMore = () => {
     return (
-        <IntlProvider locale='en'>
-            <ReadMore 
-                content={text}
-                contentCharCount={250}
-                nextLine={true}
-            />
-        </IntlProvider>
+        <ReadMore 
+            content={text}
+            contentCharCount={250}
+            nextLine={true}
+            readMoreText="Read more"
+            readLessText="Read less"
+            target="_top"
+            external
+        />
     )
 }
