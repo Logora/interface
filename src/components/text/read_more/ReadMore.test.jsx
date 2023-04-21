@@ -2,7 +2,6 @@ import React from 'react';
 import { ReadMore } from './ReadMore';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { faker } from '@faker-js/faker';
-import { IntlProvider } from 'react-intl';
 
 let text = faker.lorem.paragraph(35);
 let url = faker.internet.url();
