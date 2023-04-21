@@ -1,0 +1,39 @@
+---
+description: A modal component and its context to create modals.
+labels: ['modal', 'modal-context']
+---
+
+import { Modal } from './Modal';
+import { ModalProvider } from './ModalProvider';
+import { useModal } from './useModal';
+
+A component that renders a modal (dialog). Modal is closed when user clicks outside it and a close button can also be displayed.
+
+Component must be wrapped with the ModalProvider context.
+
+ModalProvider is a helper based on [Context API](https://en.reactjs.org/docs/context.html) and React hooks for simplified work
+with modals (dialogs).
+
+To use the context, first wrap your application with _ModalProvider_. Then, use the hook _useModal_ that exposes _showModal_ and _hideModal_ functions.
+
+### Component usage
+
+```js
+import { Modal, ModalProvider, useModal } from '@logora/debate.dialog.modal';
+
+const Modal = () => {
+	const { showModal, hideModal } = useModal();
+
+	return <div onClick={hideModal}>Close modal</div>
+}
+
+const ModalConsumer = () => {
+	const { showModal, hideModal } = useModal();
+
+	return <div onClick={() => showModal(<Modal />)}>Open modal</div>;
+}
+
+<ModalProvider>
+    <ModalConsumer />
+</ModalProvider>
+```

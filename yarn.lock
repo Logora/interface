@@ -249,12 +249,14 @@ __metadata:
     "@types/testing-library__jest-dom": 5.9.5
     classnames: ^2.3.2
     core-js: ^3.0.0
+    prop-types: ^15.8.1
     react: ^16.8.0 || ^17.0.0
     react-dom: ^16.8.0 || ^17.0.0
     react-intl: ^6.1.2
     react-loading-skeleton: ^3.0.2
     react-router: ^5.3.4
     react-router-dom: ^5.3.4
+    use-onclickoutside: ^0.4.1
   peerDependencies:
     react: ^16.8.0 || ^17.0.0
     react-dom: ^16.8.0 || ^17.0.0
@@ -518,6 +520,13 @@ __metadata:
   version: 5.2.0
   resolution: "ansi-styles@npm:5.2.0"
   checksum: d7f4e97ce0623aea6bc0d90dcd28881ee04cba06c570b97fd3391bd7a268eedfd9d5e2dd4fdcbdd82b8105df5faf6f24aaedc08eaf3da898e702db5948f63469
+  languageName: node
+  linkType: hard
+
+"are-passive-events-supported@npm:^1.1.1":
+  version: 1.1.1
+  resolution: "are-passive-events-supported@npm:1.1.1"
+  checksum: 3295a7b3aeb026d26c1b256decdb5ded8bf26f6c02fd0b37c63c7dc9affd57b7474ee9b6230b5d5ac4f0fc624a19acdcfdd76c5155025d97cc7d8bb5dc83e61b
   languageName: node
   linkType: hard
 
@@ -1242,6 +1251,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"modal-26019b@workspace:src/components/dialog/modal":
+  version: 0.0.0-use.local
+  resolution: "modal-26019b@workspace:src/components/dialog/modal"
+  languageName: unknown
+  linkType: soft
+
+"modal_provider-6421fc@workspace:src/components/dialog/modal_provider":
+  version: 0.0.0-use.local
+  resolution: "modal_provider-6421fc@workspace:src/components/dialog/modal_provider"
+  languageName: unknown
+  linkType: soft
+
 "object-assign@npm:^4.1.1":
   version: 4.1.1
   resolution: "object-assign@npm:4.1.1"
@@ -1335,7 +1356,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prop-types@npm:^15.6.2":
+"prop-types@npm:^15.6.2, prop-types@npm:^15.8.1":
   version: 15.8.1
   resolution: "prop-types@npm:15.8.1"
   dependencies:
@@ -1623,6 +1644,44 @@ __metadata:
   version: 2.5.0
   resolution: "tslib@npm:2.5.0"
   checksum: ae3ed5f9ce29932d049908ebfdf21b3a003a85653a9a140d614da6b767a93ef94f460e52c3d787f0e4f383546981713f165037dc2274df212ea9f8a4541004e1
+  languageName: node
+  linkType: hard
+
+"use-isomorphic-layout-effect@npm:^1.1.1":
+  version: 1.1.2
+  resolution: "use-isomorphic-layout-effect@npm:1.1.2"
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
+  checksum: a6532f7fc9ae222c3725ff0308aaf1f1ddbd3c00d685ef9eee6714fd0684de5cb9741b432fbf51e61a784e2955424864f7ea9f99734a02f237b17ad3e18ea5cb
+  languageName: node
+  linkType: hard
+
+"use-latest@npm:^1.2.1":
+  version: 1.2.1
+  resolution: "use-latest@npm:1.2.1"
+  dependencies:
+    use-isomorphic-layout-effect: ^1.1.1
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
+  checksum: ed3f2ddddf6f21825e2ede4c2e0f0db8dcce5129802b69d1f0575fc1b42380436e8c76a6cd885d4e9aa8e292e60fb8b959c955f33c6a9123b83814a1a1875367
+  languageName: node
+  linkType: hard
+
+"use-onclickoutside@npm:^0.4.1":
+  version: 0.4.1
+  resolution: "use-onclickoutside@npm:0.4.1"
+  dependencies:
+    are-passive-events-supported: ^1.1.1
+    use-latest: ^1.2.1
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+  checksum: 198b8ff9b9239c75728d13795c7c641e6e3db8d1f751ff23d20a8f40914c715c1f265c593847292ef173a94d9aa2190a28b09f1856c48ef5dbe0631e54d0a586
   languageName: node
   linkType: hard
 

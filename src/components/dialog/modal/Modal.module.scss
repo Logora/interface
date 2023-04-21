@@ -1,0 +1,96 @@
+@import '~@logora/debate.styles.theme/_theme.scss';
+@import '~@logora/debate.styles.spacing/_spacing.scss';
+
+.modalWrapper {
+  position: fixed;
+  display: block;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  outline: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 9999;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.modalWrapperFullScreen {
+  background: white;
+}
+
+.modalDialog {
+  min-height: calc(100% - (1.75rem * 2));
+  transform: translate(0,0);
+  max-width: 500px;
+  position: relative;
+  width: auto;
+  margin: 1.75em auto;
+  display: flex;
+  align-items: center;
+}
+
+.modalDialogFullScreen {
+  min-height: 100%;
+  max-width: none;
+  margin: 0 !important;
+}
+
+.modalContainer {
+  background: white;
+  border-radius: $box-border-radius;
+  width: 100%;
+  position: relative;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  @include p(3, xs);
+  overflow: hidden;
+}
+
+.modalHeader {
+  display: flex !important;
+  align-items: flex-start !important;
+  justify-content: space-between !important;
+  @include px(3, xs);
+  @include pb(1, xs);
+  width: 100%;
+  font-weight: $font-weight-bold;
+  .modalExitButton {
+    font-weight: $font-weight-normal;
+    line-height: 1;
+    color: #000;
+    text-shadow: $text-secondary;
+    opacity: 1;
+    font-size: $font-size-large;
+    margin-left: auto;
+    &:hover {
+      color: $text-secondary;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    &:not(:disabled):not(.disabled) {
+      &:hover, &:focus {
+        opacity: .75;
+      }
+    }
+  }
+}
+
+.modalHeaderWithTitle {
+  @include mb(3, xs);
+}
+
+.modalContent {
+  @include px(3, xs);
+  width: 100%;
+}
+
+@media screen and (max-width: 575px) {
+  .modalContainer {
+    margin: 0.75em;
+  }
+}

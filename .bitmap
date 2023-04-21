@@ -15,6 +15,12 @@
         "mainFile": "index.js",
         "rootDir": "src/components/action/link"
     },
+    "dialog/modal": {
+        "scope": "",
+        "version": "",
+        "mainFile": "index.js",
+        "rootDir": "src/components/dialog/modal"
+    },
     "error/standard_error_boundary": {
         "scope": "logora.debate",
         "version": "0.0.4",
