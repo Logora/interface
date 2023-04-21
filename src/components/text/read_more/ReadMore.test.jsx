@@ -24,6 +24,22 @@ it('should render correctly with sliced content', () => {
     expect(screen.getByText("Read more")).toBeTruthy();
 });
 
+it('should render correctly with content even if content is shorter than contentCharCount', () => {
+    render(
+        <ReadMore 
+            content={text}
+            contentCharCount={2500}
+            to={url}
+            readMoreText="Read more"
+            readLessText="Read less"
+            target="_top"
+            external
+        />
+    );
+    expect(screen.getByText(text + "...")).toBeTruthy();
+    expect(screen.getByText("Read more")).toBeTruthy();
+});
+
 
 it('should render correct url', () => {
     render(
