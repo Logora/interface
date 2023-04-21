@@ -34,8 +34,8 @@
         "rootDir": "src/components/forms/form"
     },
     "hooks/use_css_theme": {
-        "scope": "",
-        "version": "",
+        "scope": "logora.debate",
+        "version": "0.0.1",
         "mainFile": "index.js",
         "rootDir": "src/components/hooks/use_css_theme"
     },
