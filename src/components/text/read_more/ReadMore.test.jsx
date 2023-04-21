@@ -9,13 +9,15 @@ let url = faker.internet.url();
 
 it('should render correctly with sliced content', () => {
     render(
-        <IntlProvider locale="en">
-            <ReadMore 
-                content={text}
-                contentCharCount={250}
-                readMoreUrl={url}
-            />
-        </IntlProvider>
+        <ReadMore 
+            content={text}
+            contentCharCount={250}
+            to={url}
+            readMoreText="Read more"
+            readLessText="Read less"
+            target="_top"
+            external
+        />
     );
     const slicedText = text.slice(0, 250) + "...";
     expect(screen.getByText(slicedText)).toBeTruthy();
@@ -25,13 +27,15 @@ it('should render correctly with sliced content', () => {
 
 it('should render correct url', () => {
     render(
-        <IntlProvider locale="en">
-            <ReadMore 
-                content={text}
-                contentCharCount={250}
-                readMoreUrl={url}
-            />
-        </IntlProvider>
+        <ReadMore 
+            content={text}
+            contentCharCount={250}
+            to={url}
+            readMoreText="Read more"
+            readLessText="Read less"
+            target="_top"
+            external
+        />
     );
     const slicedText = text.slice(0, 250) + "...";
     expect(screen.getByText(slicedText)).toBeTruthy();
@@ -40,19 +44,21 @@ it('should render correct url', () => {
 
 it('should show all content when clicking on "Read more" if url is not provided', () => {
     render(
-        <IntlProvider locale="en">
-            <ReadMore 
-                content={text}
-                contentCharCount={250}
-                readMoreUrl={url}
-            />
-        </IntlProvider>
+        <ReadMore 
+            content={text}
+            contentCharCount={250}
+            readMoreText="Read more"
+            readLessText="Read less"
+            target="_top"
+            external
+        />
     );
     const slicedText = text.slice(0, 250) + "...";
     const readMoreButton = screen.getByText("Read more");
     expect(screen.getByText(slicedText)).toBeTruthy();
-    expect(screen.getByRole('link').getAttribute('href')).toEqual(url);
 
     fireEvent.click(readMoreButton);
-    expect(screen.getByText(slicedText)).toBeTruthy();
+    const readLessButton = screen.getByText("Read less");
+    expect(screen.getByText(text + "...")).toBeTruthy();
+    expect(readLessButton).toBeTruthy();
 });

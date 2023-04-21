@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import { Link } from '@logora/debate.action.link';
-import { FormattedMessage } from 'react-intl';
 import styles from './ReadMore.module.scss';
 import cx from 'classnames';
 
 export const ReadMore = (props) => {
-    const { content, contentCharCount = 250, readMoreUrl, nextLine = false, lineCount = false, nextLineSpacing = 0, className, ...rest } = props;
+    const { content, contentCharCount = 250, to, nextLine = false, lineCount = false, nextLineSpacing = 0, className, readMoreText, readLessText, ...rest } = props;
     const [showMore, setShowMore] = useState(false);
     const [contentLength, setContentLength] = useState(contentCharCount)
 
@@ -37,27 +36,21 @@ export const ReadMore = (props) => {
                 { lineCount ? content : formatContent(content) }
             </span>
             <span className={nextLine ? styles.nextLine : {}} style={ nextLine ? nextLineStyle : {}}>
-                { readMoreUrl ?
+                { to ?
                     <Link 
-                        to={readMoreUrl} 
+                        to={to} 
                         className={cx(styles.readMoreElement, className)}
-                        data-tid={"link_comment_read_more"}
-                        target="_top"
-                        external
                         {...rest}
                     >
-                        <FormattedMessage id="action.read_more" defaultMessage={"Read more"} />
+                        { readMoreText }
                     </Link>
                 :
                     <span 
                         className={cx(styles.readMoreElement, className)} 
                         onClick={showMore ? hideContent : showContent}
+                        {...rest}
                     >
-                        {showMore ?
-                            <FormattedMessage id="action.read_more" defaultMessage={"Read less"} />
-                        :
-                            <FormattedMessage id="action.read_less" defaultMessage={"Read more"} />
-                        }
+                        { showMore ?  readLessText  : readMoreText  }
                     </span>
                 }
             </span>
