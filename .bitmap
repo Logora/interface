@@ -125,7 +125,7 @@
     },
     "text/read_more": {
         "scope": "logora.debate",
-        "version": "0.0.3",
+        "version": "0.0.4",
         "mainFile": "index.js",
         "rootDir": "src/components/text/read_more"
     },
