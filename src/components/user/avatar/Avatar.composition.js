@@ -14,10 +14,18 @@ export const DefaultAvatar = () => {
     );
 };
 
+export const AvatarWithDefaultImage = () => {
+    return (
+        <IntlProvider>
+            <Avatar userName={userName} />
+        </IntlProvider>
+    );
+};
+
 export const AvatarSmall = () => {
     return (
         <IntlProvider>
-            <Avatar avatarUrl={avatarUrl} userName={userName} size={"small"} />
+            <Avatar avatarUrl={avatarUrl} userName={userName} size={20} />
         </IntlProvider>
     );
 };
@@ -25,7 +33,7 @@ export const AvatarSmall = () => {
 export const AvatarLarge = () => {
     return (
         <IntlProvider>
-            <Avatar avatarUrl={avatarUrl} userName={userName} size={"large"} />
+            <Avatar avatarUrl={avatarUrl} userName={userName} size={60} />
         </IntlProvider>
     );
 };
@@ -42,7 +50,7 @@ export const AvatarOnline = () => {
 export const AvatarSmallOnline = () => {
     return (
         <IntlProvider>
-            <Avatar avatarUrl={avatarUrl} userName={userName} size={"small"} isOnline />
+            <Avatar avatarUrl={avatarUrl} userName={userName} size={20} isOnline />
         </IntlProvider>
     );
 };
@@ -50,7 +58,7 @@ export const AvatarSmallOnline = () => {
 export const AvatarLargeOnline = () => {
     return (
         <IntlProvider>
-            <Avatar avatarUrl={avatarUrl} userName={userName} size={"large"} isOnline />
+            <Avatar avatarUrl={avatarUrl} userName={userName} size={60} isOnline />
         </IntlProvider>
     );
 };

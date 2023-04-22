@@ -30,6 +30,20 @@ describe('Avatar', () => {
         expect(avatarImg).toHaveClass('custom-class');
     });
 
+    it('renders default avatar picture if avatarUrl is empty', () => {
+        const props = { userName: "John", className: "avatar-class" };
+        render(
+          <IntlProvider locale="en" messages={messages}>
+            <Avatar {...props} />
+          </IntlProvider>
+        );
+        const defaultIcon = screen.getByTestId("avatar-icon");
+        expect(defaultIcon).toBeInTheDocument();
+        expect(defaultIcon).toHaveAttribute('height', '40');
+        expect(defaultIcon).toHaveAttribute('width', '40');
+        expect(defaultIcon).toHaveClass('avatar-class');
+    });
+
     it('renders user online status when isOnline prop is true', () => {
         render(
             <IntlProvider locale="en" messages={messages}>
@@ -74,8 +88,8 @@ describe('Avatar', () => {
         expect(onlineTooltip).not.toBeInTheDocument();
     });
 
-    it('renders user profile picture with alt text and small size', () => {
-        const props = { ...defaultProps, size: 'small' };
+    it('renders user profile picture with alt text and custom size', () => {
+        const props = { ...defaultProps, size: 25 };
         render(
           <IntlProvider locale="en" messages={messages}>
             <Avatar {...props} />
@@ -86,21 +100,6 @@ describe('Avatar', () => {
         expect(avatarImg).toHaveAttribute('src', 'https://example.com/avatar.jpg');
         expect(avatarImg).toHaveAttribute('height', '25');
         expect(avatarImg).toHaveAttribute('width', '25');
-        expect(avatarImg).toHaveClass('custom-class');
-    });
-
-    it('renders user profile picture with alt text and large size', () => {
-        const props = { ...defaultProps, size: 'large' };
-        render(
-          <IntlProvider locale="en" messages={messages}>
-            <Avatar {...props} />
-          </IntlProvider>
-        );
-        const avatarImg = screen.getByAltText("John's avatar picture");
-        expect(avatarImg).toBeInTheDocument();
-        expect(avatarImg).toHaveAttribute('src', 'https://example.com/avatar.jpg');
-        expect(avatarImg).toHaveAttribute('height', '60');
-        expect(avatarImg).toHaveAttribute('width', '60');
         expect(avatarImg).toHaveClass('custom-class');
     });
 });

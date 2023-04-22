@@ -21,23 +21,8 @@
 }
 
 .avatarImage {
-    height: 40px !important;
-    width: 40px !important;
     object-fit: cover;
     max-width: none;
     border-radius: 50%;
     overflow: hidden;
-}
-
-.small {
-    height: 25px !important;
-    width: 25px !important;
-}
-.normal {
-    height: 40px !important;
-    width: 40px !important;
-}
-.large {
-    height: 60px !important;
-    width: 60px !important;
 }

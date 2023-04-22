@@ -7,7 +7,7 @@ import { Avatar } from './Avatar';
 
 The `Avatar` component is used to display a user's avatar image, along with an optional online status indicator. 
 It is built using React and `react-intl` for internationalization support.
-Three sizes are available : "small", "normal" and "large".
+If no image URL image is passed, a default icon is shown.
 
 
 ### Component usage
@@ -23,7 +23,7 @@ const userAvatar = {
   userName: 'John',
   isOnline: true,
   className: 'custom-class',
-  size: "large"
+  size: 60
 };
 
 <IntlProvider>
@@ -35,9 +35,9 @@ const userAvatar = {
 
 | Prop name | Type   | Required | Default | Description                                                |
 |-----------|--------|----------|---------|------------------------------------------------------------|
-| avatarUrl | string | Yes      | -       | The URL of the user's avatar image.                         |
+| avatarUrl | string | No       | -       | The URL of the user's avatar image.                         |
 | userName  | string | Yes      | -       | The name of the user associated with the avatar image.      |
 | isOnline  | bool   | No       | false   | Determines whether to display an online status indicator.  |
 | className | string | No       | -       | Additional CSS class names to apply to the avatar container.|
-| size      | string | No       | normal  | The size variant of the avatar. Possible values are "normal", "small", and "large". |
+| size      | integer | No       | 40     | The size of the avatar, in pixels.                          |
 | ...rest   | any    | No       | -       | Additional props to apply to the avatar image.              |
