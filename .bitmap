@@ -21,12 +21,6 @@
         "mainFile": "index.js",
         "rootDir": "src/components/dialog/modal"
     },
-    "dialog/tooltip": {
-        "scope": "",
-        "version": "",
-        "mainFile": "index.js",
-        "rootDir": "src/components/dialog/tooltip"
-    },
     "error/standard_error_boundary": {
         "scope": "logora.debate",
         "version": "0.0.4",
