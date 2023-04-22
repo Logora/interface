@@ -1,0 +1,25 @@
+---
+description: A component to display a header with some informations.
+labels: ['header']
+---
+
+import { EmbedHeader } from './EmbedHeader';
+
+A component to display a header with some informations.
+
+This component must be wrapped by IntlProvider.
+
+### Component usage
+```js
+    import { EmbedHeader } from '@logora/debate.information.embed_header';
+```
+```js
+<IntlProvider locale="en">
+    <EmbedHeader
+        title={"How to prevent COVID-19 spread ?"} 
+        titleRedirectUrl={"https://test.fr/"} 
+        onlineUsersCount={273} 
+        headerLabel={"Medicine"}
+    />
+</IntlProvider>
+```

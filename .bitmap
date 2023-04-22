@@ -45,6 +45,12 @@
         "mainFile": "index.js",
         "rootDir": "src/components/hooks/use_css_theme"
     },
+    "information/embed_header": {
+        "scope": "logora.debate",
+        "version": "0.0.2",
+        "mainFile": "index.js",
+        "rootDir": "src/components/information/embed_header"
+    },
     "input/checkbox/hidden": {
         "scope": "logora.debate",
         "version": "0.0.3",
@@ -125,13 +131,13 @@
     },
     "text/expandable_text": {
         "scope": "logora.debate",
-        "version": "0.0.2",
+        "version": "0.0.3",
         "mainFile": "index.js",
         "rootDir": "src/components/text/expandable_text"
     },
     "text/read_more": {
         "scope": "logora.debate",
-        "version": "0.0.3",
+        "version": "0.0.6",
         "mainFile": "index.js",
         "rootDir": "src/components/text/read_more"
     },

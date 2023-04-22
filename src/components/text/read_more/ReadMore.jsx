@@ -9,7 +9,11 @@ export const ReadMore = (props) => {
     const [contentLength, setContentLength] = useState(contentCharCount)
 
     const formatContent = (content) => {
-        return `${content.replace(/[\n\r]/g, ' ').slice(0, contentLength)}...`;
+        if (content.length > contentCharCount) {
+            return `${content.replace(/[\n\r]/g, ' ').slice(0, contentLength)}...`;
+        } else {
+            return content + "...";
+        }
     }
 
     const showContent = () => {

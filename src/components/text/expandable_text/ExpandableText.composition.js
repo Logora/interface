@@ -10,7 +10,7 @@ export const DefaultExpandableText = () => {
             expandable
             expandText={"Read more"}
             collapseText={"Read less"}
-            maxHeight='20'
+            maxHeight='100'
         >
             <div>
                 {text}

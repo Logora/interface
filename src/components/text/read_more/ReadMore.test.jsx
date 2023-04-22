@@ -2,7 +2,6 @@ import React from 'react';
 import { ReadMore } from './ReadMore';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { faker } from '@faker-js/faker';
-import { IntlProvider } from 'react-intl';
 
 let text = faker.lorem.paragraph(35);
 let url = faker.internet.url();
@@ -21,6 +20,22 @@ it('should render correctly with sliced content', () => {
     );
     const slicedText = text.slice(0, 250) + "...";
     expect(screen.getByText(slicedText)).toBeTruthy();
+    expect(screen.getByText("Read more")).toBeTruthy();
+});
+
+it('should render correctly with content even if content is shorter than contentCharCount', () => {
+    render(
+        <ReadMore 
+            content={text}
+            contentCharCount={2500}
+            to={url}
+            readMoreText="Read more"
+            readLessText="Read less"
+            target="_top"
+            external
+        />
+    );
+    expect(screen.getByText(text + "...")).toBeTruthy();
     expect(screen.getByText("Read more")).toBeTruthy();
 });
 
