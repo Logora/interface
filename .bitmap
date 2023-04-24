@@ -21,6 +21,12 @@
         "mainFile": "index.js",
         "rootDir": "src/components/dialog/modal"
     },
+    "embed/embed_header": {
+        "scope": "",
+        "version": "",
+        "mainFile": "index.js",
+        "rootDir": "src/components/embed/embed_header"
+    },
     "error/standard_error_boundary": {
         "scope": "logora.debate",
         "version": "0.0.4",
@@ -38,12 +44,6 @@
         "version": "0.0.3",
         "mainFile": "index.js",
         "rootDir": "src/components/hooks/use_css_theme"
-    },
-    "information/embed_header": {
-        "scope": "logora.debate",
-        "version": "0.0.3",
-        "mainFile": "index.js",
-        "rootDir": "src/components/information/embed_header"
     },
     "input/checkbox/hidden": {
         "scope": "logora.debate",
