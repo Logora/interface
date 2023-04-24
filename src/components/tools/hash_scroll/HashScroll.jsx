@@ -15,7 +15,7 @@ export const HashScroll = ({ elementId, onScroll, children }) => {
 					if(onScroll) {
 						onScroll();
 					}
-					element.scrollIntoView();
+					element.scrollIntoView({ behavior: "smooth" });
 				}
 			}
 		}
