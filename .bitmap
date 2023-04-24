@@ -137,7 +137,7 @@
     },
     "tools/hash_scroll": {
         "scope": "logora.debate",
-        "version": "0.0.3",
+        "version": "0.0.4",
         "mainFile": "index.js",
         "rootDir": "src/components/tools/hash_scroll"
     },
