@@ -135,6 +135,12 @@
         "mainFile": "index.js",
         "rootDir": "src/components/text/read_more"
     },
+    "tools/hash_scroll": {
+        "scope": "logora.debate",
+        "version": "0.0.2",
+        "mainFile": "index.js",
+        "rootDir": "src/components/tools/hash_scroll"
+    },
     "tools/scroll_to_top": {
         "scope": "logora.debate",
         "version": "0.0.2",
