@@ -5,9 +5,9 @@ import { Link } from '@logora/debate.action.link';
 import cx from 'classnames';
 import styles from './EmbedHeader.module.scss';
 
-export const EmbedHeader = ({title, titleRedirectUrl, headerLabel, onlineUsersCount, textLeft, isSmallPadding}) => {
+export const EmbedHeader = ({title, titleRedirectUrl, headerLabel, onlineUsersCount, textLeft, className}) => {
     return (
-		<div className={styles.headerBox}>
+		<div className={cx(styles.headerBox, className)}>
 			<div className={styles.headerBoxLabel}>
 				<Link to={titleRedirectUrl} target="_top" external data-tid="link_debate_index_embed">
 					<div className={styles.headerLabelText}>
@@ -26,7 +26,7 @@ export const EmbedHeader = ({title, titleRedirectUrl, headerLabel, onlineUsersCo
 					</div>
 				: null}
 			</div>
-			<div className={cx(styles.debateName, { [styles.left]: textLeft, [styles.smallPadding]: isSmallPadding })} data-testid={"debate-name"}>
+			<div className={cx(styles.debateName, { [styles.left]: textLeft})} data-testid={"debate-name"}>
 				<Link className={styles.debateLink} to={titleRedirectUrl} target="_top" external data-tid="link_debate_title_embed">
 					{ title }
 				</Link>
@@ -46,6 +46,6 @@ EmbedHeader.propTypes = {
     onlineUsersCount: PropTypes.number,
     /** If true, title will be align with headerLabel text */
     textLeft: PropTypes.bool,
-    /**  If true, title padding will be smaller */
-    isSmallPadding: PropTypes.bool
+	/** Custom EmbedHeader styles */
+    className: PropTypes.object
 };

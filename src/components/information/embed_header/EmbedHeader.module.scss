@@ -121,8 +121,3 @@
         @include px(2.5, xs);
     };
 }
-
-.smallPadding {
-    @include pt(2, xs);
-    @include pb(0, xs);
-}

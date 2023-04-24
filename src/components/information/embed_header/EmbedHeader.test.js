@@ -29,15 +29,13 @@ describe('EmbedHeader', () => {
         expect(getByTestId('online-users-count-mobile')).toHaveTextContent(`${onlineUsersCount} utilisateurs en ligne`);
     });
 
-    it('applies textLeft and isSmallPadding classNames when props are provided', () => {
+    it('applies textLeft className when prop is provided', () => {
         const textLeft = true;
-        const isSmallPadding = true;
         const { getByTestId } = render(
             <IntlProvider locale="en">
-                <EmbedHeader textLeft={textLeft} isSmallPadding={isSmallPadding} />
+                <EmbedHeader textLeft={textLeft} />
             </IntlProvider>
         );
-        expect(getByTestId('debate-name')).toHaveClass('smallPadding');
         expect(getByTestId('debate-name')).toHaveClass('left');
     });
 });
