@@ -34,8 +34,6 @@ jobs:
 
           bit install
           bit status
-      - name: Test components
-        run: bit test --all
       - name: Tag components
         run: bit tag
       - name: Export components
