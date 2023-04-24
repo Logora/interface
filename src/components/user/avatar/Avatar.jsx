@@ -17,8 +17,8 @@ export const Avatar = ({ avatarUrl, userName, isOnline = false, size = 40, class
     };
 
     const commonStyles = {
-        width: `${size}px !important`,
-        height: `${size}px !important`
+        width: `${size}px`,
+        height: `${size}px`
     }
 
     const displayImage = () => {
