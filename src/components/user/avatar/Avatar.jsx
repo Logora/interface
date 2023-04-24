@@ -13,18 +13,19 @@ export const Avatar = ({ avatarUrl, userName, isOnline = false, size = 40, class
         className: cx(styles.avatarImage, className),
         height: size,
         width: size,
-        style: {
-            width: `${size} px !important`,
-            height: `${size} px !important`
-        },
         ...rest
     };
 
+    const commonStyles = {
+        width: `${size}px !important`,
+        height: `${size}px !important`
+    }
+
     const displayImage = () => {
         if (avatarUrl) {
-            return <img {...commonProps} src={avatarUrl} alt={intl.formatMessage({ id:"user.avatar.alt", defaultMessage: "{name}'s profile picture" }, { name: userName })} />;
+            return <img {...commonProps} style={commonStyles} src={avatarUrl} alt={intl.formatMessage({ id:"user.avatar.alt", defaultMessage: "{name}'s profile picture" }, { name: userName })} />;
         } else {
-            return <DefaultAvatarIcon {...commonProps} data-testid={"avatar-icon"} />;
+            return <DefaultAvatarIcon {...commonProps} style={commonStyles} data-testid={"avatar-icon"} />;
         }
     }
 

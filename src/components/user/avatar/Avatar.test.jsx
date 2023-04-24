@@ -27,6 +27,8 @@ describe('Avatar', () => {
         expect(avatarImg).toHaveAttribute('src', 'https://example.com/avatar.jpg');
         expect(avatarImg).toHaveAttribute('height', '40');
         expect(avatarImg).toHaveAttribute('width', '40');
+        expect(avatarImg).toHaveStyle('height: 40px !important');
+        expect(avatarImg).toHaveStyle('width: 40px !important');
         expect(avatarImg).toHaveClass('custom-class');
     });
 
@@ -41,6 +43,8 @@ describe('Avatar', () => {
         expect(defaultIcon).toBeInTheDocument();
         expect(defaultIcon).toHaveAttribute('height', '40');
         expect(defaultIcon).toHaveAttribute('width', '40');
+        expect(defaultIcon).toHaveStyle('height: 40px !important');
+        expect(defaultIcon).toHaveStyle('width: 40px !important');
         expect(defaultIcon).toHaveClass('avatar-class');
     });
 
