@@ -149,7 +149,7 @@
     },
     "user/avatar": {
         "scope": "logora.debate",
-        "version": "0.0.4",
+        "version": "0.0.5",
         "mainFile": "index.js",
         "rootDir": "src/components/user/avatar"
     },
