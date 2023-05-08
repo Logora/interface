@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { ArrowIcon } from '@logora/debate.icons';
+import { ArrowIcon } from './ArrowIcon';
 import styles from './ExpandableText.module.scss';
 import cx from 'classnames';
 

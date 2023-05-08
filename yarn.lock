@@ -202,7 +202,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@logora/debate.icons@npm:^0.0.1":
+"@logora/debate.icons@npm:0.0.1":
   version: 0.0.1
   resolution: "@logora/debate.icons@npm:0.0.1::__archiveUrl=https%3A%2F%2Fnode.bit.cloud%2F%40logora%2Fdebate.icons%2F-%2F%40logora-debate.icons-0.0.1.tgz"
   dependencies:
@@ -246,7 +246,7 @@ __metadata:
   dependencies:
     "@babel/runtime": "npm:7.20.0"
     "@faker-js/faker": "npm:^7.6.0"
-    "@logora/debate.icons": "npm:^0.0.1"
+    "@logora/debate.icons": "npm:0.0.1"
     "@logora/debate.tools.tooltip": "npm:0.0.5"
     "@testing-library/dom": "npm:^9.2.0"
     "@testing-library/react": "npm:^14.0.0"
