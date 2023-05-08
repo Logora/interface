@@ -1,0 +1,105 @@
+@import '~@logora/debate.styles.theme/_theme.scss';
+
+.container {
+  position: relative;
+  // by default, the label shows at the top left corner of the input
+  label {
+    color: $text-secondary;
+    pointer-events: none;
+    transition: top 300ms, font-size 300ms, padding-top 300ms, transform 300ms, color 300ms,
+    background-color 300ms ease-in-out;
+    font-size: 0.8rem;
+    position: absolute;
+    top: -0.6em;
+    left: 12px;
+    z-index: 1;
+    background-color: white;
+    transform: unset;
+    padding: 0 4px;
+  }
+}
+
+input.textInput {
+  width: 100%;
+  box-sizing: border-box;
+  outline: 0;
+  padding: 0.69em 1em;
+  font-size: inherit;
+  font-family: inherit;
+  border: $box-border;
+	box-shadow: $box-shadow;
+	border-radius: $box-border-radius;
+  background-color: white;
+  color: $text-primary;
+
+  // when no content in the input and not focused, display the label as the placeholder
+  &:placeholder-shown:not(:focus) {
+    & ~ label {
+      transition: top 300ms, font-size 300ms, padding-top 300ms, transform 300ms, color 300ms ease-in-out;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1em;
+      background-color: unset;
+    }
+  }
+
+  // keep precedence! filled < hover < success < error < disabled
+  &.filled {
+    background-color: #f6f6f6;
+  }
+  &::placeholder {
+    color: #6c707c;
+  }
+  &:hover {
+    border: 1px solid #babec9;
+  }
+  &:focus {
+    border: 1px solid $call-primary !important;
+    background-color: white;
+    & ~ label {
+      color: $call-primary !important;
+    }
+  }
+
+  &.success {
+    border: 1px solid $success-primary !important;
+    & ~ label {
+      color: $success-primary;
+    }
+  }
+  &.error {
+    border: 1px solid $cancel-primary !important;
+    & ~ label {
+      color: $cancel-primary;
+    }
+  }
+  &:disabled {
+    cursor: not-allowed;
+    background-color: #f6f6f6;
+    color: #babec9;
+    border: 1px solid #ededed;
+  }
+}
+
+.textInputWithIcon {
+  position: relative;
+  font-size: inherit;
+  .textInput {
+    padding-right: 2em;
+  }
+  // icon element
+  > :last-child {
+    font-size: inherit;
+    color: inherit;
+    position: absolute;
+    right: 0.75em;
+    top: calc(50% - 0.6rem);
+    width: 16px;
+  }
+}
+
+.errorMessage {
+  font-size: 0.8em;
+  padding-top: 8px;
+  color: $cancel-primary;
+}

@@ -9,6 +9,12 @@
  */
 
 {
+    "action/button": {
+        "scope": "logora.debate",
+        "version": "0.0.15",
+        "mainFile": "index.js",
+        "rootDir": "src/components/action/button"
+    },
     "action/link": {
         "scope": "logora.debate",
         "version": "0.0.2",
@@ -62,6 +68,12 @@
         "version": "0.0.3",
         "mainFile": "index.js",
         "rootDir": "src/components/input/checkbox/label"
+    },
+    "input/text_input": {
+        "scope": "logora.debate",
+        "version": "0.0.4",
+        "mainFile": "index.js",
+        "rootDir": "src/components/input/text_input"
     },
     "input/toggle": {
         "scope": "logora.debate",

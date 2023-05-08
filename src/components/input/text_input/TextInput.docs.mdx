@@ -1,0 +1,57 @@
+---
+labels: ['react', 'typescript', 'input', 'text-area']
+description: 'Text input component.'
+---
+
+import { useState } from 'react';
+import { TextInput } from './TextInput';
+
+### Usages
+
+TextInput component with error and success props.  
+Supports all props from native html input.  
+Size support with em, the container of the component can use `font-size` to change the size of the component.
+
+TextInput example:
+
+```js
+import { TextInput } from '@logora/debate.input.text_input';
+```
+
+```js live
+() => {
+  const [value, setValue] = useState('');
+  return (
+    <TextInput error={value === 'error'} placeholder="placeholder" success={value === 'success'} onChange={(e) => setValue(e.target.value)} />
+  );
+};
+```
+
+TextInput with icon:
+
+```js live
+<TextInput
+  placeholder="search..."
+  icon={
+    <img
+      src="https://static.bit.dev/bit-icons/filter.svg"
+      style={{ cursor: 'pointer' }}
+      onClick={() => alert('on icon click')}
+    />
+  }
+/>
+```
+
+### Properties
+| **Name**      | **Type** | **Required** | **Default** | **Description** |
+| ----------- | ----------- | :-----------: | ----------- | ----------- |
+| <font color='#4646c6'>className</font> | <font color="#397300">string</font> | &cross; | - | <font color="grey">*input container class name*</font> |
+| <font color='#4646c6'>inputClass</font> | <font color="#397300">string</font> | &cross; | - | <font color="grey">*input class name*</font> |
+| <font color='#4646c6'>messageClass</font> | <font color="#397300">string</font> | &cross; | - | <font color="grey">*message class name*</font> |
+| <font color='#4646c6'>placeholder</font> | <font color="#397300">string</font> | &cross; | - | <font color="grey">*input placeholder*</font> |
+| <font color='#4646c6'>icon</font> | <font color="#397300">React element</font> | &cross; | - | <font color="grey">*left-side icon*</font> |
+| <font color='#4646c6'>error</font> | <font color="#397300">boolean</font> | &cross; | false | <font color="grey">*if true, will show input with error style*</font> |
+| <font color='#4646c6'>success</font> | <font color="#397300">boolean</font> | &cross; | false | <font color="grey">*if true, will show input with success style*</font> |
+| <font color='#4646c6'>filled</font> | <font color="#397300">boolean</font> | &cross; | false | <font color="grey">*if true, will make input filled*</font> |
+| <font color='#4646c6'>message</font> | <font color="#397300">string</font> | &cross; | - | <font color="grey">*helper text*</font> |
+| <font color='#4646c6'>activeLabel</font> | <font color="#397300">boolean</font> | &cross; | true | <font color="grey">*whether to show placeholder as label when input is in focus*</font> |
