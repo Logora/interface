@@ -37,8 +37,8 @@
     "use-onclickoutside": "^0.4.1"
   },
   "devDependencies": {
-    "@testing-library/react": "^14.0.0",
-    "@testing-library/user-event": "^14.4.3",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.4.0",
     "@testing-library/dom": "^9.2.0",
     "@faker-js/faker": "^7.6.0"
   }
