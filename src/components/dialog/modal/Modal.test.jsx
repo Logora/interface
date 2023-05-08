@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { Modal } from './Modal';
 import { ModalProvider } from './ModalProvider';
@@ -21,7 +21,7 @@ const TestModal = () => {
 }
 
 describe('Modal', () => {
-	it('should render modal with content and title',  async() => {
+	it('should render modal with content and title',  async () => {
 		const modal = render(
 			<ModalProvider>
 				<TestModal />
@@ -30,11 +30,13 @@ describe('Modal', () => {
 
 		expect(screen.queryByText("modal content")).toBeNull();
 
-		await userEvent.click(screen.getByTestId("show-modal-button"));
+		userEvent.click(screen.getByTestId("show-modal-button"));
 
-		expect(screen.getByRole("dialog")).toBeTruthy();
-		expect(screen.getByText("modal content")).toBeTruthy();
-		expect(screen.getByText("my title")).toBeTruthy()
+		await waitFor(() => {
+			expect(screen.getByRole("dialog")).toBeTruthy();
+			expect(screen.getByText("modal content")).toBeTruthy();
+			expect(screen.getByText("my title")).toBeTruthy()
+		});
 	});
 
 	it('should render close button if showCloseButotn is true', () => {
@@ -61,15 +63,19 @@ describe('Modal', () => {
 
 		expect(screen.queryByRole("dialog")).toBeNull();
 
-		await userEvent.click(screen.getByTestId("show-modal-button"));
+		userEvent.click(screen.getByTestId("show-modal-button"));
 
-		expect(screen.queryByRole("dialog")).toBeTruthy();
-		expect(screen.queryByText("modal content")).toBeTruthy();
-		expect(screen.getByText("×")).toBeTruthy();
+		await waitFor(() => {
+			expect(screen.queryByRole("dialog")).toBeTruthy();
+			expect(screen.queryByText("modal content")).toBeTruthy();
+			expect(screen.getByText("×")).toBeTruthy();
+		});
 
-		await userEvent.click(screen.getByText("×"));
+		userEvent.click(screen.getByText("×"));
 
-		expect(screen.queryByText("modal content")).toBeNull();
-		expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+		await waitFor(() => {
+			expect(screen.queryByText("modal content")).toBeNull();
+			expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+		});
 	});
 });
