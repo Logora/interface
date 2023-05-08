@@ -1,9 +1,9 @@
 import React from 'react';
-import { Button } from './Button';
 import { HomeIcon, SendIcon } from '@logora/debate.icons';
+import { Button } from './Button';
 
 export const ActiveButton = () => {
-    return <Button active handleClick={() => alert("Clicked")}>Active</Button>;
+    return <Button active handleClick={() => null}>Active</Button>;
 };
 
 export const InactiveButton = () => {
@@ -23,11 +23,11 @@ export const ButtonWithIconOnly = () => {
 };
 
 export const ButtonWithSuccessAccent = () => {
-    return <Button accent={"success"} handleClick={null}>Success</Button>;
+    return <Button accent="success" handleClick={null}>Success</Button>;
 };
 
 export const ButtonWithDangerAccent = () => {
-    return <Button accent={"danger"} handleClick={null}>Danger</Button>;
+    return <Button accent="danger" handleClick={null}>Danger</Button>;
 };
 
 export const ButtonWithoutBorder = () => {

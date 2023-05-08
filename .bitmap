@@ -15,10 +15,6 @@
         "mainFile": "index.js",
         "rootDir": "src/components/action/button",
         "config": {
-            "teambit.react/react-env@0.0.63": {},
-            "teambit.envs/envs": {
-                "env": "teambit.react/react-env"
-            },
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
                     "dependencies": {
@@ -40,6 +36,10 @@
                         "@testing-library/react": "^14.0.0"
                     }
                 }
+            },
+            "teambit.react/react": {},
+            "teambit.envs/envs": {
+                "env": "teambit.react/react"
             }
         }
     },
@@ -49,10 +49,6 @@
         "mainFile": "index.js",
         "rootDir": "src/components/action/link",
         "config": {
-            "teambit.react/react-env@0.0.63": {},
-            "teambit.envs/envs": {
-                "env": "teambit.react/react-env"
-            },
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
                     "devDependencies": {
@@ -68,6 +64,10 @@
                         "react-dom": "^17.0.0||^18.0.0"
                     }
                 }
+            },
+            "teambit.react/react": {},
+            "teambit.envs/envs": {
+                "env": "teambit.react/react"
             }
         }
     },
@@ -77,10 +77,6 @@
         "mainFile": "index.js",
         "rootDir": "src/components/dialog/modal",
         "config": {
-            "teambit.react/react-env@0.0.63": {},
-            "teambit.envs/envs": {
-                "env": "teambit.react/react-env"
-            },
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
                     "devDependencies": {
@@ -94,6 +90,10 @@
                         "react-dom": "^17.0.0||^18.0.0"
                     }
                 }
+            },
+            "teambit.react/react": {},
+            "teambit.envs/envs": {
+                "env": "teambit.react/react"
             }
         }
     },
@@ -103,10 +103,6 @@
         "mainFile": "index.js",
         "rootDir": "src/components/embed/embed_header",
         "config": {
-            "teambit.react/react-env@0.0.63": {},
-            "teambit.envs/envs": {
-                "env": "teambit.react/react-env"
-            },
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
                     "devDependencies": {
@@ -120,6 +116,10 @@
                         "react-dom": "^17.0.0||^18.0.0"
                     }
                 }
+            },
+            "teambit.react/react": {},
+            "teambit.envs/envs": {
+                "env": "teambit.react/react"
             }
         }
     },
@@ -129,10 +129,6 @@
         "mainFile": "index.js",
         "rootDir": "src/components/error/standard_error_boundary",
         "config": {
-            "teambit.react/react-env@0.0.63": {},
-            "teambit.envs/envs": {
-                "env": "teambit.react/react-env"
-            },
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
                     "devDependencies": {
@@ -148,6 +144,10 @@
                         "react-dom": "^17.0.0||^18.0.0"
                     }
                 }
+            },
+            "teambit.react/react": {},
+            "teambit.envs/envs": {
+                "env": "teambit.react/react"
             }
         }
     },
@@ -157,10 +157,6 @@
         "mainFile": "index.js",
         "rootDir": "src/components/forms/form",
         "config": {
-            "teambit.react/react-env@0.0.63": {},
-            "teambit.envs/envs": {
-                "env": "teambit.react/react-env"
-            },
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
                     "devDependencies": {
@@ -176,6 +172,10 @@
                         "react-dom": "^17.0.0||^18.0.0"
                     }
                 }
+            },
+            "teambit.react/react": {},
+            "teambit.envs/envs": {
+                "env": "teambit.react/react"
             }
         }
     },
@@ -185,10 +185,6 @@
         "mainFile": "index.js",
         "rootDir": "src/components/hooks/use_css_theme",
         "config": {
-            "teambit.react/react-env@0.0.63": {},
-            "teambit.envs/envs": {
-                "env": "teambit.react/react-env"
-            },
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
                     "devDependencies": {
@@ -202,6 +198,10 @@
                         "react-dom": "^17.0.0||^18.0.0"
                     }
                 }
+            },
+            "teambit.react/react": {},
+            "teambit.envs/envs": {
+                "env": "teambit.react/react"
             }
         }
     },
@@ -211,10 +211,6 @@
         "mainFile": "index.js",
         "rootDir": "src/components/input/checkbox/hidden",
         "config": {
-            "teambit.react/react-env@0.0.63": {},
-            "teambit.envs/envs": {
-                "env": "teambit.react/react-env"
-            },
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
                     "devDependencies": {
@@ -230,6 +226,10 @@
                         "react-dom": "^17.0.0||^18.0.0"
                     }
                 }
+            },
+            "teambit.react/react": {},
+            "teambit.envs/envs": {
+                "env": "teambit.react/react"
             }
         }
     },
@@ -239,10 +239,6 @@
         "mainFile": "index.js",
         "rootDir": "src/components/input/checkbox/indicator",
         "config": {
-            "teambit.react/react-env@0.0.63": {},
-            "teambit.envs/envs": {
-                "env": "teambit.react/react-env"
-            },
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
                     "devDependencies": {
@@ -258,6 +254,10 @@
                         "react-dom": "^17.0.0||^18.0.0"
                     }
                 }
+            },
+            "teambit.react/react": {},
+            "teambit.envs/envs": {
+                "env": "teambit.react/react"
             }
         }
     },
@@ -267,10 +267,6 @@
         "mainFile": "index.js",
         "rootDir": "src/components/input/checkbox/label",
         "config": {
-            "teambit.react/react-env@0.0.63": {},
-            "teambit.envs/envs": {
-                "env": "teambit.react/react-env"
-            },
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
                     "devDependencies": {
@@ -286,6 +282,10 @@
                         "react-dom": "^17.0.0||^18.0.0"
                     }
                 }
+            },
+            "teambit.react/react": {},
+            "teambit.envs/envs": {
+                "env": "teambit.react/react"
             }
         }
     },
@@ -295,10 +295,6 @@
         "mainFile": "index.js",
         "rootDir": "src/components/input/text_input",
         "config": {
-            "teambit.react/react-env@0.0.63": {},
-            "teambit.envs/envs": {
-                "env": "teambit.react/react-env"
-            },
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
                     "devDependencies": {
@@ -314,6 +310,10 @@
                         "react-dom": "^17.0.0||^18.0.0"
                     }
                 }
+            },
+            "teambit.react/react": {},
+            "teambit.envs/envs": {
+                "env": "teambit.react/react"
             }
         }
     },
@@ -323,10 +323,6 @@
         "mainFile": "index.js",
         "rootDir": "src/components/input/toggle",
         "config": {
-            "teambit.react/react-env@0.0.63": {},
-            "teambit.envs/envs": {
-                "env": "teambit.react/react-env"
-            },
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
                     "devDependencies": {
@@ -342,6 +338,10 @@
                         "react-dom": "^17.0.0||^18.0.0"
                     }
                 }
+            },
+            "teambit.react/react": {},
+            "teambit.envs/envs": {
+                "env": "teambit.react/react"
             }
         }
     },
@@ -351,10 +351,6 @@
         "mainFile": "index.js",
         "rootDir": "src/components/section/section_box",
         "config": {
-            "teambit.react/react-env@0.0.63": {},
-            "teambit.envs/envs": {
-                "env": "teambit.react/react-env"
-            },
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
                     "devDependencies": {
@@ -370,6 +366,10 @@
                         "react-dom": "^17.0.0||^18.0.0"
                     }
                 }
+            },
+            "teambit.react/react": {},
+            "teambit.envs/envs": {
+                "env": "teambit.react/react"
             }
         }
     },
@@ -379,10 +379,6 @@
         "mainFile": "index.js",
         "rootDir": "src/components/section/section_header",
         "config": {
-            "teambit.react/react-env@0.0.63": {},
-            "teambit.envs/envs": {
-                "env": "teambit.react/react-env"
-            },
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
                     "devDependencies": {
@@ -398,6 +394,10 @@
                         "react-dom": "^17.0.0||^18.0.0"
                     }
                 }
+            },
+            "teambit.react/react": {},
+            "teambit.envs/envs": {
+                "env": "teambit.react/react"
             }
         }
     },
@@ -407,10 +407,6 @@
         "mainFile": "index.js",
         "rootDir": "src/components/skeleton/box_skeleton",
         "config": {
-            "teambit.react/react-env@0.0.63": {},
-            "teambit.envs/envs": {
-                "env": "teambit.react/react-env"
-            },
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
                     "devDependencies": {
@@ -426,6 +422,10 @@
                         "react-dom": "^17.0.0||^18.0.0"
                     }
                 }
+            },
+            "teambit.react/react": {},
+            "teambit.envs/envs": {
+                "env": "teambit.react/react"
             }
         }
     },
@@ -435,10 +435,6 @@
         "mainFile": "index.js",
         "rootDir": "src/components/skeleton/user_content_skeleton",
         "config": {
-            "teambit.react/react-env@0.0.63": {},
-            "teambit.envs/envs": {
-                "env": "teambit.react/react-env"
-            },
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
                     "devDependencies": {
@@ -454,6 +450,10 @@
                         "react-dom": "^17.0.0||^18.0.0"
                     }
                 }
+            },
+            "teambit.react/react": {},
+            "teambit.envs/envs": {
+                "env": "teambit.react/react"
             }
         }
     },
@@ -463,10 +463,6 @@
         "mainFile": "_display.scss",
         "rootDir": "src/components/styles/display",
         "config": {
-            "teambit.react/react-env@0.0.63": {},
-            "teambit.envs/envs": {
-                "env": "teambit.react/react-env"
-            },
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
                     "devDependencies": {
@@ -482,6 +478,10 @@
                         "react-dom": "^17.0.0||^18.0.0"
                     }
                 }
+            },
+            "teambit.react/react": {},
+            "teambit.envs/envs": {
+                "env": "teambit.react/react"
             }
         }
     },
@@ -491,10 +491,6 @@
         "mainFile": "_flex.scss",
         "rootDir": "src/components/styles/flex",
         "config": {
-            "teambit.react/react-env@0.0.63": {},
-            "teambit.envs/envs": {
-                "env": "teambit.react/react-env"
-            },
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
                     "devDependencies": {
@@ -510,6 +506,10 @@
                         "react-dom": "^17.0.0||^18.0.0"
                     }
                 }
+            },
+            "teambit.react/react": {},
+            "teambit.envs/envs": {
+                "env": "teambit.react/react"
             }
         }
     },
@@ -519,10 +519,6 @@
         "mainFile": "_spacing.scss",
         "rootDir": "src/components/styles/spacing",
         "config": {
-            "teambit.react/react-env@0.0.63": {},
-            "teambit.envs/envs": {
-                "env": "teambit.react/react-env"
-            },
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
                     "devDependencies": {
@@ -538,6 +534,10 @@
                         "react-dom": "^17.0.0||^18.0.0"
                     }
                 }
+            },
+            "teambit.react/react": {},
+            "teambit.envs/envs": {
+                "env": "teambit.react/react"
             }
         }
     },
@@ -547,10 +547,6 @@
         "mainFile": "_tabs.scss",
         "rootDir": "src/components/styles/tabs",
         "config": {
-            "teambit.react/react-env@0.0.63": {},
-            "teambit.envs/envs": {
-                "env": "teambit.react/react-env"
-            },
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
                     "devDependencies": {
@@ -566,6 +562,10 @@
                         "react-dom": "^17.0.0||^18.0.0"
                     }
                 }
+            },
+            "teambit.react/react": {},
+            "teambit.envs/envs": {
+                "env": "teambit.react/react"
             }
         }
     },
@@ -575,10 +575,6 @@
         "mainFile": "_theme.scss",
         "rootDir": "src/components/styles/theme",
         "config": {
-            "teambit.react/react-env@0.0.63": {},
-            "teambit.envs/envs": {
-                "env": "teambit.react/react-env"
-            },
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
                     "devDependencies": {
@@ -594,6 +590,10 @@
                         "react-dom": "^17.0.0||^18.0.0"
                     }
                 }
+            },
+            "teambit.react/react": {},
+            "teambit.envs/envs": {
+                "env": "teambit.react/react"
             }
         }
     },
@@ -603,10 +603,6 @@
         "mainFile": "index.js",
         "rootDir": "src/components/text/expandable_text",
         "config": {
-            "teambit.react/react-env@0.0.63": {},
-            "teambit.envs/envs": {
-                "env": "teambit.react/react-env"
-            },
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
                     "devDependencies": {
@@ -620,6 +616,10 @@
                         "react-dom": "^17.0.0||^18.0.0"
                     }
                 }
+            },
+            "teambit.react/react": {},
+            "teambit.envs/envs": {
+                "env": "teambit.react/react"
             }
         }
     },
@@ -629,10 +629,6 @@
         "mainFile": "index.js",
         "rootDir": "src/components/text/read_more",
         "config": {
-            "teambit.react/react-env@0.0.63": {},
-            "teambit.envs/envs": {
-                "env": "teambit.react/react-env"
-            },
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
                     "devDependencies": {
@@ -646,6 +642,10 @@
                         "react-dom": "^17.0.0||^18.0.0"
                     }
                 }
+            },
+            "teambit.react/react": {},
+            "teambit.envs/envs": {
+                "env": "teambit.react/react"
             }
         }
     },
@@ -655,10 +655,6 @@
         "mainFile": "index.js",
         "rootDir": "src/components/tools/hash_scroll",
         "config": {
-            "teambit.react/react-env@0.0.63": {},
-            "teambit.envs/envs": {
-                "env": "teambit.react/react-env"
-            },
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
                     "devDependencies": {
@@ -674,6 +670,10 @@
                         "react-dom": "^17.0.0||^18.0.0"
                     }
                 }
+            },
+            "teambit.react/react": {},
+            "teambit.envs/envs": {
+                "env": "teambit.react/react"
             }
         }
     },
@@ -683,10 +683,6 @@
         "mainFile": "index.js",
         "rootDir": "src/components/tools/scroll_to_top",
         "config": {
-            "teambit.react/react-env@0.0.63": {},
-            "teambit.envs/envs": {
-                "env": "teambit.react/react-env"
-            },
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
                     "devDependencies": {
@@ -700,6 +696,10 @@
                         "react-dom": "^17.0.0||^18.0.0"
                     }
                 }
+            },
+            "teambit.react/react": {},
+            "teambit.envs/envs": {
+                "env": "teambit.react/react"
             }
         }
     },
@@ -725,9 +725,9 @@
                     }
                 }
             },
-            "teambit.react/react-env@0.0.63": {},
+            "teambit.react/react": {},
             "teambit.envs/envs": {
-                "env": "teambit.react/react-env"
+                "env": "teambit.react/react"
             }
         }
     },

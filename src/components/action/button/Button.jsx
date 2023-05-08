@@ -12,7 +12,7 @@ export const Button = (props) => {
 
   return (
     <button 
-      type={type ? type : "button"} 
+      type={type || "button"} 
       className={classnames(
         styles.primaryButton,
         className, 
