@@ -95,7 +95,7 @@
     },
     "skeleton/box_skeleton": {
         "scope": "logora.debate",
-        "version": "0.0.8",
+        "version": "0.0.9",
         "mainFile": "index.js",
         "rootDir": "src/components/skeleton/box_skeleton"
     },
