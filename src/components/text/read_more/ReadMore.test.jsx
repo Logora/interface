@@ -64,8 +64,6 @@ it('should show all content when clicking on "Read more" if url is not provided'
             contentCharCount={250}
             readMoreText="Read more"
             readLessText="Read less"
-            target="_top"
-            external
         />
     );
     const slicedText = text.slice(0, 250) + "...";

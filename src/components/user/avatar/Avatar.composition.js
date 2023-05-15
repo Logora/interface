@@ -8,7 +8,7 @@ const userName = faker.name.fullName();
 
 export const DefaultAvatar = () => {
     return (
-        <IntlProvider>
+        <IntlProvider locale="en">
             <Avatar avatarUrl={avatarUrl} userName={userName} />
         </IntlProvider>
     );
@@ -16,7 +16,7 @@ export const DefaultAvatar = () => {
 
 export const AvatarWithDefaultImage = () => {
     return (
-        <IntlProvider>
+        <IntlProvider locale="en">
             <Avatar userName={userName} />
         </IntlProvider>
     );
@@ -24,7 +24,7 @@ export const AvatarWithDefaultImage = () => {
 
 export const AvatarSmall = () => {
     return (
-        <IntlProvider>
+        <IntlProvider locale="en">
             <Avatar avatarUrl={avatarUrl} userName={userName} size={20} />
         </IntlProvider>
     );
@@ -32,7 +32,7 @@ export const AvatarSmall = () => {
 
 export const AvatarLarge = () => {
     return (
-        <IntlProvider>
+        <IntlProvider locale="en">
             <Avatar avatarUrl={avatarUrl} userName={userName} size={60} />
         </IntlProvider>
     );
@@ -40,7 +40,7 @@ export const AvatarLarge = () => {
 
 export const AvatarOnline = () => {
     return (
-        <IntlProvider>
+        <IntlProvider locale="en">
             <Avatar avatarUrl={avatarUrl} userName={userName} isOnline />
         </IntlProvider>
     );
@@ -49,7 +49,7 @@ export const AvatarOnline = () => {
 
 export const AvatarSmallOnline = () => {
     return (
-        <IntlProvider>
+        <IntlProvider locale="en">
             <Avatar avatarUrl={avatarUrl} userName={userName} size={20} isOnline />
         </IntlProvider>
     );
@@ -57,7 +57,7 @@ export const AvatarSmallOnline = () => {
 
 export const AvatarLargeOnline = () => {
     return (
-        <IntlProvider>
+        <IntlProvider locale="en">
             <Avatar avatarUrl={avatarUrl} userName={userName} size={60} isOnline />
         </IntlProvider>
     );

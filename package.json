@@ -28,7 +28,6 @@
   },
   "homepage": "https://github.com/Logora/ui#readme",
   "dependencies": {
-    "@logora/debate.icons": "^0.0.1",
     "classnames": "^2.3.2",
     "prop-types": "^15.8.1",
     "react-intl": "^6.1.2",
@@ -36,12 +35,15 @@
     "react-router": "^5.3.4",
     "react-router-dom": "^5.3.4",
     "use-onclickoutside": "^0.4.1"
-
   },
   "devDependencies": {
-    "@testing-library/react": "^12.1.4",
-    "@testing-library/user-event": "^12.1.4",
+    "@testing-library/react": "^14.0.0",
+    "@testing-library/user-event": "^14.4.3",
     "@testing-library/dom": "^9.2.0",
     "@faker-js/faker": "^7.6.0"
+  },
+  "peerDependencies": {
+    "react": "^17.0.0 || ^18.0.0",
+    "react-dom": "^17.0.0 || ^18.0.0"
   }
 }
