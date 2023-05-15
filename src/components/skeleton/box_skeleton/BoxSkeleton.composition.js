@@ -13,6 +13,12 @@ export const BoxSkeletonLarge = () => {
     );
 };
 
+export const BoxSkeletonOnlyEdgeBox = () => {
+    return (
+        <div style={{width: "200px"}}><BoxSkeleton boxHeight={200} onlyEdgeBox={true} /></div>
+    );
+};
+
 export const BoxSkeletonWithoutAnimation = () => {
     return (
         <BoxSkeleton enableAnimation={false} />
