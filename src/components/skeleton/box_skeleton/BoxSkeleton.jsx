@@ -4,7 +4,7 @@ import 'react-loading-skeleton/dist/skeleton.css';
 
 export const BoxSkeleton = (props) => {
   return (
-    <div style={{ marginTop: props.noGlobalMargin ? 0 : "1em" }} data-testid={"box-skeleton"}>
+    <div className={props.className} data-testid={"box-skeleton"}>
       <div style={{ marginRight: ".5em" }}>
         <Skeleton enableAnimation={props.enableAnimation} height={props.boxHeight || 200} />
         {!props.onlyEdgeBox && 
