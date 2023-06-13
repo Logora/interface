@@ -25,8 +25,8 @@ describe('EmbedHeader', () => {
                 <EmbedHeader onlineUsersCount={onlineUsersCount} />
             </IntlProvider>
         );
-        expect(getByTestId('online-users-count')).toHaveTextContent(`${onlineUsersCount} utilisateurs en ligne`);
-        expect(getByTestId('online-users-count-mobile')).toHaveTextContent(`${onlineUsersCount} utilisateurs en ligne`);
+        expect(getByTestId('online-users-count')).toHaveTextContent(`${onlineUsersCount} online users`);
+        expect(getByTestId('online-users-count-mobile')).toHaveTextContent(`${onlineUsersCount} online`);
     });
 
     it('applies textLeft className when prop is provided', () => {

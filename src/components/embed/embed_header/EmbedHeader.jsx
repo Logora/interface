@@ -18,10 +18,10 @@ export const EmbedHeader = ({title, titleRedirectUrl, headerLabel, onlineUsersCo
 					<div className={styles.headerLiveStat}>
 						<div className={styles.headerLiveNow}></div>
 						<span className={styles.headerLivePin} data-testid={"online-users-count"}>
-							{onlineUsersCount} <FormattedMessage id={"info.online_users"} values={{ count: onlineUsersCount }} defaultMessage="utilisateurs en ligne" />
+							<FormattedMessage id={"embed.embed_header.online_users"} values={{ count: onlineUsersCount }} defaultMessage="{count} online users" />
 						</span>
 						<span className={styles.headerLivePinMobile} data-testid={"online-users-count-mobile"}>
-							{onlineUsersCount} <FormattedMessage id={"info.online"} values={{ variable: onlineUsersCount }} defaultMessage="utilisateurs en ligne" />
+							<FormattedMessage id={"embed.embed_header.online"} values={{ count: onlineUsersCount }} defaultMessage="{count} online" />
 						</span>
 					</div>
 				: null}
