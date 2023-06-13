@@ -29,7 +29,7 @@
     },
     "embed/embed_header": {
         "scope": "logora.debate",
-        "version": "0.0.6",
+        "version": "0.0.7",
         "mainFile": "index.js",
         "rootDir": "src/components/embed/embed_header"
     },
