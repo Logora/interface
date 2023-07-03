@@ -67,7 +67,7 @@ export const ExpandableText = (
 						</div>
 					</div> 
 					:
-					<div className={styles.linkContainer} onClick={() => handleCollapse()}>
+					<div className={styles.linkContainerExpanded} onClick={() => handleCollapse()}>
 						<div className={cx(styles.linkExpanded, className)}>
 							<span>{collapseText}</span>
                             { showIcon && <ArrowIcon height={16} width={16} /> }

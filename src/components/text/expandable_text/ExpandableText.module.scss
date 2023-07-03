@@ -30,6 +30,26 @@
     }
 }
 
+.linkContainerExpanded {
+    display: flex;
+    flex-direction: row;
+    position: unset;
+    width: 100%;
+    z-index: 1;
+    height: 70%;
+    justify-content: center;
+    align-items: flex-end;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    span {
+        font-size: $font-size-small;
+    }
+    &:hover {
+        cursor: pointer;
+        color: black;
+    }
+}
+
 .link {
     position: relative;
     border-bottom: 1px solid black;
