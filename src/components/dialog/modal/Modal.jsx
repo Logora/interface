@@ -5,11 +5,11 @@ import useOnClickOutside from 'use-onclickoutside';
 import cx from 'classnames';
 import styles from './Modal.module.scss';
 
-export const Modal = ({ title, showCloseButton = false, fullScreen, children, ...rest }) => {
+export const Modal = ({ title, showCloseButton = false, fullScreen, children, disableClickOutside = false, ...rest }) => {
   const modalRef = useRef();
   const { hideModal } = useModal();
 
-  useOnClickOutside(modalRef, hideModal);
+  useOnClickOutside(modalRef, disableClickOutside ? () => null : hideModal);
 
   useEffect(() => {
     document.body.style.overflowY = "hidden";
@@ -50,6 +50,8 @@ Modal.propTypes = {
   fullScreen: PropTypes.bool,
   /** Modal content */
   children: PropTypes.node,
+  /** Disable the click outside to close modal option */
+  disableClickOutside: PropTypes.bool,
   /** Other props passed to the modal */
   rest: PropTypes.object
 };
