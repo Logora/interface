@@ -23,7 +23,7 @@
     },
     "dialog/modal": {
         "scope": "logora.debate",
-        "version": "0.0.7",
+        "version": "0.0.8",
         "mainFile": "index.js",
         "rootDir": "src/components/dialog/modal"
     },
