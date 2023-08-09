@@ -9,7 +9,7 @@ export const Modal = ({ title, showCloseButton = false, fullScreen, children, di
   const modalRef = useRef();
   const { hideModal } = useModal();
 
-  useOnClickOutside(modalRef, disableClickOutside ? () => null : hideModal);
+  useOnClickOutside(modalRef, disableClickOutside ? null : hideModal);
 
   useEffect(() => {
     document.body.style.overflowY = "hidden";
