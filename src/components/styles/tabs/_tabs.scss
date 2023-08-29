@@ -34,11 +34,11 @@
         border-top-right-radius: $box-border-radius;
 
         &:hover, &:focus {
-            border-color: #e9ecef #e9ecef #dee2e6;
+            border-color: $text-tertiary $text-tertiary $darken-text-tertiary;
         }
 
         &.disabled {
-            color: #6c757d;
+            color: $darkest-text-tertiary;
             background-color: transparent;
             border-color: transparent;
         }
@@ -46,9 +46,9 @@
 
     .navLink.active,
     .navItem.show .navLink {
-        color: #495057;
-        background-color: white;
-        border-color: #dee2e6 #dee2e6 white;
+        color: $text-secondary;
+        background-color: $background-color-primary;
+        border-color: $darken-text-tertiary $darken-text-tertiary $background-color-primary;
     }
 }
 
@@ -66,7 +66,7 @@
 
     // Disabled state lightens text
     &.disabled {
-        color: #6c757d;
+        color: $darkest-text-tertiary;
         pointer-events: none;
         cursor: default;
     }

@@ -18,6 +18,7 @@ $box-border-radius: var(--box-border-radius, 6px);
 $text-primary: var(--text-primary, #222222);
 $text-secondary: var(--text-secondary, #777777);
 $text-tertiary: var(--text-tertiary, #fafafa);
+$text-light: var(--text-light, white);
 $font-weight-normal: var(--font-weight-normal, 400);
 $font-weight-bold: var(--font-weight-bold, 700);
 $darken-text-tertiary: var(--darken-text-tertiary, darken(#fafafa, 5%));

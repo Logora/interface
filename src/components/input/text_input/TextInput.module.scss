@@ -13,7 +13,7 @@
     top: -0.6em;
     left: 12px;
     z-index: 1;
-    background-color: white;
+    background-color: $background-color-primary;
     transform: unset;
     padding: 0 4px;
   }
@@ -29,7 +29,7 @@ input.textInput {
   border: $box-border;
 	box-shadow: $box-shadow;
 	border-radius: $box-border-radius;
-  background-color: white;
+  background-color: $background-color-primary;
   color: $text-primary;
 
   // when no content in the input and not focused, display the label as the placeholder
@@ -45,17 +45,17 @@ input.textInput {
 
   // keep precedence! filled < hover < success < error < disabled
   &.filled {
-    background-color: #f6f6f6;
+    background-color: $background-color-secondary;
   }
   &::placeholder {
-    color: #6c707c;
+    color: $text-secondary;
   }
   &:hover {
-    border: 1px solid #babec9;
+    border: 1px solid $text-secondary;
   }
   &:focus {
     border: 1px solid $call-primary !important;
-    background-color: white;
+    background-color: $background-color-primary;
     & ~ label {
       color: $call-primary !important;
     }
@@ -75,9 +75,11 @@ input.textInput {
   }
   &:disabled {
     cursor: not-allowed;
-    background-color: #f6f6f6;
-    color: #babec9;
-    border: 1px solid #ededed;
+    background-color: $text-tertiary;
+    border: 1px solid $darken-text-tertiary;
+    & ~ label {
+      color: $darkest-text-tertiary;
+    }
   }
 }
 
