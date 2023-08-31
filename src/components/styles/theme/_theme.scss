@@ -10,19 +10,10 @@ $cancel-primary: var(--cancel-primary, #c73c49);
 $connected-green: var(--connected-green, #80d764);
 $announcement-primary: var(--announcement-primary, #cce5ff);
 $announcement-text-primary: var(--announcement-text-primary, #004085);
-$background-color-primary: var(--background-color-primary, white);
-$background-color-secondary: var(--background-color-secondary ,#E8E8E8);
-$box-shadow: var(--box-shadow, 0px 2px 5px rgba(7,42,68, 0.1));
-$box-border: var(--box-border, 1px solid rgba(7,42,68, 0.1));
 $box-border-radius: var(--box-border-radius, 6px);
-$text-primary: var(--text-primary, #222222);
-$text-secondary: var(--text-secondary, #777777);
-$text-tertiary: var(--text-tertiary, #fafafa);
 $text-light: var(--text-light, white);
 $font-weight-normal: var(--font-weight-normal, 400);
 $font-weight-bold: var(--font-weight-bold, 700);
-$darken-text-tertiary: var(--darken-text-tertiary, darken(#fafafa, 5%));
-$darkest-text-tertiary: var(--darkest-text-tertiary, darken(#fafafa, 20%));
 $button-box-shadow: var(--button-box-shadow, 1.5px 1.5px 1.5px 0 rgba(0, 0, 0, 0.07));
 $font-family: var(--font-family, 'Montserrat');
 $title-font-family: var(--title-font-family, $font-family);
@@ -35,14 +26,27 @@ $tag-text-color: var(--tag-text-color, $call-primary);
 $layout-mobile-margin: var(--layout-horizontal-margin, 0);
 $layout-max-width: 1400px;
 $line-height: 1.3;
+:root {
+    --background-color-primary: white;
+    --background-color-secondary: #E8E8E8;
+    --text-primary: #222222;
+    --text-secondary: #777777;
+    --text-tertiary: #fafafa;
+    --box-shadow: 0px 2px 5px rgba(7,42,68, 0.1);
+    --box-border: 1px solid rgba(7,42,68, 0.1);
+    --darken-text-tertiary: darken(#fafafa, 5%);
+    --darkest-text-tertiary: darken(#fafafa, 20%);
+}
 @media (prefers-color-scheme: dark) {
-    $background-color-primary: var(--background-color-primary, #222425);
-    $background-color-secondary: var(--background-color-secondary ,#727272);
-    $text-primary: var(--text-primary, white);
-    $text-secondary: var(--text-secondary, #d9d9d9);
-    $text-tertiary: var(--text-tertiary, #3d3d3d);
-    $box-shadow: var(--box-shadow, 0px 2px 5px rgba(55,55,55, 0.4));
-    $box-border: var(--box-border, 1px solid rgba(115,115,115, 0.3));
-    $darken-text-tertiary: var(--darken-text-tertiary, darken(#3d3d3d, 5%));
-    $darkest-text-tertiary: var(--darkest-text-tertiary, darken(#3d3d3d, 20%));
+    :root {
+        --background-color-primary: #222425;
+        --background-color-secondary: #727272;
+        --text-primary: white;
+        --text-secondary: #d9d9d9;
+        --text-tertiary: #3d3d3d;
+        --box-shadow: 0px 2px 5px rgba(55,55,55, 0.4);
+        --box-border: 1px solid rgba(115,115,115, 0.3);
+        --darken-text-tertiary: darken(#3d3d3d, 5%);
+        --darkest-text-tertiary: darken(#3d3d3d, 20%);
+    }
 }
