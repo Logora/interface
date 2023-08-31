@@ -77,7 +77,7 @@
     },
     "input/toggle": {
         "scope": "logora.debate",
-        "version": "0.0.8",
+        "version": "0.0.9",
         "mainFile": "index.js",
         "rootDir": "src/components/input/toggle"
     },
@@ -161,7 +161,7 @@
     },
     "user/avatar": {
         "scope": "logora.debate",
-        "version": "0.0.12",
+        "version": "0.0.13",
         "mainFile": "index.js",
         "rootDir": "src/components/user/avatar"
     },
