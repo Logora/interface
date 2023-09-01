@@ -12,7 +12,7 @@ export const ExpandableText = (
         className,
         maxHeight = "100", 
         showIcon = true,
-        backgroundColor = "#ffffff",
+        backgroundColor = "var(--background-color-primary)",
         onCollapse = () => {}, 
         onExpand = () => {}, 
     }
