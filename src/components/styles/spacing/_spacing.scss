@@ -1,17 +1,23 @@
 @import '~@logora/debate.styles.display/_display.scss';
 
-$spacer: 1em !default;
+$spacer: var(--space-unit, 1em) !default;
+$spacer-xxs: var(--spacer-xxs, $spacer * .25);
+$spacer-xs: var(--spacer-xs, $spacer * .325);
+$spacer-sm: var(--spacer-sm, $spacer * .5);
+$spacer-md: var(--spacer-md, $spacer * .75);
+$spacer-lg: var(--spacer-lg, $spacer * 1.5);
+$spacer-xl: var(--spacer-xl, $spacer * 3);
 $spacers: () !default;
 $spacers: map-merge(
         (
                 0: 0,
-                1: ($spacer * .25),
-                1.5: ($spacer * 0.325),
-                2: ($spacer * .5),
-                2.5: ($spacer * 0.75),
+                1: $spacer-xxs,
+                1.5: $spacer-xs,
+                2: $spacer-sm,
+                2.5: $spacer-md,
                 3: $spacer,
-                4: ($spacer * 1.5),
-                5: ($spacer * 3)
+                4: $spacer-lg,
+                5: $spacer-xl
         ),
         $spacers
 );
