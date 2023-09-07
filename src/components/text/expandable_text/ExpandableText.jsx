@@ -44,7 +44,7 @@ export const ExpandableText = (
 	};
 
     const shouldShowButton = expandable && (contentHeight > maxHeight);
-    const contentStyles = { maxHeight: maxHeight + "px", marginBottom: "10px" }
+    const contentStyles = { maxHeight: maxHeight + "px", marginBottom: "var(--space-unit)" }
 	const maskStyles = { background: isReply ? `linear-gradient(to bottom, rgba(255, 255, 255, 0), var(--text-tertiary) 90%)` : `linear-gradient(to bottom, rgba(255, 255, 255, 0), ${backgroundColor} 90%)`}
 
     return (

@@ -1,7 +1,9 @@
 @import '~@logora/debate.styles.theme/_theme.scss';
+@import "~@logora/debate.styles.spacing/_spacing.scss";
 
 .container {
     position: relative;
+    @include mb(3, xs);
 }
 
 .contentMask {
@@ -20,7 +22,7 @@
     height: 70%;
     justify-content: center;
     align-items: flex-end;
-    margin-bottom: 10px;
+    @include mb(2, xs);
     span {
         font-size: $font-size-small;
     }
