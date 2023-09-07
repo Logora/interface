@@ -21,6 +21,10 @@ $spacers: map-merge(
         ),
         $spacers
 );
+$title-spacing: var(--title-spacing, $spacer);
+$title-spacing-lg: var(--title-spacing-lg, $spacer-lg);
+$box-spacing: var(--box-spacing, $spacer);
+$box-element-spacing: var(--box-element-spacing, $spacer-lg);
 
 @mixin m($value, $breakpoint) {
   @include media-breakpoint-up($breakpoint) {
