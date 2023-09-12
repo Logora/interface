@@ -83,7 +83,7 @@
     },
     "section/section_box": {
         "scope": "logora.debate",
-        "version": "0.0.23",
+        "version": "0.0.24",
         "mainFile": "index.js",
         "rootDir": "src/components/section/section_box"
     },
