@@ -227,32 +227,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@logora/debate.styles.theme@npm:0.0.8":
-  version: 0.0.8
-  resolution: "@logora/debate.styles.theme@npm:0.0.8::__archiveUrl=https%3A%2F%2Fnode.bit.cloud%2F%40logora%2Fdebate.styles.theme%2F-%2F%40logora-debate.styles.theme-0.0.8.tgz"
-  dependencies:
-    core-js: ^3.0.0
-  peerDependencies:
-    react: ^16.8.0 || ^17.0.0
-    react-dom: ^16.8.0 || ^17.0.0
-  checksum: aae4fd8ede91e5b509365aa25760ff7c5c7e300053c0ef1b1a2801cd1a7c00f686d8614a5d1f4a266bf0b32e76226dd777a54d700196f0fcddd3d36fa08ce63a
-  languageName: node
-  linkType: hard
-
-"@logora/debate.tools.tooltip@npm:0.0.5":
-  version: 0.0.5
-  resolution: "@logora/debate.tools.tooltip@npm:0.0.5::__archiveUrl=https%3A%2F%2Fnode.bit.cloud%2F%40logora%2Fdebate.tools.tooltip%2F-%2F%40logora-debate.tools.tooltip-0.0.5.tgz"
-  dependencies:
-    "@logora/debate.styles.theme": 0.0.8
-    classnames: ^2.3.1
-    core-js: ^3.0.0
-  peerDependencies:
-    react: ^16.8.0 || ^17.0.0
-    react-dom: ^16.8.0 || ^17.0.0
-  checksum: 5a6d92b7a3111b13fe401187f9ebb7aeefcb65cbe62f5186d1e63e6ef1dc707d7fa9ea0cacb53465e177aebab0484cca75a78eddbf783af0183f7669fe8b38ed
-  languageName: node
-  linkType: hard
-
 "@logora/ui@workspace:.":
   version: 0.0.0-use.local
   resolution: "@logora/ui@workspace:."
@@ -260,7 +234,6 @@ __metadata:
     "@babel/runtime": 7.20.0
     "@faker-js/faker": ^7.6.0
     "@logora/debate.icons": 0.0.1
-    "@logora/debate.tools.tooltip": 0.0.5
     "@testing-library/dom": ^9.2.0
     "@testing-library/react": ^14.0.0
     "@testing-library/user-event": ^14.4.3
@@ -654,7 +627,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"classnames@npm:^2.3.1, classnames@npm:^2.3.2":
+"classnames@npm:^2.3.2":
   version: 2.3.2
   resolution: "classnames@npm:2.3.2"
   checksum: 2c62199789618d95545c872787137262e741f9db13328e216b093eea91c85ef2bfb152c1f9e63027204e2559a006a92eb74147d46c800a9f96297ae1d9f96f4e
@@ -1305,9 +1278,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"loader-714374@workspace:src/components/tools/loader":
+"loader-6245f5@workspace:src/components/progress/loader":
   version: 0.0.0-use.local
-  resolution: "loader-714374@workspace:src/components/tools/loader"
+  resolution: "loader-6245f5@workspace:src/components/progress/loader"
   languageName: unknown
   linkType: soft
 
