@@ -1,0 +1,76 @@
+@import '~@logora/debate.styles.theme/_theme.scss';
+
+.tooltipChild {
+    position: relative;
+}
+
+.tooltipText {
+    width: 120px;
+    visibility: hidden;
+    background-color: $text-secondary;
+    color: $background-color-primary;
+    text-align: center;
+    border-radius: $box-border-radius;
+    padding: 5px;
+    position: absolute;
+    z-index: 3;
+    top: 150%;
+    left: 50%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-weight: $font-weight-normal !important;
+    font-size: $font-size-small !important;
+}
+
+//Arrow
+.tooltipChild .tooltipText::after {
+    content: "";
+    position: absolute;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: $text-secondary transparent transparent transparent;
+    top: -10px;
+    left: 50%;
+    transform: rotate(180deg);
+}
+
+.tooltipChild:hover .tooltipText {
+    visibility: visible;
+    opacity: 1;    
+}
+
+// Tooltip and arrow position
+.tooltipChild .tooltipTextTop {
+    width: 180px;
+    top: -160%;
+    left: -45%;
+    &::after {
+        top: 100%;
+        left: 50%;
+        transform: none;
+    }
+}
+
+.tooltipChild .tooltipTextLeft {
+    width: 148px;
+    top: 0;
+    left: -95px;
+    &::after {
+        top: 10px;
+        left: 153px;
+        transform: rotate(270deg);
+    }
+}
+
+.tooltipChild .tooltipTextRight {
+    width: 148px;
+    top: 0;
+    left: 93px;
+    &::after {
+        top: 10px;
+        left: -5px;
+        transform: rotate(90deg);
+    }
+}

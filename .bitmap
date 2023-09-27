@@ -33,6 +33,40 @@
         "mainFile": "index.js",
         "rootDir": "src/components/dialog/modal"
     },
+    "dialog/tooltip": {
+        "scope": "",
+        "version": "",
+        "mainFile": "index.js",
+        "rootDir": "src/components/dialog/tooltip",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "devDependencies": {
+                        "@types/jest": "-",
+                        "@types/testing-library__jest-dom": "-"
+                    },
+                    "peerDependencies": {
+                        "react": "^17.0.0||^18.0.0",
+                        "react-dom": "^17.0.0||^18.0.0"
+                    }
+                }
+            },
+            "teambit.react/react": {},
+            "teambit.component/dev-files": {
+                "devFilePatterns": [
+                    "**/*.story.+(js|ts|jsx|tsx)",
+                    "**/*.dev.jsx"
+                ]
+            },
+            "teambit.envs/envs": {},
+            "teambit.compilation/compiler": {},
+            "teambit.harmony/application": {},
+            "teambit.compositions/compositions": {},
+            "teambit.docs/docs": {},
+            "teambit.preview/preview": {},
+            "teambit.pipelines/builder": {}
+        }
+    },
     "embed/embed_header": {
         "scope": "logora.debate",
         "version": "0.0.15",
