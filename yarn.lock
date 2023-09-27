@@ -1305,6 +1305,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"loader-714374@workspace:src/components/tools/loader":
+  version: 0.0.0-use.local
+  resolution: "loader-714374@workspace:src/components/tools/loader"
+  languageName: unknown
+  linkType: soft
+
 "loose-envify@npm:^1.1.0, loose-envify@npm:^1.2.0, loose-envify@npm:^1.3.1, loose-envify@npm:^1.4.0":
   version: 1.4.0
   resolution: "loose-envify@npm:1.4.0"
