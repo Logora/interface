@@ -1,4 +1,5 @@
 @import '~@logora/debate.styles.theme/_theme.scss';
+@import '~@logora/debate.styles.spacing/_spacing.scss';
 
 .container {
   position: relative;
@@ -11,11 +12,11 @@
     font-size: 0.8rem;
     position: absolute;
     top: -0.6em;
-    left: 12px;
+    left: $spacer-md;
     z-index: 1;
     background-color: $background-color-primary;
     transform: unset;
-    padding: 0 4px;
+    padding: 0 $spacer-xxs;
   }
 }
 
@@ -23,7 +24,8 @@ input.textInput {
   width: 100%;
   box-sizing: border-box;
   outline: 0;
-  padding: 0.69em 1em;
+  @include px(3, xs);
+	@include py(2.5, xs);
   font-size: inherit;
   font-family: inherit;
   border: $box-border;
@@ -87,14 +89,14 @@ input.textInput {
   position: relative;
   font-size: inherit;
   .textInput {
-    padding-right: 2em;
+    padding-right: $spacer-xl;
   }
   // icon element
   > :last-child {
     font-size: inherit;
     color: inherit;
     position: absolute;
-    right: 0.75em;
+    right: $spacer-md;
     top: calc(50% - 0.6rem);
     width: 16px;
   }
@@ -102,6 +104,7 @@ input.textInput {
 
 .errorMessage {
   font-size: 0.8em;
-  padding-top: 8px;
+  padding-top: 0.8em;
+  padding-top: $spacer-md;
   color: $cancel-primary;
 }
