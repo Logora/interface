@@ -89,7 +89,7 @@
     },
     "input/text_input": {
         "scope": "logora.debate",
-        "version": "0.0.14",
+        "version": "0.0.15",
         "mainFile": "index.js",
         "rootDir": "src/components/input/text_input"
     },
