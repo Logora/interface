@@ -1,0 +1,34 @@
+@import '~@logora/debate.styles.theme/_theme.scss';
+@import '~@logora/debate.styles.spacing/_spacing.scss';
+
+a.backLink {
+    display: flex !important;
+    align-items: center !important;
+    font-weight: $font-weight-normal;
+    font-size: $font-size-small;
+    color: $text-secondary;
+    text-decoration: none !important;
+    svg {
+        fill: $text-secondary;
+        fill-rule: evenodd;
+    }
+    &:hover {
+        color: $text-primary;
+        text-decoration: none;
+    
+        svg {
+            fill: $text-primary;
+            fill-rule: evenodd;
+        }
+    }
+    &:focus {
+        border: none;
+    }
+    &:active {
+        border: none;
+    }
+}
+
+.arrowIcon {
+    @include ml(2, xs);
+}

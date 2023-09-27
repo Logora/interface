@@ -9,17 +9,29 @@
  */
 
 {
+    "action/back_link": {
+        "scope": "logora.debate",
+        "version": "0.0.20",
+        "mainFile": "index.js",
+        "rootDir": "src/components/action/back_link"
+    },
     "action/button": {
         "scope": "logora.debate",
-        "version": "0.0.24",
+        "version": "0.0.25",
         "mainFile": "index.js",
         "rootDir": "src/components/action/button"
     },
     "action/link": {
         "scope": "logora.debate",
-        "version": "0.0.7",
+        "version": "0.0.9",
         "mainFile": "index.js",
         "rootDir": "src/components/action/link"
+    },
+    "action/link_button": {
+        "scope": "logora.debate",
+        "version": "0.0.15",
+        "mainFile": "index.js",
+        "rootDir": "src/components/action/link_button"
     },
     "dialog/modal": {
         "scope": "logora.debate",
@@ -27,9 +39,15 @@
         "mainFile": "index.js",
         "rootDir": "src/components/dialog/modal"
     },
+    "dialog/tooltip": {
+        "scope": "logora.debate",
+        "version": "0.0.1",
+        "mainFile": "index.js",
+        "rootDir": "src/components/dialog/tooltip"
+    },
     "embed/embed_header": {
         "scope": "logora.debate",
-        "version": "0.0.13",
+        "version": "0.0.15",
         "mainFile": "index.js",
         "rootDir": "src/components/embed/embed_header"
     },
@@ -83,7 +101,7 @@
     },
     "section/section_box": {
         "scope": "logora.debate",
-        "version": "0.0.23",
+        "version": "0.0.24",
         "mainFile": "index.js",
         "rootDir": "src/components/section/section_box"
     },
@@ -143,7 +161,7 @@
     },
     "text/read_more": {
         "scope": "logora.debate",
-        "version": "0.0.15",
+        "version": "0.0.17",
         "mainFile": "index.js",
         "rootDir": "src/components/text/read_more"
     },
@@ -161,7 +179,7 @@
     },
     "user/avatar": {
         "scope": "logora.debate",
-        "version": "0.0.16",
+        "version": "0.0.17",
         "mainFile": "index.js",
         "rootDir": "src/components/user/avatar"
     },

@@ -1,6 +1,6 @@
 import React from "react";
 import { useIntl } from 'react-intl';
-import { Tooltip } from '@logora/debate.tools.tooltip';
+import { Tooltip } from '@logora/debate.dialog.tooltip';
 import { DefaultAvatarIcon } from "./DefaultAvatar";
 import cx from 'classnames';
 import styles from './Avatar.module.scss';
