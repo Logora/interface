@@ -89,7 +89,7 @@
     },
     "input/text_input": {
         "scope": "logora.debate",
-        "version": "0.0.13",
+        "version": "0.0.14",
         "mainFile": "index.js",
         "rootDir": "src/components/input/text_input"
     },
@@ -130,14 +130,7 @@
             "teambit.compositions/compositions": {},
             "teambit.docs/docs": {},
             "teambit.preview/preview": {},
-            "teambit.pipelines/builder": {},
-            "teambit.component/renaming": {
-                "renamedFrom": {
-                    "scope": "logora.debate",
-                    "name": "tools/loader",
-                    "version": "0.0.13"
-                }
-            }
+            "teambit.pipelines/builder": {}
         }
     },
     "section/section_box": {
