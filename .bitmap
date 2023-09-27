@@ -21,6 +21,12 @@
         "mainFile": "index.js",
         "rootDir": "src/components/action/link"
     },
+    "action/link_button": {
+        "scope": "",
+        "version": "",
+        "mainFile": "index.js",
+        "rootDir": "src/components/action/link_button"
+    },
     "dialog/modal": {
         "scope": "logora.debate",
         "version": "0.0.14",

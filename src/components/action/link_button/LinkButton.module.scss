@@ -1,0 +1,19 @@
+@import '~@logora/debate.styles.theme/_theme.scss';
+
+.primaryLink {
+    background-color: $call-primary !important;
+    border: 1px solid $call-primary !important;
+    border-radius: $box-border-radius;
+    box-shadow: $button-box-shadow;
+    font-size: $font-size-normal;
+    padding: 5px 12px;
+    cursor: pointer;
+    -webkit-appearance: initial !important;
+    color: $text-light !important;
+    text-decoration: none !important;
+}
+
+.primaryLink:hover {
+    text-decoration: none !important;
+    color: $text-light !important;
+}

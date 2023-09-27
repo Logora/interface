@@ -47,4 +47,4 @@ Link.propTypes = {
     children: PropTypes.node,
     /** Extra props passed to the component */
     rest: PropTypes.object
-  };
+};

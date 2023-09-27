@@ -1,0 +1,26 @@
+---
+description: A link component styled as a button.
+labels: ['button', 'link']
+---
+
+import { LinkButton } from './LinkButton';
+import { MemoryRouter } from "react-router";
+
+A component that renders a button that navigates to provided link.
+
+LinkButton is a styled version of the [Link](https://bit.cloud/logora/debate/action/link) component.
+
+_to_ prop can be a string, an object or a function, as per react-router documentation : https://v5.reactrouter.com/web/api/Link
+
+### Component usage
+```js
+<MemoryRouter>
+    <LinkButton 
+        to={link}
+        className={classNameToPass}
+        external={false}
+    >
+        Go to link !
+    </LinkButton>
+</MemoryRouter>
+```
