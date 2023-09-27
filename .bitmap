@@ -17,13 +17,13 @@
     },
     "action/link": {
         "scope": "logora.debate",
-        "version": "0.0.8",
+        "version": "0.0.9",
         "mainFile": "index.js",
         "rootDir": "src/components/action/link"
     },
     "action/link_button": {
         "scope": "logora.debate",
-        "version": "0.0.14",
+        "version": "0.0.15",
         "mainFile": "index.js",
         "rootDir": "src/components/action/link_button"
     },
@@ -35,7 +35,7 @@
     },
     "embed/embed_header": {
         "scope": "logora.debate",
-        "version": "0.0.14",
+        "version": "0.0.15",
         "mainFile": "index.js",
         "rootDir": "src/components/embed/embed_header"
     },
@@ -149,7 +149,7 @@
     },
     "text/read_more": {
         "scope": "logora.debate",
-        "version": "0.0.16",
+        "version": "0.0.17",
         "mainFile": "index.js",
         "rootDir": "src/components/text/read_more"
     },
