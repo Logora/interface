@@ -185,26 +185,9 @@
     },
     "user/avatar": {
         "scope": "logora.debate",
-        "version": "0.0.17",
+        "version": "0.0.18",
         "mainFile": "index.js",
-        "rootDir": "src/components/user/avatar",
-        "config": {
-            "teambit.dependencies/dependency-resolver": {
-                "policy": {
-                    "dependencies": {
-                        "@testing-library/react": "^14.0.0",
-                        "react": "^17.0.0"
-                    },
-                    "devDependencies": {
-                        "@testing-library/react": "^14.0.0"
-                    },
-                    "peerDependencies": {
-                        "react": "^17.0.0||^18.0.0",
-                        "react-dom": "^17.0.0||^18.0.0"
-                    }
-                }
-            }
-        }
+        "rootDir": "src/components/user/avatar"
     },
     "$schema-version": "16.0.0"
 }
