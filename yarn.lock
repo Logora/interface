@@ -1305,9 +1305,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"loader-714374@workspace:src/components/tools/loader":
+"loader-6245f5@workspace:src/components/progress/loader":
   version: 0.0.0-use.local
-  resolution: "loader-714374@workspace:src/components/tools/loader"
+  resolution: "loader-6245f5@workspace:src/components/progress/loader"
   languageName: unknown
   linkType: soft
 

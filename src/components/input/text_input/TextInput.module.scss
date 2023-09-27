@@ -89,7 +89,7 @@ input.textInput {
   position: relative;
   font-size: inherit;
   .textInput {
-    padding-right: $spacer-xl;
+    padding-right: 2em !important;
   }
   // icon element
   > :last-child {
@@ -104,7 +104,6 @@ input.textInput {
 
 .errorMessage {
   font-size: 0.8em;
-  padding-top: 0.8em;
   padding-top: $spacer-md;
   color: $cancel-primary;
 }
