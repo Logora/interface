@@ -7,7 +7,7 @@ import PropTypes from "prop-types";
 
 export const BackLink = ({ to, text, external = true, className, ...rest }) => {
     return (
-        <Link to={to} className={cx(className, styles.backLink)} external {...rest}>
+        <Link to={to} className={cx(className, styles.backLink)} external={external} {...rest}>
             <ArrowIcon height={24} width={24} />
             <span className={styles.arrowIcon}>
                 { text }
