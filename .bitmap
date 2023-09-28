@@ -70,24 +70,10 @@
         "rootDir": "src/components/hooks/use_css_theme"
     },
     "hooks/use_font_loader": {
-        "scope": "",
-        "version": "",
-        "defaultScope": "logora.debate",
+        "scope": "logora.debate",
+        "version": "0.0.1",
         "mainFile": "index.js",
-        "rootDir": "src/components/hooks/use_font_loader",
-        "config": {
-            "teambit.dependencies/dependency-resolver": {
-                "policy": {
-                    "dependencies": {
-                        "webfontloader": "^1.6.28"
-                    },
-                    "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0"
-                    }
-                }
-            }
-        }
+        "rootDir": "src/components/hooks/use_font_loader"
     },
     "hooks/use_relative_time": {
         "scope": "logora.debate",
