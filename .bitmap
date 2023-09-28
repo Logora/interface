@@ -11,7 +11,7 @@
 {
     "action/back_link": {
         "scope": "logora.debate",
-        "version": "0.0.22",
+        "version": "0.0.23",
         "mainFile": "index.js",
         "rootDir": "src/components/action/back_link"
     },
