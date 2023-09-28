@@ -69,6 +69,12 @@
         "mainFile": "index.js",
         "rootDir": "src/components/hooks/use_css_theme"
     },
+    "hooks/use_relative_time": {
+        "scope": "logora.debate",
+        "version": "0.0.9",
+        "mainFile": "index.js",
+        "rootDir": "src/components/hooks/use_relative_time"
+    },
     "input/checkbox/hidden": {
         "scope": "logora.debate",
         "version": "0.0.4",

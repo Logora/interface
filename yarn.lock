@@ -1767,6 +1767,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"use_relative_time-24bd49@workspace:src/components/hooks/use_relative_time":
+  version: 0.0.0-use.local
+  resolution: "use_relative_time-24bd49@workspace:src/components/hooks/use_relative_time"
+  languageName: unknown
+  linkType: soft
+
 "user_content_skeleton-068543@workspace:src/components/skeleton/user_content_skeleton":
   version: 0.0.0-use.local
   resolution: "user_content_skeleton-068543@workspace:src/components/skeleton/user_content_skeleton"
