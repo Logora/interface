@@ -37,7 +37,7 @@ jobs:
           bit install
           bit status
       - name: Tag components
-        run: bit tag
+        run: bit tag --build
       - name: Export components
         run: bit export
       - name: Commit changes made to .bitmap

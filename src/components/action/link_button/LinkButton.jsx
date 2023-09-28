@@ -18,7 +18,7 @@ export const LinkButton = ({ className, to, external, children, ...rest }) => {
 }
 
 LinkButton.propTypes = {
-  /** href, or object passed to react-router */
+  /** href, or object passed to react-router's Link */
   to: PropTypes.any.isRequired,
   /** Class name to style the link */
   className: PropTypes.string,
