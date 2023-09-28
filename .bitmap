@@ -11,7 +11,7 @@
 {
     "action/back_link": {
         "scope": "logora.debate",
-        "version": "0.0.20",
+        "version": "0.0.21",
         "mainFile": "index.js",
         "rootDir": "src/components/action/back_link"
     },
@@ -29,7 +29,7 @@
     },
     "action/link_button": {
         "scope": "logora.debate",
-        "version": "0.0.15",
+        "version": "0.0.16",
         "mainFile": "index.js",
         "rootDir": "src/components/action/link_button"
     },
@@ -41,7 +41,7 @@
     },
     "dialog/tooltip": {
         "scope": "logora.debate",
-        "version": "0.0.1",
+        "version": "0.0.2",
         "mainFile": "index.js",
         "rootDir": "src/components/dialog/tooltip"
     },
@@ -185,7 +185,7 @@
     },
     "user/avatar": {
         "scope": "logora.debate",
-        "version": "0.0.18",
+        "version": "0.0.19",
         "mainFile": "index.js",
         "rootDir": "src/components/user/avatar"
     },
