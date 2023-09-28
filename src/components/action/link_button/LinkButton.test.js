@@ -16,6 +16,21 @@ describe('LinkButton', () => {
         expect(renderedButton).toBeTruthy();
     });
 
+    it('should render with a child component', () => {
+        const linkButton = render(
+            <MemoryRouter>
+                <LinkButton to={'/page'}>
+                    <>
+                        <span>Click me</span>
+                        <span>Or me</span>
+                    </>
+                </LinkButton>
+            </MemoryRouter>
+        );
+        expect(linkButton.getByText(/click me/i)).toBeTruthy();
+        expect(linkButton.getByText(/or me/i)).toBeTruthy();
+    });
+
     it('renders LinkButton with external link', () => {
         const linkButton = render(
             <MemoryRouter>
