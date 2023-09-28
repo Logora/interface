@@ -69,6 +69,22 @@
         "mainFile": "index.js",
         "rootDir": "src/components/hooks/use_css_theme"
     },
+    "hooks/use_font_loader": {
+        "scope": "",
+        "version": "",
+        "defaultScope": "logora.debate",
+        "mainFile": "index.js",
+        "rootDir": "src/components/hooks/use_font_loader",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "dependencies": {
+                        "webfontloader": "^1.6.28"
+                    }
+                }
+            }
+        }
+    },
     "hooks/use_relative_time": {
         "scope": "logora.debate",
         "version": "0.0.10",
