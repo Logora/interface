@@ -33,6 +33,7 @@ jobs:
           bit config set analytics_reporting false
           bit config set anonymous_reporting false
           bit config set user.token $BIT_TOKEN
+          bit config set force_local_build true 
 
           bit install
           bit status
