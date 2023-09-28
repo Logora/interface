@@ -1,11 +1,9 @@
-import React, { memo } from "react";
+import React from "react";
 import styles from "./Loader.module.scss";
 
-export const Loader = memo(() => {
+export const Loader = () => {
     return (<div className={styles.spinnerBox}>
         <div className={styles.spinnerBorder} role="status">
         </div>
     </div>);
-});
-
-
+};
