@@ -29,7 +29,7 @@
     },
     "action/link_button": {
         "scope": "logora.debate",
-        "version": "0.0.17",
+        "version": "0.0.18",
         "mainFile": "index.js",
         "rootDir": "src/components/action/link_button"
     },
