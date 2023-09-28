@@ -71,7 +71,7 @@
     },
     "hooks/use_relative_time": {
         "scope": "logora.debate",
-        "version": "0.0.9",
+        "version": "0.0.10",
         "mainFile": "index.js",
         "rootDir": "src/components/hooks/use_relative_time"
     },
