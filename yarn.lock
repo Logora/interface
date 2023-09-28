@@ -203,18 +203,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@logora/debate.icons@npm:0.0.7":
-  version: 0.0.7
-  resolution: "@logora/debate.icons@npm:0.0.7::__archiveUrl=https%3A%2F%2Fnode.bit.cloud%2F%40logora%2Fdebate.icons%2F-%2F%40logora-debate.icons-0.0.7.tgz"
-  dependencies:
-    core-js: ^3.0.0
-  peerDependencies:
-    react: ^17.0.0||^18.0.0
-    react-dom: ^17.0.0||^18.0.0
-  checksum: f9649c206b716cb49f33d42f94f5ab716826c44079b27cd5ef5084d5f2a8aeb3260bea76e718ae0ec06531d1374ef88607b725c3e6a47092a9e059a46f728bd4
-  languageName: node
-  linkType: hard
-
 "@logora/debate.icons@npm:0.0.8":
   version: 0.0.8
   resolution: "@logora/debate.icons@npm:0.0.8::__archiveUrl=https%3A%2F%2Fnode.bit.cloud%2F%40logora%2Fdebate.icons%2F-%2F%40logora-debate.icons-0.0.8.tgz"
@@ -558,8 +546,6 @@ __metadata:
 "back_link-1a910c@workspace:src/components/action/back_link":
   version: 0.0.0-use.local
   resolution: "back_link-1a910c@workspace:src/components/action/back_link"
-  dependencies:
-    "@logora/debate.icons": 0.0.7
   languageName: unknown
   linkType: soft
 

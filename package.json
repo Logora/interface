@@ -34,7 +34,8 @@
     "react-loading-skeleton": "^3.0.2",
     "react-router": "^5.3.4",
     "react-router-dom": "^5.3.4",
-    "use-onclickoutside": "^0.4.1"
+    "use-onclickoutside": "^0.4.1",
+    "@logora/debate.icons": "0.0.8"
   },
   "devDependencies": {
     "@testing-library/react": "^14.0.0",
