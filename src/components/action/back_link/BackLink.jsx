@@ -18,9 +18,9 @@ export const BackLink = ({ to, text, external = true, className, ...rest }) => {
 
 BackLink.propTypes = {
     /** href, or object passed to the link */
-    to: PropTypes.any,
+    to: PropTypes.any.isRequired,
     /** Link text */
-    text: PropTypes.string,
+    text: PropTypes.string.isRequired,
     /** If `true`, will render a plain anchor tag instead of react-router's Link */
     external: PropTypes.bool,
     /**  Class name to style the link */

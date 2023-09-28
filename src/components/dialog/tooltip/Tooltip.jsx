@@ -13,23 +13,23 @@ export const Tooltip = ({ position = "bottom", text, onClickText, children }) =>
         }, 5000);
     };
 
-    return (<div className={styles.tooltipChild} onClick={onClickText ? switchText : null}>
-      { children }
-      <span className={cx(styles.tooltipText, { [styles.tooltipTextTop]: position === "top", [styles.tooltipTextLeft]: position === "left", [styles.tooltipTextRight]: position === "right" })}>
-        { clicked ? onClickText : text }
-      </span>
-    </div>);
+    return (
+      <div className={styles.tooltipChild} onClick={onClickText ? switchText : null}>
+        { children }
+        <span className={cx(styles.tooltipText, { [styles.tooltipTextTop]: position === "top", [styles.tooltipTextLeft]: position === "left", [styles.tooltipTextRight]: position === "right" })}>
+          { clicked ? onClickText : text }
+        </span>
+      </div>
+    );
 };
 
 Tooltip.propTypes = {
     /** Tooltip text */
-    text: PropTypes.string,
+    text: PropTypes.string.isRequired,
     /** Text displayed when tooltip is clicked */
     onClickText: PropTypes.string,
     /** Tooltip position, can be `top`, `bottom`, `left` or `right` */
     position: PropTypes.string,
     /**  Component on which the tooltip is displayed */
     children: PropTypes.node,
-  };
-
-
+};
