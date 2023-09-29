@@ -1,8 +1,9 @@
 import React from "react";
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
+import PropTypes from "prop-types";
 
-export const BoxSkeleton = ({ enableAnimation, boxHeight = 200, onlyEdgeBox, className }) => {
+export const BoxSkeleton = ({ enableAnimation = true, boxHeight = 200, onlyEdgeBox = false, className }) => {
   return (
     <div className={className} data-testid={"box-skeleton"}>
       <div style={{ marginRight: ".5em" }}>
@@ -23,4 +24,21 @@ export const BoxSkeleton = ({ enableAnimation, boxHeight = 200, onlyEdgeBox, cla
       </div>
     </div>
   )
+};
+
+BoxSkeleton.propTypes = {
+  /** Enable skeleton animation */
+  enableAnimation: PropTypes.bool,
+  /** Height of the main box in pixels */
+  boxHeight: PropTypes.number,
+  /** If `true`, will not show the footer */
+  onlyEdgeBox: PropTypes.bool,
+  /** Skeleton class name */
+  className: PropTypes.string,
+};
+
+BoxSkeleton.defaultProps = {
+  enableAnimation: true,
+  boxHeight: 200,
+  onlyEdgeBox: false
 };

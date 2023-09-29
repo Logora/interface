@@ -1,1 +1,1 @@
-export { BoxSkeleton as default } from './BoxSkeleton';
+export { BoxSkeleton } from './BoxSkeleton';
