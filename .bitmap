@@ -131,7 +131,7 @@
     },
     "progress/progress_bar": {
         "scope": "logora.debate",
-        "version": "0.0.1",
+        "version": "0.0.2",
         "mainFile": "index.js",
         "rootDir": "src/components/progress/progress_bar"
     },
@@ -212,17 +212,6 @@
         "version": "0.0.9",
         "mainFile": "index.js",
         "rootDir": "src/components/tools/hash_scroll"
-    },
-    "tools/progress_bar": {
-        "scope": "logora.debate",
-        "version": "0.0.15",
-        "mainFile": "index.js",
-        "rootDir": "src/components/tools/progress_bar",
-        "config": {
-            "teambit.component/remove": {
-                "removed": true
-            }
-        }
     },
     "tools/scroll_to_top": {
         "scope": "logora.debate",
