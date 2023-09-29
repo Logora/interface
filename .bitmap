@@ -141,6 +141,12 @@
         "mainFile": "index.js",
         "rootDir": "src/components/skeleton/user_content_skeleton"
     },
+    "source/context_source_box": {
+        "scope": "logora.debate",
+        "version": "0.0.19",
+        "mainFile": "index.js",
+        "rootDir": "src/components/source/context_source_box"
+    },
     "styles/display": {
         "scope": "logora.debate",
         "version": "0.0.7",

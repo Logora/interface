@@ -665,6 +665,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"context_source_box-802378@workspace:src/components/source/context_source_box":
+  version: 0.0.0-use.local
+  resolution: "context_source_box-802378@workspace:src/components/source/context_source_box"
+  peerDependencies:
+    react: ^17.0.0||^18.0.0
+    react-dom: ^17.0.0||^18.0.0
+  languageName: unknown
+  linkType: soft
+
 "core-js@npm:>=3.25.5 <4.0.0, core-js@npm:^3.0.0":
   version: 3.32.2
   resolution: "core-js@npm:3.32.2"
@@ -1859,8 +1868,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "use_font_loader-9075d4@workspace:src/components/hooks/use_font_loader"
   peerDependencies:
-    react: ^16.8.0 || ^17.0.0
-    react-dom: ^16.8.0 || ^17.0.0
+    react: ^17.0.0 || ^18.0.0
+    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 

@@ -1,0 +1,22 @@
+---
+description: A stylized box for sources / articles.
+---
+
+import { ContextSourceBox } from './ContextSourceBox';
+import { IntlProvider } from 'react-intl';
+
+A component that renders a stylized box for sources / articles.
+
+It should be wrapped around [react-intl](https://formatjs.io/docs/getting-started/installation/)'s IntlProvider.
+
+### Component usage
+```js
+<IntlProvider locale="en">
+    <ContextSourceBox
+        imageUrl="https://example.com/yourimage.jpg"
+        author="Logora"
+        date="2022-10-13T12:54:02.487Z"
+        title="An interesting article about cats" 
+    />
+</IntlProvider>
+```
