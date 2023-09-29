@@ -143,7 +143,7 @@
     },
     "source/context_source_box": {
         "scope": "logora.debate",
-        "version": "0.0.19",
+        "version": "0.0.20",
         "mainFile": "index.js",
         "rootDir": "src/components/source/context_source_box"
     },
