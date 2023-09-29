@@ -29,7 +29,7 @@ ContextSourceBox.propTypes = {
   /** Author of the source */
   author: PropTypes.string,
   /** Publication date of the source */
-  date: PropTypes.string,
+  date: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date) ]),
   /**  URL of the source image */
   imageUrl: PropTypes.string
 };
