@@ -4,7 +4,7 @@ import styles from './ProgressBar.module.scss';
 import PropTypes from "prop-types";
 
 export const ProgressBar = ({ goal, progress, title, showPercentageSubtitle = false, showProgressSubtitle = false, barFull = false, progressUnit, className, innerClassName, subtitleClassName, children }) => {
-    const percentage = Number(((progress || 0) / Math.max(goal, 1) * 100).toFixed(1));
+    const percentage = Number((((goal === 0 ? 0 : (progress || 0)) / (goal === 0 ? 1 : goal)) * 100).toFixed(1));
 
     return (
         <div className={styles.progressContainer}>
