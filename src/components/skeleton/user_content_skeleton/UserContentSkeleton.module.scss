@@ -11,6 +11,10 @@
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 100;
+    width: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
 }
 
 .border {
