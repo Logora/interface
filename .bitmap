@@ -130,45 +130,10 @@
         "rootDir": "src/components/progress/loader"
     },
     "progress/progress_bar": {
-        "scope": "",
-        "version": "",
+        "scope": "logora.debate",
+        "version": "0.0.1",
         "mainFile": "index.js",
-        "rootDir": "src/components/progress/progress_bar",
-        "config": {
-            "teambit.dependencies/dependency-resolver": {
-                "policy": {
-                    "devDependencies": {
-                        "@types/testing-library__jest-dom": "-",
-                        "@types/jest": "-"
-                    },
-                    "peerDependencies": {
-                        "react": "^17.0.0||^18.0.0",
-                        "react-dom": "^17.0.0||^18.0.0"
-                    }
-                }
-            },
-            "teambit.react/react": {},
-            "teambit.component/dev-files": {
-                "devFilePatterns": [
-                    "**/*.story.+(js|ts|jsx|tsx)",
-                    "**/*.dev.jsx"
-                ]
-            },
-            "teambit.envs/envs": {},
-            "teambit.harmony/application": {},
-            "teambit.compositions/compositions": {},
-            "teambit.docs/docs": {},
-            "teambit.preview/preview": {},
-            "teambit.pipelines/builder": {},
-            "teambit.compilation/compiler": {},
-            "teambit.component/renaming": {
-                "renamedFrom": {
-                    "scope": "logora.debate",
-                    "name": "tools/progress_bar",
-                    "version": "0.0.14"
-                }
-            }
-        }
+        "rootDir": "src/components/progress/progress_bar"
     },
     "section/section_box": {
         "scope": "logora.debate",
@@ -250,18 +215,9 @@
     },
     "tools/progress_bar": {
         "scope": "logora.debate",
-        "version": "0.0.14",
+        "version": "0.0.15",
         "mainFile": "index.js",
-        "rootDir": "src/components/tools/progress_bar",
-        "config": {
-            "teambit.component/deprecation": {
-                "deprecate": true,
-                "newId": {
-                    "name": "progress/progress_bar",
-                    "scope": "logora.debate"
-                }
-            }
-        }
+        "rootDir": "src/components/tools/progress_bar"
     },
     "tools/scroll_to_top": {
         "scope": "logora.debate",
