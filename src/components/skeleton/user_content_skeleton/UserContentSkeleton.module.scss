@@ -1,3 +1,6 @@
+@import '~@logora/debate.styles.theme/_theme.scss';
+@import '~@logora/debate.styles.spacing/_spacing.scss';
+
 .skeletonContainer {
     position: relative;
 }
@@ -8,4 +11,11 @@
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 100;
+}
+
+.border {
+    border-radius: $box-border-radius;
+    box-shadow: $box-shadow;
+    border: $box-border;
+    @include p(3, xs);
 }

@@ -7,6 +7,12 @@ export const DefaultUserContentSkeleton = () => {
     );
 };
 
+export const UserContentSkeletonWithBorder = () => {
+    return (
+        <UserContentSkeleton border />
+    );
+};
+
 export const UserContentSkeletonWithoutBody = () => {
     return (
         <UserContentSkeleton hideBody />

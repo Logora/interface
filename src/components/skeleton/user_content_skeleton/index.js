@@ -1,1 +1,1 @@
-export { UserContentSkeleton as default } from './UserContentSkeleton';
+export { UserContentSkeleton } from './UserContentSkeleton';
