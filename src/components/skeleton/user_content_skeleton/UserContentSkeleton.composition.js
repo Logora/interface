@@ -19,6 +19,12 @@ export const UserContentSkeletonWithoutBody = () => {
     );
 };
 
+export const UserContentSkeletonWithTwoLines = () => {
+    return (
+        <UserContentSkeleton numberLines={2} />
+    );
+};
+
 export const UserContentSkeletonWithoutAnimation = () => {
     return (
         <UserContentSkeleton enableAnimation={false} />

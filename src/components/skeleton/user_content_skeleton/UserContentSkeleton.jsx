@@ -5,23 +5,20 @@ import styles from './UserContentSkeleton.module.scss';
 import cx from 'classnames';
 import PropTypes from "prop-types";
 
-export const UserContentSkeleton = ({ enableAnimation = true, hideBody = false, border = false, children}) => {
+export const UserContentSkeleton = ({ enableAnimation = true, hideBody = false, numberLines = 4, border = false, children}) => {
   return (
     <div data-testid={"user-content-skeleton"} className={cx(styles.skeletonContainer, { [styles.border]: border })}>
       <div style={{ display: "flex", flexDirection: "row", justifycontent: "flex-start" }}>
         <Skeleton enableAnimation={enableAnimation} circle={true} height={60} width={60} />
-        <div style={{ display: "flex", flexDirection: "column", justifycontent: "flex-start", width: "100%", margin: "5px" }}>
+        <div style={{ display: "flex", flexDirection: "column", justifycontent: "flex-start", width: "100%", margin: "10px" }}>
           <Skeleton enableAnimation={enableAnimation} />
-          <Skeleton enableAnimation={enableAnimation} width={120} />
+          <Skeleton enableAnimation={enableAnimation} width={160} />
         </div>
       </div>
       { hideBody ? null :
-        <>
-          <div data-testid={"skeleton-body"} style={{ minHeight: "100px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
-            <Skeleton enableAnimation={enableAnimation} count={3} style={{ marginBottom: "5px" }}/>
-          </div>
-          <Skeleton enableAnimation={enableAnimation} />
-        </>
+        <div data-testid={"skeleton-body"} style={{ marginTop: "10px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
+          <Skeleton enableAnimation={enableAnimation} count={numberLines} />
+        </div>
       }
       { children &&
         <div className={styles.childrenLayer}>
@@ -39,6 +36,8 @@ UserContentSkeleton.propTypes = {
   hideBody: PropTypes.bool,
   /** Will add a border to the box if `true` */
   border: PropTypes.bool,
+  /** Number of skeleton lines in the body */
+  numberLines: PropTypes.number,
   /** Children displayed at the center of the skeleton */
   children: PropTypes.node,
 };
@@ -46,5 +45,6 @@ UserContentSkeleton.propTypes = {
 UserContentSkeleton.defaultProps = {
   enableAnimation: true,
   hideBody: false,
-  border: false
+  border: false,
+  numberLines: 4
 };
