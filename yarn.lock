@@ -1009,6 +1009,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"icon_text_link-65256c@workspace:src/components/action/icon_text_link":
+  version: 0.0.0-use.local
+  resolution: "icon_text_link-65256c@workspace:src/components/action/icon_text_link"
+  peerDependencies:
+    react: ^17.0.0||^18.0.0
+    react-dom: ^17.0.0||^18.0.0
+  languageName: unknown
+  linkType: soft
+
 "indicator-f4a977@workspace:src/components/input/checkbox/indicator":
   version: 0.0.0-use.local
   resolution: "indicator-f4a977@workspace:src/components/input/checkbox/indicator"
@@ -1867,6 +1876,15 @@ __metadata:
 "use_font_loader-9075d4@workspace:src/components/hooks/use_font_loader":
   version: 0.0.0-use.local
   resolution: "use_font_loader-9075d4@workspace:src/components/hooks/use_font_loader"
+  peerDependencies:
+    react: ^17.0.0 || ^18.0.0
+    react-dom: ^17.0.0 || ^18.0.0
+  languageName: unknown
+  linkType: soft
+
+"use_matomo-f7f686@workspace:src/components/hooks/use_matomo":
+  version: 0.0.0-use.local
+  resolution: "use_matomo-f7f686@workspace:src/components/hooks/use_matomo"
   peerDependencies:
     react: ^17.0.0 || ^18.0.0
     react-dom: ^17.0.0 || ^18.0.0

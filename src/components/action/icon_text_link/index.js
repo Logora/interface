@@ -1,0 +1,1 @@
+export { IconTextLink } from './IconTextLink';

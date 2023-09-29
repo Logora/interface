@@ -1,0 +1,37 @@
+---
+description: A link component with an icon and text.
+---
+
+import { IconTextLink } from './IconTextLink';
+import { MemoryRouter } from "react-router";
+import HomeIcon from './HomeIcon.dev'
+
+A component that renders a link styled with an icon and text underneath.
+
+IconTextLink is using the Link component from react-router when _to_ is passed, and it should be inside a router in this case.
+
+_icon_ prop should be a component.
+
+_to_ prop can be a string, an object or a function, as per react-router documentation : https://v5.reactrouter.com/web/api/Link
+
+If _children_ are passed, it will replace the icon.
+
+Other props will be passed to the link or to the main container.
+
+### Component usage
+
+```js
+import { IconTextLink } from '@logora/debate.action.icon_text_link';
+```
+
+```js
+<MemoryRouter>
+    <IconTextLink 
+        to={link}
+        icon={HomeIcon}
+        text="My link!"
+        className={classNameToPass}
+        custom-attribute={"my-value"}
+    />
+</MemoryRouter>
+```
