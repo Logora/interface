@@ -217,7 +217,12 @@
         "scope": "logora.debate",
         "version": "0.0.15",
         "mainFile": "index.js",
-        "rootDir": "src/components/tools/progress_bar"
+        "rootDir": "src/components/tools/progress_bar",
+        "config": {
+            "teambit.component/remove": {
+                "removed": true
+            }
+        }
     },
     "tools/scroll_to_top": {
         "scope": "logora.debate",
