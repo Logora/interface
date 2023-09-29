@@ -42,8 +42,6 @@ IconTextLink.propTypes = {
     text: PropTypes.string,
     /** If `true`, link is displayed as active */
     active: PropTypes.bool,
-    /** If `true`, will render a plain anchor tag instead of react-router's Link */
-    external: PropTypes.bool,
     /**  Class name to style the link */
     className: PropTypes.string,
     /** If `true`, will display a red pin on the icon */

@@ -22,7 +22,7 @@ export const ActiveIconTextLink = () => {
 export const IconTextLinkWithTextPin = () => {
     return (
         <MemoryRouter>
-            <IconTextLink to="/page" icon={HomeIcon} text="Home" pin pinText={23} />
+            <IconTextLink to="/page" icon={HomeIcon} text="Home" pin pinText={"23"} />
         </MemoryRouter>
     );
 };
