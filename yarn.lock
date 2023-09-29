@@ -1469,6 +1469,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"progress_bar-44ae69@workspace:src/components/tools/progress_bar":
+  version: 0.0.0-use.local
+  resolution: "progress_bar-44ae69@workspace:src/components/tools/progress_bar"
+  peerDependencies:
+    react: ^17.0.0||^18.0.0
+    react-dom: ^17.0.0||^18.0.0
+  languageName: unknown
+  linkType: soft
+
 "prop-types@npm:^15.6.2, prop-types@npm:^15.8.1":
   version: 15.8.1
   resolution: "prop-types@npm:15.8.1"
