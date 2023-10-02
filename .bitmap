@@ -58,45 +58,10 @@
         "rootDir": "src/components/dialog/confirm_modal"
     },
     "dialog/dropdown": {
-        "scope": "",
-        "version": "",
+        "scope": "logora.debate",
+        "version": "0.0.1",
         "mainFile": "index.js",
-        "rootDir": "src/components/dialog/dropdown",
-        "config": {
-            "teambit.dependencies/dependency-resolver": {
-                "policy": {
-                    "devDependencies": {
-                        "@types/testing-library__jest-dom": "-",
-                        "@types/jest": "-"
-                    },
-                    "peerDependencies": {
-                        "react": "^17.0.0||^18.0.0",
-                        "react-dom": "^17.0.0||^18.0.0"
-                    }
-                }
-            },
-            "teambit.react/react": {},
-            "teambit.component/dev-files": {
-                "devFilePatterns": [
-                    "**/*.story.+(js|ts|jsx|tsx)",
-                    "**/*.dev.jsx"
-                ]
-            },
-            "teambit.envs/envs": {},
-            "teambit.compilation/compiler": {},
-            "teambit.harmony/application": {},
-            "teambit.compositions/compositions": {},
-            "teambit.docs/docs": {},
-            "teambit.preview/preview": {},
-            "teambit.pipelines/builder": {},
-            "teambit.component/renaming": {
-                "renamedFrom": {
-                    "scope": "logora.debate",
-                    "name": "tools/dropdown",
-                    "version": "0.0.16"
-                }
-            }
-        }
+        "rootDir": "src/components/dialog/dropdown"
     },
     "dialog/modal": {
         "scope": "logora.debate",
@@ -274,18 +239,9 @@
     },
     "tools/dropdown": {
         "scope": "logora.debate",
-        "version": "0.0.16",
+        "version": "0.0.17",
         "mainFile": "index.js",
-        "rootDir": "src/components/tools/dropdown",
-        "config": {
-            "teambit.component/deprecation": {
-                "deprecate": true,
-                "newId": {
-                    "name": "dialog/dropdown",
-                    "scope": "logora.debate"
-                }
-            }
-        }
+        "rootDir": "src/components/tools/dropdown"
     },
     "tools/hash_scroll": {
         "scope": "logora.debate",
