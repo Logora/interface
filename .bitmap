@@ -51,6 +51,12 @@
         "mainFile": "index.js",
         "rootDir": "src/components/data/data_provider"
     },
+    "dialog/announcement_dialog": {
+        "scope": "logora.debate",
+        "version": "0.0.17",
+        "mainFile": "index.js",
+        "rootDir": "src/components/dialog/announcement_dialog"
+    },
     "dialog/confirm_modal": {
         "scope": "logora.debate",
         "version": "0.0.1",

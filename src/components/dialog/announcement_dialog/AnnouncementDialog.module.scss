@@ -1,0 +1,35 @@
+@import '~@logora/debate.styles.theme/_theme.scss';
+@import '~@logora/debate.styles.spacing/_spacing.scss';
+
+.container {
+    display: flex !important;
+    width: fit-content;
+    border-radius: $box-border-radius;
+    box-shadow: $box-shadow;
+    border: $box-border;
+    background: $background-color-primary;
+    &.fullWidth {
+        width: 100%;
+    }
+}
+
+.icon {
+    display: flex !important;
+    align-items: center !important;
+    @include p(3, xs);
+    background-color: $call-primary;
+    border-radius: $box-border-radius 0 0 $box-border-radius;
+    svg {
+        fill: transparent;
+        path {
+            fill: $text-light;
+        }
+        circle {
+            stroke: $text-light;
+        }
+    }
+}
+
+.content {
+    @include p(3, xs);
+}
