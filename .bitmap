@@ -135,6 +135,12 @@
         "mainFile": "index.js",
         "rootDir": "src/components/input/checkbox/label"
     },
+    "input/select": {
+        "scope": "logora.debate",
+        "version": "0.0.19",
+        "mainFile": "index.js",
+        "rootDir": "src/components/input/select"
+    },
     "input/text_input": {
         "scope": "logora.debate",
         "version": "0.0.16",
