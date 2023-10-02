@@ -711,6 +711,15 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"confirm_modal-1d89d1@workspace:src/components/dialog/confirm_modal":
+  version: 0.0.0-use.local
+  resolution: "confirm_modal-1d89d1@workspace:src/components/dialog/confirm_modal"
+  peerDependencies:
+    react: ^17.0.0||^18.0.0
+    react-dom: ^17.0.0||^18.0.0
+  languageName: unknown
+  linkType: soft
+
 "context_source_box-802378@workspace:src/components/source/context_source_box":
   version: 0.0.0-use.local
   resolution: "context_source_box-802378@workspace:src/components/source/context_source_box"
@@ -827,6 +836,15 @@ __metadata:
   checksum: 005eb283caef57fc1adec4d5df4dd49189b628f2f575af45decb210e04d634459e3f1ee64f18b41e2dcf200c844bc1d9279d80807e686a30d69a4756151ad248
   languageName: node
   linkType: hard
+
+"dropdown-5b3788@workspace:src/components/tools/dropdown":
+  version: 0.0.0-use.local
+  resolution: "dropdown-5b3788@workspace:src/components/tools/dropdown"
+  peerDependencies:
+    react: ^17.0.0||^18.0.0
+    react-dom: ^17.0.0||^18.0.0
+  languageName: unknown
+  linkType: soft
 
 "embed_header-3651ea@workspace:src/components/embed/embed_header":
   version: 0.0.0-use.local
