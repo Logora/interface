@@ -29,11 +29,7 @@ __metadata:
     "@babel/helper-validator-identifier": ^7.22.20
     chalk: ^2.4.2
     js-tokens: ^4.0.0
-<<<<<<< HEAD
-  checksum: f61ae6de6ee0ea8d9b5bcf2a532faec5ab0a1dc0f7c640e5047fc61630a0edb88b18d8c92eb06566d30da7a27db841aca11820ecd3ebe9ce514c9350fbed39c4
-=======
   checksum: 84bd034dca309a5e680083cd827a766780ca63cef37308404f17653d32366ea76262bd2364b2d38776232f2d01b649f26721417d507e8b4b6da3e4e739f6d134
->>>>>>> 6c1d1979d545469d21f061454bd8596c1a256eef
   languageName: node
   linkType: hard
 
@@ -49,26 +45,12 @@ __metadata:
 "@babel/runtime@npm:7.20.0":
   version: 7.20.0
   resolution: "@babel/runtime@npm:7.20.0"
-<<<<<<< HEAD
   dependencies:
     regenerator-runtime: ^0.13.10
   checksum: 637fca51db34f3a59d329b7e0d01163769fe94915fdb04e4ac4ba62de9f1ca637ce3a564fe3b0166ccdd7f02f14b6a5707ee3e550b3e01c72327c6620d8e6a8b
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.1.2, @babel/runtime@npm:^7.12.13, @babel/runtime@npm:^7.12.5":
-  version: 7.22.5
-  resolution: "@babel/runtime@npm:7.22.5"
-=======
->>>>>>> 6c1d1979d545469d21f061454bd8596c1a256eef
-  dependencies:
-    regenerator-runtime: ^0.13.10
-  checksum: 637fca51db34f3a59d329b7e0d01163769fe94915fdb04e4ac4ba62de9f1ca637ce3a564fe3b0166ccdd7f02f14b6a5707ee3e550b3e01c72327c6620d8e6a8b
-  languageName: node
-  linkType: hard
-
-<<<<<<< HEAD
-=======
 "@babel/runtime@npm:^7.1.2, @babel/runtime@npm:^7.12.13, @babel/runtime@npm:^7.12.5":
   version: 7.23.1
   resolution: "@babel/runtime@npm:7.23.1"
@@ -78,7 +60,6 @@ __metadata:
   languageName: node
   linkType: hard
 
->>>>>>> 6c1d1979d545469d21f061454bd8596c1a256eef
 "@faker-js/faker@npm:^7.6.0":
   version: 7.6.0
   resolution: "@faker-js/faker@npm:7.6.0"
@@ -240,12 +221,7 @@ __metadata:
   dependencies:
     "@babel/runtime": 7.20.0
     "@faker-js/faker": ^7.6.0
-<<<<<<< HEAD
-    "@logora/debate.icons": 0.0.1
-    "@logora/debate.tools.tooltip": 0.0.5
-=======
     "@logora/debate.icons": 0.0.8
->>>>>>> 6c1d1979d545469d21f061454bd8596c1a256eef
     "@testing-library/dom": ^9.2.0
     "@testing-library/react": ^14.0.0
     "@testing-library/user-event": ^14.4.3
@@ -254,10 +230,7 @@ __metadata:
     "@types/react": ">=17.0.8 <18.0.0"
     "@types/react-dom": ">=17.0.5 <18.0.0"
     "@types/testing-library__jest-dom": 5.9.5
-<<<<<<< HEAD
-=======
     axios: ^1.3.6
->>>>>>> 6c1d1979d545469d21f061454bd8596c1a256eef
     classnames: ^2.3.2
     core-js: ">=3.25.5 <4.0.0"
     prop-types: ^15.8.1
@@ -386,9 +359,9 @@ __metadata:
   linkType: hard
 
 "@types/node@npm:*":
-  version: 20.7.0
-  resolution: "@types/node@npm:20.7.0"
-  checksum: 1b2919925c213f4d2039ada7a8354c998e144f7291db8d719ef58ea9924ab636c113690073b0ec3b82ba62907385f7e0f51e9d1583c1a818776daa5156d3a590
+  version: 20.8.0
+  resolution: "@types/node@npm:20.8.0"
+  checksum: ebad6342d54238a24bf980d7750117a5d67749c9b72cbb7a974a1e932c39034aa3a810d669e007e8a5071782a253aa069a187b614407a382403c9826e837c849
   languageName: node
   linkType: hard
 
@@ -407,9 +380,9 @@ __metadata:
   linkType: hard
 
 "@types/prop-types@npm:*":
-  version: 15.7.7
-  resolution: "@types/prop-types@npm:15.7.7"
-  checksum: 023b95f7dd82e1c594f51dcb93ec4c382600cef6eeee29a2ac7b782b92c0882eab8da16d4cbd6e18b39e85ac8d94ebf4ca02c6e248ce5b5fb4b16dbab5d82861
+  version: 15.7.8
+  resolution: "@types/prop-types@npm:15.7.8"
+  checksum: 61dfad79da8b1081c450bab83b77935df487ae1cdd4660ec7df6be8e74725c15fa45cf486ce057addc956ca4ae78300b97091e2a25061133d1b9a1440bc896ae
   languageName: node
   linkType: hard
 
@@ -432,24 +405,24 @@ __metadata:
   linkType: hard
 
 "@types/react@npm:*, @types/react@npm:16 || 17 || 18, @types/react@npm:^18.0.21":
-  version: 18.2.23
-  resolution: "@types/react@npm:18.2.23"
+  version: 18.2.24
+  resolution: "@types/react@npm:18.2.24"
   dependencies:
     "@types/prop-types": "*"
     "@types/scheduler": "*"
     csstype: ^3.0.2
-  checksum: efb9d1ed1940c0e7ba08a21ffba5e266d8dbbb8fe618cfb97bc902dfc96385fdd8189e3f7f64b4aa13134f8e61947d60560deb23be151253c3a97b0d070897ca
+  checksum: ea5d8204e71b1c9c6631f429a93f8e7be0614cdbdb464e92b3181bdccd8a7c45e30ded8b13da726684b6393f651317c36d54832e3d3cdea0da480a3f26268909
   languageName: node
   linkType: hard
 
 "@types/react@npm:>=17.0.8 <18.0.0, @types/react@npm:^17":
-  version: 17.0.66
-  resolution: "@types/react@npm:17.0.66"
+  version: 17.0.67
+  resolution: "@types/react@npm:17.0.67"
   dependencies:
     "@types/prop-types": "*"
     "@types/scheduler": "*"
     csstype: ^3.0.2
-  checksum: b364a98670ccee222dbd21ddd6cd1be78ad22bca40c7e1c073fff908121fd51fe1de0e9afc3d4ef8dfb6ceedfa28c5257dde9f23af0096f4d350e60c4b2f8858
+  checksum: eb4915fc7d24e19fe6e98dfe98ade377423b1263e7dc001beda41b0298152fb5a410a55dde5def5ec0838156239a48e778d522da03d319ae5ecea80d455da604
   languageName: node
   linkType: hard
 
@@ -493,11 +466,11 @@ __metadata:
   linkType: hard
 
 "@types/yargs@npm:^17.0.8":
-  version: 17.0.25
-  resolution: "@types/yargs@npm:17.0.25"
+  version: 17.0.26
+  resolution: "@types/yargs@npm:17.0.26"
   dependencies:
     "@types/yargs-parser": "*"
-  checksum: ef57926de514f5eb0a182167a63930bd7d2eb33d89b6041760f690d50b2019d7901b30c33ab7d03b3fa66a5004f0f81e36186d8f9e5e583a27b9ce331d2a5276
+  checksum: 26611969674f4972080c3b22239d4579eaadc5287f95f7802f893c4a9bb292c141467bd70f1e66eb834486c63a23c4f10032618b3d2e7b1ddc05051d08db4078
   languageName: node
   linkType: hard
 
@@ -591,14 +564,24 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-<<<<<<< HEAD
 "avatar_modal-5d045b@workspace:src/components/modal/avatar_modal":
   version: 0.0.0-use.local
   resolution: "avatar_modal-5d045b@workspace:src/components/modal/avatar_modal"
   peerDependencies:
     react: ^16.8.0 || ^17.0.0
     react-dom: ^16.8.0 || ^17.0.0
-=======
+  languageName: unknown
+  linkType: soft
+
+"avatar_selector-e502b8@workspace:src/components/user/avatar_selector":
+  version: 0.0.0-use.local
+  resolution: "avatar_selector-e502b8@workspace:src/components/user/avatar_selector"
+  peerDependencies:
+    react: ^17.0.0 || ^18.0.0
+    react-dom: ^17.0.0 || ^18.0.0
+  languageName: unknown
+  linkType: soft
+
 "axios@npm:^1.3.6":
   version: 1.5.1
   resolution: "axios@npm:1.5.1"
@@ -625,7 +608,6 @@ __metadata:
   peerDependencies:
     react: ^17.0.0||^18.0.0
     react-dom: ^17.0.0||^18.0.0
->>>>>>> 6c1d1979d545469d21f061454bd8596c1a256eef
   languageName: unknown
   linkType: soft
 
@@ -699,11 +681,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-<<<<<<< HEAD
-"classnames@npm:^2.3.1, classnames@npm:^2.3.2":
-=======
 "classnames@npm:^2.3.2":
->>>>>>> 6c1d1979d545469d21f061454bd8596c1a256eef
   version: 2.3.2
   resolution: "classnames@npm:2.3.2"
   checksum: 2c62199789618d95545c872787137262e741f9db13328e216b093eea91c85ef2bfb152c1f9e63027204e2559a006a92eb74147d46c800a9f96297ae1d9f96f4e
@@ -770,9 +748,9 @@ __metadata:
   linkType: soft
 
 "core-js@npm:>=3.25.5 <4.0.0, core-js@npm:^3.0.0":
-  version: 3.32.2
-  resolution: "core-js@npm:3.32.2"
-  checksum: d6fac7e8eb054eefc211c76cd0a0ff07447a917122757d085f469f046ec888d122409c7db1a9601c3eb5fa767608ed380bcd219eace02bdf973da155680edeec
+  version: 3.33.0
+  resolution: "core-js@npm:3.33.0"
+  checksum: dd62217935ac281faf6f833bb306fb891162919fcf9c1f0c975b1b91e82ac09a940f5deb5950bbb582739ceef716e8bd7e4f9eab8328932fb029d3bc2ecb2881
   languageName: node
   linkType: hard
 
@@ -1457,8 +1435,6 @@ __metadata:
   peerDependencies:
     react: ^17.0.0||^18.0.0
     react-dom: ^17.0.0||^18.0.0
-<<<<<<< HEAD
-=======
   languageName: unknown
   linkType: soft
 
@@ -1468,16 +1444,6 @@ __metadata:
   peerDependencies:
     react: ^17.0.0||^18.0.0
     react-dom: ^17.0.0||^18.0.0
-  languageName: unknown
-  linkType: soft
-
-"loader-6245f5@workspace:src/components/progress/loader":
-  version: 0.0.0-use.local
-  resolution: "loader-6245f5@workspace:src/components/progress/loader"
-  peerDependencies:
-    react: ^17.0.0||^18.0.0
-    react-dom: ^17.0.0||^18.0.0
->>>>>>> 6c1d1979d545469d21f061454bd8596c1a256eef
   languageName: unknown
   linkType: soft
 
@@ -1629,18 +1595,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-<<<<<<< HEAD
-=======
-"progress_bar-9f380d@workspace:src/components/progress/progress_bar":
-  version: 0.0.0-use.local
-  resolution: "progress_bar-9f380d@workspace:src/components/progress/progress_bar"
-  peerDependencies:
-    react: ^17.0.0||^18.0.0
-    react-dom: ^17.0.0||^18.0.0
-  languageName: unknown
-  linkType: soft
-
->>>>>>> 6c1d1979d545469d21f061454bd8596c1a256eef
 "prop-types@npm:^15.6.2, prop-types@npm:^15.8.1":
   version: 15.8.1
   resolution: "prop-types@npm:15.8.1"
@@ -1779,11 +1733,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-<<<<<<< HEAD
-"regenerator-runtime@npm:^0.13.10, regenerator-runtime@npm:^0.13.11, regenerator-runtime@npm:^0.13.4":
-=======
 "regenerator-runtime@npm:^0.13.10, regenerator-runtime@npm:^0.13.4":
->>>>>>> 6c1d1979d545469d21f061454bd8596c1a256eef
   version: 0.13.11
   resolution: "regenerator-runtime@npm:0.13.11"
   checksum: 27481628d22a1c4e3ff551096a683b424242a216fee44685467307f14d58020af1e19660bf2e26064de946bad7eff28950eae9f8209d55723e2d9351e632bbb4
