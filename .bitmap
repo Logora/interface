@@ -241,7 +241,12 @@
         "scope": "logora.debate",
         "version": "0.0.17",
         "mainFile": "index.js",
-        "rootDir": "src/components/tools/dropdown"
+        "rootDir": "src/components/tools/dropdown",
+        "config": {
+            "teambit.component/remove": {
+                "removed": true
+            }
+        }
     },
     "tools/hash_scroll": {
         "scope": "logora.debate",
