@@ -147,17 +147,6 @@
         "mainFile": "index.js",
         "rootDir": "src/components/input/toggle"
     },
-    "modal/confirm_modal": {
-        "scope": "logora.debate",
-        "version": "0.0.26",
-        "mainFile": "index.js",
-        "rootDir": "src/components/modal/confirm_modal",
-        "config": {
-            "teambit.component/remove": {
-                "removed": true
-            }
-        }
-    },
     "progress/loader": {
         "scope": "logora.debate",
         "version": "0.0.2",
