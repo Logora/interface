@@ -53,7 +53,7 @@
     },
     "dialog/announcement_dialog": {
         "scope": "logora.debate",
-        "version": "0.0.17",
+        "version": "0.0.18",
         "mainFile": "index.js",
         "rootDir": "src/components/dialog/announcement_dialog"
     },
