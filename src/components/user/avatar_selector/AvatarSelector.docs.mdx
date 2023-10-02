@@ -1,0 +1,25 @@
+---
+description: A component to select an avatar.
+labels: ["user"]
+---
+
+import { AvatarSelector } from "./AvatarSelector";
+import { IntlProvider } from "react-intl";
+
+A component that allows users to select an avatar picture from a library of available images.
+
+### Component usage
+
+```js
+import { AvatarSelector } from '@logora/debate.modal.avatar_selector';
+```
+
+```js
+    <IntlProvider locale="en">
+        <AvatarSelector
+            onChooseAvatar={handleChooseAvatar}
+            avatarUrlList={avatarUrlList}
+            userName={"User Name"}
+        />
+    </IntlProvider>
+```

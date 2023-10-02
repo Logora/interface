@@ -3,9 +3,9 @@
 /**
  * The Bitmap file is an auto generated file used by Bit to track all your Bit components. It maps the component to a folder in your file system.
  * This file should be committed to VCS(version control).
- * Components are listed using their component ID (https://bit.dev/docs/components/component-id).
+ * Components are listed using their component ID (https://bit.dev/reference/components/component-id).
  * If you want to delete components you can use the "bit remove <component-id>" command.
- * See the docs (https://bit.dev/docs/components/removing-components) for more information, or use "bit remove --help".
+ * See the docs (https://bit.dev/reference/components/removing-components) for more information, or use "bit remove --help".
  */
 
 {
@@ -80,6 +80,21 @@
         "version": "0.0.7",
         "mainFile": "index.js",
         "rootDir": "src/components/input/toggle"
+    },
+    "modal/avatar_modal": {
+        "scope": "logora.debate",
+        "version": "0.0.10",
+        "mainFile": "index.js",
+        "rootDir": "src/components/modal/avatar_modal",
+        "config": {
+            "teambit.component/deprecation": {
+                "deprecate": true,
+                "newId": {
+                    "name": "user/avatar_selector",
+                    "scope": "logora.debate"
+                }
+            }
+        }
     },
     "section/section_box": {
         "scope": "logora.debate",
@@ -165,5 +180,42 @@
         "mainFile": "index.js",
         "rootDir": "src/components/user/avatar"
     },
-    "$schema-version": "15.0.0"
+    "user/avatar_selector": {
+        "scope": "",
+        "version": "",
+        "mainFile": "index.js",
+        "rootDir": "src/components/user/avatar_selector",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "devDependencies": {
+                        "@types/jest": "-",
+                        "@types/testing-library__jest-dom": "-"
+                    }
+                }
+            },
+            "teambit.react/react": {},
+            "teambit.component/dev-files": {
+                "devFilePatterns": [
+                    "**/*.story.+(js|ts|jsx|tsx)",
+                    "**/*.dev.jsx"
+                ]
+            },
+            "teambit.envs/envs": {},
+            "teambit.compositions/compositions": {},
+            "teambit.docs/docs": {},
+            "teambit.preview/preview": {},
+            "teambit.pipelines/builder": {},
+            "teambit.harmony/application": {},
+            "teambit.compilation/compiler": {},
+            "teambit.component/renaming": {
+                "renamedFrom": {
+                    "scope": "logora.debate",
+                    "name": "modal/avatar_modal",
+                    "version": "0.0.10"
+                }
+            }
+        }
+    },
+    "$schema-version": "16.0.0"
 }

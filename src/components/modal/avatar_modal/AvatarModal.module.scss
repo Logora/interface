@@ -1,0 +1,105 @@
+@import '~@logora/debate.styles.theme/_theme.scss';
+@import '~@logora/debate.styles.spacing/_spacing.scss';
+
+.title {
+    font-size: $font-size-extra-small;
+    text-transform: uppercase;
+    @include mb(3, xs);
+    &.avatarListTitle {
+        @include pt(3, xs);
+        @include mt(3, xs);
+        @include mb(2, xs);
+        border-top: 1px solid $background-color-secondary;
+    }
+}
+
+.uploadAvatarContainer {
+    display: flex !important;
+    align-items: center !important;
+}
+
+.imageInput {
+    display: none;
+}
+
+.imageInputLabel {
+    height: fit-content !important;
+    @include p(2, xs);
+    border: 1px solid $call-primary !important;
+    border-radius: $box-border-radius !important;
+    cursor: pointer !important;
+    color: $call-primary !important;
+    &:hover {
+        opacity: .7;
+    }
+}
+
+.avatarList {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+    grid-gap: 30px;
+    overflow: auto;
+    max-height: 350px;
+    @include px(1, xs);
+    @include py(1, xs);
+    &.userChoice {
+        padding-bottom: 60px !important;
+    }
+}
+
+.cancelSelection {
+    width: fit-content;
+    @include px(3, xs);
+    @include py(2, xs);
+    @include mb(2, xs);
+    background-color: $background-color-secondary;
+    color: $text-secondary;
+    border-radius: 30px;
+    font-size: $font-size-extra-small;
+    cursor: pointer;
+    &:hover {
+        opacity: .7;
+    }
+}
+
+.avatar {
+    cursor: pointer;
+    &.selected {
+        box-shadow: 0 0 0 3px $success-primary;
+        box-sizing: border-box;
+    }
+}
+
+.uploadedAvatar {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    @include mr(2, xs);
+    object-fit: cover;
+}
+
+.chosenAvatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.confirm {
+    display: flex !important;
+    gap: 20px;
+    justify-content: center;
+    background-color: $background-color-secondary;
+    @include p(2.5, xs);
+    @include pr(0, xs);
+    @include mt(1, xs);
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    z-index: 100;
+    width: 100%;
+}
+
+.button {
+    text-transform: uppercase;
+}
