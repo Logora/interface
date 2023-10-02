@@ -25,7 +25,7 @@ jobs:
       - name: Install Bit Version Manager
         run: npm i -g @teambit/bvm
       - name: Install latest Bit version
-        run: bvm install
+        run: bvm install --use-system-node 1.0.0
       - name: add bvm bin folder to path
         run: echo "$HOME/bin" >> $GITHUB_PATH
       - name: Set up bit config
@@ -33,11 +33,12 @@ jobs:
           bit config set analytics_reporting false
           bit config set anonymous_reporting false
           bit config set user.token $BIT_TOKEN
+          bit config set force_local_build true 
 
           bit install
           bit status
       - name: Tag components
-        run: bit tag
+        run: bit tag --build
       - name: Export components
         run: bit export
       - name: Commit changes made to .bitmap

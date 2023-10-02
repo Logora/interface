@@ -12,9 +12,10 @@ export const ExpandableText = (
         className,
         maxHeight = "100", 
         showIcon = true,
-        backgroundColor = "#ffffff",
+        backgroundColor = "var(--background-color-primary)",
         onCollapse = () => {}, 
         onExpand = () => {}, 
+		isReply = false,
     }
 ) => {
 	const [isExpanded, setIsExpanded] = useState(false);
@@ -43,8 +44,8 @@ export const ExpandableText = (
 	};
 
     const shouldShowButton = expandable && (contentHeight > maxHeight);
-    const contentStyles = { maxHeight: maxHeight + "px", marginBottom: "10px" }
-	const maskStyles = { background: `linear-gradient(to bottom, rgba(255, 255, 255, 0), ${backgroundColor} 90%)` }
+    const contentStyles = { maxHeight: maxHeight + "px" }
+	const maskStyles = { background: isReply ? `linear-gradient(to bottom, rgba(255, 255, 255, 0), var(--text-tertiary) 90%)` : `linear-gradient(to bottom, rgba(255, 255, 255, 0), ${backgroundColor} 90%)`}
 
     return (
         <div className={styles.container} ref={contentRef}>

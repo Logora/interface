@@ -1,0 +1,25 @@
+---
+description: A modal to ask for confirmation.
+labels: ['modal', 'confirmation', 'confirm-modal']
+---
+
+A modal component that asks for user's confirmation. The modal shows two buttons, one to confirm, one to cancel.
+
+### Component usage
+
+```js
+import { ConfirmModal } from '@logora/debate.dialog.confirm_modal';
+```
+
+```js
+    <ModalProvider>
+        <ConfirmModal 
+            title="User confirmation"
+            question="Are you sure you want to start this debate ?"
+            confirmLabel="Yes"
+            cancelLabel="No"
+            onConfirmCallback={() => alert("Debate started !")}
+            onCancelCallback={() => alert("Debate cancelled !")}
+        />
+    </ModalProvider>
+```

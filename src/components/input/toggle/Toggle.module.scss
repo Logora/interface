@@ -23,12 +23,12 @@
   height: 100%;
   display: inline-block;
   cursor: pointer;
-  background-color: #babec9;
+  background-color: $darkest-text-tertiary;
   -webkit-transition: 0.4s;
   transition: 0.4s;
   border-radius: 1em;
   &:hover {
-    background-color: #878c9a;
+    background-color: $text-secondary;
   }
 }
 
@@ -39,13 +39,13 @@
   width: 0.75em;
   left: 0.125em;
   bottom: 0.125em;
-  background-color: white !important;
+  background-color: $text-light !important;
   transition: 0.4s;
   border-radius: 50%;
 }
 
 input:disabled + .slider {
-  background-color: #ededed !important;
+  background-color: $background-color-secondary !important;
   cursor: not-allowed;
 }
 
@@ -54,7 +54,7 @@ input:checked + .slider {
 }
 
 input:checked:disabled + .slider {
-  background-color: #eceaff !important;
+  background-color: $darken-text-tertiary !important;
 }
 
 input:checked + .slider:before {
@@ -62,5 +62,5 @@ input:checked + .slider:before {
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 0 0.125em #eceaff;
+  box-shadow: 0 0 0 0.125em $darken-text-tertiary;
 }

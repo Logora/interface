@@ -1,0 +1,27 @@
+@import '~@logora/debate.styles.theme/_theme.scss';
+@import '~@logora/debate.styles.spacing/_spacing.scss';
+
+.spinnerBox {
+    min-height: 10vh;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: flex-start !important;
+    @include my(4, xs);
+    width: 100%;
+    text-align: center;
+}
+
+.spinnerBorder {
+    display: inline-block;
+    width: 2em;
+    height: 2em;
+    vertical-align: text-bottom;
+    border: .25em solid currentColor;
+    border-right-color: transparent;
+    border-radius: 50%;
+    animation: spinner-border .75s linear infinite;
+}
+
+@keyframes spinner-border {
+    to { transform: rotate(360deg); }
+}

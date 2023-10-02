@@ -1,0 +1,70 @@
+@import '~@logora/debate.styles.theme/_theme.scss';
+@import '~@logora/debate.styles.spacing/_spacing.scss';
+
+.selectContainer {
+	display: flex !important;
+  	justify-content: left !important;
+	@include px(0, xs);
+	cursor: pointer;
+	@include media-breakpoint-up(sm) {
+		display: block !important;
+	}
+}
+
+.selectInput {
+	@include px(3, xs);
+	@include py(2, xs);
+	background-color: $background-color-primary;
+	border-radius: $box-border-radius;
+	border: $box-border;
+	transition: background-color 0.3s;
+	min-width: 130px;
+	display: flex !important;
+	align-items: center !important;
+	&.span {
+		@include mr(1, xs);
+		align-self: flex-end;
+	}
+	&:hover {
+		background-color: rgba(0, 0, 0, 0.03);
+	}
+	svg {
+		margin-left: auto;
+	}
+	&::first-letter {
+		text-transform: capitalize;
+	}
+}
+
+.currentOptionText { 
+	@include mr(2, xs);
+}
+
+.selectOption {
+	@include px(3, xs);
+	@include py(2, xs);
+	transition: background-color 0.3s;
+	&:hover {
+		background-color: rgba(0, 0, 0, 0.03);
+	}
+	&::first-letter {
+		text-transform: capitalize;
+	}
+}
+
+.selectOptionActive {
+	background-color: $call-primary !important;
+	color: $text-light;
+	svg {
+		display: inline-block;
+	}
+}
+
+.checkBox {
+	@include ml(3, xs);
+	fill: $text-light !important;
+}
+
+.arrowDown {
+	margin-bottom: 3px;
+}

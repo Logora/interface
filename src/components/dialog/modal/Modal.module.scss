@@ -18,7 +18,7 @@
 }
 
 .modalWrapperFullScreen {
-  background: white;
+  background: $background-color-primary;
 }
 
 .modalDialog {
@@ -39,7 +39,7 @@
 }
 
 .modalContainer {
-  background: white;
+  background: $background-color-primary;
   border-radius: $box-border-radius;
   width: 100%;
   position: relative;
@@ -61,7 +61,7 @@
   .modalExitButton {
     font-weight: $font-weight-normal;
     line-height: 1;
-    color: #000;
+    color: $text-primary;
     text-shadow: $text-secondary;
     opacity: 1;
     font-size: $font-size-large;

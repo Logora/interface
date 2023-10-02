@@ -1,0 +1,52 @@
+---
+description: A data provider to call an external API.
+labels: ['data', 'data-provider']
+---
+
+DataProviderContext is a helper based on [Context API](https://en.reactjs.org/docs/context.html) and React hooks for simplified work
+with an external API.
+
+To use the context, first wrap your application with _DataProviderContext.Provider_. Then, use the hook _useDataProvider_ that exposes the data provider.
+
+A dataProvider key should be passed to the context. The _dataProvider_ function creates a dataProvider object that should be passed to the context.
+
+The _dataProvider_ function takes four arguments :
+- httpClient : a client similar to the axios client, with _get_, _post_, _patch_ and _delete_ functions available
+- apiUrl : an API URL that will be used to make requests
+- apiKey (optional) : an API key passed with the _getOne_ and _getList_ requests
+- storageKey (optional) : name of the local storage key where the API access token is stored. The access token is used for the _getOneWithToken_, _getListWithToken_, _create_, _update_, _delete_ requests
+
+_dataProvider_ exposes eight functions that can be used to call the API. All functions return a Promise : 
+- getOne(resource, id, params)
+- getList(resource, params)
+- getSettings(shortname)
+- getOneWithToken(resource, id, params)
+- getListWithToken(resource, params)
+- create(resource, data)
+- update(resource, id, data)
+- delete(resource, id)
+
+
+### Component usage
+```js
+import { dataProvider, DataProviderContext, useDataProvider } from '@logora/debate.data.data_provider';
+```
+```js
+const httpClient = axios.create();
+
+const DataConsumer = () => {
+	const dataProvider = useDataProvider();
+
+    useEffect(() => {
+        dataProvider.getOne("resource-name", "resource-id").then((response) => {
+            console.log(response.data);
+        });
+    });
+
+	return <div>My data consumer</div>;
+}
+
+<DataProviderContext.Provider value={{ dataProvider: dataProvider(httpClient, "https://example.api", "api-key", "token-storage-key") }}>
+    <DataConsumer />
+</DataProviderContext.Provider>
+```

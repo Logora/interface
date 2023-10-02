@@ -3,10 +3,9 @@
 
 .sectionBoxContainer {
     @include p(3, xs);
-    @include my(4, xs);
-    color: $text-primary;
     box-shadow: $box-shadow;
     border: $box-border;
     color: $text-primary;
     border-radius: $box-border-radius;
+    background-color: $background-color-primary;
 }

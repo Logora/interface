@@ -13,9 +13,9 @@
     display: flex !important;
     justify-content: flex-start !important;
     > .titleRedirectUrl {
-        background: #FFF !important;
+        background: $background-color-primary !important;
         &:hover {
-            background: #FFF !important;
+            background: $background-color-primary !important;
         }
     }
 }
@@ -74,7 +74,7 @@
 
 .headerLabelText {
     background-color: $call-primary;
-    color: white;
+    color: $text-light;
     border-bottom: 1px solid;
     border-color: $call-primary;
     border-radius: $box-border-radius 0 $box-border-radius 0;
@@ -102,12 +102,12 @@
 }
 
 .debateLink {
-    background: #FFF !important;
+    background: $background-color-primary !important;
     text-decoration: none !important;
     color: $call-primary;
     font-weight: $font-weight-bold;
     &:hover {
-        background: #FFF !important;
+        background: $background-color-primary !important;
         text-decoration: underline !important;
     }
 }

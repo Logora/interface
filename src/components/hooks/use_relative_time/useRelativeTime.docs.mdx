@@ -1,0 +1,35 @@
+---
+description: A hook to display a relative date in human-readable format.
+labels: ['date', 'relative-time']
+---
+
+import { IntlProvider } from 'react-intl';
+
+This function receives one argument, _time_, which is a timestamp in milliseconds.
+
+It returns the timestamp formatted according to the locale.
+
+For example in English, it will show "2 days ago" if the date is in the past or "3 days left" for a date in the future. 
+
+It must be wrapped by [react-intl](https://formatjs.io/docs/getting-started/installation/)'s IntlProvider.
+
+The text can be customized using the locale strings.
+
+### Component usage
+```js
+import { useRelativeTime } from '@logora/debate.hooks.use_relative_time';
+```
+```js
+const RelativeTime = () => {
+    const date = new Date();
+	const daysAgo = new Date(date.getTime());
+    daysAgo.setDate(date.getDate() - 2);
+    const relativeTime = useRelativeTime(daysAgo);
+
+	return (
+        <IntlProvider locale="en">
+            { relativeTime } // "2 days ago"
+        </IntlProvider>
+    )
+}
+```

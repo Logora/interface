@@ -1,0 +1,38 @@
+@import '~@logora/debate.styles.theme/_theme.scss';
+@import '~@logora/debate.styles.spacing/_spacing.scss';
+
+.dropdownWrapper {
+	position: relative;
+	display: inline-block;
+}
+
+.dropdownHeader {
+	border: none;
+	padding: 0 !important;
+	cursor: pointer;
+	outline: none !important;
+}
+
+.dropdownList {
+	position: absolute;
+	z-index: 1000;
+	background: $background-color-primary;
+	box-shadow: $box-shadow;
+	border: $box-border;
+	border-radius: $box-border-radius;
+	overscroll-behavior-y: contain;
+	width: max-content;
+}
+
+.left {
+	left: 0 !important;
+}
+
+.right {
+	right: 0 !important;
+}
+
+.center {
+	left: 50%;
+	transform: translateX(-50%);
+}

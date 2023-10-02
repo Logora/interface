@@ -1,0 +1,35 @@
+---
+description: A select input component.
+labels: ['select', 'input', 'dropdown']
+---
+
+A component that renders a select component with multiple options.
+
+Select options are passed as objects. An option can have keys : *dataTid, name, value* and *textKey*.
+
+Select is closed when user clicks outside it. A click on any child from the list also close the list.
+
+### Component usage
+
+```js
+import { Select } from '@logora/debate.input.select';
+```
+
+```js
+<Select  
+    options={([{
+        name: "Most recent", {/* required */}
+        value: "trending", {/* required */}
+        text: "Sort by newest", {/* required */}
+        dataTid: "action_sort_arguments_newest" {/* optional */}
+    },
+    {
+        name: "Most relevant",
+        value: "-created_at",
+        text: "Sort by oldest",
+        dataTid: "action_sort_arguments_relevant",
+    }])}
+    defaultOption={"trending"}
+    onChange={(option) => console.log(option)}
+/>
+```
