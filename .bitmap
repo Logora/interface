@@ -209,7 +209,7 @@
     },
     "source/source_list_item": {
         "scope": "logora.debate",
-        "version": "0.0.15",
+        "version": "0.0.16",
         "mainFile": "index.js",
         "rootDir": "src/components/source/source_list_item"
     },
