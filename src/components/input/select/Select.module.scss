@@ -13,7 +13,7 @@
 
 .selectInput {
 	@include px(3, xs);
-	@include py(2, xs);
+	@include py(2.5, xs);
 	background-color: $background-color-primary;
 	border-radius: $box-border-radius;
 	border: $box-border;
