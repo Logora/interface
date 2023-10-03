@@ -40,21 +40,10 @@
         "rootDir": "src/components/action/link_button"
     },
     "ad/use_google_ad_manager": {
-        "scope": "",
-        "version": "",
-        "defaultScope": "logora.debate",
+        "scope": "logora.debate",
+        "version": "0.0.1",
         "mainFile": "index.js",
-        "rootDir": "src/components/ad/use_google_ad_manager",
-        "config": {
-            "teambit.dependencies/dependency-resolver": {
-                "policy": {
-                    "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0"
-                    }
-                }
-            }
-        }
+        "rootDir": "src/components/ad/use_google_ad_manager"
     },
     "data/axios_client": {
         "scope": "logora.debate",
