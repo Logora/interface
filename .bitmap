@@ -171,6 +171,9 @@
                     "name": "user/avatar_selector",
                     "scope": "logora.debate"
                 }
+            },
+            "teambit.component/remove": {
+                "removed": true
             }
         }
     },
