@@ -93,6 +93,12 @@
         "mainFile": "index.js",
         "rootDir": "src/components/input/checkbox/label"
     },
+    "input/search_input": {
+        "scope": "logora.debate",
+        "version": "0.0.13",
+        "mainFile": "index.js",
+        "rootDir": "src/components/input/search_input"
+    },
     "input/text_input": {
         "scope": "logora.debate",
         "version": "0.0.16",

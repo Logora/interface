@@ -1,0 +1,19 @@
+@import '~@logora/debate.styles.theme/_theme.scss';
+@import '~@logora/debate.styles.spacing/_spacing.scss';
+
+.searchSubmit, .searchReset {
+	cursor: pointer;
+}
+
+.searchButton {
+	border: 0;
+}
+
+.searchReducedButton {
+	border: $box-border;
+	box-shadow: $box-shadow;
+	border-radius: $box-border-radius;
+	@include px(4, xs);
+	@include py(2, xs);
+	cursor: pointer;
+}
