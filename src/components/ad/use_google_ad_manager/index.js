@@ -1,0 +1,1 @@
+export { useGoogleAdManager } from './useGoogleAdManager';

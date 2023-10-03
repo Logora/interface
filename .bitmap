@@ -39,6 +39,13 @@
         "mainFile": "index.js",
         "rootDir": "src/components/action/link_button"
     },
+    "ad/use_google_ad_manager": {
+        "scope": "",
+        "version": "",
+        "defaultScope": "logora.debate",
+        "mainFile": "index.js",
+        "rootDir": "src/components/ad/use_google_ad_manager"
+    },
     "data/axios_client": {
         "scope": "logora.debate",
         "version": "0.0.3",
