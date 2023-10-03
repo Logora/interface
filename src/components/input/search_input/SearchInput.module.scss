@@ -13,7 +13,7 @@
 	border: $box-border;
 	box-shadow: $box-shadow;
 	border-radius: $box-border-radius;
-	@include px(4, xs);
-	@include py(2, xs);
+	@include px(3, xs);
+	@include py(2.5, xs);
 	cursor: pointer;
 }

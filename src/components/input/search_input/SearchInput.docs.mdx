@@ -1,26 +1,23 @@
 ---
 description: An input to handle search.
-labels: ['search_input']
+labels: ['search_input', 'input']
 ---
 
 import { SearchInput } from './SearchInput';
-import { ConfigProvider } from '@logora/debate.context.config_provider'
 
 An input to handle search queries with custom placeholder.
 
 ### Component usage
 
 ```js
-import SearchInput from '@logora/debate.input.search_input';
+import { SearchInput } from '@logora/debate.input.search_input';
 ```
 
 ```js
-<ConfigProvider>
-    <SearchInput 
-        placeholder="Search"
-        onSearchSubmit={(query) => console.log("SearchInput callback")} 
-        disabled={false}
-        reducedByDefault={false}
-    />
-</ConfigProvider>
+<SearchInput 
+    placeholder="Search"
+    onSearchSubmit={(query) => console.log("SearchInput callback")} 
+    disabled={false}
+    reducedByDefault={false}
+/>
 ```
