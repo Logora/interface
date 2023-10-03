@@ -1,0 +1,23 @@
+---
+description: A simple pagination component.
+labels: ['pagination', 'list']
+---
+
+A component that renders a button used to handle pagination of lists. 
+
+### Component usage
+
+```js
+    import { Pagination } from "@logora/debate.list.pagination";
+```
+```js
+    <Pagination
+        currentPage={1}
+        perPage={10}
+        totalElements={20}
+        onLoad={loadMoreElementsCallback}
+        isLoading={isLoadingVar}
+        hasLoadingComponent={false}
+        buttonText={"Next page"}
+    />
+```

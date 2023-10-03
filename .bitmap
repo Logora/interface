@@ -165,6 +165,12 @@
         "mainFile": "index.js",
         "rootDir": "src/components/input/toggle"
     },
+    "list/pagination": {
+        "scope": "logora.debate",
+        "version": "0.0.25",
+        "mainFile": "index.js",
+        "rootDir": "src/components/list/pagination"
+    },
     "section/section_box": {
         "scope": "logora.debate",
         "version": "0.0.24",
