@@ -1,0 +1,1 @@
+export { useMatomo } from './useMatomo';

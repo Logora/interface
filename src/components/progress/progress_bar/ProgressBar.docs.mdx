@@ -1,0 +1,29 @@
+---
+description: A progress bar component.
+labels: ['progress_bar']
+---
+
+import { ProgressBar } from './ProgressBar';
+
+A component that renders a progress bar. It can also render a title and a subtitle (right side text above the progress bar).
+
+### Component usage
+
+```js
+import { ProgressBar } from "@logora/debate.progress.progress_bar";
+```
+
+```js
+<ProgressBar 
+    progress={25} 
+    progressUnit={"votes"}
+    goal={100} 
+    title={"My title"}
+    className={styles.myClass} 
+    innerClassName={styles.myInnerClass}
+    subtitleClassName={styles.mySubtitleClassName}
+    showPercentageSubtitle={false}
+    showProgressSubtitle={true}
+    barFull={false}
+/>
+```

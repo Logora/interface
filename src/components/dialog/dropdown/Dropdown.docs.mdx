@@ -1,0 +1,28 @@
+---
+description: A Dropdown component.
+labels: ['dropdown']
+---
+
+import { Dropdown } from './Dropdown';
+
+A component that renders a dropdown component. The first child is the button triggering the display of the list, and the second child is the content of the dropdown.
+Dropdown is closed when user clicks outside of it. A click on any child from the list also closes the list.
+Dropdown position can be controlled with props.
+
+### Component usage
+
+```js
+import { Dropdown } from '@logora/debate.dialog.dropdown';
+```
+
+```js
+    <Dropdown onClick={() => console.log("Click dropdown button !")} horizontalPosition={'right'}>
+        {/* First child: trigger button */}
+        <div>Title</div> 
+        {/* Second child: list */}
+        <div>
+            <p>Child 1</p>
+            <p>Child 2</p>
+        </div>
+    </Dropdown>
+```

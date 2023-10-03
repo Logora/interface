@@ -1,0 +1,87 @@
+@import '~@logora/debate.styles.theme/_theme.scss';
+@import '~@logora/debate.styles.spacing/_spacing.scss';
+@import '~@logora/debate.styles.flex/_flex.scss';
+@import '~@logora/debate.styles.display/_display.scss';
+
+.progressContainer {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100%;
+}
+
+.titleContainer {
+    display: flex !important;
+    @include flex-direction(column, xs);
+    @include flex-direction(row, sm);
+}
+
+.title {
+    width: 100%;
+    font-weight: $font-weight-bold;
+}
+
+.subtitleContainer {
+    width: 100%;
+    text-align: right;
+}
+
+.progressSubtitle {
+    @include mr(1, xs);
+    color: $text-secondary;
+    font-size: $font-size-small;
+}
+
+.progressBarContainer { 
+    position: relative;
+    background: $background-color-secondary;
+    border-radius: $box-border-radius !important;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.currentProgressBar {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+    white-space: nowrap;
+    color: $text-light;
+    -webkit-transition: width 1.2s ease !important;
+    transition: width 1.2s ease !important;
+}
+
+.progressBar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    white-space: nowrap;
+    background-color: $call-primary;
+    border-radius: $box-border-radius !important;
+    height: 100%;
+    color: $text-light;
+    animation: progressBarAnimation 1.2s ease;
+    animation-fill-mode:both; 
+    -webkit-animation: progressBarAnimation 1.2s ease;
+    -webkit-animation-fill-mode:both; 
+    -moz-animation: progressBarAnimation 1.2s ease;
+    -moz-animation-fill-mode:both; 
+}
+
+.progressBarContent {
+    text-align: left;
+    @include pl(2, xs);
+    color: $text-light;
+    font-size: $font-size-normal;
+    font-weight: $font-weight-normal;
+}
+
+@keyframes progressBarAnimation {
+    0% { width: 0; }
+    100% { width: 100%; }
+}

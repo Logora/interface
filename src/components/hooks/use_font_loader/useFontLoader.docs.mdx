@@ -1,0 +1,24 @@
+---
+description: A hook to download fonts from Google Fonts.
+labels: ['fonts', 'webfontloader', 'google-fonts']
+---
+
+A component that uses [Web Font Loader](https://github.com/typekit/webfontloader) to download fonts from Google Fonts.
+
+### Component usage
+
+```js
+import { useFontLoader } from '@logora/debate.hooks.use_font_loader';
+
+function MyComponentWithFonts() {
+  useFontLoader(["Droid Sans:300,400,700:latin"]);
+
+  return <div id="my-root">Hello World</div>;
+}
+```
+
+### Properties
+| **Name**      | **Type** | **Required** | **Default** | **Description** |
+| ----------- | ----------- | :-----------: | ----------- | ----------- |
+| <font color='#4646c6'>fontFamilies</font> | <font color="#397300">array</font> | &check; | - | <font color="grey">*Array of font families*</font> |
+| <font color='#4646c6'>enable</font> | <font color="#397300">boolean</font> | &cross; | true | <font color="grey">*If `false`, will not load fonts*</font> |

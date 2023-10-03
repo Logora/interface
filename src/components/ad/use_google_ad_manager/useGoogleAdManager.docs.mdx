@@ -1,0 +1,27 @@
+---
+description: A hook to insert the Google Ad Manager (GPT) script.
+labels: ['google-ad-manager', 'gpt', 'didomi']
+---
+
+A hook that inserts the script from Google Ad Manager (GPT).
+
+The hook can also add consent attributes from [didomi](https://www.didomi.io/fr/) to manage user consent.
+
+
+### Component usage
+
+```js
+import { useGoogleAdManager } from '@logora/debate.ad.use_google_ad_manager';
+
+function MyComponentWithGPT() {
+  useGoogleAdManager();
+
+  return <div id="my-root">Hello World</div>;
+}
+```
+
+### Properties
+| **Name**      | **Type** | **Required** | **Default** | **Description** |
+| ----------- | ----------- | :-----------: | ----------- | ----------- |
+| <font color='#4646c6'>enable</font> | <font color="#397300">boolean</font> | &cross; | true | <font color="grey">*Whether to insert the script*</font> |
+| <font color='#4646c6'>enableDidomi</font> | <font color="#397300">boolean</font> | &cross; | false | <font color="grey">*Whether to add didomi attributes to manage user consent*</font> |

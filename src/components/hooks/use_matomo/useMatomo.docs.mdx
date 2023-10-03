@@ -1,0 +1,28 @@
+---
+description: A hook to insert the Matomo Tag Manager script
+labels: ['matomo', 'analytics']
+---
+
+A hook that inserts a [Matomo](https://matomo.org/) Tag Manager container script.
+
+### Component usage
+
+```js
+import { useMatomo } from '@logora/debate.hooks.use_matomo';
+```
+
+```js
+const ComponentWithMatomo = () => {
+  useMatomo("analytics.mysite.com", "3R2zBYFH");
+
+  return <div id="my-root">Hello World</div>;
+}
+```
+
+### Parameters
+
+| **Name**      | **Type** | **Required** | **Default** | **Description** |
+| ----------- | ----------- | :-----------: | ----------- | ----------- |
+| <font color='#4646c6'>matomoHost</font> | <font color="#397300">string</font> | &check; | - | <font color="grey">*Matomo domain, for example analytics.mysite.com*</font> |
+| <font color='#4646c6'>matomoContainerTag</font> | <font color="#397300">string</font> | &check; | - | <font color="grey">*Matomo container tag*</font> |
+| <font color='#4646c6'>enable</font> | <font color="#397300">string</font> | &cross; | true | <font color="grey">*If `false`, will not load the script*</font> |
