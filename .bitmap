@@ -207,6 +207,12 @@
         "mainFile": "index.js",
         "rootDir": "src/components/source/context_source_box"
     },
+    "source/source_list_item": {
+        "scope": "logora.debate",
+        "version": "0.0.15",
+        "mainFile": "index.js",
+        "rootDir": "src/components/source/source_list_item"
+    },
     "styles/display": {
         "scope": "logora.debate",
         "version": "0.0.7",

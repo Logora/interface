@@ -1900,6 +1900,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"source_list_item-915e96@workspace:src/components/source/source_list_item":
+  version: 0.0.0-use.local
+  resolution: "source_list_item-915e96@workspace:src/components/source/source_list_item"
+  peerDependencies:
+    react: ^17.0.0||^18.0.0
+    react-dom: ^17.0.0||^18.0.0
+  languageName: unknown
+  linkType: soft
+
 "spacing-44d24d@workspace:src/components/styles/spacing":
   version: 0.0.0-use.local
   resolution: "spacing-44d24d@workspace:src/components/styles/spacing"
