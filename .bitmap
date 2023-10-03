@@ -44,7 +44,17 @@
         "version": "",
         "defaultScope": "logora.debate",
         "mainFile": "index.js",
-        "rootDir": "src/components/ad/use_google_ad_manager"
+        "rootDir": "src/components/ad/use_google_ad_manager",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "peerDependencies": {
+                        "react": "^17.0.0 || ^18.0.0",
+                        "react-dom": "^17.0.0 || ^18.0.0"
+                    }
+                }
+            }
+        }
     },
     "data/axios_client": {
         "scope": "logora.debate",

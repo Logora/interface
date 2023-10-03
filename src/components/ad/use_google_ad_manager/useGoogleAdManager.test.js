@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { render } from '@testing-library/react';
 import { useGoogleAdManager } from './useGoogleAdManager.js';
 
 const gptSrc = "https://securepubads.g.doubleclick.net/tag/js/gpt.js";
 
 describe('useGoogleAdManager', () => {
-    it('should load GPT script correctly', () => {
+    it('should load GPT script correctly', async () => {
+        jest.spyOn(document.body, 'appendChild');
+
         const ComponentWithGoogleAdManager = () => {
             useGoogleAdManager(true, false);
 
@@ -15,24 +17,31 @@ describe('useGoogleAdManager', () => {
         const container = render(<ComponentWithGoogleAdManager />);
         expect(container.getByText('With GoogleAdManager')).toBeTruthy();
 
-        const script = document.querySelector('script');
-        expect(script).toBeTruthy();
-        expect(script.src).toContain(gptSrc);
+        expect(document.body.appendChild).toBeCalledWith(
+            expect.objectContaining({
+                src: gptSrc,
+            })
+        );
     });
 
-    it('should load Matomo script correctly with didomi consent', () => {
+    it('should load GPT script correctly with didomi consent', () => {
+        jest.spyOn(document.body, 'appendChild');
+
         const ComponentWithGoogleAdManager = () => {
-            useGoogleAdManager(true, false);
+            useGoogleAdManager(true, true);
 
             return <div>With GoogleAdManager and consent</div>;
         }
 
         const container = render(<ComponentWithGoogleAdManager />);
+
         expect(container.getByText('With GoogleAdManager and consent')).toBeTruthy();
 
-        const script = document.querySelector('script');
-        expect(script).toBeTruthy();
-        expect(script.src).toContain(gptSrc);
-        expect(script).toHaveAttribute('type', 'didomi/javascript');
+        expect(document.body.appendChild).toBeCalledWith(
+            expect.objectContaining({
+                type: 'didomi/javascript',
+                src: gptSrc,
+            })
+        );
     });
 })

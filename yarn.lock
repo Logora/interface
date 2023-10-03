@@ -564,15 +564,6 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"avatar_modal-5d045b@workspace:src/components/modal/avatar_modal":
-  version: 0.0.0-use.local
-  resolution: "avatar_modal-5d045b@workspace:src/components/modal/avatar_modal"
-  peerDependencies:
-    react: ^16.8.0 || ^17.0.0
-    react-dom: ^16.8.0 || ^17.0.0
-  languageName: unknown
-  linkType: soft
-
 "avatar_selector-e502b8@workspace:src/components/user/avatar_selector":
   version: 0.0.0-use.local
   resolution: "avatar_selector-e502b8@workspace:src/components/user/avatar_selector"
@@ -2018,6 +2009,15 @@ __metadata:
 "use_font_loader-9075d4@workspace:src/components/hooks/use_font_loader":
   version: 0.0.0-use.local
   resolution: "use_font_loader-9075d4@workspace:src/components/hooks/use_font_loader"
+  peerDependencies:
+    react: ^17.0.0 || ^18.0.0
+    react-dom: ^17.0.0 || ^18.0.0
+  languageName: unknown
+  linkType: soft
+
+"use_google_ad_manager-942609@workspace:src/components/ad/use_google_ad_manager":
+  version: 0.0.0-use.local
+  resolution: "use_google_ad_manager-942609@workspace:src/components/ad/use_google_ad_manager"
   peerDependencies:
     react: ^17.0.0 || ^18.0.0
     react-dom: ^17.0.0 || ^18.0.0
