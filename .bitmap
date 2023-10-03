@@ -159,24 +159,6 @@
         "mainFile": "index.js",
         "rootDir": "src/components/input/toggle"
     },
-    "modal/avatar_modal": {
-        "scope": "logora.debate",
-        "version": "0.0.10",
-        "mainFile": "index.js",
-        "rootDir": "src/components/modal/avatar_modal",
-        "config": {
-            "teambit.component/deprecation": {
-                "deprecate": true,
-                "newId": {
-                    "name": "user/avatar_selector",
-                    "scope": "logora.debate"
-                }
-            },
-            "teambit.component/remove": {
-                "removed": true
-            }
-        }
-    },
     "section/section_box": {
         "scope": "logora.debate",
         "version": "0.0.24",
@@ -268,45 +250,10 @@
         "rootDir": "src/components/user/avatar"
     },
     "user/avatar_selector": {
-        "scope": "",
-        "version": "",
+        "scope": "logora.debate",
+        "version": "0.0.1",
         "mainFile": "index.js",
-        "rootDir": "src/components/user/avatar_selector",
-        "config": {
-            "teambit.dependencies/dependency-resolver": {
-                "policy": {
-                    "devDependencies": {
-                        "@types/jest": "-",
-                        "@types/testing-library__jest-dom": "-"
-                    },
-                    "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0"
-                    }
-                }
-            },
-            "teambit.react/react": {},
-            "teambit.component/dev-files": {
-                "devFilePatterns": [
-                    "**/*.story.+(js|ts|jsx|tsx)",
-                    "**/*.dev.jsx"
-                ]
-            },
-            "teambit.envs/envs": {},
-            "teambit.compositions/compositions": {},
-            "teambit.docs/docs": {},
-            "teambit.preview/preview": {},
-            "teambit.pipelines/builder": {},
-            "teambit.harmony/application": {},
-            "teambit.compilation/compiler": {},
-            "teambit.component/renaming": {
-                "renamedFrom": {
-                    "scope": "logora.debate",
-                    "name": "modal/avatar_modal",
-                    "version": "0.0.10"
-                }
-            }
-        }
+        "rootDir": "src/components/user/avatar_selector"
     },
     "$schema-version": "16.0.0"
 }
