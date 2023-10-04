@@ -47,7 +47,7 @@ export const SearchInput = ({ onSearchSubmit, placeholder, disabled, reducedByDe
 			) 
 		:
 			(
-				<div className={styles.searchMobileButton} onClick={() => setOpenSearch(true)}>
+				<div className={styles.searchReducedButton} onClick={() => setOpenSearch(true)}>
 					<SearchIcon className={styles.searchSubmit} data-tid={"action_search_submit"} height={20.8} width={16} />
 				</div>
 			)
