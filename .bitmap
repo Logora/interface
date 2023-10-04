@@ -149,7 +149,7 @@
     },
     "input/search_input": {
         "scope": "logora.debate",
-        "version": "0.0.15",
+        "version": "0.0.16",
         "mainFile": "index.js",
         "rootDir": "src/components/input/search_input"
     },
@@ -227,7 +227,7 @@
     },
     "source/source_modal": {
         "scope": "logora.debate",
-        "version": "0.0.33",
+        "version": "0.0.34",
         "mainFile": "index.js",
         "rootDir": "src/components/source/source_modal"
     },
