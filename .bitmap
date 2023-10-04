@@ -203,19 +203,19 @@
     },
     "source/context_source_box": {
         "scope": "logora.debate",
-        "version": "0.0.21",
+        "version": "0.0.22",
         "mainFile": "index.js",
         "rootDir": "src/components/source/context_source_box"
     },
     "source/context_source_list": {
         "scope": "logora.debate",
-        "version": "0.0.16",
+        "version": "0.0.17",
         "mainFile": "index.js",
         "rootDir": "src/components/source/context_source_list"
     },
     "source/source_box": {
         "scope": "logora.debate",
-        "version": "0.0.1",
+        "version": "0.0.2",
         "mainFile": "index.js",
         "rootDir": "src/components/source/source_box"
     },
@@ -227,7 +227,7 @@
     },
     "source/source_modal": {
         "scope": "logora.debate",
-        "version": "0.0.32",
+        "version": "0.0.33",
         "mainFile": "index.js",
         "rootDir": "src/components/source/source_modal"
     },
