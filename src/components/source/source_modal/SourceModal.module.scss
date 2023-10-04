@@ -1,0 +1,28 @@
+@import '~@logora/debate.styles.theme/_theme.scss';
+@import '~@logora/debate.styles.spacing/_spacing.scss';
+
+.sourceModalBody {
+  @include py(2, xs);
+  max-height: calc(100vh - 80px);
+  overflow-y: auto;
+}
+
+.sourcePreviewBox {
+  border-radius: $box-border-radius;
+  width: 100%;
+  @include p(0, xs);
+  @include my(3, xs);
+}
+
+.sourceInputContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+button.sourcePreviewButton {
+  width: 100%;
+}
+
+.sourcePreviewError {
+  text-align: center;
+}

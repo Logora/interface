@@ -1,0 +1,27 @@
+---
+description: A modal to retrieve metadata for a source web page.
+labels: ['modal']
+---
+
+A modal component that fetches metadata from a web page (source) provided by user input.
+
+User inputs the URL of a web page, and when clicking on search, the modal will fetch the page metadata and display it.
+
+User can submit via a button and a callback enables to retrieve the fetched source.
+
+### Component usage
+
+```js
+    import { SourceModal } from '@logora/debate.source.source_modal';
+```
+
+```js
+    <IntlProvider locale="en">
+        <ModalProvider>
+            <SourceModal 
+                onAddSource={() => null}
+                onHideModal={() => null}
+            />
+        </ModalProvider>
+    </IntlProvider>
+```

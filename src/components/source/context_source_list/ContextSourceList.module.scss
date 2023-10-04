@@ -1,0 +1,31 @@
+@import '~@logora/debate.styles.theme/_theme.scss';
+@import '~@logora/debate.styles.spacing/_spacing.scss';
+
+.container {
+    @include p(4, sm);
+    @include p(3, xs);
+    background-color: $background-color-primary;
+    box-shadow: $box-shadow;
+    border: $box-border;
+    border-radius: $box-border-radius;
+    display: flex;
+    flex-direction: column;
+    gap: $spacer-lg;
+    @include media-breakpoint-down(xs) {
+        gap: $spacer;
+    }
+}
+
+.title {
+    font-size: $font-size-large;
+    font-weight: $font-weight-bold;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: $spacer-lg;
+    @include media-breakpoint-down(xs) {
+        gap: $spacer;
+    }
+}
