@@ -1,0 +1,9 @@
+@import '~@logora/debate.styles.spacing/_spacing.scss';
+
+.adContainer {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: center !important;
+  @include my(2, xs);
+}
