@@ -12,7 +12,7 @@ export const AdUnit = ({ id, adPath, sizes = [], targeting, enableDidomi = false
             window.googletag = window.googletag || {cmd: []};
             let slot = {};
             googletag.cmd.push(function() {
-                slot = googletag.defineSlot(path, sizes, id)
+                slot = googletag.defineSlot(adPath, sizes, id)
                     .setTargeting('origine', ['logora'])
                     .addService(googletag.pubads());
                 for (const [key, value] of Object.entries(targeting || {})) {
