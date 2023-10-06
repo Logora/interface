@@ -83,4 +83,22 @@ describe('WithAd', () => {
         expect(screen.getByText("Hello world")).toBeTruthy();
         expect(document.getElementById('ad-id')).toBeNull();
     });
+
+    it('should pass extra props to children', () => {
+        render(
+            <WithAd
+                id={"ad-id"}
+                adPath={"/path"}
+                sizes={[[300, 250]]}
+                index={1}
+                frequency={2}
+                data-testid={"children-testid"}
+            >
+                <div>Hello world</div>
+            </WithAd>
+        );
+
+        expect(screen.getByText("Hello world")).toBeTruthy();
+        expect(screen.getByTestId("children-testid")).toHaveTextContent("Hello world");
+    });
 });
