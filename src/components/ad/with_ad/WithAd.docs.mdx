@@ -1,0 +1,30 @@
+---
+description: A wrapper to display ads below elements
+labels: ['ad', 'google-ad-manager']
+---
+
+The WithAd wrapper allows to display an ad unit below components.
+
+It is useful in lists when the frequency of ads needs to be controlled.
+
+Use the `index` and `frequency` props to displays ads every {frequency} items.
+
+Other props such as ad path, sizes, targeting and consent management are passed to the underlying [AdUnit](bit.cloud/logora/debate/ad/ad_unit) component.
+
+### Component usage
+
+```js
+    import { WithAd } from '@logora/debate.ad.with_ad';
+```
+
+```js
+<WithAd
+    index={2}
+    id={"ad-id"}
+    adPath={"/path"}
+    sizes={[[300, 250]]}
+    frequency={3}
+>
+    <div>Hello world !</div>
+</WithAd>
+```
