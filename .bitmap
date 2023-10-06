@@ -55,7 +55,17 @@
         "scope": "",
         "version": "",
         "mainFile": "index.js",
-        "rootDir": "src/components/ad/with_ad"
+        "rootDir": "src/components/ad/with_ad",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "peerDependencies": {
+                        "react": "^17.0.0 || ^18.0.0",
+                        "react-dom": "^17.0.0 || ^18.0.0"
+                    }
+                }
+            }
+        }
     },
     "data/axios_client": {
         "scope": "logora.debate",
