@@ -273,6 +273,12 @@
         "mainFile": "_theme.scss",
         "rootDir": "src/components/styles/theme"
     },
+    "tag/tag": {
+        "scope": "logora.debate",
+        "version": "0.0.18",
+        "mainFile": "index.js",
+        "rootDir": "src/components/tag/tag"
+    },
     "text/expandable_text": {
         "scope": "logora.debate",
         "version": "0.0.19",
