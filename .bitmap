@@ -57,11 +57,70 @@
         "mainFile": "index.js",
         "rootDir": "src/components/ad/with_ad"
     },
+    "context/config_provider": {
+        "scope": "logora.debate",
+        "version": "0.0.5",
+        "mainFile": "index.js",
+        "rootDir": "src/components/context/config_provider",
+        "config": {
+            "teambit.component/deprecation": {
+                "deprecate": true,
+                "newId": {
+                    "name": "data/config_provider",
+                    "scope": "logora.debate"
+                }
+            },
+            "teambit.component/remove": {
+                "removed": true
+            }
+        }
+    },
     "data/axios_client": {
         "scope": "logora.debate",
         "version": "0.0.3",
         "mainFile": "index.js",
         "rootDir": "src/components/data/axios_client"
+    },
+    "data/config_provider": {
+        "scope": "",
+        "version": "",
+        "mainFile": "index.js",
+        "rootDir": "src/components/data/config_provider",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "devDependencies": {
+                        "@types/testing-library__jest-dom": "-",
+                        "@types/jest": "-"
+                    },
+                    "peerDependencies": {
+                        "react": "^17.0.0||^18.0.0",
+                        "react-dom": "^17.0.0||^18.0.0"
+                    }
+                }
+            },
+            "teambit.react/react": {},
+            "teambit.component/dev-files": {
+                "devFilePatterns": [
+                    "**/*.story.+(js|ts|jsx|tsx)",
+                    "**/*.dev.jsx"
+                ]
+            },
+            "teambit.envs/envs": {},
+            "teambit.compilation/compiler": {},
+            "teambit.harmony/application": {},
+            "teambit.compositions/compositions": {},
+            "teambit.docs/docs": {},
+            "teambit.preview/preview": {},
+            "teambit.pipelines/builder": {},
+            "teambit.component/renaming": {
+                "renamedFrom": {
+                    "scope": "logora.debate",
+                    "name": "context/config_provider",
+                    "version": "0.0.5"
+                }
+            }
+        }
     },
     "data/data_provider": {
         "scope": "logora.debate",
