@@ -19,9 +19,3 @@ ConfigProvider.propTypes = {
   /** Provider children */
   children: PropTypes.node
 };
-
-export const withConfig = Component => props => (
-  <ConfigContext.Consumer>
-    {context => <Component {...props} {...context} />}
-  </ConfigContext.Consumer>
-)
