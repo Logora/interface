@@ -275,7 +275,7 @@
     },
     "tag/tag": {
         "scope": "logora.debate",
-        "version": "0.0.18",
+        "version": "0.0.19",
         "mainFile": "index.js",
         "rootDir": "src/components/tag/tag"
     },
