@@ -13,7 +13,13 @@ export const Select = ({ options, defaultOption, onChange, resetSelect = false, 
 		if (resetSelect === true) {
 			setCurrentOption(defaultOptionValue);
 		}
-	}, [resetSelect])
+	}, [resetSelect]);
+
+	useEffect(() => {
+        if (defaultOption) {
+		    setCurrentOption(options.filter(elm => elm.value == defaultOption)[0]);
+        }
+	}, [defaultOption]);
 
 	const handleSelectOption = (option) => {
 		setCurrentOption(option);

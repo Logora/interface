@@ -530,8 +530,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "ad_unit-9bc477@workspace:src/components/ad/ad_unit"
   peerDependencies:
-    react: ^16.8.0 || ^17.0.0
-    react-dom: ^16.8.0 || ^17.0.0
+    react: ^17.0.0 || ^18.0.0
+    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
@@ -2217,3 +2217,12 @@ __metadata:
   checksum: 711ffc8ef891ca6597b19539075ec3e08bb9b4c2ca1f78887e3c07a977ab91ac1421940505a197758fb5939aa9524976d0a5bbcac34d07ed6faa75cedbb17206
   languageName: node
   linkType: hard
+
+"with_ad-f236a2@workspace:src/components/ad/with_ad":
+  version: 0.0.0-use.local
+  resolution: "with_ad-f236a2@workspace:src/components/ad/with_ad"
+  peerDependencies:
+    react: ^17.0.0 || ^18.0.0
+    react-dom: ^17.0.0 || ^18.0.0
+  languageName: unknown
+  linkType: soft
