@@ -89,7 +89,7 @@
     },
     "dialog/dropdown": {
         "scope": "logora.debate",
-        "version": "0.0.1",
+        "version": "0.0.2",
         "mainFile": "index.js",
         "rootDir": "src/components/dialog/dropdown"
     },
@@ -173,7 +173,7 @@
     },
     "input/select": {
         "scope": "logora.debate",
-        "version": "0.0.23",
+        "version": "0.0.24",
         "mainFile": "index.js",
         "rootDir": "src/components/input/select"
     },
