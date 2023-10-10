@@ -15,7 +15,7 @@ export const UserContentSkeletonWithBorder = () => {
 
 export const UserContentSkeletonWithoutBody = () => {
     return (
-        <UserContentSkeleton hideBody />
+        <UserContentSkeleton numberLines={0} />
     );
 };
 
@@ -28,6 +28,18 @@ export const UserContentSkeletonWithTwoLines = () => {
 export const UserContentSkeletonWithoutAnimation = () => {
     return (
         <UserContentSkeleton enableAnimation={false} />
+    );
+};
+
+export const UserContentSkeletonWithTag = () => {
+    return (
+        <UserContentSkeleton tag={"Rock"} />
+    );
+};
+
+export const UserContentSkeletonWithTagAndBorder = () => {
+    return (
+        <UserContentSkeleton border tag={"Rock"} />
     );
 };
 

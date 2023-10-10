@@ -63,6 +63,12 @@
         "mainFile": "index.js",
         "rootDir": "src/components/data/axios_client"
     },
+    "data/config_provider": {
+        "scope": "logora.debate",
+        "version": "0.0.2",
+        "mainFile": "index.js",
+        "rootDir": "src/components/data/config_provider"
+    },
     "data/data_provider": {
         "scope": "logora.debate",
         "version": "0.0.7",
@@ -209,7 +215,7 @@
     },
     "skeleton/user_content_skeleton": {
         "scope": "logora.debate",
-        "version": "0.0.15",
+        "version": "0.0.17",
         "mainFile": "index.js",
         "rootDir": "src/components/skeleton/user_content_skeleton"
     },
@@ -275,7 +281,7 @@
     },
     "tag/tag": {
         "scope": "logora.debate",
-        "version": "0.0.19",
+        "version": "0.0.20",
         "mainFile": "index.js",
         "rootDir": "src/components/tag/tag"
     },

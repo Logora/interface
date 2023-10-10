@@ -10,8 +10,8 @@ describe('UserContentSkeleton', () => {
         expect(container.getByTestId('user-content-skeleton')).toBeTruthy();
     });
 
-    it('hides the body when hideBody prop is true', () => {
-        const container = render(<UserContentSkeleton hideBody={true} />);
+    it('hides the body when numberLines prop is 0', () => {
+        const container = render(<UserContentSkeleton numberLines={0} />);
 
         expect(screen.getByTestId('user-content-skeleton')).toBeTruthy();
         expect(screen.queryByTestId('skeleton-body')).toBeNull();
@@ -45,5 +45,11 @@ describe('UserContentSkeleton', () => {
         );
         expect(getByTestId('user-content-skeleton')).toBeTruthy();
         expect(getByText('My child')).toBeTruthy();
+    });
+
+    it('displays tag if passed', () => {
+        const { getByTestId, getByText } = render(<UserContentSkeleton tag={"Music"} />);
+        expect(getByTestId('user-content-skeleton')).toBeTruthy();
+        expect(getByText('Music')).toBeTruthy();
     });
 });

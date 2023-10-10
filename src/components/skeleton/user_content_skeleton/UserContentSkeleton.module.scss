@@ -5,6 +5,28 @@
     position: relative;
 }
 
+.skeletonHeader {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: flex-start !important;
+}
+
+.skeletonHeaderLines {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    text-align: left;
+    width: 100%;
+    @include m(2, xs);
+}
+
+.skeletonBody {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    @include mt(2, xs);
+}
+
 .childrenLayer {
     position: absolute;  
     top: 50%;
@@ -22,4 +44,32 @@
     box-shadow: $box-shadow;
     border: $box-border;
     @include p(3, xs);
+}
+
+.tagContainer {
+    display: flex !important;
+	flex-direction: column !important;
+	align-items: flex-end !important;
+	justify-content: flex-start !important;
+	padding: 0 !important;
+	width: max-content;
+	margin-left: auto;
+}
+
+.tagBox {
+	font-weight: $font-weight-bold;
+	display: flex !important;
+	align-items: center !important;
+	justify-content: flex-end !important;
+	border-radius: $box-border-radius;
+	background-color: $call-primary;
+}
+
+.tag {
+	font-size: $font-size-extra-small;
+	color: $text-light;
+	@include line-clamp(2);
+	max-height: 3.4em;
+	@include px(2.5, xs);
+	@include py(2, xs);
 }

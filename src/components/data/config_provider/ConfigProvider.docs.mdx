@@ -1,0 +1,26 @@
+---
+description: A context provider to store configuration and routes.
+labels: ['config', 'config-provider']
+---
+
+ConfigProvider is a context component to store configuration variables and routes.
+
+To use the context, first wrap your application with _ConfigProvider_. Then, use _useConfig_ and _useRoutes_ hooks to get config and routes.
+
+### Component usage
+```js
+import { ConfigProvider, useConfig, useRoutes } from '@logora/debate.data.config_provider';
+```
+
+```js
+const ComponentWithConfig = () => {
+	const config = useConfig();
+	const routes = useRoutes();
+
+	return <div>Hello world</div>;
+}
+
+<ConfigProvider config={layout: "compact"}>
+    <ComponentWithConfig />
+</ConfigProvider>
+```
