@@ -82,7 +82,6 @@ describe('Select', () => {
         expect(dropdown.queryByText(/Option 3/i)).toBeNull();
     });
 
-
     it('should call onChange when clicking on option', async () => {
         const callback = jest.fn();
 
@@ -96,5 +95,15 @@ describe('Select', () => {
         expect(callback).toHaveBeenCalledTimes(1);
         expect(dropdown.queryByText(/Option 1/i)).toBeNull();
         expect(dropdown.queryByText(/Option 3/i)).toBeNull();
+    });
+
+    it('should display default option', () => {
+        const { getByText, queryByText } = render(
+            <Select options={options} defaultOption={"Option 2"} /> 
+        );
+        
+        expect(getByText(/Option 2/i)).toBeTruthy();
+        expect(queryByText(/Option 1/i)).toBeNull();
+        expect(queryByText(/Option 3/i)).toBeNull();
     });
 });

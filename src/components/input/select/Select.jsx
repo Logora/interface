@@ -6,7 +6,7 @@ import cx from "classnames";
 import PropTypes from "prop-types";
 
 export const Select = ({ options, defaultOption, onChange, resetSelect = false, className }) => {
-	const defaultOptionValue = defaultOption ? options.filter(elm => elm.value == defaultOption)[0] : options[0];
+	const defaultOptionValue = defaultOption ? options.filter(elm => elm.name == defaultOption)[0] : options[0];
 	const [currentOption, setCurrentOption] = useState(defaultOptionValue);
 	
 	useEffect(() => {
@@ -17,7 +17,7 @@ export const Select = ({ options, defaultOption, onChange, resetSelect = false, 
 
 	useEffect(() => {
         if (defaultOption) {
-		    setCurrentOption(options.filter(elm => elm.value == defaultOption)[0]);
+		    setCurrentOption(options.filter(elm => elm.name == defaultOption)[0]);
         }
 	}, [defaultOption]);
 
