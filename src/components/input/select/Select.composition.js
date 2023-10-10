@@ -4,19 +4,19 @@ import { Select } from './Select';
 const options = [
     {
         dataTid: "action_sort_arguments_newest",
-        name: "Most recent",
+        name: "recency",
         value: "trending",
         text: "Most recent"
     },
     {
         dataTid: "action_sort_arguments_relevant",
-        name: "Most relevant",
+        name: "relevance",
         value: "-created_at",
         text: "Most relevant"
     },
     {
         dataTid: "action_sort_arguments_oldest",
-        name: "Oldest",
+        name: "oldest",
         value: "+created_at",
         text: "Oldest"
     }
@@ -30,6 +30,12 @@ export const DefaultSelect = () => {
 
 export const SelectWithDefault = () => {
     return (
-        <Select options={options} defaultOption={"-created_at"} />
+        <Select options={options} defaultOption={"relevance"} />
+    )
+};
+
+export const DisabledSelect = () => {
+    return (
+        <Select options={options} disabled />
     )
 };

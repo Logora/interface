@@ -38,6 +38,26 @@ describe('Dropdown', () => {
 		expect(dropdown.getByText(/Child 2/i)).toBeTruthy();
 	});
 
+	it('should not display children on click if disabled', async () => {
+		const dropdown = render(
+			<Dropdown disabled>
+				<div>Title</div>
+				<>
+					<p>Child 1</p>
+					<p>Child 2</p>
+				</>
+			</Dropdown>
+		);
+		const dropdownTitle = dropdown.getByText(/Title/i);
+		expect(dropdown.queryByText(/Child 1/i)).toBeNull();
+		expect(dropdown.queryByText(/Child 2/i)).toBeNull();
+
+		await userEvent.click(dropdownTitle);
+		
+		expect(dropdown.queryByText(/Child 1/i)).toBeNull();
+		expect(dropdown.queryByText(/Child 2/i)).toBeNull();
+	});
+
 	it('should close on click outside', async () => {
 		const dropdown = render(
 			<Dropdown>

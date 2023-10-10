@@ -5,7 +5,7 @@ import styles from "./Select.module.scss";
 import cx from "classnames";
 import PropTypes from "prop-types";
 
-export const Select = ({ options, defaultOption, onChange, resetSelect = false, className }) => {
+export const Select = ({ options, defaultOption, onChange, resetSelect = false, disabled = false, className }) => {
 	const defaultOptionValue = defaultOption ? options.filter(elm => elm.name == defaultOption)[0] : options[0];
 	const [currentOption, setCurrentOption] = useState(defaultOptionValue);
 	
@@ -47,11 +47,11 @@ export const Select = ({ options, defaultOption, onChange, resetSelect = false, 
 	return (
 		<div className={styles.selectContainer}>
 			<Dropdown>
-				<div className={cx(styles.selectInput, { [className]: className })}>
+				<div className={cx(styles.selectInput, { [className]: className, [styles.disabled]: disabled })}>
 					<span className={styles.currentOptionText}>{currentOption.text}</span>{" "}
 					<SmallArrowIcon className={styles.arrowDown} height={16} width={16} />
 				</div>
-				{ options.map(displayOption) }
+				{ !disabled && options.map(displayOption) }
 			</Dropdown>
 		</div>
 	);
@@ -66,6 +66,13 @@ Select.propTypes = {
 	onChange: PropTypes.func,
 	/** If `true`, will reset to default option */
 	resetSelect: PropTypes.bool,
+	/** Disable input */
+	disabled: PropTypes.bool,
 	/**  Class name to style the input */
 	className: PropTypes.string
 };
+
+Select.defaultProps = {
+	resetSelect: false,
+	disabled: false
+}

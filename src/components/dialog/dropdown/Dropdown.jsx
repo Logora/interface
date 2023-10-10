@@ -4,15 +4,17 @@ import cx from "classnames";
 import styles from "./Dropdown.module.scss";
 import PropTypes from "prop-types";
 
-export const Dropdown = ({ onClick, horizontalPosition = "left", className, dropdownClassName, children }) => {
+export const Dropdown = ({ onClick, horizontalPosition = "left", disabled = false, className, dropdownClassName, children }) => {
     const [active, setActive] = useState(false);
     const dropdownRef = useRef(null);
 
 	const onToggleClick = () => {
-        if (onClick) {
-			onClick();
-		}
-		setActive(!active);
+        if(!disabled) {
+            if (onClick) {
+                onClick();
+            }
+            setActive(!active);
+        }
 	};
 
     useOnClickOutside(dropdownRef, () => setActive(false));
@@ -45,6 +47,8 @@ Dropdown.propTypes = {
     onClick: PropTypes.func,
     /** Dropdown horizontal alignment, can be `left`, `center` or `right` */
     horizontalPosition: PropTypes.string.isRequired,
+    /** Disable dropdown */
+    disabled: PropTypes.bool,
     /** Class name passed to the root container */
     className: PropTypes.string,
     /** Class name passed to the dropdown */
@@ -54,5 +58,6 @@ Dropdown.propTypes = {
 };
 
 Dropdown.defaultProps ={
-    horizontalPosition: "left"
+    horizontalPosition: "left",
+    disabled: false
 }

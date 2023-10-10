@@ -40,14 +40,25 @@ describe('Select', () => {
             <Select options={options} /> 
         );
         const dropdownFirstOption = dropdown.getByText(/Option 1/i);
-
         expect(dropdown.queryByText(/Option 2/i)).toBeNull();
         expect(dropdown.queryByText(/Option 3/i)).toBeNull();
 
         await userEvent.click(dropdownFirstOption);
-        
         expect(dropdown.getByText(/Option 2/i)).toBeTruthy();
         expect(dropdown.getByText(/Option 3/i)).toBeTruthy();
+    });
+
+    it('should not display options on click if disabled', async () => {
+        const dropdown = render(
+            <Select disabled options={options} /> 
+        );
+        const dropdownFirstOption = dropdown.getByText(/Option 1/i);
+        expect(dropdown.queryByText(/Option 2/i)).toBeNull();
+        expect(dropdown.queryByText(/Option 3/i)).toBeNull();
+        
+        await userEvent.click(dropdownFirstOption);
+        expect(dropdown.queryByText(/Option 2/i)).toBeNull();
+        expect(dropdown.queryByText(/Option 3/i)).toBeNull();
     });
 
     it('should close on option click', async () => {

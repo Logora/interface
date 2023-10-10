@@ -13,6 +13,18 @@ export const DefaultDropdown = () => {
     )
 };
 
+export const DisabledDropdown = () => {
+    return (
+        <Dropdown disabled>
+            <div style={{ padding: "5px 15px", border: "1px solid black", borderRadius: "6px" }}>Disabled</div> 
+            <div>
+                <p>Child 1</p>
+                <p>Child 2</p>
+            </div>
+        </Dropdown>
+    )
+}
+
 export const CenterDropdown = () => {
     return (
         <Dropdown horizontalPosition={'center'}>

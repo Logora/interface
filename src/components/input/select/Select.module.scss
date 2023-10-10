@@ -34,6 +34,14 @@
 	&::first-letter {
 		text-transform: capitalize;
 	}
+	&.disabled {
+		cursor: not-allowed;
+		background-color: $text-tertiary;
+		border: 1px solid $darken-text-tertiary;
+		& ~ label {
+		  color: $darkest-text-tertiary;
+		}
+	}
 }
 
 .currentOptionText { 
