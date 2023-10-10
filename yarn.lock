@@ -1640,6 +1640,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"point_box-e43c6d@workspace:src/components/point/point_box":
+  version: 0.0.0-use.local
+  resolution: "point_box-e43c6d@workspace:src/components/point/point_box"
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0
+    react-dom: ^16.8.0 || ^17.0.0
+  languageName: unknown
+  linkType: soft
+
 "pretty-format@npm:^26.0.0, pretty-format@npm:^26.6.2":
   version: 26.6.2
   resolution: "pretty-format@npm:26.6.2"

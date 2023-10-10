@@ -1,0 +1,37 @@
+@import '~@logora/debate.styles.theme/_theme.scss';
+@import '~@logora/debate.styles.spacing/_spacing.scss';
+
+.container {
+    @include p(3, xs);
+    display: flex;
+    gap: $spacer-md;
+    position: relative;
+    font-size: $font-size-small;
+    border-radius: $box-border-radius;
+    box-shadow: $box-shadow;
+    border: $box-border;
+    height: fit-content;
+}
+
+.icon {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    min-width: 30px;
+    max-height: 30px;
+    border-radius: 50%;
+    background-color: $call-primary;
+    svg {
+        position: absolute;
+        transform: translate(-50%, -50%);
+        top: 50%;
+        left: 50%;
+        fill: $text-light !important;
+    }
+}
+
+.timeAgo {
+    font-weight: $font-weight-normal;
+    color: $text-secondary;
+    font-size: $font-size-extra-small;
+}
