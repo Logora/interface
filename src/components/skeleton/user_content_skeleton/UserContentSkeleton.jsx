@@ -5,18 +5,27 @@ import styles from './UserContentSkeleton.module.scss';
 import cx from 'classnames';
 import PropTypes from "prop-types";
 
-export const UserContentSkeleton = ({ enableAnimation = true, hideBody = false, numberLines = 4, border = false, children}) => {
+export const UserContentSkeleton = ({ enableAnimation = true, numberLines = 4, border = false, tag, tagClassName, children}) => {
   return (
     <div data-testid={"user-content-skeleton"} className={cx(styles.skeletonContainer, { [styles.border]: border })}>
-      <div style={{ display: "flex", flexDirection: "row", justifycontent: "flex-start" }}>
+      <div className={styles.skeletonHeader}>
         <Skeleton enableAnimation={enableAnimation} circle={true} height={60} width={60} />
-        <div style={{ display: "flex", flexDirection: "column", justifycontent: "flex-start", width: "100%", margin: "10px" }}>
+        <div className={styles.skeletonHeaderLines}>
           <Skeleton enableAnimation={enableAnimation} />
           <Skeleton enableAnimation={enableAnimation} width={160} />
         </div>
+        { tag &&
+            <div className={styles.tagContainer}>
+                <div className={cx(styles.tagBox, tagClassName)}>
+                    <div className={styles.tag}>
+                        { tag }
+                    </div>
+                </div>
+            </div>
+        }
       </div>
-      { hideBody ? null :
-        <div data-testid={"skeleton-body"} style={{ marginTop: "10px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
+      { numberLines > 0 &&
+        <div data-testid={"skeleton-body"} className={styles.skeletonBody}>
           <Skeleton enableAnimation={enableAnimation} count={numberLines} />
         </div>
       }
@@ -32,19 +41,20 @@ export const UserContentSkeleton = ({ enableAnimation = true, hideBody = false, 
 UserContentSkeleton.propTypes = {
   /** Enable skeleton animation */
   enableAnimation: PropTypes.bool,
-  /** Hide skeleton body */
-  hideBody: PropTypes.bool,
   /** Will add a border to the box if `true` */
   border: PropTypes.bool,
   /** Number of skeleton lines in the body */
   numberLines: PropTypes.number,
+  /** Number of skeleton lines in the body */
+  tag: PropTypes.string,
+  /** Number of skeleton lines in the body */
+  tagClassName: PropTypes.string,
   /** Children displayed at the center of the skeleton */
   children: PropTypes.node,
 };
 
 UserContentSkeleton.defaultProps = {
   enableAnimation: true,
-  hideBody: false,
   border: false,
   numberLines: 4
 };
