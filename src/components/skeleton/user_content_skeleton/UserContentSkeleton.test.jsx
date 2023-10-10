@@ -48,7 +48,7 @@ describe('UserContentSkeleton', () => {
     });
 
     it('displays tag if passed', () => {
-        const { getByTestId } = render(<UserContentSkeleton tag={"Music"} />);
+        const { getByTestId, getByText } = render(<UserContentSkeleton tag={"Music"} />);
         expect(getByTestId('user-content-skeleton')).toBeTruthy();
         expect(getByText('Music')).toBeTruthy();
     });
