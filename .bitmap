@@ -101,7 +101,7 @@
     },
     "dialog/tooltip": {
         "scope": "logora.debate",
-        "version": "0.0.2",
+        "version": "0.0.3",
         "mainFile": "index.js",
         "rootDir": "src/components/dialog/tooltip"
     },
@@ -311,13 +311,13 @@
     },
     "user/avatar": {
         "scope": "logora.debate",
-        "version": "0.0.21",
+        "version": "0.0.22",
         "mainFile": "index.js",
         "rootDir": "src/components/user/avatar"
     },
     "user/avatar_selector": {
         "scope": "logora.debate",
-        "version": "0.0.1",
+        "version": "0.0.2",
         "mainFile": "index.js",
         "rootDir": "src/components/user/avatar_selector"
     },
