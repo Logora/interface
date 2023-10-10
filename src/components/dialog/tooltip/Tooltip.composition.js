@@ -8,9 +8,11 @@ export const DefaultTooltip = () => {
 };
 
 export const TooltipWithoutText = () => {
-    return <Tooltip text="Tooltip text">
-        <h3>Default tooltip</h3>
-    </Tooltip>;
+    return (
+        <Tooltip>
+            <h3>Default tooltip</h3>
+        </Tooltip>
+    );
 };
 
 export const HoverAndClickTooltip = () => {
