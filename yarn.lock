@@ -781,9 +781,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"config_provider-37d7f8@workspace:src/components/context/config_provider":
+"config_provider-df02ba@workspace:src/components/data/config_provider":
   version: 0.0.0-use.local
-  resolution: "config_provider-37d7f8@workspace:src/components/context/config_provider"
+  resolution: "config_provider-df02ba@workspace:src/components/data/config_provider"
   peerDependencies:
     react: ^17.0.0||^18.0.0
     react-dom: ^17.0.0||^18.0.0
