@@ -16,6 +16,8 @@
     flex-direction: column !important;
     justify-content: flex-start !important;
     text-align: left;
+    width: 100%;
+    @include m(2, xs);
 }
 
 .skeletonBody {
