@@ -1,5 +1,5 @@
 import React from "react";
-import { ConfigProvider } from "./ConfigProvider";
+import { ConfigContext } from "./ConfigProvider";
 
 export const withConfig = Component => props => (
     <ConfigContext.Consumer>
