@@ -3,23 +3,26 @@ import { fireEvent, render } from "@testing-library/react";
 import { Tooltip } from "./Tooltip";
 
 describe('Tooltip', () => {
-    it('should render with the correct text', () => {
+    it('should render with the correct text', async () => {
         const tooltip = render(<Tooltip text={"hover tooltip"} onClickText={"click"}>Child</Tooltip>);
-        const renderedTooltip = tooltip.getByText(/child/i);
-        expect(renderedTooltip).toBeTruthy();
+        expect(tooltip.getByText(/child/i)).toBeTruthy();
+
+        fireEvent.mouseOver(tooltip.getByText(/child/i));
+        expect(tooltip.getByText(/hover tooltip/i)).toBeTruthy();
+    });
+
+    it('should render children only if no text is passed', () => {
+        const tooltip = render(<Tooltip>Child</Tooltip>);
+        expect(tooltip.getByText(/child/i)).toBeTruthy();
+
+        fireEvent.mouseOver(tooltip.getByText(/child/i));
+        expect(tooltip.queryByText(/hover tooltip/i)).toBeNull();
     });
 
     it('calls onClickText props when clicked', () => {
         const tooltip = render(<Tooltip text={"hover tooltip"} onClickText={"click"}>Child</Tooltip>);
         fireEvent.click(document.querySelector('.tooltipChild'));
         expect(tooltip.getByText(/click/i)).toBeTruthy();
-    });
-
-    it('calls text props when hover', () => {
-        const tooltip = render(<Tooltip text={"hover tooltip"} onClickText={"click"}>Child</Tooltip>);
-        const renderedTooltip = tooltip.getByText(/hover tooltip/i);
-        fireEvent.mouseOver(renderedTooltip);
-        expect(renderedTooltip).toBeTruthy();
     });
 
     it('should be at the props position', () => {

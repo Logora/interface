@@ -7,6 +7,12 @@ export const DefaultTooltip = () => {
     </Tooltip>;
 };
 
+export const TooltipWithoutText = () => {
+    return <Tooltip text="Tooltip text">
+        <h3>Default tooltip</h3>
+    </Tooltip>;
+};
+
 export const HoverAndClickTooltip = () => {
     return <Tooltip text="Hover tooltip" onClickText="Clicked!">
         <h4>Hover and click tooltip</h4>
