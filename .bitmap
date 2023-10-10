@@ -124,45 +124,10 @@
         "rootDir": "src/components/forms/form"
     },
     "gamification/point_box": {
-        "scope": "",
-        "version": "",
+        "scope": "logora.debate",
+        "version": "0.0.1",
         "mainFile": "index.js",
-        "rootDir": "src/components/gamification/point_box",
-        "config": {
-            "teambit.dependencies/dependency-resolver": {
-                "policy": {
-                    "devDependencies": {
-                        "@types/jest": "-",
-                        "@types/testing-library__jest-dom": "-"
-                    },
-                    "dependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0"
-                    }
-                }
-            },
-            "teambit.react/react": {},
-            "teambit.component/dev-files": {
-                "devFilePatterns": [
-                    "**/*.story.+(js|ts|jsx|tsx)",
-                    "**/*.dev.jsx"
-                ]
-            },
-            "teambit.envs/envs": {},
-            "teambit.compositions/compositions": {},
-            "teambit.docs/docs": {},
-            "teambit.preview/preview": {},
-            "teambit.pipelines/builder": {},
-            "teambit.harmony/application": {},
-            "teambit.compilation/compiler": {},
-            "teambit.component/renaming": {
-                "renamedFrom": {
-                    "scope": "logora.debate",
-                    "name": "point/point_box",
-                    "version": "0.0.2"
-                }
-            }
-        }
+        "rootDir": "src/components/gamification/point_box"
     },
     "hooks/use_css_theme": {
         "scope": "logora.debate",
@@ -235,24 +200,6 @@
         "version": "0.0.26",
         "mainFile": "index.js",
         "rootDir": "src/components/list/pagination"
-    },
-    "point/point_box": {
-        "scope": "logora.debate",
-        "version": "0.0.2",
-        "mainFile": "index.js",
-        "rootDir": "src/components/point/point_box",
-        "config": {
-            "teambit.component/deprecation": {
-                "deprecate": true,
-                "newId": {
-                    "name": "gamification/point_box",
-                    "scope": "logora.debate"
-                }
-            },
-            "teambit.component/remove": {
-                "removed": true
-            }
-        }
     },
     "section/section_box": {
         "scope": "logora.debate",
