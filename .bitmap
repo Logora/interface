@@ -75,6 +75,12 @@
         "mainFile": "index.js",
         "rootDir": "src/components/data/data_provider"
     },
+    "dialog/alert_dialog": {
+        "scope": "logora.debate",
+        "version": "0.0.14",
+        "mainFile": "index.js",
+        "rootDir": "src/components/dialog/alert_dialog"
+    },
     "dialog/announcement_dialog": {
         "scope": "logora.debate",
         "version": "0.0.19",

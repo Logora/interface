@@ -532,6 +532,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"alert_dialog-4d4319@workspace:src/components/dialog/alert_dialog":
+  version: 0.0.0-use.local
+  resolution: "alert_dialog-4d4319@workspace:src/components/dialog/alert_dialog"
+  languageName: unknown
+  linkType: soft
+
 "announcement_dialog-50f3af@workspace:src/components/dialog/announcement_dialog":
   version: 0.0.0-use.local
   resolution: "announcement_dialog-50f3af@workspace:src/components/dialog/announcement_dialog"
