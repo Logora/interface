@@ -77,7 +77,7 @@
     },
     "dialog/alert_dialog": {
         "scope": "logora.debate",
-        "version": "0.0.14",
+        "version": "0.0.15",
         "mainFile": "index.js",
         "rootDir": "src/components/dialog/alert_dialog"
     },
