@@ -39,7 +39,6 @@ export const Select = ({ options, defaultOption, onChange, resetSelect = false, 
 				onClick={() => handleSelectOption(option)}
 			>
 				{option.text}
-				{currentOption.value == option.value && option.value != "" ? <CheckboxIcon className={styles.checkBox} width={16} height={16} />  : null}
 			</div>
 		);
 	};
