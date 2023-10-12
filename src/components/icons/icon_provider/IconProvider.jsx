@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { IconContext } from './IconContext';
 import PropTypes from "prop-types";
 
@@ -7,7 +7,7 @@ export const IconProvider = ({ libraryName = "regular", children }) => {
 
     const importIconLibrary = async () => {
         if(libraryName === "regular") {
-            return import("@logora/debate.icons.regular_icons");
+            return lazy(() => import("@logora/debate.icons.regular_icons"));
         }
     };
 
@@ -25,7 +25,9 @@ export const IconProvider = ({ libraryName = "regular", children }) => {
 
     return (
         <IconContext.Provider value={{ iconLibrary }}>
-            {children}
+            <Suspense fallback={null}>
+                { children }
+            </Suspense>
         </IconContext.Provider>
     );
 }
