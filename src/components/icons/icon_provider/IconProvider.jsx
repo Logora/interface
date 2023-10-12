@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, lazy } from 'react';
 import { IconContext } from './IconContext';
 import PropTypes from "prop-types";
 
@@ -7,13 +7,11 @@ export const IconProvider = ({ libraryName = "regular", children }) => {
 
     useEffect(() => {
         if(libraryName === "regular") {
-            (() => import(`@logora/debate.icons.regular_icons`))().then((library) => {
-                setIconLibrary(library);
-            });
+            const IconLibrary = lazy(() => import(`@logora/debate.icons.regular_icons`));
+            setIconLibrary(IconLibrary);
         } else if(libraryName === "spiegel") {
-            (() => import(`@logora/debate.icons.spiegel_icons`))().then((library) => {
-                setIconLibrary(library);
-            });
+            const IconLibrary = lazy(() => import(`@logora/debate.icons.spiegel_icons`));
+            setIconLibrary(IconLibrary);
         }
     }, [libraryName]);
 
