@@ -18,7 +18,6 @@ export const IconProvider = ({ libraryName = "regular", children }) => {
                 setIconLibrary(null);
             }
         };
-
         loadIconLibrary();
     }, [libraryName]);
 
