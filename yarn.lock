@@ -52,11 +52,11 @@ __metadata:
   linkType: hard
 
 "@babel/runtime@npm:^7.1.2, @babel/runtime@npm:^7.12.13, @babel/runtime@npm:^7.12.5":
-  version: 7.23.1
-  resolution: "@babel/runtime@npm:7.23.1"
+  version: 7.23.2
+  resolution: "@babel/runtime@npm:7.23.2"
   dependencies:
     regenerator-runtime: ^0.14.0
-  checksum: 0cd0d43e6e7dc7f9152fda8c8312b08321cda2f56ef53d6c22ebdd773abdc6f5d0a69008de90aa41908d00e2c1facb24715ff121274e689305c858355ff02c70
+  checksum: 6c4df4839ec75ca10175f636d6362f91df8a3137f86b38f6cd3a4c90668a0fe8e9281d320958f4fbd43b394988958585a17c3aab2a4ea6bf7316b22916a371fb
   languageName: node
   linkType: hard
 
@@ -284,7 +284,7 @@ __metadata:
     "@types/testing-library__jest-dom": 5.9.5
     axios: ^1.3.6
     classnames: ^2.3.2
-    core-js: ">=3.25.5 <4.0.0"
+    core-js: ">=3.33.0 <4.0.0"
     prop-types: ^15.8.1
     react: ^17.0.0 || ^18.0.0
     react-dom: ^17.0.0 || ^18.0.0
@@ -796,7 +796,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"core-js@npm:>=3.25.5 <4.0.0, core-js@npm:^3.0.0":
+"core-js@npm:>=3.33.0 <4.0.0, core-js@npm:^3.0.0":
   version: 3.33.0
   resolution: "core-js@npm:3.33.0"
   checksum: dd62217935ac281faf6f833bb306fb891162919fcf9c1f0c975b1b91e82ac09a940f5deb5950bbb582739ceef716e8bd7e4f9eab8328932fb029d3bc2ecb2881
@@ -1156,12 +1156,6 @@ __metadata:
   checksum: b1538270429b13901ee586aa44f4cc3ecd8831c061d06cb8322e50ea17b3f5ce4d0e2e66394761e6c8e152cd8c34fb3b4b690116c6ce2bd45b18c746516cb9e8
   languageName: node
   linkType: hard
-
-"icon-3aea60@workspace:src/components/icons/icon":
-  version: 0.0.0-use.local
-  resolution: "icon-3aea60@workspace:src/components/icons/icon"
-  languageName: unknown
-  linkType: soft
 
 "icon_provider-024301@workspace:src/components/icons/icon_provider":
   version: 0.0.0-use.local
