@@ -29,4 +29,4 @@ Icon.propTypes = {
     className: PropTypes.string,
     /** Extra props passed to the icon */
     rest: PropTypes.object
-  };
+};
