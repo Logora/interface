@@ -1,36 +1,28 @@
-import React, { useState, useEffect, lazy, Suspense } from 'react';
+import React, { useState, useEffect } from 'react';
 import { IconContext } from './IconContext';
 import PropTypes from "prop-types";
 
-export const IconProvider = ({ libraryName = "regular", children }) => {
+export const IconProvider = ({ libraryName, children }) => {
     const [iconLibrary, setIconLibrary] = useState(null);
 
     useEffect(() => {
-        if(libraryName === "regular") {
-            const IconLibrary = lazy(() => import(`@logora/debate.icons.regular_icons`));
-            setIconLibrary(IconLibrary);
-        } else if(libraryName === "spiegel") {
-            const IconLibrary = lazy(() => import(`@logora/debate.icons.spiegel_icons`));
-            setIconLibrary(IconLibrary);
+        if(libraryName) {
+            (() => import(libraryName))().then((library) => {
+                setIconLibrary(library);
+            });
         }
     }, [libraryName]);
 
     return (
-        <Suspense>
-            <IconContext.Provider value={{ iconLibrary }}>
-                { children }
-            </IconContext.Provider>
-        </Suspense>
+        <IconContext.Provider value={{ iconLibrary }}>
+            { children }
+        </IconContext.Provider>
     );
 }
 
 IconProvider.propTypes = {
     /** Icon library name */
-    libraryName: PropTypes.string.isRequired,
+    libraryName: PropTypes.string,
     /** Provider children */
 	children: PropTypes.node,
 };
-
-IconProvider.defaultProps = {
-    libraryName: "regular"
-}
