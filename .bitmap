@@ -199,22 +199,6 @@
         "mainFile": "index.js",
         "rootDir": "src/components/hooks/use_relative_time"
     },
-    "icons/icon": {
-        "scope": "",
-        "version": "",
-        "mainFile": "index.js",
-        "rootDir": "src/components/icons/icon",
-        "config": {
-            "teambit.dependencies/dependency-resolver": {
-                "policy": {
-                    "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0"
-                    }
-                }
-            }
-        }
-    },
     "icons/icon_provider": {
         "scope": "",
         "version": "",
