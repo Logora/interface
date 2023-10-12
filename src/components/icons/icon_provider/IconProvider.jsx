@@ -5,30 +5,22 @@ import PropTypes from "prop-types";
 export const IconProvider = ({ libraryName = "regular", children }) => {
     const [iconLibrary, setIconLibrary] = useState(null);
 
-    const importIconLibrary = async () => {
-        if(libraryName === "regular") {
-            return lazy(() => import("@logora/debate.icons.regular_icons"));
-        }
-    };
-
     useEffect(() => {
-        const loadIconLibrary = async () => {
-            try {
-                const iconLibraryModule = await importIconLibrary();
-                setIconLibrary(iconLibraryModule);
-            } catch(e) {
-                setIconLibrary(null);
-            }
-        };
-        loadIconLibrary();
+        if(libraryName === "regular") {
+            const IconLibrary = lazy(() => import(`@logora/debate.icons.regular_icons`));
+            setIconLibrary(IconLibrary);
+        } else if(libraryName === "spiegel") {
+            const IconLibrary = lazy(() => import(`@logora/debate.icons.spiegel_icons`));
+            setIconLibrary(IconLibrary);
+        }
     }, [libraryName]);
 
     return (
-        <IconContext.Provider value={{ iconLibrary }}>
-            <Suspense fallback={null}>
+        <Suspense>
+            <IconContext.Provider value={{ iconLibrary }}>
                 { children }
-            </Suspense>
-        </IconContext.Provider>
+            </IconContext.Provider>
+        </Suspense>
     );
 }
 

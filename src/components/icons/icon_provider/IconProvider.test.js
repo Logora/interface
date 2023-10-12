@@ -10,7 +10,7 @@ describe('IconProvider', () => {
 	it('should render component with icon library', async () => {
 		act(()=>{
 			render(
-				<IconProvider libraryName={"myLibrary"}>
+				<IconProvider libraryName={"regular"}>
 					<ComponentWithIcons />
 				</IconProvider>
 			);
