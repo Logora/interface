@@ -583,22 +583,9 @@
     "icons/icon_provider": {
         "name": "icons/icon_provider",
         "scope": "logora.debate",
-        "version": "0.0.1",
+        "version": "0.0.2",
         "mainFile": "index.js",
-        "rootDir": "src/components/icons/icon_provider",
-        "config": {
-            "teambit.dependencies/dependency-resolver": {
-                "policy": {
-                    "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0"
-                    },
-                    "dependencies": {
-                        "core-js": "^3.33.0"
-                    }
-                }
-            }
-        }
+        "rootDir": "src/components/icons/icon_provider"
     },
     "icons/regular_icons": {
         "name": "icons/regular_icons",
