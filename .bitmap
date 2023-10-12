@@ -602,6 +602,12 @@
             }
         }
     },
+    "icons/spiegel_icons": {
+        "scope": "",
+        "version": "",
+        "mainFile": "index.js",
+        "rootDir": "src/components/icons/spiegel_icons"
+    },
     "input/checkbox/hidden": {
         "scope": "logora.debate",
         "version": "0.0.4",
