@@ -6,8 +6,12 @@ export const IconProvider = ({ libraryName, children }) => {
     const [iconLibrary, setIconLibrary] = useState(null);
 
     useEffect(() => {
-        if(libraryName) {
-            (() => import(libraryName))().then((library) => {
+        if(libraryName === "regular") {
+            (() => import('@logora/debate.icons.regular_icons'))().then((library) => {
+                setIconLibrary(library);
+            });
+        } else if(libraryName === "spiegel") {
+            (() => import('@logora/debate.icons.spiegel_icons'))().then((library) => {
                 setIconLibrary(library);
             });
         }

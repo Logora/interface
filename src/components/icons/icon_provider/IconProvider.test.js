@@ -10,7 +10,7 @@ describe('IconProvider', () => {
 	it('should render component with icon library', async () => {
 		act(()=>{
 			render(
-				<IconProvider libraryName={"@logora/debate.icons.regular_icons"}>
+				<IconProvider libraryName={"regular"}>
 					<ComponentWithIcons />
 				</IconProvider>
 			);

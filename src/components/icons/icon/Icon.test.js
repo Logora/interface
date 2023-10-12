@@ -7,7 +7,7 @@ describe('Icon', () => {
 	it('should render icon', async () => {
 		act(()=>{
 			render(
-				<IconProvider libraryName={"@logora/debate.icons.regular_icons"}>
+				<IconProvider libraryName={"regular"}>
 					<Icon data-testid={"test-icon"} name={"italic"} />
 				</IconProvider>
 			);
@@ -20,7 +20,7 @@ describe('Icon', () => {
 	it('should render nothing if icon is not found', async () => {
 		act(()=>{
 			render(
-				<IconProvider libraryName={"@logora/debate.icons.regular_icons"}>
+				<IconProvider libraryName={"regular"}>
 					<Icon data-testid={"test-icon"} name={"random"} />
 				</IconProvider>
 			);

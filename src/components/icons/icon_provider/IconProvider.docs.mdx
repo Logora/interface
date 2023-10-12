@@ -7,7 +7,7 @@ IconProvider is a context component to store a library of icons loaded dynamical
 
 Pass a library name, and it will load it and store it in the context.
 
-Library module can be for example : `@logora/debate.icons.regular_icons`.
+Library module must have this format : `@logora/debate.icons.${library_name}_icons`.
 
 It should be used with the [Icon component](https://bit.cloud/logora/debate/icons/icon).
 
@@ -23,7 +23,7 @@ const ComponentWithIcons = () => {
 	return <div>Hello world !</div>
 }
 
-<IconProvider libraryName={"@logora/debate.icons.regular_icons"}>
+<IconProvider libraryName={"regular"}>
     <ComponentWithIcons />
 </IconProvider>
 ```

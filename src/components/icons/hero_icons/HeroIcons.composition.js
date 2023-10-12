@@ -49,7 +49,7 @@ import { User } from "./User"
 import { Votebox } from './Votebox';
 import { Versus } from'./Versus';
 
-export const RegularIconsLibrary = () => {
+export const HeroIconsLibrary = () => {
     return (
         <div style={{display: "flex", justifyContent: "center", flexWrap: "wrap"}}>
             <Alarm width={50} height={50} data-testid={"alarm-icon"} style={{margin: "15px"}} /> 
