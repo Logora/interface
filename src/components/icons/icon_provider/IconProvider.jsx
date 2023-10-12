@@ -8,7 +8,7 @@ export const IconProvider = ({ libraryName = "regular", children }) => {
     const importIconLibrary = async () => {
         if(libraryName === "regular") {
             return import("@logora/debate.icons.regular_icons");
-        }        
+        }
     };
 
     useEffect(() => {

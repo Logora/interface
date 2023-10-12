@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, act, screen, waitFor } from '@testing-library/react';
 import { IconProvider } from './IconProvider';
 
 const ComponentWithIcons = () => {
@@ -7,13 +7,17 @@ const ComponentWithIcons = () => {
 }
 
 describe('IconProvider', () => {
-	it('should render component with icon library', () => {
-		const container = render(
-			<IconProvider libraryName={"myLibrary"}>
-				<ComponentWithIcons />
-			</IconProvider>
-		);
+	it('should render component with icon library', async () => {
+		act(()=>{
+			render(
+				<IconProvider libraryName={"myLibrary"}>
+					<ComponentWithIcons />
+				</IconProvider>
+			);
+		});
 
-		expect(container.getByText(/hello world/i)).toBeTruthy()
+		await waitFor(() => {
+			expect(screen.getByText(/hello world/i)).toBeTruthy();
+		});
 	});
 });
