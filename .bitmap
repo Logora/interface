@@ -582,9 +582,8 @@
     },
     "icons/icon": {
         "name": "icons/icon",
-        "scope": "",
-        "version": "",
-        "defaultScope": "logora.debate",
+        "scope": "logora.debate",
+        "version": "0.0.1",
         "mainFile": "index.js",
         "rootDir": "src/components/icons/icon"
     },
