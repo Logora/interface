@@ -1157,6 +1157,12 @@ __metadata:
   languageName: node
   linkType: hard
 
+"icon-3aea60@workspace:src/components/icons/icon":
+  version: 0.0.0-use.local
+  resolution: "icon-3aea60@workspace:src/components/icons/icon"
+  languageName: unknown
+  linkType: soft
+
 "icon_provider-024301@workspace:src/components/icons/icon_provider":
   version: 0.0.0-use.local
   resolution: "icon_provider-024301@workspace:src/components/icons/icon_provider"
@@ -1898,6 +1904,12 @@ __metadata:
 "spacing-44d24d@workspace:src/components/styles/spacing":
   version: 0.0.0-use.local
   resolution: "spacing-44d24d@workspace:src/components/styles/spacing"
+  languageName: unknown
+  linkType: soft
+
+"spiegel_icons-519fa4@workspace:src/components/icons/spiegel_icons":
+  version: 0.0.0-use.local
+  resolution: "spiegel_icons-519fa4@workspace:src/components/icons/spiegel_icons"
   languageName: unknown
   linkType: soft
 

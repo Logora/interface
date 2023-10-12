@@ -615,9 +615,10 @@
                     },
                     "dependencies": {
                         "core-js": "^3.33.0",
-                        "@logora/debate.icons.regular_icons": "-"
+                        "@logora/debate.icons.regular_icons": "0.0.1"
                     },
                     "devDependencies": {
+                        "@logora/debate.icons.spiegel_icons": "0.0.1",
                         "@logora/debate.icons.regular_icons": "0.0.1"
                     }
                 }
