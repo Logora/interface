@@ -580,6 +580,14 @@
             }
         }
     },
+    "icons/hero_icons": {
+        "name": "icons/hero_icons",
+        "scope": "",
+        "version": "",
+        "defaultScope": "logora.debate",
+        "mainFile": "index.js",
+        "rootDir": "src/components/icons/hero_icons"
+    },
     "icons/icon": {
         "name": "icons/icon",
         "scope": "logora.debate",
