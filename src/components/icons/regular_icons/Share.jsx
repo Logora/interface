@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const ShareIcon = (props) => (
+export const Share = (props) => (
   props.variant === "edge" ?
     <svg 
       viewBox="0 0 24 24" 

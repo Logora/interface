@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const SuggestionCircleIcon = (props) => (
+export const SuggestionCircle = (props) => (
     <svg viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg" {...props}>
         <circle cx="14" cy="14" r="14" />
         <path 

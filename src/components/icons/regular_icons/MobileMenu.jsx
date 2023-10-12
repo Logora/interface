@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const MobileMenuIcon = (props) => (
+export const MobileMenu = (props) => (
     <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" {...props}>
         <circle cx="20" cy="20" r="20"/>
         <path fill="#FFF" d="M29.1667 19.1667H10.8333C10.3731 19.1667 10 19.5398 10 20C10 20.4602 10.3731 20.8333 10.8333 20.8333H29.1667C29.6269 20.8333 30 20.4602 30 20C30 19.5398 29.6269 19.1667 29.1667 19.1667Z"/>

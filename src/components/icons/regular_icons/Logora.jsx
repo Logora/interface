@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const LogoraIcon = (props) => (
+export const Logora = (props) => (
     <svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144 144" preserveAspectRatio="xMidYMid meet" {...props}>
         <g transform="translate(0.000000,144.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
             <path d="M574 1415 c-458 -105 -694 -594 -488 -1011 89 -180 256 -317 454

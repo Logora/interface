@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const NextIcon = (props) => (
+export const Next = (props) => (
     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" {...props} >
         <path d="m12 0c-6.617 0-12 5.383-12 12s5.383 12 12 12 12-5.383 12-12-5.383-12-12-12z" />
         <path d="m12 0c-6.617 0-12 5.383-12 12s5.383 12 12 12z" />

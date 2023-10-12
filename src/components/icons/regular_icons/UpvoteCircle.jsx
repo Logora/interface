@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const UpvoteCircleIcon = (props) => (
+export const UpvoteCircle = (props) => (
     <svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg" {...props}>
         <circle cx="15" cy="15" r="15" />
         <path 

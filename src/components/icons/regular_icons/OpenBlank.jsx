@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const OpenBlankIcon = (props) => (
+export const OpenBlank = (props) => (
     <svg 
         viewBox="0 0 15 15" 
         fill="none" 
