@@ -199,37 +199,11 @@
         "mainFile": "index.js",
         "rootDir": "src/components/hooks/use_relative_time"
     },
-    "icons/icon_provider": {
-        "scope": "",
-        "version": "",
-        "mainFile": "index.js",
-        "rootDir": "src/components/icons/icon_provider",
-        "config": {
-            "teambit.dependencies/dependency-resolver": {
-                "policy": {
-                    "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0"
-                    }
-                }
-            }
-        }
-    },
     "icons/regular_icons": {
-        "scope": "",
-        "version": "",
+        "scope": "logora.debate",
+        "version": "0.0.1",
         "mainFile": "index.js",
-        "rootDir": "src/components/icons/regular_icons",
-        "config": {
-            "teambit.dependencies/dependency-resolver": {
-                "policy": {
-                    "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0"
-                    }
-                }
-            }
-        }
+        "rootDir": "src/components/icons/regular_icons"
     },
     "input/checkbox/hidden": {
         "scope": "logora.debate",
