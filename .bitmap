@@ -585,14 +585,44 @@
         "scope": "logora.debate",
         "version": "0.0.4",
         "mainFile": "index.js",
-        "rootDir": "src/components/icons/icon"
+        "rootDir": "src/components/icons/icon",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "peerDependencies": {
+                        "react": "^17.0.0 || ^18.0.0",
+                        "react-dom": "^17.0.0 || ^18.0.0"
+                    },
+                    "devDependencies": {
+                        "@logora/debate.icons.regular_icons": "0.0.1"
+                    }
+                }
+            }
+        }
     },
     "icons/icon_provider": {
         "name": "icons/icon_provider",
         "scope": "logora.debate",
         "version": "0.0.5",
         "mainFile": "index.js",
-        "rootDir": "src/components/icons/icon_provider"
+        "rootDir": "src/components/icons/icon_provider",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "peerDependencies": {
+                        "react": "^17.0.0 || ^18.0.0",
+                        "react-dom": "^17.0.0 || ^18.0.0"
+                    },
+                    "dependencies": {
+                        "core-js": "^3.33.0",
+                        "@logora/debate.icons.regular_icons": "-"
+                    },
+                    "devDependencies": {
+                        "@logora/debate.icons.regular_icons": "0.0.1"
+                    }
+                }
+            }
+        }
     },
     "icons/regular_icons": {
         "name": "icons/regular_icons",
