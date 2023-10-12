@@ -1157,6 +1157,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"icon-3aea60@workspace:src/components/icons/icon":
+  version: 0.0.0-use.local
+  resolution: "icon-3aea60@workspace:src/components/icons/icon"
+  languageName: unknown
+  linkType: soft
+
+"icon_provider-024301@workspace:src/components/icons/icon_provider":
+  version: 0.0.0-use.local
+  resolution: "icon_provider-024301@workspace:src/components/icons/icon_provider"
+  languageName: unknown
+  linkType: soft
+
 "icon_text_link-65256c@workspace:src/components/action/icon_text_link":
   version: 0.0.0-use.local
   resolution: "icon_text_link-65256c@workspace:src/components/action/icon_text_link"
