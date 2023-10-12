@@ -13,37 +13,140 @@
         "scope": "logora.debate",
         "version": "0.0.29",
         "mainFile": "index.js",
-        "rootDir": "src/components/action/back_link"
+        "rootDir": "src/components/action/back_link",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "devDependencies": {
+                        "@types/testing-library__jest-dom": "-",
+                        "@types/jest": "-"
+                    },
+                    "peerDependencies": {
+                        "react": "^17.0.0 || ^18.0.0",
+                        "react-dom": "^17.0.0 || ^18.0.0",
+                        "react-router-dom": "^5.3.4",
+                        "react-router": "^5.3.4"
+                    }
+                }
+            }
+        }
     },
     "action/button": {
         "scope": "logora.debate",
         "version": "0.0.28",
         "mainFile": "index.js",
-        "rootDir": "src/components/action/button"
+        "rootDir": "src/components/action/button",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "dependencies": {
+                        "@babel/runtime": "7.19.4",
+                        "@types/node": "18.11.2",
+                        "@types/react": "^18.0.21",
+                        "@types/react-dom": "^18.0.6",
+                        "classnames": "^2.3.2",
+                        "core-js": "^3.25.5",
+                        "react": "^17.0.0"
+                    },
+                    "peerDependencies": {
+                        "react": "^17.0.0 || ^18.0.0",
+                        "react-dom": "^17.0.0 || ^18.0.0"
+                    },
+                    "devDependencies": {
+                        "@types/testing-library__jest-dom": "-",
+                        "@types/jest": "-",
+                        "@testing-library/react": "^14.0.0"
+                    }
+                }
+            }
+        }
     },
     "action/icon_text_link": {
         "scope": "logora.debate",
         "version": "0.0.25",
         "mainFile": "index.js",
-        "rootDir": "src/components/action/icon_text_link"
+        "rootDir": "src/components/action/icon_text_link",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "devDependencies": {
+                        "@types/testing-library__jest-dom": "-",
+                        "@types/jest": "-"
+                    },
+                    "peerDependencies": {
+                        "react": "^17.0.0 || ^18.0.0",
+                        "react-dom": "^17.0.0 || ^18.0.0",
+                        "react-router-dom": "^5.3.4"
+                    },
+                    "dependencies": {}
+                }
+            }
+        }
     },
     "action/link": {
         "scope": "logora.debate",
         "version": "0.0.10",
         "mainFile": "index.js",
-        "rootDir": "src/components/action/link"
+        "rootDir": "src/components/action/link",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "devDependencies": {
+                        "@types/jest": "-",
+                        "@types/testing-library__jest-dom": "-",
+                        "@testing-library/react": "^14.0.0"
+                    },
+                    "dependencies": {
+                        "react": "^17.0.0"
+                    },
+                    "peerDependencies": {
+                        "react": "^17.0.0 || ^18.0.0",
+                        "react-dom": "^17.0.0 || ^18.0.0"
+                    }
+                }
+            }
+        }
     },
     "action/link_button": {
         "scope": "logora.debate",
         "version": "0.0.21",
         "mainFile": "index.js",
-        "rootDir": "src/components/action/link_button"
+        "rootDir": "src/components/action/link_button",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "devDependencies": {
+                        "@types/testing-library__jest-dom": "-",
+                        "@types/jest": "-"
+                    },
+                    "peerDependencies": {
+                        "react": "^17.0.0 || ^18.0.0",
+                        "react-dom": "^17.0.0 || ^18.0.0",
+                        "react-router-dom": "^5.3.4"
+                    }
+                }
+            }
+        }
     },
     "ad/ad_unit": {
         "scope": "logora.debate",
         "version": "0.0.7",
         "mainFile": "index.js",
-        "rootDir": "src/components/ad/ad_unit"
+        "rootDir": "src/components/ad/ad_unit",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "devDependencies": {
+                        "@types/jest": "-",
+                        "@types/testing-library__jest-dom": "-"
+                    },
+                    "peerDependencies": {
+                        "react": "^17.0.0 || ^18.0.0",
+                        "react-dom": "^17.0.0 || ^18.0.0"
+                    }
+                }
+            }
+        }
     },
     "ad/use_google_ad_manager": {
         "scope": "logora.debate",
@@ -65,97 +168,335 @@
         "scope": "logora.debate",
         "version": "0.0.3",
         "mainFile": "index.js",
-        "rootDir": "src/components/ad/with_ad"
+        "rootDir": "src/components/ad/with_ad",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "peerDependencies": {
+                        "react": "^17.0.0 || ^18.0.0",
+                        "react-dom": "^17.0.0 || ^18.0.0"
+                    }
+                }
+            }
+        }
     },
     "data/axios_client": {
         "scope": "logora.debate",
         "version": "0.0.4",
         "mainFile": "index.js",
-        "rootDir": "src/components/data/axios_client"
+        "rootDir": "src/components/data/axios_client",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "devDependencies": {
+                        "@types/jest": "-",
+                        "@types/testing-library__jest-dom": "-"
+                    },
+                    "peerDependencies": {
+                        "react": "^17.0.0 || ^18.0.0",
+                        "react-dom": "^17.0.0 || ^18.0.0"
+                    }
+                }
+            }
+        }
     },
     "data/config_provider": {
         "scope": "logora.debate",
         "version": "0.0.3",
         "mainFile": "index.js",
-        "rootDir": "src/components/data/config_provider"
+        "rootDir": "src/components/data/config_provider",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "devDependencies": {
+                        "@types/testing-library__jest-dom": "-",
+                        "@types/jest": "-"
+                    },
+                    "peerDependencies": {
+                        "react": "^17.0.0 || ^18.0.0",
+                        "react-dom": "^17.0.0 || ^18.0.0"
+                    }
+                }
+            }
+        }
     },
     "data/data_provider": {
         "scope": "logora.debate",
         "version": "0.0.8",
         "mainFile": "index.js",
-        "rootDir": "src/components/data/data_provider"
+        "rootDir": "src/components/data/data_provider",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "devDependencies": {
+                        "@types/testing-library__jest-dom": "-",
+                        "@types/jest": "-"
+                    },
+                    "peerDependencies": {
+                        "react": "^17.0.0 || ^18.0.0",
+                        "react-dom": "^17.0.0 || ^18.0.0"
+                    }
+                }
+            }
+        }
     },
     "dialog/alert_container": {
         "scope": "logora.debate",
         "version": "0.0.7",
         "mainFile": "index.js",
-        "rootDir": "src/components/dialog/alert_container"
+        "rootDir": "src/components/dialog/alert_container",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "devDependencies": {
+                        "@types/jest": "-",
+                        "@types/testing-library__jest-dom": "-"
+                    },
+                    "peerDependencies": {
+                        "react": "^17.0.0 || ^18.0.0",
+                        "react-dom": "^17.0.0 || ^18.0.0"
+                    }
+                }
+            }
+        }
     },
     "dialog/alert_dialog": {
         "scope": "logora.debate",
         "version": "0.0.17",
         "mainFile": "index.js",
-        "rootDir": "src/components/dialog/alert_dialog"
+        "rootDir": "src/components/dialog/alert_dialog",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "devDependencies": {
+                        "@types/jest": "-",
+                        "@types/testing-library__jest-dom": "-"
+                    },
+                    "peerDependencies": {
+                        "react": "^17.0.0 || ^18.0.0",
+                        "react-dom": "^17.0.0 || ^18.0.0"
+                    }
+                }
+            }
+        }
     },
     "dialog/announcement_dialog": {
         "scope": "logora.debate",
         "version": "0.0.21",
         "mainFile": "index.js",
-        "rootDir": "src/components/dialog/announcement_dialog"
+        "rootDir": "src/components/dialog/announcement_dialog",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "devDependencies": {
+                        "@types/testing-library__jest-dom": "-",
+                        "@types/jest": "-"
+                    },
+                    "peerDependencies": {
+                        "react": "^17.0.0 || ^18.0.0",
+                        "react-dom": "^17.0.0 || ^18.0.0"
+                    }
+                }
+            }
+        }
     },
     "dialog/confirm_modal": {
         "scope": "logora.debate",
         "version": "0.0.4",
         "mainFile": "index.js",
-        "rootDir": "src/components/dialog/confirm_modal"
+        "rootDir": "src/components/dialog/confirm_modal",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "devDependencies": {
+                        "@types/testing-library__jest-dom": "-",
+                        "@types/jest": "-"
+                    },
+                    "peerDependencies": {
+                        "react": "^17.0.0 || ^18.0.0",
+                        "react-dom": "^17.0.0 || ^18.0.0"
+                    }
+                }
+            }
+        }
     },
     "dialog/dropdown": {
         "scope": "logora.debate",
         "version": "0.0.5",
         "mainFile": "index.js",
-        "rootDir": "src/components/dialog/dropdown"
+        "rootDir": "src/components/dialog/dropdown",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "devDependencies": {
+                        "@types/testing-library__jest-dom": "-",
+                        "@types/jest": "-"
+                    },
+                    "peerDependencies": {
+                        "react": "^17.0.0 || ^18.0.0",
+                        "react-dom": "^17.0.0 || ^18.0.0"
+                    }
+                }
+            }
+        }
     },
     "dialog/modal": {
         "scope": "logora.debate",
         "version": "0.0.17",
         "mainFile": "index.js",
-        "rootDir": "src/components/dialog/modal"
+        "rootDir": "src/components/dialog/modal",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "devDependencies": {
+                        "@testing-library/react": "^14.0.0"
+                    },
+                    "dependencies": {
+                        "react": "^17.0.0"
+                    },
+                    "peerDependencies": {
+                        "react": "^17.0.0 || ^18.0.0",
+                        "react-dom": "^17.0.0 || ^18.0.0"
+                    }
+                }
+            }
+        }
     },
     "dialog/tooltip": {
         "scope": "logora.debate",
         "version": "0.0.6",
         "mainFile": "index.js",
-        "rootDir": "src/components/dialog/tooltip"
+        "rootDir": "src/components/dialog/tooltip",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "devDependencies": {
+                        "@types/jest": "-",
+                        "@types/testing-library__jest-dom": "-"
+                    },
+                    "peerDependencies": {
+                        "react": "^17.0.0 || ^18.0.0",
+                        "react-dom": "^17.0.0 || ^18.0.0"
+                    }
+                }
+            }
+        }
     },
     "embed/embed_header": {
         "scope": "logora.debate",
         "version": "0.0.20",
         "mainFile": "index.js",
-        "rootDir": "src/components/embed/embed_header"
+        "rootDir": "src/components/embed/embed_header",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "devDependencies": {
+                        "@testing-library/react": "^14.0.0"
+                    },
+                    "dependencies": {
+                        "react": "^17.0.0"
+                    },
+                    "peerDependencies": {
+                        "react": "^17.0.0 || ^18.0.0",
+                        "react-dom": "^17.0.0 || ^18.0.0"
+                    }
+                }
+            }
+        }
     },
     "error/standard_error_boundary": {
         "scope": "logora.debate",
         "version": "0.0.12",
         "mainFile": "index.js",
-        "rootDir": "src/components/error/standard_error_boundary"
+        "rootDir": "src/components/error/standard_error_boundary",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "devDependencies": {
+                        "@types/testing-library__jest-dom": "-",
+                        "@types/jest": "-",
+                        "@testing-library/react": "^14.0.0"
+                    },
+                    "dependencies": {
+                        "react": "^17.0.0"
+                    },
+                    "peerDependencies": {
+                        "react": "^17.0.0 || ^18.0.0",
+                        "react-dom": "^17.0.0 || ^18.0.0"
+                    }
+                }
+            }
+        }
     },
     "forms/form": {
         "scope": "logora.debate",
         "version": "0.0.4",
         "mainFile": "index.js",
-        "rootDir": "src/components/forms/form"
+        "rootDir": "src/components/forms/form",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "devDependencies": {
+                        "@types/testing-library__jest-dom": "-",
+                        "@types/jest": "-",
+                        "@testing-library/react": "^14.0.0"
+                    },
+                    "dependencies": {
+                        "react": "^17.0.0"
+                    },
+                    "peerDependencies": {
+                        "react": "^17.0.0 || ^18.0.0",
+                        "react-dom": "^17.0.0 || ^18.0.0"
+                    }
+                }
+            }
+        }
     },
     "gamification/point_box": {
         "scope": "logora.debate",
         "version": "0.0.4",
         "mainFile": "index.js",
-        "rootDir": "src/components/gamification/point_box"
+        "rootDir": "src/components/gamification/point_box",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "devDependencies": {
+                        "@types/jest": "-",
+                        "@types/testing-library__jest-dom": "-"
+                    },
+                    "dependencies": {
+                        "react": "^17.0.0 || ^18.0.0",
+                        "react-dom": "^17.0.0 || ^18.0.0"
+                    },
+                    "peerDependencies": {
+                        "react": "^17.0.0 || ^18.0.0",
+                        "react-dom": "^17.0.0 || ^18.0.0"
+                    }
+                }
+            }
+        }
     },
     "hooks/use_css_theme": {
         "scope": "logora.debate",
         "version": "0.0.9",
         "mainFile": "index.js",
-        "rootDir": "src/components/hooks/use_css_theme"
+        "rootDir": "src/components/hooks/use_css_theme",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "devDependencies": {
+                        "@testing-library/react": "^14.0.0"
+                    },
+                    "dependencies": {
+                        "react": "^17.0.0"
+                    },
+                    "peerDependencies": {
+                        "react": "^17.0.0 || ^18.0.0",
+                        "react-dom": "^17.0.0 || ^18.0.0"
+                    }
+                }
+            }
+        }
     },
     "hooks/use_font_loader": {
         "scope": "logora.debate",
@@ -197,199 +538,720 @@
         "scope": "logora.debate",
         "version": "0.0.11",
         "mainFile": "index.js",
-        "rootDir": "src/components/hooks/use_relative_time"
+        "rootDir": "src/components/hooks/use_relative_time",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "devDependencies": {
+                        "@types/jest": "-",
+                        "@types/testing-library__jest-dom": "-"
+                    },
+                    "peerDependencies": {
+                        "react": "^17.0.0 || ^18.0.0",
+                        "react-dom": "^17.0.0 || ^18.0.0"
+                    }
+                }
+            }
+        }
     },
     "icons/icon": {
         "scope": "",
         "version": "",
         "mainFile": "index.js",
-        "rootDir": "src/components/icons/icon"
+        "rootDir": "src/components/icons/icon",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "peerDependencies": {
+                        "react": "^17.0.0 || ^18.0.0",
+                        "react-dom": "^17.0.0 || ^18.0.0"
+                    }
+                }
+            }
+        }
     },
     "icons/icon_provider": {
         "scope": "",
         "version": "",
         "mainFile": "index.js",
-        "rootDir": "src/components/icons/icon_provider"
+        "rootDir": "src/components/icons/icon_provider",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "peerDependencies": {
+                        "react": "^17.0.0 || ^18.0.0",
+                        "react-dom": "^17.0.0 || ^18.0.0"
+                    }
+                }
+            }
+        }
     },
     "icons/regular_icons": {
         "scope": "logora.debate",
         "version": "0.0.1",
         "mainFile": "index.js",
-        "rootDir": "src/components/icons/regular_icons"
+        "rootDir": "src/components/icons/regular_icons",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "peerDependencies": {
+                        "react": "^17.0.0 || ^18.0.0",
+                        "react-dom": "^17.0.0 || ^18.0.0"
+                    }
+                }
+            }
+        }
     },
     "input/checkbox/hidden": {
         "scope": "logora.debate",
         "version": "0.0.5",
         "mainFile": "index.js",
-        "rootDir": "src/components/input/checkbox/hidden"
+        "rootDir": "src/components/input/checkbox/hidden",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "devDependencies": {
+                        "@types/testing-library__jest-dom": "-",
+                        "@types/jest": "-",
+                        "@testing-library/react": "^14.0.0"
+                    },
+                    "dependencies": {
+                        "react": "^17.0.0"
+                    },
+                    "peerDependencies": {
+                        "react": "^17.0.0 || ^18.0.0",
+                        "react-dom": "^17.0.0 || ^18.0.0"
+                    }
+                }
+            }
+        }
     },
     "input/checkbox/indicator": {
         "scope": "logora.debate",
         "version": "0.0.5",
         "mainFile": "index.js",
-        "rootDir": "src/components/input/checkbox/indicator"
+        "rootDir": "src/components/input/checkbox/indicator",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "devDependencies": {
+                        "@types/testing-library__jest-dom": "-",
+                        "@types/jest": "-",
+                        "@testing-library/react": "^14.0.0"
+                    },
+                    "dependencies": {
+                        "react": "^17.0.0"
+                    },
+                    "peerDependencies": {
+                        "react": "^17.0.0 || ^18.0.0",
+                        "react-dom": "^17.0.0 || ^18.0.0"
+                    }
+                }
+            }
+        }
     },
     "input/checkbox/label": {
         "scope": "logora.debate",
         "version": "0.0.6",
         "mainFile": "index.js",
-        "rootDir": "src/components/input/checkbox/label"
+        "rootDir": "src/components/input/checkbox/label",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "devDependencies": {
+                        "@types/testing-library__jest-dom": "-",
+                        "@types/jest": "-",
+                        "@testing-library/react": "^14.0.0"
+                    },
+                    "dependencies": {
+                        "react": "^17.0.0"
+                    },
+                    "peerDependencies": {
+                        "react": "^17.0.0 || ^18.0.0",
+                        "react-dom": "^17.0.0 || ^18.0.0"
+                    }
+                }
+            }
+        }
     },
     "input/search_input": {
         "scope": "logora.debate",
         "version": "0.0.20",
         "mainFile": "index.js",
-        "rootDir": "src/components/input/search_input"
+        "rootDir": "src/components/input/search_input",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "devDependencies": {
+                        "@types/testing-library__jest-dom": "-",
+                        "@types/jest": "-"
+                    },
+                    "peerDependencies": {
+                        "react": "^17.0.0 || ^18.0.0",
+                        "react-dom": "^17.0.0 || ^18.0.0"
+                    }
+                }
+            }
+        }
     },
     "input/select": {
         "scope": "logora.debate",
         "version": "0.0.29",
         "mainFile": "index.js",
-        "rootDir": "src/components/input/select"
+        "rootDir": "src/components/input/select",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "devDependencies": {
+                        "@types/testing-library__jest-dom": "-",
+                        "@types/jest": "-"
+                    },
+                    "peerDependencies": {
+                        "react": "^17.0.0 || ^18.0.0",
+                        "react-dom": "^17.0.0 || ^18.0.0"
+                    }
+                }
+            }
+        }
     },
     "input/text_input": {
         "scope": "logora.debate",
         "version": "0.0.20",
         "mainFile": "index.js",
-        "rootDir": "src/components/input/text_input"
+        "rootDir": "src/components/input/text_input",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "devDependencies": {
+                        "@types/testing-library__jest-dom": "-",
+                        "@types/jest": "-",
+                        "@testing-library/react": "^14.0.0"
+                    },
+                    "dependencies": {
+                        "react": "^17.0.0"
+                    },
+                    "peerDependencies": {
+                        "react": "^17.0.0 || ^18.0.0",
+                        "react-dom": "^17.0.0 || ^18.0.0"
+                    }
+                }
+            }
+        }
     },
     "input/toggle": {
         "scope": "logora.debate",
         "version": "0.0.19",
         "mainFile": "index.js",
-        "rootDir": "src/components/input/toggle"
+        "rootDir": "src/components/input/toggle",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "devDependencies": {
+                        "@types/testing-library__jest-dom": "-",
+                        "@types/jest": "-",
+                        "@testing-library/react": "^14.0.0"
+                    },
+                    "dependencies": {
+                        "react": "^17.0.0"
+                    },
+                    "peerDependencies": {
+                        "react": "^17.0.0 || ^18.0.0",
+                        "react-dom": "^17.0.0 || ^18.0.0"
+                    }
+                }
+            }
+        }
     },
     "list/pagination": {
         "scope": "logora.debate",
         "version": "0.0.29",
         "mainFile": "index.js",
-        "rootDir": "src/components/list/pagination"
+        "rootDir": "src/components/list/pagination",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "devDependencies": {
+                        "@types/testing-library__jest-dom": "-",
+                        "@types/jest": "-"
+                    },
+                    "peerDependencies": {
+                        "react": "^17.0.0 || ^18.0.0",
+                        "react-dom": "^17.0.0 || ^18.0.0"
+                    }
+                }
+            }
+        }
     },
     "section/section_box": {
         "scope": "logora.debate",
         "version": "0.0.27",
         "mainFile": "index.js",
-        "rootDir": "src/components/section/section_box"
+        "rootDir": "src/components/section/section_box",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "devDependencies": {
+                        "@types/testing-library__jest-dom": "-",
+                        "@types/jest": "-",
+                        "@testing-library/react": "^14.0.0"
+                    },
+                    "dependencies": {
+                        "react": "^17.0.0"
+                    },
+                    "peerDependencies": {
+                        "react": "^17.0.0 || ^18.0.0",
+                        "react-dom": "^17.0.0 || ^18.0.0"
+                    }
+                }
+            }
+        }
     },
     "section/section_header": {
         "scope": "logora.debate",
         "version": "0.0.25",
         "mainFile": "index.js",
-        "rootDir": "src/components/section/section_header"
+        "rootDir": "src/components/section/section_header",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "devDependencies": {
+                        "@types/testing-library__jest-dom": "-",
+                        "@types/jest": "-",
+                        "@testing-library/react": "^14.0.0"
+                    },
+                    "dependencies": {
+                        "react": "^17.0.0"
+                    },
+                    "peerDependencies": {
+                        "react": "^17.0.0 || ^18.0.0",
+                        "react-dom": "^17.0.0 || ^18.0.0"
+                    }
+                }
+            }
+        }
     },
     "skeleton/box_skeleton": {
         "scope": "logora.debate",
         "version": "0.0.13",
         "mainFile": "index.js",
-        "rootDir": "src/components/skeleton/box_skeleton"
+        "rootDir": "src/components/skeleton/box_skeleton",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "devDependencies": {
+                        "@types/testing-library__jest-dom": "-",
+                        "@types/jest": "-",
+                        "@testing-library/react": "^14.0.0"
+                    },
+                    "dependencies": {
+                        "react": "^17.0.0"
+                    },
+                    "peerDependencies": {
+                        "react": "^17.0.0 || ^18.0.0",
+                        "react-dom": "^17.0.0 || ^18.0.0"
+                    }
+                }
+            }
+        }
     },
     "skeleton/user_content_skeleton": {
         "scope": "logora.debate",
         "version": "0.0.20",
         "mainFile": "index.js",
-        "rootDir": "src/components/skeleton/user_content_skeleton"
+        "rootDir": "src/components/skeleton/user_content_skeleton",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "devDependencies": {
+                        "@types/testing-library__jest-dom": "-",
+                        "@types/jest": "-",
+                        "@testing-library/react": "^14.0.0"
+                    },
+                    "dependencies": {
+                        "react": "^17.0.0"
+                    },
+                    "peerDependencies": {
+                        "react": "^17.0.0 || ^18.0.0",
+                        "react-dom": "^17.0.0 || ^18.0.0"
+                    }
+                }
+            }
+        }
     },
     "source/context_source_box": {
         "scope": "logora.debate",
         "version": "0.0.25",
         "mainFile": "index.js",
-        "rootDir": "src/components/source/context_source_box"
+        "rootDir": "src/components/source/context_source_box",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "devDependencies": {
+                        "@types/testing-library__jest-dom": "-",
+                        "@types/jest": "-"
+                    },
+                    "peerDependencies": {
+                        "react": "^17.0.0 || ^18.0.0",
+                        "react-dom": "^17.0.0 || ^18.0.0"
+                    }
+                }
+            }
+        }
     },
     "source/context_source_list": {
         "scope": "logora.debate",
         "version": "0.0.21",
         "mainFile": "index.js",
-        "rootDir": "src/components/source/context_source_list"
+        "rootDir": "src/components/source/context_source_list",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "devDependencies": {
+                        "@types/jest": "-",
+                        "@types/testing-library__jest-dom": "-"
+                    },
+                    "peerDependencies": {
+                        "react": "^17.0.0 || ^18.0.0",
+                        "react-dom": "^17.0.0 || ^18.0.0"
+                    }
+                }
+            }
+        }
     },
     "source/source_box": {
         "scope": "logora.debate",
         "version": "0.0.6",
         "mainFile": "index.js",
-        "rootDir": "src/components/source/source_box"
+        "rootDir": "src/components/source/source_box",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "devDependencies": {
+                        "@types/testing-library__jest-dom": "-",
+                        "@types/jest": "-"
+                    },
+                    "peerDependencies": {
+                        "react": "^17.0.0 || ^18.0.0",
+                        "react-dom": "^17.0.0 || ^18.0.0"
+                    }
+                }
+            }
+        }
     },
     "source/source_list_item": {
         "scope": "logora.debate",
         "version": "0.0.20",
         "mainFile": "index.js",
-        "rootDir": "src/components/source/source_list_item"
+        "rootDir": "src/components/source/source_list_item",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "devDependencies": {
+                        "@types/testing-library__jest-dom": "-",
+                        "@types/jest": "-"
+                    },
+                    "peerDependencies": {
+                        "react": "^17.0.0 || ^18.0.0",
+                        "react-dom": "^17.0.0 || ^18.0.0"
+                    }
+                }
+            }
+        }
     },
     "source/source_modal": {
         "scope": "logora.debate",
         "version": "0.0.40",
         "mainFile": "index.js",
-        "rootDir": "src/components/source/source_modal"
+        "rootDir": "src/components/source/source_modal",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "devDependencies": {
+                        "@types/jest": "-",
+                        "@types/testing-library__jest-dom": "-"
+                    },
+                    "peerDependencies": {
+                        "react": "^17.0.0 || ^18.0.0",
+                        "react-dom": "^17.0.0 || ^18.0.0"
+                    }
+                }
+            }
+        }
     },
     "styles/display": {
         "scope": "logora.debate",
         "version": "0.0.8",
         "mainFile": "_display.scss",
-        "rootDir": "src/components/styles/display"
+        "rootDir": "src/components/styles/display",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "devDependencies": {
+                        "@types/testing-library__jest-dom": "-",
+                        "@types/jest": "-",
+                        "@testing-library/react": "^14.0.0"
+                    },
+                    "dependencies": {
+                        "react": "^17.0.0"
+                    },
+                    "peerDependencies": {
+                        "react": "^17.0.0 || ^18.0.0",
+                        "react-dom": "^17.0.0 || ^18.0.0"
+                    }
+                }
+            }
+        }
     },
     "styles/flex": {
         "scope": "logora.debate",
         "version": "0.0.9",
         "mainFile": "_flex.scss",
-        "rootDir": "src/components/styles/flex"
+        "rootDir": "src/components/styles/flex",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "devDependencies": {
+                        "@types/testing-library__jest-dom": "-",
+                        "@types/jest": "-",
+                        "@testing-library/react": "^14.0.0"
+                    },
+                    "dependencies": {
+                        "react": "^17.0.0"
+                    },
+                    "peerDependencies": {
+                        "react": "^17.0.0 || ^18.0.0",
+                        "react-dom": "^17.0.0 || ^18.0.0"
+                    }
+                }
+            }
+        }
     },
     "styles/spacing": {
         "scope": "logora.debate",
         "version": "0.0.10",
         "mainFile": "_spacing.scss",
-        "rootDir": "src/components/styles/spacing"
+        "rootDir": "src/components/styles/spacing",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "devDependencies": {
+                        "@types/testing-library__jest-dom": "-",
+                        "@types/jest": "-",
+                        "@testing-library/react": "^14.0.0"
+                    },
+                    "dependencies": {
+                        "react": "^17.0.0"
+                    },
+                    "peerDependencies": {
+                        "react": "^17.0.0 || ^18.0.0",
+                        "react-dom": "^17.0.0 || ^18.0.0"
+                    }
+                }
+            }
+        }
     },
     "styles/tabs": {
         "scope": "logora.debate",
         "version": "0.0.12",
         "mainFile": "_tabs.scss",
-        "rootDir": "src/components/styles/tabs"
+        "rootDir": "src/components/styles/tabs",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "devDependencies": {
+                        "@types/jest": "-",
+                        "@types/testing-library__jest-dom": "-",
+                        "@testing-library/react": "^14.0.0"
+                    },
+                    "dependencies": {
+                        "react": "^17.0.0"
+                    },
+                    "peerDependencies": {
+                        "react": "^17.0.0 || ^18.0.0",
+                        "react-dom": "^17.0.0 || ^18.0.0"
+                    }
+                }
+            }
+        }
     },
     "styles/theme": {
         "scope": "logora.debate",
         "version": "0.0.15",
         "mainFile": "_theme.scss",
-        "rootDir": "src/components/styles/theme"
+        "rootDir": "src/components/styles/theme",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "devDependencies": {
+                        "@types/testing-library__jest-dom": "-",
+                        "@types/jest": "-",
+                        "@testing-library/react": "^14.0.0"
+                    },
+                    "dependencies": {
+                        "react": "^17.0.0"
+                    },
+                    "peerDependencies": {
+                        "react": "^17.0.0 || ^18.0.0",
+                        "react-dom": "^17.0.0 || ^18.0.0"
+                    }
+                }
+            }
+        }
     },
     "tag/tag": {
         "scope": "logora.debate",
         "version": "0.0.24",
         "mainFile": "index.js",
-        "rootDir": "src/components/tag/tag"
+        "rootDir": "src/components/tag/tag",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "devDependencies": {
+                        "@types/testing-library__jest-dom": "-",
+                        "@types/jest": "-"
+                    },
+                    "peerDependencies": {
+                        "react": "^17.0.0 || ^18.0.0",
+                        "react-dom": "^17.0.0 || ^18.0.0"
+                    }
+                }
+            }
+        }
     },
     "text/expandable_text": {
         "scope": "logora.debate",
         "version": "0.0.22",
         "mainFile": "index.js",
-        "rootDir": "src/components/text/expandable_text"
+        "rootDir": "src/components/text/expandable_text",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "devDependencies": {
+                        "@testing-library/react": "^14.0.0"
+                    },
+                    "dependencies": {
+                        "react": "^17.0.0"
+                    },
+                    "peerDependencies": {
+                        "react": "^17.0.0 || ^18.0.0",
+                        "react-dom": "^17.0.0 || ^18.0.0"
+                    }
+                }
+            }
+        }
     },
     "text/read_more": {
         "scope": "logora.debate",
         "version": "0.0.20",
         "mainFile": "index.js",
-        "rootDir": "src/components/text/read_more"
+        "rootDir": "src/components/text/read_more",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "devDependencies": {
+                        "@testing-library/react": "^14.0.0"
+                    },
+                    "dependencies": {
+                        "react": "^17.0.0"
+                    },
+                    "peerDependencies": {
+                        "react": "^17.0.0 || ^18.0.0",
+                        "react-dom": "^17.0.0 || ^18.0.0"
+                    }
+                }
+            }
+        }
     },
     "tools/hash_scroll": {
         "scope": "logora.debate",
         "version": "0.0.10",
         "mainFile": "index.js",
-        "rootDir": "src/components/tools/hash_scroll"
+        "rootDir": "src/components/tools/hash_scroll",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "devDependencies": {
+                        "@types/jest": "-",
+                        "@types/testing-library__jest-dom": "-",
+                        "@testing-library/react": "^14.0.0"
+                    },
+                    "dependencies": {
+                        "react": "^17.0.0"
+                    },
+                    "peerDependencies": {
+                        "react": "^17.0.0 || ^18.0.0",
+                        "react-dom": "^17.0.0 || ^18.0.0"
+                    }
+                }
+            }
+        }
     },
     "tools/scroll_to_top": {
         "scope": "logora.debate",
         "version": "0.0.8",
         "mainFile": "index.js",
-        "rootDir": "src/components/tools/scroll_to_top"
+        "rootDir": "src/components/tools/scroll_to_top",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "devDependencies": {
+                        "@testing-library/react": "^14.0.0"
+                    },
+                    "dependencies": {
+                        "react": "^17.0.0"
+                    },
+                    "peerDependencies": {
+                        "react": "^17.0.0 || ^18.0.0",
+                        "react-dom": "^17.0.0 || ^18.0.0"
+                    }
+                }
+            }
+        }
     },
     "user/avatar": {
         "scope": "logora.debate",
         "version": "0.0.25",
         "mainFile": "index.js",
-        "rootDir": "src/components/user/avatar"
+        "rootDir": "src/components/user/avatar",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "dependencies": {
+                        "@testing-library/react": "^14.0.0",
+                        "react": "^17.0.0"
+                    },
+                    "devDependencies": {
+                        "@testing-library/react": "^14.0.0"
+                    },
+                    "peerDependencies": {
+                        "react": "^17.0.0 || ^18.0.0",
+                        "react-dom": "^17.0.0 || ^18.0.0",
+                        "react-router": "^5.3.4",
+                        "react-router-dom": "^5.3.4"
+                    }
+                }
+            }
+        }
     },
     "user/avatar_selector": {
         "scope": "logora.debate",
         "version": "0.0.6",
         "mainFile": "index.js",
-        "rootDir": "src/components/user/avatar_selector"
+        "rootDir": "src/components/user/avatar_selector",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "devDependencies": {
+                        "@types/jest": "-",
+                        "@types/testing-library__jest-dom": "-"
+                    },
+                    "peerDependencies": {
+                        "react": "^17.0.0 || ^18.0.0",
+                        "react-dom": "^17.0.0 || ^18.0.0"
+                    }
+                }
+            }
+        }
     },
     "$schema-version": "16.0.0"
 }
