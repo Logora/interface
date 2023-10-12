@@ -1,4 +1,4 @@
-import React, { useState, useEffect, lazy } from 'react';
+import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { IconContext } from './IconContext';
 import PropTypes from "prop-types";
 
@@ -16,9 +16,11 @@ export const IconProvider = ({ libraryName = "regular", children }) => {
     }, [libraryName]);
 
     return (
-        <IconContext.Provider value={{ iconLibrary }}>
-            { children }
-        </IconContext.Provider>
+        <Suspense>
+            <IconContext.Provider value={{ iconLibrary }}>
+                { children }
+            </IconContext.Provider>
+        </Suspense>
     );
 }
 
