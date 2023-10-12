@@ -41,11 +41,9 @@ import { Send } from "./Send"
 import { Share } from "./Share"
 import { SmallArrow } from "./SmallArrow"
 import { Source } from "./Source"
-import { SuggestionCircle } from "./SuggestionCircle"
 import { Suggestion } from './Suggestion';
 import { Twitter } from "./Twitter"
 import { Underline } from "./Underline"
-import { UpvoteCircle } from "./UpvoteCircle"
 import { Upvote } from "./Upvote";
 import { User } from "./User"
 import { Votebox } from './Votebox';
@@ -96,11 +94,9 @@ export const RegularIconsLibrary = () => {
             <Share width={50} height={50} data-testid={"share-icon"} style={{margin: "15px"}} />
             <SmallArrow width={50} height={50} data-testid={"small-arrow-icon"} style={{margin: "15px"}} />
             <Source width={50} height={50} data-testid={"source-icon"} style={{margin: "15px"}} />
-            <SuggestionCircle width={50} height={50} data-testid={"suggestion-circle-icon"} style={{margin: "15px"}} />
             <Suggestion width={50} height={50} data-testid={"suggestion-icon"} style={{margin: "15px"}} />
             <Twitter width={50} height={50} data-testid={"twitter-icon"} style={{margin: "15px"}} />
             <Underline width={50} height={50} data-testid={"underline-icon"} style={{margin: "15px"}} />
-            <UpvoteCircle width={50} height={50} data-testid={"upvote-circle-icon"} style={{margin: "15px"}} />
             <Upvote width={50} height={50} data-testid={"upvote-icon"} style={{margin: "15px"}} />
             <User width={50} height={50} data-testid={"user-icon"} style={{margin: "15px"}} />
             <Votebox width={50} height={50} data-testid={"vote-box-icon"}  style={{margin: "15px"}} />

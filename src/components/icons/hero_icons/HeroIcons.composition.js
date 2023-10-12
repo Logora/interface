@@ -49,7 +49,7 @@ import { User } from "./User"
 import { Votebox } from './Votebox';
 import { Versus } from'./Versus';
 
-export const SpiegelIconsLibrary = () => {
+export const RegularIconsLibrary = () => {
     return (
         <div style={{display: "flex", justifyContent: "center", flexWrap: "wrap"}}>
             <Alarm width={50} height={50} data-testid={"alarm-icon"} style={{margin: "15px"}} /> 
@@ -59,8 +59,8 @@ export const SpiegelIconsLibrary = () => {
             <Bold width={50} height={50} data-testid={"bold-icon"} style={{margin: "15px"}} />
             <Camera width={50} height={50} data-testid={"camera-icon"} style={{margin: "15px"}} />
             <Chat width={50} height={50} data-testid={"chat-icon"} style={{margin: "15px"}} />
-            <Checkbox  width={50} height={50} data-testid={"checkbox-icon"} style={{margin: "15px"}} />
             <Check  width={50} height={50} data-testid={"checkbox-icon"} style={{margin: "15px"}} />
+            <Checkbox  width={50} height={50} data-testid={"checkbox-icon"} style={{margin: "15px"}} />
             <Clap width={50} height={50} data-testid={"clap-icon"} style={{margin: "15px"}} />
             <Clock width={50} height={50} data-testid={"clock-icon"} style={{margin: "15px"}} />
             <Close width={50} height={50} data-testid={"close-icon"} style={{margin: "15px"}} />

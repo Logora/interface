@@ -41,10 +41,8 @@ export { Share } from "./Share"
 export { SmallArrow } from "./SmallArrow"
 export { Source } from "./Source"
 export { Suggestion } from './Suggestion';
-import { SuggestionCircle } from './SuggestionCircle';
 export { Twitter } from "./Twitter"
 export { Underline } from "./Underline"
-export { UpvoteCircle } from "./UpvoteCircle"
 export { Upvote } from "./Upvote";
 export { User } from "./User"
 export { Votebox } from './Votebox';
