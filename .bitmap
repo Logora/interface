@@ -590,7 +590,17 @@
         "scope": "",
         "version": "",
         "mainFile": "index.js",
-        "rootDir": "src/components/icons/regular_icons"
+        "rootDir": "src/components/icons/regular_icons",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "peerDependencies": {
+                        "react": "^17.0.0 || ^18.0.0",
+                        "react-dom": "^17.0.0 || ^18.0.0"
+                    }
+                }
+            }
+        }
     },
     "input/checkbox/hidden": {
         "scope": "logora.debate",
