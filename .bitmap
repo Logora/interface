@@ -199,6 +199,18 @@
         "mainFile": "index.js",
         "rootDir": "src/components/hooks/use_relative_time"
     },
+    "icons/icon": {
+        "scope": "",
+        "version": "",
+        "mainFile": "index.js",
+        "rootDir": "src/components/icons/icon"
+    },
+    "icons/icon_provider": {
+        "scope": "",
+        "version": "",
+        "mainFile": "index.js",
+        "rootDir": "src/components/icons/icon_provider"
+    },
     "icons/regular_icons": {
         "scope": "logora.debate",
         "version": "0.0.1",
