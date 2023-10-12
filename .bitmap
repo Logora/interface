@@ -171,6 +171,12 @@
         "mainFile": "index.js",
         "rootDir": "src/components/icons/icon_provider"
     },
+    "icons/regular_icons": {
+        "scope": "",
+        "version": "",
+        "mainFile": "index.js",
+        "rootDir": "src/components/icons/regular_icons"
+    },
     "input/checkbox/hidden": {
         "scope": "logora.debate",
         "version": "0.0.4",

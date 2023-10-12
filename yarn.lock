@@ -1155,6 +1155,12 @@ __metadata:
   languageName: node
   linkType: hard
 
+"icon_provider-024301@workspace:src/components/icons/icon_provider":
+  version: 0.0.0-use.local
+  resolution: "icon_provider-024301@workspace:src/components/icons/icon_provider"
+  languageName: unknown
+  linkType: soft
+
 "icon_text_link-65256c@workspace:src/components/action/icon_text_link":
   version: 0.0.0-use.local
   resolution: "icon_text_link-65256c@workspace:src/components/action/icon_text_link"
@@ -1789,6 +1795,12 @@ __metadata:
   checksum: 869edff00288442f8d7fa4c9327f91d85f3b3acf8cbbef9ea7a220345cf23e9241b6def9263d2c1ebcf3a316b0aa52ad26a43a84aa02baca3381717b3e307f47
   languageName: node
   linkType: hard
+
+"regular_icons-fa7d8f@workspace:src/components/icons/regular_icons":
+  version: 0.0.0-use.local
+  resolution: "regular_icons-fa7d8f@workspace:src/components/icons/regular_icons"
+  languageName: unknown
+  linkType: soft
 
 "resolve-pathname@npm:^3.0.0":
   version: 3.0.0
