@@ -612,10 +612,22 @@
         }
     },
     "icons/spiegel_icons": {
+        "name": "icons/spiegel_icons",
         "scope": "",
         "version": "",
+        "defaultScope": "logora.debate",
         "mainFile": "index.js",
-        "rootDir": "src/components/icons/spiegel_icons"
+        "rootDir": "src/components/icons/spiegel_icons",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "peerDependencies": {
+                        "react": "^17.0.0 || ^18.0.0",
+                        "react-dom": "^17.0.0 || ^18.0.0"
+                    }
+                }
+            }
+        }
     },
     "input/checkbox/hidden": {
         "name": "input/checkbox/hidden",
