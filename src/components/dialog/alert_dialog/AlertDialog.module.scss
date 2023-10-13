@@ -9,7 +9,6 @@
     box-shadow: $box-shadow;
     visibility: visible;
     transition: visibility 0s 2s;
-    max-width: 400px;
     @include p(3, xs);
     &.info {
         background-color: $call-primary;
