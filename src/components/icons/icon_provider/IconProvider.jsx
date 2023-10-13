@@ -1,8 +1,8 @@
-import React, { useState, useEffect, lazy } from 'react';
+import React, { useState, useEffect } from 'react';
 import { IconContext } from './IconContext';
 import PropTypes from "prop-types";
 
-export const IconProvider = ({ libraryName, children }) => {
+export const IconProvider = ({ libraryName = "regular", children }) => {
     const [iconLibrary, setIconLibrary] = useState(null);
 
     useEffect(() => {
@@ -32,3 +32,7 @@ IconProvider.propTypes = {
     /** Provider children */
 	children: PropTypes.node,
 };
+
+IconProvider.defaultProps = {
+    libraryName: "regular"
+}
