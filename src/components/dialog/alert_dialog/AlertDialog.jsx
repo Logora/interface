@@ -29,7 +29,7 @@ AlertDialog.propTypes = {
     /** Text of the alert */
     text: PropTypes.string.isRequired,
     /** Points earned displayed below the text */
-    points: PropTypes.string,
+    points: PropTypes.number,
     /** Type of the alert, can be 'info', 'success' or 'error' */
     variant: PropTypes.string,
     /** Callback triggered on close */
