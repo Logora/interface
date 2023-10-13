@@ -254,14 +254,14 @@
     "dialog/alert_container": {
         "name": "dialog/alert_container",
         "scope": "logora.debate",
-        "version": "0.0.8",
+        "version": "0.0.9",
         "mainFile": "index.js",
         "rootDir": "src/components/dialog/alert_container"
     },
     "dialog/alert_dialog": {
         "name": "dialog/alert_dialog",
         "scope": "logora.debate",
-        "version": "0.0.18",
+        "version": "0.0.19",
         "mainFile": "index.js",
         "rootDir": "src/components/dialog/alert_dialog"
     },
