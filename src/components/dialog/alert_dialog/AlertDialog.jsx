@@ -32,10 +32,9 @@ AlertDialog.propTypes = {
     points: PropTypes.string,
     /** Type of the alert, can be 'info', 'success' or 'error' */
     variant: PropTypes.string,
-    /** On close callback */
+    /** Callback triggered on close */
     handleClose: PropTypes.func
 };
-
 
 AlertDialog.defaultProps = {
     variant: "info"
