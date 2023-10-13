@@ -8,6 +8,8 @@
   justify-content: center;
 }
 
-.paginationButton {
-  font-weight: $font-weight-normal;
+.paginationBox > button.paginationButton {
+  border-color: $darkest-text-tertiary !important;
+  font-weight: $font-weight-bold;
+  color: $text-primary !important;
 }
