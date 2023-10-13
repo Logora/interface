@@ -31,7 +31,7 @@ export const AlertDialogWithPoints = () => {
     return (
         <AlertDialog 
             text={"A message !"}
-            points={"34"}
+            points={34}
             variant={"info"}
         />
     );
