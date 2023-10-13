@@ -1128,6 +1128,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"hero_icons-f6c90f@workspace:src/components/icons/hero_icons":
+  version: 0.0.0-use.local
+  resolution: "hero_icons-f6c90f@workspace:src/components/icons/hero_icons"
+  languageName: unknown
+  linkType: soft
+
 "hidden-30841f@workspace:src/components/input/checkbox/hidden":
   version: 0.0.0-use.local
   resolution: "hidden-30841f@workspace:src/components/input/checkbox/hidden"
