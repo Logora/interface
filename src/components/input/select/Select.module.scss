@@ -75,7 +75,7 @@
 
 .arrowDown {
 	transform: rotate(90deg);
-	fill: transparent;
+	fill: transparent !important;
 	path {
 		stroke: $text-primary;
 	}
