@@ -5,7 +5,7 @@ import styles from "./Select.module.scss";
 import cx from "classnames";
 import PropTypes from "prop-types";
 
-export const Select = ({ options, defaultOption, onChange, resetSelect = false, disabled = false, className }) => {
+export const Select = ({ options, defaultOption, onChange, resetSelect = false, disabled = false, className, horizontalPosition }) => {
 	const defaultOptionValue = defaultOption ? options.filter(elm => elm.name == defaultOption)[0] : options[0];
 	const [currentOption, setCurrentOption] = useState(defaultOptionValue);
 	
@@ -45,7 +45,7 @@ export const Select = ({ options, defaultOption, onChange, resetSelect = false, 
 	
 	return (
 		<div className={styles.selectContainer}>
-			<Dropdown>
+			<Dropdown horizontalPosition={horizontalPosition}>
 				<div className={cx(styles.selectInput, { [className]: className, [styles.disabled]: disabled })}>
 					<span className={styles.currentOptionText}>{currentOption.text}</span>{" "}
 					<LightArrowIcon className={styles.arrowDown} height={10} width={10} />
@@ -68,10 +68,13 @@ Select.propTypes = {
 	/** Disable input */
 	disabled: PropTypes.bool,
 	/**  Class name to style the input */
-	className: PropTypes.string
+	className: PropTypes.string,
+	/** Dropdown horizontal alignment, can be `left`, `center` or `right` */
+	horizontalPosition: PropTypes.string
 };
 
 Select.defaultProps = {
 	resetSelect: false,
-	disabled: false
+	disabled: false,
+	horizontalPosition: "left"
 }

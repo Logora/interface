@@ -34,6 +34,12 @@ export const SelectWithDefault = () => {
     )
 };
 
+export const SelectWithRightOptions = () => {
+    return (
+        <Select options={options} horizontalPosition={"right"} />
+    )
+};
+
 export const DisabledSelect = () => {
     return (
         <Select options={options} disabled />
