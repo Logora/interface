@@ -9,7 +9,6 @@
 
 .authorName {
     @include px(2, xs);
-    background-color: $background-color-primary !important;
     a {
         font-size: $font-size-small;
         font-weight: $font-weight-bold;
@@ -18,13 +17,5 @@
     }
     &:hover {
         text-decoration: underline;
-        background-color: $background-color-primary !important;
-    }
-}
-
-.authorLink {
-    background: $background-color-primary !important;
-    &:hover {
-        background-color: $background-color-primary !important;
     }
 }
