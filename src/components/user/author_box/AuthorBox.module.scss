@@ -1,0 +1,114 @@
+@import '~@logora/debate.styles.theme/_theme.scss';
+@import '~@logora/debate.styles.display/_display.scss';
+@import '~@logora/debate.styles.spacing/_spacing.scss';
+
+.authorBox {
+    display: flex !important;
+    flex-direction: row !important;
+    @include p(0, xs);
+    @include pr(2, xs);
+    width: 100%;
+}
+
+.authorNameBox {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    @include ml(2.5, xs);
+    @include text-truncate();
+}
+
+.authorName {
+    font-weight: $font-weight-bold;
+    font-size: $font-size-small;
+    cursor: pointer;
+    color: $text-primary;
+    line-height: 1.4em;
+    @include text-truncate();
+    @include pb(1, xs);
+}
+
+.authorName a {
+    color: inherit !important;
+    text-decoration: none !important;
+}
+
+
+.authorName a:hover {
+    text-decoration: underline !important;
+    color: $text-primary !important;
+}
+
+.authorNameLine {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    .expertContainer, .linkDisabled {
+        cursor: default;
+        color: $text-secondary;
+    }
+    .expertContainer svg {
+        display: inline-block;
+    }
+    .expertBadge {
+        font-weight: $font-weight-normal;
+        font-size: $font-size-extra-small;
+        overflow: hidden;
+    }
+}
+
+.authorPointsBox {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    font-weight: $font-weight-normal;
+    font-size: $font-size-extra-small;
+    color: $text-primary;
+}
+
+.occupationBox {
+    @extend .authorPointsBox;
+    align-items: flex-start !important;
+    @include pt(2, xs);
+}
+
+@media(max-width: 768px) {
+    .authorNameBox {
+        font-size: $font-size-small;
+    }
+}
+
+.authorPoints {
+    display: flex !important;
+    align-items: center !important;
+    @include px(2, xs);
+    @include py(1, xs);
+    @include mr(1.5, xs);
+    background-color: $background-color-secondary;
+    border-radius: 15px;
+    svg {
+        @include ml(1, xs);
+    }
+}
+
+.authorLink {
+    background: $background-color-primary !important;
+    &.isReply {
+        background: $text-tertiary !important;
+    }
+    &.isReply:hover {
+        background: $text-tertiary !important;
+    }
+    &:hover {
+        background-color: $background-color-primary !important;
+    }
+}
+
+.pointIcon {
+    circle {
+        stroke: $text-primary;
+    }
+    path {
+        fill: $text-primary;
+    }
+}

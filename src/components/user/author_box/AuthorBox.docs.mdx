@@ -1,0 +1,40 @@
+---
+description: A component to display a user's avatar image, name link and other information in a box.
+tags: ['author', 'avatar', 'user', 'image']
+---
+
+import { AuthorBox } from './AuthorBox';
+
+The AuthorBox component is used to display a user's avatar image, name link, points and occupation in a box.
+It uses [ConfigProvider](https://bit.cloud/logora/debate/data/config_provider) for routing.
+The avatar image is rendered using the [Avatar](https://bit.cloud/logora/debate/user/avatar) component.
+
+It should be wrapped with react-intl's IntlProvider, ConfigProvider and be inside a Router.
+
+### Component usage
+
+```js
+import { AuthorBox } from '@logora/debate.user.author_box';
+```
+
+```
+import { AuthorBox } from './AuthorBox';
+
+const author = {
+  slug: 'john-doe',
+  full_name: 'John Doe',
+  image_url: 'https://example.com/avatar.jpg',
+  points: 53
+};
+
+<AuthorBox author={author} />
+```
+
+### Properties
+
+| Prop name        | Type    | Required | Default | Description                                                                                     |
+| ---------------- | ------- | -------- | ------- | ----------------------------------------------------------------------------------------------- |
+| `author`         | object  | Yes      | -       | An object containing the `full_name`, `image_url`, `slug` and `points` of the author.                    |
+| `disableLinks`   | boolean | No       | `false` | Disables the links to the author profile if set to `true`.                                  |
+| `showDescription`| boolean | No       | `true`  | Shows the author's description if set to `true`.                                                |
+| `hideUserInfo`   | boolean | No       | `false` | Hides the author's name and image if set to `true`.                                         |
