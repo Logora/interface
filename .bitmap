@@ -776,7 +776,7 @@
     "user/user_box_small": {
         "name": "user/user_box_small",
         "scope": "logora.debate",
-        "version": "0.0.2",
+        "version": "0.0.3",
         "mainFile": "index.js",
         "rootDir": "src/components/user/user_box_small"
     },
