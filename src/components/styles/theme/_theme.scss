@@ -34,6 +34,7 @@ $font-size-extra-small: var(--font-size-extra-small, 12px);
 $font-size-title: var(--font-size-title, $font-size-large);
 $tag-border-color: var(--tag-border-color, $call-primary);
 $tag-text-color: var(--tag-text-color, $call-primary);
+$tag-text-color-active: var(--tag-text-color-active, white);
 $layout-mobile-margin: var(--layout-horizontal-margin, 0);
 $layout-max-width: 1400px;
 $line-height: 1.3;
