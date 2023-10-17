@@ -21,6 +21,6 @@
     &.active {
         background-color: $tag-border-color;
         border-color: $tag-border-color;
-        color: $text-light !important;
+        color: $tag-text-color-active !important;
     };
 }

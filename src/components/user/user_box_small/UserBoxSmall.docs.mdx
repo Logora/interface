@@ -1,0 +1,20 @@
+---
+description: A small user box component with a user avatar image and name link.
+tags: ['user', 'avatar', 'user-box']
+---
+
+The UserBoxSmall component is used to display a user's avatar image and name link in a small box.
+
+It uses [ConfigProvider](https://bit.cloud/logora/debate/context/config_provider) for routing.
+
+The avatar image is rendered using the [Avatar](https://bit.cloud/logora/debate/user/avatar) component with size "small".
+
+### Component usage
+
+```js
+import { UserBoxSmall } from '@logora/debate.user.user_box_small';
+```
+
+```js
+<UserBoxSmall userName={"John Doe"} userSlug={"john-doe"} avatarUrl={'https://example.com/avatar.jpg'} />
+```

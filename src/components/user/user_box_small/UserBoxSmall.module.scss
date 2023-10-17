@@ -1,0 +1,21 @@
+@import '~@logora/debate.styles.theme/_theme.scss';
+@import "~@logora/debate.styles.spacing/_spacing.scss";
+
+.authorContainer {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+}
+
+.authorName {
+    @include px(2, xs);
+    a {
+        font-size: $font-size-small;
+        font-weight: $font-weight-bold;
+        color: $text-primary !important;
+        text-decoration: none;
+    }
+    &:hover {
+        text-decoration: underline;
+    }
+}
