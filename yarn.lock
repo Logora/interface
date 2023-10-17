@@ -266,6 +266,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@logora/debate.util.location@npm:0.0.6":
+  version: 0.0.6
+  resolution: "@logora/debate.util.location@npm:0.0.6::__archiveUrl=https%3A%2F%2Fnode.bit.cloud%2F%40logora%2Fdebate.util.location%2F-%2F%40logora-debate.util.location-0.0.6.tgz"
+  dependencies:
+    core-js: ^3.0.0
+    path-to-regexp: ^6.2.1
+    querystringify: ^2.2.0
+  peerDependencies:
+    react: ^17.0.0||^18.0.0
+    react-dom: ^17.0.0||^18.0.0
+  checksum: f795b2998adebca0a243f92dbfb41157eaf55790231d62330c165720a155c2ac30d2327c33bcdb185325b6cd618fd52d74e0f89298a0f689807e4845546990dc
+  languageName: node
+  linkType: hard
+
 "@logora/ui@workspace:.":
   version: 0.0.0-use.local
   resolution: "@logora/ui@workspace:."
@@ -274,6 +288,7 @@ __metadata:
     "@faker-js/faker": ^7.6.0
     "@logora/debate.icons": 0.0.8
     "@logora/debate.progress.loader": 0.0.2
+    "@logora/debate.util.location": 0.0.6
     "@testing-library/dom": ^9.2.0
     "@testing-library/react": ^14.0.0
     "@testing-library/user-event": ^14.4.3
@@ -286,8 +301,8 @@ __metadata:
     classnames: ^2.3.2
     core-js: ">=3.33.0 <4.0.0"
     prop-types: ^15.8.1
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
+    react: ">=17.0.0 <18.0.0 || >=18.0.0 <19.0.0"
+    react-dom: ">=17.0.0 <18.0.0 || >=18.0.0 <19.0.0"
     react-hot-toast: ^2.4.1
     react-intl: ^6.1.2
     react-loading-skeleton: ^3.0.2
@@ -296,8 +311,6 @@ __metadata:
     use-onclickoutside: ^0.4.1
     webfontloader: ^1.6.28
   peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
     react-router: ^5.3.4
     react-router-dom: ^5.3.4
   languageName: unknown
@@ -617,6 +630,12 @@ __metadata:
   checksum: 7b78c451df768adba04e2d02e63e2d0bf3b07adcd6e42b4cf665cb7ce899bedd344c69a1dcbce355b5f972d597b25aaa1c1742b52cffd9caccb22f348114f6be
   languageName: node
   linkType: hard
+
+"author_box_small-dbc234@workspace:src/components/user/author_box_small":
+  version: 0.0.0-use.local
+  resolution: "author_box_small-dbc234@workspace:src/components/user/author_box_small"
+  languageName: unknown
+  linkType: soft
 
 "available-typed-arrays@npm:^1.0.5":
   version: 1.0.5
@@ -1589,6 +1608,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"path-to-regexp@npm:^6.2.1":
+  version: 6.2.1
+  resolution: "path-to-regexp@npm:6.2.1"
+  checksum: f0227af8284ea13300f4293ba111e3635142f976d4197f14d5ad1f124aebd9118783dd2e5f1fe16f7273743cc3dbeddfb7493f237bb27c10fdae07020cc9b698
+  languageName: node
+  linkType: hard
+
 "picomatch@npm:^2.2.3, picomatch@npm:^2.3.1":
   version: 2.3.1
   resolution: "picomatch@npm:2.3.1"
@@ -1654,7 +1680,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-dom@npm:^17.0.0 || ^18.0.0":
+"querystringify@npm:^2.2.0":
+  version: 2.2.0
+  resolution: "querystringify@npm:2.2.0"
+  checksum: 5641ea231bad7ef6d64d9998faca95611ed4b11c2591a8cae741e178a974f6a8e0ebde008475259abe1621cb15e692404e6b6626e927f7b849d5c09392604b15
+  languageName: node
+  linkType: hard
+
+"react-dom@npm:>=17.0.0 <18.0.0 || >=18.0.0 <19.0.0":
   version: 18.2.0
   resolution: "react-dom@npm:18.2.0"
   dependencies:
@@ -1768,7 +1801,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react@npm:^17.0.0 || ^18.0.0":
+"react@npm:>=17.0.0 <18.0.0 || >=18.0.0 <19.0.0":
   version: 18.2.0
   resolution: "react@npm:18.2.0"
   dependencies:
