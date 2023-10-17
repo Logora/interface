@@ -93,12 +93,6 @@
 
 .authorLink {
     background: $background-color-primary !important;
-    &.isReply {
-        background: $text-tertiary !important;
-    }
-    &.isReply:hover {
-        background: $text-tertiary !important;
-    }
     &:hover {
         background-color: $background-color-primary !important;
     }

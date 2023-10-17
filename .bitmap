@@ -764,7 +764,21 @@
         "scope": "logora.debate",
         "version": "0.0.26",
         "mainFile": "index.js",
-        "rootDir": "src/components/user/author_box"
+        "rootDir": "src/components/user/author_box",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "devDependencies": {
+                        "@types/jest": "-",
+                        "@types/testing-library__jest-dom": "-"
+                    },
+                    "peerDependencies": {
+                        "react": "^18.2.0",
+                        "react-dom": "^18.2.0"
+                    }
+                }
+            }
+        }
     },
     "user/avatar": {
         "name": "user/avatar",

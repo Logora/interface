@@ -21,20 +21,16 @@ import { AuthorBox } from '@logora/debate.user.author_box';
 import { AuthorBox } from './AuthorBox';
 
 const author = {
-  slug: 'john-doe',
+  hash_id: 'john-doe',
   full_name: 'John Doe',
   image_url: 'https://example.com/avatar.jpg',
   points: 53
 };
 
-<AuthorBox author={author} />
+<AuthorBox 
+  hashId={author.hash_id}
+  fullName={author.full_name}
+  avatarUrl={author.image_url}
+  points={author.points}
+/>
 ```
-
-### Properties
-
-| Prop name        | Type    | Required | Default | Description                                                                                     |
-| ---------------- | ------- | -------- | ------- | ----------------------------------------------------------------------------------------------- |
-| `author`         | object  | Yes      | -       | An object containing the `full_name`, `image_url`, `slug` and `points` of the author.                    |
-| `disableLinks`   | boolean | No       | `false` | Disables the links to the author profile if set to `true`.                                  |
-| `showDescription`| boolean | No       | `true`  | Shows the author's description if set to `true`.                                                |
-| `hideUserInfo`   | boolean | No       | `false` | Hides the author's name and image if set to `true`.                                         |

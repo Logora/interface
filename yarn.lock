@@ -631,6 +631,12 @@ __metadata:
   languageName: node
   linkType: hard
 
+"author_box-192ddc@workspace:src/components/user/author_box":
+  version: 0.0.0-use.local
+  resolution: "author_box-192ddc@workspace:src/components/user/author_box"
+  languageName: unknown
+  linkType: soft
+
 "available-typed-arrays@npm:^1.0.5":
   version: 1.0.5
   resolution: "available-typed-arrays@npm:1.0.5"
