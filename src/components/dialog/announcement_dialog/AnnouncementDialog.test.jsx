@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { AnnouncementDialog } from './AnnouncementDialog';
-import { AnnouncementIcon } from '@logora/debate.icons';
+import { Announcement } from '@logora/debate.icons.regular_icons';
 
 describe('AnnouncementDialog', () => {
     it('should render with the correct text', () => {
@@ -18,7 +18,7 @@ describe('AnnouncementDialog', () => {
     it('should render with the custom icon', () => {
         const dialog = render(
             <AnnouncementDialog 
-                icon={AnnouncementIcon}
+                icon={Announcement}
                 message={"An other announcement message !"}
             />
         );

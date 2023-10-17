@@ -1,5 +1,5 @@
 import React from 'react';
-import { HomeIcon, SendIcon } from '@logora/debate.icons';
+import { Home, Send } from '@logora/debate.icons.regular_icons';
 import { Button } from './Button';
 
 export const ActiveButton = () => {
@@ -11,15 +11,15 @@ export const InactiveButton = () => {
 };
 
 export const ButtonWithLeftIcon = () => {
-    return <Button leftIcon={<HomeIcon />} handleClick={null}>Home</Button>;
+    return <Button leftIcon={<Home />} handleClick={null}>Home</Button>;
 };
 
 export const ButtonWithRightIcon = () => {
-    return <Button rightIcon={<SendIcon />} handleClick={null}>Home</Button>;
+    return <Button rightIcon={<Send />} handleClick={null}>Home</Button>;
 };
 
 export const ButtonWithIconOnly = () => {
-    return <Button leftIcon={<HomeIcon />} handleClick={null} />;
+    return <Button leftIcon={<Home />} handleClick={null} />;
 };
 
 export const ButtonWithSuccessAccent = () => {

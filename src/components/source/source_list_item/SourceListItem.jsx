@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from '@logora/debate.action.link'
-import { LinkIcon } from '@logora/debate.icons';
+import { Link as LinkIcon } from '@logora/debate.icons.regular_icons';
 import styles from './SourceListItem.module.scss';
 import PropTypes from "prop-types";
 

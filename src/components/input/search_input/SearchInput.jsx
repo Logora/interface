@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { SearchIcon, CloseIcon } from '@logora/debate.icons';
+import { Search, Close } from '@logora/debate.icons.regular_icons';
 import { TextInput } from '@logora/debate.input.text_input';
 import useOnClickOutside from 'use-onclickoutside';
 import styles from "./SearchInput.module.scss";
@@ -41,14 +41,14 @@ export const SearchInput = ({ onSearchSubmit, placeholder, disabled, reducedByDe
 						onChange={e => setQuery(e.target.value)}
 						data-testid={"input_search_query"}
 						data-tid={"input_search_query"}
-						icon={query ? <CloseIcon className={styles.searchReset} role="submit" data-tid={"action_search_reset"} height={16} width={16} onClick={(e) => handleReset(e)} /> : <SearchIcon className={styles.searchSubmit} role="submit" data-tid={"action_search_submit"} height={16} width={16} onClick={(e) => handleSubmit(e)} />}
+						icon={query ? <Close className={styles.searchReset} role="submit" data-tid={"action_search_reset"} height={16} width={16} onClick={(e) => handleReset(e)} /> : <Search className={styles.searchSubmit} role="submit" data-tid={"action_search_submit"} height={16} width={16} onClick={(e) => handleSubmit(e)} />}
 					/>
 				</form>	
 			) 
 		:
 			(
 				<div className={styles.searchReducedButton} onClick={() => setOpenSearch(true)}>
-					<SearchIcon className={styles.searchSubmit} data-tid={"action_search_submit"} height={20.8} width={16} />
+					<Search className={styles.searchSubmit} data-tid={"action_search_submit"} height={20.8} width={16} />
 				</div>
 			)
 	)
