@@ -631,12 +631,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"author_box_small-dbc234@workspace:src/components/user/author_box_small":
-  version: 0.0.0-use.local
-  resolution: "author_box_small-dbc234@workspace:src/components/user/author_box_small"
-  languageName: unknown
-  linkType: soft
-
 "available-typed-arrays@npm:^1.0.5":
   version: 1.0.5
   resolution: "available-typed-arrays@npm:1.0.5"
@@ -2132,6 +2126,12 @@ __metadata:
 "use_relative_time-24bd49@workspace:src/components/hooks/use_relative_time":
   version: 0.0.0-use.local
   resolution: "use_relative_time-24bd49@workspace:src/components/hooks/use_relative_time"
+  languageName: unknown
+  linkType: soft
+
+"user_box_small-4cb87a@workspace:src/components/user/user_box_small":
+  version: 0.0.0-use.local
+  resolution: "user_box_small-4cb87a@workspace:src/components/user/user_box_small"
   languageName: unknown
   linkType: soft
 
