@@ -759,25 +759,6 @@
             }
         }
     },
-    "user/author_box_small": {
-        "name": "user/author_box_small",
-        "scope": "logora.debate",
-        "version": "0.0.22",
-        "mainFile": "index.js",
-        "rootDir": "src/components/user/author_box_small",
-        "config": {
-            "teambit.component/deprecation": {
-                "deprecate": true,
-                "newId": {
-                    "name": "user/user_box_small",
-                    "scope": "logora.debate"
-                }
-            },
-            "teambit.component/remove": {
-                "removed": true
-            }
-        }
-    },
     "user/avatar": {
         "name": "user/avatar",
         "scope": "logora.debate",
@@ -794,45 +775,10 @@
     },
     "user/user_box_small": {
         "name": "user/user_box_small",
-        "scope": "",
-        "version": "",
-        "defaultScope": "logora.debate",
+        "scope": "logora.debate",
+        "version": "0.0.1",
         "mainFile": "index.js",
-        "rootDir": "src/components/user/user_box_small",
-        "config": {
-            "teambit.dependencies/dependency-resolver": {
-                "policy": {
-                    "devDependencies": {
-                        "@types/jest": "-",
-                        "@types/testing-library__jest-dom": "-"
-                    },
-                    "peerDependencies": {
-                        "react": "^17.0.0||^18.0.0",
-                        "react-dom": "^17.0.0||^18.0.0"
-                    }
-                }
-            },
-            "teambit.react/react": {},
-            "teambit.component/dev-files": {
-                "devFilePatterns": [
-                    "**/*.story.+(js|ts|jsx|tsx)",
-                    "**/*.dev.jsx"
-                ]
-            },
-            "teambit.envs/envs": {},
-            "teambit.compositions/compositions": {},
-            "teambit.docs/docs": {},
-            "teambit.preview/preview": {},
-            "teambit.pipelines/builder": {},
-            "teambit.harmony/application": {},
-            "teambit.component/renaming": {
-                "renamedFrom": {
-                    "scope": "logora.debate",
-                    "name": "user/author_box_small",
-                    "version": "0.0.22"
-                }
-            }
-        }
+        "rootDir": "src/components/user/user_box_small"
     },
     "$schema-version": "17.0.0"
 }
