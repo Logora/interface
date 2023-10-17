@@ -1,5 +1,5 @@
 import React from 'react';
-import { AnnouncementIcon } from '@logora/debate.icons';
+import { Announcement } from '@logora/debate.icons.regular_icons';
 import { TextInput } from './TextInput';
 
 export const BasicTextInput = () => <TextInput placeholder="enter text..." data-testid="test-input" />;
@@ -35,7 +35,7 @@ export const SmallTextInputWithIcon = () => (
     style={{ fontSize: 12 }}
     placeholder="enter text..."
     data-testid="test-input"
-    icon={<AnnouncementIcon style={{ cursor: 'pointer' }} onClick={() => alert('on icon click')} />}
+    icon={<Announcement style={{ cursor: 'pointer' }} onClick={() => alert('on icon click')} />}
   />
 );
 
@@ -44,14 +44,14 @@ export const BigTextInputWithIcon = () => (
     style={{ fontSize: 24 }}
     placeholder="enter text..."
     data-testid="test-input"
-    icon={<AnnouncementIcon style={{ cursor: 'pointer' }} onClick={() => alert('on icon click')} />}
+    icon={<Announcement style={{ cursor: 'pointer' }} onClick={() => alert('on icon click')} />}
   />
 );
 
 export const TextInputWithIcon = () => (
   <TextInput
     placeholder="search..."
-    icon={<AnnouncementIcon style={{ cursor: 'pointer' }} onClick={() => alert('on icon click')} />}
+    icon={<Announcement style={{ cursor: 'pointer' }} onClick={() => alert('on icon click')} />}
   />
 );
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from '@logora/debate.action.link';
-import { ArrowIcon } from "@logora/debate.icons";
+import { Arrow } from "@logora/debate.icons.regular_icons";
 import cx from 'classnames';
 import styles from './BackLink.module.scss';
 import PropTypes from "prop-types";
@@ -8,7 +8,7 @@ import PropTypes from "prop-types";
 export const BackLink = ({ to, text, external = true, className, ...rest }) => {
     return (
         <Link to={to} className={cx(className, styles.backLink)} external={external} {...rest}>
-            <ArrowIcon height={24} width={24} />
+            <Arrow height={24} width={24} />
             <span className={styles.arrowIcon}>
                 { text }
             </span>

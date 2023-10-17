@@ -1,5 +1,5 @@
 import React from 'react';
-import { AnnouncementIcon } from '@logora/debate.icons';
+import { Announcement } from '@logora/debate.icons.regular_icons';
 import cx from 'classnames';
 import styles from './AnnouncementDialog.module.scss';
 import PropTypes from "prop-types";
@@ -11,7 +11,7 @@ export const AnnouncementDialog = ({ message, icon: Icon, fullWidth = false, cla
                 { Icon ?
                     <Icon height={24} width={24} data-testid={"custom-icon"} />
                 :
-                    <AnnouncementIcon height={24} width={24} data-testid={"announcement-icon"} />
+                    <Announcement height={24} width={24} data-testid={"announcement-icon"} />
                 }
             </div>
             <div className={styles.content}>

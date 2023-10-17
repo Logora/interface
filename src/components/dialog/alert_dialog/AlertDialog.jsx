@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { PointIcon } from '@logora/debate.icons';
+import { Point } from '@logora/debate.icons.regular_icons';
 import cx from 'classnames';
 import styles from './AlertDialog.module.scss';
 
@@ -14,7 +14,7 @@ export const AlertDialog = ({ text, points, variant = "info", handleClose }) => 
                 { points &&
                     <div className={styles.points}>
                         <span className={styles.textPoints}>{points}</span>
-                        <PointIcon width={14} height={14} className={styles.pointIcon} />
+                        <Point width={14} height={14} className={styles.pointIcon} />
                     </div>
                 }
             </div>
