@@ -31,6 +31,7 @@ $font-size-large: var(--font-size-large, 18px);
 $font-size-normal: var(--font-size-normal, 16px);
 $font-size-small: var(--font-size-small, 14px);
 $font-size-extra-small: var(--font-size-extra-small, 12px);
+$font-size-title: var(--font-size-title, $font-size-large);
 $tag-border-color: var(--tag-border-color, $call-primary);
 $tag-text-color: var(--tag-text-color, $call-primary);
 $layout-mobile-margin: var(--layout-horizontal-margin, 0);
