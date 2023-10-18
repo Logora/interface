@@ -22,7 +22,6 @@ export const AuthorBox = ({
     const intl = useIntl();
     const routes = useRoutes();
     const isOnline = (new Date(lastActivity) > Date.now());
-    const formattedPoints = intl.formatNumber(points, { notation: 'compact', maximumFractionDigits: 1, roundingMode: "floor" });
 
     return (
         <div className={styles.authorBox}>
@@ -59,7 +58,13 @@ export const AuthorBox = ({
                     <>
                         <div className={styles.authorPointsBox}>
                             <div className={styles.authorPoints}>
-                                <span><FormattedMessage id="user.author_box.points" defaultMessage={"{count} points"} values={{ count: formattedPoints }} /></span>
+                                <span>
+                                    <FormattedMessage 
+                                        id="user.author_box.points" 
+                                        defaultMessage={"{count} points"} 
+                                        values={{ count: intl.formatNumber(points, { notation: 'compact', maximumFractionDigits: 1, roundingMode: "floor" }) }} 
+                                    />
+                                </span>
                             </div>
                             { eloquenceTitle &&
                                 <>
