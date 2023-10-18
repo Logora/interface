@@ -135,7 +135,7 @@ describe('AuthorBox', () => {
     });
 
     it('should show deleted user', () => {
-        const { getByText } = render(
+        const { queryByText, getByText } = render(
             <BrowserRouter>
                 <ConfigProvider routes={{ ...routes }}>
                     <IntlProvider locale="en">
