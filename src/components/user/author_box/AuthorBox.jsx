@@ -1,6 +1,6 @@
 import React from 'react';
 import { useRoutes } from '@logora/debate.data.config_provider';
-import { useIntl } from 'react-intl';
+import { useIntl, FormattedMessage } from 'react-intl';
 import { Avatar } from '@logora/debate.user.avatar';
 import { Link } from '@logora/debate.action.link';
 import { ExpertBadge } from '@logora/debate.icons.regular_icons';
@@ -13,7 +13,7 @@ export const AuthorBox = ({
         avatarUrl, 
         lastActivity, 
         isExpert = false, 
-        points, 
+        points = 0, 
         eloquenceTitle, 
         occupation, 
         disableLinks = false, 
@@ -26,10 +26,10 @@ export const AuthorBox = ({
     return (
         <div className={styles.authorBox}>
             { disableLinks  || isDeleted ?
-                <Avatar data-tid={"action_view_argument_author_image"} avatarUrl={isDeleted ? null : avatarUrl} userName={fullName} isOnline={isOnline} size={48} />
+                <Avatar avatarUrl={isDeleted ? null : avatarUrl} userName={fullName} isOnline={isOnline} size={48} />
             :
                 <Link to={routes.userShowLocation.toUrl({ userSlug: slug })} className={styles.authorLink}>
-                    <Avatar data-tid={"action_view_argument_author_image"} avatarUrl={avatarUrl} userName={fullName} isOnline={isOnline} size={48} />
+                    <Avatar avatarUrl={avatarUrl} userName={fullName} isOnline={isOnline} size={48} />
                 </Link>
             }
             <div className={styles.authorNameBox}>
@@ -37,18 +37,18 @@ export const AuthorBox = ({
                     <div className={styles.authorNameLine}>
                         { disableLinks || isDeleted ?
                             <span className={styles.linkDisabled}>
-                                {isDeleted ? intl.formatMessage({ id: "info.deleted", defaultMessage: "Deleted" }) : fullName}
+                                { isDeleted ? intl.formatMessage({ id: "user.author_box.deleted", defaultMessage: "Deleted" }) : fullName }
                             </span>
                         :
                             <div className={styles.authorLink}>
-                                <Link data-tid={"action_view_argument_author_name"} to={routes.userShowLocation.toUrl({userSlug: slug})}>
+                                <Link to={routes.userShowLocation.toUrl({userSlug: slug})}>
                                     { fullName }
                                 </Link>
                             </div>
                         }
                         { isExpert && !isDeleted &&
                             <div className={styles.expertContainer}>
-                                <span className={styles.expertBadge}>{ intl.formatMessage({ id: "user.isExpert", defaultMessage: "Journalist" }) }</span>
+                                <span className={styles.expertBadge}>{ intl.formatMessage({ id: "user.author_box.expert", defaultMessage: "Journalist" }) }</span>
                                 <ExpertBadge width={16} />
                             </div>
                         }
@@ -58,7 +58,15 @@ export const AuthorBox = ({
                     <>
                         <div className={styles.authorPointsBox}>
                             <div className={styles.authorPoints}>
-                                <span>{points ? intl.formatNumber(points, { notation: 'compact', maximumFractionDigits: 1, roundingMode: "floor" }) : "0"}</span>
+                                <span>
+                                    { intl.formatNumber(points, { notation: 'compact', maximumFractionDigits: 1, roundingMode: "floor" }) }
+                                    {" "}
+                                    <FormattedMessage 
+                                        id="user.author_box.points" 
+                                        defaultMessage={"points"} 
+                                        values={{ count: points }} 
+                                    />
+                                </span>
                             </div>
                             { eloquenceTitle &&
                                 <>
@@ -91,7 +99,7 @@ AuthorBox.propTypes = {
     /** User slug used in the router link */ 
     slug: PropTypes.string,
     /** User last activity date time */
-    lastActivity: PropTypes.instanceOf(Date), 
+    lastActivity: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date) ]),
     /** Whether an user has a special "expert" status or not */ 
     isExpert: PropTypes.bool,
     /** User eloquence points total */ 
@@ -107,6 +115,7 @@ AuthorBox.propTypes = {
 }
 
 AuthorBox.defaultProps = {
+    points: 0,
     isExpert: false,
     disableLinks: false,
     isDeleted: false

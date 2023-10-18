@@ -11,7 +11,7 @@ const author = {
     image_url: faker.image.avatar(),
     full_name: faker.name.fullName(),
     hash_id: faker.lorem.slug(),
-    points: 52,
+    points: 1463,
     eloquence_title: faker.science.chemicalElement().symbol,
     occupation: faker.vehicle.bicycle(),
     last_activity: faker.date.recent(),
@@ -50,7 +50,7 @@ describe('AuthorBox', () => {
         expect(avatarImg).toBeInTheDocument();
         expect(avatarImg).toHaveAttribute('src', author.image_url);
         expect(getByText(author.full_name)).toBeTruthy();
-        expect(getByText(author.points)).toBeTruthy();
+        expect(getByText("1.5K points")).toBeTruthy();
         expect(getByText("Eloquence title")).toBeTruthy();
 
         const authorLinkElements = getAllByRole('link');
@@ -82,7 +82,7 @@ describe('AuthorBox', () => {
         );
 
         expect(getByText(author.full_name)).toBeTruthy();
-        expect(getByText(author.points)).toBeTruthy();
+        expect(getByText("1.5K points")).toBeTruthy();
         expect(getByText("Eloquence title")).toBeTruthy();
         expect(queryByRole('link')).not.toBeInTheDocument();
     });
