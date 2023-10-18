@@ -25,7 +25,7 @@ export const AuthorBox = ({
 
     return (
         <div className={styles.authorBox}>
-            { disableLinks  || isDeleted ?
+            { !slug || disableLinks  || isDeleted ?
                 <Avatar avatarUrl={isDeleted ? null : avatarUrl} userName={fullName} isOnline={isOnline} size={48} />
             :
                 <Link to={routes.userShowLocation.toUrl({ userSlug: slug })} className={styles.authorLink}>
@@ -35,7 +35,7 @@ export const AuthorBox = ({
             <div className={styles.authorNameBox}>
                 <div className={styles.authorName}>
                     <div className={styles.authorNameLine}>
-                        { disableLinks || isDeleted ?
+                        { !slug || disableLinks || isDeleted ?
                             <span className={styles.linkDisabled}>
                                 { isDeleted ? intl.formatMessage({ id: "user.author_box.deleted", defaultMessage: "Deleted" }) : fullName }
                             </span>
