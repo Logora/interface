@@ -289,6 +289,7 @@ __metadata:
     core-js: ">=3.33.0 <4.0.0"
     prop-types: ^15.8.1
     react: ">=18.2.0 <19.0.0"
+    react-copy-to-clipboard: ^5.0.4
     react-dom: ">=18.2.0 <19.0.0"
     react-hot-toast: ^2.4.1
     react-intl: ^6.1.2
@@ -801,6 +802,15 @@ __metadata:
   resolution: "context_source_list-733b2d@workspace:src/components/source/context_source_list"
   languageName: unknown
   linkType: soft
+
+"copy-to-clipboard@npm:^3.3.1":
+  version: 3.3.3
+  resolution: "copy-to-clipboard@npm:3.3.3"
+  dependencies:
+    toggle-selection: ^1.0.6
+  checksum: e0a325e39b7615108e6c1c8ac110ae7b829cdc4ee3278b1df6a0e4228c490442cc86444cd643e2da344fbc424b3aab8909e2fec82f8bc75e7e5b190b7c24eecf
+  languageName: node
+  linkType: hard
 
 "core-js@npm:>=3.33.0 <4.0.0, core-js@npm:^3.0.0":
   version: 3.33.0
@@ -1674,6 +1684,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-copy-to-clipboard@npm:^5.0.4":
+  version: 5.1.0
+  resolution: "react-copy-to-clipboard@npm:5.1.0"
+  dependencies:
+    copy-to-clipboard: ^3.3.1
+    prop-types: ^15.8.1
+  peerDependencies:
+    react: ^15.3.0 || 16 || 17 || 18
+  checksum: f00a4551b9b63c944a041a6ab46af5ef20ba1106b3bc25173e7ef9bffbfba17a613368682ab8820cfe8d4b3acc5335cd9ce20229145bcc1e6aa8d1db04c512e5
+  languageName: node
+  linkType: hard
+
 "react-dom@npm:>=18.2.0 <19.0.0":
   version: 18.2.0
   resolution: "react-dom@npm:18.2.0"
@@ -1891,6 +1913,12 @@ __metadata:
   languageName: node
   linkType: hard
 
+"share_box-9b6d3f@workspace:src/components/share/share_box":
+  version: 0.0.0-use.local
+  resolution: "share_box-9b6d3f@workspace:src/components/share/share_box"
+  languageName: unknown
+  linkType: soft
+
 "side-channel@npm:^1.0.4":
   version: 1.0.4
   resolution: "side-channel@npm:1.0.4"
@@ -2033,6 +2061,13 @@ __metadata:
   resolution: "toggle-9b9f77@workspace:src/components/input/toggle"
   languageName: unknown
   linkType: soft
+
+"toggle-selection@npm:^1.0.6":
+  version: 1.0.6
+  resolution: "toggle-selection@npm:1.0.6"
+  checksum: a90dc80ed1e7b18db8f4e16e86a5574f87632dc729cfc07d9ea3ced50021ad42bb4e08f22c0913e0b98e3837b0b717e0a51613c65f30418e21eb99da6556a74c
+  languageName: node
+  linkType: hard
 
 "tooltip-28dbeb@workspace:src/components/dialog/tooltip":
   version: 0.0.0-use.local
