@@ -762,7 +762,7 @@
     "user/author_box": {
         "name": "user/author_box",
         "scope": "logora.debate",
-        "version": "0.0.30",
+        "version": "0.0.31",
         "mainFile": "index.js",
         "rootDir": "src/components/user/author_box"
     },
