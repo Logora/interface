@@ -1,0 +1,24 @@
+---
+description: A share button component.
+---
+
+import { ShareButton } from './ShareButton';
+import { IntlProvider } from 'react-intl';
+
+A button that opens ShareBox on click on desktop, and the navigator's native share dialog on mobile.
+
+Share URL and text will be passed to the different share options.
+
+It should be wrapped around [react-intl](https://formatjs.io/docs/getting-started/installation/)'s IntlProvider.
+
+### Component usage
+```js
+<IntlProvider locale="fr">
+    <ShareButton
+        showText 
+        shareUrl="https://example.com/share-link"
+        shareTitle="Here is an interesting link"
+        shareText="Hello, I stumbled upon this interesting article about asteroids. You should check it out !"
+    />
+</IntlProvider>
+```

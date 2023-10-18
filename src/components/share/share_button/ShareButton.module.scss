@@ -1,0 +1,76 @@
+@import '~@logora/debate.styles.theme/_theme.scss';
+@import '~@logora/debate.styles.spacing/_spacing.scss';
+
+.shareButtonContainer {
+  display: flex !important;
+  align-content: center !important;
+  justify-content: center !important;
+  padding: 0 !important;
+  cursor: pointer;
+}
+
+.popoverWrapper {
+  position: relative;
+  display: flex !important;
+  align-items: center !important;
+  color: $text-primary;
+}
+
+.popoverWrapper.popoverActive .popoverContent {
+  z-index: 10;
+  opacity: 1;
+  visibility: visible;
+  transform: translate(0, -20px);
+  transition: all 0.3s cubic-bezier(0.75, -0.02, 0.2, 0.97);
+}
+
+.popoverContent {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  left: -95px;
+  top: 59px;
+  transform: translate(0, 10px);
+  padding: 1.5rem;
+  border: 1px solid $text-secondary;
+  border-radius: $box-border-radius;
+  box-shadow: $box-shadow;
+  background: $background-color-primary;
+  color: $text-primary;
+  line-height: 1.5em;
+  width: auto;
+  @include ml(4, xs);
+  @include ml(0, sm);
+  &.popoverContentWithCode {
+    left: -107px;
+  }
+
+  &:before {
+    position: absolute;
+    z-index: -1;
+    content: "";
+    right: calc(50% - 10px);
+    top: -10px;
+    border-style: solid;
+    border-width: 0 10px 10px 10px;
+    border-color: transparent transparent $text-secondary transparent;
+    transition-duration: 0.3s;
+    transition-property: transform;
+  }
+  &:after {
+    position: absolute;
+    z-index: -1;
+    content: "";
+    right: calc(50% - 10px);
+    top: -9px;
+    border-style: solid;
+    border-width: 0 10px 10px 10px;
+    border-color: transparent transparent $background-color-primary transparent;
+    transition-duration: 0.3s;
+    transition-property: transform;
+  }
+}
+
+.shareButtonText {
+  @include pl(1, xs);
+}

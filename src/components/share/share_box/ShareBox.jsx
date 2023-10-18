@@ -59,9 +59,9 @@ ShareBox.propTypes = {
 	/** Position of the tooltip */
 	tooltipPosition: PropTypes.string,
 	/** Url to share */
-	shareUrl: PropTypes.string,
+	shareUrl: PropTypes.string.isRequired,
 	/** Title of the share */
-	shareTitle: PropTypes.string,
+	shareTitle: PropTypes.string.isRequired,
 	/** Text of the share */
     shareText: PropTypes.string,
 	/** Code to share */

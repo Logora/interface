@@ -1919,6 +1919,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"share_button-41118f@workspace:src/components/share/share_button":
+  version: 0.0.0-use.local
+  resolution: "share_button-41118f@workspace:src/components/share/share_button"
+  languageName: unknown
+  linkType: soft
+
 "side-channel@npm:^1.0.4":
   version: 1.0.4
   resolution: "side-channel@npm:1.0.4"
