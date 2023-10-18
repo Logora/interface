@@ -59,10 +59,12 @@ export const AuthorBox = ({
                         <div className={styles.authorPointsBox}>
                             <div className={styles.authorPoints}>
                                 <span>
+                                    { intl.formatNumber(points, { notation: 'compact', maximumFractionDigits: 1, roundingMode: "floor" }) }
+                                    {" "}
                                     <FormattedMessage 
                                         id="user.author_box.points" 
-                                        defaultMessage={"{count} points"} 
-                                        values={{ count: intl.formatNumber(points, { notation: 'compact', maximumFractionDigits: 1, roundingMode: "floor" }) }} 
+                                        defaultMessage={"points"} 
+                                        values={{ count: points }} 
                                     />
                                 </span>
                             </div>
