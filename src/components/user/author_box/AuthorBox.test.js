@@ -11,8 +11,9 @@ const author = {
     image_url: faker.image.avatar(),
     full_name: faker.name.fullName(),
     hash_id: faker.lorem.slug(),
-    slug: faker.lorem.slug(),
     points: 52,
+    eloquence_title: faker.science.chemicalElement().symbol,
+    occupation: faker.vehicle.bicycle(),
     last_activity: faker.date.recent(),
     description: faker.name.jobTitle(),
     is_expert: false
@@ -25,31 +26,32 @@ const routes = {
     userShowLocation: UserShowLocation,
 }
 
-describe('AuthorBox component', () => {
+describe('AuthorBox', () => {
     it('should render with author data', () => {
         const { getByText, getByAltText, getAllByRole } = render(
             <BrowserRouter>
-                <ConfigProvider routes={{ ...routes }}>
+                <ConfigProvider config={{}} routes={{ ...routes }}>
                     <IntlProvider locale="en">
                         <AuthorBox
-                            avatarUrl={author.image_url}
-                            hashId={author.hash_id}
-                            points={author.points}
                             fullName={author.full_name}
-                            isExpert={author.is_expert}
+                            avatarUrl={author.image_url}
+                            slug={author.hash_id}
+                            points={author.points}
+                            eloquenceTitle={author.eloquence_title}
+                            lastActivity={author.last_activity}
+                            isExpert={false}
                         />
                     </IntlProvider>
                 </ConfigProvider>
             </BrowserRouter>
         );
 
-        const avatarImg = getByAltText("John Doe's profile picture");
+        const avatarImg = getByAltText(author.full_name + "'s profile picture");
         expect(avatarImg).toBeInTheDocument();
         expect(avatarImg).toHaveAttribute('src', author.image_url);
-        expect(getByText('John Doe')).toBeInTheDocument();
-        expect(getByText('1.2K')).toBeInTheDocument();
-        expect(getByText('Eloquence title')).toBeInTheDocument();
-        expect(getByText('Developer')).toBeInTheDocument();
+        expect(getByText(author.full_name)).toBeTruthy();
+        expect(getByText(author.points)).toBeTruthy();
+        expect(getByText("Eloquence title")).toBeTruthy();
 
         const authorLinkElements = getAllByRole('link');
         expect(authorLinkElements.length).toBe(2);
@@ -59,95 +61,100 @@ describe('AuthorBox component', () => {
         );
     });
 
-    // it('should render without links', () => {
-    //     const { getByText, queryByRole } = render(
-    //         <BrowserRouter>
-    //             <ConfigProvider routes={{ ...routes }}>
-    //                 <IntlProvider locale="en">
-    //                     <AuthorBox author={{ ...author, slug: '' }} disableLinks={true} />
-    //                 </IntlProvider>
-    //             </ConfigProvider>
-    //         </BrowserRouter>
-    //     );
+    it('should render without links', () => {
+        const { getByText, queryByRole } = render(
+            <BrowserRouter>
+                <ConfigProvider routes={{ ...routes }}>
+                    <IntlProvider locale="en">
+                        <AuthorBox 
+                            fullName={author.full_name}
+                            avatarUrl={author.image_url}
+                            slug={author.hash_id}
+                            points={author.points}
+                            eloquenceTitle={author.eloquence_title}
+                            lastActivity={author.last_activity} 
+                            isExpert={false}
+                            disableLinks={true} 
+                        />
+                    </IntlProvider>
+                </ConfigProvider>
+            </BrowserRouter>
+        );
 
-    //     expect(getByText('John Doe')).toBeInTheDocument();
-    //     expect(queryByRole('link')).not.toBeInTheDocument();
-    //     expect(getByText('1.2K')).toBeInTheDocument();
-    //     expect(getByText('Eloquence title')).toBeInTheDocument();
-    //     expect(getByText('Developer')).toBeInTheDocument();
-    // });
+        expect(getByText(author.full_name)).toBeTruthy();
+        expect(getByText(author.points)).toBeTruthy();
+        expect(getByText("Eloquence title")).toBeTruthy();
+        expect(queryByRole('link')).not.toBeInTheDocument();
+    });
 
-    // it('should render occupation if author has one', () => {
-    //     const { getByText } = render(
-    //         <BrowserRouter>
-    //             <ConfigProvider routes={{...routes}}>
-    //                 <IntlProvider locale="en">
-    //                     <AuthorBox author={author} />
-    //                 </IntlProvider>
-    //             </ConfigProvider>
-    //         </BrowserRouter>
-    //     );
-    //     expect(getByText(author.occupation)).toBeInTheDocument();
-    // });
+    it('should render occupation if author has one', () => {
+        const { getByText } = render(
+            <BrowserRouter>
+                <ConfigProvider routes={{...routes}}>
+                    <IntlProvider locale="en">
+                        <AuthorBox 
+                            fullName={author.full_name}
+                            avatarUrl={author.image_url}
+                            slug={author.hash_id}
+                            points={author.points}
+                            eloquenceTitle={author.eloquence_title}
+                            lastActivity={author.last_activity} 
+                            occupation={author.occupation}
+                            isExpert={false}
+                            disableLinks={true}
+                        />
+                    </IntlProvider>
+                </ConfigProvider>
+            </BrowserRouter>
+        );
 
-    // it('should render eloquence title if author has one', () => {
-    //     const { getByText } = render(
-    //         <BrowserRouter>
-    //             <ConfigProvider routes={{...routes}}>
-    //                 <IntlProvider locale="en">
-    //                     <AuthorBox author={author} />
-    //                 </IntlProvider>
-    //             </ConfigProvider>
-    //         </BrowserRouter>
-    //     );
-    //     expect(getByText("Eloquence title")).toBeInTheDocument();
-    // });
+        expect(getByText(author.occupation)).toBeInTheDocument();
+    });
 
-    // it('should hide user info', () => {
-    //     const { queryByText, getByAltText } = render(
-    //         <BrowserRouter>
-    //             <ConfigProvider routes={{ ...routes }}>
-    //                 <IntlProvider locale="en">
-    //                     <AuthorBox author={author} hideUserInfo={true} />
-    //                 </IntlProvider>
-    //             </ConfigProvider>
-    //         </BrowserRouter>
-    //     );
+    it('should show is expert', () => {
+        const { getByText } = render(
+            <BrowserRouter>
+                <ConfigProvider routes={{ ...routes }}>
+                    <IntlProvider locale="en">
+                        <AuthorBox 
+                            fullName={author.full_name}
+                            avatarUrl={author.image_url}
+                            slug={author.hash_id}
+                            points={author.points}
+                            eloquenceTitle={author.eloquence_title}
+                            lastActivity={author.last_activity} 
+                            occupation={author.occupation}
+                            isExpert={true}
+                        />
+                    </IntlProvider>
+                </ConfigProvider>
+            </BrowserRouter>
+        );
 
-    //     const avatarImg = getByAltText("John Doe's profile picture");
-    //     expect(avatarImg).toBeInTheDocument();
-    //     expect(avatarImg).toHaveAttribute('src', author.image_url);
-    //     expect(queryByText('John Doe')).not.toBeInTheDocument();
-    //     expect(queryByText('1.2K')).not.toBeInTheDocument();
-    //     expect(queryByText('Eloquence title')).not.toBeInTheDocument();
-    //     expect(queryByText('Developer')).not.toBeInTheDocument();
-    // });
+        expect(getByText('Journalist')).toBeInTheDocument();
+    });
 
-    // it('should show author description', () => {
-    //     const { getByText } = render(
-    //         <BrowserRouter>
-    //             <ConfigProvider routes={{ ...routes }}>
-    //                 <IntlProvider locale="en">
-    //                     <AuthorBox author={{ ...author, description: 'Lorem ipsum dolor sit amet' }} showDescription={true} />
-    //                 </IntlProvider>
-    //             </ConfigProvider>
-    //         </BrowserRouter>
-    //     );
+    it('should show deleted user', () => {
+        const { getByText } = render(
+            <BrowserRouter>
+                <ConfigProvider routes={{ ...routes }}>
+                    <IntlProvider locale="en">
+                        <AuthorBox 
+                            fullName={author.full_name}
+                            avatarUrl={author.image_url}
+                            slug={author.hash_id}
+                            points={author.points}
+                            eloquenceTitle={author.eloquence_title}
+                            lastActivity={author.last_activity} 
+                            occupation={author.occupation}
+                            isDeleted={true}
+                        />
+                    </IntlProvider>
+                </ConfigProvider>
+            </BrowserRouter>
+        );
 
-    //     expect(getByText('Lorem ipsum dolor sit amet')).toBeInTheDocument();
-    // });
-
-    // it('should show is expert', () => {
-    //     const { getByText } = render(
-    //         <BrowserRouter>
-    //             <ConfigProvider routes={{ ...routes }}>
-    //                 <IntlProvider locale="en">
-    //                     <AuthorBox author={{ ...author, is_expert: true }} />
-    //                 </IntlProvider>
-    //             </ConfigProvider>
-    //         </BrowserRouter>
-    //     );
-
-    //     expect(getByText('Journalist')).toBeInTheDocument();
-    // });
+        expect(queryByText(author.full_name)).toBeNull();
+        expect(getByText("Deleted")).toBeTruthy();
+    });
 });

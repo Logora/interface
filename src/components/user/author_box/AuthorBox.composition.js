@@ -10,22 +10,12 @@ const author = {
   image_url: faker.image.avatar(),
   full_name: faker.name.fullName(),
   hash_id: faker.lorem.slug(),
-  slug: faker.lorem.slug(),
   points: 52,
+  eloquence_title: faker.science.chemicalElement().symbol,
+  occupation: faker.vehicle.bicycle(),
   last_activity: faker.date.recent(),
   description: faker.name.jobTitle(),
   is_expert: false
-};
-
-const expert_author = {
-  image_url: faker.image.avatar(),
-  full_name: faker.name.fullName(),
-  hash_id: faker.lorem.slug(),
-  slug: faker.lorem.slug(),
-  points: 52,
-  last_activity: new Date(),
-  description: faker.name.jobTitle(),
-  is_expert: true,
 };
 
 const routes = {
@@ -38,10 +28,28 @@ export const DefaultAuthorBox = () => {
       <ConfigProvider routes={{ ...routes }}>
         <IntlProvider locale="en">
           <AuthorBox
-            avatarUrl={author.image_url}
-            hashId={author.hash_id}
-            points={author.points}
             fullName={author.full_name}
+            avatarUrl={author.image_url}
+            slug={author.hash_id}
+            points={author.points}
+            isExpert={author.is_expert}
+          />
+        </IntlProvider>
+      </ConfigProvider>
+    </BrowserRouter>
+  );
+};
+
+export const AuthorBoxWithoutLinks = () => {
+  return (
+    <BrowserRouter>
+      <ConfigProvider routes={{ ...routes }}>
+        <IntlProvider locale="en">
+          <AuthorBox
+            fullName={author.full_name}
+            avatarUrl={author.image_url}
+            slug={author.hash_id}
+            points={author.points}
             isExpert={author.is_expert}
             disableLinks
           />
@@ -51,82 +59,74 @@ export const DefaultAuthorBox = () => {
   );
 };
 
-// export const AuthorBoxWithoutLink = () => {
-//   return (
-//     <BrowserRouter>
-//       <ConfigProvider routes={{ ...routes }}>
-//         <IntlProvider locale="en">
-//           <AuthorBox
-//           avatarUrl=""
-//           hashId=""
-//           points=""
-//           eloquenceTitle=""
-//           fullName=""
-//           isExpert=""
-//           hideUserInfo="" 
-//           disableLinks={true} />
-//         </IntlProvider>
-//       </ConfigProvider>
-//     </BrowserRouter>
-//   );
-// };
+export const AuthorBoxWithTitle = () => {
+    return (
+      <BrowserRouter>
+        <ConfigProvider routes={{ ...routes }}>
+          <IntlProvider locale="en">
+            <AuthorBox 
+              fullName={author.full_name}
+              avatarUrl={author.image_url}
+              slug={author.hash_id}
+              points={author.points}
+              eloquenceTitle={author.eloquence_title}
+            />
+          </IntlProvider>
+        </ConfigProvider>
+      </BrowserRouter>
+    );
+};
 
-// export const AuthorBoxWithTitle = () => {
-//     return (
-//       <BrowserRouter>
-//         <ConfigProvider routes={{ ...routes }}>
-//           <IntlProvider locale="en">
-//             <AuthorBox author={{ ...author, eloquence_title: faker.name.jobType() }} />
-//           </IntlProvider>
-//         </ConfigProvider>
-//       </BrowserRouter>
-//     );
-// };
+export const AuthorBoxWithOccupation = () => {
+    return (
+      <BrowserRouter>
+        <ConfigProvider routes={{ ...routes }}>
+          <IntlProvider locale="en">
+            <AuthorBox 
+              fullName={author.full_name}
+              avatarUrl={author.image_url}
+              slug={author.hash_id}
+              points={author.points}
+              occupation={author.occupation}
+            />
+          </IntlProvider>
+        </ConfigProvider>
+      </BrowserRouter>
+    );
+};
 
-// export const AuthorBoxWithDescription = () => {
-//   return (
-//     <BrowserRouter>
-//       <ConfigProvider routes={{ ...routes }}>
-//         <IntlProvider locale="en">
-//           <AuthorBox author={author} showDescription={true} />
-//         </IntlProvider>
-//       </ConfigProvider>
-//     </BrowserRouter>
-//   );
-// };
+export const AuthorBoxExpert = () => {
+  return (
+    <BrowserRouter>
+      <ConfigProvider routes={{ ...routes }}>
+        <IntlProvider locale="en">
+          <AuthorBox 
+            fullName={author.full_name}
+            avatarUrl={author.image_url}
+            slug={author.hash_id}
+            points={author.points}
+            isExpert={true}
+          />
+        </IntlProvider>
+      </ConfigProvider>
+    </BrowserRouter>
+  );
+};
 
-// export const AuthorBoxWithOccupation = () => {
-//     return (
-//       <BrowserRouter>
-//         <ConfigProvider routes={{ ...routes }}>
-//           <IntlProvider locale="en">
-//             <AuthorBox author={{ ...author, occupation: faker.name.jobTitle() }} />
-//           </IntlProvider>
-//         </ConfigProvider>
-//       </BrowserRouter>
-//     );
-// };
-
-// export const AuthorBoxWithoutUserInfo = () => {
-//   return (
-//     <BrowserRouter>
-//       <ConfigProvider routes={{ ...routes }}>
-//         <IntlProvider locale="en">
-//           <AuthorBox author={author} hideUserInfo={true} />
-//         </IntlProvider>
-//       </ConfigProvider>
-//     </BrowserRouter>
-//   );
-// };
-
-// export const AuthorBoxExpert = () => {
-//   return (
-//     <BrowserRouter>
-//       <ConfigProvider routes={{ ...routes }}>
-//         <IntlProvider locale="en">
-//           <AuthorBox author={expert_author} />
-//         </IntlProvider>
-//       </ConfigProvider>
-//     </BrowserRouter>
-//   );
-// };
+export const AuthorBoxDeletedUser = () => {
+  return (
+    <BrowserRouter>
+      <ConfigProvider routes={{ ...routes }}>
+        <IntlProvider locale="en">
+          <AuthorBox 
+            fullName={author.full_name}
+            avatarUrl={author.image_url}
+            slug={author.hash_id}
+            points={author.points}
+            isDeleted={true}
+          />
+        </IntlProvider>
+      </ConfigProvider>
+    </BrowserRouter>
+  );
+};
