@@ -26,10 +26,10 @@ export const AuthorBox = ({
     return (
         <div className={styles.authorBox}>
             { disableLinks  || isDeleted ?
-                <Avatar data-tid={"action_view_argument_author_image"} avatarUrl={isDeleted ? null : avatarUrl} userName={fullName} isOnline={isOnline} size={48} />
+                <Avatar avatarUrl={isDeleted ? null : avatarUrl} userName={fullName} isOnline={isOnline} size={48} />
             :
                 <Link to={routes.userShowLocation.toUrl({ userSlug: slug })} className={styles.authorLink}>
-                    <Avatar data-tid={"action_view_argument_author_image"} avatarUrl={avatarUrl} userName={fullName} isOnline={isOnline} size={48} />
+                    <Avatar avatarUrl={avatarUrl} userName={fullName} isOnline={isOnline} size={48} />
                 </Link>
             }
             <div className={styles.authorNameBox}>
@@ -37,18 +37,18 @@ export const AuthorBox = ({
                     <div className={styles.authorNameLine}>
                         { disableLinks || isDeleted ?
                             <span className={styles.linkDisabled}>
-                                {isDeleted ? intl.formatMessage({ id: "info.deleted", defaultMessage: "Deleted" }) : fullName}
+                                {isDeleted ? intl.formatMessage({ id: "user.author_box.deleted", defaultMessage: "Deleted" }) : fullName}
                             </span>
                         :
                             <div className={styles.authorLink}>
-                                <Link data-tid={"action_view_argument_author_name"} to={routes.userShowLocation.toUrl({userSlug: slug})}>
+                                <Link to={routes.userShowLocation.toUrl({userSlug: slug})}>
                                     { fullName }
                                 </Link>
                             </div>
                         }
                         { isExpert && !isDeleted &&
                             <div className={styles.expertContainer}>
-                                <span className={styles.expertBadge}>{ intl.formatMessage({ id: "user.isExpert", defaultMessage: "Journalist" }) }</span>
+                                <span className={styles.expertBadge}>{ intl.formatMessage({ id: "user.author_box.expert", defaultMessage: "Journalist" }) }</span>
                                 <ExpertBadge width={16} />
                             </div>
                         }
@@ -91,7 +91,7 @@ AuthorBox.propTypes = {
     /** User slug used in the router link */ 
     slug: PropTypes.string,
     /** User last activity date time */
-    lastActivity: PropTypes.instanceOf(Date), 
+    lastActivity: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date) ]),
     /** Whether an user has a special "expert" status or not */ 
     isExpert: PropTypes.bool,
     /** User eloquence points total */ 
