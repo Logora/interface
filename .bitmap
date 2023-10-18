@@ -548,6 +548,13 @@
         "mainFile": "index.js",
         "rootDir": "src/components/share/share_button"
     },
+    "share/share_modal": {
+        "name": "share/share_modal",
+        "scope": "logora.debate",
+        "version": "0.0.22",
+        "mainFile": "index.js",
+        "rootDir": "src/components/share/share_modal"
+    },
     "skeleton/box_skeleton": {
         "name": "skeleton/box_skeleton",
         "scope": "logora.debate",

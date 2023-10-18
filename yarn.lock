@@ -1925,6 +1925,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"share_modal-2e4f13@workspace:src/components/share/share_modal":
+  version: 0.0.0-use.local
+  resolution: "share_modal-2e4f13@workspace:src/components/share/share_modal"
+  languageName: unknown
+  linkType: soft
+
 "side-channel@npm:^1.0.4":
   version: 1.0.4
   resolution: "side-channel@npm:1.0.4"

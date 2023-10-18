@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event';
 import { ShareBox } from './ShareBox';
 import { IntlProvider } from 'react-intl';
 
-describe('ShareButton', () => {
+describe('ShareBox', () => {
     it('should render box with share option', () => {
         const { queryAllByRole } = render(
             <IntlProvider locale="en">

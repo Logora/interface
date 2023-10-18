@@ -1,0 +1,29 @@
+---
+description: A modal to display ShareBox component.
+labels: ['modal']
+---
+
+import { ShareModal } from './ShareModal';
+import { ModalProvider } from '@logora/debate.dialog.modal';
+import { IntlProvider } from 'react-intl';
+
+A modal component that displays the ShareBox component.
+
+### Component usage
+```js
+    import { ShareModal } from "@logora/debate.share.share_modal";
+```
+```js
+    <IntlProvider locale="en">
+        <ModalProvider>
+            <ShareModal 
+                shareUrl="https://app.logora.fr/share/p/48656"
+                shareText="Text"
+                shareTitle="Title"
+                title="Modal Title"
+                shareCode='<iframe src="https://api.logora.fr/embed.html?shortname="[...]'
+                showShareCode={true}
+            />
+        </ModalProvider>
+    </IntlProvider>
+```
