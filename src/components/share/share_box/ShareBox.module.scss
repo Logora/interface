@@ -1,0 +1,27 @@
+@import '~@logora/debate.styles.spacing/_spacing.scss';
+@import '~@logora/debate.styles.theme/_theme.scss';
+
+.shareBox {
+    text-align: center;
+    width: max-content;
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-around !important;
+    @include px(3, xs);
+}
+
+.linkCopyButton {
+    cursor: pointer;
+    margin-right: 10px;
+    &:hover{
+        cursor: pointer;
+    }
+}
+
+.linkCopyIcon {
+    height: 100%;
+}
+
+.codeIcon path, .codeIcon rect {
+    stroke: $text-primary;
+}

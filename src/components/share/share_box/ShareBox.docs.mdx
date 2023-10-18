@@ -1,0 +1,21 @@
+---
+description: A component to share a link on social networks.
+---
+
+import { ShareBox } from './ShareBox';
+import { IntlProvider } from 'react-intl';
+
+A component that shows icons to share a link or to copy to clipboard.
+
+It should be wrapped around [react-intl](https://formatjs.io/docs/getting-started/installation/)'s IntlProvider.
+
+### Component usage
+```js
+<IntlProvider locale="fr">
+    <ShareBox 
+        shareUrl="https://example.com/share-link"
+        shareTitle="Here is an interesting link"
+        shareText="Hello, I stumbled upon this interesting article about asteroids. You should check it out !"
+    />
+</IntlProvider>
+```

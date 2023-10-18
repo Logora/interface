@@ -534,6 +534,13 @@
         "mainFile": "index.js",
         "rootDir": "src/components/section/section_header"
     },
+    "share/share_box": {
+        "name": "share/share_box",
+        "scope": "logora.debate",
+        "version": "0.0.22",
+        "mainFile": "index.js",
+        "rootDir": "src/components/share/share_box"
+    },
     "skeleton/box_skeleton": {
         "name": "skeleton/box_skeleton",
         "scope": "logora.debate",
