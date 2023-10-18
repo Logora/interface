@@ -1,6 +1,6 @@
 import React from 'react';
 import { useRoutes } from '@logora/debate.data.config_provider';
-import { useIntl } from 'react-intl';
+import { useIntl, FormattedMessage } from 'react-intl';
 import { Avatar } from '@logora/debate.user.avatar';
 import { Link } from '@logora/debate.action.link';
 import { ExpertBadge } from '@logora/debate.icons.regular_icons';
@@ -13,7 +13,7 @@ export const AuthorBox = ({
         avatarUrl, 
         lastActivity, 
         isExpert = false, 
-        points, 
+        points = 0, 
         eloquenceTitle, 
         occupation, 
         disableLinks = false, 
@@ -22,6 +22,7 @@ export const AuthorBox = ({
     const intl = useIntl();
     const routes = useRoutes();
     const isOnline = (new Date(lastActivity) > Date.now());
+    const formattedPoints = intl.formatNumber(points, { notation: 'compact', maximumFractionDigits: 1, roundingMode: "floor" });
 
     return (
         <div className={styles.authorBox}>
@@ -37,7 +38,7 @@ export const AuthorBox = ({
                     <div className={styles.authorNameLine}>
                         { disableLinks || isDeleted ?
                             <span className={styles.linkDisabled}>
-                                {isDeleted ? intl.formatMessage({ id: "user.author_box.deleted", defaultMessage: "Deleted" }) : fullName}
+                                { isDeleted ? intl.formatMessage({ id: "user.author_box.deleted", defaultMessage: "Deleted" }) : fullName }
                             </span>
                         :
                             <div className={styles.authorLink}>
@@ -58,7 +59,7 @@ export const AuthorBox = ({
                     <>
                         <div className={styles.authorPointsBox}>
                             <div className={styles.authorPoints}>
-                                <span>{points ? intl.formatNumber(points, { notation: 'compact', maximumFractionDigits: 1, roundingMode: "floor" }) : "0"}</span>
+                                <span><FormattedMessage id="user.author_box.points" defaultMessage={"{count} points"} values={{ count: formattedPoints }} /></span>
                             </div>
                             { eloquenceTitle &&
                                 <>
@@ -107,6 +108,7 @@ AuthorBox.propTypes = {
 }
 
 AuthorBox.defaultProps = {
+    points: 0,
     isExpert: false,
     disableLinks: false,
     isDeleted: false
