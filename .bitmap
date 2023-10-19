@@ -544,7 +544,7 @@
     "share/share_button": {
         "name": "share/share_button",
         "scope": "logora.debate",
-        "version": "0.0.36",
+        "version": "0.0.37",
         "mainFile": "index.js",
         "rootDir": "src/components/share/share_button"
     },
