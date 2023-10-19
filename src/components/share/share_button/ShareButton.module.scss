@@ -20,31 +20,23 @@
   z-index: 10;
   opacity: 1;
   visibility: visible;
-  transform: translate(0, -20px);
-  transition: all 0.3s cubic-bezier(0.75, -0.02, 0.2, 0.97);
+  transform: translate(-50%, 0%);
 }
 
 .popoverContent {
   opacity: 0;
   visibility: hidden;
   position: absolute;
-  left: -95px;
-  top: 59px;
-  transform: translate(0, 10px);
-  padding: 1.5rem;
+  left: 25%;
+  top: 35px;
+  padding: $spacer;
   border: 1px solid $text-secondary;
   border-radius: $box-border-radius;
   box-shadow: $box-shadow;
   background: $background-color-primary;
   color: $text-primary;
-  line-height: 1.5em;
+  line-height: $spacer-lg;
   width: auto;
-  @include ml(4, xs);
-  @include ml(0, sm);
-  &.popoverContentWithCode {
-    left: -107px;
-  }
-
   &:before {
     position: absolute;
     z-index: -1;
