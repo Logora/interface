@@ -8,7 +8,7 @@ import cx from "classnames";
 import { useConfig } from '@logora/debate.data.config_provider';
 import PropTypes from "prop-types";
 
-export const ShareButton = ({ showText, shareUrl, shareTitle, shareText, shareCode, showShareCode, iconSize, className }) => {
+export const ShareButton = ({ showText, shareUrl, shareTitle, shareText, shareCode, showShareCode, iconSize, className, tooltipPosition }) => {
 	const popoverContentRef = useRef();
 	const intl = useIntl();
 	const [popoverActive, setPopoverActive] = useState(false);
@@ -64,7 +64,7 @@ export const ShareButton = ({ showText, shareUrl, shareTitle, shareText, shareCo
 				<Share height={iconSize ? iconSize : config.theme.iconTheme === "edge" ? 24 : 22} width={iconSize ? iconSize : config.theme.iconTheme === "edge" ? 24 : 22} {...(config.theme.iconTheme === "edge" && {variant: "edge"})} />
 				<div className={styles.shareButtonText}>{showText && intl.formatMessage({ id: "share_button_text", defaultMessage: "Share" })}</div>
 				<div ref={popoverContentRef} className={cx(styles.popoverContent, {[styles.popoverContentWithCode]: showShareCode})}>
-					{ popoverActive && <ShareBox shareUrl={shareUrlBuild} shareTitle={shareTitle} shareText={shareText} showShareCode={showShareCode} shareCode={shareCode} /> }
+					{ popoverActive && <ShareBox shareUrl={shareUrlBuild} shareTitle={shareTitle} shareText={shareText} showShareCode={showShareCode} shareCode={shareCode} tooltipPosition={tooltipPosition} /> }
 				</div>
 			</div>
 		</div>
@@ -88,9 +88,12 @@ ShareButton.propTypes = {
 	iconSize: PropTypes.number,
 	/** Style to pass */
 	className: PropTypes.string,
+	/** Position of the tooltip */
+	tooltipPosition: PropTypes.string,
 };
 
 ShareButton.defaultProps = {
 	showShareCode: false,
 	showText: false,
+	tooltipPosition: 'bottom'
 }

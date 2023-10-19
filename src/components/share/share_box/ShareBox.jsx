@@ -23,30 +23,30 @@ export const ShareBox = ({ tooltipPosition, shareUrl, shareTitle, shareText, sha
             <Tooltip text={intl.formatMessage({ id:"share_copy_to_clipboard", defaultMessage: "Copy to clipboard" })} onClickText={intl.formatMessage({ id: "share_link_copied", defaultMessage: "Link copied !" })} position={tooltipPosition}>
                 <CopyToClipboard tabIndex="0" className={styles.linkCopyButton} text={shareUrl}>
                     <div>
-                        <Link role="button" className={styles.linkCopyIcon} data-tid={"action_embed_code_clipboard"} width={22} height={22} />
+                        <Link role="button" className={styles.linkCopyIcon} data-tid={"action_embed_code_clipboard"} width={20} height={20} />
                     </div>
                 </CopyToClipboard>
             </Tooltip>
             <Tooltip text={intl.formatMessage({ id:"share_facebook_share", defaultMessage: "Share on Facebook" })} position={tooltipPosition}>
                 <div onClick={() => toggleSharing("https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(shareUrl))} className={styles.linkCopyButton} tabIndex={0}>
-                    <Facebook role="button" data-tid={"action_share_debate_facebook"} width={22} height={22} />
+                    <Facebook role="button" data-tid={"action_share_debate_facebook"} width={20} height={20} />
                 </div>
             </Tooltip>
             <Tooltip text={intl.formatMessage({ id:"share_twitter_share", defaultMessage: "Share on Twitter" })} position={tooltipPosition}>
                 <div onClick={() => toggleSharing("https://twitter.com/intent/tweet?text=" + encodeURIComponent(shareTitle) + "&url=" + encodeURIComponent(shareUrl))} className={styles.linkCopyButton} tabIndex={0}>
-                    <Twitter role="button" data-tid={"action_share_debate_twitter"} width={22} height={22} />
+                    <Twitter role="button" data-tid={"action_share_debate_twitter"} width={20} height={20} />
                 </div>
             </Tooltip>
             <Tooltip text={intl.formatMessage({ id:"share_mail_share", defaultMessage: "Share by email" })} position={tooltipPosition}>
                 <div onClick={() => toggleSharing("mailto:example@example.com?subject=" + shareTitle + "&body=" + shareText + "%0D%0A" + shareUrl)} className={styles.linkCopyButton} tabIndex={0}>
-                    <Mail role="button" data-tid={"action_share_debate_mail"} width={23} height={22} />
+                    <Mail role="button" data-tid={"action_share_debate_mail"} width={20} height={20} />
                 </div>
             </Tooltip>
             { showShareCode &&
                 <Tooltip text={intl.formatMessage({ id:"share_embed_code_to_clipboard", defaultMessage: "Copy embed code" })} onClickText={intl.formatMessage({ id: "share_code_copied", defaultMessage: "Code copied !" })} position={tooltipPosition}>
                     <CopyToClipboard tabIndex="0" className={styles.codeCopyButton} text={shareCode}>
                         <div className={styles.codeIcon}>
-                            <Code className={styles.codeIcon} role="button" data-tid={"action_embed_code_clipboard"} width={22} height={22} />
+                            <Code className={styles.codeIcon} role="button" data-tid={"action_embed_code_clipboard"} width={20} height={20} />
                         </div>
                     </CopyToClipboard>
                 </Tooltip>
