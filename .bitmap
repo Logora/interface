@@ -700,7 +700,7 @@
     "styles/tabs": {
         "name": "styles/tabs",
         "scope": "logora.debate",
-        "version": "0.0.16",
+        "version": "0.0.17",
         "mainFile": "_tabs.scss",
         "rootDir": "src/components/styles/tabs"
     },
