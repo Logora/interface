@@ -5,14 +5,12 @@ import { useIntl } from "react-intl";
 import useOnClickOutside from 'use-onclickoutside';
 import styles from "./ShareButton.module.scss";
 import cx from "classnames";
-import { useConfig } from '@logora/debate.data.config_provider';
 import PropTypes from "prop-types";
 
-export const ShareButton = ({ showText, shareUrl, shareTitle, shareText, shareCode, showShareCode, iconSize, className, tooltipPosition }) => {
+export const ShareButton = ({ showText, shareUrl, shareTitle, shareText = false, shareCode, showShareCode = false, iconSize = 22, className, tooltipPosition }) => {
 	const popoverContentRef = useRef();
 	const intl = useIntl();
 	const [popoverActive, setPopoverActive] = useState(false);
-	const config = useConfig();
 
 	const buildShareLink = () => {
         let shareUrlBuild = shareUrl;
@@ -31,7 +29,7 @@ export const ShareButton = ({ showText, shareUrl, shareTitle, shareText, shareCo
 	};
 
 	const handleShare = () => {
-		if ((typeof window !== 'undefined') && window.navigator.share) {
+		if ((typeof window !== 'undefined') && window.navigator.share && window.navigator.maxTouchPoints && window.navigator?.maxTouchPoints > 0 ) {
 			handleMobileShare();
 		} else {
 			setPopoverActive(true);
@@ -61,7 +59,7 @@ export const ShareButton = ({ showText, shareUrl, shareTitle, shareText, shareCo
 			<div
 				className={cx(styles.popoverWrapper, { [styles.popoverActive]: popoverActive})}
 			>
-				<Share height={iconSize ? iconSize : 22} width={iconSize ? iconSize : 22} />
+				<Share height={iconSize} width={iconSize} />
 				<div className={styles.shareButtonText}>{showText && intl.formatMessage({ id: "share.share_button.text", defaultMessage: "Share" })}</div>
 				<div ref={popoverContentRef} className={cx(styles.popoverContent, {[styles.popoverContentWithCode]: showShareCode})}>
 					{ popoverActive && <ShareBox shareUrl={shareUrlBuild} shareTitle={shareTitle} shareText={shareText} showShareCode={showShareCode} shareCode={shareCode} tooltipPosition={tooltipPosition} /> }
@@ -95,5 +93,6 @@ ShareButton.propTypes = {
 ShareButton.defaultProps = {
 	showShareCode: false,
 	showText: false,
-	tooltipPosition: 'bottom'
+	tooltipPosition: 'bottom',
+	iconSize: 22
 }
