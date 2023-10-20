@@ -7,7 +7,7 @@ import styles from "./ShareButton.module.scss";
 import cx from "classnames";
 import PropTypes from "prop-types";
 
-export const ShareButton = ({ showText, shareUrl, shareTitle, shareText = false, shareCode, showShareCode = false, iconSize = 22, className, tooltipPosition }) => {
+export const ShareButton = ({ showText, shareUrl, shareTitle, shareText = false, shareCode, showShareCode = false, iconSize = 22, className, tooltipPosition = 'bottom' }) => {
 	const popoverContentRef = useRef();
 	const intl = useIntl();
 	const [popoverActive, setPopoverActive] = useState(false);
