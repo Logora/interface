@@ -49,7 +49,7 @@
       },
       "teambit.pkg/pkg": {
         "packageJson": {
-          "sideEffects": false
+          "sideEffects": ["*.css", "*.scss"]
         }
       }
     }
