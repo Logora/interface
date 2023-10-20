@@ -30,23 +30,23 @@ export const AvatarSelector = ({ avatarUrlList, onChooseAvatar, userName, allowU
         <>
             { allowUserImage &&
                 <>
-                    <div className={styles.title}>{intl.formatMessage({ id: "modal.avatar_selector.user_image_title", defaultMessage: "Import image of your choice" })}</div>
+                    <div className={styles.title}>{intl.formatMessage({ id: "user.avatar_selector.user_image_title", defaultMessage: "Import image of your choice" })}</div>
                     <input data-testid="avatar-input" id="user_image" className={styles.imageInput} name="user_image" type="file" accept="image/*"  onChange={(e) => handleUpload(e.target.files)} />
                     <div className={styles.uploadAvatarContainer}>
-                        {uploadedAvatarPreview && <img data-testid={"upload-avatar"} src={uploadedAvatarPreview} alt={intl.formatMessage({ id: "modal.avatar_selector.avatar", defaultMessage: "Selected profile picture" })} className={styles.uploadedAvatar} />}
-                        <label htmlFor="user_image" className={styles.imageInputLabel}>{intl.formatMessage({ id: "modal.avatar_selector.upload_input", defaultMessage: "Upload an image" })}</label>
+                        {uploadedAvatarPreview && <img data-testid={"upload-avatar"} src={uploadedAvatarPreview} alt={intl.formatMessage({ id: "user.avatar_selector.avatar", defaultMessage: "Selected profile picture" })} className={styles.uploadedAvatar} />}
+                        <label htmlFor="user_image" className={styles.imageInputLabel}>{intl.formatMessage({ id: "user.avatar_selector.upload_input", defaultMessage: "Upload an image" })}</label>
                     </div>
-                    <div className={cx(styles.title, styles.avatarListTitle)}>{intl.formatMessage({ id: "modal.avatar_selector.avatar_list_title", defaultMessage: "Or choose from one of our avatars" })}</div>
+                    <div className={cx(styles.title, styles.avatarListTitle)}>{intl.formatMessage({ id: "user.avatar_selector.avatar_list_title", defaultMessage: "Or choose from one of our avatars" })}</div>
                 </>
             }
-            { chosenAvatar && <div onClick={() => setChosenAvatar(false)} className={styles.cancelSelection}>{intl.formatMessage({ id: "modal.avatar_selector.cancel_selection", defaultMessage: "Cancel selection" })}</div>}
+            { chosenAvatar && <div onClick={() => setChosenAvatar(false)} className={styles.cancelSelection}>{intl.formatMessage({ id: "user.avatar_selector.cancel_selection", defaultMessage: "Cancel selection" })}</div>}
             <div className={cx(styles.avatarList, {[styles.userChoice]: chosenAvatar || uploadedAvatar})}>
                 { avatarUrlList.map((e, index) => <Avatar key={index} size={70} avatarUrl={e} userName={userName} onClick={() => setChosenAvatar(e)} className={cx(styles.avatar, {[styles.selected]: e === chosenAvatar})} data-testid="avatar" />)}
             </div>
             { (chosenAvatar || uploadedAvatar) && 
                 <div className={styles.confirm}>
-                    <img src={chosenAvatar ? chosenAvatar : (uploadedAvatarPreview ? uploadedAvatarPreview : undefined)} alt={intl.formatMessage({ id: "modal.avatar_selector.avatar", defaultMessage: "Selected profile picture" })} className={styles.chosenAvatar} />
-                    <Button handleClick={() => handleChooseAvatar(chosenAvatar ? chosenAvatar : uploadedAvatar)} className={styles.button}>{intl.formatMessage({ id: "modal.avatar_selector.confirm", defaultMessage: "Choose this image" })}</Button>
+                    <img src={chosenAvatar ? chosenAvatar : (uploadedAvatarPreview ? uploadedAvatarPreview : undefined)} alt={intl.formatMessage({ id: "user.avatar_selector.avatar", defaultMessage: "Selected profile picture" })} className={styles.chosenAvatar} />
+                    <Button handleClick={() => handleChooseAvatar(chosenAvatar ? chosenAvatar : uploadedAvatar)} className={styles.button}>{intl.formatMessage({ id: "user.avatar_selector.confirm", defaultMessage: "Choose this image" })}</Button>
                 </div>
             }
         </>
