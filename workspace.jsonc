@@ -46,6 +46,11 @@
           "**/*.story.+(js|ts|jsx|tsx)",
           "**/*.dev.jsx"
         ]
+      },
+      "teambit.pkg/pkg": {
+        "packageJson": {
+          "sideEffects": false
+        }
       }
     }
   }
