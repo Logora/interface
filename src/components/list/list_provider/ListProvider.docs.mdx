@@ -1,0 +1,51 @@
+---
+description: A context provider and hook to manage elements in a list.
+labels: ['list', 'list-provider']
+---
+
+A component to help with list management.
+
+ListProvider stores elements to add, update or remove, and a list ID.
+To update these elemtents, use the _add_, _update_ and _remove_ functions.
+
+A list can then use the _useList_ hook to manage its elements. To do that, listen to the changes in _addElement_, _updateElement_ and _removeElement_.
+A _listId_ is also stored in case there are multiple lists managed.
+
+### Component usage
+
+```js
+    import { ListProvider, useList } from "@logora/debate.list.list_provider";
+```
+
+```js
+    const List = (props) => {
+        const [elements, setElements] = useState([]);
+        const uniqueListId = "myList";
+        const { listId, addElement, updateElement, removeElement } = useList();
+
+        useEffect(() => {
+            if(listId === uniqueListId) {
+                setElements(current => [...current, addElement]);
+            }
+        }, [addElement])
+
+        return (
+            elements.map(e => {
+                <div className="listElement">e</div>
+            })
+        );
+    }
+
+    const ListManager = (props) => {
+        const { add, update, remove } = useList();
+        
+        return (
+            <div onClick={add("myList", "myValue")}>Click here to add element to list<div>
+        );
+    }
+
+    <ListProvider>
+        <ListManager />
+        <List />
+    </ListProvider>
+```

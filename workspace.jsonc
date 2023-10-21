@@ -45,7 +45,10 @@
       },
       "teambit.pkg/pkg": {
         "packageJson": {
-          "sideEffects": ["*.css", "*.scss"]
+          "sideEffects": [
+            "*.css",
+            "*.scss"
+          ]
         }
       }
     }

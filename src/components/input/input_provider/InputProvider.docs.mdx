@@ -1,0 +1,38 @@
+---
+description: A context provider and hook to manage input fields in React.
+labels: ['react', 'context', 'input-provider']
+---
+
+A component to manage input fields using React context.
+
+InputProvider stores the state of the input fields including focus, reset, input content, and input rich content. It provides a context where these values can be accessed by the child components.
+
+### Component usage
+
+```js
+    import { InputProvider, useInput } from "@logora/debate.input.input_provider";
+```
+
+To use the `InputProvider`, you need to wrap it around your components that need to access the input state. The state values can be accessed using the `useInput` hook.
+
+```js
+const ConsumerComponent = () => {
+  const { focus, setFocus, inputContent, setInputContent, inputRichContent, setInputRichContent, reset, setReset } = useInput();
+
+  // Use the state values as needed
+  // ...
+
+  return (
+    // JSX for your component
+    // ...
+  );
+}
+
+const ParentComponent = () => {
+  return (
+    <InputProvider>
+      <ConsumerComponent />
+    </InputProvider>
+  );
+}
+```
