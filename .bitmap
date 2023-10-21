@@ -220,14 +220,14 @@
     "icons/icon": {
         "name": "icons/icon",
         "scope": "logora.debate",
-        "version": "0.0.16",
+        "version": "0.0.17",
         "mainFile": "index.js",
         "rootDir": "src/components/icons/icon"
     },
     "icons/icon_provider": {
         "name": "icons/icon_provider",
         "scope": "logora.debate",
-        "version": "0.0.17",
+        "version": "0.0.18",
         "mainFile": "index.js",
         "rootDir": "src/components/icons/icon_provider"
     },
