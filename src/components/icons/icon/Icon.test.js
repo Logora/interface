@@ -2,12 +2,13 @@ import React from 'react';
 import { render, act, screen, waitFor } from '@testing-library/react';
 import { IconProvider } from '@logora/debate.icons.icon_provider';
 import { Icon } from './Icon';
+import * as regularIcons from '@logora/debate.icons.regular_icons';
 
 describe('Icon', () => {
 	it('should render icon', async () => {
 		act(()=>{
 			render(
-				<IconProvider libraryName={"regular"}>
+				<IconProvider library={regularIcons}>
 					<Icon data-testid={"test-icon"} name={"italic"} />
 				</IconProvider>
 			);
@@ -20,7 +21,7 @@ describe('Icon', () => {
 	it('should render nothing if icon is not found', async () => {
 		act(()=>{
 			render(
-				<IconProvider libraryName={"regular"}>
+				<IconProvider library={regularIcons}>
 					<Icon data-testid={"test-icon"} name={"random"} />
 				</IconProvider>
 			);

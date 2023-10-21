@@ -18,9 +18,7 @@ export const IconProvider = ({ library, children }) => {
 
 IconProvider.propTypes = {
     /** Library name if async or module */
-    library: PropTypes.string.isRequired,
-    /** Whether to load the library asynchronously or not */
-    async: PropTypes.bool,
+    library: PropTypes.any.isRequired,
     /** Provider children */
 	children: PropTypes.node
 };

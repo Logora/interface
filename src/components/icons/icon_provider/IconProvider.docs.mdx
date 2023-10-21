@@ -1,0 +1,28 @@
+---
+description: A provider to store an icon library.
+labels: ['icons', 'icon-provider']
+---
+
+IconProvider is a context component to store a library of icons.
+
+Pass a library, and it store it in the context.
+
+It should be used with the [Icon component](https://bit.cloud/logora/debate/icons/icon).
+
+### Component usage
+
+```js
+import { IconProvider, IconContext } from '@logora/debate.icons.icon_provider';
+```
+
+```js
+import * as regularIcons from '@logora/debate.icons.icon_provider';
+
+const ComponentWithIcons = () => {
+	return <div>Hello world !</div>
+}
+
+<IconProvider library={regularIcons}>
+    <ComponentWithIcons />
+</IconProvider>
+```
