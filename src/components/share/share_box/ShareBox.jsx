@@ -34,7 +34,7 @@ export const ShareBox = ({ tooltipPosition, shareUrl, shareTitle, shareText, sha
             </Tooltip>
             <Tooltip text={intl.formatMessage({ id: "share.share_box.twitter_share", defaultMessage: "Share on Twitter" })} position={tooltipPosition}>
                 <div onClick={() => toggleSharing("https://twitter.com/intent/tweet?text=" + encodeURIComponent(shareTitle) + "&url=" + encodeURIComponent(shareUrl))} className={styles.linkCopyButton} tabIndex={0}>
-                    <Icon name="twitter" role="button" data-tid={"action_share_debate_twitter"} width={20} height={20} />
+                    <Icon name="twitter" className={styles.twitterIcon} role="button" data-tid={"action_share_debate_twitter"} width={20} height={20} />
                 </div>
             </Tooltip>
             <Tooltip text={intl.formatMessage({ id: "share.share_box.mail_share", defaultMessage: "Share by email" })} position={tooltipPosition}>
