@@ -471,6 +471,13 @@
         "mainFile": "index.js",
         "rootDir": "src/components/user/avatar_selector"
     },
+    "user/user_box": {
+        "name": "user/user_box",
+        "scope": "logora.debate",
+        "version": "0.0.31",
+        "mainFile": "index.js",
+        "rootDir": "src/components/user/user_box"
+    },
     "user/user_box_small": {
         "name": "user/user_box_small",
         "scope": "logora.debate",
