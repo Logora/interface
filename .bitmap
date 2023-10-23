@@ -68,21 +68,21 @@
     "auth/facebook_login_button": {
         "name": "auth/facebook_login_button",
         "scope": "logora.debate",
-        "version": "0.0.21",
+        "version": "0.0.22",
         "mainFile": "index.js",
         "rootDir": "src/components/auth/facebook_login_button"
     },
     "auth/google_login_button": {
         "name": "auth/google_login_button",
         "scope": "logora.debate",
-        "version": "0.0.23",
+        "version": "0.0.24",
         "mainFile": "index.js",
         "rootDir": "src/components/auth/google_login_button"
     },
     "auth/oauth2_button": {
         "name": "auth/oauth2_button",
         "scope": "logora.debate",
-        "version": "0.0.9",
+        "version": "0.0.10",
         "mainFile": "index.js",
         "rootDir": "src/components/auth/oauth2_button"
     },
