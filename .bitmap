@@ -474,7 +474,7 @@
     "user/user_box": {
         "name": "user/user_box",
         "scope": "logora.debate",
-        "version": "0.0.29",
+        "version": "0.0.30",
         "mainFile": "index.js",
         "rootDir": "src/components/user/user_box"
     },
