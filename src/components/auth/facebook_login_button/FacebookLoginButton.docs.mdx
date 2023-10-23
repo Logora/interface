@@ -1,0 +1,34 @@
+---
+description: A button to login to Facebook with the OAuth2 protocol.
+labels: ['auth', 'oauth2', 'facebook']
+---
+
+import { FacebookLoginButton } from './FacebookLoginButton';
+import { MemoryRouter } from "react-router";
+
+A button component to login to Facebook with OAuth2.
+
+When clicking on the button, a popup will appear that will ask the user to login to Facebook. User will be
+redirected to _redirectUri_ afterwards if login is successful, with authorization code.
+
+Two scopes are requested :
+- email
+- public_profile
+
+### Component usage
+
+```js
+import { FacebookLoginButton } from '@logora/debate.auth.facebook_login_button';
+```
+
+```js
+    <MemoryRouter>
+        <FacebookLoginButton 
+            text={"Sign in with Facebook"}
+            facebookClientId={"facebook-client-id"}
+            redirectUri={"https://auth.redirect/}
+            onCode={(code) => console.log(code)}
+            onClose={closeCallbackFunction}
+        />
+    </MemoryRouter>
+```

@@ -1,0 +1,31 @@
+---
+description: A button to login with the OAuth2 protocol.
+labels: ['react', 'auth', 'oauth2']
+---
+
+A button component to login to an OAuth2 provider. It uses [react-oauth-popup](https://www.npmjs.com/package/react-oauth-popup) under the hood.
+
+When clicking on the button, a popup will appear containing the auth form passed with _authDialogUrl_. User can the provide credentials and will be
+redirected to _redirectUri_ afterwards.
+
+### Component usage
+
+```js
+import { OAuth2Button } from '@logora/debate.auth.oauth2_button';
+```
+
+```js
+    <MemoryRouter>
+        <OAuth2Button 
+            authDialogUrl={"https://www.facebook.com/v9.0/dialog/oauth"}
+            clientId={"facebook-client-id"}
+            scope={"email,public_profile"}
+            provider={"facebook"}
+            redirectUri={"https://auth.redirect/}
+            onCode={(code) => console.log(code)}
+            onClose={closeCallbackFunction}
+        >
+            Click here to login !
+        </OAuth2Button>
+    </MemoryRouter>
+```
