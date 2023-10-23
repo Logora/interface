@@ -1203,9 +1203,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"input_provider-60acc4@workspace:src/components/context/input_provider":
+"input_provider-d522aa@workspace:src/components/input/input_provider":
   version: 0.0.0-use.local
-  resolution: "input_provider-60acc4@workspace:src/components/context/input_provider"
+  resolution: "input_provider-d522aa@workspace:src/components/input/input_provider"
   languageName: unknown
   linkType: soft
 
@@ -2178,6 +2178,12 @@ __metadata:
 "use_relative_time-24bd49@workspace:src/components/hooks/use_relative_time":
   version: 0.0.0-use.local
   resolution: "use_relative_time-24bd49@workspace:src/components/hooks/use_relative_time"
+  languageName: unknown
+  linkType: soft
+
+"user_box-8dfef7@workspace:src/components/user/user_box":
+  version: 0.0.0-use.local
+  resolution: "user_box-8dfef7@workspace:src/components/user/user_box"
   languageName: unknown
   linkType: soft
 

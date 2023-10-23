@@ -1,0 +1,21 @@
+---
+description: A component that renders an user box.
+---
+
+import { UserBox } from './UserBox';
+
+A component that renders a user box. It renders a profile image, a full name and a description.
+
+### Component usage
+```js
+import { UserBox } from '@logora/user.user_box';
+```
+```js
+<BrowserRouter>
+    <IntlProvider locale="en">
+        <ConfigProvider routes={{...routes}}>
+            <UserBox user={user} />
+        </ConfigProvider>
+    </IntlProvider>
+</BrowserRouter>
+```
