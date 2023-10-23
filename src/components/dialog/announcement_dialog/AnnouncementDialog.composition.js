@@ -1,29 +1,37 @@
 import React from 'react';
 import { AnnouncementDialog } from './AnnouncementDialog';
-import HomeIcon from './HomeIcon.dev'
+import HomeIcon from './HomeIcon.dev';
+import { IconProvider } from '@logora/debate.icons.icon_provider';
+import * as regularIcons from '@logora/debate.icons.regular_icons';
 
 export const DefaultAnnouncementDialog = () => {
     return (
-        <AnnouncementDialog 
-            message={"An announcement message !"}
-        />
+        <IconProvider library={regularIcons}>
+            <AnnouncementDialog 
+                message={"An announcement message !"}
+            />
+        </IconProvider>
     );
 };
 
 export const AnnouncementDialogCustomIcon = () => {
     return (
-        <AnnouncementDialog 
-            icon={HomeIcon}
-            message={"An announcement message width custom icon !"}
-        />
+        <IconProvider library={regularIcons}>
+            <AnnouncementDialog 
+                icon={HomeIcon}
+                message={"An announcement message width custom icon !"}
+            />
+        </IconProvider>
     );
 };
 
 export const AnnouncementDialogFullWidth = () => {
     return (
-        <AnnouncementDialog 
-            message={"An announcement message with full width !"}
-            fullWidth
-        />
+        <IconProvider library={regularIcons}>
+            <AnnouncementDialog 
+                message={"An announcement message with full width !"}
+                fullWidth
+            />
+        </IconProvider>
     );
 };

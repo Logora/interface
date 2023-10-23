@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { Share } from "@logora/debate.icons.regular_icons";
+import { Icon } from "@logora/debate.icons.icon";
 import { ShareBox } from "@logora/debate.share.share_box";
 import { useIntl } from "react-intl";
 import useOnClickOutside from 'use-onclickoutside';
@@ -59,7 +59,7 @@ export const ShareButton = ({ showText, shareUrl, shareTitle, shareText = false,
 			<div
 				className={cx(styles.popoverWrapper, { [styles.popoverActive]: popoverActive})}
 			>
-				<Share height={iconSize} width={iconSize} />
+				<Icon name="share" height={iconSize} width={iconSize} />
 				<div className={styles.shareButtonText}>{showText && intl.formatMessage({ id: "share.share_button.text", defaultMessage: "Share" })}</div>
 				<div ref={popoverContentRef} className={cx(styles.popoverContent, {[styles.popoverContentWithCode]: showShareCode})}>
 					{ popoverActive && <ShareBox shareUrl={shareUrlBuild} shareTitle={shareTitle} shareText={shareText} showShareCode={showShareCode} shareCode={shareCode} tooltipPosition={tooltipPosition} /> }

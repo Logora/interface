@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { LightArrow } from '@logora/debate.icons.regular_icons';
+import { Icon } from '@logora/debate.icons.icon';
 import { Dropdown } from '@logora/debate.dialog.dropdown';
 import styles from "./Select.module.scss";
 import cx from "classnames";
@@ -48,7 +48,7 @@ export const Select = ({ options, defaultOption, onChange, resetSelect = false, 
 			<Dropdown horizontalPosition={horizontalPosition}>
 				<div className={cx(styles.selectInput, { [className]: className, [styles.disabled]: disabled })}>
 					<span className={styles.currentOptionText}>{currentOption.text}</span>{" "}
-					<LightArrow className={styles.arrowDown} height={10} width={10} />
+					<Icon name="lightArrow" className={styles.arrowDown} height={10} width={10} />
 				</div>
 				{ !disabled && options.map(displayOption) }
 			</Dropdown>

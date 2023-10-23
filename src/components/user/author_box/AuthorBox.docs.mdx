@@ -3,13 +3,12 @@ description: A component to display a user's avatar image, name link and other i
 tags: ['author', 'avatar', 'user', 'image']
 ---
 
-import { AuthorBox } from './AuthorBox';
-
 The AuthorBox component is used to display a user's avatar image, name link, points and occupation in a box.
 It uses [ConfigProvider](https://bit.cloud/logora/debate/data/config_provider) for routing.
 The avatar image is rendered using the [Avatar](https://bit.cloud/logora/debate/user/avatar) component.
 
-It should be wrapped with react-intl's IntlProvider, ConfigProvider and be inside a Router.
+It must be inside react-intl's IntlProvider, ConfigProvider and be inside a Router.
+It must be inside [IconProvider](https://bit.cloud/logora/debate/icons/icon_provider).
 
 ### Component usage
 

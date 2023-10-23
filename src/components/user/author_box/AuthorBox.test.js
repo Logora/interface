@@ -5,6 +5,8 @@ import { ConfigProvider } from '@logora/debate.data.config_provider';
 import { IntlProvider } from 'react-intl';
 import { AuthorBox } from './AuthorBox';
 import { Location } from '@logora/debate.util.location';
+import { IconProvider } from '@logora/debate.icons.icon_provider';
+import * as regularIcons from '@logora/debate.icons.regular_icons';
 import { faker } from '@faker-js/faker';
 
 const author = {
@@ -32,15 +34,17 @@ describe('AuthorBox', () => {
             <BrowserRouter>
                 <ConfigProvider config={{}} routes={{ ...routes }}>
                     <IntlProvider locale="en">
-                        <AuthorBox
-                            fullName={author.full_name}
-                            avatarUrl={author.image_url}
-                            slug={author.hash_id}
-                            points={author.points}
-                            eloquenceTitle={author.eloquence_title}
-                            lastActivity={author.last_activity}
-                            isExpert={false}
-                        />
+                        <IconProvider library={regularIcons}>
+                            <AuthorBox
+                                fullName={author.full_name}
+                                avatarUrl={author.image_url}
+                                slug={author.hash_id}
+                                points={author.points}
+                                eloquenceTitle={author.eloquence_title}
+                                lastActivity={author.last_activity}
+                                isExpert={false}
+                            />
+                        </IconProvider>
                     </IntlProvider>
                 </ConfigProvider>
             </BrowserRouter>
@@ -66,16 +70,18 @@ describe('AuthorBox', () => {
             <BrowserRouter>
                 <ConfigProvider routes={{ ...routes }}>
                     <IntlProvider locale="en">
-                        <AuthorBox 
-                            fullName={author.full_name}
-                            avatarUrl={author.image_url}
-                            slug={author.hash_id}
-                            points={author.points}
-                            eloquenceTitle={author.eloquence_title}
-                            lastActivity={author.last_activity} 
-                            isExpert={false}
-                            disableLinks={true} 
-                        />
+                        <IconProvider library={regularIcons}>
+                            <AuthorBox 
+                                fullName={author.full_name}
+                                avatarUrl={author.image_url}
+                                slug={author.hash_id}
+                                points={author.points}
+                                eloquenceTitle={author.eloquence_title}
+                                lastActivity={author.last_activity} 
+                                isExpert={false}
+                                disableLinks={true} 
+                            />
+                        </IconProvider>
                     </IntlProvider>
                 </ConfigProvider>
             </BrowserRouter>
@@ -92,17 +98,19 @@ describe('AuthorBox', () => {
             <BrowserRouter>
                 <ConfigProvider routes={{...routes}}>
                     <IntlProvider locale="en">
-                        <AuthorBox 
-                            fullName={author.full_name}
-                            avatarUrl={author.image_url}
-                            slug={author.hash_id}
-                            points={author.points}
-                            eloquenceTitle={author.eloquence_title}
-                            lastActivity={author.last_activity} 
-                            occupation={author.occupation}
-                            isExpert={false}
-                            disableLinks={true}
-                        />
+                        <IconProvider library={regularIcons}>
+                            <AuthorBox 
+                                fullName={author.full_name}
+                                avatarUrl={author.image_url}
+                                slug={author.hash_id}
+                                points={author.points}
+                                eloquenceTitle={author.eloquence_title}
+                                lastActivity={author.last_activity} 
+                                occupation={author.occupation}
+                                isExpert={false}
+                                disableLinks={true}
+                            />
+                        </IconProvider>
                     </IntlProvider>
                 </ConfigProvider>
             </BrowserRouter>
@@ -116,16 +124,18 @@ describe('AuthorBox', () => {
             <BrowserRouter>
                 <ConfigProvider routes={{ ...routes }}>
                     <IntlProvider locale="en">
-                        <AuthorBox 
-                            fullName={author.full_name}
-                            avatarUrl={author.image_url}
-                            slug={author.hash_id}
-                            points={author.points}
-                            eloquenceTitle={author.eloquence_title}
-                            lastActivity={author.last_activity} 
-                            occupation={author.occupation}
-                            isExpert={true}
-                        />
+                        <IconProvider library={regularIcons}>
+                            <AuthorBox 
+                                fullName={author.full_name}
+                                avatarUrl={author.image_url}
+                                slug={author.hash_id}
+                                points={author.points}
+                                eloquenceTitle={author.eloquence_title}
+                                lastActivity={author.last_activity} 
+                                occupation={author.occupation}
+                                isExpert={true}
+                            />
+                        </IconProvider>
                     </IntlProvider>
                 </ConfigProvider>
             </BrowserRouter>
@@ -139,16 +149,18 @@ describe('AuthorBox', () => {
             <BrowserRouter>
                 <ConfigProvider routes={{ ...routes }}>
                     <IntlProvider locale="en">
-                        <AuthorBox 
-                            fullName={author.full_name}
-                            avatarUrl={author.image_url}
-                            slug={author.hash_id}
-                            points={author.points}
-                            eloquenceTitle={author.eloquence_title}
-                            lastActivity={author.last_activity} 
-                            occupation={author.occupation}
-                            isDeleted={true}
-                        />
+                        <IconProvider library={regularIcons}>
+                            <AuthorBox 
+                                fullName={author.full_name}
+                                avatarUrl={author.image_url}
+                                slug={author.hash_id}
+                                points={author.points}
+                                eloquenceTitle={author.eloquence_title}
+                                lastActivity={author.last_activity} 
+                                occupation={author.occupation}
+                                isDeleted={true}
+                            />
+                        </IconProvider>
                     </IntlProvider>
                 </ConfigProvider>
             </BrowserRouter>

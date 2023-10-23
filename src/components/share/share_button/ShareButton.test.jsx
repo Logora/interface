@@ -1,21 +1,25 @@
 import React from 'react';
-import { render, screen, waitFor } from '@testing-library/react';
+import { render, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { ShareButton } from './ShareButton';
 import { IntlProvider } from 'react-intl';
 import { ConfigProvider } from '@logora/debate.data.config_provider';
+import { IconProvider } from '@logora/debate.icons.icon_provider';
+import * as regularIcons from '@logora/debate.icons.regular_icons';
 
 describe('ShareButton', () => {
     it('should render button with share text', () => {
         const { getByText, queryAllByRole } = render(
             <IntlProvider locale="en">
                 <ConfigProvider config={{theme:{}}}>
-                    <ShareButton 
-                        showText
-                        shareUrl="https://example.com/share-link"
-                        shareTitle="Here is an interesting link"
-                        shareText="Hello, I stumbled upon this interesting article about asteroids. You should check it out !"
-                    />
+                    <IconProvider library={regularIcons}>
+                        <ShareButton 
+                            showText
+                            shareUrl="https://example.com/share-link"
+                            shareTitle="Here is an interesting link"
+                            shareText="Hello, I stumbled upon this interesting article about asteroids. You should check it out !"
+                        />
+                    </IconProvider>
                 </ConfigProvider>
             </IntlProvider>
         );
@@ -27,11 +31,13 @@ describe('ShareButton', () => {
         const { queryByText, queryAllByRole } = render(
             <IntlProvider locale="en">
                 <ConfigProvider config={{theme:{}}}>
-                    <ShareButton 
-                        shareUrl="https://example.com/share-link"
-                        shareTitle="Here is an interesting link"
-                        shareText="Hello, I stumbled upon this interesting article about asteroids. You should check it out !"
-                    />
+                    <IconProvider library={regularIcons}>
+                        <ShareButton 
+                            shareUrl="https://example.com/share-link"
+                            shareTitle="Here is an interesting link"
+                            shareText="Hello, I stumbled upon this interesting article about asteroids. You should check it out !"
+                        />
+                    </IconProvider>
                 </ConfigProvider>
             </IntlProvider>
         );
@@ -43,12 +49,14 @@ describe('ShareButton', () => {
         const { getByText, queryAllByRole } = render(
             <IntlProvider locale="en">
                 <ConfigProvider config={{theme:{}}}>
-                    <ShareButton 
-                        showText
-                        shareUrl="https://example.com/share-link"
-                        shareTitle="Here is an interesting link"
-                        shareText="Hello, I stumbled upon this interesting article about asteroids. You should check it out !"
-                    />
+                    <IconProvider library={regularIcons}>
+                        <ShareButton 
+                            showText
+                            shareUrl="https://example.com/share-link"
+                            shareTitle="Here is an interesting link"
+                            shareText="Hello, I stumbled upon this interesting article about asteroids. You should check it out !"
+                        />
+                    </IconProvider>
                 </ConfigProvider>
             </IntlProvider>
         );
@@ -65,12 +73,14 @@ describe('ShareButton', () => {
         const { getByText, queryAllByRole } = render(
             <IntlProvider locale="en">
                 <ConfigProvider config={{theme:{}}}>
-                    <ShareButton 
-                        showText
-                        shareUrl="https://example.com/share-link"
-                        shareTitle="Here is an interesting link"
-                        shareText="Hello, I stumbled upon this interesting article about asteroids. You should check it out !"
-                    />
+                    <IconProvider library={regularIcons}>
+                        <ShareButton 
+                            showText
+                            shareUrl="https://example.com/share-link"
+                            shareTitle="Here is an interesting link"
+                            shareText="Hello, I stumbled upon this interesting article about asteroids. You should check it out !"
+                        />
+                    </IconProvider>
                 </ConfigProvider>
             </IntlProvider>
         );

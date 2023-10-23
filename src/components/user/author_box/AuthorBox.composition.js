@@ -4,6 +4,8 @@ import { IntlProvider } from 'react-intl';
 import { AuthorBox } from './AuthorBox';
 import { Location } from '@logora/debate.util.location';
 import { BrowserRouter } from 'react-router-dom';
+import { IconProvider } from '@logora/debate.icons.icon_provider';
+import * as regularIcons from '@logora/debate.icons.regular_icons';
 import { faker } from '@faker-js/faker';
 
 const author = {
@@ -27,13 +29,15 @@ export const DefaultAuthorBox = () => {
     <BrowserRouter>
       <ConfigProvider routes={{ ...routes }}>
         <IntlProvider locale="en">
-          <AuthorBox
-            fullName={author.full_name}
-            avatarUrl={author.image_url}
-            slug={author.hash_id}
-            points={author.points}
-            isExpert={author.is_expert}
-          />
+          <IconProvider library={regularIcons}>
+            <AuthorBox
+              fullName={author.full_name}
+              avatarUrl={author.image_url}
+              slug={author.hash_id}
+              points={author.points}
+              isExpert={author.is_expert}
+            />
+          </IconProvider>
         </IntlProvider>
       </ConfigProvider>
     </BrowserRouter>
@@ -45,14 +49,16 @@ export const AuthorBoxWithoutLinks = () => {
     <BrowserRouter>
       <ConfigProvider routes={{ ...routes }}>
         <IntlProvider locale="en">
-          <AuthorBox
-            fullName={author.full_name}
-            avatarUrl={author.image_url}
-            slug={author.hash_id}
-            points={author.points}
-            isExpert={author.is_expert}
-            disableLinks
-          />
+          <IconProvider library={regularIcons}>
+            <AuthorBox
+              fullName={author.full_name}
+              avatarUrl={author.image_url}
+              slug={author.hash_id}
+              points={author.points}
+              isExpert={author.is_expert}
+              disableLinks
+            />
+          </IconProvider>
         </IntlProvider>
       </ConfigProvider>
     </BrowserRouter>
@@ -64,13 +70,15 @@ export const AuthorBoxWithTitle = () => {
       <BrowserRouter>
         <ConfigProvider routes={{ ...routes }}>
           <IntlProvider locale="en">
-            <AuthorBox 
-              fullName={author.full_name}
-              avatarUrl={author.image_url}
-              slug={author.hash_id}
-              points={author.points}
-              eloquenceTitle={author.eloquence_title}
-            />
+            <IconProvider library={regularIcons}>
+              <AuthorBox 
+                fullName={author.full_name}
+                avatarUrl={author.image_url}
+                slug={author.hash_id}
+                points={author.points}
+                eloquenceTitle={author.eloquence_title}
+              />
+            </IconProvider>
           </IntlProvider>
         </ConfigProvider>
       </BrowserRouter>
@@ -82,13 +90,15 @@ export const AuthorBoxWithOccupation = () => {
       <BrowserRouter>
         <ConfigProvider routes={{ ...routes }}>
           <IntlProvider locale="en">
-            <AuthorBox 
-              fullName={author.full_name}
-              avatarUrl={author.image_url}
-              slug={author.hash_id}
-              points={author.points}
-              occupation={author.occupation}
-            />
+            <IconProvider library={regularIcons}>
+              <AuthorBox 
+                fullName={author.full_name}
+                avatarUrl={author.image_url}
+                slug={author.hash_id}
+                points={author.points}
+                occupation={author.occupation}
+              />
+            </IconProvider>
           </IntlProvider>
         </ConfigProvider>
       </BrowserRouter>
@@ -100,13 +110,15 @@ export const AuthorBoxExpert = () => {
     <BrowserRouter>
       <ConfigProvider routes={{ ...routes }}>
         <IntlProvider locale="en">
-          <AuthorBox 
-            fullName={author.full_name}
-            avatarUrl={author.image_url}
-            slug={author.hash_id}
-            points={author.points}
-            isExpert={true}
-          />
+          <IconProvider library={regularIcons}>
+            <AuthorBox 
+              fullName={author.full_name}
+              avatarUrl={author.image_url}
+              slug={author.hash_id}
+              points={author.points}
+              isExpert={true}
+            />
+          </IconProvider>
         </IntlProvider>
       </ConfigProvider>
     </BrowserRouter>
@@ -118,13 +130,15 @@ export const AuthorBoxDeletedUser = () => {
     <BrowserRouter>
       <ConfigProvider routes={{ ...routes }}>
         <IntlProvider locale="en">
-          <AuthorBox 
-            fullName={author.full_name}
-            avatarUrl={author.image_url}
-            slug={author.hash_id}
-            points={author.points}
-            isDeleted={true}
-          />
+          <IconProvider library={regularIcons}>
+            <AuthorBox 
+              fullName={author.full_name}
+              avatarUrl={author.image_url}
+              slug={author.hash_id}
+              points={author.points}
+              isDeleted={true}
+            />
+          </IconProvider>
         </IntlProvider>
       </ConfigProvider>
     </BrowserRouter>

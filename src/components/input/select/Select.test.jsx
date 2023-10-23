@@ -2,6 +2,8 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { Select } from './Select';
+import { IconProvider } from '@logora/debate.icons.icon_provider';
+import * as regularIcons from '@logora/debate.icons.regular_icons';
 
 const options = [
     {
@@ -27,7 +29,9 @@ const options = [
 describe('Select', () => {
     it('should render a dropdown with first option text', () => {
         const dropdown = render(
-            <Select options={options} /> 
+            <IconProvider library={regularIcons}>
+                <Select options={options} /> 
+            </IconProvider>
         );
         const renderedFirstOption = dropdown.getByText(/Option 1/i);
         expect(renderedFirstOption).toBeTruthy();
@@ -37,7 +41,9 @@ describe('Select', () => {
 
     it('should display all options when clicking on title', async () => {
         const dropdown = render(
-            <Select options={options} /> 
+            <IconProvider library={regularIcons}>
+                <Select options={options} /> 
+            </IconProvider>
         );
         const dropdownFirstOption = dropdown.getByText(/Option 1/i);
         expect(dropdown.queryByText(/Option 2/i)).toBeNull();
@@ -50,7 +56,9 @@ describe('Select', () => {
 
     it('should not display options on click if disabled', async () => {
         const dropdown = render(
-            <Select disabled options={options} /> 
+            <IconProvider library={regularIcons}>
+                <Select disabled options={options} /> 
+            </IconProvider>
         );
         const dropdownFirstOption = dropdown.getByText(/Option 1/i);
         expect(dropdown.queryByText(/Option 2/i)).toBeNull();
@@ -63,7 +71,9 @@ describe('Select', () => {
 
     it('should close on option click', async () => {
         const dropdown = render(
-            <Select options={options} /> 
+            <IconProvider library={regularIcons}>
+                <Select options={options} /> 
+            </IconProvider>
         );
 
         await userEvent.click(dropdown.getByText(/Option 1/i));
@@ -79,7 +89,9 @@ describe('Select', () => {
 
     it('should close on click outside', async () => {
         const dropdown = render(
-            <Select options={options} /> 
+            <IconProvider library={regularIcons}>
+                <Select options={options} /> 
+            </IconProvider>
         );
 
         await userEvent.click(dropdown.getByText(/Option 1/i));
@@ -97,7 +109,9 @@ describe('Select', () => {
         const callback = jest.fn();
 
         const dropdown = render(
-            <Select onChange={callback} options={options} /> 
+            <IconProvider library={regularIcons}>
+                <Select onChange={callback} options={options} /> 
+            </IconProvider>
         );
 
         await userEvent.click(dropdown.getByText(/Option 1/i));
@@ -110,7 +124,9 @@ describe('Select', () => {
 
     it('should display default option', () => {
         const { getByText, queryByText } = render(
-            <Select options={options} defaultOption={"Option 2"} /> 
+            <IconProvider library={regularIcons}>
+                <Select options={options} defaultOption={"Option 2"} /> 
+            </IconProvider>
         );
         
         expect(getByText(/Option 2/i)).toBeTruthy();

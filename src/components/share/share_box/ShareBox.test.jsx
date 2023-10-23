@@ -3,16 +3,20 @@ import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { ShareBox } from './ShareBox';
 import { IntlProvider } from 'react-intl';
+import { IconProvider } from '@logora/debate.icons.icon_provider';
+import * as regularIcons from '@logora/debate.icons.regular_icons';
 
 describe('ShareBox', () => {
     it('should render box with share option', () => {
         const { queryAllByRole } = render(
             <IntlProvider locale="en">
-                <ShareBox 
-                    shareUrl="https://example.com/share-link"
-                    shareTitle="Here is an interesting link"
-                    shareText="Hello, I stumbled upon this interesting article about asteroids. You should check it out !"
-                />
+                <IconProvider library={regularIcons}>
+                    <ShareBox 
+                        shareUrl="https://example.com/share-link"
+                        shareTitle="Here is an interesting link"
+                        shareText="Hello, I stumbled upon this interesting article about asteroids. You should check it out !"
+                    />
+                </IconProvider>
             </IntlProvider>
         );
         expect(queryAllByRole("button")).toHaveLength(4)
@@ -29,11 +33,13 @@ describe('ShareBox', () => {
 
         const { queryAllByRole, getByText } = render(
             <IntlProvider locale="en">
-                <ShareBox 
-                    shareUrl={shareUrl}
-                    shareTitle="Here is an interesting link"
-                    shareText="Hello, I stumbled upon this interesting article about asteroids. You should check it out !"
-                />
+                <IconProvider library={regularIcons}>
+                    <ShareBox 
+                        shareUrl={shareUrl}
+                        shareTitle="Here is an interesting link"
+                        shareText="Hello, I stumbled upon this interesting article about asteroids. You should check it out !"
+                    />
+                </IconProvider>
             </IntlProvider>
         );
         const icons = (queryAllByRole("button"));
@@ -49,11 +55,13 @@ describe('ShareBox', () => {
     it('should open Facebook share link on click', () => {
         const { queryAllByRole, getByText} = render(
             <IntlProvider locale="en">
-                <ShareBox 
-                    shareUrl="https://example.com/share-link"
-                    shareTitle="Here is an interesting link"
-                    shareText="Hello, I stumbled upon this interesting article about asteroids. You should check it out !"
-                />
+                <IconProvider library={regularIcons}>
+                    <ShareBox 
+                        shareUrl="https://example.com/share-link"
+                        shareTitle="Here is an interesting link"
+                        shareText="Hello, I stumbled upon this interesting article about asteroids. You should check it out !"
+                    />
+                </IconProvider>
             </IntlProvider>
         );
         const icons = (queryAllByRole("button"));
@@ -66,11 +74,13 @@ describe('ShareBox', () => {
     it('should open twitter share link on click', () => {
         const { queryAllByRole, getByText} = render(
             <IntlProvider locale="en">
-                <ShareBox 
-                    shareUrl="https://example.com/share-link"
-                    shareTitle="Here is an interesting link"
-                    shareText="Hello, I stumbled upon this interesting article about asteroids. You should check it out !"
-                />
+                <IconProvider library={regularIcons}>
+                    <ShareBox 
+                        shareUrl="https://example.com/share-link"
+                        shareTitle="Here is an interesting link"
+                        shareText="Hello, I stumbled upon this interesting article about asteroids. You should check it out !"
+                    />
+                </IconProvider>
             </IntlProvider>
         );
         const icons = (queryAllByRole("button"));
@@ -83,11 +93,13 @@ describe('ShareBox', () => {
     it('should open email share on click', () => {
         const { queryAllByRole, getByText} = render(
             <IntlProvider locale="en">
-                <ShareBox 
-                    shareUrl="https://example.com/share-link"
-                    shareTitle="Here is an interesting link"
-                    shareText="Hello, I stumbled upon this interesting article about asteroids. You should check it out !"
-                />
+                <IconProvider library={regularIcons}>
+                    <ShareBox 
+                        shareUrl="https://example.com/share-link"
+                        shareTitle="Here is an interesting link"
+                        shareText="Hello, I stumbled upon this interesting article about asteroids. You should check it out !"
+                    />
+                </IconProvider>
             </IntlProvider>
         );
         const icons = (queryAllByRole("button"));
@@ -100,12 +112,14 @@ describe('ShareBox', () => {
     it('should render box with code share option and copy to clipboard on click', () => {
         const { queryAllByRole, getByText } = render(
             <IntlProvider locale="en">
-                <ShareBox 
-                    shareUrl="https://example.com/share-link"
-                    shareTitle="Here is an interesting link"
-                    shareText="Hello, I stumbled upon this interesting article about asteroids. You should check it out !"
-                    showShareCode
-                />
+                <IconProvider library={regularIcons}>
+                    <ShareBox 
+                        shareUrl="https://example.com/share-link"
+                        shareTitle="Here is an interesting link"
+                        shareText="Hello, I stumbled upon this interesting article about asteroids. You should check it out !"
+                        showShareCode
+                    />
+                </IconProvider>
             </IntlProvider>
         );
         expect(queryAllByRole("button")).toHaveLength(5);

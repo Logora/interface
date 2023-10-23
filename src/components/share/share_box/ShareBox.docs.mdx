@@ -7,9 +7,15 @@ import { IntlProvider } from 'react-intl';
 
 A component that shows icons to share a link or to copy to clipboard.
 
-It should be wrapped around [react-intl](https://formatjs.io/docs/getting-started/installation/)'s IntlProvider.
+It must be inside [react-intl](https://formatjs.io/docs/getting-started/installation/)'s IntlProvider.
+
+It must be inside [IconProvider](https://bit.cloud/logora/debate/icons/icon_provider).
 
 ### Component usage
+```js
+import { ShareBox } from '@logora/debate.share.share_box';
+```
+
 ```js
 <IntlProvider locale="fr">
     <ShareBox 

@@ -3,7 +3,7 @@ import { useRoutes } from '@logora/debate.data.config_provider';
 import { useIntl, FormattedMessage } from 'react-intl';
 import { Avatar } from '@logora/debate.user.avatar';
 import { Link } from '@logora/debate.action.link';
-import { ExpertBadge } from '@logora/debate.icons.regular_icons';
+import { Icon } from '@logora/debate.icons.icon';
 import styles from './AuthorBox.module.scss';
 import PropTypes from 'prop-types';
 
@@ -49,7 +49,7 @@ export const AuthorBox = ({
                         { isExpert && !isDeleted &&
                             <div className={styles.expertContainer}>
                                 <span className={styles.expertBadge}>{ intl.formatMessage({ id: "user.author_box.expert", defaultMessage: "Journalist" }) }</span>
-                                <ExpertBadge width={16} />
+                                <Icon name="expertBadge" width={16} />
                             </div>
                         }
                     </div>

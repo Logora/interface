@@ -1,5 +1,7 @@
 import React from 'react';
 import { Select } from './Select';
+import { IconProvider } from '@logora/debate.icons.icon_provider';
+import * as regularIcons from '@logora/debate.icons.regular_icons';
 
 const options = [
     {
@@ -24,24 +26,32 @@ const options = [
 
 export const DefaultSelect = () => {
     return (
-        <Select options={options} />
+        <IconProvider library={regularIcons}>
+            <Select options={options} />
+        </IconProvider>
     )
 };
 
 export const SelectWithDefault = () => {
     return (
-        <Select options={options} defaultOption={"relevance"} />
+        <IconProvider library={regularIcons}>
+            <Select options={options} defaultOption={"relevance"} />
+        </IconProvider>
     )
 };
 
 export const SelectWithRightOptions = () => {
     return (
-        <Select options={options} horizontalPosition={"right"} />
+        <IconProvider library={regularIcons}>
+            <Select options={options} horizontalPosition={"right"} />
+        </IconProvider>
     )
 };
 
 export const DisabledSelect = () => {
     return (
-        <Select options={options} disabled />
+        <IconProvider library={regularIcons}>
+            <Select options={options} disabled />
+        </IconProvider>
     )
 };
