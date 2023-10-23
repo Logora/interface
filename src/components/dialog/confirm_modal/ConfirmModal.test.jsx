@@ -3,18 +3,22 @@ import { fireEvent, render, screen, waitForElementToBeRemoved } from '@testing-l
 import userEvent from '@testing-library/user-event';
 import { ConfirmModal } from './ConfirmModal';
 import { ModalProvider } from '@logora/debate.dialog.modal';
+import { IconProvider } from '@logora/debate.icons.icon_provider';
+import * as regularIcons from '@logora/debate.icons.regular_icons';
 
 describe('ConfirmModal', () => {
 	it('should render modal with content and title', () => {
 		const modal = render(
-			<ModalProvider>
-				<ConfirmModal 
-					title="confirm modal title" 
-					question="are you sure ?"
-					confirmLabel="yes"
-					cancelLabel="no"
-				/>
-			</ModalProvider>
+			<IconProvider library={regularIcons}>
+				<ModalProvider>
+					<ConfirmModal 
+						title="confirm modal title" 
+						question="are you sure ?"
+						confirmLabel="yes"
+						cancelLabel="no"
+					/>
+				</ModalProvider>
+			</IconProvider>
 		);
 
 		expect(screen.getByText("confirm modal title")).toBeTruthy()
@@ -26,14 +30,16 @@ describe('ConfirmModal', () => {
 
 	it('should close on click outside', async () => {
 		const modal = render(
-			<ModalProvider>
-				<ConfirmModal 
-					title="confirm modal title" 
-					question="are you sure ?"
-					confirmLabel="yes"
-					cancelLabel="no"
-				/>
-			</ModalProvider>
+			<IconProvider library={regularIcons}>
+				<ModalProvider>
+					<ConfirmModal 
+						title="confirm modal title" 
+						question="are you sure ?"
+						confirmLabel="yes"
+						cancelLabel="no"
+					/>
+				</ModalProvider>
+			</IconProvider>
 		);
 
 		expect(screen.getByRole("dialog")).toBeTruthy()
@@ -49,14 +55,16 @@ describe('ConfirmModal', () => {
 	/*
 	it('should close when clicking on confirm button', async () => {
 		const modal = render(
-			<ModalProvider>
-				<ConfirmModal 
-					title="confirm modal title" 
-					question="are you sure ?"
-					confirmLabel="yes"
-					cancelLabel="no"
-				/>
-			</ModalProvider>
+			<IconProvider library={regularIcons}>
+				<ModalProvider>
+					<ConfirmModal 
+						title="confirm modal title" 
+						question="are you sure ?"
+						confirmLabel="yes"
+						cancelLabel="no"
+					/>
+				</ModalProvider>
+			</IconProvider>
 		);
 
 		expect(screen.getByRole("dialog")).toBeTruthy()
@@ -73,14 +81,16 @@ describe('ConfirmModal', () => {
 	/*
 	it('should close when clicking on cancel button', async () => {
 		const modal = render(
-			<ModalProvider>
-				<ConfirmModal 
-					title="confirm modal title" 
-					question="are you sure ?"
-					confirmLabel="yes"
-					cancelLabel="no"
-				/>
-			</ModalProvider>
+			<IconProvider library={regularIcons}>
+				<ModalProvider>
+					<ConfirmModal 
+						title="confirm modal title" 
+						question="are you sure ?"
+						confirmLabel="yes"
+						cancelLabel="no"
+					/>
+				</ModalProvider>
+			</IconProvider>
 		);
 
 		expect(screen.getByRole("dialog")).toBeTruthy()
@@ -98,15 +108,17 @@ describe('ConfirmModal', () => {
 		const confirmCallback = jest.fn();
 
 		const modal = render(
-			<ModalProvider>
-				<ConfirmModal 
-					title="confirm modal title" 
-					question="are you sure ?"
-					confirmLabel="yes"
-					cancelLabel="no"
-					onConfirmCallback={confirmCallback}
-				/>
-			</ModalProvider>
+			<IconProvider library={regularIcons}>
+				<ModalProvider>
+					<ConfirmModal 
+						title="confirm modal title" 
+						question="are you sure ?"
+						confirmLabel="yes"
+						cancelLabel="no"
+						onConfirmCallback={confirmCallback}
+					/>
+				</ModalProvider>
+			</IconProvider>
 		);
 
 		expect(screen.getByRole("dialog")).toBeTruthy()
@@ -122,15 +134,17 @@ describe('ConfirmModal', () => {
 		const cancelCallback = jest.fn();
 
 		const modal = render(
-			<ModalProvider>
-				<ConfirmModal 
-					title="confirm modal title" 
-					question="are you sure ?"
-					confirmLabel="yes"
-					cancelLabel="no"
-					onCancelCallback={cancelCallback}
-				/>
-			</ModalProvider>
+			<IconProvider library={regularIcons}>
+				<ModalProvider>
+					<ConfirmModal 
+						title="confirm modal title" 
+						question="are you sure ?"
+						confirmLabel="yes"
+						cancelLabel="no"
+						onCancelCallback={cancelCallback}
+					/>
+				</ModalProvider>
+			</IconProvider>
 		);
 
 		expect(screen.getByRole("dialog")).toBeTruthy()

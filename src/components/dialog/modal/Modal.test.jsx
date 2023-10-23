@@ -4,6 +4,8 @@ import userEvent from '@testing-library/user-event';
 import { Modal } from './Modal';
 import { ModalProvider } from './ModalProvider';
 import { useModal } from './useModal';
+import { IconProvider } from '@logora/debate.icons.icon_provider';
+import * as regularIcons from '@logora/debate.icons.regular_icons';
 
 const TestModal = () => {
 	const { showModal } = useModal();
@@ -23,9 +25,11 @@ const TestModal = () => {
 describe('Modal', () => {
 	it('should render modal with content and title',  async () => {
 		const modal = render(
-			<ModalProvider>
-				<TestModal />
-			</ModalProvider>
+			<IconProvider library={regularIcons}>
+				<ModalProvider>
+					<TestModal />
+				</ModalProvider>
+			</IconProvider>
 		);
 
 		expect(screen.queryByText("modal content")).toBeNull();
@@ -41,24 +45,28 @@ describe('Modal', () => {
 
 	it('should render close button if showCloseButotn is true', () => {
 		const modal = render(
-			<ModalProvider>
-				<Modal title="my title" showCloseButton>
-					<div data-testid="modal-content">modal content</div>
-				</Modal>
-			</ModalProvider>
+			<IconProvider library={regularIcons}>
+				<ModalProvider>
+					<Modal title="my title" showCloseButton>
+						<div data-testid="modal-content">modal content</div>
+					</Modal>
+				</ModalProvider>
+			</IconProvider>
 		);
 
 		expect(screen.getByText("modal content")).toBeTruthy()
 		expect(screen.getByText("my title")).toBeTruthy()
-		expect(screen.getByText("×")).toBeTruthy();
+		expect(screen.getByTestId("close-button")).toBeTruthy();
 		expect(document.body.style.overflowY).toEqual("hidden")
 	});
 
 	it('should close when clicking on close button', async () => {
 		const modal = render(
-			<ModalProvider>
-				<TestModal />
-			</ModalProvider>
+			<IconProvider library={regularIcons}>
+				<ModalProvider>
+					<TestModal />
+				</ModalProvider>
+			</IconProvider>
 		);
 
 		expect(screen.queryByRole("dialog")).toBeNull();
@@ -68,10 +76,10 @@ describe('Modal', () => {
 		await waitFor(() => {
 			expect(screen.queryByRole("dialog")).toBeTruthy();
 			expect(screen.queryByText("modal content")).toBeTruthy();
-			expect(screen.getByText("×")).toBeTruthy();
+			expect(screen.getByTestId("close-button")).toBeTruthy();
 		});
 
-		userEvent.click(screen.getByText("×"));
+		userEvent.click(screen.getByTestId("close-button"));
 
 		await waitFor(() => {
 			expect(screen.queryByText("modal content")).toBeNull();

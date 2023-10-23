@@ -4,6 +4,7 @@ import { useModal } from './useModal';
 import useOnClickOutside from 'use-onclickoutside';
 import cx from 'classnames';
 import styles from './Modal.module.scss';
+import { Icon } from "@logora/debate.icons.icon";
 
 export const Modal = ({ title, showCloseButton = false, fullScreen, children, disableClickOutside = false, ...rest }) => {
   const modalRef = useRef();
@@ -27,8 +28,8 @@ export const Modal = ({ title, showCloseButton = false, fullScreen, children, di
               <div>{title}</div>
             }
             { showCloseButton &&
-              <div className={styles.modalExitButton} onClick={hideModal}>
-                <span aria-hidden="true">&times;</span>
+              <div className={styles.modalExitButton} onClick={hideModal} aria-hidden="true" data-testid="close-button" >
+                <Icon name="close" height={18} width={18} />
               </div>
             }
           </div>

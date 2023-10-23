@@ -59,16 +59,11 @@
   width: 100%;
   font-weight: $font-weight-bold;
   .modalExitButton {
-    font-weight: $font-weight-normal;
     line-height: 1;
-    color: $text-primary;
-    text-shadow: $text-secondary;
     opacity: 1;
-    font-size: $font-size-large;
     margin-left: auto;
     &:hover {
       color: $text-secondary;
-      text-decoration: none;
       cursor: pointer;
     }
 

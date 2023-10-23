@@ -29,17 +29,19 @@ export const DefaultSourceModal = () => {
     const data = dataProvider(httpClient, "https://mock.example.api");
 
     return (
-        <ModalProvider>
-            <IntlProvider locale="en">
-                <IconProvider library={regularIcons}>
-                    <DataProviderContext.Provider value={{ dataProvider: data }}>
-                        <SourceModal 
-                            onAddSource={() => console.log("Add source")} 
-                            onHideModal={() => console.log("Hide modal")} 
-                        />
-                    </DataProviderContext.Provider>
-                </IconProvider>
-            </IntlProvider>
-        </ModalProvider>
+        <div style={{width: "250px", height: "100px"}}>
+            <ModalProvider>
+                <IntlProvider locale="en">
+                    <IconProvider library={regularIcons}>
+                        <DataProviderContext.Provider value={{ dataProvider: data }}>
+                            <SourceModal 
+                                onAddSource={() => console.log("Add source")} 
+                                onHideModal={() => console.log("Hide modal")} 
+                            />
+                        </DataProviderContext.Provider>
+                    </IconProvider>
+                </IntlProvider>
+            </ModalProvider>
+        </div>
     )
 };
