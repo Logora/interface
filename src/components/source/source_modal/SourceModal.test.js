@@ -5,6 +5,8 @@ import { ModalProvider } from '@logora/debate.dialog.modal';
 import { dataProvider, DataProviderContext } from '@logora/debate.data.data_provider';
 import { IntlProvider } from 'react-intl';
 import userEvent from '@testing-library/user-event';
+import { IconProvider } from '@logora/debate.icons.icon_provider';
+import * as regularIcons from '@logora/debate.icons.regular_icons';
 import { faker } from '@faker-js/faker';
 
 const addSourceCallback = jest.fn();
@@ -35,12 +37,14 @@ describe('SourceModal', () => {
         const modal = render(
             <ModalProvider>
                 <IntlProvider locale="en">
-                    <DataProviderContext.Provider value={{ dataProvider: data }}>
-                        <SourceModal 
-                            onAddSource={addSourceCallback} 
-                            onHideModal={hideModalCallback} 
-                        />
-                    </DataProviderContext.Provider>
+                    <IconProvider library={regularIcons}>
+                        <DataProviderContext.Provider value={{ dataProvider: data }}>
+                            <SourceModal 
+                                onAddSource={addSourceCallback} 
+                                onHideModal={hideModalCallback} 
+                            />
+                        </DataProviderContext.Provider>
+                    </IconProvider>
                 </IntlProvider>
             </ModalProvider>
         );
@@ -56,12 +60,14 @@ describe('SourceModal', () => {
         const modal = render(
             <ModalProvider>
                 <IntlProvider locale="en">
-                    <DataProviderContext.Provider value={{ dataProvider: data }}>
-                        <SourceModal 
-                            onAddSource={addSourceCallback} 
-                            onHideModal={hideModalCallback} 
-                        />
-                    </DataProviderContext.Provider>
+                    <IconProvider library={regularIcons}>
+                        <DataProviderContext.Provider value={{ dataProvider: data }}>
+                            <SourceModal 
+                                onAddSource={addSourceCallback} 
+                                onHideModal={hideModalCallback} 
+                            />
+                        </DataProviderContext.Provider>
+                    </IconProvider>
                 </IntlProvider>
             </ModalProvider>
         );

@@ -3,6 +3,8 @@ import { SourceModal } from './SourceModal';
 import { ModalProvider } from '@logora/debate.dialog.modal';
 import { dataProvider, DataProviderContext } from '@logora/debate.data.data_provider';
 import { IntlProvider } from 'react-intl';
+import { IconProvider } from '@logora/debate.icons.icon_provider';
+import * as regularIcons from '@logora/debate.icons.regular_icons';
 import { faker } from '@faker-js/faker';
 
 const source = { 
@@ -29,12 +31,14 @@ export const DefaultSourceModal = () => {
     return (
         <ModalProvider>
             <IntlProvider locale="en">
-                <DataProviderContext.Provider value={{ dataProvider: data }}>
-                    <SourceModal 
-                        onAddSource={() => console.log("Add source")} 
-                        onHideModal={() => console.log("Hide modal")} 
-                    />
-                </DataProviderContext.Provider>
+                <IconProvider library={regularIcons}>
+                    <DataProviderContext.Provider value={{ dataProvider: data }}>
+                        <SourceModal 
+                            onAddSource={() => console.log("Add source")} 
+                            onHideModal={() => console.log("Hide modal")} 
+                        />
+                    </DataProviderContext.Provider>
+                </IconProvider>
             </IntlProvider>
         </ModalProvider>
     )
