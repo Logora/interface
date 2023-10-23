@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link } from '@logora/debate.action.link'
-import { Link as LinkIcon } from '@logora/debate.icons.regular_icons';
+import { Icon } from '@logora/debate.icons.icon';
 import styles from './SourceListItem.module.scss';
 import PropTypes from "prop-types";
 
 export const SourceListItem = ({ index = 0, url, title, publisher }) => {
     return (
         <Link className={styles.sourceListItem} to={url} external target="_blank" rel="nofollow noreferrer noopener" data-tid={"link_view_source"}>
-            <LinkIcon width={16} height={16} />
+            <Icon name="link" width={16} height={16} />
             <div className={styles.sourceListItemLink} >
                 <span>[ { index + 1} ]</span> 
                 <span>{ publisher && `${publisher} - `} {title}</span>
