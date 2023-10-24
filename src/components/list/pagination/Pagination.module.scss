@@ -29,4 +29,7 @@
   fill: transparent !important;
   transform: rotate(90deg);
   @include ml(3, xs);
+  path {
+    stroke: $text-primary;
+  }
 }
