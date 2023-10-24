@@ -183,7 +183,17 @@
         "version": "",
         "defaultScope": "logora.debate",
         "mainFile": "index.js",
-        "rootDir": "src/components/gamification/badge_box"
+        "rootDir": "src/components/gamification/badge_box",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "peerDependencies": {
+                        "react": "^17.0.0 || ^18.0.0",
+                        "react-dom": "^17.0.0 || ^18.0.0"
+                    }
+                }
+            }
+        }
     },
     "gamification/point_box": {
         "name": "gamification/point_box",
@@ -331,7 +341,17 @@
         "version": "",
         "defaultScope": "logora.debate",
         "mainFile": "index.js",
-        "rootDir": "src/components/progress/progress_bar"
+        "rootDir": "src/components/progress/progress_bar",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "peerDependencies": {
+                        "react": "^17.0.0 || ^18.0.0",
+                        "react-dom": "^17.0.0 || ^18.0.0"
+                    }
+                }
+            }
+        }
     },
     "section/section_box": {
         "name": "section/section_box",
