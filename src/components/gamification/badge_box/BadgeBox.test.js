@@ -29,7 +29,7 @@ const badgeCompleted = {
 }
 
 describe("BadgeBox", () => { 
-    it("render correctly", () => {
+    it("renders correctly", () => {
         const { getByText, getByAltText } = render(
             <IntlProvider locale="en">
                 <BadgeBox eloquenceTitle="" badge={badge} />
@@ -45,7 +45,7 @@ describe("BadgeBox", () => {
         expect(getByText("At level 3 you will get the title :")).toBeInTheDocument();
     });
 
-    it("render title obtained", () => {
+    it("renders title obtained", () => {
         const { getByText, getByAltText, getByTestId, queryByText } = render(
             <IntlProvider locale="en">
                 <BadgeBox eloquenceTitle="" badge={badgeCompleted} />
@@ -67,7 +67,7 @@ describe("BadgeBox", () => {
         expect(queryByText("At level 3 you will get the title :")).toBeNull();
     });
 
-    it("render title shown", () => {
+    it("renders title shown", () => {
         const { getByText, getByAltText, getByTestId, queryByText } = render(
             <IntlProvider locale="en">
                 <BadgeBox eloquenceTitle={badgeCompleted.badge.name} badge={badgeCompleted} />
