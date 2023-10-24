@@ -156,6 +156,14 @@
         "mainFile": "index.js",
         "rootDir": "src/components/forms/form"
     },
+    "gamification/badge_box": {
+        "name": "gamification/badge_box",
+        "scope": "",
+        "version": "",
+        "defaultScope": "logora.debate",
+        "mainFile": "index.js",
+        "rootDir": "src/components/gamification/badge_box"
+    },
     "gamification/point_box": {
         "name": "gamification/point_box",
         "scope": "logora.debate",
@@ -295,6 +303,14 @@
         "version": "0.0.40",
         "mainFile": "index.js",
         "rootDir": "src/components/list/pagination"
+    },
+    "progress/progress_bar": {
+        "name": "progress/progress_bar",
+        "scope": "",
+        "version": "",
+        "defaultScope": "logora.debate",
+        "mainFile": "index.js",
+        "rootDir": "src/components/progress/progress_bar"
     },
     "section/section_box": {
         "name": "section/section_box",

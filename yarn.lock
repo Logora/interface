@@ -667,6 +667,15 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"badge_box-0d24b6@workspace:src/components/gamification/badge_box":
+  version: 0.0.0-use.local
+  resolution: "badge_box-0d24b6@workspace:src/components/gamification/badge_box"
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0
+    react-dom: ^16.8.0 || ^17.0.0
+  languageName: unknown
+  linkType: soft
+
 "box_skeleton-a11637@workspace:src/components/skeleton/box_skeleton":
   version: 0.0.0-use.local
   resolution: "box_skeleton-a11637@workspace:src/components/skeleton/box_skeleton"

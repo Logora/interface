@@ -1,0 +1,103 @@
+@import '~@logora/debate.styles.theme/_theme.scss';
+@import '~@logora/debate.styles.spacing/_spacing.scss';
+@import '~@logora/debate.styles.flex/_flex.scss';
+@import '~@logora/debate.styles.display/_display.scss';
+
+.badgeBox {
+    @include display(flex, xs);
+    @include flex-direction(column, xs);
+    @include align-items(center, xs);
+    @include justify-content(flex-start, xs);
+    @include p(3, xs);
+    box-shadow: $box-shadow;
+    border-radius: $box-border-radius;
+    border: $box-border;
+    text-align: center;
+    width: 250px;
+    max-width: 250px;
+    position: relative;
+    background-color: $background-color-primary;
+}
+
+.level-1 {
+    background-color: #C98448;
+}
+
+.level-2 {
+    background-color: #AFAFAF;
+}
+
+.level-3 {
+    background-color: #FCBD11;
+}
+
+.badgeLevel {
+    @include px(2, xs);
+    @include py(1.5, xs);
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: $font-size-small;
+    color: $text-light;
+    border-radius: $box-border-radius 0 $box-border-radius 0;
+}
+
+.badgeImageBox {
+    @include mb(2, xs);
+}
+
+.badgeImage {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+
+.badgeName {
+    @include py(2, xs);
+    font-weight: $font-weight-bold;
+}
+
+.badgeDescription {
+    font-size: $font-size-small;
+    min-height: 40px;
+}
+
+.badgeProgressContainer {
+    @include mt(2, xs);
+    width: 100%;
+    font-size: $font-size-small;
+    color: $text-secondary;
+    font-weight: $font-weight-bold;
+}
+
+.badgeProgress {
+    height: 7px;
+    width: 100%;
+    border-radius: 8px;
+    background-color: $background-color-secondary !important;
+}
+
+.badgeReward {
+    @include display(flex, xs);
+    @include flex-direction(column, xs);
+    @include mt(3, xs);
+    @include p(1, xs);
+    border-radius: $box-border-radius;
+    width: 100%;
+    font-size: $font-size-small;
+    color: $text-secondary;
+    .rewardName {
+        font-weight: $font-weight-bold;
+    }
+    &.rewardObtained {
+        background: $success-primary;
+        color: $text-light;
+        cursor: pointer;
+    }
+    &.rewardShown {
+        background: $background-color-primary !important;
+        color: $success-primary !important;
+        cursor: pointer;
+        border: 1px solid $success-primary;
+    }
+}
