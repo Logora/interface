@@ -1,0 +1,43 @@
+---
+description: A button to login to Google with the OAuth2 protocol.
+labels: ['auth', 'oauth2', 'google']
+---
+
+import { GoogleLoginButton } from './GoogleLoginButton';
+import { MemoryRouter } from "react-router";
+
+A button component to login to Google with OAuth2.
+
+When clicking on the button, a popup will appear that will ask the user to login to Google. User will be
+redirected to _redirectUri_ afterwards if login is successful, with authorization code.
+
+Two scopes are requested :
+- https://www.googleapis.com/auth/userinfo.email 
+- https://www.googleapis.com/auth/userinfo.profile
+
+### Component usage
+
+```js
+import { GoogleLoginButton } from '@logora/debate.auth.google_login_button';
+```
+
+```js
+    <MemoryRouter>
+        <GoogleLoginButton 
+            text={"Sign in with Google"}
+            googleClientId={"google-client-id"}
+            redirectUri={"https://auth.redirect/}
+            onCode={(code) => console.log(code)}
+            onClose={closeCallbackFunction}
+        />
+    </MemoryRouter>
+```
+
+### Properties
+| **Name**      | **Type** | **Required** | **Default** | **Description** |
+| ----------- | ----------- | :-----------: | ----------- | ----------- |
+| <font color='#4646c6'>text</font> | <font color="#397300">string</font> | &check; | - | <font color="grey">*button text*</font> |
+| <font color='#4646c6'>googleClientId</font> | <font color="#397300">string</font> | &check; | - | <font color="grey">*google oauth2 client ID*</font> |
+| <font color='#4646c6'>redirectUri</font> | <font color="#397300">string</font> | &check; | - | <font color="grey">*oauth2 redirect URI*</font> |
+| <font color='#4646c6'>onCode</font> | <font color="#397300">function</font> | &check; | - | <font color="grey">*callback triggered if auth is successful. onCode takes one argument, which is the oauth2 authorization code*</font> |
+| <font color='#4646c6'>onClose</font> | <font color="#397300">function</font> | &cross; | - | <font color="grey">*callback triggered if popup is closed by user*</font> |
