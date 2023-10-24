@@ -6,10 +6,27 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  &:hover {
+    svg path {
+      stroke: $call-primary !important;
+    }
+  }
 }
 
 .paginationBox > button.paginationButton {
   border-color: $darkest-text-tertiary !important;
   font-weight: $font-weight-bold;
   color: $text-primary !important;
+  @include px(3, xs);
+  @include py(2.5, xs);
+  & svg {
+    width: 14px !important;
+    height: 14px !important;
+  }
+}
+
+.paginationIcon {
+  fill: transparent !important;
+  transform: rotate(90deg);
+  @include ml(3, xs);
 }

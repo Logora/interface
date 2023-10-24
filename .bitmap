@@ -337,9 +337,8 @@
     },
     "progress/progress_bar": {
         "name": "progress/progress_bar",
-        "scope": "",
-        "version": "",
-        "defaultScope": "logora.debate",
+        "scope": "logora.debate",
+        "version": "0.0.2",
         "mainFile": "index.js",
         "rootDir": "src/components/progress/progress_bar",
         "config": {
