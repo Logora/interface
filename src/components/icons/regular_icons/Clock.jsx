@@ -1,8 +1,15 @@
 import React from 'react';
 
 export const Clock = (props) => (
-    <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
-        <circle cx="9" cy="9" r="8.45" stroke="black" strokeWidth="1.1"/>
-        <path d="M8.5 4.5V9.5H12.5" stroke="black" strokeWidth="1.1" strokeLinecap="round" strokeLinejoin="round"/>
+    <svg viewBox="0 0 50 50" fill="black" xmlns="http://www.w3.org/2000/svg" {...props}>
+        <g clipPath="url(#clip0_2638_46113)">
+            <path d="M34.7224 27.9165C35.5661 27.9165 36.2501 27.2325 36.2501 26.3888C36.2501 25.545 35.5661 24.861 34.7224 24.861H25.139V12.4999C25.139 11.6561 24.455 10.9721 23.6112 10.9721C22.7675 10.9721 22.0835 11.6561 22.0835 12.4999V26.3888C22.0835 27.2325 22.7675 27.9165 23.6112 27.9165H34.7224Z"/>
+            <path fillRule="evenodd" clipRule="evenodd" d="M50 25C50 38.8071 38.8071 50 25 50C11.1929 50 0 38.8071 0 25C0 11.1929 11.1929 0 25 0C38.8071 0 50 11.1929 50 25ZM46.9444 25C46.9444 37.1196 37.1196 46.9444 25 46.9444C12.8804 46.9444 3.05556 37.1196 3.05556 25C3.05556 12.8804 12.8804 3.05556 25 3.05556C37.1196 3.05556 46.9444 12.8804 46.9444 25Z"/>
+        </g>
+        <defs>
+            <clipPath id="clip0_2638_46113">
+                <rect width="50" height="50" fill="white"/>
+            </clipPath>
+        </defs>
     </svg>
 )
