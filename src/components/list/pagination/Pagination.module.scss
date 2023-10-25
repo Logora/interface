@@ -6,11 +6,6 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  &:hover {
-    svg path {
-      stroke: $call-primary !important;
-    }
-  }
 }
 
 .paginationBox > button.paginationButton {
@@ -22,6 +17,11 @@
   & svg {
     width: 14px !important;
     height: 14px !important;
+  }
+  &:hover {
+    svg path {
+      stroke: $call-primary !important;
+    }
   }
 }
 
