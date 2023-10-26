@@ -48,8 +48,8 @@ export const AuthorBox = ({
                         }
                         { isExpert && !isDeleted &&
                             <div className={styles.expertContainer}>
+                                <Icon name="expertBadge" width={14} height={14} />
                                 <span className={styles.expertBadge}>{ intl.formatMessage({ id: "user.author_box.expert", defaultMessage: "Journalist" }) }</span>
-                                <Icon name="expertBadge" width={16} />
                             </div>
                         }
                     </div>

@@ -42,13 +42,18 @@
 .authorNameLine {
     display: flex;
     flex-wrap: wrap;
-    gap: 5px;
+    align-items: center;
+    gap: $spacer-sm;
     .expertContainer, .linkDisabled {
         cursor: default;
         color: $text-secondary;
     }
-    .expertContainer svg {
-        display: inline-block;
+    .expertContainer {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        align-items: center;
+        gap: $spacer-xs;
     }
     .expertBadge {
         font-weight: $font-weight-normal;

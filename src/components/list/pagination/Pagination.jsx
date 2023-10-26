@@ -3,6 +3,7 @@ import { Loader } from '@logora/debate.progress.loader';
 import { Button } from '@logora/debate.action.button';
 import styles from './Pagination.module.scss';
 import PropTypes from "prop-types";
+import { Icon } from "@logora/debate.icons.icon";
 
 export const Pagination = ({ currentPage, perPage, totalElements, buttonText, onLoad, isLoading, hideLoader, ...rest }) => {
     const [hasNextPage, setHasNextPage] = useState((currentPage * perPage) < totalElements)
@@ -25,6 +26,7 @@ export const Pagination = ({ currentPage, perPage, totalElements, buttonText, on
                             {...rest}
                         >
                             { buttonText }
+                            <Icon className={styles.paginationIcon} name="lightArrow" height={14} width={14} />
                         </Button>
                     ) : (
                         hideLoader ?

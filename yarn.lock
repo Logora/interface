@@ -336,8 +336,8 @@ __metadata:
     "@testing-library/dom": ^9.0.0
     "@types/react-dom": ^18.0.0
   peerDependencies:
-    react: ^18.0.0
-    react-dom: ^18.0.0
+    react: ^18.1.0
+    react-dom: ^18.1.0
   checksum: 4a54c8f56cc4a39b50803205f84f06280bb76521d6d5d4b3b36651d760c7c7752ef142d857d52aaf4fad4848ed7a8be49afc793a5dda105955d2f8bef24901ac
   languageName: node
   linkType: hard
@@ -665,6 +665,12 @@ __metadata:
 "back_link-1a910c@workspace:src/components/action/back_link":
   version: 0.0.0-use.local
   resolution: "back_link-1a910c@workspace:src/components/action/back_link"
+  languageName: unknown
+  linkType: soft
+
+"badge_box-0d24b6@workspace:src/components/gamification/badge_box":
+  version: 0.0.0-use.local
+  resolution: "badge_box-0d24b6@workspace:src/components/gamification/badge_box"
   languageName: unknown
   linkType: soft
 
@@ -1689,6 +1695,12 @@ __metadata:
   checksum: 032c1602383e71e9c0c02a01bbd25d6759d60e9c7cf21937dde8357aa753da348fcec5def5d1002c9678a8524d5fe099ad98861286550ef44de8808cc61e43b6
   languageName: node
   linkType: hard
+
+"progress_bar-9f380d@workspace:src/components/progress/progress_bar":
+  version: 0.0.0-use.local
+  resolution: "progress_bar-9f380d@workspace:src/components/progress/progress_bar"
+  languageName: unknown
+  linkType: soft
 
 "prop-types@npm:^15.6.2, prop-types@npm:^15.8.1":
   version: 15.8.1
