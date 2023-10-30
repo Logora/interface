@@ -45,7 +45,7 @@ IconTextLink.propTypes = {
     /**  Class name to style the link */
     className: PropTypes.string,
 	/**  Class name to style the text */
-    className: PropTypes.string,
+    textClassName: PropTypes.string,
     /** If `true`, will display a red pin on the icon */
     pin: PropTypes.bool,
     /** Text displayed under the icon */
