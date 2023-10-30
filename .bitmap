@@ -180,7 +180,7 @@
     "gamification/badge_box": {
         "name": "gamification/badge_box",
         "scope": "logora.debate",
-        "version": "0.0.2",
+        "version": "0.0.3",
         "mainFile": "index.js",
         "rootDir": "src/components/gamification/badge_box"
     },
