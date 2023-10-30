@@ -4,7 +4,7 @@ import { Link } from "@logora/debate.action.link";
 import cx from "classnames";
 import PropTypes from "prop-types";
 
-export const IconTextLink = ({ className, to, icon: Icon, text, active = false, children, pin = false, pinText, ...rest }) =>  {
+export const IconTextLink = ({ className, textClassName,  to, icon: Icon, text, active = false, children, pin = false, pinText, ...rest }) =>  {
 	const displayIconText = () => {
 		return (
 			<div data-testid={"iconTextContainer"} className={cx(styles.iconTextContainer, {[styles.active]: active})} {...(to ? {} : {...rest})}>
@@ -19,7 +19,7 @@ export const IconTextLink = ({ className, to, icon: Icon, text, active = false, 
 					}
 					{ Icon ? <Icon height={24} width={24} /> : children }
 				</div>
-				<div className={styles.iconText}>{ text }</div>
+				<div className={cx(styles.iconText, textClassName)}>{ text }</div>
 			</div>
 		);
 	};
@@ -43,6 +43,8 @@ IconTextLink.propTypes = {
     /** If `true`, link is displayed as active */
     active: PropTypes.bool,
     /**  Class name to style the link */
+    className: PropTypes.string,
+	/**  Class name to style the text */
     className: PropTypes.string,
     /** If `true`, will display a red pin on the icon */
     pin: PropTypes.bool,
