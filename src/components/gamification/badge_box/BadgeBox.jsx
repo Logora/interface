@@ -17,7 +17,7 @@ export const BadgeBox = ({ icon_url, level, name, next_title_level, steps, title
                 <img className={styles.badgeImage} src={icon_url} loading={"lazy"} width={80} height={80} title={title} alt={`Badge ${title}`} />
             </div>
             <div className={styles.badgeName}>
-                { intl.formatMessage({ id: `gamification.badge.${name}.title`, defaultMessage: "Contributor" }) }
+                { intl.formatMessage({ id: `gamification.badge_box.${name}.title`, defaultMessage: "Contributor" }) }
             </div>
             <div className={styles.badgeDescription}>
                 <FormattedMessage id={`gamification.badge_box.${name}.description`} values={{ count: steps }} defaultMessage="Write {count} arguments with a relevance score of at least 75" />
