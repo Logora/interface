@@ -30,6 +30,10 @@ export const ButtonWithDangerAccent = () => {
     return <Button accent="danger" handleClick={null}>Danger</Button>;
 };
 
+export const ButtonDisabledWithoutBorder = () => {
+    return <Button border={false} disabled>Disabled</Button>;
+};
+
 export const ButtonWithoutBorder = () => {
     return <Button border={false} handleClick={null} active>No border</Button>;
 };
