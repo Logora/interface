@@ -26,7 +26,7 @@
     "action/icon_text_link": {
         "name": "action/icon_text_link",
         "scope": "logora.debate",
-        "version": "0.0.31",
+        "version": "0.0.32",
         "mainFile": "index.js",
         "rootDir": "src/components/action/icon_text_link"
     },
