@@ -61,16 +61,8 @@
 }
 
 .selectOptionActive {
-	background-color: $call-primary !important;
-	color: $text-light;
-	svg {
-		display: inline-block;
-	}
-}
-
-.checkBox {
-	@include ml(3, xs);
-	fill: $text-light !important;
+	background-color: $darkest-text-tertiary;
+	color: $text-primary;
 }
 
 .arrowDown {
