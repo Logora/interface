@@ -138,7 +138,7 @@
     "dialog/dialog_box": {
         "name": "dialog/dialog_box",
         "scope": "logora.debate",
-        "version": "0.0.17",
+        "version": "0.0.18",
         "mainFile": "index.js",
         "rootDir": "src/components/dialog/dialog_box"
     },
