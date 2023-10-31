@@ -4,8 +4,8 @@ import styles from './DialogBox.module.scss';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 
-export const DialogBox = ({ isBottom, isTop, isRight, isLeft, titleKey, contentKey, isHidden = false, children, className }) => {
-    const storedChoice = JSON.parse(typeof window !== "undefined" && window.localStorage && window.localStorage.getItem(contentKey)) || false;
+export const DialogBox = ({ position = "bottom", title, content, isHidden = false, children, className }) => {
+    const storedChoice = JSON.parse(typeof window !== "undefined" && window.localStorage && window.localStorage.getItem(content)) || false;
     const [show, setShow] = useState(true);
 
     useEffect(() => {
@@ -14,7 +14,7 @@ export const DialogBox = ({ isBottom, isTop, isRight, isLeft, titleKey, contentK
     const closeBox = () => {
         setShow(false);
         if(typeof window !== "undefined") {
-            window.localStorage.setItem(contentKey, true);
+            window.localStorage.setItem(content, true);
         }
     }
 
@@ -22,13 +22,13 @@ export const DialogBox = ({ isBottom, isTop, isRight, isLeft, titleKey, contentK
         <div className={styles.childContainer}>
             {children}
             {!storedChoice && !isHidden &&
-                <div className={cx(styles.textContainer, className, {[styles.hidden]: !show, [styles.left]: isLeft, [styles.right]: isRight, [styles.top]: isTop, [styles.bottom]: isBottom})}>
+                <div className={cx(styles.textContainer, className, {[styles.hidden]: !show, [styles.left]: position === "left", [styles.right]: position === "right", [styles.top]: position === "top", [styles.bottom]: position === "bottom"})}>
                     <div className={styles.close} onClick={closeBox}>x</div>
                     <div className={styles.title}>
-                        <span><FormattedMessage id={titleKey} defaultMessage="Debates" /></span>
+                        <span>{title}</span>
                     </div>
                     <div className={styles.textContent}>
-                        <span><FormattedMessage id={contentKey} defaultMessage="Participate by writing your argument and earn eloquence points" /></span>
+                        <span>{content}</span>
                     </div>
                     <div className={styles.closeText} onClick={closeBox}>
                         <span><FormattedMessage id="dialog.dialog_box.got_it" defaultMessage="Got it" /></span>
@@ -40,18 +40,12 @@ export const DialogBox = ({ isBottom, isTop, isRight, isLeft, titleKey, contentK
 }
 
 DialogBox.propTypes = {
-    /** Dialog position */
-    isBottom: PropTypes.bool,
-    /** Dialog position */
-    isTop: PropTypes.bool,
-    /** Dialog position */
-    isRight: PropTypes.bool,
-    /** Dialog position */
-    isLeft: PropTypes.bool,
+    /** DialogBox position, can be `top`, `bottom`, `left` or `right` */
+    position: PropTypes.string,
     /** Title to display */
-    titleKey: PropTypes.string.isRequired,
+    title: PropTypes.string,
     /** Content to display */
-    contentKey: PropTypes.string.isRequired,
+    content: PropTypes.string,
     /** Controls the dialog display */
     isHidden: PropTypes.bool,
     /** Custom css to pass */

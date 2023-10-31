@@ -4,12 +4,11 @@ import { DialogBox } from './DialogBox';
 
 export const DefaultDialogBox = () => {
     return (
-        <div style={{ width: "200px", height: "200px"}}>
+        <div style={{ width: "400px", height: "200px"}}>
             <IntlProvider locale='en'>
                 <DialogBox 
-                    isBottom
-                    titleKey={"info.debates"} 
-                    contentKey={"info.debate.first_time"}
+                    title="Debates"
+                    content="Participate by writing your argument and earn eloquence points"
                 >
                     <span>React child</span>
                 </DialogBox>
@@ -22,9 +21,8 @@ export const HiddenDialogBox = () => {
     return (
         <IntlProvider locale='en'>
             <DialogBox 
-                isBottom
-                titleKey={"info.debates"} 
-                contentKey={"info.debate.first_time"}
+                title="Debates"
+                content="Participate by writing your argument and earn eloquence points"
                 isHidden={true}
             >
                 <span>React child</span>
