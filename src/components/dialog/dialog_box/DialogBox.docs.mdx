@@ -1,0 +1,25 @@
+---
+description: A component to display a dialog containing a title, a content and a button to close it.
+---
+
+import { DialogBox } from './DialogBox';
+
+This component must be wrapped by IntlProvider. The component position is provided by props around it's children.
+
+It displays a title, a content and a button to close it.
+
+### Component usage
+```js
+import { DialogBox } from '@logora/debate.dialog.dialog_box';
+```
+```js
+<IntlProvider locale='en'>
+    <DialogBox 
+        isBottom
+        titleKey={"title.key"} 
+        contentKey={"content.key"}
+    >
+        <span>React child</span>
+    </DialogBox>
+</IntlProvider>
+```

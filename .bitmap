@@ -135,6 +135,13 @@
         "mainFile": "index.js",
         "rootDir": "src/components/dialog/confirm_modal"
     },
+    "dialog/dialog_box": {
+        "name": "dialog/dialog_box",
+        "scope": "logora.debate",
+        "version": "0.0.17",
+        "mainFile": "index.js",
+        "rootDir": "src/components/dialog/dialog_box"
+    },
     "dialog/dropdown": {
         "name": "dialog/dropdown",
         "scope": "logora.debate",

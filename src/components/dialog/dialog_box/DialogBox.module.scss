@@ -1,0 +1,145 @@
+@import '~@logora/debate.styles.theme/_theme.scss';
+@import '~@logora/debate.styles.spacing/_spacing.scss';
+@import '~@logora/debate.styles.display/_display.scss';
+
+.childContainer {
+    position: relative;
+}
+.textContainer {
+    @include px(3, xs);
+    @include py(2.5, xs);
+    z-index: 200;
+    position: absolute;
+    width: 45%;
+    height: fit-content;
+    min-width: 250px;
+    background-color: $success-primary;
+    color: $text-light;
+    border-radius: 3px;
+    text-align: left;
+    visibility: visible;
+    opacity: 1;
+    @include media-breakpoint-down(sm) {
+        min-width: 150px;
+    }
+    &.hidden {
+        visibility: hidden;
+        opacity: 0;
+        transition: visibility .3s, opacity .3s linear;
+    }
+    &::after {
+        content: "";
+        position: absolute;
+        border-width: 10px;
+        border-style: solid;
+        border-color: $success-primary transparent transparent transparent;
+    }
+    &.top {
+        left: 25%;
+        bottom: 105%;
+        &::after {
+            bottom: -19px;
+            left: 50%;
+            transform: none;
+        }
+        @include media-breakpoint-down(sm) {
+            width: 80%;
+            left: 10%;
+            bottom: 70%;
+        }
+    }
+    &.bottom {
+        left: 25%;
+        top: 105%;
+        &::after {
+            bottom: 100%;
+            left: 50%;
+            transform: rotate(180deg);
+        }
+        @include media-breakpoint-down(sm) {
+            width: 80%;
+            left: 10%;
+            top: 76%;
+        }
+    }
+    &.left {
+        top: 10%;
+        left: -40%;
+        width: 45%;
+        &::after {
+            top: 25%;
+            right: -19px;
+            transform: rotate(270deg);
+        }
+        @include media-breakpoint-down(lg) {
+            width: 80%;
+            left: -70%;
+        }
+    }
+    &.right {
+        top: 10%;
+        right: -40%;
+        width: 45%;
+        &::after {
+            top: 25%;
+            left: -19px;
+            transform: rotate(90deg);
+        }
+        @include media-breakpoint-down(lg) {
+            width: 80%;
+            right: -70%;
+        }
+    }
+}
+.title {
+    display: flex !important;
+    align-items: center !important;
+    @include mb(1.5, xs);
+    font-weight: $font-weight-bold;
+    text-transform: uppercase;
+    svg {
+        @include mr(1, xs);
+        fill: $text-light;
+    }
+}
+
+.textContent {
+    font-size: $font-size-small;
+    svg {
+        @include ml(1, xs);
+        fill: transparent;
+        path {
+            fill: $text-light;
+        }
+        circle {
+            stroke: $text-light;
+        }
+    }
+}
+.close {
+    @include p(1, xs);
+    position: absolute;
+    top: 4px;
+    right: 8px;
+}
+.closeText {
+    @include mt(2, xs);
+    width: fit-content;
+    font-size: $font-size-small;
+    text-decoration: underline;
+}
+.close, .closeText {
+    cursor: pointer;
+    &:hover {
+        opacity: .85;
+    }
+}
+
+.pointIcon {
+    circle {
+        stroke: $text-primary;
+    }
+    path {
+        fill: $text-primary;
+    }
+}
