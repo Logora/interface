@@ -53,5 +53,6 @@ DialogBox.propTypes = {
 };
 
 DialogBox.defaultProps = {
-    isHidden: false
+    isHidden: false,
+    position: "bottom"
 };
