@@ -110,25 +110,16 @@
     "dialog/alert_container": {
         "name": "dialog/alert_container",
         "scope": "logora.debate",
-        "version": "0.0.27",
+        "version": "0.0.28",
         "mainFile": "index.js",
         "rootDir": "src/components/dialog/alert_container"
     },
     "dialog/alert_dialog": {
         "name": "dialog/alert_dialog",
         "scope": "logora.debate",
-        "version": "0.0.37",
+        "version": "0.0.38",
         "mainFile": "index.js",
-        "rootDir": "src/components/dialog/alert_dialog",
-        "config": {
-            "teambit.component/deprecation": {
-                "deprecate": true,
-                "newId": {
-                    "name": "dialog/toast",
-                    "scope": "logora.debate"
-                }
-            }
-        }
+        "rootDir": "src/components/dialog/alert_dialog"
     },
     "dialog/announcement_dialog": {
         "name": "dialog/announcement_dialog",
@@ -167,45 +158,10 @@
     },
     "dialog/toast": {
         "name": "dialog/toast",
-        "scope": "",
-        "version": "",
-        "defaultScope": "logora.debate",
+        "scope": "logora.debate",
+        "version": "0.0.1",
         "mainFile": "index.js",
-        "rootDir": "src/components/dialog/toast",
-        "config": {
-            "teambit.dependencies/dependency-resolver": {
-                "policy": {
-                    "devDependencies": {
-                        "@types/jest": "-",
-                        "@types/testing-library__jest-dom": "-"
-                    },
-                    "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0"
-                    }
-                }
-            },
-            "teambit.react/react": {},
-            "teambit.component/dev-files": {
-                "devFilePatterns": [
-                    "**/*.story.+(js|ts|jsx|tsx)",
-                    "**/*.dev.jsx"
-                ]
-            },
-            "teambit.envs/envs": {},
-            "teambit.harmony/application": {},
-            "teambit.compositions/compositions": {},
-            "teambit.docs/docs": {},
-            "teambit.preview/preview": {},
-            "teambit.pipelines/builder": {},
-            "teambit.component/renaming": {
-                "renamedFrom": {
-                    "scope": "logora.debate",
-                    "name": "dialog/alert_dialog",
-                    "version": "0.0.37"
-                }
-            }
-        }
+        "rootDir": "src/components/dialog/toast"
     },
     "dialog/tooltip": {
         "name": "dialog/tooltip",
