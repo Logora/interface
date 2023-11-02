@@ -1,6 +1,6 @@
 import React from 'react';
 import { toast, Toaster, resolveValue } from 'react-hot-toast';
-import { AlertDialog } from '@logora/debate.dialog.alert_dialog';
+import { Toast } from '@logora/debate.dialog.toast';
 import styles from './AlertContainer.module.scss';
 
 export const AlertContainer = () => {
@@ -14,7 +14,7 @@ export const AlertContainer = () => {
         >
             {(t) => {
                 return(
-                    <AlertDialog 
+                    <Toast 
                         text={resolveValue(t.message, t)} 
                         points={t.points} 
                         variant={t.type} 
