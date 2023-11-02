@@ -114,13 +114,6 @@
         "mainFile": "index.js",
         "rootDir": "src/components/dialog/alert_container"
     },
-    "dialog/alert_dialog": {
-        "name": "dialog/alert_dialog",
-        "scope": "logora.debate",
-        "version": "0.0.38",
-        "mainFile": "index.js",
-        "rootDir": "src/components/dialog/alert_dialog"
-    },
     "dialog/announcement_dialog": {
         "name": "dialog/announcement_dialog",
         "scope": "logora.debate",
