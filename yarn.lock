@@ -203,18 +203,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@logora/debate.icons@npm:0.0.8":
-  version: 0.0.8
-  resolution: "@logora/debate.icons@npm:0.0.8::__archiveUrl=https%3A%2F%2Fnode.bit.cloud%2F%40logora%2Fdebate.icons%2F-%2F%40logora-debate.icons-0.0.8.tgz"
-  dependencies:
-    core-js: ^3.0.0
-  peerDependencies:
-    react: ^17.0.0||^18.0.0
-    react-dom: ^17.0.0||^18.0.0
-  checksum: d9b0d1e02eb8877e42e9d6ea7c018bdff2d6411b6d7b583e048ae42fb3dc1cfc8e7a8970468cf59a72a60af44d8212797f61d8dcfe604dd002422389f304f920
-  languageName: node
-  linkType: hard
-
 "@logora/debate.progress.loader@npm:0.0.2":
   version: 0.0.2
   resolution: "@logora/debate.progress.loader@npm:0.0.2::__archiveUrl=https%3A%2F%2Fnode.bit.cloud%2F%40logora%2Fdebate.progress.loader%2F-%2F%40logora-debate.progress.loader-0.0.2.tgz"
@@ -286,7 +274,6 @@ __metadata:
   dependencies:
     "@babel/runtime": 7.20.0
     "@faker-js/faker": ^7.6.0
-    "@logora/debate.icons": 0.0.8
     "@logora/debate.progress.loader": 0.0.2
     "@logora/debate.util.location": 0.0.6
     "@testing-library/dom": ^9.2.0
@@ -547,18 +534,6 @@ __metadata:
 "ad_unit-9bc477@workspace:src/components/ad/ad_unit":
   version: 0.0.0-use.local
   resolution: "ad_unit-9bc477@workspace:src/components/ad/ad_unit"
-  languageName: unknown
-  linkType: soft
-
-"alert_container-511ffe@workspace:src/components/dialog/alert_container":
-  version: 0.0.0-use.local
-  resolution: "alert_container-511ffe@workspace:src/components/dialog/alert_container"
-  languageName: unknown
-  linkType: soft
-
-"alert_dialog-4d4319@workspace:src/components/dialog/alert_dialog":
-  version: 0.0.0-use.local
-  resolution: "alert_dialog-4d4319@workspace:src/components/dialog/alert_dialog"
   languageName: unknown
   linkType: soft
 
@@ -2139,6 +2114,18 @@ __metadata:
   checksum: f76fa01b3d5be85db6a2a143e24df9f60dd047d151062d0ba3df62953f2f697b16fe5dad9b0ac6191c7efc7b1d9dcaa4b768174b7b29da89d4428e64bc0a20ed
   languageName: node
   linkType: hard
+
+"toast-536b13@workspace:src/components/dialog/toast":
+  version: 0.0.0-use.local
+  resolution: "toast-536b13@workspace:src/components/dialog/toast"
+  languageName: unknown
+  linkType: soft
+
+"toast_provider-f05d55@workspace:src/components/dialog/toast_provider":
+  version: 0.0.0-use.local
+  resolution: "toast_provider-f05d55@workspace:src/components/dialog/toast_provider"
+  languageName: unknown
+  linkType: soft
 
 "toggle-9b9f77@workspace:src/components/input/toggle":
   version: 0.0.0-use.local
