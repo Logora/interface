@@ -1,0 +1,35 @@
+---
+description: A container for displaying toasts (alerts). 
+tags: ['alert', 'toast', 'container', 'react-hot-toast']
+---
+
+This component provides a toaster container which enables to display alerts at the bottom center of the screen.
+It is using [react-hot-toast](https://react-hot-toast.com/).
+
+Use the `toast` function from the `useToast` hook to display a toast.
+
+### Component usage
+
+```js
+import { ToastProvider, useToast } from '@logora/debate.dialog.toast_provider';
+```
+
+```js
+
+const ComponentWithToast = () => {
+    const { toast, toasts } = useToast();
+
+    return (
+        <>
+            <div data-testid="toast-button" onClick={() => toast("First toast")}>My toaster</div>
+            <div data-testid="toast-counter">{ toasts.length } toasts</div>
+        </>
+    )
+}
+
+const App = () => {
+    <ToastProvider>
+        <ComponentWithToast />
+    </ToastProvider>
+}
+```

@@ -112,7 +112,16 @@
         "scope": "logora.debate",
         "version": "0.0.28",
         "mainFile": "index.js",
-        "rootDir": "src/components/dialog/alert_container"
+        "rootDir": "src/components/dialog/alert_container",
+        "config": {
+            "teambit.component/deprecation": {
+                "deprecate": true,
+                "newId": {
+                    "name": "dialog/toast_provider",
+                    "scope": "logora.debate"
+                }
+            }
+        }
     },
     "dialog/announcement_dialog": {
         "name": "dialog/announcement_dialog",
@@ -155,6 +164,48 @@
         "version": "0.0.1",
         "mainFile": "index.js",
         "rootDir": "src/components/dialog/toast"
+    },
+    "dialog/toast_provider": {
+        "name": "dialog/toast_provider",
+        "scope": "",
+        "version": "",
+        "defaultScope": "logora.debate",
+        "mainFile": "index.js",
+        "rootDir": "src/components/dialog/toast_provider",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "devDependencies": {
+                        "@types/jest": "-",
+                        "@types/testing-library__jest-dom": "-"
+                    },
+                    "peerDependencies": {
+                        "react": "^17.0.0 || ^18.0.0",
+                        "react-dom": "^17.0.0 || ^18.0.0"
+                    }
+                }
+            },
+            "teambit.react/react": {},
+            "teambit.component/dev-files": {
+                "devFilePatterns": [
+                    "**/*.story.+(js|ts|jsx|tsx)",
+                    "**/*.dev.jsx"
+                ]
+            },
+            "teambit.envs/envs": {},
+            "teambit.compositions/compositions": {},
+            "teambit.docs/docs": {},
+            "teambit.preview/preview": {},
+            "teambit.pipelines/builder": {},
+            "teambit.harmony/application": {},
+            "teambit.component/renaming": {
+                "renamedFrom": {
+                    "scope": "logora.debate",
+                    "name": "dialog/alert_container",
+                    "version": "0.0.28"
+                }
+            }
+        }
     },
     "dialog/tooltip": {
         "name": "dialog/tooltip",
