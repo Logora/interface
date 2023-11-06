@@ -6,6 +6,7 @@ import { Link } from '@logora/debate.action.link';
 import { Icon } from '@logora/debate.icons.icon';
 import styles from './AuthorBox.module.scss';
 import PropTypes from 'prop-types';
+import cx from 'classnames';
 
 export const AuthorBox = ({ 
         fullName, 
@@ -36,7 +37,7 @@ export const AuthorBox = ({
                 <div className={styles.authorName}>
                     <div className={styles.authorNameLine}>
                         { !slug || disableLinks || isDeleted ?
-                            <span className={styles.linkDisabled}>
+                            <span className={cx({[styles.deleted]: isDeleted, [styles.linkDisabled]: !slug || disableLinks})}>
                                 { isDeleted ? intl.formatMessage({ id: "user.author_box.deleted", defaultMessage: "Deleted" }) : fullName }
                             </span>
                         :
