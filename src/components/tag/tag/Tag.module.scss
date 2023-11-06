@@ -8,7 +8,6 @@
     @include py(2, xs);
     @include px(3, xs); 
     border-radius: $box-border-radius;
-    box-shadow: $box-shadow;
     font-size: $font-size-small;
     transition: opacity 0.2s;
     text-transform: capitalize;
