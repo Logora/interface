@@ -292,7 +292,7 @@
     "input/search_input": {
         "name": "input/search_input",
         "scope": "logora.debate",
-        "version": "0.0.36",
+        "version": "0.0.37",
         "mainFile": "index.js",
         "rootDir": "src/components/input/search_input"
     },
@@ -306,7 +306,7 @@
     "input/text_input": {
         "name": "input/text_input",
         "scope": "logora.debate",
-        "version": "0.0.35",
+        "version": "0.0.36",
         "mainFile": "index.js",
         "rootDir": "src/components/input/text_input"
     },
@@ -418,7 +418,7 @@
     "source/source_modal": {
         "name": "source/source_modal",
         "scope": "logora.debate",
-        "version": "0.0.62",
+        "version": "0.0.63",
         "mainFile": "index.js",
         "rootDir": "src/components/source/source_modal"
     },
