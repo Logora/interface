@@ -39,7 +39,7 @@ export const AvatarSelector = ({ avatarUrlList, onChooseAvatar, userName, allowU
                     <div className={cx(styles.title, styles.avatarListTitle)}>{intl.formatMessage({ id: "user.avatar_selector.avatar_list_title", defaultMessage: "Or choose from one of our avatars" })}</div>
                 </>
             }
-            { chosenAvatar && <div onClick={() => setChosenAvatar(false)} className={styles.cancelSelection}>{intl.formatMessage({ id: "user.avatar_selector.cancel_selection", defaultMessage: "Cancel selection" })}</div>}
+            { (chosenAvatar && allowUserImage) && <div onClick={() => setChosenAvatar(false)} className={styles.cancelSelection}>{intl.formatMessage({ id: "user.avatar_selector.cancel_selection", defaultMessage: "Cancel selection" })}</div>}
             <div className={cx(styles.avatarList, {[styles.userChoice]: chosenAvatar || uploadedAvatar})}>
                 { avatarUrlList.map((e, index) => <Avatar key={index} size={70} avatarUrl={e} userName={userName} onClick={() => setChosenAvatar(e)} className={cx(styles.avatar, {[styles.selected]: e === chosenAvatar})} data-testid="avatar" />)}
             </div>

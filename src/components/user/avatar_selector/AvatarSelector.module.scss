@@ -89,7 +89,7 @@
     display: flex !important;
     gap: 20px;
     justify-content: center;
-    background-color: $background-color-secondary;
+    background-color: $background-color-primary;
     @include p(2.5, xs);
     @include pr(0, xs);
     @include mt(1, xs);
