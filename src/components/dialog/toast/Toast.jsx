@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Point } from '@logora/debate.icons.regular_icons';
 import cx from 'classnames';
 import styles from './Toast.module.scss';
 
@@ -14,7 +13,6 @@ export const Toast = ({ text, points, variant = "info", handleClose }) => {
                 { points &&
                     <div className={styles.points}>
                         <span className={styles.textPoints}>{points}</span>
-                        <Point width={14} height={14} className={styles.pointIcon} />
                     </div>
                 }
             </div>
