@@ -145,14 +145,14 @@
     "dialog/toast": {
         "name": "dialog/toast",
         "scope": "logora.debate",
-        "version": "0.0.2",
+        "version": "0.0.3",
         "mainFile": "index.js",
         "rootDir": "src/components/dialog/toast"
     },
     "dialog/toast_provider": {
         "name": "dialog/toast_provider",
         "scope": "logora.debate",
-        "version": "0.0.3",
+        "version": "0.0.4",
         "mainFile": "index.js",
         "rootDir": "src/components/dialog/toast_provider"
     },
