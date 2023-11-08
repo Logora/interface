@@ -82,7 +82,7 @@
     "auth/login_form": {
         "name": "auth/login_form",
         "scope": "logora.debate",
-        "version": "0.0.36",
+        "version": "0.0.37",
         "mainFile": "index.js",
         "rootDir": "src/components/auth/login_form"
     },
@@ -96,7 +96,7 @@
     "auth/signup_form": {
         "name": "auth/signup_form",
         "scope": "logora.debate",
-        "version": "0.0.38",
+        "version": "0.0.39",
         "mainFile": "index.js",
         "rootDir": "src/components/auth/signup_form"
     },
