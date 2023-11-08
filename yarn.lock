@@ -1520,6 +1520,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"login_form-9ffdcd@workspace:src/components/auth/login_form":
+  version: 0.0.0-use.local
+  resolution: "login_form-9ffdcd@workspace:src/components/auth/login_form"
+  languageName: unknown
+  linkType: soft
+
 "loose-envify@npm:^1.1.0, loose-envify@npm:^1.2.0, loose-envify@npm:^1.3.1, loose-envify@npm:^1.4.0":
   version: 1.4.0
   resolution: "loose-envify@npm:1.4.0"
@@ -1988,6 +1994,12 @@ __metadata:
   checksum: 351e41b947079c10bd0858364f32bb3a7379514c399edb64ab3dce683933483fc63fb5e4efe0a15a2e8a7e3c436b6a91736ddb8d8c6591b0460a24bb4a1ee245
   languageName: node
   linkType: hard
+
+"signup_form-a65820@workspace:src/components/auth/signup_form":
+  version: 0.0.0-use.local
+  resolution: "signup_form-a65820@workspace:src/components/auth/signup_form"
+  languageName: unknown
+  linkType: soft
 
 "slash@npm:^3.0.0":
   version: 3.0.0

@@ -1,0 +1,24 @@
+---
+description: A simple login form.
+labels: ['auth', 'login', 'form', 'login-form']
+---
+
+A login form with email and password inputs.
+
+### Component usage
+
+```js
+import { LoginForm } from '@logora/debate.auth.login_form';
+```
+
+```js
+    <MemoryRouter>
+        <IntlProvider locale="en">
+            <LoginForm 
+                onSubmit={(email, password) => console.log(email) }
+                error={false}
+                forgotPasswordUrl={"http://example.com/forgot_password"}
+            />
+        </IntlProvider>
+    </MemoryRouter>
+```

@@ -79,12 +79,26 @@
         "mainFile": "index.js",
         "rootDir": "src/components/auth/google_login_button"
     },
+    "auth/login_form": {
+        "name": "auth/login_form",
+        "scope": "logora.debate",
+        "version": "0.0.36",
+        "mainFile": "index.js",
+        "rootDir": "src/components/auth/login_form"
+    },
     "auth/oauth2_button": {
         "name": "auth/oauth2_button",
         "scope": "logora.debate",
         "version": "0.0.10",
         "mainFile": "index.js",
         "rootDir": "src/components/auth/oauth2_button"
+    },
+    "auth/signup_form": {
+        "name": "auth/signup_form",
+        "scope": "logora.debate",
+        "version": "0.0.38",
+        "mainFile": "index.js",
+        "rootDir": "src/components/auth/signup_form"
     },
     "data/axios_client": {
         "name": "data/axios_client",

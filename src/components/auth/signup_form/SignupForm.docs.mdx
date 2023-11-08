@@ -1,0 +1,29 @@
+---
+description: A simple signup form.
+labels: ['auth', 'signup', 'form']
+---
+
+A signup form with email and password inputs.
+
+### Component usage
+
+```js
+import { SignupForm } from '@logora/debate.auth.signup_form';
+```
+
+```js
+    <IntlProvider locale="en">
+        <SignupForm 
+            onSubmit={(first_name, last_name, email, password, password_confirmation, accepts_provider_email) => console.log(email) }
+            providerName={"my company"}
+            error={false}
+        />
+    </IntlProvider>
+```
+
+### Properties
+| **Name**      | **Type** | **Required** | **Default** | **Description** |
+| ----------- | ----------- | :-----------: | ----------- | ----------- |
+| <font color='#4646c6'>onSubmit</font> | <font color="#397300">function</font> | &check; | - | <font color="grey">*callback function to get submitted email and password*</font> |
+| <font color='#4646c6'>providerName</font> | <font color="#397300">string</font> | &check; | - | <font color="grey">*provider name displayed in consent checkbox label*</font> |
+| <font color='#4646c6'>error</font> | <font color="#397300">boolean</font> | &cross; | - | <font color="grey">*if true, will show error message*</font> |
