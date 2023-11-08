@@ -82,7 +82,7 @@
     "auth/login_form": {
         "name": "auth/login_form",
         "scope": "logora.debate",
-        "version": "0.0.37",
+        "version": "0.0.38",
         "mainFile": "index.js",
         "rootDir": "src/components/auth/login_form"
     },
@@ -103,7 +103,7 @@
     "auth/social_auth_form": {
         "name": "auth/social_auth_form",
         "scope": "logora.debate",
-        "version": "0.0.34",
+        "version": "0.0.35",
         "mainFile": "index.js",
         "rootDir": "src/components/auth/social_auth_form"
     },
