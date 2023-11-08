@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { MemoryRouter } from "react-router";
+import { MemoryRouter } from "react-router-dom";
 import { IntlProvider } from 'react-intl';
 import { SocialAuthForm } from './SocialAuthForm';
 import { DefaultSocialAuthForm, SocialAuthFormWithoutLogo } from './SocialAuthForm.composition';
@@ -95,7 +95,7 @@ describe('SocialAuthForm', () => {
         const onSubmitCallback = jest.fn();
         const data = { email: email, password: password }
 
-        const component = render(
+        render(
             <MemoryRouter>
                 <IconProvider library={regularIcons}>
                     <IntlProvider locale="en">
