@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { IconContext } from './IconContext';
 import PropTypes from "prop-types";
+
+export const IconContext = createContext();
 
 export const IconProvider = ({ library, children }) => {
     const [iconLibrary, setIconLibrary] = useState(null);
