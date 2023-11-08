@@ -1,2 +1,1 @@
-export { IconProvider } from './IconProvider';
-export { IconContext } from './IconContext';
+export { IconProvider, IconContext } from './IconProvider';
