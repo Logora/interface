@@ -1,0 +1,33 @@
+---
+description: A form to login or signup by Facebook, Google or email.
+labels: ['auth', 'form', 'login', 'social', 'oauth2']
+---
+
+Component to login or signup by Facebook, Google or email. Provides a consent checkbox and forgot password link.
+
+A callback function _onSubmit_ is available to retrieve the form submit data.
+
+### Component usage
+
+```js
+import { SocialAuthForm } from '@logora/debate.auth.social_auth_form';
+```
+
+```js
+    <MemoryRouter>
+        <IntlProvider locale="en">
+            <SocialAuthForm 
+                onSubmit={(data, authType, lastStep, consent) => console.log(data) }
+                facebookClientId={"facebook-client-id"}
+                googleClientId={"google-client-id"}
+                oAuthRedirectUri={"https://redirect-uri.com"} 
+                logoUrl={"https://picsum.photos/200"}
+                providerName={"My company"}
+                termsUrl={"https://example.com/terms"}
+                privacyUrl={"https://example.com/privacy"}
+                forgotPasswordUrl={"http://example.com/forgot_password"} 
+                error={false}
+            />
+        </IntlProvider>
+    </MemoryRouter>
+```
