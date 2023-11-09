@@ -1,0 +1,36 @@
+---
+description: A collection of providers with a factory to help with Single Sign-on (SSO) authentication.
+labels: ['auth', 'sso', 'oauth2', 'provider', 'jwt']
+---
+
+import { AuthProviderFactory } from './AuthProviderFactory';
+
+A collection of classes that help manage Single Sign-On (SSO) authentication with different providers.
+A provider class extends base class _AuthProvider_ and exposes four functions by default :
+- _shouldInitAuth()_ : returns a boolean to show if the provider should start the authentication flow
+- _isSameUser(sessionId)_ : returns _true_ if current user is the same as the one attempting to authenticate
+- _getSessionId()_ : returns a unique session identifier
+- _getAuthorizationParams()_ : returns an object with parameters that will be used to authenticate with the provider
+
+There are five provider classes available in this library :
+- _PasswordAuth_ : username/password authentication
+- _FormAuth_ : sign up form authentication
+- _OAuth2ServerAuth_ : OAuth2 providers flow (OAuth2 server, Google, Facebook...)
+- _OAuth2Auth_ : OAuth2 client auth
+- _JWTAuth_ : JWT token authentication
+
+Use the _AuthProviderFactory_ to instantiate a provider class. See examples below :
+
+### Component usage
+
+```js
+import AuthProviderFactory from '@logora/debate.auth.providers';
+```
+
+```js
+    authProvider = AuthProviderFactory.create("social", "my-provider", "my-assertion", "my-social-provider");
+
+    authProviderSignatureJWT = AuthProviderFactory.create("jwt", "my-provider", "jwt-token");
+
+    authProviderFacebook = AuthProviderFactory.create("oauth2_server", "my-provider", "facebook-authorization-code", "facebook");
+```

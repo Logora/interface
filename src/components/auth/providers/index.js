@@ -1,0 +1,1 @@
+export { AuthProviderFactory as default } from "./AuthProviderFactory";

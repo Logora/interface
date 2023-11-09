@@ -93,6 +93,13 @@
         "mainFile": "index.js",
         "rootDir": "src/components/auth/oauth2_button"
     },
+    "auth/providers": {
+        "name": "auth/providers",
+        "scope": "logora.debate",
+        "version": "0.0.5",
+        "mainFile": "index.js",
+        "rootDir": "src/components/auth/providers"
+    },
     "auth/signup_form": {
         "name": "auth/signup_form",
         "scope": "logora.debate",
