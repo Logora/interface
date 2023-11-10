@@ -1,8 +1,7 @@
-
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import { Button } from './Button';
-import { MemoryRouter } from 'react-router';
+import { MemoryRouter } from 'react-router-dom';
 
 describe('Button', () => {
   it('renders the component', () => {
