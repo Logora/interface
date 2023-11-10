@@ -1,11 +1,12 @@
 ---
 description: A Button component.
-labels: ['button']
+labels: ['button', 'link']
 ---
 
 import { Button } from './Button';
 
 A component that renders a clickable button. The button comes with different styles and the possibility to add icons.
+It can also become a link, with the *to* property.
 
 ### Component usage
 
@@ -25,6 +26,17 @@ To use the Button component:
     accent="success"
     handleClick={clickCallbackFunction} 
     className={classNameToPass}
+>
+    Click !
+</Button>
+```
+
+To use the Button component as a link:
+
+```js
+<Button 
+    to={link}
+    external={false}
 >
     Click !
 </Button>

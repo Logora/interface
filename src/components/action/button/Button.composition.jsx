@@ -1,6 +1,7 @@
 import React from 'react';
 import { Home, Send } from '@logora/debate.icons.regular_icons';
 import { Button } from './Button';
+import { MemoryRouter } from "react-router";
 
 export const ActiveButton = () => {
     return <Button active handleClick={() => null}>Active</Button>;
@@ -36,4 +37,20 @@ export const ButtonDisabledWithoutBorder = () => {
 
 export const ButtonWithoutBorder = () => {
     return <Button border={false} handleClick={null} active>No border</Button>;
+};
+
+export const ButtonWithLink = () => {
+    return (
+        <MemoryRouter>
+            <Button to="/page">Link button</Button>
+        </MemoryRouter>
+    );
+};
+
+export const ButtonWithLinkAndIcon = () => {
+    return (
+        <MemoryRouter>
+            <Button rightIcon={<Send />} to="/page">Link button</Button>
+        </MemoryRouter>
+    );
 };

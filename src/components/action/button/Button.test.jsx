@@ -2,6 +2,7 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import { Button } from './Button';
+import { MemoryRouter } from 'react-router';
 
 describe('Button', () => {
   it('renders the component', () => {
@@ -26,5 +27,29 @@ describe('Button', () => {
     const rightIcon = <i>Right Icon</i>;
     const { getByText } = render(<Button rightIcon={rightIcon}>Hello</Button>);
     expect(getByText('Right Icon')).toBeInTheDocument();
+  });
+
+  it('renders with external link', () => {
+    const linkButton = render(
+        <MemoryRouter>
+            <Button to='https://example.com' external>
+                External Link
+            </Button>
+        </MemoryRouter>
+    );
+    const renderedButton = linkButton.getByText('External Link');
+    expect(renderedButton).toBeInTheDocument();
+    expect(renderedButton).toHaveAttribute('href', 'https://example.com');
+  });
+
+  it('renders without external link', () => {
+    const linkButton = render(
+        <MemoryRouter>
+            <Button to='/page'>Internal Link</Button>
+        </MemoryRouter>
+    );
+    const renderedButton = linkButton.getByText('Internal Link');
+    expect(renderedButton).toBeInTheDocument();
+    expect(renderedButton).toHaveAttribute('href', '/page');
   });
 });

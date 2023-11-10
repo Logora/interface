@@ -1,6 +1,6 @@
 @import '~@logora/debate.styles.theme/_theme.scss';
 
-button.primaryButton {
+.primaryButton {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -15,7 +15,8 @@ button.primaryButton {
   font-weight: $font-weight-normal;
   cursor: pointer;
   -webkit-appearance: initial !important;
-
+  text-decoration: none !important;
+  
   &.iconOnly {
     padding: 0.6em 0.8em;
     > svg {
@@ -56,6 +57,7 @@ button.primaryButton {
     opacity: 0.9;
     color: $text-light !important;
     background-color: $call-primary !important;
+    text-decoration: none !important;
 
     &.active {
       background-color: $background-color-primary !important;
