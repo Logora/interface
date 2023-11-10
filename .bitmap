@@ -96,7 +96,7 @@
     "auth/providers": {
         "name": "auth/providers",
         "scope": "logora.debate",
-        "version": "0.0.5",
+        "version": "0.0.6",
         "mainFile": "index.js",
         "rootDir": "src/components/auth/providers"
     },
