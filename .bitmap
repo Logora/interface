@@ -114,6 +114,13 @@
         "mainFile": "index.js",
         "rootDir": "src/components/auth/social_auth_form"
     },
+    "auth/use_auth": {
+        "name": "auth/use_auth",
+        "scope": "logora.debate",
+        "version": "0.0.15",
+        "mainFile": "index.js",
+        "rootDir": "src/components/auth/use_auth"
+    },
     "data/axios_client": {
         "name": "data/axios_client",
         "scope": "logora.debate",

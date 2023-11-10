@@ -2223,6 +2223,12 @@ __metadata:
   languageName: node
   linkType: hard
 
+"use_auth-6e2b8d@workspace:src/components/auth/use_auth":
+  version: 0.0.0-use.local
+  resolution: "use_auth-6e2b8d@workspace:src/components/auth/use_auth"
+  languageName: unknown
+  linkType: soft
+
 "use_css_theme-8882df@workspace:src/components/hooks/use_css_theme":
   version: 0.0.0-use.local
   resolution: "use_css_theme-8882df@workspace:src/components/hooks/use_css_theme"

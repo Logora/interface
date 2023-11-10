@@ -1,0 +1,34 @@
+---
+description: A library to manage authentication.
+labels: ['auth', 'token', 'useAuth']
+---
+
+This library contains several hooks and classes to manage user authentication.
+It manages user login, token storage and user logout.
+
+Here are the different classes available :
+
+- `AuthContext`: a context to store current user and login state.
+
+- `AuthProvider`: a provider to use the context in your app, with the following variables :
+    - `currentUser`, `setCurrentUser`: current logged in user object
+    - `isLoggedIn`, `setIsLoggedIn`: boolean to define if user is logged in
+    - `isLoggingIn` , `setIsLoggingIn`: boolean to define is user is currently logging in
+    - `authError`, `setAuthError`: authentication error, empty if auth was successful
+
+- `useAuth`: a hook to get the AuthContext.
+
+- `AuthStorage`: manages token storage. It uses local storage by default or session storage if local storage is not available.
+
+- `useAuthActions`: exports three functions :
+    - `loginUser`: fetches user token from API
+    - `logoutUser`: logs out user and removes token
+    - `fetchUser`: fetches user profile and stores it in context
+
+- `useAuthToken`: manages tokens retrieval and refresh from API.
+
+- `useAuthInterceptor`: a hook that adds an interceptor to the httpClient (typically axios) to refresh token when expired.
+
+
+
+
