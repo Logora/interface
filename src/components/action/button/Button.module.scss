@@ -1,6 +1,6 @@
 @import '~@logora/debate.styles.theme/_theme.scss';
 
-.primaryButton {
+button.primaryButton, a.primaryButton {
   display: flex;
   align-items: center;
   justify-content: center;
