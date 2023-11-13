@@ -276,6 +276,7 @@ __metadata:
     "@faker-js/faker": ^7.6.0
     "@logora/debate.progress.loader": 0.0.2
     "@logora/debate.util.location": 0.0.6
+    "@rooks/use-sessionstorage-state": ^4.11.2
     "@testing-library/dom": ^9.2.0
     "@testing-library/react": ^14.0.0
     "@testing-library/user-event": ^14.4.3
@@ -305,6 +306,15 @@ __metadata:
     react-router-dom: ^5.3.4
   languageName: unknown
   linkType: soft
+
+"@rooks/use-sessionstorage-state@npm:^4.11.2":
+  version: 4.11.2
+  resolution: "@rooks/use-sessionstorage-state@npm:4.11.2"
+  peerDependencies:
+    react: ">=16.8.0"
+  checksum: e86682a384837dd1e5b530cc9ecc52018329d9633a018583fd2daa47ea0748d3312d8db81124c301b9518e7778b64e17574e2843ebec284061bf5aca7b7648a8
+  languageName: node
+  linkType: hard
 
 "@sinclair/typebox@npm:^0.27.8":
   version: 0.27.8
@@ -2048,6 +2058,12 @@ __metadata:
 "spiegel_icons-519fa4@workspace:src/components/icons/spiegel_icons":
   version: 0.0.0-use.local
   resolution: "spiegel_icons-519fa4@workspace:src/components/icons/spiegel_icons"
+  languageName: unknown
+  linkType: soft
+
+"sso_form-aa9aae@workspace:src/components/auth/sso_form":
+  version: 0.0.0-use.local
+  resolution: "sso_form-aa9aae@workspace:src/components/auth/sso_form"
   languageName: unknown
   linkType: soft
 

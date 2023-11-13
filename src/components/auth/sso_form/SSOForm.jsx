@@ -10,7 +10,7 @@ import cx from "classnames";
 import styles from "./SSOForm.module.scss";
 import PropTypes from "prop-types";
 
-export const SSOForm = ({ authType, providerName, loginUrl, signupUrl, termsUrl, logoUrl, clientId, oAuthRedirectUri, scope, subtitle, redirectParameter = "logora_redirect", trackingParameter, trackingValue, showEmailConsent = false, showTerms = false, error = false }) => {
+export const SSOForm = ({ authType, providerName, loginUrl, signupUrl, termsUrl, logoUrl, clientId, oAuthRedirectUri, scope, subtitle, redirectParameter = "logora_redirect", trackingParameter, trackingValue, hideActions = false, showEmailConsent = false, showTerms = false, error = false }) => {
 	const [emailConsent, setEmailConsent] = useSessionStorageState("logora:emailConsent", false);
 	const intl = useIntl();
 	const location = useLocation();
@@ -71,65 +71,69 @@ export const SSOForm = ({ authType, providerName, loginUrl, signupUrl, termsUrl,
 				}
 				{ intl.formatMessage({ id: 'auth.sso_form.subtitle', defaultMessage: "Sign up right now and receive alerts by email." }) }
 			</div>
-            <LinkButton
-                data-tid={"link_signup"}
-				data-testid={"signup-button"}
-                className={styles.loginButton}
-                to={signupLink}
-				external
-            >
-                { intl.formatMessage({ id: 'auth.sso_form.signup', defaultMessage: 'Sign up' }) }
-            </LinkButton>
-            <div className={styles.cgu}>
-                { intl.formatMessage({ id: 'auth.sso_form.already_account', defaultMessage: "Already have an account ?" }) }
-                <a
-                    className={styles.signupButton}
-					role="link"
-					data-testid={"signin-link"}
-                    data-tid={"link_login"}
-                    rel='nofollow'
-                    href={loginLink}
-                >
-                    { intl.formatMessage({ id: 'auth.sso_form.signin', defaultMessage: 'Sign in' }) }
-                </a>
-            </div>
-            { showEmailConsent ? (
-                <div className={cx(styles.switchBox)}>
-                    <Toggle 
-                        type={"checkbox"} 
-                        name={"accepts_provider_email"} 
-                        role="input"
-                        style={{ fontSize: 18 }}
-                        checked={emailConsent} 
-                        label={ intl.formatMessage({ id: "auth.sso_form.consent_label", defaultMessage: "I agree to receive emails from the editor" }, { variable: providerName }) }
-                        onInputChanged={(e) => setEmailConsent(!emailConsent)} 
-                        data-testid={"accepts-email-input"}
-                    />
-                </div>
-            ) : null}
-            { error ? (
-                <div className={styles.error}>
-					{ intl.formatMessage({ id: "auth.sso_form.error", defaultMessage: "An error occurred during sign in. Please try again in a few moments." }) }
-				</div>
-            ) : null}
-			{ showTerms &&
+			{ hideActions ? null :
 				<>
-					<div className={styles.cguButton}>
-						<FormattedMessage
-							id='auth.sso_form.terms'
-							defaultMessage="By clicking on « Sign up », I declare that I have read the <var1> General Conditions of Use </var1> of the debate space and accept them"
-							values={{
-								var1: (chunks) => (
-									<a className={styles.termsTarget} target='_blank' href={termsUrl}>
-										{chunks}
-									</a>
-								),
-							}}
-						/>
+					<LinkButton
+						data-tid={"link_signup"}
+						data-testid={"signup-button"}
+						className={styles.loginButton}
+						to={signupLink}
+						external
+					>
+						{ intl.formatMessage({ id: 'auth.sso_form.signup', defaultMessage: 'Sign up' }) }
+					</LinkButton>
+					<div className={styles.cgu}>
+						{ intl.formatMessage({ id: 'auth.sso_form.already_account', defaultMessage: "Already have an account ?" }) }
+						<a
+							className={styles.signupButton}
+							role="link"
+							data-testid={"signin-link"}
+							data-tid={"link_login"}
+							rel='nofollow'
+							href={loginLink}
+						>
+							{ intl.formatMessage({ id: 'auth.sso_form.signin', defaultMessage: 'Sign in' }) }
+						</a>
 					</div>
-					<div className={styles.cguButton}>
-						<FormattedMessage id='auth.sso_form.data_terms' defaultMessage={"Your personal data are being processed by the Editor. For more information and to exercise your rights, see our personal data policy available on the site."} />
-					</div>
+					{ showEmailConsent ? (
+						<div className={cx(styles.switchBox)}>
+							<Toggle 
+								type={"checkbox"} 
+								name={"accepts_provider_email"} 
+								role="input"
+								style={{ fontSize: 18 }}
+								checked={emailConsent} 
+								label={ intl.formatMessage({ id: "auth.sso_form.consent_label", defaultMessage: "I agree to receive emails from the editor" }, { variable: providerName }) }
+								onInputChanged={(e) => setEmailConsent(!emailConsent)} 
+								data-testid={"accepts-email-input"}
+							/>
+						</div>
+					) : null}
+					{ error ? (
+						<div className={styles.error}>
+							{ intl.formatMessage({ id: "auth.sso_form.error", defaultMessage: "An error occurred during sign in. Please try again in a few moments." }) }
+						</div>
+					) : null}
+					{ showTerms &&
+						<>
+							<div className={styles.cguButton}>
+								<FormattedMessage
+									id='auth.sso_form.terms'
+									defaultMessage="By clicking on « Sign up », I declare that I have read the <var1> General Conditions of Use </var1> of the debate space and accept them"
+									values={{
+										var1: (chunks) => (
+											<a className={styles.termsTarget} target='_blank' href={termsUrl}>
+												{chunks}
+											</a>
+										),
+									}}
+								/>
+							</div>
+							<div className={styles.cguButton}>
+								<FormattedMessage id='auth.sso_form.data_terms' defaultMessage={"Your personal data are being processed by the Editor. For more information and to exercise your rights, see our personal data policy available on the site."} />
+							</div>
+						</>
+					}
 				</>
 			}
         </div>
@@ -163,6 +167,8 @@ SSOForm.propTypes = {
 	trackingParameter: PropTypes.string,
 	/** Custom parameter value to add to the auth URL */
 	trackingValue: PropTypes.string,
+	/** If `true`, will only show header and subtitle */
+	hideActions: PropTypes.bool,
 	/** If `true`, will show a toggle for email consent */
 	showEmailConsent: PropTypes.bool,
 	/** If `true`, will show a toggle to accept terms */
@@ -173,6 +179,7 @@ SSOForm.propTypes = {
 
 SSOForm.defaultProps = {
 	redirectParameter: "logora_redirect",
+	hideActions: false,
 	showEmailConsent: false,
 	showTerms: false,
 	error: false

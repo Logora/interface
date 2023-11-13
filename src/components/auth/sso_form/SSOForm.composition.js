@@ -47,7 +47,6 @@ export const SSOFormWithRedirect = () => {
     );
 };
 
-
 export const SSOFormWithLogoUrl = () => {
     return (
         <MemoryRouter>
@@ -141,6 +140,27 @@ export const SSOFormWithError = () => {
                         providerName={"FSociety Inc."}
                         termsUrl={"https://example.com/terms"}
                         error={true}
+                    />
+                </IntlProvider>
+            </IconProvider>
+        </MemoryRouter>
+    );
+};
+
+export const SSOFormWithoutActions = () => {
+    return (
+        <MemoryRouter>
+            <IconProvider library={regularIcons}>
+                <IntlProvider locale="en">
+                    <SSOForm 
+                        subtitle={"My awesome subtitle to give more info"}
+                        clientId={"client-id"}
+                        scope={"email"}
+                        oAuthRedirectUri={"https://redirect-uri.com"} 
+                        showEmailConsent={true}
+                        providerName={"FSociety Inc."}
+                        termsUrl={"https://example.com/terms"}
+                        hideActions={true}
                     />
                 </IntlProvider>
             </IconProvider>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import { DefaultSSOForm, SSOFormWithRedirect, SSOFormWithEmailConsent, SSOFormWithError, SSOFormWithSubtitle } from './SSOForm.composition';
+import { DefaultSSOForm, SSOFormWithRedirect, SSOFormWithEmailConsent, SSOFormWithError, SSOFormWithSubtitle, SSOFormWithoutActions } from './SSOForm.composition';
 
 describe('SSOForm', () => {
     it('should render with correct defaults', () => {
@@ -52,7 +52,6 @@ describe('SSOForm', () => {
         expect(screen.queryByText("My awesome subtitle to give more info")).toBeTruthy();
     });
 
-
     it('should render with consent toggle', () => {
         const component = render(
             <SSOFormWithEmailConsent />
@@ -68,10 +67,19 @@ describe('SSOForm', () => {
     });
 
     it('should render with error', () => {
-        const component = render(
+        render(
             <SSOFormWithError />
         )
 
         expect(screen.getByText("An error occurred during sign in. Please try again in a few moments.")).toBeTruthy();
+    });
+
+    it('should render without actions if prop passed', () => {
+        render(
+            <SSOFormWithoutActions />
+        )
+
+        expect(screen.queryByTestId('signup-button')).toBeNull();
+        expect(screen.queryByTestId('signin-link')).toBeNull();
     });
 });
