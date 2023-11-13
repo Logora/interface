@@ -61,7 +61,7 @@ export const SSOForm = ({ authType, providerName, loginUrl, signupUrl, termsUrl,
 				}
             </div>
             <div className={styles.mainText}>
-				<div class={styles.title}>
+				<div className={styles.title}>
 					{ intl.formatMessage({ id: 'auth.sso_form.title', defaultMessage: "Debate now !" }, { provider: providerName }) }
 					<br />
 				</div>
