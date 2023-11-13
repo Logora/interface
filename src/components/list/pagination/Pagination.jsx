@@ -20,9 +20,7 @@ export const Pagination = ({ currentPage, perPage, totalElements, buttonText, on
                 <div className={styles.paginationBox}>
                     { !isLoading ? (
                         <Button
-                            className={styles.paginationButton} 
                             handleClick={onLoad} 
-                            active
                             {...rest}
                             rightIcon={<Icon name="lightArrow" height={14} width={14} />}
                         >

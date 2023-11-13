@@ -7,15 +7,3 @@
   align-items: center;
   justify-content: center;
 }
-
-.paginationBox > button.paginationButton {
-  border-color: $darkest-text-tertiary !important;
-  font-weight: $font-weight-bold;
-  color: $text-primary !important;
-  @include px(3, xs);
-  @include py(2.5, xs);
-  & svg {
-    width: 14px !important;
-    height: 14px !important;
-  }
-}

@@ -55,10 +55,10 @@ input.textInput {
     border: 1px solid $text-secondary;
   }
   &:focus {
-    border: 1px solid $call-primary !important;
+    border: 1px solid $text-secondary !important;
     background-color: $background-color-primary;
     & ~ label {
-      color: $call-primary !important;
+      color: $text-secondary !important;
     }
   }
 
