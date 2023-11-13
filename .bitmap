@@ -114,6 +114,13 @@
         "mainFile": "index.js",
         "rootDir": "src/components/auth/social_auth_form"
     },
+    "auth/sso_form": {
+        "name": "auth/sso_form",
+        "scope": "logora.debate",
+        "version": "0.0.28",
+        "mainFile": "index.js",
+        "rootDir": "src/components/auth/sso_form"
+    },
     "auth/use_auth": {
         "name": "auth/use_auth",
         "scope": "logora.debate",

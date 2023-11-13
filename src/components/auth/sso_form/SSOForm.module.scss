@@ -1,0 +1,102 @@
+@import '~@logora/debate.styles.theme/_theme.scss';
+@import '~@logora/debate.styles.display/_display.scss';
+@import '~@logora/debate.styles.spacing/_spacing.scss';
+
+.ssoForm {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+}
+
+.logo {
+  @include mt(0, sm);
+  @include mb(3, xs);
+  align-self: center;
+}
+
+.logoImage {
+  width: 200px;
+}
+
+.loginIcon {
+  width: 120px;
+  height: 120px;
+  text-align: center;
+  fill-rule: evenodd;
+  fill: $call-primary !important;
+}
+
+.mainText {
+  font-size: $font-size-normal;
+  color: $text-primary;
+  text-align: center;
+  @include mx(2, xs);
+  @include mx(4, sm);
+  font-weight: $font-weight-normal;
+
+}
+
+.loginButton {
+  @include px(4, xs);
+  @include py(2, xs);
+  @include my(3, xs);
+  background-color: $call-primary !important;
+  border: none !important;
+  text-transform: uppercase;
+  cursor: pointer;
+  color: $text-light;
+}
+
+.cgu {
+  color: $text-secondary;
+  font-size: $font-size-small;
+  font-weight: $font-weight-normal;
+  width: 100%;
+  text-align: center;
+  @include mx(5, sm);
+  @include mx(3, xs);
+  @include my(2, xs);
+}
+
+.signupButton {
+  color: $call-primary;
+  color: $call-primary !important;
+  text-decoration: underline;
+  @include ml(2, xs);
+  cursor: pointer;
+}
+
+.cguButton {
+  text-align: center;
+  background: none;
+  font-size: $font-size-extra-small;
+  color: $text-secondary;
+  border: none;
+  font-weight: $font-weight-normal;
+  @include mb(2, xs);
+  @include mt(2, xs);
+  @include p(0, xs);
+}
+
+.switchBox {
+  @include py(3, xs);
+}
+
+.error {
+  @include pb(2, xs);
+  color: $cancel-primary
+}
+
+.termsTarget {
+  color: $call-primary !important;
+}
+
+@media(max-width: 768px) {
+  .loginIcon{
+    width: 80px;
+    height: 80px;
+  }
+  .mainText{
+    font-size: $font-size-small;
+  }
+}

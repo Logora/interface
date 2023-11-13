@@ -1,0 +1,40 @@
+---
+description: A component to enable user sign in with OAuth2.
+labels: ['auth', 'sso', 'single-sign-on', 'oauth2']
+---
+
+The SSOForm component is a React component that represents a Single Sign-On form. 
+
+It provides a form with sign up and sign in options, as well as additional features like displaying a logo, showing a subtitle, and displaying terms and email consent options. 
+
+The component supports internationalization using the react-intl library.
+
+### Component usage
+
+```js
+import { SSOForm } from '@logora/debate.auth.sso_form';
+```
+
+```js
+    <MemoryRouter>
+        <IntlProvider locale="en">
+            <IconProvider>
+                <SocialAuthForm 
+                    authType={"oauth2_server"}
+                    providerName={"My Website"}
+                    clientId={"oauth-client-id"}
+                    scope={"email"}
+                    oAuthRedirectUri={"https://redirect-uri.com"} 
+                    loginUrl={"https://example.com/login"}
+                    signupUrl={"https://example.com/signup"}
+                    redirectParameter={"customRedirect"}
+                    trackingParameter={"tracker"}
+                    trackingValue={"tracker-value"}
+                    termsUrl={"https://example.com/terms"}
+                    showEmailConsent={true}
+                    showTerms={true}
+                />
+            </IconProvider>
+        </IntlProvider>
+    </MemoryRouter>
+```
