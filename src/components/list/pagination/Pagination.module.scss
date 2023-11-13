@@ -18,18 +18,4 @@
     width: 14px !important;
     height: 14px !important;
   }
-  &:hover {
-    svg path {
-      stroke: $call-primary !important;
-    }
-  }
-}
-
-.paginationIcon {
-  fill: transparent !important;
-  transform: rotate(90deg);
-  @include ml(3, xs);
-  path {
-    stroke: $text-primary;
-  }
 }

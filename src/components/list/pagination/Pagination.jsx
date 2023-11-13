@@ -24,9 +24,9 @@ export const Pagination = ({ currentPage, perPage, totalElements, buttonText, on
                             handleClick={onLoad} 
                             active
                             {...rest}
+                            rightIcon={<Icon name="lightArrow" height={14} width={14} />}
                         >
                             { buttonText }
-                            <Icon className={styles.paginationIcon} name="lightArrow" height={14} width={14} />
                         </Button>
                     ) : (
                         hideLoader ?

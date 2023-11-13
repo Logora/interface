@@ -64,11 +64,3 @@
 	background-color: $darken-text-tertiary;
 	color: $text-primary;
 }
-
-.arrowDown {
-	transform: rotate(90deg);
-	fill: transparent !important;
-	path {
-		stroke: $text-primary;
-	}
-}
