@@ -96,21 +96,21 @@
     "auth/signup_form": {
         "name": "auth/signup_form",
         "scope": "logora.debate",
-        "version": "0.0.45",
+        "version": "0.0.46",
         "mainFile": "index.js",
         "rootDir": "src/components/auth/signup_form"
     },
     "auth/social_auth_form": {
         "name": "auth/social_auth_form",
         "scope": "logora.debate",
-        "version": "0.0.42",
+        "version": "0.0.43",
         "mainFile": "index.js",
         "rootDir": "src/components/auth/social_auth_form"
     },
     "auth/sso_form": {
         "name": "auth/sso_form",
         "scope": "logora.debate",
-        "version": "0.0.32",
+        "version": "0.0.33",
         "mainFile": "index.js",
         "rootDir": "src/components/auth/sso_form"
     },
@@ -348,7 +348,7 @@
     "input/toggle": {
         "name": "input/toggle",
         "scope": "logora.debate",
-        "version": "0.0.25",
+        "version": "0.0.26",
         "mainFile": "index.js",
         "rootDir": "src/components/input/toggle"
     },
