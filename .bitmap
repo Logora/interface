@@ -117,7 +117,7 @@
     "auth/sso_form": {
         "name": "auth/sso_form",
         "scope": "logora.debate",
-        "version": "0.0.30",
+        "version": "0.0.31",
         "mainFile": "index.js",
         "rootDir": "src/components/auth/sso_form"
     },
