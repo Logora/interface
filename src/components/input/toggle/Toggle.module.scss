@@ -11,6 +11,7 @@
 
 .toggleContainer {
   display: flex;
+  align-items: center;
 }
 
 .toggleLabel {
@@ -63,4 +64,10 @@ input:checked + .slider:before {
 
 input:focus + .slider {
   box-shadow: 0 0 0 0.125em $darken-text-tertiary;
+}
+
+.errorMessage {
+  font-size: 0.8em;
+  padding-top: $spacer-md;
+  color: $cancel-primary;
 }

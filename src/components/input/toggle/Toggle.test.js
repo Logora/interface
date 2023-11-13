@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import { DisabledToggle, DisabledAndCheckedToggle, ToggleWithLabel } from './Toggle.composition';
+import { DisabledToggle, DisabledAndCheckedToggle, ToggleWithLabel, ToggleWithErrorMessage } from './Toggle.composition';
 
 describe('Toggle', () => {
   it('should render the toggle with disabled and unchecked options', () => {
@@ -26,6 +26,14 @@ describe('Toggle', () => {
     const inputElement = container.querySelector('input');
 
     expect(screen.getByText("Yes or no ?")).toBeTruthy();
+    expect(inputElement).not.toBeNull();
+  });
+
+  it('should render the toggle with a message', () => {
+    const { container } = render(<ToggleWithErrorMessage />);
+    const inputElement = container.querySelector('input');
+
+    expect(screen.getByText("Error !")).toBeTruthy();
     expect(inputElement).not.toBeNull();
   });
 });

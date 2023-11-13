@@ -18,3 +18,7 @@ export function DisabledToggle() {
 export function DisabledAndCheckedToggle() {
   return <Toggle disabled checked />;
 }
+
+export function ToggleWithErrorMessage() {
+  return <Toggle label={"Yes or no ?"} message={"Error !"} />;
+}
