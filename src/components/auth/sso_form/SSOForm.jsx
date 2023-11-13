@@ -62,12 +62,12 @@ export const SSOForm = ({ authType, providerName, loginUrl, signupUrl, termsUrl,
             </div>
             <div className={styles.mainText}>
 				{ subtitle &&
-					<>
+					<div class={styles.subtitle}>
 						<strong>
 							{ subtitle }
 						</strong>
 						<br />
-					</>
+					</div>
 				}
 				{ intl.formatMessage({ id: 'auth.sso_form.subtitle', defaultMessage: "Sign up right now and receive alerts by email." }) }
 			</div>

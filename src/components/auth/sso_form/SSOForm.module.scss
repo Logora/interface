@@ -33,7 +33,10 @@
   @include mx(2, xs);
   @include mx(4, sm);
   font-weight: $font-weight-normal;
+}
 
+.subtitle {
+  @include mb(2, xs);
 }
 
 .loginButton {
