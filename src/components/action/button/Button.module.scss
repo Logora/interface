@@ -32,16 +32,6 @@ button.primaryButton, a.primaryButton {
     width: 20px !important;
   }
 
-  &.active {
-    background-color: $background-color-primary !important;
-    color: $call-primary !important;
-
-    &.active > svg {
-      fill: $call-primary;
-      fill-rule: evenodd;
-    }
-  }
-
   &.danger {
     background-color: $cancel-primary !important;
     border-color: $cancel-primary !important;
@@ -52,6 +42,26 @@ button.primaryButton, a.primaryButton {
     border-color: $success-primary !important;
   }
 
+  &.active {
+    background-color: $background-color-primary !important;
+    color: $call-primary !important;
+
+    &.active > svg {
+      fill: $call-primary;
+      fill-rule: evenodd;
+    }
+
+    &.danger {
+      color: $cancel-primary !important;
+      border-color: $cancel-primary !important;
+    }
+  
+    &.success {
+      color: $success-primary !important;
+      border-color: $success-primary !important;
+    }
+  }
+
   &:hover:not(:disabled) {
     cursor: pointer;
     opacity: 0.9;
@@ -59,19 +69,25 @@ button.primaryButton, a.primaryButton {
     background-color: $call-primary !important;
     text-decoration: none !important;
 
-    &.active {
-      background-color: $background-color-primary !important;
-      color: $call-primary !important;
-    }
-
     &.danger {
-      background-color: $cancel-primary;
-      border-color: $cancel-primary;
+      background-color: $cancel-primary !important;
     }
 
     &.success {
-      background-color: $success-primary;
-      border-color: $success-primary;
+      background-color: $success-primary !important;
+    }
+
+    &.active {
+      background-color: $background-color-primary !important;
+      color: $call-primary !important;
+      
+      &.danger {
+        color: $cancel-primary !important;
+      }
+  
+      &.success {
+        color: $success-primary !important;
+      }
     }
   }
 

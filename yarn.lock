@@ -1519,12 +1519,6 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"link_button-65b99f@workspace:src/components/action/link_button":
-  version: 0.0.0-use.local
-  resolution: "link_button-65b99f@workspace:src/components/action/link_button"
-  languageName: unknown
-  linkType: soft
-
 "list_provider-276d9a@workspace:src/components/list/list_provider":
   version: 0.0.0-use.local
   resolution: "list_provider-276d9a@workspace:src/components/list/list_provider"
