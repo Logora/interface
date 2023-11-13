@@ -10,7 +10,7 @@ import cx from "classnames";
 import styles from "./SSOForm.module.scss";
 import PropTypes from "prop-types";
 
-export const SSOForm = ({ authType, providerName, loginUrl, signupUrl, termsUrl, logoUrl, clientId, oAuthRedirectUri, scope, subtitle, redirectParameter = "logora_redirect", trackingParameter, trackingValue, hideActions = false, showEmailConsent = false, showTerms = false, error = false }) => {
+export const SSOForm = ({ authType, providerName, loginUrl, signupUrl, termsUrl, logoUrl, clientId, oAuthRedirectUri, scope, redirectParameter = "logora_redirect", trackingParameter, trackingValue, hideActions = false, showEmailConsent = false, showTerms = false, error = false }) => {
 	const [emailConsent, setEmailConsent] = useSessionStorageState("logora:emailConsent", false);
 	const intl = useIntl();
 	const location = useLocation();
@@ -61,14 +61,10 @@ export const SSOForm = ({ authType, providerName, loginUrl, signupUrl, termsUrl,
 				}
             </div>
             <div className={styles.mainText}>
-				{ subtitle &&
-					<div class={styles.subtitle}>
-						<strong>
-							{ subtitle }
-						</strong>
-						<br />
-					</div>
-				}
+				<div class={styles.title}>
+					{ intl.formatMessage({ id: 'auth.sso_form.title', defaultMessage: "Debate now !" }) }
+					<br />
+				</div>
 				{ intl.formatMessage({ id: 'auth.sso_form.subtitle', defaultMessage: "Sign up right now and receive alerts by email." }) }
 			</div>
 			{ hideActions ? null :
@@ -160,8 +156,6 @@ SSOForm.propTypes = {
 	oAuthRedirectUri: PropTypes.string,
 	/** OAuth2 scope */
 	scope: PropTypes.string,
-	/** Text shown below the title */
-	subtitle: PropTypes.string,
 	/** Name of the parameter passed in the URL that will contain the current page URL to redirect after authentication */
 	redirectParameter: PropTypes.string,
 	/** Custom parameter name to add to the auth URL */

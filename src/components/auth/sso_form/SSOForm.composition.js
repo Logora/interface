@@ -68,26 +68,6 @@ export const SSOFormWithLogoUrl = () => {
     );
 };
 
-export const SSOFormWithSubtitle = () => {
-    return (
-        <MemoryRouter>
-            <IconProvider library={regularIcons}>
-                <IntlProvider locale="en">
-                    <SSOForm 
-                        subtitle={"My awesome subtitle to give more info"}
-                        clientId={"client-id"}
-                        scope={"email"}
-                        oAuthRedirectUri={"https://redirect-uri.com"} 
-                        showEmailConsent={true}
-                        providerName={"FSociety Inc."}
-                        termsUrl={"https://example.com/terms"}
-                    />
-                </IntlProvider>
-            </IconProvider>
-        </MemoryRouter>
-    );
-};
-
 export const SSOFormWithEmailConsent = () => {
     return (
         <MemoryRouter>

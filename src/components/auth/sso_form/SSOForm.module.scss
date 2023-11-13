@@ -35,7 +35,8 @@
   font-weight: $font-weight-normal;
 }
 
-.subtitle {
+.title {
+  font-weight: $font-weight-bold;
   @include mb(2, xs);
 }
 
