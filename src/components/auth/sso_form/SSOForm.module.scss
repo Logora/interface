@@ -37,14 +37,7 @@
 }
 
 .loginButton {
-  @include px(4, xs);
-  @include py(2, xs);
   @include my(3, xs);
-  background-color: $call-primary !important;
-  border: none !important;
-  text-transform: uppercase;
-  cursor: pointer;
-  color: $text-light;
 }
 
 .cgu {

@@ -4,7 +4,7 @@ import { useLocation } from "react-router";
 import useSessionStorageState from '@rooks/use-sessionstorage-state';
 import { Icon } from "@logora/debate.icons.icon";
 import { Toggle } from "@logora/debate.input.toggle";
-import { LinkButton } from '@logora/debate.action.link_button';
+import { Button } from '@logora/debate.action.button';
 import { FormattedMessage } from "react-intl";
 import cx from "classnames";
 import styles from "./SSOForm.module.scss";
@@ -73,15 +73,16 @@ export const SSOForm = ({ authType, providerName, loginUrl, signupUrl, termsUrl,
 			</div>
 			{ hideActions ? null :
 				<>
-					<LinkButton
+					<Button
 						data-tid={"link_signup"}
 						data-testid={"signup-button"}
 						className={styles.loginButton}
 						to={signupLink}
 						external
+						border={false}
 					>
 						{ intl.formatMessage({ id: 'auth.sso_form.signup', defaultMessage: 'Sign up' }) }
-					</LinkButton>
+					</Button>
 					<div className={styles.cgu}>
 						{ intl.formatMessage({ id: 'auth.sso_form.already_account', defaultMessage: "Already have an account ?" }) }
 						<a
