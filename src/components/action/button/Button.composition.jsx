@@ -1,5 +1,7 @@
 import React from 'react';
-import { Home, Send } from '@logora/debate.icons.regular_icons';
+import { IconProvider } from '@logora/debate.icons.icon_provider';
+import * as regularIcons from '@logora/debate.icons.regular_icons';
+import { Icon } from '@logora/debate.icons.icon';
 import { Button } from './Button';
 import { MemoryRouter } from "react-router";
 
@@ -12,15 +14,15 @@ export const InactiveButton = () => {
 };
 
 export const ButtonWithLeftIcon = () => {
-    return <Button leftIcon={<Home />} handleClick={null}>Home</Button>;
+    return <IconProvider library={regularIcons}><Button leftIcon={<Icon name="home" />} handleClick={null}>Home</Button></IconProvider>;
 };
 
 export const ButtonWithRightIcon = () => {
-    return <Button rightIcon={<Send />} handleClick={null}>Home</Button>;
+    return <IconProvider library={regularIcons}><Button rightIcon={<Icon name="send" />} handleClick={null}>Home</Button></IconProvider>;
 };
 
 export const ButtonWithIconOnly = () => {
-    return <Button leftIcon={<Home />} handleClick={null} />;
+    return <IconProvider library={regularIcons}><Button leftIcon={<Icon name="home" />} handleClick={null} /></IconProvider>;
 };
 
 export const ButtonWithSuccessAccent = () => {
@@ -49,8 +51,10 @@ export const ButtonWithLink = () => {
 
 export const ButtonWithLinkAndIcon = () => {
     return (
-        <MemoryRouter>
-            <Button rightIcon={<Send />} to="/page">Link button</Button>
-        </MemoryRouter>
+        <IconProvider library={regularIcons}>
+            <MemoryRouter>
+                <Button rightIcon={<Icon name="send" />} to="/page">Link button</Button>
+            </MemoryRouter>
+        </IconProvider>
     );
 };
