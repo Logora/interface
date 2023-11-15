@@ -1,14 +1,14 @@
 import React from "react";
-import { KeywordBox } from './KeywordBox';
-import { render } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event';
 import { IntlProvider } from 'react-intl';
+import { KeywordBox } from './KeywordBox';
 
 const callback = jest.fn();
 
 describe('KeywordBox', () => {
     it ('renders KeywordBox component correctly', () => {
-        const { getByText } = render(
+        render(
             <IntlProvider locale="en">
                 <KeywordBox
                     keyword={"Keyword"} 
@@ -19,12 +19,12 @@ describe('KeywordBox', () => {
             </IntlProvider>
         );
 
-        expect(getByText(/Keyword/i)).toBeInTheDocument();
-        expect(getByText(/875/i)).toBeInTheDocument();
+        expect(screen.getByText(/Keyword/i)).toBeInTheDocument();
+        expect(screen.getByText(/875/i)).toBeInTheDocument();
     })
 
     it ('fires callback when clicking on button', async() => {
-        const { getByText } = render(
+        render(
             <IntlProvider locale="en">
                 <KeywordBox
                     keyword={"Keyword"} 
@@ -35,11 +35,11 @@ describe('KeywordBox', () => {
             </IntlProvider>
         );
 
-        const btn = getByText(/View contributions/i);
+        const btn = screen.getByText(/View contributions/i);
 
         expect(btn).toBeTruthy();
-        expect(getByText(/Keyword/i)).toBeInTheDocument();
-        expect(getByText(/875/i)).toBeInTheDocument();
+        expect(screen.getByText(/Keyword/i)).toBeInTheDocument();
+        expect(screen.getByText(/875/i)).toBeInTheDocument();
 
         await userEvent.click(btn);
         expect(callback).toHaveBeenCalled();
