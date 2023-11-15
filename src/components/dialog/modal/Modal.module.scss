@@ -47,7 +47,6 @@
   flex-direction: column !important;
   align-items: center !important;
   @include p(3, xs);
-  overflow: hidden;
 }
 
 .modalHeader {
