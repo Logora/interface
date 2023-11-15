@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { IconContext } from '@logora/debate.icons.icon_provider';
 import PropTypes from "prop-types";
 
-export const Icon = ({ name, height, width, className, ...rest }) => {
+export const Icon = ({ name, height = 20, width = 20, className, ...rest }) => {
     const { iconLibrary } = useContext(IconContext);
 
     if (!iconLibrary || !name) {
@@ -30,3 +30,8 @@ Icon.propTypes = {
     /** Extra props passed to the icon */
     rest: PropTypes.object
 };
+
+Icon.defaultProps = {
+	height: 20,
+	width: 20
+}
