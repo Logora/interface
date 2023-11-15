@@ -152,7 +152,7 @@
     "dialog/confirm_modal": {
         "name": "dialog/confirm_modal",
         "scope": "logora.debate",
-        "version": "0.0.33",
+        "version": "0.0.34",
         "mainFile": "index.js",
         "rootDir": "src/components/dialog/confirm_modal"
     },
@@ -173,7 +173,7 @@
     "dialog/modal": {
         "name": "dialog/modal",
         "scope": "logora.debate",
-        "version": "0.0.36",
+        "version": "0.0.37",
         "mainFile": "index.js",
         "rootDir": "src/components/dialog/modal"
     },
@@ -404,7 +404,7 @@
     "share/share_modal": {
         "name": "share/share_modal",
         "scope": "logora.debate",
-        "version": "0.0.46",
+        "version": "0.0.47",
         "mainFile": "index.js",
         "rootDir": "src/components/share/share_modal"
     },
@@ -453,7 +453,7 @@
     "source/source_modal": {
         "name": "source/source_modal",
         "scope": "logora.debate",
-        "version": "0.0.74",
+        "version": "0.0.75",
         "mainFile": "index.js",
         "rootDir": "src/components/source/source_modal"
     },
