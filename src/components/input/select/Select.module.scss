@@ -46,6 +46,7 @@
 
 .currentOptionText { 
 	@include mr(2, xs);
+	@include text-truncate();
 }
 
 .selectOption {
@@ -63,4 +64,8 @@
 .selectOptionActive {
 	background-color: $darken-text-tertiary;
 	color: $text-primary;
+}
+
+.arrowDown {
+	flex-shrink: 0;
 }
