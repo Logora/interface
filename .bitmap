@@ -492,6 +492,20 @@
         "mainFile": "_theme.scss",
         "rootDir": "src/components/styles/theme"
     },
+    "summary/argument_summary_box": {
+        "name": "summary/argument_summary_box",
+        "scope": "logora.debate",
+        "version": "0.0.5",
+        "mainFile": "index.js",
+        "rootDir": "src/components/summary/argument_summary_box"
+    },
+    "summary/keyword_box": {
+        "name": "summary/keyword_box",
+        "scope": "logora.debate",
+        "version": "0.0.4",
+        "mainFile": "index.js",
+        "rootDir": "src/components/summary/keyword_box"
+    },
     "tag/tag": {
         "name": "tag/tag",
         "scope": "logora.debate",

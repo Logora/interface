@@ -1,0 +1,21 @@
+---
+description: A component that renders n keyword box with the number of occurrences and a call-to-action button.
+---
+
+import { KeywordBox } from './KeywordBox';
+
+### Component usage
+```js
+import { KeywordBox } from '@logora/debate.summary.keyword_box';
+import { IntlProvider } from 'react-intl';
+```
+```js
+<IntlProvider locale="en">
+    <KeywordBox 
+        keyword={"Politics"} 
+        occurrences={875} 
+        color={"#FBC62F"}
+        handleClick={doSomething}
+    />
+</IntlProvider>
+```
