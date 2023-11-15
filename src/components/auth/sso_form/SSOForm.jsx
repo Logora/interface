@@ -55,7 +55,7 @@ export const SSOForm = ({ authType, providerName, loginUrl, signupUrl, termsUrl,
 		<div className={styles.ssoForm}>
             <div className={styles.logo}>
 				{ logoUrl ?
-					<img className={styles.logoImage} src={logoUrl} alt={"Logo " + providerName} />
+					<img height={50} width={50} className={styles.logoImage} src={logoUrl} alt={"Logo " + providerName} />
 				:
 					<Icon name="next" height={50} width={50} className={styles.loginIcon} />
 				}
