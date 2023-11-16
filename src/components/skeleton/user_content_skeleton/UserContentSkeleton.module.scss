@@ -16,8 +16,9 @@
     flex-direction: column !important;
     justify-content: flex-start !important;
     text-align: left;
-    width: 100%;
     @include m(2, xs);
+    flex: 1;
+    min-width: 80px;
 }
 
 .skeletonBody {
@@ -54,6 +55,7 @@
 	padding: 0 !important;
 	width: max-content;
 	margin-left: auto;
+    @include mt(2, xs);
 }
 
 .tagBox {

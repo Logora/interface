@@ -12,7 +12,7 @@ export const UserContentSkeleton = ({ enableAnimation = true, numberLines = 4, b
         <Skeleton enableAnimation={enableAnimation} circle={true} height={60} width={60} />
         <div className={styles.skeletonHeaderLines}>
           <Skeleton enableAnimation={enableAnimation} />
-          <Skeleton enableAnimation={enableAnimation} width={160} />
+          <Skeleton enableAnimation={enableAnimation} />
         </div>
         { tag &&
             <div className={styles.tagContainer}>
