@@ -18,6 +18,7 @@ button.primaryButton, a.primaryButton {
   cursor: pointer;
   -webkit-appearance: initial !important;
   text-decoration: none !important;
+  gap: $spacer-sm;
   
   &.iconOnly {
     padding: 0.6em 0.8em;
@@ -113,13 +114,13 @@ button.primaryButton, a.primaryButton {
   }
 }
 
-.withLeftIcon {
-  > svg {
-    margin-right: 10px;
-  }
-}
-.withRightIcon {
-  > svg {
-    margin-left: 10px;
-  }
-}
+// .withLeftIcon {
+//   > svg {
+//     margin-right: 10px;
+//   }
+// }
+// .withRightIcon {
+//   > svg {
+//     margin-left: 10px;
+//   }
+// }

@@ -7,7 +7,7 @@ import PropTypes from "prop-types";
 
 export const UserContentSkeleton = ({ enableAnimation = true, numberLines = 4, border = false, tag, tagClassName, children}) => {
   return (
-    <SkeletonTheme baseColor="var(--darken-text-tertiary)" highlightColor="var(--text-secondary)">
+    <SkeletonTheme baseColor="var(--background-color-secondary)" highlightColor="var(--text-tertiary)">
       <div data-testid={"user-content-skeleton"} className={cx(styles.skeletonContainer, { [styles.border]: border })}>
         <div className={styles.skeletonHeader}>
           <Skeleton enableAnimation={enableAnimation} circle={true} height={60} width={60} />

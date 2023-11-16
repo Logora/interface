@@ -26,7 +26,7 @@
 		align-self: flex-end;
 	}
 	&:hover {
-		background-color: rgba(0, 0, 0, 0.03);
+		border: 1px solid $text-secondary;
 	}
 	svg {
 		margin-left: auto;
