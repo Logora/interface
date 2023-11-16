@@ -22,7 +22,7 @@ export const Pagination = ({ currentPage, perPage, totalElements, buttonText, on
                         <Button
                             handleClick={onLoad} 
                             {...rest}
-                            rightIcon={<Icon name="lightArrow" height={14} width={14} />}
+                            rightIcon={<Icon name="lightArrow" height={10} width={10} />}
                         >
                             { buttonText }
                         </Button>

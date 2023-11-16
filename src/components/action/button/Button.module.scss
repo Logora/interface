@@ -1,11 +1,13 @@
 @import '~@logora/debate.styles.theme/_theme.scss';
+@import '~@logora/debate.styles.spacing/_spacing.scss';
 
 button.primaryButton, a.primaryButton {
+  @include px(3, xs);
+	@include py(2.5, xs);
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: $box-border-radius !important;
-  padding: 0.5em 0.7em;
   transition: background-color 300ms ease-in-out;
   background-color: $call-primary !important;
   border: 1px solid;
