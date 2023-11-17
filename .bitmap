@@ -418,7 +418,7 @@
     "skeleton/user_content_skeleton": {
         "name": "skeleton/user_content_skeleton",
         "scope": "logora.debate",
-        "version": "0.0.29",
+        "version": "0.0.30",
         "mainFile": "index.js",
         "rootDir": "src/components/skeleton/user_content_skeleton"
     },
