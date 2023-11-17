@@ -1,5 +1,5 @@
 import React from "react";
-import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
+import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 import styles from './UserContentSkeleton.module.scss';
 import cx from 'classnames';
@@ -7,36 +7,34 @@ import PropTypes from "prop-types";
 
 export const UserContentSkeleton = ({ enableAnimation = true, numberLines = 4, border = false, tag, tagClassName, children}) => {
   return (
-    <SkeletonTheme baseColor="var(--background-color-secondary)" highlightColor="var(--text-tertiary)">
-      <div data-testid={"user-content-skeleton"} className={cx(styles.skeletonContainer, { [styles.border]: border })}>
-        <div className={styles.skeletonHeader}>
-          <Skeleton enableAnimation={enableAnimation} circle={true} height={60} width={60} />
-          <div className={styles.skeletonHeaderLines}>
-            <Skeleton enableAnimation={enableAnimation} />
-            <Skeleton enableAnimation={enableAnimation} />
-          </div>
-          { tag &&
-              <div className={styles.tagContainer}>
-                  <div className={cx(styles.tagBox, tagClassName)}>
-                      <div className={styles.tag}>
-                          { tag }
-                      </div>
-                  </div>
-              </div>
-          }
+    <div data-testid={"user-content-skeleton"} className={cx(styles.skeletonContainer, { [styles.border]: border })}>
+      <div className={styles.skeletonHeader}>
+        <Skeleton enableAnimation={enableAnimation} circle={true} height={60} width={60} className={styles.skeletonColor} />
+        <div className={styles.skeletonHeaderLines}>
+          <Skeleton enableAnimation={enableAnimation} className={styles.skeletonColor} />
+          <Skeleton enableAnimation={enableAnimation} className={styles.skeletonColor} />
         </div>
-        { numberLines > 0 &&
-          <div data-testid={"skeleton-body"} className={styles.skeletonBody}>
-            <Skeleton enableAnimation={enableAnimation} count={numberLines} />
-          </div>
-        }
-        { children &&
-          <div className={styles.childrenLayer}>
-            { children }
-          </div>
+        { tag &&
+            <div className={styles.tagContainer}>
+                <div className={cx(styles.tagBox, tagClassName)}>
+                    <div className={styles.tag}>
+                        { tag }
+                    </div>
+                </div>
+            </div>
         }
       </div>
-    </SkeletonTheme>
+      { numberLines > 0 &&
+        <div data-testid={"skeleton-body"} className={styles.skeletonBody}>
+          <Skeleton enableAnimation={enableAnimation} count={numberLines} className={styles.skeletonColor} />
+        </div>
+      }
+      { children &&
+        <div className={styles.childrenLayer}>
+          { children }
+        </div>
+      }
+    </div>
   )
 };
 

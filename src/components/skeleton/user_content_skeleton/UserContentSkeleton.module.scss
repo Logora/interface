@@ -75,3 +75,8 @@
 	@include px(2.5, xs);
 	@include py(2, xs);
 }
+
+.skeletonColor {
+    --highlight-color: lighten($background-color-secondary, 20%) !important;
+    --base-color: $background-color-secondary !important;
+}
