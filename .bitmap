@@ -61,7 +61,7 @@
     "auth/auth_modal": {
         "name": "auth/auth_modal",
         "scope": "logora.debate",
-        "version": "0.0.27",
+        "version": "0.0.28",
         "mainFile": "index.js",
         "rootDir": "src/components/auth/auth_modal"
     },
