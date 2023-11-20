@@ -1,0 +1,26 @@
+---
+description: An authentication modal to login through OAuth2 or by form.
+labels: ['auth', 'oauth2', 'form', 'sso']
+---
+
+import { AuthModal } from './AuthModal';
+import { MemoryRouter } from "react-router";
+import { IntlProvider } from "react-intl";
+import { ConfigProvider } from '@logora/debate.data.config_provider';
+
+An authentication modal to login through OAuth2 or by form.
+
+### Component usage
+```js
+import AuthModal from '@logora/debate.auth.auth_modal';
+
+<MemoryRouter>
+    <ConfigProvider>
+        <ModalProvider>
+            <IntlProvider locale="en">
+                <AuthModal onHideModal={() => console.log("AuthModal closed !")} />
+            </IntlProvider>
+        </ModalProvider>
+    </ConfigProvider>
+</MemoryRouter>
+```

@@ -58,6 +58,13 @@
         "mainFile": "index.js",
         "rootDir": "src/components/ad/with_ad"
     },
+    "auth/auth_modal": {
+        "name": "auth/auth_modal",
+        "scope": "logora.debate",
+        "version": "0.0.27",
+        "mainFile": "index.js",
+        "rootDir": "src/components/auth/auth_modal"
+    },
     "auth/facebook_login_button": {
         "name": "auth/facebook_login_button",
         "scope": "logora.debate",

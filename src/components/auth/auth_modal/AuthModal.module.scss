@@ -1,0 +1,9 @@
+@import '~@logora/debate.styles.spacing/_spacing.scss';
+
+.loginModalBody {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  @include py(1, xs);
+  @include px(1, xs);
+}

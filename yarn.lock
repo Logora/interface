@@ -625,6 +625,12 @@ __metadata:
   languageName: node
   linkType: hard
 
+"auth_modal-600632@workspace:src/components/auth/auth_modal":
+  version: 0.0.0-use.local
+  resolution: "auth_modal-600632@workspace:src/components/auth/auth_modal"
+  languageName: unknown
+  linkType: soft
+
 "author_box-192ddc@workspace:src/components/user/author_box":
   version: 0.0.0-use.local
   resolution: "author_box-192ddc@workspace:src/components/user/author_box"
