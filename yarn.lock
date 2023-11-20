@@ -625,6 +625,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"auth_initializer-8f1c34@workspace:src/components/auth/auth_initializer":
+  version: 0.0.0-use.local
+  resolution: "auth_initializer-8f1c34@workspace:src/components/auth/auth_initializer"
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0
+    react-dom: ^16.8.0 || ^17.0.0
+  languageName: unknown
+  linkType: soft
+
 "auth_modal-600632@workspace:src/components/auth/auth_modal":
   version: 0.0.0-use.local
   resolution: "auth_modal-600632@workspace:src/components/auth/auth_modal"
@@ -2254,6 +2263,12 @@ __metadata:
 "use_auth-6e2b8d@workspace:src/components/auth/use_auth":
   version: 0.0.0-use.local
   resolution: "use_auth-6e2b8d@workspace:src/components/auth/use_auth"
+  languageName: unknown
+  linkType: soft
+
+"use_authentication_required-56b909@workspace:src/components/hooks/use_authentication_required":
+  version: 0.0.0-use.local
+  resolution: "use_authentication_required-56b909@workspace:src/components/hooks/use_authentication_required"
   languageName: unknown
   linkType: soft
 

@@ -1,0 +1,35 @@
+---
+description: A component to manage authentication
+labels: ['auth', 'authentication', 'oauth2']
+---
+
+This component is used to manage authentication. It is responsible for initializing authentication, like logging in a user, and also handles logout and token refresh requests.
+It can be used as a standalone to trigger authentication and manage user token.
+
+Three authentication methods are available :
+- social : email, Google and Facebook authentication
+- oauth2_server : authentication with an OAuth2 server using the authorization code flow
+- jwt : authentication using a JWT token
+
+Authentication can be triggered using a Javascript event `logora:authentication:require`.
+
+
+### Component usage
+
+```js
+import { AuthInitializer } from '@logora/debate.auth.auth_initializer';
+```
+
+```js
+const Component = () => {
+	return (
+        <>
+            <AuthInitializer authType={"social"} provider={"my-app"} assertion={"random-assertion"} />
+        </>
+    )
+}
+```
+
+```js
+window.dispatchEvent(new Event("logora:authentication:require"));
+```

@@ -1,0 +1,22 @@
+---
+description: A hook to dispatch a custom event to signal authentication.
+labels: ['auth']
+---
+
+This hook dispatch a custom event to signal authentication.
+
+### Component usage
+```js
+import { useAuthenticationRequired } from '@logora/debate.hooks.use_authentication_required';
+```
+```js
+const Component = () => {
+	const requireAuthentication = useAuthenticationRequired();
+
+	return (
+        <>
+            {requireAuthentication({})}
+        </>
+    )
+}
+```

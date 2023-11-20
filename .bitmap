@@ -58,6 +58,13 @@
         "mainFile": "index.js",
         "rootDir": "src/components/ad/with_ad"
     },
+    "auth/auth_initializer": {
+        "name": "auth/auth_initializer",
+        "scope": "logora.debate",
+        "version": "0.0.23",
+        "mainFile": "index.js",
+        "rootDir": "src/components/auth/auth_initializer"
+    },
     "auth/auth_modal": {
         "name": "auth/auth_modal",
         "scope": "logora.debate",
@@ -239,6 +246,13 @@
         "version": "0.0.23",
         "mainFile": "index.js",
         "rootDir": "src/components/gamification/point_box"
+    },
+    "hooks/use_authentication_required": {
+        "name": "hooks/use_authentication_required",
+        "scope": "logora.debate",
+        "version": "0.0.29",
+        "mainFile": "index.js",
+        "rootDir": "src/components/hooks/use_authentication_required"
     },
     "hooks/use_css_theme": {
         "name": "hooks/use_css_theme",
