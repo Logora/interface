@@ -61,14 +61,14 @@
     "auth/auth_initializer": {
         "name": "auth/auth_initializer",
         "scope": "logora.debate",
-        "version": "0.0.24",
+        "version": "0.0.25",
         "mainFile": "index.js",
         "rootDir": "src/components/auth/auth_initializer"
     },
     "auth/auth_modal": {
         "name": "auth/auth_modal",
         "scope": "logora.debate",
-        "version": "0.0.28",
+        "version": "0.0.29",
         "mainFile": "index.js",
         "rootDir": "src/components/auth/auth_modal"
     },
@@ -138,7 +138,7 @@
     "data/axios_client": {
         "name": "data/axios_client",
         "scope": "logora.debate",
-        "version": "0.0.5",
+        "version": "0.0.6",
         "mainFile": "index.js",
         "rootDir": "src/components/data/axios_client"
     },
@@ -250,7 +250,7 @@
     "hooks/use_authentication_required": {
         "name": "hooks/use_authentication_required",
         "scope": "logora.debate",
-        "version": "0.0.30",
+        "version": "0.0.31",
         "mainFile": "index.js",
         "rootDir": "src/components/hooks/use_authentication_required"
     },
