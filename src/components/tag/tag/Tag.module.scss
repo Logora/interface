@@ -5,8 +5,8 @@
     border: 1px solid;
     color: $tag-text-color;
     border-color: $tag-border-color;
-    @include py(2, xs);
-    @include px(3, xs); 
+    @include px(3, xs);
+	@include py(1.5, xs);
     border-radius: $box-border-radius;
     font-size: $font-size-small;
     transition: opacity 0.2s;
