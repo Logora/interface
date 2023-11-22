@@ -61,7 +61,7 @@
     "auth/auth_initializer": {
         "name": "auth/auth_initializer",
         "scope": "logora.debate",
-        "version": "0.0.26",
+        "version": "0.0.27",
         "mainFile": "index.js",
         "rootDir": "src/components/auth/auth_initializer"
     },
@@ -249,25 +249,10 @@
     },
     "hooks/use_auth_required": {
         "name": "hooks/use_auth_required",
-        "scope": "",
-        "version": "",
-        "defaultScope": "logora.debate",
+        "scope": "logora.debate",
+        "version": "0.0.1",
         "mainFile": "index.js",
-        "rootDir": "src/components/hooks/use_auth_required",
-        "config": {
-            "teambit.dependencies/dependency-resolver": {
-                "policy": {
-                    "devDependencies": {
-                        "@types/jest": "-",
-                        "@types/testing-library__jest-dom": "-"
-                    },
-                    "peerDependencies": {
-                        "react": "^17.0.0||^18.0.0",
-                        "react-dom": "^17.0.0||^18.0.0"
-                    }
-                }
-            }
-        }
+        "rootDir": "src/components/hooks/use_auth_required"
     },
     "hooks/use_css_theme": {
         "name": "hooks/use_css_theme",
