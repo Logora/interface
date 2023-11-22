@@ -1,1 +1,0 @@
-export { useAuthenticationRequired } from './useAuthenticationRequired';

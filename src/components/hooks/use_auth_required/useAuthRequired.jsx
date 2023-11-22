@@ -3,7 +3,7 @@ import { ConfigContext } from '@logora/debate.data.config_provider';
 import { useModal } from '@logora/debate.dialog.modal';
 const AuthModal = lazy(() => import(/* webpackPrefetch: true */'@logora/debate.auth.auth_modal'));
 
-export const useAuthenticationRequired = () => {
+export const useAuthRequired = () => {
     const { config } = useContext(ConfigContext);
     const { showModal } = useModal();
 

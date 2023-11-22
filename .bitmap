@@ -247,12 +247,27 @@
         "mainFile": "index.js",
         "rootDir": "src/components/gamification/point_box"
     },
-    "hooks/use_authentication_required": {
-        "name": "hooks/use_authentication_required",
-        "scope": "logora.debate",
-        "version": "0.0.32",
+    "hooks/use_auth_required": {
+        "name": "hooks/use_auth_required",
+        "scope": "",
+        "version": "",
+        "defaultScope": "logora.debate",
         "mainFile": "index.js",
-        "rootDir": "src/components/hooks/use_authentication_required"
+        "rootDir": "src/components/hooks/use_auth_required",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "devDependencies": {
+                        "@types/jest": "-",
+                        "@types/testing-library__jest-dom": "-"
+                    },
+                    "peerDependencies": {
+                        "react": "^17.0.0||^18.0.0",
+                        "react-dom": "^17.0.0||^18.0.0"
+                    }
+                }
+            }
+        }
     },
     "hooks/use_css_theme": {
         "name": "hooks/use_css_theme",

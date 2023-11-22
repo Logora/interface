@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import { ConfigContext } from '@logora/debate.data.config_provider';
-import { useAuthenticationRequired } from './useAuthenticationRequired';
+import { useAuthRequired } from './useAuthRequired';
 import { useModal } from '@logora/debate.dialog.modal';
 
 jest.mock('@logora/debate.dialog.modal', () => ({
@@ -9,7 +9,7 @@ jest.mock('@logora/debate.dialog.modal', () => ({
 }));
 
 const TestComponent = () => {
-    const requireAuthentication = useAuthenticationRequired();
+    const requireAuthentication = useAuthRequired();
 
     return (
         <div>
@@ -20,7 +20,7 @@ const TestComponent = () => {
     );
 };
 
-describe('useAuthenticationRequired', () => {
+describe('useAuthRequired', () => {
     const showModal = jest.fn();
     const hideModal = jest.fn();
 
