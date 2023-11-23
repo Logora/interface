@@ -1,7 +1,7 @@
 import React, { useContext, lazy, Suspense } from 'react';
 import { ConfigContext } from '@logora/debate.data.config_provider';
 import { useModal } from '@logora/debate.dialog.modal';
-const AuthModal = lazy(() => import(/* webpackPrefetch: true */'@logora/debate.auth.auth_modal'));
+const AuthModal = lazy(() => import('@logora/debate.auth.auth_modal'));
 
 export const useAuthRequired = () => {
     const { config } = useContext(ConfigContext);
