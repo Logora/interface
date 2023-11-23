@@ -317,6 +317,13 @@
         "mainFile": "index.js",
         "rootDir": "src/components/icons/spiegel_icons"
     },
+    "information/information_box": {
+        "name": "information/information_box",
+        "scope": "logora.debate",
+        "version": "0.0.15",
+        "mainFile": "index.js",
+        "rootDir": "src/components/information/information_box"
+    },
     "input/checkbox/hidden": {
         "name": "input/checkbox/hidden",
         "scope": "logora.debate",

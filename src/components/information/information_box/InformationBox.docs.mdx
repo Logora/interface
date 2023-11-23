@@ -1,0 +1,28 @@
+---
+description: A box information component.
+---
+
+import { InformationBox } from './InformationBox';
+import { IntlProvider } from 'react-intl';
+
+A box that renders a piece of information with title, description, icon and link redirection.
+
+It should be wrapped around [react-intl](https://formatjs.io/docs/getting-started/installation/)'s IntlProvider.
+
+### Component usage
+```js
+import InformationBox from '@logora/debate.box.information_box';
+```
+```js
+<IntlProvider locale="en">
+    <InformationBox 
+        icon={YourIcon}
+        title={"Your title"}
+        points={100} 
+        description={"Your description"}
+        textLink={"Your text link"}
+        link={"Router link"}
+        isActive={false}
+    />
+</IntlProvider>
+```

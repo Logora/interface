@@ -1,0 +1,1 @@
+export { InformationBox as default } from './InformationBox';

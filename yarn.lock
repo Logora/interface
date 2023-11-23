@@ -203,6 +203,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@logora/debate.icons@npm:0.0.8":
+  version: 0.0.8
+  resolution: "@logora/debate.icons@npm:0.0.8::__archiveUrl=https%3A%2F%2Fnode.bit.cloud%2F%40logora%2Fdebate.icons%2F-%2F%40logora-debate.icons-0.0.8.tgz"
+  dependencies:
+    core-js: ^3.0.0
+  peerDependencies:
+    react: ^17.0.0||^18.0.0
+    react-dom: ^17.0.0||^18.0.0
+  checksum: d9b0d1e02eb8877e42e9d6ea7c018bdff2d6411b6d7b583e048ae42fb3dc1cfc8e7a8970468cf59a72a60af44d8212797f61d8dcfe604dd002422389f304f920
+  languageName: node
+  linkType: hard
+
 "@logora/debate.progress.loader@npm:0.0.2":
   version: 0.0.2
   resolution: "@logora/debate.progress.loader@npm:0.0.2::__archiveUrl=https%3A%2F%2Fnode.bit.cloud%2F%40logora%2Fdebate.progress.loader%2F-%2F%40logora-debate.progress.loader-0.0.2.tgz"
@@ -274,6 +286,7 @@ __metadata:
   dependencies:
     "@babel/runtime": 7.20.0
     "@faker-js/faker": ^7.6.0
+    "@logora/debate.icons": 0.0.8
     "@logora/debate.progress.loader": 0.0.2
     "@logora/debate.util.location": 0.0.6
     "@rooks/use-sessionstorage-state": ^4.11.2
@@ -1248,6 +1261,12 @@ __metadata:
 "indicator-f4a977@workspace:src/components/input/checkbox/indicator":
   version: 0.0.0-use.local
   resolution: "indicator-f4a977@workspace:src/components/input/checkbox/indicator"
+  languageName: unknown
+  linkType: soft
+
+"information_box-1c6b66@workspace:src/components/information/information_box":
+  version: 0.0.0-use.local
+  resolution: "information_box-1c6b66@workspace:src/components/information/information_box"
   languageName: unknown
   linkType: soft
 
@@ -2281,9 +2300,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"use_authentication_required-56b909@workspace:src/components/hooks/use_authentication_required":
+"use_auth_required-b192ee@workspace:src/components/hooks/use_auth_required":
   version: 0.0.0-use.local
-  resolution: "use_authentication_required-56b909@workspace:src/components/hooks/use_authentication_required"
+  resolution: "use_auth_required-b192ee@workspace:src/components/hooks/use_auth_required"
   languageName: unknown
   linkType: soft
 
