@@ -569,6 +569,14 @@
         "mainFile": "index.js",
         "rootDir": "src/components/tools/scroll_to_top"
     },
+    "translation/translation_button": {
+        "name": "translation/translation_button",
+        "scope": "",
+        "version": "",
+        "defaultScope": "logora.debate",
+        "mainFile": "index.js",
+        "rootDir": "src/components/translation/translation_button"
+    },
     "user/author_box": {
         "name": "user/author_box",
         "scope": "logora.debate",

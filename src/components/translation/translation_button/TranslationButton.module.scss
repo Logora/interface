@@ -1,0 +1,10 @@
+@import '~@logora/debate.styles.theme/_theme.scss';
+@import '~@logora/debate.styles.spacing/_spacing.scss';
+
+.translationButton {
+    font-size: $font-size-extra-small;
+    color: $call-primary;
+    cursor: pointer;
+    @include px(0, xs);
+    @include py(3, xs);
+}
