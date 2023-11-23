@@ -575,7 +575,17 @@
         "version": "",
         "defaultScope": "logora.debate",
         "mainFile": "index.js",
-        "rootDir": "src/components/translation/translation_button"
+        "rootDir": "src/components/translation/translation_button",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "peerDependencies": {
+                        "react": "^17.0.0 || ^18.0.0",
+                        "react-dom": "^17.0.0 || ^18.0.0"
+                    }
+                }
+            }
+        }
     },
     "user/author_box": {
         "name": "user/author_box",
