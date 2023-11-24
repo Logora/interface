@@ -2335,6 +2335,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"use_responsive-4f0c03@workspace:src/components/hooks/use_responsive":
+  version: 0.0.0-use.local
+  resolution: "use_responsive-4f0c03@workspace:src/components/hooks/use_responsive"
+  languageName: unknown
+  linkType: soft
+
 "user_box-8dfef7@workspace:src/components/user/user_box":
   version: 0.0.0-use.local
   resolution: "user_box-8dfef7@workspace:src/components/user/user_box"
@@ -2368,6 +2374,12 @@ __metadata:
   checksum: bb7ae1facc76b5cf8071aeb6c13d284d023fdb370478d10a5d64508e0e6e53bb459c4bbe34258df29d82e6f561f874f0105eba38de0e61fe9edd0bdce07a77a2
   languageName: node
   linkType: hard
+
+"vote_provider-361d6f@workspace:src/components/vote/vote_provider":
+  version: 0.0.0-use.local
+  resolution: "vote_provider-361d6f@workspace:src/components/vote/vote_provider"
+  languageName: unknown
+  linkType: soft
 
 "webfontloader@npm:^1.6.28":
   version: 1.6.28

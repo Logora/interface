@@ -630,7 +630,21 @@
         "scope": "logora.debate",
         "version": "0.0.9",
         "mainFile": "index.js",
-        "rootDir": "src/components/vote/vote_provider"
+        "rootDir": "src/components/vote/vote_provider",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "devDependencies": {
+                        "@types/jest": "-",
+                        "@types/testing-library__jest-dom": "-"
+                    },
+                    "peerDependencies": {
+                        "react": "^17.0.0 || ^18.0.0",
+                        "react-dom": "^17.0.0 || ^18.0.0"
+                    }
+                }
+            }
+        }
     },
     "$schema-version": "17.0.0"
 }
