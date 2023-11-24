@@ -1,0 +1,80 @@
+---
+description: A hook and a component to display content in correct language.
+labels: ['translated-content']
+---
+
+A hook and a component to display the current content with the correct choosen language.  
+The `useTranslatedContent` hook displays the original content if the user language is the same as the global language.
+It can also display the original content anyway if needed with the resetContent function.
+It also returns a `isTranslated` boolean to check on whether the content returned is a translated content or not.
+It receive `originalContent`, `originalLanguage`, `targetField` and a `translations` array params.  
+The `TranslatedContent` component uses the hook, so it can be used instead to display translated content.
+
+### Usage
+```js
+import { useTranslatedContent } from '@logora/debate.translation.translated_content';
+```
+or
+```js
+import { TranslatedContent } from '@logora/debate.translation.translated_content';
+```
+
+### Hook integration
+```js
+const Component = () => {
+    const myContent = { title: "Bonjour monde !", language: "en" }
+    const translations = [
+        {   id: 438,                               
+            translatable_id: 710,                  
+            translatable_type: "Message",          
+            target_language: "en",
+            origin_language: "fr",
+            origin_field: "title",
+            translation_method: "deepl",
+            origin_content: "Bonjour monde !",
+            translated_content: "Hello world!",
+            is_approved: true,
+            translated_at: Fri, 30 Jun 2023 15:03:49.688198000 UTC +00:00,
+            approved_at: Fri, 30 Jun 2023 15:03:49.746854000 UTC +00:00,
+            created_at: Fri, 30 Jun 2023 15:03:49.746854000 UTC +00:00,
+            updated_at: Fri, 30 Jun 2023 15:03:49.746854000 UTC +00:00,
+            application_id: 1
+        }
+    ]
+    const { titleTranslated, resetContent } = useTranslatedContent(myContent.content, myContent.language, "title", translations);
+
+
+	return (
+        <div>
+            { titleTranslated }
+        </div>
+    )
+}
+```
+
+### Component integration
+```js
+<TranslatedContent
+    originalContent={"A title"}
+    originalLanguage={"en"}
+    targetField={"title"}
+    translations={[
+        {   id: 438,                               
+            translatable_id: 710,                  
+            translatable_type: "Message",          
+            target_language: "en",
+            origin_language: "fr",
+            origin_field: "title",
+            translation_method: "deepl",
+            origin_content: "Bonjour monde !",
+            translated_content: "Hello world!",
+            is_approved: true,
+            translated_at: Fri, 30 Jun 2023 15:03:49.688198000 UTC +00:00,
+            approved_at: Fri, 30 Jun 2023 15:03:49.746854000 UTC +00:00,
+            created_at: Fri, 30 Jun 2023 15:03:49.746854000 UTC +00:00,
+            updated_at: Fri, 30 Jun 2023 15:03:49.746854000 UTC +00:00,
+            application_id: 1
+        }
+    ]}
+/>
+```

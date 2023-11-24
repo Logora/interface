@@ -569,6 +569,24 @@
         "mainFile": "index.js",
         "rootDir": "src/components/tools/scroll_to_top"
     },
+    "translation/translated_content": {
+        "name": "translation/translated_content",
+        "scope": "",
+        "version": "",
+        "defaultScope": "logora.debate",
+        "mainFile": "index.js",
+        "rootDir": "src/components/translation/translated_content",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "peerDependencies": {
+                        "react-dom": "^17.0.0 || ^18.0.0",
+                        "react": "^17.0.0 || ^18.0.0"
+                    }
+                }
+            }
+        }
+    },
     "translation/translation_button": {
         "name": "translation/translation_button",
         "scope": "",
