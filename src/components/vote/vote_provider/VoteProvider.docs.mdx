@@ -1,0 +1,68 @@
+---
+description: Documentation for VoteProvider.jsx
+labels: ['vote', 'provider', 'vote-provider']
+---
+
+The VoteProvider.jsx file is a React component that provides a voting context to its child components. It has the following properties:
+- voteableType (required): The type of voteable item.
+- children (required): The child components of VoteProvider.
+
+It relies on two dependencies: AuthProvider and DataProvider.
+
+The AuthProvider is responsible for handling user authentication. It provides information about the user's authentication status and current user data. VoteProvider uses the useAuth hook from AuthProvider to access this information.
+
+The DataProvider is used to fetch data from an API. It abstracts the API requests and provides a convenient interface to retrieve data. VoteProvider uses the useDataProvider hook from DataProvider to make API calls and retrieve votes.
+
+To use the VoteProvider component, you need to ensure that both AuthProvider and DataProvider are properly set up and available in the component hierarchy.
+Make sure to wrap your application with AuthProvider and DataProvider components before using the VoteProvider component. This ensures that the necessary context and functionality are available for VoteProvider to work correctly.
+
+The VoteProvider component uses the useDataProvider and useAuth hooks to fetch votes from an API and manage user authentication.
+
+### Component usage
+
+```js
+import { VoteProvider } from '@logora/debate.vote.vote_provider';
+import { VoteContext } from '@logora/debate.vote.vote_provider';
+
+```
+
+```js
+<VoteProvider voteableType="post">{/* Child components */}</VoteProvider>
+```
+
+The VoteProvider component exposes the VoteContext context that contains the votes and addVoteableIds values. Child components can access these values using the useContext(VoteContext) hook.
+
+To retrieve the data using the getList() function, VoteProvider passes the following parameters:
+
+- 'votes': The resource name or endpoint from which to retrieve the votes.
+- An object containing additional parameters:
+- page: The page number of the results.
+- per_page: The number of votes to fetch per page.
+- user_id: The ID of the current user.
+- voteable_id: The IDs of the voteable items.
+- voteable_type: The type of the voteable items.
+-countless: A boolean indicating whether to include countless votes.
+
+The getList() function returns a promise that resolves to a response object. In the response object, you can access the retrieved data using response.data.data. VoteProvider then processes the retrieved votes and updates the state accordingly.
+
+Here is an example of how to use the getList() function within the getVotes() method of VoteProvider:
+
+```js
+const getVotes = () => {
+  api
+    .getList('votes', {
+      page: 1,
+      per_page: Math.max(1, voteableIds.length),
+      user_id: currentUser.id,
+      voteable_id: voteableIds.join(','),
+      voteable_type: props.voteableType,
+      countless: true
+    })
+    .then(response => {
+      if (response.data.success) {
+        const loadedVotes = response.data.data;
+        // Process the loadedVotes data and update the state
+      }
+    });
+};
+```

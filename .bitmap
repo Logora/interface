@@ -625,5 +625,12 @@
         "mainFile": "index.js",
         "rootDir": "src/components/user/user_box_small"
     },
+    "vote/vote_provider": {
+        "name": "vote/vote_provider",
+        "scope": "logora.debate",
+        "version": "0.0.9",
+        "mainFile": "index.js",
+        "rootDir": "src/components/vote/vote_provider"
+    },
     "$schema-version": "17.0.0"
 }
