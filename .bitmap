@@ -571,21 +571,10 @@
     },
     "translation/translated_content": {
         "name": "translation/translated_content",
-        "scope": "",
-        "version": "",
-        "defaultScope": "logora.debate",
+        "scope": "logora.debate",
+        "version": "0.0.1",
         "mainFile": "index.js",
-        "rootDir": "src/components/translation/translated_content",
-        "config": {
-            "teambit.dependencies/dependency-resolver": {
-                "policy": {
-                    "peerDependencies": {
-                        "react-dom": "^17.0.0 || ^18.0.0",
-                        "react": "^17.0.0 || ^18.0.0"
-                    }
-                }
-            }
-        }
+        "rootDir": "src/components/translation/translated_content"
     },
     "translation/translation_button": {
         "name": "translation/translation_button",
