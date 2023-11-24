@@ -285,7 +285,7 @@
     "hooks/use_responsive": {
         "name": "hooks/use_responsive",
         "scope": "logora.debate",
-        "version": "0.0.8",
+        "version": "0.0.9",
         "mainFile": "index.js",
         "rootDir": "src/components/hooks/use_responsive"
     },
