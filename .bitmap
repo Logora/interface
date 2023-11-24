@@ -282,6 +282,13 @@
         "mainFile": "index.js",
         "rootDir": "src/components/hooks/use_relative_time"
     },
+    "hooks/use_responsive": {
+        "name": "hooks/use_responsive",
+        "scope": "logora.debate",
+        "version": "0.0.8",
+        "mainFile": "index.js",
+        "rootDir": "src/components/hooks/use_responsive"
+    },
     "icons/hero_icons": {
         "name": "icons/hero_icons",
         "scope": "logora.debate",

@@ -1,0 +1,46 @@
+---
+description: A provider to help make the display responsive based on a container width.
+labels: ['responsive']
+---
+
+This provider calculates the width of the container passed in prop, and returns responsive variables to use.
+
+If _containerPath_ is passed, the provider will get the container with _querySelector_ and calculate its width.
+If _containerWidth_ is passed, the provider will use it as width and not take into account _containerPath_.
+
+This hook returns three boolean variables to enable responsive design :
+- _isMobile_ : container width under 576 pixels
+- _isTablet_ : container width betwwen 577 and 768 pixels
+- _isDesktop_ : container width above 769 pixels
+
+### Component usage
+
+```js
+import { ResponsiveProvider, useResponsive } from '@logora/debate.hooks.use_responsive';
+```
+
+```js
+const ResponsiveComponent = () => {
+	const { isMobile, isTablet, isDesktop } = useResponsive();
+
+	return (
+        <>
+            { isMobile && <div>Shown in mobile container only</div> }
+            { isTablet && <div>Shown in tablet container only</div> }
+            { isDesktop && <div>Shown in desktop container only</div> }
+        </>
+    )
+}
+```
+
+```js
+const App = () => {
+    return (
+        <div id="rootContainer">
+            <ResponsiveProvider containerPath="#rootContainer">
+                <ResponsiveComponent />
+            </ResponsiveProvider>
+        </div>
+    )
+}
+```
