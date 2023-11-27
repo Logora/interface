@@ -1,0 +1,42 @@
+---
+description: Documentation for useVote
+labels: ["vote", "hook", "use-vote"]
+---
+
+`useVote` is a custom hook designed to handle the voting system in our application. It provides a set of values and functions to manage votes.
+
+## Returns
+
+`useVote` returns an object with the following properties:
+
+1. `totalUpvotes`: The total number of upvotes for the voteable item.
+2. `totalDownvotes`: The total number of downvotes for the voteable item.
+3. `activeVote`: A boolean indicating whether a vote is active or not.
+4. `voteSide`: A boolean indicating whether the active vote is an upvote (true) or a downvote (false).
+5. `handleVote`: A function that can be called to trigger a vote.
+
+### Component usage
+
+```js
+import { useVote } from "@logora/debate.hooks.use_vote";
+```
+
+```js
+function VotingComponent({ voteableType, voteableId, upvotes, downvotes }) {
+  const { totalUpvotes, totalDownvotes, handleVote } = useVote(
+    voteableType,
+    voteableId,
+    upvotes,
+    downvotes
+  );
+
+  return (
+    <div>
+      <button onClick={() => handleVote(true)}>Upvote</button>
+      <button onClick={() => handleVote(false)}>Downvote</button>
+      <p>Upvotes: {totalUpvotes}</p>
+      <p>Downvotes: {totalDownvotes}</p>
+    </div>
+  );
+}
+```

@@ -625,6 +625,45 @@
         "mainFile": "index.js",
         "rootDir": "src/components/user/user_box_small"
     },
+    "vote/use_vote": {
+        "name": "vote/use_vote",
+        "scope": "",
+        "version": "",
+        "defaultScope": "logora.debate",
+        "mainFile": "index.js",
+        "rootDir": "src/components/vote/use_vote",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "peerDependencies": {
+                        "react": "^17.0.0 || ^18.0.0",
+                        "react-dom": "^17.0.0 || ^18.0.0"
+                    }
+                }
+            }
+        }
+    },
+    "vote/vote_button": {
+        "name": "vote/vote_button",
+        "scope": "logora.debate",
+        "version": "0.0.14",
+        "mainFile": "index.js",
+        "rootDir": "src/components/vote/vote_button",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "dependencies": {
+                        "@types/jest": "29.5.5",
+                        "@types/testing-library__jest-dom": "5.14.9"
+                    },
+                    "peerDependencies": {
+                        "react": "^17.0.0 || ^18.0.0",
+                        "react-dom": "^17.0.0 || ^18.0.0"
+                    }
+                }
+            }
+        }
+    },
     "vote/vote_provider": {
         "name": "vote/vote_provider",
         "scope": "logora.debate",

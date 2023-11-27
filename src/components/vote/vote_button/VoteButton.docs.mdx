@@ -1,0 +1,24 @@
+---
+description: A button allowing users to vote on items and and displays the number of support votes.
+labels: ['vote', 'vote-button']
+---
+
+A button allowing users to vote on items and and displays the number of support votes.
+
+Button can be disabled with a prop.
+
+### Component usage
+
+```js
+import { VoteButton } from '@logora/debate.vote.vote_button';
+```
+
+```js
+<VoteButton
+    voteableType={"Message"}
+    voteableId={45}
+    totalUpvote={10}
+    totalDownvote={0}
+    disabled={false}
+/>
+```
