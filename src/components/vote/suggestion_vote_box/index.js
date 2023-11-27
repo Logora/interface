@@ -1,0 +1,1 @@
+export { SuggestionVoteBox } from './SuggestionVoteBox';

@@ -1,0 +1,35 @@
+@import '~@logora/debate.styles.theme/_theme.scss';
+@import '~@logora/debate.styles.spacing/_spacing.scss';
+
+.container {
+    display: flex !important;
+    flex-direction: row !important;
+}
+
+.upvoteContainer {
+    @include mr(4, xs);
+}
+
+.upvoteContainer, .downvoteContainer {
+    cursor: pointer;
+    display: flex !important;
+    align-items: center !important;
+    font-size: $font-size-extra-small;
+}
+
+.voteText {
+    @include ml(2, xs);
+}
+
+.disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.active span {
+    color: $call-primary;
+}
+
+.active svg {
+    fill: $call-primary;
+}

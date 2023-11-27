@@ -1,0 +1,24 @@
+---
+description: A vote box allowing user to up and down vote.
+labels: ['vote', 'vote-button']
+---
+
+A button allowing users to upvote or downvote on items and and displays the number of support and opponent votes.
+
+Button can be disabled if needed.
+
+### Component usage
+
+```js
+import { UpDownVoteBox } from '@logora/debate.vote.up_down_vote_box';
+```
+
+```js
+<UpDownVoteBox
+    voteableType={"Message"}
+    voteableId={45}
+    totalUpvote={10}
+    totalDownvote={0}
+    disabled={false}
+/>
+```
