@@ -1,0 +1,108 @@
+@import '~@logora/debate.styles.theme/_theme.scss';
+@import '~@logora/debate.styles.spacing/_spacing.scss';
+
+.container {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    box-shadow: $box-shadow;
+    border: $box-border;
+    color: $text-primary;
+    border-radius: $box-border-radius;
+    background: $background-color-primary;
+    a {
+        text-decoration: none !important;
+        color: $text-primary !important;
+    }
+}
+.consultationImage {
+    border-top-right-radius: $box-border-radius;
+    border-top-left-radius: $box-border-radius;
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    &.consultationImageIsMobile {
+        height: 160px;
+    }
+}
+.consultationTime {
+    @include py(2, xs);
+    width: 100%;
+    background-color: $info-primary;
+    font-size: $font-size-normal;
+    font-weight: $font-weight-bold;
+    color: $text-light;
+    text-align: center;
+    &.ended {
+        background-color: $text-secondary;
+    }
+}
+.consultationTitle {
+    @include pt(4, xs);
+    @include pb(2, xs);
+    @include px(3, xs);
+    font-size: $font-size-normal;
+    font-weight: $font-weight-bold;
+}
+.consultationButtonContainer {
+    display: flex !important;
+    @include px(3, xs);
+    @include pb(4, xs);
+    color: $text-secondary;
+    font-size: $font-size-small;
+    &:hover {
+        text-decoration: underline;
+        text-decoration-color: $text-secondary;
+    }
+    .arrowIcon {
+        @include ml(1, xs);
+        transform: rotate(180deg);
+        fill: $text-secondary;
+    }
+}
+.consultationInformations {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    @include px(3, xs);
+    @include py(2, xs);
+    border-top: 1px solid $text-tertiary;
+    min-height: 50px;
+    .consultationLeft {
+        display: flex !important;
+    }
+    .consultationGroupInformation {
+        display: flex !important;
+        align-items: center !important;
+        &.consultationGroupRight {
+            @include pr(3, xs);
+        }
+    }
+    .progressBarContainer {
+        width: 60%;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-end !important;
+        font-size: $font-size-extra-small;
+        .progress {
+            @include mt(1, xs);
+            height: 15px;
+            width: 100%;
+            border-radius: $box-border-radius;
+            background-color: $background-color-secondary !important;
+        }
+        .bar {
+            background-color: $call-primary;
+        }
+        .totalVotes {
+            @include mr(1, xs);
+        }
+        .totalVotesPercentage {
+            @include ml(1, xs);
+        }
+    }
+    
+    .consultationTextInformation {
+        @include pr(1, xs);
+    }
+}
