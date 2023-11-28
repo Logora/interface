@@ -135,6 +135,13 @@
         "mainFile": "index.js",
         "rootDir": "src/components/auth/use_auth"
     },
+    "consultation/consultation_box": {
+        "name": "consultation/consultation_box",
+        "scope": "logora.debate",
+        "version": "0.0.34",
+        "mainFile": "index.js",
+        "rootDir": "src/components/consultation/consultation_box"
+    },
     "data/axios_client": {
         "name": "data/axios_client",
         "scope": "logora.debate",
