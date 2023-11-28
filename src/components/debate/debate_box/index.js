@@ -1,0 +1,1 @@
+export { DebateBox } from './DebateBox';

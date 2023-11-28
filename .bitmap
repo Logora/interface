@@ -163,6 +163,13 @@
         "mainFile": "index.js",
         "rootDir": "src/components/data/data_provider"
     },
+    "debate/debate_box": {
+        "name": "debate/debate_box",
+        "scope": "logora.debate",
+        "version": "0.0.33",
+        "mainFile": "index.js",
+        "rootDir": "src/components/debate/debate_box"
+    },
     "dialog/announcement_dialog": {
         "name": "dialog/announcement_dialog",
         "scope": "logora.debate",
@@ -631,6 +638,13 @@
         "version": "0.0.11",
         "mainFile": "index.js",
         "rootDir": "src/components/user/user_box_small"
+    },
+    "util/get_winning_vote": {
+        "name": "util/get_winning_vote",
+        "scope": "logora.debate",
+        "version": "0.0.2",
+        "mainFile": "index.js",
+        "rootDir": "src/components/util/get_winning_vote"
     },
     "vote/suggestion_vote_box": {
         "name": "vote/suggestion_vote_box",

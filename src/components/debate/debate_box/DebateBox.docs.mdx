@@ -1,0 +1,28 @@
+---
+description: A debate box.
+labels: ['debate_box']
+---
+
+import { DebateBox } from './DebateBox';
+import { IntlProvider } from 'react-intl';
+
+A debate box to display minimum informations about a debate.
+
+### Component usage
+```js
+    import { DebateBox } from '@logora/debate.debate.debate_box';
+```
+```js
+    <BrowserRouter>
+        <IntlProvider locale="en">
+            <ConfigProvider routes={{...routes}}>
+                <DebateBox debate={props.debate} />
+            </ConfigProvider>
+        </IntlProvider>
+    </BrowserRouter>
+```
+
+### Properties
+| **Name**      | **Type** | **Required** | **Default** | **Description** |
+| ----------- | ----------- | :-----------: | ----------- | ----------- |
+| <font color='#4646c6'>debate</font> | <font color="#397300">string</font> | &check; | - | <font color="grey">*debate object containing all the debate information*</font> |
