@@ -166,7 +166,7 @@
     "debate/debate_box": {
         "name": "debate/debate_box",
         "scope": "logora.debate",
-        "version": "0.0.33",
+        "version": "0.0.34",
         "mainFile": "index.js",
         "rootDir": "src/components/debate/debate_box"
     },
@@ -642,7 +642,7 @@
     "util/get_winning_vote": {
         "name": "util/get_winning_vote",
         "scope": "logora.debate",
-        "version": "0.0.2",
+        "version": "0.0.3",
         "mainFile": "index.js",
         "rootDir": "src/components/util/get_winning_vote"
     },
