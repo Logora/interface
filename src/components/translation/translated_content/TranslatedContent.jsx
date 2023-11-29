@@ -14,11 +14,11 @@ export const TranslatedContent = ({ originalContent, originalLanguage, targetFie
 
 TranslatedContent.propTypes = {
     /** The content in its original language */
-    originalContent: PropTypes.string.isRequired,
+    originalContent: PropTypes.string,
     /** The original language */
-    originalLanguage: PropTypes.string.isRequired,
+    originalLanguage: PropTypes.string,
     /** Type of the target field  */
-    targetField: PropTypes.string.isRequired,
+    targetField: PropTypes.string,
     /** An array containing the other translations  */
-    translations: PropTypes.array.isRequired,
+    translations: PropTypes.array,
   };
