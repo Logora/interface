@@ -87,7 +87,6 @@
 
 .debateName {
     color: $text-primary;
-    font-size: $font-size-large;
     font-weight: $font-weight-bold;
     text-align: center;
     width: 100%;
@@ -101,6 +100,7 @@
 }
 
 .debateLink {
+    font-size: $font-size-large;
     background: $background-color-primary !important;
     text-decoration: none !important;
     color: $text-primary;
