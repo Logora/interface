@@ -93,9 +93,9 @@
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    @include pb(2, xs);
-    @include pt(2, xs);
-    @include px(2, xs);
+    @include pb(0, xs);
+    @include pt(3, xs);
+    @include px(3, xs);
     @include px(0, sm);
 }
 
