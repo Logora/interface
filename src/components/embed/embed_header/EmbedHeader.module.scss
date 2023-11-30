@@ -116,9 +116,7 @@
 .left {
     justify-content: flex-start !important;
     @include px(3, xs);
-    @include py(2.5, xs);
+    @include pt(3, xs);
+    @include pb(0, xs);
     text-align: left;
-    @include media-breakpoint-down(xs) {
-        @include px(2.5, xs);
-    };
 }
