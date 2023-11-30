@@ -82,7 +82,8 @@
     flex-wrap: nowrap;
     @include px(2, xs);
     @include px(3, sm);
-    @include py(2, xs);
+    @include py(3, xs);
+    @include pb(0, xs);
     white-space: nowrap;
 }
 
