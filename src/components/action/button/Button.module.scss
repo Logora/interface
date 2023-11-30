@@ -3,7 +3,7 @@
 
 button.primaryButton, a.primaryButton {
   @include px(3, xs);
-	@include py(1.5, xs);
+	@include py(2.5, xs);
   display: flex;
   align-items: center;
   justify-content: center;
