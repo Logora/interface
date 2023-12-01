@@ -39,7 +39,8 @@
     "react-oauth-popup": "^1.0.5",
     "react-router": "^5.3.4",
     "react-router-dom": "^5.3.4",
-    "use-onclickoutside": "^0.4.1"
+    "use-onclickoutside": "^0.4.1",
+    "webfontloader": "^1.6.28"
   },
   "devDependencies": {
     "@faker-js/faker": "^7.6.0",
