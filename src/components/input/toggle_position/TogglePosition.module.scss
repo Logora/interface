@@ -1,0 +1,46 @@
+@import '~@logora/debate.styles.theme/_theme.scss';
+@import '~@logora/debate.styles.spacing/_spacing.scss';
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    @include p(1, xs);
+    width: fit-content;
+    gap: $spacer;
+}
+
+.label {
+    @include py(1.5, xs);
+    @include px(2.5, xs);
+    font-size: $font-size-small;
+    color: $text-primary;
+    cursor: pointer;
+    border-radius: $box-border-radius;
+    font-weight: $font-weight-bold;
+    transition: all .3s ease-in;
+    border: 1px solid $darkest-text-tertiary;
+}
+
+.labelActive {
+    color: $text-light;
+    opacity: 1;
+    cursor: default;
+}
+
+.labelDisabled {
+    display: none;
+}
+
+.firstLabelDefault {
+    background-color: $for-primary;
+    &.labelActive {
+        border-color: $for-primary;
+    }
+}
+
+.secondLabelDefault {
+    background-color: $against-primary;
+    &.labelActive {
+        border-color: $against-primary;
+    }
+}

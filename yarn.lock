@@ -2263,6 +2263,12 @@ __metadata:
   languageName: node
   linkType: hard
 
+"toggle_position-655142@workspace:src/components/input/toggle_position":
+  version: 0.0.0-use.local
+  resolution: "toggle_position-655142@workspace:src/components/input/toggle_position"
+  languageName: unknown
+  linkType: soft
+
 "tooltip-28dbeb@workspace:src/components/dialog/tooltip":
   version: 0.0.0-use.local
   resolution: "tooltip-28dbeb@workspace:src/components/dialog/tooltip"
