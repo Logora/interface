@@ -3,11 +3,14 @@ import { render, screen } from '@testing-library/react';
 import { EmbedHeader } from './EmbedHeader';
 import { IntlProvider } from 'react-intl';
 
+const title = 'Test Title';
+const titleRedirectUrl = '/test-url';
+const headerLabel = 'Test Label';
+const onlineUsersCount = 5;
+const textLeft = true;
+
 describe('EmbedHeader', () => {
     it('renders header label, title and link with correct href value', () => {
-        const title = 'Test Title';
-        const titleRedirectUrl = '/test-url';
-        const headerLabel = 'Test Label';
         const { getByText } = render(
             <IntlProvider locale="en">
                 <EmbedHeader title={title} titleRedirectUrl={titleRedirectUrl} headerLabel={headerLabel} />
@@ -19,10 +22,9 @@ describe('EmbedHeader', () => {
     });
 
     it('renders online users count if provided', () => {
-        const onlineUsersCount = 5;
         const { getByTestId } = render(
             <IntlProvider locale="en">
-                <EmbedHeader onlineUsersCount={onlineUsersCount} />
+                <EmbedHeader onlineUsersCount={onlineUsersCount} headerLabel={headerLabel} />
             </IntlProvider>
         );
         expect(getByTestId('online-users-count')).toHaveTextContent(`${onlineUsersCount} online users`);
@@ -30,12 +32,22 @@ describe('EmbedHeader', () => {
     });
 
     it('applies textLeft className when prop is provided', () => {
-        const textLeft = true;
         const { getByTestId } = render(
             <IntlProvider locale="en">
                 <EmbedHeader textLeft={textLeft} />
             </IntlProvider>
         );
         expect(getByTestId('debate-name')).toHaveClass('left');
+    });
+
+    it('renders only title', () => {
+        const { queryByText } = render(
+            <IntlProvider locale="en">
+                <EmbedHeader title={title} titleRedirectUrl={titleRedirectUrl} />
+            </IntlProvider>
+        );
+        expect(queryByText('Test Label')).toBeNull();
+        expect(queryByText('online users')).toBeNull();
+        expect(queryByText('Test Title')).toBeInTheDocument();
     });
 });
