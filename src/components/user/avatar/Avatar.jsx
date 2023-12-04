@@ -24,7 +24,11 @@ export const Avatar = ({ avatarUrl, defaultAvatarUrl, userName, isOnline = false
     const displayImage = () => {
         return (
             <object {...commonProps} style={commonStyles} src={avatarUrl} title={intl.formatMessage({ id:"user.avatar.alt", defaultMessage: "{name}'s profile picture" }, { name: userName })} type="image/png">
-                <img {...commonProps} style={commonStyles} src={defaultAvatarUrl} alt={intl.formatMessage({ id:"user.avatar.alt", defaultMessage: "{name}'s profile picture" }, { name: userName })} />
+                { defaultAvatarUrl ? 
+                    <img {...commonProps} style={commonStyles} src={defaultAvatarUrl} alt={intl.formatMessage({ id:"user.avatar.alt", defaultMessage: "{name}'s profile picture" }, { name: userName })} />
+                :
+                    <DefaultAvatarIcon />
+                }
             </object>
         )
     }
