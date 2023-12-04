@@ -32,7 +32,7 @@ const routes = {
 
 describe('UserBox', () => {
     it ('renders component with correct data', () => {  
-        const { getByText, getByTitle } = render(
+        const { getByText, getByAltText } = render(
             <BrowserRouter>
                 <IntlProvider locale="en">
                     <ConfigProvider routes={{...routes}}>
@@ -42,7 +42,7 @@ describe('UserBox', () => {
             </BrowserRouter>
         );
 
-        const avatarImg = getByTitle(user.full_name + "'s profile picture");
+        const avatarImg = getByAltText(user.full_name + "'s profile picture");
         expect(avatarImg).toBeInTheDocument();
         expect(avatarImg).toHaveAttribute('src', user.image_url);
 

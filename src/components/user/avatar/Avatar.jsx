@@ -22,15 +22,11 @@ export const Avatar = ({ avatarUrl, defaultAvatarUrl, userName, isOnline = false
     }
 
     const displayImage = () => {
-        return (
-            <object {...commonProps} style={commonStyles} src={avatarUrl} title={intl.formatMessage({ id:"user.avatar.alt", defaultMessage: "{name}'s profile picture" }, { name: userName })} type="image/png">
-                { defaultAvatarUrl ? 
-                    <img {...commonProps} style={commonStyles} src={defaultAvatarUrl} alt={intl.formatMessage({ id:"user.avatar.alt", defaultMessage: "{name}'s profile picture" }, { name: userName })} />
-                :
-                    <DefaultAvatarIcon />
-                }
-            </object>
-        )
+        if (avatarUrl) {
+            return <img {...commonProps} style={commonStyles} src={avatarUrl} alt={intl.formatMessage({ id:"user.avatar.alt", defaultMessage: "{name}'s profile picture" }, { name: userName })} onError={(e) => {e.currentTarget.src = defaultAvatarUrl }} />
+        } else {
+            return <DefaultAvatarIcon {...commonProps} style={commonStyles} data-testid={"avatar-icon"} />
+        }
     }
 
     return (

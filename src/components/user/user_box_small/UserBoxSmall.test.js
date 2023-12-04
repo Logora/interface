@@ -33,7 +33,7 @@ describe('UserBoxSmall', () => {
     const userNameElement = screen.getByText(user.full_name);
     expect(userNameElement).toBeInTheDocument();
 
-    const avatarImageElement = screen.getByTitle(user.full_name + "'s profile picture");
+    const avatarImageElement = screen.getByAltText(user.full_name + "'s profile picture");
     expect(avatarImageElement).toHaveAttribute('height', '25');
     expect(avatarImageElement).toHaveAttribute('width', '25');
     expect(avatarImageElement).toBeInTheDocument();
