@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useIntl } from 'react-intl';
 import { Tooltip } from '@logora/debate.dialog.tooltip';
 import { DefaultAvatarIcon } from "./DefaultAvatar";
@@ -6,7 +6,8 @@ import cx from 'classnames';
 import styles from './Avatar.module.scss';
 import PropTypes from 'prop-types';
 
-export const Avatar = ({ avatarUrl, defaultAvatarUrl, userName, isOnline = false, size = 40, className, ...rest }) => {
+export const Avatar = ({ avatarUrl, userName, isOnline = false, size = 40, className, ...rest }) => {
+    const [fallback, setFallback] = useState(false);
     const intl = useIntl();
 
     const commonProps = {
@@ -23,8 +24,8 @@ export const Avatar = ({ avatarUrl, defaultAvatarUrl, userName, isOnline = false
     }
 
     const displayImage = () => {
-        if (avatarUrl) {
-            return <img {...commonProps} style={commonStyles} src={avatarUrl} alt={intl.formatMessage({ id:"user.avatar.alt", defaultMessage: "{name}'s profile picture" }, { name: userName })} onError={(e) => {e.currentTarget.src = defaultAvatarUrl }} />
+        if (avatarUrl && !fallback) {
+            return <img {...commonProps} style={commonStyles} src={avatarUrl} alt={intl.formatMessage({ id:"user.avatar.alt", defaultMessage: "{name}'s profile picture" }, { name: userName })} onError={() => { setFallback(true) }} />
         } else {
             return <DefaultAvatarIcon {...commonProps} style={commonStyles} data-testid={"avatar-icon"} />
         }
@@ -51,14 +52,12 @@ export const Avatar = ({ avatarUrl, defaultAvatarUrl, userName, isOnline = false
 Avatar.propTypes = {
     /** User's image url */
     avatarUrl: PropTypes.string,
-    /** Fallback image url if user's image breaks */
-    defaultAvatarUrl: PropTypes.string,
     /** User's full name */
     userName: PropTypes.string,
     /** Whether the user is online or not, displays online pin */
     isOnline: PropTypes.bool,
     /** Adjust the size of avatar */
-    size: PropTypes.string,
+    size: PropTypes.number,
     /** Additional classname passed to image */
     className: PropTypes.string,
 }

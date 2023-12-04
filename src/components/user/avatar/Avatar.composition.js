@@ -67,7 +67,7 @@ export const AvatarLargeOnline = () => {
 export const FallbackAvatar = () => {
     return (
         <IntlProvider locale="en">
-            <Avatar avatarUrl={"https://example.com/does-not-exist.png"} defaultAvatarUrl={defaultAvatarUrl} userName={userName} />
+            <Avatar avatarUrl={"https://example.com/does-not-exist.png"} userName={userName} />
         </IntlProvider>
     );
 };
