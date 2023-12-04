@@ -30,7 +30,7 @@ const routes = {
 
 describe('AuthorBox', () => {
     it('should render with author data', () => {
-        const { getByText, getByTitle, getAllByRole } = render(
+        const { getByText, getByAltText, getAllByRole } = render(
             <BrowserRouter>
                 <ConfigProvider config={{}} routes={{ ...routes }}>
                     <IntlProvider locale="en">
@@ -50,7 +50,7 @@ describe('AuthorBox', () => {
             </BrowserRouter>
         );
 
-        const avatarImg = getByTitle(author.full_name + "'s profile picture");
+        const avatarImg = getByAltText(author.full_name + "'s profile picture");
         expect(avatarImg).toBeInTheDocument();
         expect(avatarImg).toHaveAttribute('src', author.image_url);
         expect(getByText(author.full_name)).toBeTruthy();
