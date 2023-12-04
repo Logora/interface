@@ -5,7 +5,7 @@ import { DefaultAvatarIcon } from "./DefaultAvatar";
 import cx from 'classnames';
 import styles from './Avatar.module.scss';
 
-export const Avatar = ({ avatarUrl, userName, isOnline = false, size = 40, className, ...rest }) => {
+export const Avatar = ({ avatarUrl, defaultAvatarUrl, userName, isOnline = false, size = 40, className, ...rest }) => {
     const intl = useIntl();
 
     const commonProps = {
@@ -22,11 +22,11 @@ export const Avatar = ({ avatarUrl, userName, isOnline = false, size = 40, class
     }
 
     const displayImage = () => {
-        if (avatarUrl) {
-            return <img {...commonProps} style={commonStyles} src={avatarUrl} alt={intl.formatMessage({ id:"user.avatar.alt", defaultMessage: "{name}'s profile picture" }, { name: userName })} />;
-        } else {
-            return <DefaultAvatarIcon {...commonProps} style={commonStyles} data-testid={"avatar-icon"} />;
-        }
+        return (
+            <object {...commonProps} style={commonStyles} src={avatarUrl} title={intl.formatMessage({ id:"user.avatar.alt", defaultMessage: "{name}'s profile picture" }, { name: userName })} type="image/png">
+                <img {...commonProps} style={commonStyles} src={defaultAvatarUrl} alt={intl.formatMessage({ id:"user.avatar.alt", defaultMessage: "{name}'s profile picture" }, { name: userName })} />
+            </object>
+        )
     }
 
     return (
