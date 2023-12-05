@@ -4,6 +4,7 @@ import { IntlProvider } from 'react-intl';
 import { faker } from '@faker-js/faker';
 
 const avatarUrl = faker.image.avatar();
+const defaultAvatarUrl = faker.image.avatar();
 const userName = faker.name.fullName();
 
 export const DefaultAvatar = () => {
@@ -59,6 +60,14 @@ export const AvatarLargeOnline = () => {
     return (
         <IntlProvider locale="en">
             <Avatar avatarUrl={avatarUrl} userName={userName} size={60} isOnline />
+        </IntlProvider>
+    );
+};
+
+export const FallbackAvatar = () => {
+    return (
+        <IntlProvider locale="en">
+            <Avatar avatarUrl={"https://example.com/does-not-exist.png"} userName={userName} />
         </IntlProvider>
     );
 };

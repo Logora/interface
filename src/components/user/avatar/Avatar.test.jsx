@@ -2,15 +2,22 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { IntlProvider } from 'react-intl';
 import { Avatar } from './Avatar';
+import { faker } from '@faker-js/faker';
 
 const messages = {
     'user.avatar.alt': "{name}'s avatar picture",
     'user.avatar.online': '{name} is here',
 };
 
+const defaultUrls = {
+    avatarUrl: faker.image.avatar(),
+    defaultAvatarUrl: faker.image.avatar(),
+}
+
 describe('Avatar', () => {
     const defaultProps = {
-        avatarUrl: 'https://example.com/avatar.jpg',
+        avatarUrl: defaultUrls.avatarUrl,
+        defaultAvatarUrl: defaultUrls.defaultAvatarUrl,
         userName: 'John',
         isOnline: true,
         className: 'custom-class',
@@ -24,7 +31,7 @@ describe('Avatar', () => {
         );
         const avatarImg = screen.getByAltText("John's avatar picture");
         expect(avatarImg).toBeInTheDocument();
-        expect(avatarImg).toHaveAttribute('src', 'https://example.com/avatar.jpg');
+        expect(avatarImg).toHaveAttribute('src', defaultUrls.avatarUrl);
         expect(avatarImg).toHaveAttribute('height', '40');
         expect(avatarImg).toHaveAttribute('width', '40');
         expect(avatarImg).toHaveStyle('height: 40px');
@@ -33,7 +40,7 @@ describe('Avatar', () => {
     });
 
     it('renders default avatar picture if avatarUrl is empty', () => {
-        const props = { userName: "John", className: "avatar-class" };
+        const props = { userName: "John", className: "avatar-class", avatarUrl: null, defaultAvatarUrl: null };
         render(
           <IntlProvider locale="en" messages={messages}>
             <Avatar {...props} />
@@ -101,7 +108,7 @@ describe('Avatar', () => {
         );
         const avatarImg = screen.getByAltText("John's avatar picture");
         expect(avatarImg).toBeInTheDocument();
-        expect(avatarImg).toHaveAttribute('src', 'https://example.com/avatar.jpg');
+        expect(avatarImg).toHaveAttribute('src', defaultUrls.avatarUrl);
         expect(avatarImg).toHaveAttribute('height', '25');
         expect(avatarImg).toHaveAttribute('width', '25');
         expect(avatarImg).toHaveClass('custom-class');
