@@ -38,7 +38,7 @@ export const ShareBox = ({ tooltipPosition, shareUrl, shareTitle, shareText, sha
                 </div>
             </Tooltip>
             <Tooltip text={intl.formatMessage({ id: "share.share_box.mail_share", defaultMessage: "Share by email" })} position={tooltipPosition}>
-                <div onClick={() => toggleSharing("mailto:example@example.com?subject=" + shareTitle + "&body=" + shareText + "%0D%0A" + shareUrl)} className={styles.linkCopyButton} tabIndex={0}>
+                <div onClick={() => toggleSharing("mailto:?subject=" + shareTitle + "&body=" + shareText + "%0D%0A" + shareUrl)} className={styles.linkCopyButton} tabIndex={0}>
                     <Icon name="mail" role="button" data-tid={"action_share_debate_mail"} width={20} height={20} />
                 </div>
             </Tooltip>
