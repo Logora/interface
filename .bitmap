@@ -166,7 +166,7 @@
     "debate/debate_box": {
         "name": "debate/debate_box",
         "scope": "logora.debate",
-        "version": "0.0.35",
+        "version": "0.0.38",
         "mainFile": "index.js",
         "rootDir": "src/components/debate/debate_box"
     },
@@ -453,21 +453,21 @@
     "share/share_box": {
         "name": "share/share_box",
         "scope": "logora.debate",
-        "version": "0.0.51",
+        "version": "0.0.52",
         "mainFile": "index.js",
         "rootDir": "src/components/share/share_box"
     },
     "share/share_button": {
         "name": "share/share_button",
         "scope": "logora.debate",
-        "version": "0.0.62",
+        "version": "0.0.63",
         "mainFile": "index.js",
         "rootDir": "src/components/share/share_button"
     },
     "share/share_modal": {
         "name": "share/share_modal",
         "scope": "logora.debate",
-        "version": "0.0.50",
+        "version": "0.0.51",
         "mainFile": "index.js",
         "rootDir": "src/components/share/share_modal"
     },
@@ -621,35 +621,35 @@
     "user/author_box": {
         "name": "user/author_box",
         "scope": "logora.debate",
-        "version": "0.0.58",
+        "version": "0.0.61",
         "mainFile": "index.js",
         "rootDir": "src/components/user/author_box"
     },
     "user/avatar": {
         "name": "user/avatar",
         "scope": "logora.debate",
-        "version": "0.0.32",
+        "version": "0.0.35",
         "mainFile": "index.js",
         "rootDir": "src/components/user/avatar"
     },
     "user/avatar_selector": {
         "name": "user/avatar_selector",
         "scope": "logora.debate",
-        "version": "0.0.41",
+        "version": "0.0.44",
         "mainFile": "index.js",
         "rootDir": "src/components/user/avatar_selector"
     },
     "user/user_box": {
         "name": "user/user_box",
         "scope": "logora.debate",
-        "version": "0.0.34",
+        "version": "0.0.37",
         "mainFile": "index.js",
         "rootDir": "src/components/user/user_box"
     },
     "user/user_box_small": {
         "name": "user/user_box_small",
         "scope": "logora.debate",
-        "version": "0.0.11",
+        "version": "0.0.14",
         "mainFile": "index.js",
         "rootDir": "src/components/user/user_box_small"
     },
