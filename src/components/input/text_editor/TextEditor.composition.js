@@ -13,14 +13,36 @@ const httpClient = {
     patch: () => null
 };
 
+const data = dataProvider(httpClient, "https://mock.example.api");
+
+const handleSubmit = (textContent, richContent, sources) => {
+    console.log(textContent)
+    console.log(richContent)
+}
+
 export const DefaultTextEditor = () => {
-    const data = dataProvider(httpClient, "https://mock.example.api");
+    return (
+        <IntlProvider locale="en">
+            <DataProviderContext.Provider value={{ dataProvider: data }}>
+                <ModalProvider>
+                    <IconProvider library={regularIcons}>
+                        <InputProvider>
+                            <TextEditor 
+                                placeholder={"Add an argument"}
+                                onSubmit={handleSubmit}
+                                onActivation={() => null}
+                                shortBar={true}
+                                uid={"6756"}
+                            />
+                        </InputProvider>
+                    </IconProvider>
+                </ModalProvider>
+            </DataProviderContext.Provider>
+        </IntlProvider>
+    );
+};
 
-    const handleSubmit = (textContent, richContent, sources) => {
-        console.log(textContent)
-        console.log(richContent)
-    }
-
+export const TextEditorWithSource = () => {
     return (
         <IntlProvider locale="en">
             <DataProviderContext.Provider value={{ dataProvider: data }}>
@@ -44,13 +66,6 @@ export const DefaultTextEditor = () => {
 };
 
 export const TextEditorWithMaxLength = () => {
-    const data = dataProvider(httpClient, "https://mock.example.api");
-
-    const handleSubmit = (textContent, richContent, sources) => {
-        console.log(textContent)
-        console.log(richContent)
-    }
-
     return (
         <IntlProvider locale="en">
             <DataProviderContext.Provider value={{ dataProvider: data }}>
@@ -64,6 +79,98 @@ export const TextEditorWithMaxLength = () => {
                                 shortBar={true}
                                 uid={"6756"}
                                 maxLength={500}
+                            />
+                        </InputProvider>
+                    </IconProvider>
+                </ModalProvider>
+            </DataProviderContext.Provider>
+        </IntlProvider>
+    );
+};
+
+export const TextEditorHideSourceAction = () => {
+    return (
+        <IntlProvider locale="en">
+            <DataProviderContext.Provider value={{ dataProvider: data }}>
+                <ModalProvider>
+                    <IconProvider library={regularIcons}>
+                        <InputProvider>
+                            <TextEditor 
+                                placeholder={"Add an argument"}
+                                onSubmit={handleSubmit}
+                                onActivation={() => null}
+                                shortBar={true}
+                                uid={"6756"}
+                                hideSourceAction
+                            />
+                        </InputProvider>
+                    </IconProvider>
+                </ModalProvider>
+            </DataProviderContext.Provider>
+        </IntlProvider>
+    );
+};
+
+export const TextEditorHideSubmit = () => {
+    return (
+        <IntlProvider locale="en">
+            <DataProviderContext.Provider value={{ dataProvider: data }}>
+                <ModalProvider>
+                    <IconProvider library={regularIcons}>
+                        <InputProvider>
+                            <TextEditor 
+                                placeholder={"Add an argument"}
+                                onSubmit={handleSubmit}
+                                onActivation={() => null}
+                                shortBar={true}
+                                uid={"6756"}
+                                hideSubmit
+                            />
+                        </InputProvider>
+                    </IconProvider>
+                </ModalProvider>
+            </DataProviderContext.Provider>
+        </IntlProvider>
+    );
+};
+
+export const TextEditorDisableRichText = () => {
+    return (
+        <IntlProvider locale="en">
+            <DataProviderContext.Provider value={{ dataProvider: data }}>
+                <ModalProvider>
+                    <IconProvider library={regularIcons}>
+                        <InputProvider>
+                            <TextEditor 
+                                placeholder={"Add an argument"}
+                                onSubmit={handleSubmit}
+                                onActivation={() => null}
+                                shortBar={true}
+                                uid={"6756"}
+                                disableRichText
+                            />
+                        </InputProvider>
+                    </IconProvider>
+                </ModalProvider>
+            </DataProviderContext.Provider>
+        </IntlProvider>
+    );
+};
+
+export const TextEditorShowStylesControls = () => {
+    return (
+        <IntlProvider locale="en">
+            <DataProviderContext.Provider value={{ dataProvider: data }}>
+                <ModalProvider>
+                    <IconProvider library={regularIcons}>
+                        <InputProvider>
+                            <TextEditor 
+                                placeholder={"Add an argument"}
+                                onSubmit={handleSubmit}
+                                onActivation={() => null}
+                                shortBar={true}
+                                uid={"6756"}
+                                showStylesControls
                             />
                         </InputProvider>
                     </IconProvider>

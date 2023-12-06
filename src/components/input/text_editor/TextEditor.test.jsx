@@ -2,7 +2,7 @@ import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { act } from 'react-dom/test-utils';
-import { DefaultTextEditor } from './TextEditor.composition';
+import { DefaultTextEditor, TextEditorWithSource } from './TextEditor.composition';
 import { TextEditor } from './TextEditor';
 import { ModalProvider } from '@logora/debate.dialog.modal';
 import { InputProvider, useInput } from '@logora/debate.input.input_provider';
@@ -101,7 +101,7 @@ describe('TextEditor', () => {
 
     it('should render with source', () => {
         const editor = render(
-            <DefaultTextEditor />
+            <TextEditorWithSource />
         );
         expect(screen.getByText(/test.com - Source Test/)).toBeTruthy();
         
