@@ -387,6 +387,13 @@
         "mainFile": "index.js",
         "rootDir": "src/components/input/select"
     },
+    "input/text_editor": {
+        "name": "input/text_editor",
+        "scope": "logora.debate",
+        "version": "0.0.20",
+        "mainFile": "index.js",
+        "rootDir": "src/components/input/text_editor"
+    },
     "input/text_input": {
         "name": "input/text_input",
         "scope": "logora.debate",

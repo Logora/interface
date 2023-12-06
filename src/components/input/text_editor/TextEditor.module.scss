@@ -1,0 +1,141 @@
+@import '~@logora/debate.styles.theme/_theme.scss';
+@import '~@logora/debate.styles.spacing/_spacing.scss';
+
+.ltr {
+    text-align: left;
+}
+
+.editorContainer {
+    color: $text-primary;
+    line-height: 20px;
+    font-weight: $font-weight-normal;
+    text-align: left;
+}
+
+.editorInner {
+    background: $background-color-primary;
+    position: relative;
+    &.editorInnerInactive {
+        display: flex !important;
+        justify-content: space-between !important;
+    }
+}
+
+.editorPlaceholder {
+    color: $third-position-color-primary;
+    overflow: hidden;
+    position: absolute;
+    text-overflow: ellipsis;
+    top: 15px;
+    font-size: $font-size-normal;
+    user-select: none;
+    display: inline-block;
+    pointer-events: none;
+}
+
+.editorInput {
+    min-height: 25px;
+    resize: none;
+    font-size: $font-size-normal;
+    position: relative;
+    tab-size: 1;
+    outline: 0;
+    @include py(3, xs);
+    caret-color: $text-primary;
+    &.editorInputInactive {
+        min-width: 180px;
+        width: 100%;
+    }
+}
+
+.editorTextBold {
+    font-weight: $font-weight-bold;
+}
+
+.editorTextItalic {
+    font-style: italic;
+}
+
+.editorTextUnderline {
+    text-decoration: underline;
+}
+
+.editorTextStrikethrough {
+    text-decoration: line-through;
+}
+
+.editorTextUnderlineStrikethrough {
+    text-decoration: underline line-through;
+}
+
+.editorParagraph {
+    @include m(0, xs);
+    @include mb(1, xs);
+    position: relative;
+}
+
+.editorParagraph:last-child {
+    @include mb(0, xs);
+}
+
+.editorQuote {
+    @include m(0, xs);
+    @include pl(3, xs);
+    font-size: $font-size-normal;
+    color: $text-secondary;
+    border-left-color: rgb(206, 208, 212);
+    border-left-width: 4px;
+    border-left-style: solid;
+}
+
+.editorListOl {
+    @include m(0, xs);
+    @include ml(2, xs);
+    @include p(1, xs);
+    margin-left: 16px;
+}
+
+.editorListItem {
+    @include mx(3, xs);
+    @include my(2, xs);
+}
+
+.editorNestedListItem {
+    list-style-type: none;
+}
+
+pre::-webkit-scrollbar {
+    background: transparent;
+    width: 10px;
+}
+
+pre::-webkit-scrollbar-thumb {
+    background: $text-secondary;
+}
+
+.sourcesBox {
+    display: flex !important;
+    justify-content: flex-start !important;
+    align-items: center !important;
+    @include mt(2, xs);
+    @include px(0, xs);
+    @include py(2, xs);
+    border-top: 1px solid $darkest-text-tertiary;
+}
+
+.sourceList {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    align-items: flex-start !important;
+    @include px(0, xs);
+    @include py(0, xs);
+}
+
+.charactersCount {
+    align-self: center;
+    font-size: $font-size-small;
+    color: $text-secondary;
+    white-space: nowrap;
+    @include mt(2, xs);
+}

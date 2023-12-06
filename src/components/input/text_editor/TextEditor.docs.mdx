@@ -1,0 +1,31 @@
+---
+description: A text editor component.
+labels: ['input', 'text editor']
+---
+
+import { TextEditor } from './TextEditor';
+
+A component that renders a input for text edition with rich content options : 
+- bold
+- italic
+- underline
+- quote
+- ordered list
+
+It must be inside [IconProvider](https://bit.cloud/logora/debate/icons/icon_provider).
+
+### Component usage
+
+```js
+import TextEditor from "@logora/debate.input.text_editor";
+```
+
+```js
+<TextEditor 
+    handleChange={handleChange}
+    placeholder={"Your placeholder"}
+    onSubmit={(textContent, richContent, sources) => console.log(textContent)}
+    onActivation={() => console.log("Activated !")}
+    disabled={false}
+/>
+```
