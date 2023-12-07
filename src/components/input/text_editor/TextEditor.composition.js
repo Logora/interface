@@ -6,6 +6,7 @@ import { dataProvider, DataProviderContext } from '@logora/debate.data.data_prov
 import { InputProvider } from '@logora/debate.input.input_provider';
 import { IconProvider } from '@logora/debate.icons.icon_provider';
 import * as regularIcons from '@logora/debate.icons.regular_icons';
+import { IdProvider } from "react-use-id-hook";
 
 const httpClient = {
     get: () => null,
@@ -26,15 +27,16 @@ export const DefaultTextEditor = () => {
             <DataProviderContext.Provider value={{ dataProvider: data }}>
                 <ModalProvider>
                     <IconProvider library={regularIcons}>
-                        <InputProvider>
-                            <TextEditor 
-                                placeholder={"Add an argument"}
-                                onSubmit={handleSubmit}
-                                onActivation={() => null}
-                                shortBar={true}
-                                uid={"6756"}
-                            />
-                        </InputProvider>
+                        <IdProvider>
+                            <InputProvider>
+                                <TextEditor 
+                                    placeholder={"Add an argument"}
+                                    onSubmit={handleSubmit}
+                                    onActivation={() => null}
+                                    shortBar={true}
+                                />
+                            </InputProvider>
+                        </IdProvider>
                     </IconProvider>
                 </ModalProvider>
             </DataProviderContext.Provider>
@@ -48,16 +50,17 @@ export const TextEditorWithSource = () => {
             <DataProviderContext.Provider value={{ dataProvider: data }}>
                 <ModalProvider>
                     <IconProvider library={regularIcons}>
-                        <InputProvider>
-                            <TextEditor 
-                                placeholder={"Add an argument"}
-                                onSubmit={handleSubmit}
-                                onActivation={() => null}
-                                shortBar={true}
-                                uid={"6756"}
-                                sources={[{publisher: "test.com", source_url: "http://test.com", title: "Source Test"}]}
-                            />
-                        </InputProvider>
+                        <IdProvider>
+                            <InputProvider>
+                                <TextEditor 
+                                    placeholder={"Add an argument"}
+                                    onSubmit={handleSubmit}
+                                    onActivation={() => null}
+                                    shortBar={true}
+                                    sources={[{publisher: "test.com", source_url: "http://test.com", title: "Source Test"}]}
+                                />
+                            </InputProvider>
+                        </IdProvider>
                     </IconProvider>
                 </ModalProvider>
             </DataProviderContext.Provider>
@@ -71,16 +74,17 @@ export const TextEditorWithMaxLength = () => {
             <DataProviderContext.Provider value={{ dataProvider: data }}>
                 <ModalProvider>
                     <IconProvider library={regularIcons}>
-                        <InputProvider>
-                            <TextEditor 
-                                placeholder={"Add an argument"}
-                                onSubmit={handleSubmit}
-                                onActivation={() => null}
-                                shortBar={true}
-                                uid={"6756"}
-                                maxLength={500}
-                            />
-                        </InputProvider>
+                        <IdProvider>
+                            <InputProvider>
+                                <TextEditor 
+                                    placeholder={"Add an argument"}
+                                    onSubmit={handleSubmit}
+                                    onActivation={() => null}
+                                    shortBar={true}
+                                    maxLength={500}
+                                />
+                            </InputProvider>
+                        </IdProvider>
                     </IconProvider>
                 </ModalProvider>
             </DataProviderContext.Provider>
@@ -94,16 +98,17 @@ export const TextEditorHideSourceAction = () => {
             <DataProviderContext.Provider value={{ dataProvider: data }}>
                 <ModalProvider>
                     <IconProvider library={regularIcons}>
-                        <InputProvider>
-                            <TextEditor 
-                                placeholder={"Add an argument"}
-                                onSubmit={handleSubmit}
-                                onActivation={() => null}
-                                shortBar={true}
-                                uid={"6756"}
-                                hideSourceAction
-                            />
-                        </InputProvider>
+                        <IdProvider>
+                            <InputProvider>
+                                <TextEditor 
+                                    placeholder={"Add an argument"}
+                                    onSubmit={handleSubmit}
+                                    onActivation={() => null}
+                                    shortBar={true}
+                                    hideSourceAction
+                                />
+                            </InputProvider>
+                        </IdProvider>
                     </IconProvider>
                 </ModalProvider>
             </DataProviderContext.Provider>
@@ -117,16 +122,17 @@ export const TextEditorHideSubmit = () => {
             <DataProviderContext.Provider value={{ dataProvider: data }}>
                 <ModalProvider>
                     <IconProvider library={regularIcons}>
-                        <InputProvider>
-                            <TextEditor 
-                                placeholder={"Add an argument"}
-                                onSubmit={handleSubmit}
-                                onActivation={() => null}
-                                shortBar={true}
-                                uid={"6756"}
-                                hideSubmit
-                            />
-                        </InputProvider>
+                        <IdProvider>
+                            <InputProvider>
+                                <TextEditor 
+                                    placeholder={"Add an argument"}
+                                    onSubmit={handleSubmit}
+                                    onActivation={() => null}
+                                    shortBar={true}
+                                    hideSubmit
+                                />
+                            </InputProvider>
+                        </IdProvider>
                     </IconProvider>
                 </ModalProvider>
             </DataProviderContext.Provider>
@@ -140,16 +146,17 @@ export const TextEditorDisableRichText = () => {
             <DataProviderContext.Provider value={{ dataProvider: data }}>
                 <ModalProvider>
                     <IconProvider library={regularIcons}>
-                        <InputProvider>
-                            <TextEditor 
-                                placeholder={"Add an argument"}
-                                onSubmit={handleSubmit}
-                                onActivation={() => null}
-                                shortBar={true}
-                                uid={"6756"}
-                                disableRichText
-                            />
-                        </InputProvider>
+                        <IdProvider>
+                            <InputProvider>
+                                <TextEditor 
+                                    placeholder={"Add an argument"}
+                                    onSubmit={handleSubmit}
+                                    onActivation={() => null}
+                                    shortBar={true}
+                                    disableRichText
+                                />
+                            </InputProvider>
+                        </IdProvider>
                     </IconProvider>
                 </ModalProvider>
             </DataProviderContext.Provider>
@@ -157,22 +164,23 @@ export const TextEditorDisableRichText = () => {
     );
 };
 
-export const TextEditorShowStylesControls = () => {
+export const ActiveTextEditor = () => {
     return (
         <IntlProvider locale="en">
             <DataProviderContext.Provider value={{ dataProvider: data }}>
                 <ModalProvider>
                     <IconProvider library={regularIcons}>
-                        <InputProvider>
-                            <TextEditor 
-                                placeholder={"Add an argument"}
-                                onSubmit={handleSubmit}
-                                onActivation={() => null}
-                                shortBar={true}
-                                uid={"6756"}
-                                showStylesControls
-                            />
-                        </InputProvider>
+                        <IdProvider>
+                            <InputProvider>
+                                <TextEditor 
+                                    placeholder={"Add an argument"}
+                                    onSubmit={handleSubmit}
+                                    onActivation={() => null}
+                                    shortBar={true}
+                                    active
+                                />
+                            </InputProvider>
+                        </IdProvider> 
                     </IconProvider>
                 </ModalProvider>
             </DataProviderContext.Provider>

@@ -392,7 +392,27 @@
         "scope": "logora.debate",
         "version": "0.0.22",
         "mainFile": "index.js",
-        "rootDir": "src/components/input/text_editor"
+        "rootDir": "src/components/input/text_editor",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "devDependencies": {
+                        "@types/jest": "-",
+                        "@types/testing-library__jest-dom": "-",
+                        "@testing-library/dom": "9.0.0"
+                    },
+                    "dependencies": {
+                        "@lexical/clipboard": "0.8.1",
+                        "@lexical/selection": "0.8.1",
+                        "@lexical/markdown": "0.8.1"
+                    },
+                    "peerDependencies": {
+                        "react": "^18.0.0",
+                        "react-dom": "^18.0.0"
+                    }
+                }
+            }
+        }
     },
     "input/text_input": {
         "name": "input/text_input",

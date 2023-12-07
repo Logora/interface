@@ -27,14 +27,16 @@ import styles from './TextEditor.module.scss';
 import EditorTheme from './EditorTheme';
 import cx from "classnames";
 import PropTypes from "prop-types";
+import { useId } from "react-use-id-hook";
 
-export const TextEditor = ({ placeholder, onSubmit, sources, hideSubmit = false, hideSourceAction = false, onActivation, disabled = false, uid, handleChange, handleSourcesChange, shortBar = false, showStylesControls = false, maxLength, disableRichText = false, editorRef }) => {
+export const TextEditor = ({ placeholder, onSubmit, sources, hideSubmit = false, hideSourceAction = false, onActivation, disabled = false, handleChange, handleSourcesChange, shortBar = false, active = false, maxLength, disableRichText = false, editorRef }) => {
     const [isActive, setIsActive] = useState(false);
     const [editorText, setEditorText] = useState("");
     const [editorRichText, setEditorRichText] = useState("");
     const [editorSources, setEditorSources] = useState([]);
     const { showModal } = useModal();
     const intl = useIntl();
+    const uid = useId();
 
     useEffect(() => {
         if (sources && sources.length > 0) {
@@ -118,7 +120,7 @@ export const TextEditor = ({ placeholder, onSubmit, sources, hideSubmit = false,
             <LexicalErrorBoundary>
                 <LexicalComposer initialConfig={editorConfig}>
                     <div className={styles.editorContainer} onClick={setFocus}>
-                        <div className={cx(styles.editorInner, {[styles.editorInnerInactive]: !isActive && !showStylesControls })}>
+                        <div className={cx(styles.editorInner, {[styles.editorInnerInactive]: !isActive && !active })}>
                             <RichTextPlugin
                                 contentEditable={<ContentEditable className={cx(styles.editorInput, {[styles.editorInputInactive]: !isActive})} />}
                                 placeholder={placeholder && <Placeholder />}
@@ -130,7 +132,7 @@ export const TextEditor = ({ placeholder, onSubmit, sources, hideSubmit = false,
                                 shortBar={shortBar}
                                 onSubmit={handleSubmit}
                                 onAddSource={handleShowSourceModal}
-                                isActive={isActive || showStylesControls}
+                                isActive={isActive || active}
                             />
                             { isActive && maxLength && 
                                 <div className={styles.charactersCount}>
@@ -177,16 +179,14 @@ TextEditor.propTypes = {
     onActivation: PropTypes.func,
     /** If true, disabled input */
     disabled: PropTypes.bool,
-    /** Message's uid */
-    uid: PropTypes.string,
     /** Update text */
     handleChange: PropTypes.func,
     /** Update sources */
     handleSourcesChange: PropTypes.func,
     /** If true, less space between icons */
     shortBar: PropTypes.bool,
-    /** If true, show editor as active with rich text options */
-    showStylesControls: PropTypes.bool,
+    /** If true, show editor as active */
+    active: PropTypes.bool,
     /** Maximum number of characters */
     maxLength: PropTypes.number,
     /** If true, hide rich text buttons */
@@ -200,6 +200,6 @@ TextEditor.defaultProps = {
     hideSourceAction: false,
     disabled: false,
     shortBar: false,
-    showStylesControls: false,
+    active: false,
     disableRichText: false
 };

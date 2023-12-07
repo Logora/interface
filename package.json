@@ -28,12 +28,12 @@
   },
   "homepage": "https://github.com/Logora/ui#readme",
   "dependencies": {
-    "@lexical/headless": "^0.12.4",
-    "@lexical/react": "^0.12.4",
+    "@lexical/headless": "^0.12.5",
+    "@lexical/react": "^0.12.5",
     "axios": "^1.6.2",
     "classnames": "^2.3.2",
     "core-js": "^3.33.0",
-    "lexical": "^0.12.4",
+    "lexical": "^0.12.5",
     "prop-types": "^15.8.1",
     "react-copy-to-clipboard": "^5.1.0",
     "react-hot-toast": "^2.4.1",
@@ -42,6 +42,7 @@
     "react-oauth-popup": "^1.0.5",
     "react-router": "^5.3.4",
     "react-router-dom": "^5.3.4",
+    "react-use-id-hook": "^1.0.1",
     "use-onclickoutside": "^0.4.1",
     "webfontloader": "^1.6.28"
   },
@@ -52,8 +53,8 @@
     "@testing-library/user-event": "^14.4.3"
   },
   "peerDependencies": {
-    "react": "^17.0.0 || ^18.0.0",
-    "react-dom": "^17.0.0 || ^18.0.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
     "react-router": "^5.3.4",
     "react-router-dom": "^5.3.4"
   }
