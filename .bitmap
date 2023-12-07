@@ -61,7 +61,7 @@
     "auth/auth_initializer": {
         "name": "auth/auth_initializer",
         "scope": "logora.debate",
-        "version": "0.0.32",
+        "version": "0.0.33",
         "mainFile": "index.js",
         "rootDir": "src/components/auth/auth_initializer"
     },
@@ -166,7 +166,7 @@
     "debate/debate_box": {
         "name": "debate/debate_box",
         "scope": "logora.debate",
-        "version": "0.0.38",
+        "version": "0.0.39",
         "mainFile": "index.js",
         "rootDir": "src/components/debate/debate_box"
     },
@@ -306,7 +306,7 @@
     "icons/hero_icons": {
         "name": "icons/hero_icons",
         "scope": "logora.debate",
-        "version": "0.0.6",
+        "version": "0.0.7",
         "mainFile": "index.js",
         "rootDir": "src/components/icons/hero_icons"
     },
