@@ -1,0 +1,24 @@
+---
+description: A hook to report a content.
+labels: ['report']
+---
+
+A hook to report a content. It receive a reportableType, a reportableId and a modalTitle params.
+
+It's using useAuthenticationRequired hook.
+
+### Component usage
+```js
+import { useReportContent } from '@logora/debate.user_content.use_report_content';
+```
+```js
+const Component = () => {
+    const { reportContent } = useReportContent(reportableType, reportableId, modalTitle);
+
+	return (
+        <button onClick={reportContent}>
+            Report
+        </button>
+    )
+}
+```

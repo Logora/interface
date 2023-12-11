@@ -1,0 +1,54 @@
+---
+description: A modal and a hook to report some content.
+labels: ['modal', 'report']
+---
+A hook to report a content. It receive a reportableType, a reportableId and a modalTitle params.
+
+It's using useAuthenticationRequired hook.  
+
+A modal component that enables user to submit a report about some content.
+
+Two inputs are provided : one to define the object of the report, and one to give more details about the report.
+
+On submit, data is sent to the API defined through DataProvider.
+
+It must be inside [IconProvider](https://bit.cloud/logora/debate/icons/icon_provider).
+
+### Hook usage
+```js
+    import { useReportContent } from '@logora/debate.user_content.use_report_content';
+```
+```js
+const Component = () => {
+    const { reportContent } = useReportContent(reportableType, reportableId, modalTitle);
+
+	return (
+        <button onClick={reportContent}>
+            Report
+        </button>
+    )
+}
+```
+
+### Modal usage
+```js
+    import ReportModal from '@logora/debate.user_content.use_report_content';
+```
+```js
+    <IntlProvider locale="en">
+        <ModalProvider>
+            <ReportModal
+                reportableId={34}
+                reportableType={"argument"}
+                title={"Report this argument"}
+            />
+        </ModalProvider>
+    </IntlProvider>
+```
+
+### Properties
+| **Name**      | **Type** | **Required** | **Default** | **Description** |
+| ----------- | ----------- | :-----------: | ----------- | ----------- |
+| <font color='#4646c6'>reportableId</font> | <font color="#397300">string</font> | &check; | - | <font color="grey">*reported content identifier*</font> |
+| <font color='#4646c6'>reportableType</font> | <font color="#397300">string</font> | &check; | - | <font color="grey">*reported content type*</font> |
+| <font color='#4646c6'>title</font> | <font color="#397300">string</font> | &check; | - | <font color="grey">*modal title*</font> |

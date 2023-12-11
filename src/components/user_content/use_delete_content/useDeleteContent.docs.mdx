@@ -1,0 +1,34 @@
+---
+description: A hook to delete a content.
+labels: ['delete']
+---
+
+import { IntlProvider } from 'react-intl';
+
+A hook to a content. It receive a content, a contentType, a listId, a deleteTitle, a deleteQuestion and a deleteAlert params.
+
+It's using useAuthenticationRequired hook.
+
+It must be wrapped by [react-intl](https://formatjs.io/docs/getting-started/installation/)'s IntlProvider and by ToastProvider.
+
+### Component usage
+
+```js
+import { useDeleteContent } from '@logora/debate.user_content.use_delete_content';
+```
+
+```js
+const Component = () => {
+    const { deleteContent } = useDeleteContent(content, contentType, listId, deleteTitle, deleteQuestion, deleteAlert);
+
+	return (
+        <IntlProvider locale="en">
+            <ToastProvider>
+                <button onClick={() => deleteContent()}>
+                    <span>Delete</span>
+                </button>
+            </ToastProvider>
+        </IntlProvider>
+    )
+}
+```

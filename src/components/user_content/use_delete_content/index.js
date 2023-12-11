@@ -1,0 +1,1 @@
+export { useDeleteContent } from './useDeleteContent';
