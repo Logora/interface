@@ -92,7 +92,7 @@
     @include m(0, xs);
     @include ml(2, xs);
     @include p(1, xs);
-    margin-left: 16px;
+    list-style-type: decimal !important;
 }
 
 .editorListItem {
