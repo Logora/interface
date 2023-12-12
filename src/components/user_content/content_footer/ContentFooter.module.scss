@@ -1,0 +1,90 @@
+@import '~@logora/debate.styles.theme/_theme.scss';
+@import '~@logora/debate.styles.display/_display.scss';
+@import '~@logora/debate.styles.spacing/_spacing.scss';
+
+.container {
+    font-size: $font-size-small;
+    font-weight: $font-weight-normal;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: $spacer-lg;
+}
+
+.container svg {
+    fill-rule: evenodd;
+}
+
+.voteAction {
+    @include p(0, xs);
+}
+
+.moreAction {
+    cursor: pointer;
+    text-align: right;
+}
+
+.leftReply {
+    display: flex !important;
+    flex-grow: 2;
+}
+
+.replyAction {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer;
+    .replyText {
+        @include ml(2, xs);
+    }
+}
+
+.dropdownItem {
+    display: block;
+    width: 100%;
+    @include p(2, xs);
+    @include px(3, xs);
+    clear: both;
+    text-align: inherit; 
+    white-space: nowrap;
+    background-color: transparent; 
+    border: 0;
+    text-align: left;
+    font-size: $font-size-small;
+    &:hover{
+        background-color: rgba(0, 0, 0, 0.03);
+    }
+}
+
+@media(max-width: 768px) {
+    .container {
+        font-size: $font-size-extra-small;
+    }
+}
+
+.container[max-width~="1280px"] {
+    .replyAction {
+        font-size: $font-size-extra-small;
+    }
+}
+
+.position-1 {
+    color: $for-primary !important;
+    & svg {
+      fill: $for-primary !important;
+    }
+}
+
+.position-2 {
+    color: $against-primary !important;
+    & svg {
+      fill: $against-primary !important;
+    }
+}
+
+.position-3 {
+    color: $third-position-color-primary !important;
+    & svg {
+      fill: $third-position-color-primary !important;
+    }
+}

@@ -34,7 +34,7 @@ export const ReportModal = (props) => {
 
     return (
         <div>
-            <Modal data-vid={"report_modal"} title={props.title || intl.formatMessage({ id: "report.report_modal.title" })}>
+            <Modal data-vid={"report_modal"} title={props.title || intl.formatMessage({ id: "report.report_modal.title", defaultMessage: "Report content" })}>
                 <div className={cx(styles.reportModalBody)}>
                     {
                         {
