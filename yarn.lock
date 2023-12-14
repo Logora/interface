@@ -1132,6 +1132,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"content_footer-d4afad@workspace:src/components/user_content/content_footer":
+  version: 0.0.0-use.local
+  resolution: "content_footer-d4afad@workspace:src/components/user_content/content_footer"
+  languageName: unknown
+  linkType: soft
+
 "context_source_box-802378@workspace:src/components/source/context_source_box":
   version: 0.0.0-use.local
   resolution: "context_source_box-802378@workspace:src/components/source/context_source_box"
@@ -2710,6 +2716,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"use_delete_content-840af0@workspace:src/components/user_content/use_delete_content":
+  version: 0.0.0-use.local
+  resolution: "use_delete_content-840af0@workspace:src/components/user_content/use_delete_content"
+  languageName: unknown
+  linkType: soft
+
 "use_font_loader-9075d4@workspace:src/components/hooks/use_font_loader":
   version: 0.0.0-use.local
   resolution: "use_font_loader-9075d4@workspace:src/components/hooks/use_font_loader"
@@ -2731,6 +2743,12 @@ __metadata:
 "use_relative_time-24bd49@workspace:src/components/hooks/use_relative_time":
   version: 0.0.0-use.local
   resolution: "use_relative_time-24bd49@workspace:src/components/hooks/use_relative_time"
+  languageName: unknown
+  linkType: soft
+
+"use_report_content-9e76e9@workspace:src/components/user_content/use_report_content":
+  version: 0.0.0-use.local
+  resolution: "use_report_content-9e76e9@workspace:src/components/user_content/use_report_content"
   languageName: unknown
   linkType: soft
 

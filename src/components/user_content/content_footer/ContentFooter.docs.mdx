@@ -1,0 +1,41 @@
+---
+description: A component to display a footer.
+tags: ['argument', 'footer', 'proposal', 'user_content']
+---
+
+The ContentFooter component is used to display the footer of a user content, including vote, reply, share, report and delete actions.
+
+### Component usage
+
+```js
+import { ContentFooter } from '@logora/debate.user_content.content_footer';
+```
+
+```js
+const resource = {
+    id: 12,
+    author: {
+        id: 22,
+    },
+    created_at: "2023-11-13T15:35:35.323Z",
+    upvotes: 12,
+    total_upvotes: 12,
+    total_downvotes: 20,
+}
+
+<ContentFooter 
+    resource={resource}
+    showActions
+    shareButton
+    enableReply
+    voteButton
+    shareUrl={"https://test.com"}
+    shareTitle={"Share title"}
+    shareText={"Share text"}
+    voteableType={"Message"}
+    showShareText
+    showShareCode
+    shareCode={"</>"}
+    positionIndex={1}
+/>
+```
