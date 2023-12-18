@@ -92,7 +92,7 @@ export const DebateBox = ({ debate }) => {
                                     <div className={styles.debateParticipantItem}>
                                         <Link to={routes.debateShowLocation.toUrl({debateSlug: debate.slug})}>
                                             <div className={styles.participantsCountBox}>
-                                                +{debate.participants_count - 3}
+                                                +{intl.formatNumber(debate.participants_count - 3, { notation: 'compact', maximumFractionDigits: 1, roundingMode: "floor" })}
                                             </div>
                                         </Link>
                                     </div>
