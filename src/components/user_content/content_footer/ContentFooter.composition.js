@@ -11,6 +11,9 @@ import { dataProvider, DataProviderContext } from '@logora/debate.data.data_prov
 import { ToastProvider } from '@logora/debate.dialog.toast_provider';
 import { VoteProvider } from '@logora/debate.vote.vote_provider';
 import { faker } from '@faker-js/faker';
+import { VoteButton } from '@logora/debate.vote.vote_button';
+import { UpDownVoteBox } from '@logora/debate.vote.up_down_vote_box';
+import { ProgressBar } from "@logora/debate.progress.progress_bar";
 
 const vote = { 
     id: faker.datatype.number(),
@@ -68,16 +71,21 @@ export const DefaultContentFooter = () => {
                                                     showActions
                                                     shareButton
                                                     enableReply
-                                                    voteButton
                                                     shareUrl={"https://test.com"}
                                                     shareTitle={"Share title"}
                                                     shareText={"Share text"}
-                                                    voteableType={vote.voteable_type}
                                                     showShareText
                                                     showShareCode
                                                     shareCode={"</>"}
-                                                    positionIndex={1}
-                                                />
+                                                >
+                                                    <VoteButton
+                                                        voteableType={"Message"}
+                                                        voteableId={45}
+                                                        totalUpvote={10}
+                                                        totalDownvote={0}
+                                                        disabled={false}
+                                                    />
+                                                </ContentFooter>
                                             </VoteProvider>
                                         </ToastProvider>
                                     </ModalProvider>
@@ -108,16 +116,22 @@ export const ContentFooterShareModal = () => {
                                                     showActions
                                                     shareModal
                                                     enableReply
-                                                    voteButton
                                                     shareUrl={"https://test.com"}
                                                     shareTitle={"Share title"}
                                                     shareText={"Share text"}
-                                                    voteableType={vote.voteable_type}
                                                     showShareText
                                                     showShareCode
                                                     shareCode={"</>"}
                                                     shareModalTitle={"Share content"}
-                                                />
+                                                >
+                                                    <VoteButton
+                                                        voteableType={"Message"}
+                                                        voteableId={45}
+                                                        totalUpvote={10}
+                                                        totalDownvote={0}
+                                                        disabled={false}
+                                                    />
+                                                </ContentFooter>
                                             </VoteProvider>
                                         </ToastProvider>
                                     </ModalProvider>
@@ -147,7 +161,6 @@ export const ContentFooterUpDownVoteBox = () => {
                                                     resource={resource || props.resource}
                                                     showActions
                                                     shareModal
-                                                    enableReply
                                                     upDownVoteBox
                                                     shareUrl={"https://test.com"}
                                                     shareTitle={"Share title"}
@@ -157,7 +170,15 @@ export const ContentFooterUpDownVoteBox = () => {
                                                     showShareCode
                                                     shareCode={"</>"}
                                                     shareModalTitle={"Share content"}
-                                                />
+                                                >
+                                                    <UpDownVoteBox
+                                                        voteableType={"Message"}
+                                                        voteableId={45}
+                                                        totalUpvote={10}
+                                                        totalDownvote={5}
+                                                        disabled={false}
+                                                    />
+                                                </ContentFooter>
                                             </VoteProvider>
                                         </ToastProvider>
                                     </ModalProvider>
@@ -189,16 +210,22 @@ export const ContentFooterDisabled = () => {
                                                     showActions
                                                     shareModal
                                                     enableReply
-                                                    voteButton
                                                     shareUrl={"https://test.com"}
                                                     shareTitle={"Share title"}
                                                     shareText={"Share text"}
-                                                    voteableType={vote.voteable_type}
                                                     showShareText
                                                     showShareCode
                                                     shareCode={"</>"}
                                                     shareModalTitle={"Share content"}
-                                                />
+                                                >
+                                                    <VoteButton
+                                                        voteableType={"Message"}
+                                                        voteableId={45}
+                                                        totalUpvote={10}
+                                                        totalDownvote={0}
+                                                        disabled={true}
+                                                    />
+                                                </ContentFooter>
                                             </VoteProvider>
                                         </ToastProvider>
                                     </ModalProvider>
@@ -228,15 +255,21 @@ export const ContentFooterWithoutReply = () => {
                                                     resource={resource || props.resource}
                                                     showActions
                                                     shareButton
-                                                    voteButton
                                                     shareUrl={"https://test.com"}
                                                     shareTitle={"Share title"}
                                                     shareText={"Share text"}
-                                                    voteableType={vote.voteable_type}
                                                     showShareText
                                                     showShareCode
                                                     shareCode={"</>"}
-                                                />
+                                                >
+                                                    <VoteButton
+                                                        voteableType={"Message"}
+                                                        voteableId={45}
+                                                        totalUpvote={10}
+                                                        totalDownvote={0}
+                                                        disabled={false}
+                                                    />
+                                                </ContentFooter>
                                             </VoteProvider>
                                         </ToastProvider>
                                     </ModalProvider>
@@ -266,18 +299,153 @@ export const ContentFooterLeftReply = () => {
                                                     resource={resource || props.resource}
                                                     showActions
                                                     shareModal
-                                                    voteButton
                                                     shareUrl={"https://test.com"}
                                                     shareTitle={"Share title"}
                                                     shareText={"Share text"}
-                                                    voteableType={vote.voteable_type}
                                                     showShareText
                                                     showShareCode
                                                     shareCode={"</>"}
                                                     shareModalTitle={"Share content"}
                                                     enableReply
                                                     leftReply
-                                                />
+                                                >
+                                                    <VoteButton
+                                                        voteableType={"Message"}
+                                                        voteableId={45}
+                                                        totalUpvote={10}
+                                                        totalDownvote={0}
+                                                        disabled={false}
+                                                    />
+                                                </ContentFooter>
+                                            </VoteProvider>
+                                        </ToastProvider>
+                                    </ModalProvider>
+                                </IconProvider>
+                            </ListProvider>
+                        </AuthContext.Provider>
+                    </DataProviderContext.Provider>
+                </ConfigProvider>
+            </IntlProvider>
+        </div>
+    );
+};
+
+export const ContentFooterProgressBar = () => {
+    return (
+        <div style={{ width: "400px", height: "60px" }}>
+            <IntlProvider locale="en">
+                <ConfigProvider config={{ auth: { disableLoginModal: true } }}>
+                    <DataProviderContext.Provider value={{ dataProvider: data }}>
+                        <AuthContext.Provider value={{ currentUser: currentUser, isLoggedIn: true }}>
+                            <ListProvider>
+                                <IconProvider library={regularIcons}>
+                                    <ModalProvider>
+                                        <ToastProvider>
+                                            <VoteProvider>
+                                                <ContentFooter 
+                                                    resource={resource || props.resource}
+                                                    showActions
+                                                >
+                                                    <div>25/30 supports</div>
+                                                    <ProgressBar 
+                                                        progress={25} 
+                                                        goal={30}
+                                                    >
+                                                        Nice progress !
+                                                    </ProgressBar>
+                                                </ContentFooter>
+                                            </VoteProvider>
+                                        </ToastProvider>
+                                    </ModalProvider>
+                                </IconProvider>
+                            </ListProvider>
+                        </AuthContext.Provider>
+                    </DataProviderContext.Provider>
+                </ConfigProvider>
+            </IntlProvider>
+        </div>
+    );
+};
+
+export const ContentFooterWithoutEdition = () => {
+    return (
+        <div style={{ width: "400px", height: "60px" }}>
+            <IntlProvider locale="en">
+                <ConfigProvider config={{ auth: { disableLoginModal: true } }}>
+                    <DataProviderContext.Provider value={{ dataProvider: data }}>
+                        <AuthContext.Provider value={{ currentUser: currentUser, isLoggedIn: true }}>
+                            <ListProvider>
+                                <IconProvider library={regularIcons}>
+                                    <ModalProvider>
+                                        <ToastProvider>
+                                            <VoteProvider>
+                                                <ContentFooter 
+                                                    resource={resource || props.resource}
+                                                    showActions
+                                                    shareButton
+                                                    enableReply
+                                                    shareUrl={"https://test.com"}
+                                                    shareTitle={"Share title"}
+                                                    shareText={"Share text"}
+                                                    showShareText
+                                                    showShareCode
+                                                    shareCode={"</>"}
+                                                    enableEdition={false}
+                                                >
+                                                    <VoteButton
+                                                        voteableType={"Message"}
+                                                        voteableId={45}
+                                                        totalUpvote={10}
+                                                        totalDownvote={0}
+                                                        disabled={false}
+                                                    />
+                                                </ContentFooter>
+                                            </VoteProvider>
+                                        </ToastProvider>
+                                    </ModalProvider>
+                                </IconProvider>
+                            </ListProvider>
+                        </AuthContext.Provider>
+                    </DataProviderContext.Provider>
+                </ConfigProvider>
+            </IntlProvider>
+        </div>
+    );
+};
+
+export const ContentFooterWithoutDeletion = () => {
+    return (
+        <div style={{ width: "400px", height: "60px" }}>
+            <IntlProvider locale="en">
+                <ConfigProvider config={{ auth: { disableLoginModal: true } }}>
+                    <DataProviderContext.Provider value={{ dataProvider: data }}>
+                        <AuthContext.Provider value={{ currentUser: currentUser, isLoggedIn: true }}>
+                            <ListProvider>
+                                <IconProvider library={regularIcons}>
+                                    <ModalProvider>
+                                        <ToastProvider>
+                                            <VoteProvider>
+                                                <ContentFooter 
+                                                    resource={resource || props.resource}
+                                                    showActions
+                                                    shareButton
+                                                    enableReply
+                                                    shareUrl={"https://test.com"}
+                                                    shareTitle={"Share title"}
+                                                    shareText={"Share text"}
+                                                    showShareText
+                                                    showShareCode
+                                                    shareCode={"</>"}
+                                                    enableDeletion={false}
+                                                >
+                                                    <VoteButton
+                                                        voteableType={"Message"}
+                                                        voteableId={45}
+                                                        totalUpvote={10}
+                                                        totalDownvote={0}
+                                                        disabled={false}
+                                                    />
+                                                </ContentFooter>
                                             </VoteProvider>
                                         </ToastProvider>
                                     </ModalProvider>

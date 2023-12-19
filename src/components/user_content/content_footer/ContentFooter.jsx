@@ -7,10 +7,8 @@ import { useDeleteContent } from "@logora/debate.user_content.use_delete_content
 import { useIntl } from "react-intl";
 import { useModal } from '@logora/debate.dialog.modal';
 import { Dropdown } from '@logora/debate.dialog.dropdown';
-import { VoteButton } from '@logora/debate.vote.vote_button';
 import { Icon } from '@logora/debate.icons.icon';
 import { ShareButton } from '@logora/debate.share.share_button';
-import { UpDownVoteBox } from "@logora/debate.vote.up_down_vote_box";
 const ShareModal = lazy(() => import('@logora/debate.share.share_modal'));
 import cx from "classnames";
 import styles from "./ContentFooter.module.scss";
@@ -22,13 +20,10 @@ export const ContentFooter = ({ resource,
     deleteListId, 
     disabled = false, 
     leftReply, 
-    positionIndex, 
+    children, 
     enableReply, 
     handleReplyTo, 
     showActions = true, 
-    voteButton, 
-    upDownVoteBox, 
-    voteableType, 
     shareButton, 
     shareModal,
     shareUrl,
@@ -37,7 +32,9 @@ export const ContentFooter = ({ resource,
     shareModalTitle,
     showShareCode,
     shareCode,
-    showShareText }) => {
+    showShareText,
+    enableEdition = true,
+    enableDeletion = true }) => {
 	const intl = useIntl();
 	const config = useConfig();
 	const { currentUser } = useAuth();
@@ -80,28 +77,10 @@ export const ContentFooter = ({ resource,
 	return (
 		<div className={styles.container}>
 			<div className={styles.voteAction} data-tid={"action_vote_argument"}>
-                { voteButton &&
-                    <VoteButton
-                        voteableType={voteableType}
-                        voteableId={resource.id}
-                        totalUpvote={resource.upvotes}
-                        totalDownvote={0}
-                        activeClassName={styles[`position-${positionIndex}`]}
-                        disabled={disabled}
-                    />
-                }
-                { upDownVoteBox &&
-                    <UpDownVoteBox 
-                        voteableType={voteableType} 
-                        voteableId={resource.id} 
-                        totalUpvote={resource.total_upvotes} 
-                        totalDownvote={resource.total_downvotes} 
-                        disabled={disabled} 
-                    />
-                }
+                { children }
 			</div>
 			{ !disabled && enableReply &&
-				<div className={cx({[styles.leftReply]: leftReply})} data-tid={"action_reply_argument"}>
+				<div className={cx({[styles.leftReply]: leftReply})} data-tid={"action_reply_argument"} data-testid="reply-button">
 					<div
 						className={styles.replyAction}
 						tabIndex='0'
@@ -126,22 +105,24 @@ export const ContentFooter = ({ resource,
 			{ !disabled && showActions && 
 				<div className={styles.moreAction} title={intl.formatMessage({ id: "alt.more", defaultMessage: "More options" })}>
 					<Dropdown horizontalPosition={'right'}>
-						<Icon name="ellipsis" width={25} height={25} />
+						<Icon name="ellipsis" width={25} height={25} data-testid="dropdown" />
 						<div>
-							{currentUserIsAuthor() &&
+							{ currentUserIsAuthor() &&
 								<>
-									{ isEditable() &&
+									{ enableEdition && isEditable() &&
 										<div data-tid={"action_edit_argument"} className={styles.dropdownItem} tabIndex='0' onClick={handleEdit}>
                                             { intl.formatMessage({ id: "action.", defaultMessage: "Update" }) }
 										</div>
 									}
-									<div data-tid={"action_delete_argument"} className={styles.dropdownItem} tabIndex='0' onClick={deleteContent}>
-                                        { intl.formatMessage({ id: "action.delete", defaultMessage: "Delete" }) }
-									</div>
+                                    { enableDeletion &&
+                                        <div data-tid={"action_delete_argument"} className={styles.dropdownItem} tabIndex='0' onClick={deleteContent}>
+                                            { intl.formatMessage({ id: "action.delete", defaultMessage: "Delete" }) }
+                                        </div>
+                                    }
 								</>
 							}
 							{ currentUser.is_banned !== true &&
-								<div data-tid={"action_report_argument"} className={styles.dropdownItem} onClick={reportContent}>
+								<div data-tid={"action_report_argument"} className={styles.dropdownItem} onClick={reportContent} data-testid="report-content">
                                     { intl.formatMessage({ id: "action.report", defaultMessage: "Report" }) }
 								</div>
 							}
@@ -171,20 +152,12 @@ ContentFooter.propTypes = {
     disabled: PropTypes.bool, 
     /** If true, the reply button will be as far to the left as possible and the elements will no longer be in space-between */
     leftReply: PropTypes.bool, 
-    /** Changes the colour of the voting buttons according to position */
-    positionIndex: PropTypes.number, 
     /** Show reply button */
     enableReply: PropTypes.bool, 
     /** Callback function */
     handleReplyTo: PropTypes.func, 
     /** If true, show dropdown actions */
     showActions: PropTypes.bool, 
-    /** If true, show voteButton action */
-    voteButton: PropTypes.bool, 
-    /** If true, show upDownVoteBox action */
-    upDownVoteBox: PropTypes.bool, 
-    /** Voteable type */
-    voteableType: PropTypes.string, 
     /** If true, show share button action */
     shareButton: PropTypes.bool, 
     /** If true, show share modal action in the dropdown */
@@ -202,10 +175,18 @@ ContentFooter.propTypes = {
     /** Code to share */
     shareCode: PropTypes.string,
     /** If true, show "Share" text next to icon */
-    showShareText: PropTypes.bool
+    showShareText: PropTypes.bool,
+    /** Item to be displayed on the left */
+	children: PropTypes.node,
+    /** If true, content can be edited */
+	enableEdition: PropTypes.bool,
+    /** If true, content can be deleted */
+	enableDeletion: PropTypes.bool,
 };
 
 ContentFooter.defaultProps = {
     disabled: false, 
     showActions: true,
+    enableEdition: true,
+    enableDeletion: true
 };
