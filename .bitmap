@@ -656,7 +656,7 @@
     "user_content/content_footer": {
         "name": "user_content/content_footer",
         "scope": "logora.debate",
-        "version": "0.0.4",
+        "version": "0.0.5",
         "mainFile": "index.js",
         "rootDir": "src/components/user_content/content_footer"
     },
