@@ -89,7 +89,7 @@ export const ContentFooter = ({ resource,
                         onClick={handleReplyTo}
                     >
                         <Icon name="reply" data-tid={"action_reply_argument"} height={17} width={17} />
-                        <span className={styles.replyText}>{intl.formatMessage({ id:"action.reply", defaultMessage: "Reply" })}</span>
+                        <span className={styles.replyText}>{intl.formatMessage({ id:"user_content.content_footer.reply", defaultMessage: "Reply" })}</span>
                     </div>
                 </div>
             }
@@ -105,7 +105,7 @@ export const ContentFooter = ({ resource,
                 />
             }
 			{ !disabled && showActions && 
-				<div className={styles.moreAction} title={intl.formatMessage({ id: "alt.more", defaultMessage: "More options" })}>
+				<div className={styles.moreAction} title={intl.formatMessage({ id: "user_content.content_footer.more", defaultMessage: "More options" })}>
 					<Dropdown horizontalPosition={'right'}>
 						<Icon name="ellipsis" width={25} height={25} data-testid="dropdown" />
 						<div>
@@ -113,24 +113,24 @@ export const ContentFooter = ({ resource,
 								<>
 									{ enableEdition && isEditable() &&
 										<div data-tid={"action_edit_argument"} className={styles.dropdownItem} tabIndex='0' onClick={handleEdit}>
-                                            { intl.formatMessage({ id: "action.", defaultMessage: "Update" }) }
+                                            { intl.formatMessage({ id: "user_content.content_footer.update", defaultMessage: "Update" }) }
 										</div>
 									}
                                     { enableDeletion &&
                                         <div data-tid={"action_delete_argument"} className={styles.dropdownItem} tabIndex='0' onClick={deleteContent}>
-                                            { intl.formatMessage({ id: "action.delete", defaultMessage: "Delete" }) }
+                                            { intl.formatMessage({ id: "user_content.content_footer.delete", defaultMessage: "Delete" }) }
                                         </div>
                                     }
 								</>
 							}
 							{ currentUser.is_banned !== true &&
 								<div data-tid={"action_report_argument"} className={styles.dropdownItem} onClick={reportContent} data-testid="report-content">
-                                    { intl.formatMessage({ id: "action.report", defaultMessage: "Report" }) }
+                                    { intl.formatMessage({ id: "user_content.content_footer.report", defaultMessage: "Report" }) }
 								</div>
 							}
                             { shareModal &&
                                 <div data-tid={"action_share_argument"} className={styles.dropdownItem} onClick={handleShowShareModal}>
-                                    { intl.formatMessage({ id: "action.share", defaultMessage: "Share" }) }
+                                    { intl.formatMessage({ id: "user_content.content_footer.share", defaultMessage: "Share" }) }
                                 </div>
                             }
 						</div>
