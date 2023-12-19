@@ -50,7 +50,8 @@
     "@faker-js/faker": "^7.6.0",
     "@testing-library/dom": "^9.2.0",
     "@testing-library/react": "^14.0.0",
-    "@testing-library/user-event": "^14.4.3"
+    "@testing-library/user-event": "^14.4.3",
+    "sass": "^1.69.5"
   },
   "peerDependencies": {
     "react": "^17.0.0 || ^18.0.0",
