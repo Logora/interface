@@ -34,7 +34,9 @@ export const ContentFooter = ({ resource,
     shareCode,
     showShareText,
     enableEdition = true,
-    enableDeletion = true }) => {
+    enableDeletion = true,
+    containerClassNames,
+    voteActionClassNames }) => {
 	const intl = useIntl();
 	const config = useConfig();
 	const { currentUser } = useAuth();
@@ -75,33 +77,33 @@ export const ContentFooter = ({ resource,
     }
 
 	return (
-		<div className={styles.container}>
-			<div className={styles.voteAction} data-tid={"action_vote_argument"}>
+		<div className={cx(styles.container, containerClassNames)}>
+            <div className={cx(styles.voteAction, voteActionClassNames)} data-tid={"action_vote_argument"}>
                 { children }
-			</div>
-			{ !disabled && enableReply &&
-				<div className={cx({[styles.leftReply]: leftReply})} data-tid={"action_reply_argument"} data-testid="reply-button">
-					<div
-						className={styles.replyAction}
-						tabIndex='0'
-						onClick={handleReplyTo}
-					>
-						<Icon name="reply" data-tid={"action_reply_argument"} height={17} width={17} />
-						<span className={styles.replyText}>{intl.formatMessage({ id:"action.reply", defaultMessage: "Reply" })}</span>
-					</div>
-				</div>
-			}
-			{ shareButton && 
-				<ShareButton 
-					shareUrl={shareUrl} 
-					shareTitle={shareTitle}
-					shareText={shareText}
-					showShareCode={showShareCode}
-					shareCode={shareCode}
-					showText={showShareText}
-					iconSize={17}
-				/>
-			}
+            </div>
+            { !disabled && enableReply &&
+                <div className={cx({[styles.leftReply]: leftReply})} data-tid={"action_reply_argument"} data-testid="reply-button">
+                    <div
+                        className={styles.replyAction}
+                        tabIndex='0'
+                        onClick={handleReplyTo}
+                    >
+                        <Icon name="reply" data-tid={"action_reply_argument"} height={17} width={17} />
+                        <span className={styles.replyText}>{intl.formatMessage({ id:"action.reply", defaultMessage: "Reply" })}</span>
+                    </div>
+                </div>
+            }
+            { shareButton && 
+                <ShareButton 
+                    shareUrl={shareUrl} 
+                    shareTitle={shareTitle}
+                    shareText={shareText}
+                    showShareCode={showShareCode}
+                    shareCode={shareCode}
+                    showText={showShareText}
+                    iconSize={17}
+                />
+            }
 			{ !disabled && showActions && 
 				<div className={styles.moreAction} title={intl.formatMessage({ id: "alt.more", defaultMessage: "More options" })}>
 					<Dropdown horizontalPosition={'right'}>
@@ -182,6 +184,10 @@ ContentFooter.propTypes = {
 	enableEdition: PropTypes.bool,
     /** If true, content can be deleted */
 	enableDeletion: PropTypes.bool,
+    /** Custom style for container */
+	containerClassNames: PropTypes.string,
+    /** Custom style for children container */
+    voteActionClassNames: PropTypes.string,
 };
 
 ContentFooter.defaultProps = {
