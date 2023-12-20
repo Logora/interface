@@ -27,16 +27,16 @@ const routes = {
 
 const tag = faker.word.noun(5);
 
-export const DefaultContentHeader = () => {
+export const DefaultContentHeader = (props) => {
     return (
         <BrowserRouter>
             <ConfigProvider routes={{ ...routes }}>
                 <IconProvider library={regularIcons}>
                     <IntlProvider locale="en">
                         <ContentHeader
-                            author={author}
-                            tag={tag}
-                            date={date}
+                            author={props.author || author}
+                            tag={props.tag || tag}
+                            date={props.date || date}
                             positionIndex={1}
                             oneLine={false}
                             disableLinks={false}
@@ -48,15 +48,15 @@ export const DefaultContentHeader = () => {
     );
 };
 
-export const ContentHeaderWithoutTag = () => {
+export const ContentHeaderWithoutTag = (props) => {
     return (
         <BrowserRouter>
             <ConfigProvider routes={{ ...routes }}>
                 <IconProvider library={regularIcons}>
                     <IntlProvider locale="en">
                         <ContentHeader
-                            author={author}
-                            date={date}
+                            author={props.author || author}
+                            date={props.date || date}
                             positionIndex={1}
                             oneLine={false}
                         />
@@ -67,15 +67,15 @@ export const ContentHeaderWithoutTag = () => {
     );
 };
 
-export const ContentHeaderWithoutDate = () => {
+export const ContentHeaderWithoutDate = (props) => {
     return (
         <BrowserRouter>
             <ConfigProvider routes={{ ...routes }}>
                 <IconProvider library={regularIcons}>
                     <IntlProvider locale="en">
                         <ContentHeader
-                            author={author}
-                            tag={tag}
+                            author={props.author || author}
+                            tag={props.tag || tag}
                             positionIndex={1}
                             oneLine={false}
                         />
@@ -86,17 +86,17 @@ export const ContentHeaderWithoutDate = () => {
     );
   };
   
-export const ContentHeaderWithOneLine = () => {
+export const ContentHeaderWithOneLine = (props) => {
     return (
         <BrowserRouter>
             <ConfigProvider routes={{ ...routes }}>
                 <IconProvider library={regularIcons}>
                     <IntlProvider locale="en">
                         <ContentHeader
-                            author={author}
-                            tag={tag}
+                            author={props.author || author}
+                            tag={props.tag || tag}
                             positionIndex={1}
-                            date={date}
+                            date={props.date || date}
                             oneLine={true}
                             disableLinks={false}
                         />
@@ -107,16 +107,16 @@ export const ContentHeaderWithOneLine = () => {
     );
 };
 
-export const ContentHeaderWithoutLinks = () => {
+export const ContentHeaderWithoutLinks = (props) => {
     return (
         <BrowserRouter>
             <ConfigProvider routes={{ ...routes }}>
                 <IconProvider library={regularIcons}>
                     <IntlProvider locale="en">
                         <ContentHeader
-                            author={author}
-                            tag={tag}
-                            date={date}
+                            author={props.author || author}
+                            tag={props.tag || tag}
+                            date={props.date || date}
                             oneLine={false}
                             disableLinks={true}
                         />
@@ -127,16 +127,16 @@ export const ContentHeaderWithoutLinks = () => {
     );
 };
   
-export const ContentHeaderSelected = () => {
+export const ContentHeaderSelected = (props) => {
     return (
         <BrowserRouter>
             <ConfigProvider routes={{ ...routes }}>
                 <IconProvider library={regularIcons}>
                     <IntlProvider locale="en">
                         <ContentHeader
-                            author={author}
-                            tag={tag}
-                            date={date}
+                            author={props.author || author}
+                            tag={props.tag || tag}
+                            date={props.date || date}
                             selectedContent
                         />
                     </IntlProvider>

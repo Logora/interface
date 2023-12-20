@@ -67,7 +67,7 @@ export const DefaultContentFooter = () => {
                                         <ToastProvider>
                                             <VoteProvider>
                                                 <ContentFooter 
-                                                    resource={resource || props.resource}
+                                                    resource={resource}
                                                     showActions
                                                     shareButton
                                                     enableReply
@@ -112,7 +112,7 @@ export const ContentFooterShareModal = () => {
                                         <ToastProvider>
                                             <VoteProvider>
                                                 <ContentFooter 
-                                                    resource={resource || props.resource}
+                                                    resource={resource}
                                                     showActions
                                                     shareModal
                                                     enableReply
@@ -158,7 +158,7 @@ export const ContentFooterUpDownVoteBox = () => {
                                         <ToastProvider>
                                             <VoteProvider>
                                                 <ContentFooter 
-                                                    resource={resource || props.resource}
+                                                    resource={resource}
                                                     showActions
                                                     shareModal
                                                     upDownVoteBox
@@ -205,7 +205,7 @@ export const ContentFooterDisabled = () => {
                                         <ToastProvider>
                                             <VoteProvider>
                                                 <ContentFooter 
-                                                    resource={resource || props.resource}
+                                                    resource={resource}
                                                     disabled
                                                     showActions
                                                     shareModal
@@ -252,7 +252,7 @@ export const ContentFooterWithoutReply = () => {
                                         <ToastProvider>
                                             <VoteProvider>
                                                 <ContentFooter 
-                                                    resource={resource || props.resource}
+                                                    resource={resource}
                                                     showActions
                                                     shareButton
                                                     shareUrl={"https://test.com"}
@@ -296,7 +296,7 @@ export const ContentFooterLeftReply = () => {
                                         <ToastProvider>
                                             <VoteProvider>
                                                 <ContentFooter 
-                                                    resource={resource || props.resource}
+                                                    resource={resource}
                                                     showActions
                                                     shareModal
                                                     shareUrl={"https://test.com"}
@@ -343,7 +343,7 @@ export const ContentFooterProgressBar = () => {
                                         <ToastProvider>
                                             <VoteProvider>
                                                 <ContentFooter 
-                                                    resource={resource || props.resource}
+                                                    resource={resource}
                                                     showActions
                                                 >
                                                     <div>25/30 supports</div>
@@ -380,7 +380,7 @@ export const ContentFooterWithoutEdition = () => {
                                         <ToastProvider>
                                             <VoteProvider>
                                                 <ContentFooter 
-                                                    resource={resource || props.resource}
+                                                    resource={resource}
                                                     showActions
                                                     shareButton
                                                     enableReply
@@ -426,7 +426,7 @@ export const ContentFooterWithoutDeletion = () => {
                                         <ToastProvider>
                                             <VoteProvider>
                                                 <ContentFooter 
-                                                    resource={resource || props.resource}
+                                                    resource={resource}
                                                     showActions
                                                     shareButton
                                                     enableReply

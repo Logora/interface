@@ -8,6 +8,7 @@ import { Location } from '@logora/debate.util.location';
 import { IconProvider } from '@logora/debate.icons.icon_provider';
 import * as regularIcons from '@logora/debate.icons.regular_icons';
 import { faker } from '@faker-js/faker';
+import { DefaultContentHeader, ContentHeaderWithoutTag, ContentHeaderWithoutDate, ContentHeaderWithOneLine, ContentHeaderWithoutLinks, ContentHeaderSelected } from './ContentHeader.composition';
 
 const author = {
     image_url: 'https://via.placeholder.com/150',
@@ -36,15 +37,7 @@ describe('ContentHeader component', () => {
 
     it('should render with correct data', () => {
         const { getByText, getByAltText, getAllByRole } = render(
-            <BrowserRouter>
-                <ConfigProvider routes={{ ...routes }}>
-                    <IconProvider library={regularIcons}>
-                        <IntlProvider locale="en">
-                            <ContentHeader author={author} tag={tag} date={date} />
-                        </IntlProvider>
-                    </IconProvider>
-                </ConfigProvider>
-            </BrowserRouter>
+            <DefaultContentHeader author={author} tag={tag} date={date} />
         );
 
         const avatarImg = getByAltText(author.full_name + "'s profile picture");
@@ -70,33 +63,17 @@ describe('ContentHeader component', () => {
     });
 
     it('should not render tag if not present', () => {
-        const { getByText, queryByText } =render(
-            <BrowserRouter>
-                <ConfigProvider routes={{ ...routes }}>
-                    <IconProvider library={regularIcons}>
-                        <IntlProvider locale="en">
-                            <ContentHeader author={author} date={date} />
-                        </IntlProvider>
-                    </IconProvider>
-                </ConfigProvider>
-            </BrowserRouter>
+        const { getByText, queryByText } = render(
+            <ContentHeaderWithoutTag author={author} date={date} />
         );
-        
+
         expect(getByText(author.full_name)).toBeInTheDocument();
         expect(queryByText(tag)).not.toBeInTheDocument();
     });
 
     it('should not render date if not present', () => {
-        const { getByText, queryByTestId } =render(
-            <BrowserRouter>
-                <ConfigProvider routes={{ ...routes }}>
-                    <IconProvider library={regularIcons}>
-                        <IntlProvider locale="en">
-                            <ContentHeader author={author} tag={tag} />
-                        </IntlProvider>
-                    </IconProvider>
-                </ConfigProvider>
-            </BrowserRouter>
+        const { getByText, queryByTestId } = render(
+            <ContentHeaderWithoutDate author={author} tag={tag} />
         );
 
         expect(getByText(author.full_name)).toBeInTheDocument();
@@ -105,15 +82,7 @@ describe('ContentHeader component', () => {
   
     it('should render without links if disabledLinks is true', () => {
         const { getByText, queryByRole } = render(
-            <BrowserRouter>
-                <ConfigProvider routes={{ ...routes }}>
-                    <IconProvider library={regularIcons}>
-                        <IntlProvider locale="en">
-                            <ContentHeader author={author} tag={tag} date={date} disableLinks />
-                        </IntlProvider>
-                    </IconProvider>
-                </ConfigProvider>
-            </BrowserRouter>
+            <ContentHeaderWithoutLinks author={author} tag={tag} date={date} disableLinks />
         );
 
         expect(getByText(author.full_name)).toBeInTheDocument();
@@ -122,15 +91,7 @@ describe('ContentHeader component', () => {
 
     it('should render with selected div if selectedContent is true', () => {
         const { getByText } = render(
-            <BrowserRouter>
-                <ConfigProvider routes={{ ...routes }}>
-                    <IconProvider library={regularIcons}>
-                        <IntlProvider locale="en">
-                            <ContentHeader author={author} tag={tag} date={date} selectedContent />
-                        </IntlProvider>
-                    </IconProvider>
-                </ConfigProvider>
-            </BrowserRouter>
+            <ContentHeaderSelected author={author} tag={tag} date={date} selectedContent />
         );
 
         expect(getByText('Selected by editor')).toBeInTheDocument();
@@ -138,15 +99,7 @@ describe('ContentHeader component', () => {
 
     it('should render on one line if oneLine is true', () => {
         const { queryByText, getByText, queryByTestId } = render(
-            <BrowserRouter>
-                <ConfigProvider routes={{ ...routes }}>
-                    <IconProvider library={regularIcons}>
-                        <IntlProvider locale="en">
-                            <ContentHeader author={author} tag={tag} date={date} oneLine />
-                        </IntlProvider>
-                    </IconProvider>
-                </ConfigProvider>
-            </BrowserRouter>
+            <ContentHeaderWithOneLine author={author} tag={tag} date={date} oneLine />
         );
 
         expect(getByText(author.full_name)).toBeInTheDocument();
