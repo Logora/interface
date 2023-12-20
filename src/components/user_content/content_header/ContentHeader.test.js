@@ -1,12 +1,5 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import { ContentHeader } from './ContentHeader';
-import { BrowserRouter } from 'react-router-dom';
-import { ConfigProvider } from '@logora/debate.data.config_provider';
-import { IntlProvider } from 'react-intl';
-import { Location } from '@logora/debate.util.location';
-import { IconProvider } from '@logora/debate.icons.icon_provider';
-import * as regularIcons from '@logora/debate.icons.regular_icons';
 import { faker } from '@faker-js/faker';
 import { DefaultContentHeader, ContentHeaderWithoutTag, ContentHeaderWithoutDate, ContentHeaderWithOneLine, ContentHeaderWithoutLinks, ContentHeaderSelected } from './ContentHeader.composition';
 
@@ -23,12 +16,6 @@ const author = {
 
 const date = faker.date.past(2);
 const tag = faker.name.jobType();
-
-let UserShowLocation = new Location('espace-debat/user/:userSlug', { userSlug: "" })
-
-const routes = {
-    userShowLocation: UserShowLocation,
-}
 
 describe('ContentHeader component', () => {
     beforeEach(() => {
