@@ -67,24 +67,3 @@
         font-size: $font-size-extra-small;
     }
 }
-
-.position-1 {
-    color: $for-primary !important;
-    & svg {
-      fill: $for-primary !important;
-    }
-}
-
-.position-2 {
-    color: $against-primary !important;
-    & svg {
-      fill: $against-primary !important;
-    }
-}
-
-.position-3 {
-    color: $third-position-color-primary !important;
-    & svg {
-      fill: $third-position-color-primary !important;
-    }
-}

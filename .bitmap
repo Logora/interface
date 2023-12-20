@@ -660,6 +660,14 @@
         "mainFile": "index.js",
         "rootDir": "src/components/user_content/content_footer"
     },
+    "user_content/content_header": {
+        "name": "user_content/content_header",
+        "scope": "",
+        "version": "",
+        "defaultScope": "logora.debate",
+        "mainFile": "index.js",
+        "rootDir": "src/components/user_content/content_header"
+    },
     "user_content/use_delete_content": {
         "name": "user_content/use_delete_content",
         "scope": "logora.debate",

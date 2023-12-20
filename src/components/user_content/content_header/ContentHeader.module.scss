@@ -1,0 +1,74 @@
+@import '~@logora/debate.styles.theme/_theme.scss';
+@import "~@logora/debate.styles.display/_display.scss";
+@import "~@logora/debate.styles.spacing/_spacing.scss";
+
+.contentHeaderContainer {
+	display: flex !important;
+	flex-direction: column !important;
+	gap: $spacer;
+}
+
+.contentHeader {
+	display: flex !important;
+	flex-direction: row !important;
+	align-items: flex-start !important;
+	font-size: $font-size-normal;
+}
+
+.contentHeaderAuthorBox {
+	display: flex !important;
+	flex-direction: row !important;
+	align-items: center !important;
+	padding: 0 !important;
+	overflow: hidden;
+	flex: 1;
+}
+
+.contentHeaderDate {
+	color: $text-secondary;
+	font-size: $font-size-extra-small;
+	font-weight: $font-weight-normal;
+	text-align: right;
+	@include pt(2, xs);
+}
+
+.contentHeaderRight {
+	display: flex !important;
+	flex-direction: column !important;
+	align-items: flex-end !important;
+	justify-content: center !important;
+	padding: 0 !important;
+	width: max-content;
+	margin-left: auto;
+}
+
+.contentHeaderTagBox {
+	font-weight: $font-weight-bold;
+	display: flex !important;
+	align-items: center !important;
+	justify-content: flex-end !important;
+	border-radius: $box-border-radius;
+	background-color: $call-primary;
+}
+
+.contentHeaderTag {
+	font-size: $font-size-extra-small;
+	color: $text-light;
+	@include line-clamp(2);
+	max-height: 3.4em;
+	@include px(2.5, xs);
+	@include py(2, xs);
+}
+
+.selectedContent {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	color: $text-primary;
+	font-size: $font-size-small;
+	gap: $spacer-xs;
+	flex-wrap: wrap;
+	@include media-breakpoint-down(xs) {
+		font-size: $font-size-extra-small;
+	}
+}

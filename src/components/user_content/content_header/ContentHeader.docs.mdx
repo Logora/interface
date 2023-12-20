@@ -1,0 +1,27 @@
+---
+description: A component to display a user content's header with author, category and date.
+tags: ['header', 'user-content']
+---
+
+The ContentHeader component is used to display the header of a user content, including the author's avatar, name, points, and the content's category and date.
+It uses [ConfigProvider](https://bit.cloud/logora/debate/context/config_provider) for routing.
+
+It should be wrapped with react-intl's IntlProvider, ConfigProvider and be inside a Router.
+
+### Component usage
+
+```js
+import { ContentHeader } from '@logora/debate.user_content.content_header';
+```
+
+```js
+const author = {
+  slug: 'john-doe',
+  full_name: 'John Doe',
+  image_url: 'https://example.com/avatar.jpg',
+  points: 53
+};
+
+<ContentHeader author={author} tag={"my-tag"} date={new Date()} />
+```
+

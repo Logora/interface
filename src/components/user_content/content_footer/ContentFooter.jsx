@@ -35,8 +35,8 @@ export const ContentFooter = ({ resource,
     showShareText,
     enableEdition = true,
     enableDeletion = true,
-    containerClassNames,
-    voteActionClassNames }) => {
+    containerClassName,
+    voteActionClassName }) => {
 	const intl = useIntl();
 	const config = useConfig();
 	const { currentUser } = useAuth();
@@ -77,8 +77,8 @@ export const ContentFooter = ({ resource,
     }
 
 	return (
-		<div className={cx(styles.container, containerClassNames)}>
-            <div className={cx(styles.voteAction, voteActionClassNames)} data-tid={"action_vote_argument"}>
+		<div className={cx(styles.container, containerClassName)}>
+            <div className={cx(styles.voteAction, voteActionClassName)} data-tid={"action_vote_argument"}>
                 { children }
             </div>
             { !disabled && enableReply &&
@@ -185,9 +185,9 @@ ContentFooter.propTypes = {
     /** If true, content can be deleted */
 	enableDeletion: PropTypes.bool,
     /** Custom style for container */
-	containerClassNames: PropTypes.string,
+	containerClassName: PropTypes.string,
     /** Custom style for children container */
-    voteActionClassNames: PropTypes.string,
+    voteActionClassName: PropTypes.string,
 };
 
 ContentFooter.defaultProps = {
