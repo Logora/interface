@@ -1,0 +1,25 @@
+---
+description: A box component to show a summary of content.
+labels: ['user_content', 'box']
+---
+A box component to show a summary of content.  
+
+It must be wrapped by react-intl's IntlProvider, by ConfigProvider and by a router from react-router.
+
+### Component usage
+```js
+    import { SummaryContentBox } from '@logora/debate.user_content.summary_content_box';
+```
+```js
+<SummaryContentBox
+    author={author}
+    tag={"Politics"}
+    date={new Date()}
+    content={"Argument content"}
+    link={"https://example.com"}
+    contentCount={12}
+    tagClassName="argument-position"
+    headerOneLine
+    showFooter
+/>
+```
