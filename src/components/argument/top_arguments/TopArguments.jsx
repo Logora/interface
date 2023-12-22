@@ -45,7 +45,7 @@ export const TopArguments = ({ argumentFor, argumentAgainst, debateUrl, argument
                 :
                     <UserContentSkeleton enableAnimation={false} border tag={debate.group_context.positions[positionIndex].name} tagClassName={styles[`positionBackground-${positionIndex}`]}>
                         <Button to={debateUrl} external data-tid={"action_add_argument"} target={"_top"}>
-                            <FormattedMessage id="argument.argument_blank_box.call_to_action" defaultMessage={"Add an argument"} />
+                            <FormattedMessage id="argument.top_arguments.call_to_action" defaultMessage={"Add an argument"} />
                         </Button>
                     </UserContentSkeleton>
                 }

@@ -60,9 +60,8 @@
     },
     "argument/top_arguments": {
         "name": "argument/top_arguments",
-        "scope": "",
-        "version": "",
-        "defaultScope": "logora.debate",
+        "scope": "logora.debate",
+        "version": "0.0.22",
         "mainFile": "index.js",
         "rootDir": "src/components/argument/top_arguments",
         "config": {
