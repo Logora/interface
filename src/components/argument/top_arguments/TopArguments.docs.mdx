@@ -1,0 +1,22 @@
+---
+description: A box component to show top arguments of a debate.
+labels: ['argument']
+---
+
+import { TopArguments } from './TopArguments';
+
+A box component to show top arguments of a debate.
+
+### Component usage
+```js
+    import { TopArguments } from '@logora/debate.argument.top_arguments';
+```
+```js
+<TopArguments 
+    argumentFor={argumentFor}
+    argumentAgainst={argumentAgainst} 
+    argumentCount={[5, 3]}
+    debate={debate}
+    debateUrl={"mydebateUrl"} 
+/>
+```

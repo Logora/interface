@@ -3476,6 +3476,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"top_arguments-9e4953@workspace:src/components/argument/top_arguments":
+  version: 0.0.0-use.local
+  resolution: "top_arguments-9e4953@workspace:src/components/argument/top_arguments"
+  languageName: unknown
+  linkType: soft
+
 "translated_content-06b536@workspace:src/components/translation/translated_content":
   version: 0.0.0-use.local
   resolution: "translated_content-06b536@workspace:src/components/translation/translated_content"
