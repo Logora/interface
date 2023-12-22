@@ -1,0 +1,31 @@
+---
+description: A modal to select a position in a debate.
+labels: ["modal"]
+---
+
+import { SideModal } from "./SideModal";
+import { ModalProvider } from "@logora/debate.dialog.modal";
+
+A modal component that allows users to select a side in a debate.
+
+### Component usage
+
+```jsx
+import SideModal from '@logora/debate.modal.side_modal';
+
+<ModalProvider>
+  <SideModal
+    debateName="Example Debate"
+    debatePositions={[
+      { id: 1, name: "Position A" },
+      { id: 2, name: "Position B" },
+      { id: 3, name: "Position C" },
+    ]}
+    disabledPositions={[{ id: 1, name: "Position A" }]}
+    onChooseSide={(positionId) =>
+      console.log(`Selected position: ${positionId}`)
+    }
+    isNeutral={false}
+  />
+</ModalProvider>
+```

@@ -1,0 +1,94 @@
+@import "~@logora/debate.styles.theme/_theme.scss";
+@import "~@logora/debate.styles.spacing/_spacing.scss";
+
+.modalContent {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center;
+  @include my(2, xs);
+  @include p(0, xs);
+}
+
+.modalActions {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-wrap: wrap !important;
+  @include mt(2, xs);
+  @include p(0, xs);
+}
+
+.modalAction {
+  @include px(3, xs);
+  @include py(2, xs);
+  @include mx(1, xs);
+  @include mt(2, xs);
+}
+
+.modalActions .modalAction:first-child {
+  background-color: $for-primary !important;
+  border-color: $for-primary !important;
+
+  &:hover {
+    background-color: $for-primary !important;
+    border-color: $for-primary !important;
+  }
+}
+
+.modalActions .modalAction:nth-child(2) {
+  background-color: $against-primary !important;
+  border-color: $against-primary !important;
+  &:hover {
+    background-color: $against-primary !important;
+    border-color: $against-primary !important;
+  }
+}
+
+.modalActions .modalAction:nth-child(3) {
+  background-color: $third-position-color-primary !important;
+  border-color: $third-position-color-primary !important;
+
+  &:hover {
+    background-color: $third-position-color-primary !important;
+    border-color: $third-position-color-primary !important;
+  }
+}
+
+.argumentInputWarning {
+  font-size: $font-size-extra-small !important;
+  color: $info-primary !important;
+  display: flex !important;
+  @include mt(3, xs);
+  svg.warningIcon {
+    @include mr(2, xs);
+    fill: transparent !important;
+    circle {
+      stroke: $info-primary;
+      stroke-width: 1.5px;
+    }
+    path {
+      fill: $info-primary;
+    }
+  }
+}
+
+.neutralPosition {
+  @include mt(5, xs);
+  color: $text-secondary;
+  font-size: $font-size-small;
+  .userChoice {
+    @include mb(3, xs);
+  }
+  .neutralPositionName {
+    @include py(1, xs);
+    @include px(1.5, xs);
+    @include ml(1, xs);
+    color: $third-position-color-primary;
+    border-color: $third-position-color-primary;
+    border: 1px solid;
+    border-radius: $box-border-radius;
+  }
+}

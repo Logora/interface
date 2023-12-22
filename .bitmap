@@ -436,6 +436,13 @@
         "mainFile": "index.js",
         "rootDir": "src/components/list/pagination"
     },
+    "modal/side_modal": {
+        "name": "modal/side_modal",
+        "scope": "logora.debate",
+        "version": "0.0.10",
+        "mainFile": "index.js",
+        "rootDir": "src/components/modal/side_modal"
+    },
     "progress/progress_bar": {
         "name": "progress/progress_bar",
         "scope": "logora.debate",
