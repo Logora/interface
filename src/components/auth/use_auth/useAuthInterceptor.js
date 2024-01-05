@@ -16,7 +16,7 @@ export const useAuthInterceptor = (httpClient, authUrl, tokenKey) => {
         httpClient.interceptors.request.use(
             (config) => {
                 const originalRequest = config;
-                if(originalRequest.headers.Authorization) {
+                if(originalRequest.headers.authorization) {
                     const tokenObject = getToken();
                     if (
                         tokenObject &&
@@ -25,7 +25,7 @@ export const useAuthInterceptor = (httpClient, authUrl, tokenKey) => {
                     ) {
                         return refreshToken().then((accessToken) => {
                             const header = "Bearer " + accessToken;
-                            originalRequest.headers.Authorization = header;
+                            originalRequest.headers.authorization = header;
                             return Promise.resolve(originalRequest);
                         });
                     }
