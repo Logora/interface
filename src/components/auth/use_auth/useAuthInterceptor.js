@@ -1,8 +1,8 @@
 import { useEffect } from "react";
-import { useAuthToken } from '@logora/debate.auth.use_auth';
+import { authTokenHandler } from '@logora/debate.auth.use_auth';
 
 export const useAuthInterceptor = (httpClient, authUrl, tokenKey) => {
-    const { getToken, refreshToken } = useAuthToken(httpClient, authUrl, tokenKey);
+    const { getToken, refreshToken } = authTokenHandler(httpClient, authUrl, tokenKey);
 
     const isTokenExpired = (tokenObject) => {
         try {

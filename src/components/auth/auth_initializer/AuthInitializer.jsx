@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { httpClient } from '@logora/debate.data.axios_client';
-import { useAuthToken, useAuthActions } from '@logora/debate.auth.use_auth';
+import { authTokenHandler, useAuthActions } from '@logora/debate.auth.use_auth';
 import { useAuthInterceptor } from '@logora/debate.auth.use_auth';
 import { useAuthRequired } from "@logora/debate.hooks.use_auth_required";
 import AuthProviderFactory from '@logora/debate.auth.providers';
@@ -10,7 +10,7 @@ export const AuthInitializer = ({ authType, provider, assertion }) => {
     const tokenKey = "logora_user_token";
     useAuthInterceptor(httpClient, process.env.API_AUTH_URL, tokenKey);
 
-    const { getToken, removeToken } = useAuthToken(httpClient, process.env.API_AUTH_URL, tokenKey);
+    const { getToken, removeToken } = authTokenHandler(httpClient, process.env.API_AUTH_URL, tokenKey);
     const { loginUser, logoutUser, fetchUser } = useAuthActions(httpClient, process.env.API_AUTH_URL, tokenKey);
 	const requireAuthentication = useAuthRequired();
 
