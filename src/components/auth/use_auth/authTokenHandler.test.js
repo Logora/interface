@@ -1,4 +1,4 @@
-import { useAuthToken } from "./useAuthToken";
+import { authTokenHandler } from "./authTokenHandler";
 import { makeStorage } from './AuthStorage';
 
 const localStorageMock = (function() {
@@ -33,7 +33,7 @@ beforeEach(() => {
     httpClient.patch.mockClear();
 });
 
-describe('useAuthToken', () => {
+describe('authTokenHandler', () => {
     describe('getToken', () => {
         beforeEach(() => {
             delete window.localStorage;
@@ -46,7 +46,7 @@ describe('useAuthToken', () => {
             })
 
             const tokenKey = "token-key";
-            const { getToken } = useAuthToken(httpClient, 'https://example.com/auth', tokenKey);
+            const { getToken } = authTokenHandler(httpClient, 'https://example.com/auth', tokenKey);
     
             expect(getToken()).toBeNull();
         });
@@ -59,7 +59,7 @@ describe('useAuthToken', () => {
 
             const tokenKey = "token-key";
             const { setToken } = makeStorage(tokenKey);
-            const { getToken } = useAuthToken(httpClient, 'https://example.com/auth', tokenKey);
+            const { getToken } = authTokenHandler(httpClient, 'https://example.com/auth', tokenKey);
     
             const token = { access_token: "a-super-token"};
             setToken(token);
@@ -80,7 +80,7 @@ describe('useAuthToken', () => {
 
             const tokenKey = "token-key";
             const { setToken } = makeStorage(tokenKey);
-            const { getToken, removeToken } = useAuthToken(httpClient, 'https://example.com/auth', tokenKey);
+            const { getToken, removeToken } = authTokenHandler(httpClient, 'https://example.com/auth', tokenKey);
     
             const token = { access_token: "great-token"};
             setToken(token);
@@ -106,7 +106,7 @@ describe('useAuthToken', () => {
 
             const authParams = { session_id: "session_id" }
             const tokenKey = "token-key";
-            const { fetchToken, getToken } = useAuthToken(httpClient, 'https://example.com/auth', tokenKey);
+            const { fetchToken, getToken } = authTokenHandler(httpClient, 'https://example.com/auth', tokenKey);
 
             fetchToken(authParams).then(response => {
                 console.log(response);
