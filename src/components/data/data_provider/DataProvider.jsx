@@ -2,7 +2,7 @@ export function getAuthHeader(storageKey) {
 	try {
 		const token = JSON.parse(localStorage.getItem(storageKey));
 		if (token && token.access_token) {
-			return { Authorization: 'Bearer ' + token.access_token };
+			return { authorization: 'Bearer ' + token.access_token };
 		} else {
 			return {};
 		}

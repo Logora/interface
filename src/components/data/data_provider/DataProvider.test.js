@@ -57,7 +57,7 @@ describe('data provider function', () => {
         };
 
         const config = {
-			headers: { "Authorization": "Bearer " + accessToken }
+			headers: { "authorization": "Bearer " + accessToken }
 		};
 
         const api = dataProvider(httpClient, apiUrl, apiKey, storageKey);
@@ -154,7 +154,7 @@ describe('data provider function', () => {
         const api = dataProvider(httpClient, apiUrl, apiKey, storageKey);
 
         const config = {
-			headers: { "Authorization": "Bearer " + accessToken }
+			headers: { "authorization": "Bearer " + accessToken }
 		};
 
         api.getListWithToken(resource, { page: 1, per_page: 10, sort: "-created_at" });
@@ -201,7 +201,7 @@ describe('data provider function', () => {
         }
 
         const config = {
-			headers: { "Authorization": "Bearer " + accessToken }
+			headers: { "authorization": "Bearer " + accessToken }
 		};
 
         api.getListWithToken(resource, params);
@@ -255,7 +255,7 @@ describe('data provider function', () => {
             custom_data: 'custom-data'
         };
         const config = {
-			headers: { "Authorization": "Bearer " + accessToken }
+			headers: { "authorization": "Bearer " + accessToken }
 		};
         const api = dataProvider(httpClient, apiUrl, apiKey, storageKey);
 
@@ -281,7 +281,7 @@ describe('data provider function', () => {
             custom_data: 'custom-data'
         };
         const config = {
-			headers: { "Authorization": "Bearer " + accessToken }
+			headers: { "authorization": "Bearer " + accessToken }
 		};
         const api = dataProvider(httpClient, apiUrl, apiKey, storageKey);
 
@@ -304,7 +304,7 @@ describe('data provider function', () => {
         const resource = "user";
         const resourceId = "my-id";
         const config = {
-			headers: { "Authorization": "Bearer " + accessToken }
+			headers: { "authorization": "Bearer " + accessToken }
 		};
         const api = dataProvider(httpClient, apiUrl, apiKey, storageKey);
 
@@ -333,7 +333,7 @@ describe('getAuthHeader function', () => {
         setLocalStorage(storageKey, mockJson);
     
         const authHeader = getAuthHeader(storageKey);
-        expect(authHeader["Authorization"]).toEqual("Bearer " + accessToken);
+        expect(authHeader["authorization"]).toEqual("Bearer " + accessToken);
     });
 
     it('should return nothing if no access token', () => {
