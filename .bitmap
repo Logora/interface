@@ -256,21 +256,10 @@
     },
     "forms/use_form_validation": {
         "name": "forms/use_form_validation",
-        "scope": "",
-        "version": "",
-        "defaultScope": "logora.debate",
+        "scope": "logora.debate",
+        "version": "0.0.1",
         "mainFile": "index.js",
-        "rootDir": "src/components/forms/use_form_validation",
-        "config": {
-            "teambit.dependencies/dependency-resolver": {
-                "policy": {
-                    "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0"
-                    }
-                }
-            }
-        }
+        "rootDir": "src/components/forms/use_form_validation"
     },
     "gamification/badge_box": {
         "name": "gamification/badge_box",
