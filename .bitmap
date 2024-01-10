@@ -250,37 +250,16 @@
     "follow/follow_button": {
         "name": "follow/follow_button",
         "scope": "logora.debate",
-        "version": "0.0.29",
+        "version": "0.0.30",
         "mainFile": "index.js",
-        "rootDir": "src/components/follow/follow_button",
-        "config": {
-            "teambit.dependencies/dependency-resolver": {
-                "policy": {
-                    "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0"
-                    }
-                }
-            }
-        }
+        "rootDir": "src/components/follow/follow_button"
     },
     "follow/use_follow": {
         "name": "follow/use_follow",
-        "scope": "",
-        "version": "",
-        "defaultScope": "logora.debate",
+        "scope": "logora.debate",
+        "version": "0.0.1",
         "mainFile": "index.js",
-        "rootDir": "src/components/follow/use_follow",
-        "config": {
-            "teambit.dependencies/dependency-resolver": {
-                "policy": {
-                    "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0"
-                    }
-                }
-            }
-        }
+        "rootDir": "src/components/follow/use_follow"
     },
     "forms/form": {
         "name": "forms/form",
