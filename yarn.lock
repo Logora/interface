@@ -3172,6 +3172,12 @@ __metadata:
   languageName: node
   linkType: hard
 
+"side_modal-59db52@workspace:src/components/modal/side_modal":
+  version: 0.0.0-use.local
+  resolution: "side_modal-59db52@workspace:src/components/modal/side_modal"
+  languageName: unknown
+  linkType: soft
+
 "signal-exit@npm:^4.0.1":
   version: 4.1.0
   resolution: "signal-exit@npm:4.1.0"
@@ -3606,6 +3612,12 @@ __metadata:
 "use_font_loader-9075d4@workspace:src/components/hooks/use_font_loader":
   version: 0.0.0-use.local
   resolution: "use_font_loader-9075d4@workspace:src/components/hooks/use_font_loader"
+  languageName: unknown
+  linkType: soft
+
+"use_form_validation-76238e@workspace:src/components/forms/use_form_validation":
+  version: 0.0.0-use.local
+  resolution: "use_form_validation-76238e@workspace:src/components/forms/use_form_validation"
   languageName: unknown
   linkType: soft
 

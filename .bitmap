@@ -260,7 +260,17 @@
         "version": "",
         "defaultScope": "logora.debate",
         "mainFile": "index.js",
-        "rootDir": "src/components/forms/use_form_validation"
+        "rootDir": "src/components/forms/use_form_validation",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "peerDependencies": {
+                        "react": "^17.0.0 || ^18.0.0",
+                        "react-dom": "^17.0.0 || ^18.0.0"
+                    }
+                }
+            }
+        }
     },
     "gamification/badge_box": {
         "name": "gamification/badge_box",
