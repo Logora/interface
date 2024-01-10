@@ -249,9 +249,8 @@
     },
     "follow/follow_button": {
         "name": "follow/follow_button",
-        "scope": "",
-        "version": "",
-        "defaultScope": "logora.debate",
+        "scope": "logora.debate",
+        "version": "0.0.29",
         "mainFile": "index.js",
         "rootDir": "src/components/follow/follow_button",
         "config": {
