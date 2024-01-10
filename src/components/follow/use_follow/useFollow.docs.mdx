@@ -1,0 +1,24 @@
+---
+description: A hook to follow a resource.
+labels: ['follow']
+---
+
+A hook to follow a resource. It receive a resourceName and a followableId params.
+
+It's using useAuthenticationRequired hook.
+
+### Component usage
+```js
+import { useFollow } from '@logora/debate.follow.use_follow';
+```
+```js
+const Component = () => {
+    const { followActive, handleFollow } = useFollow(resourceName, followableId);
+
+	return (
+        <button onClick={() => handleFollow()}>
+            Follow
+        </button>
+    )
+}
+```

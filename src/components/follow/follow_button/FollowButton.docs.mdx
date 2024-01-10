@@ -1,0 +1,41 @@
+---
+description: A button component to follow a content.
+labels: ['follow']
+---
+
+import { FollowButton } from './FollowButton';
+
+A button component to follow a content.
+
+It must be wrapped by [react-intl](https://formatjs.io/docs/getting-started/installation/)'s IntlProvider.
+
+It must be wrapped by dataProvider.
+
+It must be wrapped by AuthProvider.
+
+It must be wrapped by ContextProvider.
+
+It must be wrapped by ModalProvider.
+
+### Component usage
+```js
+    import { FollowButton } from '@logora/debate.follow.follow_button';
+```
+```js
+<IntlProvider locale='en'>
+    <DataProviderContext.Provider value={{ dataProvider: data }}>
+        <AuthProvider>
+            <ConfigContext.Provider value={{ config }}>
+                <ModalProvider>
+                    <FollowButton 
+                        followableType={"content"}
+                        followableId={12}
+                        tooltipText={"Tooltip content"}
+                        dataTid={"data-tid"}
+                    />
+                </ModalProvider>
+            </ConfigContext.Provider>
+        </AuthProvider>
+    </DataProviderContext.Provider>
+</IntlProvider>
+```

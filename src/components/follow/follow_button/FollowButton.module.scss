@@ -1,0 +1,18 @@
+@import '~@logora/debate.styles.theme/_theme.scss';
+@import "~@logora/debate.styles.spacing/_spacing.scss";
+
+button.followUserButton {
+  display: flex;
+  flex-direction: row;
+  gap: $spacer-sm;
+  font-weight: $font-weight-bold;
+  padding: $spacer-sm;
+  display: flex;
+  align-items: center;
+}
+
+button.followUserButtonNoBorder {
+  font-weight: $font-weight-normal;
+  color: $text-primary !important;
+  padding: 0 !important;
+}

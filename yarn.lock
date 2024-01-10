@@ -1623,6 +1623,12 @@ __metadata:
   languageName: node
   linkType: hard
 
+"follow_button-2c28f3@workspace:src/components/follow/follow_button":
+  version: 0.0.0-use.local
+  resolution: "follow_button-2c28f3@workspace:src/components/follow/follow_button"
+  languageName: unknown
+  linkType: soft
+
 "for-each@npm:^0.3.3":
   version: 0.3.3
   resolution: "for-each@npm:0.3.3"
@@ -3606,6 +3612,12 @@ __metadata:
 "use_delete_content-840af0@workspace:src/components/user_content/use_delete_content":
   version: 0.0.0-use.local
   resolution: "use_delete_content-840af0@workspace:src/components/user_content/use_delete_content"
+  languageName: unknown
+  linkType: soft
+
+"use_follow-e7516a@workspace:src/components/follow/use_follow":
+  version: 0.0.0-use.local
+  resolution: "use_follow-e7516a@workspace:src/components/follow/use_follow"
   languageName: unknown
   linkType: soft
 
