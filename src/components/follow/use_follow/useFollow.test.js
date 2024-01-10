@@ -6,6 +6,7 @@ import { ConfigProvider } from '@logora/debate.data.config_provider';
 import { ModalProvider } from '@logora/debate.dialog.modal';
 import userEvent from '@testing-library/user-event';
 import { faker } from '@faker-js/faker';
+import React from 'react';
 
 const httpClient = {
     get: () => null,
