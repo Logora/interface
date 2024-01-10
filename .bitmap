@@ -254,6 +254,14 @@
         "mainFile": "index.js",
         "rootDir": "src/components/forms/form"
     },
+    "forms/use_form_validation": {
+        "name": "forms/use_form_validation",
+        "scope": "",
+        "version": "",
+        "defaultScope": "logora.debate",
+        "mainFile": "index.js",
+        "rootDir": "src/components/forms/use_form_validation"
+    },
     "gamification/badge_box": {
         "name": "gamification/badge_box",
         "scope": "logora.debate",

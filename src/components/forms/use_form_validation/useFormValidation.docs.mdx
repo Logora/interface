@@ -1,0 +1,40 @@
+---
+description: A hook to validate form inputs.
+labels: ['form-validation']
+---
+
+A hook to validate form inputs. It uses a validate function to verify the datas which take the form values and a validator array which determines what to check on every input.
+If any input is not validated, the hook provides an errors object to use into the form.
+
+validate() function has to parameters : 
+    formData: all the submitted values of the form
+    validationRules: an array of rules to validate. Each rules represent an object with the input field as the key and an array of the validation method in first index and a optionnal validation checker as the second index.
+
+
+### Component usage
+```js
+import { useFormValidation } from '@logora/debate.hooks.use_form_validation';
+```
+```js
+const Component = () => {
+    const { errors, validate } = useFormValidation();
+
+    const submitForm = () => {
+        const data = {
+            content: "My content",
+            title: "My title"
+        };
+        if (validate(data, [{ content: ["required", null] }, { title: ["length", 5] }])) {
+            submitData();
+        } else {
+            return errors;
+        }
+    }
+
+	return (
+        <button onClick={() => submitData()}>
+            Submit
+        </button>
+    )
+}
+```
