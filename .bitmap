@@ -751,6 +751,27 @@
         "mainFile": "index.js",
         "rootDir": "src/components/util/get_winning_vote"
     },
+    "util/unique_by": {
+        "name": "util/unique_by",
+        "scope": "logora.debate",
+        "version": "0.0.5",
+        "mainFile": "index.js",
+        "rootDir": "src/components/util/unique_by",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "devDependencies": {
+                        "@types/jest": "-",
+                        "@types/testing-library__jest-dom": "-"
+                    },
+                    "peerDependencies": {
+                        "react": "^17.0.0 || ^18.0.0",
+                        "react-dom": "^17.0.0 || ^18.0.0"
+                    }
+                }
+            }
+        }
+    },
     "vote/suggestion_vote_box": {
         "name": "vote/suggestion_vote_box",
         "scope": "logora.debate",

@@ -1,0 +1,24 @@
+---
+description: A function to sort unique values from an array of objects
+---
+
+This function receives two argumentw, _objArray_, which is an array of objects (a list) and _objKey_ which is the key that will be used to compare the objects.
+
+It returns a new array with only unique objects.
+
+
+### Component usage
+```js
+import { uniqueBy } from '@logora/debate.util.unique_by';
+```
+```js
+const ComponentWithUniqObjArr = () => {
+    const objArray = [{ age: 18, name: "non"}, { age: 21, name: "non" }, { age: 18, name: "non"}]
+    const uniqObjArray = uniqueBy(objArray, "age");
+	return (
+        <div>
+            {uniqObjArray}
+            {/* [{ age: 18, name: "non"}, { age: 21, name: "non" }] */}
+        </div>
+    )
+}
