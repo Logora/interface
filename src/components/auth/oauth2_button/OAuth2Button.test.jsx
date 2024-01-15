@@ -1,8 +1,8 @@
 import React from 'react';
 import { MemoryRouter } from 'react-router';
 import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
 import { OAuth2Button } from './OAuth2Button';
+import userEvent from '@testing-library/user-event';
 
 Object.defineProperty(window, 'location', {
 	value: {
@@ -103,5 +103,25 @@ describe('OAuth2Button', () => {
 		await userEvent.click(renderedButton);
 		expect(spyWindowOpen).toHaveBeenCalledTimes(1);
 		expect(spyWindowOpen).toHaveBeenLastCalledWith(expectedUrl.href, "", "width=500,height=500,left=262,top=107.2");
+	});
+
+	it('should render button with the correct extra className', () => {
+		const oauth2Button = render(
+			<MemoryRouter>
+				<OAuth2Button 
+					authDialogUrl={"https://www.example.com/dialog/oauth"}
+					clientId={"client-id"}
+					scope={"email,profile"}
+					provider={"my-oauth2-provider"}
+					redirectUri={"https://auth.redirect/uri"}
+					className={"extraClassName"}
+				>
+					Click here to login !
+				</OAuth2Button>
+			</MemoryRouter>
+		);
+		const renderedButton = oauth2Button.getByText(/Click here to login !/i);
+		expect(renderedButton).toBeTruthy();
+		expect(screen.getByTestId('container')).toHaveClass('extraClassName') ;
 	});
 });

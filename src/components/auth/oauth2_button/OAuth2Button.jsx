@@ -1,10 +1,11 @@
 import React from 'react';
-import OauthPopup from "react-oauth-popup";
 import { useLocation } from "react-router";
+import OauthPopup from "react-oauth-popup";
 import styles from './OAuth2Button.module.scss';
+import classnames from 'classnames';
 import PropTypes from "prop-types";
 
-export const OAuth2Button = ({ provider, authDialogUrl, clientId, redirectUri, scope, responseType, onCode, onClose, children }) =>  {
+export const OAuth2Button = ({ provider, authDialogUrl, clientId, redirectUri, scope, responseType, onCode, onClose, children, className }) =>  {
     const location = useLocation();
 
 	const handleOnCode = (code, params) => {
@@ -32,7 +33,7 @@ export const OAuth2Button = ({ provider, authDialogUrl, clientId, redirectUri, s
 	}
 
 	return (
-		<div className={styles.oauthButtonContainer}>
+		<div data-testid="container" className={classnames(styles.oauthButtonContainer, className)}>
 			<OauthPopup
 				url={getDialogUrl()}
 				onCode={handleOnCode}
@@ -64,5 +65,7 @@ OAuth2Button.propTypes = {
 	/** Callback triggered if popup is closed */
 	onClose: PropTypes.func,
 	/** Button content */
-	children: PropTypes.node
+	children: PropTypes.node,
+	/**  Class name to style the button container */
+	className: PropTypes.string,
 }

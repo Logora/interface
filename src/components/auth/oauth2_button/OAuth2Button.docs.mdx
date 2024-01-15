@@ -21,9 +21,10 @@ import { OAuth2Button } from '@logora/debate.auth.oauth2_button';
             clientId={"facebook-client-id"}
             scope={"email,public_profile"}
             provider={"facebook"}
-            redirectUri={"https://auth.redirect/}
+            redirectUri={"https://auth.redirect/"}
             onCode={(code) => console.log(code)}
             onClose={closeCallbackFunction}
+            className={"extraClassName"}
         >
             Click here to login !
         </OAuth2Button>
