@@ -443,6 +443,24 @@
         "mainFile": "index.js",
         "rootDir": "src/components/input/toggle_position"
     },
+    "intl/intl_provider": {
+        "name": "intl/intl_provider",
+        "scope": "",
+        "version": "",
+        "defaultScope": "logora.debate",
+        "mainFile": "index.js",
+        "rootDir": "src/components/intl/intl_provider",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "peerDependencies": {
+                        "react": "^17.0.0 || ^18.0.0",
+                        "react-dom": "^17.0.0 || ^18.0.0"
+                    }
+                }
+            }
+        }
+    },
     "list/list_provider": {
         "name": "list/list_provider",
         "scope": "logora.debate",

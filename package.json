@@ -33,6 +33,7 @@
     "axios": "^1.6.2",
     "classnames": "^2.3.2",
     "core-js": "^3.33.0",
+    "flat": "^6.0.1",
     "lexical": "^0.12.6",
     "prop-types": "^15.8.1",
     "react-copy-to-clipboard": "^5.1.0",
@@ -43,6 +44,7 @@
     "react-router": "^5.3.4",
     "react-router-dom": "^5.3.4",
     "react-use-id-hook": "^1.0.1",
+    "@rooks/use-sessionstorage-state": "^4.11.2",
     "use-onclickoutside": "^0.4.1",
     "webfontloader": "^1.6.28"
   },
