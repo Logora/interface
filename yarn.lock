@@ -521,20 +521,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@logora/debate.util.location@npm:0.0.6":
-  version: 0.0.6
-  resolution: "@logora/debate.util.location@npm:0.0.6"
-  dependencies:
-    core-js: ^3.0.0
-    path-to-regexp: ^6.2.1
-    querystringify: ^2.2.0
-  peerDependencies:
-    react: ^17.0.0||^18.0.0
-    react-dom: ^17.0.0||^18.0.0
-  checksum: f795b2998adebca0a243f92dbfb41157eaf55790231d62330c165720a155c2ac30d2327c33bcdb185325b6cd618fd52d74e0f89298a0f689807e4845546990dc
-  languageName: node
-  linkType: hard
-
 "@logora/ui@workspace:.":
   version: 0.0.0-use.local
   resolution: "@logora/ui@workspace:."
@@ -552,7 +538,6 @@ __metadata:
     "@lexical/selection": ^0.12.5
     "@lexical/utils": ^0.12.5
     "@logora/debate.progress.loader": 0.0.2
-    "@logora/debate.util.location": 0.0.6
     "@rooks/use-sessionstorage-state": ^4.11.2
     "@testing-library/dom": 9.0.0
     "@testing-library/react": ^14.0.0
@@ -566,7 +551,9 @@ __metadata:
     classnames: ^2.3.2
     core-js: ">=3.33.0 <4.0.0"
     lexical: ^0.12.6
+    path-to-regexp: ^6.2.1
     prop-types: ^15.8.1
+    querystringify: ^2.2.0
     react: ">=18.2.0 <19.0.0"
     react-copy-to-clipboard: ^5.1.0
     react-dom: ">=18.2.0 <19.0.0"
@@ -2363,6 +2350,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"location-53999c@workspace:src/components/util/location":
+  version: 0.0.0-use.local
+  resolution: "location-53999c@workspace:src/components/util/location"
+  languageName: unknown
+  linkType: soft
+
 "login_form-9ffdcd@workspace:src/components/auth/login_form":
   version: 0.0.0-use.local
   resolution: "login_form-9ffdcd@workspace:src/components/auth/login_form"
@@ -3023,12 +3016,6 @@ __metadata:
 "regular_icons-fa7d8f@workspace:src/components/icons/regular_icons":
   version: 0.0.0-use.local
   resolution: "regular_icons-fa7d8f@workspace:src/components/icons/regular_icons"
-  languageName: unknown
-  linkType: soft
-
-"report_modal-7a8199@workspace:src/components/report/report_modal":
-  version: 0.0.0-use.local
-  resolution: "report_modal-7a8199@workspace:src/components/report/report_modal"
   languageName: unknown
   linkType: soft
 

@@ -1,0 +1,18 @@
+---
+description: A class to help define routes with dynamic parameters.
+---
+
+import { Location } from './Location';
+
+A class that helps define routes with parameters.
+
+### Component usage
+```js
+import { Location } from '@logora/debate.util.location';
+```
+```js
+const location = new Location("path/:pathParam", { pathParam: "" }, { queryParam: "" });
+const url = location.toUrl({ pathParam: "myPathParam", queryParam: "myQueryParam" });
+console.log(url);
+// => "path/myPathParam?queryParam=myQueryParam
+```

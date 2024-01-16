@@ -826,6 +826,13 @@
         "mainFile": "index.js",
         "rootDir": "src/components/util/get_winning_vote"
     },
+    "util/location": {
+        "name": "util/location",
+        "scope": "logora.debate",
+        "version": "0.0.6",
+        "mainFile": "index.js",
+        "rootDir": "src/components/util/location"
+    },
     "util/unique_by": {
         "name": "util/unique_by",
         "scope": "logora.debate",
