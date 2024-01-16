@@ -37,18 +37,6 @@
         "mainFile": "index.js",
         "rootDir": "src/components/action/link"
     },
-    "action/translation_button": {
-        "name": "action/translation_button",
-        "scope": "logora.debate",
-        "version": "0.0.10",
-        "mainFile": "index.js",
-        "rootDir": "src/components/action/translation_button",
-        "config": {
-            "teambit.component/remove": {
-                "removed": true
-            }
-        }
-    },
     "ad/ad_unit": {
         "name": "ad/ad_unit",
         "scope": "logora.debate",
