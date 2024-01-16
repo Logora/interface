@@ -296,6 +296,18 @@
         "mainFile": "index.js",
         "rootDir": "src/components/hooks/use_auth_required"
     },
+    "hooks/use_authentication_required": {
+        "name": "hooks/use_authentication_required",
+        "scope": "logora.debate",
+        "version": "0.0.32",
+        "mainFile": "index.js",
+        "rootDir": "src/components/hooks/use_authentication_required",
+        "config": {
+            "teambit.component/remove": {
+                "removed": true
+            }
+        }
+    },
     "hooks/use_css_theme": {
         "name": "hooks/use_css_theme",
         "scope": "logora.debate",
@@ -303,12 +315,48 @@
         "mainFile": "index.js",
         "rootDir": "src/components/hooks/use_css_theme"
     },
+    "hooks/use_delete_content": {
+        "name": "hooks/use_delete_content",
+        "scope": "logora.debate",
+        "version": "0.0.31",
+        "mainFile": "index.js",
+        "rootDir": "src/components/hooks/use_delete_content",
+        "config": {
+            "teambit.component/remove": {
+                "removed": true
+            }
+        }
+    },
+    "hooks/use_follow": {
+        "name": "hooks/use_follow",
+        "scope": "logora.debate",
+        "version": "0.0.29",
+        "mainFile": "index.js",
+        "rootDir": "src/components/hooks/use_follow",
+        "config": {
+            "teambit.component/remove": {
+                "removed": true
+            }
+        }
+    },
     "hooks/use_font_loader": {
         "name": "hooks/use_font_loader",
         "scope": "logora.debate",
         "version": "0.0.2",
         "mainFile": "index.js",
         "rootDir": "src/components/hooks/use_font_loader"
+    },
+    "hooks/use_form_validation": {
+        "name": "hooks/use_form_validation",
+        "scope": "logora.debate",
+        "version": "0.0.3",
+        "mainFile": "index.js",
+        "rootDir": "src/components/hooks/use_form_validation",
+        "config": {
+            "teambit.component/remove": {
+                "removed": true
+            }
+        }
     },
     "hooks/use_matomo": {
         "name": "hooks/use_matomo",
@@ -324,12 +372,48 @@
         "mainFile": "index.js",
         "rootDir": "src/components/hooks/use_relative_time"
     },
+    "hooks/use_report_content": {
+        "name": "hooks/use_report_content",
+        "scope": "logora.debate",
+        "version": "0.0.37",
+        "mainFile": "index.js",
+        "rootDir": "src/components/hooks/use_report_content",
+        "config": {
+            "teambit.component/remove": {
+                "removed": true
+            }
+        }
+    },
     "hooks/use_responsive": {
         "name": "hooks/use_responsive",
         "scope": "logora.debate",
         "version": "0.0.9",
         "mainFile": "index.js",
         "rootDir": "src/components/hooks/use_responsive"
+    },
+    "hooks/use_translated_content": {
+        "name": "hooks/use_translated_content",
+        "scope": "logora.debate",
+        "version": "0.0.7",
+        "mainFile": "index.js",
+        "rootDir": "src/components/hooks/use_translated_content",
+        "config": {
+            "teambit.component/remove": {
+                "removed": true
+            }
+        }
+    },
+    "hooks/use_vote": {
+        "name": "hooks/use_vote",
+        "scope": "logora.debate",
+        "version": "0.0.23",
+        "mainFile": "index.js",
+        "rootDir": "src/components/hooks/use_vote",
+        "config": {
+            "teambit.component/remove": {
+                "removed": true
+            }
+        }
     },
     "icons/hero_icons": {
         "name": "icons/hero_icons",
@@ -470,6 +554,18 @@
         "version": "0.0.6",
         "mainFile": "index.js",
         "rootDir": "src/components/progress/progress_bar"
+    },
+    "report/report_modal": {
+        "name": "report/report_modal",
+        "scope": "logora.debate",
+        "version": "0.0.35",
+        "mainFile": "index.js",
+        "rootDir": "src/components/report/report_modal",
+        "config": {
+            "teambit.component/remove": {
+                "removed": true
+            }
+        }
     },
     "section/section_box": {
         "name": "section/section_box",
