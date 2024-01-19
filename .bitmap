@@ -464,6 +464,13 @@
         "mainFile": "index.js",
         "rootDir": "src/components/modal/side_modal"
     },
+    "modal/update_user_info_modal": {
+        "name": "modal/update_user_info_modal",
+        "scope": "logora.debate",
+        "version": "0.0.28",
+        "mainFile": "index.js",
+        "rootDir": "src/components/modal/update_user_info_modal"
+    },
     "progress/progress_bar": {
         "name": "progress/progress_bar",
         "scope": "logora.debate",
