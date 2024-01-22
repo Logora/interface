@@ -10,7 +10,7 @@ export const useFormValidation = () => {
     }
 
     const checkValue = (value, targetValue) => {
-        return value == targetValue;
+        return value !== targetValue;
     }
 
     const checkMinLength = (value, minLength) => {

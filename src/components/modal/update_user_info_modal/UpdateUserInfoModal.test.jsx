@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen, act } from "@testing-library/react";
+import { render, act } from "@testing-library/react";
 import userEvent from '@testing-library/user-event';
 import { UpdateUserInfoModal } from "./UpdateUserInfoModal";
 import { IntlProvider } from 'react-intl';
@@ -20,6 +20,16 @@ const httpClient = {
 const currentUser = {
     id: faker.datatype.number(),
     full_name: faker.name.fullName(),
+    image_url: faker.image.avatar(),
+    points: faker.datatype.number()
+}
+
+const currentUserWithInfos = {
+    id: faker.datatype.number(),
+    full_name: faker.name.fullName(),
+    first_name: faker.name.firstName(),
+    last_name: faker.name.lastName(),
+    description: faker.name.jobTitle(),
     image_url: faker.image.avatar(),
     points: faker.datatype.number()
 }
@@ -130,5 +140,65 @@ describe("UpdateUserInfoModal", () => {
         await act(async () => { await userEvent.click(avatarButton) });
 
         expect(queryByText("Back")).toBeInTheDocument();
+    });
+
+    it("should throw an error if the terms are not accepted", async () => {
+        const { getByTestId, queryByText } = render(
+            <ModalProvider>
+                <ConfigProvider config={{ translation: { translationMethods: [{fr: "en"}]}, actions: { disableNameUpdate: true } }}>
+                    <IntlProvider locale="en">
+                        <IconProvider library={regularIcons}>
+                            <DataProviderContext.Provider value={{ dataProvider: data }}>
+                                <AuthContext.Provider value={{ currentUser: currentUser, isLoggedIn: true }}>
+                                    <UpdateUserInfoModal 
+                                        showEmailConsent
+                                        showTerms
+                                    />
+                                </AuthContext.Provider>
+                            </DataProviderContext.Provider>
+                        </IconProvider>
+                    </IntlProvider>
+                </ConfigProvider>
+            </ModalProvider>
+        );
+        
+        const firstName = getByTestId('first-name');
+        await act(async () => { await userEvent.click(firstName) });
+        await act(async () => { await userEvent.keyboard("First name") });
+
+        const lastName = getByTestId('last-name');
+        await act(async () => {  await userEvent.click(lastName) });
+        await act(async () => { await userEvent.keyboard("Last name") });
+
+        const saveButton = getByTestId('save-button');
+        await act(async () => { await userEvent.click(saveButton) });
+        expect(queryByText("accepts_terms must be true.")).toBeInTheDocument();
+    });
+
+    it("should displays the current user's info", async () => {
+        const { getByTestId} = render(
+            <ModalProvider>
+                <ConfigProvider config={{ translation: { translationMethods: [{fr: "en"}]}, actions: { disableNameUpdate: true } }}>
+                    <IntlProvider locale="en">
+                        <IconProvider library={regularIcons}>
+                            <DataProviderContext.Provider value={{ dataProvider: data }}>
+                                <AuthContext.Provider value={{ currentUser: currentUserWithInfos, isLoggedIn: true }}>
+                                    <UpdateUserInfoModal />
+                                </AuthContext.Provider>
+                            </DataProviderContext.Provider>
+                        </IconProvider>
+                    </IntlProvider>
+                </ConfigProvider>
+            </ModalProvider> 
+        );
+
+        const firstName = getByTestId('first-name');
+        expect(firstName.value).toBe(currentUserWithInfos.first_name);
+
+        const lastName = getByTestId('last-name');
+        expect(lastName.value).toBe(currentUserWithInfos.last_name);
+
+        const description = getByTestId('description');
+        expect(description.value).toBe(currentUserWithInfos.description);
     });
 });

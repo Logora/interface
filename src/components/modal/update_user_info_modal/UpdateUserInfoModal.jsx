@@ -24,9 +24,9 @@ export const UpdateUserInfoModal = ({ termsUrl, privacyUrl, showEmailConsent = f
 
     const avatarUrlList = [...Array(config.avatars?.maxFileName || 0).keys()].map(j => `${config.avatars?.baseUrl}/${j+1}.${config.avatars?.fileExtension}`);
 
-    const [firstName, setFirstName] = useState(auth.currentUser.first_name);
-    const [description, setDescription] = useState(auth.currentUser.description);
-    const [lastName, setLastName] = useState(auth.currentUser.last_name);
+    const [firstName, setFirstName] = useState(auth.currentUser.first_name || '');
+    const [description, setDescription] = useState(auth.currentUser.description || '');
+    const [lastName, setLastName] = useState(auth.currentUser.last_name || '');
     const [lang, setLang] = useState(auth.currentUser.language);
     const [showAvatars, setShowAvatars] = useState(false);
     const [previewPictureBase64, setPreviewPictureBase64] = useState(auth.currentUser.image_url);
@@ -128,6 +128,7 @@ export const UpdateUserInfoModal = ({ termsUrl, privacyUrl, showEmailConsent = f
                                             value={firstName}
                                             error={errors["first_name"] ? true : false}
                                             message={errors["first_name"]}
+                                            data-testid="first-name"
                                         />
                                     </div>
                                     <div className={styles.updateProfileInput}>
@@ -140,6 +141,7 @@ export const UpdateUserInfoModal = ({ termsUrl, privacyUrl, showEmailConsent = f
                                             value={lastName}
                                             error={errors["last_name"] ? true : false}
                                             message={errors["last_name"]}
+                                            data-testid="last-name"
                                         />
                                     </div>
                                 </div>
@@ -169,6 +171,7 @@ export const UpdateUserInfoModal = ({ termsUrl, privacyUrl, showEmailConsent = f
                                         value={description} 
                                         onChange={(e) => setDescription(e.target.value)} 
                                         maxLength={500}
+                                        data-testid="description"
                                     />
                                 </div>
                             </div>
