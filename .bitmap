@@ -471,6 +471,14 @@
         "mainFile": "index.js",
         "rootDir": "src/components/modal/update_user_info_modal"
     },
+    "progress/loader": {
+        "name": "progress/loader",
+        "scope": "",
+        "version": "",
+        "defaultScope": "logora.debate",
+        "mainFile": "index.js",
+        "rootDir": "src/components/progress/loader"
+    },
     "progress/progress_bar": {
         "name": "progress/progress_bar",
         "scope": "logora.debate",
