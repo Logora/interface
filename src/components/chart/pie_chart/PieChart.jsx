@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useIntl } from "react-intl";
 import { Pie } from 'react-chartjs-2';
 import { Loader } from '@logora/debate.progress.loader';
-import 'chart.js/auto';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import styles from "./PieChart.module.scss";
 import StandardErrorBoundary from "@logora/debate.error.standard_error_boundary";
