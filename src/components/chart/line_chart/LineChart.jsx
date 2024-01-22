@@ -88,11 +88,11 @@ LineChart.propTypes = {
 	/** Array of objects containing the labels */
 	labels: PropTypes.array,
 	/** Callback function used to filter data */
-	onFilterChange: PropTypes.number,
+	onFilterChange: PropTypes.func,
 	/** Title for the chart */
 	title: PropTypes.string,
 	/** Extra classname for the chart container */
-	className: PropTypes.array,
+	className: PropTypes.string,
 	/** Array of filters */
-	filterOptions: PropTypes.number
+	filterOptions: PropTypes.array
 };
