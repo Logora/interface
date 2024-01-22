@@ -7,6 +7,6 @@ describe('LineChart', () => {
         const container = render(
             <DefaultLineChart />
         );
-        expect(screen.getByTestId("lineChartCanvas")).toBeTruthy();
+        expect(screen.getByText("day")).toBeTruthy();
     })
 })

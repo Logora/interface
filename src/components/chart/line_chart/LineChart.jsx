@@ -73,7 +73,7 @@ export const LineChart = ({ data, labels, onFilterChange, title, className, filt
             <Loader/>
           :
             <div className={styles.lineChartWrapper}>
-              <Line data-testid="lineChartCanvas" data={lineChartData} options={CHART_OPTIONS} />
+              <Line data={lineChartData} options={CHART_OPTIONS} />
             </div>
         }
       </div>

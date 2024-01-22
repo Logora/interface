@@ -77,8 +77,8 @@ export const PieChart = ({ data, labels, totalItemsCount, pieTitle, colors, minP
 			{ isLoading ?
 				<Loader/>
 			:
-				<div className={styles.pieChart}>
-					<Pie data-testid="pieChartCanvas" data={pieChartData} plugins={[ChartDataLabels]} options={options} />
+				<div className={styles.pieChart} data-testid="pieChartCanvas">
+					<Pie data={pieChartData} plugins={[ChartDataLabels]} options={options} />
 				</div>
 			}
 		</StandardErrorBoundary>
