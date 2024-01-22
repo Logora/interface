@@ -142,6 +142,22 @@
         "mainFile": "index.js",
         "rootDir": "src/components/auth/use_auth"
     },
+    "chart/line_chart": {
+        "name": "chart/line_chart",
+        "scope": "",
+        "version": "",
+        "defaultScope": "logora.debate",
+        "mainFile": "index.js",
+        "rootDir": "src/components/chart/line_chart"
+    },
+    "chart/pie_chart": {
+        "name": "chart/pie_chart",
+        "scope": "",
+        "version": "",
+        "defaultScope": "logora.debate",
+        "mainFile": "index.js",
+        "rootDir": "src/components/chart/pie_chart"
+    },
     "consultation/consultation_box": {
         "name": "consultation/consultation_box",
         "scope": "logora.debate",

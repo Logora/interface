@@ -1,0 +1,18 @@
+@import '~@logora/debate.styles.theme/_theme.scss';
+@import '~@logora/debate.styles.spacing/_spacing.scss';
+
+.pieChart {
+  @include mt(4, xs);
+  @include p(3, xs);
+  align-self: center;
+  color: $text-primary;
+  flex: 1;
+  min-width: 0;
+  height: 400px;
+}
+
+@media screen and (max-width: 576px) {
+  .pieChart {
+    flex: unset;
+  }
+}
