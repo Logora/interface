@@ -29,7 +29,7 @@ export const EmbedHeader = ({ title, titleRedirectUrl, headerLabel, onlineUsersC
 				</div>
 			}
 			<div className={cx(styles.debateName, { [styles.left]: textLeft})} data-testid={"debate-name"}>
-				<Link className={styles.debateLink} to={titleRedirectUrl} target="_top" external data-tid="link_debate_title_embed">
+				<Link className={styles.debateLink} to={titleRedirectUrl} target="_top" external data-tid="link_debate_title_embed" rel="">
 					{ title }
 				</Link>
 			</div>
