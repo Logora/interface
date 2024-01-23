@@ -491,6 +491,9 @@
                     "name": "user/update_user_info_modal",
                     "scope": "logora.debate"
                 }
+            },
+            "teambit.component/remove": {
+                "removed": true
             }
         }
     },
