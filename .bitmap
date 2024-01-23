@@ -478,25 +478,6 @@
         "mainFile": "index.js",
         "rootDir": "src/components/modal/side_modal"
     },
-    "modal/update_user_info_modal": {
-        "name": "modal/update_user_info_modal",
-        "scope": "logora.debate",
-        "version": "0.0.31",
-        "mainFile": "index.js",
-        "rootDir": "src/components/modal/update_user_info_modal",
-        "config": {
-            "teambit.component/deprecation": {
-                "deprecate": true,
-                "newId": {
-                    "name": "user/update_user_info_modal",
-                    "scope": "logora.debate"
-                }
-            },
-            "teambit.component/remove": {
-                "removed": true
-            }
-        }
-    },
     "progress/loader": {
         "name": "progress/loader",
         "scope": "logora.debate",
