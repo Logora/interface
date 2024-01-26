@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useIntl } from "react-intl";
+import 'chart.js/auto';
 import { Line } from 'react-chartjs-2';
 import { Select } from '@logora/debate.input.select';
 import { Tag } from '@logora/debate.tag.tag';
@@ -11,7 +12,13 @@ import PropTypes from 'prop-types';
 
 export const LineChart = ({ data, labels, onFilterChange, title, className, filterOptions }) => {
   const intl = useIntl();
-  const CHART_OPTIONS = {responsive: true, maintainAspectRatio: false, plugins: { title: { display: true, font: { size: "16" }, text: title}, legend: { position: "top", align: "center" } }, scales: { y: { beginAtZero: true, grid: { drawOnChartArea: true, color: "#f1f1f1" } }, x: { grid: { drawOnChartArea: false } } } };
+  
+  const CHART_OPTIONS = {
+    responsive: true, 
+    maintainAspectRatio: false, 
+    plugins: { title: { display: true, font: { size: "16" }, text: title}, legend: { position: "top", align: "center" } }, 
+    scales: { y: { beginAtZero: true, grid: { drawOnChartArea: true, color: "#f1f1f1" } }, x: { grid: { drawOnChartArea: false } } } 
+  };
   
 	const [isLoading, setIsLoading] = useState(true);
   const [metric, setMetric] = useState(filterOptions[0].value);

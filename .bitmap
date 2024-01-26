@@ -147,14 +147,40 @@
         "scope": "logora.debate",
         "version": "0.0.1",
         "mainFile": "index.js",
-        "rootDir": "src/components/chart/line_chart"
+        "rootDir": "src/components/chart/line_chart",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "peerDependencies": {
+                        "react": "^17.0.0 || ^18.0.0",
+                        "react-dom": "^17.0.0 || ^18.0.0"
+                    },
+                    "dependencies": {
+                        "chart.js": "^4.4.1"
+                    }
+                }
+            }
+        }
     },
     "chart/pie_chart": {
         "name": "chart/pie_chart",
         "scope": "logora.debate",
         "version": "0.0.1",
         "mainFile": "index.js",
-        "rootDir": "src/components/chart/pie_chart"
+        "rootDir": "src/components/chart/pie_chart",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "peerDependencies": {
+                        "react": "^17.0.0 || ^18.0.0",
+                        "react-dom": "^17.0.0 || ^18.0.0"
+                    },
+                    "dependencies": {
+                        "chart.js": "^4.4.1"
+                    }
+                }
+            }
+        }
     },
     "consultation/consultation_box": {
         "name": "consultation/consultation_box",

@@ -52,11 +52,11 @@ __metadata:
   linkType: hard
 
 "@babel/runtime@npm:^7.1.2, @babel/runtime@npm:^7.12.13, @babel/runtime@npm:^7.12.5":
-  version: 7.23.8
-  resolution: "@babel/runtime@npm:7.23.8"
+  version: 7.23.9
+  resolution: "@babel/runtime@npm:7.23.9"
   dependencies:
     regenerator-runtime: ^0.14.0
-  checksum: 0bd5543c26811153822a9f382fd39886f66825ff2a397a19008011376533747cd05c33a91f6248c0b8b0edf0448d7c167ebfba34786088f1b7eb11c65be7dfc3
+  checksum: 6bbebe8d27c0c2dd275d1ac197fc1a6c00e18dab68cc7aaff0adc3195b45862bae9c4cc58975629004b0213955b2ed91e99eccb3d9b39cabea246c657323d667
   languageName: node
   linkType: hard
 
@@ -86,24 +86,24 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@formatjs/icu-messageformat-parser@npm:2.7.5":
-  version: 2.7.5
-  resolution: "@formatjs/icu-messageformat-parser@npm:2.7.5"
+"@formatjs/icu-messageformat-parser@npm:2.7.6":
+  version: 2.7.6
+  resolution: "@formatjs/icu-messageformat-parser@npm:2.7.6"
   dependencies:
     "@formatjs/ecma402-abstract": 1.18.2
-    "@formatjs/icu-skeleton-parser": 1.7.2
+    "@formatjs/icu-skeleton-parser": 1.8.0
     tslib: ^2.4.0
-  checksum: b32e937e59064fd71e388b71e648062554e420a855b00ce12133ce4ef698e45201f91e95fb3dbb76272b6ea5a13150a39a8e8835e2b5ee89d9d33665288e90d1
+  checksum: d537253cbfe0515c0b72495b1133528a6643f23f978f6d9576defe5150dbb4b9b4e4b7028e2ff1bfaa4d104b05aa1119688d3fb7a4cf9b1b78ba8019a6adfeb1
   languageName: node
   linkType: hard
 
-"@formatjs/icu-skeleton-parser@npm:1.7.2":
-  version: 1.7.2
-  resolution: "@formatjs/icu-skeleton-parser@npm:1.7.2"
+"@formatjs/icu-skeleton-parser@npm:1.8.0":
+  version: 1.8.0
+  resolution: "@formatjs/icu-skeleton-parser@npm:1.8.0"
   dependencies:
     "@formatjs/ecma402-abstract": 1.18.2
     tslib: ^2.4.0
-  checksum: be6315223e1adba40cef0811477eb0cb285fed851af9bd59415eb6a4f8eea4927f725bd30d7194df8637caa2ee85a7f1f3236c971c377e73159a2df00f635ebb
+  checksum: 85ca45148a8535c61f2667d24d3e59ab97cd2b4accee8383594872a319e875effae7d54e070fd0d3926fc1407b04f5685f94336c1d0d587fcb1064bb498e5319
   languageName: node
   linkType: hard
 
@@ -138,23 +138,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@formatjs/intl@npm:2.9.11":
-  version: 2.9.11
-  resolution: "@formatjs/intl@npm:2.9.11"
+"@formatjs/intl@npm:2.10.0":
+  version: 2.10.0
+  resolution: "@formatjs/intl@npm:2.10.0"
   dependencies:
     "@formatjs/ecma402-abstract": 1.18.2
     "@formatjs/fast-memoize": 2.2.0
-    "@formatjs/icu-messageformat-parser": 2.7.5
+    "@formatjs/icu-messageformat-parser": 2.7.6
     "@formatjs/intl-displaynames": 6.6.6
     "@formatjs/intl-listformat": 7.5.5
-    intl-messageformat: 10.5.10
+    intl-messageformat: 10.5.11
     tslib: ^2.4.0
   peerDependencies:
     typescript: ^4.7 || 5
   peerDependenciesMeta:
     typescript:
       optional: true
-  checksum: 9a7229fce1ad9ba2a0fda6c52ae2c50baeb1a62f2b2fc521a1a59f8d5aaee4a1f0a707357c10e67525ee2d3adf3f93cb40ed7e8c83448d77a214264c508df19f
+  checksum: 45ed03c7c4a378606b273477a1fd0323804caf2eee1d0ace17b8dfe15a9c71b4083ffc4592c02a1261bcbc2edfd09e81d3144b5b7599dcd51f3cae48c5c93d9a
   languageName: node
   linkType: hard
 
@@ -214,6 +214,13 @@ __metadata:
     "@types/yargs": ^17.0.8
     chalk: ^4.0.0
   checksum: a0bcf15dbb0eca6bdd8ce61a3fb055349d40268622a7670a3b2eb3c3dbafe9eb26af59938366d520b86907b9505b0f9b29b85cec11579a9e580694b87cd90fcc
+  languageName: node
+  linkType: hard
+
+"@kurkle/color@npm:^0.3.0":
+  version: 0.3.2
+  resolution: "@kurkle/color@npm:0.3.2"
+  checksum: 79e97b31f8f6efb28c69d373f94b0c7480226fe8ec95221f518ac998e156444a496727ce47de6d728eb5c3369288e794cba82cae34253deb0d472d3bfe080e49
   languageName: node
   linkType: hard
 
@@ -470,6 +477,420 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@logora/debate.action.button@npm:0.0.60":
+  version: 0.0.60
+  resolution: "@logora/debate.action.button@npm:0.0.60"
+  dependencies:
+    "@babel/runtime": 7.19.4
+    "@logora/debate.action.link": 0.0.11
+    "@logora/debate.styles.spacing": 0.0.12
+    "@logora/debate.styles.theme": 0.0.21
+    "@types/node": 18.11.2
+    "@types/react": ^18.0.21
+    "@types/react-dom": ^18.0.6
+    classnames: ^2.3.2
+    core-js: ^3.25.5
+    prop-types: ^15.8.1
+  peerDependencies:
+    react: ^17.0.0 || ^18.0.0
+    react-dom: ^17.0.0 || ^18.0.0
+    react-router: ^5.3.4
+    react-router-dom: ^5.3.4
+  checksum: 97b2bfe13cc15de449019c5680b2e02c228a254cf5c2ff8194e0502bf8ae3d561ec954ad3ea2a8c4e04e05648cc65ee633e4e43ac2bf416a7af8c0a801485b4c
+  languageName: node
+  linkType: hard
+
+"@logora/debate.action.link@npm:0.0.11":
+  version: 0.0.11
+  resolution: "@logora/debate.action.link@npm:0.0.11"
+  dependencies:
+    core-js: ^3.0.0
+    prop-types: ^15.8.1
+  peerDependencies:
+    react: ^17.0.0 || ^18.0.0
+    react-dom: ^17.0.0 || ^18.0.0
+    react-router: ^5.3.4
+    react-router-dom: ^5.3.4
+  checksum: 09a2ac3acf954ebe23ba9ea6298bd78c75bceff6c57a9e9298e4811cc7b8cf5951c5778c236676b24281513c2c5d11faeea0d9dd2ec6a32052096642b417b5db
+  languageName: node
+  linkType: hard
+
+"@logora/debate.auth.use_auth@npm:0.0.19":
+  version: 0.0.19
+  resolution: "@logora/debate.auth.use_auth@npm:0.0.19"
+  dependencies:
+    "@logora/debate.data.data_provider": 0.0.10
+    core-js: ^3.0.0
+  peerDependencies:
+    react: ^17.0.0||^18.0.0
+    react-dom: ^17.0.0||^18.0.0
+  checksum: 5a4874e108fdcfb4daf60ab42fdeec0b0ce7ed064ae9f521e2469c1f40d1db80c094b1112432247d155d417d93bc333f0910da6e2f5b234992579bf87b29b072
+  languageName: node
+  linkType: hard
+
+"@logora/debate.data.config_provider@npm:0.0.4":
+  version: 0.0.4
+  resolution: "@logora/debate.data.config_provider@npm:0.0.4"
+  dependencies:
+    core-js: ^3.0.0
+    prop-types: ^15.8.1
+  peerDependencies:
+    react: ^17.0.0 || ^18.0.0
+    react-dom: ^17.0.0 || ^18.0.0
+  checksum: f580cea39dde227832c2ede2397dcec22e1772b99c87bbe9cca64aede76285f88d400c97819cf3a201c09c46b85d19e0ac9461153e2f950d37dc3dedbb26b3f9
+  languageName: node
+  linkType: hard
+
+"@logora/debate.data.data_provider@npm:0.0.10":
+  version: 0.0.10
+  resolution: "@logora/debate.data.data_provider@npm:0.0.10"
+  dependencies:
+    core-js: ^3.0.0
+  peerDependencies:
+    react: ^17.0.0 || ^18.0.0
+    react-dom: ^17.0.0 || ^18.0.0
+  checksum: 0d31bdd07f89052cc6c745d388ee76c357cc581e94bea0e2d1201ff4dda2a992a3c43b4776cec1e6659d50bb6ec786a6d86df73082648f68efef2e9440184fca
+  languageName: node
+  linkType: hard
+
+"@logora/debate.dialog.dropdown@npm:0.0.15":
+  version: 0.0.15
+  resolution: "@logora/debate.dialog.dropdown@npm:0.0.15"
+  dependencies:
+    "@logora/debate.styles.spacing": 0.0.12
+    "@logora/debate.styles.theme": 0.0.21
+    classnames: ^2.3.2
+    core-js: ^3.0.0
+    prop-types: ^15.8.1
+    use-onclickoutside: ^0.4.1
+  peerDependencies:
+    react: ^17.0.0 || ^18.0.0
+    react-dom: ^17.0.0 || ^18.0.0
+  checksum: 0c363a5521cac892ad9a639dc35a759e5080cc46b14840eeea9108edf26560b735370d0a4c39004fe77aba37c17059f61dc90bb6ec6d74e602fd1c101a109495
+  languageName: node
+  linkType: hard
+
+"@logora/debate.dialog.modal@npm:0.0.39":
+  version: 0.0.39
+  resolution: "@logora/debate.dialog.modal@npm:0.0.39"
+  dependencies:
+    "@logora/debate.icons.icon": 0.0.32
+    "@logora/debate.styles.spacing": 0.0.12
+    "@logora/debate.styles.theme": 0.0.21
+    classnames: ^2.3.2
+    core-js: ^3.0.0
+    prop-types: ^15.8.1
+    use-onclickoutside: ^0.4.1
+  peerDependencies:
+    react: ^17.0.0 || ^18.0.0
+    react-dom: ^17.0.0 || ^18.0.0
+  checksum: 549f2ba14184f42b68ea242a2b13be12e7305a56dfc06973731b3b3887f7996a83061240a3e5e362890bccc6ddd6fa3afb778925a5345d7d919c9ce0e824ff0d
+  languageName: node
+  linkType: hard
+
+"@logora/debate.dialog.tooltip@npm:0.0.13":
+  version: 0.0.13
+  resolution: "@logora/debate.dialog.tooltip@npm:0.0.13"
+  dependencies:
+    "@logora/debate.styles.theme": 0.0.21
+    classnames: ^2.3.2
+    core-js: ^3.0.0
+    prop-types: ^15.8.1
+  peerDependencies:
+    react: ^17.0.0 || ^18.0.0
+    react-dom: ^17.0.0 || ^18.0.0
+  checksum: 478e47414d866edd7e4822c09c3f6e75cdfa74cd8e2c18eedfa878091f1193511da5feb8632fddbd135afc643aebe6db344c46ee6dc8eaa6249768637e063e02
+  languageName: node
+  linkType: hard
+
+"@logora/debate.forms.form@npm:0.0.5":
+  version: 0.0.5
+  resolution: "@logora/debate.forms.form@npm:0.0.5"
+  dependencies:
+    core-js: ^3.0.0
+  peerDependencies:
+    react: ^17.0.0 || ^18.0.0
+    react-dom: ^17.0.0 || ^18.0.0
+  checksum: 0ab197007ba41ec17264cdb86c89d4c944372cdaf8dda7b8c3fb51a335e03da97e1fd03bcf1ee900247d7951944367fc17bffbf25a02a4ce277feb32f03c514e
+  languageName: node
+  linkType: hard
+
+"@logora/debate.forms.use_form_validation@npm:0.0.3":
+  version: 0.0.3
+  resolution: "@logora/debate.forms.use_form_validation@npm:0.0.3"
+  dependencies:
+    core-js: ^3.0.0
+    react-intl: ^6.1.2
+  peerDependencies:
+    react: ^17.0.0 || ^18.0.0
+    react-dom: ^17.0.0 || ^18.0.0
+  checksum: 0e2b81d3dc3059b615af954c29865aa3c4661d5b05cc11f6927a42ccaebc52a5f8a853927e0bfb7ef5192b211fc1c34f7fa9603ee751fd60a970da8f7096c527
+  languageName: node
+  linkType: hard
+
+"@logora/debate.hooks.use_responsive@npm:0.0.9":
+  version: 0.0.9
+  resolution: "@logora/debate.hooks.use_responsive@npm:0.0.9"
+  dependencies:
+    core-js: ^3.0.0
+    prop-types: ^15.8.1
+  peerDependencies:
+    react: ^17.0.0||^18.0.0
+    react-dom: ^17.0.0||^18.0.0
+  checksum: fae767efa700982feb91dba21e83642601ebec81249a1eb41f3a34b555679d8844db5db54e2bb180b06b8a7cbc02a62100599c631f9af90700f70b982ef4e669
+  languageName: node
+  linkType: hard
+
+"@logora/debate.icons.icon@npm:0.0.32":
+  version: 0.0.32
+  resolution: "@logora/debate.icons.icon@npm:0.0.32"
+  dependencies:
+    "@logora/debate.icons.icon_provider": 0.0.32
+    core-js: ^3.0.0
+    prop-types: ^15.8.1
+  peerDependencies:
+    react: ^17.0.0 || ^18.0.0
+    react-dom: ^17.0.0 || ^18.0.0
+  checksum: 38f9415798ffaa0288cce38ad44b3d191bc2738407f5fe87b159f4f30f8071cee9e6961518b341f40378bda07c9fb0e1958902da29eefc3b8284dc9d56650425
+  languageName: node
+  linkType: hard
+
+"@logora/debate.icons.icon_provider@npm:0.0.32":
+  version: 0.0.32
+  resolution: "@logora/debate.icons.icon_provider@npm:0.0.32"
+  dependencies:
+    core-js: ^3.33.0
+    prop-types: ^15.8.1
+  peerDependencies:
+    react: ^17.0.0 || ^18.0.0
+    react-dom: ^17.0.0 || ^18.0.0
+  checksum: cd1ca2c87d59ad2dbee418484f1df3c7a919ab56fea4d346c6e1ba5b1a601da042540dbd69b98dacfd2fc8d8cfa0391430382e406bfb8b14688cd9c4edbb984e
+  languageName: node
+  linkType: hard
+
+"@logora/debate.input.checkbox.hidden@npm:0.0.6":
+  version: 0.0.6
+  resolution: "@logora/debate.input.checkbox.hidden@npm:0.0.6"
+  dependencies:
+    classnames: ^2.3.2
+    core-js: ^3.0.0
+  peerDependencies:
+    react: ^17.0.0 || ^18.0.0
+    react-dom: ^17.0.0 || ^18.0.0
+  checksum: ce2ede87bee3374b9d5c7905602116c955f5d5fdde98e960656e6f963f0189c8f10b0f11cb4335490879115a173444aabd7f3a5ea7b027cf7726c3d5deb641be
+  languageName: node
+  linkType: hard
+
+"@logora/debate.input.checkbox.indicator@npm:0.0.6":
+  version: 0.0.6
+  resolution: "@logora/debate.input.checkbox.indicator@npm:0.0.6"
+  dependencies:
+    classnames: ^2.3.2
+    core-js: ^3.0.0
+  peerDependencies:
+    react: ^17.0.0 || ^18.0.0
+    react-dom: ^17.0.0 || ^18.0.0
+  checksum: 04dbe9d1ba6937f775a51906287a03dd7ef0b036272b0c1db28e26875b8f35a6ffc02f382267724aadb1f7190300589d442e74792b95e41f56f1f747e26ef1eb
+  languageName: node
+  linkType: hard
+
+"@logora/debate.input.checkbox.label@npm:0.0.8":
+  version: 0.0.8
+  resolution: "@logora/debate.input.checkbox.label@npm:0.0.8"
+  dependencies:
+    "@logora/debate.input.checkbox.hidden": 0.0.6
+    "@logora/debate.input.checkbox.indicator": 0.0.6
+    core-js: ^3.0.0
+  peerDependencies:
+    react: ^17.0.0 || ^18.0.0
+    react-dom: ^17.0.0 || ^18.0.0
+  checksum: cfb2974612fc68988f26d96ff0395b971b239ce62905b7f76c20901543b01391cc05582c473d820f44258d9abb0cad0cb247455141924bd981e43e2d7f363115
+  languageName: node
+  linkType: hard
+
+"@logora/debate.input.select@npm:0.0.63":
+  version: 0.0.63
+  resolution: "@logora/debate.input.select@npm:0.0.63"
+  dependencies:
+    "@logora/debate.dialog.dropdown": 0.0.15
+    "@logora/debate.icons.icon": 0.0.32
+    "@logora/debate.styles.spacing": 0.0.12
+    "@logora/debate.styles.theme": 0.0.21
+    classnames: ^2.3.2
+    core-js: ^3.0.0
+    prop-types: ^15.8.1
+  peerDependencies:
+    react: ^17.0.0 || ^18.0.0
+    react-dom: ^17.0.0 || ^18.0.0
+  checksum: 036833a44f685f860d8481e3d1456f6fde3974b741b282dbc882ffb170b818d45f3c926daed8a4f2de6dc7e82d1acf3512a8a594ba1ad57e4f7990a8a81af98f
+  languageName: node
+  linkType: hard
+
+"@logora/debate.input.text_input@npm:0.0.42":
+  version: 0.0.42
+  resolution: "@logora/debate.input.text_input@npm:0.0.42"
+  dependencies:
+    "@logora/debate.forms.form": 0.0.5
+    "@logora/debate.styles.spacing": 0.0.12
+    "@logora/debate.styles.theme": 0.0.21
+    classnames: ^2.3.2
+    core-js: ^3.0.0
+  peerDependencies:
+    react: ^17.0.0 || ^18.0.0
+    react-dom: ^17.0.0 || ^18.0.0
+  checksum: 6f09bc9b6ffe3f79eb88bd0baff4666601c0c66fd2e66b17fdfca83c1437294f135596507fd424ad38f3417b0bf8a58afbb4e699295b09f416d2aa91986ed43a
+  languageName: node
+  linkType: hard
+
+"@logora/debate.input.toggle@npm:0.0.29":
+  version: 0.0.29
+  resolution: "@logora/debate.input.toggle@npm:0.0.29"
+  dependencies:
+    "@logora/debate.input.checkbox.label": 0.0.8
+    "@logora/debate.styles.spacing": 0.0.12
+    "@logora/debate.styles.theme": 0.0.21
+    classnames: ^2.3.2
+    core-js: ^3.0.0
+  peerDependencies:
+    react: ^17.0.0 || ^18.0.0
+    react-dom: ^17.0.0 || ^18.0.0
+  checksum: 8cc7fb4955fee839c11902cdc96ea028a9be4b1518fbea19c13d0d752633067cf1fc4ca39b9e91892f9c5add2f6ada7a0acbe00d493f7f8d6b99663b124aa6c0
+  languageName: node
+  linkType: hard
+
+"@logora/debate.modal.update_user_info_modal@npm:0.0.31":
+  version: 0.0.31
+  resolution: "@logora/debate.modal.update_user_info_modal@npm:0.0.31"
+  dependencies:
+    "@logora/debate.action.button": 0.0.60
+    "@logora/debate.auth.use_auth": 0.0.19
+    "@logora/debate.data.config_provider": 0.0.4
+    "@logora/debate.data.data_provider": 0.0.10
+    "@logora/debate.dialog.modal": 0.0.39
+    "@logora/debate.forms.use_form_validation": 0.0.3
+    "@logora/debate.hooks.use_responsive": 0.0.9
+    "@logora/debate.icons.icon": 0.0.32
+    "@logora/debate.input.select": 0.0.63
+    "@logora/debate.input.text_input": 0.0.42
+    "@logora/debate.input.toggle": 0.0.29
+    "@logora/debate.progress.loader": 0.0.3
+    "@logora/debate.styles.display": 0.0.10
+    "@logora/debate.styles.flex": 0.0.11
+    "@logora/debate.styles.spacing": 0.0.12
+    "@logora/debate.styles.theme": 0.0.21
+    "@logora/debate.user.avatar_selector": 0.0.44
+    core-js: ^3.0.0
+    prop-types: ^15.8.1
+    react-intl: ^6.1.2
+  peerDependencies:
+    react: ^17.0.0 || ^18.0.0
+    react-dom: ^17.0.0 || ^18.0.0
+  checksum: 217441b99e445c671c0b3adf21ca9abebd92974bfb4be40877b879b81905e842bd9afb76896df816439af3bf11a92aad0ee8c8395ef7cd1c28db2e099a12a9c0
+  languageName: node
+  linkType: hard
+
+"@logora/debate.progress.loader@npm:0.0.3":
+  version: 0.0.3
+  resolution: "@logora/debate.progress.loader@npm:0.0.3"
+  dependencies:
+    "@logora/debate.styles.spacing": 0.0.12
+    "@logora/debate.styles.theme": 0.0.21
+    core-js: ^3.0.0
+  peerDependencies:
+    react: ^17.0.0||^18.0.0
+    react-dom: ^17.0.0||^18.0.0
+  checksum: 2c53aa7e8d74fbed1a19853b9233b4b71ba634d78358ef0ff5dfdada3a5882927cf47676d81cb4b7abdce0eaefcc418daedb2a83bdcf8fdece2af7c318e27875
+  languageName: node
+  linkType: hard
+
+"@logora/debate.styles.display@npm:0.0.10":
+  version: 0.0.10
+  resolution: "@logora/debate.styles.display@npm:0.0.10"
+  dependencies:
+    core-js: ^3.0.0
+  peerDependencies:
+    react: ^17.0.0 || ^18.0.0
+    react-dom: ^17.0.0 || ^18.0.0
+  checksum: 3d8a3d0775ed36eeaa0a33c2ee67f1e6b8e62577cb39290cf555d7e26de1899282db2d106befc4c8b78cd19ae15d0a4fbfd6f1308409d311c7b33713f81fe667
+  languageName: node
+  linkType: hard
+
+"@logora/debate.styles.flex@npm:0.0.11":
+  version: 0.0.11
+  resolution: "@logora/debate.styles.flex@npm:0.0.11"
+  dependencies:
+    "@logora/debate.styles.display": 0.0.10
+    core-js: ^3.0.0
+  peerDependencies:
+    react: ^17.0.0 || ^18.0.0
+    react-dom: ^17.0.0 || ^18.0.0
+  checksum: 0b66ecbea4261c87bad60a624fa0ce6f94861fc8c898b78e38f4fdb7070518dcd4ea28c26d969f47802e3f3239048380da3740863288ad03b4e621029c138144
+  languageName: node
+  linkType: hard
+
+"@logora/debate.styles.spacing@npm:0.0.12":
+  version: 0.0.12
+  resolution: "@logora/debate.styles.spacing@npm:0.0.12"
+  dependencies:
+    "@logora/debate.styles.display": 0.0.10
+    core-js: ^3.0.0
+  peerDependencies:
+    react: ^17.0.0 || ^18.0.0
+    react-dom: ^17.0.0 || ^18.0.0
+  checksum: a7dbe72a24023593c6c087babae1ca519db14e796a3c26823d596981d375aa9cb0873778eda66b36118fb3ce332baffa1767fce78941aea00183470e1701b1c6
+  languageName: node
+  linkType: hard
+
+"@logora/debate.styles.theme@npm:0.0.21":
+  version: 0.0.21
+  resolution: "@logora/debate.styles.theme@npm:0.0.21"
+  dependencies:
+    core-js: ^3.0.0
+  peerDependencies:
+    react: ^17.0.0 || ^18.0.0
+    react-dom: ^17.0.0 || ^18.0.0
+  checksum: f848fc0ef7748cda0574882743016bcc4f4816dbbcadb75c836045ccb3d5b078ba98da00cadb98c484dba39b210a8b5a5a69aa2f49ab8a8acd6c7e31daf70648
+  languageName: node
+  linkType: hard
+
+"@logora/debate.user.avatar@npm:0.0.35":
+  version: 0.0.35
+  resolution: "@logora/debate.user.avatar@npm:0.0.35"
+  dependencies:
+    "@logora/debate.dialog.tooltip": 0.0.13
+    "@logora/debate.styles.theme": 0.0.21
+    classnames: ^2.3.2
+    core-js: ^3.0.0
+    prop-types: ^15.8.1
+    react-intl: ^6.1.2
+  peerDependencies:
+    react: ^17.0.0 || ^18.0.0
+    react-dom: ^17.0.0 || ^18.0.0
+    react-router: ^5.3.4
+    react-router-dom: ^5.3.4
+  checksum: 24ad07cc1b14a3a8b8082f28e5a8ddf137f5fd6c2e8068b0bedeeef24f83dc3838bbafff194a64ddeb454a6bb773e18c1f08fdce0a883a53a6ac4c7d6abc9640
+  languageName: node
+  linkType: hard
+
+"@logora/debate.user.avatar_selector@npm:0.0.44":
+  version: 0.0.44
+  resolution: "@logora/debate.user.avatar_selector@npm:0.0.44"
+  dependencies:
+    "@logora/debate.action.button": 0.0.60
+    "@logora/debate.styles.spacing": 0.0.12
+    "@logora/debate.styles.theme": 0.0.21
+    "@logora/debate.user.avatar": 0.0.35
+    classnames: ^2.3.2
+    core-js: ^3.0.0
+    prop-types: ^15.8.1
+    react-intl: ^6.1.2
+  peerDependencies:
+    react: ^17.0.0 || ^18.0.0
+    react-dom: ^17.0.0 || ^18.0.0
+  checksum: d8bfd9f3c50fe13215d57fe5be4e23dd7e997f54c38b7f850e0773d21ae900984351783b1db26f409496751c8fda370b51aecc4145f9e3a09d0c040efbc40479
+  languageName: node
+  linkType: hard
+
 "@logora/ui@workspace:.":
   version: 0.0.0-use.local
   resolution: "@logora/ui@workspace:."
@@ -486,6 +907,7 @@ __metadata:
     "@lexical/rich-text": ^0.12.5
     "@lexical/selection": ^0.12.5
     "@lexical/utils": ^0.12.5
+    "@logora/debate.modal.update_user_info_modal": 0.0.31
     "@rooks/use-sessionstorage-state": ^4.11.2
     "@testing-library/dom": 9.0.0
     "@testing-library/react": ^14.0.0
@@ -496,8 +918,8 @@ __metadata:
     "@types/react-dom": ">=17.0.5 <18.0.0"
     "@types/testing-library__jest-dom": 5.9.5
     axios: ^1.6.2
-    chart.js: ^2.9.4
-    chartjs-plugin-datalabels: 1.0.0
+    chart.js: ^4.4.1
+    chartjs-plugin-datalabels: ^2.2.0
     classnames: ^2.3.2
     core-js: ">=3.33.0 <4.0.0"
     lexical: ^0.12.6
@@ -505,7 +927,7 @@ __metadata:
     prop-types: ^15.8.1
     querystringify: ^2.2.0
     react: ">=18.2.0 <19.0.0"
-    react-chartjs-2: ^2.11.2
+    react-chartjs-2: ^5.2.0
     react-copy-to-clipboard: ^5.1.0
     react-dom: ">=18.2.0 <19.0.0"
     react-hot-toast: ^2.4.1
@@ -699,11 +1121,11 @@ __metadata:
   linkType: hard
 
 "@types/node@npm:*":
-  version: 20.11.5
-  resolution: "@types/node@npm:20.11.5"
+  version: 20.11.7
+  resolution: "@types/node@npm:20.11.7"
   dependencies:
     undici-types: ~5.26.4
-  checksum: a542727de1334ae20a3ca034b0ecf4b464a57ca01efc4f9cf43bd9ab93896125ab3c2de060ecd8f6ae23b86c6bf3463f681b643e69c032c6a662d376c98a6092
+  checksum: 61ea0718bccda31110c643190518407b7c50d26698a20e3522871608db5fa3d2d43d1ae57c609068eae6996d563db43326045a90f22a9aacc825e8d6c7aea2ce
   languageName: node
   linkType: hard
 
@@ -1005,13 +1427,13 @@ __metadata:
   linkType: soft
 
 "axios@npm:^1.6.2":
-  version: 1.6.5
-  resolution: "axios@npm:1.6.5"
+  version: 1.6.7
+  resolution: "axios@npm:1.6.7"
   dependencies:
     follow-redirects: ^1.15.4
     form-data: ^4.0.0
     proxy-from-env: ^1.1.0
-  checksum: e28d67b2d9134cb4608c44d8068b0678cfdccc652742e619006f27264a30c7aba13b2cd19c6f1f52ae195b5232734925928fb192d5c85feea7edd2f273df206d
+  checksum: 87d4d429927d09942771f3b3a6c13580c183e31d7be0ee12f09be6d5655304996bb033d85e54be81606f4e89684df43be7bf52d14becb73a12727bf33298a082
   languageName: node
   linkType: hard
 
@@ -1134,41 +1556,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chart.js@npm:^2.9.4":
-  version: 2.9.4
-  resolution: "chart.js@npm:2.9.4"
+"chart.js@npm:^4.4.1":
+  version: 4.4.1
+  resolution: "chart.js@npm:4.4.1"
   dependencies:
-    chartjs-color: ^2.1.0
-    moment: ^2.10.2
-  checksum: cbdc7abe2fa65e4838848e68b035ae6048ebcc512b9057d7cdb6d361e728400d39e3fde75e0b4da815ab43f7890c31787d8f80d4e6ab75a3e80fc75b47cd173c
+    "@kurkle/color": ^0.3.0
+  checksum: 8c108f137824ea0e3d79914708b409298c12ed7d16da99a40ca3cab51466ef7b0068ad82ac0addeb288b938fe0621d3e5a6a913b60e72a729aa42aa96705fcad
   languageName: node
   linkType: hard
 
-"chartjs-color-string@npm:^0.6.0":
-  version: 0.6.0
-  resolution: "chartjs-color-string@npm:0.6.0"
-  dependencies:
-    color-name: ^1.0.0
-  checksum: 2355bc8e9514b779d0dc057c5ee6707e8166f270531c27287a399d6bfeb0d891b00a6f6c20e764453a062de0de8b298b11d3850fc94c323df66efb4720ece4c7
-  languageName: node
-  linkType: hard
-
-"chartjs-color@npm:^2.1.0":
-  version: 2.4.1
-  resolution: "chartjs-color@npm:2.4.1"
-  dependencies:
-    chartjs-color-string: ^0.6.0
-    color-convert: ^1.9.3
-  checksum: 254d7b2f103980417703331c49fba18877ac797fd9056d79f0d566dc4fd8d41f91b7f63d4b19602462b91110bee2fe0c9fd57266ce871e498ac1c25742fffb11
-  languageName: node
-  linkType: hard
-
-"chartjs-plugin-datalabels@npm:1.0.0":
-  version: 1.0.0
-  resolution: "chartjs-plugin-datalabels@npm:1.0.0"
+"chartjs-plugin-datalabels@npm:^2.2.0":
+  version: 2.2.0
+  resolution: "chartjs-plugin-datalabels@npm:2.2.0"
   peerDependencies:
-    chart.js: ">= 2.7.0 < 3"
-  checksum: a3679ae36979b01046f3ea8ddc785303d13078e953eb5d988d84be6d7d70cfe4f13177d4ac2359a56ec508dce31d058843422d08b44e5a4624efd819df804c7c
+    chart.js: ">=3.0.0"
+  checksum: 26086a908a8e88507959b7aaf798b2d9794ea95f7a5889b8bb9f6b9f3437a7e2fdf18952d3ba403b2ff78e5b70452439fb323bd0dfe76e9d7d1dae1328dacb99
   languageName: node
   linkType: hard
 
@@ -1219,7 +1621,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"color-convert@npm:^1.9.0, color-convert@npm:^1.9.3":
+"color-convert@npm:^1.9.0":
   version: 1.9.3
   resolution: "color-convert@npm:1.9.3"
   dependencies:
@@ -1244,7 +1646,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"color-name@npm:^1.0.0, color-name@npm:~1.1.4":
+"color-name@npm:~1.1.4":
   version: 1.1.4
   resolution: "color-name@npm:1.1.4"
   checksum: b0445859521eb4021cd0fb0cc1a75cecf67fceecae89b63f62b201cca8d345baf8b952c966862a9d9a2632987d4f6581f0ec8d957dfacece86f0a7919316f610
@@ -1311,7 +1713,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"core-js@npm:>=3.33.0 <4.0.0":
+"core-js@npm:>=3.33.0 <4.0.0, core-js@npm:^3.0.0, core-js@npm:^3.25.5, core-js@npm:^3.33.0":
   version: 3.35.1
   resolution: "core-js@npm:3.35.1"
   checksum: e246af6b634be3763ffe3ce6ac4601b4dc5b928006fb6c95e5d08ecd82a2413bf36f00ffe178b89c9a8e94000288933a78a9881b2c9498e6cf312b031013b952
@@ -1923,9 +2325,9 @@ __metadata:
   linkType: hard
 
 "immutable@npm:^4.0.0":
-  version: 4.3.4
-  resolution: "immutable@npm:4.3.4"
-  checksum: de3edd964c394bab83432429d3fb0b4816b42f56050f2ca913ba520bd3068ec3e504230d0800332d3abc478616e8f55d3787424a90d0952e6aba864524f1afc3
+  version: 4.3.5
+  resolution: "immutable@npm:4.3.5"
+  checksum: 0e25dd5c314421faede9e1122ab26cdb638cc3edc8678c4a75dee104279b12621a30c80a480fae7f68bc7e81672f1e672e454dc0fdc7e6cf0af10809348387b8
   languageName: node
   linkType: hard
 
@@ -1972,15 +2374,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"intl-messageformat@npm:10.5.10":
-  version: 10.5.10
-  resolution: "intl-messageformat@npm:10.5.10"
+"intl-messageformat@npm:10.5.11":
+  version: 10.5.11
+  resolution: "intl-messageformat@npm:10.5.11"
   dependencies:
     "@formatjs/ecma402-abstract": 1.18.2
     "@formatjs/fast-memoize": 2.2.0
-    "@formatjs/icu-messageformat-parser": 2.7.5
+    "@formatjs/icu-messageformat-parser": 2.7.6
     tslib: ^2.4.0
-  checksum: ff0e59d31122b8d85435c1881f8ee94d765daf202f8fbc5ba77150f979c322a0b77373d151286cdcd700267ff07a6c3927276e3eea8d987b04e69eb5b6a44469
+  checksum: b5574447a0d938170049042ec807344d57c72e9aabb2e72be0d5197baabeb763e05680b19b7607df93fadeec0e13c9bfcb450e9ba2fe7464b4f06600b612bf5e
   languageName: node
   linkType: hard
 
@@ -2348,9 +2750,6 @@ __metadata:
 "loader-6245f5@workspace:src/components/progress/loader":
   version: 0.0.0-use.local
   resolution: "loader-6245f5@workspace:src/components/progress/loader"
-  peerDependencies:
-    react: ^16.8.0 || ^17.0.0
-    react-dom: ^16.8.0 || ^17.0.0
   languageName: unknown
   linkType: soft
 
@@ -2359,13 +2758,6 @@ __metadata:
   resolution: "location-53999c@workspace:src/components/util/location"
   languageName: unknown
   linkType: soft
-
-"lodash@npm:^4.17.19":
-  version: 4.17.21
-  resolution: "lodash@npm:4.17.21"
-  checksum: eb835a2e51d381e561e508ce932ea50a8e5a68f4ebdd771ea240d3048244a8d13658acbd502cd4829768c56f2e16bdd4340b9ea141297d472517b83868e677f7
-  languageName: node
-  linkType: hard
 
 "login_form-9ffdcd@workspace:src/components/auth/login_form":
   version: 0.0.0-use.local
@@ -2385,9 +2777,9 @@ __metadata:
   linkType: hard
 
 "lru-cache@npm:^10.0.1, lru-cache@npm:^9.1.1 || ^10.0.0":
-  version: 10.1.0
-  resolution: "lru-cache@npm:10.1.0"
-  checksum: 58056d33e2500fbedce92f8c542e7c11b50d7d086578f14b7074d8c241422004af0718e08a6eaae8705cee09c77e39a61c1c79e9370ba689b7010c152e6a76ab
+  version: 10.2.0
+  resolution: "lru-cache@npm:10.2.0"
+  checksum: eee7ddda4a7475deac51ac81d7dd78709095c6fa46e8350dc2d22462559a1faa3b81ed931d5464b13d48cbd7e08b46100b6f768c76833912bc444b99c37e25db
   languageName: node
   linkType: hard
 
@@ -2561,13 +2953,6 @@ __metadata:
   resolution: "modal-26019b@workspace:src/components/dialog/modal"
   languageName: unknown
   linkType: soft
-
-"moment@npm:^2.10.2":
-  version: 2.30.1
-  resolution: "moment@npm:2.30.1"
-  checksum: 859236bab1e88c3e5802afcf797fc801acdbd0ee509d34ea3df6eea21eb6bcc2abd4ae4e4e64aa7c986aa6cba563c6e62806218e6412a765010712e5fa121ba6
-  languageName: node
-  linkType: hard
 
 "ms@npm:2.1.2":
   version: 2.1.2
@@ -2801,7 +3186,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prop-types@npm:^15.6.2, prop-types@npm:^15.7.2, prop-types@npm:^15.8.1":
+"prop-types@npm:^15.6.2, prop-types@npm:^15.8.1":
   version: 15.8.1
   resolution: "prop-types@npm:15.8.1"
   dependencies:
@@ -2832,17 +3217,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-chartjs-2@npm:^2.11.2":
-  version: 2.11.2
-  resolution: "react-chartjs-2@npm:2.11.2"
-  dependencies:
-    lodash: ^4.17.19
-    prop-types: ^15.7.2
+"react-chartjs-2@npm:^5.2.0":
+  version: 5.2.0
+  resolution: "react-chartjs-2@npm:5.2.0"
   peerDependencies:
-    chart.js: ^2.3
-    react: ^0.14.0 || ^15.0.0 || ^16.0.0 || ^17.0.0
-    react-dom: ^0.14.0 || ^15.0.0 || ^16.0.0 || ^17.0.0
-  checksum: 874ddc9ebdd620ac2692e307dfa848d540cc84beed56910a92b8630abcc286f9b8682aba87c8635d969943586adabe5b8222adf3a7bff041d15a9698f17caa4a
+    chart.js: ^4.1.1
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+  checksum: ace702185be1450e5888a8bcd8b5fc1995067e3b11d236764a67f5567a3d7c32ff16923b8d48d3d39bda6e45135da6c044c9b43fbe8e1978f95aca9d2c0ce348
   languageName: node
   linkType: hard
 
@@ -2894,18 +3275,18 @@ __metadata:
   linkType: hard
 
 "react-intl@npm:^6.1.2":
-  version: 6.6.1
-  resolution: "react-intl@npm:6.6.1"
+  version: 6.6.2
+  resolution: "react-intl@npm:6.6.2"
   dependencies:
     "@formatjs/ecma402-abstract": 1.18.2
-    "@formatjs/icu-messageformat-parser": 2.7.5
-    "@formatjs/intl": 2.9.11
+    "@formatjs/icu-messageformat-parser": 2.7.6
+    "@formatjs/intl": 2.10.0
     "@formatjs/intl-displaynames": 6.6.6
     "@formatjs/intl-listformat": 7.5.5
     "@types/hoist-non-react-statics": ^3.3.1
     "@types/react": 16 || 17 || 18
     hoist-non-react-statics: ^3.3.2
-    intl-messageformat: 10.5.10
+    intl-messageformat: 10.5.11
     tslib: ^2.4.0
   peerDependencies:
     react: ^16.6.0 || 17 || 18
@@ -2913,7 +3294,7 @@ __metadata:
   peerDependenciesMeta:
     typescript:
       optional: true
-  checksum: 3fd61ef8114ebbf75f5fb367737436ae48df02566015bcd4b6a2f43b232c9980e69072fd593fff0884d943ffb19cb23ca4ddeeb4f90035bd43a0cba410d9382a
+  checksum: a7a7cffa68089053f4d6e87bba8c84e23b2ed27200764bc115edd2455fa2b538c5890fd2f112056e66fceed2ab77e6abdf7c63d6e357ead5549f5eabbd666840
   languageName: node
   linkType: hard
 
@@ -3582,9 +3963,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"update_user_info_modal-32a4d0@workspace:src/components/modal/update_user_info_modal":
+"update_user_info_modal-43ccda@workspace:src/components/user/update_user_info_modal":
   version: 0.0.0-use.local
-  resolution: "update_user_info_modal-32a4d0@workspace:src/components/modal/update_user_info_modal"
+  resolution: "update_user_info_modal-43ccda@workspace:src/components/user/update_user_info_modal"
   languageName: unknown
   linkType: soft
 
