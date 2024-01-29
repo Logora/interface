@@ -18,6 +18,7 @@ export const AdUnit = ({ id, adPath, sizes = [], targeting, enableDidomi = false
                 for (const [key, value] of Object.entries(targeting || {})) {
                     slot = slot.setTargeting(key, value);
                 }
+                googletag.pubads().enableSingleRequest();
                 googletag.pubads().disableInitialLoad();
                 googletag.enableServices();
                 googletag.display(id);
