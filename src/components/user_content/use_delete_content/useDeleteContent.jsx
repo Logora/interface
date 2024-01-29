@@ -7,15 +7,13 @@ import { useDataProvider } from '@logora/debate.data.data_provider';
 import { useToast } from '@logora/debate.dialog.toast_provider';
 import { ConfirmModal } from '@logora/debate.dialog.confirm_modal';
 import { useAuthRequired } from '@logora/debate.hooks.use_auth_required';
-import { useConfig } from '@logora/debate.data.config_provider';
 
-export const useDeleteContent = (content, contentType, listId, deleteTitle, deleteQuestion, deleteAlert) => {
+export const useDeleteContent = (content, contentType, listId, deleteTitle, deleteQuestion, deleteAlert, softDelete = false) => {
     const { showModal } = useModal();
     const { isLoggedIn } = useAuth();
 	const intl = useIntl();
     const list = useList();
     const api = useDataProvider();
-	const config = useConfig();
 	const { toast } = useToast() || {};
 	const requireAuthentication = useAuthRequired();
 
@@ -38,7 +36,7 @@ export const useDeleteContent = (content, contentType, listId, deleteTitle, dele
 	const confirmDelete = () => {
         list.remove(listId, [content]);
         toast(deleteAlert || intl.formatMessage({ id: "info.delete_content_alert", defaultMessage: "Your contribution has been deleted" }), { type: "success" });
-		if(config.actions?.softDelete) {
+		if(softDelete) {
 			api.update(contentType, content.id, { is_deleted: true }).then((response) => {
 				if (response.data.success) {
 					// NOTHING
