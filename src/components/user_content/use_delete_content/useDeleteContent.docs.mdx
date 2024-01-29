@@ -5,7 +5,7 @@ labels: ['delete']
 
 import { IntlProvider } from 'react-intl';
 
-A hook to a content. It receive a content, a contentType, a listId, a deleteTitle, a deleteQuestion and a deleteAlert params.
+A hook to delete a content. It receive a content, a contentType, a listId, a deleteTitle, a deleteQuestion and a deleteAlert params.
 
 It's using useAuthenticationRequired hook.
 
@@ -19,7 +19,7 @@ import { useDeleteContent } from '@logora/debate.user_content.use_delete_content
 
 ```js
 const Component = () => {
-    const { deleteContent } = useDeleteContent(content, contentType, listId, deleteTitle, deleteQuestion, deleteAlert);
+    const { deleteContent } = useDeleteContent(content, contentType, listId, deleteTitle, deleteQuestion, deleteAlert, softDelete);
 
 	return (
         <IntlProvider locale="en">
