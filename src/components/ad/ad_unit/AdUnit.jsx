@@ -17,9 +17,9 @@ export const AdUnit = ({ id, adPath, sizes = [], targeting, enableDidomi = false
                 for (const [key, value] of Object.entries(targeting || {})) {
                     slot.setTargeting(key, value);
                 }
-                googletag.pubads().disableInitialLoad();
+
+                googletag.pubads().enableSingleRequest();
                 googletag.enableServices();
-                googletag.display(id);
 
                 googletag.pubads().addEventListener('impressionViewable', function(event) {
                     var s = event.slot;
@@ -27,6 +27,8 @@ export const AdUnit = ({ id, adPath, sizes = [], targeting, enableDidomi = false
                         googletag.pubads().refresh([s]);
                     }, refreshRate);
                 });
+
+                googletag.display(id);
             });
 
             return () => {
