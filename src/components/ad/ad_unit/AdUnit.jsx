@@ -10,26 +10,22 @@ export const AdUnit = ({ id, adPath, sizes = [], targeting, enableDidomi = false
     useEffect(() => {
         if(typeof window !== 'undefined' && id && adPath) {
             window.googletag = window.googletag || {cmd: []};
-            let slot = {};
             googletag.cmd.push(function() {
-                slot = googletag.defineSlot(adPath, sizes, id)
+                var slot = googletag.defineSlot(adPath, sizes, id)
                     .setTargeting('origine', ['logora'])
                     .addService(googletag.pubads());
                 for (const [key, value] of Object.entries(targeting || {})) {
-                    slot = slot.setTargeting(key, value);
+                    slot.setTargeting(key, value);
                 }
-                googletag.pubads().enableSingleRequest();
                 googletag.pubads().disableInitialLoad();
                 googletag.enableServices();
                 googletag.display(id);
-                googletag.pubads().refresh([slot]);
 
                 googletag.pubads().addEventListener('impressionViewable', function(event) {
-                    if(event.slot === slot) {
-                        setTimeout(function () {
-                            googletag.pubads().refresh([event.slot]);
-                        }, refreshRate);
-                    }
+                    var s = event.slot;
+                    setTimeout(function () {
+                        googletag.pubads().refresh([s]);
+                    }, refreshRate);
                 });
             });
 
