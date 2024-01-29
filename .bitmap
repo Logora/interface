@@ -719,7 +719,7 @@
     "user_content/content_footer": {
         "name": "user_content/content_footer",
         "scope": "logora.debate",
-        "version": "0.0.12",
+        "version": "0.0.13",
         "mainFile": "index.js",
         "rootDir": "src/components/user_content/content_footer"
     },
@@ -740,7 +740,7 @@
     "user_content/use_delete_content": {
         "name": "user_content/use_delete_content",
         "scope": "logora.debate",
-        "version": "0.0.8",
+        "version": "0.0.9",
         "mainFile": "index.js",
         "rootDir": "src/components/user_content/use_delete_content"
     },
