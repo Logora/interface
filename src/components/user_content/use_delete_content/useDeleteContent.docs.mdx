@@ -19,7 +19,7 @@ import { useDeleteContent } from '@logora/debate.user_content.use_delete_content
 
 ```js
 const Component = () => {
-    const { deleteContent } = useDeleteContent(content, contentType, listId, deleteTitle, deleteQuestion, deleteAlert, softDelete);
+    const { deleteContent } = useDeleteContent(content, contentType, listId, softDelete, deleteTitle, deleteQuestion, deleteAlert);
 
 	return (
         <IntlProvider locale="en">

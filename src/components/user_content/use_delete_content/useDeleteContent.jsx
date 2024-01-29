@@ -8,7 +8,7 @@ import { useToast } from '@logora/debate.dialog.toast_provider';
 import { ConfirmModal } from '@logora/debate.dialog.confirm_modal';
 import { useAuthRequired } from '@logora/debate.hooks.use_auth_required';
 
-export const useDeleteContent = (content, contentType, listId, deleteTitle, deleteQuestion, deleteAlert, softDelete = false) => {
+export const useDeleteContent = (content, contentType, listId, softDelete = false,  deleteTitle, deleteQuestion, deleteAlert) => {
     const { showModal } = useModal();
     const { isLoggedIn } = useAuth();
 	const intl = useIntl();
