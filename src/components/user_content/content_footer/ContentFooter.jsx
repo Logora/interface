@@ -18,6 +18,7 @@ export const ContentFooter = ({ resource,
     reportType, 
     deleteType, 
     deleteListId, 
+    softDelete = false,
     disabled = false, 
     leftReply, 
     children, 
@@ -43,7 +44,7 @@ export const ContentFooter = ({ resource,
     const { showModal } = useModal();
 	const { setInputContent } = useInput() || {};
 	const { reportContent } = useReportContent(reportType, resource.id);
-	const { deleteContent } = useDeleteContent(resource, deleteType, deleteListId);
+	const { deleteContent } = useDeleteContent(resource, deleteType, deleteListId, softDelete);
 
 	const currentUserIsAuthor = () => {
 		return resource.author.id === currentUser.id;
@@ -150,6 +151,8 @@ ContentFooter.propTypes = {
     deleteType: PropTypes.string, 
     /** Delete list id */
     deleteListId: PropTypes.string, 
+    /** If true, will use PATCH method to delete content instead of DELETE */
+    softDelete: PropTypes.bool,
     /** If true, disabled replies and dropdown actions */
     disabled: PropTypes.bool, 
     /** If true, the reply button will be as far to the left as possible and the elements will no longer be in space-between */
@@ -192,6 +195,7 @@ ContentFooter.propTypes = {
 
 ContentFooter.defaultProps = {
     disabled: false, 
+    softDelete: false,
     showActions: true,
     enableEdition: true,
     enableDeletion: true
