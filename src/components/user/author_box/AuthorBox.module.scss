@@ -24,8 +24,11 @@
     cursor: pointer;
     color: $text-primary;
     line-height: 1.4em;
-    @include text-truncate();
     @include pb(1, xs);
+}
+
+.authorLink {
+    @include text-truncate();
 }
 
 .authorName a {

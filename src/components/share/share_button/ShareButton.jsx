@@ -29,7 +29,8 @@ export const ShareButton = ({ showText, shareUrl, shareTitle, shareText = false,
 	};
 
 	const handleShare = () => {
-		if ((typeof window !== 'undefined') && window.navigator.share && window.navigator.maxTouchPoints && window.navigator?.maxTouchPoints > 0 ) {
+		let mql = window.matchMedia("(max-width: 600px)");
+		if ((typeof window !== 'undefined') && window.navigator.share && window.navigator.maxTouchPoints && window.navigator?.maxTouchPoints > 0 && mql.matches) {
 			handleMobileShare();
 		} else {
 			setPopoverActive(true);

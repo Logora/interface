@@ -470,6 +470,420 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@logora/debate.action.button@npm:0.0.60":
+  version: 0.0.60
+  resolution: "@logora/debate.action.button@npm:0.0.60::__archiveUrl=https%3A%2F%2Fnode.bit.cloud%2F%40logora%2Fdebate.action.button%2F-%2F%40logora-debate.action.button-0.0.60.tgz"
+  dependencies:
+    "@babel/runtime": 7.19.4
+    "@logora/debate.action.link": 0.0.11
+    "@logora/debate.styles.spacing": 0.0.12
+    "@logora/debate.styles.theme": 0.0.21
+    "@types/node": 18.11.2
+    "@types/react": ^18.0.21
+    "@types/react-dom": ^18.0.6
+    classnames: ^2.3.2
+    core-js: ^3.25.5
+    prop-types: ^15.8.1
+  peerDependencies:
+    react: ^17.0.0 || ^18.0.0
+    react-dom: ^17.0.0 || ^18.0.0
+    react-router: ^5.3.4
+    react-router-dom: ^5.3.4
+  checksum: 97b2bfe13cc15de449019c5680b2e02c228a254cf5c2ff8194e0502bf8ae3d561ec954ad3ea2a8c4e04e05648cc65ee633e4e43ac2bf416a7af8c0a801485b4c
+  languageName: node
+  linkType: hard
+
+"@logora/debate.action.link@npm:0.0.11":
+  version: 0.0.11
+  resolution: "@logora/debate.action.link@npm:0.0.11::__archiveUrl=https%3A%2F%2Fnode.bit.cloud%2F%40logora%2Fdebate.action.link%2F-%2F%40logora-debate.action.link-0.0.11.tgz"
+  dependencies:
+    core-js: ^3.0.0
+    prop-types: ^15.8.1
+  peerDependencies:
+    react: ^17.0.0 || ^18.0.0
+    react-dom: ^17.0.0 || ^18.0.0
+    react-router: ^5.3.4
+    react-router-dom: ^5.3.4
+  checksum: 09a2ac3acf954ebe23ba9ea6298bd78c75bceff6c57a9e9298e4811cc7b8cf5951c5778c236676b24281513c2c5d11faeea0d9dd2ec6a32052096642b417b5db
+  languageName: node
+  linkType: hard
+
+"@logora/debate.auth.use_auth@npm:0.0.19":
+  version: 0.0.19
+  resolution: "@logora/debate.auth.use_auth@npm:0.0.19::__archiveUrl=https%3A%2F%2Fnode.bit.cloud%2F%40logora%2Fdebate.auth.use_auth%2F-%2F%40logora-debate.auth.use_auth-0.0.19.tgz"
+  dependencies:
+    "@logora/debate.data.data_provider": 0.0.10
+    core-js: ^3.0.0
+  peerDependencies:
+    react: ^17.0.0||^18.0.0
+    react-dom: ^17.0.0||^18.0.0
+  checksum: 5a4874e108fdcfb4daf60ab42fdeec0b0ce7ed064ae9f521e2469c1f40d1db80c094b1112432247d155d417d93bc333f0910da6e2f5b234992579bf87b29b072
+  languageName: node
+  linkType: hard
+
+"@logora/debate.data.config_provider@npm:0.0.4":
+  version: 0.0.4
+  resolution: "@logora/debate.data.config_provider@npm:0.0.4::__archiveUrl=https%3A%2F%2Fnode.bit.cloud%2F%40logora%2Fdebate.data.config_provider%2F-%2F%40logora-debate.data.config_provider-0.0.4.tgz"
+  dependencies:
+    core-js: ^3.0.0
+    prop-types: ^15.8.1
+  peerDependencies:
+    react: ^17.0.0 || ^18.0.0
+    react-dom: ^17.0.0 || ^18.0.0
+  checksum: f580cea39dde227832c2ede2397dcec22e1772b99c87bbe9cca64aede76285f88d400c97819cf3a201c09c46b85d19e0ac9461153e2f950d37dc3dedbb26b3f9
+  languageName: node
+  linkType: hard
+
+"@logora/debate.data.data_provider@npm:0.0.10":
+  version: 0.0.10
+  resolution: "@logora/debate.data.data_provider@npm:0.0.10::__archiveUrl=https%3A%2F%2Fnode.bit.cloud%2F%40logora%2Fdebate.data.data_provider%2F-%2F%40logora-debate.data.data_provider-0.0.10.tgz"
+  dependencies:
+    core-js: ^3.0.0
+  peerDependencies:
+    react: ^17.0.0 || ^18.0.0
+    react-dom: ^17.0.0 || ^18.0.0
+  checksum: 0d31bdd07f89052cc6c745d388ee76c357cc581e94bea0e2d1201ff4dda2a992a3c43b4776cec1e6659d50bb6ec786a6d86df73082648f68efef2e9440184fca
+  languageName: node
+  linkType: hard
+
+"@logora/debate.dialog.dropdown@npm:0.0.15":
+  version: 0.0.15
+  resolution: "@logora/debate.dialog.dropdown@npm:0.0.15::__archiveUrl=https%3A%2F%2Fnode.bit.cloud%2F%40logora%2Fdebate.dialog.dropdown%2F-%2F%40logora-debate.dialog.dropdown-0.0.15.tgz"
+  dependencies:
+    "@logora/debate.styles.spacing": 0.0.12
+    "@logora/debate.styles.theme": 0.0.21
+    classnames: ^2.3.2
+    core-js: ^3.0.0
+    prop-types: ^15.8.1
+    use-onclickoutside: ^0.4.1
+  peerDependencies:
+    react: ^17.0.0 || ^18.0.0
+    react-dom: ^17.0.0 || ^18.0.0
+  checksum: 0c363a5521cac892ad9a639dc35a759e5080cc46b14840eeea9108edf26560b735370d0a4c39004fe77aba37c17059f61dc90bb6ec6d74e602fd1c101a109495
+  languageName: node
+  linkType: hard
+
+"@logora/debate.dialog.modal@npm:0.0.39":
+  version: 0.0.39
+  resolution: "@logora/debate.dialog.modal@npm:0.0.39::__archiveUrl=https%3A%2F%2Fnode.bit.cloud%2F%40logora%2Fdebate.dialog.modal%2F-%2F%40logora-debate.dialog.modal-0.0.39.tgz"
+  dependencies:
+    "@logora/debate.icons.icon": 0.0.32
+    "@logora/debate.styles.spacing": 0.0.12
+    "@logora/debate.styles.theme": 0.0.21
+    classnames: ^2.3.2
+    core-js: ^3.0.0
+    prop-types: ^15.8.1
+    use-onclickoutside: ^0.4.1
+  peerDependencies:
+    react: ^17.0.0 || ^18.0.0
+    react-dom: ^17.0.0 || ^18.0.0
+  checksum: 549f2ba14184f42b68ea242a2b13be12e7305a56dfc06973731b3b3887f7996a83061240a3e5e362890bccc6ddd6fa3afb778925a5345d7d919c9ce0e824ff0d
+  languageName: node
+  linkType: hard
+
+"@logora/debate.dialog.tooltip@npm:0.0.13":
+  version: 0.0.13
+  resolution: "@logora/debate.dialog.tooltip@npm:0.0.13::__archiveUrl=https%3A%2F%2Fnode.bit.cloud%2F%40logora%2Fdebate.dialog.tooltip%2F-%2F%40logora-debate.dialog.tooltip-0.0.13.tgz"
+  dependencies:
+    "@logora/debate.styles.theme": 0.0.21
+    classnames: ^2.3.2
+    core-js: ^3.0.0
+    prop-types: ^15.8.1
+  peerDependencies:
+    react: ^17.0.0 || ^18.0.0
+    react-dom: ^17.0.0 || ^18.0.0
+  checksum: 478e47414d866edd7e4822c09c3f6e75cdfa74cd8e2c18eedfa878091f1193511da5feb8632fddbd135afc643aebe6db344c46ee6dc8eaa6249768637e063e02
+  languageName: node
+  linkType: hard
+
+"@logora/debate.forms.form@npm:0.0.5":
+  version: 0.0.5
+  resolution: "@logora/debate.forms.form@npm:0.0.5::__archiveUrl=https%3A%2F%2Fnode.bit.cloud%2F%40logora%2Fdebate.forms.form%2F-%2F%40logora-debate.forms.form-0.0.5.tgz"
+  dependencies:
+    core-js: ^3.0.0
+  peerDependencies:
+    react: ^17.0.0 || ^18.0.0
+    react-dom: ^17.0.0 || ^18.0.0
+  checksum: 0ab197007ba41ec17264cdb86c89d4c944372cdaf8dda7b8c3fb51a335e03da97e1fd03bcf1ee900247d7951944367fc17bffbf25a02a4ce277feb32f03c514e
+  languageName: node
+  linkType: hard
+
+"@logora/debate.forms.use_form_validation@npm:0.0.3":
+  version: 0.0.3
+  resolution: "@logora/debate.forms.use_form_validation@npm:0.0.3::__archiveUrl=https%3A%2F%2Fnode.bit.cloud%2F%40logora%2Fdebate.forms.use_form_validation%2F-%2F%40logora-debate.forms.use_form_validation-0.0.3.tgz"
+  dependencies:
+    core-js: ^3.0.0
+    react-intl: ^6.1.2
+  peerDependencies:
+    react: ^17.0.0 || ^18.0.0
+    react-dom: ^17.0.0 || ^18.0.0
+  checksum: 0e2b81d3dc3059b615af954c29865aa3c4661d5b05cc11f6927a42ccaebc52a5f8a853927e0bfb7ef5192b211fc1c34f7fa9603ee751fd60a970da8f7096c527
+  languageName: node
+  linkType: hard
+
+"@logora/debate.hooks.use_responsive@npm:0.0.9":
+  version: 0.0.9
+  resolution: "@logora/debate.hooks.use_responsive@npm:0.0.9::__archiveUrl=https%3A%2F%2Fnode.bit.cloud%2F%40logora%2Fdebate.hooks.use_responsive%2F-%2F%40logora-debate.hooks.use_responsive-0.0.9.tgz"
+  dependencies:
+    core-js: ^3.0.0
+    prop-types: ^15.8.1
+  peerDependencies:
+    react: ^17.0.0||^18.0.0
+    react-dom: ^17.0.0||^18.0.0
+  checksum: fae767efa700982feb91dba21e83642601ebec81249a1eb41f3a34b555679d8844db5db54e2bb180b06b8a7cbc02a62100599c631f9af90700f70b982ef4e669
+  languageName: node
+  linkType: hard
+
+"@logora/debate.icons.icon@npm:0.0.32":
+  version: 0.0.32
+  resolution: "@logora/debate.icons.icon@npm:0.0.32::__archiveUrl=https%3A%2F%2Fnode.bit.cloud%2F%40logora%2Fdebate.icons.icon%2F-%2F%40logora-debate.icons.icon-0.0.32.tgz"
+  dependencies:
+    "@logora/debate.icons.icon_provider": 0.0.32
+    core-js: ^3.0.0
+    prop-types: ^15.8.1
+  peerDependencies:
+    react: ^17.0.0 || ^18.0.0
+    react-dom: ^17.0.0 || ^18.0.0
+  checksum: 38f9415798ffaa0288cce38ad44b3d191bc2738407f5fe87b159f4f30f8071cee9e6961518b341f40378bda07c9fb0e1958902da29eefc3b8284dc9d56650425
+  languageName: node
+  linkType: hard
+
+"@logora/debate.icons.icon_provider@npm:0.0.32":
+  version: 0.0.32
+  resolution: "@logora/debate.icons.icon_provider@npm:0.0.32::__archiveUrl=https%3A%2F%2Fnode.bit.cloud%2F%40logora%2Fdebate.icons.icon_provider%2F-%2F%40logora-debate.icons.icon_provider-0.0.32.tgz"
+  dependencies:
+    core-js: ^3.33.0
+    prop-types: ^15.8.1
+  peerDependencies:
+    react: ^17.0.0 || ^18.0.0
+    react-dom: ^17.0.0 || ^18.0.0
+  checksum: cd1ca2c87d59ad2dbee418484f1df3c7a919ab56fea4d346c6e1ba5b1a601da042540dbd69b98dacfd2fc8d8cfa0391430382e406bfb8b14688cd9c4edbb984e
+  languageName: node
+  linkType: hard
+
+"@logora/debate.input.checkbox.hidden@npm:0.0.6":
+  version: 0.0.6
+  resolution: "@logora/debate.input.checkbox.hidden@npm:0.0.6::__archiveUrl=https%3A%2F%2Fnode.bit.cloud%2F%40logora%2Fdebate.input.checkbox.hidden%2F-%2F%40logora-debate.input.checkbox.hidden-0.0.6.tgz"
+  dependencies:
+    classnames: ^2.3.2
+    core-js: ^3.0.0
+  peerDependencies:
+    react: ^17.0.0 || ^18.0.0
+    react-dom: ^17.0.0 || ^18.0.0
+  checksum: ce2ede87bee3374b9d5c7905602116c955f5d5fdde98e960656e6f963f0189c8f10b0f11cb4335490879115a173444aabd7f3a5ea7b027cf7726c3d5deb641be
+  languageName: node
+  linkType: hard
+
+"@logora/debate.input.checkbox.indicator@npm:0.0.6":
+  version: 0.0.6
+  resolution: "@logora/debate.input.checkbox.indicator@npm:0.0.6::__archiveUrl=https%3A%2F%2Fnode.bit.cloud%2F%40logora%2Fdebate.input.checkbox.indicator%2F-%2F%40logora-debate.input.checkbox.indicator-0.0.6.tgz"
+  dependencies:
+    classnames: ^2.3.2
+    core-js: ^3.0.0
+  peerDependencies:
+    react: ^17.0.0 || ^18.0.0
+    react-dom: ^17.0.0 || ^18.0.0
+  checksum: 04dbe9d1ba6937f775a51906287a03dd7ef0b036272b0c1db28e26875b8f35a6ffc02f382267724aadb1f7190300589d442e74792b95e41f56f1f747e26ef1eb
+  languageName: node
+  linkType: hard
+
+"@logora/debate.input.checkbox.label@npm:0.0.8":
+  version: 0.0.8
+  resolution: "@logora/debate.input.checkbox.label@npm:0.0.8::__archiveUrl=https%3A%2F%2Fnode.bit.cloud%2F%40logora%2Fdebate.input.checkbox.label%2F-%2F%40logora-debate.input.checkbox.label-0.0.8.tgz"
+  dependencies:
+    "@logora/debate.input.checkbox.hidden": 0.0.6
+    "@logora/debate.input.checkbox.indicator": 0.0.6
+    core-js: ^3.0.0
+  peerDependencies:
+    react: ^17.0.0 || ^18.0.0
+    react-dom: ^17.0.0 || ^18.0.0
+  checksum: cfb2974612fc68988f26d96ff0395b971b239ce62905b7f76c20901543b01391cc05582c473d820f44258d9abb0cad0cb247455141924bd981e43e2d7f363115
+  languageName: node
+  linkType: hard
+
+"@logora/debate.input.select@npm:0.0.63":
+  version: 0.0.63
+  resolution: "@logora/debate.input.select@npm:0.0.63::__archiveUrl=https%3A%2F%2Fnode.bit.cloud%2F%40logora%2Fdebate.input.select%2F-%2F%40logora-debate.input.select-0.0.63.tgz"
+  dependencies:
+    "@logora/debate.dialog.dropdown": 0.0.15
+    "@logora/debate.icons.icon": 0.0.32
+    "@logora/debate.styles.spacing": 0.0.12
+    "@logora/debate.styles.theme": 0.0.21
+    classnames: ^2.3.2
+    core-js: ^3.0.0
+    prop-types: ^15.8.1
+  peerDependencies:
+    react: ^17.0.0 || ^18.0.0
+    react-dom: ^17.0.0 || ^18.0.0
+  checksum: 036833a44f685f860d8481e3d1456f6fde3974b741b282dbc882ffb170b818d45f3c926daed8a4f2de6dc7e82d1acf3512a8a594ba1ad57e4f7990a8a81af98f
+  languageName: node
+  linkType: hard
+
+"@logora/debate.input.text_input@npm:0.0.42":
+  version: 0.0.42
+  resolution: "@logora/debate.input.text_input@npm:0.0.42::__archiveUrl=https%3A%2F%2Fnode.bit.cloud%2F%40logora%2Fdebate.input.text_input%2F-%2F%40logora-debate.input.text_input-0.0.42.tgz"
+  dependencies:
+    "@logora/debate.forms.form": 0.0.5
+    "@logora/debate.styles.spacing": 0.0.12
+    "@logora/debate.styles.theme": 0.0.21
+    classnames: ^2.3.2
+    core-js: ^3.0.0
+  peerDependencies:
+    react: ^17.0.0 || ^18.0.0
+    react-dom: ^17.0.0 || ^18.0.0
+  checksum: 6f09bc9b6ffe3f79eb88bd0baff4666601c0c66fd2e66b17fdfca83c1437294f135596507fd424ad38f3417b0bf8a58afbb4e699295b09f416d2aa91986ed43a
+  languageName: node
+  linkType: hard
+
+"@logora/debate.input.toggle@npm:0.0.29":
+  version: 0.0.29
+  resolution: "@logora/debate.input.toggle@npm:0.0.29::__archiveUrl=https%3A%2F%2Fnode.bit.cloud%2F%40logora%2Fdebate.input.toggle%2F-%2F%40logora-debate.input.toggle-0.0.29.tgz"
+  dependencies:
+    "@logora/debate.input.checkbox.label": 0.0.8
+    "@logora/debate.styles.spacing": 0.0.12
+    "@logora/debate.styles.theme": 0.0.21
+    classnames: ^2.3.2
+    core-js: ^3.0.0
+  peerDependencies:
+    react: ^17.0.0 || ^18.0.0
+    react-dom: ^17.0.0 || ^18.0.0
+  checksum: 8cc7fb4955fee839c11902cdc96ea028a9be4b1518fbea19c13d0d752633067cf1fc4ca39b9e91892f9c5add2f6ada7a0acbe00d493f7f8d6b99663b124aa6c0
+  languageName: node
+  linkType: hard
+
+"@logora/debate.modal.update_user_info_modal@npm:0.0.31":
+  version: 0.0.31
+  resolution: "@logora/debate.modal.update_user_info_modal@npm:0.0.31::__archiveUrl=https%3A%2F%2Fnode.bit.cloud%2F%40logora%2Fdebate.modal.update_user_info_modal%2F-%2F%40logora-debate.modal.update_user_info_modal-0.0.31.tgz"
+  dependencies:
+    "@logora/debate.action.button": 0.0.60
+    "@logora/debate.auth.use_auth": 0.0.19
+    "@logora/debate.data.config_provider": 0.0.4
+    "@logora/debate.data.data_provider": 0.0.10
+    "@logora/debate.dialog.modal": 0.0.39
+    "@logora/debate.forms.use_form_validation": 0.0.3
+    "@logora/debate.hooks.use_responsive": 0.0.9
+    "@logora/debate.icons.icon": 0.0.32
+    "@logora/debate.input.select": 0.0.63
+    "@logora/debate.input.text_input": 0.0.42
+    "@logora/debate.input.toggle": 0.0.29
+    "@logora/debate.progress.loader": 0.0.3
+    "@logora/debate.styles.display": 0.0.10
+    "@logora/debate.styles.flex": 0.0.11
+    "@logora/debate.styles.spacing": 0.0.12
+    "@logora/debate.styles.theme": 0.0.21
+    "@logora/debate.user.avatar_selector": 0.0.44
+    core-js: ^3.0.0
+    prop-types: ^15.8.1
+    react-intl: ^6.1.2
+  peerDependencies:
+    react: ^17.0.0 || ^18.0.0
+    react-dom: ^17.0.0 || ^18.0.0
+  checksum: 217441b99e445c671c0b3adf21ca9abebd92974bfb4be40877b879b81905e842bd9afb76896df816439af3bf11a92aad0ee8c8395ef7cd1c28db2e099a12a9c0
+  languageName: node
+  linkType: hard
+
+"@logora/debate.progress.loader@npm:0.0.3":
+  version: 0.0.3
+  resolution: "@logora/debate.progress.loader@npm:0.0.3::__archiveUrl=https%3A%2F%2Fnode.bit.cloud%2F%40logora%2Fdebate.progress.loader%2F-%2F%40logora-debate.progress.loader-0.0.3.tgz"
+  dependencies:
+    "@logora/debate.styles.spacing": 0.0.12
+    "@logora/debate.styles.theme": 0.0.21
+    core-js: ^3.0.0
+  peerDependencies:
+    react: ^17.0.0||^18.0.0
+    react-dom: ^17.0.0||^18.0.0
+  checksum: 2c53aa7e8d74fbed1a19853b9233b4b71ba634d78358ef0ff5dfdada3a5882927cf47676d81cb4b7abdce0eaefcc418daedb2a83bdcf8fdece2af7c318e27875
+  languageName: node
+  linkType: hard
+
+"@logora/debate.styles.display@npm:0.0.10":
+  version: 0.0.10
+  resolution: "@logora/debate.styles.display@npm:0.0.10::__archiveUrl=https%3A%2F%2Fnode.bit.cloud%2F%40logora%2Fdebate.styles.display%2F-%2F%40logora-debate.styles.display-0.0.10.tgz"
+  dependencies:
+    core-js: ^3.0.0
+  peerDependencies:
+    react: ^17.0.0 || ^18.0.0
+    react-dom: ^17.0.0 || ^18.0.0
+  checksum: 3d8a3d0775ed36eeaa0a33c2ee67f1e6b8e62577cb39290cf555d7e26de1899282db2d106befc4c8b78cd19ae15d0a4fbfd6f1308409d311c7b33713f81fe667
+  languageName: node
+  linkType: hard
+
+"@logora/debate.styles.flex@npm:0.0.11":
+  version: 0.0.11
+  resolution: "@logora/debate.styles.flex@npm:0.0.11::__archiveUrl=https%3A%2F%2Fnode.bit.cloud%2F%40logora%2Fdebate.styles.flex%2F-%2F%40logora-debate.styles.flex-0.0.11.tgz"
+  dependencies:
+    "@logora/debate.styles.display": 0.0.10
+    core-js: ^3.0.0
+  peerDependencies:
+    react: ^17.0.0 || ^18.0.0
+    react-dom: ^17.0.0 || ^18.0.0
+  checksum: 0b66ecbea4261c87bad60a624fa0ce6f94861fc8c898b78e38f4fdb7070518dcd4ea28c26d969f47802e3f3239048380da3740863288ad03b4e621029c138144
+  languageName: node
+  linkType: hard
+
+"@logora/debate.styles.spacing@npm:0.0.12":
+  version: 0.0.12
+  resolution: "@logora/debate.styles.spacing@npm:0.0.12::__archiveUrl=https%3A%2F%2Fnode.bit.cloud%2F%40logora%2Fdebate.styles.spacing%2F-%2F%40logora-debate.styles.spacing-0.0.12.tgz"
+  dependencies:
+    "@logora/debate.styles.display": 0.0.10
+    core-js: ^3.0.0
+  peerDependencies:
+    react: ^17.0.0 || ^18.0.0
+    react-dom: ^17.0.0 || ^18.0.0
+  checksum: a7dbe72a24023593c6c087babae1ca519db14e796a3c26823d596981d375aa9cb0873778eda66b36118fb3ce332baffa1767fce78941aea00183470e1701b1c6
+  languageName: node
+  linkType: hard
+
+"@logora/debate.styles.theme@npm:0.0.21":
+  version: 0.0.21
+  resolution: "@logora/debate.styles.theme@npm:0.0.21::__archiveUrl=https%3A%2F%2Fnode.bit.cloud%2F%40logora%2Fdebate.styles.theme%2F-%2F%40logora-debate.styles.theme-0.0.21.tgz"
+  dependencies:
+    core-js: ^3.0.0
+  peerDependencies:
+    react: ^17.0.0 || ^18.0.0
+    react-dom: ^17.0.0 || ^18.0.0
+  checksum: f848fc0ef7748cda0574882743016bcc4f4816dbbcadb75c836045ccb3d5b078ba98da00cadb98c484dba39b210a8b5a5a69aa2f49ab8a8acd6c7e31daf70648
+  languageName: node
+  linkType: hard
+
+"@logora/debate.user.avatar@npm:0.0.35":
+  version: 0.0.35
+  resolution: "@logora/debate.user.avatar@npm:0.0.35::__archiveUrl=https%3A%2F%2Fnode.bit.cloud%2F%40logora%2Fdebate.user.avatar%2F-%2F%40logora-debate.user.avatar-0.0.35.tgz"
+  dependencies:
+    "@logora/debate.dialog.tooltip": 0.0.13
+    "@logora/debate.styles.theme": 0.0.21
+    classnames: ^2.3.2
+    core-js: ^3.0.0
+    prop-types: ^15.8.1
+    react-intl: ^6.1.2
+  peerDependencies:
+    react: ^17.0.0 || ^18.0.0
+    react-dom: ^17.0.0 || ^18.0.0
+    react-router: ^5.3.4
+    react-router-dom: ^5.3.4
+  checksum: 24ad07cc1b14a3a8b8082f28e5a8ddf137f5fd6c2e8068b0bedeeef24f83dc3838bbafff194a64ddeb454a6bb773e18c1f08fdce0a883a53a6ac4c7d6abc9640
+  languageName: node
+  linkType: hard
+
+"@logora/debate.user.avatar_selector@npm:0.0.44":
+  version: 0.0.44
+  resolution: "@logora/debate.user.avatar_selector@npm:0.0.44::__archiveUrl=https%3A%2F%2Fnode.bit.cloud%2F%40logora%2Fdebate.user.avatar_selector%2F-%2F%40logora-debate.user.avatar_selector-0.0.44.tgz"
+  dependencies:
+    "@logora/debate.action.button": 0.0.60
+    "@logora/debate.styles.spacing": 0.0.12
+    "@logora/debate.styles.theme": 0.0.21
+    "@logora/debate.user.avatar": 0.0.35
+    classnames: ^2.3.2
+    core-js: ^3.0.0
+    prop-types: ^15.8.1
+    react-intl: ^6.1.2
+  peerDependencies:
+    react: ^17.0.0 || ^18.0.0
+    react-dom: ^17.0.0 || ^18.0.0
+  checksum: d8bfd9f3c50fe13215d57fe5be4e23dd7e997f54c38b7f850e0773d21ae900984351783b1db26f409496751c8fda370b51aecc4145f9e3a09d0c040efbc40479
+  languageName: node
+  linkType: hard
+
 "@logora/ui@workspace:.":
   version: 0.0.0-use.local
   resolution: "@logora/ui@workspace:."
@@ -486,6 +900,7 @@ __metadata:
     "@lexical/rich-text": ^0.12.5
     "@lexical/selection": ^0.12.5
     "@lexical/utils": ^0.12.5
+    "@logora/debate.modal.update_user_info_modal": 0.0.31
     "@rooks/use-sessionstorage-state": ^4.11.2
     "@testing-library/dom": 9.0.0
     "@testing-library/react": ^14.0.0
@@ -1311,7 +1726,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"core-js@npm:>=3.33.0 <4.0.0":
+"core-js@npm:>=3.33.0 <4.0.0, core-js@npm:^3.0.0, core-js@npm:^3.25.5, core-js@npm:^3.33.0":
   version: 3.35.1
   resolution: "core-js@npm:3.35.1"
   checksum: e246af6b634be3763ffe3ce6ac4601b4dc5b928006fb6c95e5d08ecd82a2413bf36f00ffe178b89c9a8e94000288933a78a9881b2c9498e6cf312b031013b952
@@ -2348,9 +2763,6 @@ __metadata:
 "loader-6245f5@workspace:src/components/progress/loader":
   version: 0.0.0-use.local
   resolution: "loader-6245f5@workspace:src/components/progress/loader"
-  peerDependencies:
-    react: ^16.8.0 || ^17.0.0
-    react-dom: ^16.8.0 || ^17.0.0
   languageName: unknown
   linkType: soft
 
@@ -3582,9 +3994,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"update_user_info_modal-32a4d0@workspace:src/components/modal/update_user_info_modal":
+"update_user_info_modal-43ccda@workspace:src/components/user/update_user_info_modal":
   version: 0.0.0-use.local
-  resolution: "update_user_info_modal-32a4d0@workspace:src/components/modal/update_user_info_modal"
+  resolution: "update_user_info_modal-43ccda@workspace:src/components/user/update_user_info_modal"
   languageName: unknown
   linkType: soft
 
