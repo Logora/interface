@@ -27,8 +27,9 @@ export const AdUnit = ({ id, adPath, sizes = [], targeting, enableDidomi = false
                     }, refreshRate);
                 });
 
+                googletag.pubads().enableSingleRequest();
                 googletag.enableServices();
-
+                googletag.display(id);
             });
 
             return () => {
