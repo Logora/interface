@@ -21,15 +21,18 @@ export const AdUnit = ({ id, adPath, sizes = [], targeting, enableDidomi = false
                 }
 
                 googletag.pubads().addEventListener('impressionViewable', function(event) {
-                    var s = event.slot;
-                    setTimeout(function () {
-                        googletag.pubads().refresh([s]);
-                    }, refreshRate);
+                    if(event.slot === slot) {
+                        setTimeout(function () {
+                            googletag.pubads().refresh([event.slot]);
+                        }, refreshRate);
+                    }
                 });
 
                 googletag.pubads().enableSingleRequest();
+                googletag.pubads().disableInitialLoad();
                 googletag.enableServices();
                 googletag.display(id);
+                googletag.pubads().refresh([slot]);
             });
 
             return () => {
