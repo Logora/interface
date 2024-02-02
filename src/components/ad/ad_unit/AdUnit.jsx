@@ -3,23 +3,22 @@ import styles from "./AdUnit.module.scss";
 import PropTypes from 'prop-types';
 
 export const AdUnit = ({ id, adPath, sizes = [], targeting, enableDidomi = false, refreshRate = 8000 }) => {
+    const googletag = window.googletag || (window.googletag = { cmd: [] });
+
     if(!id || !adPath) {
         return null;
     }
 
     useEffect(() => {
         if(typeof window !== 'undefined' && id && adPath) {
-            window.googletag = window.googletag || {cmd: []};
             googletag.cmd.push(function() {
-                var slot = googletag.defineSlot(adPath, sizes, id)
+                let slot = googletag
+                    .defineSlot(adPath, sizes, id)
                     .setTargeting('origine', ['logora'])
                     .addService(googletag.pubads());
                 for (const [key, value] of Object.entries(targeting || {})) {
                     slot.setTargeting(key, value);
                 }
-
-                googletag.pubads().enableSingleRequest();
-                googletag.enableServices();
 
                 googletag.pubads().addEventListener('impressionViewable', function(event) {
                     var s = event.slot;
@@ -28,7 +27,8 @@ export const AdUnit = ({ id, adPath, sizes = [], targeting, enableDidomi = false
                     }, refreshRate);
                 });
 
-                googletag.display(id);
+                googletag.enableServices();
+
             });
 
             return () => {
