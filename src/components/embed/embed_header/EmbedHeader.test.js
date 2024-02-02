@@ -2,12 +2,14 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { EmbedHeader } from './EmbedHeader';
 import { IntlProvider } from 'react-intl';
+import { faker } from '@faker-js/faker';
 
 const title = 'Test Title';
 const titleRedirectUrl = '/test-url';
 const headerLabel = 'Test Label';
 const onlineUsersCount = 5;
 const textLeft = true;
+const logo = faker.image.cats();
 
 describe('EmbedHeader', () => {
     it('renders header label, title and link with correct href value', () => {
@@ -49,5 +51,20 @@ describe('EmbedHeader', () => {
         expect(queryByText('Test Label')).toBeNull();
         expect(queryByText('online users')).toBeNull();
         expect(queryByText('Test Title')).toBeInTheDocument();
+    });
+
+    it('renders logo without header label', () => {
+        const { queryByText, getByAltText } = render(
+            <IntlProvider locale="en">
+                <EmbedHeader title={title} titleRedirectUrl={titleRedirectUrl} headerLabel={headerLabel} withLogo={logo} altLogo={"My Logo"}/>
+            </IntlProvider>
+        );
+        expect(queryByText('Test Label')).toBeNull();
+        expect(queryByText('online users')).toBeNull();
+        expect(queryByText('Test Title')).toBeInTheDocument();
+
+        const customLogo = getByAltText("My Logo");
+        expect(customLogo).toBeInTheDocument();
+        expect(customLogo).toHaveAttribute("src", logo);
     });
 });

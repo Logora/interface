@@ -5,15 +5,19 @@ import { Link } from '@logora/debate.action.link';
 import cx from 'classnames';
 import styles from './EmbedHeader.module.scss';
 
-export const EmbedHeader = ({ title, titleRedirectUrl, headerLabel, onlineUsersCount, textLeft, className }) => {
+export const EmbedHeader = ({ title, titleRedirectUrl, headerLabel, onlineUsersCount, textLeft, className, withLogo, altLogo }) => {
     return (
 		<div className={cx(styles.headerBox, className)}>
 			{ headerLabel &&
 				<div className={styles.headerBoxLabel}>
 					<Link to={titleRedirectUrl} target="_top" external data-tid="link_debate_index_embed">
-						<div className={styles.headerLabelText}>
-							{ headerLabel }
-						</div>
+						{ withLogo ?
+							<img loading={"lazy"} className={styles.headerLogo} src={withLogo} width={100} height={40} alt={altLogo} />
+						:
+							<div className={styles.headerLabelText}>
+								{ headerLabel }
+							</div>
+						}
 					</Link>
 					{ onlineUsersCount ?
 						<div className={styles.headerLiveStat}>
@@ -49,5 +53,9 @@ EmbedHeader.propTypes = {
     /** If true, title will be align with headerLabel text */
     textLeft: PropTypes.bool,
 	/** Custom EmbedHeader styles */
-    className: PropTypes.object
+    className: PropTypes.object,
+	/** Link of the image to display */
+    withLogo: PropTypes.string,
+	/** Alt of the logo */
+    altLogo: PropTypes.string,
 };
