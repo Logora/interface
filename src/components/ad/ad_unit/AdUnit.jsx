@@ -3,14 +3,13 @@ import styles from "./AdUnit.module.scss";
 import PropTypes from 'prop-types';
 
 export const AdUnit = ({ id, adPath, sizes = [], targeting, enableDidomi = false, refreshRate = 8000 }) => {
-    const googletag = window.googletag || (window.googletag = { cmd: [] });
-
     if(!id || !adPath) {
         return null;
     }
 
     useEffect(() => {
         if(typeof window !== 'undefined' && id && adPath) {
+            const googletag = window.googletag || (window.googletag = { cmd: [] });
             googletag.cmd.push(function() {
                 let slot = googletag
                     .defineSlot(adPath, sizes, id)
