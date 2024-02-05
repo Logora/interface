@@ -29,7 +29,7 @@ export const AdUnit = ({ id, adPath, sizes = [], targeting, enableDidomi = false
             return () => {
                 const googletag = window.googletag || {cmd: []};
                 googletag.cmd.push(function() {
-                    googletag.destroySlots();
+                    googletag.destroySlots([slot]);
                 });
             }
         }
