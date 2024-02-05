@@ -3,26 +3,22 @@ import { AdUnit } from '@logora/debate.ad.ad_unit';
 import PropTypes from 'prop-types';
 
 export const WithAd = ({ id, adPath, targeting, sizes, index, frequency = 3, enableDidomi = false, children, ...rest }) => {
-    if(id && adPath && ((index + 1) % frequency === 1)) {
-        return (
+    return (
+        <>
+            { React.cloneElement(children, rest) }
             <>
-                { React.cloneElement(children, rest) }
-                <AdUnit 
-                    id={index ? id + "-" + index : id}
-                    adPath={adPath}
-                    targeting={targeting}
-                    sizes={sizes} 
-                    enableDidomi={enableDidomi}
-                />
+                { id && adPath && ((index + 1) % frequency === 1) &&
+                    <AdUnit 
+                        id={index ? id + "-" + index : id}
+                        adPath={adPath}
+                        targeting={targeting}
+                        sizes={sizes} 
+                        enableDidomi={enableDidomi}
+                    />
+                }
             </>
-        )
-    } else {
-        return (
-            <>
-                { React.cloneElement(children, rest) }
-            </>
-        )
-    }
+        </>
+    )
 }
 
 WithAd.propTypes = {

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import styles from "./AdUnit.module.scss";
 import PropTypes from 'prop-types';
 
-export const AdUnit = ({ id, adPath, sizes = [], targeting, enableDidomi = false, refreshRate = 8000 }) => {
+export const AdUnit = ({ id, adPath, sizes = [], targeting, enableDidomi = false }) => {
     if(!id || !adPath) {
         return null;
     }
@@ -12,7 +12,7 @@ export const AdUnit = ({ id, adPath, sizes = [], targeting, enableDidomi = false
         if(typeof window !== 'undefined' && divId && adPath) {
             const googletag = window.googletag || (window.googletag = { cmd: [] });
             let slot;
-            
+
             googletag.cmd.push(function() {
                 slot = googletag
                     .defineSlot(adPath, sizes, divId)
@@ -22,20 +22,6 @@ export const AdUnit = ({ id, adPath, sizes = [], targeting, enableDidomi = false
                     slot.setTargeting(key, value);
                 }
 
-                googletag.pubads().addEventListener('impressionViewable', function(event) {
-                    if(event.slot === slot) {
-                        setTimeout(function () {
-                            googletag.pubads().refresh([event.slot]);
-                        }, refreshRate);
-                    }
-                });
-
-                googletag.pubads().enableSingleRequest();
-                googletag.pubads().disableInitialLoad();
-                googletag.enableServices();
-            });
-
-            googletag.cmd.push(function() {
                 googletag.display(divId);
                 googletag.pubads().refresh([slot]);
             });
@@ -43,7 +29,7 @@ export const AdUnit = ({ id, adPath, sizes = [], targeting, enableDidomi = false
             return () => {
                 const googletag = window.googletag || {cmd: []};
                 googletag.cmd.push(function() {
-                    googletag.destroySlots();
+                    googletag.destroySlots([slot]);
                 });
             }
         }
@@ -75,14 +61,11 @@ AdUnit.propTypes = {
     targeting: PropTypes.object,
     /** Sizes of slot */
     sizes: PropTypes.array,
-    /** Ad refresh rate */
-    refreshRate: PropTypes.number,
     /** Whether to add didomi attributes to manage user consent */
     enableDidomi: PropTypes.bool
 };
 
 AdUnit.defaultProps = {
     sizes: [],
-    refreshRate: 8000,
     enableDidomi: false
 };
