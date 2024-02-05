@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 export const useGoogleAdManager = (enable = true, enableDidomi = false, refreshRate = 8000) => {
     useEffect(() => {
         if (enable === true && typeof window !== 'undefined') {
-            if (!(window.googletag && googletag.apiReady)) {
+            if (!(window.googletag && window.googletag.apiReady)) {
                 const libScript = document.createElement("script");
                 libScript.src = "https://securepubads.g.doubleclick.net/tag/js/gpt.js";
                 libScript.async = true;
