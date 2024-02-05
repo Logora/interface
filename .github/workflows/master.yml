@@ -36,8 +36,6 @@ jobs:
           bit config set user.token $BIT_TOKEN
           bit config set force_local_build true 
           export NODE_OPTIONS="--max-old-space-size=8192"
-
-          bit install
       - name: Tag components
         run: bit tag --build
       - name: Export components

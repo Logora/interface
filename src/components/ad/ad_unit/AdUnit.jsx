@@ -61,14 +61,11 @@ AdUnit.propTypes = {
     targeting: PropTypes.object,
     /** Sizes of slot */
     sizes: PropTypes.array,
-    /** Ad refresh rate */
-    refreshRate: PropTypes.number,
     /** Whether to add didomi attributes to manage user consent */
     enableDidomi: PropTypes.bool
 };
 
 AdUnit.defaultProps = {
     sizes: [],
-    refreshRate: 8000,
     enableDidomi: false
 };
