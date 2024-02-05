@@ -40,21 +40,21 @@
     "ad/ad_unit": {
         "name": "ad/ad_unit",
         "scope": "logora.debate",
-        "version": "0.0.18",
+        "version": "0.0.19",
         "mainFile": "index.js",
         "rootDir": "src/components/ad/ad_unit"
     },
     "ad/use_google_ad_manager": {
         "name": "ad/use_google_ad_manager",
         "scope": "logora.debate",
-        "version": "0.0.3",
+        "version": "0.0.4",
         "mainFile": "index.js",
         "rootDir": "src/components/ad/use_google_ad_manager"
     },
     "ad/with_ad": {
         "name": "ad/with_ad",
         "scope": "logora.debate",
-        "version": "0.0.14",
+        "version": "0.0.15",
         "mainFile": "index.js",
         "rootDir": "src/components/ad/with_ad"
     },
