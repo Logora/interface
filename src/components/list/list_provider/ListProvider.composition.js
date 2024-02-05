@@ -5,13 +5,19 @@ import { useList } from './useList';
 const List = () => {
     const [elements, setElements] = useState(["first element"]);
     const uniqueListId = "myList";
-    const { addElements, removeElements } = useList();
+    const { addElements, addFirstElements, removeElements } = useList();
 
     useEffect(() => {
         if(uniqueListId in addElements) {
             setElements(prevState => [...prevState, addElements[uniqueListId]]);
         }
     }, [addElements]);
+
+    useEffect(() => {
+        if(uniqueListId in addFirstElements) {
+            setElements(prevState => [addFirstElements[uniqueListId], ...prevState]);
+        }
+    }, [addFirstElements]);
 
     useEffect(() => {
         if(uniqueListId in removeElements) {
@@ -37,12 +43,17 @@ const List = () => {
 }
 
 const ListManager = () => {
-    const { add, remove } = useList();
+    const { add, addFirst, remove } = useList();
     const [counter, setCounter] = useState(0);
 
     const handleAdd = () => {
         setCounter(counter + 1);
         add("myList", `hello-${counter + 1}`);
+    }
+
+    const handleAddFirst = () => {
+        setCounter(counter + 1);
+        addFirst("myList", `hello-${counter + 1}`);
     }
 
     const handleRemove = () => {
@@ -54,6 +65,7 @@ const ListManager = () => {
 
     return (
         <>
+            <button onClick={ handleAddFirst }>Add first element</button>
             <button onClick={ handleAdd }>Add element</button>
             <button onClick={ handleRemove }>Remove element</button>
         </>

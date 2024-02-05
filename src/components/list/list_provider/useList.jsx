@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { ListContext } from "./ListProvider";
 
 export const useList = () => {
-    const { add, update, remove, addElements, updateElements, removeElements, setAddElements, setUpdateElements, setRemoveElements } = useContext(ListContext);
+    const { add, addFirst, update, remove, addElements, addFirstElements, updateElements, removeElements, setAddElements, setAddFirstElements, setUpdateElements, setRemoveElements } = useContext(ListContext);
 
-    return { add, update, remove, addElements, updateElements, removeElements, setAddElements, setUpdateElements, setRemoveElements };
+    return { add, addFirst, update, remove, addElements, addFirstElements, updateElements, removeElements, setAddElements, setAddFirstElements, setUpdateElements, setRemoveElements };
 }
