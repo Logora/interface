@@ -122,6 +122,8 @@
 .headerLogo {
 	width: 100px !important;
 	height: 40px !important;
+    object-fit: contain;
+	object-position: left;
 }
 
 .debateNameWithLogo {
