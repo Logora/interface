@@ -4,7 +4,7 @@ export const ListContext = createContext();
 
 export const ListProvider = ({ children }) => {
     const [addElements, setAddElements] = useState({});
-    const [addFirstElements, setAddFirstElements] = useState({});
+    const [addPinnedElements, setAddPinnedElements] = useState({});
     const [updateElements, setUpdateElements] = useState({});
     const [removeElements, setRemoveElements] = useState({});
 
@@ -12,8 +12,8 @@ export const ListProvider = ({ children }) => {
         setAddElements(addElements => ({...addElements, [listId]: elements}));
     }
 
-    const addFirst = (listId, element) => {
-        setAddFirstElements(addFirstElements => ({...addFirstElements, [listId]: element}));
+    const addPinned = (listId, element) => {
+        setAddPinnedElements(addPinnedElements => ({...addPinnedElements, [listId]: element}));
     }
 
     const update = (listId, elements) => {
@@ -25,7 +25,7 @@ export const ListProvider = ({ children }) => {
     }
 
     return (
-        <ListContext.Provider value={{ add, addFirst, update, remove, addElements, addFirstElements, updateElements, removeElements, setAddElements, setAddFirstElements, setUpdateElements, setRemoveElements }}>
+        <ListContext.Provider value={{ add, addPinned, update, remove, addElements, addPinnedElements, updateElements, removeElements, setAddElements, setAddPinnedElements, setUpdateElements, setRemoveElements }}>
             { children }
         </ListContext.Provider>
     );
