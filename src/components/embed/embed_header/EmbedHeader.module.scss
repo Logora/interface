@@ -99,10 +99,6 @@
     @include px(0, sm);
 }
 
-.debateNameWithLogo {
-    @include px(0, xs);
-}
-
 .debateLink {
     font-size: $font-size-large;
     background: $background-color-primary !important;
@@ -126,4 +122,8 @@
 .headerLogo {
 	width: 100px !important;
 	height: 40px !important;
+}
+
+.debateNameWithLogo {
+    @include px(0, xs);
 }
