@@ -38,8 +38,8 @@ export const EmbedHeaderWithLogo = () => {
                 titleRedirectUrl={"https://test.fr/"} 
                 onlineUsersCount={273} 
                 headerLabel={"Medicine"}
-                withLogo={faker.image.cats(width=100, height=40)}
-                altLogo={"Super logo"}
+                logoUrl={faker.image.nature()}
+                logoAlt={"Super logo"}
             />
         </IntlProvider>
     )

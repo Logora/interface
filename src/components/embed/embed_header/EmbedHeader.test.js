@@ -56,7 +56,7 @@ describe('EmbedHeader', () => {
     it('renders logo without header label', () => {
         const { queryByText, getByAltText } = render(
             <IntlProvider locale="en">
-                <EmbedHeader title={title} titleRedirectUrl={titleRedirectUrl} headerLabel={headerLabel} withLogo={logo} altLogo={"My Logo"}/>
+                <EmbedHeader title={title} titleRedirectUrl={titleRedirectUrl} headerLabel={headerLabel} logoUrl={logo} logoAlt={"My Logo"}/>
             </IntlProvider>
         );
         expect(queryByText('Test Label')).toBeNull();
