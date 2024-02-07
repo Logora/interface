@@ -1341,6 +1341,12 @@ __metadata:
   languageName: node
   linkType: hard
 
+"argument_input-293e61@workspace:src/components/input/argument_input":
+  version: 0.0.0-use.local
+  resolution: "argument_input-293e61@workspace:src/components/input/argument_input"
+  languageName: unknown
+  linkType: soft
+
 "argument_summary_box-b83b8e@workspace:src/components/summary/argument_summary_box":
   version: 0.0.0-use.local
   resolution: "argument_summary_box-b83b8e@workspace:src/components/summary/argument_summary_box"
