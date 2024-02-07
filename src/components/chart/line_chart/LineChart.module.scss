@@ -3,53 +3,52 @@
 @import "~@logora/debate.styles.flex/_flex.scss";
 @import "~@logora/debate.styles.display/_display.scss";
 
-:global(.logoraContainer) {
-  .lineChartContainer {
-    @include display(flex, xs);
-    @include flex-direction(column, xs);
-    height: max-content;
-		color: $text-primary;
-    p {
-      @include mt(3, xs);
-    }
-  }
+.lineChartContainer {
+  @include display(flex, xs);
+  @include flex-direction(column, xs);
+  height: max-content;
+  color: $text-primary;
 
-  .lineChartFilterOptions {
-    @include display(flex, xs);
-    @include flex-direction(column, xs);
-    @include flex-direction(row, sm);
-    @include align-items(baseline, xs);
-  }
-
-  .filterTagList {
-    @include display(flex, xs);
-    flex-wrap: wrap;
-    @include mt(0, sm);
+  p {
     @include mt(3, xs);
-    @include ml(3, sm);
-    @include ml(0, xs);
-    @include justify-content(flex-start, sm);
-    @include align-items(flex-start, xs);
-    gap: $spacer-xxs;
-    
-    overflow-x: scroll;
-    overflow-y: hidden;
-    scrollbar-width: none;
-    -ms-overflow-style: -ms-autohiding-scrollbar;
-
-    &::-webkit-scrollbar {
-        display: none;
-    }
   }
+}
 
-  .tagItem {
-    @include display(flex, xs);
-    color: $text-secondary;
-    cursor: pointer;
-    white-space: nowrap;
-  }
+.lineChartFilterOptions {
+  @include display(flex, xs);
+  @include flex-direction(column, xs);
+  @include flex-direction(row, sm);
+  @include align-items(baseline, xs);
+}
 
-  .lineChartWrapper {
-    height: 300px;
+.filterTagList {
+  @include display(flex, xs);
+  flex-wrap: wrap;
+  @include mt(0, sm);
+  @include mt(3, xs);
+  @include ml(3, sm);
+  @include ml(0, xs);
+  @include justify-content(flex-start, sm);
+  @include align-items(flex-start, xs);
+  gap: $spacer-xxs;
+
+  overflow-x: scroll;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+
+  &::-webkit-scrollbar {
+    display: none;
   }
+}
+
+.tagItem {
+  @include display(flex, xs);
+  color: $text-secondary;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.lineChartWrapper {
+  height: 300px;
 }
