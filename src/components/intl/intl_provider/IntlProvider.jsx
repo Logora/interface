@@ -30,7 +30,7 @@ export const IntlProvider = ({ language, async = false, locales, customMessages 
 
   useEffect(() => {
     if (locale && async) {
-      (() => import("./locales/" + locale + ".json"))().then((m) => {
+      import(locales + locale + ".json").then((m) => {
         setMessages(m);
       }).catch(() => setMessages({}));
     }
