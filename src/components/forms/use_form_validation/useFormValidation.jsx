@@ -9,6 +9,10 @@ export const useFormValidation = () => {
         return !formData[value];
     }
 
+    const checkValue = (value, targetValue) => {
+        return value !== targetValue;
+    }
+
     const checkMinLength = (value, minLength) => {
         return value.split(" ").length < minLength;
     }
@@ -44,6 +48,14 @@ export const useFormValidation = () => {
             if (validationMethod === "required") {
                 if (required(formData, validationField)) {
                     errors[validationField] = intl.formatMessage({ id: `errors.${validationField}_required`, defaultMessage: `${validationField} can't be empty.` })
+                }
+            }
+            if (validationMethod === "enforceValue") {
+                if (checkValue(formData[validationField], validationChecker)) {
+                    errors[validationField] = intl.formatMessage({ 
+                        id: "errors.enforce_value", 
+                        defaultMessage: `${validationField} must be ${validationChecker}.` },
+                        { validation_field: validationField, validation_value: validationChecker })
                 }
             }
             if (validationMethod === "length") {

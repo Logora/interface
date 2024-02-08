@@ -25,7 +25,7 @@ export const AuthorBox = ({
     const isOnline = (new Date(lastActivity) > Date.now());
 
     return (
-        <div className={styles.authorBox}>
+        <div className={cx(styles.authorBox, "author-box")}>
             { !slug || disableLinks  || isDeleted ?
                 <Avatar avatarUrl={isDeleted ? null : avatarUrl} userName={fullName} isOnline={isOnline} size={48} />
             :

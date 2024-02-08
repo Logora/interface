@@ -5,13 +5,19 @@ import { useList } from './useList';
 const List = () => {
     const [elements, setElements] = useState(["first element"]);
     const uniqueListId = "myList";
-    const { addElements, removeElements } = useList();
+    const { addElements, addPinnedElements, removeElements } = useList();
 
     useEffect(() => {
         if(uniqueListId in addElements) {
             setElements(prevState => [...prevState, addElements[uniqueListId]]);
         }
     }, [addElements]);
+
+    useEffect(() => {
+        if(uniqueListId in addPinnedElements) {
+            setElements(prevState => [addPinnedElements[uniqueListId], ...prevState]);
+        }
+    }, [addPinnedElements]);
 
     useEffect(() => {
         if(uniqueListId in removeElements) {
@@ -37,12 +43,17 @@ const List = () => {
 }
 
 const ListManager = () => {
-    const { add, remove } = useList();
+    const { add, addPinned, remove } = useList();
     const [counter, setCounter] = useState(0);
 
     const handleAdd = () => {
         setCounter(counter + 1);
         add("myList", `hello-${counter + 1}`);
+    }
+
+    const handleAddPinned = () => {
+        setCounter(counter + 1);
+        addPinned("myList", `hello-${counter + 1}`);
     }
 
     const handleRemove = () => {
@@ -54,6 +65,7 @@ const ListManager = () => {
 
     return (
         <>
+            <button onClick={ handleAddPinned }>Add pinned element</button>
             <button onClick={ handleAdd }>Add element</button>
             <button onClick={ handleRemove }>Remove element</button>
         </>

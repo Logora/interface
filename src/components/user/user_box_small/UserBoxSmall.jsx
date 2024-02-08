@@ -4,12 +4,13 @@ import { Link } from '@logora/debate.action.link';
 import { Avatar } from '@logora/debate.user.avatar';
 import styles from "./UserBoxSmall.module.scss";
 import PropTypes from 'prop-types';
+import cx from 'classnames';
 
 export const UserBoxSmall = ({ userName, avatarUrl, userSlug }) => {
     const routes = useRoutes();
 
     return (
-        <div className={styles.authorContainer}>
+        <div className={cx(styles.authorContainer, "author-box")}>
             <Link to={routes.userShowLocation.toUrl({ userSlug: userSlug })} className={styles.authorLink} target="_top">
                 <Avatar avatarUrl={avatarUrl} userName={userName} size={25} />
             </Link>

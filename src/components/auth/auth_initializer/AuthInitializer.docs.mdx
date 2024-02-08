@@ -13,7 +13,6 @@ Three authentication methods are available :
 
 Authentication can be triggered using a Javascript event `logora:authentication:require`.
 
-
 ### Component usage
 
 ```js
@@ -24,7 +23,7 @@ import { AuthInitializer } from '@logora/debate.auth.auth_initializer';
 const Component = () => {
 	return (
         <>
-            <AuthInitializer authType={"social"} provider={"my-app"} assertion={"random-assertion"} />
+            <AuthInitializer authUrl={"https://auth.com/"} authType={"social"} provider={"my-app"} assertion={"random-assertion"} />
         </>
     )
 }

@@ -1,0 +1,140 @@
+@import '~@logora/debate.styles.theme/_theme.scss';
+@import '~@logora/debate.styles.spacing/_spacing.scss';
+@import '~@logora/debate.styles.flex/_flex.scss';
+@import '~@logora/debate.styles.display/_display.scss';
+
+.inputContainer {
+    position: relative;
+}
+
+.argumentInput {
+    width: 100%;
+    @include p(4, sm);
+    @include p(3, xs);
+    background-color: $background-color-primary;
+    box-shadow: $box-shadow;
+    border: $box-border-main-container;
+    border-radius: $box-border-radius;
+    z-index: 1;
+    -webkit-transition: box-shadow 0.8s ease-in-out;
+    -moz-transition: box-shadow 0.8s ease-in-out;
+    -o-transition: box-shadow 0.8s ease-in-out;
+    transition: box-shadow 0.8s ease-in-out;
+
+    &:hover, &:focus-within {
+        box-shadow: 0 0 5px $darkest-text-tertiary;
+    }
+
+    &.flash, &.flash:hover, &.flash:focus-within {
+        box-shadow: 0 0 15px $call-primary;
+    }
+}
+
+.argumentInputBox {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    gap: $spacer-xs;
+}
+
+.userPosition {
+    display: flex !important;
+    flex-flow: row wrap;
+    align-items: center;
+    gap: $spacer;
+    color: $text-primary;
+    width: fit-content;
+}
+
+.argumentTextInputBox {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: $spacer-lg;
+    &.argumentTextInputBoxisTablet {
+        flex-direction: row !important;
+    }
+    @include media-breakpoint-down(xs) {
+        gap: $spacer-xs;
+    }
+}
+
+.argumentAuthorContainer {
+    @include mt(2, xs);
+}
+
+.textEditorBox {
+    @include pt(2, sm);
+    @include pt(0, xs);
+    width: 100%;
+}
+
+.argumentInputWarning {
+    font-size: $font-size-extra-small;
+    color: $cancel-primary;
+    @include mt(3, xs);
+    svg.warningIcon {
+        fill: transparent !important;
+        min-width: 20px;
+        min-height: 20px;
+        circle {
+            stroke: $cancel-primary;
+            stroke-width: 1.5px;
+        }
+        path {
+            fill: $cancel-primary;
+        }
+    }
+    &.disabledPositionWarning {
+        display: flex !important;
+        align-items: center !important;
+        gap: $spacer-sm;
+    }
+}
+
+.disabledInputMask {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    opacity: 0.9;
+    background: $text-tertiary;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-style: italic;
+}
+
+.replyInputContainer {
+    border-radius: $box-border-radius;
+    box-shadow: $box-shadow;
+    transition: margin-top 2s;
+    border: $box-border;
+    @include mt(2, xs);
+    @include p(3, xs);
+    position: relative;
+    background-color: $background-color-primary;
+    &::before {
+        content: "";
+        border-left: 4px solid $text-secondary;
+        position: absolute;
+        width: 4px;
+        height: 10px;
+        top: -10px;
+        left: 4em;
+    }
+}
+
+.replyEditorRow {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: flex-start !important;
+    align-items: flex-start !important;
+    gap: $spacer !important;
+    width: 100%;
+}
+
+.replyTextEditorBox {
+    @include pt(0, xs);
+}

@@ -146,7 +146,7 @@ export const SocialAuthForm = ({ lastStep, providerName, logoUrl, termsUrl, priv
 					{ !loginStep ?
 						<>
 							<div className={styles.signUpSubtitle}>
-								{ intl.formatMessage({ id: "auth.social_auth_form.signup_subtitle", defaultMessage: "Sign up in a few clicks to start debating" }) }
+								{ intl.formatMessage({ id: "auth.social_auth_form.signup_subtitle", defaultMessage: "Sign up in a few clicks to start debating" }, { provider: providerName }) }
 							</div>
 							<SignupForm 
 								onSubmit={handleSignUp} 

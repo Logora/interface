@@ -5,12 +5,13 @@ import { Avatar } from '@logora/debate.user.avatar';
 import { Link } from 'react-router-dom';
 import styles from './UserBox.module.scss';
 import PropTypes from 'prop-types';
+import cx from 'classnames';
 
 export const UserBox = ({ user }) => {
   const routes = useRoutes();
 
   return (
-		<div className={styles.userBox}>
+		<div className={cx(styles.userBox, "author-box")}>
 			<div className={styles.userBoxHeader}>
 				<Link to={routes.userShowLocation.toUrl({userSlug: user.hash_id})}>
 					<Avatar data-tid={"action_view_user_image"} userName={user.full_name} avatarUrl={user.image_url} isOnline={(new Date(user.last_activity) > Date.now() )} size={60} />

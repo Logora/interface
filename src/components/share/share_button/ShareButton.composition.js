@@ -7,24 +7,28 @@ import * as regularIcons from '@logora/debate.icons.regular_icons';
 
 export const DefaultShareButton = () => {
     return (
-        <IntlProvider locale="en">
-            <ConfigProvider config={{theme:{}}}>
-                <IconProvider library={regularIcons}>
-                    <ShareButton shareUrl={"https://example.fr/test/"} shareTitle="Share this !" shareText={"You should check this interesting link"} />
-                </IconProvider>
-            </ConfigProvider>
-        </IntlProvider>
+        <div style={{width: "200px"}}>
+            <IntlProvider locale="en">
+                <ConfigProvider config={{theme:{}}}>
+                    <IconProvider library={regularIcons}>
+                        <ShareButton shareUrl={"https://example.fr/test/"} shareTitle="Share this !" shareText={"You should check this interesting link"} />
+                    </IconProvider>
+                </ConfigProvider>
+            </IntlProvider>
+        </div>
     );
 };
 
 export const ShareButtonWithText = () => {
     return (
-        <IntlProvider locale="en">
-            <ConfigProvider config={{theme:{}}}>
-                <IconProvider library={regularIcons}>
-                    <ShareButton showText shareUrl={"https://example.fr/test/"} shareTitle="Share this !" shareText={"You should check this interesting link"} />
-                </IconProvider>
-            </ConfigProvider>
-        </IntlProvider>
+        <div style={{width: "200px"}}>
+            <IntlProvider locale="en">
+                <ConfigProvider config={{theme:{}}}>
+                    <IconProvider library={regularIcons}>
+                        <ShareButton showText shareUrl={"https://example.fr/test/"} shareTitle="Share this !" shareText={"You should check this interesting link"} />
+                    </IconProvider>
+                </ConfigProvider>
+            </IntlProvider>
+        </div>
     );
 };

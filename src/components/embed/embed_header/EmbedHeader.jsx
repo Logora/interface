@@ -5,15 +5,19 @@ import { Link } from '@logora/debate.action.link';
 import cx from 'classnames';
 import styles from './EmbedHeader.module.scss';
 
-export const EmbedHeader = ({ title, titleRedirectUrl, headerLabel, onlineUsersCount, textLeft, className }) => {
+export const EmbedHeader = ({ title, titleRedirectUrl, headerLabel, onlineUsersCount, textLeft, className, logoUrl, logoAlt }) => {
     return (
 		<div className={cx(styles.headerBox, className)}>
 			{ headerLabel &&
 				<div className={styles.headerBoxLabel}>
 					<Link to={titleRedirectUrl} target="_top" external data-tid="link_debate_index_embed">
-						<div className={styles.headerLabelText}>
-							{ headerLabel }
-						</div>
+						{ logoUrl ?
+							<img loading={"lazy"} className={styles.headerLogo} src={logoUrl} width={100} height={40} alt={logoAlt} />
+						:
+							<div className={styles.headerLabelText}>
+								{ headerLabel }
+							</div>
+						}
 					</Link>
 					{ onlineUsersCount ?
 						<div className={styles.headerLiveStat}>
@@ -28,8 +32,8 @@ export const EmbedHeader = ({ title, titleRedirectUrl, headerLabel, onlineUsersC
 					: null}
 				</div>
 			}
-			<div className={cx(styles.debateName, { [styles.left]: textLeft})} data-testid={"debate-name"}>
-				<Link className={styles.debateLink} to={titleRedirectUrl} target="_top" external data-tid="link_debate_title_embed">
+			<div className={cx(styles.debateName, { [styles.left]: textLeft, [styles.debateNameWithLogo]: logoUrl})} data-testid={"debate-name"}>
+				<Link className={styles.debateLink} to={titleRedirectUrl} target="_top" external data-tid="link_debate_title_embed" rel="">
 					{ title }
 				</Link>
 			</div>
@@ -49,5 +53,9 @@ EmbedHeader.propTypes = {
     /** If true, title will be align with headerLabel text */
     textLeft: PropTypes.bool,
 	/** Custom EmbedHeader styles */
-    className: PropTypes.object
+    className: PropTypes.object,
+	/** Link of the image to display */
+    logoUrl: PropTypes.string,
+	/** Alt of the logo */
+    logoAlt: PropTypes.string,
 };

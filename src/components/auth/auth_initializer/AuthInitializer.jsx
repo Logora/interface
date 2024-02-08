@@ -6,12 +6,12 @@ import { useAuthInterceptor } from '@logora/debate.auth.use_auth';
 import { useAuthRequired } from "@logora/debate.hooks.use_auth_required";
 import AuthProviderFactory from '@logora/debate.auth.providers';
 
-export const AuthInitializer = ({ authType, provider, assertion }) => {
+export const AuthInitializer = ({ authUrl, authType, provider, assertion }) => {
     const tokenKey = "logora_user_token";
-    useAuthInterceptor(httpClient, process.env.API_AUTH_URL, tokenKey);
+    useAuthInterceptor(httpClient, authUrl, tokenKey);
 
-    const { getToken, removeToken } = authTokenHandler(httpClient, process.env.API_AUTH_URL, tokenKey);
-    const { loginUser, logoutUser, fetchUser } = useAuthActions(httpClient, process.env.API_AUTH_URL, tokenKey);
+    const { getToken, removeToken } = authTokenHandler(httpClient, authUrl, tokenKey);
+    const { loginUser, logoutUser, fetchUser } = useAuthActions(httpClient, authUrl, tokenKey);
 	const requireAuthentication = useAuthRequired();
 
     useEffect(() => {
@@ -62,6 +62,8 @@ export const AuthInitializer = ({ authType, provider, assertion }) => {
 }
 
 AuthInitializer.propTypes = {
+    /** Auth API URL */
+    authUrl: PropTypes.string.isRequired,
     /** Authentication type, can be 'oauth2', 'oauth2_server', 'social' or 'jwt' */
     authType: PropTypes.string.isRequired,
     /** User provider name */

@@ -1,0 +1,34 @@
+---
+description: A component that renders a line chart related to the datasets that are passed.
+---
+
+import { LineChart } from './LineChart';
+
+A component that renders a line chart related to the datasets that are passed.
+
+It must be inside [react-intl](https://formatjs.io/docs/getting-started/installation/)'s IntlProvider.
+It must be inside [IconProvider](https://bit.cloud/logora/debate/icons/icon_provider).
+
+### Component usage
+
+```js
+import { LineChart } from '@logora/debate.chart.pie_chart';
+```
+
+```js
+    const formattedLineChartData = [{ label: "My dataset", contentColor: "#E6E6E6", data: { "dimension": 115, "value": 2 } }]
+    const labels = [{ "id": 114, "name": "moto", "taggings_count": 0, "display_name": "moto"},{ "id": 115, "name": "honda", "taggings_count": 0, "display_name": "honda"},{ "id": 116, "name": "cbr", "taggings_count": 0, "display_name": "cbr"},{ "id": 117, "name": "chanyol", "taggings_count": 0, "display_name": "chanyol"}]
+
+    <IntlProvider locale="en">
+        <IconProvider library={regularIcons}>
+            <LineChart
+                filterOptions={FILTER_OPTIONS}
+                className={"myClassName"}
+                title={"My chart title"}
+                onFilterChange={() => handleLineChartFilterChange()}
+                labels={labels}
+                data={formattedLineChartData}
+            />
+        </IconProvider>
+    </IntlProvider>
+```

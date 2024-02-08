@@ -2,41 +2,34 @@ import React, { useEffect } from 'react';
 import styles from "./AdUnit.module.scss";
 import PropTypes from 'prop-types';
 
-export const AdUnit = ({ id, adPath, sizes = [], targeting, enableDidomi = false, refreshRate = 8000 }) => {
+export const AdUnit = ({ id, adPath, sizes = [], targeting, enableDidomi = false }) => {
     if(!id || !adPath) {
         return null;
     }
+    const divId = `div-gpt-ad-${id}`;
 
     useEffect(() => {
-        if(typeof window !== 'undefined' && id && adPath) {
-            window.googletag = window.googletag || {cmd: []};
-            let slot = {};
+        if(typeof window !== 'undefined' && divId && adPath) {
+            const googletag = window.googletag || (window.googletag = { cmd: [] });
+            let slot;
+
             googletag.cmd.push(function() {
-                slot = googletag.defineSlot(adPath, sizes, id)
+                slot = googletag
+                    .defineSlot(adPath, sizes, divId)
                     .setTargeting('origine', ['logora'])
                     .addService(googletag.pubads());
                 for (const [key, value] of Object.entries(targeting || {})) {
-                    slot = slot.setTargeting(key, value);
+                    slot.setTargeting(key, value);
                 }
-                googletag.pubads().enableSingleRequest();
-                googletag.pubads().disableInitialLoad();
-                googletag.enableServices();
-                googletag.display(id);
-                googletag.pubads().refresh([slot]);
 
-                googletag.pubads().addEventListener('impressionViewable', function(event) {
-                    if(event.slot === slot) {
-                        setTimeout(function () {
-                            googletag.pubads().refresh([event.slot]);
-                        }, refreshRate);
-                    }
-                });
+                googletag.display(divId);
+                googletag.pubads().refresh([slot]);
             });
 
             return () => {
                 const googletag = window.googletag || {cmd: []};
                 googletag.cmd.push(function() {
-                    googletag.destroySlots();
+                    googletag.destroySlots([slot]);
                 });
             }
         }
@@ -46,14 +39,14 @@ export const AdUnit = ({ id, adPath, sizes = [], targeting, enableDidomi = false
         return (
             <script type="didomi/html" data-vendor="didomi:google" data-purposes="cookies">
                 <div className={styles.adContainer}>
-                    <div className={styles.adUnit} id={id}></div>
+                    <div className={styles.adUnit} id={divId}></div>
                 </div>
             </script>
         );
     } else {
         return (
             <div className={styles.adContainer}>
-                <div className={styles.adUnit} id={id}></div>
+                <div className={styles.adUnit} id={divId}></div>
             </div>
         );
     }
@@ -68,14 +61,11 @@ AdUnit.propTypes = {
     targeting: PropTypes.object,
     /** Sizes of slot */
     sizes: PropTypes.array,
-    /** Ad refresh rate */
-    refreshRate: PropTypes.number,
     /** Whether to add didomi attributes to manage user consent */
     enableDidomi: PropTypes.bool
 };
 
 AdUnit.defaultProps = {
     sizes: [],
-    refreshRate: 8000,
     enableDidomi: false
 };

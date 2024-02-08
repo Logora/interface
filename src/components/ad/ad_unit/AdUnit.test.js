@@ -39,7 +39,7 @@ describe('AdUnit', () => {
             />
         );
 
-        expect(container.firstChild?.firstChild.id).toBe(id);
+        expect(container.firstChild?.firstChild.id).toBe(`div-gpt-ad-${id}`);
     });
 
     it('should set didomi script if consent is true', () => {
@@ -58,6 +58,6 @@ describe('AdUnit', () => {
         expect(container.firstChild.tagName).toBe("SCRIPT");
         expect(container.firstChild.type).toBe("didomi/html");
         expect(container.firstChild.getAttribute("data-vendor")).toBe("didomi:google");
-        expect(container.firstChild?.firstChild?.firstChild.id).toBe(id);
+        expect(container.firstChild?.firstChild?.firstChild.id).toBe(`div-gpt-ad-${id}`);
     });
 });

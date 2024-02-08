@@ -1,0 +1,29 @@
+---
+description: An input to submit an argument.
+labels: ['argument', 'input']
+---
+
+An input to write and submit an argument.
+
+It should be inside [IconProvider](https://bit.cloud/logora/debate/icons/icon_provider).
+
+### Component usage
+
+```js
+import ArgumentInput from '@logora/debate.input.argument_input';
+```
+
+```js
+<ArgumentInput 
+    placeholder="Search"
+    onSubmit={() => {}}
+    groupId={23}
+    groupName={"My name"}
+    positions={[{id: 2, name: "Yes"}, {id: 3, name: "No"}]}
+    disabledPositions={[]}
+    listId={"argumentList"}
+    positionId={2}
+    hideSourceAction={false}
+    avatarSize={48}
+/>
+```
