@@ -21,7 +21,27 @@
         "scope": "logora.debate",
         "version": "0.0.60",
         "mainFile": "index.js",
-        "rootDir": "src/components/action/button"
+        "rootDir": "src/components/action/button",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "dependencies": {
+                        "classnames": "^2.3.2",
+                        "core-js": "^3.25.5",
+                        "react": "^17.0.0"
+                    },
+                    "peerDependencies": {
+                        "react": "^17.0.0 || ^18.0.0",
+                        "react-dom": "^17.0.0 || ^18.0.0"
+                    },
+                    "devDependencies": {
+                        "@types/testing-library__jest-dom": "-",
+                        "@types/jest": "-",
+                        "@testing-library/react": "^14.0.0"
+                    }
+                }
+            }
+        }
     },
     "action/icon_text_link": {
         "name": "action/icon_text_link",
@@ -477,6 +497,9 @@
                     "peerDependencies": {
                         "react": "^17.0.0 || ^18.0.0",
                         "react-dom": "^17.0.0 || ^18.0.0"
+                    },
+                    "dependencies": {
+                        "flat": "^6.0.1"
                     }
                 }
             }

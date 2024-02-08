@@ -20,7 +20,6 @@
   "teambit.dependencies/dependency-resolver": {
     "packageManager": "teambit.dependencies/yarn",
     "policy": {
-      "dependencies": {},
       "peerDependencies": {
         "react": "^17.0.0 || ^18.0.0",
         "react-dom": "^17.0.0 || ^18.0.0",

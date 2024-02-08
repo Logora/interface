@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import { AsyncIntlProvider } from './AsyncIntlProvider';
+import { IntlProvider } from './IntlProvider';
 
 const IntlComponent = () => {
     return (
@@ -8,12 +8,12 @@ const IntlComponent = () => {
     )
 }
 
-describe('AsyncIntlProvider', () => {
+describe('IntlProvider', () => {
     it('should render children', () => {
         render(
-            <AsyncIntlProvider>
+            <IntlProvider>
                 <IntlComponent />
-            </AsyncIntlProvider>
+            </IntlProvider>
         )
 
         expect(screen.getByText("Hello world !")).toBeTruthy();
