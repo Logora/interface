@@ -469,7 +469,20 @@
         "scope": "logora.debate",
         "version": "0.0.1",
         "mainFile": "index.js",
-        "rootDir": "src/components/intl/intl_provider"
+        "rootDir": "src/components/intl/intl_provider",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "peerDependencies": {
+                        "react": "^17.0.0 || ^18.0.0",
+                        "react-dom": "^17.0.0 || ^18.0.0"
+                    },
+                    "dependencies": {
+                        "flat": "^5.0.2"
+                    }
+                }
+            }
+        }
     },
     "list/list_provider": {
         "name": "list/list_provider",

@@ -36,7 +36,7 @@
     "chartjs-plugin-datalabels": "1.0.0",
     "classnames": "^2.3.2",
     "core-js": "^3.33.0",
-    "flat": "^6.0.1",
+    "flat": "^5.0.2",
     "lexical": "^0.12.6",
     "path-to-regexp": "^6.2.1",
     "prop-types": "^15.8.1",
