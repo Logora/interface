@@ -1,0 +1,261 @@
+@import '~@logora/debate.styles.theme/_theme.scss';
+@import '~@logora/debate.styles.spacing/_spacing.scss';
+@import '~@logora/debate.styles.flex/_flex.scss';
+@import '~@logora/debate.styles.display/_display.scss';
+
+.voteBox {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100%;
+}
+
+.voteResultsBox {
+    display: flex !important;
+    flex-direction: column !important;
+    @include p(0, xs);
+    width: 100%;
+}
+
+.voteResults {
+    @include p(0, xs);
+}
+
+.voteProgressHeader {
+    @include mb(1, xs);
+    display: flex !important;
+    align-items: center !important;
+    font-size: $font-size-normal;
+    @include line-clamp(1);
+}
+
+.voteProgressHeaderAgainst {
+    @include mt(2.5, xs);
+}
+
+.votesProgressHeaderBox {
+    display: flex !important;
+    align-items: flex-end !important;
+}
+
+.voteResultsNumberVoters {
+    display: flex !important;
+    align-items: center !important;
+    @include p(0, xs);
+    font-size: $font-size-normal;
+    color: $text-secondary;
+}
+
+.voteBoxFooter {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    @include mt(3, xs);
+    @include p(0, xs);
+}
+
+.backToVote {
+    color: $text-secondary;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.voteBoxActions {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: $spacer;
+    color: $text-secondary;
+    width: 100%;
+}
+
+.voteBoxActionsBody {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr);
+    gap: $spacer-md;
+    @include p(0, xs);
+    width: 100%;
+}
+
+.voteBoxActionsBodyColumn {
+    grid-template-columns: 1fr;
+}
+
+.voteBoxActionsBodyRow {
+    flex-direction: column !important;
+    @include media-breakpoint-down(xs) {
+        flex-direction: row !important;
+    };
+}
+
+.voteAction {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: center !important;
+    @include p(0, xs);
+    max-width: 100% !important;
+    width: 100% !important;
+    text-align: center;
+    &.voteActionContext {
+        justify-content: flex-start !important;
+    }
+}
+
+// REDUCED SYNTHESIS EXCEPTIONS
+.voteBoxActionsBodyUnwrapped {
+    flex-wrap: nowrap !important;
+    .voteAction {
+        @include mb(0, xs);
+        @include make-col-ready();
+        @include make-col(6);
+    }
+}
+
+button.voteButton, a.voteButton  {
+    -webkit-appearance: initial !important;
+    width: 100%;
+    @include hyphens(auto);
+    @include p(2, xs);
+    &.voteButtonContext {
+        justify-content: flex-start !important;
+        max-width: 400px;
+    }
+}
+
+.voteButtonFullWidth {
+    @include mx(0, xs);
+    @include mt(0, xs);
+    justify-content: flex-start !important;
+    max-width: 100%;
+    flex-basis: auto;
+}
+
+.voteBoxShowResultContainer {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: center !important;
+    flex-wrap: wrap !important;
+}
+
+.voteBoxShowResult {
+    cursor: pointer;
+    a {
+        background: none !important;
+        &:hover {
+            background: none !important;
+        }
+    }
+    .boldShowResult {
+        font-weight: $font-weight-bold;
+    }
+}
+
+.voteButtonThesis {
+    display: block;
+    text-align: left;
+    @include line-clamp(2);
+}
+
+@include media-breakpoint-down(sm) {
+    .voteButtonThesisSynthesisMobile {           
+        text-align: center !important;
+    }
+}
+
+.voteBoxActionsBody .voteAction:first-child .voteButton {
+    background-color: $for-primary !important;
+    border-color: $for-primary !important;
+    border: 1px solid $for-primary !important;
+    &:hover {
+        background-color: $for-primary !important;
+        border-color: $for-primary !important;
+        border: 1px solid $for-primary !important;
+    }
+}
+
+.voteBoxActionsBody .voteAction:nth-child(2) .voteButton {
+    background-color: $against-primary !important;
+    border-color: $against-primary !important;
+    border: 1px $against-primary !important;
+    &:hover {
+        background-color: $against-primary !important;
+        border-color: $against-primary !important;
+        border: 1px $against-primary !important;
+    }
+}
+
+.voteBoxActionsBody .voteAction:nth-child(3) .voteButton {
+    background-color: $text-light !important;
+    color: $third-position-color-primary !important;
+    border-color: $third-position-color-primary !important;
+    border: 1px solid $third-position-color-primary !important;
+    &:hover {
+        background-color: $text-light !important;
+        color: $third-position-color-primary !important;
+        border-color: $third-position-color-primary !important;
+        border: 1px solid $third-position-color-primary !important;
+    }
+}
+
+.changeVoteButton {
+    @include pb(1, xs);
+    @include px(3, xs);
+    font-size: $font-size-small;
+    cursor: pointer;
+    -webkit-appearance: initial !important;
+    color: $text-secondary;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid $text-secondary;
+    background: none;
+    font-weight: $font-weight-normal;
+}
+
+.sideIcon {
+    svg {
+        margin-left: 5px;
+        fill: $text-primary;
+    }
+}
+
+.progress {
+    border-radius: 10px;
+    height: 25px;
+    color: $text-secondary;
+}
+
+.progressBar {
+    border-radius: 10px;
+    height: 25px;
+}
+
+.voteResults > div:first-child .progress .progressBar {
+    background-color: $for-primary !important;
+}
+
+.voteResults > div:nth-child(2) .progress .progressBar {
+    background-color: $against-primary !important;
+}
+
+.voteResults div:nth-child(3) .progress .progressBar {
+    background-color: $third-position-color-primary !important;
+}
+
+.progressText {
+    color: $text-light;
+    font-size: $font-size-normal;
+    font-weight: $font-weight-normal;
+}
+
+.userImage {
+    border-radius: 50%;
+    object-fit: cover;
+    width: 25px;
+    height: 25px;
+    @include mr(2, xs);
+}

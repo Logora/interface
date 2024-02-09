@@ -4,9 +4,9 @@ import { flatten } from 'flat';
 import useSessionStorageState from '@rooks/use-sessionstorage-state';
 import PropTypes from 'prop-types';
 
-export const LocaleContext = createContext();
+export const IntlContext = createContext();
 
-export const IntlProvider = ({ language, defaultLanguage = "fr", async = true, locales, customMessages = {}, children }) => {
+export const IntlProvider = ({ language, async = false, locales, customMessages = {}, children, onError }) => {
   const [storedLocale] = useSessionStorageState("logora:locale", null);
 
   const getLocale = () => {
@@ -14,13 +14,11 @@ export const IntlProvider = ({ language, defaultLanguage = "fr", async = true, l
       return storedLocale;
     } else if (language) {
       return language;
-    } else {
-      return defaultLanguage;
     }
   }
 
   const getMessages = () => {
-    if(!async) {
+    if (!async && (locale in locales)) {
       return locales[locale];
     } else {
       return {};
@@ -32,9 +30,9 @@ export const IntlProvider = ({ language, defaultLanguage = "fr", async = true, l
 
   useEffect(() => {
     if (locale && async) {
-      (() => import(locales + locale + ".json"))().then((m) => {
+      import(locales + locale + ".json").then((m) => {
         setMessages(m);
-      });
+      }).catch(() => setMessages({}));
     }
   }, [locale]);
 
@@ -49,10 +47,10 @@ export const IntlProvider = ({ language, defaultLanguage = "fr", async = true, l
   }
 
   return (
-    <ReactIntlProvider locale={locale} messages={mergeRemoteMessages(flatten(messages))}>
-      <LocaleContext.Provider value={{ locale, setLocale }}>
+    <ReactIntlProvider locale={locale} messages={mergeRemoteMessages(flatten(messages))} onError={onError}>
+      <IntlContext.Provider value={{ locale, setLocale }}>
         {children}
-      </LocaleContext.Provider>
+      </IntlContext.Provider>
     </ReactIntlProvider>
   )
 };
@@ -60,14 +58,19 @@ export const IntlProvider = ({ language, defaultLanguage = "fr", async = true, l
 IntlProvider.propTypes = {
   /** Current language used */
   language: PropTypes.string,
-  /** Default language if no language is passed or stored  */
-  defaultLanguage: PropTypes.string,
   /** If true, will fetch the locales asynchronously with import */
   async: PropTypes.bool,
   /** Path to the folder containing locale files, or object containing the locale strings */
   locales: PropTypes.any,
-  /** Dictionary of messages that will override messages from files */
+  /** Dictionary of messages that will override localized messages */
   customMessages: PropTypes.object,
   /** Component children */
-  children: PropTypes.node
+  children: PropTypes.node,
+  /** Optional onError callback passed to react-intl */
+  onError: PropTypes.func
 };
+
+IntlProvider.defaultProps = {
+  async: false,
+  customMessages: {}
+}

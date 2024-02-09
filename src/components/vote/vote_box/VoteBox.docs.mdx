@@ -1,0 +1,49 @@
+---
+description: Documentation for VoteBox.jsx
+labels: ['vote']
+---
+
+VoteBox.jsx is a React component that represents a voting box for a debate or group. 
+
+This component allows users to vote on different positions in the debate. 
+
+It handles user authentication, displaying voting options, vote count, and percentage distribution.
+
+### Component usage
+
+```js
+import { VoteBox } from '@logora/debate.vote.vote_box';
+```
+
+```js
+const votePositions = [
+    {
+        id: 900,
+        language: null,
+        name: "Yes",
+    },
+    {
+        id: 901,
+        language: null,
+        name: "No",
+    }
+];
+
+const debate = {
+    id: 1,
+    votes_count: {
+        900: "10",
+        901: "8",
+        total: "18"
+    },
+    slug: "my-debate",
+    is_active: true,
+};
+
+<VoteBox 
+    voteableType={"Group"} 
+    debate={debate} 
+    votePositions={votePositions}
+    displayColumn
+/>
+```
