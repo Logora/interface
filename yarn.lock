@@ -4178,6 +4178,12 @@ __metadata:
   languageName: node
   linkType: hard
 
+"vote_box-dab0ab@workspace:src/components/vote/vote_box":
+  version: 0.0.0-use.local
+  resolution: "vote_box-dab0ab@workspace:src/components/vote/vote_box"
+  languageName: unknown
+  linkType: soft
+
 "vote_button-bea9f9@workspace:src/components/vote/vote_button":
   version: 0.0.0-use.local
   resolution: "vote_button-bea9f9@workspace:src/components/vote/vote_button"
