@@ -36,6 +36,7 @@ export const ContentFooter = ({ resource,
     showShareText,
     enableEdition = true,
     enableDeletion = true,
+    enableReport = true,
     containerClassName,
     voteActionClassName }) => {
 	const intl = useIntl();
@@ -124,7 +125,7 @@ export const ContentFooter = ({ resource,
                                     }
 								</>
 							}
-							{ currentUser.is_banned !== true &&
+							{ enableReport && currentUser.is_banned !== true &&
 								<div data-tid={"action_report_argument"} className={styles.dropdownItem} onClick={reportContent} data-testid="report-content">
                                     { intl.formatMessage({ id: "user_content.content_footer.report", defaultMessage: "Report" }) }
 								</div>
@@ -187,6 +188,8 @@ ContentFooter.propTypes = {
 	enableEdition: PropTypes.bool,
     /** If true, content can be deleted */
 	enableDeletion: PropTypes.bool,
+    /** If true, content can be reported */
+	enableReport: PropTypes.bool,
     /** Custom style for container */
 	containerClassName: PropTypes.string,
     /** Custom style for children container */
