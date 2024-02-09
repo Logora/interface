@@ -34,11 +34,6 @@
     @include mt(2.5, xs);
 }
 
-.votesProgressHeaderBox {
-    display: flex !important;
-    align-items: flex-end !important;
-}
-
 .voteResultsNumberVoters {
     display: flex !important;
     align-items: center !important;
@@ -84,13 +79,6 @@
     grid-template-columns: 1fr;
 }
 
-.voteBoxActionsBodyRow {
-    flex-direction: column !important;
-    @include media-breakpoint-down(xs) {
-        flex-direction: row !important;
-    };
-}
-
 .voteAction {
     display: flex !important;
     flex-direction: row !important;
@@ -100,18 +88,8 @@
     max-width: 100% !important;
     width: 100% !important;
     text-align: center;
-    &.voteActionContext {
+    &.buttonAlignLeft {
         justify-content: flex-start !important;
-    }
-}
-
-// REDUCED SYNTHESIS EXCEPTIONS
-.voteBoxActionsBodyUnwrapped {
-    flex-wrap: nowrap !important;
-    .voteAction {
-        @include mb(0, xs);
-        @include make-col-ready();
-        @include make-col(6);
     }
 }
 
@@ -120,20 +98,10 @@ button.voteButton, a.voteButton  {
     width: 100%;
     @include hyphens(auto);
     @include p(2, xs);
-    &.voteButtonContext {
-        justify-content: flex-start !important;
-        max-width: 400px;
-    }
 }
 
-.voteButtonFullWidth {
-    @include mx(0, xs);
-    @include mt(0, xs);
+.textAlignLeft {
     justify-content: flex-start !important;
-    text-transform: none;
-    width: 100%;
-    max-width: 100%;
-    flex-basis: auto;
 }
 
 .voteBoxShowResultContainer {
@@ -246,18 +214,4 @@ button.voteButton, a.voteButton  {
 
 .voteResults div:nth-child(3) .progress .progressBar {
     background-color: $third-position-color-primary !important;
-}
-
-.progressText {
-    color: $text-light;
-    font-size: $font-size-normal;
-    font-weight: $font-weight-normal;
-}
-
-.userImage {
-    border-radius: 50%;
-    object-fit: cover;
-    width: 25px;
-    height: 25px;
-    @include mr(2, xs);
 }
