@@ -86,11 +86,12 @@ export const dataProvider = (
 		});
 	},
 
-    update: (resource, id, data) => {
+    update: (resource, id, data, withToken = true) => {
         const url = `${apiUrl}/${resource}/${id}`;
-        const config = {
-			headers: getAuthHeader(storageKey),
-		};
+        let config = {};
+		if(withToken) {
+			config["headers"] = getAuthHeader(storageKey);
+		}
         return new Promise((resolve, reject) => {
 			httpClient.patch(url, data, config)
 				.then((response) => {
@@ -102,11 +103,12 @@ export const dataProvider = (
 		});
     },
 
-    create: (resource, data) => {
+    create: (resource, data, withToken = true) => {
         const url = `${apiUrl}/${resource}`;
-        const config = {
-			headers: getAuthHeader(storageKey),
-		};
+        let config = {};
+		if(withToken) {
+			config["headers"] = getAuthHeader(storageKey);
+		}
         return new Promise((resolve, reject) => {
 			httpClient.post(url, data, config)
 				.then((response) => {
@@ -118,11 +120,12 @@ export const dataProvider = (
 		});
     },
 
-    delete: (resource, id) => {
+    delete: (resource, id, withToken = true) => {
         const url = `${apiUrl}/${resource}/${id}`;
-        const config = {
-			headers: getAuthHeader(storageKey),
-		};
+        let config = {};
+		if(withToken) {
+			config["headers"] = getAuthHeader(storageKey);
+		}
         return new Promise((resolve, reject) => {
 			httpClient.delete(url, config)
 				.then((response) => {

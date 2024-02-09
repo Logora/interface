@@ -130,8 +130,6 @@ button.voteButton, a.voteButton  {
     @include mx(0, xs);
     @include mt(0, xs);
     justify-content: flex-start !important;
-    text-transform: none;
-    width: 100%;
     max-width: 100%;
     flex-basis: auto;
 }
