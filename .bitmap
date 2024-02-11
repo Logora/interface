@@ -712,27 +712,9 @@
     "user/update_user_info_modal": {
         "name": "user/update_user_info_modal",
         "scope": "logora.debate",
-        "version": "0.0.4",
+        "version": "0.0.5",
         "mainFile": "index.js",
-        "rootDir": "src/components/user/update_user_info_modal",
-        "config": {
-            "teambit.dependencies/dependency-resolver": {
-                "policy": {
-                    "devDependencies": {
-                        "@types/jest": "-",
-                        "@types/testing-library__jest-dom": "-"
-                    },
-                    "dependencies": {
-                        "@logora/debate.user.avatar_selector": "0.0.1",
-                        "@logora/debate.modal.update_user_info_modal": "-"
-                    },
-                    "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0"
-                    }
-                }
-            }
-        }
+        "rootDir": "src/components/user/update_user_info_modal"
     },
     "user/user_box": {
         "name": "user/user_box",
