@@ -263,7 +263,7 @@ describe('data provider function', () => {
 
 		const url = `${apiUrl}/${resource}`;
 
-        expect(httpClient.post).toHaveBeenCalledWith(url, data, config);
+        expect(httpClient.post).toHaveBeenCalledWith(`${url}?`, data, config);
         expect(httpClient.post).toHaveBeenCalledTimes(1);
     });
 
@@ -277,11 +277,11 @@ describe('data provider function', () => {
         };
         const api = dataProvider(httpClient, apiUrl, apiKey, storageKey);
 
-        api.create(resource, data, false);
+        api.create(resource, data, {}, false);
 
 		const url = `${apiUrl}/${resource}`;
 
-        expect(httpClient.post).toHaveBeenCalledWith(url, data, {});
+        expect(httpClient.post).toHaveBeenCalledWith(`${url}?api_key=${apiKey}`, data, {});
         expect(httpClient.post).toHaveBeenCalledTimes(1);
     });
 
@@ -307,13 +307,12 @@ describe('data provider function', () => {
 
 		const url = `${apiUrl}/${resource}/${resourceId}`;
 
-        expect(httpClient.patch).toHaveBeenCalledWith(url, data, config);
+        expect(httpClient.patch).toHaveBeenCalledWith(`${url}?`, data, config);
         expect(httpClient.patch).toHaveBeenCalledTimes(1);
     });
 
     it('should call update function without token if withToken is false', () => {
         const storageKey = "storage-key";
-    
         const apiUrl = "http://example.com/update"
         const apiKey = "api-key";
         const resource = "user";
@@ -323,11 +322,11 @@ describe('data provider function', () => {
         };
         const api = dataProvider(httpClient, apiUrl, apiKey, storageKey);
 
-        api.update(resource, resourceId, data, false);
+        api.update(resource, resourceId, data, {}, false);
 
 		const url = `${apiUrl}/${resource}/${resourceId}`;
 
-        expect(httpClient.patch).toHaveBeenCalledWith(url, data, {});
+        expect(httpClient.patch).toHaveBeenCalledWith(`${url}?api_key=${apiKey}`, data, {});
         expect(httpClient.patch).toHaveBeenCalledTimes(1);
     });
 
@@ -350,24 +349,23 @@ describe('data provider function', () => {
 
 		const url = `${apiUrl}/${resource}/${resourceId}`;
 
-        expect(httpClient.delete).toHaveBeenCalledWith(url, config);
+        expect(httpClient.delete).toHaveBeenCalledWith(`${url}?`, config);
         expect(httpClient.delete).toHaveBeenCalledTimes(1);
     });
 
     it('should call delete function without token if withToken is false', () => {
         const storageKey = "storage-key";
-
         const apiUrl = "http://example.com/delete"
         const apiKey = "api-key";
         const resource = "user";
         const resourceId = "my-id";
         const api = dataProvider(httpClient, apiUrl, apiKey, storageKey);
 
-        api.delete(resource, resourceId, false);
+        api.delete(resource, resourceId, {}, false);
 
 		const url = `${apiUrl}/${resource}/${resourceId}`;
 
-        expect(httpClient.delete).toHaveBeenCalledWith(url, {});
+        expect(httpClient.delete).toHaveBeenCalledWith(`${url}?api_key=${apiKey}`, {});
         expect(httpClient.delete).toHaveBeenCalledTimes(1);
     });
 });

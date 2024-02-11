@@ -12,15 +12,15 @@ export function getAuthHeader(storageKey) {
 }
 
 export const dataProvider = (
-    httpClient,
-    apiUrl,
+	httpClient,
+	apiUrl,
 	apiKey = "",
 	storageKey = ""
 ) => ({
-    getOne: (resource, id, params) => {
+	getOne: (resource, id, params = {}) => {
 		params.api_key = apiKey;
-        const queryString = new URLSearchParams(params).toString();
-        const url = `${apiUrl}/${resource}/${id}?${queryString}`;
+		const queryString = new URLSearchParams(params).toString();
+		const url = `${apiUrl}/${resource}/${id}?${queryString}`;
 		return new Promise((resolve, reject) => {
 			httpClient.get(url)
 				.then((response) => {
@@ -30,11 +30,11 @@ export const dataProvider = (
 					reject(err);
 				});
 		});
-    },
+	},
 
-    getOneWithToken: (resource, id, params) => {
-        const queryString = new URLSearchParams(params).toString();
-        const url = `${apiUrl}/${resource}/${id}?${queryString}`;
+	getOneWithToken: (resource, id, params = {}) => {
+		const queryString = new URLSearchParams(params).toString();
+		const url = `${apiUrl}/${resource}/${id}?${queryString}`;
 		const config = {
 			headers: getAuthHeader(storageKey),
 		};
@@ -47,15 +47,11 @@ export const dataProvider = (
 					reject(err);
 				});
 		});
-    },
+	},
 
-	getList: (resource, params) => {
-		let data = {
-			...params,
-			api_key: apiKey
-		};
-
-		const queryString = new URLSearchParams(data).toString();
+	getList: (resource, params = {}) => {
+		params.api_key = apiKey;
+		const queryString = new URLSearchParams(params).toString();
 		const url = `${apiUrl}/${resource}?${queryString}`;
 		return new Promise((resolve, reject) => {
 			httpClient.get(url)
@@ -66,9 +62,9 @@ export const dataProvider = (
 					reject(err);
 				});
 		});
-    },
+	},
 
-	getListWithToken: (resource, params) => {
+	getListWithToken: (resource, params = {}) => {
 		const config = {
 			headers: getAuthHeader(storageKey),
 		};
@@ -86,13 +82,17 @@ export const dataProvider = (
 		});
 	},
 
-    update: (resource, id, data, withToken = true) => {
-        const url = `${apiUrl}/${resource}/${id}`;
-        let config = {};
-		if(withToken) {
+	update: (resource, id, data, params = {}, withToken = true) => {
+		let config = {};
+		if (withToken) {
 			config["headers"] = getAuthHeader(storageKey);
+		} else {
+			params.api_key = apiKey;
 		}
-        return new Promise((resolve, reject) => {
+
+		const queryString = new URLSearchParams(params).toString();
+		const url = `${apiUrl}/${resource}/${id}?${queryString}`;
+		return new Promise((resolve, reject) => {
 			httpClient.patch(url, data, config)
 				.then((response) => {
 					resolve(response);
@@ -101,15 +101,19 @@ export const dataProvider = (
 					reject(err);
 				});
 		});
-    },
+	},
 
-    create: (resource, data, withToken = true) => {
-        const url = `${apiUrl}/${resource}`;
-        let config = {};
-		if(withToken) {
+	create: (resource, data, params = {}, withToken = true) => {
+		let config = {};
+		if (withToken) {
 			config["headers"] = getAuthHeader(storageKey);
+		} else {
+			params.api_key = apiKey;
 		}
-        return new Promise((resolve, reject) => {
+
+		const queryString = new URLSearchParams(params).toString();
+		const url = `${apiUrl}/${resource}?${queryString}`;
+		return new Promise((resolve, reject) => {
 			httpClient.post(url, data, config)
 				.then((response) => {
 					resolve(response);
@@ -118,15 +122,19 @@ export const dataProvider = (
 					reject(err);
 				});
 		});
-    },
+	},
 
-    delete: (resource, id, withToken = true) => {
-        const url = `${apiUrl}/${resource}/${id}`;
-        let config = {};
-		if(withToken) {
+	delete: (resource, id, params = {}, withToken = true) => {
+		let config = {};
+		if (withToken) {
 			config["headers"] = getAuthHeader(storageKey);
+		} else {
+			params.api_key = apiKey;
 		}
-        return new Promise((resolve, reject) => {
+
+		const queryString = new URLSearchParams(params).toString();
+		const url = `${apiUrl}/${resource}/${id}?${queryString}`;
+		return new Promise((resolve, reject) => {
 			httpClient.delete(url, config)
 				.then((response) => {
 					resolve(response);
@@ -135,15 +143,15 @@ export const dataProvider = (
 					reject(err);
 				});
 		});
-    },
+	},
 
-    getSettings: (shortname) => {
-        const params = {
-            shortname: shortname
-        };
-        const queryString = new URLSearchParams(params).toString();
-        const url = `${apiUrl}/settings?${queryString}`;
-        return new Promise((resolve, reject) => {
+	getSettings: (shortname) => {
+		const params = {
+			shortname: shortname
+		};
+		const queryString = new URLSearchParams(params).toString();
+		const url = `${apiUrl}/settings?${queryString}`;
+		return new Promise((resolve, reject) => {
 			httpClient
 				.post(url)
 				.then((response) => {
@@ -153,5 +161,5 @@ export const dataProvider = (
 					reject(err);
 				});
 		});
-    },
+	},
 });
