@@ -3,7 +3,7 @@ import { render, screen, waitFor, act } from '@testing-library/react';
 import { renderToStaticMarkup } from 'react-dom/server'
 import { useIntl } from 'react-intl';
 import { IntlProvider } from './IntlProvider';
-import locales from './locales';
+import { locales, localesAsync } from './locales';
 
 const IntlComponent = () => {
     const intl = useIntl();
@@ -17,6 +17,10 @@ const IntlComponent = () => {
 }
 
 describe('IntlProvider', () => {
+    beforeEach(() => {
+        window.sessionStorage.clear();
+    });
+
     describe('sync mode', () => {
         it('should render children with correct language', () => {
             render(
@@ -82,7 +86,7 @@ describe('IntlProvider', () => {
         it('should render children with correct language', async () => {
             await act(async () => {
                 render(
-                    <IntlProvider locales={"./locales/"} language={"fr"} async onError={() => {}}>
+                    <IntlProvider locales={localesAsync} language={"fr"} async onError={() => {}}>
                         <IntlComponent />
                     </IntlProvider>
                 )
@@ -97,7 +101,7 @@ describe('IntlProvider', () => {
         it('should render children with another language', async () => {
             await act(async () => {
                 render(
-                    <IntlProvider locales={"./locales/"} language={"en"} async onError={() => {}}>
+                    <IntlProvider locales={localesAsync} language={"en"} async onError={() => {}}>
                         <IntlComponent />
                     </IntlProvider>
                 )
@@ -112,7 +116,7 @@ describe('IntlProvider', () => {
         it('should render children with default if language is unknown', async () => {
             await act(async () => {
                 render(
-                    <IntlProvider locales={"./locales/"} language={"pt"} async onError={() => {}}>
+                    <IntlProvider locales={localesAsync} language={"pt"} async onError={() => {}}>
                         <IntlComponent />
                     </IntlProvider>
                 )
@@ -131,7 +135,7 @@ describe('IntlProvider', () => {
 
             await act(async () => {
                 render(
-                    <IntlProvider locales={"./locales/"} language={"fr"} customMessages={customMessages} async onError={() => {}}>
+                    <IntlProvider locales={localesAsync} language={"fr"} customMessages={customMessages} async onError={() => {}}>
                         <IntlComponent />
                     </IntlProvider>
                 )
@@ -145,7 +149,7 @@ describe('IntlProvider', () => {
 
         it('should render with default locales when rendering server side', () => {
             const html = renderToStaticMarkup(
-                <IntlProvider locales={"./locales/"} language={"fr"} async onError={() => {}}>
+                <IntlProvider locales={localesAsync} language={"fr"} async onError={() => {}}>
                     <IntlComponent />
                 </IntlProvider>
             )

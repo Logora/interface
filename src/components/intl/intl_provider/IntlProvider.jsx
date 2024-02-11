@@ -1,13 +1,12 @@
-import React, { createContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+import { IntlContext } from "./IntlContext";
 import { IntlProvider as ReactIntlProvider } from 'react-intl';
 import { flatten } from 'flat';
 import useSessionStorageState from '@rooks/use-sessionstorage-state';
 import PropTypes from 'prop-types';
 
-export const IntlContext = createContext();
-
-export const IntlProvider = ({ language, async = false, locales, customMessages = {}, children, onError }) => {
-  const [storedLocale] = useSessionStorageState("logora:locale", null);
+export const IntlProvider = ({ language, locales, async = false, customMessages = {}, children, onError }) => {
+  const [storedLocale, setStoredLocale] = useSessionStorageState("logora:locale", null);
 
   const getLocale = () => {
     if (storedLocale) {
@@ -29,10 +28,16 @@ export const IntlProvider = ({ language, async = false, locales, customMessages 
   const [messages, setMessages] = useState(getMessages());
 
   useEffect(() => {
-    if (locale && async) {
-      import(locales + locale + ".json").then((m) => {
-        setMessages(m);
-      }).catch(() => setMessages({}));
+    if (locale) {
+      if (async && (locale in locales)) {
+        (locales[locale])().then((m) => {
+          setMessages(m);
+        }).catch(() => setMessages({}));
+      }
+
+      if (storedLocale !== locale) {
+        setStoredLocale(locale);
+      }
     }
   }, [locale]);
 
@@ -58,10 +63,10 @@ export const IntlProvider = ({ language, async = false, locales, customMessages 
 IntlProvider.propTypes = {
   /** Current language used */
   language: PropTypes.string,
+  /** Object containing the locale strings. Can be imported lazily in async mode */
+  locales: PropTypes.any,
   /** If true, will fetch the locales asynchronously with import */
   async: PropTypes.bool,
-  /** Path to the folder containing locale files, or object containing the locale strings */
-  locales: PropTypes.any,
   /** Dictionary of messages that will override localized messages */
   customMessages: PropTypes.object,
   /** Component children */
