@@ -2,7 +2,7 @@ import React, { useEffect, Suspense } from 'react';
 import { useAuth } from '@logora/debate.auth.use_auth';
 import { useModal } from '@logora/debate.dialog.modal';
 import { useConfig } from '@logora/debate.data.config_provider';
-import { UpdateUserInfoModal } from '@logora/debate.modal.update_user_info_modal';
+import { UpdateUserInfoModal } from './UpdateUserInfoModal';
 
 export const useUpdateUserInfo = () => {
     const { currentUser, isLoggedIn } = useAuth();
