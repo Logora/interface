@@ -467,7 +467,7 @@
     "intl/intl_provider": {
         "name": "intl/intl_provider",
         "scope": "logora.debate",
-        "version": "0.0.4",
+        "version": "0.0.5",
         "mainFile": "index.js",
         "rootDir": "src/components/intl/intl_provider"
     },
