@@ -244,7 +244,7 @@ UpdateUserInfoModal.propTypes = {
     /** URL to the terms page */
 	termsUrl: PropTypes.string,
     /** URL to the privacy page */
-	privacy: PropTypes.string,
+	privacyUrl: PropTypes.string,
     /** If `true`, will show a toggle for email consent */
 	showEmailConsent: PropTypes.bool,
 	/** If `true`, will show a toggle to accept terms */
