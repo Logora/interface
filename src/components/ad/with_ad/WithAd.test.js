@@ -15,14 +15,14 @@ describe('WithAd', () => {
         );
 
         expect(screen.getByText("Hello world")).toBeTruthy();
-        expect(screen.queryByTestId("ad-unit")).toBeNull();
+        expect(screen.queryByTestId("div-gpt-ad-ad-unit")).toBeNull();
     });
 
     it('should render children only if no index is passed', () => {
         render(
             <WithAd
                 id={"ad-id"}
-                adPath={"/path"}
+                adPath={"/6355419/Travel"}
                 sizes={[[300, 250]]}
             >
                 <div>Hello world</div>
@@ -30,14 +30,14 @@ describe('WithAd', () => {
         );
 
         expect(screen.getByText("Hello world")).toBeTruthy();
-        expect(screen.queryByTestId("ad-unit")).toBeNull();
+        expect(screen.queryByTestId("div-gpt-ad-ad-id")).toBeNull();
     });
 
     it('should render children and ad unit if index and frequency match', () => {
-        const { container } = render(
+        render(
             <WithAd
                 id={"ad-id"}
-                adPath={"/path"}
+                adPath={"/6355419/Travel"}
                 sizes={[[300, 250]]}
                 index={0}
                 frequency={2}
@@ -47,14 +47,14 @@ describe('WithAd', () => {
         );
 
         expect(screen.getByText("Hello world")).toBeTruthy();
-        expect(document.getElementById('ad-id')).toBeTruthy();
+        expect(document.getElementById('div-gpt-ad-ad-id')).toBeTruthy();
     });
 
     it('should render children and ad unit with correct id', () => {
         render(
             <WithAd
                 id={"ad-id"}
-                adPath={"/path"}
+                adPath={"/6355419/Travel"}
                 sizes={[[300, 250]]}
                 index={12}
                 frequency={4}
@@ -64,7 +64,7 @@ describe('WithAd', () => {
         );
 
         expect(screen.getByText("Hello world")).toBeTruthy();
-        expect(document.getElementById('ad-id-12')).toBeTruthy();
+        expect(document.getElementById('div-gpt-ad-ad-id-12')).toBeTruthy();
     });
 
     it('should render only children if index and frequency do not match', () => {
@@ -81,7 +81,7 @@ describe('WithAd', () => {
         );
 
         expect(screen.getByText("Hello world")).toBeTruthy();
-        expect(document.getElementById('ad-id')).toBeNull();
+        expect(document.getElementById('div-gpt-ad-ad-id')).toBeNull();
     });
 
     it('should pass extra props to children', () => {

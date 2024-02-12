@@ -4,11 +4,16 @@ export const ListContext = createContext();
 
 export const ListProvider = ({ children }) => {
     const [addElements, setAddElements] = useState({});
+    const [addPinnedElements, setAddPinnedElements] = useState({});
     const [updateElements, setUpdateElements] = useState({});
     const [removeElements, setRemoveElements] = useState({});
 
     const add = (listId, elements) => {
         setAddElements(addElements => ({...addElements, [listId]: elements}));
+    }
+
+    const addPinned = (listId, element) => {
+        setAddPinnedElements(addPinnedElements => ({...addPinnedElements, [listId]: element}));
     }
 
     const update = (listId, elements) => {
@@ -20,7 +25,7 @@ export const ListProvider = ({ children }) => {
     }
 
     return (
-        <ListContext.Provider value={{ add, update, remove, addElements, updateElements, removeElements, setAddElements, setUpdateElements, setRemoveElements }}>
+        <ListContext.Provider value={{ add, addPinned, update, remove, addElements, addPinnedElements, updateElements, removeElements, setAddElements, setAddPinnedElements, setUpdateElements, setRemoveElements }}>
             { children }
         </ListContext.Provider>
     );

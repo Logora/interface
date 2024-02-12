@@ -18,6 +18,7 @@ export const ContentFooter = ({ resource,
     reportType, 
     deleteType, 
     deleteListId, 
+    softDelete = false,
     disabled = false, 
     leftReply, 
     children, 
@@ -35,6 +36,7 @@ export const ContentFooter = ({ resource,
     showShareText,
     enableEdition = true,
     enableDeletion = true,
+    enableReport = true,
     containerClassName,
     voteActionClassName }) => {
 	const intl = useIntl();
@@ -43,7 +45,7 @@ export const ContentFooter = ({ resource,
     const { showModal } = useModal();
 	const { setInputContent } = useInput() || {};
 	const { reportContent } = useReportContent(reportType, resource.id);
-	const { deleteContent } = useDeleteContent(resource, deleteType, deleteListId);
+	const { deleteContent } = useDeleteContent(resource, deleteType, deleteListId, softDelete);
 
 	const currentUserIsAuthor = () => {
 		return resource.author.id === currentUser.id;
@@ -123,7 +125,7 @@ export const ContentFooter = ({ resource,
                                     }
 								</>
 							}
-							{ currentUser.is_banned !== true &&
+							{ enableReport && currentUser.is_banned !== true &&
 								<div data-tid={"action_report_argument"} className={styles.dropdownItem} onClick={reportContent} data-testid="report-content">
                                     { intl.formatMessage({ id: "user_content.content_footer.report", defaultMessage: "Report" }) }
 								</div>
@@ -150,6 +152,8 @@ ContentFooter.propTypes = {
     deleteType: PropTypes.string, 
     /** Delete list id */
     deleteListId: PropTypes.string, 
+    /** If true, will use PATCH method to delete content instead of DELETE */
+    softDelete: PropTypes.bool,
     /** If true, disabled replies and dropdown actions */
     disabled: PropTypes.bool, 
     /** If true, the reply button will be as far to the left as possible and the elements will no longer be in space-between */
@@ -184,6 +188,8 @@ ContentFooter.propTypes = {
 	enableEdition: PropTypes.bool,
     /** If true, content can be deleted */
 	enableDeletion: PropTypes.bool,
+    /** If true, content can be reported */
+	enableReport: PropTypes.bool,
     /** Custom style for container */
 	containerClassName: PropTypes.string,
     /** Custom style for children container */
@@ -192,6 +198,7 @@ ContentFooter.propTypes = {
 
 ContentFooter.defaultProps = {
     disabled: false, 
+    softDelete: false,
     showActions: true,
     enableEdition: true,
     enableDeletion: true

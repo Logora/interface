@@ -1,0 +1,37 @@
+---
+description: An IntlProvider component.
+labels: ['i18n', 'react-intl', 'provider']
+---
+
+An IntlProvider component that wraps your application and provides it a context of internationalization. 
+This component uses the `react-intl` package.
+
+The provider can import locales synchronously or asynchronously, using the `async` prop.
+
+## Component usage
+
+To import the IntlProvider component:
+
+```jsx
+import { IntlProvider, IntlContext } from '@logora/debate.intl.intl_provider';
+```
+
+To use the IntlProvider component:
+
+```jsx
+<IntlProvider language={"en"} locales={localesObject} customMessages={yourMessages}>
+    <YourApp />
+</IntlProvider>
+```
+
+In the above wrapper, replace `language` with the string of your app's current language (such as 'en', 'fr', etc.) and `locales` with the JSON object that contains localized messages for the app.
+
+`customMessages` is used to override your localized messages.
+
+If `async` is true, you can pass the path to the localized messages files to the `locales` prop. The component will then import the correct file asynchronously. This is useful to avoid loading all language files.
+
+All the components inside the IntlProvider will have access to the intl object via context and can use it to output translated texts.
+
+This component generally used once, at the root level of your application, but it can be used in other parts of the app if needed.
+
+react-intl package also provides several APIs to format dates, numbers, and strings (like pluralization rules), helps to handle translated message values containing HTML formatting, and components for common cases like numbers, dates, and strings. Please refer to the package documentation for more details.

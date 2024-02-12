@@ -118,3 +118,14 @@
     @include pb(0, xs);
     text-align: left;
 }
+
+.headerLogo {
+	width: 100px !important;
+	height: 40px !important;
+    object-fit: contain;
+	object-position: left;
+}
+
+.debateNameWithLogo {
+    @include px(0, xs);
+}
