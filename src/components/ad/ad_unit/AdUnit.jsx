@@ -33,7 +33,7 @@ export const AdUnit = ({ id, adPath, sizes = [], targeting, enableDidomi = false
                 });
             }
         }
-    });
+    }, []);
 
     if(enableDidomi === true) {
         return (

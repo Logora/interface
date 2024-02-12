@@ -11,7 +11,7 @@ export const useMatomo = (matomoHost, matomoContainerTag, enable = true) => {
         g.async=true; g.src='https://" + matomoHost + "/js/container_" + matomoContainerTag + ".js'; s.parentNode.insertBefore(g,s);";
         document.body.appendChild(script);
       }
-    });
+    }, []);
 
     return null;
 }

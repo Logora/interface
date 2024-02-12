@@ -43,23 +43,39 @@ const currentUser = {
     id: vote.user_id,
 }
 
+const votePositions = [
+    { id: 1, name: 'Yes' },
+    { id: 2, name: 'No' },
+];
+
+const threeVotePositions = [
+    { id: 1, name: 'Yes' },
+    { id: 2, name: 'No' },
+    { id: 3, name: 'No Opinion' },
+];
+
+const debate = {
+    id: faker.datatype.number(),
+    votes_count: {
+        total: 15,
+        1: 10,
+        2: 5,
+    }
+};
+
+const debateThreeVotePositions = {
+    id: 1,
+    votes_count: {
+        1: "10",
+        2: "8",
+        3: "6",
+        total: "24"
+    }
+};
+
+const data = dataProvider(httpClient, "https://mock.example.api");
+
 export const DefaultVoteBox = () => {
-    const votePositions = [
-        { id: 1, name: 'Yes' },
-        { id: 2, name: 'No' },
-    ];
-
-    const debate = {
-        id: faker.datatype.number(),
-        votes_count: {
-            total: 15,
-            1: 10,
-            2: 5,
-        }
-    };
-
-    const data = dataProvider(httpClient, "https://mock.example.api");
-
     return (
         <div style={{ width: "400px" }}>
             <BrowserRouter>
@@ -72,6 +88,8 @@ export const DefaultVoteBox = () => {
                                         <ModalProvider>
                                             <VoteProvider>
                                                 <VoteBox 
+                                                    voteableId={debate.id}
+                                                    votes={debate.votes_count}
                                                     voteableType={"Group"}
                                                     votePositions={votePositions}
                                                     displayColumn
@@ -91,22 +109,6 @@ export const DefaultVoteBox = () => {
 };
 
 export const VoteBoxRow = () => {
-    const votePositions = [
-        { id: 1, name: 'Yes' },
-        { id: 2, name: 'No' },
-    ];
-
-    const debate = {
-        id: faker.datatype.number(),
-        votes_count: {
-            total: 15,
-            1: 10,
-            2: 5,
-        }
-    };
-
-    const data = dataProvider(httpClient, "https://mock.example.api");
-
     return (
         <div style={{ width: "400px" }}>
             <BrowserRouter>
@@ -119,6 +121,8 @@ export const VoteBoxRow = () => {
                                         <ModalProvider>
                                             <VoteProvider>
                                                 <VoteBox 
+                                                    voteableId={debate.id}
+                                                    votes={debate.votes_count}
                                                     voteableType={"Group"}
                                                     votePositions={votePositions}
                                                     debate={debate}
@@ -137,22 +141,6 @@ export const VoteBoxRow = () => {
 };
 
 export const VoteBoxFullWidth = () => {
-    const votePositions = [
-        { id: 1, name: 'Yes' },
-        { id: 2, name: 'No' },
-    ];
-
-    const debate = {
-        id: faker.datatype.number(),
-        votes_count: {
-            total: 15,
-            1: 10,
-            2: 5,
-        }
-    };
-
-    const data = dataProvider(httpClient, "https://mock.example.api");
-
     return (
         <div style={{ width: "400px" }}>
             <BrowserRouter>
@@ -165,11 +153,13 @@ export const VoteBoxFullWidth = () => {
                                         <ModalProvider>
                                             <VoteProvider>
                                                 <VoteBox 
+                                                    voteableId={debate.id}
+                                                    votes={debate.votes_count}
                                                     voteableType={"Group"}
                                                     votePositions={votePositions}
                                                     debate={debate}
                                                     displayColumn
-                                                    fullWidthButton
+                                                    textAlignLeft
                                                 />
                                             </VoteProvider>
                                         </ModalProvider>
@@ -185,38 +175,6 @@ export const VoteBoxFullWidth = () => {
 };
 
 export const VoteBoxNeutralPosition = () => {
-    const votePositions = [
-        {
-            id: 900,
-            language: null,
-            name: "Yes",
-        },
-        {
-            id: 901,
-            language: null,
-            name: "No",
-        },
-        {
-            id: 902,
-            language: null,
-            name: "No Opinion",
-        }
-    ];
-
-    const debate = {
-        id: 1,
-        votes_count: {
-            900: "10",
-            901: "8",
-            902: "6",
-            total: "24"
-        },
-        slug: "my-debate",
-        is_active: true,
-    };
-
-    const data = dataProvider(httpClient, "https://mock.example.api");
-
     return (
         <div style={{ width: "400px" }}>
             <BrowserRouter>
@@ -229,8 +187,10 @@ export const VoteBoxNeutralPosition = () => {
                                         <ModalProvider>
                                             <VoteProvider>
                                                 <VoteBox 
+                                                    voteableId={debateThreeVotePositions.id}
+                                                    votes={debateThreeVotePositions.votes_count}
                                                     voteableType={"Group"}
-                                                    votePositions={votePositions}
+                                                    votePositions={threeVotePositions}
                                                     displayColumn
                                                     debate={debate}
                                                 />
@@ -248,37 +208,6 @@ export const VoteBoxNeutralPosition = () => {
 };
 
 export const VoteBoxDisabled = () => {
-    const votePositions = [
-        {
-            id: 900,
-            language: null,
-            name: "Yes",
-        },
-        {
-            id: 901,
-            language: null,
-            name: "No",
-        },
-        {
-            id: 902,
-            language: null,
-            name: "No Opinion",
-        }
-    ];
-
-    const debate = {
-        id: 1,
-        votes_count: {
-            900: "10",
-            901: "8",
-            902: "6",
-            total: "24"
-        },
-        slug: "my-debate",
-    };
-
-    const data = dataProvider(httpClient, "https://mock.example.api");
-
     return (
         <div style={{ width: "400px" }}>
             <BrowserRouter>
@@ -291,72 +220,10 @@ export const VoteBoxDisabled = () => {
                                         <ModalProvider>
                                             <VoteProvider>
                                                 <VoteBox 
+                                                    voteableId={debateThreeVotePositions.id}
+                                                    votes={debateThreeVotePositions.votes_count}
                                                     voteableType={"Group"}
-                                                    votePositions={votePositions}
-                                                    displayColumn
-                                                    debate={debate}
-                                                    disabled
-                                                />
-                                            </VoteProvider>
-                                        </ModalProvider>
-                                    </ConfigProvider>
-                                </ToastProvider>
-                            </IconProvider>
-                        </AuthContext.Provider>
-                    </DataProviderContext.Provider>
-                </IntlProvider>
-            </BrowserRouter>
-        </div>
-    );
-};
-
-export const VoteBoxDebateDisabled = () => {
-    const votePositions = [
-        {
-            id: 900,
-            language: null,
-            name: "Yes",
-        },
-        {
-            id: 901,
-            language: null,
-            name: "No",
-        },
-        {
-            id: 902,
-            language: null,
-            name: "No Opinion",
-        }
-    ];
-
-    const debate = {
-        id: 1,
-        votes_count: {
-            900: "10",
-            901: "8",
-            902: "6",
-            total: "24"
-        },
-        slug: "my-debate",
-        is_active: false
-    };
-
-    const data = dataProvider(httpClient, "https://mock.example.api");
-
-    return (
-        <div style={{ width: "400px" }}>
-            <BrowserRouter>
-                <IntlProvider locale="en">
-                    <DataProviderContext.Provider value={{ dataProvider: data }}>
-                        <AuthContext.Provider value={{ currentUser: currentUser, isLoggedIn: true }}>
-                            <IconProvider library={regularIcons}>
-                                <ToastProvider>
-                                    <ConfigProvider config={{}} routes={{ ...routes }}>
-                                        <ModalProvider>
-                                            <VoteProvider>
-                                                <VoteBox 
-                                                    voteableType={"Group"}
-                                                    votePositions={votePositions}
+                                                    votePositions={threeVotePositions}
                                                     displayColumn
                                                     debate={debate}
                                                     disabled

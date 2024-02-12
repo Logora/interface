@@ -52,21 +52,7 @@ const debate = {
         1: 5,
         2: 5,
         3: 0
-    },
-    debate_members: [
-        {
-          position: { id: 1 },
-          user: { image_url: 'image_url_1', full_name: 'User 1' },
-        },
-        {
-          position: { id: 2 },
-          user: { image_url: 'image_url_2', full_name: 'User 2' },
-        },
-        {
-          position: { id: 3 },
-          user: { image_url: 'image_url_3', full_name: 'User 3' },
-        },
-    ],
+    }
 };
 
 const votePositions = [
@@ -123,8 +109,10 @@ describe('VoteBox Component', () => {
         const { getByText, getAllByTestId } = render(
             <VoteBoxWrapper>
                 <VoteBox 
+                    voteableId={debate.id}
                     voteableType={vote.voteable_type}
                     votePositions={votePositions}
+                    votes={debate.votes_count}
                     debate={debate}
                 />
             </VoteBoxWrapper>
@@ -145,8 +133,10 @@ describe('VoteBox Component', () => {
         const { getByTitle } = render(
             <VoteBoxWrapper>
                 <VoteBox 
+                    voteableId={debate.id}
                     voteableType={vote.voteable_type}
                     votePositions={votePositions}
+                    votes={debate.votes_count}
                     debate={debate}
                     onVote={onVote}
                 />
@@ -162,8 +152,10 @@ describe('VoteBox Component', () => {
         const { getAllByText, queryByText } = render(
             <VoteBoxWrapper>
                 <VoteBox 
+                    voteableId={debate.id}
                     voteableType={vote.voteable_type}
                     votePositions={votePositions}
+                    votes={debate.votes_count}
                     debate={debate}
                     disabled={true}
                 />
@@ -186,8 +178,10 @@ describe('VoteBox Component', () => {
         const { getByTestId, getByText, getAllByText } = render(
             <VoteBoxWrapper>
                 <VoteBox 
+                    voteableId={debate.id}
                     voteableType={vote.voteable_type}
                     votePositions={votePositions}
+                    votes={debate.votes_count}
                     debate={debate}
                 />
             </VoteBoxWrapper>
@@ -212,7 +206,9 @@ describe('VoteBox Component', () => {
         const { getByTitle, queryByText, getAllByText } = render(
             <VoteBoxWrapper>
                 <VoteBox 
+                    voteableId={debate.id}
                     votePositions={votePositions}
+                    votes={debate.votes_count}
                     debate={debate}
                 />
             </VoteBoxWrapper>

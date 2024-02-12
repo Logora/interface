@@ -29,20 +29,16 @@ const votePositions = [
     }
 ];
 
-const debate = {
-    id: 1,
-    votes_count: {
-        900: "10",
-        901: "8",
-        total: "18"
-    },
-    slug: "my-debate",
-    is_active: true,
+const votes: {
+    900: "10",
+    901: "8",
+    total: "18"
 };
 
 <VoteBox 
+    voteableId={23}
     voteableType={"Group"} 
-    debate={debate} 
+    votes={votes}
     votePositions={votePositions}
     displayColumn
 />

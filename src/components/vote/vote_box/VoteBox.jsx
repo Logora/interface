@@ -17,16 +17,15 @@ import { Button } from '@logora/debate.action.button';
 import cx from 'classnames';
 import styles from './VoteBox.module.scss';
 
-export const VoteBox = ({debate, votePositions, voteableType, redirectAfterVote, displayColumn, fullWidthButton, voteBoxClassName, actionsContainerClassName, buttonContainerClassName, showResultClassName, onVote, context, disabled}) => {
+export const VoteBox = ({ debate, votes, votePositions, voteableType, voteableId, redirectAfterVote, displayColumn, textAlignLeft, voteBoxClassName, buttonContainerClassName, buttonClassName, showResultClassName, onVote, disabled }) => {
     const { isMobile } = useResponsive();
     const [isLoadingVote, setIsLoadingVote] = useState(true);
     const [currentVote, setCurrentVote] = useState(undefined);
     const [showResults, setShowResults] = useState(false);
-    const [totalVotes, setTotalVotes] = useState(parseFloat(debate?.votes_count.total) || Object.values(debate?.votes_count).reduce((sum,value)=> sum + parseFloat(value), 0) || 0);
-    const [debateVotePositions, setDebateVotePositions] = useState(votePositions || []);
-    const firstPosition = useTranslatedContent(debateVotePositions[0].name, debateVotePositions[0].language, "name", debateVotePositions[0].translation_entries);
-    const secondPosition = useTranslatedContent(debateVotePositions[1].name, debateVotePositions[1].language, "name", debateVotePositions[1].translation_entries);
-    const neutralPosition = useTranslatedContent(debateVotePositions[2]?.name, debateVotePositions[2]?.language, "name", debateVotePositions[2]?.translation_entries);
+    const [totalVotes, setTotalVotes] = useState(parseFloat(votes.total) || Object.values(votes).reduce((sum,value)=> sum + parseFloat(value), 0) || 0);
+    const firstPosition = useTranslatedContent(votePositions[0]?.name, votePositions[0]?.language, "name", votePositions[0]?.translation_entries);
+    const secondPosition = useTranslatedContent(votePositions[1]?.name, votePositions[1]?.language, "name", votePositions[1]?.translation_entries);
+    const neutralPosition = useTranslatedContent(votePositions[2]?.name, votePositions[2]?.language, "name", votePositions[2]?.translation_entries);
     const [savedVote, setSavedVote, removeSavedVote] = useSessionStorageState("storedUserVote", {});
     const [savedUserSide, setSavedUserSide, removeSavedUserSide] = useSessionStorageState("userSide", {});
     const { toast } = useToast() || {};
@@ -35,8 +34,8 @@ export const VoteBox = ({debate, votePositions, voteableType, redirectAfterVote,
         const votesCountObj = {};
         votePositions && votePositions.forEach(position => 
             votesCountObj[position.id] = {
-                count: parseFloat(debate?.votes_count[position.id]) || 0, 
-                percentage: totalVotes === 0 ? 0 : Math.round(100 * ((debate?.votes_count[position.id] || 0) / (totalVotes)))
+                count: parseFloat(votes[position.id]) || 0, 
+                percentage: totalVotes === 0 ? 0 : Math.round(100 * ((votes[position.id] || 0) / (totalVotes)))
             }
         );
 
@@ -55,7 +54,7 @@ export const VoteBox = ({debate, votePositions, voteableType, redirectAfterVote,
     useEffect(() => {
         if (isLoggingIn === false) {
             if (isLoggedIn) { 
-                getVote(debate.id);
+                getVote(voteableId);
             } else {
                 setIsLoadingVote(false);
             }
@@ -117,12 +116,12 @@ export const VoteBox = ({debate, votePositions, voteableType, redirectAfterVote,
     
     const voteAction = (positionId) => {
         const data = {
-            voteable_id: debate.id,
+            voteable_id: voteableId,
             voteable_type: voteableType || 'Group',
             position_id: positionId
         }
         const userSideToSave = {
-            groupId: debate.id,
+            groupId: voteableId,
             voteableType: voteableType,
             positionId: positionId
         }
@@ -154,7 +153,7 @@ export const VoteBox = ({debate, votePositions, voteableType, redirectAfterVote,
         const newCount = votesCount[positionId].count + 1;
         const newTotal = totalVotes + 1;
         const newVotesCount = {};
-        debateVotePositions.forEach((element) => {
+        votePositions.forEach((element) => {
             if(positionId === element.id) {
                 newVotesCount[element.id] = { count: newCount, percentage: getPercentageValue(newCount, newTotal) };
             } else {
@@ -197,7 +196,7 @@ export const VoteBox = ({debate, votePositions, voteableType, redirectAfterVote,
         } else {
             if (Object.keys(votesCount).includes(positionId.toString())) {
                 const voteToSave = {
-                    groupId: debate.id,
+                    groupId: voteableId,
                     voteableType: voteableType,
                     positionId: positionId
                 }
@@ -221,12 +220,12 @@ export const VoteBox = ({debate, votePositions, voteableType, redirectAfterVote,
         const isButton = (typeof window !== "undefined" && redirectAfterVote !== true);
 
         return (
-            <div key={index} className={cx(styles.voteAction, {[styles.voteActionContext]: context && !isMobile})}>
+            <div key={index} className={cx(styles.voteAction, {[styles.buttonAlignLeft]: styles.buttonAlignLeft})}>
                 <Button
                     data-tid={"action_vote"} 
                     type="button"
                     title={currentPositionName}
-                    className={cx(styles.voteButton, {[styles.voteButtonFullWidth]: fullWidthButton, [styles.voteButtonContext]: context && !isMobile})}
+                    className={cx(styles.voteButton, {[styles.textAlignLeft]: textAlignLeft, [buttonClassName]: buttonClassName})}
                     onClick={isButton ? (() => handleVote(position.id)) : null}
                     disabled={disabled}
                     data-testid={"voteButton"}
@@ -256,7 +255,7 @@ export const VoteBox = ({debate, votePositions, voteableType, redirectAfterVote,
                     <div className={styles.voteResultsBox} data-testid={"voteResultsBox"}>
                         <div className={styles.voteResults}>
                             {
-                                debateVotePositions.map((value, index) => {
+                                votePositions.map((value, index) => {
                                     let currentPositionName;
                                     if (index === 0) { currentPositionName = firstPosition.translatedContent }
                                     else if (index === 1) { currentPositionName = secondPosition.translatedContent }
@@ -299,9 +298,9 @@ export const VoteBox = ({debate, votePositions, voteableType, redirectAfterVote,
                         </div>
                     </div>
                 ) : (
-                    <div className={cx(styles.voteBoxActions, {[actionsContainerClassName]: actionsContainerClassName})}>
-                        <div className={cx(styles.voteBoxActionsBody, { [styles.voteBoxActionsBodyColumn]: displayColumn, [buttonContainerClassName]: buttonContainerClassName, [styles.voteBoxActionsBodyRow]: displayColumn === false && config.synthesis.newDesign, [styles.voteBoxActionsBodyUnwrapped]: (debateVotePositions[0].name.length <= 4 && debateVotePositions[1].name.length <= 4)})}>
-                            {debateVotePositions.map((value, index) => displayVotePosition(value, index))}
+                    <div className={styles.voteBoxActions}>
+                        <div className={cx(styles.voteBoxActionsBody, { [styles.voteBoxActionsBodyColumn]: displayColumn, [buttonContainerClassName]: buttonContainerClassName})}>
+                            {votePositions.map((value, index) => displayVotePosition(value, index))}
                         </div>
                         <div className={cx(styles.voteBoxActions, styles.voteBoxShowResultContainer, {[showResultClassName]: showResultClassName})}>
                             <div className={styles.voteBoxShowResult}>
@@ -330,24 +329,26 @@ VoteBox.propTypes = {
     votePositions: PropTypes.array.isRequired,
     /** Type of vote */
     voteableType: PropTypes.string,
+    /** The id of the element */
+    voteableId: PropTypes.number.isRequired,
+    /** Object containing all the votes and the total */
+    votes: PropTypes.object,
     /** If true, redirecting after vote */
     redirectAfterVote: PropTypes.bool,
     /** If true, activate the column layout */
     displayColumn: PropTypes.bool,
     /** If true, display buttons in full width*/
-    fullWidthButton: PropTypes.bool,
+    textAlignLeft: PropTypes.bool,
     /** CSS class name of the vote box  */
     voteBoxClassName: PropTypes.string,
-    /** CSS class name of the actions container */
-    actionsContainerClassName: PropTypes.string,
     /** CSS class name of the button container */
     buttonContainerClassName: PropTypes.string,
+    /** CSS class name of the button */
+    buttonClassName: PropTypes.string,
     /** CSS class name of the show result text */
     showResultClassName: PropTypes.string,
     /** Callback function */
     onVote: PropTypes.func,
-    /** Other style */
-    context: PropTypes.bool,
     /** Disabled vote buttons and show result */
     disabled: PropTypes.bool,
 };
