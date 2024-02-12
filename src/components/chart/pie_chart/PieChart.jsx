@@ -26,7 +26,7 @@ export const PieChart = ({ data, labels, totalItemsCount, pieTitle, colors, minP
 	const formatPieChartData = (data) => {
 		const negligibleDimensions = data.filter(item => Math.round((100*item.value)/totalItemsCount) <= (maxValue * minPercentageValue)) 
 		const otherDimensions = { dimension: "others", value: negligibleDimensions.reduce((a, b) => a + b.value, 0) }
-		let finalArr = data.filter(e => !negligibleDimensions.includes(e));
+		let finalArr = data.filter(e => !negligibleDimensions.includes(e)).sort((a, b) => b.value - a.value);
 		if (negligibleDimensions.reduce((a, b) => a + b.value, 0) > 0) { finalArr.push(otherDimensions); }
 				
 		let finalData = {
@@ -35,10 +35,12 @@ export const PieChart = ({ data, labels, totalItemsCount, pieTitle, colors, minP
 				{
 					data: finalArr.map(elm => Math.round((100*elm.value)/totalItemsCount)),
 					backgroundColor: colors || DEFAULT_COLORS,
-					borderWidth: 1,
+					borderWidth: 2,
 				},
 			],
 		};
+
+		console.log(finalArr)
 		
 		setPieChartData(finalData);
 		setIsLoading(false);
