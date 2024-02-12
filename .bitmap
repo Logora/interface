@@ -40,7 +40,7 @@
     "ad/ad_unit": {
         "name": "ad/ad_unit",
         "scope": "logora.debate",
-        "version": "0.0.21",
+        "version": "0.0.22",
         "mainFile": "index.js",
         "rootDir": "src/components/ad/ad_unit"
     },
@@ -54,7 +54,7 @@
     "ad/with_ad": {
         "name": "ad/with_ad",
         "scope": "logora.debate",
-        "version": "0.0.17",
+        "version": "0.0.18",
         "mainFile": "index.js",
         "rootDir": "src/components/ad/with_ad"
     },
@@ -327,7 +327,7 @@
     "hooks/use_matomo": {
         "name": "hooks/use_matomo",
         "scope": "logora.debate",
-        "version": "0.0.3",
+        "version": "0.0.4",
         "mainFile": "index.js",
         "rootDir": "src/components/hooks/use_matomo"
     },
