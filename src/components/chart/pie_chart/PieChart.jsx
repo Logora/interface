@@ -79,7 +79,7 @@ export const PieChart = ({ data, labels, totalItemsCount, pieTitle, colors, minP
 				<Loader/>
 			:
 				<div className={styles.pieChart} data-testid="pieChartCanvas">
-					<Pie data={pieChartData} plugins={[ChartDataLabels]} options={options} />
+					<Pie data={pieChartData} options={options} />
 				</div>
 			}
 		</StandardErrorBoundary>
