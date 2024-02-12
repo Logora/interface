@@ -152,7 +152,7 @@
     "chart/pie_chart": {
         "name": "chart/pie_chart",
         "scope": "logora.debate",
-        "version": "0.0.2",
+        "version": "0.0.3",
         "mainFile": "index.js",
         "rootDir": "src/components/chart/pie_chart"
     },
