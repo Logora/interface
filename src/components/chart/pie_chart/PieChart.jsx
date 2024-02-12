@@ -39,8 +39,6 @@ export const PieChart = ({ data, labels, totalItemsCount, pieTitle, colors, minP
 				},
 			],
 		};
-
-		console.log(finalArr)
 		
 		setPieChartData(finalData);
 		setIsLoading(false);
