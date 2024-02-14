@@ -106,14 +106,13 @@ describe('VoteBox Component', () => {
     });
 
     it('should render component correctly', () => {
-        const { getByText, getAllByTestId } = render(
+        const { getByText, getAllByTestId, queryByRole } = render(
             <VoteBoxWrapper>
                 <VoteBox 
                     voteableId={debate.id}
                     voteableType={vote.voteable_type}
                     votePositions={votePositions}
-                    votes={debate.votes_count}
-                    debate={debate}
+                    numberVotes={debate.votes_count}
                 />
             </VoteBoxWrapper>
         );
@@ -124,8 +123,10 @@ describe('VoteBox Component', () => {
         expect(voteButtons[1].getAttribute('title')).toBe('Position 2');
         expect(voteButtons[2].getAttribute('title')).toBe('Position 3');
 
-        const voteCountText = getByText('10 votes -');
+        const voteCountText = getByText('10 votes —');
         expect(voteCountText).toBeInTheDocument();
+
+        expect(queryByRole('link')).toBeNull();
     });
 
     it('should call callback', async () => {
@@ -136,8 +137,7 @@ describe('VoteBox Component', () => {
                     voteableId={debate.id}
                     voteableType={vote.voteable_type}
                     votePositions={votePositions}
-                    votes={debate.votes_count}
-                    debate={debate}
+                    numberVotes={debate.votes_count}
                     onVote={onVote}
                 />
             </VoteBoxWrapper>
@@ -155,8 +155,7 @@ describe('VoteBox Component', () => {
                     voteableId={debate.id}
                     voteableType={vote.voteable_type}
                     votePositions={votePositions}
-                    votes={debate.votes_count}
-                    debate={debate}
+                    numberVotes={debate.votes_count}
                     disabled={true}
                 />
             </VoteBoxWrapper>
@@ -181,8 +180,7 @@ describe('VoteBox Component', () => {
                     voteableId={debate.id}
                     voteableType={vote.voteable_type}
                     votePositions={votePositions}
-                    votes={debate.votes_count}
-                    debate={debate}
+                    numberVotes={debate.votes_count}
                 />
             </VoteBoxWrapper>
         );
@@ -208,8 +206,7 @@ describe('VoteBox Component', () => {
                 <VoteBox 
                     voteableId={debate.id}
                     votePositions={votePositions}
-                    votes={debate.votes_count}
-                    debate={debate}
+                    numberVotes={debate.votes_count}
                 />
             </VoteBoxWrapper>
         );
@@ -230,5 +227,32 @@ describe('VoteBox Component', () => {
         await act(async () => { await userEvent.click(queryByText('Modify')) });
         expect(queryByText('Show result')).toBeInTheDocument();
         expect(queryByText('Modify')).toBeNull();
+    });
+
+    it('should redirect after vote', async () => {
+        const { getByTestId, getByTitle, queryByRole } = render(
+            <VoteBoxWrapper>
+                <VoteBox 
+                    voteableId={debate.id}
+                    votePositions={votePositions}
+                    numberVotes={debate.votes_count}
+                    redirectUrl={"myUrl"}
+                />
+            </VoteBoxWrapper>
+        );
+
+        expect(queryByRole('button')).toBeNull();
+
+        const showResultLink = getByTestId("show-result");
+        expect(showResultLink).toHaveAttribute("href", "myUrl?initVote=true");
+
+        const firstPosition = getByTitle("Position 1");
+        expect(firstPosition).toHaveAttribute("href", "myUrl?initVote=true&positionId=1");
+
+        const secondPosition = getByTitle("Position 2");
+        expect(secondPosition).toHaveAttribute("href", "myUrl?initVote=true&positionId=2");
+
+        const thirdPosition = getByTitle("Position 3");
+        expect(thirdPosition).toHaveAttribute("href", "myUrl?initVote=true&positionId=3");
     });
 });

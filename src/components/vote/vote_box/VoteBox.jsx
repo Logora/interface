@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from "prop-types";
 import { useLocation } from 'react-router';
 import { useRoutes, useConfig } from '@logora/debate.data.config_provider';
-import { useResponsive } from "@logora/debate.hooks.use_responsive";
 import { useDataProvider } from '@logora/debate.data.data_provider';
 import { useAuth } from "@logora/debate.auth.use_auth";
 import { useIntl, FormattedMessage } from 'react-intl';
@@ -17,12 +16,11 @@ import { Button } from '@logora/debate.action.button';
 import cx from 'classnames';
 import styles from './VoteBox.module.scss';
 
-export const VoteBox = ({ debate, votes, votePositions, voteableType, voteableId, redirectAfterVote, displayColumn, textAlignLeft, voteBoxClassName, buttonContainerClassName, buttonClassName, showResultClassName, onVote, disabled }) => {
-    const { isMobile } = useResponsive();
+export const VoteBox = ({ numberVotes, votePositions, voteableType, voteableId, redirectUrl, displayColumn, textAlignLeft, voteBoxClassName, buttonContainerClassName, buttonClassName, showResultClassName, onVote, disabled }) => {
     const [isLoadingVote, setIsLoadingVote] = useState(true);
     const [currentVote, setCurrentVote] = useState(undefined);
     const [showResults, setShowResults] = useState(false);
-    const [totalVotes, setTotalVotes] = useState(parseFloat(votes.total) || Object.values(votes).reduce((sum,value)=> sum + parseFloat(value), 0) || 0);
+    const [totalVotes, setTotalVotes] = useState(parseFloat(numberVotes.total) || Object.values(numberVotes).reduce((sum,value)=> sum + parseFloat(value), 0) || 0);
     const firstPosition = useTranslatedContent(votePositions[0]?.name, votePositions[0]?.language, "name", votePositions[0]?.translation_entries);
     const secondPosition = useTranslatedContent(votePositions[1]?.name, votePositions[1]?.language, "name", votePositions[1]?.translation_entries);
     const neutralPosition = useTranslatedContent(votePositions[2]?.name, votePositions[2]?.language, "name", votePositions[2]?.translation_entries);
@@ -34,8 +32,8 @@ export const VoteBox = ({ debate, votes, votePositions, voteableType, voteableId
         const votesCountObj = {};
         votePositions && votePositions.forEach(position => 
             votesCountObj[position.id] = {
-                count: parseFloat(votes[position.id]) || 0, 
-                percentage: totalVotes === 0 ? 0 : Math.round(100 * ((votes[position.id] || 0) / (totalVotes)))
+                count: parseFloat(numberVotes[position.id]) || 0, 
+                percentage: totalVotes === 0 ? 0 : Math.round(100 * ((numberVotes[position.id] || 0) / (totalVotes)))
             }
         );
 
@@ -62,7 +60,7 @@ export const VoteBox = ({ debate, votes, votePositions, voteableType, voteableId
     }, [isLoggingIn, isLoggedIn])
 
     useEffect(() => {
-        if (isLoadingVote === false && !redirectAfterVote) {
+        if (isLoadingVote === false && !redirectUrl) {
             const [initVote, positionId] = getStoredVote();
             if (initVote) {
                 if (!positionId) { 
@@ -179,12 +177,11 @@ export const VoteBox = ({ debate, votes, votePositions, voteableType, voteableId
     }
 
     const getRedirectUrl = (positionId) => {
-        const debatePath = routes.debateShowLocation.toUrl({ debateSlug: debate.slug });
          let searchParams = new URLSearchParams({
             initVote: "true",
             ...(positionId && { positionId: positionId })
         });
-        return debatePath + `?${searchParams.toString()}`;
+        return redirectUrl + `?${searchParams.toString()}`;
     }
 
     const handleVote = (positionId) => {
@@ -217,7 +214,7 @@ export const VoteBox = ({ debate, votes, votePositions, voteableType, voteableId
         else if (index === 1) { currentPositionName = secondPosition.translatedContent }
         else if (index === 2) { currentPositionName = neutralPosition.translatedContent }
 
-        const isButton = (typeof window !== "undefined" && redirectAfterVote !== true);
+        const isButton = (typeof window !== "undefined" && !redirectUrl);
 
         return (
             <div key={index} className={cx(styles.voteAction, {[styles.buttonAlignLeft]: styles.buttonAlignLeft})}>
@@ -304,13 +301,13 @@ export const VoteBox = ({ debate, votes, votePositions, voteableType, voteableId
                         </div>
                         <div className={cx(styles.voteBoxActions, styles.voteBoxShowResultContainer, {[showResultClassName]: showResultClassName})}>
                             <div className={styles.voteBoxShowResult}>
-                                {typeof window !== "undefined" && redirectAfterVote !== true ?
+                                {typeof window !== "undefined" && !redirectUrl ?
                                     <div onClick={() => handleShowResults()} data-tid="show_vote_result" data-testid={"show-result"}>
-                                        <span><FormattedMessage id="vote.vote_box.votes" values={{ votesCount: totalVotes }} defaultMessage="{votesCount} votes" /> - <span className={styles.boldShowResult}><FormattedMessage id="vote.vote_box.show_result" defaultMessage="Show result" /></span></span>
+                                        <span><FormattedMessage id="vote.vote_box.votes" values={{ votesCount: totalVotes }} defaultMessage="{votesCount} votes" /> — <span className={styles.boldShowResult}><FormattedMessage id="vote.vote_box.show_result" defaultMessage="Show result" /></span></span>
                                     </div>
                                 :
                                     <Link to={getRedirectUrl(null)} rel="nofollow" data-tid="show_vote_result" target="_top" external data-testid={"show-result"}>
-                                        <span><FormattedMessage id="vote.vote_box.votes" values={{ votesCount: totalVotes }} defaultMessage="{votesCount} votes" /> - <span className={styles.boldShowResult}><FormattedMessage id="vote.vote_box.show_result" defaultMessage="Show result" /></span></span>
+                                        <span><FormattedMessage id="vote.vote_box.votes" values={{ votesCount: totalVotes }} defaultMessage="{votesCount} votes" /> — <span className={styles.boldShowResult}><FormattedMessage id="vote.vote_box.show_result" defaultMessage="Show result" /></span></span>
                                     </Link>
                                 }
                             </div> 
@@ -323,8 +320,6 @@ export const VoteBox = ({ debate, votes, votePositions, voteableType, voteableId
 }
 
 VoteBox.propTypes = {
-    /** Object containing the debate */
-    debate: PropTypes.object.isRequired,
     /** Array containing the debate positions */
     votePositions: PropTypes.array.isRequired,
     /** Type of vote */
@@ -332,9 +327,9 @@ VoteBox.propTypes = {
     /** The id of the element */
     voteableId: PropTypes.number.isRequired,
     /** Object containing all the votes and the total */
-    votes: PropTypes.object,
-    /** If true, redirecting after vote */
-    redirectAfterVote: PropTypes.bool,
+    numberVotes: PropTypes.object.isRequired,
+    /** The redirect url after voting */
+    redirectUrl: PropTypes.string,
     /** If true, activate the column layout */
     displayColumn: PropTypes.bool,
     /** If true, display buttons in full width*/

@@ -89,11 +89,10 @@ export const DefaultVoteBox = () => {
                                             <VoteProvider>
                                                 <VoteBox 
                                                     voteableId={debate.id}
-                                                    votes={debate.votes_count}
+                                                    numberVotes={debate.votes_count}
                                                     voteableType={"Group"}
                                                     votePositions={votePositions}
                                                     displayColumn
-                                                    debate={debate}
                                                 />
                                             </VoteProvider>
                                         </ModalProvider>
@@ -122,10 +121,9 @@ export const VoteBoxRow = () => {
                                             <VoteProvider>
                                                 <VoteBox 
                                                     voteableId={debate.id}
-                                                    votes={debate.votes_count}
+                                                    numberVotes={debate.votes_count}
                                                     voteableType={"Group"}
                                                     votePositions={votePositions}
-                                                    debate={debate}
                                                 />
                                             </VoteProvider>
                                         </ModalProvider>
@@ -154,10 +152,9 @@ export const VoteBoxFullWidth = () => {
                                             <VoteProvider>
                                                 <VoteBox 
                                                     voteableId={debate.id}
-                                                    votes={debate.votes_count}
+                                                    numberVotes={debate.votes_count}
                                                     voteableType={"Group"}
                                                     votePositions={votePositions}
-                                                    debate={debate}
                                                     displayColumn
                                                     textAlignLeft
                                                 />
@@ -188,11 +185,10 @@ export const VoteBoxNeutralPosition = () => {
                                             <VoteProvider>
                                                 <VoteBox 
                                                     voteableId={debateThreeVotePositions.id}
-                                                    votes={debateThreeVotePositions.votes_count}
+                                                    numberVotes={debateThreeVotePositions.votes_count}
                                                     voteableType={"Group"}
                                                     votePositions={threeVotePositions}
                                                     displayColumn
-                                                    debate={debate}
                                                 />
                                             </VoteProvider>
                                         </ModalProvider>
@@ -221,12 +217,44 @@ export const VoteBoxDisabled = () => {
                                             <VoteProvider>
                                                 <VoteBox 
                                                     voteableId={debateThreeVotePositions.id}
-                                                    votes={debateThreeVotePositions.votes_count}
+                                                    numberVotes={debateThreeVotePositions.votes_count}
                                                     voteableType={"Group"}
                                                     votePositions={threeVotePositions}
                                                     displayColumn
-                                                    debate={debate}
                                                     disabled
+                                                />
+                                            </VoteProvider>
+                                        </ModalProvider>
+                                    </ConfigProvider>
+                                </ToastProvider>
+                            </IconProvider>
+                        </AuthContext.Provider>
+                    </DataProviderContext.Provider>
+                </IntlProvider>
+            </BrowserRouter>
+        </div>
+    );
+};
+
+export const VoteBoxRedirect = () => {
+    return (
+        <div style={{ width: "400px" }}>
+            <BrowserRouter>
+                <IntlProvider locale="en">
+                    <DataProviderContext.Provider value={{ dataProvider: data }}>
+                        <AuthContext.Provider value={{ currentUser: currentUser, isLoggedIn: true }}>
+                            <IconProvider library={regularIcons}>
+                                <ToastProvider>
+                                    <ConfigProvider config={{}} routes={{ ...routes }}>
+                                        <ModalProvider>
+                                            <VoteProvider>
+                                                <VoteBox 
+                                                    voteableId={debateThreeVotePositions.id}
+                                                    numberVotes={debateThreeVotePositions.votes_count}
+                                                    voteableType={"Group"}
+                                                    votePositions={threeVotePositions}
+                                                    displayColumn
+                                                    redirectUrl={"myUrl"}
                                                 />
                                             </VoteProvider>
                                         </ModalProvider>
