@@ -478,6 +478,13 @@
         "mainFile": "index.js",
         "rootDir": "src/components/list/list_provider"
     },
+    "list/paginated_list": {
+        "name": "list/paginated_list",
+        "scope": "logora.debate",
+        "version": "0.0.71",
+        "mainFile": "index.js",
+        "rootDir": "src/components/list/paginated_list"
+    },
     "list/pagination": {
         "name": "list/pagination",
         "scope": "logora.debate",

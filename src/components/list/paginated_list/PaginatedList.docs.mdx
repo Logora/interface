@@ -1,0 +1,42 @@
+---
+description: A list component.
+---
+
+A list component.
+
+It must be inside [react-intl](https://formatjs.io/docs/getting-started/installation/)'s IntlProvider.
+It must be inside DataProvider.
+It must be inside ListProvider.
+It must be inside router.
+It must be inside [IconProvider](https://bit.cloud/logora/debate/icons/icon_provider).
+
+### Component usage
+```js
+import { PaginatedList } from '@logora/debate.list.paginated_list';
+```
+```js
+<BrowserRouter>
+    <IntlProvider locale="en">
+        <ListProvider>
+            <IconProvider>
+                <DataProviderContext.Provider value={{ dataProvider: data }}>
+                    <PaginatedList 
+                        currentListId={"listId"}
+                        resource={"apiPath"}
+                        loadingComponent={null}
+                        resourcePropName="res"
+                        filters={ {"filter": true} }
+                        display={"column"}
+                        perPage={4}
+                        withPagination={false}
+                        staticContext={null}
+                        staticResourceName={"null"}
+                        sort={"-created_at"}
+                        countless={true}
+                    />
+                </DataProviderContext.Provider>
+            </IconProvider>
+        <ListProvider>
+    </IntlProvider>
+</BrowserRouter>
+```
