@@ -481,7 +481,7 @@
     "list/paginated_list": {
         "name": "list/paginated_list",
         "scope": "logora.debate",
-        "version": "0.0.71",
+        "version": "0.0.72",
         "mainFile": "index.js",
         "rootDir": "src/components/list/paginated_list"
     },
