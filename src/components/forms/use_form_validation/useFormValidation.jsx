@@ -22,7 +22,8 @@ export const useFormValidation = () => {
     }
 
     const checkMinChar = (value, minChar) => {
-        return value.split("").length < minChar;
+        value = value || "";
+        return value.trim().split("").length < minChar;
     }
 
     const checkMaxChar = (value, maxChar) => {

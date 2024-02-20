@@ -18,7 +18,7 @@
     @include display(flex, xs);
     @include flex-direction(column, xs);
     @include flex-direction(row, sm);
-    @include align-items(center, sm);
+    @include align-items(flex-start, sm);
     @include justify-content(center, xs);
     @include justify-content(flex-start, sm);
     gap: $spacer;
