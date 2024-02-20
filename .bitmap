@@ -285,7 +285,7 @@
     "forms/use_form_validation": {
         "name": "forms/use_form_validation",
         "scope": "logora.debate",
-        "version": "0.0.3",
+        "version": "0.0.4",
         "mainFile": "index.js",
         "rootDir": "src/components/forms/use_form_validation"
     },
@@ -390,7 +390,7 @@
     "input/argument_input": {
         "name": "input/argument_input",
         "scope": "logora.debate",
-        "version": "0.0.7",
+        "version": "0.0.8",
         "mainFile": "index.js",
         "rootDir": "src/components/input/argument_input"
     },
@@ -719,7 +719,7 @@
     "user/update_user_info_modal": {
         "name": "user/update_user_info_modal",
         "scope": "logora.debate",
-        "version": "0.0.9",
+        "version": "0.0.10",
         "mainFile": "index.js",
         "rootDir": "src/components/user/update_user_info_modal"
     },
