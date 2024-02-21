@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen, waitFor, fireEvent } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import { act } from 'react-dom/test-utils';
 import { IntlProvider } from 'react-intl';
 import { dataProvider, DataProviderContext } from '@logora/debate.data.data_provider';

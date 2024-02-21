@@ -2,12 +2,16 @@
 description: A list component.
 ---
 
-A list component.
+A list component. For lists containing votes, VotePaginatedList is available.  
 
-It must be inside [react-intl](https://formatjs.io/docs/getting-started/installation/)'s IntlProvider.
-It must be inside DataProvider.
-It must be inside ListProvider.
-It must be inside router.
+It must be inside [react-intl](https://formatjs.io/docs/getting-started/installation/)'s IntlProvider.  
+
+It must be inside DataProvider.  
+
+It must be inside ListProvider.  
+
+It must be inside a router.  
+
 It must be inside [IconProvider](https://bit.cloud/logora/debate/icons/icon_provider).
 
 ### Component usage
@@ -18,24 +22,48 @@ import { PaginatedList } from '@logora/debate.list.paginated_list';
 <BrowserRouter>
     <IntlProvider locale="en">
         <ListProvider>
-            <IconProvider>
-                <DataProviderContext.Provider value={{ dataProvider: data }}>
-                    <PaginatedList 
-                        currentListId={"listId"}
-                        resource={"apiPath"}
-                        loadingComponent={null}
-                        resourcePropName="res"
-                        filters={ {"filter": true} }
-                        display={"column"}
-                        perPage={4}
-                        withPagination={false}
-                        staticContext={null}
-                        staticResourceName={"null"}
-                        sort={"-created_at"}
-                        countless={true}
-                    />
-                </DataProviderContext.Provider>
-            </IconProvider>
+            <DataProviderContext.Provider value={{ dataProvider: data }}>
+                <PaginatedList 
+                    currentListId={"listId"}
+                    resource={"apiPath"}
+                    loadingComponent={null}
+                    resourcePropName="res"
+                    filters={ {"filter": true} }
+                    display={"column"}
+                    perPage={4}
+                    withPagination={false}
+                    staticContext={null}
+                    staticResourceName={"null"}
+                    sort={"-created_at"}
+                    countless={true}
+                />
+            </DataProviderContext.Provider>
+        <ListProvider>
+    </IntlProvider>
+</BrowserRouter>
+```   
+
+```js
+import { VotePaginatedList } from '@logora/debate.list.paginated_list';
+```  
+```js
+<BrowserRouter>
+    <IntlProvider locale="en">
+        <ListProvider>
+            <DataProviderContext.Provider value={{ dataProvider: data }}>
+                <VotePaginatedList 
+                    voteableType={"Message"}
+                    currentListId={"listId"}
+                    loadingComponent={<Skeleton />}
+                    resource={"/resource"}
+                    sort={"+created_at"}
+                    perPage={5}
+                    display={"column"}
+                    resourcePropName={"message"}
+                >
+                    <YourComponent />
+                </VotePaginatedList>
+            </DataProviderContext.Provider>
         <ListProvider>
     </IntlProvider>
 </BrowserRouter>
