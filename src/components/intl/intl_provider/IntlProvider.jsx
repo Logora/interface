@@ -51,12 +51,28 @@ export const IntlProvider = ({ language, locales, async = false, customMessages 
     return updatedMessages;
   }
 
+  const displayContext = () => {
+    return (
+      <ReactIntlProvider locale={locale} messages={mergeRemoteMessages(flatten(messages))} onError={onError}>
+        <IntlContext.Provider value={{ locale, setLocale }}>
+          {children}
+        </IntlContext.Provider>
+      </ReactIntlProvider>
+    )
+  }
+
   return (
-    <ReactIntlProvider locale={locale} messages={mergeRemoteMessages(flatten(messages))} onError={onError}>
-      <IntlContext.Provider value={{ locale, setLocale }}>
-        {children}
-      </IntlContext.Provider>
-    </ReactIntlProvider>
+    <>
+      {async ?
+        (messages ?
+          displayContext()
+          :
+          null
+        )
+        :
+        displayContext()
+      }
+    </>
   )
 };
 
