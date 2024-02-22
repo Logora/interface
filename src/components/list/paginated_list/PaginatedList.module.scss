@@ -1,0 +1,79 @@
+@import '~@logora/debate.styles.spacing/_spacing.scss';
+@import '~@logora/debate.styles.display/_display.scss';
+@import '~@logora/debate.styles.theme/_theme.scss';
+
+.paginatedList {
+	display: inline-grid;
+	width: 100%;
+
+	&.centeredList {
+		justify-content: center !important;
+	}
+
+	&.listIsDesktop {
+		grid-template-columns: repeat(3, 1fr);
+
+		&.indexLayoutList {
+			grid-template-columns: repeat(6, 1fr);
+		}
+
+		&.indexLayoutList>div {
+			grid-column: span 3;
+		}
+
+		&.indexLayoutList>div:nth-child(n + 3) {
+			grid-column: span 2;
+		}
+	}
+
+	&.listIsTablet {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	&.listIsMobile {
+		grid-template-columns: repeat(1, 1fr) !important;
+	}
+
+	&.column,
+	&.oneElementPerLine {
+		grid-template-columns: repeat(1, 1fr) !important;
+	}
+
+	&.twoElementsPerLine {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	&.paginatedListIsTablet {
+		@include media-breakpoint-up(md) {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+}
+
+.listContainer {
+	display: flex;
+	flex-direction: column;
+	gap: $spacer-lg;
+
+	@include media-breakpoint-down(xs) {
+		gap: $spacer;
+	}
+}
+
+.emptyList {
+	text-align: center;
+	@include my(3, xs);
+	@include p(0, xs);
+	width: 100%;
+}
+
+.emptyListElement {
+	text-align: center;
+	@include my(0, xs);
+	@include p(0, xs);
+	width: 100%;
+}
+
+.paginatedListItem {
+	min-width: 0;
+}

@@ -1,0 +1,61 @@
+---
+description: A box component to show argument.
+labels: ['argument']
+---
+
+A box component to show argument.  
+It has a different style for answers and deleted message.
+
+### Component usage
+```js
+    import { Argument } from '@logora/debate.argument.argument';
+```
+```js
+const argument = {
+    id: 414,
+    content: "My super argument",
+    upvotes: 0,
+    group_id: 417,
+    is_reply: false,
+    created_at: "2024-02-07T10:34:16.888Z",
+    score: 50,
+    author: {
+        image_url: "user.image_url",
+        full_name: "Full Name",
+        slug: "full-name",
+        points: 1320,
+        last_activity: "2024-02-07T10:34:16.888Z",
+        description: "Super job"
+    },
+    position: {
+        id: 1,
+        name: "Yes",
+        language: "en",
+        translation_entries: []
+    }
+};
+
+const debatePositions = [
+    {
+        id: 1,
+        name: "Yes",
+        language: "en",
+        translation_entries: []
+    },
+    {
+        id: 2,
+        name: "No",
+        language: "en",
+        translation_entries: []
+    },
+];
+
+<Argument
+    argument={argument}
+    debatePositions={debatePositions}
+    debateName={"Debate name"}
+    replies={false}
+    nestingLevel={0}
+    debateIsActive
+/>
+```

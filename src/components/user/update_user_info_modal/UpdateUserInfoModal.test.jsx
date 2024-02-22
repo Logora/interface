@@ -93,7 +93,7 @@ describe("UpdateUserInfoModal", () => {
         expect(queryByText("I agree to receive emails from the editor")).toBeInTheDocument();
     });
 
-    it("should throw an error if the name field is empty", async () => {
+    it("should throw an error if the name field is less than 2 characters", async () => {
         const { getByTestId, queryByText } = render(
             <ModalProvider>
                 <ConfigProvider config={{ translation: { translationMethods: [{fr: "en"}]}, actions: { disableNameUpdate: true } }}>
@@ -112,11 +112,11 @@ describe("UpdateUserInfoModal", () => {
 
         const saveButton = getByTestId('save-button');
         await act(async () => { await userEvent.click(saveButton) });
-        expect(queryByText("first_name can't be empty.")).toBeInTheDocument();
-        expect(queryByText("last_name can't be empty.")).toBeInTheDocument();
+        expect(queryByText("first_name is too short.")).toBeInTheDocument();
+        expect(queryByText("last_name is too short.")).toBeInTheDocument();
     });
 
-    it("should throw an error if the name field is empty", async () => {
+    it("should display back button when choosing an avatar", async () => {
         const { getByTestId, queryByText } = render(
             <ModalProvider>
                 <ConfigProvider config={{ translation: { translationMethods: [{fr: "en"}]}, actions: { disableNameUpdate: true } }}>

@@ -47,7 +47,9 @@ export const UpdateUserInfoModal = ({ termsUrl, privacyUrl, showEmailConsent = f
 
     const validationRules = [
         { first_name: ["required", null] }, 
+        { first_name: ["minChar", 2] }, 
         { last_name: ["required", null] }, 
+        { last_name: ["minChar", 2] }, 
         { language: ["required", null] },
         ...( showTerms ? [{ accepts_terms: ["enforceValue", true] }] : [])
     ]

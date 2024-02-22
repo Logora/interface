@@ -1,0 +1,74 @@
+@import '~@logora/debate.styles.spacing/_spacing.scss';
+@import '~@logora/debate.styles.display/_display.scss';
+@import '~@logora/debate.styles.theme/_theme.scss';
+
+.listHeader {
+	display: flex;
+    justify-content: space-between;
+    align-items: center;
+	position: relative;
+    @include media-breakpoint-down(xs) {
+        gap: $spacer;
+        flex-direction: column;
+		align-items: flex-start;
+		&.listHeaderOneItem {
+			flex-direction: row;
+			align-items: center;
+		}
+    }
+}
+
+.listTitle {
+    font-size: $font-size-title;
+    font-weight: $font-weight-bold;
+	font-family: $title-font-family;
+}
+
+.rightBar {
+    display: flex;
+    gap: $spacer;
+    @include media-breakpoint-down(xs) {
+        width: 100%;
+        justify-content: space-between;
+		&.rightBarOneItem {
+			justify-content: flex-end;
+		}
+    }
+    flex: 2;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.search {
+    flex: 2;
+    max-width: 35%;
+    @include media-breakpoint-down(xs) {
+        max-width: 100%;
+    }
+}
+
+.tagList {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	overflow-x: auto;
+    overflow-y: hidden;
+    gap: $spacer-md;
+	@include media-breakpoint-down(xs) {
+		gap: $spacer-sm;
+    }
+}
+
+.tagItem {
+    display: flex !important;
+    color: $text-secondary;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.select {
+	max-width: 300px;
+	@include media-breakpoint-down(xs) {
+		max-width: 150px;
+	}
+}
