@@ -58,6 +58,24 @@
         "mainFile": "index.js",
         "rootDir": "src/components/ad/with_ad"
     },
+    "argument/argument": {
+        "name": "argument/argument",
+        "scope": "",
+        "version": "",
+        "defaultScope": "logora.debate",
+        "mainFile": "index.js",
+        "rootDir": "src/components/argument/argument",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "peerDependencies": {
+                        "react": "^17.0.0 || ^18.0.0",
+                        "react-dom": "^17.0.0 || ^18.0.0"
+                    }
+                }
+            }
+        }
+    },
     "argument/top_arguments": {
         "name": "argument/top_arguments",
         "scope": "logora.debate",

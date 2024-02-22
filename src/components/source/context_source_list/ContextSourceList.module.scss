@@ -6,7 +6,7 @@
     @include p(3, xs);
     background-color: $background-color-primary;
     box-shadow: $box-shadow;
-    border: $box-border;
+    border: $box-border-main-container;
     border-radius: $box-border-radius;
     display: flex;
     flex-direction: column;

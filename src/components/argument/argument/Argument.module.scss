@@ -1,0 +1,244 @@
+@import '~@logora/debate.styles.theme/_theme.scss';
+@import "~@logora/debate.styles.display/_display.scss";
+@import "~@logora/debate.styles.flex/_flex.scss";
+@import "~@logora/debate.styles.spacing/_spacing.scss";
+
+.argument {
+	border-radius: $box-border-radius;
+	box-shadow: $box-shadow;
+	transition: margin-top 2s;
+	border: $box-border;
+	scroll-margin-top: 80px;
+	background-color: $background-color-primary;
+	@include p(3, xs);
+	display: flex;
+	flex-direction: column;
+	gap: $spacer;
+}
+
+.edited {
+	font-size: $font-size-extra-small;
+	color: $text-secondary;
+	line-height: 1.5;
+	@include mb(1.5, xs);
+}
+
+.argumentReply {
+	position: relative;
+	background-color: $text-tertiary;
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+	box-shadow: $box-shadow;
+	border-top-right-radius: $box-border-radius;
+	border-bottom-right-radius: $box-border-radius;
+	border-left: 6px solid;
+	border-left-color: $call-primary !important;
+	&.position-1 {
+		border-left-color: $for-primary !important;
+	}
+	&.position-2 {
+		border-left-color: $against-primary !important;
+	}
+	&.position-3 {
+		border-left-color: $third-position-color-primary !important;
+	}
+	@for $i from 1 through 5 {
+		&.level-#{$i} {
+			margin-left: #{$i}em !important;
+		}
+	}
+	&::before {
+		content: "";
+		border-left: 4px solid $text-secondary;
+		position: absolute;
+		width: 4px;
+		height: 10px;
+		top: -10px;
+		left: 2em;
+	}
+	@include media-breakpoint-down(xs) {
+		border-left: 4px solid;
+	}
+}
+
+.flash {
+	-webkit-transition: box-shadow 0.8s ease-in-out;
+	-moz-transition: box-shadow 0.8s ease-in-out;
+	-o-transition: box-shadow 0.8s ease-in-out;
+	transition: box-shadow 0.8s ease-in-out;
+	box-shadow: 0 0 15px $call-primary;
+}
+.position-1.flash {
+	box-shadow: 0 0 15px $for-primary;
+}
+.position-2.flash {
+	box-shadow: 0 0 15px $against-primary;
+}
+.position-3.flash {
+	box-shadow: 0 0 15px $third-position-color-primary;
+	@include mt(2, xs);
+}
+
+.argumentBody {
+	font-size: $font-size-small;
+}
+
+.argumentDeletedBody {
+	font-size: $font-size-small;
+	color: $text-secondary;
+}
+
+.fixedHeight {
+	height: 100px;
+	overflow: hidden;
+	position: relative;
+	&:after {
+		content: "";
+		position: absolute;
+		z-index: 1;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		pointer-events: none;
+		background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 90%);
+		width: 100%;
+		height: 5em;
+	}
+}
+
+.commentArgument {
+	border-bottom: 0;
+}
+
+.argumentContent {
+	line-height: 1.5em;
+	overflow-wrap: break-word;
+	& * {
+		font-size: $font-size-small;
+	}
+}
+
+.argumentSourcesList {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
+	font-size: $font-size-extra-small;
+	font-weight: $font-weight-normal;
+}
+
+.argumentSourcesList a {
+	text-decoration: none;
+}
+
+.repliesList {
+	@include mt(2, xs);
+}
+
+.readMoreLink {
+	@include mt(2.5, xs);
+	display: flex;
+	justify-content: center;
+}
+
+.replyTo {
+	@include pb(2, xs);
+	@include display(flex, xs);
+	@include flex-direction(row, xs);
+	@include align-items(flex-start, xs);
+	font-size: $font-size-extra-small;
+	color: $text-secondary;
+	cursor: pointer;
+	overflow: hidden;
+	white-space: nowrap;
+	span {
+		@include pl(1, xs);
+		cursor: pointer;
+		text-decoration: underline;
+	}
+	svg {
+		padding: 2px 0 0 2px;
+		fill: $text-secondary;
+	}
+}
+
+.replyingTo {
+	display: flex !important;
+}
+
+.headerPosition-0 {
+	background-color: $call-primary !important;
+}
+.headerPosition-1 {
+	background-color: $for-primary !important;
+}
+.headerPosition-2 {
+	background-color: $against-primary !important;
+}
+.headerPosition-3 {
+	background-color: $third-position-color-primary !important;
+}
+
+.replyFooter {
+	font-size: $font-size-small;
+	font-weight: $font-weight-normal;
+	display: flex !important;
+	align-items: center !important;
+	justify-content: flex-start !important;
+	cursor: pointer;
+	&.commentReplyFooter {
+		@include pt(3, xs);
+		border-top: 1px solid $text-tertiary;
+		@include media-breakpoint-down(sm) {
+			@include pl(4, xs);
+		}
+	}
+}
+
+.expandRepliesContainer {
+	text-align: right;
+	@include p(0, xs);
+}
+
+.expandRepliesButton {
+	border: none;
+	position: relative;
+	cursor: pointer;
+	@include p(0, xs);
+	@include px(2.5, xs);
+	display: flex;
+	align-items: center;
+	gap: $spacer-sm;
+	svg {
+		display: inline-block;
+		path {
+			stroke: $text-primary;
+		}
+	}
+	&.repliesExpanded {
+		svg {
+			transform: rotate(180deg);
+		}
+	}
+}
+
+.voteButtonPosition-1 {
+    color: $for-primary !important;
+    & svg {
+      fill: $for-primary !important;
+    }
+}
+
+.voteButtonPosition-2 {
+    color: $against-primary !important;
+    & svg {
+      fill: $against-primary !important;
+    }
+}
+
+.voteButtonPosition-3 {
+    color: $third-position-color-primary !important;
+    & svg {
+      fill: $third-position-color-primary !important;
+    }
+}

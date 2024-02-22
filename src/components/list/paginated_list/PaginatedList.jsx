@@ -202,7 +202,6 @@ export const PaginatedList = ({ staticContext,
 
 	const loadResources = () => {
 		const loadFunction = withToken ? api.getListWithToken : api.getList;
-		if (page > 1 && currentFilters && currentFilters.argument_id) { delete currentFilters.argument_id } // remove extra Argument on load more
 		if (((page - 1) * perPage < totalElements) || page === 1) {
 			const params = {
 				[pageParam]: page,

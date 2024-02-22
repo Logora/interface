@@ -15,6 +15,7 @@
 }
 
 .image {
+    flex: 1;
     min-width: 200px;
     height: 115px;
     border-radius: $box-border-radius 0 0 $box-border-radius;
@@ -25,6 +26,7 @@
 }
 
 .content {
+    flex: 3;
     @include p(3, xs);
     .infos {
         display: flex !important;
