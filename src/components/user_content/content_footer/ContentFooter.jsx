@@ -125,7 +125,7 @@ export const ContentFooter = ({ resource,
                                     }
 								</>
 							}
-							{ !disabled && enableReport && currentUser.is_banned !== true &&
+							{ enableReport && currentUser.is_banned !== true &&
 								<div data-tid={"action_report_argument"} className={styles.dropdownItem} onClick={reportContent} data-testid="report-content">
                                     { intl.formatMessage({ id: "user_content.content_footer.report", defaultMessage: "Report" }) }
 								</div>
