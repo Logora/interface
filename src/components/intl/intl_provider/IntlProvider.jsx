@@ -64,7 +64,7 @@ export const IntlProvider = ({ language, locales, async = false, customMessages 
   return (
     <>
       {async ?
-        (messages ?
+        (Object.keys(messages).length > 0 ?
           displayContext()
           :
           null
