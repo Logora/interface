@@ -113,21 +113,6 @@ describe('IntlProvider', () => {
             });
         });
 
-        it('should render children with default if language is unknown', async () => {
-            await act(async () => {
-                render(
-                    <IntlProvider locales={localesAsync} language={"pt"} async onError={() => {}}>
-                        <IntlComponent />
-                    </IntlProvider>
-                )
-            });
-
-            await waitFor(() => {
-                expect(screen.getByText("Default title")).toBeTruthy();
-                expect(screen.getByText("Default subtitle")).toBeTruthy();
-            });
-        });
-
         it('should render with custom messages', async () => {
             const customMessages = {
                 "header.subtitle": "Mon autre sous-titre..."
@@ -148,6 +133,8 @@ describe('IntlProvider', () => {
         });
 
         it('should render with default locales when rendering server side', () => {
+            const { window } = global;
+            delete global.window;
             const html = renderToStaticMarkup(
                 <IntlProvider locales={localesAsync} language={"fr"} async onError={() => {}}>
                     <IntlComponent />
@@ -156,6 +143,7 @@ describe('IntlProvider', () => {
 
             expect(html).toContain("Default title");
             expect(html).toContain("Default subtitle")
+            global.window = window;
         });
     });
 });

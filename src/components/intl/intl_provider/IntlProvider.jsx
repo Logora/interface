@@ -63,7 +63,7 @@ export const IntlProvider = ({ language, locales, async = false, customMessages 
 
   return (
     <>
-      {async ?
+      {async && typeof window !== 'undefined' ?
         (Object.keys(messages).length > 0 ?
           displayContext()
           :
