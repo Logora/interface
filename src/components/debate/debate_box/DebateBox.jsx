@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useConfig, useRoutes } from '@logora/debate.data.config_provider';
 import { Avatar } from '@logora/debate.user.avatar';
@@ -6,24 +6,21 @@ import { useIntl, FormattedMessage } from 'react-intl';
 import { Icon } from '@logora/debate.icons.icon';
 import { getWinningVote } from '@logora/debate.util.get_winning_vote';
 import { useResponsive } from '@logora/debate.hooks.use_responsive';
-import { TranslatedContent, useTranslatedContent } from '@logora/debate.translation.translated_content';
+import { useTranslatedContent } from '@logora/debate.translation.translated_content';
 import cx from 'classnames';
 import styles from './DebateBox.module.scss';
 import PropTypes from "prop-types";
 
 export const DebateBox = ({ debate }) => {
-    const [winningPosition, setWinningPosition] = useState(debate.group_context.positions[0] || undefined);
-    const [totalVotes, setTotalVotes] = useState(0);
+    const winningVote = getWinningVote(debate.votes_count, debate.group_context.positions);
+    const winningPosition = useState(winningVote.winningPositionObj || debate.group_context.positions[0] || undefined);
+    const totalVotes = useState(winningVote.totalVotes || 0);
     const config = useConfig();
     const routes = useRoutes();
     const intl = useIntl();
     const { isMobile } = useResponsive();
     const name = useTranslatedContent(debate.name, debate.language, "name", debate.translation_entries);
-
-    useEffect(() => {
-        setTotalVotes(getWinningVote(debate.votes_count, debate.group_context.positions).totalVotes);
-        setWinningPosition(getWinningVote(debate.votes_count, debate.group_context.positions).winningPositionObj);
-    }, [])
+    const winningPositionName = useTranslatedContent(winningPosition.name, winningPosition.language, "name", winningPosition.translation_entries);
 
     const getPercentageValue = (voteCount, totalVotes) => {
         if (totalVotes == 0 || voteCount == 0) { return 0; }
@@ -106,12 +103,7 @@ export const DebateBox = ({ debate }) => {
                                 {winningPosition && (
                                     <>
                                         {getPercentageValue(winningPosition.count, totalVotes)} %{" "}
-                                        <TranslatedContent
-                                            originalContent={winningPosition.name}
-                                            originalLanguage={winningPosition.language}
-                                            targetField={"name"}
-                                            translations={winningPosition.translation_entries}
-                                        />
+                                        {winningPositionName.translatedContent || winningPosition.name}
                                     </>
                                 )}
                             </div>
