@@ -106,14 +106,14 @@ export const ContentFooter = ({ resource,
                     iconSize={17}
                 />
             }
-			{ !disabled && showActions && 
+			{ showActions && 
 				<div className={styles.moreAction} title={intl.formatMessage({ id: "user_content.content_footer.more", defaultMessage: "More options" })}>
 					<Dropdown horizontalPosition={'right'}>
 						<Icon name="ellipsis" width={25} height={25} data-testid="dropdown" />
 						<div>
 							{ currentUserIsAuthor() &&
 								<>
-									{ enableEdition && isEditable() &&
+									{ !disabled && enableEdition && isEditable() &&
 										<div data-tid={"action_edit_argument"} className={styles.dropdownItem} tabIndex='0' onClick={handleEdit}>
                                             { intl.formatMessage({ id: "user_content.content_footer.update", defaultMessage: "Update" }) }
 										</div>
@@ -125,7 +125,7 @@ export const ContentFooter = ({ resource,
                                     }
 								</>
 							}
-							{ enableReport && currentUser.is_banned !== true &&
+							{ !disabled && enableReport && currentUser.is_banned !== true &&
 								<div data-tid={"action_report_argument"} className={styles.dropdownItem} onClick={reportContent} data-testid="report-content">
                                     { intl.formatMessage({ id: "user_content.content_footer.report", defaultMessage: "Report" }) }
 								</div>
