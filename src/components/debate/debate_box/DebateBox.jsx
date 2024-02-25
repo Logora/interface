@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { useConfig, useRoutes } from '@logora/debate.data.config_provider';
 import { Avatar } from '@logora/debate.user.avatar';
@@ -13,8 +13,8 @@ import PropTypes from "prop-types";
 
 export const DebateBox = ({ debate }) => {
     const winningVote = getWinningVote(debate.votes_count, debate.group_context.positions);
-    const winningPosition = useState(winningVote.winningPositionObj || debate.group_context.positions[0] || undefined);
-    const totalVotes = useState(winningVote.totalVotes || 0);
+    const winningPosition = winningVote.winningPositionObj || debate.group_context.positions[0];
+    const totalVotes = winningVote.totalVotes || 0;
     const config = useConfig();
     const routes = useRoutes();
     const intl = useIntl();
@@ -103,7 +103,7 @@ export const DebateBox = ({ debate }) => {
                                 {winningPosition && (
                                     <>
                                         {getPercentageValue(winningPosition.count, totalVotes)} %{" "}
-                                        {winningPositionName.translatedContent || winningPosition.name}
+                                        {winningPositionName.translatedContent}
                                     </>
                                 )}
                             </div>

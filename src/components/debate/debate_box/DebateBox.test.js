@@ -33,13 +33,13 @@ const debate = {
 			{
 				id: 656,
 				name: "Non",
-				language: "en",
+				language: "fr",
     			translation_entries: []
 			},
 			{
 				id: 657,
 				name: "Sans opinion",
-				language: "en",
+				language: "es",
     			translation_entries: []
 			}
 		],
@@ -100,6 +100,8 @@ describe('DebateBox', () => {
 	it ('renders DebateBox component', () => {  
 		const { getByText } = render(<DefaultDebateBox debate={debate} />);
 		expect(getByText(debate.name)).toBeInTheDocument();
+		expect(getByText(/75/)).toBeTruthy();
+		expect(getByText(/Non/)).toBeTruthy();
 	});
 	
 	it ('renders DebateBox with correct links', () => {  
