@@ -4,21 +4,19 @@ import { useConfig, useRoutes } from '@logora/debate.data.config_provider';
 import { Avatar } from '@logora/debate.user.avatar';
 import { useIntl, FormattedMessage } from 'react-intl';
 import { Icon } from '@logora/debate.icons.icon';
-import { getWinningVote } from '@logora/debate.util.get_winning_vote';
 import { useResponsive } from '@logora/debate.hooks.use_responsive';
 import { useTranslatedContent } from '@logora/debate.translation.translated_content';
 import cx from 'classnames';
 import styles from './DebateBox.module.scss';
 import PropTypes from "prop-types";
 
-export const DebateBox = ({ debate }) => {
-    const winningVote = getWinningVote(debate.votes_count, debate.group_context.positions);
-    const winningPosition = winningVote.winningPositionObj || debate.group_context.positions[0];
-    const totalVotes = winningVote.totalVotes || 0;
+export const DebateBox = ({ debate }) => {    
     const config = useConfig();
     const routes = useRoutes();
     const intl = useIntl();
     const { isMobile } = useResponsive();
+    const totalVotes = Object.values(debate.votes_count).reduce((sum, value) => sum + parseFloat(value), 0) || 0;
+    const winningPosition = debate.group_context?.positions.reduce((a, b) => (parseInt(debate.votes_count[b.id]) > parseInt(debate.votes_count[a.id]) ? b : a));
     const name = useTranslatedContent(debate.name, debate.language, "name", debate.translation_entries);
     const winningPositionName = useTranslatedContent(winningPosition.name, winningPosition.language, "name", winningPosition.translation_entries);
 
@@ -102,7 +100,7 @@ export const DebateBox = ({ debate }) => {
                             <div className={styles.debateBoxNumbersText}>
                                 {winningPosition && (
                                     <>
-                                        {getPercentageValue(winningPosition.count, totalVotes)} %{" "}
+                                        {getPercentageValue(debate.votes_count[winningPosition.id] || 0, totalVotes)} %{" "}
                                         {winningPositionName.translatedContent}
                                     </>
                                 )}
