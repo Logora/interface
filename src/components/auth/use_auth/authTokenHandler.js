@@ -1,4 +1,4 @@
-import { makeStorage } from "@logora/debate.auth.use_auth";
+import { makeStorage } from "./AuthStorage";
 
 export const authTokenHandler = (httpClient, authUrl, tokenKey) => {
     const storage = makeStorage(tokenKey);

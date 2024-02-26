@@ -1,5 +1,5 @@
 import React from 'react';
-import { useTranslatedContent } from '@logora/debate.translation.translated_content';
+import { useTranslatedContent } from './useTranslatedContent';
 import PropTypes from "prop-types";
 
 export const TranslatedContent = ({ originalContent, originalLanguage, targetField, translations }) => {

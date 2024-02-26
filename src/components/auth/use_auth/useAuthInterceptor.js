@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { authTokenHandler } from '@logora/debate.auth.use_auth';
+import { authTokenHandler } from './authTokenHandler';
 
 export const useAuthInterceptor = (httpClient, authUrl, tokenKey) => {
     const { getToken, refreshToken } = authTokenHandler(httpClient, authUrl, tokenKey);

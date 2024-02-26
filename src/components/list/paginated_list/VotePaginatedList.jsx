@@ -1,6 +1,6 @@
 import React from 'react';
 import { VoteProvider, VoteContext } from '@logora/debate.vote.vote_provider';
-import { PaginatedList } from '@logora/debate.list.paginated_list';
+import { PaginatedList } from './PaginatedList';
 
 export const VotePaginatedList = (props) => {
 	const loadVotes = (elements, context) => {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import { ConfigProvider } from '@logora/debate.data.config_provider';
-import { AuthInitializer } from '@logora/debate.auth.auth_initializer';
+import { AuthInitializer } from './AuthInitializer';
 
 const config = {
     shortname: "myapp",

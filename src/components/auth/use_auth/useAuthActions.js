@@ -1,4 +1,5 @@
-import { useAuth, authTokenHandler } from "@logora/debate.auth.use_auth";
+import { useAuth } from "./useAuth";
+import { authTokenHandler } from "./authTokenHandler";
 import { useDataProvider } from '@logora/debate.data.data_provider';
 
 export const useAuthActions = (httpClient, authUrl, tokenKey) => {

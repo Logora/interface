@@ -2,7 +2,7 @@ import React, { lazy, Suspense } from 'react';
 import { useAuth } from "@logora/debate.auth.use_auth";
 import { useModal } from '@logora/debate.dialog.modal';
 import { useAuthRequired } from '@logora/debate.hooks.use_auth_required';
-const ReportModal = lazy(() => import(/* webpackPrefetch: true */ '@logora/debate.user_content.use_report_content'));
+const ReportModal = lazy(() => import(/* webpackPrefetch: true */ './ReportModal'));
 
 export const useReportContent = (reportableType, reportableId, modalTitle) => {
     const { isLoggedIn } = useAuth();
