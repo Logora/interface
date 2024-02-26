@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     if: "!contains(github.event.head_commit.message, '--skip-ci')"
     env:
-      BIT_TOKEN: ${{ secrets.BIT_TOKEN }}
+      BIT_CONFIG_ACCESS_TOKEN: ${{ secrets.BIT_TOKEN }}
 
     steps:
       - uses: actions/checkout@v3
@@ -23,21 +23,8 @@ jobs:
         run: |
           npm config set '@logora:registry' https://node.bit.cloud
           npm config set '@teambit:registry' https://node.bit.cloud
-      - name: Install Bit Version Manager
-        run: npm i -g @teambit/bvm
-      - name: Install latest Bit version
-        run: bvm install --use-system-node 1.2.7
-      - name: add bvm bin folder to path
-        run: echo "$HOME/bin" >> $GITHUB_PATH
-      - name: Set up bit config
-        run: |
-          bit config set analytics_reporting false
-          bit config set anonymous_reporting false
-          bit config set user.token $BIT_TOKEN
-          bit config set force_local_build true 
-          export NODE_OPTIONS="--max-old-space-size=8192"
-
-          bit install
+      - name: Initialize Bit
+        uses: bit-tasks/init@v1
       - name: Tag components
         run: bit tag --build
       - name: Export components

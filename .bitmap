@@ -194,7 +194,7 @@
     "debate/debate_box": {
         "name": "debate/debate_box",
         "scope": "logora.debate",
-        "version": "0.0.47",
+        "version": "0.0.48",
         "mainFile": "index.js",
         "rootDir": "src/components/debate/debate_box"
     },
@@ -635,7 +635,7 @@
     "styles/theme": {
         "name": "styles/theme",
         "scope": "logora.debate",
-        "version": "0.0.21",
+        "version": "0.0.22",
         "mainFile": "_theme.scss",
         "rootDir": "src/components/styles/theme"
     },

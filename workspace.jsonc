@@ -15,7 +15,10 @@
      * owner - owner name in bit.dev, e.g. 'teambit'.
      **/
     "defaultDirectory": "src/components/{name}",
-    "defaultScope": "logora.debate"
+    "defaultScope": "logora.debate",
+    "teambit.harmony/bit": {
+      "engine": "1.2.7"
+    }
   },
   "teambit.dependencies/dependency-resolver": {
     "packageManager": "teambit.dependencies/yarn",
