@@ -784,7 +784,12 @@
         "scope": "logora.debate",
         "version": "0.0.3",
         "mainFile": "index.js",
-        "rootDir": "src/components/util/get_winning_vote"
+        "rootDir": "src/components/util/get_winning_vote",
+        "config": {
+            "teambit.component/remove": {
+                "removed": true
+            }
+        }
     },
     "util/location": {
         "name": "util/location",
