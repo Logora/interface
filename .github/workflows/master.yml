@@ -14,12 +14,16 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+
       - name: Initialize Bit
         uses: bit-tasks/init@v1
+
       - name: Tag components
         run: bit tag --build
+
       - name: Export components
         run: bit export
+
       - name: Commit changes made to .bitmap
         run: |
           git config --global user.name '${{ github.actor }}'
