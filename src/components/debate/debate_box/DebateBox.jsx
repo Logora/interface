@@ -15,7 +15,7 @@ export const DebateBox = ({ debate }) => {
     const routes = useRoutes();
     const intl = useIntl();
     const { isMobile } = useResponsive();
-    const totalVotes = argument.group.votes_count?.total || Object.values(debate.votes_count).reduce((sum, value) => sum + parseFloat(value), 0) || 0;
+    const totalVotes = debate.votes_count?.total || Object.values(debate.votes_count).reduce((sum, value) => sum + parseFloat(value), 0) || 0;
     const winningPosition = debate.group_context?.positions.reduce((a, b) => (parseInt(debate.votes_count[b.id]) > parseInt(debate.votes_count[a.id]) ? b : a));
     const name = useTranslatedContent(debate.name, debate.language, "name", debate.translation_entries);
     const winningPositionName = useTranslatedContent(winningPosition.name, winningPosition.language, "name", winningPosition.translation_entries);
