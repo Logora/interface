@@ -106,7 +106,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel, debatePositi
 				id={componentId}
 			>
 				<ContentHeader
-					selectedContent={argument.score == 100}
+					selectedContent={argument.score == 99}
 					author={argument.author}
 					tag={(argument.author.is_expert && argument.is_reply) ? null : position.translatedContent}
 					date={argument.created_at}
