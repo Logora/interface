@@ -62,16 +62,16 @@
 .argumentAuthorContainer {
     @include mt(2, xs);
     overflow: hidden;
-    .argumentAuthorContainerMobile {
-        width: 100%;
-    }
+}
+
+.argumentAuthorContainerMobile {
+    width: 100%;
 }
 
 .textEditorBox {
     @include pt(2, sm);
     @include pt(0, xs);
     width: 100%;
-    flex: 1;
 }
 
 .argumentInputWarning {
