@@ -8,14 +8,15 @@
     @include p(0, xs);
     @include pr(2, xs);
     width: 100%;
+    gap: $spacer;
 }
 
 .authorNameBox {
     display: flex !important;
     flex-direction: column !important;
     justify-content: center !important;
-    @include ml(2.5, xs);
     @include text-truncate();
+    flex: 1;
 }
 
 .authorName {

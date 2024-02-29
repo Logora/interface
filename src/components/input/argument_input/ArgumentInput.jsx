@@ -305,7 +305,7 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
                             </div>
                         }
                         <div className={cx(styles.argumentTextInputBox, {[styles.argumentTextInputBoxisTablet]: !isMobile, [styles.replyEditorRow]: isReply})}>
-                            <div className={styles.argumentAuthorContainer}>
+                            <div className={cx(styles.argumentAuthorContainer,{[styles.argumentAuthorContainerMobile]: isMobile})}>
                                 { inputActivation || isReply ?
                                     <Avatar avatarUrl={currentUser.image_url} userName={currentUser.full_name} size={avatarSize} />
                                 :

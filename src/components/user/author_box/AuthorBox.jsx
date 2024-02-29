@@ -37,7 +37,7 @@ export const AuthorBox = ({
                 <div className={styles.authorName}>
                     <div className={styles.authorNameLine}>
                         { !slug || disableLinks || isDeleted ?
-                            <span className={cx({[styles.deleted]: isDeleted, [styles.linkDisabled]: !slug || disableLinks})}>
+                            <span className={cx(styles.authorLink, {[styles.deleted]: isDeleted, [styles.linkDisabled]: !slug || disableLinks})}>
                                 { isDeleted ? intl.formatMessage({ id: "user.author_box.deleted", defaultMessage: "Deleted" }) : fullName }
                             </span>
                         :
