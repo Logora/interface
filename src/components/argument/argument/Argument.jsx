@@ -22,6 +22,7 @@ import draftToHtml from "draftjs-to-html";
 import styles from "./Argument.module.scss";
 const ArgumentInput = lazy(() => import('@logora/debate.input.argument_input'));
 import { HashScroll } from '@logora/debate.tools.hash_scroll';
+import PropTypes from "prop-types";
 
 export const Argument = ({ argument, argumentReplies, nestingLevel, debatePositions, disableLinks, replyToArgument, flashParent, expandable, debateIsActive, isComment, hideReplies, debateName, vote, fixedContentHeight }) => {
 	const [expandReplies, setExpandReplies] = useState(false);
@@ -305,3 +306,34 @@ export const Argument = ({ argument, argumentReplies, nestingLevel, debatePositi
 };
 
 export const ArgumentContainer = Argument;
+
+Argument.propTypes = {
+    /** Argument data */
+    argument: PropTypes.object.isRequired,
+    /** If reply, array with argument and all parents */
+    argumentReplies: PropTypes.array,
+	/** Nesting level of the argument */
+    nestingLevel: PropTypes.number,
+	/** Positions of the debate */
+    debatePositions: PropTypes.array.isRequired,
+	/** If true, disables links */
+    disableLinks: PropTypes.bool,
+	/** Parent argument */
+    replyToArgument: PropTypes.object,
+	/** Flash border of parent argument */
+    flashParent: PropTypes.func,
+	/** If true, content is expandable */
+    expandable: PropTypes.bool,
+	/** If false, disabled mode in argument */
+    debateIsActive: PropTypes.bool,
+	/** If true, enabled comment styles */
+    isComment: PropTypes.bool,
+	/** If true, hide replies */
+    hideReplies: PropTypes.bool,
+	/** Name of the debate */
+    debateName: PropTypes.string,
+	/** Vote data */
+    vote: PropTypes.object,
+	/** If true, fix argument height */
+    fixedContentHeight: PropTypes.bool,
+};

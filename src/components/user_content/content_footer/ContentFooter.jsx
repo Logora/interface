@@ -89,6 +89,7 @@ export const ContentFooter = ({ resource,
                         className={styles.replyAction}
                         tabIndex='0'
                         onClick={handleReplyTo}
+                        data-testid="action-reply-button"
                     >
                         <Icon name="reply" data-tid={"action_reply_argument"} height={17} width={17} />
                         <span className={styles.replyText}>{intl.formatMessage({ id:"user_content.content_footer.reply", defaultMessage: "Reply" })}</span>
