@@ -115,6 +115,7 @@ button.voteButton, a.voteButton  {
     cursor: pointer;
     a {
         background: none !important;
+        color: $text-secondary;
         &:hover {
             background: none !important;
         }

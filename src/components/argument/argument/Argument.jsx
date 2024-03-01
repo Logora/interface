@@ -24,7 +24,7 @@ const ArgumentInput = lazy(() => import('@logora/debate.input.argument_input'));
 import { HashScroll } from '@logora/debate.tools.hash_scroll';
 import PropTypes from "prop-types";
 
-export const Argument = ({ argument, argumentReplies, nestingLevel, debatePositions, disableLinks, replyToArgument, flashParent, expandable, debateIsActive, isComment, hideReplies, debateName, vote, fixedContentHeight }) => {
+export const Argument = ({ argument, argumentReplies, nestingLevel, debatePositions, disableLinks, replyToArgument, flashParent, expandable, debateIsActive, isComment, hideReplies, debateName, vote, fixedContentHeight, enableEdition = true }) => {
 	const [expandReplies, setExpandReplies] = useState(false);
 	const [flash, setFlash] = useState(false);
 	const [startReplyInput, setStartReplyInput] = useState(false);
@@ -187,6 +187,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel, debatePositi
 						showShareText
 						leftReply={isComment}
 						enableReport={!(argument.score == 100 && argument.manual_score)}
+						enableEdition={enableEdition}
 					>
 						<VoteButton
 							voteableType={"Message"}
@@ -336,4 +337,6 @@ Argument.propTypes = {
     vote: PropTypes.object,
 	/** If true, fix argument height */
     fixedContentHeight: PropTypes.bool,
+	/** If true, enable edition */
+	enableEdition: PropTypes.bool,
 };
