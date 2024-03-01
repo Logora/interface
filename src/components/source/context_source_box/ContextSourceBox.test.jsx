@@ -25,7 +25,7 @@ describe('ContextSourceBox', () => {
         );
         expect(box.getByText(source.title)).toBeTruthy();
         expect(box.getByText(source.author)).toBeTruthy();
-        expect(box.getByAltText('')).toHaveAttribute('src', source.imageUrl);
+        expect(box.getByAltText('Debate source image')).toHaveAttribute('src', source.imageUrl);
     });
 
     it('should render without author and separator if author empty', () => {
@@ -41,6 +41,6 @@ describe('ContextSourceBox', () => {
         expect(box.getByText(source.title)).toBeTruthy();
         expect(box.queryByText(source.author)).toBeNull();
         expect(box.queryByText("•")).toBeNull();
-        expect(box.getByAltText('')).toHaveAttribute('src', source.imageUrl);
+        expect(box.getByAltText('Debate source image')).toHaveAttribute('src', source.imageUrl);
     });
 });

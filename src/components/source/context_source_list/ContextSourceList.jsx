@@ -1,12 +1,15 @@
 import React from 'react';
 import { useIntl } from "react-intl";
+import { useResponsive } from "@logora/debate.hooks.use_responsive";
 import { Link } from '@logora/debate.action.link';
 import { ContextSourceBox } from "@logora/debate.source.context_source_box";
 import styles from './ContextSourceList.module.scss';
+import cx from "classnames";
 import PropTypes from "prop-types";
 
 export const ContextSourceList = ({ sources = [] }) => {
     const intl = useIntl();
+    const { isMobile, isTablet } = useResponsive();
 
     const displaySource = (source) => {
         return (
@@ -21,7 +24,9 @@ export const ContextSourceList = ({ sources = [] }) => {
             <div className={styles.title}>
                 <span>{intl.formatMessage({ id: "source.context_source_list.title", defaultMessage: "Debate context"})}</span>
             </div>
-            <div className={styles.content}>{sources.map(displaySource)}</div>
+            <div className={cx(styles.content, {[styles.contentTablet]: isTablet, [styles.contentMobile]: isMobile})}>
+                {sources.map(displaySource)}
+            </div>
         </div>
     )
 }

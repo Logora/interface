@@ -17,15 +17,19 @@
 }
 
 .title {
-    font-size: $font-size-large;
+    font-size: $font-size-title;
     font-weight: $font-weight-bold;
+    font-family: $title-font-family;
 }
 
 .content {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: $spacer-lg;
-    @include media-breakpoint-down(xs) {
-        gap: $spacer;
+    &.contentMobile {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    &.contentTablet {
+        grid-template-columns: repeat(2, 1fr);
     }
 }

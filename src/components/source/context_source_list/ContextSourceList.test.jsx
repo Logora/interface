@@ -2,6 +2,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { ContextSourceList } from './ContextSourceList';
 import { IntlProvider } from 'react-intl';
+import { ResponsiveProvider } from '@logora/debate.hooks.use_responsive';
 import { faker } from '@faker-js/faker';
 
 const createSource = () => {
@@ -21,9 +22,11 @@ describe('ContextSourceList', () => {
     it('should render with the correct text', () => {
         const box = render(
             <IntlProvider locale="en">
-                <ContextSourceList 
-                    sources={sources}
-                />
+                <ResponsiveProvider>
+                    <ContextSourceList 
+                        sources={sources}
+                    />
+                </ResponsiveProvider>
             </IntlProvider>
         );
 
