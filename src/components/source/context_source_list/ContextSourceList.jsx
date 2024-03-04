@@ -9,7 +9,7 @@ import PropTypes from "prop-types";
 
 export const ContextSourceList = ({ sources = [] }) => {
     const intl = useIntl();
-    const { isMobile, isTablet } = useResponsive();
+    const { isMobile, isTablet, isDesktop } = useResponsive();
 
     const displaySource = (source) => {
         return (
@@ -24,7 +24,7 @@ export const ContextSourceList = ({ sources = [] }) => {
             <div className={styles.title}>
                 <span>{intl.formatMessage({ id: "source.context_source_list.title", defaultMessage: "Debate context"})}</span>
             </div>
-            <div className={cx(styles.content, {[styles.contentTablet]: isTablet, [styles.contentMobile]: isMobile})}>
+            <div className={cx(styles.content, {[styles.contentDesktop]: isDesktop, [styles.contentTablet]: isTablet, [styles.contentMobile]: isMobile})}>
                 {sources.map(displaySource)}
             </div>
         </div>

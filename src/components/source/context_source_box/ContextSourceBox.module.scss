@@ -16,14 +16,12 @@
     height: 48px;
     border-radius: $box-border-radius;
     object-fit: cover;
-    @include media-breakpoint-down(xs) {
-        display: none;
-    }
 }
 
 .content {
     .infos {
         display: flex !important;
+        flex-wrap: wrap;
         @include mb(2, xs);
         font-size: $font-size-small;
         color: $text-secondary;

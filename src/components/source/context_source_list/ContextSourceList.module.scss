@@ -24,12 +24,14 @@
 
 .content {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
     gap: $spacer-lg;
-    &.contentMobile {
-        grid-template-columns: repeat(1, 1fr);
+    &.contentDesktop {
+        grid-template-columns: repeat(3, 1fr);
     }
     &.contentTablet {
         grid-template-columns: repeat(2, 1fr);
+    }
+    &.contentMobile {
+        grid-template-columns: repeat(1, 1fr);
     }
 }
