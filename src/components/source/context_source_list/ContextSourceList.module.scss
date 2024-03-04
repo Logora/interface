@@ -25,13 +25,13 @@
 .content {
     display: grid;
     gap: $spacer-lg;
-    &.contentDesktop {
-        grid-template-columns: repeat(3, 1fr);
+    &.contentMobile {
+        grid-template-columns: repeat(1, 1fr);
     }
     &.contentTablet {
         grid-template-columns: repeat(2, 1fr);
     }
-    &.contentMobile {
-        grid-template-columns: repeat(1, 1fr);
+    &.contentDesktop {
+        grid-template-columns: repeat(3, 1fr);
     }
 }
