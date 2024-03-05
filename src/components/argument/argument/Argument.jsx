@@ -15,7 +15,6 @@ import { Avatar } from "@logora/debate.user.avatar";
 import { ContentFooter } from '@logora/debate.user_content.content_footer';
 import { VoteButton } from '@logora/debate.vote.vote_button';
 import { Button } from '@logora/debate.action.button';
-import { useResponsive } from '@logora/debate.hooks.use_responsive';
 import { VotePaginatedList } from '@logora/debate.list.paginated_list';
 import cx from "classnames";
 import draftToHtml from "draftjs-to-html";
@@ -24,7 +23,7 @@ const ArgumentInput = lazy(() => import('@logora/debate.input.argument_input'));
 import { HashScroll } from '@logora/debate.tools.hash_scroll';
 import PropTypes from "prop-types";
 
-export const Argument = ({ argument, argumentReplies, nestingLevel, debatePositions, disableLinks, replyToArgument, flashParent, expandable, debateIsActive, isComment, hideReplies, debateName, vote, fixedContentHeight, enableEdition = true }) => {
+export const Argument = ({ argument, argumentReplies, nestingLevel, debatePositions, disableLinks, replyToArgument, flashParent, expandable, debateIsActive, isComment, hideReplies, debateName, vote, fixedContentHeight, enableEdition = true, deleteListId }) => {
 	const [expandReplies, setExpandReplies] = useState(false);
 	const [flash, setFlash] = useState(false);
 	const [startReplyInput, setStartReplyInput] = useState(false);
@@ -32,7 +31,6 @@ export const Argument = ({ argument, argumentReplies, nestingLevel, debatePositi
 	const [replies, setReplies] = useState([]);
 	const [activeAnchor, setActiveAnchor] = useState(false);
 	const intl = useIntl();
-	const { isMobile } = useResponsive();
 	const { currentUser } = useAuth();
 	const content = useTranslatedContent(argument.content, argument.language, "content", argument.translation_entries);
 	const position = useTranslatedContent(argument.position?.name, argument.position?.language, "name", argument.position?.translation_entries);
@@ -175,7 +173,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel, debatePositi
 						reportType={"Message"}
 						softDelete={config.actions?.softDelete}
 						deleteType={"messages"}
-						deleteListId={(isMobile || !(argument.position)) ? "argumentList" : `argumentList${argument.position.id}`}
+						deleteListId={deleteListId}
 						enableReply={nestingLevel <= 2}
 						handleReplyTo={toggleReplyInput}
 						shareButton={!isComment}
@@ -339,4 +337,6 @@ Argument.propTypes = {
     fixedContentHeight: PropTypes.bool,
 	/** If true, enable edition */
 	enableEdition: PropTypes.bool,
+	/** Id of the list to delete the item from */
+	deleteListId: PropTypes.string,
 };
