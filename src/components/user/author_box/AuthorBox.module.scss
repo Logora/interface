@@ -8,8 +8,6 @@
     @include p(0, xs);
     @include pr(2, xs);
     width: 100%;
-    min-width: 150px;
-    max-width: 300px;
     gap: $spacer;
 }
 
