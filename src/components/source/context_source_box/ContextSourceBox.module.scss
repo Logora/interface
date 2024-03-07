@@ -3,11 +3,8 @@
 
 .container {
     display: flex !important;
-    align-items: center;
-    background-color: $background-color-primary;
-    box-shadow: $box-shadow;
-	border: $box-border;
-	border-radius: $box-border-radius;
+    gap: $spacer-md;
+    justify-content: space-between;
     cursor: pointer;
     &:hover .sourceTitle {
         text-decoration: underline;
@@ -15,26 +12,25 @@
 }
 
 .image {
-    flex: 1;
-    min-width: 200px;
-    height: 115px;
-    border-radius: $box-border-radius 0 0 $box-border-radius;
+    width: 48;
+    height: 48px;
+    border-radius: $box-border-radius;
     object-fit: cover;
-    @include media-breakpoint-down(xs) {
-        display: none;
-    }
 }
 
 .content {
-    flex: 3;
-    @include p(3, xs);
     .infos {
         display: flex !important;
+        flex-wrap: wrap;
         @include mb(2, xs);
         font-size: $font-size-small;
         color: $text-secondary;
+        .sourceAuthor {
+            text-transform: uppercase;
+        }
         .separator {
             @include px(1, xs);
+            font-size: $font-size-extra-small;
         }
     }
     .sourceTitle {

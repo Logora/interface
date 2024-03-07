@@ -1,5 +1,6 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, act } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { IntlProvider } from 'react-intl';
 import { ConfigProvider } from '@logora/debate.data.config_provider';
 import { BrowserRouter } from 'react-router-dom';
@@ -363,4 +364,181 @@ describe('Argument', () => {
         const replyButton = getByTestId('reply-button');
         expect(replyButton).toHaveClass('leftReply');
     });
-})
+
+    it ('should render deleted argument', () => {  
+        const { queryByText } = render(
+            <BrowserRouter>
+                <ConfigProvider routes={{ ...routes }} config={{ translation: { enable: false } }}>
+                    <DataProviderContext.Provider value={{ dataProvider: data }}>
+                        <AuthContext.Provider value={{ currentUser: currentUser, isLoggedIn: true }}>
+                            <ResponsiveProvider>
+                                <ModalProvider>
+                                    <ListProvider>
+                                        <ToastProvider>
+                                            <VoteProvider>
+                                                <IdProvider>
+                                                    <InputProvider>
+                                                        <IconProvider library={regularIcons}>
+                                                            <IntlProvider locale="en">
+                                                                <Argument
+                                                                    argument={argumentDeleted}
+                                                                    debatePositions={debatePositions}
+                                                                    debateName={debateName}
+                                                                    replies={false}
+                                                                    nestingLevel={0}
+                                                                    debateIsActive
+                                                                />
+                                                            </IntlProvider>
+                                                        </IconProvider>
+                                                    </InputProvider>
+                                                </IdProvider>
+                                            </VoteProvider>
+                                        </ToastProvider>
+                                    </ListProvider>
+                                </ModalProvider>
+                            </ResponsiveProvider>
+                        </AuthContext.Provider>
+                    </DataProviderContext.Provider>
+                </ConfigProvider>
+            </BrowserRouter>
+        );
+
+        expect(queryByText(argument.author.full_name)).not.toBeInTheDocument();
+        expect(queryByText("Deleted")).toBeInTheDocument();
+        expect(queryByText("Content deleted by the user")).toBeInTheDocument();
+    });
+
+    it ('should render dropdown', async () => {  
+        const { getByText, getByTestId } = render(
+            <BrowserRouter>
+                <ConfigProvider routes={{ ...routes }} config={{ translation: { enable: false } }}>
+                    <DataProviderContext.Provider value={{ dataProvider: data }}>
+                        <AuthContext.Provider value={{ currentUser: currentUser, isLoggedIn: true }}>
+                            <ResponsiveProvider>
+                                <ModalProvider>
+                                    <ListProvider>
+                                        <ToastProvider>
+                                            <VoteProvider>
+                                                <IdProvider>
+                                                    <InputProvider>
+                                                        <IconProvider library={regularIcons}>
+                                                            <IntlProvider locale="en">
+                                                                <Argument
+                                                                    argument={argument}
+                                                                    debatePositions={debatePositions}
+                                                                    debateName={debateName}
+                                                                    nestingLevel={0}
+                                                                    debateIsActive
+                                                                />
+                                                            </IntlProvider>
+                                                        </IconProvider>
+                                                    </InputProvider>
+                                                </IdProvider>
+                                            </VoteProvider>
+                                        </ToastProvider>
+                                    </ListProvider>
+                                </ModalProvider>
+                            </ResponsiveProvider>
+                        </AuthContext.Provider>
+                    </DataProviderContext.Provider>
+                </ConfigProvider>
+            </BrowserRouter>
+        );
+
+        const dropdown = getByTestId("dropdown");
+        await act(async () => { await userEvent.click(dropdown) });
+        
+        expect(getByText("Report")).toBeInTheDocument();
+    });
+
+    it ('should add vote', async () => {  
+        const { getByText, getByTestId, queryByText } = render(
+            <BrowserRouter>
+                <ConfigProvider routes={{ ...routes }} config={{ translation: { enable: false } }}>
+                    <DataProviderContext.Provider value={{ dataProvider: data }}>
+                        <AuthContext.Provider value={{ currentUser: currentUser, isLoggedIn: true }}>
+                            <ResponsiveProvider>
+                                <ModalProvider>
+                                    <ListProvider>
+                                        <ToastProvider>
+                                            <VoteProvider>
+                                                <IdProvider>
+                                                    <InputProvider>
+                                                        <IconProvider library={regularIcons}>
+                                                            <IntlProvider locale="en">
+                                                                <Argument
+                                                                    argument={argument}
+                                                                    debatePositions={debatePositions}
+                                                                    debateName={debateName}
+                                                                    nestingLevel={0}
+                                                                    debateIsActive
+                                                                />
+                                                            </IntlProvider>
+                                                        </IconProvider>
+                                                    </InputProvider>
+                                                </IdProvider>
+                                            </VoteProvider>
+                                        </ToastProvider>
+                                    </ListProvider>
+                                </ModalProvider>
+                            </ResponsiveProvider>
+                        </AuthContext.Provider>
+                    </DataProviderContext.Provider>
+                </ConfigProvider>
+            </BrowserRouter>
+        );
+
+        expect(getByText("0")).toBeInTheDocument();
+        expect(queryByText("1")).not.toBeInTheDocument();
+        const voteButton = getByTestId("vote-button");
+        await act(async () => { await userEvent.click(voteButton) });
+        
+        expect(getByText("1")).toBeInTheDocument();
+        expect(queryByText("0")).not.toBeInTheDocument();
+    });
+
+    it ('should render argument input', async () => {  
+        const { getByText, getByTestId } = render(
+            <BrowserRouter>
+                <ConfigProvider routes={{ ...routes }} config={{ translation: { enable: false } }}>
+                    <DataProviderContext.Provider value={{ dataProvider: data }}>
+                        <AuthContext.Provider value={{ currentUser: currentUser, isLoggedIn: true }}>
+                            <ResponsiveProvider>
+                                <ModalProvider>
+                                    <ListProvider>
+                                        <ToastProvider>
+                                            <VoteProvider>
+                                                <IdProvider>
+                                                    <InputProvider>
+                                                        <IconProvider library={regularIcons}>
+                                                            <IntlProvider locale="en">
+                                                                <Argument
+                                                                    argument={argument}
+                                                                    debatePositions={debatePositions}
+                                                                    debateName={debateName}
+                                                                    nestingLevel={0}
+                                                                    debateIsActive
+                                                                />
+                                                            </IntlProvider>
+                                                        </IconProvider>
+                                                    </InputProvider>
+                                                </IdProvider>
+                                            </VoteProvider>
+                                        </ToastProvider>
+                                    </ListProvider>
+                                </ModalProvider>
+                            </ResponsiveProvider>
+                        </AuthContext.Provider>
+                    </DataProviderContext.Provider>
+                </ConfigProvider>
+            </BrowserRouter>
+        );
+
+        const replyButton = getByTestId("action-reply-button");
+        await act(async () => { await userEvent.click(replyButton) });
+        
+        expect(getByText("Your position")).toBeInTheDocument();
+        expect(getByText("Your answer")).toBeInTheDocument();
+        expect(getByText(debatePositions[1].name)).toBeInTheDocument();
+    });
+});

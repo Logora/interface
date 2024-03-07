@@ -1,10 +1,12 @@
 @import '~@logora/debate.styles.theme/_theme.scss';
 
-.readMoreElement {
-    font-weight: $font-weight-bold;
-    text-decoration: none;
-    color: $text-primary;
-    cursor: pointer;
+.readMore {
+    a.readMoreElement {
+        font-weight: $font-weight-bold;
+        text-decoration: none;
+        color: $text-primary !important;
+        cursor: pointer;
+    }
 }
 
 .contentBody {

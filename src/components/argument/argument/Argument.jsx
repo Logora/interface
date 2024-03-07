@@ -15,15 +15,15 @@ import { Avatar } from "@logora/debate.user.avatar";
 import { ContentFooter } from '@logora/debate.user_content.content_footer';
 import { VoteButton } from '@logora/debate.vote.vote_button';
 import { Button } from '@logora/debate.action.button';
-import { useResponsive } from '@logora/debate.hooks.use_responsive';
 import { VotePaginatedList } from '@logora/debate.list.paginated_list';
 import cx from "classnames";
 import draftToHtml from "draftjs-to-html";
 import styles from "./Argument.module.scss";
 const ArgumentInput = lazy(() => import('@logora/debate.input.argument_input'));
 import { HashScroll } from '@logora/debate.tools.hash_scroll';
+import PropTypes from "prop-types";
 
-export const Argument = ({ argument, argumentReplies, nestingLevel, debatePositions, disableLinks, replyToArgument, flashParent, expandable, debateIsActive, isComment, hideReplies, debateName, vote, fixedContentHeight }) => {
+export const Argument = ({ argument, argumentReplies, nestingLevel, debatePositions, disableLinks, replyToArgument, flashParent, expandable, debateIsActive, isComment, hideReplies, debateName, vote, fixedContentHeight, enableEdition = true, deleteListId }) => {
 	const [expandReplies, setExpandReplies] = useState(false);
 	const [flash, setFlash] = useState(false);
 	const [startReplyInput, setStartReplyInput] = useState(false);
@@ -31,7 +31,6 @@ export const Argument = ({ argument, argumentReplies, nestingLevel, debatePositi
 	const [replies, setReplies] = useState([]);
 	const [activeAnchor, setActiveAnchor] = useState(false);
 	const intl = useIntl();
-	const { isMobile } = useResponsive();
 	const { currentUser } = useAuth();
 	const content = useTranslatedContent(argument.content, argument.language, "content", argument.translation_entries);
 	const position = useTranslatedContent(argument.position?.name, argument.position?.language, "name", argument.position?.translation_entries);
@@ -174,7 +173,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel, debatePositi
 						reportType={"Message"}
 						softDelete={config.actions?.softDelete}
 						deleteType={"messages"}
-						deleteListId={(isMobile || !(argument.position)) ? "argumentList" : `argumentList${argument.position.id}`}
+						deleteListId={deleteListId}
 						enableReply={nestingLevel <= 2}
 						handleReplyTo={toggleReplyInput}
 						shareButton={!isComment}
@@ -186,6 +185,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel, debatePositi
 						showShareText
 						leftReply={isComment}
 						enableReport={!(argument.score == 100 && argument.manual_score)}
+						enableEdition={enableEdition}
 					>
 						<VoteButton
 							voteableType={"Message"}
@@ -305,3 +305,38 @@ export const Argument = ({ argument, argumentReplies, nestingLevel, debatePositi
 };
 
 export const ArgumentContainer = Argument;
+
+Argument.propTypes = {
+    /** Argument data */
+    argument: PropTypes.object.isRequired,
+    /** If reply, array with argument and all parents */
+    argumentReplies: PropTypes.array,
+	/** Nesting level of the argument */
+    nestingLevel: PropTypes.number,
+	/** Positions of the debate */
+    debatePositions: PropTypes.array.isRequired,
+	/** If true, disables links */
+    disableLinks: PropTypes.bool,
+	/** Parent argument */
+    replyToArgument: PropTypes.object,
+	/** Flash border of parent argument */
+    flashParent: PropTypes.func,
+	/** If true, content is expandable */
+    expandable: PropTypes.bool,
+	/** If false, disabled mode in argument */
+    debateIsActive: PropTypes.bool,
+	/** If true, enabled comment styles */
+    isComment: PropTypes.bool,
+	/** If true, hide replies */
+    hideReplies: PropTypes.bool,
+	/** Name of the debate */
+    debateName: PropTypes.string,
+	/** Vote data */
+    vote: PropTypes.object,
+	/** If true, fix argument height */
+    fixedContentHeight: PropTypes.bool,
+	/** If true, enable edition */
+	enableEdition: PropTypes.bool,
+	/** Id of the list to delete the item from */
+	deleteListId: PropTypes.string,
+};

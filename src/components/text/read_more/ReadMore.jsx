@@ -35,7 +35,7 @@ export const ReadMore = (props) => {
     }
     
     return (
-        <div>
+        <div className={styles.readMore}>
             <span className={lineCount ? styles.contentBody : {}} style={lineCount ? lineClampingStyle : {}}>
                 { lineCount ? content : formatContent(content) }
             </span>

@@ -97,6 +97,9 @@
     @include pt(3, xs);
     @include px(3, xs);
     @include px(0, sm);
+    a.debateLink {
+        color: $text-primary !important;
+    }
 }
 
 .debateLink {
