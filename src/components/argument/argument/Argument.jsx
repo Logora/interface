@@ -31,7 +31,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel, debatePositi
 	const [replies, setReplies] = useState([]);
 	const [activeAnchor, setActiveAnchor] = useState(false);
 	const intl = useIntl();
-	const { currentUser } = useAuth();
+	const { isLoggedIn, currentUser } = useAuth();
 	const content = useTranslatedContent(argument.content, argument.language, "content", argument.translation_entries);
 	const position = useTranslatedContent(argument.position?.name, argument.position?.language, "name", argument.position?.translation_entries);
 	const config = useConfig();
@@ -222,27 +222,31 @@ export const Argument = ({ argument, argumentReplies, nestingLevel, debatePositi
 			</div>
 			{ !hideReplies && 
 				<>
-					{ startReplyInput && (
-						<Suspense fallback={null}>
-							<ArgumentInput
-								key={`Reply${argument.id}`}
-								groupId={argument.group_id}
-								groupType={isComment && "Source"}
-								groupName={debateName}
-								positions={debatePositions}
-								parentId={argument.id}
-								positionId={vote?.position_id}
-								disabled={!debateIsActive}
-								hideSourceAction={config?.actions?.disableUserSources || false}
-								onSubmit={() => { 
-									toggleReplyInput();
-									toggleReplies();
-								}}
-								isReply
-								avatarSize={40}
-								placeholder={intl.formatMessage({ id:"input.reply_input.your_answer", defaultMessage: "Your answer" })}
-							/>
-						</Suspense>
+					{ 
+						(!isLoggedIn && config?.actions?.disableInputForVisitor === true) ?
+							null
+						:
+							startReplyInput && (
+								<Suspense fallback={null}>
+									<ArgumentInput
+										key={`Reply${argument.id}`}
+										groupId={argument.group_id}
+										groupType={isComment && "Source"}
+										groupName={debateName}
+										positions={debatePositions}
+										parentId={argument.id}
+										positionId={vote?.position_id}
+										disabled={!debateIsActive}
+										hideSourceAction={config?.actions?.disableUserSources || false}
+										onSubmit={() => { 
+											toggleReplyInput();
+											toggleReplies();
+										}}
+										isReply
+										avatarSize={40}
+										placeholder={intl.formatMessage({ id:"input.reply_input.your_answer", defaultMessage: "Your answer" })}
+									/>
+								</Suspense>
 					)}
 					{ expandReplies &&
 						<div className={styles.repliesList}>
