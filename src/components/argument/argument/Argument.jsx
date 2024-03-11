@@ -169,12 +169,12 @@ export const Argument = ({ argument, argumentReplies, nestingLevel, debatePositi
 				{ !argument.is_deleted &&
 					<ContentFooter
 						resource={argument}
-                    	disabled={!debateIsActive}
+                    	disabled={!debateIsActive || (!isLoggedIn && config?.actions?.disableInputForVisitor === true)}
 						reportType={"Message"}
 						softDelete={config.actions?.softDelete}
 						deleteType={"messages"}
 						deleteListId={deleteListId}
-						enableReply={nestingLevel <= 2 || (!isLoggedIn && config?.actions?.disableInputForVisitor === true)}
+						enableReply={nestingLevel <= 2}
 						handleReplyTo={toggleReplyInput}
 						shareButton={!isComment}
 						shareUrl={"https://app.logora.fr/share/a/" + argument.id}
