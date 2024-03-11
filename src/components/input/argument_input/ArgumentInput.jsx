@@ -169,6 +169,7 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
 			    };
 			    storedData = Object.assign(storedData, replyArgumentData);
 			    setSavedReply(storedData);
+                requireAuthentication({ loginAction: "argument" });
             } else {
                 requireAuthentication({ loginAction: "argument" });
             }
