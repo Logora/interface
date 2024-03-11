@@ -174,7 +174,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel, debatePositi
 						softDelete={config.actions?.softDelete}
 						deleteType={"messages"}
 						deleteListId={deleteListId}
-						enableReply={nestingLevel <= 2}
+						enableReply={nestingLevel <= 2 || (!isLoggedIn && config?.actions?.disableInputForVisitor === true)}
 						handleReplyTo={toggleReplyInput}
 						shareButton={!isComment}
 						shareUrl={"https://app.logora.fr/share/a/" + argument.id}
