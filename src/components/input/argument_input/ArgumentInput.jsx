@@ -165,7 +165,7 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
                 let storedData = savedReply;
 			    let replyArgumentData = {
 				    content: argumentContent,
-				    richContent: replyRichContent,
+				    richContent: argumentRichContent,
 			    };
 			    storedData = Object.assign(storedData, replyArgumentData);
 			    setSavedReply(storedData);
