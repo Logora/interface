@@ -74,8 +74,8 @@ export const AuthModal = ({ onHideModal = null }) => {
 									logoUrl={config.logo?.desktop}
 									providerName={config.provider?.companyName}
 									forgotPasswordUrl={"https://admin.logora.fr/?application=" + config.shortname + "#/forgot_password"}
-									termsUrl={config.provider?.cguUrl || "http://logora.fr/cgu"}
-									privacyUrl={config.provider?.privacyUrl || "http://logora.fr/privacy"}
+									termsUrl={config.provider?.cguUrl || "https://www.logora.com/blog-posts/cgu"}
+									privacyUrl={config.provider?.privacyUrl || "https://www.logora.com/blog-posts/privacy-policy"}
 								/>
 							) : (
 								<SSOForm 
@@ -87,7 +87,7 @@ export const AuthModal = ({ onHideModal = null }) => {
 									logoUrl={config.logo?.desktop}
 									loginUrl={config.auth.login_url}
 									signupUrl={config.auth.registration_url || config.auth.login_url}
-									termsUrl={config.provider?.cguUrl || "http://logora.fr/cgu"}
+									termsUrl={config.provider?.cguUrl || "https://www.logora.com/blog-posts/cgu"}
 									redirectParameter={config.auth.redirectParameter}
 									trackingParameter={config.auth.trackingParameter}
 									trackingValue={config.auth.trackingValue}
