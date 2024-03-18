@@ -131,7 +131,7 @@ export const UpdateUserInfoModal = ({ termsUrl, privacyUrl, showEmailConsent = f
                                             error={errors["first_name"] ? true : false}
                                             message={errors["first_name"]}
                                             data-testid="first-name"
-                                            disabled={config.actions?.disableOnboardingNameUpdate == true}
+                                            disabled={config.actions?.disableOnboardingNameUpdate === true}
                                         />
                                     </div>
                                     <div className={styles.updateProfileInput}>
@@ -145,11 +145,11 @@ export const UpdateUserInfoModal = ({ termsUrl, privacyUrl, showEmailConsent = f
                                             error={errors["last_name"] ? true : false}
                                             message={errors["last_name"]}
                                             data-testid="last-name"
-                                            disabled={config.actions?.disableOnboardingNameUpdate == true}
+                                            disabled={config.actions?.disableOnboardingNameUpdate === true}
                                         />
                                     </div>
                                 </div>
-                                { config.actions?.disableNameUpdate == true &&
+                                { config.actions?.disableNameUpdate == true && config.actions?.disableOnboardingNameUpdate != true &&
                                     <div className={styles.hint}>
                                         { intl.formatMessage({ id:"user.user_edit.user_name_hint", defaultMessage: "last name" }) } 
                                     </div>
