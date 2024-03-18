@@ -21,8 +21,8 @@ export const useUpdateUserInfo = () => {
                 <UpdateUserInfoModal 
                     showEmailConsent={config.auth?.showEmailConsent}
                     showTerms={config.auth?.hideCgu !== true}
-                    termsUrl={config.provider?.cguUrl || "http://logora.fr/cgu"}
-                    privacyUrl={config.provider?.privacyUrl || "http://logora.fr/privacy"}
+                    termsUrl={config.provider?.cguUrl || "https://www.logora.com/blog-posts/cgu"}
+                    privacyUrl={config.provider?.privacyUrl || "https://www.logora.com/blog-posts/privacy-policy"}
                 />
             </Suspense>
         );
