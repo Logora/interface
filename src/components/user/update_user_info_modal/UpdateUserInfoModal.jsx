@@ -126,7 +126,7 @@ export const UpdateUserInfoModal = ({ termsUrl, privacyUrl, showEmailConsent = f
                                             name={"first_name"} 
                                             role="input"
                                             placeholder={intl.formatMessage({ id:"auth_signup_form_first_name_placeholder", defaultMessage: "First name" })} 
-                                            onChange={e => setFirstName(e.target.value)}
+                                            onChange={e => config.actions?.disableOnboardingNameUpdate === true ? null : setFirstName(e.target.value)}
                                             value={firstName}
                                             error={errors["first_name"] ? true : false}
                                             message={errors["first_name"]}
@@ -140,7 +140,7 @@ export const UpdateUserInfoModal = ({ termsUrl, privacyUrl, showEmailConsent = f
                                             name={"last_name"} 
                                             role="input"
                                             placeholder={intl.formatMessage({ id:"auth_signup_form_last_name_placeholder", defaultMessage: "Last name" })} 
-                                            onChange={e => setLastName(e.target.value)}
+                                            onChange={e => config.actions?.disableOnboardingNameUpdate === true ? null : setLastName(e.target.value)}
                                             value={lastName}
                                             error={errors["last_name"] ? true : false}
                                             message={errors["last_name"]}
