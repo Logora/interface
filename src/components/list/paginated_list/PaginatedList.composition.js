@@ -20,7 +20,7 @@ const httpClient = {
                 {
                     "data": {
                         "success": true,
-                        "data": [ 
+                        "data": [
                             { id: 1, name: "First item" },
                             { id: 2, name: "Second item"},
                             { id: 3, name: "Third item"}
@@ -44,15 +44,47 @@ export const DefaultPaginatedList = () => {
                     <IconProvider library={regularIcons}>
                         <ResponsiveProvider>
                             <DataProviderContext.Provider value={{ dataProvider: data }}>
-                                <PaginatedList 
+                                <PaginatedList
                                     currentListId={"itemList"}
-                                    resource={'/items'} 
+                                    resource={'/items'}
                                     sort={"-created_at"}
                                     loadingComponent={null}
-                                    resourcePropName={"item"} 
+                                    resourcePropName={"item"}
                                     perPage={10}
                                     withPagination={false}
-                                    countless={true}
+                                    cursorPagination
+                                    staticContext={null}
+                                    staticResourceName={"getListItem"}
+                                    display="column"
+                                >
+                                    <ListItem />
+                                </PaginatedList>
+                            </DataProviderContext.Provider>
+                        </ResponsiveProvider>
+                    </IconProvider>
+                </ListProvider>
+            </IntlProvider>
+        </BrowserRouter>
+    );
+};
+
+export const CursorPaginatedList = () => {
+    return (
+        <BrowserRouter>
+            <IntlProvider locale="en">
+                <ListProvider>
+                    <IconProvider library={regularIcons}>
+                        <ResponsiveProvider>
+                            <DataProviderContext.Provider value={{ dataProvider: data }}>
+                                <PaginatedList
+                                    currentListId={"itemList"}
+                                    resource={'/items'}
+                                    sort={"-created_at"}
+                                    loadingComponent={null}
+                                    resourcePropName={"item"}
+                                    perPage={10}
+                                    withPagination
+                                    cursorPagination
                                     staticContext={null}
                                     staticResourceName={"getListItem"}
                                     display="column"
@@ -76,12 +108,12 @@ export const PaginatedListWithPagination = () => {
                     <IconProvider library={regularIcons}>
                         <ResponsiveProvider>
                             <DataProviderContext.Provider value={{ dataProvider: data }}>
-                                <PaginatedList 
+                                <PaginatedList
                                     currentListId={"itemList"}
-                                    resource={'/items'} 
+                                    resource={'/items'}
                                     sort={"-created_at"}
                                     loadingComponent={null}
-                                    resourcePropName={"item"} 
+                                    resourcePropName={"item"}
                                     perPage={1}
                                     withPagination
                                     countless={false}
@@ -109,12 +141,12 @@ export const PaginatedListWithCustomGap = () => {
                     <IconProvider library={regularIcons}>
                         <ResponsiveProvider>
                             <DataProviderContext.Provider value={{ dataProvider: data }}>
-                                <PaginatedList 
+                                <PaginatedList
                                     currentListId={"itemList"}
-                                    resource={'/items'} 
+                                    resource={'/items'}
                                     sort={"-created_at"}
                                     loadingComponent={null}
-                                    resourcePropName={"item"} 
+                                    resourcePropName={"item"}
                                     perPage={1}
                                     withPagination
                                     countless={false}
@@ -144,12 +176,12 @@ export const PaginatedListWithSearchBarAndTitle = () => {
                     <IconProvider library={regularIcons}>
                         <ResponsiveProvider>
                             <DataProviderContext.Provider value={{ dataProvider: data }}>
-                                <PaginatedList 
+                                <PaginatedList
                                     currentListId={"itemList"}
-                                    resource={'/items'} 
+                                    resource={'/items'}
                                     sort={"-created_at"}
                                     loadingComponent={null}
-                                    resourcePropName={"item"} 
+                                    resourcePropName={"item"}
                                     perPage={1}
                                     withPagination={false}
                                     countless={false}
@@ -182,12 +214,12 @@ export const RowPaginatedList = () => {
                     <IconProvider library={regularIcons}>
                         <ResponsiveProvider>
                             <DataProviderContext.Provider value={{ dataProvider: data }}>
-                                <PaginatedList 
+                                <PaginatedList
                                     currentListId={"itemList"}
-                                    resource={'/items'} 
+                                    resource={'/items'}
                                     sort={"-created_at"}
                                     loadingComponent={null}
-                                    resourcePropName={"item"} 
+                                    resourcePropName={"item"}
                                     perPage={1}
                                     withPagination={false}
                                     countless={false}

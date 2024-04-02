@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useDataProvider } from '@logora/debate.data.data_provider';
 import { useResponsive } from "@logora/debate.hooks.use_responsive";
 import { useIntl } from "react-intl";
@@ -51,7 +51,8 @@ export const PaginatedList = ({ staticContext,
 	numberElements,
 	countless,
 	onElementClick,
-	withUrlParams = false
+	withUrlParams = false,
+	cursorPagination = false,
 }) => {
 	const intl = useIntl();
 	const list = useList();
@@ -66,6 +67,7 @@ export const PaginatedList = ({ staticContext,
 	const [currentQuery, setCurrentQuery] = useState(query || null);
 	const [activeTagId, setActiveTagId] = useState(null);
 	const [defaultSelectOption, setDefaultSelectOption] = useState(null);
+	const nextPageToken = useRef(null)
 	const urlParams = new URLSearchParams(location.search);
 
 	const getInitSort = () => {
@@ -208,7 +210,9 @@ export const PaginatedList = ({ staticContext,
 				[perPageParam]: perPage,
 				...(currentSort && !currentQuery && { [sortParam]: currentSort }),
 				...(currentQuery && { [queryParam]: currentQuery }),
-				...(countless === true && { countless: true }),
+				...(countless === true && !cursorPagination && { countless: true }),
+				...(cursorPagination === true && { cursor_pagination: true }),
+				...(nextPageToken.current && { next_page_token: nextPageToken.current }),
 				...currentFilters,
 				...(activeTagId && { [tagParam]: activeTagId })
 			}
@@ -221,6 +225,9 @@ export const PaginatedList = ({ staticContext,
 							onUpdateTotal(headers[totalHeaderParam || "total"]);
 						}
 					}
+				}
+				if (response?.data?.next_page_token) {
+					nextPageToken.current = response.data.next_page_token;
 				}
 				let newElements = response?.data?.data;
 				if (onElementsLoad) {
@@ -317,7 +324,20 @@ export const PaginatedList = ({ staticContext,
 					</div>
 			) :
 				<>
-					<div className={cx(styles.paginatedList, { [styles.paginatedListIsTablet]: !isMobile && !isDesktop, [styles.centeredList]: display === "column", [styles.column]: display === "column", [styles.twoElementsPerLine]: elementsPerLine === 2, [styles.oneElementPerLine]: elementsPerLine === 1, [styles.indexLayoutList]: indexLayout, [styles.listIsDesktop]: isDesktop, [styles.listIsTablet]: isTablet && !isDesktop, [styles.listIsMobile]: isMobile })} style={{ gap: gap }}>
+					<div
+						className={cx(styles.paginatedList, {
+							[styles.paginatedListIsTablet]: !isMobile && !isDesktop,
+							[styles.centeredList]: display === "column",
+							[styles.column]: display === "column",
+							[styles.twoElementsPerLine]: elementsPerLine === 2,
+							[styles.oneElementPerLine]: elementsPerLine === 1,
+							[styles.indexLayoutList]: indexLayout,
+							[styles.listIsDesktop]: isDesktop,
+							[styles.listIsTablet]: isTablet && !isDesktop,
+							[styles.listIsMobile]: isMobile
+						})}
+						style={{ gap: gap }}
+					>
 						{currentResources.map(displayResource)}
 						{/* Show loading components directly in list when loading more elements */}
 						{isLoading ?
@@ -419,6 +439,8 @@ PaginatedList.propTypes = {
 	numberElements: PropTypes.number,
 	/** Activate countless */
 	countless: PropTypes.bool,
+	/** Activate cursor pagination. Will disable countless by default. */
+	cursorPagination: PropTypes.bool,
 	/** Activate url params */
 	withUrlParams: PropTypes.bool,
 };

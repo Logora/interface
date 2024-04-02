@@ -20,12 +20,25 @@ export const ListProvider = ({ children }) => {
         setUpdateElements(updateElements => ({...updateElements, [listId]: elements}));
     }
 
-    const remove = (listId, elements) => { 
+    const remove = (listId, elements) => {
         setRemoveElements(removeElements => ({...removeElements, [listId]: elements}));
     }
 
     return (
-        <ListContext.Provider value={{ add, addPinned, update, remove, addElements, addPinnedElements, updateElements, removeElements, setAddElements, setAddPinnedElements, setUpdateElements, setRemoveElements }}>
+        <ListContext.Provider value={{
+            add,
+            addPinned,
+            update,
+            remove,
+            addElements,
+            addPinnedElements,
+            updateElements,
+            removeElements,
+            setAddElements,
+            setAddPinnedElements,
+            setUpdateElements,
+            setRemoveElements
+        }}>
             { children }
         </ListContext.Provider>
     );
