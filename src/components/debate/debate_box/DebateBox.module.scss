@@ -82,6 +82,18 @@
   padding: $box-spacing;
 }
 
+.subApplication {
+  > img {
+    height: 20px;
+    @include mr(2, xs);
+  }
+  @include mb(2, xs);
+  color: $text-secondary;
+  font-size: $font-size-extra-small;
+  display: flex;
+  align-items: center;
+}
+
 .debateBoxTitle {
   font-size: $font-size-large;
 }

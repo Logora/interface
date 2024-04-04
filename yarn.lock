@@ -486,7 +486,7 @@ __metadata:
     "@lexical/utils": ^0.12.5
     "@rooks/use-previous": ^4.11.2
     "@rooks/use-sessionstorage-state": ^4.11.2
-    "@testing-library/dom": ^9.2.0
+    "@testing-library/dom": 9.0.0
     "@testing-library/react": ^14.0.0
     "@testing-library/user-event": ^14.4.3
     "@types/jest": ">=26.0.0 <27.0.0"
@@ -498,17 +498,17 @@ __metadata:
     chart.js: ^4.4.1
     chartjs-plugin-datalabels: ^2.2.0
     classnames: ^2.3.2
-    core-js: ^3.33.0
+    core-js: ">=3.33.0 <4.0.0"
     draftjs-to-html: ^0.9.1
     flat: ^5.0.2
     lexical: ^0.12.6
     path-to-regexp: ^6.2.1
     prop-types: ^15.8.1
     querystringify: ^2.2.0
-    react: ^17.0.0 || ^18.0.0
+    react: ">=18.2.0 <19.0.0"
     react-chartjs-2: ^5.2.0
     react-copy-to-clipboard: ^5.1.0
-    react-dom: ^17.0.0 || ^18.0.0
+    react-dom: ">=18.2.0 <19.0.0"
     react-hot-toast: ^2.4.1
     react-intl: ^6.1.2
     react-loading-skeleton: ^3.0.2
@@ -516,14 +516,12 @@ __metadata:
     react-router: ^5.3.4
     react-router-dom: ^5.3.4
     react-use-id-hook: ^1.0.1
-    sass: ^1.69.5
+    sass: 1.69.5
     use-debounce: ^10.0.0
     use-onclickoutside: ^0.4.1
     uuid: ^9.0.1
     webfontloader: ^1.6.28
   peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
     react-router: ^5.3.4
     react-router-dom: ^5.3.4
   languageName: unknown
@@ -597,7 +595,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@testing-library/dom@npm:^9.0.0, @testing-library/dom@npm:^9.2.0":
+"@testing-library/dom@npm:^9.0.0":
   version: 9.3.4
   resolution: "@testing-library/dom@npm:9.3.4"
   dependencies:
@@ -1305,10 +1303,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"core-js@npm:^3.33.0":
-  version: 3.36.0
-  resolution: "core-js@npm:3.36.0"
-  checksum: 48c807d5055ad0424f52d13583e96ddca2efcdc4e3cd9c479d60f269c8fe225191cd4e26a4593f43f7ef6dba08d161091147ecf8ae0300c15bc648a4f555217b
+"core-js@npm:>=3.33.0 <4.0.0":
+  version: 3.36.1
+  resolution: "core-js@npm:3.36.1"
+  checksum: 6f6c152179bd0673da34e67a82c6a5c37f31f9fbe908e9caf93749dc62a25b6e07fbff2411de3b74bb2d0661b7f9fb247115ba8efabf9904f5fef26edead515e
   languageName: node
   linkType: hard
 
@@ -2877,7 +2875,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-dom@npm:^17.0.0 || ^18.0.0":
+"react-dom@npm:>=18.2.0 <19.0.0":
   version: 18.2.0
   resolution: "react-dom@npm:18.2.0"
   dependencies:
@@ -3021,7 +3019,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react@npm:^17.0.0 || ^18.0.0":
+"react@npm:>=18.2.0 <19.0.0":
   version: 18.2.0
   resolution: "react@npm:18.2.0"
   dependencies:
@@ -3098,16 +3096,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sass@npm:^1.69.5":
-  version: 1.71.1
-  resolution: "sass@npm:1.71.1"
+"sass@npm:1.69.5":
+  version: 1.69.5
+  resolution: "sass@npm:1.69.5"
   dependencies:
     chokidar: ">=3.0.0 <4.0.0"
     immutable: ^4.0.0
     source-map-js: ">=0.6.2 <2.0.0"
   bin:
     sass: sass.js
-  checksum: 19c4939d3042eb9459d462bbd27b1f576fa18034e23c87ca0005b87effdee431c16503b5a785edcdcde1a76dfb804716d9ad42c85a78968ac3825d515e45cb53
+  checksum: c66f4f02882e7aa7aa49703824dadbb5a174dcd05e3cd96f17f73687889aab6027d078b518e2c04b594dfd89b2f574824bf935c7aee46c770aa6be9aafcc49f2
   languageName: node
   linkType: hard
 
@@ -3475,8 +3473,6 @@ __metadata:
 "text_editor-87beba@workspace:src/components/input/text_editor":
   version: 0.0.0-use.local
   resolution: "text_editor-87beba@workspace:src/components/input/text_editor"
-  dependencies:
-    "@testing-library/dom": 9.0.0
   languageName: unknown
   linkType: soft
 
