@@ -126,12 +126,12 @@ export const UpdateUserInfoModal = ({ termsUrl, privacyUrl, showEmailConsent = f
                                             name={"first_name"} 
                                             role="input"
                                             placeholder={intl.formatMessage({ id:"auth_signup_form_first_name_placeholder", defaultMessage: "First name" })} 
-                                            onChange={e => setFirstName(e.target.value)}
+                                            onChange={e => config.actions?.disableOnboardingNameUpdate === true ? null : setFirstName(e.target.value)}
                                             value={firstName}
                                             error={errors["first_name"] ? true : false}
                                             message={errors["first_name"]}
                                             data-testid="first-name"
-                                            disabled={config.actions?.disableOnboardingNameUpdate == true}
+                                            disabled={config.actions?.disableOnboardingNameUpdate === true}
                                         />
                                     </div>
                                     <div className={styles.updateProfileInput}>
@@ -140,16 +140,16 @@ export const UpdateUserInfoModal = ({ termsUrl, privacyUrl, showEmailConsent = f
                                             name={"last_name"} 
                                             role="input"
                                             placeholder={intl.formatMessage({ id:"auth_signup_form_last_name_placeholder", defaultMessage: "Last name" })} 
-                                            onChange={e => setLastName(e.target.value)}
+                                            onChange={e => config.actions?.disableOnboardingNameUpdate === true ? null : setLastName(e.target.value)}
                                             value={lastName}
                                             error={errors["last_name"] ? true : false}
                                             message={errors["last_name"]}
                                             data-testid="last-name"
-                                            disabled={config.actions?.disableOnboardingNameUpdate == true}
+                                            disabled={config.actions?.disableOnboardingNameUpdate === true}
                                         />
                                     </div>
                                 </div>
-                                { config.actions?.disableNameUpdate == true &&
+                                { config.actions?.disableNameUpdate == true && config.actions?.disableOnboardingNameUpdate != true &&
                                     <div className={styles.hint}>
                                         { intl.formatMessage({ id:"user.user_edit.user_name_hint", defaultMessage: "last name" }) } 
                                     </div>

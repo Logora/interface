@@ -3,6 +3,7 @@ import { Modal, useModal } from "@logora/debate.dialog.modal";
 import { FormattedMessage } from "react-intl";
 import { Button } from '@logora/debate.action.button';
 import { Icon } from "@logora/debate.icons.icon";
+import { useTranslatedContent } from '@logora/debate.translation.translated_content';
 import PropTypes from "prop-types";
 import styles from "./SideModal.module.scss";
 
@@ -22,24 +23,23 @@ export const SideModal = ({ modalTitle, onChooseSide, title, positions, disabled
             <div className={styles.modalContent}>{title}</div>
             <div className={styles.modalActions}>
                 { positions.slice(0, 2).map((position) => {
-                if (
-                    disabledPositions &&
-                    disabledPositions.length > 0 &&
-                    disabledPositions.filter((pos) => pos.id === position.id).length > 0
-                ) {
-                    return null;
+                    if (
+                        disabledPositions &&
+                        disabledPositions.length > 0 &&
+                        disabledPositions.filter((pos) => pos.id === position.id).length > 0
+                    )   { return null; }
+                        return (
+                            <Button
+                                data-tid={"action_choose_side"}
+                                key={position.id}
+                                className={styles.modalAction}
+                                onClick={() => handleChoosePosition(position.id)}
+                            >
+                                { useTranslatedContent(position.name, position.language, "name", position.translation_entries).translatedContent }
+                            </Button>
+                        );
+                    })
                 }
-                    return (
-                        <Button
-                            data-tid={"action_choose_side"}
-                            key={position.id}
-                            className={styles.modalAction}
-                            onClick={() => handleChoosePosition(position.id)}
-                        >
-                            {position.name}
-                        </Button>
-                    );
-                })}
             </div>
             { disabledPositions?.length > 0 && (
                 <div className={styles.argumentInputWarning}>
@@ -60,7 +60,7 @@ export const SideModal = ({ modalTitle, onChooseSide, title, positions, disabled
                 <div className={styles.neutralPosition}>
                     <div className={styles.userChoice}>
                         <FormattedMessage id={"modal.side_modal.neutral_position"} defaultMessage={"You support the position"} />
-                        <span className={styles.neutralPositionName}>{positions[2].name}</span>
+                        <span className={styles.neutralPositionName}>{ useTranslatedContent(positions[2].name, positions[2].language, "name", positions[2].translation_entries).translatedContent }</span>
                     </div>
                     <FormattedMessage id={"modal.side_modal.neutral_position_change"} defaultMessage={"It is not possible to write an argument with this one. If you wish to participate in the debate, choose one of the positions displayed above."}/>
                 </div>
