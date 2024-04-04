@@ -572,14 +572,14 @@
     "source/context_source_box": {
         "name": "source/context_source_box",
         "scope": "logora.debate",
-        "version": "0.0.37",
+        "version": "0.0.38",
         "mainFile": "index.js",
         "rootDir": "src/components/source/context_source_box"
     },
     "source/context_source_list": {
         "name": "source/context_source_list",
         "scope": "logora.debate",
-        "version": "0.0.35",
+        "version": "0.0.36",
         "mainFile": "index.js",
         "rootDir": "src/components/source/context_source_list"
     },
