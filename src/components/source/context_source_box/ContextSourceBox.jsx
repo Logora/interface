@@ -14,10 +14,10 @@ export const ContextSourceBox = ({ title, imageUrl, date, author }) => {
               { author &&
                 <>
                   <span className={styles.sourceAuthor}>{author}</span>
-                  <span className={styles.separator}>•</span>
+                  <span className={styles.separator}>·</span>
                 </>
               }
-              <span className={styles.sourcePublishedDate}><FormattedDate value={new Date(date)} year="numeric" month="long" day="2-digit" /></span>
+              <span className={styles.sourcePublishedDate}><FormattedDate value={new Date(date)} /></span>
             </div>
             <div className={styles.sourceTitle}>{title}</div>
         </div>
