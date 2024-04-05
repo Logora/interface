@@ -105,7 +105,11 @@ const debate = {
 		}
 	],
 	language: "en",
-    translation_entries: []
+    translation_entries: [],
+	sub_application: {
+		logo: "https://pbs.twimg.com/profile_images/1608100070754238467/NXpjW55F_400x400.jpg",
+		name: "Test Océan"
+	}
 }
 
 export const DefaultDebateBox = (props) => {
@@ -114,6 +118,20 @@ export const DefaultDebateBox = (props) => {
             <IntlProvider locale="en">
 				<ResponsiveProvider>
 					<ConfigProvider routes={{...routes}} config={{ modules: {}}}>
+						<DebateBox debate={props.debate || debate} />
+					</ConfigProvider>
+				</ResponsiveProvider>
+            </IntlProvider>
+        </BrowserRouter>
+    )
+};
+
+export const BrandedDebateBox = (props) => {
+    return (
+        <BrowserRouter>
+            <IntlProvider locale="en">
+				<ResponsiveProvider>
+					<ConfigProvider routes={{...routes}} config={{ modules: {}, actions: { allowDebateBranding: true } }}>
 						<DebateBox debate={props.debate || debate} />
 					</ConfigProvider>
 				</ResponsiveProvider>
