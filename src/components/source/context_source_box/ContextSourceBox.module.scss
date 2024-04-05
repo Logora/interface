@@ -12,8 +12,8 @@
 }
 
 .image {
-    width: 48;
-    height: 48px;
+    width: 48px !important;
+    height: 48px !important;
     border-radius: $box-border-radius;
     object-fit: cover;
 }
@@ -30,7 +30,6 @@
         }
         .separator {
             @include px(1, xs);
-            font-size: $font-size-extra-small;
         }
     }
     .sourceTitle {
