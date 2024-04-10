@@ -33,18 +33,14 @@ export const Avatar = ({ avatarUrl, userName, isOnline = false, size = 40, class
 
     return (
         <div className={styles.avatarContainer}>
-            { isOnline ?
-                <Tooltip text={intl.formatMessage({ id:"user.avatar.online", defaultMessage: "{name} is online" }, { name: userName })}>
-                    <div 
-                        className={styles.avatarBox}
-                    >
-                        { displayImage() }
-                        <span data-testid={"online-pin"} className={styles.onlinePin}></span>
-                    </div>
-                </Tooltip>
-                :
-                displayImage()
-            }
+            <Tooltip text={ isOnline ? intl.formatMessage({ id:"user.avatar.online", defaultMessage: "{name} is online" }, { name: userName }) : userName}>
+                <div 
+                    className={styles.avatarBox}
+                >
+                    { displayImage() }
+                    { isOnline ? <span data-testid={"online-pin"} className={styles.onlinePin}></span> : null }
+                </div>
+            </Tooltip>
         </div>
     )
 };

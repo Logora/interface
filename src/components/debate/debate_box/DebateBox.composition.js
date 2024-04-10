@@ -30,7 +30,7 @@ const debate = {
 		656: "6",
 		657: "0"
 	},
-	participants_count: 3,
+	participants_count: 5,
 	group_context: {
 		id: 273,
 		name: faker.music.songName(),
@@ -99,7 +99,23 @@ const debate = {
 			last_activity: faker.date.recent(),
 			is_expert: false,
 			is_admin: false,
-			points: 1589,
+			points: 65235,
+			eloquence_title: null,
+			occupation: null
+		},
+		{
+			id: 156,
+			hash_id: faker.lorem.slug(),
+			first_name: faker.name.firstName(),
+			last_name: faker.name.lastName(),
+			slug: faker.lorem.slug(),
+			image_url: faker.image.avatar(),
+			full_name: faker.name.fullName(),
+			description: null,
+			last_activity: faker.date.recent(),
+			is_expert: false,
+			is_admin: false,
+			points: 2004,
 			eloquence_title: null,
 			occupation: null
 		}
