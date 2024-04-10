@@ -6,7 +6,7 @@ import cx from 'classnames';
 import styles from './Avatar.module.scss';
 import PropTypes from 'prop-types';
 
-export const Avatar = ({ avatarUrl, userName, isOnline = false, size = 40, className, ...rest }) => {
+export const Avatar = ({ avatarUrl, userName, isOnline = false, showTooltip = false, size = 40, className, ...rest }) => {
     const [fallback, setFallback] = useState(false);
     const intl = useIntl();
 
@@ -33,14 +33,18 @@ export const Avatar = ({ avatarUrl, userName, isOnline = false, size = 40, class
 
     return (
         <div className={styles.avatarContainer}>
-            <Tooltip text={ isOnline ? intl.formatMessage({ id:"user.avatar.online", defaultMessage: "{name} is online" }, { name: userName }) : userName}>
-                <div 
-                    className={styles.avatarBox}
-                >
-                    { displayImage() }
-                    { isOnline ? <span data-testid={"online-pin"} className={styles.onlinePin}></span> : null }
-                </div>
-            </Tooltip>
+            { showTooltip || isOnline ?
+                <Tooltip text={ isOnline ? intl.formatMessage({ id:"user.avatar.online", defaultMessage: "{name} is online" }, { name: userName }) : userName}>
+                    <div 
+                        className={styles.avatarBox}
+                    >
+                        { displayImage() }
+                        { isOnline ? <span data-testid={"online-pin"} className={styles.onlinePin}></span> : null }
+                    </div>
+                </Tooltip>
+            :
+                displayImage()
+            }
         </div>
     )
 };

@@ -200,7 +200,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel, debatePositi
 				{ argument.number_replies > 0 && !hideReplies &&
 					<div className={cx(styles.replyFooter, {[styles.commentReplyFooter]: isComment})} onClick={toggleReplies}>
 						{ argument.replies_authors.map((author, index) => 
-							<Avatar key={index} avatarUrl={author.image_url} userName={author.full_name} size={32} />
+							<Avatar key={index} avatarUrl={author.image_url} userName={author.full_name} size={32} showTooltip />
 						)}
 						<div
 							className={styles.expandRepliesContainer}

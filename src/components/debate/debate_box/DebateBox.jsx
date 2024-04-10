@@ -30,7 +30,7 @@ export const DebateBox = ({ debate }) => {
         return (
             <div className={styles.debateParticipantItem} key={index}>
                 <Link to={routes.userShowLocation.toUrl({ userSlug: participant.hash_id })}>
-                    <Avatar avatarUrl={participant.image_url} userName={participant.full_name} isOnline={(new Date(participant.last_activity) > Date.now())} />
+                    <Avatar avatarUrl={participant.image_url} userName={participant.full_name} isOnline={(new Date(participant.last_activity) > Date.now())} showTooltip />
                 </Link>
             </div>
         );
