@@ -90,13 +90,13 @@ export const DebateBox = ({ debate }) => {
                                 {debate.participants.map(displayParticipant)}
                                 {debate.participants_count > 3 &&
                                     <div className={styles.debateParticipantItem}>
-                                        <Link to={routes.debateShowLocation.toUrl({ debateSlug: debate.slug })}>
-                                            <div className={styles.participantsCountBox}>
-                                                <Tooltip text={intl.formatMessage({ id:"debate.debate_box.participants_count", defaultMessage: "Number of debaters" })}>
-                                                    +{intl.formatNumber(debate.participants_count - 3, { notation: 'compact', maximumFractionDigits: 1, roundingMode: "floor" })}
-                                                </Tooltip>
-                                            </div>
-                                        </Link>
+                                        <Tooltip text={intl.formatMessage({ id:"debate.debate_box.participants_count", defaultMessage: "Number of debaters" })}>
+                                            <Link to={routes.debateShowLocation.toUrl({ debateSlug: debate.slug })}>
+                                                    <div className={styles.participantsCountBox}>
+                                                            +{intl.formatNumber(debate.participants_count - 3, { notation: 'compact', maximumFractionDigits: 1, roundingMode: "floor" })}
+                                                    </div>
+                                            </Link>
+                                        </Tooltip>
                                     </div>
                                 }
                             </>
