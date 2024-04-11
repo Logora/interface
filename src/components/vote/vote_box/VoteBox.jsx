@@ -280,9 +280,11 @@ export const VoteBox = ({ numberVotes, votePositions, voteableType, voteableId, 
                             }
                         </div>
                         <div className={styles.voteBoxFooter}>
-                            <div className={styles.voteResultsNumberVoters}>
-                                <FormattedMessage id="vote.vote_box.votes" values={{ votesCount: totalVotes }} defaultMessage="{votesCount} votes" />
-                            </div>
+                            {showTotal && (
+                                <div className={styles.voteResultsNumberVoters}>
+                                    <FormattedMessage id="vote.vote_box.votes" values={{ votesCount: totalVotes }} defaultMessage="{votesCount} votes" />
+                                </div>
+                            )}
                             {!disabled &&
                                 <div>
                                     {currentVote ?
