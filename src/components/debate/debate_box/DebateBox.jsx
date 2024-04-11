@@ -4,6 +4,7 @@ import { useConfig, useRoutes } from '@logora/debate.data.config_provider';
 import { Avatar } from '@logora/debate.user.avatar';
 import { useIntl, FormattedMessage } from 'react-intl';
 import { Icon } from '@logora/debate.icons.icon';
+import { Tooltip } from '@logora/debate.dialog.tooltip';
 import { useResponsive } from '@logora/debate.hooks.use_responsive';
 import { useTranslatedContent } from '@logora/debate.translation.translated_content';
 import cx from 'classnames';
@@ -29,7 +30,7 @@ export const DebateBox = ({ debate }) => {
         return (
             <div className={styles.debateParticipantItem} key={index}>
                 <Link to={routes.userShowLocation.toUrl({ userSlug: participant.hash_id })}>
-                    <Avatar avatarUrl={participant.image_url} userName={participant.full_name} isOnline={(new Date(participant.last_activity) > Date.now())} />
+                    <Avatar avatarUrl={participant.image_url} userName={participant.full_name} isOnline={(new Date(participant.last_activity) > Date.now())} showTooltip />
                 </Link>
             </div>
         );
@@ -89,11 +90,13 @@ export const DebateBox = ({ debate }) => {
                                 {debate.participants.map(displayParticipant)}
                                 {debate.participants_count > 3 &&
                                     <div className={styles.debateParticipantItem}>
-                                        <Link to={routes.debateShowLocation.toUrl({ debateSlug: debate.slug })}>
-                                            <div className={styles.participantsCountBox}>
-                                                +{intl.formatNumber(debate.participants_count - 3, { notation: 'compact', maximumFractionDigits: 1, roundingMode: "floor" })}
-                                            </div>
-                                        </Link>
+                                        <Tooltip text={intl.formatMessage({ id:"debate.debate_box.participants_count", defaultMessage: "Number of debaters" })}>
+                                            <Link to={routes.debateShowLocation.toUrl({ debateSlug: debate.slug })}>
+                                                    <div className={styles.participantsCountBox}>
+                                                            +{intl.formatNumber(debate.participants_count - 3, { notation: 'compact', maximumFractionDigits: 1, roundingMode: "floor" })}
+                                                    </div>
+                                            </Link>
+                                        </Tooltip>
                                     </div>
                                 }
                             </>
