@@ -203,6 +203,38 @@ export const VoteBoxNeutralPosition = () => {
     );
 };
 
+export const VoteBoxWithoutTotal = () => {
+    return (
+        <div style={{ width: "400px" }}>
+            <BrowserRouter>
+                <IntlProvider locale="en">
+                    <DataProviderContext.Provider value={{ dataProvider: data }}>
+                        <AuthContext.Provider value={{ currentUser: currentUser, isLoggedIn: true }}>
+                            <IconProvider library={regularIcons}>
+                                <ToastProvider>
+                                    <ConfigProvider config={{}} routes={{ ...routes }}>
+                                        <ModalProvider>
+                                            <VoteProvider>
+                                                <VoteBox 
+                                                    voteableId={debate.id}
+                                                    numberVotes={debate.votes_count}
+                                                    voteableType={"Group"}
+                                                    votePositions={votePositions}
+                                                    showTotal={false}
+                                                />
+                                            </VoteProvider>
+                                        </ModalProvider>
+                                    </ConfigProvider>
+                                </ToastProvider>
+                            </IconProvider>
+                        </AuthContext.Provider>
+                    </DataProviderContext.Provider>
+                </IntlProvider>
+            </BrowserRouter>
+        </div>
+    );
+};
+
 export const VoteBoxDisabled = () => {
     return (
         <div style={{ width: "400px" }}>
