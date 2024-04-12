@@ -225,7 +225,21 @@
         "version": "",
         "defaultScope": "logora.debate",
         "mainFile": "index.js",
-        "rootDir": "src/components/dialog/drawer"
+        "rootDir": "src/components/dialog/drawer",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "dependencies": {
+                        "react": "^17.0.0 || ^18.0.0",
+                        "react-dom": "^17.0.0 || ^18.0.0"
+                    },
+                    "peerDependencies": {
+                        "react-dom": "^17.0.0 || ^18.0.0",
+                        "react": "^17.0.0 || ^18.0.0"
+                    }
+                }
+            }
+        }
     },
     "dialog/dropdown": {
         "name": "dialog/dropdown",
