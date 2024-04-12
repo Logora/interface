@@ -36,7 +36,7 @@ export const Drawer = ({ isOpen = false, onClose, title, size = '60vw', enableOv
                             {title}
                         </div>
                     }
-                    <div onClick={closeDrawer} className={cx(styles.closeButton)}>
+                    <div onClick={closeDrawer} className={cx(styles.closeButton)} data-testid="close-button">
                         <Icon name="close" width={15} height={15} />
                     </div>
                 </div>

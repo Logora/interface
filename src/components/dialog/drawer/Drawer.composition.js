@@ -12,7 +12,7 @@ export const DefaultDrawer = () => {
 
     return (
         <IconProvider library={regularIcons}>
-            <div onClick={toggleDrawer}>Click here to toggle drawer</div>
+            <div onClick={toggleDrawer} data-testid="open-button">Click here to toggle drawer</div>
 
             <Drawer isOpen={isOpen} onClose={() => setIsOpen(false)}>
                 <div>Drawer content</div>
