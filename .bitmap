@@ -221,25 +221,10 @@
     },
     "dialog/drawer": {
         "name": "dialog/drawer",
-        "scope": "",
-        "version": "",
-        "defaultScope": "logora.debate",
+        "scope": "logora.debate",
+        "version": "0.0.1",
         "mainFile": "index.js",
-        "rootDir": "src/components/dialog/drawer",
-        "config": {
-            "teambit.dependencies/dependency-resolver": {
-                "policy": {
-                    "dependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0"
-                    },
-                    "peerDependencies": {
-                        "react-dom": "^17.0.0 || ^18.0.0",
-                        "react": "^17.0.0 || ^18.0.0"
-                    }
-                }
-            }
-        }
+        "rootDir": "src/components/dialog/drawer"
     },
     "dialog/dropdown": {
         "name": "dialog/dropdown",
