@@ -219,6 +219,14 @@
         "mainFile": "index.js",
         "rootDir": "src/components/dialog/dialog_box"
     },
+    "dialog/drawer": {
+        "name": "dialog/drawer",
+        "scope": "",
+        "version": "",
+        "defaultScope": "logora.debate",
+        "mainFile": "index.js",
+        "rootDir": "src/components/dialog/drawer"
+    },
     "dialog/dropdown": {
         "name": "dialog/dropdown",
         "scope": "logora.debate",
