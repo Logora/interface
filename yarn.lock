@@ -142,10 +142,12 @@
   dependencies:
     "@lexical/utils" "0.12.6"
 
-"@lexical/headless@^0.12.6":
-  version "0.12.6"
-  resolved "https://registry.yarnpkg.com/@lexical/headless/-/headless-0.12.6.tgz#4a05390be2637879b425b88c162dfbd48050e2e2"
-  integrity sha512-FDyN9FRvWqWUrMp3vzQAH+KngYLxwAfSjinhf40D+r4Y5OxgU7rpYBBBeQ5n6H+Zr1YvkIRFnTmOdqlKUcm3/g==
+"@lexical/headless@^0.14.3":
+  version "0.14.3"
+  resolved "https://registry.yarnpkg.com/@lexical/headless/-/headless-0.14.3.tgz#f649a6925282fe58996d90f9a7097dc2a86f3a13"
+  integrity sha512-/fNeDHm0WvnlquKgjJDJ0G9Di8TJU6gw0AaLmNLI1Iz+8HvMZ8P6R8OW0l+uRtJMC0TlFt6iLxira6rntQ2K2g==
+  dependencies:
+    lexical "0.14.3"
 
 "@lexical/history@0.12.6":
   version "0.12.6"
@@ -655,6 +657,11 @@ isarray@0.0.1:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-4.0.0.tgz#19203fb59991df98e3a287050d4647cdeaf32499"
   integrity sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==
+
+lexical@0.14.3:
+  version "0.14.3"
+  resolved "https://registry.yarnpkg.com/lexical/-/lexical-0.14.3.tgz#81c41a4c585100192f6d330e81cc6013bf326f5e"
+  integrity sha512-LaWSKj6OpvJ+bdfQA2AybEzho0YoWfAdRGkuCtPNYd/uf7IHyoEwCFQsIBvWCQF23saDgE1NONR4uiwl6iaJ9g==
 
 lexical@^0.12.6:
   version "0.12.6"
