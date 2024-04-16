@@ -10,6 +10,9 @@ jobs:
     runs-on: ubuntu-latest
     if: "!contains(github.event.head_commit.message, '[skip-ci]')"
     env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GIT_USER_NAME: ${{ github.actor }}
+      GIT_USER_EMAIL: '${{ github.actor }}@users.noreply.github.com'
       BIT_CONFIG_ACCESS_TOKEN: ${{ secrets.BIT_TOKEN }}
     steps:
       - name: Checkout repository
