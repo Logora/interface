@@ -1,0 +1,29 @@
+---
+description: A drawer component.
+labels: ['drawer', 'overlay']
+---
+
+import { Drawer } from './Drawer';
+
+A component that renders a clickable drawer with the optional button, title, and content that can be customized. 
+The drawer slides from the right side of the screen and comes with a custom size and the possibility to enable overlay.
+
+### Component usage
+
+To import the component:
+```js
+import { Drawer } from '@logora/debate.dialog.drawer';
+```
+
+To use the Drawer component:
+
+```js
+<Drawer 
+    onClose={handleCloseFunction}
+    title="My Drawer"
+    size="60vw"
+    enableOverlay={true}
+>
+    Drawer Content
+</Drawer>
+```

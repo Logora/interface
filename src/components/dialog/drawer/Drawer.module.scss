@@ -1,0 +1,35 @@
+@import '~@logora/debate.styles.theme/_theme.scss';
+@import '~@logora/debate.styles.spacing/_spacing.scss';
+
+.drawer {
+    overflow: auto;
+    @include media-breakpoint-down(sm) {
+        width: 99% !important;
+    }
+}
+
+.header {
+    display: flex !important;
+    align-items: center !important;
+    color: $text-primary;
+    background-color: $background-color-primary;
+    @include px(3, xs);
+    @include py(3, xs);
+    min-height: 30px;
+}
+
+.closeButton {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer;
+    margin-left: auto;
+    color: $text-secondary;
+    svg {
+        fill: $text-secondary;
+    }
+}
+
+.body {
+    @include py(2, xs);
+}

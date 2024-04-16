@@ -48,6 +48,7 @@
     "react-hot-toast": "^2.4.1",
     "react-intl": "^6.1.2",
     "react-loading-skeleton": "^3.0.2",
+    "react-modern-drawer": "^1.2.2",
     "react-oauth-popup": "^1.0.5",
     "react-router": "^5.3.4",
     "react-router-dom": "^5.3.4",
@@ -59,8 +60,8 @@
   },
   "devDependencies": {
     "@faker-js/faker": "^7.6.0",
-    "@testing-library/dom": "^9.2.0",
-    "@testing-library/react": "^14.0.0",
+    "@testing-library/dom": "^10.0.0",
+    "@testing-library/react": "^15.0.2",
     "@testing-library/user-event": "^14.4.3",
     "sass": "^1.69.5"
   },

@@ -14,6 +14,7 @@ import { Close } from "./Close"
 import { Code } from "./Code"
 import { Community } from "./Community"
 import { Crown } from "./Crown"
+import { Document } from './Document'
 import { Downvote } from "./Downvote"
 import { Ellipsis } from "./Ellipsis"
 import { ExpertBadge } from "./ExpertBadge"
@@ -67,6 +68,7 @@ export const RegularIconsLibrary = () => {
             <Code width={50} height={50} data-testid={"code-icon"} style={{margin: "15px"}} />
             <Community width={50} height={50} data-testid={"community-icon"} style={{margin: "15px"}} />
             <Crown width={50} height={50} data-testid={"crown-icon"} style={{margin: "15px"}} />
+            <Document width={50} height={50} data-testid={"document-icon"} style={{margin: "15px"}} />
             <Downvote width={50} height={50} data-testid={"downvote-icon"} style={{margin: "15px"}} />
             <Ellipsis width={50} height={50} data-testid={"ellipsis-icon"} style={{margin: "15px"}} />
             <ExpertBadge width={50} height={50} data-testid={"expert-badge-icon"} style={{margin: "15px"}} />
