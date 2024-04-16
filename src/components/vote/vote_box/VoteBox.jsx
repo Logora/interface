@@ -141,7 +141,7 @@ export const VoteBox = ({ numberVotes, votePositions, voteableType, voteableId, 
             api.create("votes", data).then(response => {
                 if(response.data.success) {
                     setCurrentVote(response.data.data.resource);
-                    toast(intl.formatMessage({ id: "header.vote_confirm_modal", defaultMessage: "Your vote has been saved !"  }), { type: "success", points: 1 });
+                    toast(intl.formatMessage({ id: "header.vote_confirm_modal", defaultMessage: "Your vote has been saved !"  }), { type: "success" });
                 }
             });
         }
