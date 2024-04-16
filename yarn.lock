@@ -5,7 +5,7 @@ __metadata:
   version: 6
   cacheKey: 8
 
-"@babel/code-frame@npm:^7.10.4, @babel/code-frame@npm:^7.12.13":
+"@babel/code-frame@npm:^7.10.4":
   version: 7.24.2
   resolution: "@babel/code-frame@npm:7.24.2"
   dependencies:
@@ -31,15 +31,6 @@ __metadata:
     js-tokens: ^4.0.0
     picocolors: ^1.0.0
   checksum: 5f17b131cc3ebf3ab285a62cf98a404aef1bd71a6be045e748f8d5bf66d6a6e1aefd62f5972c84369472e8d9f22a614c58a89cd331eb60b7ba965b31b1bbeaf5
-  languageName: node
-  linkType: hard
-
-"@babel/runtime@npm:7.20.0":
-  version: 7.20.0
-  resolution: "@babel/runtime@npm:7.20.0"
-  dependencies:
-    regenerator-runtime: ^0.13.10
-  checksum: 637fca51db34f3a59d329b7e0d01163769fe94915fdb04e4ac4ba62de9f1ca637ce3a564fe3b0166ccdd7f02f14b6a5707ee3e550b3e01c72327c6620d8e6a8b
   languageName: node
   linkType: hard
 
@@ -164,51 +155,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@jest/expect-utils@npm:^29.7.0":
-  version: 29.7.0
-  resolution: "@jest/expect-utils@npm:29.7.0"
-  dependencies:
-    jest-get-type: ^29.6.3
-  checksum: 75eb177f3d00b6331bcaa057e07c0ccb0733a1d0a1943e1d8db346779039cb7f103789f16e502f888a3096fb58c2300c38d1f3748b36a7fa762eb6f6d1b160ed
-  languageName: node
-  linkType: hard
-
-"@jest/schemas@npm:^29.6.3":
-  version: 29.6.3
-  resolution: "@jest/schemas@npm:29.6.3"
-  dependencies:
-    "@sinclair/typebox": ^0.27.8
-  checksum: 910040425f0fc93cd13e68c750b7885590b8839066dfa0cd78e7def07bbb708ad869381f725945d66f2284de5663bbecf63e8fdd856e2ae6e261ba30b1687e93
-  languageName: node
-  linkType: hard
-
-"@jest/types@npm:^26.6.2":
-  version: 26.6.2
-  resolution: "@jest/types@npm:26.6.2"
-  dependencies:
-    "@types/istanbul-lib-coverage": ^2.0.0
-    "@types/istanbul-reports": ^3.0.0
-    "@types/node": "*"
-    "@types/yargs": ^15.0.0
-    chalk: ^4.0.0
-  checksum: a0bd3d2f22f26ddb23f41fddf6e6a30bf4fab2ce79ec1cb6ce6fdfaf90a72e00f4c71da91ec61e13db3b10c41de22cf49d07c57ff2b59171d64b29f909c1d8d6
-  languageName: node
-  linkType: hard
-
-"@jest/types@npm:^29.6.3":
-  version: 29.6.3
-  resolution: "@jest/types@npm:29.6.3"
-  dependencies:
-    "@jest/schemas": ^29.6.3
-    "@types/istanbul-lib-coverage": ^2.0.0
-    "@types/istanbul-reports": ^3.0.0
-    "@types/node": "*"
-    "@types/yargs": ^17.0.8
-    chalk: ^4.0.0
-  checksum: a0bcf15dbb0eca6bdd8ce61a3fb055349d40268622a7670a3b2eb3c3dbafe9eb26af59938366d520b86907b9505b0f9b29b85cec11579a9e580694b87cd90fcc
-  languageName: node
-  linkType: hard
-
 "@kurkle/color@npm:^0.3.0":
   version: 0.3.2
   resolution: "@kurkle/color@npm:0.3.2"
@@ -216,7 +162,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@lexical/clipboard@npm:0.12.6, @lexical/clipboard@npm:^0.12.5":
+"@lexical/clipboard@npm:0.12.6":
   version: 0.12.6
   resolution: "@lexical/clipboard@npm:0.12.6"
   dependencies:
@@ -282,7 +228,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@lexical/html@npm:0.12.6, @lexical/html@npm:^0.12.5":
+"@lexical/html@npm:0.12.6":
   version: 0.12.6
   resolution: "@lexical/html@npm:0.12.6"
   dependencies:
@@ -305,7 +251,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@lexical/list@npm:0.12.6, @lexical/list@npm:^0.12.5":
+"@lexical/list@npm:0.12.6":
   version: 0.12.6
   resolution: "@lexical/list@npm:0.12.6"
   dependencies:
@@ -327,7 +273,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@lexical/markdown@npm:0.12.6, @lexical/markdown@npm:^0.12.5":
+"@lexical/markdown@npm:0.12.6":
   version: 0.12.6
   resolution: "@lexical/markdown@npm:0.12.6"
   dependencies:
@@ -352,7 +298,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@lexical/overflow@npm:0.12.6, @lexical/overflow@npm:^0.12.5":
+"@lexical/overflow@npm:0.12.6":
   version: 0.12.6
   resolution: "@lexical/overflow@npm:0.12.6"
   peerDependencies:
@@ -403,7 +349,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@lexical/rich-text@npm:0.12.6, @lexical/rich-text@npm:^0.12.5":
+"@lexical/rich-text@npm:0.12.6":
   version: 0.12.6
   resolution: "@lexical/rich-text@npm:0.12.6"
   peerDependencies:
@@ -415,7 +361,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@lexical/selection@npm:0.12.6, @lexical/selection@npm:^0.12.5":
+"@lexical/selection@npm:0.12.6":
   version: 0.12.6
   resolution: "@lexical/selection@npm:0.12.6"
   peerDependencies:
@@ -444,7 +390,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@lexical/utils@npm:0.12.6, @lexical/utils@npm:^0.12.5":
+"@lexical/utils@npm:0.12.6":
   version: 0.12.6
   resolution: "@lexical/utils@npm:0.12.6"
   dependencies:
@@ -473,28 +419,14 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@logora/ui@workspace:."
   dependencies:
-    "@babel/runtime": 7.20.0
     "@faker-js/faker": ^7.6.0
-    "@lexical/clipboard": ^0.12.5
     "@lexical/headless": ^0.12.6
-    "@lexical/html": ^0.12.5
-    "@lexical/list": ^0.12.5
-    "@lexical/markdown": ^0.12.5
-    "@lexical/overflow": ^0.12.5
     "@lexical/react": ^0.12.6
-    "@lexical/rich-text": ^0.12.5
-    "@lexical/selection": ^0.12.5
-    "@lexical/utils": ^0.12.5
     "@rooks/use-previous": ^4.11.2
     "@rooks/use-sessionstorage-state": ^4.11.2
     "@testing-library/dom": ^9.2.0
     "@testing-library/react": ^14.0.0
     "@testing-library/user-event": ^14.4.3
-    "@types/jest": ">=26.0.0 <27.0.0"
-    "@types/node": 12.20.4
-    "@types/react": ^17.0.8
-    "@types/react-dom": ^17.0.5
-    "@types/testing-library__jest-dom": 5.9.5
     axios: ^1.6.2
     chart.js: ^4.4.1
     chartjs-plugin-datalabels: ^2.2.0
@@ -506,17 +438,15 @@ __metadata:
     path-to-regexp: ^6.2.1
     prop-types: ^15.8.1
     querystringify: ^2.2.0
-    react: ^17.0.0 || ^18.0.0
     react-chartjs-2: ^5.2.0
     react-copy-to-clipboard: ^5.1.0
-    react-dom: ^17.0.0 || ^18.0.0
     react-hot-toast: ^2.4.1
     react-intl: ^6.1.2
     react-loading-skeleton: ^3.0.2
     react-modern-drawer: ^1.2.2
     react-oauth-popup: ^1.0.5
     react-router: ^5.3.4
-    react-router-dom: ^5.3.4
+    react-router-dom: ^6.22.3
     react-use-id-hook: ^1.0.1
     sass: ^1.69.5
     use-debounce: ^10.0.0
@@ -527,7 +457,7 @@ __metadata:
     react: ^17.0.0 || ^18.0.0
     react-dom: ^17.0.0 || ^18.0.0
     react-router: ^5.3.4
-    react-router-dom: ^5.3.4
+    react-router-dom: ^6.22.3
   languageName: unknown
   linkType: soft
 
@@ -560,6 +490,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@remix-run/router@npm:1.15.3":
+  version: 1.15.3
+  resolution: "@remix-run/router@npm:1.15.3"
+  checksum: 9e70bd334d99fdf9285f0885c10353d7e25f66369080f551d997e3ce204e1af3a12d6f12b091f94a2dc9a54c80598bbe3c5194b57cbae17b7b40ab815dcd49a0
+  languageName: node
+  linkType: hard
+
 "@rooks/use-previous@npm:^4.11.2":
   version: 4.11.2
   resolution: "@rooks/use-previous@npm:4.11.2"
@@ -573,29 +510,6 @@ __metadata:
   peerDependencies:
     react: ">=16.8.0"
   checksum: e86682a384837dd1e5b530cc9ecc52018329d9633a018583fd2daa47ea0748d3312d8db81124c301b9518e7778b64e17574e2843ebec284061bf5aca7b7648a8
-  languageName: node
-  linkType: hard
-
-"@sinclair/typebox@npm:^0.27.8":
-  version: 0.27.8
-  resolution: "@sinclair/typebox@npm:0.27.8"
-  checksum: 00bd7362a3439021aa1ea51b0e0d0a0e8ca1351a3d54c606b115fdcc49b51b16db6e5f43b4fe7a28c38688523e22a94d49dd31168868b655f0d4d50f032d07a1
-  languageName: node
-  linkType: hard
-
-"@testing-library/dom@npm:9.0.0":
-  version: 9.0.0
-  resolution: "@testing-library/dom@npm:9.0.0"
-  dependencies:
-    "@babel/code-frame": ^7.10.4
-    "@babel/runtime": ^7.12.5
-    "@types/aria-query": ^5.0.1
-    aria-query: ^5.0.0
-    chalk: ^4.1.0
-    dom-accessibility-api: ^0.5.9
-    lz-string: ^1.4.4
-    pretty-format: ^27.0.2
-  checksum: 5381bf9438f0ee35f795e7f9b203564aa455e7cd838b6677084c82dd56396779c38cc49ddffed4e57a8bcc3c62b4bc96ea684bb4b24d13655152db745327b2cd
   languageName: node
   linkType: hard
 
@@ -655,90 +569,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/istanbul-lib-coverage@npm:*, @types/istanbul-lib-coverage@npm:^2.0.0":
-  version: 2.0.6
-  resolution: "@types/istanbul-lib-coverage@npm:2.0.6"
-  checksum: 3feac423fd3e5449485afac999dcfcb3d44a37c830af898b689fadc65d26526460bedb889db278e0d4d815a670331796494d073a10ee6e3a6526301fe7415778
-  languageName: node
-  linkType: hard
-
-"@types/istanbul-lib-report@npm:*":
-  version: 3.0.3
-  resolution: "@types/istanbul-lib-report@npm:3.0.3"
-  dependencies:
-    "@types/istanbul-lib-coverage": "*"
-  checksum: b91e9b60f865ff08cb35667a427b70f6c2c63e88105eadd29a112582942af47ed99c60610180aa8dcc22382fa405033f141c119c69b95db78c4c709fbadfeeb4
-  languageName: node
-  linkType: hard
-
-"@types/istanbul-reports@npm:^3.0.0":
-  version: 3.0.4
-  resolution: "@types/istanbul-reports@npm:3.0.4"
-  dependencies:
-    "@types/istanbul-lib-report": "*"
-  checksum: 93eb18835770b3431f68ae9ac1ca91741ab85f7606f310a34b3586b5a34450ec038c3eed7ab19266635499594de52ff73723a54a72a75b9f7d6a956f01edee95
-  languageName: node
-  linkType: hard
-
-"@types/jest@npm:*":
-  version: 29.5.12
-  resolution: "@types/jest@npm:29.5.12"
-  dependencies:
-    expect: ^29.0.0
-    pretty-format: ^29.0.0
-  checksum: 19b1efdeed9d9a60a81edc8226cdeae5af7479e493eaed273e01243891c9651f7b8b4c08fc633a7d0d1d379b091c4179bbaa0807af62542325fd72f2dd17ce1c
-  languageName: node
-  linkType: hard
-
-"@types/jest@npm:29.5.5":
-  version: 29.5.5
-  resolution: "@types/jest@npm:29.5.5"
-  dependencies:
-    expect: ^29.0.0
-    pretty-format: ^29.0.0
-  checksum: 56e55cde9949bcc0ee2fa34ce5b7c32c2bfb20e53424aa4ff3a210859eeaaa3fdf6f42f81a3f655238039cdaaaf108b054b7a8602f394e6c52b903659338d8c6
-  languageName: node
-  linkType: hard
-
-"@types/jest@npm:>=26.0.0 <27.0.0":
-  version: 26.0.24
-  resolution: "@types/jest@npm:26.0.24"
-  dependencies:
-    jest-diff: ^26.0.0
-    pretty-format: ^26.0.0
-  checksum: ae39675412f08d884926254e9b12bfd2b5a4e4d204c94d3148cb942174a474930d0c60540133c968f22241d4712b7940c96cbc883096eb326a4d5b206fb78bd0
-  languageName: node
-  linkType: hard
-
-"@types/node@npm:*":
-  version: 20.12.7
-  resolution: "@types/node@npm:20.12.7"
-  dependencies:
-    undici-types: ~5.26.4
-  checksum: 7cc979f7e2ca9a339ec71318c3901b9978555257929ef3666987f3e447123bc6dc92afcc89f6347e09e07d602fde7d51bcddea626c23aa2bb74aeaacfd1e1686
-  languageName: node
-  linkType: hard
-
-"@types/node@npm:12.20.4":
-  version: 12.20.4
-  resolution: "@types/node@npm:12.20.4"
-  checksum: 30f1f5d8159fcb968206706f0f943167731f3d0763602571af29676b1afdcfe3b41524442cacdee3853a456dcd11d0e3ab2bf28b6821dfa2749a4b393fe7b510
-  languageName: node
-  linkType: hard
-
 "@types/prop-types@npm:*":
   version: 15.7.12
   resolution: "@types/prop-types@npm:15.7.12"
   checksum: ac16cc3d0a84431ffa5cfdf89579ad1e2269549f32ce0c769321fdd078f84db4fbe1b461ed5a1a496caf09e637c0e367d600c541435716a55b1d9713f5035dfe
-  languageName: node
-  linkType: hard
-
-"@types/react-dom@npm:^17.0.5":
-  version: 17.0.25
-  resolution: "@types/react-dom@npm:17.0.25"
-  dependencies:
-    "@types/react": ^17
-  checksum: d1e582682478e0848c8d54ea3e89d02047bac6d916266b85ce63731b06987575919653ea7159d98fda47ade3362b8c4d5796831549564b83088e7aa9ce8b60ed
   languageName: node
   linkType: hard
 
@@ -761,86 +595,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:^17, @types/react@npm:^17.0.8":
-  version: 17.0.80
-  resolution: "@types/react@npm:17.0.80"
-  dependencies:
-    "@types/prop-types": "*"
-    "@types/scheduler": ^0.16
-    csstype: ^3.0.2
-  checksum: 1c27bfc42305d77ef0da55f8f6d4c4a3471aa02b294fcf29ea0f2cfb0bf02892e5a0a3bc7559fa4a5ba50697b2e31076cb5aa5987f69cfc2e880f6426edb8bdf
-  languageName: node
-  linkType: hard
-
-"@types/scheduler@npm:^0.16":
-  version: 0.16.8
-  resolution: "@types/scheduler@npm:0.16.8"
-  checksum: 6c091b096daa490093bf30dd7947cd28e5b2cd612ec93448432b33f724b162587fed9309a0acc104d97b69b1d49a0f3fc755a62282054d62975d53d7fd13472d
-  languageName: node
-  linkType: hard
-
-"@types/stack-utils@npm:^2.0.0":
-  version: 2.0.3
-  resolution: "@types/stack-utils@npm:2.0.3"
-  checksum: 72576cc1522090fe497337c2b99d9838e320659ac57fa5560fcbdcbafcf5d0216c6b3a0a8a4ee4fdb3b1f5e3420aa4f6223ab57b82fef3578bec3206425c6cf5
-  languageName: node
-  linkType: hard
-
-"@types/testing-library__jest-dom@npm:5.14.9":
-  version: 5.14.9
-  resolution: "@types/testing-library__jest-dom@npm:5.14.9"
-  dependencies:
-    "@types/jest": "*"
-  checksum: d364494fc2545316292e88861146146af1e3818792ca63b62a63758b2f737669b687f4aaddfcfbcb7d0e1ed7890a9bd05de23ff97f277d5e68de574497a9ee72
-  languageName: node
-  linkType: hard
-
-"@types/testing-library__jest-dom@npm:5.9.5":
-  version: 5.9.5
-  resolution: "@types/testing-library__jest-dom@npm:5.9.5"
-  dependencies:
-    "@types/jest": "*"
-  checksum: f2ed81103acb52d54f992d826e3854551294618628997dc01f8955efd8c1d476d64715b79187371b09ec3e61e44cc10a7ffe1e427d1bda798552f83d18309056
-  languageName: node
-  linkType: hard
-
-"@types/yargs-parser@npm:*":
-  version: 21.0.3
-  resolution: "@types/yargs-parser@npm:21.0.3"
-  checksum: ef236c27f9432983e91432d974243e6c4cdae227cb673740320eff32d04d853eed59c92ca6f1142a335cfdc0e17cccafa62e95886a8154ca8891cc2dec4ee6fc
-  languageName: node
-  linkType: hard
-
-"@types/yargs@npm:^15.0.0":
-  version: 15.0.19
-  resolution: "@types/yargs@npm:15.0.19"
-  dependencies:
-    "@types/yargs-parser": "*"
-  checksum: 6a509db36304825674f4f00300323dce2b4d850e75819c3db87e9e9f213ac2c4c6ed3247a3e4eed6e8e45b3f191b133a356d3391dd694d9ea27a0507d914ef4c
-  languageName: node
-  linkType: hard
-
-"@types/yargs@npm:^17.0.8":
-  version: 17.0.32
-  resolution: "@types/yargs@npm:17.0.32"
-  dependencies:
-    "@types/yargs-parser": "*"
-  checksum: 4505bdebe8716ff383640c6e928f855b5d337cb3c68c81f7249fc6b983d0aa48de3eee26062b84f37e0d75a5797bc745e0c6e76f42f81771252a758c638f36ba
-  languageName: node
-  linkType: hard
-
 "abbrev@npm:^2.0.0":
   version: 2.0.0
   resolution: "abbrev@npm:2.0.0"
   checksum: 0e994ad2aa6575f94670d8a2149afe94465de9cedaaaac364e7fb43a40c3691c980ff74899f682f4ca58fa96b4cbd7421a015d3a6defe43a442117d7821a2f36
   languageName: node
   linkType: hard
-
-"ad_unit-9bc477@workspace:src/components/ad/ad_unit":
-  version: 0.0.0-use.local
-  resolution: "ad_unit-9bc477@workspace:src/components/ad/ad_unit"
-  languageName: unknown
-  linkType: soft
 
 "agent-base@npm:^7.0.2, agent-base@npm:^7.1.0, agent-base@npm:^7.1.1":
   version: 7.1.1
@@ -861,13 +621,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"announcement_dialog-50f3af@workspace:src/components/dialog/announcement_dialog":
-  version: 0.0.0-use.local
-  resolution: "announcement_dialog-50f3af@workspace:src/components/dialog/announcement_dialog"
-  languageName: unknown
-  linkType: soft
-
-"ansi-regex@npm:^5.0.0, ansi-regex@npm:^5.0.1":
+"ansi-regex@npm:^5.0.1":
   version: 5.0.1
   resolution: "ansi-regex@npm:5.0.1"
   checksum: 2aa4bb54caf2d622f1afdad09441695af2a83aa3fe8b8afa581d205e57ed4261c183c4d3877cee25794443fde5876417d859c108078ab788d6af7e4fe52eb66b
@@ -930,39 +684,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"argument-75bb95@workspace:src/components/argument/argument":
-  version: 0.0.0-use.local
-  resolution: "argument-75bb95@workspace:src/components/argument/argument"
-  languageName: unknown
-  linkType: soft
-
-"argument_input-293e61@workspace:src/components/input/argument_input":
-  version: 0.0.0-use.local
-  resolution: "argument_input-293e61@workspace:src/components/input/argument_input"
-  languageName: unknown
-  linkType: soft
-
-"argument_summary_box-b83b8e@workspace:src/components/summary/argument_summary_box":
-  version: 0.0.0-use.local
-  resolution: "argument_summary_box-b83b8e@workspace:src/components/summary/argument_summary_box"
-  languageName: unknown
-  linkType: soft
-
 "aria-query@npm:5.1.3":
   version: 5.1.3
   resolution: "aria-query@npm:5.1.3"
   dependencies:
     deep-equal: ^2.0.5
   checksum: 929ff95f02857b650fb4cbcd2f41072eee2f46159a6605ea03bf63aa572e35ffdff43d69e815ddc462e16e07de8faba3978afc2813650b4448ee18c9895d982b
-  languageName: node
-  linkType: hard
-
-"aria-query@npm:^5.0.0":
-  version: 5.3.0
-  resolution: "aria-query@npm:5.3.0"
-  dependencies:
-    dequal: ^2.0.3
-  checksum: 305bd73c76756117b59aba121d08f413c7ff5e80fa1b98e217a3443fcddb9a232ee790e24e432b59ae7625aebcf4c47cb01c2cac872994f0b426f5bdfcd96ba9
   languageName: node
   linkType: hard
 
@@ -983,24 +710,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"auth_initializer-8f1c34@workspace:src/components/auth/auth_initializer":
-  version: 0.0.0-use.local
-  resolution: "auth_initializer-8f1c34@workspace:src/components/auth/auth_initializer"
-  languageName: unknown
-  linkType: soft
-
-"auth_modal-600632@workspace:src/components/auth/auth_modal":
-  version: 0.0.0-use.local
-  resolution: "auth_modal-600632@workspace:src/components/auth/auth_modal"
-  languageName: unknown
-  linkType: soft
-
-"author_box-192ddc@workspace:src/components/user/author_box":
-  version: 0.0.0-use.local
-  resolution: "author_box-192ddc@workspace:src/components/user/author_box"
-  languageName: unknown
-  linkType: soft
-
 "available-typed-arrays@npm:^1.0.7":
   version: 1.0.7
   resolution: "available-typed-arrays@npm:1.0.7"
@@ -1009,18 +718,6 @@ __metadata:
   checksum: 1aa3ffbfe6578276996de660848b6e95669d9a95ad149e3dd0c0cda77db6ee1dbd9d1dd723b65b6d277b882dd0c4b91a654ae9d3cf9e1254b7e93e4908d78fd3
   languageName: node
   linkType: hard
-
-"avatar-e1a0ae@workspace:src/components/user/avatar":
-  version: 0.0.0-use.local
-  resolution: "avatar-e1a0ae@workspace:src/components/user/avatar"
-  languageName: unknown
-  linkType: soft
-
-"avatar_selector-e502b8@workspace:src/components/user/avatar_selector":
-  version: 0.0.0-use.local
-  resolution: "avatar_selector-e502b8@workspace:src/components/user/avatar_selector"
-  languageName: unknown
-  linkType: soft
 
 "axios@npm:^1.6.2":
   version: 1.6.8
@@ -1032,24 +729,6 @@ __metadata:
   checksum: bf007fa4b207d102459300698620b3b0873503c6d47bf5a8f6e43c0c64c90035a4f698b55027ca1958f61ab43723df2781c38a99711848d232cad7accbcdfcdd
   languageName: node
   linkType: hard
-
-"axios_client-8e7312@workspace:src/components/data/axios_client":
-  version: 0.0.0-use.local
-  resolution: "axios_client-8e7312@workspace:src/components/data/axios_client"
-  languageName: unknown
-  linkType: soft
-
-"back_link-1a910c@workspace:src/components/action/back_link":
-  version: 0.0.0-use.local
-  resolution: "back_link-1a910c@workspace:src/components/action/back_link"
-  languageName: unknown
-  linkType: soft
-
-"badge_box-0d24b6@workspace:src/components/gamification/badge_box":
-  version: 0.0.0-use.local
-  resolution: "badge_box-0d24b6@workspace:src/components/gamification/badge_box"
-  languageName: unknown
-  linkType: soft
 
 "balanced-match@npm:^1.0.0":
   version: 1.0.2
@@ -1065,12 +744,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"box_skeleton-a11637@workspace:src/components/skeleton/box_skeleton":
-  version: 0.0.0-use.local
-  resolution: "box_skeleton-a11637@workspace:src/components/skeleton/box_skeleton"
-  languageName: unknown
-  linkType: soft
-
 "brace-expansion@npm:^2.0.1":
   version: 2.0.1
   resolution: "brace-expansion@npm:2.0.1"
@@ -1080,7 +753,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"braces@npm:^3.0.2, braces@npm:~3.0.2":
+"braces@npm:~3.0.2":
   version: 3.0.2
   resolution: "braces@npm:3.0.2"
   dependencies:
@@ -1088,12 +761,6 @@ __metadata:
   checksum: e2a8e769a863f3d4ee887b5fe21f63193a891c68b612ddb4b68d82d1b5f3ff9073af066c343e9867a393fe4c2555dcb33e89b937195feb9c1613d259edfcd459
   languageName: node
   linkType: hard
-
-"button-4f94f8@workspace:src/components/action/button":
-  version: 0.0.0-use.local
-  resolution: "button-4f94f8@workspace:src/components/action/button"
-  languageName: unknown
-  linkType: soft
 
 "cacache@npm:^18.0.0":
   version: 18.0.2
@@ -1139,7 +806,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chalk@npm:^4.0.0, chalk@npm:^4.1.0":
+"chalk@npm:^4.1.0":
   version: 4.1.2
   resolution: "chalk@npm:4.1.2"
   dependencies:
@@ -1190,13 +857,6 @@ __metadata:
   version: 2.0.0
   resolution: "chownr@npm:2.0.0"
   checksum: c57cf9dd0791e2f18a5ee9c1a299ae6e801ff58fee96dc8bfd0dcb4738a6ce58dd252a3605b1c93c6418fe4f9d5093b28ffbf4d66648cb2a9c67eaef9679be2f
-  languageName: node
-  linkType: hard
-
-"ci-info@npm:^3.2.0":
-  version: 3.9.0
-  resolution: "ci-info@npm:3.9.0"
-  checksum: 6b19dc9b2966d1f8c2041a838217299718f15d6c4b63ae36e4674edd2bee48f780e94761286a56aa59eb305a85fbea4ddffb7630ec063e7ec7e7e5ad42549a87
   languageName: node
   linkType: hard
 
@@ -1255,48 +915,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"config_provider-df02ba@workspace:src/components/data/config_provider":
-  version: 0.0.0-use.local
-  resolution: "config_provider-df02ba@workspace:src/components/data/config_provider"
-  languageName: unknown
-  linkType: soft
-
-"confirm_modal-1d89d1@workspace:src/components/dialog/confirm_modal":
-  version: 0.0.0-use.local
-  resolution: "confirm_modal-1d89d1@workspace:src/components/dialog/confirm_modal"
-  languageName: unknown
-  linkType: soft
-
-"consultation_box-cc36e3@workspace:src/components/consultation/consultation_box":
-  version: 0.0.0-use.local
-  resolution: "consultation_box-cc36e3@workspace:src/components/consultation/consultation_box"
-  languageName: unknown
-  linkType: soft
-
-"content_footer-d4afad@workspace:src/components/user_content/content_footer":
-  version: 0.0.0-use.local
-  resolution: "content_footer-d4afad@workspace:src/components/user_content/content_footer"
-  languageName: unknown
-  linkType: soft
-
-"content_header-100ef9@workspace:src/components/user_content/content_header":
-  version: 0.0.0-use.local
-  resolution: "content_header-100ef9@workspace:src/components/user_content/content_header"
-  languageName: unknown
-  linkType: soft
-
-"context_source_box-802378@workspace:src/components/source/context_source_box":
-  version: 0.0.0-use.local
-  resolution: "context_source_box-802378@workspace:src/components/source/context_source_box"
-  languageName: unknown
-  linkType: soft
-
-"context_source_list-733b2d@workspace:src/components/source/context_source_list":
-  version: 0.0.0-use.local
-  resolution: "context_source_list-733b2d@workspace:src/components/source/context_source_list"
-  languageName: unknown
-  linkType: soft
-
 "copy-to-clipboard@npm:^3.3.1":
   version: 3.3.3
   resolution: "copy-to-clipboard@npm:3.3.3"
@@ -1330,18 +948,6 @@ __metadata:
   checksum: 8db785cc92d259102725b3c694ec0c823f5619a84741b5c7991b8ad135dfaa66093038a1cc63e03361a6cd28d122be48f2106ae72334e067dd619a51f49eddf7
   languageName: node
   linkType: hard
-
-"data_provider-52dcfb@workspace:src/components/data/data_provider":
-  version: 0.0.0-use.local
-  resolution: "data_provider-52dcfb@workspace:src/components/data/data_provider"
-  languageName: unknown
-  linkType: soft
-
-"debate_box-90f4de@workspace:src/components/debate/debate_box":
-  version: 0.0.0-use.local
-  resolution: "debate_box-90f4de@workspace:src/components/debate/debate_box"
-  languageName: unknown
-  linkType: soft
 
 "debug@npm:4, debug@npm:^4.3.4":
   version: 4.3.4
@@ -1410,39 +1016,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dequal@npm:^2.0.3":
-  version: 2.0.3
-  resolution: "dequal@npm:2.0.3"
-  checksum: 8679b850e1a3d0ebbc46ee780d5df7b478c23f335887464023a631d1b9af051ad4a6595a44220f9ff8ff95a8ddccf019b5ad778a976fd7bbf77383d36f412f90
-  languageName: node
-  linkType: hard
-
-"dialog_box-15ddba@workspace:src/components/dialog/dialog_box":
-  version: 0.0.0-use.local
-  resolution: "dialog_box-15ddba@workspace:src/components/dialog/dialog_box"
-  languageName: unknown
-  linkType: soft
-
-"diff-sequences@npm:^26.6.2":
-  version: 26.6.2
-  resolution: "diff-sequences@npm:26.6.2"
-  checksum: 79af871776ef149a7ff3345d6b1bf37fe6e81f68632aa5542787851f6f60fba19b0be22fdd1e06046f56ae7382763ccfe94a982c39ee72bd107aef435ecbc0cf
-  languageName: node
-  linkType: hard
-
-"diff-sequences@npm:^29.6.3":
-  version: 29.6.3
-  resolution: "diff-sequences@npm:29.6.3"
-  checksum: f4914158e1f2276343d98ff5b31fc004e7304f5470bf0f1adb2ac6955d85a531a6458d33e87667f98f6ae52ebd3891bb47d420bb48a5bd8b7a27ee25b20e33aa
-  languageName: node
-  linkType: hard
-
-"display-100652@workspace:src/components/styles/display":
-  version: 0.0.0-use.local
-  resolution: "display-100652@workspace:src/components/styles/display"
-  languageName: unknown
-  linkType: soft
-
 "dom-accessibility-api@npm:^0.5.9":
   version: 0.5.16
   resolution: "dom-accessibility-api@npm:0.5.16"
@@ -1457,30 +1030,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"drawer-862176@workspace:src/components/dialog/drawer":
-  version: 0.0.0-use.local
-  resolution: "drawer-862176@workspace:src/components/dialog/drawer"
-  languageName: unknown
-  linkType: soft
-
-"dropdown-d591fa@workspace:src/components/dialog/dropdown":
-  version: 0.0.0-use.local
-  resolution: "dropdown-d591fa@workspace:src/components/dialog/dropdown"
-  languageName: unknown
-  linkType: soft
-
 "eastasianwidth@npm:^0.2.0":
   version: 0.2.0
   resolution: "eastasianwidth@npm:0.2.0"
   checksum: 7d00d7cd8e49b9afa762a813faac332dee781932d6f2c848dc348939c4253f1d4564341b7af1d041853bc3f32c2ef141b58e0a4d9862c17a7f08f68df1e0f1ed
   languageName: node
   linkType: hard
-
-"embed_header-3651ea@workspace:src/components/embed/embed_header":
-  version: 0.0.0-use.local
-  resolution: "embed_header-3651ea@workspace:src/components/embed/embed_header"
-  languageName: unknown
-  linkType: soft
 
 "emoji-regex@npm:^8.0.0":
   version: 8.0.0
@@ -1559,44 +1114,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"escape-string-regexp@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "escape-string-regexp@npm:2.0.0"
-  checksum: 9f8a2d5743677c16e85c810e3024d54f0c8dea6424fad3c79ef6666e81dd0846f7437f5e729dfcdac8981bc9e5294c39b4580814d114076b8d36318f46ae4395
-  languageName: node
-  linkType: hard
-
-"expandable_text-b7c0b7@workspace:src/components/text/expandable_text":
-  version: 0.0.0-use.local
-  resolution: "expandable_text-b7c0b7@workspace:src/components/text/expandable_text"
-  languageName: unknown
-  linkType: soft
-
-"expect@npm:^29.0.0":
-  version: 29.7.0
-  resolution: "expect@npm:29.7.0"
-  dependencies:
-    "@jest/expect-utils": ^29.7.0
-    jest-get-type: ^29.6.3
-    jest-matcher-utils: ^29.7.0
-    jest-message-util: ^29.7.0
-    jest-util: ^29.7.0
-  checksum: 9257f10288e149b81254a0fda8ffe8d54a7061cd61d7515779998b012579d2b8c22354b0eb901daf0145f347403da582f75f359f4810c007182ad3fb318b5c0c
-  languageName: node
-  linkType: hard
-
 "exponential-backoff@npm:^3.1.1":
   version: 3.1.1
   resolution: "exponential-backoff@npm:3.1.1"
   checksum: 3d21519a4f8207c99f7457287291316306255a328770d320b401114ec8481986e4e467e854cb9914dd965e0a1ca810a23ccb559c642c88f4c7f55c55778a9b48
   languageName: node
   linkType: hard
-
-"facebook_login_button-1191a5@workspace:src/components/auth/facebook_login_button":
-  version: 0.0.0-use.local
-  resolution: "facebook_login_button-1191a5@workspace:src/components/auth/facebook_login_button"
-  languageName: unknown
-  linkType: soft
 
 "fill-range@npm:^7.0.1":
   version: 7.0.1
@@ -1616,12 +1139,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"flex-39962c@workspace:src/components/styles/flex":
-  version: 0.0.0-use.local
-  resolution: "flex-39962c@workspace:src/components/styles/flex"
-  languageName: unknown
-  linkType: soft
-
 "follow-redirects@npm:^1.15.6":
   version: 1.15.6
   resolution: "follow-redirects@npm:1.15.6"
@@ -1631,12 +1148,6 @@ __metadata:
   checksum: a62c378dfc8c00f60b9c80cab158ba54e99ba0239a5dd7c81245e5a5b39d10f0c35e249c3379eae719ff0285fff88c365dd446fab19dee771f1d76252df1bbf5
   languageName: node
   linkType: hard
-
-"follow_button-2c28f3@workspace:src/components/follow/follow_button":
-  version: 0.0.0-use.local
-  resolution: "follow_button-2c28f3@workspace:src/components/follow/follow_button"
-  languageName: unknown
-  linkType: soft
 
 "for-each@npm:^0.3.3":
   version: 0.3.3
@@ -1656,12 +1167,6 @@ __metadata:
   checksum: 139d270bc82dc9e6f8bc045fe2aae4001dc2472157044fdfad376d0a3457f77857fa883c1c8b21b491c6caade9a926a4bed3d3d2e8d3c9202b151a4cbbd0bcd5
   languageName: node
   linkType: hard
-
-"form-5e6a8d@workspace:src/components/forms/form":
-  version: 0.0.0-use.local
-  resolution: "form-5e6a8d@workspace:src/components/forms/form"
-  languageName: unknown
-  linkType: soft
 
 "form-data@npm:^4.0.0":
   version: 4.0.0
@@ -1771,12 +1276,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"google_login_button-9d8ca7@workspace:src/components/auth/google_login_button":
-  version: 0.0.0-use.local
-  resolution: "google_login_button-9d8ca7@workspace:src/components/auth/google_login_button"
-  languageName: unknown
-  linkType: soft
-
 "gopd@npm:^1.0.1":
   version: 1.0.1
   resolution: "gopd@npm:1.0.1"
@@ -1786,7 +1285,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"graceful-fs@npm:^4.2.6, graceful-fs@npm:^4.2.9":
+"graceful-fs@npm:^4.2.6":
   version: 4.2.11
   resolution: "graceful-fs@npm:4.2.11"
   checksum: ac85f94da92d8eb6b7f5a8b20ce65e43d66761c55ce85ac96df6865308390da45a8d3f0296dd3a663de65d30ba497bd46c696cc1e248c72b13d6d567138a4fc7
@@ -1846,12 +1345,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"hash_scroll-a81c4c@workspace:src/components/tools/hash_scroll":
-  version: 0.0.0-use.local
-  resolution: "hash_scroll-a81c4c@workspace:src/components/tools/hash_scroll"
-  languageName: unknown
-  linkType: soft
-
 "hasown@npm:^2.0.0":
   version: 2.0.2
   resolution: "hasown@npm:2.0.2"
@@ -1860,18 +1353,6 @@ __metadata:
   checksum: e8516f776a15149ca6c6ed2ae3110c417a00b62260e222590e54aa367cbcd6ed99122020b37b7fbdf05748df57b265e70095d7bf35a47660587619b15ffb93db
   languageName: node
   linkType: hard
-
-"hero_icons-f6c90f@workspace:src/components/icons/hero_icons":
-  version: 0.0.0-use.local
-  resolution: "hero_icons-f6c90f@workspace:src/components/icons/hero_icons"
-  languageName: unknown
-  linkType: soft
-
-"hidden-30841f@workspace:src/components/input/checkbox/hidden":
-  version: 0.0.0-use.local
-  resolution: "hidden-30841f@workspace:src/components/input/checkbox/hidden"
-  languageName: unknown
-  linkType: soft
 
 "history@npm:^4.9.0":
   version: 4.10.1
@@ -1923,24 +1404,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"icon-3aea60@workspace:src/components/icons/icon":
-  version: 0.0.0-use.local
-  resolution: "icon-3aea60@workspace:src/components/icons/icon"
-  languageName: unknown
-  linkType: soft
-
-"icon_provider-024301@workspace:src/components/icons/icon_provider":
-  version: 0.0.0-use.local
-  resolution: "icon_provider-024301@workspace:src/components/icons/icon_provider"
-  languageName: unknown
-  linkType: soft
-
-"icon_text_link-65256c@workspace:src/components/action/icon_text_link":
-  version: 0.0.0-use.local
-  resolution: "icon_text_link-65256c@workspace:src/components/action/icon_text_link"
-  languageName: unknown
-  linkType: soft
-
 "iconv-lite@npm:^0.6.2":
   version: 0.6.3
   resolution: "iconv-lite@npm:0.6.3"
@@ -1971,24 +1434,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"indicator-f4a977@workspace:src/components/input/checkbox/indicator":
-  version: 0.0.0-use.local
-  resolution: "indicator-f4a977@workspace:src/components/input/checkbox/indicator"
-  languageName: unknown
-  linkType: soft
-
-"information_box-1c6b66@workspace:src/components/information/information_box":
-  version: 0.0.0-use.local
-  resolution: "information_box-1c6b66@workspace:src/components/information/information_box"
-  languageName: unknown
-  linkType: soft
-
-"input_provider-d522aa@workspace:src/components/input/input_provider":
-  version: 0.0.0-use.local
-  resolution: "input_provider-d522aa@workspace:src/components/input/input_provider"
-  languageName: unknown
-  linkType: soft
-
 "internal-slot@npm:^1.0.4":
   version: 1.0.7
   resolution: "internal-slot@npm:1.0.7"
@@ -2011,12 +1456,6 @@ __metadata:
   checksum: b5574447a0d938170049042ec807344d57c72e9aabb2e72be0d5197baabeb763e05680b19b7607df93fadeec0e13c9bfcb450e9ba2fe7464b4f06600b612bf5e
   languageName: node
   linkType: hard
-
-"intl_provider-75af04@workspace:src/components/intl/intl_provider":
-  version: 0.0.0-use.local
-  resolution: "intl_provider-75af04@workspace:src/components/intl/intl_provider"
-  languageName: unknown
-  linkType: soft
 
 "ip-address@npm:^9.0.5":
   version: 9.0.5
@@ -2247,87 +1686,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jest-diff@npm:^26.0.0":
-  version: 26.6.2
-  resolution: "jest-diff@npm:26.6.2"
-  dependencies:
-    chalk: ^4.0.0
-    diff-sequences: ^26.6.2
-    jest-get-type: ^26.3.0
-    pretty-format: ^26.6.2
-  checksum: d00d297f31e1ac0252127089892432caa7a11c69bde29cf3bb6c7a839c8afdb95cf1fd401f9df16a4422745da2e6a5d94b428b30666a2540c38e1c5699915c2d
-  languageName: node
-  linkType: hard
-
-"jest-diff@npm:^29.7.0":
-  version: 29.7.0
-  resolution: "jest-diff@npm:29.7.0"
-  dependencies:
-    chalk: ^4.0.0
-    diff-sequences: ^29.6.3
-    jest-get-type: ^29.6.3
-    pretty-format: ^29.7.0
-  checksum: 08e24a9dd43bfba1ef07a6374e5af138f53137b79ec3d5cc71a2303515335898888fa5409959172e1e05de966c9e714368d15e8994b0af7441f0721ee8e1bb77
-  languageName: node
-  linkType: hard
-
-"jest-get-type@npm:^26.3.0":
-  version: 26.3.0
-  resolution: "jest-get-type@npm:26.3.0"
-  checksum: 1cc6465ae4f5e880be22ba52fd270fa64c21994915f81b41f8f7553a7957dd8e077cc8d03035de9412e2d739f8bad6a032ebb5dab5805692a5fb9e20dd4ea666
-  languageName: node
-  linkType: hard
-
-"jest-get-type@npm:^29.6.3":
-  version: 29.6.3
-  resolution: "jest-get-type@npm:29.6.3"
-  checksum: 88ac9102d4679d768accae29f1e75f592b760b44277df288ad76ce5bf038c3f5ce3719dea8aa0f035dac30e9eb034b848ce716b9183ad7cc222d029f03e92205
-  languageName: node
-  linkType: hard
-
-"jest-matcher-utils@npm:^29.7.0":
-  version: 29.7.0
-  resolution: "jest-matcher-utils@npm:29.7.0"
-  dependencies:
-    chalk: ^4.0.0
-    jest-diff: ^29.7.0
-    jest-get-type: ^29.6.3
-    pretty-format: ^29.7.0
-  checksum: d7259e5f995d915e8a37a8fd494cb7d6af24cd2a287b200f831717ba0d015190375f9f5dc35393b8ba2aae9b2ebd60984635269c7f8cff7d85b077543b7744cd
-  languageName: node
-  linkType: hard
-
-"jest-message-util@npm:^29.7.0":
-  version: 29.7.0
-  resolution: "jest-message-util@npm:29.7.0"
-  dependencies:
-    "@babel/code-frame": ^7.12.13
-    "@jest/types": ^29.6.3
-    "@types/stack-utils": ^2.0.0
-    chalk: ^4.0.0
-    graceful-fs: ^4.2.9
-    micromatch: ^4.0.4
-    pretty-format: ^29.7.0
-    slash: ^3.0.0
-    stack-utils: ^2.0.3
-  checksum: a9d025b1c6726a2ff17d54cc694de088b0489456c69106be6b615db7a51b7beb66788bea7a59991a019d924fbf20f67d085a445aedb9a4d6760363f4d7d09930
-  languageName: node
-  linkType: hard
-
-"jest-util@npm:^29.7.0":
-  version: 29.7.0
-  resolution: "jest-util@npm:29.7.0"
-  dependencies:
-    "@jest/types": ^29.6.3
-    "@types/node": "*"
-    chalk: ^4.0.0
-    ci-info: ^3.2.0
-    graceful-fs: ^4.2.9
-    picomatch: ^2.2.3
-  checksum: 042ab4980f4ccd4d50226e01e5c7376a8556b472442ca6091a8f102488c0f22e6e8b89ea874111d2328a2080083bf3225c86f3788c52af0bd0345a00eb57a3ca
-  languageName: node
-  linkType: hard
-
 "js-tokens@npm:^3.0.0 || ^4.0.0, js-tokens@npm:^4.0.0":
   version: 4.0.0
   resolution: "js-tokens@npm:4.0.0"
@@ -2342,18 +1700,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"keyword_box-5e683b@workspace:src/components/summary/keyword_box":
-  version: 0.0.0-use.local
-  resolution: "keyword_box-5e683b@workspace:src/components/summary/keyword_box"
-  languageName: unknown
-  linkType: soft
-
-"label-54fe1c@workspace:src/components/input/checkbox/label":
-  version: 0.0.0-use.local
-  resolution: "label-54fe1c@workspace:src/components/input/checkbox/label"
-  languageName: unknown
-  linkType: soft
-
 "lexical@npm:^0.12.6":
   version: 0.12.6
   resolution: "lexical@npm:0.12.6"
@@ -2361,43 +1707,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"line_chart-c05e43@workspace:src/components/chart/line_chart":
-  version: 0.0.0-use.local
-  resolution: "line_chart-c05e43@workspace:src/components/chart/line_chart"
-  languageName: unknown
-  linkType: soft
-
-"link-b5813c@workspace:src/components/action/link":
-  version: 0.0.0-use.local
-  resolution: "link-b5813c@workspace:src/components/action/link"
-  languageName: unknown
-  linkType: soft
-
-"list_provider-276d9a@workspace:src/components/list/list_provider":
-  version: 0.0.0-use.local
-  resolution: "list_provider-276d9a@workspace:src/components/list/list_provider"
-  languageName: unknown
-  linkType: soft
-
-"loader-6245f5@workspace:src/components/progress/loader":
-  version: 0.0.0-use.local
-  resolution: "loader-6245f5@workspace:src/components/progress/loader"
-  languageName: unknown
-  linkType: soft
-
-"location-53999c@workspace:src/components/util/location":
-  version: 0.0.0-use.local
-  resolution: "location-53999c@workspace:src/components/util/location"
-  languageName: unknown
-  linkType: soft
-
-"login_form-9ffdcd@workspace:src/components/auth/login_form":
-  version: 0.0.0-use.local
-  resolution: "login_form-9ffdcd@workspace:src/components/auth/login_form"
-  languageName: unknown
-  linkType: soft
-
-"loose-envify@npm:^1.1.0, loose-envify@npm:^1.2.0, loose-envify@npm:^1.3.1, loose-envify@npm:^1.4.0":
+"loose-envify@npm:^1.2.0, loose-envify@npm:^1.3.1, loose-envify@npm:^1.4.0":
   version: 1.4.0
   resolution: "loose-envify@npm:1.4.0"
   dependencies:
@@ -2424,7 +1734,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lz-string@npm:^1.4.4, lz-string@npm:^1.5.0":
+"lz-string@npm:^1.5.0":
   version: 1.5.0
   resolution: "lz-string@npm:1.5.0"
   bin:
@@ -2449,16 +1759,6 @@ __metadata:
     promise-retry: ^2.0.1
     ssri: ^10.0.0
   checksum: 7c7a6d381ce919dd83af398b66459a10e2fe8f4504f340d1d090d3fa3d1b0c93750220e1d898114c64467223504bd258612ba83efbc16f31b075cd56de24b4af
-  languageName: node
-  linkType: hard
-
-"micromatch@npm:^4.0.4":
-  version: 4.0.5
-  resolution: "micromatch@npm:4.0.5"
-  dependencies:
-    braces: ^3.0.2
-    picomatch: ^2.3.1
-  checksum: 02a17b671c06e8fefeeb6ef996119c1e597c942e632a21ef589154f23898c9c6a9858526246abb14f8bca6e77734aa9dcf65476fca47cedfb80d9577d52843fc
   languageName: node
   linkType: hard
 
@@ -2580,12 +1880,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"modal-26019b@workspace:src/components/dialog/modal":
-  version: 0.0.0-use.local
-  resolution: "modal-26019b@workspace:src/components/dialog/modal"
-  languageName: unknown
-  linkType: soft
-
 "ms@npm:2.1.2":
   version: 2.1.2
   resolution: "ms@npm:2.1.2"
@@ -2637,12 +1931,6 @@ __metadata:
   checksum: 88eeb4da891e10b1318c4b2476b6e2ecbeb5ff97d946815ffea7794c31a89017c70d7f34b3c2ebf23ef4e9fc9fb99f7dffe36da22011b5b5c6ffa34f4873ec20
   languageName: node
   linkType: hard
-
-"oauth2_button-904b3a@workspace:src/components/auth/oauth2_button":
-  version: 0.0.0-use.local
-  resolution: "oauth2_button-904b3a@workspace:src/components/auth/oauth2_button"
-  languageName: unknown
-  linkType: soft
 
 "object-assign@npm:^4.1.1":
   version: 4.1.1
@@ -2696,18 +1984,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"paginated_list-98064e@workspace:src/components/list/paginated_list":
-  version: 0.0.0-use.local
-  resolution: "paginated_list-98064e@workspace:src/components/list/paginated_list"
-  languageName: unknown
-  linkType: soft
-
-"pagination-86dee2@workspace:src/components/list/pagination":
-  version: 0.0.0-use.local
-  resolution: "pagination-86dee2@workspace:src/components/list/pagination"
-  languageName: unknown
-  linkType: soft
-
 "path-key@npm:^3.1.0":
   version: 3.1.1
   resolution: "path-key@npm:3.1.1"
@@ -2748,41 +2024,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"picomatch@npm:^2.0.4, picomatch@npm:^2.2.1, picomatch@npm:^2.2.3, picomatch@npm:^2.3.1":
+"picomatch@npm:^2.0.4, picomatch@npm:^2.2.1":
   version: 2.3.1
   resolution: "picomatch@npm:2.3.1"
   checksum: 050c865ce81119c4822c45d3c84f1ced46f93a0126febae20737bd05ca20589c564d6e9226977df859ed5e03dc73f02584a2b0faad36e896936238238b0446cf
   languageName: node
   linkType: hard
 
-"pie_chart-0ed383@workspace:src/components/chart/pie_chart":
-  version: 0.0.0-use.local
-  resolution: "pie_chart-0ed383@workspace:src/components/chart/pie_chart"
-  languageName: unknown
-  linkType: soft
-
-"point_box-a436cc@workspace:src/components/gamification/point_box":
-  version: 0.0.0-use.local
-  resolution: "point_box-a436cc@workspace:src/components/gamification/point_box"
-  languageName: unknown
-  linkType: soft
-
 "possible-typed-array-names@npm:^1.0.0":
   version: 1.0.0
   resolution: "possible-typed-array-names@npm:1.0.0"
   checksum: b32d403ece71e042385cc7856385cecf1cd8e144fa74d2f1de40d1e16035dba097bc189715925e79b67bdd1472796ff168d3a90d296356c9c94d272d5b95f3ae
-  languageName: node
-  linkType: hard
-
-"pretty-format@npm:^26.0.0, pretty-format@npm:^26.6.2":
-  version: 26.6.2
-  resolution: "pretty-format@npm:26.6.2"
-  dependencies:
-    "@jest/types": ^26.6.2
-    ansi-regex: ^5.0.0
-    ansi-styles: ^4.0.0
-    react-is: ^17.0.1
-  checksum: e3b808404d7e1519f0df1aa1f25cee0054ab475775c6b2b8c5568ff23194a92d54bf93274139b6f584ca70fd773be4eaa754b0e03f12bb0a8d1426b07f079976
   languageName: node
   linkType: hard
 
@@ -2794,17 +2046,6 @@ __metadata:
     ansi-styles: ^5.0.0
     react-is: ^17.0.1
   checksum: cf610cffcb793885d16f184a62162f2dd0df31642d9a18edf4ca298e909a8fe80bdbf556d5c9573992c102ce8bf948691da91bf9739bee0ffb6e79c8a8a6e088
-  languageName: node
-  linkType: hard
-
-"pretty-format@npm:^29.0.0, pretty-format@npm:^29.7.0":
-  version: 29.7.0
-  resolution: "pretty-format@npm:29.7.0"
-  dependencies:
-    "@jest/schemas": ^29.6.3
-    ansi-styles: ^5.0.0
-    react-is: ^18.0.0
-  checksum: 032c1602383e71e9c0c02a01bbd25d6759d60e9c7cf21937dde8357aa753da348fcec5def5d1002c9678a8524d5fe099ad98861286550ef44de8808cc61e43b6
   languageName: node
   linkType: hard
 
@@ -2821,12 +2062,6 @@ __metadata:
   checksum: 02b64e1b3919e63df06f836b98d3af002b5cd92655cab18b5746e37374bfb73e03b84fe305454614b34c25b485cc687a9eebdccf0242cda8fda2475dd2c97e02
   languageName: node
   linkType: hard
-
-"progress_bar-9f380d@workspace:src/components/progress/progress_bar":
-  version: 0.0.0-use.local
-  resolution: "progress_bar-9f380d@workspace:src/components/progress/progress_bar"
-  languageName: unknown
-  linkType: soft
 
 "promise-retry@npm:^2.0.1":
   version: 2.0.1
@@ -2848,12 +2083,6 @@ __metadata:
   checksum: c056d3f1c057cb7ff8344c645450e14f088a915d078dcda795041765047fa080d38e5d626560ccaac94a4e16e3aa15f3557c1a9a8d1174530955e992c675e459
   languageName: node
   linkType: hard
-
-"providers-45a177@workspace:src/components/auth/providers":
-  version: 0.0.0-use.local
-  resolution: "providers-45a177@workspace:src/components/auth/providers"
-  languageName: unknown
-  linkType: soft
 
 "proxy-from-env@npm:^1.1.0":
   version: 1.1.0
@@ -2888,18 +2117,6 @@ __metadata:
   peerDependencies:
     react: ^15.3.0 || 16 || 17 || 18
   checksum: f00a4551b9b63c944a041a6ab46af5ef20ba1106b3bc25173e7ef9bffbfba17a613368682ab8820cfe8d4b3acc5335cd9ce20229145bcc1e6aa8d1db04c512e5
-  languageName: node
-  linkType: hard
-
-"react-dom@npm:^17.0.0 || ^18.0.0":
-  version: 18.2.0
-  resolution: "react-dom@npm:18.2.0"
-  dependencies:
-    loose-envify: ^1.1.0
-    scheduler: ^0.23.0
-  peerDependencies:
-    react: ^18.2.0
-  checksum: 7d323310bea3a91be2965f9468d552f201b1c27891e45ddc2d6b8f717680c95a75ae0bc1e3f5cf41472446a2589a75aed4483aee8169287909fcd59ad149e8cc
   languageName: node
   linkType: hard
 
@@ -2964,13 +2181,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-is@npm:^18.0.0":
-  version: 18.2.0
-  resolution: "react-is@npm:18.2.0"
-  checksum: e72d0ba81b5922759e4aff17e0252bd29988f9642ed817f56b25a3e217e13eea8a7f2322af99a06edb779da12d5d636e9fda473d620df9a3da0df2a74141d53e
-  languageName: node
-  linkType: hard
-
 "react-loading-skeleton@npm:^3.0.2":
   version: 3.4.0
   resolution: "react-loading-skeleton@npm:3.4.0"
@@ -2999,24 +2209,31 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-router-dom@npm:^5.3.4":
-  version: 5.3.4
-  resolution: "react-router-dom@npm:5.3.4"
+"react-router-dom@npm:^6.22.3":
+  version: 6.22.3
+  resolution: "react-router-dom@npm:6.22.3"
   dependencies:
-    "@babel/runtime": ^7.12.13
-    history: ^4.9.0
-    loose-envify: ^1.3.1
-    prop-types: ^15.6.2
-    react-router: 5.3.4
-    tiny-invariant: ^1.0.2
-    tiny-warning: ^1.0.0
+    "@remix-run/router": 1.15.3
+    react-router: 6.22.3
   peerDependencies:
-    react: ">=15"
-  checksum: b86a6f2f5222f041e38adf4e4b32c7643d6735a1a915ef25855b2db285fd059d72ba8d62e5bcd5d822b8ef9520a80453209e55077f5a90d0f72e908979b8f535
+    react: ">=16.8"
+    react-dom: ">=16.8"
+  checksum: 5ae3759a70e4123cd4b8efbb82199a69f5d8c4a7a434d186d2ec7b532b6ef3302df2a98e5c27db977d3f0d725c7a279010a16ae77a3bf6257f1fee96123d8b77
   languageName: node
   linkType: hard
 
-"react-router@npm:5.3.4, react-router@npm:^5.3.4":
+"react-router@npm:6.22.3":
+  version: 6.22.3
+  resolution: "react-router@npm:6.22.3"
+  dependencies:
+    "@remix-run/router": 1.15.3
+  peerDependencies:
+    react: ">=16.8"
+  checksum: 1f7d9a5a849761ff69ef8f3d3131b4c1c25d18b76317ba5ad6f0d9421192c0b8b71ab0cc818c57aad7b81ada725559e513307d0ab43296a460262f0358602672
+  languageName: node
+  linkType: hard
+
+"react-router@npm:^5.3.4":
   version: 5.3.4
   resolution: "react-router@npm:5.3.4"
   dependencies:
@@ -3044,34 +2261,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react@npm:^17.0.0 || ^18.0.0":
-  version: 18.2.0
-  resolution: "react@npm:18.2.0"
-  dependencies:
-    loose-envify: ^1.1.0
-  checksum: 88e38092da8839b830cda6feef2e8505dec8ace60579e46aa5490fc3dc9bba0bd50336507dc166f43e3afc1c42939c09fe33b25fae889d6f402721dcd78fca1b
-  languageName: node
-  linkType: hard
-
-"read_more-cde56f@workspace:src/components/text/read_more":
-  version: 0.0.0-use.local
-  resolution: "read_more-cde56f@workspace:src/components/text/read_more"
-  languageName: unknown
-  linkType: soft
-
 "readdirp@npm:~3.6.0":
   version: 3.6.0
   resolution: "readdirp@npm:3.6.0"
   dependencies:
     picomatch: ^2.2.1
   checksum: 1ced032e6e45670b6d7352d71d21ce7edf7b9b928494dcaba6f11fba63180d9da6cd7061ebc34175ffda6ff529f481818c962952004d273178acd70f7059b320
-  languageName: node
-  linkType: hard
-
-"regenerator-runtime@npm:^0.13.10":
-  version: 0.13.11
-  resolution: "regenerator-runtime@npm:0.13.11"
-  checksum: 27481628d22a1c4e3ff551096a683b424242a216fee44685467307f14d58020af1e19660bf2e26064de946bad7eff28950eae9f8209d55723e2d9351e632bbb4
   languageName: node
   linkType: hard
 
@@ -3093,12 +2288,6 @@ __metadata:
   checksum: d7f333667d5c564e2d7a97c56c3075d64c722c9bb51b2b4df6822b2e8096d623a5e63088fb4c83df919b6951ef8113841de8b47de7224872fa6838bc5d8a7d64
   languageName: node
   linkType: hard
-
-"regular_icons-fa7d8f@workspace:src/components/icons/regular_icons":
-  version: 0.0.0-use.local
-  resolution: "regular_icons-fa7d8f@workspace:src/components/icons/regular_icons"
-  languageName: unknown
-  linkType: soft
 
 "resolve-pathname@npm:^3.0.0":
   version: 3.0.0
@@ -3133,45 +2322,6 @@ __metadata:
   checksum: bfb9f5ddb6a2e1fe0c1ba6191cdb17afa7b40c1eb892c7152f6a29ff2b06dc7a510bdb648f8cca0179dcb3965920ebeb8894f0710b0b450a99db563831345033
   languageName: node
   linkType: hard
-
-"scheduler@npm:^0.23.0":
-  version: 0.23.0
-  resolution: "scheduler@npm:0.23.0"
-  dependencies:
-    loose-envify: ^1.1.0
-  checksum: d79192eeaa12abef860c195ea45d37cbf2bbf5f66e3c4dcd16f54a7da53b17788a70d109ee3d3dde1a0fd50e6a8fc171f4300356c5aee4fc0171de526bf35f8a
-  languageName: node
-  linkType: hard
-
-"scroll_to_top-182986@workspace:src/components/tools/scroll_to_top":
-  version: 0.0.0-use.local
-  resolution: "scroll_to_top-182986@workspace:src/components/tools/scroll_to_top"
-  languageName: unknown
-  linkType: soft
-
-"search_input-6004f6@workspace:src/components/input/search_input":
-  version: 0.0.0-use.local
-  resolution: "search_input-6004f6@workspace:src/components/input/search_input"
-  languageName: unknown
-  linkType: soft
-
-"section_box-1e8645@workspace:src/components/section/section_box":
-  version: 0.0.0-use.local
-  resolution: "section_box-1e8645@workspace:src/components/section/section_box"
-  languageName: unknown
-  linkType: soft
-
-"section_header-196a52@workspace:src/components/section/section_header":
-  version: 0.0.0-use.local
-  resolution: "section_header-196a52@workspace:src/components/section/section_header"
-  languageName: unknown
-  linkType: soft
-
-"select-b2b5ab@workspace:src/components/input/select":
-  version: 0.0.0-use.local
-  resolution: "select-b2b5ab@workspace:src/components/input/select"
-  languageName: unknown
-  linkType: soft
 
 "semver@npm:^7.3.5":
   version: 7.6.0
@@ -3210,24 +2360,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"share_box-9b6d3f@workspace:src/components/share/share_box":
-  version: 0.0.0-use.local
-  resolution: "share_box-9b6d3f@workspace:src/components/share/share_box"
-  languageName: unknown
-  linkType: soft
-
-"share_button-41118f@workspace:src/components/share/share_button":
-  version: 0.0.0-use.local
-  resolution: "share_button-41118f@workspace:src/components/share/share_button"
-  languageName: unknown
-  linkType: soft
-
-"share_modal-2e4f13@workspace:src/components/share/share_modal":
-  version: 0.0.0-use.local
-  resolution: "share_modal-2e4f13@workspace:src/components/share/share_modal"
-  languageName: unknown
-  linkType: soft
-
 "shebang-command@npm:^2.0.0":
   version: 2.0.0
   resolution: "shebang-command@npm:2.0.0"
@@ -3256,29 +2388,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"side_modal-59db52@workspace:src/components/modal/side_modal":
-  version: 0.0.0-use.local
-  resolution: "side_modal-59db52@workspace:src/components/modal/side_modal"
-  languageName: unknown
-  linkType: soft
-
 "signal-exit@npm:^4.0.1":
   version: 4.1.0
   resolution: "signal-exit@npm:4.1.0"
   checksum: 64c757b498cb8629ffa5f75485340594d2f8189e9b08700e69199069c8e3070fb3e255f7ab873c05dc0b3cec412aea7402e10a5990cb6a050bd33ba062a6c549
-  languageName: node
-  linkType: hard
-
-"signup_form-a65820@workspace:src/components/auth/signup_form":
-  version: 0.0.0-use.local
-  resolution: "signup_form-a65820@workspace:src/components/auth/signup_form"
-  languageName: unknown
-  linkType: soft
-
-"slash@npm:^3.0.0":
-  version: 3.0.0
-  resolution: "slash@npm:3.0.0"
-  checksum: 94a93fff615f25a999ad4b83c9d5e257a7280c90a32a7cb8b4a87996e4babf322e469c42b7f649fd5796edd8687652f3fb452a86dc97a816f01113183393f11c
   languageName: node
   linkType: hard
 
@@ -3288,12 +2401,6 @@ __metadata:
   checksum: b5167a7142c1da704c0e3af85c402002b597081dd9575031a90b4f229ca5678e9a36e8a374f1814c8156a725d17008ae3bde63b92f9cfd132526379e580bec8b
   languageName: node
   linkType: hard
-
-"social_auth_form-da3861@workspace:src/components/auth/social_auth_form":
-  version: 0.0.0-use.local
-  resolution: "social_auth_form-da3861@workspace:src/components/auth/social_auth_form"
-  languageName: unknown
-  linkType: soft
 
 "socks-proxy-agent@npm:^8.0.3":
   version: 8.0.3
@@ -3323,48 +2430,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"source_box-109a5a@workspace:src/components/source/source_box":
-  version: 0.0.0-use.local
-  resolution: "source_box-109a5a@workspace:src/components/source/source_box"
-  languageName: unknown
-  linkType: soft
-
-"source_list_item-915e96@workspace:src/components/source/source_list_item":
-  version: 0.0.0-use.local
-  resolution: "source_list_item-915e96@workspace:src/components/source/source_list_item"
-  languageName: unknown
-  linkType: soft
-
-"source_modal-04c9b5@workspace:src/components/source/source_modal":
-  version: 0.0.0-use.local
-  resolution: "source_modal-04c9b5@workspace:src/components/source/source_modal"
-  languageName: unknown
-  linkType: soft
-
-"spacing-44d24d@workspace:src/components/styles/spacing":
-  version: 0.0.0-use.local
-  resolution: "spacing-44d24d@workspace:src/components/styles/spacing"
-  languageName: unknown
-  linkType: soft
-
-"spiegel_icons-519fa4@workspace:src/components/icons/spiegel_icons":
-  version: 0.0.0-use.local
-  resolution: "spiegel_icons-519fa4@workspace:src/components/icons/spiegel_icons"
-  languageName: unknown
-  linkType: soft
-
 "sprintf-js@npm:^1.1.3":
   version: 1.1.3
   resolution: "sprintf-js@npm:1.1.3"
   checksum: a3fdac7b49643875b70864a9d9b469d87a40dfeaf5d34d9d0c5b1cda5fd7d065531fcb43c76357d62254c57184a7b151954156563a4d6a747015cfb41021cad0
   languageName: node
   linkType: hard
-
-"sso_form-aa9aae@workspace:src/components/auth/sso_form":
-  version: 0.0.0-use.local
-  resolution: "sso_form-aa9aae@workspace:src/components/auth/sso_form"
-  languageName: unknown
-  linkType: soft
 
 "ssri@npm:^10.0.0":
   version: 10.0.5
@@ -3374,21 +2445,6 @@ __metadata:
   checksum: 0a31b65f21872dea1ed3f7c200d7bc1c1b91c15e419deca14f282508ba917cbb342c08a6814c7f68ca4ca4116dd1a85da2bbf39227480e50125a1ceffeecb750
   languageName: node
   linkType: hard
-
-"stack-utils@npm:^2.0.3":
-  version: 2.0.6
-  resolution: "stack-utils@npm:2.0.6"
-  dependencies:
-    escape-string-regexp: ^2.0.0
-  checksum: 052bf4d25bbf5f78e06c1d5e67de2e088b06871fa04107ca8d3f0e9d9263326e2942c8bedee3545795fc77d787d443a538345eef74db2f8e35db3558c6f91ff7
-  languageName: node
-  linkType: hard
-
-"standard_error_boundary-f3d28c@workspace:src/components/error/standard_error_boundary":
-  version: 0.0.0-use.local
-  resolution: "standard_error_boundary-f3d28c@workspace:src/components/error/standard_error_boundary"
-  languageName: unknown
-  linkType: soft
 
 "stop-iteration-iterator@npm:^1.0.0":
   version: 1.0.0
@@ -3439,18 +2495,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"suggestion_vote_box-28e1e8@workspace:src/components/vote/suggestion_vote_box":
-  version: 0.0.0-use.local
-  resolution: "suggestion_vote_box-28e1e8@workspace:src/components/vote/suggestion_vote_box"
-  languageName: unknown
-  linkType: soft
-
-"summary_content_box-579180@workspace:src/components/user_content/summary_content_box":
-  version: 0.0.0-use.local
-  resolution: "summary_content_box-579180@workspace:src/components/user_content/summary_content_box"
-  languageName: unknown
-  linkType: soft
-
 "supports-color@npm:^5.3.0":
   version: 5.5.0
   resolution: "supports-color@npm:5.5.0"
@@ -3469,18 +2513,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tabs-a31bc6@workspace:src/components/styles/tabs":
-  version: 0.0.0-use.local
-  resolution: "tabs-a31bc6@workspace:src/components/styles/tabs"
-  languageName: unknown
-  linkType: soft
-
-"tag-467df6@workspace:src/components/tag/tag":
-  version: 0.0.0-use.local
-  resolution: "tag-467df6@workspace:src/components/tag/tag"
-  languageName: unknown
-  linkType: soft
-
 "tar@npm:^6.1.11, tar@npm:^6.1.2":
   version: 6.2.1
   resolution: "tar@npm:6.2.1"
@@ -3494,26 +2526,6 @@ __metadata:
   checksum: f1322768c9741a25356c11373bce918483f40fa9a25c69c59410c8a1247632487edef5fe76c5f12ac51a6356d2f1829e96d2bc34098668a2fc34d76050ac2b6c
   languageName: node
   linkType: hard
-
-"text_editor-87beba@workspace:src/components/input/text_editor":
-  version: 0.0.0-use.local
-  resolution: "text_editor-87beba@workspace:src/components/input/text_editor"
-  dependencies:
-    "@testing-library/dom": 9.0.0
-  languageName: unknown
-  linkType: soft
-
-"text_input-20edb4@workspace:src/components/input/text_input":
-  version: 0.0.0-use.local
-  resolution: "text_input-20edb4@workspace:src/components/input/text_input"
-  languageName: unknown
-  linkType: soft
-
-"theme-17e024@workspace:src/components/styles/theme":
-  version: 0.0.0-use.local
-  resolution: "theme-17e024@workspace:src/components/styles/theme"
-  languageName: unknown
-  linkType: soft
 
 "tiny-invariant@npm:^1.0.2":
   version: 1.3.3
@@ -3538,24 +2550,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"toast-536b13@workspace:src/components/dialog/toast":
-  version: 0.0.0-use.local
-  resolution: "toast-536b13@workspace:src/components/dialog/toast"
-  languageName: unknown
-  linkType: soft
-
-"toast_provider-f05d55@workspace:src/components/dialog/toast_provider":
-  version: 0.0.0-use.local
-  resolution: "toast_provider-f05d55@workspace:src/components/dialog/toast_provider"
-  languageName: unknown
-  linkType: soft
-
-"toggle-9b9f77@workspace:src/components/input/toggle":
-  version: 0.0.0-use.local
-  resolution: "toggle-9b9f77@workspace:src/components/input/toggle"
-  languageName: unknown
-  linkType: soft
-
 "toggle-selection@npm:^1.0.6":
   version: 1.0.6
   resolution: "toggle-selection@npm:1.0.6"
@@ -3563,47 +2557,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"toggle_position-655142@workspace:src/components/input/toggle_position":
-  version: 0.0.0-use.local
-  resolution: "toggle_position-655142@workspace:src/components/input/toggle_position"
-  languageName: unknown
-  linkType: soft
-
-"tooltip-28dbeb@workspace:src/components/dialog/tooltip":
-  version: 0.0.0-use.local
-  resolution: "tooltip-28dbeb@workspace:src/components/dialog/tooltip"
-  languageName: unknown
-  linkType: soft
-
-"top_arguments-9e4953@workspace:src/components/argument/top_arguments":
-  version: 0.0.0-use.local
-  resolution: "top_arguments-9e4953@workspace:src/components/argument/top_arguments"
-  languageName: unknown
-  linkType: soft
-
-"translated_content-06b536@workspace:src/components/translation/translated_content":
-  version: 0.0.0-use.local
-  resolution: "translated_content-06b536@workspace:src/components/translation/translated_content"
-  languageName: unknown
-  linkType: soft
-
-"translation_button-90cc45@workspace:src/components/translation/translation_button":
-  version: 0.0.0-use.local
-  resolution: "translation_button-90cc45@workspace:src/components/translation/translation_button"
-  languageName: unknown
-  linkType: soft
-
 "tslib@npm:^2.4.0":
   version: 2.6.2
   resolution: "tslib@npm:2.6.2"
   checksum: 329ea56123005922f39642318e3d1f0f8265d1e7fcb92c633e0809521da75eeaca28d2cf96d7248229deb40e5c19adf408259f4b9640afd20d13aecc1430f3ad
-  languageName: node
-  linkType: hard
-
-"undici-types@npm:~5.26.4":
-  version: 5.26.5
-  resolution: "undici-types@npm:5.26.5"
-  checksum: 3192ef6f3fd5df652f2dc1cd782b49d6ff14dc98e5dced492aa8a8c65425227da5da6aafe22523c67f035a272c599bb89cfe803c1db6311e44bed3042fc25487
   languageName: node
   linkType: hard
 
@@ -3624,24 +2581,6 @@ __metadata:
   checksum: 0884b58365af59f89739e6f71e3feacb5b1b41f2df2d842d0757933620e6de08eff347d27e9d499b43c40476cbaf7988638d3acb2ffbcb9d35fd035591adfd15
   languageName: node
   linkType: hard
-
-"unique_by-e6787e@workspace:src/components/util/unique_by":
-  version: 0.0.0-use.local
-  resolution: "unique_by-e6787e@workspace:src/components/util/unique_by"
-  languageName: unknown
-  linkType: soft
-
-"up_down_vote_box-8b5739@workspace:src/components/vote/up_down_vote_box":
-  version: 0.0.0-use.local
-  resolution: "up_down_vote_box-8b5739@workspace:src/components/vote/up_down_vote_box"
-  languageName: unknown
-  linkType: soft
-
-"update_user_info_modal-43ccda@workspace:src/components/user/update_user_info_modal":
-  version: 0.0.0-use.local
-  resolution: "update_user_info_modal-43ccda@workspace:src/components/user/update_user_info_modal"
-  languageName: unknown
-  linkType: soft
 
 "use-debounce@npm:^10.0.0":
   version: 10.0.0
@@ -3690,102 +2629,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"use_auth-6e2b8d@workspace:src/components/auth/use_auth":
-  version: 0.0.0-use.local
-  resolution: "use_auth-6e2b8d@workspace:src/components/auth/use_auth"
-  languageName: unknown
-  linkType: soft
-
-"use_auth_required-b192ee@workspace:src/components/hooks/use_auth_required":
-  version: 0.0.0-use.local
-  resolution: "use_auth_required-b192ee@workspace:src/components/hooks/use_auth_required"
-  languageName: unknown
-  linkType: soft
-
-"use_css_theme-8882df@workspace:src/components/hooks/use_css_theme":
-  version: 0.0.0-use.local
-  resolution: "use_css_theme-8882df@workspace:src/components/hooks/use_css_theme"
-  languageName: unknown
-  linkType: soft
-
-"use_delete_content-840af0@workspace:src/components/user_content/use_delete_content":
-  version: 0.0.0-use.local
-  resolution: "use_delete_content-840af0@workspace:src/components/user_content/use_delete_content"
-  languageName: unknown
-  linkType: soft
-
-"use_follow-e7516a@workspace:src/components/follow/use_follow":
-  version: 0.0.0-use.local
-  resolution: "use_follow-e7516a@workspace:src/components/follow/use_follow"
-  languageName: unknown
-  linkType: soft
-
-"use_font_loader-9075d4@workspace:src/components/hooks/use_font_loader":
-  version: 0.0.0-use.local
-  resolution: "use_font_loader-9075d4@workspace:src/components/hooks/use_font_loader"
-  languageName: unknown
-  linkType: soft
-
-"use_form_validation-76238e@workspace:src/components/forms/use_form_validation":
-  version: 0.0.0-use.local
-  resolution: "use_form_validation-76238e@workspace:src/components/forms/use_form_validation"
-  languageName: unknown
-  linkType: soft
-
-"use_google_ad_manager-942609@workspace:src/components/ad/use_google_ad_manager":
-  version: 0.0.0-use.local
-  resolution: "use_google_ad_manager-942609@workspace:src/components/ad/use_google_ad_manager"
-  languageName: unknown
-  linkType: soft
-
-"use_matomo-f7f686@workspace:src/components/hooks/use_matomo":
-  version: 0.0.0-use.local
-  resolution: "use_matomo-f7f686@workspace:src/components/hooks/use_matomo"
-  languageName: unknown
-  linkType: soft
-
-"use_relative_time-24bd49@workspace:src/components/hooks/use_relative_time":
-  version: 0.0.0-use.local
-  resolution: "use_relative_time-24bd49@workspace:src/components/hooks/use_relative_time"
-  languageName: unknown
-  linkType: soft
-
-"use_report_content-9e76e9@workspace:src/components/user_content/use_report_content":
-  version: 0.0.0-use.local
-  resolution: "use_report_content-9e76e9@workspace:src/components/user_content/use_report_content"
-  languageName: unknown
-  linkType: soft
-
-"use_responsive-4f0c03@workspace:src/components/hooks/use_responsive":
-  version: 0.0.0-use.local
-  resolution: "use_responsive-4f0c03@workspace:src/components/hooks/use_responsive"
-  languageName: unknown
-  linkType: soft
-
-"use_vote-466cea@workspace:src/components/vote/use_vote":
-  version: 0.0.0-use.local
-  resolution: "use_vote-466cea@workspace:src/components/vote/use_vote"
-  languageName: unknown
-  linkType: soft
-
-"user_box-8dfef7@workspace:src/components/user/user_box":
-  version: 0.0.0-use.local
-  resolution: "user_box-8dfef7@workspace:src/components/user/user_box"
-  languageName: unknown
-  linkType: soft
-
-"user_box_small-4cb87a@workspace:src/components/user/user_box_small":
-  version: 0.0.0-use.local
-  resolution: "user_box_small-4cb87a@workspace:src/components/user/user_box_small"
-  languageName: unknown
-  linkType: soft
-
-"user_content_skeleton-068543@workspace:src/components/skeleton/user_content_skeleton":
-  version: 0.0.0-use.local
-  resolution: "user_content_skeleton-068543@workspace:src/components/skeleton/user_content_skeleton"
-  languageName: unknown
-  linkType: soft
-
 "uuid@npm:^9.0.1":
   version: 9.0.1
   resolution: "uuid@npm:9.0.1"
@@ -3801,27 +2644,6 @@ __metadata:
   checksum: bb7ae1facc76b5cf8071aeb6c13d284d023fdb370478d10a5d64508e0e6e53bb459c4bbe34258df29d82e6f561f874f0105eba38de0e61fe9edd0bdce07a77a2
   languageName: node
   linkType: hard
-
-"vote_box-dab0ab@workspace:src/components/vote/vote_box":
-  version: 0.0.0-use.local
-  resolution: "vote_box-dab0ab@workspace:src/components/vote/vote_box"
-  languageName: unknown
-  linkType: soft
-
-"vote_button-bea9f9@workspace:src/components/vote/vote_button":
-  version: 0.0.0-use.local
-  resolution: "vote_button-bea9f9@workspace:src/components/vote/vote_button"
-  dependencies:
-    "@types/jest": 29.5.5
-    "@types/testing-library__jest-dom": 5.14.9
-  languageName: unknown
-  linkType: soft
-
-"vote_provider-361d6f@workspace:src/components/vote/vote_provider":
-  version: 0.0.0-use.local
-  resolution: "vote_provider-361d6f@workspace:src/components/vote/vote_provider"
-  languageName: unknown
-  linkType: soft
 
 "webfontloader@npm:^1.6.28":
   version: 1.6.28
@@ -3889,12 +2711,6 @@ __metadata:
   checksum: f17e84c042592c21e23c8195108cff18c64050b9efb8459589116999ea9da6dd1509e6a1bac3aeebefd137be00fabbb61b5c2bc0aa0f8526f32b58ee2f545651
   languageName: node
   linkType: hard
-
-"with_ad-f236a2@workspace:src/components/ad/with_ad":
-  version: 0.0.0-use.local
-  resolution: "with_ad-f236a2@workspace:src/components/ad/with_ad"
-  languageName: unknown
-  linkType: soft
 
 "wrap-ansi-cjs@npm:wrap-ansi@^7.0.0":
   version: 7.0.0
