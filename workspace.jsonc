@@ -6,28 +6,11 @@
   "teambit.workspace/workspace": {
     "name": "Logora",
     "icon": "https://logora.fr/assets/logora-logo-3f7b41aec2d1ae4d6582ba3f7be5f73b42b086e49d69f46ae387b006c41e7046.png",
-    /**
-     * default directory to place a component during `bit import` and `bit create`.
-     * the following placeholders are available:
-     * name - component name includes namespace, e.g. 'ui/button'.
-     * scopeId - full scope-id includes the owner, e.g. 'teambit.compilation'.
-     * scope - scope name only, e.g. 'compilation'.
-     * owner - owner name in bit.dev, e.g. 'teambit'.
-     **/
     "defaultDirectory": "src/components/{name}",
     "defaultScope": "logora.debate"
   },
   "teambit.dependencies/dependency-resolver": {
     "packageManager": "teambit.dependencies/yarn",
-    "policy": {
-      "dependencies": {},
-      "peerDependencies": {
-        "react": "^17.0.0 || ^18.0.0",
-        "react-dom": "^17.0.0 || ^18.0.0",
-        "react-router": "^5.3.4",
-        "react-router-dom": "^5.3.4"
-      }
-    },
     "linkCoreAspects": false,
     "installFromBitDevRegistry": false
   },
@@ -35,7 +18,7 @@
     "bundlingStrategy": "component"
   },
   "teambit.harmony/bit": {
-    "engine": "1.2.7"
+    "engine": "1.6.126"
   },
   "teambit.workspace/variants": {
     "*": {
