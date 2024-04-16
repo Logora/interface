@@ -18,6 +18,10 @@ jobs:
       - name: Initialize Bit
         uses: bit-tasks/init@v1
 
+      - name: Resolve component packages from bit.cloud registry
+        run: |
+          npm config set '@logora:registry' https://node.bit.cloud
+
       - name: Tag components
         run: bit tag --build
 
