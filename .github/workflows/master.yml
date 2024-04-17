@@ -24,6 +24,7 @@ jobs:
       - name: Resolve component packages from bit.cloud registry
         run: |
           npm config set '@logora:registry' https://node.bit.cloud
+          export NODE_OPTIONS="--max_old_space_size=8092"
       
       - name: Bit Tag and Export
         uses: bit-tasks/tag-export@v1
