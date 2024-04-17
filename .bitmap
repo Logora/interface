@@ -63,14 +63,42 @@
         "scope": "logora.debate",
         "version": "0.0.27",
         "mainFile": "index.js",
-        "rootDir": "src/components/argument/argument"
+        "rootDir": "src/components/argument/argument",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "peerDependencies": {
+                        "react": "^17.0.0 || ^18.0.0",
+                        "react-dom": "^17.0.0 || ^18.0.0",
+                        "react-router": "^5.3.4"
+                    },
+                    "dependencies": {
+                        "@testing-library/dom": "10.0.0"
+                    },
+                    "devDependencies": {
+                        "@testing-library/dom": "10.0.0"
+                    }
+                }
+            }
+        }
     },
     "argument/top_arguments": {
         "name": "argument/top_arguments",
         "scope": "logora.debate",
         "version": "0.0.39",
         "mainFile": "index.js",
-        "rootDir": "src/components/argument/top_arguments"
+        "rootDir": "src/components/argument/top_arguments",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "peerDependencies": {
+                        "react": "^17.0.0 || ^18.0.0",
+                        "react-dom": "^17.0.0 || ^18.0.0",
+                        "react-router": "^5.3.4"
+                    }
+                }
+            }
+        }
     },
     "auth/auth_initializer": {
         "name": "auth/auth_initializer",
@@ -84,7 +112,22 @@
         "scope": "logora.debate",
         "version": "0.0.51",
         "mainFile": "index.js",
-        "rootDir": "src/components/auth/auth_modal"
+        "rootDir": "src/components/auth/auth_modal",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "devDependencies": {
+                        "@types/jest": "-",
+                        "@types/testing-library__jest-dom": "-"
+                    },
+                    "peerDependencies": {
+                        "react": "^17.0.0||^18.0.0",
+                        "react-dom": "^17.0.0||^18.0.0",
+                        "react-router-dom": "^5.3.4"
+                    }
+                }
+            }
+        }
     },
     "auth/facebook_login_button": {
         "name": "auth/facebook_login_button",
@@ -126,21 +169,68 @@
         "scope": "logora.debate",
         "version": "0.0.60",
         "mainFile": "index.js",
-        "rootDir": "src/components/auth/signup_form"
+        "rootDir": "src/components/auth/signup_form",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "devDependencies": {
+                        "@types/testing-library__jest-dom": "-",
+                        "@types/jest": "-",
+                        "@testing-library/dom": "10.0.0"
+                    },
+                    "peerDependencies": {
+                        "react": "^17.0.0||^18.0.0",
+                        "react-dom": "^17.0.0||^18.0.0",
+                        "react-router": "^5.3.4",
+                        "react-router-dom": "^5.3.4"
+                    }
+                }
+            }
+        }
     },
     "auth/social_auth_form": {
         "name": "auth/social_auth_form",
         "scope": "logora.debate",
         "version": "0.0.60",
         "mainFile": "index.js",
-        "rootDir": "src/components/auth/social_auth_form"
+        "rootDir": "src/components/auth/social_auth_form",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "devDependencies": {
+                        "@types/testing-library__jest-dom": "-",
+                        "@types/jest": "-",
+                        "@testing-library/dom": "10.0.0"
+                    },
+                    "peerDependencies": {
+                        "react": "^17.0.0||^18.0.0",
+                        "react-dom": "^17.0.0||^18.0.0"
+                    }
+                }
+            }
+        }
     },
     "auth/sso_form": {
         "name": "auth/sso_form",
         "scope": "logora.debate",
         "version": "0.0.52",
         "mainFile": "index.js",
-        "rootDir": "src/components/auth/sso_form"
+        "rootDir": "src/components/auth/sso_form",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "devDependencies": {
+                        "@types/jest": "-",
+                        "@types/testing-library__jest-dom": "-"
+                    },
+                    "peerDependencies": {
+                        "react": "^17.0.0||^18.0.0",
+                        "react-dom": "^17.0.0||^18.0.0",
+                        "react-router-dom": "^5.3.4"
+                    }
+                }
+            }
+        }
     },
     "auth/use_auth": {
         "name": "auth/use_auth",
