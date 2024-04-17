@@ -11,6 +11,10 @@
   },
   "teambit.dependencies/dependency-resolver": {
     "packageManager": "teambit.dependencies/yarn",
+    "policy": {
+      "dependencies": {},
+      "peerDependencies": {}
+    },
     "linkCoreAspects": false,
     "installFromBitDevRegistry": false
   },
