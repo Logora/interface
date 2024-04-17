@@ -469,205 +469,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@logora/debate.action.link@npm:0.0.10":
-  version: 0.0.10
-  resolution: "@logora/debate.action.link@npm:0.0.10"
-  dependencies:
-    core-js: ^3.0.0
-    prop-types: ^15.8.1
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
-    react-router: ^5.3.4
-    react-router-dom: ^5.3.4
-  checksum: 22586d8d4f3f5c9b83f7caab14502164c514d9cb61edb44d714a3d1228109845da3121be099a59b8ab9ae373ddd6624514ae5146584a4b72c5991d229663c94e
-  languageName: node
-  linkType: hard
-
-"@logora/debate.argument.argument_header@npm:0.0.36":
-  version: 0.0.36
-  resolution: "@logora/debate.argument.argument_header@npm:0.0.36"
-  dependencies:
-    "@logora/debate.hooks.use_relative_time": 0.0.11
-    "@logora/debate.icons": 0.0.8
-    "@logora/debate.styles.display": 0.0.8
-    "@logora/debate.styles.spacing": 0.0.10
-    "@logora/debate.styles.theme": 0.0.15
-    "@logora/debate.user.author_box": 0.0.26
-    "@logora/debate.user.author_box_small": 0.0.22
-    classnames: ^2.3.1
-    core-js: ^3.0.0
-    react-intl: ^6.1.2
-  peerDependencies:
-    react: ^17.0.0||^18.0.0
-    react-dom: ^17.0.0||^18.0.0
-    react-router-dom: ^5.3.4
-  checksum: 825bb6c6472e4cf8b6fae46045f76a8acb159ce7bf25bf2222f1dc60b7d004b8d7ff7bd4c16b436bbef893a96da4e0ae91c741536da8b7283af6d9b270648cc9
-  languageName: node
-  linkType: hard
-
-"@logora/debate.data.config_provider@npm:0.0.3":
-  version: 0.0.3
-  resolution: "@logora/debate.data.config_provider@npm:0.0.3"
-  dependencies:
-    core-js: ^3.0.0
-    prop-types: ^15.8.1
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
-  checksum: 97746d5b93edcac2c58c8df673ada548c1ecf1715fb2e106223d932bf47be916357de9c9592a60d17e27b97780b1cad310a586ef2ab5f904949e57ba9a90fe3e
-  languageName: node
-  linkType: hard
-
-"@logora/debate.dialog.tooltip@npm:0.0.6":
-  version: 0.0.6
-  resolution: "@logora/debate.dialog.tooltip@npm:0.0.6"
-  dependencies:
-    "@logora/debate.styles.theme": 0.0.15
-    classnames: ^2.3.2
-    core-js: ^3.0.0
-    prop-types: ^15.8.1
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
-  checksum: 0b520c3abcc7ac2a990ec9384911ee4bdb60e5a7c94477b9469e3c3f1dff5d87505837b0e1fb1a514ddb6a2fdf3028d44e229c5580470a5c10f710eebb3aed95
-  languageName: node
-  linkType: hard
-
-"@logora/debate.hooks.use_relative_time@npm:0.0.11":
-  version: 0.0.11
-  resolution: "@logora/debate.hooks.use_relative_time@npm:0.0.11"
-  dependencies:
-    core-js: ^3.0.0
-    prop-types: ^15.8.1
-    react-intl: ^6.1.2
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
-  checksum: 2a0549f4a4b820eae55484bdec6b9a054dbf81681c4071d76ed15ea7edc98c45e64e3e1e0a6a696b710bfd1fc056edfff25185131e6eb4e9a761de87cefa65bd
-  languageName: node
-  linkType: hard
-
-"@logora/debate.hooks.use_translated_content@npm:0.0.7":
-  version: 0.0.7
-  resolution: "@logora/debate.hooks.use_translated_content@npm:0.0.7"
-  dependencies:
-    core-js: ^3.0.0
-    react-intl: ^6.1.2
-  peerDependencies:
-    react: ^16.8.0 || ^17.0.0
-    react-dom: ^16.8.0 || ^17.0.0
-  checksum: 66f5192a5e9dba218cf2bbe9b2a0509dfb8894db561714496ceb0083dd4401e0cc44994a9183dc53905f5e26bb96be466ee66666737a5825ab767b4c36d4d0e5
-  languageName: node
-  linkType: hard
-
-"@logora/debate.icons@npm:0.0.8":
-  version: 0.0.8
-  resolution: "@logora/debate.icons@npm:0.0.8"
-  dependencies:
-    core-js: ^3.0.0
-  peerDependencies:
-    react: ^17.0.0||^18.0.0
-    react-dom: ^17.0.0||^18.0.0
-  checksum: d9b0d1e02eb8877e42e9d6ea7c018bdff2d6411b6d7b583e048ae42fb3dc1cfc8e7a8970468cf59a72a60af44d8212797f61d8dcfe604dd002422389f304f920
-  languageName: node
-  linkType: hard
-
-"@logora/debate.styles.display@npm:0.0.8":
-  version: 0.0.8
-  resolution: "@logora/debate.styles.display@npm:0.0.8"
-  dependencies:
-    core-js: ^3.0.0
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
-  checksum: 0d572ad6181b64bd006444dc8a6866c4eba8dd6cb8b2de73bd9b44e50973a4e41f26ca51d05b4c128ba6b9ff56029406be36d704ccc9c0cbf6bd15e43004a419
-  languageName: node
-  linkType: hard
-
-"@logora/debate.styles.spacing@npm:0.0.10":
-  version: 0.0.10
-  resolution: "@logora/debate.styles.spacing@npm:0.0.10"
-  dependencies:
-    "@logora/debate.styles.display": 0.0.8
-    core-js: ^3.0.0
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
-  checksum: 9fffce64925256fa858f8bc1858606c1aa7335a648c96d6b0d9ec84c16868c0a30fc765b417ae06f4e8dace5a25d4c8bafb63a6019899132e589bd8b59367536
-  languageName: node
-  linkType: hard
-
-"@logora/debate.styles.theme@npm:0.0.15":
-  version: 0.0.15
-  resolution: "@logora/debate.styles.theme@npm:0.0.15"
-  dependencies:
-    core-js: ^3.0.0
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
-  checksum: 818a73fd76f6dbfa8deb6f74f8e4cdc06b68671052ed223d675e7776829b4b70533afe0b9e7cfc2de0e69059092f45402d4930a674fbba296528655c8bc25e24
-  languageName: node
-  linkType: hard
-
-"@logora/debate.user.author_box@npm:0.0.26":
-  version: 0.0.26
-  resolution: "@logora/debate.user.author_box@npm:0.0.26"
-  dependencies:
-    "@logora/debate.action.link": 0.0.10
-    "@logora/debate.data.config_provider": 0.0.3
-    "@logora/debate.icons": 0.0.8
-    "@logora/debate.styles.display": 0.0.8
-    "@logora/debate.styles.spacing": 0.0.10
-    "@logora/debate.styles.theme": 0.0.15
-    "@logora/debate.user.avatar": 0.0.25
-    classnames: ^2.3.1
-    core-js: ^3.0.0
-    react-intl: ^6.1.2
-  peerDependencies:
-    react: ^17.0.0||^18.0.0
-    react-dom: ^17.0.0||^18.0.0
-    react-router-dom: ^5.3.4
-  checksum: 09d3e1b3a4de79a9b4c58aad122a1d70ad16497994c8cef4eddd7a6e3e201ea93ae47f05262539fdbd4e526d65adddbd3052695ffa305da9b63df04d81130465
-  languageName: node
-  linkType: hard
-
-"@logora/debate.user.author_box_small@npm:0.0.22":
-  version: 0.0.22
-  resolution: "@logora/debate.user.author_box_small@npm:0.0.22"
-  dependencies:
-    "@logora/debate.action.link": 0.0.10
-    "@logora/debate.data.config_provider": 0.0.3
-    "@logora/debate.styles.spacing": 0.0.10
-    "@logora/debate.styles.theme": 0.0.15
-    "@logora/debate.user.avatar": 0.0.25
-    core-js: ^3.0.0
-  peerDependencies:
-    react: ^17.0.0||^18.0.0
-    react-dom: ^17.0.0||^18.0.0
-    react-router-dom: ^5.3.4
-  checksum: ed2ba199a4847628f1c02be81a99898717d7a119b4c0b0ae37c45d46a992a7831d03fced83160b50906bfb0aad7a1029aeb4ccd94629a3e75d532b7b7135a1a1
-  languageName: node
-  linkType: hard
-
-"@logora/debate.user.avatar@npm:0.0.25":
-  version: 0.0.25
-  resolution: "@logora/debate.user.avatar@npm:0.0.25"
-  dependencies:
-    "@logora/debate.dialog.tooltip": 0.0.6
-    "@logora/debate.styles.theme": 0.0.15
-    classnames: ^2.3.2
-    core-js: ^3.0.0
-    react-intl: ^6.1.2
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
-    react-router: ^5.3.4
-    react-router-dom: ^5.3.4
-  checksum: 39825627914636938b9c00eaa887b15c730d6bed3d05412e805638159e3c2eccd0b71bcb23922c1c9e531986a891fb338dfd6e4aee9be714b523d446cae1ba4d
-  languageName: node
-  linkType: hard
-
 "@logora/ui@workspace:.":
   version: 0.0.0-use.local
   resolution: "@logora/ui@workspace:."
@@ -684,9 +485,6 @@ __metadata:
     "@lexical/rich-text": ^0.12.5
     "@lexical/selection": ^0.12.5
     "@lexical/utils": ^0.12.5
-    "@logora/debate.argument.argument_header": 0.0.36
-    "@logora/debate.hooks.use_translated_content": 0.0.7
-    "@logora/debate.icons": 0.0.8
     "@rooks/use-previous": ^4.11.2
     "@rooks/use-sessionstorage-state": ^4.11.2
     "@testing-library/dom": 10.0.0
@@ -708,10 +506,10 @@ __metadata:
     path-to-regexp: ^6.2.1
     prop-types: ^15.8.1
     querystringify: ^2.2.0
-    react: ">=17.0.0 <18.0.0"
+    react: ">=18.2.0 <19.0.0"
     react-chartjs-2: ^5.2.0
     react-copy-to-clipboard: ^5.1.0
-    react-dom: ">=17.0.0 <18.0.0"
+    react-dom: ">=18.2.0 <19.0.0"
     react-hot-toast: ^2.4.1
     react-intl: ^6.1.2
     react-loading-skeleton: ^3.0.2
@@ -1147,12 +945,6 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"argument_box-e87927@workspace:src/components/argument/argument_box":
-  version: 0.0.0-use.local
-  resolution: "argument_box-e87927@workspace:src/components/argument/argument_box"
-  languageName: unknown
-  linkType: soft
-
 "argument_input-293e61@workspace:src/components/input/argument_input":
   version: 0.0.0-use.local
   resolution: "argument_input-293e61@workspace:src/components/input/argument_input"
@@ -1215,9 +1007,6 @@ __metadata:
 "author_box-192ddc@workspace:src/components/user/author_box":
   version: 0.0.0-use.local
   resolution: "author_box-192ddc@workspace:src/components/user/author_box"
-  peerDependencies:
-    react: ^18.2.0
-    react-dom: ^18.2.0
   languageName: unknown
   linkType: soft
 
@@ -1426,7 +1215,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"classnames@npm:^2.3.1, classnames@npm:^2.3.2":
+"classnames@npm:^2.3.2":
   version: 2.5.1
   resolution: "classnames@npm:2.5.1"
   checksum: da424a8a6f3a96a2e87d01a432ba19315503294ac7e025f9fece656db6b6a0f7b5003bb1fbb51cbb0d9624d964f1b9bb35a51c73af9b2434c7b292c42231c1e5
@@ -1532,7 +1321,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"core-js@npm:>=3.33.0 <4.0.0, core-js@npm:^3.0.0":
+"core-js@npm:>=3.33.0 <4.0.0":
   version: 3.37.0
   resolution: "core-js@npm:3.37.0"
   checksum: 212c3e9b3fc277dbb63739ef58a61c5709ccd0b36f09c3ce6946aa91fa180c60f57f976d4a5fdb9cda0c6cb55417379ba5a008fc3a1384ec94ec8ec61826469d
@@ -1666,6 +1455,8 @@ __metadata:
 "display-100652@workspace:src/components/styles/display":
   version: 0.0.0-use.local
   resolution: "display-100652@workspace:src/components/styles/display"
+  dependencies:
+    "@testing-library/react": ^14.0.0
   languageName: unknown
   linkType: soft
 
@@ -1849,6 +1640,8 @@ __metadata:
 "flex-39962c@workspace:src/components/styles/flex":
   version: 0.0.0-use.local
   resolution: "flex-39962c@workspace:src/components/styles/flex"
+  dependencies:
+    "@testing-library/react": ^14.0.0
   languageName: unknown
   linkType: soft
 
@@ -1890,6 +1683,8 @@ __metadata:
 "form-5e6a8d@workspace:src/components/forms/form":
   version: 0.0.0-use.local
   resolution: "form-5e6a8d@workspace:src/components/forms/form"
+  dependencies:
+    "@testing-library/react": ^14.0.0
   languageName: unknown
   linkType: soft
 
@@ -3133,16 +2928,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-dom@npm:>=17.0.0 <18.0.0":
-  version: 17.0.2
-  resolution: "react-dom@npm:17.0.2"
+"react-dom@npm:>=18.2.0 <19.0.0":
+  version: 18.2.0
+  resolution: "react-dom@npm:18.2.0"
   dependencies:
     loose-envify: ^1.1.0
-    object-assign: ^4.1.1
-    scheduler: ^0.20.2
+    scheduler: ^0.23.0
   peerDependencies:
-    react: 17.0.2
-  checksum: 1c1eaa3bca7c7228d24b70932e3d7c99e70d1d04e13bb0843bbf321582bc25d7961d6b8a6978a58a598af2af496d1cedcfb1bf65f6b0960a0a8161cb8dab743c
+    react: ^18.2.0
+  checksum: 7d323310bea3a91be2965f9468d552f201b1c27891e45ddc2d6b8f717680c95a75ae0bc1e3f5cf41472446a2589a75aed4483aee8169287909fcd59ad149e8cc
   languageName: node
   linkType: hard
 
@@ -3287,13 +3081,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react@npm:>=17.0.0 <18.0.0":
-  version: 17.0.2
-  resolution: "react@npm:17.0.2"
+"react@npm:>=18.2.0 <19.0.0":
+  version: 18.2.0
+  resolution: "react@npm:18.2.0"
   dependencies:
     loose-envify: ^1.1.0
-    object-assign: ^4.1.1
-  checksum: b254cc17ce3011788330f7bbf383ab653c6848902d7936a87b09d835d091e3f295f7e9dd1597c6daac5dc80f90e778c8230218ba8ad599f74adcc11e33b9d61b
+  checksum: 88e38092da8839b830cda6feef2e8505dec8ace60579e46aa5490fc3dc9bba0bd50336507dc166f43e3afc1c42939c09fe33b25fae889d6f402721dcd78fca1b
   languageName: node
   linkType: hard
 
@@ -3380,13 +3173,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"scheduler@npm:^0.20.2":
-  version: 0.20.2
-  resolution: "scheduler@npm:0.20.2"
+"scheduler@npm:^0.23.0":
+  version: 0.23.0
+  resolution: "scheduler@npm:0.23.0"
   dependencies:
     loose-envify: ^1.1.0
-    object-assign: ^4.1.1
-  checksum: c4b35cf967c8f0d3e65753252d0f260271f81a81e427241295c5a7b783abf4ea9e905f22f815ab66676f5313be0a25f47be582254db8f9241b259213e999b8fc
+  checksum: d79192eeaa12abef860c195ea45d37cbf2bbf5f66e3c4dcd16f54a7da53b17788a70d109ee3d3dde1a0fd50e6a8fc171f4300356c5aee4fc0171de526bf35f8a
   languageName: node
   linkType: hard
 
@@ -3597,6 +3389,8 @@ __metadata:
 "spacing-44d24d@workspace:src/components/styles/spacing":
   version: 0.0.0-use.local
   resolution: "spacing-44d24d@workspace:src/components/styles/spacing"
+  dependencies:
+    "@testing-library/react": ^14.0.0
   languageName: unknown
   linkType: soft
 
@@ -3727,6 +3521,8 @@ __metadata:
 "tabs-a31bc6@workspace:src/components/styles/tabs":
   version: 0.0.0-use.local
   resolution: "tabs-a31bc6@workspace:src/components/styles/tabs"
+  dependencies:
+    "@testing-library/react": ^14.0.0
   languageName: unknown
   linkType: soft
 
@@ -3769,6 +3565,8 @@ __metadata:
 "theme-17e024@workspace:src/components/styles/theme":
   version: 0.0.0-use.local
   resolution: "theme-17e024@workspace:src/components/styles/theme"
+  dependencies:
+    "@testing-library/react": ^14.0.0
   languageName: unknown
   linkType: soft
 
