@@ -82,30 +82,6 @@
             }
         }
     },
-    "argument/argument_box": {
-        "name": "argument/argument_box",
-        "scope": "logora.debate",
-        "version": "0.0.29",
-        "mainFile": "index.js",
-        "rootDir": "src/components/argument/argument_box",
-        "config": {
-            "teambit.component/remove": {
-                "removed": true
-            }
-        }
-    },
-    "argument/argument_header": {
-        "name": "argument/argument_header",
-        "scope": "logora.debate",
-        "version": "0.0.36",
-        "mainFile": "index.js",
-        "rootDir": "src/components/argument/argument_header",
-        "config": {
-            "teambit.component/remove": {
-                "removed": true
-            }
-        }
-    },
     "argument/top_arguments": {
         "name": "argument/top_arguments",
         "scope": "logora.debate",
