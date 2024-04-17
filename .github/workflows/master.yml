@@ -31,7 +31,7 @@ jobs:
       - name: Commit changes made to .bitmap
         run: |
           git config --global user.name '${{ env.GIT_USER_NAME }}'
-          git config --global user.email '${{ env.GIT_USER_EMAIL }}
+          git config --global user.email '${{ env.GIT_USER_EMAIL }}'
           git add .bitmap
           git commit -m "update .bitmap with new component versions (automated) [skip ci]"
           git push
