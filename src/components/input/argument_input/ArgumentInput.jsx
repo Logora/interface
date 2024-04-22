@@ -177,8 +177,12 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
     }
 
     const handleChange = (content, richContent) => {
-        setArgumentContent(content);
-        setArgumentRichContent(richContent);
+        if (!isLoggedIn && config?.actions?.disableInputForVisitor) {
+            requireAuthentication({ loginAction: "argument" });
+        } else {
+            setArgumentContent(content);
+            setArgumentRichContent(richContent);
+        }
     }
 
     const handleSourcesChange = (newSource) => {
@@ -280,6 +284,7 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
     const handleTextEditorActivation = () => {
         if (!isLoggedIn && config?.actions?.disableInputForVisitor) {
             requireAuthentication({ loginAction: "argument" });
+            setInputActivation(false);
         } else {
             setInputActivation(true);
         }
