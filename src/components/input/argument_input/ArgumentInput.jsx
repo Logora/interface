@@ -284,7 +284,6 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
     const handleTextEditorActivation = () => {
         if (!isLoggedIn && config?.actions?.disableInputForVisitor) {
             requireAuthentication({ loginAction: "argument" });
-            setInputActivation(false);
         } else {
             setInputActivation(true);
         }
@@ -328,7 +327,7 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
                                 }
                                 
                             </div>
-                            <div data-testid="argument-input" className={cx(styles.textEditorBox, {[styles.replyTextEditorBox]: isReply})}>
+                            <div onClick={handleTextEditorActivation} data-testid="argument-input" className={cx(styles.textEditorBox, {[styles.replyTextEditorBox]: isReply})}>
                                 <TextEditor 
                                     handleChange={(value, rawValue) => { handleChange(value, rawValue); } }
                                     handleSourcesChange={(sources) => { handleSourcesChange(sources); } }
@@ -339,7 +338,7 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
                                     uid={`Argument${groupId}`}
                                     onActivation={handleTextEditorActivation}
                                     showStylesControls={inputActivation}
-                                    disabled={disabled}
+                                    disabled={disabled || (!isLoggedIn && config?.actions?.disableInputForVisitor)}
                                     maxLength={config?.actions?.argumentMaxLength}
                                     disableRichText={config?.actions?.disableRichText}
                                     shortBar={isReply}
