@@ -222,31 +222,27 @@ export const Argument = ({ argument, argumentReplies, nestingLevel, debatePositi
 			</div>
 			{ !hideReplies && 
 				<>
-					{ 
-						(!isLoggedIn && config?.actions?.disableInputForVisitor === true) ?
-							null
-						:
-							startReplyInput && (
-								<Suspense fallback={null}>
-									<ArgumentInput
-										key={`Reply${argument.id}`}
-										groupId={argument.group_id}
-										groupType={isComment && "Source"}
-										groupName={debateName}
-										positions={debatePositions}
-										parentId={argument.id}
-										positionId={vote?.position_id}
-										disabled={!debateIsActive}
-										hideSourceAction={config?.actions?.disableUserSources || false}
-										onSubmit={() => { 
-											toggleReplyInput();
-											toggleReplies();
-										}}
-										isReply
-										avatarSize={40}
-										placeholder={intl.formatMessage({ id:"input.reply_input.your_answer", defaultMessage: "Your answer" })}
-									/>
-								</Suspense>
+					{ startReplyInput && (
+						<Suspense fallback={null}>
+							<ArgumentInput
+								key={`Reply${argument.id}`}
+								groupId={argument.group_id}
+								groupType={isComment && "Source"}
+								groupName={debateName}
+								positions={debatePositions}
+								parentId={argument.id}
+								positionId={vote?.position_id}
+								disabled={!debateIsActive}
+								hideSourceAction={config?.actions?.disableUserSources || false}
+								onSubmit={() => { 
+									toggleReplyInput();
+									toggleReplies();
+								}}
+								isReply
+								avatarSize={40}
+								placeholder={intl.formatMessage({ id:"input.reply_input.your_answer", defaultMessage: "Your answer" })}
+							/>
+						</Suspense>
 					)}
 					{ expandReplies &&
 						<div className={styles.repliesList}>

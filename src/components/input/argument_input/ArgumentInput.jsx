@@ -22,7 +22,7 @@ const SideModal = lazy(() => import('@logora/debate.modal.side_modal'));
 import cx from 'classnames';
 import styles from './ArgumentInput.module.scss';
 
-export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = false, disabledPositions, groupId, groupName, groupType, hideSourceAction = false, isReply = false, onSubmit, parentId, placeholder, positionId, positions }) => {
+export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = false, disabledPositions, groupId, groupName, groupType, hideSourceAction = false, isReply = false, onSubmit, parentId, placeholder, positionId, positions, onInputActivation }) => {
     const intl = useIntl();
     const api = useDataProvider();
     const list = useList();
@@ -150,7 +150,7 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
     }
 
     const handleFormSubmit = () => {
-        if(isLoggedIn) {
+        if (isLoggedIn) {
             if (argumentId) {
                 updateArgument();
             } else {
@@ -278,7 +278,11 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
     }
 
     const handleTextEditorActivation = () => {
-        setInputActivation(true);
+        if (!isLoggedIn && config?.actions?.disableInputForVisitor) {
+            requireAuthentication({ loginAction: "argument" });
+        } else {
+            setInputActivation(true);
+        }
     }
 
     const displayArgumentLimitWarning = () => {
