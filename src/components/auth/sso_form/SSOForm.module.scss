@@ -15,7 +15,9 @@
 }
 
 .logoImage {
+  object-fit: contain;
   width: 100px !important;
+  max-height: 100px !important;
 }
 
 .loginIcon {

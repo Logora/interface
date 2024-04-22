@@ -11,6 +11,10 @@
   },
   "teambit.dependencies/dependency-resolver": {
     "packageManager": "teambit.dependencies/yarn",
+    "policy": {
+      "dependencies": {},
+      "peerDependencies": {}
+    },
     "linkCoreAspects": false,
     "installFromBitDevRegistry": false
   },
@@ -18,7 +22,7 @@
     "bundlingStrategy": "component"
   },
   "teambit.harmony/bit": {
-    "engine": "1.6.126"
+    "engine": "1.2.7"
   },
   "teambit.workspace/variants": {
     "*": {

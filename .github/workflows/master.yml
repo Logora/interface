@@ -8,7 +8,6 @@ on:
 jobs:
   tag-and-export:
     runs-on: ubuntu-latest
-    if: "!contains(github.event.head_commit.message, '[skip-ci]')"
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       GIT_USER_NAME: ${{ github.actor }}
@@ -24,9 +23,15 @@ jobs:
       - name: Resolve component packages from bit.cloud registry
         run: |
           npm config set '@logora:registry' https://node.bit.cloud
+          export NODE_OPTIONS="--max_old_space_size=8092"
       
       - name: Bit Tag and Export
         uses: bit-tasks/tag-export@v1
 
-      - name: Commit Bitmap
-        uses: bit-tasks/commit-bitmap@v1
+      - name: Commit changes made to .bitmap
+        run: |
+          git config --global user.name '${{ env.GIT_USER_NAME }}'
+          git config --global user.email '${{ env.GIT_USER_EMAIL }}'
+          git add .bitmap
+          git commit -m "update .bitmap with new component versions (automated) [skip ci]"
+          git push
