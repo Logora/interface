@@ -254,7 +254,7 @@ export const ArgumentPositionDisabled = () => {
 export const DisabledArgumentInputForVisitors = () => {
     return (
         <BrowserRouter>
-            <ConfigProvider config={{ actions: { disableInputForVisitor: true } }}>
+            <ConfigProvider config={{ actions: { disableInputForVisitor: true }, auth: { type: "social" } }}>
                 <IconProvider library={regularIcons}>
                     <IntlProvider locale="en">
                         <DataProviderContext.Provider value={{ dataProvider: data }}>
