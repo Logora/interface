@@ -29,6 +29,7 @@ export const ToolbarPlugin = (props) => {
     const [isBold, setIsBold] = useState(false);
     const [isItalic, setIsItalic] = useState(false);
     const [isUnderline, setIsUnderline] = useState(false);
+    const isDisabled = props.hideSubmit && props.hideSourceAction && props.disableRichText
 
     const updateToolbar = useCallback(() => {
         const selection = $getSelection();
@@ -98,8 +99,8 @@ export const ToolbarPlugin = (props) => {
     };
 
     return (
-        <div className={cx(styles.toolbar, {[styles.toolbarIsActive]: props.isActive})} ref={toolbarRef}>
-            <>
+        (!isDisabled ?
+            <div className={cx(styles.toolbar, {[styles.toolbarIsActive]: isDisabled ? false : props.isActive})} ref={toolbarRef}>
                 { props.isActive ?
                     (!props.disableRichText &&
                         <div className={cx(styles.iconToolbar, {[styles.shortBar]: props.shortBar})}>
@@ -172,7 +173,7 @@ export const ToolbarPlugin = (props) => {
                         </Button>
                     }
                 </div>
-            </>
-        </div>
+            </div>
+        : null)
     );
 };

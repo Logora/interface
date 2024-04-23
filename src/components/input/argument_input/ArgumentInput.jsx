@@ -46,9 +46,10 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
     const [savedArgument, setSavedArgument] = useSessionStorageState("userSide", {});
     const [savedReply, setSavedReply] = useSessionStorageState(`TextEditor:content_Reply${parentId}`, {});
 	const requireAuthentication = useAuthRequired();
-    const urlParams = new URLSearchParams(location.search);
-    const { toast } = useToast() || {};
 	const { showModal } = useModal();
+    const { toast } = useToast() || {};
+    const urlParams = new URLSearchParams(location.search);
+    const inputDisabledForVisitors = (!isLoggedIn && config?.actions?.disableInputForVisitor)
 
     useEffect(() => {
         let positionIdParam = null;
@@ -177,7 +178,7 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
     }
 
     const handleChange = (content, richContent) => {
-        if (!isLoggedIn && config?.actions?.disableInputForVisitor) {
+        if (inputDisabledForVisitors) {
             requireAuthentication({ loginAction: "argument" });
         } else {
             setArgumentContent(content);
@@ -282,7 +283,7 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
     }
 
     const handleTextEditorActivation = () => {
-        if (!isLoggedIn && config?.actions?.disableInputForVisitor) {
+        if (inputDisabledForVisitors) {
             requireAuthentication({ loginAction: "argument" });
         } else {
             setInputActivation(true);
@@ -334,14 +335,15 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
                                     placeholder={placeholder}
                                     onSubmit={handleFormSubmit}
                                     sources={sources}
-                                    hideSourceAction={hideSourceAction}
+                                    hideSourceAction={hideSourceAction || inputDisabledForVisitors}
                                     uid={`Argument${groupId}`}
                                     onActivation={handleTextEditorActivation}
                                     showStylesControls={inputActivation}
-                                    disabled={disabled || (!isLoggedIn && config?.actions?.disableInputForVisitor)}
+                                    disabled={disabled || inputDisabledForVisitors}
                                     maxLength={config?.actions?.argumentMaxLength}
-                                    disableRichText={config?.actions?.disableRichText}
+                                    disableRichText={config?.actions?.disableRichText || inputDisabledForVisitors}
                                     shortBar={isReply}
+                                    hideSubmit={inputDisabledForVisitors}
                                 />
                                 { (errors && errors.content) && <div className={styles.argumentInputWarning}>{errors && Object.values(errors).map((e, index) => <div key={index}>{e}</div>)}</div> }
                                 { inputActivation && disabledPositions?.find(pos => pos.id === userPositionId) &&
