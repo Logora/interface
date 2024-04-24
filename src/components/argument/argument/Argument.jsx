@@ -254,8 +254,9 @@ export const Argument = ({ argument, argumentReplies, nestingLevel, debatePositi
 								voteableType={"Message"}
 								currentListId={"argument_" + argument.id + "_reply_list"}
 								loadingComponent={<UserContentSkeleton />}
-								resource={"/messages/" + argument.id + "/replies"}
+								resource={"messages"}
 								sort={"+created_at"}
+								filters={{ message_id: argument.id, is_reply: true }}
 								perPage={5}
 								display={"column"}
 								transformData={elm => (elm.status === "accepted" || elm.author.id === currentUser.id)}
