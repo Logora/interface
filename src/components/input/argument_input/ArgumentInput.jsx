@@ -22,7 +22,7 @@ const SideModal = lazy(() => import('@logora/debate.modal.side_modal'));
 import cx from 'classnames';
 import styles from './ArgumentInput.module.scss';
 
-export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = false, disabledPositions, groupId, groupName, groupType, hideSourceAction = false, isReply = false, onSubmit, parentId, placeholder, positionId, positions }) => {
+export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = false, disabledPositions, groupId, groupName, groupType, hideSourceAction = false, isReply = false, onSubmit, parentId, placeholder, positionId, positions, onInputActivation }) => {
     const intl = useIntl();
     const api = useDataProvider();
     const list = useList();
@@ -46,9 +46,10 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
     const [savedArgument, setSavedArgument] = useSessionStorageState("userSide", {});
     const [savedReply, setSavedReply] = useSessionStorageState(`TextEditor:content_Reply${parentId}`, {});
 	const requireAuthentication = useAuthRequired();
-    const urlParams = new URLSearchParams(location.search);
-    const { toast } = useToast() || {};
 	const { showModal } = useModal();
+    const { toast } = useToast() || {};
+    const urlParams = new URLSearchParams(location.search);
+    const inputDisabledForVisitors = (!isLoggedIn && config?.actions?.disableInputForVisitor)
 
     useEffect(() => {
         let positionIdParam = null;
@@ -150,7 +151,7 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
     }
 
     const handleFormSubmit = () => {
-        if(isLoggedIn) {
+        if (isLoggedIn) {
             if (argumentId) {
                 updateArgument();
             } else {
@@ -177,8 +178,12 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
     }
 
     const handleChange = (content, richContent) => {
-        setArgumentContent(content);
-        setArgumentRichContent(richContent);
+        if (inputDisabledForVisitors) {
+            requireAuthentication({ loginAction: "argument" });
+        } else {
+            setArgumentContent(content);
+            setArgumentRichContent(richContent);
+        }
     }
 
     const handleSourcesChange = (newSource) => {
@@ -278,7 +283,11 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
     }
 
     const handleTextEditorActivation = () => {
-        setInputActivation(true);
+        if (inputDisabledForVisitors) {
+            requireAuthentication({ loginAction: "argument" });
+        } else {
+            setInputActivation(true);
+        }
     }
 
     const displayArgumentLimitWarning = () => {
@@ -319,21 +328,22 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
                                 }
                                 
                             </div>
-                            <div data-testid="argument-input" className={cx(styles.textEditorBox, {[styles.replyTextEditorBox]: isReply})}>
+                            <div onClick={handleTextEditorActivation} data-testid="argument-input" className={cx(styles.textEditorBox, {[styles.replyTextEditorBox]: isReply})}>
                                 <TextEditor 
                                     handleChange={(value, rawValue) => { handleChange(value, rawValue); } }
                                     handleSourcesChange={(sources) => { handleSourcesChange(sources); } }
                                     placeholder={placeholder}
                                     onSubmit={handleFormSubmit}
                                     sources={sources}
-                                    hideSourceAction={hideSourceAction}
+                                    hideSourceAction={hideSourceAction || inputDisabledForVisitors}
                                     uid={`Argument${groupId}`}
                                     onActivation={handleTextEditorActivation}
                                     showStylesControls={inputActivation}
-                                    disabled={disabled}
+                                    disabled={disabled || inputDisabledForVisitors}
                                     maxLength={config?.actions?.argumentMaxLength}
-                                    disableRichText={config?.actions?.disableRichText}
+                                    disableRichText={config?.actions?.disableRichText || inputDisabledForVisitors}
                                     shortBar={isReply}
+                                    hideSubmit={inputDisabledForVisitors}
                                 />
                                 { (errors && errors.content) && <div className={styles.argumentInputWarning}>{errors && Object.values(errors).map((e, index) => <div key={index}>{e}</div>)}</div> }
                                 { inputActivation && disabledPositions?.find(pos => pos.id === userPositionId) &&

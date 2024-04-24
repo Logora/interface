@@ -250,3 +250,42 @@ export const ArgumentPositionDisabled = () => {
         </BrowserRouter>
     );
 };
+
+export const DisabledArgumentInputForVisitors = () => {
+    return (
+        <BrowserRouter>
+            <ConfigProvider config={{ actions: { disableInputForVisitor: true }, auth: { type: "social" } }}>
+                <IconProvider library={regularIcons}>
+                    <IntlProvider locale="en">
+                        <DataProviderContext.Provider value={{ dataProvider: data }}>
+                            <AuthContext.Provider value={{ currentUser: currentUser, isLoggedIn: false }}>
+                                <ToastProvider>
+                                    <ModalProvider>
+                                        <ListProvider>
+                                            <IdProvider>
+                                                <InputProvider>
+                                                    <ArgumentInput
+                                                        onSubmit={() => {}}
+                                                        groupId={debate.id}
+                                                        groupName={debate.name}
+                                                        positions={debate.positions}
+                                                        disabledPositions={[]}
+                                                        listId={"argumentList"}
+                                                        positionId={debate.positions[0].id}
+                                                        hideSourceAction={false}
+                                                        avatarSize={48}
+                                                        placeholder={"Add an argument..."}
+                                                    />
+                                                </InputProvider>
+                                            </IdProvider>
+                                        </ListProvider>
+                                    </ModalProvider>
+                                </ToastProvider>
+                            </AuthContext.Provider>
+                        </DataProviderContext.Provider>
+                    </IntlProvider>
+                </IconProvider>
+            </ConfigProvider>
+        </BrowserRouter>
+    );
+};

@@ -22,12 +22,12 @@ import { CharacterLimitPlugin } from '@lexical/react/LexicalCharacterLimitPlugin
 import { SourceModal } from '@logora/debate.source.source_modal';
 import { SourceListItem } from '@logora/debate.source.source_list_item';
 import { useIntl } from 'react-intl';
+import { useId } from "react-use-id-hook";
 import LexicalErrorBoundary from "@lexical/react/LexicalErrorBoundary";
 import styles from './TextEditor.module.scss';
 import EditorTheme from './EditorTheme';
 import cx from "classnames";
 import PropTypes from "prop-types";
-import { useId } from "react-use-id-hook";
 
 export const TextEditor = ({ placeholder, onSubmit, sources, hideSubmit = false, hideSourceAction = false, onActivation, disabled = false, handleChange, handleSourcesChange, shortBar = false, active = false, maxLength, disableRichText = false, editorRef }) => {
     const [isActive, setIsActive] = useState(false);
