@@ -340,7 +340,7 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
                                     onActivation={handleTextEditorActivation}
                                     showStylesControls={inputActivation}
                                     disabled={disabled || inputDisabledForVisitors}
-                                    maxLength={inputDisabledForVisitors || config?.actions?.argumentMaxLength}
+                                    maxLength={inputDisabledForVisitors ? false : config?.actions?.argumentMaxLength}
                                     disableRichText={config?.actions?.disableRichText || inputDisabledForVisitors}
                                     shortBar={isReply}
                                     hideSubmit={inputDisabledForVisitors}
