@@ -8,19 +8,19 @@ const List = () => {
     const { addElements, addPinnedElements, removeElements } = useList();
 
     useEffect(() => {
-        if(uniqueListId in addElements) {
+        if (uniqueListId in addElements) {
             setElements(prevState => [...prevState, addElements[uniqueListId]]);
         }
     }, [addElements]);
 
     useEffect(() => {
-        if(uniqueListId in addPinnedElements) {
+        if (uniqueListId in addPinnedElements) {
             setElements(prevState => [addPinnedElements[uniqueListId], ...prevState]);
         }
     }, [addPinnedElements]);
 
     useEffect(() => {
-        if(uniqueListId in removeElements) {
+        if (uniqueListId in removeElements) {
             setElements((prevState) =>
                 prevState.filter((prevItem) => removeElements[uniqueListId].indexOf(prevItem))
             );
@@ -31,14 +31,12 @@ const List = () => {
         <div>
             <div className="listTitle">List</div>
             <div>
-                {
-                    elements.map((el, index) => {
-                        return <div key={index} className="listElement">{ el }</div>;
-                    })
-                }
+                {elements.map((el, index) => (
+                    <div key={index} className="listElement">{ el }</div>
+                ))}
             </div>
         </div>
-        
+
     );
 }
 
@@ -65,9 +63,9 @@ const ListManager = () => {
 
     return (
         <>
-            <button onClick={ handleAddPinned }>Add pinned element</button>
-            <button onClick={ handleAdd }>Add element</button>
-            <button onClick={ handleRemove }>Remove element</button>
+            <button onClick={handleAddPinned}>Add pinned element</button>
+            <button onClick={handleAdd}>Add element</button>
+            <button onClick={handleRemove}>Remove element</button>
         </>
     );
 }
