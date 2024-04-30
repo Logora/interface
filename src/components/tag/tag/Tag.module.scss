@@ -13,6 +13,8 @@
     text-transform: capitalize;
     text-align: left;
     white-space: nowrap;
+    display: flex;
+    align-items: center;
     &:hover {
         text-decoration: none;
         opacity: 0.9;
@@ -22,4 +24,9 @@
         border-color: $tag-border-color;
         color: $tag-text-color-active !important;
     };
+    > svg {
+        fill: $tag-text-color-active !important;
+        @include ml(2, xs);
+        cursor: pointer;
+    }
 }
