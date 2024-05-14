@@ -96,8 +96,14 @@
     color: $text-secondary;
 }
 
+.authorEloquence {
+    color: $text-secondary;
+    @include text-truncate();
+}
+
 .separator {
     width: 3px;
+    min-width: 3px;
     height: 3px;
     background-color: $text-secondary;
     border-radius: 50%;
