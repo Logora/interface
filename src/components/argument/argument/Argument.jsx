@@ -252,10 +252,9 @@ export const Argument = ({ argument, argumentReplies, nestingLevel, debatePositi
 								loadingComponent={<UserContentSkeleton />}
 								resource={"messages"}
 								sort={"+created_at"}
-								filters={{ message_id: argument.id, is_reply: true }}
+								filters={{ message_id: argument.id, is_reply: true, status: "accepted" }}
 								perPage={5}
 								display={"column"}
-								transformData={elm => (elm.status === "accepted" || elm.author.id === currentUser.id)}
 								resourcePropName={'argument'}
 							>
 								<ArgumentContainer 
