@@ -193,7 +193,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel, debatePositi
 							totalUpvote={argument.upvotes}
 							totalDownvote={0}
 							activeClassName={styles[`voteButtonPosition-${debatePositions?.map((e) => e.id).indexOf(argument.position.id) + 1}`]}
-							disabled={!debateIsActive}
+							disabled={!debateIsActive || (currentUser?.id === argument?.author?.id)}
 						/>
 					</ContentFooter>
 				}
