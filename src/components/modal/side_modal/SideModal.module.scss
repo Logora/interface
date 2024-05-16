@@ -59,20 +59,8 @@
 
 .argumentInputWarning {
   font-size: $font-size-extra-small !important;
-  color: $info-primary !important;
-  display: flex !important;
+  color: $text-secondary !important;
   @include mt(3, xs);
-  svg.warningIcon {
-    @include mr(2, xs);
-    fill: transparent !important;
-    circle {
-      stroke: $info-primary;
-      stroke-width: 1.5px;
-    }
-    path {
-      fill: $info-primary;
-    }
-  }
 }
 
 .neutralPosition {
