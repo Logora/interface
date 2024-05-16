@@ -70,7 +70,7 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
 
     useEffect(() => {
         if(typeof window !== 'undefined') {
-            const initFocus = urlParams.get('initArgument') || focusOnInit;
+            const initFocus = focusOnInit || urlParams.get('initArgument');
             if (initFocus === 'true') {
                 if(!isLoggedIn) {
                     requireAuthentication({ loginAction: "argument" });
