@@ -193,7 +193,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel, debatePositi
 							totalUpvote={argument.upvotes}
 							totalDownvote={0}
 							activeClassName={styles[`voteButtonPosition-${debatePositions?.map((e) => e.id).indexOf(argument.position.id) + 1}`]}
-							disabled={!debateIsActive}
+							disabled={!debateIsActive || (currentUser?.id === argument?.author?.id)}
 						/>
 					</ContentFooter>
 				}
@@ -252,10 +252,9 @@ export const Argument = ({ argument, argumentReplies, nestingLevel, debatePositi
 								loadingComponent={<UserContentSkeleton />}
 								resource={"messages"}
 								sort={"+created_at"}
-								filters={{ message_id: argument.id, is_reply: true }}
+								filters={{ message_id: argument.id, is_reply: true, status: "accepted" }}
 								perPage={5}
 								display={"column"}
-								transformData={elm => (elm.status === "accepted" || elm.author.id === currentUser.id)}
 								resourcePropName={'argument'}
 							>
 								<ArgumentContainer 
