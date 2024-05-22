@@ -29,7 +29,7 @@ export const SideModal = ({ modalTitle, onChooseSide, title, positions, disabled
                             key={position.id}
                             className={styles.modalAction}
                             onClick={() => handleChoosePosition(position.id)}
-                            disabled={disabledPositions.filter((pos) => pos.id === position.id).length > 0}
+                            disabled={disabledPositions?.filter((pos) => pos.id === position.id).length > 0}
                         >
                             { useTranslatedContent(position.name, position.language, "name", position.translation_entries).translatedContent }
                         </Button>
@@ -66,15 +66,15 @@ SideModal.propTypes = {
     /** An array of objects containing the id and name of each position in the debate. */
     positions: PropTypes.arrayOf(
         PropTypes.shape({
-        id: PropTypes.number.isRequired,
-        name: PropTypes.string.isRequired,
+            id: PropTypes.number.isRequired,
+            name: PropTypes.string.isRequired,
         })
     ).isRequired,
     /** An array of objects containing the id and name of each position that should be disabled. */
     disabledPositions: PropTypes.arrayOf(
         PropTypes.shape({
-        id: PropTypes.number.isRequired,
-        name: PropTypes.string.isRequired,
+            id: PropTypes.number.isRequired,
+            name: PropTypes.string.isRequired,
         })
     ),
     /** Whether to show a neutral position option in the modal. */
