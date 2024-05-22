@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from "prop-types";
 import { useLocation } from 'react-router';
-import { useRoutes, useConfig } from '@logora/debate.data.config_provider';
+import { useConfig } from '@logora/debate.data.config_provider';
 import { useDataProvider } from '@logora/debate.data.data_provider';
 import { useAuth } from "@logora/debate.auth.use_auth";
 import { useIntl, FormattedMessage } from 'react-intl';
@@ -30,7 +30,7 @@ export const VoteBox = ({ numberVotes, votePositions, voteableType, voteableId, 
 
     const initVotesCount = () => {
         const votesCountObj = {};
-        votePositions && votePositions.forEach(position =>
+        votePositions?.forEach(position =>
             votesCountObj[position.id] = {
                 count: parseFloat(numberVotes[position.id]) || 0,
                 percentage: totalVotes === 0 ? 0 : Math.round(100 * ((numberVotes[position.id] || 0) / (totalVotes)))
@@ -44,7 +44,6 @@ export const VoteBox = ({ numberVotes, votePositions, voteableType, voteableId, 
     const requireAuthentication = useAuthRequired();
     const location = useLocation();
     const api = useDataProvider();
-    const routes = useRoutes();
     const config = useConfig();
     const intl = useIntl();
     const { isLoggedIn, isLoggingIn } = useAuth();
