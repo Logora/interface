@@ -29,7 +29,7 @@ export const SideModal = ({ modalTitle, onChooseSide, title, positions, disabled
                             key={position.id}
                             className={styles.modalAction}
                             onClick={() => handleChoosePosition(position.id)}
-                            disabled={disabledPositions?.filter((pos) => pos.id === position.id).length > 0}
+                            disabled={disabledPositions && disabledPositions.filter((pos) => pos.id === position.id).length > 0}
                         >
                             { useTranslatedContent(position.name, position.language, "name", position.translation_entries).translatedContent }
                         </Button>
