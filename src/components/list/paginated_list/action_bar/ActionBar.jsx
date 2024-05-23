@@ -15,7 +15,7 @@ export const ActionBar = ({ title, sortOptions, defaultSelectOption, searchBar, 
     const history = useHistory();
     const location = useLocation();
     const { isMobile } = useResponsive();
-    const urlParams = new URLSearchParams(location.search);
+    const urlParams = new URLSearchParams(window !== "undefined" ? window.location.search : location.search);
 
     const handleSortChange = (selectOption) => {
         if (withUrlParams) {

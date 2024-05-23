@@ -48,7 +48,7 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
 	const requireAuthentication = useAuthRequired();
 	const { showModal } = useModal();
     const { toast } = useToast() || {};
-    const urlParams = new URLSearchParams(location.search);
+    const urlParams = new URLSearchParams(window !== "undefined" ? window.location.search : location.search);
     const inputDisabledForVisitors = (!isLoggedIn && config?.actions?.disableInputForVisitor)
 
     useEffect(() => {
