@@ -263,7 +263,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel, debatePositi
 									debateIsActive={debateIsActive}
 									debateName={debateName}
 									debatePositions={debatePositions && debatePositions}
-									replies={argumentReplies}
+									argumentReplies={argumentReplies}
 									replyToArgument={argument}
 									flashParent={(argumentId) => scrollToArgument(`argument_${argumentId}`)}
 									isComment={isComment}
@@ -280,7 +280,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel, debatePositi
 								debateIsActive={debateIsActive}
 								debateName={debateName}
 								debatePositions={debatePositions && debatePositions}
-								replies={argumentReplies}
+								argumentReplies={argumentReplies}
 								replyToArgument={argument}
 								flashParent={(argumentId) => scrollToArgument(`argument_${argumentId}`)}
 								isComment={isComment}
