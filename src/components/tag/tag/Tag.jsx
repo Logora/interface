@@ -8,7 +8,7 @@ export const Tag = ({ dataTid, active, text, className }) => {
     return (
         <span data-testid="tag" data-tid={dataTid ? dataTid : null} className={cx(styles.tag, styles.className, className, { [styles.active]: active })}>
 			{ text } 
-			{ active && <Icon name="close" height={14} width={14} /> }
+			{ active && <Icon name="close" height={10} width={10} /> }
 		</span>
     )
 }
