@@ -26,10 +26,7 @@
     };
     > svg {
         fill: $tag-text-color-active !important;
-        @include ml(2, xs);
-        padding: 3px;
-        border: 1px solid;
-        border-radius: 100%;
+        @include ml(2.5, xs);
         cursor: pointer;
     }
 }
