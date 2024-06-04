@@ -33,7 +33,7 @@ export const ConsultationBox = ({ consultation }) => {
         <>
             <div className={styles.container}>
                 <Link to={routes.consultationShowLocation.toUrl({ consultationSlug: consultation.slug })}>
-                    <img loading={"lazy"} className={cx(styles.consultationImage, {[styles.consultationImageIsMobile]: isMobile})} src={consultation.image_url} />
+                    <img loading={"lazy"} className={styles.consultationImage} src={consultation.image_url} />
                 </Link>
                 { consultation.ends_at && 
                     <div className={cx(styles.consultationTime, {[styles.ended]: endDate < date})}>
