@@ -26,7 +26,7 @@ export const SideModal = ({ modalTitle, onChooseSide, title, positions, disabled
                     <FormattedMessage
                         id={"modal.side_modal.side_limit_short"}
                         values={{ position: disabledPositions[0].name }}
-                        defaultMessage={"You have already reached the argument limit (10) for position {position}."}
+                        defaultMessage={"You have already reached the argument limit (10) for position {position}. You can support the other position."}
                     />
                 </div>
             )}
