@@ -258,7 +258,7 @@ describe("ArgumentInput", () => {
         const onSubmit = getByRole('button', { type: 'submit' });
         await act(async () => { await userEvent.click(onSubmit) });
         expect(queryByText("Choose your side")).toBeInTheDocument();
-        expect(getByText(`You have already reached the argument limit (10) for position ${debate.positions[0].name}.`)).toBeInTheDocument();
+        expect(getByText(`You have already reached the argument limit (10) for position ${debate.positions[0].name}. You can support the other position.`)).toBeInTheDocument();
     });
 
     it("should display error if the validation rules are not met", async () => {
