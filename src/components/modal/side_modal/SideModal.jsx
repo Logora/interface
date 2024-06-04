@@ -21,6 +21,15 @@ export const SideModal = ({ modalTitle, onChooseSide, title, positions, disabled
             title={modalTitle}
         >
             <div className={styles.modalContent}>{title}</div>
+            { disabledPositions?.length > 0 && (
+                <div className={styles.argumentInputWarning}>
+                    <FormattedMessage
+                        id={"modal.side_modal.side_limit_short"}
+                        values={{ position: disabledPositions[0].name }}
+                        defaultMessage={"You have already reached the argument limit (10) for position {position}."}
+                    />
+                </div>
+            )}
             <div className={styles.modalActions}>
                 { positions.slice(0, 2).map((position) => {
                     return (
@@ -36,15 +45,6 @@ export const SideModal = ({ modalTitle, onChooseSide, title, positions, disabled
                     );
                 })}
             </div>
-            { disabledPositions?.length > 0 && (
-                <div className={styles.argumentInputWarning}>
-                    <FormattedMessage
-                        id={"modal.side_modal.side_limit_short"}
-                        values={{ position: disabledPositions[0].name }}
-                        defaultMessage={"You have already reached the argument limit (10) for position {position}."}
-                    />
-                </div>
-            )}
             { isNeutral && positions[2] && (
                 <div className={styles.neutralPosition}>
                     <div className={styles.userChoice}>

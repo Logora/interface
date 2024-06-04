@@ -58,8 +58,8 @@
 }
 
 .argumentInputWarning {
-  font-size: $font-size-extra-small !important;
-  color: $text-secondary !important;
+  font-size: $font-size-small !important;
+  color: $cancel-primary !important;
   @include mt(3, xs);
 }
 
