@@ -22,6 +22,6 @@ describe("SideModal", () => {
 
     it("should render with warning when disabled positions", async () => {
         render(<SideModalWithDisabledPositions />);
-        expect(screen.getByText("You have already reached the argument limit (10) for position Position B.")).toBeInTheDocument();
+        expect(screen.getByText("You have already reached the argument limit (10) for position Position B. You can support the other position.")).toBeInTheDocument();
     });
 });
