@@ -22,7 +22,7 @@ const SideModal = lazy(() => import('@logora/debate.modal.side_modal'));
 import cx from 'classnames';
 import styles from './ArgumentInput.module.scss';
 
-export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = false, disabledPositions, groupId, groupName, groupType, hideSourceAction = false, isReply = false, onSubmit, parentId, placeholder, positionId, positions, onInputActivation, focusOnInit = false }) => {
+export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = false, positions, disabledPositions, groupId, groupName, groupType, hideSourceAction = false, isReply = false, onSubmit, parentId, placeholder, positionId, focusOnInit = false }) => {
     const intl = useIntl();
     const api = useDataProvider();
     const list = useList();
@@ -44,7 +44,6 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
     const [inputActivation, setInputActivation] = useState(false);
     const [editElement, setEditElement] = useState({});
     const [savedArgument, setSavedArgument] = useSessionStorageState("userSide", {});
-    const [savedReply, setSavedReply] = useSessionStorageState(`TextEditor:content_Reply${parentId}`, {});
 	const requireAuthentication = useAuthRequired();
 	const { showModal } = useModal();
     const { toast } = useToast() || {};
@@ -155,25 +154,14 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
             if (argumentId) {
                 updateArgument();
             } else {
-                if ((!disabledPositions?.find(pos => pos.id === userPositionId) && (userPositionId || !positions)) || currentUser.is_expert) {
-                    submitArgument((isReply && currentUser.is_expert) && positions[0].id);
+                if ((!disabledPositions?.find(pos => pos.id === userPositionId) && (userPositionId || !positions)) || (currentUser.is_expert && !isReply)) {
+                    submitArgument(isReply && currentUser.is_expert && positions[0].id);
                 } else {
                     showSideModal();
                 }
             }
         } else {
-            if (isReply) {
-                let storedData = savedReply;
-			    let replyArgumentData = {
-				    content: argumentContent,
-				    richContent: argumentRichContent,
-			    };
-			    storedData = Object.assign(storedData, replyArgumentData);
-			    setSavedReply(storedData);
-                requireAuthentication({ loginAction: "argument" });
-            } else {
-                requireAuthentication({ loginAction: "argument" });
-            }
+            requireAuthentication({ loginAction: "argument" });
         }
     }
 
@@ -369,6 +357,8 @@ ArgumentInput.propTypes = {
     avatarSize: PropTypes.number,
     /** If true, disables the input */
     disabled: PropTypes.bool,
+    /** Positions in the debate */
+    positions: PropTypes.array,
     /** If true, disables the position */
     disabledPositions: PropTypes.array,
     /** Id of the group */
@@ -389,6 +379,6 @@ ArgumentInput.propTypes = {
     placeholder: PropTypes.string.isRequired,
     /** Position of the argument */
     positionId: PropTypes.number,
-    /** Positions in the debate */
-    positions: PropTypes.array,
+    /** Focus input on initialization */
+    focusOnInit: PropTypes.bool
 };
