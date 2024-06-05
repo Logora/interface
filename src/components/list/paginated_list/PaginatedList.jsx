@@ -21,7 +21,6 @@ export const PaginatedList = ({ staticContext,
 	filters,
 	tagList,
 	currentPage,
-	resources,
 	resource,
 	currentListId,
 	withToken,
@@ -60,7 +59,7 @@ export const PaginatedList = ({ staticContext,
 	const { isMobile, isTablet, isDesktop } = useResponsive();
 	const [isLoading, setIsLoading] = useState(false);
 	const [loadError, setLoadError] = useState(false);
-	const [currentResources, setCurrentResources] = useState(staticContext && staticResourceName && staticResourceName in staticContext ? staticContext[staticResourceName] : (resources || []));
+	const [currentResources, setCurrentResources] = useState(staticContext && staticResourceName && staticResourceName in staticContext ? staticContext[staticResourceName] : []);
 	const [totalElements, setTotalElements] = useState(staticContext && staticResourceName && staticResourceName in staticContext ? staticContext[staticResourceName].length : 0);
 	const [page, setPage] = useState(1);
 	const [currentQuery, setCurrentQuery] = useState(query || null);
@@ -345,8 +344,6 @@ export const PaginatedList = ({ staticContext,
 }
 
 PaginatedList.propTypes = {
-	/** Array of the resources */
-	resources: PropTypes.array,
 	/**  Name of the resource */
 	resource: PropTypes.string,
 	/** Static context */
