@@ -60,6 +60,7 @@
 .argumentInputWarning {
   font-size: $font-size-small !important;
   color: $cancel-primary !important;
+  text-align: center;
   @include mt(3, xs);
 }
 
