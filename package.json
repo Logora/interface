@@ -29,7 +29,7 @@
   "homepage": "https://github.com/Logora/ui#readme",
   "dependencies": {
     "@lexical/headless": "^0.12.6",
-    "@lexical/react": "^0.12.6",
+    "@lexical/react": "^0.16.0",
     "@rooks/use-previous": "^4.11.2",
     "@rooks/use-sessionstorage-state": "^4.11.2",
     "axios": "^1.6.2",
