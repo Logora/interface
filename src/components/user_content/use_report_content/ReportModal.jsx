@@ -48,14 +48,12 @@ export const ReportModal = (props) => {
                                             onChange={e => setReportType(e.value)}
                                             options={
                                                 [
-                                                    { name: "ATTACK_ON_DEBATER", value: "ATTACK_ON_DEBATER", text: intl.formatMessage({ id:"report.report_modal.attack_on_debater_option", defaultMessage: "Attack on fellow debater"}) },
-                                                    { name: "ATTACK_ON_AUTHOR", value: "ATTACK_ON_AUTHOR", text: intl.formatMessage({ id:"report.report_modal.attack_on_author_option", defaultMessage: "Attack on journalist or on moderation"}) },
-                                                    { name: "INCOHERENT", value: "INCOHERENT", text: intl.formatMessage({ id:"report.report_modal.incoherent_option", defaultMessage: "Incoherent" }) },
-                                                    { name: "HATE_SPEECH", value: "HATE_SPEECH", text: intl.formatMessage({ id:"report.report_modal.hate_speech_option", defaultMessage: "Hate speech : Intending to provoke or inflame."}) },
-                                                    { name: "OBSCENE", value: "OBSCENE", text: intl.formatMessage({ id:"report.report_modal.obscene_option", defaultMessage: "Obscene : Obscene or vulgar language such as cursing."}) },
-                                                    { name: "SPAM", value: "SPAM", text: intl.formatMessage({ id:"report.report_modal.spam_option", defaultMessage: "Spam : Irrelevant or unsolicited commercial content."}) },
-                                                    { name: "UNSUBSTANTIAL", value: "UNSUBSTANTIAL", text: intl.formatMessage({ id:"report.report_modal.unsubstantial_option", defaultMessage: "Unsubstantial : Trivial or short"}) },
-                                                    { name: "REPETITION", value: "REPETITION", text: intl.formatMessage({ id:"report.report_modal.repetition_option", defaultMessage: "Repetition"}) },
+                                                    { name: "TOXICITY", value: "TOXICITY", text: intl.formatMessage({ id:"report.report_modal.toxicity_option", defaultMessage: "Incivility"}) },
+                                                    { name: "OBSCENE", value: "OBSCENE", text: intl.formatMessage({ id:"report.report_modal.obscene_option", defaultMessage: "Profanity, Sexually explicit, Flirtation, Obscene"}) },
+                                                    { name: "HATE_SPEECH", value: "HATE_SPEECH", text: intl.formatMessage({ id:"report.report_modal.hate_speech_option", defaultMessage: "Hate speech or Identity attack"}) },
+                                                    { name: "INCOHERENT", value: "INCOHERENT", text: intl.formatMessage({ id:"report.report_modal.incoherent_option", defaultMessage: "Incomprehensibility" }) },
+                                                    { name: "SPAM", value: "SPAM", text: intl.formatMessage({ id:"report.report_modal.spam_option", defaultMessage: "Spam : Irrelevant or unsolicited commercial content / Off-topic"}) },
+                                                    { name: "UNSUBSTANTIAL", value: "UNSUBSTANTIAL", text: intl.formatMessage({ id:"report.report_modal.unsubstantial_option", defaultMessage: "Unsubstantial : Trivial or short / Repetition"}) },
                                                 ]
                                             }
                                             className={styles.select}
