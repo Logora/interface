@@ -19,7 +19,7 @@ export const DefaultExpandableText = () => {
     )
 }
 
-export const DefaultDarkBackgroundExpandableText = () => {
+export const ExpandableTextWithDarkBackground = () => {
     return (
         <div style={{ background: "#000", padding: "50px" }}>
             <ExpandableText 
@@ -30,6 +30,24 @@ export const DefaultDarkBackgroundExpandableText = () => {
                 backgroundColor='#000'
             >
                 <div style={{ color: "#FFF" }}>
+                    {text}
+                </div>
+            </ExpandableText>
+        </div>
+    )
+}
+
+export const ExpandableTextWithoutIcon = () => {
+    return (
+        <div>
+            <ExpandableText 
+                expandable
+                expandText={"Read more"}
+                collapseText={"Read less"}
+                maxHeight='100'
+                showIcon={false}
+            >
+                <div>
                     {text}
                 </div>
             </ExpandableText>
