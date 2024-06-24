@@ -68,7 +68,7 @@
     "argument/top_arguments": {
         "name": "argument/top_arguments",
         "scope": "logora.debate",
-        "version": "0.0.44",
+        "version": "0.0.45",
         "mainFile": "index.js",
         "rootDir": "src/components/argument/top_arguments"
     },
