@@ -6,6 +6,8 @@ export const HashScroll = ({ elementId, onScroll, children }) => {
     const { hash } = useLocation();
 
 	useEffect(() => {
+		if (!elementId) return;
+
 		if (typeof window !== "undefined") {
 			let pageAnchor = hash.slice(1);
 			const anchorRegex = new RegExp(elementId);
@@ -21,11 +23,7 @@ export const HashScroll = ({ elementId, onScroll, children }) => {
 		}
 	}, [hash])
 
-	return (
-		<>
-			{ children }
-		</>
-	);
+	return <>{ children }</>;
 }
 
 HashScroll.propTypes = {

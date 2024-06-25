@@ -3,9 +3,6 @@ description: A component to enable scroll based on page hash.
 labels: ['scroll', 'hash-scroll']
 ---
 
-import { HashScroll } from './HashScroll';
-import { BrowserRouter } from "react-router-dom";
-
 A component to enable scroll based on page hash.
 Wrap your component with HashScroll and pass an element ID.
 If hash matches the elementId passed in props, this component will automatically trigger a scroll to the element.
@@ -13,16 +10,18 @@ If hash matches the elementId passed in props, this component will automatically
 It must be inside a router from react-router.
 
 ### Component usage
+
 ```js
     import { HashScroll } from '@logora/debate.tools.hash_scroll';
 ```
+
 ```js
     <BrowserRouter>
         <HashScroll 
-            elementId={"myHash"}
+            elementId={"myId"}
             onScroll={() => console.log("Starting scroll !")}
         >
-            <div>Scroll to element</div>
+            <div id="myId">Scroll to element</div>
         </HashScroll>
     </BrowserRouter>
 ```

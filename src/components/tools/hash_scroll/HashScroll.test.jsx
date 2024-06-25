@@ -3,7 +3,6 @@ import { HashScroll } from "./HashScroll";
 import { render } from '@testing-library/react';
 import { StaticRouter } from "react-router-dom";
 
-
 const hash = "my-element";
 
 let scrollIntoViewMock = jest.fn();
