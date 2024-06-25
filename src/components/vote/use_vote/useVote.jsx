@@ -44,21 +44,22 @@ export const useVote = (
       onVote(true);
     }
     if (isUpvote) {
-      setTotalUpvotes(totalUpvotes + 1);
+      setTotalUpvotes((prevState) => prevState + 1)
     } else {
-      setTotalDownvotes(totalDownvotes + 1);
+      setTotalDownvotes((prevState) => prevState + 1)
     }
   };
 
   const deactivateVote = (isUpvote) => {
     setActiveVote(false);
+    setVoteSide(!isUpvote);
     if (isUpvote && onVote) {
       onVote(false);
     }
     if (isUpvote) {
-      setTotalUpvotes(totalUpvotes - 1);
+      setTotalUpvotes((prevState) => prevState - 1)
     } else {
-      setTotalDownvotes(totalDownvotes - 1);
+      setTotalDownvotes((prevState) => prevState - 1)
     }
   };
 
@@ -69,15 +70,14 @@ export const useVote = (
         setVoteDisabled(true);
         api.delete("votes", voteId).then(
           (response) => {
-            if (response.data.success) {
+            if (response.data?.success) {
               setVoteId(null);
-              setVoteDisabled(false);
             } else {
               activateVote(isUpvote);
-              setVoteDisabled(false);
             }
+            setVoteDisabled(false);
           },
-          (response) => {
+          (error) => {
             activateVote(isUpvote);
             setVoteDisabled(false);
           }
@@ -91,11 +91,13 @@ export const useVote = (
         setVoteDisabled(true);
         api.update("votes", voteId, data).then(
           (response) => {
-            if (response.data.success) {
-              setVoteDisabled(false);
+            if (!response.data?.success) {
+              deactivateVote(isUpvote);
+              activateVote(!isUpvote);
             }
+            setVoteDisabled(false);
           },
-          (response) => {
+          (error) => {
             deactivateVote(isUpvote);
             activateVote(!isUpvote);
             setVoteDisabled(false);
@@ -112,10 +114,12 @@ export const useVote = (
       setVoteDisabled(true);
       api.create("votes", data).then(
         (response) => {
-          if (response.data.success) {
+          if (response.data?.success) {
             setVoteId(response.data.data.resource.id);
-            setVoteDisabled(false);
+          } else {
+            deactivateVote(isUpvote);
           }
+          setVoteDisabled(false);
         },
         (error) => {
           deactivateVote(isUpvote);

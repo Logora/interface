@@ -24,6 +24,21 @@ const httpClient = {
   }
 };
 
+const errorHttpClient = {
+  get: () => null,
+  post: (url, data, config) => {
+      return new Promise(function(resolve, reject) {
+        reject();
+      });
+  },
+  patch: () => null,
+  delete: (url, data, config) => {
+    return new Promise(function(resolve, reject) {
+      reject();
+    });
+  }
+};
+
 const vote = { 
   id: faker.datatype.number(),
   voteable_type: faker.lorem.word(),
@@ -36,8 +51,9 @@ const currentUser = {
 }
 
 const data = dataProvider(httpClient, "https://mock.example.api");
+const errorData = dataProvider(errorHttpClient, "https://mock.example.api");
 
-const VoteWrapper = ({ children }) => (
+const VoteWrapper = ({ children, data }) => (
     <ConfigProvider config={{}}>
       <DataProviderContext.Provider value={{ dataProvider: data }}>
         <AuthContext.Provider value={{ currentUser: currentUser, isLoggedIn: true }}>
@@ -74,7 +90,7 @@ describe("useVote", () => {
     }
 
     render(
-      <VoteWrapper>
+      <VoteWrapper data={data}>
         <VoteButton
           voteableType={vote.voteable_type}
           voteableId={vote.voteable_id}
@@ -112,7 +128,7 @@ describe("useVote", () => {
     }
 
     const { getByTestId } = render(
-      <VoteWrapper>
+      <VoteWrapper data={data}>
         <VoteButton
           voteableType={"message"} 
           voteableId={faker.datatype.number()} 
@@ -155,7 +171,7 @@ describe("useVote", () => {
     }
 
     const { getByTestId } = render(
-      <VoteWrapper>
+      <VoteWrapper data={data}>
         <VoteButton
           voteableType={"message"} 
           voteableId={faker.datatype.number()} 
@@ -198,7 +214,7 @@ describe("useVote", () => {
     }
 
     const { getByTestId } = render(
-      <VoteWrapper>
+      <VoteWrapper data={data}>
         <VoteButton
           voteableType={"message"} 
           voteableId={faker.datatype.number()} 
@@ -222,7 +238,57 @@ describe("useVote", () => {
 
     expect(screen.getByText("Upvotes : 10"));
     expect(screen.getByText("Downvotes : 5"));
-    expect(screen.getByText("VoteSide : true"));
+    expect(screen.getByText("VoteSide : false"));
+    expect(screen.getByText("ActiveVote : false"));
+  });
+
+  it("should not show negative votes if error", async () => {
+    const VoteButton = ({ voteableType, voteableId, totalUpvote, totalDownvote }) => {
+      const { totalUpvotes, totalDownvotes, activeVote, voteSide, handleVote } =
+      useVote(
+        voteableType,
+        voteableId,
+        totalUpvote,
+        totalDownvote
+      );
+      return (
+        <>
+          <button onClick={() => handleVote(true)} data-testid="upvote"></button>
+          <button onClick={() => handleVote(false)} data-testid="downvote"></button>
+          <span>Upvotes : {totalUpvotes}</span>
+          <span>Downvotes : {totalDownvotes}</span>
+          <span>VoteSide : { voteSide.toString() }</span>
+          <span>ActiveVote : { activeVote.toString() }</span>
+        </>
+      )
+    }
+
+    const { getByTestId } = render(
+      <VoteWrapper data={errorData}>
+        <VoteButton
+          voteableType={"message"} 
+          voteableId={faker.datatype.number()} 
+          totalUpvote={0} 
+          totalDownvote={0} 
+        />
+      </VoteWrapper>
+    )
+
+    expect(screen.getByText("ActiveVote : false"));
+
+    const upvoteButton = getByTestId("upvote");
+    await userEvent.click(upvoteButton);
+
+    expect(screen.getByText("Upvotes : 0"));
+    expect(screen.getByText("Downvotes : 0"));
+    expect(screen.getByText("VoteSide : false"));
+    expect(screen.getByText("ActiveVote : false"));
+
+    await userEvent.click(upvoteButton);
+
+    expect(screen.getByText("Upvotes : 0"));
+    expect(screen.getByText("Downvotes : 0"));
+    expect(screen.getByText("VoteSide : false"));
     expect(screen.getByText("ActiveVote : false"));
   });
 });
