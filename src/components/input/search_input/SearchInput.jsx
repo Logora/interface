@@ -9,6 +9,7 @@ export const SearchInput = ({ onSearchSubmit, placeholder, disabled, reducedByDe
 	const [query, setQuery] = useState("");
 	const [openSearch, setOpenSearch] = useState(false);
 	const searchRef = useRef(null);
+	useOnClickOutside(searchRef, reducedByDefault ? () => setOpenSearch(false) : null);
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -22,10 +23,6 @@ export const SearchInput = ({ onSearchSubmit, placeholder, disabled, reducedByDe
 		setQuery("");
 		onSearchSubmit("");
 	};
-
-	if(reducedByDefault) {
-		useOnClickOutside(searchRef, () => setOpenSearch(false));
-	}
 
 	return (
 		!reducedByDefault || openSearch ? 
