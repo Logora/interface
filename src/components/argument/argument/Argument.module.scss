@@ -19,7 +19,7 @@
 .edited {
 	font-size: $font-size-extra-small;
 	color: $text-secondary;
-	line-height: 1.5;
+	line-height: $line-height-loose;
 	@include mb(1.5, xs);
 }
 
@@ -111,7 +111,7 @@
 }
 
 .argumentContent {
-	line-height: 1.5em;
+	line-height: $line-height-loose;
 	overflow-wrap: break-word;
 	& * {
 		font-size: $font-size-small;

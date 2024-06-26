@@ -17,7 +17,7 @@
 	flex-direction: column !important;
 	font-size: $font-size-small;
 	white-space: pre-line;
-	line-height: 1.5em;
+	line-height: $line-height-loose;
 }
 
 .title {
