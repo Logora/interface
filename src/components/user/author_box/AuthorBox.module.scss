@@ -24,7 +24,7 @@
     font-size: $font-size-small;
     cursor: pointer;
     color: $text-primary;
-    line-height: $line-height-none;
+    line-height: $line-height-loose;
     @include pb(1, xs);
 }
 
