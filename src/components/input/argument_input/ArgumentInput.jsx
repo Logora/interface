@@ -225,7 +225,7 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
                         toast(intl.formatMessage({ id: "alert.argument_create", defaultMessage: "Your contribution has been sent !" }), { type: "success", points:  intl.formatMessage({ id: "alert.argument_create_gain", defaultMessage: "Up to 10 eloquence points" }), category: "ARGUMENT", contentKey: currentUser.messages_count === 2 ? "alert.third_argument" : "alert.first_argument" });
                     }
                     window.dispatchEvent(
-                        new CustomEvent("logora:user_content:create", {
+                        new CustomEvent("logora:user_content:created", {
                             detail: {
                                 content: response.data.data?.resource
                             }
