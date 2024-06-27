@@ -41,8 +41,6 @@ const DefaultList = () => {
                                     perPage={10}
                                     withPagination={false}
                                     countless={true}
-                                    staticContext={null}
-                                    staticResourceName={"getListItem"}
                                     display="column"
                                     perPageParam={"porut"}
                                 >
@@ -107,8 +105,6 @@ describe('PaginatedList', () => {
                                         perPage={1}
                                         withPagination
                                         countless={false}
-                                        staticContext={null}
-                                        staticResourceName={"getListItem"}
                                         display="column"
                                         numberElements={3}
                                         loadingComponent={<p>Loading...</p>}
@@ -150,8 +146,6 @@ describe('PaginatedList', () => {
                                                 perPage={1}
                                                 withPagination
                                                 countless={false}
-                                                staticContext={null}
-                                                staticResourceName={"getListItem"}
                                                 display="column"
                                                 numberElements={3}
                                                 loadingComponent={<p>Loading...</p>}
@@ -221,8 +215,6 @@ describe('PaginatedList', () => {
                                             perPage={1}
                                             withPagination={true}
                                             countless={false}
-                                            staticContext={null}
-                                            staticResourceName={"getListItem"}
                                             display="column"
                                             numberElements={3}
                                         >
@@ -274,8 +266,6 @@ describe('PaginatedList', () => {
                                             perPage={1}
                                             withPagination
                                             countless={false}
-                                            staticContext={null}
-                                            staticResourceName={"getListItem"}
                                             display="column"
                                             numberElements={3}
                                             searchBar
@@ -328,8 +318,6 @@ describe('PaginatedList', () => {
                                             perPage={1}
                                             withPagination
                                             countless={false}
-                                            staticContext={null}
-                                            staticResourceName={"getListItem"}
                                             display="column"
                                             numberElements={3}
                                             title={"My title"}
@@ -382,8 +370,6 @@ describe('PaginatedList', () => {
                                             perPage={1}
                                             withPagination
                                             countless={false}
-                                            staticContext={null}
-                                            staticResourceName={"getListItem"}
                                             display="column"
                                             numberElements={3}
                                             sortOptions={[
@@ -445,8 +431,6 @@ describe('PaginatedList', () => {
                                             perPage={1}
                                             withPagination
                                             countless={false}
-                                            staticContext={null}
-                                            staticResourceName={"getListItem"}
                                             display="column"
                                             numberElements={3}
                                             emptyListComponent={<p>Empty list</p>}
@@ -497,8 +481,6 @@ describe('PaginatedList', () => {
                                             withPagination
                                             countless={false}
                                             filters={{}}
-                                            staticContext={null}
-                                            staticResourceName={"getListItem"}
                                             display="column"
                                             numberElements={3}
                                             sortOptions={[
@@ -572,8 +554,6 @@ describe('PaginatedList', () => {
                                             perPage={1}
                                             withPagination
                                             countless={false}
-                                            staticContext={null}
-                                            staticResourceName={"getListItem"}
                                             filters={{}}
                                             display="column"
                                             numberElements={3}
@@ -641,8 +621,6 @@ describe('PaginatedList', () => {
                                             perPage={1}
                                             withPagination
                                             countless={false}
-                                            staticContext={null}
-                                            staticResourceName={"getListItem"}
                                             filters={{}}
                                             display="column"
                                             numberElements={3}
@@ -705,8 +683,6 @@ describe('PaginatedList', () => {
                                             perPage={1}
                                             withPagination
                                             countless={false}
-                                            staticContext={null}
-                                            staticResourceName={"getListItem"}
                                             filters={{}}
                                             display="column"
                                             numberElements={3}
@@ -779,8 +755,6 @@ describe('PaginatedList', () => {
                                             perPage={1}
                                             withPagination
                                             countless={false}
-                                            staticContext={null}
-                                            staticResourceName={"getListItem"}
                                             filters={{}}
                                             display="column"
                                             numberElements={3}
@@ -852,8 +826,6 @@ describe('PaginatedList', () => {
                                             perPage={1}
                                             withPagination
                                             countless={false}
-                                            staticContext={null}
-                                            staticResourceName={"getListItem"}
                                             filters={{}}
                                             display="column"
                                             numberElements={3}
@@ -919,8 +891,6 @@ describe('PaginatedList', () => {
                                             perPage={1}
                                             withPagination
                                             countless={true}
-                                            staticContext={null}
-                                            staticResourceName={"getListItem"}
                                             filters={{}}
                                             display="column"
                                             numberElements={3}
@@ -982,8 +952,6 @@ describe('PaginatedList', () => {
                                             perPage={1}
                                             withPagination
                                             countless={false}
-                                            staticContext={null}
-                                            staticResourceName={"getListItem"}
                                             filters={{}}
                                             display="column"
                                             numberElements={3}
@@ -1049,8 +1017,6 @@ describe('PaginatedList', () => {
                                             perPage={1}
                                             withPagination
                                             countless={false}
-                                            staticContext={null}
-                                            staticResourceName={"getListItem"}
                                             filters={{}}
                                             display="column"
                                             numberElements={3}
@@ -1116,8 +1082,6 @@ describe('PaginatedList', () => {
                                             resourcePropName={"item"}
                                             perPage={1}
                                             withPagination
-                                            staticContext={null}
-                                            staticResourceName={"getListItem"}
                                             filters={{}}
                                             display="column"
                                             onUpdateTotal={callback}
@@ -1180,8 +1144,6 @@ describe('PaginatedList', () => {
                                             perPage={1}
                                             withPagination
                                             countless={false}
-                                            staticContext={null}
-                                            staticResourceName={"getListItem"}
                                             filters={{}}
                                             display="column"
                                             numberElements={3}
@@ -1249,8 +1211,6 @@ describe('PaginatedList', () => {
                                             resourcePropName={"item"}
                                             perPage={1}
                                             withPagination
-                                            staticContext={null}
-                                            staticResourceName={"getListItem"}
                                             filters={{}}
                                             display="column"
                                             transformData={elm => elm.id !== 1}
@@ -1317,8 +1277,6 @@ describe('PaginatedList', () => {
                                             perPage={1}
                                             withPagination
                                             countless={false}
-                                            staticContext={null}
-                                            staticResourceName={"getListItem"}
                                             filters={{}}
                                             display="column"
                                             numberElements={3}
@@ -1391,8 +1349,6 @@ describe('PaginatedList', () => {
                                             perPage={10}
                                             withPagination={false}
                                             countless={true}
-                                            staticContext={null}
-                                            staticResourceName={"getListItem"}
                                             display="column"
                                             onElementsLoad={callback}
                                         >

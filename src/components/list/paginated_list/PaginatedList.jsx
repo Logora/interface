@@ -212,6 +212,7 @@ export const PaginatedList = ({ staticContext,
 				...(activeTagId && { [tagParam]: activeTagId })
 			}
 			loadFunction(resource, params).then((response) => {
+				console.log(response)
 				const headers = response.headers;
 				if (headers) {
 					if (totalHeaderParam in headers) {
@@ -234,6 +235,7 @@ export const PaginatedList = ({ staticContext,
 				addElements(newElements);
 				setIsLoading(false);
 			}).catch((error) => {
+				console.log(error)
 				setLoadError(true);
 				setIsLoading(false);
 			});

@@ -7,11 +7,19 @@ import { IconProvider } from '@logora/debate.icons.icon_provider';
 import { ResponsiveProvider } from '@logora/debate.hooks.use_responsive';
 import * as regularIcons from '@logora/debate.icons.regular_icons';
 import { BrowserRouter } from 'react-router-dom';
+import { faker } from '@faker-js/faker'
 
 const ListItem = (props) => {
     return (
         <p>{props.item.name}</p>
     )
+}
+
+const createElement = () => {
+    return {
+        id: faker.random.numeric(6),
+        name: faker.music.songName()
+    }
 }
 
 const httpClient = {
@@ -20,11 +28,7 @@ const httpClient = {
                 {
                     "data": {
                         "success": true,
-                        "data": [ 
-                            { id: 1, name: "First item" },
-                            { id: 2, name: "Second item"},
-                            { id: 3, name: "Third item"}
-                        ]
+                        "data": Array.from({length: 3}, createElement)
                     }
                 }
             );
@@ -48,13 +52,10 @@ export const DefaultPaginatedList = () => {
                                     currentListId={"itemList"}
                                     resource={'/items'} 
                                     sort={"-created_at"}
-                                    loadingComponent={null}
                                     resourcePropName={"item"} 
-                                    perPage={10}
+                                    perPage={3}
                                     withPagination={false}
                                     countless={true}
-                                    staticContext={null}
-                                    staticResourceName={"getListItem"}
                                     display="column"
                                 >
                                     <ListItem />
@@ -85,8 +86,6 @@ export const PaginatedListWithPagination = () => {
                                     perPage={1}
                                     withPagination
                                     countless={false}
-                                    staticContext={null}
-                                    staticResourceName={"getListItem"}
                                     display="column"
                                     numberElements={3}
                                 >
@@ -118,8 +117,6 @@ export const PaginatedListWithCustomGap = () => {
                                     perPage={1}
                                     withPagination
                                     countless={false}
-                                    staticContext={null}
-                                    staticResourceName={"getListItem"}
                                     display="column"
                                     numberElements={3}
                                     gap={"2em"}
@@ -153,8 +150,6 @@ export const PaginatedListWithSearchBarAndTitle = () => {
                                     perPage={1}
                                     withPagination={false}
                                     countless={false}
-                                    staticContext={null}
-                                    staticResourceName={"getListItem"}
                                     display="column"
                                     numberElements={3}
                                     gap={"1em"}
@@ -191,8 +186,6 @@ export const RowPaginatedList = () => {
                                     perPage={1}
                                     withPagination={false}
                                     countless={false}
-                                    staticContext={null}
-                                    staticResourceName={"getListItem"}
                                     numberElements={3}
                                 >
                                     <ListItem />
