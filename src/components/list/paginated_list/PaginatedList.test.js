@@ -36,7 +36,6 @@ const DefaultList = () => {
                                     currentListId={"itemList"}
                                     resource={'/items'}
                                     sort={"-created_at"}
-                                    loadingComponent={null}
                                     resourcePropName={"item"}
                                     perPage={10}
                                     withPagination={false}
@@ -104,7 +103,6 @@ describe('PaginatedList', () => {
                                         resourcePropName={"item"}
                                         perPage={1}
                                         withPagination
-                                        countless={false}
                                         display="column"
                                         numberElements={3}
                                         loadingComponent={<p>Loading...</p>}
@@ -145,7 +143,6 @@ describe('PaginatedList', () => {
                                                 resourcePropName={"item"}
                                                 perPage={1}
                                                 withPagination
-                                                countless={false}
                                                 display="column"
                                                 numberElements={3}
                                                 loadingComponent={<p>Loading...</p>}
@@ -210,11 +207,9 @@ describe('PaginatedList', () => {
                                             currentListId={"itemList"}
                                             resource={'/items'}
                                             sort={"-created_at"}
-                                            loadingComponent={null}
                                             resourcePropName={"item"}
                                             perPage={1}
                                             withPagination={true}
-                                            countless={false}
                                             display="column"
                                             numberElements={3}
                                         >
@@ -261,11 +256,9 @@ describe('PaginatedList', () => {
                                             currentListId={"itemList"}
                                             resource={'/items'}
                                             sort={"-created_at"}
-                                            loadingComponent={null}
                                             resourcePropName={"item"}
                                             perPage={1}
                                             withPagination
-                                            countless={false}
                                             display="column"
                                             numberElements={3}
                                             searchBar
@@ -313,11 +306,9 @@ describe('PaginatedList', () => {
                                             currentListId={"itemList"}
                                             resource={'/items'}
                                             sort={"-created_at"}
-                                            loadingComponent={null}
                                             resourcePropName={"item"}
                                             perPage={1}
                                             withPagination
-                                            countless={false}
                                             display="column"
                                             numberElements={3}
                                             title={"My title"}
@@ -365,11 +356,9 @@ describe('PaginatedList', () => {
                                             currentListId={"itemList"}
                                             resource={'/items'}
                                             sort={"-created_at"}
-                                            loadingComponent={null}
                                             resourcePropName={"item"}
                                             perPage={1}
                                             withPagination
-                                            countless={false}
                                             display="column"
                                             numberElements={3}
                                             sortOptions={[
@@ -426,11 +415,9 @@ describe('PaginatedList', () => {
                                             currentListId={"itemList"}
                                             resource={'/items'}
                                             sort={"-created_at"}
-                                            loadingComponent={null}
                                             resourcePropName={"item"}
                                             perPage={1}
                                             withPagination
-                                            countless={false}
                                             display="column"
                                             numberElements={3}
                                             emptyListComponent={<p>Empty list</p>}
@@ -475,12 +462,9 @@ describe('PaginatedList', () => {
                                         <PaginatedList
                                             currentListId={"itemList"}
                                             resource={'/items'}
-                                            loadingComponent={null}
                                             resourcePropName={"item"}
                                             perPage={1}
                                             withPagination
-                                            countless={false}
-                                            filters={{}}
                                             display="column"
                                             numberElements={3}
                                             sortOptions={[
@@ -549,12 +533,9 @@ describe('PaginatedList', () => {
                                         <PaginatedList
                                             currentListId={"itemList"}
                                             resource={'/items'}
-                                            loadingComponent={null}
                                             resourcePropName={"item"}
                                             perPage={1}
                                             withPagination
-                                            countless={false}
-                                            filters={{}}
                                             display="column"
                                             numberElements={3}
                                             sortOptions={[
@@ -616,12 +597,9 @@ describe('PaginatedList', () => {
                                         <PaginatedList
                                             currentListId={"itemList"}
                                             resource={'/items'}
-                                            loadingComponent={null}
                                             resourcePropName={"item"}
                                             perPage={1}
                                             withPagination
-                                            countless={false}
-                                            filters={{}}
                                             display="column"
                                             numberElements={3}
                                             query={"test"}
@@ -678,12 +656,9 @@ describe('PaginatedList', () => {
                                         <PaginatedList
                                             currentListId={"itemList"}
                                             resource={'/items'}
-                                            loadingComponent={null}
                                             resourcePropName={"item"}
                                             perPage={1}
                                             withPagination
-                                            countless={false}
-                                            filters={{}}
                                             display="column"
                                             numberElements={3}
                                             searchBar
@@ -750,12 +725,9 @@ describe('PaginatedList', () => {
                                         <PaginatedList
                                             currentListId={"itemList"}
                                             resource={'/items'}
-                                            loadingComponent={null}
                                             resourcePropName={"item"}
                                             perPage={1}
                                             withPagination
-                                            countless={false}
-                                            filters={{}}
                                             display="column"
                                             numberElements={3}
                                             onElementClick={callback}
@@ -821,12 +793,9 @@ describe('PaginatedList', () => {
                                         <PaginatedList
                                             currentListId={"itemList"}
                                             resource={'/items'}
-                                            loadingComponent={null}
                                             resourcePropName={"item"}
                                             perPage={1}
                                             withPagination
-                                            countless={false}
-                                            filters={{}}
                                             display="column"
                                             numberElements={3}
                                             onElementClick={callback}
@@ -886,12 +855,10 @@ describe('PaginatedList', () => {
                                         <PaginatedList
                                             currentListId={"itemList"}
                                             resource={'/items'}
-                                            loadingComponent={null}
                                             resourcePropName={"item"}
                                             perPage={1}
                                             withPagination
                                             countless={true}
-                                            filters={{}}
                                             display="column"
                                             numberElements={3}
                                             sortOptions={[
@@ -947,12 +914,9 @@ describe('PaginatedList', () => {
                                         <PaginatedList
                                             currentListId={"itemList"}
                                             resource={'/items'}
-                                            loadingComponent={null}
                                             resourcePropName={"item"}
                                             perPage={1}
                                             withPagination
-                                            countless={false}
-                                            filters={{}}
                                             display="column"
                                             numberElements={3}
                                             sortOptions={[
@@ -1012,12 +976,9 @@ describe('PaginatedList', () => {
                                         <PaginatedList
                                             currentListId={"itemList"}
                                             resource={'/items'}
-                                            loadingComponent={null}
                                             resourcePropName={"item"}
                                             perPage={1}
                                             withPagination
-                                            countless={false}
-                                            filters={{}}
                                             display="column"
                                             numberElements={3}
                                             sortOptions={[
@@ -1078,11 +1039,9 @@ describe('PaginatedList', () => {
                                         <PaginatedList
                                             currentListId={"itemList"}
                                             resource={'/items'}
-                                            loadingComponent={null}
                                             resourcePropName={"item"}
                                             perPage={1}
                                             withPagination
-                                            filters={{}}
                                             display="column"
                                             onUpdateTotal={callback}
                                             sortOptions={[
@@ -1139,12 +1098,9 @@ describe('PaginatedList', () => {
                                         <PaginatedList
                                             currentListId={"itemList"}
                                             resource={'/items'}
-                                            loadingComponent={null}
                                             resourcePropName={"item"}
                                             perPage={1}
                                             withPagination
-                                            countless={false}
-                                            filters={{}}
                                             display="column"
                                             numberElements={3}
                                             sortOptions={[
@@ -1207,11 +1163,9 @@ describe('PaginatedList', () => {
                                         <PaginatedList
                                             currentListId={"itemList"}
                                             resource={'/items'}
-                                            loadingComponent={null}
                                             resourcePropName={"item"}
                                             perPage={1}
                                             withPagination
-                                            filters={{}}
                                             display="column"
                                             transformData={elm => elm.id !== 1}
                                             sortOptions={[
@@ -1272,12 +1226,9 @@ describe('PaginatedList', () => {
                                         <PaginatedList
                                             currentListId={"itemList"}
                                             resource={'/items'}
-                                            loadingComponent={null}
                                             resourcePropName={"item"}
                                             perPage={1}
                                             withPagination
-                                            countless={false}
-                                            filters={{}}
                                             display="column"
                                             numberElements={3}
                                             onElementsLoad={callback}
@@ -1344,7 +1295,6 @@ describe('PaginatedList', () => {
                                             currentListId={"itemList"}
                                             resource={'/items'}
                                             sort={"-created_at"}
-                                            loadingComponent={null}
                                             resourcePropName={"item"}
                                             perPage={10}
                                             withPagination={false}

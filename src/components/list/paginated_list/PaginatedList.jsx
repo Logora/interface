@@ -201,7 +201,7 @@ export const PaginatedList = ({ staticContext,
 
 	const loadResources = () => {
 		const loadFunction = withToken ? api.getListWithToken : api.getList;
-		if (((page - 1) * perPage < totalElements) || page === 1) {
+		if (((page - 1) * perPage < (numberElements || totalElements)) || page === 1) {
 			const params = {
 				[pageParam]: page,
 				[perPageParam]: perPage,
@@ -212,7 +212,6 @@ export const PaginatedList = ({ staticContext,
 				...(activeTagId && { [tagParam]: activeTagId })
 			}
 			loadFunction(resource, params).then((response) => {
-				console.log(response)
 				const headers = response.headers;
 				if (headers) {
 					if (totalHeaderParam in headers) {
@@ -235,7 +234,6 @@ export const PaginatedList = ({ staticContext,
 				addElements(newElements);
 				setIsLoading(false);
 			}).catch((error) => {
-				console.log(error)
 				setLoadError(true);
 				setIsLoading(false);
 			});

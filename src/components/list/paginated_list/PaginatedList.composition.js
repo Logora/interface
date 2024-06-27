@@ -51,11 +51,8 @@ export const DefaultPaginatedList = () => {
                                 <PaginatedList 
                                     currentListId={"itemList"}
                                     resource={'/items'} 
-                                    sort={"-created_at"}
                                     resourcePropName={"item"} 
                                     perPage={3}
-                                    withPagination={false}
-                                    countless={true}
                                     display="column"
                                 >
                                     <ListItem />
@@ -81,13 +78,11 @@ export const PaginatedListWithPagination = () => {
                                     currentListId={"itemList"}
                                     resource={'/items'} 
                                     sort={"-created_at"}
-                                    loadingComponent={null}
                                     resourcePropName={"item"} 
-                                    perPage={1}
+                                    perPage={3}
+                                    numberElements={9}
                                     withPagination
-                                    countless={false}
                                     display="column"
-                                    numberElements={3}
                                 >
                                     <ListItem />
                                 </PaginatedList>
@@ -112,13 +107,11 @@ export const PaginatedListWithCustomGap = () => {
                                     currentListId={"itemList"}
                                     resource={'/items'} 
                                     sort={"-created_at"}
-                                    loadingComponent={null}
                                     resourcePropName={"item"} 
-                                    perPage={1}
+                                    perPage={3}
+                                    numberElements={9}
                                     withPagination
-                                    countless={false}
                                     display="column"
-                                    numberElements={3}
                                     gap={"2em"}
                                 >
                                     <ListItem />
@@ -145,16 +138,47 @@ export const PaginatedListWithSearchBarAndTitle = () => {
                                     currentListId={"itemList"}
                                     resource={'/items'} 
                                     sort={"-created_at"}
-                                    loadingComponent={null}
                                     resourcePropName={"item"} 
-                                    perPage={1}
-                                    withPagination={false}
-                                    countless={false}
+                                    perPage={3}
+                                    numberElements={9}
                                     display="column"
-                                    numberElements={3}
                                     gap={"1em"}
                                     searchBar
                                     title={"List title"}
+                                >
+                                    <ListItem />
+                                </PaginatedList>
+                            </DataProviderContext.Provider>
+                        </ResponsiveProvider>
+                    </IconProvider>
+                </ListProvider>
+            </IntlProvider>
+        </BrowserRouter>
+        </div>
+    );
+};
+
+export const PaginatedListWithSort = () => {
+    return (
+        <div style={{width: "400px"}}>
+        <BrowserRouter>
+            <IntlProvider locale="en">
+                <ListProvider>
+                    <IconProvider library={regularIcons}>
+                        <ResponsiveProvider>
+                            <DataProviderContext.Provider value={{ dataProvider: data }}>
+                                <PaginatedList 
+                                    currentListId={"itemList"}
+                                    resource={'/items'} 
+                                    sort={"-created_at"}
+                                    resourcePropName={"item"} 
+                                    perPage={3}
+                                    numberElements={9}
+                                    display="column"
+                                    sortOptions={[
+                                        { value: "-created_at", type: "sort", name: "recent", text: "Recent" },
+                                        { value: "+created_at", type: "sort", name: "old", text: "Old" }
+                                    ]}
                                 >
                                     <ListItem />
                                 </PaginatedList>
@@ -181,12 +205,9 @@ export const RowPaginatedList = () => {
                                     currentListId={"itemList"}
                                     resource={'/items'} 
                                     sort={"-created_at"}
-                                    loadingComponent={null}
                                     resourcePropName={"item"} 
-                                    perPage={1}
-                                    withPagination={false}
-                                    countless={false}
-                                    numberElements={3}
+                                    perPage={3}
+                                    numberElements={9}
                                 >
                                     <ListItem />
                                 </PaginatedList>
