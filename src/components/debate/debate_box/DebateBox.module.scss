@@ -101,6 +101,7 @@
 .debateBoxTitle {
   font-weight: $font-weight-bold;
   min-height: 2.7em;
+  line-height: $line-height-loose;
   a {
     color: $text-primary;
     &:hover{
