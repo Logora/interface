@@ -10,7 +10,7 @@ import cx from "classnames";
 import styles from "./ActionBar.module.scss";
 import PropTypes from "prop-types";
 
-export const ActionBar = ({ title, sortOptions, defaultSelectOption, searchBar, tagList, activeTagId, withUrlParams, onSearch, onSortChange, onTagChange }) => {
+export const ActionBar = ({ title, sortOptions, defaultSelectOption, searchBar = false, tagList, activeTagId, withUrlParams = false, onSearch, onSortChange, onTagChange }) => {
     const intl = useIntl();
     const history = useHistory();
     const location = useLocation();
@@ -137,9 +137,4 @@ ActionBar.propTypes = {
     onSortChange: PropTypes.func,
     /** Tag change callback */
     onTagChange: PropTypes.func
-};
-
-ActionBar.defaultProps = {
-    searchBar: false,
-    withUrlParams: false
 };

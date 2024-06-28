@@ -13,9 +13,7 @@ import { IconProvider } from '@logora/debate.icons.icon_provider';
 import * as regularIcons from '@logora/debate.icons.regular_icons';
 
 const httpClient = {
-    get: jest.fn(),
-    post: jest.fn(),
-    patch: jest.fn()
+    get: jest.fn()
 };
 
 const ListItem = (props) => {
@@ -23,6 +21,8 @@ const ListItem = (props) => {
         <p>{props.item.name}</p>
     )
 }
+
+const data = dataProvider(httpClient, "https://mock.example.api");
 
 const DefaultList = () => {
     return (
@@ -54,13 +54,9 @@ const DefaultList = () => {
     )
 }
 
-const data = dataProvider(httpClient, "https://mock.example.api");
-
 describe('PaginatedList', () => {
     beforeEach(() => {
         httpClient.get.mockClear();
-        httpClient.post.mockClear();
-        httpClient.patch.mockClear();
     })
 
     it('should render a basic list with correct content', async () => {
