@@ -13,7 +13,19 @@ import { IconProvider } from '@logora/debate.icons.icon_provider';
 import * as regularIcons from '@logora/debate.icons.regular_icons';
 
 const httpClient = {
-    get: jest.fn()
+    get: jest.fn(e => {
+        return {
+            status: 200,
+            "data": {
+                "success": true,
+                "data": [
+                    { id: 1, name: "First item" },
+                    { id: 2, name: "Second item" },
+                    { id: 3, name: "Third item" }
+                ]
+            }
+        }
+    })
 };
 
 const ListItem = (props) => {
@@ -60,18 +72,6 @@ describe('PaginatedList', () => {
     })
 
     it('should render a basic list with correct content', async () => {
-        httpClient.get.mockResolvedValue({
-            status: 200,
-            "data": {
-                "success": true,
-                "data": [
-                    { id: 1, name: "First item" },
-                    { id: 2, name: "Second item" },
-                    { id: 3, name: "Third item" }
-                ]
-            }
-        });
-
         await act(async () => {
             render(
                 <DefaultList />
