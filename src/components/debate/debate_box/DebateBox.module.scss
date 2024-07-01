@@ -95,12 +95,13 @@
 }
 
 .debateBoxTitle {
-  font-size: $font-size-large;
+  font-size: $font-size-medium;
 }
 
 .debateBoxTitle {
   font-weight: $font-weight-bold;
   min-height: 2.7em;
+  line-height: $line-height-loose;
   a {
     color: $text-primary;
     &:hover{
@@ -113,7 +114,7 @@
 .debateTitle {
   display: block;
   @include line-clamp(2);
-  font-size: $font-size-large;
+  font-size: $font-size-medium;
   &.debateTitleMobile{
     -webkit-line-clamp: 3;
   }
