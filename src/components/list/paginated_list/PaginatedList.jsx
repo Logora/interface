@@ -61,7 +61,7 @@ export const PaginatedList = ({ staticContext,
 	const [loadError, setLoadError] = useState(false);
 	const [currentResources, setCurrentResources] = useState(staticContext && staticResourceName && staticResourceName in staticContext ? staticContext[staticResourceName] : []);
 	const [totalElements, setTotalElements] = useState(staticContext && staticResourceName && staticResourceName in staticContext ? staticContext[staticResourceName].length : 0);
-	const [page, setPage] = useState(1);
+	const [page, setPage] = useState(currentPage || 1);
 	const [currentQuery, setCurrentQuery] = useState(query || null);
 	const [activeTagId, setActiveTagId] = useState(null);
 	const [defaultSelectOption, setDefaultSelectOption] = useState(null);
@@ -91,7 +91,7 @@ export const PaginatedList = ({ staticContext,
 	}
 
 	if (query !== undefined && (query !== currentQuery)) {
-		setQuery(query);
+		setCurrentQuery(query);
 	}
 
 	if (sort !== undefined && (sort !== currentSort)) {
@@ -139,7 +139,7 @@ export const PaginatedList = ({ staticContext,
 			setPage(1);
 			setCurrentResources([]);
 			setIsLoading(true);
-			loadResources();
+			loadResources(1);
 		} else {
 			setIsLoading(false);
 		}
@@ -148,7 +148,7 @@ export const PaginatedList = ({ staticContext,
 	useEffect(() => {
 		if (page > 1) {
 			setIsLoading(true);
-			loadResources();
+			loadResources(page);
 		}
 	}, [page]);
 
@@ -199,11 +199,11 @@ export const PaginatedList = ({ staticContext,
 		}
 	};
 
-	const loadResources = () => {
+	const loadResources = (pageNumber) => {
 		const loadFunction = withToken ? api.getListWithToken : api.getList;
-		if (((page - 1) * perPage < (numberElements || totalElements)) || page === 1) {
+		if (((pageNumber - 1) * perPage < (numberElements || totalElements)) || pageNumber === 1) {
 			const params = {
-				[pageParam]: page,
+				[pageParam]: pageNumber,
 				[perPageParam]: perPage,
 				...(currentSort && !currentQuery && { [sortParam]: currentSort }),
 				...(currentQuery && { [queryParam]: currentQuery }),

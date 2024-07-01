@@ -440,7 +440,7 @@ describe('PaginatedList', () => {
 
         const oldestSortButton = screen.getByText(/oldest/i);
         expect(oldestSortButton).toBeTruthy();
-        userEvent.click(oldestSortButton);
+        await userEvent.click(oldestSortButton);
     });
 
     it('should call api on pagination click', async () => {
@@ -523,7 +523,7 @@ describe('PaginatedList', () => {
                                                 {
                                                     name: "old",
                                                     type: "sort",
-                                                    value: "+created_at",
+                                                    value: "-oldest",
                                                     text: "oldest",
                                                 },
                                             ]}
@@ -558,11 +558,11 @@ describe('PaginatedList', () => {
 
         const oldestSortButton = screen.getByText(/oldest/i);
         expect(oldestSortButton).toBeTruthy();
-        userEvent.click(oldestSortButton);
+        await userEvent.click(oldestSortButton);
 
-        //expect(mock).toHaveBeenLastCalledWith("https://mock.example.api/items?page=1&per_page=1&sort=+created_at&api_key=");
-        //expect(mock).toHaveBeenCalledTimes(3);
-        //expect(screen.getAllByTestId("list-item")).toHaveLength(3);
+        expect(mock).toHaveBeenLastCalledWith("https://mock.example.api/items?page=1&per_page=1&sort=-oldest&api_key=");
+        expect(mock).toHaveBeenCalledTimes(3);
+        expect(screen.getAllByTestId("list-item")).toHaveLength(3);
     });
 
     it('should call api with query params if passed as props', async () => {
