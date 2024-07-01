@@ -7,11 +7,19 @@ import { IconProvider } from '@logora/debate.icons.icon_provider';
 import { ResponsiveProvider } from '@logora/debate.hooks.use_responsive';
 import * as regularIcons from '@logora/debate.icons.regular_icons';
 import { BrowserRouter } from 'react-router-dom';
+import { faker } from '@faker-js/faker'
 
 const ListItem = (props) => {
     return (
         <p>{props.item.name}</p>
     )
+}
+
+const createElement = () => {
+    return {
+        id: faker.random.numeric(6),
+        name: faker.music.songName()
+    }
 }
 
 const httpClient = {
@@ -20,11 +28,7 @@ const httpClient = {
                 {
                     "data": {
                         "success": true,
-                        "data": [ 
-                            { id: 1, name: "First item" },
-                            { id: 2, name: "Second item"},
-                            { id: 3, name: "Third item"}
-                        ]
+                        "data": Array.from({length: 3}, createElement)
                     }
                 }
             );
@@ -47,14 +51,8 @@ export const DefaultPaginatedList = () => {
                                 <PaginatedList 
                                     currentListId={"itemList"}
                                     resource={'/items'} 
-                                    sort={"-created_at"}
-                                    loadingComponent={null}
                                     resourcePropName={"item"} 
-                                    perPage={10}
-                                    withPagination={false}
-                                    countless={true}
-                                    staticContext={null}
-                                    staticResourceName={"getListItem"}
+                                    perPage={3}
                                     display="column"
                                 >
                                     <ListItem />
@@ -80,15 +78,11 @@ export const PaginatedListWithPagination = () => {
                                     currentListId={"itemList"}
                                     resource={'/items'} 
                                     sort={"-created_at"}
-                                    loadingComponent={null}
                                     resourcePropName={"item"} 
-                                    perPage={1}
+                                    perPage={3}
+                                    numberElements={9}
                                     withPagination
-                                    countless={false}
-                                    staticContext={null}
-                                    staticResourceName={"getListItem"}
                                     display="column"
-                                    numberElements={3}
                                 >
                                     <ListItem />
                                 </PaginatedList>
@@ -113,15 +107,11 @@ export const PaginatedListWithCustomGap = () => {
                                     currentListId={"itemList"}
                                     resource={'/items'} 
                                     sort={"-created_at"}
-                                    loadingComponent={null}
                                     resourcePropName={"item"} 
-                                    perPage={1}
+                                    perPage={3}
+                                    numberElements={9}
                                     withPagination
-                                    countless={false}
-                                    staticContext={null}
-                                    staticResourceName={"getListItem"}
                                     display="column"
-                                    numberElements={3}
                                     gap={"2em"}
                                 >
                                     <ListItem />
@@ -148,18 +138,47 @@ export const PaginatedListWithSearchBarAndTitle = () => {
                                     currentListId={"itemList"}
                                     resource={'/items'} 
                                     sort={"-created_at"}
-                                    loadingComponent={null}
                                     resourcePropName={"item"} 
-                                    perPage={1}
-                                    withPagination={false}
-                                    countless={false}
-                                    staticContext={null}
-                                    staticResourceName={"getListItem"}
+                                    perPage={3}
+                                    numberElements={9}
                                     display="column"
-                                    numberElements={3}
                                     gap={"1em"}
                                     searchBar
                                     title={"List title"}
+                                >
+                                    <ListItem />
+                                </PaginatedList>
+                            </DataProviderContext.Provider>
+                        </ResponsiveProvider>
+                    </IconProvider>
+                </ListProvider>
+            </IntlProvider>
+        </BrowserRouter>
+        </div>
+    );
+};
+
+export const PaginatedListWithSort = () => {
+    return (
+        <div style={{width: "400px"}}>
+        <BrowserRouter>
+            <IntlProvider locale="en">
+                <ListProvider>
+                    <IconProvider library={regularIcons}>
+                        <ResponsiveProvider>
+                            <DataProviderContext.Provider value={{ dataProvider: data }}>
+                                <PaginatedList 
+                                    currentListId={"itemList"}
+                                    resource={'/items'} 
+                                    sort={"-created_at"}
+                                    resourcePropName={"item"} 
+                                    perPage={3}
+                                    numberElements={9}
+                                    display="column"
+                                    sortOptions={[
+                                        { value: "-created_at", type: "sort", name: "recent", text: "Recent" },
+                                        { value: "+created_at", type: "sort", name: "old", text: "Old" }
+                                    ]}
                                 >
                                     <ListItem />
                                 </PaginatedList>
@@ -186,14 +205,9 @@ export const RowPaginatedList = () => {
                                     currentListId={"itemList"}
                                     resource={'/items'} 
                                     sort={"-created_at"}
-                                    loadingComponent={null}
                                     resourcePropName={"item"} 
-                                    perPage={1}
-                                    withPagination={false}
-                                    countless={false}
-                                    staticContext={null}
-                                    staticResourceName={"getListItem"}
-                                    numberElements={3}
+                                    perPage={3}
+                                    numberElements={9}
                                 >
                                     <ListItem />
                                 </PaginatedList>

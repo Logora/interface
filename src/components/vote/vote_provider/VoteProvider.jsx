@@ -61,7 +61,3 @@ VoteProvider.propTypes = {
   /** The child components of VoteProvider */
   children: PropTypes.node.isRequired
 }
-
-VoteProvider.defaultProps = {
-  voteableType: 'default'
-}

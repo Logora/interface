@@ -1,6 +1,5 @@
 import React from 'react';
-import { render, screen, waitFor } from '@testing-library/react';
-import { act } from 'react-dom/test-utils';
+import { render, screen, waitFor, act } from '@testing-library/react';
 import { IntlProvider } from 'react-intl';
 import { dataProvider, DataProviderContext } from '@logora/debate.data.data_provider';
 import { ResponsiveProvider } from '@logora/debate.hooks.use_responsive';
@@ -147,9 +146,10 @@ describe('VotePaginatedList', () => {
     });
 
     it('should trow an error when data loading fails ', async () => {
-        httpClient.get.mockImplementation(() => {
-            throw new Error('User not found');
-        });
+        httpClient.get = jest.fn(() =>  Promise.reject({
+            status: 500,
+            "data": {}
+        }))
 
         jest.spyOn(console, 'error').mockImplementation(() => { });
 

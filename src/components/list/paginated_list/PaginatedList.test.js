@@ -1,6 +1,5 @@
 import React from 'react';
-import { render, screen, waitFor } from '@testing-library/react';
-import { act } from 'react-dom/test-utils';
+import { render, screen, waitFor, act } from '@testing-library/react';
 import { IntlProvider } from 'react-intl';
 import { dataProvider, DataProviderContext } from '@logora/debate.data.data_provider';
 import { ResponsiveProvider } from '@logora/debate.hooks.use_responsive';
@@ -11,11 +10,23 @@ import userEvent from '@testing-library/user-event';
 import { BrowserRouter } from 'react-router-dom';
 import { IconProvider } from '@logora/debate.icons.icon_provider';
 import * as regularIcons from '@logora/debate.icons.regular_icons';
+import { faker } from '@faker-js/faker'
+
+const createElement = () => {
+    return {
+        id: faker.random.numeric(6),
+        name: faker.music.songName()
+    }
+}
 
 const httpClient = {
-    get: jest.fn(),
-    post: jest.fn(),
-    patch: jest.fn()
+    get: () =>  Promise.resolve({
+        status: 200,
+        data: {
+            success: true,
+            data: Array.from({length: 3}, createElement)
+        }
+    })
 };
 
 const ListItem = (props) => {
@@ -23,6 +34,8 @@ const ListItem = (props) => {
         <p>{props.item.name}</p>
     )
 }
+
+const data = dataProvider(httpClient, "https://mock.example.api");
 
 const DefaultList = () => {
     return (
@@ -34,15 +47,12 @@ const DefaultList = () => {
                             <DataProviderContext.Provider value={{ dataProvider: data }}>
                                 <PaginatedList
                                     currentListId={"itemList"}
-                                    resource={'/items'}
+                                    resource={'items'}
                                     sort={"-created_at"}
-                                    loadingComponent={null}
                                     resourcePropName={"item"}
                                     perPage={10}
                                     withPagination={false}
                                     countless={true}
-                                    staticContext={null}
-                                    staticResourceName={"getListItem"}
                                     display="column"
                                     perPageParam={"porut"}
                                 >
@@ -57,38 +67,27 @@ const DefaultList = () => {
     )
 }
 
-const data = dataProvider(httpClient, "https://mock.example.api");
-
 describe('PaginatedList', () => {
+    let mock;
+
     beforeEach(() => {
-        httpClient.get.mockClear();
-        httpClient.post.mockClear();
-        httpClient.patch.mockClear();
-    })
+        mock = jest.spyOn(httpClient, 'get');
+    });
+
+    afterEach(() => {
+        mock.mockRestore();
+        mock.mockClear();
+    });
 
     it('should render a basic list with correct content', async () => {
-        httpClient.get.mockResolvedValue({
-            status: 200,
-            "data": {
-                "success": true,
-                "data": [
-                    { id: 1, name: "First item" },
-                    { id: 2, name: "Second item" },
-                    { id: 3, name: "Third item" }
-                ]
-            }
-        });
-
         await act(async () => {
             render(
                 <DefaultList />
             );
         });
 
-        expect(httpClient.get).toHaveBeenCalled();
-        expect(screen.getByText("First item")).toBeTruthy();
-        expect(screen.getByText("Second item")).toBeTruthy();
-        expect(screen.getByText("Third item")).toBeTruthy();
+        expect(mock).toHaveBeenCalled();
+        expect(screen.getAllByTestId("list-item")).toHaveLength(3);
     });
 
     it('should show the specific loader component passed as props ', async () => {
@@ -101,14 +100,11 @@ describe('PaginatedList', () => {
                                 <DataProviderContext.Provider value={{ dataProvider: data }}>
                                     <PaginatedList
                                         currentListId={"itemList"}
-                                        resource={'/items'}
+                                        resource={'items'}
                                         sort={"-created_at"}
                                         resourcePropName={"item"}
                                         perPage={1}
                                         withPagination
-                                        countless={false}
-                                        staticContext={null}
-                                        staticResourceName={"getListItem"}
                                         display="column"
                                         numberElements={3}
                                         loadingComponent={<p>Loading...</p>}
@@ -127,11 +123,10 @@ describe('PaginatedList', () => {
     });
 
     it('should trow an error when data loading fails ', async () => {
-        httpClient.get.mockImplementation(() => {
-            throw new Error('User not found');
-        });
-
-        jest.spyOn(console, 'error').mockImplementation(() => { });
+        mock.mockImplementation(() =>  Promise.reject({
+            status: 500,
+            "data": {}
+        }));
 
         await act(async () => {
             render(
@@ -144,14 +139,11 @@ describe('PaginatedList', () => {
                                         <DataProviderContext.Provider value={{ dataProvider: data }}>
                                             <PaginatedList
                                                 currentListId={"itemList"}
-                                                resource={'/itemss'}
+                                                resource={'items'}
                                                 sort={"-created_at"}
                                                 resourcePropName={"item"}
                                                 perPage={1}
                                                 withPagination
-                                                countless={false}
-                                                staticContext={null}
-                                                staticResourceName={"getListItem"}
                                                 display="column"
                                                 numberElements={3}
                                                 loadingComponent={<p>Loading...</p>}
@@ -172,9 +164,9 @@ describe('PaginatedList', () => {
     });
 
     it('should render a fallback message when no data is retrieved', async () => {
-        httpClient.get.mockResolvedValue({
+        mock.mockResolvedValue({
             status: 200,
-            "data": {
+            data: {
                 "success": true,
                 "data": []
             }
@@ -186,21 +178,17 @@ describe('PaginatedList', () => {
             );
         });
 
-        expect(httpClient.get).toHaveBeenCalled();
-        expect(screen.queryByText("First item")).toBeFalsy();
-        expect(screen.queryByText("Second item")).toBeFalsy();
-        expect(screen.queryByText("Third item")).toBeFalsy();
+        expect(mock).toHaveBeenCalled();
+        expect(screen.queryAllByTestId("list-item")).toHaveLength(0);
         expect(screen.queryByText("No items for now.")).toBeTruthy();
     });
 
     it('should render a list with a pagination button', async () => {
-        httpClient.get.mockResolvedValue({
+        mock.mockResolvedValue({
             status: 200,
             "data": {
                 "success": true,
-                "data": [
-                    { id: 1, name: "First item" }
-                ]
+                "data": Array.from({length: 1}, createElement)
             }
         });
 
@@ -214,17 +202,12 @@ describe('PaginatedList', () => {
                                     <DataProviderContext.Provider value={{ dataProvider: data }}>
                                         <PaginatedList
                                             currentListId={"itemList"}
-                                            resource={'/items'}
+                                            resource={'items'}
                                             sort={"-created_at"}
-                                            loadingComponent={null}
                                             resourcePropName={"item"}
                                             perPage={1}
-                                            withPagination={true}
-                                            countless={false}
-                                            staticContext={null}
-                                            staticResourceName={"getListItem"}
-                                            display="column"
                                             numberElements={3}
+                                            display="column"
                                         >
                                             <ListItem />
                                         </PaginatedList>
@@ -237,26 +220,12 @@ describe('PaginatedList', () => {
             );
         });
 
-        expect(httpClient.get).toHaveBeenCalled();
-        expect(screen.getByText("First item")).toBeTruthy();
-        expect(screen.queryByText("Second item")).toBeFalsy();
-        expect(screen.queryByText("Third item")).toBeFalsy();
+        expect(mock).toHaveBeenCalled();
+        expect(screen.getAllByTestId("list-item")).toHaveLength(1);
         expect(screen.getByText("See more")).toBeTruthy();
     });
 
     it('should render a list with a search bar', async () => {
-        httpClient.get.mockResolvedValue({
-            status: 200,
-            "data": {
-                "success": true,
-                "data": [
-                    { id: 1, name: "First item" },
-                    { id: 2, name: "Second item" },
-                    { id: 3, name: "Third item" }
-                ]
-            }
-        });
-
         await act(async () => {
             render(
                 <BrowserRouter>
@@ -267,15 +236,10 @@ describe('PaginatedList', () => {
                                     <DataProviderContext.Provider value={{ dataProvider: data }}>
                                         <PaginatedList
                                             currentListId={"itemList"}
-                                            resource={'/items'}
+                                            resource={'items'}
                                             sort={"-created_at"}
-                                            loadingComponent={null}
                                             resourcePropName={"item"}
                                             perPage={1}
-                                            withPagination
-                                            countless={false}
-                                            staticContext={null}
-                                            staticResourceName={"getListItem"}
                                             display="column"
                                             numberElements={3}
                                             searchBar
@@ -291,26 +255,12 @@ describe('PaginatedList', () => {
             );
         });
 
-        expect(httpClient.get).toHaveBeenCalled();
-        expect(screen.getByText("First item")).toBeTruthy();
-        expect(screen.getByText("Second item")).toBeTruthy();
-        expect(screen.getByText("Third item")).toBeTruthy();
+        expect(mock).toHaveBeenCalled();
+        expect(screen.getAllByTestId("list-item")).toHaveLength(3);
         expect(screen.getByText("Search")).toBeTruthy();
     });
 
     it('should render a list with a title', async () => {
-        httpClient.get.mockResolvedValue({
-            status: 200,
-            "data": {
-                "success": true,
-                "data": [
-                    { id: 1, name: "First item" },
-                    { id: 2, name: "Second item" },
-                    { id: 3, name: "Third item" }
-                ]
-            }
-        });
-
         await act(async () => {
             render(
                 <BrowserRouter>
@@ -321,15 +271,10 @@ describe('PaginatedList', () => {
                                     <DataProviderContext.Provider value={{ dataProvider: data }}>
                                         <PaginatedList
                                             currentListId={"itemList"}
-                                            resource={'/items'}
+                                            resource={'items'}
                                             sort={"-created_at"}
-                                            loadingComponent={null}
                                             resourcePropName={"item"}
                                             perPage={1}
-                                            withPagination
-                                            countless={false}
-                                            staticContext={null}
-                                            staticResourceName={"getListItem"}
                                             display="column"
                                             numberElements={3}
                                             title={"My title"}
@@ -345,26 +290,12 @@ describe('PaginatedList', () => {
             );
         });
 
-        expect(httpClient.get).toHaveBeenCalled();
-        expect(screen.getByText("First item")).toBeTruthy();
-        expect(screen.getByText("Second item")).toBeTruthy();
-        expect(screen.getByText("Third item")).toBeTruthy();
+        expect(mock).toHaveBeenCalled();
+        expect(screen.getAllByTestId("list-item")).toHaveLength(3);
         expect(screen.getByText("My title")).toBeTruthy();
     });
 
     it('should render a list with a sort select', async () => {
-        httpClient.get.mockResolvedValue({
-            status: 200,
-            "data": {
-                "success": true,
-                "data": [
-                    { id: 1, name: "First item" },
-                    { id: 2, name: "Second item" },
-                    { id: 3, name: "Third item" }
-                ]
-            }
-        });
-
         await act(async () => {
             render(
                 <BrowserRouter>
@@ -375,15 +306,11 @@ describe('PaginatedList', () => {
                                     <DataProviderContext.Provider value={{ dataProvider: data }}>
                                         <PaginatedList
                                             currentListId={"itemList"}
-                                            resource={'/items'}
+                                            resource={'items'}
                                             sort={"-created_at"}
-                                            loadingComponent={null}
                                             resourcePropName={"item"}
                                             perPage={1}
                                             withPagination
-                                            countless={false}
-                                            staticContext={null}
-                                            staticResourceName={"getListItem"}
                                             display="column"
                                             numberElements={3}
                                             sortOptions={[
@@ -412,15 +339,13 @@ describe('PaginatedList', () => {
             );
         });
 
-        expect(httpClient.get).toHaveBeenCalled();
-        expect(screen.getByText("First item")).toBeTruthy();
-        expect(screen.getByText("Second item")).toBeTruthy();
-        expect(screen.getByText("Third item")).toBeTruthy();
+        expect(mock).toHaveBeenCalled();
+        expect(screen.getAllByTestId("list-item")).toHaveLength(3);
         expect(screen.queryByText("recent")).toBeTruthy();
     });
 
     it('should render an empty list with a component passed as props', async () => {
-        httpClient.get.mockResolvedValue({
+        mock.mockResolvedValue({
             status: 200,
             "data": {
                 "success": true,
@@ -438,15 +363,11 @@ describe('PaginatedList', () => {
                                     <DataProviderContext.Provider value={{ dataProvider: data }}>
                                         <PaginatedList
                                             currentListId={"itemList"}
-                                            resource={'/items'}
+                                            resource={'items'}
                                             sort={"-created_at"}
-                                            loadingComponent={null}
                                             resourcePropName={"item"}
                                             perPage={1}
                                             withPagination
-                                            countless={false}
-                                            staticContext={null}
-                                            staticResourceName={"getListItem"}
                                             display="column"
                                             numberElements={3}
                                             emptyListComponent={<p>Empty list</p>}
@@ -462,24 +383,12 @@ describe('PaginatedList', () => {
             );
         });
 
-        expect(httpClient.get).toHaveBeenCalled();
+        expect(mock).toHaveBeenCalled();
         expect(screen.queryByText("Empty list")).toBeTruthy();
         expect(screen.queryByText("Aucun élément pour le moment.")).toBeFalsy();
     });
 
     it('should call api on sort select click', async () => {
-        httpClient.get.mockResolvedValue({
-            status: 200,
-            "data": {
-                "success": true,
-                "data": [
-                    { id: 1, name: "First item" },
-                    { id: 2, name: "Second item" },
-                    { id: 3, name: "Third item" }
-                ]
-            }
-        });
-
         await act(async () => {
             render(
                 <BrowserRouter>
@@ -490,15 +399,10 @@ describe('PaginatedList', () => {
                                     <DataProviderContext.Provider value={{ dataProvider: data }}>
                                         <PaginatedList
                                             currentListId={"itemList"}
-                                            resource={'/items'}
-                                            loadingComponent={null}
+                                            resource={'items'}
                                             resourcePropName={"item"}
                                             perPage={1}
                                             withPagination
-                                            countless={false}
-                                            filters={{}}
-                                            staticContext={null}
-                                            staticResourceName={"getListItem"}
                                             display="column"
                                             numberElements={3}
                                             sortOptions={[
@@ -527,35 +431,19 @@ describe('PaginatedList', () => {
             );
         });
 
-        expect(httpClient.get).toHaveBeenNthCalledWith(1, "https://mock.example.api//items?page=1&per_page=1&sort=-created_at&api_key=");
+        expect(mock).toHaveBeenNthCalledWith(1, "https://mock.example.api/items?page=1&per_page=1&sort=-created_at&api_key=");
 
         const dropdownFirstOption = screen.getByText(/recent/i);
         expect(screen.queryByText(/oldest/i)).toBeNull();
 
-        userEvent.click(dropdownFirstOption);
-
-        await waitFor(() => {
-            expect(screen.getByText(/oldest/i)).toBeTruthy();
-        });
+        await userEvent.click(dropdownFirstOption);
 
         const oldestSortButton = screen.getByText(/oldest/i);
-        userEvent.click(oldestSortButton);
-
+        expect(oldestSortButton).toBeTruthy();
+        await userEvent.click(oldestSortButton);
     });
 
     it('should call api on pagination click', async () => {
-        httpClient.get.mockResolvedValue({
-            status: 200,
-            "data": {
-                "success": true,
-                "data": [
-                    { id: 1, name: "First item" },
-                    { id: 2, name: "Second item" },
-                    { id: 3, name: "Third item" }
-                ]
-            }
-        });
-
         await act(async () => {
             render(
                 <BrowserRouter>
@@ -566,17 +454,11 @@ describe('PaginatedList', () => {
                                     <DataProviderContext.Provider value={{ dataProvider: data }}>
                                         <PaginatedList
                                             currentListId={"itemList"}
-                                            resource={'/items'}
-                                            loadingComponent={null}
+                                            resource={'items'}
                                             resourcePropName={"item"}
                                             perPage={1}
-                                            withPagination
-                                            countless={false}
-                                            staticContext={null}
-                                            staticResourceName={"getListItem"}
-                                            filters={{}}
                                             display="column"
-                                            numberElements={3}
+                                            numberElements={10}
                                             sortOptions={[
                                                 {
                                                     name: "recent",
@@ -603,28 +485,19 @@ describe('PaginatedList', () => {
             );
         });
 
-        expect(httpClient.get).toHaveBeenNthCalledWith(1, "https://mock.example.api//items?page=1&per_page=1&sort=-created_at&api_key=");
+        expect(mock).toHaveBeenLastCalledWith("https://mock.example.api/items?page=1&per_page=1&sort=-created_at&api_key=");
+        expect(mock).toHaveBeenCalledTimes(1);
 
+        expect(screen.getAllByTestId("list-item")).toHaveLength(3);
         const paginationButton = screen.getByText(/See more/i);
         expect(paginationButton).toBeTruthy();
 
         await userEvent.click(paginationButton);
-        expect(httpClient.get).toHaveBeenCalled();
+        expect(mock).toHaveBeenCalled();
+        expect(screen.getAllByTestId("list-item")).toHaveLength(6);
     });
 
-    it('should call api with query params if passed as props', async () => {
-        httpClient.get.mockResolvedValue({
-            status: 200,
-            "data": {
-                "success": true,
-                "data": [
-                    { id: 1, name: "First item" },
-                    { id: 2, name: "Second item" },
-                    { id: 3, name: "Third item" }
-                ]
-            }
-        });
-
+    it('should call api correctly after pagination and sort click', async () => {
         await act(async () => {
             render(
                 <BrowserRouter>
@@ -635,15 +508,78 @@ describe('PaginatedList', () => {
                                     <DataProviderContext.Provider value={{ dataProvider: data }}>
                                         <PaginatedList
                                             currentListId={"itemList"}
-                                            resource={'/items'}
-                                            loadingComponent={null}
+                                            resource={'items'}
+                                            resourcePropName={"item"}
+                                            perPage={1}
+                                            display="column"
+                                            numberElements={10}
+                                            sortOptions={[
+                                                {
+                                                    name: "recent",
+                                                    value: "-created_at",
+                                                    type: "sort",
+                                                    text: "recent",
+                                                },
+                                                {
+                                                    name: "old",
+                                                    type: "sort",
+                                                    value: "-oldest",
+                                                    text: "oldest",
+                                                },
+                                            ]}
+                                        >
+                                            <ListItem />
+                                        </PaginatedList>
+                                    </DataProviderContext.Provider>
+                                </ResponsiveProvider>
+                            </IconProvider>
+                        </ListProvider>
+                    </IntlProvider>
+                </BrowserRouter>
+            );
+        });
+
+        expect(mock).toHaveBeenLastCalledWith("https://mock.example.api/items?page=1&per_page=1&sort=-created_at&api_key=");
+        expect(mock).toHaveBeenCalledTimes(1);
+        expect(screen.getAllByTestId("list-item")).toHaveLength(3);
+
+        const paginationButton = screen.getByText(/See more/i);
+        expect(paginationButton).toBeTruthy();
+        await userEvent.click(paginationButton);
+
+        expect(mock).toHaveBeenLastCalledWith("https://mock.example.api/items?page=2&per_page=1&sort=-created_at&api_key=");
+        expect(mock).toHaveBeenCalledTimes(2);
+        expect(screen.getAllByTestId("list-item")).toHaveLength(6);
+
+        const dropdownFirstOption = screen.getByText(/recent/i);
+        expect(screen.queryByText(/oldest/i)).toBeNull();
+
+        await userEvent.click(dropdownFirstOption);
+
+        const oldestSortButton = screen.getByText(/oldest/i);
+        expect(oldestSortButton).toBeTruthy();
+        await userEvent.click(oldestSortButton);
+
+        expect(mock).toHaveBeenLastCalledWith("https://mock.example.api/items?page=1&per_page=1&sort=-oldest&api_key=");
+        expect(mock).toHaveBeenCalledTimes(3);
+        expect(screen.getAllByTestId("list-item")).toHaveLength(3);
+    });
+
+    it('should call api with query params if passed as props', async () => {
+        await act(async () => {
+            render(
+                <BrowserRouter>
+                    <IntlProvider locale="en">
+                        <ListProvider>
+                            <IconProvider library={regularIcons}>
+                                <ResponsiveProvider>
+                                    <DataProviderContext.Provider value={{ dataProvider: data }}>
+                                        <PaginatedList
+                                            currentListId={"itemList"}
+                                            resource={'items'}
                                             resourcePropName={"item"}
                                             perPage={1}
                                             withPagination
-                                            countless={false}
-                                            staticContext={null}
-                                            staticResourceName={"getListItem"}
-                                            filters={{}}
                                             display="column"
                                             numberElements={3}
                                             query={"test"}
@@ -673,22 +609,10 @@ describe('PaginatedList', () => {
             );
         });
 
-        expect(httpClient.get).toHaveBeenNthCalledWith(1, "https://mock.example.api//items?page=1&per_page=1&query=test&api_key=");
+        expect(mock).toHaveBeenNthCalledWith(1, "https://mock.example.api/items?page=1&per_page=1&query=test&api_key=");
     });
 
     it('should call api when using searchbar', async () => {
-        httpClient.get.mockResolvedValue({
-            status: 200,
-            "data": {
-                "success": true,
-                "data": [
-                    { id: 1, name: "First item" },
-                    { id: 2, name: "Second item" },
-                    { id: 3, name: "Third item" }
-                ]
-            }
-        });
-
         await act(async () => {
             render(
                 <BrowserRouter>
@@ -699,15 +623,10 @@ describe('PaginatedList', () => {
                                     <DataProviderContext.Provider value={{ dataProvider: data }}>
                                         <PaginatedList
                                             currentListId={"itemList"}
-                                            resource={'/items'}
-                                            loadingComponent={null}
+                                            resource={'items'}
                                             resourcePropName={"item"}
                                             perPage={1}
                                             withPagination
-                                            countless={false}
-                                            staticContext={null}
-                                            staticResourceName={"getListItem"}
-                                            filters={{}}
                                             display="column"
                                             numberElements={3}
                                             searchBar
@@ -737,7 +656,7 @@ describe('PaginatedList', () => {
             );
         });
 
-        expect(httpClient.get).toHaveBeenNthCalledWith(1, "https://mock.example.api//items?page=1&per_page=1&sort=-created_at&api_key=");
+        expect(mock).toHaveBeenNthCalledWith(1, "https://mock.example.api/items?page=1&per_page=1&sort=-created_at&api_key=");
 
         const searchInput = screen.getByTestId("input_search_query");
         await userEvent.click(searchInput);
@@ -745,22 +664,10 @@ describe('PaginatedList', () => {
         expect(screen.getByText(/Search/i)).toBeTruthy();
         await userEvent.keyboard("test");
         await userEvent.keyboard("[Enter]");
-        expect(httpClient.get).toHaveBeenCalled();
+        expect(mock).toHaveBeenCalled();
     });
 
     it('should call onElementClick when clicking list item', async () => {
-        httpClient.get.mockResolvedValue({
-            status: 200,
-            "data": {
-                "success": true,
-                "data": [
-                    { id: 1, name: "First item" },
-                    { id: 2, name: "Second item" },
-                    { id: 3, name: "Third item" }
-                ]
-            }
-        });
-
         const callback = jest.fn();
 
         await act(async () => {
@@ -773,15 +680,10 @@ describe('PaginatedList', () => {
                                     <DataProviderContext.Provider value={{ dataProvider: data }}>
                                         <PaginatedList
                                             currentListId={"itemList"}
-                                            resource={'/items'}
-                                            loadingComponent={null}
+                                            resource={'items'}
                                             resourcePropName={"item"}
                                             perPage={1}
                                             withPagination
-                                            countless={false}
-                                            staticContext={null}
-                                            staticResourceName={"getListItem"}
-                                            filters={{}}
                                             display="column"
                                             numberElements={3}
                                             onElementClick={callback}
@@ -811,11 +713,11 @@ describe('PaginatedList', () => {
             );
         });
 
-        expect(httpClient.get).toHaveBeenNthCalledWith(1, "https://mock.example.api//items?page=1&per_page=1&sort=-created_at&api_key=");
-        const firstElm = screen.getByText(/First item/i);
+        expect(mock).toHaveBeenNthCalledWith(1, "https://mock.example.api/items?page=1&per_page=1&sort=-created_at&api_key=");
+        const firstElm = screen.queryAllByTestId("list-item")[0];
         expect(firstElm).toBeTruthy();
 
-        const secondElm = screen.getByText(/First item/i);
+        const secondElm = screen.queryAllByTestId("list-item")[1];
         expect(secondElm).toBeTruthy();
 
         await userEvent.click(firstElm);
@@ -826,7 +728,7 @@ describe('PaginatedList', () => {
     });
 
     it('should render emptyText prop if no emptyListComponent is passed', async () => {
-        httpClient.get.mockResolvedValue({
+        mock.mockResolvedValue({
             status: 200,
             "data": {
                 "success": true,
@@ -846,15 +748,10 @@ describe('PaginatedList', () => {
                                     <DataProviderContext.Provider value={{ dataProvider: data }}>
                                         <PaginatedList
                                             currentListId={"itemList"}
-                                            resource={'/items'}
-                                            loadingComponent={null}
+                                            resource={'items'}
                                             resourcePropName={"item"}
                                             perPage={1}
                                             withPagination
-                                            countless={false}
-                                            staticContext={null}
-                                            staticResourceName={"getListItem"}
-                                            filters={{}}
                                             display="column"
                                             numberElements={3}
                                             onElementClick={callback}
@@ -885,24 +782,12 @@ describe('PaginatedList', () => {
             );
         });
 
-        expect(httpClient.get).toHaveBeenNthCalledWith(1, "https://mock.example.api//items?page=1&per_page=1&sort=-created_at&api_key=");
+        expect(mock).toHaveBeenNthCalledWith(1, "https://mock.example.api/items?page=1&per_page=1&sort=-created_at&api_key=");
         const emptyText = screen.getByText(/Empty text/i);
         expect(emptyText).toBeTruthy();
     });
 
     it('should call api with countless prop if passed', async () => {
-        httpClient.get.mockResolvedValue({
-            status: 200,
-            "data": {
-                "success": true,
-                "data": [
-                    { id: 1, name: "First item" },
-                    { id: 2, name: "Second item" },
-                    { id: 3, name: "Third item" }
-                ]
-            }
-        });
-
         await act(async () => {
             render(
                 <BrowserRouter>
@@ -913,15 +798,11 @@ describe('PaginatedList', () => {
                                     <DataProviderContext.Provider value={{ dataProvider: data }}>
                                         <PaginatedList
                                             currentListId={"itemList"}
-                                            resource={'/items'}
-                                            loadingComponent={null}
+                                            resource={'items'}
                                             resourcePropName={"item"}
                                             perPage={1}
                                             withPagination
                                             countless={true}
-                                            staticContext={null}
-                                            staticResourceName={"getListItem"}
-                                            filters={{}}
                                             display="column"
                                             numberElements={3}
                                             sortOptions={[
@@ -950,11 +831,11 @@ describe('PaginatedList', () => {
             );
         });
 
-        expect(httpClient.get).toHaveBeenNthCalledWith(1, "https://mock.example.api//items?page=1&per_page=1&sort=-created_at&countless=true&api_key=");
+        expect(mock).toHaveBeenNthCalledWith(1, "https://mock.example.api/items?page=1&per_page=1&sort=-created_at&countless=true&api_key=");
     });
 
     it('should render unique elements', async () => {
-        httpClient.get.mockResolvedValue({
+        mock.mockResolvedValue({
             status: 200,
             "data": {
                 "success": true,
@@ -976,15 +857,10 @@ describe('PaginatedList', () => {
                                     <DataProviderContext.Provider value={{ dataProvider: data }}>
                                         <PaginatedList
                                             currentListId={"itemList"}
-                                            resource={'/items'}
-                                            loadingComponent={null}
+                                            resource={'items'}
                                             resourcePropName={"item"}
                                             perPage={1}
                                             withPagination
-                                            countless={false}
-                                            staticContext={null}
-                                            staticResourceName={"getListItem"}
-                                            filters={{}}
                                             display="column"
                                             numberElements={3}
                                             sortOptions={[
@@ -1013,7 +889,7 @@ describe('PaginatedList', () => {
             );
         });
 
-        expect(httpClient.get).toHaveBeenNthCalledWith(1, "https://mock.example.api//items?page=1&per_page=1&sort=-created_at&api_key=");
+        expect(mock).toHaveBeenNthCalledWith(1, "https://mock.example.api/items?page=1&per_page=1&sort=-created_at&api_key=");
         expect(screen.queryAllByText("First item").length).toEqual(1);
         expect(screen.getByText("First item")).toBeTruthy();
         expect(screen.queryByText("Second item")).toBeFalsy();
@@ -1021,18 +897,6 @@ describe('PaginatedList', () => {
     });
 
     it('should call api with first sortOption from props (getInitSort func)', async () => {
-        httpClient.get.mockResolvedValue({
-            status: 200,
-            "data": {
-                "success": true,
-                "data": [
-                    { id: 1, name: "First item" },
-                    { id: 2, name: "Second item" },
-                    { id: 3, name: "Third item" }
-                ]
-            }
-        });
-
         await act(async () => {
             render(
                 <BrowserRouter>
@@ -1043,15 +907,10 @@ describe('PaginatedList', () => {
                                     <DataProviderContext.Provider value={{ dataProvider: data }}>
                                         <PaginatedList
                                             currentListId={"itemList"}
-                                            resource={'/items'}
-                                            loadingComponent={null}
+                                            resource={'items'}
                                             resourcePropName={"item"}
                                             perPage={1}
                                             withPagination
-                                            countless={false}
-                                            staticContext={null}
-                                            staticResourceName={"getListItem"}
-                                            filters={{}}
                                             display="column"
                                             numberElements={3}
                                             sortOptions={[
@@ -1080,11 +939,11 @@ describe('PaginatedList', () => {
             );
         });
 
-        expect(httpClient.get).toHaveBeenNthCalledWith(1, "https://mock.example.api//items?page=1&per_page=1&sort=-test&api_key=");
+        expect(mock).toHaveBeenNthCalledWith(1, "https://mock.example.api/items?page=1&per_page=1&sort=-test&api_key=");
     });
 
     it('should call onUpdateTotal func if passed as prop and headers["total"] is present', async () => {
-        httpClient.get.mockResolvedValue({
+        mock.mockResolvedValue({
             status: 200,
             "headers": {
                 "total": 3
@@ -1111,14 +970,9 @@ describe('PaginatedList', () => {
                                     <DataProviderContext.Provider value={{ dataProvider: data }}>
                                         <PaginatedList
                                             currentListId={"itemList"}
-                                            resource={'/items'}
-                                            loadingComponent={null}
+                                            resource={'items'}
                                             resourcePropName={"item"}
                                             perPage={1}
-                                            withPagination
-                                            staticContext={null}
-                                            staticResourceName={"getListItem"}
-                                            filters={{}}
                                             display="column"
                                             onUpdateTotal={callback}
                                             sortOptions={[
@@ -1147,23 +1001,11 @@ describe('PaginatedList', () => {
             );
         });
 
-        expect(httpClient.get).toHaveBeenNthCalledWith(1, "https://mock.example.api//items?page=1&per_page=1&sort=-created_at&api_key=");
+        expect(mock).toHaveBeenNthCalledWith(1, "https://mock.example.api/items?page=1&per_page=1&sort=-created_at&api_key=");
         expect(callback).toHaveBeenNthCalledWith(1, 3);
     });
 
     it('should call api with first sortOptions filter type from props (getInitFilters func)', async () => {
-        httpClient.get.mockResolvedValue({
-            status: 200,
-            "data": {
-                "success": true,
-                "data": [
-                    { id: 1, name: "First item" },
-                    { id: 2, name: "Second item" },
-                    { id: 3, name: "Third item" }
-                ]
-            }
-        });
-
         await act(async () => {
             render(
                 <BrowserRouter>
@@ -1174,15 +1016,10 @@ describe('PaginatedList', () => {
                                     <DataProviderContext.Provider value={{ dataProvider: data }}>
                                         <PaginatedList
                                             currentListId={"itemList"}
-                                            resource={'/items'}
-                                            loadingComponent={null}
+                                            resource={'items'}
                                             resourcePropName={"item"}
                                             perPage={1}
                                             withPagination
-                                            countless={false}
-                                            staticContext={null}
-                                            staticResourceName={"getListItem"}
-                                            filters={{}}
                                             display="column"
                                             numberElements={3}
                                             sortOptions={[
@@ -1215,18 +1052,18 @@ describe('PaginatedList', () => {
             );
         });
 
-        expect(httpClient.get).toHaveBeenNthCalledWith(1, "https://mock.example.api//items?page=1&per_page=1&popular=true&api_key=");
+        expect(mock).toHaveBeenNthCalledWith(1, "https://mock.example.api/items?page=1&per_page=1&popular=true&api_key=");
     });
 
     it('should use transformData filter func if passed as prop', async () => {
-        httpClient.get.mockResolvedValue({
+        mock.mockResolvedValue({
             status: 200,
             "headers": {
                 "total": 3
             },
-            "data": {
-                "success": true,
-                "data": [
+            data: {
+                success: true,
+                data: [
                     { id: 1, name: "First item" },
                     { id: 2, name: "Second item" },
                     { id: 3, name: "Third item" }
@@ -1244,14 +1081,9 @@ describe('PaginatedList', () => {
                                     <DataProviderContext.Provider value={{ dataProvider: data }}>
                                         <PaginatedList
                                             currentListId={"itemList"}
-                                            resource={'/items'}
-                                            loadingComponent={null}
+                                            resource={'items'}
                                             resourcePropName={"item"}
                                             perPage={1}
-                                            withPagination
-                                            staticContext={null}
-                                            staticResourceName={"getListItem"}
-                                            filters={{}}
                                             display="column"
                                             transformData={elm => elm.id !== 1}
                                             sortOptions={[
@@ -1280,25 +1112,13 @@ describe('PaginatedList', () => {
             );
         });
 
-        expect(httpClient.get).toHaveBeenNthCalledWith(1, "https://mock.example.api//items?page=1&per_page=1&sort=-created_at&api_key=");
+        expect(mock).toHaveBeenNthCalledWith(1, "https://mock.example.api/items?page=1&per_page=1&sort=-created_at&api_key=");
         expect(screen.queryByText("First item")).toBeFalsy();
         expect(screen.getByText("Second item")).toBeTruthy();
         expect(screen.getByText("Third item")).toBeTruthy();
     });
 
     it('should call onElementsLoad if passed as props', async () => {
-        httpClient.get.mockResolvedValue({
-            status: 200,
-            "data": {
-                "success": true,
-                "data": [
-                    { id: 1, name: "First item" },
-                    { id: 2, name: "Second item" },
-                    { id: 3, name: "Third item" }
-                ]
-            }
-        });
-
         const callback = jest.fn();
 
         await act(async () => {
@@ -1311,15 +1131,10 @@ describe('PaginatedList', () => {
                                     <DataProviderContext.Provider value={{ dataProvider: data }}>
                                         <PaginatedList
                                             currentListId={"itemList"}
-                                            resource={'/items'}
-                                            loadingComponent={null}
+                                            resource={'items'}
                                             resourcePropName={"item"}
                                             perPage={1}
                                             withPagination
-                                            countless={false}
-                                            staticContext={null}
-                                            staticResourceName={"getListItem"}
-                                            filters={{}}
                                             display="column"
                                             numberElements={3}
                                             onElementsLoad={callback}
@@ -1349,15 +1164,12 @@ describe('PaginatedList', () => {
             );
         });
 
-        expect(httpClient.get).toHaveBeenNthCalledWith(1, "https://mock.example.api//items?page=1&per_page=1&sort=-created_at&api_key=");
+        expect(mock).toHaveBeenNthCalledWith(1, "https://mock.example.api/items?page=1&per_page=1&sort=-created_at&api_key=");
         expect(callback).toHaveBeenCalled();
     });
 
     it('should add elements through useList hook', async () => {
-        const myElements = [
-            { id: 4, name: "Fourth item" },
-            { id: 5, name: "Fifth item" }
-        ];
+        const myElements = Array.from({length: 4}, createElement)
 
         const AddElementsComponent = () => {
             const list = useList();
@@ -1384,15 +1196,12 @@ describe('PaginatedList', () => {
                                         <AddElementsComponent />
                                         <PaginatedList
                                             currentListId={"itemList"}
-                                            resource={'/items'}
+                                            resource={'items'}
                                             sort={"-created_at"}
-                                            loadingComponent={null}
                                             resourcePropName={"item"}
                                             perPage={10}
                                             withPagination={false}
                                             countless={true}
-                                            staticContext={null}
-                                            staticResourceName={"getListItem"}
                                             display="column"
                                             onElementsLoad={callback}
                                         >
@@ -1407,16 +1216,13 @@ describe('PaginatedList', () => {
             );
         });
 
-        expect(screen.getByText("First item")).toBeTruthy();
-        expect(screen.getByText("Second item")).toBeTruthy();
-        expect(screen.getByText("Third item")).toBeTruthy();
+        expect(screen.getAllByTestId("list-item")).toHaveLength(3);
 
         const addButton = screen.getByText("Add elements");
         expect(addButton).toBeTruthy();
 
         await act(async () => { await userEvent.click(addButton) });
 
-        expect(screen.getByText(/Fourth item/i)).toBeTruthy();
-        expect(screen.getByText(/Fifth item/i)).toBeTruthy();
+        expect(screen.getAllByTestId("list-item")).toHaveLength(7);
     });
 });
