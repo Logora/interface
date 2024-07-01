@@ -146,9 +146,10 @@ describe('VotePaginatedList', () => {
     });
 
     it('should trow an error when data loading fails ', async () => {
-        httpClient.get.mockImplementation(() => {
-            throw new Error('User not found');
-        });
+        httpClient.get = jest.fn(() =>  Promise.reject({
+            status: 500,
+            "data": {}
+        }))
 
         jest.spyOn(console, 'error').mockImplementation(() => { });
 
