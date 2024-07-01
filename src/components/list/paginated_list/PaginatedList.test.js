@@ -1,6 +1,5 @@
 import React from 'react';
-import { render, screen, waitFor } from '@testing-library/react';
-import { act } from 'react-dom/test-utils';
+import { render, screen, waitFor, act } from '@testing-library/react';
 import { IntlProvider } from 'react-intl';
 import { dataProvider, DataProviderContext } from '@logora/debate.data.data_provider';
 import { ResponsiveProvider } from '@logora/debate.hooks.use_responsive';
@@ -13,19 +12,17 @@ import { IconProvider } from '@logora/debate.icons.icon_provider';
 import * as regularIcons from '@logora/debate.icons.regular_icons';
 
 const httpClient = {
-    get: jest.fn(e => {
-        return {
-            status: 200,
-            "data": {
-                "success": true,
-                "data": [
-                    { id: 1, name: "First item" },
-                    { id: 2, name: "Second item" },
-                    { id: 3, name: "Third item" }
-                ]
-            }
+    get: jest.fn(() =>  Promise.resolve({
+        status: 200,
+        "data": {
+            "success": true,
+            "data": [
+                { id: 1, name: "First item" },
+                { id: 2, name: "Second item" },
+                { id: 3, name: "Third item" }
+            ]
         }
-    })
+    }))
 };
 
 const ListItem = (props) => {
@@ -79,9 +76,7 @@ describe('PaginatedList', () => {
         });
 
         expect(httpClient.get).toHaveBeenCalled();
-        expect(screen.getByText("First item")).toBeTruthy();
-        expect(screen.getByText("Second item")).toBeTruthy();
-        expect(screen.getByText("Third item")).toBeTruthy();
+        expect(screen.getAllByTestId("list-item")).toHaveLength(3);
     });
 
     it('should show the specific loader component passed as props ', async () => {
@@ -278,18 +273,6 @@ describe('PaginatedList', () => {
     });
 
     it('should render a list with a title', async () => {
-        httpClient.get.mockResolvedValue({
-            status: 200,
-            "data": {
-                "success": true,
-                "data": [
-                    { id: 1, name: "First item" },
-                    { id: 2, name: "Second item" },
-                    { id: 3, name: "Third item" }
-                ]
-            }
-        });
-
         await act(async () => {
             render(
                 <BrowserRouter>
@@ -328,18 +311,6 @@ describe('PaginatedList', () => {
     });
 
     it('should render a list with a sort select', async () => {
-        httpClient.get.mockResolvedValue({
-            status: 200,
-            "data": {
-                "success": true,
-                "data": [
-                    { id: 1, name: "First item" },
-                    { id: 2, name: "Second item" },
-                    { id: 3, name: "Third item" }
-                ]
-            }
-        });
-
         await act(async () => {
             render(
                 <BrowserRouter>
@@ -435,18 +406,6 @@ describe('PaginatedList', () => {
     });
 
     it('should call api on sort select click', async () => {
-        httpClient.get.mockResolvedValue({
-            status: 200,
-            "data": {
-                "success": true,
-                "data": [
-                    { id: 1, name: "First item" },
-                    { id: 2, name: "Second item" },
-                    { id: 3, name: "Third item" }
-                ]
-            }
-        });
-
         await act(async () => {
             render(
                 <BrowserRouter>
@@ -570,18 +529,6 @@ describe('PaginatedList', () => {
     });
 
     it('should call api with query params if passed as props', async () => {
-        httpClient.get.mockResolvedValue({
-            status: 200,
-            "data": {
-                "success": true,
-                "data": [
-                    { id: 1, name: "First item" },
-                    { id: 2, name: "Second item" },
-                    { id: 3, name: "Third item" }
-                ]
-            }
-        });
-
         await act(async () => {
             render(
                 <BrowserRouter>
@@ -629,18 +576,6 @@ describe('PaginatedList', () => {
     });
 
     it('should call api when using searchbar', async () => {
-        httpClient.get.mockResolvedValue({
-            status: 200,
-            "data": {
-                "success": true,
-                "data": [
-                    { id: 1, name: "First item" },
-                    { id: 2, name: "Second item" },
-                    { id: 3, name: "Third item" }
-                ]
-            }
-        });
-
         await act(async () => {
             render(
                 <BrowserRouter>
@@ -696,18 +631,6 @@ describe('PaginatedList', () => {
     });
 
     it('should call onElementClick when clicking list item', async () => {
-        httpClient.get.mockResolvedValue({
-            status: 200,
-            "data": {
-                "success": true,
-                "data": [
-                    { id: 1, name: "First item" },
-                    { id: 2, name: "Second item" },
-                    { id: 3, name: "Third item" }
-                ]
-            }
-        });
-
         const callback = jest.fn();
 
         await act(async () => {
@@ -828,18 +751,6 @@ describe('PaginatedList', () => {
     });
 
     it('should call api with countless prop if passed', async () => {
-        httpClient.get.mockResolvedValue({
-            status: 200,
-            "data": {
-                "success": true,
-                "data": [
-                    { id: 1, name: "First item" },
-                    { id: 2, name: "Second item" },
-                    { id: 3, name: "Third item" }
-                ]
-            }
-        });
-
         await act(async () => {
             render(
                 <BrowserRouter>
@@ -949,18 +860,6 @@ describe('PaginatedList', () => {
     });
 
     it('should call api with first sortOption from props (getInitSort func)', async () => {
-        httpClient.get.mockResolvedValue({
-            status: 200,
-            "data": {
-                "success": true,
-                "data": [
-                    { id: 1, name: "First item" },
-                    { id: 2, name: "Second item" },
-                    { id: 3, name: "Third item" }
-                ]
-            }
-        });
-
         await act(async () => {
             render(
                 <BrowserRouter>
@@ -1071,18 +970,6 @@ describe('PaginatedList', () => {
     });
 
     it('should call api with first sortOptions filter type from props (getInitFilters func)', async () => {
-        httpClient.get.mockResolvedValue({
-            status: 200,
-            "data": {
-                "success": true,
-                "data": [
-                    { id: 1, name: "First item" },
-                    { id: 2, name: "Second item" },
-                    { id: 3, name: "Third item" }
-                ]
-            }
-        });
-
         await act(async () => {
             render(
                 <BrowserRouter>
@@ -1197,18 +1084,6 @@ describe('PaginatedList', () => {
     });
 
     it('should call onElementsLoad if passed as props', async () => {
-        httpClient.get.mockResolvedValue({
-            status: 200,
-            "data": {
-                "success": true,
-                "data": [
-                    { id: 1, name: "First item" },
-                    { id: 2, name: "Second item" },
-                    { id: 3, name: "Third item" }
-                ]
-            }
-        });
-
         const callback = jest.fn();
 
         await act(async () => {

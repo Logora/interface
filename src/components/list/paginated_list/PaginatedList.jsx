@@ -30,7 +30,7 @@ export const PaginatedList = ({ staticContext,
 	sortParam = "sort",
 	queryParam = "query",
 	tagParam = "tag_id",
-	totalHeaderParam,
+	totalHeaderParam = "total",
 	onUpdateTotal,
 	onElementsLoad,
 	transformData,
@@ -234,6 +234,7 @@ export const PaginatedList = ({ staticContext,
 				addElements(newElements);
 				setIsLoading(false);
 			}).catch((error) => {
+				console.log(error)
 				setLoadError(true);
 				setIsLoading(false);
 			});
@@ -268,7 +269,7 @@ export const PaginatedList = ({ staticContext,
 	const displayResource = (resource, index) => {
 		if (resource != undefined) {
 			return (
-				<div className={styles.paginatedListItem} key={resource[uniqueIdKey || "id"]} onClick={onElementClick}>
+				<div className={styles.paginatedListItem} data-testid={"list-item"} key={resource[uniqueIdKey || "id"]} onClick={onElementClick}>
 					<StandardErrorBoundary hideMessage={true}>
 						{React.cloneElement(children, { ...{ index: index, [resourcePropName]: resource } })}
 					</StandardErrorBoundary>
@@ -418,19 +419,4 @@ PaginatedList.propTypes = {
 	countless: PropTypes.bool,
 	/** Activate url params */
 	withUrlParams: PropTypes.bool,
-};
-
-PaginatedList.defaultProps = {
-	pageParam: "page",
-	perPageParam: "per_page",
-	sortParam: "sort",
-	queryParam: "query",
-	tagParam: "tag_id",
-	totalHeaderParam: "total",
-	searchBar: false,
-	indexLayout: false,
-	gap: "1em",
-	withPagination: true,
-	uniqueIdKey: "id",
-	withUrlParams: false
 };
