@@ -95,7 +95,7 @@
 }
 
 .debateBoxTitle {
-  font-size: $font-size-large;
+  font-size: $font-size-medium;
 }
 
 .debateBoxTitle {
@@ -114,7 +114,7 @@
 .debateTitle {
   display: block;
   @include line-clamp(2);
-  font-size: $font-size-large;
+  font-size: $font-size-medium;
   &.debateTitleMobile{
     -webkit-line-clamp: 3;
   }
