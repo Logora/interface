@@ -47,7 +47,7 @@ const DefaultList = () => {
                             <DataProviderContext.Provider value={{ dataProvider: data }}>
                                 <PaginatedList
                                     currentListId={"itemList"}
-                                    resource={'/items'}
+                                    resource={'items'}
                                     sort={"-created_at"}
                                     resourcePropName={"item"}
                                     perPage={10}
@@ -100,7 +100,7 @@ describe('PaginatedList', () => {
                                 <DataProviderContext.Provider value={{ dataProvider: data }}>
                                     <PaginatedList
                                         currentListId={"itemList"}
-                                        resource={'/items'}
+                                        resource={'items'}
                                         sort={"-created_at"}
                                         resourcePropName={"item"}
                                         perPage={1}
@@ -139,7 +139,7 @@ describe('PaginatedList', () => {
                                         <DataProviderContext.Provider value={{ dataProvider: data }}>
                                             <PaginatedList
                                                 currentListId={"itemList"}
-                                                resource={'/items'}
+                                                resource={'items'}
                                                 sort={"-created_at"}
                                                 resourcePropName={"item"}
                                                 perPage={1}
@@ -202,7 +202,7 @@ describe('PaginatedList', () => {
                                     <DataProviderContext.Provider value={{ dataProvider: data }}>
                                         <PaginatedList
                                             currentListId={"itemList"}
-                                            resource={'/items'}
+                                            resource={'items'}
                                             sort={"-created_at"}
                                             resourcePropName={"item"}
                                             perPage={1}
@@ -236,7 +236,7 @@ describe('PaginatedList', () => {
                                     <DataProviderContext.Provider value={{ dataProvider: data }}>
                                         <PaginatedList
                                             currentListId={"itemList"}
-                                            resource={'/items'}
+                                            resource={'items'}
                                             sort={"-created_at"}
                                             resourcePropName={"item"}
                                             perPage={1}
@@ -271,7 +271,7 @@ describe('PaginatedList', () => {
                                     <DataProviderContext.Provider value={{ dataProvider: data }}>
                                         <PaginatedList
                                             currentListId={"itemList"}
-                                            resource={'/items'}
+                                            resource={'items'}
                                             sort={"-created_at"}
                                             resourcePropName={"item"}
                                             perPage={1}
@@ -306,7 +306,7 @@ describe('PaginatedList', () => {
                                     <DataProviderContext.Provider value={{ dataProvider: data }}>
                                         <PaginatedList
                                             currentListId={"itemList"}
-                                            resource={'/items'}
+                                            resource={'items'}
                                             sort={"-created_at"}
                                             resourcePropName={"item"}
                                             perPage={1}
@@ -363,7 +363,7 @@ describe('PaginatedList', () => {
                                     <DataProviderContext.Provider value={{ dataProvider: data }}>
                                         <PaginatedList
                                             currentListId={"itemList"}
-                                            resource={'/items'}
+                                            resource={'items'}
                                             sort={"-created_at"}
                                             resourcePropName={"item"}
                                             perPage={1}
@@ -399,7 +399,7 @@ describe('PaginatedList', () => {
                                     <DataProviderContext.Provider value={{ dataProvider: data }}>
                                         <PaginatedList
                                             currentListId={"itemList"}
-                                            resource={'/items'}
+                                            resource={'items'}
                                             resourcePropName={"item"}
                                             perPage={1}
                                             withPagination
@@ -431,7 +431,7 @@ describe('PaginatedList', () => {
             );
         });
 
-        expect(mock).toHaveBeenNthCalledWith(1, "https://mock.example.api//items?page=1&per_page=1&sort=-created_at&api_key=");
+        expect(mock).toHaveBeenNthCalledWith(1, "https://mock.example.api/items?page=1&per_page=1&sort=-created_at&api_key=");
 
         const dropdownFirstOption = screen.getByText(/recent/i);
         expect(screen.queryByText(/oldest/i)).toBeNull();
@@ -457,12 +457,11 @@ describe('PaginatedList', () => {
                                     <DataProviderContext.Provider value={{ dataProvider: data }}>
                                         <PaginatedList
                                             currentListId={"itemList"}
-                                            resource={'/items'}
+                                            resource={'items'}
                                             resourcePropName={"item"}
                                             perPage={1}
-                                            withPagination
                                             display="column"
-                                            numberElements={3}
+                                            numberElements={10}
                                             sortOptions={[
                                                 {
                                                     name: "recent",
@@ -489,7 +488,8 @@ describe('PaginatedList', () => {
             );
         });
 
-        expect(mock).toHaveBeenNthCalledWith(1, "https://mock.example.api//items?page=1&per_page=1&sort=-created_at&api_key=");
+        expect(mock).toHaveBeenLastCalledWith("https://mock.example.api/items?page=1&per_page=1&sort=-created_at&api_key=");
+        expect(mock).toHaveBeenCalledTimes(1);
 
         expect(screen.getAllByTestId("list-item")).toHaveLength(3);
         const paginationButton = screen.getByText(/See more/i);
@@ -497,6 +497,74 @@ describe('PaginatedList', () => {
 
         await userEvent.click(paginationButton);
         expect(mock).toHaveBeenCalled();
+        expect(screen.getAllByTestId("list-item")).toHaveLength(6);
+    });
+
+    it('should call api correctly after pagination and sort click', async () => {
+        await act(async () => {
+            render(
+                <BrowserRouter>
+                    <IntlProvider locale="en">
+                        <ListProvider>
+                            <IconProvider library={regularIcons}>
+                                <ResponsiveProvider>
+                                    <DataProviderContext.Provider value={{ dataProvider: data }}>
+                                        <PaginatedList
+                                            currentListId={"itemList"}
+                                            resource={'items'}
+                                            resourcePropName={"item"}
+                                            perPage={1}
+                                            display="column"
+                                            numberElements={10}
+                                            sortOptions={[
+                                                {
+                                                    name: "recent",
+                                                    value: "-created_at",
+                                                    type: "sort",
+                                                    text: "recent",
+                                                },
+                                                {
+                                                    name: "old",
+                                                    type: "sort",
+                                                    value: "+created_at",
+                                                    text: "oldest",
+                                                },
+                                            ]}
+                                        >
+                                            <ListItem />
+                                        </PaginatedList>
+                                    </DataProviderContext.Provider>
+                                </ResponsiveProvider>
+                            </IconProvider>
+                        </ListProvider>
+                    </IntlProvider>
+                </BrowserRouter>
+            );
+        });
+
+        expect(mock).toHaveBeenLastCalledWith("https://mock.example.api/items?page=1&per_page=1&sort=-created_at&api_key=");
+        expect(mock).toHaveBeenCalledTimes(1);
+        expect(screen.getAllByTestId("list-item")).toHaveLength(3);
+
+        const paginationButton = screen.getByText(/See more/i);
+        expect(paginationButton).toBeTruthy();
+        await userEvent.click(paginationButton);
+
+        expect(mock).toHaveBeenLastCalledWith("https://mock.example.api/items?page=2&per_page=1&sort=-created_at&api_key=");
+        expect(mock).toHaveBeenCalledTimes(2);
+        expect(screen.getAllByTestId("list-item")).toHaveLength(6);
+
+        const dropdownFirstOption = screen.getByText(/recent/i);
+        expect(screen.queryByText(/oldest/i)).toBeNull();
+
+        await userEvent.click(dropdownFirstOption);
+
+        expect(screen.getByText(/oldest/i)).toBeTruthy();
+        const oldestSortButton = screen.getByText(/oldest/i);
+        userEvent.click(oldestSortButton);
+
+        expect(mock).toHaveBeenLastCalledWith("https://mock.example.api/items?page=1&per_page=1&sort=+created_at&api_key=");
+        expect(mock).toHaveBeenCalledTimes(3);
         expect(screen.getAllByTestId("list-item")).toHaveLength(6);
     });
 
@@ -511,7 +579,7 @@ describe('PaginatedList', () => {
                                     <DataProviderContext.Provider value={{ dataProvider: data }}>
                                         <PaginatedList
                                             currentListId={"itemList"}
-                                            resource={'/items'}
+                                            resource={'items'}
                                             resourcePropName={"item"}
                                             perPage={1}
                                             withPagination
@@ -544,7 +612,7 @@ describe('PaginatedList', () => {
             );
         });
 
-        expect(mock).toHaveBeenNthCalledWith(1, "https://mock.example.api//items?page=1&per_page=1&query=test&api_key=");
+        expect(mock).toHaveBeenNthCalledWith(1, "https://mock.example.api/items?page=1&per_page=1&query=test&api_key=");
     });
 
     it('should call api when using searchbar', async () => {
@@ -558,7 +626,7 @@ describe('PaginatedList', () => {
                                     <DataProviderContext.Provider value={{ dataProvider: data }}>
                                         <PaginatedList
                                             currentListId={"itemList"}
-                                            resource={'/items'}
+                                            resource={'items'}
                                             resourcePropName={"item"}
                                             perPage={1}
                                             withPagination
@@ -591,7 +659,7 @@ describe('PaginatedList', () => {
             );
         });
 
-        expect(mock).toHaveBeenNthCalledWith(1, "https://mock.example.api//items?page=1&per_page=1&sort=-created_at&api_key=");
+        expect(mock).toHaveBeenNthCalledWith(1, "https://mock.example.api/items?page=1&per_page=1&sort=-created_at&api_key=");
 
         const searchInput = screen.getByTestId("input_search_query");
         await userEvent.click(searchInput);
@@ -615,7 +683,7 @@ describe('PaginatedList', () => {
                                     <DataProviderContext.Provider value={{ dataProvider: data }}>
                                         <PaginatedList
                                             currentListId={"itemList"}
-                                            resource={'/items'}
+                                            resource={'items'}
                                             resourcePropName={"item"}
                                             perPage={1}
                                             withPagination
@@ -648,7 +716,7 @@ describe('PaginatedList', () => {
             );
         });
 
-        expect(mock).toHaveBeenNthCalledWith(1, "https://mock.example.api//items?page=1&per_page=1&sort=-created_at&api_key=");
+        expect(mock).toHaveBeenNthCalledWith(1, "https://mock.example.api/items?page=1&per_page=1&sort=-created_at&api_key=");
         const firstElm = screen.queryAllByTestId("list-item")[0];
         expect(firstElm).toBeTruthy();
 
@@ -683,7 +751,7 @@ describe('PaginatedList', () => {
                                     <DataProviderContext.Provider value={{ dataProvider: data }}>
                                         <PaginatedList
                                             currentListId={"itemList"}
-                                            resource={'/items'}
+                                            resource={'items'}
                                             resourcePropName={"item"}
                                             perPage={1}
                                             withPagination
@@ -717,7 +785,7 @@ describe('PaginatedList', () => {
             );
         });
 
-        expect(mock).toHaveBeenNthCalledWith(1, "https://mock.example.api//items?page=1&per_page=1&sort=-created_at&api_key=");
+        expect(mock).toHaveBeenNthCalledWith(1, "https://mock.example.api/items?page=1&per_page=1&sort=-created_at&api_key=");
         const emptyText = screen.getByText(/Empty text/i);
         expect(emptyText).toBeTruthy();
     });
@@ -733,7 +801,7 @@ describe('PaginatedList', () => {
                                     <DataProviderContext.Provider value={{ dataProvider: data }}>
                                         <PaginatedList
                                             currentListId={"itemList"}
-                                            resource={'/items'}
+                                            resource={'items'}
                                             resourcePropName={"item"}
                                             perPage={1}
                                             withPagination
@@ -766,7 +834,7 @@ describe('PaginatedList', () => {
             );
         });
 
-        expect(mock).toHaveBeenNthCalledWith(1, "https://mock.example.api//items?page=1&per_page=1&sort=-created_at&countless=true&api_key=");
+        expect(mock).toHaveBeenNthCalledWith(1, "https://mock.example.api/items?page=1&per_page=1&sort=-created_at&countless=true&api_key=");
     });
 
     it('should render unique elements', async () => {
@@ -792,7 +860,7 @@ describe('PaginatedList', () => {
                                     <DataProviderContext.Provider value={{ dataProvider: data }}>
                                         <PaginatedList
                                             currentListId={"itemList"}
-                                            resource={'/items'}
+                                            resource={'items'}
                                             resourcePropName={"item"}
                                             perPage={1}
                                             withPagination
@@ -824,7 +892,7 @@ describe('PaginatedList', () => {
             );
         });
 
-        expect(mock).toHaveBeenNthCalledWith(1, "https://mock.example.api//items?page=1&per_page=1&sort=-created_at&api_key=");
+        expect(mock).toHaveBeenNthCalledWith(1, "https://mock.example.api/items?page=1&per_page=1&sort=-created_at&api_key=");
         expect(screen.queryAllByText("First item").length).toEqual(1);
         expect(screen.getByText("First item")).toBeTruthy();
         expect(screen.queryByText("Second item")).toBeFalsy();
@@ -842,7 +910,7 @@ describe('PaginatedList', () => {
                                     <DataProviderContext.Provider value={{ dataProvider: data }}>
                                         <PaginatedList
                                             currentListId={"itemList"}
-                                            resource={'/items'}
+                                            resource={'items'}
                                             resourcePropName={"item"}
                                             perPage={1}
                                             withPagination
@@ -874,7 +942,7 @@ describe('PaginatedList', () => {
             );
         });
 
-        expect(mock).toHaveBeenNthCalledWith(1, "https://mock.example.api//items?page=1&per_page=1&sort=-test&api_key=");
+        expect(mock).toHaveBeenNthCalledWith(1, "https://mock.example.api/items?page=1&per_page=1&sort=-test&api_key=");
     });
 
     it('should call onUpdateTotal func if passed as prop and headers["total"] is present', async () => {
@@ -905,7 +973,7 @@ describe('PaginatedList', () => {
                                     <DataProviderContext.Provider value={{ dataProvider: data }}>
                                         <PaginatedList
                                             currentListId={"itemList"}
-                                            resource={'/items'}
+                                            resource={'items'}
                                             resourcePropName={"item"}
                                             perPage={1}
                                             display="column"
@@ -936,7 +1004,7 @@ describe('PaginatedList', () => {
             );
         });
 
-        expect(mock).toHaveBeenNthCalledWith(1, "https://mock.example.api//items?page=1&per_page=1&sort=-created_at&api_key=");
+        expect(mock).toHaveBeenNthCalledWith(1, "https://mock.example.api/items?page=1&per_page=1&sort=-created_at&api_key=");
         expect(callback).toHaveBeenNthCalledWith(1, 3);
     });
 
@@ -951,7 +1019,7 @@ describe('PaginatedList', () => {
                                     <DataProviderContext.Provider value={{ dataProvider: data }}>
                                         <PaginatedList
                                             currentListId={"itemList"}
-                                            resource={'/items'}
+                                            resource={'items'}
                                             resourcePropName={"item"}
                                             perPage={1}
                                             withPagination
@@ -987,7 +1055,7 @@ describe('PaginatedList', () => {
             );
         });
 
-        expect(mock).toHaveBeenNthCalledWith(1, "https://mock.example.api//items?page=1&per_page=1&popular=true&api_key=");
+        expect(mock).toHaveBeenNthCalledWith(1, "https://mock.example.api/items?page=1&per_page=1&popular=true&api_key=");
     });
 
     it('should use transformData filter func if passed as prop', async () => {
@@ -996,9 +1064,9 @@ describe('PaginatedList', () => {
             "headers": {
                 "total": 3
             },
-            "data": {
-                "success": true,
-                "data": [
+            data: {
+                success: true,
+                data: [
                     { id: 1, name: "First item" },
                     { id: 2, name: "Second item" },
                     { id: 3, name: "Third item" }
@@ -1016,7 +1084,7 @@ describe('PaginatedList', () => {
                                     <DataProviderContext.Provider value={{ dataProvider: data }}>
                                         <PaginatedList
                                             currentListId={"itemList"}
-                                            resource={'/items'}
+                                            resource={'items'}
                                             resourcePropName={"item"}
                                             perPage={1}
                                             display="column"
@@ -1047,7 +1115,7 @@ describe('PaginatedList', () => {
             );
         });
 
-        expect(mock).toHaveBeenNthCalledWith(1, "https://mock.example.api//items?page=1&per_page=1&sort=-created_at&api_key=");
+        expect(mock).toHaveBeenNthCalledWith(1, "https://mock.example.api/items?page=1&per_page=1&sort=-created_at&api_key=");
         expect(screen.queryByText("First item")).toBeFalsy();
         expect(screen.getByText("Second item")).toBeTruthy();
         expect(screen.getByText("Third item")).toBeTruthy();
@@ -1066,7 +1134,7 @@ describe('PaginatedList', () => {
                                     <DataProviderContext.Provider value={{ dataProvider: data }}>
                                         <PaginatedList
                                             currentListId={"itemList"}
-                                            resource={'/items'}
+                                            resource={'items'}
                                             resourcePropName={"item"}
                                             perPage={1}
                                             withPagination
@@ -1099,7 +1167,7 @@ describe('PaginatedList', () => {
             );
         });
 
-        expect(mock).toHaveBeenNthCalledWith(1, "https://mock.example.api//items?page=1&per_page=1&sort=-created_at&api_key=");
+        expect(mock).toHaveBeenNthCalledWith(1, "https://mock.example.api/items?page=1&per_page=1&sort=-created_at&api_key=");
         expect(callback).toHaveBeenCalled();
     });
 
@@ -1131,7 +1199,7 @@ describe('PaginatedList', () => {
                                         <AddElementsComponent />
                                         <PaginatedList
                                             currentListId={"itemList"}
-                                            resource={'/items'}
+                                            resource={'items'}
                                             sort={"-created_at"}
                                             resourcePropName={"item"}
                                             perPage={10}
