@@ -444,7 +444,6 @@ describe('PaginatedList', () => {
 
         const oldestSortButton = screen.getByText(/oldest/i);
         userEvent.click(oldestSortButton);
-
     });
 
     it('should call api on pagination click', async () => {
@@ -492,11 +491,13 @@ describe('PaginatedList', () => {
 
         expect(mock).toHaveBeenNthCalledWith(1, "https://mock.example.api//items?page=1&per_page=1&sort=-created_at&api_key=");
 
+        expect(screen.getAllByTestId("list-item")).toHaveLength(3);
         const paginationButton = screen.getByText(/See more/i);
         expect(paginationButton).toBeTruthy();
 
         await userEvent.click(paginationButton);
         expect(mock).toHaveBeenCalled();
+        expect(screen.getAllByTestId("list-item")).toHaveLength(6);
     });
 
     it('should call api with query params if passed as props', async () => {
