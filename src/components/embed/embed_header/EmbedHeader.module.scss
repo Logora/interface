@@ -103,7 +103,8 @@
 }
 
 .debateLink {
-    font-size: $font-size-large;
+    font-size: $font-size-medium;
+    line-height: $line-height-loose;
     background: $background-color-primary !important;
     text-decoration: none !important;
     color: $text-primary;
