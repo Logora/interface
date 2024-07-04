@@ -1,18 +1,18 @@
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import {
-  SELECTION_CHANGE_COMMAND,
-  FORMAT_TEXT_COMMAND,
-  $getSelection,
-  $isRangeSelection
+    SELECTION_CHANGE_COMMAND,
+    FORMAT_TEXT_COMMAND,
+    $getSelection,
+    $isRangeSelection
 } from "lexical";
-import { $wrapNodes } from "@lexical/selection";
+import { $setBlocksType } from "@lexical/selection";
 import { $getNearestNodeOfType, mergeRegister } from "@lexical/utils";
 import {
-  INSERT_ORDERED_LIST_COMMAND,
-  REMOVE_LIST_COMMAND,
-  $isListNode,
-  ListNode
+    INSERT_ORDERED_LIST_COMMAND,
+    REMOVE_LIST_COMMAND,
+    $isListNode,
+    ListNode
 } from "@lexical/list";
 import { $createQuoteNode, $isHeadingNode } from "@lexical/rich-text";
 import styles from './ToolbarPlugin.module.scss';
@@ -34,81 +34,79 @@ export const ToolbarPlugin = (props) => {
     const updateToolbar = useCallback(() => {
         const selection = $getSelection();
         if ($isRangeSelection(selection)) {
-        const anchorNode = selection.anchor.getNode();
-        const element =
-            anchorNode.getKey() === "root"
-            ? anchorNode
-            : anchorNode.getTopLevelElementOrThrow();
-        const elementKey = element.getKey();
-        const elementDOM = editor.getElementByKey(elementKey);
-        if (elementDOM !== null) {
-            setSelectedElementKey(elementKey);
-            if ($isListNode(element)) {
-            const parentList = $getNearestNodeOfType(anchorNode, ListNode);
-            const type = parentList ? parentList.getTag() : element.getTag();
-            setBlockType(type);
-            } else {
-            const type = $isHeadingNode(element)
-                ? element.getTag()
-                : element.getType();
-            setBlockType(type);
+            const anchorNode = selection.anchor.getNode();
+            const element =
+                anchorNode.getKey() === "root"
+                    ? anchorNode
+                    : anchorNode.getTopLevelElementOrThrow();
+            const elementKey = element.getKey();
+            const elementDOM = editor.getElementByKey(elementKey);
+            if (elementDOM !== null) {
+                setSelectedElementKey(elementKey);
+                if ($isListNode(element)) {
+                    const parentList = $getNearestNodeOfType(anchorNode, ListNode);
+                    const type = parentList ? parentList.getTag() : element.getTag();
+                    setBlockType(type);
+                } else {
+                    const type = $isHeadingNode(element)
+                        ? element.getTag()
+                        : element.getType();
+                    setBlockType(type);
+                }
             }
-        }
-        // Update text format
-        setIsBold(selection.hasFormat("bold"));
-        setIsItalic(selection.hasFormat("italic"));
-        setIsUnderline(selection.hasFormat("underline"));
+            // Update text format
+            setIsBold(selection.hasFormat("bold"));
+            setIsItalic(selection.hasFormat("italic"));
+            setIsUnderline(selection.hasFormat("underline"));
         }
     }, [editor]);
 
     useEffect(() => {
         return mergeRegister(
-        editor.registerUpdateListener(({ editorState }) => {
-            editorState.read(() => {
-            updateToolbar();
-            });
-        }),
-        editor.registerCommand(
-            SELECTION_CHANGE_COMMAND,
-            (_payload, newEditor) => {
-            updateToolbar();
-            return false;
-            },
-            LowPriority
-        )
+            editor.registerUpdateListener(({ editorState }) => {
+                editorState.read(() => {
+                    updateToolbar();
+                });
+            }),
+            editor.registerCommand(
+                SELECTION_CHANGE_COMMAND,
+                (_payload, newEditor) => {
+                    updateToolbar();
+                    return false;
+                },
+                LowPriority
+            )
         );
     }, [editor, updateToolbar]);
 
     const formatNumberedList = () => {
         if (blockType !== "ol") {
-        editor.dispatchCommand(INSERT_ORDERED_LIST_COMMAND);
+            editor.dispatchCommand(INSERT_ORDERED_LIST_COMMAND);
         } else {
-        editor.dispatchCommand(REMOVE_LIST_COMMAND);
+            editor.dispatchCommand(REMOVE_LIST_COMMAND);
         }
     };
 
     const formatQuote = () => {
-        if (blockType !== "quote") {
+        if (blockType !== 'quote') {
             editor.update(() => {
                 const selection = $getSelection();
-                if ($isRangeSelection(selection)) {
-                    $wrapNodes(selection, () => $createQuoteNode());
-                }
+                $setBlocksType(selection, () => $createQuoteNode());
             });
         }
     };
 
     return (
         (!isDisabled ?
-            <div className={cx(styles.toolbar, {[styles.toolbarIsActive]: isDisabled ? false : props.isActive})} ref={toolbarRef}>
-                { props.isActive ?
+            <div className={cx(styles.toolbar, { [styles.toolbarIsActive]: isDisabled ? false : props.isActive })} ref={toolbarRef}>
+                {props.isActive ?
                     (!props.disableRichText &&
-                        <div className={cx(styles.iconToolbar, {[styles.shortBar]: props.shortBar})}>
+                        <div className={cx(styles.iconToolbar, { [styles.shortBar]: props.shortBar })}>
                             <button
                                 onClick={() => {
-                                editor.dispatchCommand(FORMAT_TEXT_COMMAND, "bold");
+                                    editor.dispatchCommand(FORMAT_TEXT_COMMAND, "bold");
                                 }}
-                                className={cx(styles.toolbarItem, {[styles.active] : isBold})}
+                                className={cx(styles.toolbarItem, { [styles.active]: isBold })}
                                 aria-label="Format Bold"
                                 data-testid="format-bold"
                             >
@@ -116,24 +114,24 @@ export const ToolbarPlugin = (props) => {
                             </button>
                             <button
                                 onClick={() => {
-                                editor.dispatchCommand(FORMAT_TEXT_COMMAND, "italic");
+                                    editor.dispatchCommand(FORMAT_TEXT_COMMAND, "italic");
                                 }}
-                                className={cx(styles.toolbarItem, {[styles.active] : isItalic})}
+                                className={cx(styles.toolbarItem, { [styles.active]: isItalic })}
                                 aria-label="Format Italics"
                             >
                                 <Icon name="italic" width={24} height={24} className={cx(styles.format, styles.italic)} />
                             </button>
                             <button
                                 onClick={() => {
-                                editor.dispatchCommand(FORMAT_TEXT_COMMAND, "underline");
+                                    editor.dispatchCommand(FORMAT_TEXT_COMMAND, "underline");
                                 }}
-                                className={cx(styles.toolbarItem, {[styles.active] : isUnderline})}
+                                className={cx(styles.toolbarItem, { [styles.active]: isUnderline })}
                                 aria-label="Format Underline"
                             >
                                 <Icon name="underline" width={24} height={24} className={cx(styles.format, styles.underline)} />
                             </button>
-                            <button 
-                                onClick={formatQuote} 
+                            <button
+                                onClick={formatQuote}
                                 className={styles.toolbarItem}
                                 aria-label="Format Quote"
                             >
@@ -148,24 +146,24 @@ export const ToolbarPlugin = (props) => {
                             </button>
                         </div>
                     )
-                : null }
+                    : null}
                 <div className={styles.actionButton}>
-                    { props.hideSourceAction ? null
-                    :
+                    {props.hideSourceAction ? null
+                        :
                         props.isActive ?
                             <Button
-                                active 
+                                active
                                 handleClick={props.onAddSource}
                                 className={styles.inputSubmitActionButton}
                             >
                                 <Icon name="link" width={24} height={24} />
                             </Button>
-                        : null
+                            : null
                     }
-                    { props.hideSubmit ? null
-                    :
+                    {props.hideSubmit ? null
+                        :
                         <Button
-                            type="submit" 
+                            type="submit"
                             handleClick={props.onSubmit}
                             className={cx(styles.inputSubmitActionButton, styles.submitAction)}
                         >
@@ -174,6 +172,6 @@ export const ToolbarPlugin = (props) => {
                     }
                 </div>
             </div>
-        : null)
+            : null)
     );
 };

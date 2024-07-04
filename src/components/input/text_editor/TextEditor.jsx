@@ -5,6 +5,7 @@ import { ContentEditable } from "@lexical/react/LexicalContentEditable";
 import { ToolbarPlugin } from "./plugins/ToolbarPlugin";
 import { OnChangePlugin } from '@lexical/react/LexicalOnChangePlugin';
 import { EditorRefPlugin } from '@lexical/react/LexicalEditorRefPlugin'
+import { LexicalErrorBoundary } from "@lexical/react/LexicalErrorBoundary";
 import { QuoteNode } from "@lexical/rich-text";
 import { OverflowNode } from "@lexical/overflow";
 import { AutoSavePlugin } from "./plugins/AutoSavePlugin";
@@ -23,7 +24,6 @@ import { SourceModal } from '@logora/debate.source.source_modal';
 import { SourceListItem } from '@logora/debate.source.source_list_item';
 import { useIntl } from 'react-intl';
 import { useId } from "react-use-id-hook";
-import LexicalErrorBoundary from "@lexical/react/LexicalErrorBoundary";
 import styles from './TextEditor.module.scss';
 import EditorTheme from './EditorTheme';
 import cx from "classnames";
@@ -51,9 +51,9 @@ export const TextEditor = ({ placeholder, onSubmit, sources, hideSubmit = false,
     }, [editorSources]);
 
     const activate = () => {
-        if(!isActive) {
+        if (!isActive) {
             setIsActive(true);
-            if(onActivation) {
+            if (onActivation) {
                 onActivation();
             }
         }
@@ -88,7 +88,7 @@ export const TextEditor = ({ placeholder, onSubmit, sources, hideSubmit = false,
         const textContent = editorText;
         const richContent = editorRichText;
         const sources = editorSources;
-        if(onSubmit) {
+        if (onSubmit) {
             event.preventDefault();
             onSubmit(textContent, richContent, sources);
         }
@@ -116,51 +116,49 @@ export const TextEditor = ({ placeholder, onSubmit, sources, hideSubmit = false,
     }
 
     return (
-        <>
-            <LexicalErrorBoundary>
-                <LexicalComposer initialConfig={editorConfig}>
-                    <div className={styles.editorContainer} onClick={setFocus}>
-                        <div className={cx(styles.editorInner, {[styles.editorInnerInactive]: !isActive && !active })}>
-                            <RichTextPlugin
-                                contentEditable={<ContentEditable className={cx(styles.editorInput, {[styles.editorInputInactive]: !isActive})} />}
-                                placeholder={placeholder && <Placeholder />}
-                            />
-                            <ToolbarPlugin 
-                                hideSourceAction={hideSourceAction} 
-                                hideSubmit={hideSubmit}
-                                disableRichText={disableRichText}
-                                shortBar={shortBar}
-                                onSubmit={handleSubmit}
-                                onAddSource={handleShowSourceModal}
-                                isActive={isActive || active}
-                            />
-                            { isActive && maxLength && 
-                                <div className={styles.charactersCount}>
-                                    <CharacterLimitPlugin maxLength={maxLength} /> { intl.formatMessage({ id: "input.remaining_chars", defaultMessage: "remaining characters" }) }
-                                </div>
-                            }
-                            <ListPlugin />
-                            <HistoryPlugin />
-                            <OnChangePlugin onChange={onChange} ignoreSelectionChange />
-                            <AutoSavePlugin onSetContent={activate} storageUid={uid} />
-                            <SetContentPlugin />
-                            <SetRichContentPlugin />
-                            <FocusPlugin />
-                            { maxLength && <MaxLengthPlugin maxLength={maxLength} /> }
-                            <ResetPlugin storageUid={uid} />
-                            <EditorRefPlugin editorRef={editorRef} />
-                        </div>
+        <LexicalErrorBoundary>
+            <LexicalComposer initialConfig={editorConfig}>
+                <div className={styles.editorContainer} onClick={setFocus}>
+                    <div className={cx(styles.editorInner, { [styles.editorInnerInactive]: !isActive && !active })}>
+                        <RichTextPlugin
+                            contentEditable={<ContentEditable className={cx(styles.editorInput, { [styles.editorInputInactive]: !isActive })} />}
+                            placeholder={placeholder && <Placeholder />}
+                        />
+                        <ToolbarPlugin
+                            hideSourceAction={hideSourceAction}
+                            hideSubmit={hideSubmit}
+                            disableRichText={disableRichText}
+                            shortBar={shortBar}
+                            onSubmit={handleSubmit}
+                            onAddSource={handleShowSourceModal}
+                            isActive={isActive || active}
+                        />
+                        {isActive && maxLength &&
+                            <div className={styles.charactersCount}>
+                                <CharacterLimitPlugin maxLength={maxLength} /> {intl.formatMessage({ id: "input.remaining_chars", defaultMessage: "remaining characters" })}
+                            </div>
+                        }
+                        <ListPlugin />
+                        <HistoryPlugin />
+                        <OnChangePlugin onChange={onChange} ignoreSelectionChange />
+                        <AutoSavePlugin onSetContent={activate} storageUid={uid} />
+                        <SetContentPlugin />
+                        <SetRichContentPlugin />
+                        <FocusPlugin />
+                        {maxLength && <MaxLengthPlugin maxLength={maxLength} />}
+                        <ResetPlugin storageUid={uid} />
+                        <EditorRefPlugin editorRef={editorRef} />
                     </div>
-                </LexicalComposer>
-                { sources && sources.length !== 0 ? (
-                    <div className={styles.sourcesBox}>
-                        <div className={styles.sourceList}>
-                            { sources.map(displaySource) }
-                        </div>
+                </div>
+            </LexicalComposer>
+            {sources && sources.length !== 0 ? (
+                <div className={styles.sourcesBox}>
+                    <div className={styles.sourceList}>
+                        {sources.map(displaySource)}
                     </div>
-                ) : null }
-            </LexicalErrorBoundary>
-        </>
+                </div>
+            ) : null}
+        </LexicalErrorBoundary>
     );
 }
 
