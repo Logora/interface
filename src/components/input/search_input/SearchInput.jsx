@@ -13,9 +13,7 @@ export const SearchInput = ({ onSearchSubmit, placeholder, disabled, reducedByDe
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		if (query) {
-			onSearchSubmit(query);
-		}
+		onSearchSubmit(query);
 	};
 
 	const handleReset = (e) => {
