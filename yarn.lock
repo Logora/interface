@@ -487,7 +487,7 @@ __metadata:
     "@lexical/react": ^0.16.1
     "@rooks/use-previous": ^4.11.2
     "@rooks/use-sessionstorage-state": ^4.11.2
-    "@testing-library/dom": ^10.3.1
+    "@testing-library/dom": ^10.0.0
     "@testing-library/react": ^16.0.0
     "@testing-library/user-event": ^14.5.2
     "@types/jest": ">=26.0.0 <27.0.0"
@@ -499,17 +499,17 @@ __metadata:
     chart.js: ^4.4.1
     chartjs-plugin-datalabels: ^2.2.0
     classnames: ^2.3.2
-    core-js: ^3.33.0
+    core-js: ">=3.33.0 <4.0.0"
     draftjs-to-html: ^0.9.1
     flat: ^5.0.2
     lexical: ^0.16.1
     path-to-regexp: ^6.2.1
     prop-types: ^15.8.1
     querystringify: ^2.2.0
-    react: ^17.0.0 || ^18.0.0
+    react: ">=18.2.0 <19.0.0"
     react-chartjs-2: ^5.2.0
     react-copy-to-clipboard: ^5.1.0
-    react-dom: ^17.0.0 || ^18.0.0
+    react-dom: ">=18.2.0 <19.0.0"
     react-hot-toast: ^2.4.1
     react-intl: ^6.1.2
     react-loading-skeleton: ^3.0.2
@@ -518,14 +518,12 @@ __metadata:
     react-router: ^5.3.4
     react-router-dom: ^5.3.4
     react-use-id-hook: ^1.0.1
-    sass: ^1.69.5
+    sass: 1.69.5
     use-debounce: ^10.0.0
     use-onclickoutside: ^0.4.1
     uuid: ^9.0.1
     webfontloader: ^1.6.28
   peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
     react-router: ^5.3.4
     react-router-dom: ^5.3.4
   languageName: unknown
@@ -583,7 +581,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@testing-library/dom@npm:^10.3.1":
+"@testing-library/dom@npm:^10.0.0":
   version: 10.3.1
   resolution: "@testing-library/dom@npm:10.3.1"
   dependencies:
@@ -1246,7 +1244,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"core-js@npm:^3.33.0":
+"core-js@npm:>=3.33.0 <4.0.0":
   version: 3.37.1
   resolution: "core-js@npm:3.37.1"
   checksum: 2d58a5c599f05c3e04abc8bc5e64b88eb17d914c0f552f670fb800afa74ec54b4fcc7f231ad6bd45badaf62c0fb0ce30e6fe89cedb6bb6d54e6f19115c3c17ff
@@ -2471,7 +2469,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-dom@npm:^17.0.0 || ^18.0.0":
+"react-dom@npm:>=18.2.0 <19.0.0":
   version: 18.3.1
   resolution: "react-dom@npm:18.3.1"
   dependencies:
@@ -2624,7 +2622,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react@npm:^17.0.0 || ^18.0.0":
+"react@npm:>=18.2.0 <19.0.0":
   version: 18.3.1
   resolution: "react@npm:18.3.1"
   dependencies:
@@ -2689,16 +2687,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sass@npm:^1.69.5":
-  version: 1.77.6
-  resolution: "sass@npm:1.77.6"
+"sass@npm:1.69.5":
+  version: 1.69.5
+  resolution: "sass@npm:1.69.5"
   dependencies:
     chokidar: ">=3.0.0 <4.0.0"
     immutable: ^4.0.0
     source-map-js: ">=0.6.2 <2.0.0"
   bin:
     sass: sass.js
-  checksum: 9bd1cb9ec1f10b7df83ed6a4b3d8764fe9174ee422f1ea21c51bcd953f710deee57c649269f9cb1ad1e9dcc3b87efee62cd2b36aca9cc646d44fd9179300d5f3
+  checksum: c66f4f02882e7aa7aa49703824dadbb5a174dcd05e3cd96f17f73687889aab6027d078b518e2c04b594dfd89b2f574824bf935c7aee46c770aa6be9aafcc49f2
   languageName: node
   linkType: hard
 

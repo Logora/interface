@@ -22,7 +22,7 @@
     "bundlingStrategy": "component"
   },
   "teambit.harmony/bit": {
-    "engine": "1.7.17"
+    "engine": "1.2.7"
   },
   "teambit.workspace/variants": {
     "*": {
