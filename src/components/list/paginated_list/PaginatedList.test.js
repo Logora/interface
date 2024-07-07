@@ -1,5 +1,5 @@
-import React from 'react';
-import { render, screen, waitFor, act } from '@testing-library/react';
+import React, { act } from 'react';
+import { render, screen } from '@testing-library/react';
 import { IntlProvider } from 'react-intl';
 import { dataProvider, DataProviderContext } from '@logora/debate.data.data_provider';
 import { ResponsiveProvider } from '@logora/debate.hooks.use_responsive';
@@ -119,7 +119,7 @@ describe('PaginatedList', () => {
             </BrowserRouter>
         );
 
-        await act(async () => { expect(screen.getAllByText("Loading...")).toBeTruthy(); })
+        expect(screen.getAllByText("Loading...")).toBeTruthy();
     });
 
     it('should trow an error when data loading fails ', async () => {
@@ -1221,7 +1221,7 @@ describe('PaginatedList', () => {
         const addButton = screen.getByText("Add elements");
         expect(addButton).toBeTruthy();
 
-        await act(async () => { await userEvent.click(addButton) });
+        await userEvent.click(addButton)
 
         expect(screen.getAllByTestId("list-item")).toHaveLength(7);
     });
