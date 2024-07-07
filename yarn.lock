@@ -492,7 +492,7 @@ __metadata:
     "@lexical/utils": 0.16.1
     "@rooks/use-previous": ^4.11.2
     "@rooks/use-sessionstorage-state": ^4.11.2
-    "@testing-library/dom": ^10.0.0
+    "@testing-library/dom": ^10.3.1
     "@testing-library/react": ^16.0.0
     "@testing-library/user-event": ^14.5.2
     "@types/jest": ^26.0.0
@@ -503,7 +503,7 @@ __metadata:
     chart.js: ^4.4.1
     chartjs-plugin-datalabels: ^2.2.0
     classnames: ^2.3.2
-    core-js: ">=3.25.5 <4.0.0"
+    core-js: ^3.33.0
     draftjs-to-html: ^0.9.1
     flat: ^5.0.2
     lexical: ^0.16.1
@@ -587,7 +587,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@testing-library/dom@npm:^10.0.0":
+"@testing-library/dom@npm:^10.3.1":
   version: 10.3.1
   resolution: "@testing-library/dom@npm:10.3.1"
   dependencies:
@@ -798,9 +798,6 @@ __metadata:
 "ad_unit-9bc477@workspace:src/components/ad/ad_unit":
   version: 0.0.0-use.local
   resolution: "ad_unit-9bc477@workspace:src/components/ad/ad_unit"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
@@ -826,9 +823,6 @@ __metadata:
 "announcement_dialog-50f3af@workspace:src/components/dialog/announcement_dialog":
   version: 0.0.0-use.local
   resolution: "announcement_dialog-50f3af@workspace:src/components/dialog/announcement_dialog"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
@@ -898,27 +892,18 @@ __metadata:
 "argument-75bb95@workspace:src/components/argument/argument":
   version: 0.0.0-use.local
   resolution: "argument-75bb95@workspace:src/components/argument/argument"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
 "argument_input-293e61@workspace:src/components/input/argument_input":
   version: 0.0.0-use.local
   resolution: "argument_input-293e61@workspace:src/components/input/argument_input"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
 "argument_summary_box-b83b8e@workspace:src/components/summary/argument_summary_box":
   version: 0.0.0-use.local
   resolution: "argument_summary_box-b83b8e@workspace:src/components/summary/argument_summary_box"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
@@ -941,45 +926,30 @@ __metadata:
 "auth_initializer-8f1c34@workspace:src/components/auth/auth_initializer":
   version: 0.0.0-use.local
   resolution: "auth_initializer-8f1c34@workspace:src/components/auth/auth_initializer"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
 "auth_modal-600632@workspace:src/components/auth/auth_modal":
   version: 0.0.0-use.local
   resolution: "auth_modal-600632@workspace:src/components/auth/auth_modal"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
 "author_box-192ddc@workspace:src/components/user/author_box":
   version: 0.0.0-use.local
   resolution: "author_box-192ddc@workspace:src/components/user/author_box"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
 "avatar-e1a0ae@workspace:src/components/user/avatar":
   version: 0.0.0-use.local
   resolution: "avatar-e1a0ae@workspace:src/components/user/avatar"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
 "avatar_selector-e502b8@workspace:src/components/user/avatar_selector":
   version: 0.0.0-use.local
   resolution: "avatar_selector-e502b8@workspace:src/components/user/avatar_selector"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
@@ -997,27 +967,18 @@ __metadata:
 "axios_client-8e7312@workspace:src/components/data/axios_client":
   version: 0.0.0-use.local
   resolution: "axios_client-8e7312@workspace:src/components/data/axios_client"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
 "back_link-1a910c@workspace:src/components/action/back_link":
   version: 0.0.0-use.local
   resolution: "back_link-1a910c@workspace:src/components/action/back_link"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
 "badge_box-0d24b6@workspace:src/components/gamification/badge_box":
   version: 0.0.0-use.local
   resolution: "badge_box-0d24b6@workspace:src/components/gamification/badge_box"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
@@ -1038,9 +999,6 @@ __metadata:
 "box_skeleton-a11637@workspace:src/components/skeleton/box_skeleton":
   version: 0.0.0-use.local
   resolution: "box_skeleton-a11637@workspace:src/components/skeleton/box_skeleton"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
@@ -1065,9 +1023,6 @@ __metadata:
 "button-4f94f8@workspace:src/components/action/button":
   version: 0.0.0-use.local
   resolution: "button-4f94f8@workspace:src/components/action/button"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
@@ -1221,63 +1176,42 @@ __metadata:
 "config_provider-df02ba@workspace:src/components/data/config_provider":
   version: 0.0.0-use.local
   resolution: "config_provider-df02ba@workspace:src/components/data/config_provider"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
 "confirm_modal-1d89d1@workspace:src/components/dialog/confirm_modal":
   version: 0.0.0-use.local
   resolution: "confirm_modal-1d89d1@workspace:src/components/dialog/confirm_modal"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
 "consultation_box-cc36e3@workspace:src/components/consultation/consultation_box":
   version: 0.0.0-use.local
   resolution: "consultation_box-cc36e3@workspace:src/components/consultation/consultation_box"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
 "content_footer-d4afad@workspace:src/components/user_content/content_footer":
   version: 0.0.0-use.local
   resolution: "content_footer-d4afad@workspace:src/components/user_content/content_footer"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
 "content_header-100ef9@workspace:src/components/user_content/content_header":
   version: 0.0.0-use.local
   resolution: "content_header-100ef9@workspace:src/components/user_content/content_header"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
 "context_source_box-802378@workspace:src/components/source/context_source_box":
   version: 0.0.0-use.local
   resolution: "context_source_box-802378@workspace:src/components/source/context_source_box"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
 "context_source_list-733b2d@workspace:src/components/source/context_source_list":
   version: 0.0.0-use.local
   resolution: "context_source_list-733b2d@workspace:src/components/source/context_source_list"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
@@ -1290,7 +1224,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"core-js@npm:>=3.25.5 <4.0.0":
+"core-js@npm:^3.33.0":
   version: 3.37.1
   resolution: "core-js@npm:3.37.1"
   checksum: 2d58a5c599f05c3e04abc8bc5e64b88eb17d914c0f552f670fb800afa74ec54b4fcc7f231ad6bd45badaf62c0fb0ce30e6fe89cedb6bb6d54e6f19115c3c17ff
@@ -1318,18 +1252,12 @@ __metadata:
 "data_provider-52dcfb@workspace:src/components/data/data_provider":
   version: 0.0.0-use.local
   resolution: "data_provider-52dcfb@workspace:src/components/data/data_provider"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
 "debate_box-90f4de@workspace:src/components/debate/debate_box":
   version: 0.0.0-use.local
   resolution: "debate_box-90f4de@workspace:src/components/debate/debate_box"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
@@ -1362,9 +1290,6 @@ __metadata:
 "dialog_box-15ddba@workspace:src/components/dialog/dialog_box":
   version: 0.0.0-use.local
   resolution: "dialog_box-15ddba@workspace:src/components/dialog/dialog_box"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
@@ -1385,9 +1310,6 @@ __metadata:
 "display-100652@workspace:src/components/styles/display":
   version: 0.0.0-use.local
   resolution: "display-100652@workspace:src/components/styles/display"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
@@ -1408,18 +1330,12 @@ __metadata:
 "drawer-862176@workspace:src/components/dialog/drawer":
   version: 0.0.0-use.local
   resolution: "drawer-862176@workspace:src/components/dialog/drawer"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
 "dropdown-d591fa@workspace:src/components/dialog/dropdown":
   version: 0.0.0-use.local
   resolution: "dropdown-d591fa@workspace:src/components/dialog/dropdown"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
@@ -1433,9 +1349,6 @@ __metadata:
 "embed_header-3651ea@workspace:src/components/embed/embed_header":
   version: 0.0.0-use.local
   resolution: "embed_header-3651ea@workspace:src/components/embed/embed_header"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
@@ -1493,9 +1406,6 @@ __metadata:
 "expandable_text-b7c0b7@workspace:src/components/text/expandable_text":
   version: 0.0.0-use.local
   resolution: "expandable_text-b7c0b7@workspace:src/components/text/expandable_text"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
@@ -1522,9 +1432,6 @@ __metadata:
 "facebook_login_button-1191a5@workspace:src/components/auth/facebook_login_button":
   version: 0.0.0-use.local
   resolution: "facebook_login_button-1191a5@workspace:src/components/auth/facebook_login_button"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
@@ -1549,9 +1456,6 @@ __metadata:
 "flex-39962c@workspace:src/components/styles/flex":
   version: 0.0.0-use.local
   resolution: "flex-39962c@workspace:src/components/styles/flex"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
@@ -1568,9 +1472,6 @@ __metadata:
 "follow_button-2c28f3@workspace:src/components/follow/follow_button":
   version: 0.0.0-use.local
   resolution: "follow_button-2c28f3@workspace:src/components/follow/follow_button"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
@@ -1587,9 +1488,6 @@ __metadata:
 "form-5e6a8d@workspace:src/components/forms/form":
   version: 0.0.0-use.local
   resolution: "form-5e6a8d@workspace:src/components/forms/form"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
@@ -1678,9 +1576,6 @@ __metadata:
 "google_login_button-9d8ca7@workspace:src/components/auth/google_login_button":
   version: 0.0.0-use.local
   resolution: "google_login_button-9d8ca7@workspace:src/components/auth/google_login_button"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
@@ -1708,27 +1603,18 @@ __metadata:
 "hash_scroll-a81c4c@workspace:src/components/tools/hash_scroll":
   version: 0.0.0-use.local
   resolution: "hash_scroll-a81c4c@workspace:src/components/tools/hash_scroll"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
 "hero_icons-f6c90f@workspace:src/components/icons/hero_icons":
   version: 0.0.0-use.local
   resolution: "hero_icons-f6c90f@workspace:src/components/icons/hero_icons"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
 "hidden-30841f@workspace:src/components/input/checkbox/hidden":
   version: 0.0.0-use.local
   resolution: "hidden-30841f@workspace:src/components/input/checkbox/hidden"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
@@ -1785,27 +1671,18 @@ __metadata:
 "icon-3aea60@workspace:src/components/icons/icon":
   version: 0.0.0-use.local
   resolution: "icon-3aea60@workspace:src/components/icons/icon"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
 "icon_provider-024301@workspace:src/components/icons/icon_provider":
   version: 0.0.0-use.local
   resolution: "icon_provider-024301@workspace:src/components/icons/icon_provider"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
 "icon_text_link-65256c@workspace:src/components/action/icon_text_link":
   version: 0.0.0-use.local
   resolution: "icon_text_link-65256c@workspace:src/components/action/icon_text_link"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
@@ -1842,27 +1719,18 @@ __metadata:
 "indicator-f4a977@workspace:src/components/input/checkbox/indicator":
   version: 0.0.0-use.local
   resolution: "indicator-f4a977@workspace:src/components/input/checkbox/indicator"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
 "information_box-1c6b66@workspace:src/components/information/information_box":
   version: 0.0.0-use.local
   resolution: "information_box-1c6b66@workspace:src/components/information/information_box"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
 "input_provider-d522aa@workspace:src/components/input/input_provider":
   version: 0.0.0-use.local
   resolution: "input_provider-d522aa@workspace:src/components/input/input_provider"
-  peerDependencies:
-    react: ^17.0.0||^18.0.0
-    react-dom: ^17.0.0||^18.0.0
   languageName: unknown
   linkType: soft
 
@@ -1881,9 +1749,6 @@ __metadata:
 "intl_provider-75af04@workspace:src/components/intl/intl_provider":
   version: 0.0.0-use.local
   resolution: "intl_provider-75af04@workspace:src/components/intl/intl_provider"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
@@ -2075,18 +1940,12 @@ __metadata:
 "keyword_box-5e683b@workspace:src/components/summary/keyword_box":
   version: 0.0.0-use.local
   resolution: "keyword_box-5e683b@workspace:src/components/summary/keyword_box"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
 "label-54fe1c@workspace:src/components/input/checkbox/label":
   version: 0.0.0-use.local
   resolution: "label-54fe1c@workspace:src/components/input/checkbox/label"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
@@ -2100,54 +1959,36 @@ __metadata:
 "line_chart-c05e43@workspace:src/components/chart/line_chart":
   version: 0.0.0-use.local
   resolution: "line_chart-c05e43@workspace:src/components/chart/line_chart"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
 "link-b5813c@workspace:src/components/action/link":
   version: 0.0.0-use.local
   resolution: "link-b5813c@workspace:src/components/action/link"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
 "list_provider-276d9a@workspace:src/components/list/list_provider":
   version: 0.0.0-use.local
   resolution: "list_provider-276d9a@workspace:src/components/list/list_provider"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
 "loader-6245f5@workspace:src/components/progress/loader":
   version: 0.0.0-use.local
   resolution: "loader-6245f5@workspace:src/components/progress/loader"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
 "location-53999c@workspace:src/components/util/location":
   version: 0.0.0-use.local
   resolution: "location-53999c@workspace:src/components/util/location"
-  peerDependencies:
-    react: ^17.0.0||^18.0.0
-    react-dom: ^17.0.0||^18.0.0
   languageName: unknown
   linkType: soft
 
 "login_form-9ffdcd@workspace:src/components/auth/login_form":
   version: 0.0.0-use.local
   resolution: "login_form-9ffdcd@workspace:src/components/auth/login_form"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
@@ -2329,9 +2170,6 @@ __metadata:
 "modal-26019b@workspace:src/components/dialog/modal":
   version: 0.0.0-use.local
   resolution: "modal-26019b@workspace:src/components/dialog/modal"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
@@ -2390,9 +2228,6 @@ __metadata:
 "oauth2_button-904b3a@workspace:src/components/auth/oauth2_button":
   version: 0.0.0-use.local
   resolution: "oauth2_button-904b3a@workspace:src/components/auth/oauth2_button"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
@@ -2422,18 +2257,12 @@ __metadata:
 "paginated_list-98064e@workspace:src/components/list/paginated_list":
   version: 0.0.0-use.local
   resolution: "paginated_list-98064e@workspace:src/components/list/paginated_list"
-  peerDependencies:
-    react: ^17.0.0||^18.0.0
-    react-dom: ^17.0.0||^18.0.0
   languageName: unknown
   linkType: soft
 
 "pagination-86dee2@workspace:src/components/list/pagination":
   version: 0.0.0-use.local
   resolution: "pagination-86dee2@workspace:src/components/list/pagination"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
@@ -2487,18 +2316,12 @@ __metadata:
 "pie_chart-0ed383@workspace:src/components/chart/pie_chart":
   version: 0.0.0-use.local
   resolution: "pie_chart-0ed383@workspace:src/components/chart/pie_chart"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
 "point_box-a436cc@workspace:src/components/gamification/point_box":
   version: 0.0.0-use.local
   resolution: "point_box-a436cc@workspace:src/components/gamification/point_box"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
@@ -2560,9 +2383,6 @@ __metadata:
 "progress_bar-9f380d@workspace:src/components/progress/progress_bar":
   version: 0.0.0-use.local
   resolution: "progress_bar-9f380d@workspace:src/components/progress/progress_bar"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
@@ -2590,9 +2410,6 @@ __metadata:
 "providers-45a177@workspace:src/components/auth/providers":
   version: 0.0.0-use.local
   resolution: "providers-45a177@workspace:src/components/auth/providers"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
@@ -2797,9 +2614,6 @@ __metadata:
 "read_more-cde56f@workspace:src/components/text/read_more":
   version: 0.0.0-use.local
   resolution: "read_more-cde56f@workspace:src/components/text/read_more"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
@@ -2829,9 +2643,6 @@ __metadata:
 "regular_icons-fa7d8f@workspace:src/components/icons/regular_icons":
   version: 0.0.0-use.local
   resolution: "regular_icons-fa7d8f@workspace:src/components/icons/regular_icons"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
@@ -2881,45 +2692,30 @@ __metadata:
 "scroll_to_top-182986@workspace:src/components/tools/scroll_to_top":
   version: 0.0.0-use.local
   resolution: "scroll_to_top-182986@workspace:src/components/tools/scroll_to_top"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
 "search_input-6004f6@workspace:src/components/input/search_input":
   version: 0.0.0-use.local
   resolution: "search_input-6004f6@workspace:src/components/input/search_input"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
 "section_box-1e8645@workspace:src/components/section/section_box":
   version: 0.0.0-use.local
   resolution: "section_box-1e8645@workspace:src/components/section/section_box"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
 "section_header-196a52@workspace:src/components/section/section_header":
   version: 0.0.0-use.local
   resolution: "section_header-196a52@workspace:src/components/section/section_header"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
 "select-b2b5ab@workspace:src/components/input/select":
   version: 0.0.0-use.local
   resolution: "select-b2b5ab@workspace:src/components/input/select"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
@@ -2935,27 +2731,18 @@ __metadata:
 "share_box-9b6d3f@workspace:src/components/share/share_box":
   version: 0.0.0-use.local
   resolution: "share_box-9b6d3f@workspace:src/components/share/share_box"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
 "share_button-41118f@workspace:src/components/share/share_button":
   version: 0.0.0-use.local
   resolution: "share_button-41118f@workspace:src/components/share/share_button"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
 "share_modal-2e4f13@workspace:src/components/share/share_modal":
   version: 0.0.0-use.local
   resolution: "share_modal-2e4f13@workspace:src/components/share/share_modal"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
@@ -2978,9 +2765,6 @@ __metadata:
 "side_modal-59db52@workspace:src/components/modal/side_modal":
   version: 0.0.0-use.local
   resolution: "side_modal-59db52@workspace:src/components/modal/side_modal"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
@@ -2994,9 +2778,6 @@ __metadata:
 "signup_form-a65820@workspace:src/components/auth/signup_form":
   version: 0.0.0-use.local
   resolution: "signup_form-a65820@workspace:src/components/auth/signup_form"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
@@ -3017,9 +2798,6 @@ __metadata:
 "social_auth_form-da3861@workspace:src/components/auth/social_auth_form":
   version: 0.0.0-use.local
   resolution: "social_auth_form-da3861@workspace:src/components/auth/social_auth_form"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
@@ -3054,45 +2832,30 @@ __metadata:
 "source_box-109a5a@workspace:src/components/source/source_box":
   version: 0.0.0-use.local
   resolution: "source_box-109a5a@workspace:src/components/source/source_box"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
 "source_list_item-915e96@workspace:src/components/source/source_list_item":
   version: 0.0.0-use.local
   resolution: "source_list_item-915e96@workspace:src/components/source/source_list_item"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
 "source_modal-04c9b5@workspace:src/components/source/source_modal":
   version: 0.0.0-use.local
   resolution: "source_modal-04c9b5@workspace:src/components/source/source_modal"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
 "spacing-44d24d@workspace:src/components/styles/spacing":
   version: 0.0.0-use.local
   resolution: "spacing-44d24d@workspace:src/components/styles/spacing"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
 "spiegel_icons-519fa4@workspace:src/components/icons/spiegel_icons":
   version: 0.0.0-use.local
   resolution: "spiegel_icons-519fa4@workspace:src/components/icons/spiegel_icons"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
@@ -3106,9 +2869,6 @@ __metadata:
 "sso_form-aa9aae@workspace:src/components/auth/sso_form":
   version: 0.0.0-use.local
   resolution: "sso_form-aa9aae@workspace:src/components/auth/sso_form"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
@@ -3133,9 +2893,6 @@ __metadata:
 "standard_error_boundary-f3d28c@workspace:src/components/error/standard_error_boundary":
   version: 0.0.0-use.local
   resolution: "standard_error_boundary-f3d28c@workspace:src/components/error/standard_error_boundary"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
@@ -3182,18 +2939,12 @@ __metadata:
 "suggestion_vote_box-28e1e8@workspace:src/components/vote/suggestion_vote_box":
   version: 0.0.0-use.local
   resolution: "suggestion_vote_box-28e1e8@workspace:src/components/vote/suggestion_vote_box"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
 "summary_content_box-579180@workspace:src/components/user_content/summary_content_box":
   version: 0.0.0-use.local
   resolution: "summary_content_box-579180@workspace:src/components/user_content/summary_content_box"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
@@ -3218,18 +2969,12 @@ __metadata:
 "tabs-a31bc6@workspace:src/components/styles/tabs":
   version: 0.0.0-use.local
   resolution: "tabs-a31bc6@workspace:src/components/styles/tabs"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
 "tag-467df6@workspace:src/components/tag/tag":
   version: 0.0.0-use.local
   resolution: "tag-467df6@workspace:src/components/tag/tag"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
@@ -3250,27 +2995,18 @@ __metadata:
 "text_editor-87beba@workspace:src/components/input/text_editor":
   version: 0.0.0-use.local
   resolution: "text_editor-87beba@workspace:src/components/input/text_editor"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
 "text_input-20edb4@workspace:src/components/input/text_input":
   version: 0.0.0-use.local
   resolution: "text_input-20edb4@workspace:src/components/input/text_input"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
 "theme-17e024@workspace:src/components/styles/theme":
   version: 0.0.0-use.local
   resolution: "theme-17e024@workspace:src/components/styles/theme"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
@@ -3300,27 +3036,18 @@ __metadata:
 "toast-536b13@workspace:src/components/dialog/toast":
   version: 0.0.0-use.local
   resolution: "toast-536b13@workspace:src/components/dialog/toast"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
 "toast_provider-f05d55@workspace:src/components/dialog/toast_provider":
   version: 0.0.0-use.local
   resolution: "toast_provider-f05d55@workspace:src/components/dialog/toast_provider"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
 "toggle-9b9f77@workspace:src/components/input/toggle":
   version: 0.0.0-use.local
   resolution: "toggle-9b9f77@workspace:src/components/input/toggle"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
@@ -3334,45 +3061,30 @@ __metadata:
 "toggle_position-655142@workspace:src/components/input/toggle_position":
   version: 0.0.0-use.local
   resolution: "toggle_position-655142@workspace:src/components/input/toggle_position"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
 "tooltip-28dbeb@workspace:src/components/dialog/tooltip":
   version: 0.0.0-use.local
   resolution: "tooltip-28dbeb@workspace:src/components/dialog/tooltip"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
 "top_arguments-9e4953@workspace:src/components/argument/top_arguments":
   version: 0.0.0-use.local
   resolution: "top_arguments-9e4953@workspace:src/components/argument/top_arguments"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
 "translated_content-06b536@workspace:src/components/translation/translated_content":
   version: 0.0.0-use.local
   resolution: "translated_content-06b536@workspace:src/components/translation/translated_content"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
 "translation_button-90cc45@workspace:src/components/translation/translation_button":
   version: 0.0.0-use.local
   resolution: "translation_button-90cc45@workspace:src/components/translation/translation_button"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
@@ -3411,27 +3123,18 @@ __metadata:
 "unique_by-e6787e@workspace:src/components/util/unique_by":
   version: 0.0.0-use.local
   resolution: "unique_by-e6787e@workspace:src/components/util/unique_by"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
 "up_down_vote_box-8b5739@workspace:src/components/vote/up_down_vote_box":
   version: 0.0.0-use.local
   resolution: "up_down_vote_box-8b5739@workspace:src/components/vote/up_down_vote_box"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
 "update_user_info_modal-43ccda@workspace:src/components/user/update_user_info_modal":
   version: 0.0.0-use.local
   resolution: "update_user_info_modal-43ccda@workspace:src/components/user/update_user_info_modal"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
@@ -3485,144 +3188,96 @@ __metadata:
 "use_auth-6e2b8d@workspace:src/components/auth/use_auth":
   version: 0.0.0-use.local
   resolution: "use_auth-6e2b8d@workspace:src/components/auth/use_auth"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
 "use_auth_required-b192ee@workspace:src/components/hooks/use_auth_required":
   version: 0.0.0-use.local
   resolution: "use_auth_required-b192ee@workspace:src/components/hooks/use_auth_required"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
 "use_css_theme-8882df@workspace:src/components/hooks/use_css_theme":
   version: 0.0.0-use.local
   resolution: "use_css_theme-8882df@workspace:src/components/hooks/use_css_theme"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
 "use_delete_content-840af0@workspace:src/components/user_content/use_delete_content":
   version: 0.0.0-use.local
   resolution: "use_delete_content-840af0@workspace:src/components/user_content/use_delete_content"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
 "use_follow-e7516a@workspace:src/components/follow/use_follow":
   version: 0.0.0-use.local
   resolution: "use_follow-e7516a@workspace:src/components/follow/use_follow"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
 "use_font_loader-9075d4@workspace:src/components/hooks/use_font_loader":
   version: 0.0.0-use.local
   resolution: "use_font_loader-9075d4@workspace:src/components/hooks/use_font_loader"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
 "use_form_validation-76238e@workspace:src/components/forms/use_form_validation":
   version: 0.0.0-use.local
   resolution: "use_form_validation-76238e@workspace:src/components/forms/use_form_validation"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
 "use_google_ad_manager-942609@workspace:src/components/ad/use_google_ad_manager":
   version: 0.0.0-use.local
   resolution: "use_google_ad_manager-942609@workspace:src/components/ad/use_google_ad_manager"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
 "use_matomo-f7f686@workspace:src/components/hooks/use_matomo":
   version: 0.0.0-use.local
   resolution: "use_matomo-f7f686@workspace:src/components/hooks/use_matomo"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
 "use_relative_time-24bd49@workspace:src/components/hooks/use_relative_time":
   version: 0.0.0-use.local
   resolution: "use_relative_time-24bd49@workspace:src/components/hooks/use_relative_time"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
 "use_report_content-9e76e9@workspace:src/components/user_content/use_report_content":
   version: 0.0.0-use.local
   resolution: "use_report_content-9e76e9@workspace:src/components/user_content/use_report_content"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
 "use_responsive-4f0c03@workspace:src/components/hooks/use_responsive":
   version: 0.0.0-use.local
   resolution: "use_responsive-4f0c03@workspace:src/components/hooks/use_responsive"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
 "use_vote-466cea@workspace:src/components/vote/use_vote":
   version: 0.0.0-use.local
   resolution: "use_vote-466cea@workspace:src/components/vote/use_vote"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
 "user_box-8dfef7@workspace:src/components/user/user_box":
   version: 0.0.0-use.local
   resolution: "user_box-8dfef7@workspace:src/components/user/user_box"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
 "user_box_small-4cb87a@workspace:src/components/user/user_box_small":
   version: 0.0.0-use.local
   resolution: "user_box_small-4cb87a@workspace:src/components/user/user_box_small"
-  peerDependencies:
-    react: ^17.0.0||^18.0.0
-    react-dom: ^17.0.0||^18.0.0
   languageName: unknown
   linkType: soft
 
 "user_content_skeleton-068543@workspace:src/components/skeleton/user_content_skeleton":
   version: 0.0.0-use.local
   resolution: "user_content_skeleton-068543@workspace:src/components/skeleton/user_content_skeleton"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
@@ -3645,27 +3300,18 @@ __metadata:
 "vote_box-dab0ab@workspace:src/components/vote/vote_box":
   version: 0.0.0-use.local
   resolution: "vote_box-dab0ab@workspace:src/components/vote/vote_box"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
 "vote_button-bea9f9@workspace:src/components/vote/vote_button":
   version: 0.0.0-use.local
   resolution: "vote_button-bea9f9@workspace:src/components/vote/vote_button"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
 "vote_provider-361d6f@workspace:src/components/vote/vote_provider":
   version: 0.0.0-use.local
   resolution: "vote_provider-361d6f@workspace:src/components/vote/vote_provider"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
@@ -3701,9 +3347,6 @@ __metadata:
 "with_ad-f236a2@workspace:src/components/ad/with_ad":
   version: 0.0.0-use.local
   resolution: "with_ad-f236a2@workspace:src/components/ad/with_ad"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-    react-dom: ^17.0.0 || ^18.0.0
   languageName: unknown
   linkType: soft
 
