@@ -1,4 +1,4 @@
-import React, { act } from 'react';
+import React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { useReportContent } from './useReportContent';
@@ -62,7 +62,7 @@ describe('useReportContent', () => {
         )
 
         const reportButton = screen.getByTestId("report-button");
-        await act(async () => { await userEvent.click(reportButton) });
+        await userEvent.click(reportButton)
 
         expect(screen.getByText("Report Post")).toBeTruthy();
         expect(screen.getByText("Tell us more about your report")).toBeTruthy();
@@ -91,14 +91,14 @@ describe('useReportContent', () => {
         )
 
         const reportButton = screen.getByTestId("report-button");
-        await act(async () => { await userEvent.click(reportButton) });
+        await userEvent.click(reportButton)
 
         expect(screen.getByText("Report Post")).toBeTruthy();
         expect(screen.getByText("Tell us more about your report")).toBeTruthy();
         expect(screen.getByText("Send")).toBeTruthy();
 
         const confirmButton = screen.getByText("Send");
-        await act(async () => { await userEvent.click(confirmButton) });
+        await userEvent.click(confirmButton)
 
         expect(screen.getByText("Thank you for your submission !")).toBeTruthy();
         expect(screen.getByText("Close")).toBeTruthy();

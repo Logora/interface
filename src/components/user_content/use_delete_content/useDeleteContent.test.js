@@ -1,4 +1,4 @@
-import React, { act } from 'react';
+import React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { useDeleteContent } from './useDeleteContent';
@@ -59,7 +59,7 @@ describe('useDeleteContent', () => {
         )
 
         const deleteButton = screen.getByTestId("delete-button");
-        await act(async () => { await userEvent.click(deleteButton) });
+        await userEvent.click(deleteButton)
 
         expect(screen.getByText("Delete content")).toBeTruthy();
         expect(screen.getByText("Delete contribution")).toBeTruthy();

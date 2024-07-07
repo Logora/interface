@@ -12,7 +12,7 @@ export const VoteProvider = ({ voteableType, children }) => {
   const [voteableIds, setVoteableIds] = useState([])
 
   useEffect(() => {
-    if (isLoggedIn && voteableIds && voteableIds.length > 0) {
+    if (isLoggedIn && voteableIds && voteableIds.length > 0 && voteableType) {
       getVotes()
     }
   }, [isLoggedIn, voteableIds])
@@ -57,7 +57,7 @@ export const VoteProvider = ({ voteableType, children }) => {
 
 VoteProvider.propTypes = {
   /** The type of voteable item */
-  voteableType: PropTypes.string.isRequired,
+  voteableType: PropTypes.string,
   /** The child components of VoteProvider */
   children: PropTypes.node.isRequired
 }

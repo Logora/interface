@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, within, act } from '@testing-library/react';
+import { render, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { VoteBox } from './VoteBox';
 import { IntlProvider } from 'react-intl';
@@ -144,7 +144,7 @@ describe('VoteBox Component', () => {
         );
 
         const button = getByTitle('Position 1');
-        await act(async () => { await userEvent.click(button) });
+        await userEvent.click(button)
         expect(onVote).toHaveBeenCalled();
     });
 
@@ -187,7 +187,7 @@ describe('VoteBox Component', () => {
 
         const showResultLink = getByTestId('show-result');
         expect(showResultLink).toBeInTheDocument();
-        await act(async () => { await userEvent.click(showResultLink) });
+        await userEvent.click(showResultLink)
 
         const backToVote = getByText('Back to vote');
         const resultHeadings = getAllByText(/position \d/i);
@@ -215,7 +215,7 @@ describe('VoteBox Component', () => {
         expect(queryByText('Modify')).toBeNull();
         expect(queryByText('Show result')).toBeInTheDocument();
 
-        await act(async () => { await userEvent.click(position1) });
+        await userEvent.click(position1)
         expect(queryByText('11 votes')).toBeInTheDocument();
         expect(queryByText('Modify')).toBeInTheDocument();
         expect(queryByText('Show result')).toBeNull();
@@ -224,7 +224,7 @@ describe('VoteBox Component', () => {
         expect(within(resultPercentages[1]).getByText("45%")).toBeInTheDocument();
         expect(within(resultPercentages[2]).getByText("0%")).toBeInTheDocument();
 
-        await act(async () => { await userEvent.click(queryByText('Modify')) });
+        await userEvent.click(queryByText('Modify'))
         expect(queryByText('Show result')).toBeInTheDocument();
         expect(queryByText('Modify')).toBeNull();
     });

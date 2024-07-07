@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen, act } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { ArgumentInput } from "./ArgumentInput";
 import { BrowserRouter } from "react-router-dom";
@@ -256,7 +256,8 @@ describe("ArgumentInput", () => {
         expect(queryByText(debate.positions[1].name)).toBeInTheDocument();
 
         const onSubmit = getByRole('button', { type: 'submit' });
-        await act(async () => { await userEvent.click(onSubmit) });
+        await userEvent.click(onSubmit)
+
         expect(queryByText("Choose your side")).toBeInTheDocument();
         expect(getByText(`You have already reached the argument limit (10) for position ${debate.positions[0].name}. You can support the other position.`)).toBeInTheDocument();
     });
@@ -329,23 +330,23 @@ describe("ArgumentInput", () => {
         const onSubmit = getByRole('button', { type: 'submit' });
 
         // Empty content
-        await act(async () => { await userEvent.click(onSubmit) });
+        await userEvent.click(onSubmit)
         expect(queryByText("content can't be empty.")).toBeInTheDocument();
 
         // Short content
         const setContentButton = screen.getByText("Click to set short content");
-        await act(async () => { await userEvent.click(setContentButton) });
+        await userEvent.click(setContentButton)
         expect(queryByText("I write")).toBeInTheDocument();
         
-        await act(async () => { await userEvent.click(onSubmit) });
+        await userEvent.click(onSubmit)
         expect(queryByText("content is too short. It must be at least 3 long.")).toBeInTheDocument();
 
         // Url content
         const setUrlContentButton = screen.getByText("Click to set url content");
-        await act(async () => { await userEvent.click(setUrlContentButton) });
+        await userEvent.click(setUrlContentButton)
         expect(queryByText("I write https://mysite.com")).toBeInTheDocument();
         
-        await act(async () => { await userEvent.click(onSubmit) });
+        await userEvent.click(onSubmit)
         expect(queryByText("content must not contain any links")).toBeInTheDocument();
     });
 
@@ -406,14 +407,14 @@ describe("ArgumentInput", () => {
         );
 
         const input = getByTestId("argument-input");
-        await act(async () => { await userEvent.click(input) });
+        await userEvent.click(input)
 
         const setContentButton = screen.getByText("Click to set content");
-        await act(async () => { await userEvent.click(setContentButton) });
+        await userEvent.click(setContentButton)
         expect(queryByText("I write an argument")).toBeInTheDocument();
         
         const onSubmit = getByRole('button', { type: 'submit' });
-        await act(async () => { await userEvent.click(onSubmit) });
+        await userEvent.click(onSubmit)
         expect(callback).toHaveBeenCalled();
     });
 });

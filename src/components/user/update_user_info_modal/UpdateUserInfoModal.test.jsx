@@ -1,5 +1,5 @@
 import React from "react";
-import { render, act } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import userEvent from '@testing-library/user-event';
 import { UpdateUserInfoModal } from "./UpdateUserInfoModal";
 import { IntlProvider } from 'react-intl';
@@ -111,7 +111,7 @@ describe("UpdateUserInfoModal", () => {
         );
 
         const saveButton = getByTestId('save-button');
-        await act(async () => { await userEvent.click(saveButton) });
+        await userEvent.click(saveButton)
         expect(queryByText("first_name is too short.")).toBeInTheDocument();
         expect(queryByText("last_name is too short.")).toBeInTheDocument();
     });
@@ -137,7 +137,7 @@ describe("UpdateUserInfoModal", () => {
         );
         
         const avatarButton = getByTestId('avatar-button');
-        await act(async () => { await userEvent.click(avatarButton) });
+        await userEvent.click(avatarButton)
 
         expect(queryByText("Back")).toBeInTheDocument();
     });
@@ -163,15 +163,15 @@ describe("UpdateUserInfoModal", () => {
         );
         
         const firstName = getByTestId('first-name');
-        await act(async () => { await userEvent.click(firstName) });
-        await act(async () => { await userEvent.keyboard("First name") });
+        await userEvent.click(firstName)
+        await userEvent.keyboard("First name")
 
         const lastName = getByTestId('last-name');
-        await act(async () => {  await userEvent.click(lastName) });
-        await act(async () => { await userEvent.keyboard("Last name") });
+         await userEvent.click(lastName)
+        await userEvent.keyboard("Last name")
 
         const saveButton = getByTestId('save-button');
-        await act(async () => { await userEvent.click(saveButton) });
+        await userEvent.click(saveButton)
         expect(queryByText("accepts_terms must be true.")).toBeInTheDocument();
     });
 

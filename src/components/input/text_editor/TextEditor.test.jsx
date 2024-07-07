@@ -1,4 +1,4 @@
-import React, { act } from 'react';
+import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { DefaultTextEditor, TextEditorWithSource } from './TextEditor.composition';
@@ -48,7 +48,7 @@ describe('TextEditor', () => {
         );
 
         const onSubmit = document.querySelector('.inputSubmitActionButton');
-        await act(async () => { await userEvent.click(onSubmit) });
+        await userEvent.click(onSubmit)
 
         expect(callback).toHaveBeenCalled();
     });
@@ -80,7 +80,7 @@ describe('TextEditor', () => {
         let bold = screen.queryByTestId('format-bold');
         expect(bold).toBeNull();
 
-        await act(async () => { await userEvent.click(input) });
+        await userEvent.click(input)
 
         bold = screen.queryByTestId('format-bold');
         expect(callback).toHaveBeenCalled();
@@ -95,7 +95,7 @@ describe('TextEditor', () => {
         expect(document.activeElement.tagName).toBe("BODY");
 
         const editor = screen.getByRole('textbox');
-        await act(async () => { await userEvent.click(editor) });
+        await userEvent.click(editor)
 
         expect(document.activeElement).toBe(editor);
         expect(document.activeElement.tagName).toBe("DIV");
@@ -378,7 +378,7 @@ describe('TextEditor', () => {
         const focusButton = screen.getByText("Click to focus");
         expect(document.activeElement.tagName).toBe("BODY");
 
-        await act(async () => { await userEvent.click(focusButton) });
+        await userEvent.click(focusButton)
 
         const editor = screen.getByRole('textbox');
         expect(document.activeElement).toBe(editor);
@@ -427,7 +427,7 @@ describe('TextEditor', () => {
         const setContentButton = screen.getByText("Click to set content");
         expect(document.activeElement.tagName).toBe("BODY");
 
-        await act(async () => { await userEvent.click(setContentButton) });
+        await userEvent.click(setContentButton)
 
         expect(container.getByText("Integer pretium varius odio ac eleifend.")).toBeTruthy();
     });
@@ -471,12 +471,12 @@ describe('TextEditor', () => {
         );
 
         const input = screen.getByRole("textbox");
-        await act(async () => { await userEvent.click(input) });
+        await userEvent.click(input)
         const maxLength = getByText("remaining characters", { exact: false })
         expect(maxLength.textContent).toEqual("500 remaining characters");
 
         const setContentButton = screen.getByText("Click to set content");
-        await act(async () => { await userEvent.click(setContentButton) });
+        await userEvent.click(setContentButton)
         const maxLengthUpdated = getByText("remaining characters", { exact: false })
         expect(maxLengthUpdated.textContent).toEqual("460 remaining characters");
     });
@@ -559,11 +559,11 @@ describe('TextEditor', () => {
 //         const resetContentButton = screen.getByText("Click to reset content");
 //         expect(document.activeElement.tagName).toBe("BODY");
     
-//         await act(async () => { await userEvent.click(setContentButton) });
+//         await userEvent.click(setContentButton)
     
 //         expect(container.getByText("Integer pretium varius odio ac eleifend.")).toBeTruthy();
     
-//         await act(async () => { await userEvent.click(resetContentButton) });
+//         await userEvent.click(resetContentButton)
     
 //         expect(container.queryByText("Integer pretium varius odio ac eleifend.")).toBeNull();
 //     });
@@ -640,13 +640,13 @@ describe('AutoSavePlugin', () => {
         const setContentButton = screen.getByText("Click to set content");
         expect(document.activeElement.tagName).toBe("BODY");
 
-        await act(async () => { userEvent.click(setContentButton) });
+        await  userEvent.click(setContentButton)
 
         await waitFor(() => {
             expect(container.getByText("Integer pretium varius odio ac eleifend.")).toBeTruthy();
         });
 
-        await act(async () => { await new Promise((r) => setTimeout(r, 1500)) });
+        await new Promise((r) => setTimeout(r, 1500))
 
         await waitFor(() => {
             expect(getItemMock).toHaveBeenCalled();

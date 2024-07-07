@@ -60,14 +60,14 @@ describe('ContentFooter', () => {
         expect(queryByTestId("reply-button")).not.toHaveClass("leftReply");
 
         const dropdown = queryByTestId("dropdown");
-        await act(async () => { await userEvent.click(dropdown) });
+        await userEvent.click(dropdown)
 
         expect(queryByText("Update")).toBeInTheDocument();
         expect(queryByText("Delete")).toBeInTheDocument();
         expect(queryByText("Report")).toBeInTheDocument();
 
         const deleteModal = queryByText("Delete");
-        await act(async () => { await userEvent.click(deleteModal) });
+        await userEvent.click(deleteModal)
 
         expect(queryByText("Delete content")).toBeInTheDocument();
     });
@@ -120,7 +120,7 @@ describe('ContentFooter', () => {
         expect(queryByTestId("reply-button")).not.toHaveClass("leftReply");
 
         const dropdown = queryByTestId("dropdown");
-        await act(async () => { await userEvent.click(dropdown) });
+        await userEvent.click(dropdown)
 
         expect(queryByText("Update")).toBeNull();
         expect(queryByText("Delete")).toBeNull();
@@ -138,7 +138,7 @@ describe('ContentFooter', () => {
         expect(queryByTestId("reply-button")).not.toHaveClass("leftReply");
 
         const dropdown = queryByTestId("dropdown");
-        await act(async () => { await userEvent.click(dropdown) });
+        await userEvent.click(dropdown)
 
         expect(queryByText("Update")).toBeNull();
         expect(queryByText("Delete")).toBeInTheDocument();
@@ -156,7 +156,7 @@ describe('ContentFooter', () => {
         expect(queryByTestId("reply-button")).not.toHaveClass("leftReply");
 
         const dropdown = queryByTestId("dropdown");
-        await act(async () => { await userEvent.click(dropdown) });
+        await userEvent.click(dropdown)
 
         expect(queryByText("Update")).toBeInTheDocument();
         expect(queryByText("Delete")).toBeNull();

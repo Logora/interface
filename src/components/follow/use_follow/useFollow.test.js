@@ -1,4 +1,4 @@
-import { render, screen, act } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { useFollow } from './useFollow';
 import { dataProvider, DataProviderContext } from '@logora/debate.data.data_provider';
 import { AuthContext } from '@logora/debate.auth.use_auth';
@@ -87,7 +87,7 @@ describe('useFollow', () => {
         expect(screen.getByText("Not followed"));
 
         const followButton = getByTestId("follow");
-        await act(async() => { await userEvent.click(followButton); });
+        await userEvent.click(followButton);
 
         expect(screen.getByText("Followed"));
     });

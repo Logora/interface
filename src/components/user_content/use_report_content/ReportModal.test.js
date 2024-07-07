@@ -1,4 +1,4 @@
-import React, { act } from 'react';
+import React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { DefaultReportModal } from './ReportModal.composition';
@@ -19,7 +19,7 @@ describe('ReportModal', () => {
 		);
 
 		const dropdownButton = screen.getByText("Incivility");
-        await act(async () => { await userEvent.click(dropdownButton) });
+        await userEvent.click(dropdownButton)
 
         expect(screen.getByText("Incomprehensibility")).toBeTruthy();
 	});

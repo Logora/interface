@@ -1,5 +1,5 @@
-import React from "react";
-import { render, screen, act, waitFor } from "@testing-library/react";
+import React, { act } from "react";
+import { render, screen, waitFor } from "@testing-library/react";
 import { DefaultAvatarSelector } from "./AvatarSelector.composition";
 import { AllowUserImageAvatarSelector } from "./AvatarSelector.composition";
 import { AvatarSelector } from "./AvatarSelector";
@@ -11,7 +11,6 @@ const avatarUrlList = [faker.image.avatar(), faker.image.avatar(), faker.image.a
 const file = new File(['hello'], 'hello.png', {type: 'image/png'})
 
 describe("AvatarSelector", () => {
-
     it("should render with all images", () => {
         render(<DefaultAvatarSelector />);
         const images = screen.getAllByTestId("avatar");
