@@ -487,8 +487,8 @@ __metadata:
     "@lexical/react": ^0.16.1
     "@rooks/use-previous": ^4.11.2
     "@rooks/use-sessionstorage-state": ^4.11.2
-    "@testing-library/dom": 10.0.0
-    "@testing-library/react": ">=16.0.0 <17.0.0"
+    "@testing-library/dom": ^10.3.1
+    "@testing-library/react": ^16.0.0
     "@testing-library/user-event": ^14.5.2
     "@types/jest": ">=26.0.0 <27.0.0"
     "@types/node": 12.20.4
@@ -499,17 +499,17 @@ __metadata:
     chart.js: ^4.4.1
     chartjs-plugin-datalabels: ^2.2.0
     classnames: ^2.3.2
-    core-js: ">=3.33.0 <4.0.0"
+    core-js: ^3.33.0
     draftjs-to-html: ^0.9.1
     flat: ^5.0.2
     lexical: ^0.16.1
     path-to-regexp: ^6.2.1
     prop-types: ^15.8.1
     querystringify: ^2.2.0
-    react: ">=18.2.0 <19.0.0"
+    react: ^17.0.0 || ^18.0.0
     react-chartjs-2: ^5.2.0
     react-copy-to-clipboard: ^5.1.0
-    react-dom: ">=18.2.0 <19.0.0"
+    react-dom: ^17.0.0 || ^18.0.0
     react-hot-toast: ^2.4.1
     react-intl: ^6.1.2
     react-loading-skeleton: ^3.0.2
@@ -518,12 +518,14 @@ __metadata:
     react-router: ^5.3.4
     react-router-dom: ^5.3.4
     react-use-id-hook: ^1.0.1
-    sass: 1.69.5
+    sass: ^1.69.5
     use-debounce: ^10.0.0
     use-onclickoutside: ^0.4.1
     uuid: ^9.0.1
     webfontloader: ^1.6.28
   peerDependencies:
+    react: ^17.0.0 || ^18.0.0
+    react-dom: ^17.0.0 || ^18.0.0
     react-router: ^5.3.4
     react-router-dom: ^5.3.4
   languageName: unknown
@@ -613,6 +615,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@testing-library/dom@npm:^10.3.1":
+  version: 10.3.1
+  resolution: "@testing-library/dom@npm:10.3.1"
+  dependencies:
+    "@babel/code-frame": ^7.10.4
+    "@babel/runtime": ^7.12.5
+    "@types/aria-query": ^5.0.1
+    aria-query: 5.3.0
+    chalk: ^4.1.0
+    dom-accessibility-api: ^0.5.9
+    lz-string: ^1.5.0
+    pretty-format: ^27.0.2
+  checksum: 1afc3dc2ab742e15cf9560ec04bc7e493ad7644374d2bc6001a15542ed05c34fa6152a919cb170fc11e9a74602d8c7f31901f99af61ce25e76f20157b2e0805d
+  languageName: node
+  linkType: hard
+
 "@testing-library/dom@npm:^9.0.0":
   version: 9.3.4
   resolution: "@testing-library/dom@npm:9.3.4"
@@ -629,7 +647,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@testing-library/react@npm:>=16.0.0 <17.0.0":
+"@testing-library/react@npm:^14.0.0":
+  version: 14.3.1
+  resolution: "@testing-library/react@npm:14.3.1"
+  dependencies:
+    "@babel/runtime": ^7.12.5
+    "@testing-library/dom": ^9.0.0
+    "@types/react-dom": ^18.0.0
+  peerDependencies:
+    react: ^18.0.0
+    react-dom: ^18.0.0
+  checksum: b057d4c9db5a523acfc24d7bc4665a924ab8d6f252c7f51eecf7dd30f1239413e1134925fd5cc9cbdef80496af64c04e6719b2081f89fe05ba87e8c6305bcc16
+  languageName: node
+  linkType: hard
+
+"@testing-library/react@npm:^16.0.0":
   version: 16.0.0
   resolution: "@testing-library/react@npm:16.0.0"
   dependencies:
@@ -646,20 +678,6 @@ __metadata:
     "@types/react-dom":
       optional: true
   checksum: 45a35f0b5f34b5a7f4dcefdd3f1d202d5421692e5cc7a491c9bc71e6ed9dd5872a182b80b4dfefb4a56d9c1df35e50f6fa2917bcf657cc26b4bc0d2259df0027
-  languageName: node
-  linkType: hard
-
-"@testing-library/react@npm:^14.0.0":
-  version: 14.3.1
-  resolution: "@testing-library/react@npm:14.3.1"
-  dependencies:
-    "@babel/runtime": ^7.12.5
-    "@testing-library/dom": ^9.0.0
-    "@types/react-dom": ^18.0.0
-  peerDependencies:
-    react: ^18.0.0
-    react-dom: ^18.0.0
-  checksum: b057d4c9db5a523acfc24d7bc4665a924ab8d6f252c7f51eecf7dd30f1239413e1134925fd5cc9cbdef80496af64c04e6719b2081f89fe05ba87e8c6305bcc16
   languageName: node
   linkType: hard
 
@@ -967,12 +985,16 @@ __metadata:
 "argument-75bb95@workspace:src/components/argument/argument":
   version: 0.0.0-use.local
   resolution: "argument-75bb95@workspace:src/components/argument/argument"
+  dependencies:
+    "@testing-library/dom": 10.0.0
   languageName: unknown
   linkType: soft
 
 "argument_input-293e61@workspace:src/components/input/argument_input":
   version: 0.0.0-use.local
   resolution: "argument_input-293e61@workspace:src/components/input/argument_input"
+  dependencies:
+    "@testing-library/dom": 10.0.0
   languageName: unknown
   linkType: soft
 
@@ -1055,6 +1077,8 @@ __metadata:
 "avatar_selector-e502b8@workspace:src/components/user/avatar_selector":
   version: 0.0.0-use.local
   resolution: "avatar_selector-e502b8@workspace:src/components/user/avatar_selector"
+  dependencies:
+    "@testing-library/dom": 10.0.0
   languageName: unknown
   linkType: soft
 
@@ -1304,6 +1328,8 @@ __metadata:
 "confirm_modal-1d89d1@workspace:src/components/dialog/confirm_modal":
   version: 0.0.0-use.local
   resolution: "confirm_modal-1d89d1@workspace:src/components/dialog/confirm_modal"
+  dependencies:
+    "@testing-library/dom": 10.0.0
   languageName: unknown
   linkType: soft
 
@@ -1316,6 +1342,8 @@ __metadata:
 "content_footer-d4afad@workspace:src/components/user_content/content_footer":
   version: 0.0.0-use.local
   resolution: "content_footer-d4afad@workspace:src/components/user_content/content_footer"
+  dependencies:
+    "@testing-library/dom": 10.0.0
   languageName: unknown
   linkType: soft
 
@@ -1346,7 +1374,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"core-js@npm:>=3.33.0 <4.0.0":
+"core-js@npm:^3.33.0":
   version: 3.37.1
   resolution: "core-js@npm:3.37.1"
   checksum: 2d58a5c599f05c3e04abc8bc5e64b88eb17d914c0f552f670fb800afa74ec54b4fcc7f231ad6bd45badaf62c0fb0ce30e6fe89cedb6bb6d54e6f19115c3c17ff
@@ -1460,6 +1488,8 @@ __metadata:
 "dialog_box-15ddba@workspace:src/components/dialog/dialog_box":
   version: 0.0.0-use.local
   resolution: "dialog_box-15ddba@workspace:src/components/dialog/dialog_box"
+  dependencies:
+    "@testing-library/dom": 10.0.0
   languageName: unknown
   linkType: soft
 
@@ -1508,6 +1538,8 @@ __metadata:
 "dropdown-d591fa@workspace:src/components/dialog/dropdown":
   version: 0.0.0-use.local
   resolution: "dropdown-d591fa@workspace:src/components/dialog/dropdown"
+  dependencies:
+    "@testing-library/dom": 10.0.0
   languageName: unknown
   linkType: soft
 
@@ -1641,6 +1673,8 @@ __metadata:
 "facebook_login_button-1191a5@workspace:src/components/auth/facebook_login_button":
   version: 0.0.0-use.local
   resolution: "facebook_login_button-1191a5@workspace:src/components/auth/facebook_login_button"
+  dependencies:
+    "@testing-library/dom": 10.0.0
   languageName: unknown
   linkType: soft
 
@@ -1825,6 +1859,8 @@ __metadata:
 "google_login_button-9d8ca7@workspace:src/components/auth/google_login_button":
   version: 0.0.0-use.local
   resolution: "google_login_button-9d8ca7@workspace:src/components/auth/google_login_button"
+  dependencies:
+    "@testing-library/dom": 10.0.0
   languageName: unknown
   linkType: soft
 
@@ -2402,6 +2438,8 @@ __metadata:
 "keyword_box-5e683b@workspace:src/components/summary/keyword_box":
   version: 0.0.0-use.local
   resolution: "keyword_box-5e683b@workspace:src/components/summary/keyword_box"
+  dependencies:
+    "@testing-library/dom": 10.0.0
   languageName: unknown
   linkType: soft
 
@@ -2455,6 +2493,8 @@ __metadata:
 "login_form-9ffdcd@workspace:src/components/auth/login_form":
   version: 0.0.0-use.local
   resolution: "login_form-9ffdcd@workspace:src/components/auth/login_form"
+  dependencies:
+    "@testing-library/dom": 10.0.0
   languageName: unknown
   linkType: soft
 
@@ -2637,6 +2677,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "modal-26019b@workspace:src/components/dialog/modal"
   dependencies:
+    "@testing-library/dom": 10.0.0
     "@testing-library/react": ^14.0.0
   languageName: unknown
   linkType: soft
@@ -2696,6 +2737,8 @@ __metadata:
 "oauth2_button-904b3a@workspace:src/components/auth/oauth2_button":
   version: 0.0.0-use.local
   resolution: "oauth2_button-904b3a@workspace:src/components/auth/oauth2_button"
+  dependencies:
+    "@testing-library/dom": 10.0.0
   languageName: unknown
   linkType: soft
 
@@ -2761,6 +2804,8 @@ __metadata:
 "paginated_list-98064e@workspace:src/components/list/paginated_list":
   version: 0.0.0-use.local
   resolution: "paginated_list-98064e@workspace:src/components/list/paginated_list"
+  dependencies:
+    "@testing-library/dom": 10.0.0
   languageName: unknown
   linkType: soft
 
@@ -2960,7 +3005,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-dom@npm:>=18.2.0 <19.0.0":
+"react-dom@npm:^17.0.0 || ^18.0.0":
   version: 18.3.1
   resolution: "react-dom@npm:18.3.1"
   dependencies:
@@ -3113,7 +3158,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react@npm:>=18.2.0 <19.0.0":
+"react@npm:^17.0.0 || ^18.0.0":
   version: 18.3.1
   resolution: "react@npm:18.3.1"
   dependencies:
@@ -3192,16 +3237,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sass@npm:1.69.5":
-  version: 1.69.5
-  resolution: "sass@npm:1.69.5"
+"sass@npm:^1.69.5":
+  version: 1.77.6
+  resolution: "sass@npm:1.77.6"
   dependencies:
     chokidar: ">=3.0.0 <4.0.0"
     immutable: ^4.0.0
     source-map-js: ">=0.6.2 <2.0.0"
   bin:
     sass: sass.js
-  checksum: c66f4f02882e7aa7aa49703824dadbb5a174dcd05e3cd96f17f73687889aab6027d078b518e2c04b594dfd89b2f574824bf935c7aee46c770aa6be9aafcc49f2
+  checksum: 9bd1cb9ec1f10b7df83ed6a4b3d8764fe9174ee422f1ea21c51bcd953f710deee57c649269f9cb1ad1e9dcc3b87efee62cd2b36aca9cc646d44fd9179300d5f3
   languageName: node
   linkType: hard
 
@@ -3225,6 +3270,8 @@ __metadata:
 "search_input-6004f6@workspace:src/components/input/search_input":
   version: 0.0.0-use.local
   resolution: "search_input-6004f6@workspace:src/components/input/search_input"
+  dependencies:
+    "@testing-library/dom": 10.0.0
   languageName: unknown
   linkType: soft
 
@@ -3247,6 +3294,8 @@ __metadata:
 "select-b2b5ab@workspace:src/components/input/select":
   version: 0.0.0-use.local
   resolution: "select-b2b5ab@workspace:src/components/input/select"
+  dependencies:
+    "@testing-library/dom": 10.0.0
   languageName: unknown
   linkType: soft
 
@@ -3288,18 +3337,24 @@ __metadata:
 "share_box-9b6d3f@workspace:src/components/share/share_box":
   version: 0.0.0-use.local
   resolution: "share_box-9b6d3f@workspace:src/components/share/share_box"
+  dependencies:
+    "@testing-library/dom": 10.0.0
   languageName: unknown
   linkType: soft
 
 "share_button-41118f@workspace:src/components/share/share_button":
   version: 0.0.0-use.local
   resolution: "share_button-41118f@workspace:src/components/share/share_button"
+  dependencies:
+    "@testing-library/dom": 10.0.0
   languageName: unknown
   linkType: soft
 
 "share_modal-2e4f13@workspace:src/components/share/share_modal":
   version: 0.0.0-use.local
   resolution: "share_modal-2e4f13@workspace:src/components/share/share_modal"
+  dependencies:
+    "@testing-library/dom": 10.0.0
   languageName: unknown
   linkType: soft
 
@@ -3347,6 +3402,8 @@ __metadata:
 "signup_form-a65820@workspace:src/components/auth/signup_form":
   version: 0.0.0-use.local
   resolution: "signup_form-a65820@workspace:src/components/auth/signup_form"
+  dependencies:
+    "@testing-library/dom": 10.0.0
   languageName: unknown
   linkType: soft
 
@@ -3367,6 +3424,8 @@ __metadata:
 "social_auth_form-da3861@workspace:src/components/auth/social_auth_form":
   version: 0.0.0-use.local
   resolution: "social_auth_form-da3861@workspace:src/components/auth/social_auth_form"
+  dependencies:
+    "@testing-library/dom": 10.0.0
   languageName: unknown
   linkType: soft
 
@@ -3413,6 +3472,8 @@ __metadata:
 "source_modal-04c9b5@workspace:src/components/source/source_modal":
   version: 0.0.0-use.local
   resolution: "source_modal-04c9b5@workspace:src/components/source/source_modal"
+  dependencies:
+    "@testing-library/dom": 10.0.0
   languageName: unknown
   linkType: soft
 
@@ -3521,6 +3582,8 @@ __metadata:
 "suggestion_vote_box-28e1e8@workspace:src/components/vote/suggestion_vote_box":
   version: 0.0.0-use.local
   resolution: "suggestion_vote_box-28e1e8@workspace:src/components/vote/suggestion_vote_box"
+  dependencies:
+    "@testing-library/dom": 10.0.0
   languageName: unknown
   linkType: soft
 
@@ -3653,6 +3716,8 @@ __metadata:
 "toggle_position-655142@workspace:src/components/input/toggle_position":
   version: 0.0.0-use.local
   resolution: "toggle_position-655142@workspace:src/components/input/toggle_position"
+  dependencies:
+    "@testing-library/dom": 10.0.0
   languageName: unknown
   linkType: soft
 
@@ -3677,6 +3742,8 @@ __metadata:
 "translation_button-90cc45@workspace:src/components/translation/translation_button":
   version: 0.0.0-use.local
   resolution: "translation_button-90cc45@workspace:src/components/translation/translation_button"
+  dependencies:
+    "@testing-library/dom": 10.0.0
   languageName: unknown
   linkType: soft
 
@@ -3721,12 +3788,16 @@ __metadata:
 "up_down_vote_box-8b5739@workspace:src/components/vote/up_down_vote_box":
   version: 0.0.0-use.local
   resolution: "up_down_vote_box-8b5739@workspace:src/components/vote/up_down_vote_box"
+  dependencies:
+    "@testing-library/dom": 10.0.0
   languageName: unknown
   linkType: soft
 
 "update_user_info_modal-43ccda@workspace:src/components/user/update_user_info_modal":
   version: 0.0.0-use.local
   resolution: "update_user_info_modal-43ccda@workspace:src/components/user/update_user_info_modal"
+  dependencies:
+    "@testing-library/dom": 10.0.0
   languageName: unknown
   linkType: soft
 
@@ -3800,6 +3871,8 @@ __metadata:
 "use_delete_content-840af0@workspace:src/components/user_content/use_delete_content":
   version: 0.0.0-use.local
   resolution: "use_delete_content-840af0@workspace:src/components/user_content/use_delete_content"
+  dependencies:
+    "@testing-library/dom": 10.0.0
   languageName: unknown
   linkType: soft
 
@@ -3842,6 +3915,8 @@ __metadata:
 "use_report_content-9e76e9@workspace:src/components/user_content/use_report_content":
   version: 0.0.0-use.local
   resolution: "use_report_content-9e76e9@workspace:src/components/user_content/use_report_content"
+  dependencies:
+    "@testing-library/dom": 10.0.0
   languageName: unknown
   linkType: soft
 
@@ -3854,6 +3929,8 @@ __metadata:
 "use_vote-466cea@workspace:src/components/vote/use_vote":
   version: 0.0.0-use.local
   resolution: "use_vote-466cea@workspace:src/components/vote/use_vote"
+  dependencies:
+    "@testing-library/dom": 10.0.0
   languageName: unknown
   linkType: soft
 
@@ -3896,6 +3973,8 @@ __metadata:
 "vote_box-dab0ab@workspace:src/components/vote/vote_box":
   version: 0.0.0-use.local
   resolution: "vote_box-dab0ab@workspace:src/components/vote/vote_box"
+  dependencies:
+    "@testing-library/dom": 10.0.0
   languageName: unknown
   linkType: soft
 
@@ -3903,6 +3982,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "vote_button-bea9f9@workspace:src/components/vote/vote_button"
   dependencies:
+    "@testing-library/dom": 10.0.0
     "@types/jest": 29.5.5
     "@types/testing-library__jest-dom": 5.14.9
   languageName: unknown
