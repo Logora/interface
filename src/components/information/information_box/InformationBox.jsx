@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { useIntl, FormattedMessage } from "react-intl";
 import PropTypes from "prop-types";
 
-export const InformationBox = ({ icon, title, points, description, textLink, link, isActive }) => {
+export const InformationBox = ({ icon, title, points, description, textLink, link, isActive = false}) => {
     const intl = useIntl();
 
     return (
@@ -51,8 +51,4 @@ InformationBox.propTypes = {
     link: PropTypes.string,
     /** If true, enable link and redirectio */
     isActive: PropTypes.bool,
-};
-
-InformationBox.defaultProps = {
-    isActive: false,
 };

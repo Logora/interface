@@ -133,7 +133,3 @@ SignupForm.propTypes = {
 	/** If `true`, will show an error message */
 	error: PropTypes.bool
 }
-
-SignupForm.defaultProps = {
-	error: false
-}

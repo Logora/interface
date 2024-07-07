@@ -56,8 +56,3 @@ Modal.propTypes = {
   /** Other props passed to the modal */
   rest: PropTypes.object
 };
-
-Modal.defaultProps = {
-  fullScreen: false,
-  showCloseButton: true
-};

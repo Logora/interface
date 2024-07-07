@@ -30,8 +30,3 @@ Icon.propTypes = {
     /** Extra props passed to the icon */
     rest: PropTypes.object
 };
-
-Icon.defaultProps = {
-	height: 20,
-	width: 20
-}

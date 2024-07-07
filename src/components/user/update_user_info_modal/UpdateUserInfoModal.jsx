@@ -254,8 +254,3 @@ UpdateUserInfoModal.propTypes = {
 	/** If `true`, will show a toggle to accept terms */
 	showTerms: PropTypes.bool,
 }
-
-UpdateUserInfoModal.defaultProps = {
-    showEmailConsent: false,
-    showTerms: false
-}

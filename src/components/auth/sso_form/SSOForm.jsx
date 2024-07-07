@@ -171,11 +171,3 @@ SSOForm.propTypes = {
 	/** If `true`, will show an error */
 	error: PropTypes.bool
 }
-
-SSOForm.defaultProps = {
-	redirectParameter: "logora_redirect",
-	hideActions: false,
-	showEmailConsent: false,
-	showTerms: false,
-	error: false
-}

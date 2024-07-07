@@ -41,8 +41,3 @@ WithAd.propTypes = {
     /** Extra props passed to children */
     rest: PropTypes.object
 };
-
-WithAd.defaultProps = {
-    frequency: 3,
-    enableDidomi: false
-};

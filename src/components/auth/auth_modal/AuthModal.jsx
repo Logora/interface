@@ -109,8 +109,3 @@ AuthModal.propTypes = {
 	/** Callback when modal is closed */
 	onHideModal: PropTypes.func
 };
-  
-AuthModal.defaultProps = {
-	onHideModal: null
-};
-  

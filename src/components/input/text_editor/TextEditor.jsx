@@ -192,12 +192,3 @@ TextEditor.propTypes = {
     /** Editor ref */
     editorRef: PropTypes.any
 };
-
-TextEditor.defaultProps = {
-    hideSubmit: false,
-    hideSourceAction: false,
-    disabled: false,
-    shortBar: false,
-    active: false,
-    disableRichText: false
-};

@@ -90,10 +90,3 @@ ShareButton.propTypes = {
 	/** Position of the tooltip */
 	tooltipPosition: PropTypes.string,
 };
-
-ShareButton.defaultProps = {
-	showShareCode: false,
-	showText: false,
-	tooltipPosition: 'bottom',
-	iconSize: 22
-}

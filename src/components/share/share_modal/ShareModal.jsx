@@ -4,7 +4,7 @@ import { ShareBox } from "@logora/debate.share.share_box";
 import styles from "./ShareModal.module.scss";
 import PropTypes from "prop-types";
 
-export const ShareModal = ({ shareUrl, title, shareTitle, shareText, showShareCode, shareCode }) => {
+export const ShareModal = ({ shareUrl, title, shareTitle, shareText, showShareCode = false, shareCode }) => {
     const buildShareLink = () => {
         let shareUrlBuild = shareUrl;
         if(typeof window !== 'undefined') {
@@ -24,7 +24,7 @@ export const ShareModal = ({ shareUrl, title, shareTitle, shareText, showShareCo
                         shareTitle={shareTitle} 
                         shareText={shareText} 
                         tooltipPosition={"top"} 
-                        showShareCode={showShareCode ? true : false}
+                        showShareCode={showShareCode}
                         shareCode={shareCode}
                     />
                 </div>
@@ -47,7 +47,3 @@ ShareModal.propTypes = {
 	/** If `true`, show copy code icon */
 	showShareCode: PropTypes.bool,
 };
-
-ShareModal.defaultProps = {
-	showShareCode: false
-}

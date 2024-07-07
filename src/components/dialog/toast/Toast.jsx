@@ -33,7 +33,3 @@ Toast.propTypes = {
     /** Callback triggered on close */
     handleClose: PropTypes.func
 };
-
-Toast.defaultProps = {
-    variant: "info"
-};

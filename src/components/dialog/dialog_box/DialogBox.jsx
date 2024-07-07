@@ -51,8 +51,3 @@ DialogBox.propTypes = {
     /** Custom css to pass */
     className: PropTypes.string,
 };
-
-DialogBox.defaultProps = {
-    isHidden: false,
-    position: "bottom"
-};

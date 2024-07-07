@@ -114,10 +114,3 @@ AuthorBox.propTypes = {
     /** Give information about the current status of the content displayed and whether to show the user as deleted or not */ 
     isDeleted: PropTypes.bool
 }
-
-AuthorBox.defaultProps = {
-    points: 0,
-    isExpert: false,
-    disableLinks: false,
-    isDeleted: false
-}

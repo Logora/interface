@@ -70,9 +70,3 @@ ProgressBar.propTypes = {
 	/**  Content of the link if icon is empty*/
 	children: PropTypes.node
 };
-
-ProgressBar.defaultProps = {
-    showPercentageSubtitle: false,
-	showProgressSubtitle: false,
-    barFull: false
-};

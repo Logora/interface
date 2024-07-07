@@ -194,7 +194,3 @@ SocialAuthForm.propTypes = {
 	/** Callback function to get submitted data */
 	onSubmit: PropTypes.func
 }
-
-SocialAuthForm.defaultProps = {
-	error: false
-}

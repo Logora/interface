@@ -83,6 +83,3 @@ SideModal.propTypes = {
     onChooseSide: PropTypes.func.isRequired,
 };
 
-SideModal.defaultProps = {
-    isNeutral: false,
-};

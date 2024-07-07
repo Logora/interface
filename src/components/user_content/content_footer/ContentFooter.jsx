@@ -196,11 +196,3 @@ ContentFooter.propTypes = {
     /** Custom style for children container */
     voteActionClassName: PropTypes.string,
 };
-
-ContentFooter.defaultProps = {
-    disabled: false, 
-    softDelete: false,
-    showActions: true,
-    enableEdition: true,
-    enableDeletion: true
-};

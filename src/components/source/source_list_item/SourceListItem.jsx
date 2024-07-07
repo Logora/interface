@@ -26,7 +26,3 @@ SourceListItem.propTypes = {
     /** Publisher of the source */
     publisher: PropTypes.string,
 };
-
-SourceListItem.defaultProps = {
-    index: 0
-}

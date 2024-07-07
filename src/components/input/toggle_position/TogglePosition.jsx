@@ -52,9 +52,3 @@ TogglePosition.propTypes = {
     /** Callback for active position */
     onChange: PropTypes.func.isRequired,
 };
-
-TogglePosition.defaultProps = {
-    firstLabelClassName: styles.firstLabelDefault,
-    secondLabelClassName: styles.secondLabelDefault,
-    activeLabel: null,
-};

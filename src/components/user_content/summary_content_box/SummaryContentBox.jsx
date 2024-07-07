@@ -85,10 +85,3 @@ SummaryContentBox.propTypes = {
     /** Show footer link to read more arguments */
     showFooter: PropTypes.bool,
 };
-
-SummaryContentBox.defaultProps = {
-    contentCount: 0,
-    tagClassName: '',
-    headerOneLine: false,
-    showFooter: false,
-};

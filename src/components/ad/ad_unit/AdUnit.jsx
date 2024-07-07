@@ -64,8 +64,3 @@ AdUnit.propTypes = {
     /** Whether to add didomi attributes to manage user consent */
     enableDidomi: PropTypes.bool
 };
-
-AdUnit.defaultProps = {
-    sizes: [],
-    enableDidomi: false
-};

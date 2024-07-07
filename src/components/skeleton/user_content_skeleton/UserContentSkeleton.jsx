@@ -54,9 +54,3 @@ UserContentSkeleton.propTypes = {
   /** Children displayed at the center of the skeleton */
   children: PropTypes.node,
 };
-
-UserContentSkeleton.defaultProps = {
-  enableAnimation: true,
-  border: false,
-  numberLines: 4
-};

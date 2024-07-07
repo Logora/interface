@@ -36,9 +36,3 @@ BoxSkeleton.propTypes = {
   /** Skeleton class name */
   className: PropTypes.string,
 };
-
-BoxSkeleton.defaultProps = {
-  enableAnimation: true,
-  boxHeight: 200,
-  onlyEdgeBox: false
-};

@@ -76,10 +76,3 @@ ContentHeader.propTypes = {
 	/** If `true`, will display the deleted content style */
 	isDeleted: PropTypes.bool,
 };
-
-ContentHeader.defaultProps = {
-	oneLine: false,
-	disableLinks: false,
-	selectedContent: false,
-	isDeleted: false
-}

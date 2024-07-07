@@ -62,9 +62,3 @@ Drawer.propTypes = {
     /** Drawer content */
     children: PropTypes.node,
 };
-
-Drawer.defaultProps = {
-    isOpen: false,
-    size: '50vw',
-    enableOverlay: false
-};

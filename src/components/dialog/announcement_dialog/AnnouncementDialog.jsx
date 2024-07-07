@@ -35,7 +35,3 @@ AnnouncementDialog.propTypes = {
     /** Content to display if message is empty */
     children: PropTypes.node,
 };
-
-AnnouncementDialog.defaultProps = {
-    fullWidth: false
-}

@@ -6,7 +6,7 @@ import { Icon } from '@logora/debate.icons.icon';
 import { useIntl } from 'react-intl';
 import PropTypes from "prop-types";
 
-export const ShareBox = ({ tooltipPosition, shareUrl, shareTitle, shareText, shareCode, showShareCode }) => {
+export const ShareBox = ({ tooltipPosition, shareUrl, shareTitle, shareText, shareCode, showShareCode = false }) => {
     const intl = useIntl();
 
     const toggleSharing = (targetUrl) => {
@@ -69,7 +69,3 @@ ShareBox.propTypes = {
 	/** If `true`, show copy code icon */
 	showShareCode: PropTypes.bool,
 };
-
-ShareBox.defaultProps = {
-	showShareCode: false,
-}

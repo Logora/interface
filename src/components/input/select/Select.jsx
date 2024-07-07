@@ -5,7 +5,7 @@ import styles from "./Select.module.scss";
 import cx from "classnames";
 import PropTypes from "prop-types";
 
-export const Select = ({ options, defaultOption, onChange, resetSelect = false, disabled = false, className, horizontalPosition }) => {
+export const Select = ({ options, defaultOption, onChange, resetSelect = false, disabled = false, className, horizontalPosition = "left" }) => {
 	const defaultOptionValue = defaultOption ? options.filter(elm => elm.name == defaultOption)[0] : options[0];
 	const [currentOption, setCurrentOption] = useState(defaultOptionValue);
 	
@@ -72,9 +72,3 @@ Select.propTypes = {
 	/** Dropdown horizontal alignment, can be `left`, `center` or `right` */
 	horizontalPosition: PropTypes.string
 };
-
-Select.defaultProps = {
-	resetSelect: false,
-	disabled: false,
-	horizontalPosition: "left"
-}

@@ -56,8 +56,3 @@ Dropdown.propTypes = {
     /** Dropdown button and content of the dropdown */
     children: PropTypes.node,
 };
-
-Dropdown.defaultProps ={
-    horizontalPosition: "left",
-    disabled: false
-}

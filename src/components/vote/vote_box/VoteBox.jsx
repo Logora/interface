@@ -360,8 +360,3 @@ VoteBox.propTypes = {
     /** Disabled vote buttons and show result */
     disabled: PropTypes.bool,
 };
-
-VoteBox.defaultProps = {
-    showTotal: true,
-    disabled: false
-}

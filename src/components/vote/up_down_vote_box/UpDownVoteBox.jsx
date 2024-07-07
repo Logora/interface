@@ -69,9 +69,3 @@ UpDownVoteBox.propTypes = {
     /** Disable vote button */
     disabled: PropTypes.bool
 };
-
-UpDownVoteBox.defaultProps = {
-    disabled: false,
-    totalUpvote: 0,
-    totalDownvote: 0
-}

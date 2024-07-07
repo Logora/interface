@@ -90,8 +90,3 @@ IntlProvider.propTypes = {
   /** Optional onError callback passed to react-intl */
   onError: PropTypes.func
 };
-
-IntlProvider.defaultProps = {
-  async: false,
-  customMessages: {}
-}

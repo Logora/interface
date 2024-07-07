@@ -10,7 +10,7 @@ export const useVote = (
   voteableId,
   upvotes,
   downvotes,
-  onVote
+  onVote = null
 ) => {
   const { votes } = useContext(VoteContext);
   const { isLoggedIn } = useAuth();
@@ -159,8 +159,4 @@ useVote.propTypes = {
   downvotes: PropTypes.number.isRequired,
   /**  Callback called when a vote is made (optional) */
   onVote: PropTypes.func,
-};
-
-useVote.defaultProps = {
-  onVote: null,
 };

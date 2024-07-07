@@ -48,9 +48,3 @@ VoteButton.propTypes = {
     /** Disable vote button */
     disabled: PropTypes.bool
 };
-
-VoteButton.defaultProps = {
-    disabled: false,
-    totalUpvote: 0,
-    totalDownvote: 0
-}

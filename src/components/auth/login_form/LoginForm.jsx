@@ -75,7 +75,3 @@ LoginForm.propTypes = {
 	/** If `true`, will show an error message */
 	error: PropTypes.bool
 }
-
-LoginForm.defaultProps = {
-	error: false
-}

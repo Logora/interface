@@ -55,8 +55,3 @@ IconTextLink.propTypes = {
     /** Extra props passed to the link */
     rest: PropTypes.object
 };
-
-IconTextLink.defaultProps = {
-    active: false,
-	pin: false
-};

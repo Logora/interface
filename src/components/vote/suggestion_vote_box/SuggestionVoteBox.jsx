@@ -81,9 +81,3 @@ SuggestionVoteBox.propTypes = {
   /** Disable vote button */
   disabled: PropTypes.bool
 };
-
-SuggestionVoteBox.defaultProps = {
-  disabled: false,
-  totalUpvote: 0,
-  totalDownvote: 0
-};
