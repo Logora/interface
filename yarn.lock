@@ -488,7 +488,7 @@ __metadata:
     "@rooks/use-previous": ^4.11.2
     "@rooks/use-sessionstorage-state": ^4.11.2
     "@testing-library/dom": ^10.0.0
-    "@testing-library/react": ">=16.0.0 <17.0.0"
+    "@testing-library/react": ^16.0.0
     "@testing-library/user-event": ^14.5.2
     "@types/jest": ">=26.0.0 <27.0.0"
     "@types/node": 12.20.4
@@ -597,7 +597,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@testing-library/react@npm:>=16.0.0 <17.0.0":
+"@testing-library/react@npm:^16.0.0":
   version: 16.0.0
   resolution: "@testing-library/react@npm:16.0.0"
   dependencies:
@@ -614,24 +614,6 @@ __metadata:
     "@types/react-dom":
       optional: true
   checksum: 45a35f0b5f34b5a7f4dcefdd3f1d202d5421692e5cc7a491c9bc71e6ed9dd5872a182b80b4dfefb4a56d9c1df35e50f6fa2917bcf657cc26b4bc0d2259df0027
-  languageName: node
-  linkType: hard
-
-"@testing-library/react@npm:^15.0.2":
-  version: 15.0.7
-  resolution: "@testing-library/react@npm:15.0.7"
-  dependencies:
-    "@babel/runtime": ^7.12.5
-    "@testing-library/dom": ^10.0.0
-    "@types/react-dom": ^18.0.0
-  peerDependencies:
-    "@types/react": ^18.0.0
-    react: ^18.0.0
-    react-dom: ^18.0.0
-  peerDependenciesMeta:
-    "@types/react":
-      optional: true
-  checksum: eb33fd82eb811bb8612aa154e430a2c1c251d5ed45a477ef57fe20095db494ea7dcfa6b1e1e2bffb0c7ee10c86e408745d95a879be8ca8fbe301bb91e5f2e5db
   languageName: node
   linkType: hard
 
@@ -748,15 +730,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-dom@npm:^18.0.0":
-  version: 18.3.0
-  resolution: "@types/react-dom@npm:18.3.0"
-  dependencies:
-    "@types/react": "*"
-  checksum: a0cd9b1b815a6abd2a367a9eabdd8df8dd8f13f95897b2f9e1359ea3ac6619f957c1432ece004af7d95e2a7caddbba19faa045f831f32d6263483fc5404a7596
-  languageName: node
-  linkType: hard
-
 "@types/react@npm:*, @types/react@npm:16 || 17 || 18":
   version: 18.3.3
   resolution: "@types/react@npm:18.3.3"
@@ -845,8 +818,6 @@ __metadata:
 "ad_unit-9bc477@workspace:src/components/ad/ad_unit":
   version: 0.0.0-use.local
   resolution: "ad_unit-9bc477@workspace:src/components/ad/ad_unit"
-  dependencies:
-    "@testing-library/react": ^15.0.2
   languageName: unknown
   linkType: soft
 
@@ -3399,8 +3370,6 @@ __metadata:
 "with_ad-f236a2@workspace:src/components/ad/with_ad":
   version: 0.0.0-use.local
   resolution: "with_ad-f236a2@workspace:src/components/ad/with_ad"
-  dependencies:
-    "@testing-library/react": ^15.0.2
   languageName: unknown
   linkType: soft
 
