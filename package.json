@@ -62,8 +62,8 @@
   },
   "devDependencies": {
     "@faker-js/faker": "^7.6.0",
-    "@testing-library/dom": "^10.3.1",
-    "@testing-library/react": "^16.0.0",
+    "@testing-library/dom": "^10.0.0",
+    "@testing-library/react": "^12.1.5",
     "@testing-library/user-event": "^14.5.2",
     "sass": "^1.69.5"
   },
