@@ -21,7 +21,7 @@
                     "devDependencies": {
                         "@types/testing-library__jest-dom": "-",
                         "@types/jest": "-",
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@testing-library/dom": "^10.0.0",
                         "@types/node": "-"
                     }
@@ -41,7 +41,7 @@
                     "devDependencies": {
                         "@types/testing-library__jest-dom": "-",
                         "@types/jest": "-",
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@types/react": "-",
                         "@types/react-dom": "-",
                         "@types/node": "-",
@@ -63,7 +63,7 @@
                     "devDependencies": {
                         "@types/testing-library__jest-dom": "-",
                         "@types/jest": "-",
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@testing-library/dom": "^10.0.0",
                         "@types/node": "-"
                     }
@@ -83,7 +83,7 @@
                     "devDependencies": {
                         "@types/jest": "-",
                         "@types/testing-library__jest-dom": "-",
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@testing-library/dom": "^10.0.0",
                         "@types/node": "-"
                     }
@@ -104,7 +104,7 @@
                         "@types/jest": "-",
                         "@types/testing-library__jest-dom": "-",
                         "@types/node": "-",
-                        "@testing-library/react": "^12.1.5"
+                        "@testing-library/react": "^15.0.3"
                     }
                 }
             }
@@ -120,7 +120,7 @@
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
                     "devDependencies": {
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@testing-library/dom": "^10.0.0",
                         "@types/node": "-"
                     }
@@ -141,7 +141,7 @@
                         "@types/node": "-",
                         "@types/jest": "-",
                         "@types/testing-library__jest-dom": "-",
-                        "@testing-library/react": "^12.1.5"
+                        "@testing-library/react": "^15.0.3"
                     }
                 }
             }
@@ -158,7 +158,7 @@
                 "policy": {
                     "devDependencies": {
                         "@testing-library/dom": "^10.0.0",
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@types/node": "-"
                     }
                 }
@@ -175,7 +175,7 @@
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
                     "devDependencies": {
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@testing-library/dom": "^10.0.0",
                         "@types/node": "-"
                     }
@@ -195,7 +195,7 @@
                     "devDependencies": {
                         "@types/jest": "-",
                         "@types/testing-library__jest-dom": "-",
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@testing-library/dom": "^10.0.0",
                         "@types/node": "-"
                     }
@@ -215,7 +215,7 @@
                     "devDependencies": {
                         "@types/jest": "-",
                         "@types/testing-library__jest-dom": "-",
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@testing-library/dom": "^10.0.0",
                         "@types/node": "-"
                     }
@@ -236,7 +236,7 @@
                         "@types/testing-library__jest-dom": "-",
                         "@types/jest": "-",
                         "@testing-library/dom": "^10.0.0",
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@types/node": "-"
                     }
                 }
@@ -256,7 +256,7 @@
                         "@types/testing-library__jest-dom": "-",
                         "@types/jest": "-",
                         "@testing-library/dom": "^10.0.0",
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@types/node": "-"
                     }
                 }
@@ -276,7 +276,7 @@
                         "@types/testing-library__jest-dom": "-",
                         "@types/jest": "-",
                         "@testing-library/dom": "^10.0.0",
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@types/node": "-"
                     }
                 }
@@ -296,7 +296,7 @@
                         "@types/testing-library__jest-dom": "-",
                         "@types/jest": "-",
                         "@testing-library/dom": "^10.0.0",
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@types/node": "-"
                     }
                 }
@@ -315,7 +315,7 @@
                     "devDependencies": {
                         "@types/jest": "-",
                         "@types/testing-library__jest-dom": "-",
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@testing-library/dom": "^10.0.0",
                         "@types/node": "-"
                     }
@@ -336,7 +336,7 @@
                         "@types/testing-library__jest-dom": "-",
                         "@types/jest": "-",
                         "@testing-library/dom": "^10.0.0",
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@types/node": "-"
                     }
                 }
@@ -356,7 +356,7 @@
                         "@types/testing-library__jest-dom": "-",
                         "@types/jest": "-",
                         "@testing-library/dom": "^10.0.0",
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@types/node": "-"
                     }
                 }
@@ -375,7 +375,7 @@
                     "devDependencies": {
                         "@types/jest": "-",
                         "@types/testing-library__jest-dom": "-",
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@testing-library/dom": "^10.0.0",
                         "@types/node": "-"
                     }
@@ -395,7 +395,7 @@
                     "devDependencies": {
                         "@types/jest": "-",
                         "@types/testing-library__jest-dom": "-",
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@testing-library/dom": "^10.0.0",
                         "@types/node": "-"
                     }
@@ -413,7 +413,7 @@
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
                     "devDependencies": {
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@testing-library/dom": "^10.0.0",
                         "@types/node": "-"
                     }
@@ -431,7 +431,7 @@
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
                     "devDependencies": {
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@testing-library/dom": "^10.0.0",
                         "@types/node": "-"
                     }
@@ -451,7 +451,7 @@
                     "devDependencies": {
                         "@types/jest": "-",
                         "@types/testing-library__jest-dom": "-",
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@testing-library/dom": "^10.0.0",
                         "@types/node": "-"
                     }
@@ -471,7 +471,7 @@
                     "devDependencies": {
                         "@types/jest": "-",
                         "@types/testing-library__jest-dom": "-",
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@testing-library/dom": "^10.0.0",
                         "@types/node": "-"
                     }
@@ -491,7 +491,7 @@
                     "devDependencies": {
                         "@types/testing-library__jest-dom": "-",
                         "@types/jest": "-",
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@testing-library/dom": "^10.0.0",
                         "@types/node": "-"
                     }
@@ -511,7 +511,7 @@
                     "devDependencies": {
                         "@types/testing-library__jest-dom": "-",
                         "@types/jest": "-",
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@testing-library/dom": "^10.0.0",
                         "@types/node": "-"
                     }
@@ -531,7 +531,7 @@
                     "devDependencies": {
                         "@types/testing-library__jest-dom": "-",
                         "@types/jest": "-",
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@testing-library/dom": "^10.0.0",
                         "@types/node": "-"
                     }
@@ -551,7 +551,7 @@
                     "devDependencies": {
                         "@types/testing-library__jest-dom": "-",
                         "@types/jest": "-",
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@testing-library/dom": "^10.0.0",
                         "@types/node": "-"
                     }
@@ -572,7 +572,7 @@
                         "@types/testing-library__jest-dom": "-",
                         "@types/jest": "-",
                         "@testing-library/dom": "^10.0.0",
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@types/node": "-"
                     }
                 }
@@ -592,7 +592,7 @@
                         "@types/jest": "-",
                         "@types/testing-library__jest-dom": "-",
                         "@testing-library/dom": "^10.0.0",
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@types/node": "-"
                     }
                 }
@@ -609,7 +609,7 @@
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
                     "devDependencies": {
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@testing-library/dom": "^10.0.0",
                         "@types/node": "-"
                     }
@@ -630,7 +630,7 @@
                         "@types/testing-library__jest-dom": "-",
                         "@types/jest": "-",
                         "@testing-library/dom": "^10.0.0",
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@types/node": "-"
                     }
                 }
@@ -647,7 +647,7 @@
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
                     "devDependencies": {
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@testing-library/dom": "^10.0.0",
                         "@types/node": "-"
                     }
@@ -667,7 +667,7 @@
                     "devDependencies": {
                         "@types/jest": "-",
                         "@types/testing-library__jest-dom": "-",
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@testing-library/dom": "^10.0.0",
                         "@types/node": "-"
                     }
@@ -687,7 +687,7 @@
                     "devDependencies": {
                         "@types/jest": "-",
                         "@types/testing-library__jest-dom": "-",
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@testing-library/dom": "^10.0.0",
                         "@types/node": "-"
                     }
@@ -707,7 +707,7 @@
                     "devDependencies": {
                         "@types/jest": "-",
                         "@types/testing-library__jest-dom": "-",
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@testing-library/dom": "^10.0.0",
                         "@types/node": "-"
                     }
@@ -725,7 +725,7 @@
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
                     "devDependencies": {
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@testing-library/dom": "^10.0.0",
                         "@types/node": "-"
                     }
@@ -745,7 +745,7 @@
                     "devDependencies": {
                         "@types/testing-library__jest-dom": "-",
                         "@types/jest": "-",
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@testing-library/dom": "^10.0.0",
                         "@types/node": "-"
                     }
@@ -763,7 +763,7 @@
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
                     "devDependencies": {
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@testing-library/dom": "^10.0.0",
                         "@types/node": "-"
                     }
@@ -781,7 +781,7 @@
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
                     "devDependencies": {
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@testing-library/dom": "^10.0.0",
                         "@types/node": "-"
                     }
@@ -801,7 +801,7 @@
                     "devDependencies": {
                         "@types/testing-library__jest-dom": "-",
                         "@types/jest": "-",
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@testing-library/dom": "^10.0.0",
                         "@types/node": "-"
                     }
@@ -819,7 +819,7 @@
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
                     "devDependencies": {
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@testing-library/dom": "^10.0.0",
                         "@types/node": "-"
                     }
@@ -837,7 +837,7 @@
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
                     "devDependencies": {
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@testing-library/dom": "^10.0.0",
                         "@types/node": "-"
                     }
@@ -857,7 +857,7 @@
                     "devDependencies": {
                         "@types/jest": "-",
                         "@types/testing-library__jest-dom": "-",
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@testing-library/dom": "^10.0.0",
                         "@types/node": "-"
                     }
@@ -877,7 +877,7 @@
                     "devDependencies": {
                         "@types/jest": "-",
                         "@types/testing-library__jest-dom": "-",
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@testing-library/dom": "^10.0.0",
                         "@types/node": "-"
                     }
@@ -895,7 +895,7 @@
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
                     "devDependencies": {
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@testing-library/dom": "^10.0.0",
                         "@types/node": "-"
                     }
@@ -913,7 +913,7 @@
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
                     "devDependencies": {
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@testing-library/dom": "^10.0.0",
                         "@types/node": "-"
                     }
@@ -931,7 +931,7 @@
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
                     "devDependencies": {
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@testing-library/dom": "^10.0.0",
                         "@types/node": "-"
                     }
@@ -951,7 +951,7 @@
                     "devDependencies": {
                         "@types/jest": "-",
                         "@types/testing-library__jest-dom": "-",
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@testing-library/dom": "^10.0.0",
                         "@types/node": "-"
                     }
@@ -971,7 +971,7 @@
                     "devDependencies": {
                         "@types/testing-library__jest-dom": "-",
                         "@types/jest": "-",
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@testing-library/dom": "^10.0.0",
                         "@types/node": "-"
                     }
@@ -989,7 +989,7 @@
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
                     "devDependencies": {
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@testing-library/dom": "^10.0.0",
                         "@types/node": "-"
                     }
@@ -1008,7 +1008,7 @@
                 "policy": {
                     "devDependencies": {
                         "@logora/debate.icons.regular_icons": "0.0.19",
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@testing-library/dom": "^10.0.0",
                         "@types/node": "-"
                     }
@@ -1028,7 +1028,7 @@
                     "devDependencies": {
                         "@logora/debate.icons.spiegel_icons": "0.0.16",
                         "@logora/debate.icons.regular_icons": "0.0.19",
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@testing-library/dom": "^10.0.0",
                         "@types/node": "-"
                     }
@@ -1046,7 +1046,7 @@
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
                     "devDependencies": {
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@testing-library/dom": "^10.0.0",
                         "@types/node": "-"
                     }
@@ -1064,7 +1064,7 @@
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
                     "devDependencies": {
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@testing-library/dom": "^10.0.0",
                         "@types/node": "-"
                     }
@@ -1084,7 +1084,7 @@
                     "devDependencies": {
                         "@types/testing-library__jest-dom": "-",
                         "@types/jest": "-",
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@testing-library/dom": "^10.0.0",
                         "@types/node": "-"
                     }
@@ -1106,7 +1106,7 @@
                         "@types/react": "-",
                         "@types/react-dom": "-",
                         "@testing-library/dom": "^10.0.0",
-                        "@testing-library/react": "^12.1.5"
+                        "@testing-library/react": "^15.0.3"
                     },
                     "dependencies": {
                         "@testing-library/react": "^16.0.0"
@@ -1127,7 +1127,7 @@
                     "devDependencies": {
                         "@types/testing-library__jest-dom": "-",
                         "@types/jest": "-",
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@testing-library/dom": "^10.0.0",
                         "@types/node": "-"
                     }
@@ -1147,7 +1147,7 @@
                     "devDependencies": {
                         "@types/testing-library__jest-dom": "-",
                         "@types/jest": "-",
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@testing-library/dom": "^10.0.0",
                         "@types/node": "-"
                     }
@@ -1167,7 +1167,7 @@
                     "devDependencies": {
                         "@types/testing-library__jest-dom": "-",
                         "@types/jest": "-",
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@testing-library/dom": "^10.0.0",
                         "@types/node": "-"
                     }
@@ -1187,7 +1187,7 @@
                     "devDependencies": {
                         "@types/jest": "-",
                         "@types/testing-library__jest-dom": "-",
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@testing-library/dom": "^10.0.0",
                         "@types/node": "-"
                     }
@@ -1208,7 +1208,7 @@
                         "@types/testing-library__jest-dom": "-",
                         "@types/jest": "-",
                         "@testing-library/dom": "^10.0.0",
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@types/node": "-"
                     }
                 }
@@ -1228,7 +1228,7 @@
                         "@types/testing-library__jest-dom": "-",
                         "@types/jest": "-",
                         "@testing-library/dom": "^10.0.0",
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@types/node": "-"
                     }
                 }
@@ -1248,7 +1248,7 @@
                         "@types/jest": "-",
                         "@types/testing-library__jest-dom": "-",
                         "@testing-library/dom": "^10.0.0",
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@types/node": "-"
                     }
                 }
@@ -1267,7 +1267,7 @@
                     "devDependencies": {
                         "@types/testing-library__jest-dom": "-",
                         "@types/jest": "-",
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@testing-library/dom": "^10.0.0",
                         "@types/node": "-"
                     }
@@ -1287,7 +1287,7 @@
                     "devDependencies": {
                         "@types/testing-library__jest-dom": "-",
                         "@types/jest": "-",
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@types/react": "-",
                         "@types/react-dom": "-",
                         "@testing-library/dom": "^10.0.0",
@@ -1310,7 +1310,7 @@
                         "@types/jest": "-",
                         "@types/testing-library__jest-dom": "-",
                         "@testing-library/dom": "^10.0.0",
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@types/node": "-"
                     }
                 }
@@ -1327,7 +1327,7 @@
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
                     "devDependencies": {
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@testing-library/dom": "^10.0.0",
                         "@types/node": "-"
                     }
@@ -1347,7 +1347,7 @@
                     "devDependencies": {
                         "@types/jest": "-",
                         "@types/testing-library__jest-dom": "-",
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@testing-library/dom": "^10.0.0",
                         "@types/node": "-"
                     }
@@ -1371,7 +1371,7 @@
                         "@types/react": "-",
                         "@types/react-dom": "-",
                         "@testing-library/dom": "^10.0.0",
-                        "@testing-library/react": "^12.1.5"
+                        "@testing-library/react": "^15.0.3"
                     },
                     "dependencies": {
                         "@testing-library/react": "^16.0.0",
@@ -1393,7 +1393,7 @@
                     "devDependencies": {
                         "@types/testing-library__jest-dom": "-",
                         "@types/jest": "-",
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@testing-library/dom": "^10.0.0",
                         "@types/node": "-"
                     }
@@ -1413,7 +1413,7 @@
                     "devDependencies": {
                         "@types/jest": "-",
                         "@types/testing-library__jest-dom": "-",
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@testing-library/dom": "^10.0.0",
                         "@types/node": "-"
                     }
@@ -1433,7 +1433,7 @@
                     "devDependencies": {
                         "@types/testing-library__jest-dom": "-",
                         "@types/jest": "-",
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@testing-library/dom": "^10.0.0",
                         "@types/node": "-"
                     }
@@ -1451,7 +1451,7 @@
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
                     "devDependencies": {
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@testing-library/dom": "^10.0.0",
                         "@types/node": "-"
                     }
@@ -1471,7 +1471,7 @@
                     "devDependencies": {
                         "@types/testing-library__jest-dom": "-",
                         "@types/jest": "-",
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@testing-library/dom": "^10.0.0",
                         "@types/node": "-"
                     }
@@ -1491,7 +1491,7 @@
                     "devDependencies": {
                         "@types/testing-library__jest-dom": "-",
                         "@types/jest": "-",
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@testing-library/dom": "^10.0.0",
                         "@types/node": "-"
                     }
@@ -1512,7 +1512,7 @@
                         "@types/testing-library__jest-dom": "-",
                         "@types/jest": "-",
                         "@testing-library/dom": "^10.0.0",
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@types/node": "-"
                     }
                 }
@@ -1532,7 +1532,7 @@
                         "@types/testing-library__jest-dom": "-",
                         "@types/jest": "-",
                         "@testing-library/dom": "^10.0.0",
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@types/node": "-"
                     }
                 }
@@ -1552,7 +1552,7 @@
                         "@types/testing-library__jest-dom": "-",
                         "@types/jest": "-",
                         "@testing-library/dom": "^10.0.0",
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@types/node": "-"
                     }
                 }
@@ -1571,7 +1571,7 @@
                     "devDependencies": {
                         "@types/testing-library__jest-dom": "-",
                         "@types/jest": "-",
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@testing-library/dom": "^10.0.0",
                         "@types/node": "-"
                     }
@@ -1591,7 +1591,7 @@
                     "devDependencies": {
                         "@types/testing-library__jest-dom": "-",
                         "@types/jest": "-",
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@testing-library/dom": "^10.0.0",
                         "@types/node": "-"
                     }
@@ -1611,7 +1611,7 @@
                     "devDependencies": {
                         "@types/testing-library__jest-dom": "-",
                         "@types/jest": "-",
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@testing-library/dom": "^10.0.0",
                         "@types/node": "-"
                     }
@@ -1631,7 +1631,7 @@
                     "devDependencies": {
                         "@types/jest": "-",
                         "@types/testing-library__jest-dom": "-",
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@testing-library/dom": "^10.0.0",
                         "@types/node": "-"
                     }
@@ -1651,7 +1651,7 @@
                     "devDependencies": {
                         "@types/testing-library__jest-dom": "-",
                         "@types/jest": "-",
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@testing-library/dom": "^10.0.0",
                         "@types/node": "-"
                     }
@@ -1671,7 +1671,7 @@
                     "devDependencies": {
                         "@types/testing-library__jest-dom": "-",
                         "@types/jest": "-",
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@testing-library/dom": "^10.0.0",
                         "@types/node": "-"
                     }
@@ -1692,7 +1692,7 @@
                         "@types/jest": "-",
                         "@types/testing-library__jest-dom": "-",
                         "@testing-library/dom": "^10.0.0",
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@types/node": "-"
                     }
                 }
@@ -1711,7 +1711,7 @@
                     "devDependencies": {
                         "@types/testing-library__jest-dom": "-",
                         "@types/jest": "-",
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@testing-library/dom": "^10.0.0",
                         "@types/node": "-"
                     }
@@ -1731,7 +1731,7 @@
                     "devDependencies": {
                         "@types/testing-library__jest-dom": "-",
                         "@types/jest": "-",
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@testing-library/dom": "^10.0.0",
                         "@types/node": "-"
                     }
@@ -1751,7 +1751,7 @@
                     "devDependencies": {
                         "@types/testing-library__jest-dom": "-",
                         "@types/jest": "-",
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@testing-library/dom": "^10.0.0",
                         "@types/node": "-"
                     }
@@ -1771,7 +1771,7 @@
                     "devDependencies": {
                         "@types/jest": "-",
                         "@types/testing-library__jest-dom": "-",
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@testing-library/dom": "^10.0.0",
                         "@types/node": "-"
                     }
@@ -1791,7 +1791,7 @@
                     "devDependencies": {
                         "@types/testing-library__jest-dom": "-",
                         "@types/jest": "-",
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@testing-library/dom": "^10.0.0",
                         "@types/node": "-"
                     }
@@ -1811,7 +1811,7 @@
                     "devDependencies": {
                         "@types/jest": "-",
                         "@types/testing-library__jest-dom": "-",
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@testing-library/dom": "^10.0.0",
                         "@types/node": "-"
                     }
@@ -1832,7 +1832,7 @@
                         "@types/jest": "-",
                         "@types/testing-library__jest-dom": "-",
                         "@testing-library/dom": "^10.0.0",
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@types/node": "-"
                     }
                 }
@@ -1851,7 +1851,7 @@
                     "devDependencies": {
                         "@types/testing-library__jest-dom": "-",
                         "@types/jest": "-",
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@testing-library/dom": "^10.0.0",
                         "@types/node": "-"
                     }
@@ -1869,7 +1869,7 @@
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
                     "devDependencies": {
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@testing-library/dom": "^10.0.0",
                         "@types/node": "-"
                     }
@@ -1887,7 +1887,7 @@
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
                     "devDependencies": {
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@testing-library/dom": "^10.0.0",
                         "@types/node": "-"
                     }
@@ -1907,7 +1907,7 @@
                     "devDependencies": {
                         "@types/jest": "-",
                         "@types/testing-library__jest-dom": "-",
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@types/node": "-",
                         "@types/react": "-",
                         "@types/react-dom": "-",
@@ -1931,7 +1931,7 @@
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
                     "devDependencies": {
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@testing-library/dom": "^10.0.0",
                         "@types/node": "-"
                     }
@@ -1949,7 +1949,7 @@
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
                     "devDependencies": {
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@testing-library/dom": "^10.0.0",
                         "@types/node": "-"
                     }
@@ -1968,7 +1968,7 @@
                 "policy": {
                     "devDependencies": {
                         "@testing-library/dom": "^10.0.0",
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@types/node": "-"
                     }
                 }
@@ -1987,7 +1987,7 @@
                     "devDependencies": {
                         "@types/jest": "-",
                         "@types/testing-library__jest-dom": "-",
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@testing-library/dom": "^10.0.0",
                         "@types/node": "-"
                     }
@@ -2009,7 +2009,7 @@
                         "react": "^17.0.0"
                     },
                     "devDependencies": {
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@types/react": "-",
                         "@types/react-dom": "-",
                         "@types/node": "-",
@@ -2032,7 +2032,7 @@
                         "@types/jest": "-",
                         "@types/testing-library__jest-dom": "-",
                         "@testing-library/dom": "^10.0.0",
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@types/node": "-"
                     }
                 }
@@ -2052,7 +2052,7 @@
                         "@types/jest": "-",
                         "@types/testing-library__jest-dom": "-",
                         "@testing-library/dom": "^10.0.0",
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@types/node": "-"
                     }
                 }
@@ -2071,7 +2071,7 @@
                     "devDependencies": {
                         "@types/jest": "-",
                         "@types/testing-library__jest-dom": "-",
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@testing-library/dom": "^10.0.0",
                         "@types/node": "-"
                     }
@@ -2091,7 +2091,7 @@
                     "devDependencies": {
                         "@types/jest": "-",
                         "@types/testing-library__jest-dom": "-",
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@testing-library/dom": "^10.0.0",
                         "@types/node": "-"
                     }
@@ -2110,7 +2110,7 @@
                 "policy": {
                     "devDependencies": {
                         "@testing-library/dom": "^10.0.0",
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@types/node": "-"
                     }
                 }
@@ -2127,7 +2127,7 @@
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
                     "devDependencies": {
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@testing-library/dom": "^10.0.0",
                         "@types/node": "-"
                     }
@@ -2145,7 +2145,7 @@
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
                     "devDependencies": {
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@testing-library/dom": "^10.0.0",
                         "@types/node": "-"
                     }
@@ -2164,7 +2164,7 @@
                 "policy": {
                     "devDependencies": {
                         "@testing-library/dom": "^10.0.0",
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@types/node": "-"
                     }
                 }
@@ -2182,7 +2182,7 @@
                 "policy": {
                     "devDependencies": {
                         "@testing-library/dom": "^10.0.0",
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@types/node": "-"
                     }
                 }
@@ -2201,7 +2201,7 @@
                     "devDependencies": {
                         "@types/testing-library__jest-dom": "-",
                         "@types/jest": "-",
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@testing-library/dom": "^10.0.0",
                         "@types/node": "-"
                     }
@@ -2221,7 +2221,7 @@
                     "devDependencies": {
                         "@types/jest": "-",
                         "@types/testing-library__jest-dom": "-",
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@testing-library/dom": "^10.0.0",
                         "@types/node": "-"
                     }
@@ -2240,7 +2240,7 @@
                 "policy": {
                     "devDependencies": {
                         "@testing-library/dom": "^10.0.0",
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@types/node": "-"
                     }
                 }
@@ -2258,7 +2258,7 @@
                 "policy": {
                     "devDependencies": {
                         "@testing-library/dom": "^10.0.0",
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@types/node": "-"
                     }
                 }
@@ -2276,7 +2276,7 @@
                 "policy": {
                     "devDependencies": {
                         "@testing-library/dom": "^10.0.0",
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@types/node": "-"
                     }
                 }
@@ -2296,7 +2296,7 @@
                         "@types/testing-library__jest-dom": "-",
                         "@types/jest": "-",
                         "@testing-library/dom": "^10.0.0",
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@types/node": "-"
                     }
                 }
@@ -2314,7 +2314,7 @@
                 "policy": {
                     "devDependencies": {
                         "@testing-library/dom": "^10.0.0",
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@types/node": "-"
                     }
                 }
@@ -2333,7 +2333,7 @@
                     "devDependencies": {
                         "@types/jest": "-",
                         "@types/testing-library__jest-dom": "-",
-                        "@testing-library/react": "^12.1.5",
+                        "@testing-library/react": "^15.0.3",
                         "@testing-library/dom": "^10.0.0",
                         "@types/node": "-"
                     }
