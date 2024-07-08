@@ -1,5 +1,5 @@
-import React, { act } from 'react';
-import { render, screen } from '@testing-library/react';
+import React from 'react';
+import { render, screen, act } from '@testing-library/react';
 import { IntlProvider } from 'react-intl';
 import { dataProvider, DataProviderContext } from '@logora/debate.data.data_provider';
 import { ResponsiveProvider } from '@logora/debate.hooks.use_responsive';

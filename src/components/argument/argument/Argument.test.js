@@ -1,5 +1,5 @@
-import React, { act } from 'react';
-import { render } from '@testing-library/react';
+import React from 'react';
+import { render, act } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { IntlProvider } from 'react-intl';
 import { ConfigProvider } from '@logora/debate.data.config_provider';

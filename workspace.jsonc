@@ -10,16 +10,7 @@
     "defaultScope": "logora.debate"
   },
   "teambit.dependencies/dependency-resolver": {
-    "packageManager": "teambit.dependencies/yarn",
-    "policy": {
-      "dependencies": {},
-      "peerDependencies": {}
-    },
-    "linkCoreAspects": false,
-    "installFromBitDevRegistry": false
-  },
-  "teambit.preview/preview": {
-    "bundlingStrategy": "component"
+    "packageManager": "teambit.dependencies/yarn"
   },
   "teambit.harmony/bit": {
     "engine": "1.7.17"
