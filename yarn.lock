@@ -478,7 +478,6 @@ __metadata:
     "@lexical/utils": 0.16.1
     "@rooks/use-previous": ^4.11.2
     "@rooks/use-sessionstorage-state": ^4.11.2
-    "@testing-library/dom": ^10.0.0
     "@testing-library/react": ^14.3.0
     "@testing-library/user-event": ^14.5.2
     "@types/jest": ^26.0.0
@@ -587,6 +586,24 @@ __metadata:
     react: ^18.0.0
     react-dom: ^18.0.0
   checksum: b057d4c9db5a523acfc24d7bc4665a924ab8d6f252c7f51eecf7dd30f1239413e1134925fd5cc9cbdef80496af64c04e6719b2081f89fe05ba87e8c6305bcc16
+  languageName: node
+  linkType: hard
+
+"@testing-library/react@npm:^15.0.7":
+  version: 15.0.7
+  resolution: "@testing-library/react@npm:15.0.7"
+  dependencies:
+    "@babel/runtime": ^7.12.5
+    "@testing-library/dom": ^10.0.0
+    "@types/react-dom": ^18.0.0
+  peerDependencies:
+    "@types/react": ^18.0.0
+    react: ^18.0.0
+    react-dom: ^18.0.0
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
+  checksum: eb33fd82eb811bb8612aa154e430a2c1c251d5ed45a477ef57fe20095db494ea7dcfa6b1e1e2bffb0c7ee10c86e408745d95a879be8ca8fbe301bb91e5f2e5db
   languageName: node
   linkType: hard
 
@@ -767,12 +784,16 @@ __metadata:
 "ad_unit-9bc477@workspace:src/components/ad/ad_unit":
   version: 0.0.0-use.local
   resolution: "ad_unit-9bc477@workspace:src/components/ad/ad_unit"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
 "announcement_dialog-50f3af@workspace:src/components/dialog/announcement_dialog":
   version: 0.0.0-use.local
   resolution: "announcement_dialog-50f3af@workspace:src/components/dialog/announcement_dialog"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
@@ -828,18 +849,24 @@ __metadata:
 "argument-75bb95@workspace:src/components/argument/argument":
   version: 0.0.0-use.local
   resolution: "argument-75bb95@workspace:src/components/argument/argument"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
 "argument_input-293e61@workspace:src/components/input/argument_input":
   version: 0.0.0-use.local
   resolution: "argument_input-293e61@workspace:src/components/input/argument_input"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
 "argument_summary_box-b83b8e@workspace:src/components/summary/argument_summary_box":
   version: 0.0.0-use.local
   resolution: "argument_summary_box-b83b8e@workspace:src/components/summary/argument_summary_box"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
@@ -893,6 +920,8 @@ __metadata:
 "author_box-192ddc@workspace:src/components/user/author_box":
   version: 0.0.0-use.local
   resolution: "author_box-192ddc@workspace:src/components/user/author_box"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
@@ -908,12 +937,16 @@ __metadata:
 "avatar-e1a0ae@workspace:src/components/user/avatar":
   version: 0.0.0-use.local
   resolution: "avatar-e1a0ae@workspace:src/components/user/avatar"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
 "avatar_selector-e502b8@workspace:src/components/user/avatar_selector":
   version: 0.0.0-use.local
   resolution: "avatar_selector-e502b8@workspace:src/components/user/avatar_selector"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
@@ -931,18 +964,24 @@ __metadata:
 "axios_client-8e7312@workspace:src/components/data/axios_client":
   version: 0.0.0-use.local
   resolution: "axios_client-8e7312@workspace:src/components/data/axios_client"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
 "back_link-1a910c@workspace:src/components/action/back_link":
   version: 0.0.0-use.local
   resolution: "back_link-1a910c@workspace:src/components/action/back_link"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
 "badge_box-0d24b6@workspace:src/components/gamification/badge_box":
   version: 0.0.0-use.local
   resolution: "badge_box-0d24b6@workspace:src/components/gamification/badge_box"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
@@ -956,6 +995,8 @@ __metadata:
 "box_skeleton-a11637@workspace:src/components/skeleton/box_skeleton":
   version: 0.0.0-use.local
   resolution: "box_skeleton-a11637@workspace:src/components/skeleton/box_skeleton"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
@@ -971,6 +1012,8 @@ __metadata:
 "button-4f94f8@workspace:src/components/action/button":
   version: 0.0.0-use.local
   resolution: "button-4f94f8@workspace:src/components/action/button"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
@@ -1103,42 +1146,56 @@ __metadata:
 "config_provider-df02ba@workspace:src/components/data/config_provider":
   version: 0.0.0-use.local
   resolution: "config_provider-df02ba@workspace:src/components/data/config_provider"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
 "confirm_modal-1d89d1@workspace:src/components/dialog/confirm_modal":
   version: 0.0.0-use.local
   resolution: "confirm_modal-1d89d1@workspace:src/components/dialog/confirm_modal"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
 "consultation_box-cc36e3@workspace:src/components/consultation/consultation_box":
   version: 0.0.0-use.local
   resolution: "consultation_box-cc36e3@workspace:src/components/consultation/consultation_box"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
 "content_footer-d4afad@workspace:src/components/user_content/content_footer":
   version: 0.0.0-use.local
   resolution: "content_footer-d4afad@workspace:src/components/user_content/content_footer"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
 "content_header-100ef9@workspace:src/components/user_content/content_header":
   version: 0.0.0-use.local
   resolution: "content_header-100ef9@workspace:src/components/user_content/content_header"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
 "context_source_box-802378@workspace:src/components/source/context_source_box":
   version: 0.0.0-use.local
   resolution: "context_source_box-802378@workspace:src/components/source/context_source_box"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
 "context_source_list-733b2d@workspace:src/components/source/context_source_list":
   version: 0.0.0-use.local
   resolution: "context_source_list-733b2d@workspace:src/components/source/context_source_list"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
@@ -1168,12 +1225,16 @@ __metadata:
 "data_provider-52dcfb@workspace:src/components/data/data_provider":
   version: 0.0.0-use.local
   resolution: "data_provider-52dcfb@workspace:src/components/data/data_provider"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
 "debate_box-90f4de@workspace:src/components/debate/debate_box":
   version: 0.0.0-use.local
   resolution: "debate_box-90f4de@workspace:src/components/debate/debate_box"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
@@ -1242,6 +1303,8 @@ __metadata:
 "dialog_box-15ddba@workspace:src/components/dialog/dialog_box":
   version: 0.0.0-use.local
   resolution: "dialog_box-15ddba@workspace:src/components/dialog/dialog_box"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
@@ -1262,6 +1325,8 @@ __metadata:
 "display-100652@workspace:src/components/styles/display":
   version: 0.0.0-use.local
   resolution: "display-100652@workspace:src/components/styles/display"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
@@ -1282,18 +1347,24 @@ __metadata:
 "drawer-862176@workspace:src/components/dialog/drawer":
   version: 0.0.0-use.local
   resolution: "drawer-862176@workspace:src/components/dialog/drawer"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
 "dropdown-d591fa@workspace:src/components/dialog/dropdown":
   version: 0.0.0-use.local
   resolution: "dropdown-d591fa@workspace:src/components/dialog/dropdown"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
 "embed_header-3651ea@workspace:src/components/embed/embed_header":
   version: 0.0.0-use.local
   resolution: "embed_header-3651ea@workspace:src/components/embed/embed_header"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
@@ -1347,6 +1418,8 @@ __metadata:
 "expandable_text-b7c0b7@workspace:src/components/text/expandable_text":
   version: 0.0.0-use.local
   resolution: "expandable_text-b7c0b7@workspace:src/components/text/expandable_text"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
@@ -1366,6 +1439,8 @@ __metadata:
 "facebook_login_button-1191a5@workspace:src/components/auth/facebook_login_button":
   version: 0.0.0-use.local
   resolution: "facebook_login_button-1191a5@workspace:src/components/auth/facebook_login_button"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
@@ -1390,6 +1465,8 @@ __metadata:
 "flex-39962c@workspace:src/components/styles/flex":
   version: 0.0.0-use.local
   resolution: "flex-39962c@workspace:src/components/styles/flex"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
@@ -1406,6 +1483,8 @@ __metadata:
 "follow_button-2c28f3@workspace:src/components/follow/follow_button":
   version: 0.0.0-use.local
   resolution: "follow_button-2c28f3@workspace:src/components/follow/follow_button"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
@@ -1421,6 +1500,8 @@ __metadata:
 "form-5e6a8d@workspace:src/components/forms/form":
   version: 0.0.0-use.local
   resolution: "form-5e6a8d@workspace:src/components/forms/form"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
@@ -1498,6 +1579,8 @@ __metadata:
 "google_login_button-9d8ca7@workspace:src/components/auth/google_login_button":
   version: 0.0.0-use.local
   resolution: "google_login_button-9d8ca7@workspace:src/components/auth/google_login_button"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
@@ -1573,6 +1656,8 @@ __metadata:
 "hash_scroll-a81c4c@workspace:src/components/tools/hash_scroll":
   version: 0.0.0-use.local
   resolution: "hash_scroll-a81c4c@workspace:src/components/tools/hash_scroll"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
@@ -1588,12 +1673,16 @@ __metadata:
 "hero_icons-f6c90f@workspace:src/components/icons/hero_icons":
   version: 0.0.0-use.local
   resolution: "hero_icons-f6c90f@workspace:src/components/icons/hero_icons"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
 "hidden-30841f@workspace:src/components/input/checkbox/hidden":
   version: 0.0.0-use.local
   resolution: "hidden-30841f@workspace:src/components/input/checkbox/hidden"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
@@ -1623,18 +1712,24 @@ __metadata:
 "icon-3aea60@workspace:src/components/icons/icon":
   version: 0.0.0-use.local
   resolution: "icon-3aea60@workspace:src/components/icons/icon"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
 "icon_provider-024301@workspace:src/components/icons/icon_provider":
   version: 0.0.0-use.local
   resolution: "icon_provider-024301@workspace:src/components/icons/icon_provider"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
 "icon_text_link-65256c@workspace:src/components/action/icon_text_link":
   version: 0.0.0-use.local
   resolution: "icon_text_link-65256c@workspace:src/components/action/icon_text_link"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
@@ -1648,18 +1743,24 @@ __metadata:
 "indicator-f4a977@workspace:src/components/input/checkbox/indicator":
   version: 0.0.0-use.local
   resolution: "indicator-f4a977@workspace:src/components/input/checkbox/indicator"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
 "information_box-1c6b66@workspace:src/components/information/information_box":
   version: 0.0.0-use.local
   resolution: "information_box-1c6b66@workspace:src/components/information/information_box"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
 "input_provider-d522aa@workspace:src/components/input/input_provider":
   version: 0.0.0-use.local
   resolution: "input_provider-d522aa@workspace:src/components/input/input_provider"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
@@ -1689,6 +1790,8 @@ __metadata:
 "intl_provider-75af04@workspace:src/components/intl/intl_provider":
   version: 0.0.0-use.local
   resolution: "intl_provider-75af04@workspace:src/components/intl/intl_provider"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
@@ -1961,12 +2064,16 @@ __metadata:
 "keyword_box-5e683b@workspace:src/components/summary/keyword_box":
   version: 0.0.0-use.local
   resolution: "keyword_box-5e683b@workspace:src/components/summary/keyword_box"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
 "label-54fe1c@workspace:src/components/input/checkbox/label":
   version: 0.0.0-use.local
   resolution: "label-54fe1c@workspace:src/components/input/checkbox/label"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
@@ -1980,36 +2087,48 @@ __metadata:
 "line_chart-c05e43@workspace:src/components/chart/line_chart":
   version: 0.0.0-use.local
   resolution: "line_chart-c05e43@workspace:src/components/chart/line_chart"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
 "link-b5813c@workspace:src/components/action/link":
   version: 0.0.0-use.local
   resolution: "link-b5813c@workspace:src/components/action/link"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
 "list_provider-276d9a@workspace:src/components/list/list_provider":
   version: 0.0.0-use.local
   resolution: "list_provider-276d9a@workspace:src/components/list/list_provider"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
 "loader-6245f5@workspace:src/components/progress/loader":
   version: 0.0.0-use.local
   resolution: "loader-6245f5@workspace:src/components/progress/loader"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
 "location-53999c@workspace:src/components/util/location":
   version: 0.0.0-use.local
   resolution: "location-53999c@workspace:src/components/util/location"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
 "login_form-9ffdcd@workspace:src/components/auth/login_form":
   version: 0.0.0-use.local
   resolution: "login_form-9ffdcd@workspace:src/components/auth/login_form"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
@@ -2062,6 +2181,8 @@ __metadata:
 "modal-26019b@workspace:src/components/dialog/modal":
   version: 0.0.0-use.local
   resolution: "modal-26019b@workspace:src/components/dialog/modal"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
@@ -2075,6 +2196,8 @@ __metadata:
 "oauth2_button-904b3a@workspace:src/components/auth/oauth2_button":
   version: 0.0.0-use.local
   resolution: "oauth2_button-904b3a@workspace:src/components/auth/oauth2_button"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
@@ -2124,12 +2247,16 @@ __metadata:
 "paginated_list-98064e@workspace:src/components/list/paginated_list":
   version: 0.0.0-use.local
   resolution: "paginated_list-98064e@workspace:src/components/list/paginated_list"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
 "pagination-86dee2@workspace:src/components/list/pagination":
   version: 0.0.0-use.local
   resolution: "pagination-86dee2@workspace:src/components/list/pagination"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
@@ -2166,12 +2293,16 @@ __metadata:
 "pie_chart-0ed383@workspace:src/components/chart/pie_chart":
   version: 0.0.0-use.local
   resolution: "pie_chart-0ed383@workspace:src/components/chart/pie_chart"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
 "point_box-a436cc@workspace:src/components/gamification/point_box":
   version: 0.0.0-use.local
   resolution: "point_box-a436cc@workspace:src/components/gamification/point_box"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
@@ -2226,6 +2357,8 @@ __metadata:
 "progress_bar-9f380d@workspace:src/components/progress/progress_bar":
   version: 0.0.0-use.local
   resolution: "progress_bar-9f380d@workspace:src/components/progress/progress_bar"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
@@ -2243,6 +2376,8 @@ __metadata:
 "providers-45a177@workspace:src/components/auth/providers":
   version: 0.0.0-use.local
   resolution: "providers-45a177@workspace:src/components/auth/providers"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
@@ -2447,6 +2582,8 @@ __metadata:
 "read_more-cde56f@workspace:src/components/text/read_more":
   version: 0.0.0-use.local
   resolution: "read_more-cde56f@workspace:src/components/text/read_more"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
@@ -2488,6 +2625,8 @@ __metadata:
 "regular_icons-fa7d8f@workspace:src/components/icons/regular_icons":
   version: 0.0.0-use.local
   resolution: "regular_icons-fa7d8f@workspace:src/components/icons/regular_icons"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
@@ -2523,30 +2662,40 @@ __metadata:
 "scroll_to_top-182986@workspace:src/components/tools/scroll_to_top":
   version: 0.0.0-use.local
   resolution: "scroll_to_top-182986@workspace:src/components/tools/scroll_to_top"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
 "search_input-6004f6@workspace:src/components/input/search_input":
   version: 0.0.0-use.local
   resolution: "search_input-6004f6@workspace:src/components/input/search_input"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
 "section_box-1e8645@workspace:src/components/section/section_box":
   version: 0.0.0-use.local
   resolution: "section_box-1e8645@workspace:src/components/section/section_box"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
 "section_header-196a52@workspace:src/components/section/section_header":
   version: 0.0.0-use.local
   resolution: "section_header-196a52@workspace:src/components/section/section_header"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
 "select-b2b5ab@workspace:src/components/input/select":
   version: 0.0.0-use.local
   resolution: "select-b2b5ab@workspace:src/components/input/select"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
@@ -2579,18 +2728,24 @@ __metadata:
 "share_box-9b6d3f@workspace:src/components/share/share_box":
   version: 0.0.0-use.local
   resolution: "share_box-9b6d3f@workspace:src/components/share/share_box"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
 "share_button-41118f@workspace:src/components/share/share_button":
   version: 0.0.0-use.local
   resolution: "share_button-41118f@workspace:src/components/share/share_button"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
 "share_modal-2e4f13@workspace:src/components/share/share_modal":
   version: 0.0.0-use.local
   resolution: "share_modal-2e4f13@workspace:src/components/share/share_modal"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
@@ -2609,12 +2764,16 @@ __metadata:
 "side_modal-59db52@workspace:src/components/modal/side_modal":
   version: 0.0.0-use.local
   resolution: "side_modal-59db52@workspace:src/components/modal/side_modal"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
 "signup_form-a65820@workspace:src/components/auth/signup_form":
   version: 0.0.0-use.local
   resolution: "signup_form-a65820@workspace:src/components/auth/signup_form"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
@@ -2628,6 +2787,8 @@ __metadata:
 "social_auth_form-da3861@workspace:src/components/auth/social_auth_form":
   version: 0.0.0-use.local
   resolution: "social_auth_form-da3861@workspace:src/components/auth/social_auth_form"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
@@ -2641,36 +2802,48 @@ __metadata:
 "source_box-109a5a@workspace:src/components/source/source_box":
   version: 0.0.0-use.local
   resolution: "source_box-109a5a@workspace:src/components/source/source_box"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
 "source_list_item-915e96@workspace:src/components/source/source_list_item":
   version: 0.0.0-use.local
   resolution: "source_list_item-915e96@workspace:src/components/source/source_list_item"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
 "source_modal-04c9b5@workspace:src/components/source/source_modal":
   version: 0.0.0-use.local
   resolution: "source_modal-04c9b5@workspace:src/components/source/source_modal"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
 "spacing-44d24d@workspace:src/components/styles/spacing":
   version: 0.0.0-use.local
   resolution: "spacing-44d24d@workspace:src/components/styles/spacing"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
 "spiegel_icons-519fa4@workspace:src/components/icons/spiegel_icons":
   version: 0.0.0-use.local
   resolution: "spiegel_icons-519fa4@workspace:src/components/icons/spiegel_icons"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
 "sso_form-aa9aae@workspace:src/components/auth/sso_form":
   version: 0.0.0-use.local
   resolution: "sso_form-aa9aae@workspace:src/components/auth/sso_form"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
@@ -2686,6 +2859,8 @@ __metadata:
 "standard_error_boundary-f3d28c@workspace:src/components/error/standard_error_boundary":
   version: 0.0.0-use.local
   resolution: "standard_error_boundary-f3d28c@workspace:src/components/error/standard_error_boundary"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
@@ -2701,12 +2876,16 @@ __metadata:
 "suggestion_vote_box-28e1e8@workspace:src/components/vote/suggestion_vote_box":
   version: 0.0.0-use.local
   resolution: "suggestion_vote_box-28e1e8@workspace:src/components/vote/suggestion_vote_box"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
 "summary_content_box-579180@workspace:src/components/user_content/summary_content_box":
   version: 0.0.0-use.local
   resolution: "summary_content_box-579180@workspace:src/components/user_content/summary_content_box"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
@@ -2731,30 +2910,40 @@ __metadata:
 "tabs-a31bc6@workspace:src/components/styles/tabs":
   version: 0.0.0-use.local
   resolution: "tabs-a31bc6@workspace:src/components/styles/tabs"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
 "tag-467df6@workspace:src/components/tag/tag":
   version: 0.0.0-use.local
   resolution: "tag-467df6@workspace:src/components/tag/tag"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
 "text_editor-87beba@workspace:src/components/input/text_editor":
   version: 0.0.0-use.local
   resolution: "text_editor-87beba@workspace:src/components/input/text_editor"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
 "text_input-20edb4@workspace:src/components/input/text_input":
   version: 0.0.0-use.local
   resolution: "text_input-20edb4@workspace:src/components/input/text_input"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
 "theme-17e024@workspace:src/components/styles/theme":
   version: 0.0.0-use.local
   resolution: "theme-17e024@workspace:src/components/styles/theme"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
@@ -2784,18 +2973,24 @@ __metadata:
 "toast-536b13@workspace:src/components/dialog/toast":
   version: 0.0.0-use.local
   resolution: "toast-536b13@workspace:src/components/dialog/toast"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
 "toast_provider-f05d55@workspace:src/components/dialog/toast_provider":
   version: 0.0.0-use.local
   resolution: "toast_provider-f05d55@workspace:src/components/dialog/toast_provider"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
 "toggle-9b9f77@workspace:src/components/input/toggle":
   version: 0.0.0-use.local
   resolution: "toggle-9b9f77@workspace:src/components/input/toggle"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
@@ -2809,30 +3004,40 @@ __metadata:
 "toggle_position-655142@workspace:src/components/input/toggle_position":
   version: 0.0.0-use.local
   resolution: "toggle_position-655142@workspace:src/components/input/toggle_position"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
 "tooltip-28dbeb@workspace:src/components/dialog/tooltip":
   version: 0.0.0-use.local
   resolution: "tooltip-28dbeb@workspace:src/components/dialog/tooltip"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
 "top_arguments-9e4953@workspace:src/components/argument/top_arguments":
   version: 0.0.0-use.local
   resolution: "top_arguments-9e4953@workspace:src/components/argument/top_arguments"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
 "translated_content-06b536@workspace:src/components/translation/translated_content":
   version: 0.0.0-use.local
   resolution: "translated_content-06b536@workspace:src/components/translation/translated_content"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
 "translation_button-90cc45@workspace:src/components/translation/translation_button":
   version: 0.0.0-use.local
   resolution: "translation_button-90cc45@workspace:src/components/translation/translation_button"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
@@ -2853,18 +3058,24 @@ __metadata:
 "unique_by-e6787e@workspace:src/components/util/unique_by":
   version: 0.0.0-use.local
   resolution: "unique_by-e6787e@workspace:src/components/util/unique_by"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
 "up_down_vote_box-8b5739@workspace:src/components/vote/up_down_vote_box":
   version: 0.0.0-use.local
   resolution: "up_down_vote_box-8b5739@workspace:src/components/vote/up_down_vote_box"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
 "update_user_info_modal-43ccda@workspace:src/components/user/update_user_info_modal":
   version: 0.0.0-use.local
   resolution: "update_user_info_modal-43ccda@workspace:src/components/user/update_user_info_modal"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
@@ -2918,96 +3129,128 @@ __metadata:
 "use_auth-6e2b8d@workspace:src/components/auth/use_auth":
   version: 0.0.0-use.local
   resolution: "use_auth-6e2b8d@workspace:src/components/auth/use_auth"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
 "use_auth_required-b192ee@workspace:src/components/hooks/use_auth_required":
   version: 0.0.0-use.local
   resolution: "use_auth_required-b192ee@workspace:src/components/hooks/use_auth_required"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
 "use_css_theme-8882df@workspace:src/components/hooks/use_css_theme":
   version: 0.0.0-use.local
   resolution: "use_css_theme-8882df@workspace:src/components/hooks/use_css_theme"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
 "use_delete_content-840af0@workspace:src/components/user_content/use_delete_content":
   version: 0.0.0-use.local
   resolution: "use_delete_content-840af0@workspace:src/components/user_content/use_delete_content"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
 "use_follow-e7516a@workspace:src/components/follow/use_follow":
   version: 0.0.0-use.local
   resolution: "use_follow-e7516a@workspace:src/components/follow/use_follow"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
 "use_font_loader-9075d4@workspace:src/components/hooks/use_font_loader":
   version: 0.0.0-use.local
   resolution: "use_font_loader-9075d4@workspace:src/components/hooks/use_font_loader"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
 "use_form_validation-76238e@workspace:src/components/forms/use_form_validation":
   version: 0.0.0-use.local
   resolution: "use_form_validation-76238e@workspace:src/components/forms/use_form_validation"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
 "use_google_ad_manager-942609@workspace:src/components/ad/use_google_ad_manager":
   version: 0.0.0-use.local
   resolution: "use_google_ad_manager-942609@workspace:src/components/ad/use_google_ad_manager"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
 "use_matomo-f7f686@workspace:src/components/hooks/use_matomo":
   version: 0.0.0-use.local
   resolution: "use_matomo-f7f686@workspace:src/components/hooks/use_matomo"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
 "use_relative_time-24bd49@workspace:src/components/hooks/use_relative_time":
   version: 0.0.0-use.local
   resolution: "use_relative_time-24bd49@workspace:src/components/hooks/use_relative_time"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
 "use_report_content-9e76e9@workspace:src/components/user_content/use_report_content":
   version: 0.0.0-use.local
   resolution: "use_report_content-9e76e9@workspace:src/components/user_content/use_report_content"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
 "use_responsive-4f0c03@workspace:src/components/hooks/use_responsive":
   version: 0.0.0-use.local
   resolution: "use_responsive-4f0c03@workspace:src/components/hooks/use_responsive"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
 "use_vote-466cea@workspace:src/components/vote/use_vote":
   version: 0.0.0-use.local
   resolution: "use_vote-466cea@workspace:src/components/vote/use_vote"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
 "user_box-8dfef7@workspace:src/components/user/user_box":
   version: 0.0.0-use.local
   resolution: "user_box-8dfef7@workspace:src/components/user/user_box"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
 "user_box_small-4cb87a@workspace:src/components/user/user_box_small":
   version: 0.0.0-use.local
   resolution: "user_box_small-4cb87a@workspace:src/components/user/user_box_small"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
 "user_content_skeleton-068543@workspace:src/components/skeleton/user_content_skeleton":
   version: 0.0.0-use.local
   resolution: "user_content_skeleton-068543@workspace:src/components/skeleton/user_content_skeleton"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
@@ -3030,18 +3273,24 @@ __metadata:
 "vote_box-dab0ab@workspace:src/components/vote/vote_box":
   version: 0.0.0-use.local
   resolution: "vote_box-dab0ab@workspace:src/components/vote/vote_box"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
 "vote_button-bea9f9@workspace:src/components/vote/vote_button":
   version: 0.0.0-use.local
   resolution: "vote_button-bea9f9@workspace:src/components/vote/vote_button"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
 "vote_provider-361d6f@workspace:src/components/vote/vote_provider":
   version: 0.0.0-use.local
   resolution: "vote_provider-361d6f@workspace:src/components/vote/vote_provider"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
 
@@ -3093,5 +3342,7 @@ __metadata:
 "with_ad-f236a2@workspace:src/components/ad/with_ad":
   version: 0.0.0-use.local
   resolution: "with_ad-f236a2@workspace:src/components/ad/with_ad"
+  dependencies:
+    "@testing-library/react": ^15.0.7
   languageName: unknown
   linkType: soft
