@@ -21,7 +21,25 @@
         "scope": "logora.debate",
         "version": "0.0.76",
         "mainFile": "index.js",
-        "rootDir": "src/components/action/button"
+        "rootDir": "src/components/action/button",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "peerDependencies": {
+                        "react": "^17.0.0 || ^18.0.0",
+                        "react-dom": "^17.0.0 || ^18.0.0"
+                    },
+                    "devDependencies": {
+                        "@types/testing-library__jest-dom": "-",
+                        "@types/jest": "-",
+                        "@testing-library/react": "^16.0.0",
+                        "@types/react": "-",
+                        "@types/react-dom": "-",
+                        "@types/node": "-"
+                    }
+                }
+            }
+        }
     },
     "action/icon_text_link": {
         "name": "action/icon_text_link",
@@ -406,7 +424,23 @@
         "scope": "logora.debate",
         "version": "0.0.63",
         "mainFile": "index.js",
-        "rootDir": "src/components/input/argument_input"
+        "rootDir": "src/components/input/argument_input",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "peerDependencies": {
+                        "react": "^17.0.0 || ^18.0.0",
+                        "react-dom": "^17.0.0 || ^18.0.0"
+                    },
+                    "devDependencies": {
+                        "@types/node": "-",
+                        "@types/react": "-",
+                        "@types/react-dom": "-",
+                        "@testing-library/dom": "10.3.1"
+                    }
+                }
+            }
+        }
     },
     "input/checkbox/hidden": {
         "name": "input/checkbox/hidden",
@@ -497,7 +531,25 @@
         "scope": "logora.debate",
         "version": "0.0.98",
         "mainFile": "index.js",
-        "rootDir": "src/components/list/paginated_list"
+        "rootDir": "src/components/list/paginated_list",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "devDependencies": {
+                        "@types/jest": "-",
+                        "@types/testing-library__jest-dom": "-",
+                        "@types/node": "-",
+                        "@types/react": "-",
+                        "@types/react-dom": "-",
+                        "@testing-library/dom": "10.3.1"
+                    },
+                    "peerDependencies": {
+                        "react": "^17.0.0||^18.0.0",
+                        "react-dom": "^17.0.0||^18.0.0"
+                    }
+                }
+            }
+        }
     },
     "list/pagination": {
         "name": "list/pagination",
@@ -686,7 +738,25 @@
         "scope": "logora.debate",
         "version": "0.0.13",
         "mainFile": "index.js",
-        "rootDir": "src/components/tools/hash_scroll"
+        "rootDir": "src/components/tools/hash_scroll",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "devDependencies": {
+                        "@types/jest": "-",
+                        "@types/testing-library__jest-dom": "-",
+                        "@testing-library/react": "^16.0.0",
+                        "@types/node": "-",
+                        "@types/react": "-",
+                        "@types/react-dom": "-"
+                    },
+                    "peerDependencies": {
+                        "react": "^17.0.0 || ^18.0.0",
+                        "react-dom": "^17.0.0 || ^18.0.0"
+                    }
+                }
+            }
+        }
     },
     "tools/scroll_to_top": {
         "name": "tools/scroll_to_top",
@@ -721,7 +791,25 @@
         "scope": "logora.debate",
         "version": "0.0.44",
         "mainFile": "index.js",
-        "rootDir": "src/components/user/avatar"
+        "rootDir": "src/components/user/avatar",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "devDependencies": {
+                        "@testing-library/react": "^16.0.0",
+                        "@types/react": "-",
+                        "@types/react-dom": "-",
+                        "@types/node": "-"
+                    },
+                    "peerDependencies": {
+                        "react": "^17.0.0 || ^18.0.0",
+                        "react-dom": "^17.0.0 || ^18.0.0",
+                        "react-router": "^5.3.4",
+                        "react-router-dom": "^5.3.4"
+                    }
+                }
+            }
+        }
     },
     "user/avatar_selector": {
         "name": "user/avatar_selector",

@@ -10,7 +10,12 @@
     "defaultScope": "logora.debate"
   },
   "teambit.dependencies/dependency-resolver": {
-    "packageManager": "teambit.dependencies/yarn"
+    "packageManager": "teambit.dependencies/yarn",
+    "policy": {
+      "dependencies": {},
+      "peerDependencies": {}
+    },
+    "linkCoreAspects": true
   },
   "teambit.preview/preview": {
     "bundlingStrategy": "component"
