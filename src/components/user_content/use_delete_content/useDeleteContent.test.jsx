@@ -1,7 +1,6 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, act } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { act } from 'react-dom/test-utils';
 import { useDeleteContent } from './useDeleteContent';
 import { IntlProvider } from 'react-intl';
 import { ToastProvider } from '@logora/debate.dialog.toast_provider';
