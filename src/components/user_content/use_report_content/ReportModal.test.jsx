@@ -19,7 +19,7 @@ describe('ReportModal', () => {
 		);
 
 		const dropdownButton = screen.getByText("Incivility");
-        await act(async () => { await userEvent.click(dropdownButton) });
+        await userEvent.click(dropdownButton)
 
         expect(screen.getByText("Incomprehensibility")).toBeTruthy();
 	});

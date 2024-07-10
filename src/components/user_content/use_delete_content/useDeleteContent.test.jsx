@@ -59,7 +59,7 @@ describe('useDeleteContent', () => {
         )
 
         const deleteButton = screen.getByTestId("delete-button");
-        await act(async () => { await userEvent.click(deleteButton) });
+        await userEvent.click(deleteButton)
 
         expect(screen.getByText("Delete content")).toBeTruthy();
         expect(screen.getByText("Delete contribution")).toBeTruthy();
