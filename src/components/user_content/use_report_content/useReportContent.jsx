@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from 'react';
+import React, { Suspense } from 'react';
 import { useAuth } from "@logora/debate.auth.use_auth";
 import { useModal } from '@logora/debate.dialog.modal';
 import { useAuthRequired } from '@logora/debate.hooks.use_auth_required';
