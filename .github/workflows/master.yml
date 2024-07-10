@@ -7,7 +7,8 @@ on:
 
 jobs:
   tag-and-export:
-    runs-on: ubuntu-latest
+    runs-on:
+      group: large
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       GIT_USER_NAME: ${{ github.actor }}
@@ -23,8 +24,7 @@ jobs:
       - name: Resolve component packages from bit.cloud registry
         run: |
           npm config set '@logora:registry' https://node.bit.cloud
-          export NODE_OPTIONS="--max_old_space_size=8092"
-      
+          export NODE_OPTIONS="--max_old_space_size=12000"     
       - name: Bit Tag and Export
         run: |
           bit tag --build --ignore-newest-version
