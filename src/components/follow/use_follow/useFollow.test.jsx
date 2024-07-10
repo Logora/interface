@@ -87,7 +87,7 @@ describe('useFollow', () => {
         expect(screen.getByText("Not followed"));
 
         const followButton = getByTestId("follow");
-        await act(async() => { await userEvent.click(followButton); });
+        await userEvent.click(followButton);
 
         expect(screen.getByText("Followed"));
     });
