@@ -4,7 +4,8 @@ import axios from "axios";
 const HTTP_TIMEOUT = 10000;
 
 const httpClient = axios.create({
-    timeout: HTTP_TIMEOUT
+    timeout: HTTP_TIMEOUT,
+    adapter: 'fetch'
 });
 
 export { httpClient };

@@ -34,7 +34,7 @@
     "@lexical/html": "^0.16.1",
     "@rooks/use-previous": "^4.11.2",
     "@rooks/use-sessionstorage-state": "^4.11.2",
-    "axios": "^1.6.2",
+    "axios": "^1.7.2",
     "chart.js": "^4.4.1",
     "chartjs-plugin-datalabels": "^2.2.0",
     "classnames": "^2.5.1",
