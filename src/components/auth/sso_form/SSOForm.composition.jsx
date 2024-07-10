@@ -4,7 +4,7 @@ import { IntlProvider } from 'react-intl';
 import { SSOForm } from './SSOForm';
 import { IconProvider } from '@logora/debate.icons.icon_provider';
 import * as regularIcons from '@logora/debate.icons.regular_icons';
-const { faker } = require('@faker-js/faker');
+import { faker } from '@faker-js/faker';
 
 export const DefaultSSOForm = () => {
     return (
