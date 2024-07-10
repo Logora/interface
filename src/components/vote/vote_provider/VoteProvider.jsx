@@ -11,12 +11,6 @@ export const VoteProvider = ({ voteableType, children }) => {
   const [votes, setVotes] = useState({})
   const [voteableIds, setVoteableIds] = useState([])
 
-  useEffect(() => {
-    if (isLoggedIn && voteableIds && voteableIds.length > 0) {
-      getVotes()
-    }
-  }, [isLoggedIn, voteableIds])
-
   const getVotes = () => {
     api
       .getList('votes', {
@@ -44,6 +38,12 @@ export const VoteProvider = ({ voteableType, children }) => {
       })
   }
 
+  useEffect(() => {
+    if (isLoggedIn && voteableType && voteableIds && voteableIds.length > 0) {
+      getVotes()
+    }
+  }, [isLoggedIn, voteableIds])
+
   const addVoteableIds = voteableIds => {
     setVoteableIds(prevIds => [...prevIds, ...voteableIds])
   }
@@ -57,7 +57,7 @@ export const VoteProvider = ({ voteableType, children }) => {
 
 VoteProvider.propTypes = {
   /** The type of voteable item */
-  voteableType: PropTypes.string.isRequired,
+  voteableType: PropTypes.string,
   /** The child components of VoteProvider */
   children: PropTypes.node.isRequired
 }
