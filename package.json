@@ -7,7 +7,7 @@
   "author": "Logora <contact@logora.fr>",
   "scripts": {
     "start": "bit start",
-    "test": "bit test --all",
+    "test": "bit test",
     "test:coverage": "bit test --coverage"
   },
   "repository": {

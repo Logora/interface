@@ -46,7 +46,7 @@ Dropdown.propTypes = {
     /** Callback triggered when clicking the dropdown button */
     onClick: PropTypes.func,
     /** Dropdown horizontal alignment, can be `left`, `center` or `right` */
-    horizontalPosition: PropTypes.string.isRequired,
+    horizontalPosition: PropTypes.string,
     /** Disable dropdown */
     disabled: PropTypes.bool,
     /** Class name passed to the root container */
