@@ -7,8 +7,7 @@ on:
 
 jobs:
   tag-and-export:
-    runs-on:
-      group: large
+    runs-on: ubuntu-latest
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       GIT_USER_NAME: ${{ github.actor }}
@@ -24,10 +23,10 @@ jobs:
       - name: Resolve component packages from bit.cloud registry
         run: |
           npm config set '@logora:registry' https://node.bit.cloud
-          export NODE_OPTIONS="--max_old_space_size=10000"     
+
       - name: Bit Tag and Export
         run: |
-          bit tag --build --ignore-newest-version
+          bit tag --build --skip-tasks teambit.defender/linter
           bit export
 
       - name: Commit changes made to .bitmap

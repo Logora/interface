@@ -1,4 +1,5 @@
-import { render, screen, act } from '@testing-library/react';
+import React from 'react';
+import { render, screen } from '@testing-library/react';
 import { useFollow } from './useFollow';
 import { dataProvider, DataProviderContext } from '@logora/debate.data.data_provider';
 import { AuthContext } from '@logora/debate.auth.use_auth';
@@ -6,7 +7,6 @@ import { ConfigProvider } from '@logora/debate.data.config_provider';
 import { ModalProvider } from '@logora/debate.dialog.modal';
 import userEvent from '@testing-library/user-event';
 import { faker } from '@faker-js/faker';
-import React from 'react';
 
 const httpClient = {
     get: () => null,

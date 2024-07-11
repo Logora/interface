@@ -14,7 +14,6 @@ describe('FollowButton', () => {
 
     it('should show "Followed" text when clicked', () => {
         jest.mock('@logora/debate.auth.use_auth');
-        jest.mock('@logora/debate.hooks.use_auth_required');
 
         const { queryByTestId } = render(<DefaultFollowButton />);
         fireEvent.click(queryByTestId('button'));

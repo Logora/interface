@@ -7,25 +7,22 @@
     "name": "Logora",
     "icon": "https://logora.fr/assets/logora-logo-3f7b41aec2d1ae4d6582ba3f7be5f73b42b086e49d69f46ae387b006c41e7046.png",
     "defaultDirectory": "src/components/{name}",
-    "defaultScope": "logora.debate"
+    "defaultScope": "logora.debate",
+    "resolveAspectsFromNodeModules": true,
+    "resolveEnvsFromRoots": true
   },
   "teambit.dependencies/dependency-resolver": {
-    "packageManager": "teambit.dependencies/yarn",
-    "policy": {
-      "dependencies": {},
-      "peerDependencies": {}
-    },
+    "packageManager": "teambit.dependencies/pnpm",
     "linkCoreAspects": true
   },
   "teambit.preview/preview": {
     "bundlingStrategy": "component"
   },
   "teambit.harmony/bit": {
-    "engine": "1.2.7"
+    "engine": "1.7.41"
   },
   "teambit.workspace/variants": {
     "*": {
-      "teambit.react/react": {},
       "teambit.component/dev-files": {
         "devFilePatterns": [
           "**/*.story.+(js|ts|jsx|tsx)",

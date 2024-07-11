@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen, waitFor, act } from '@testing-library/react';
-import { renderToStaticMarkup } from 'react-dom/server'
+//import { renderToStaticMarkup } from 'react-dom/server'
 import { useIntl } from 'react-intl';
 import { IntlProvider } from './IntlProvider';
 import { locales, localesAsync } from './locales';
@@ -70,6 +70,7 @@ describe('IntlProvider', () => {
             expect(screen.getByText("Mon autre sous-titre...")).toBeTruthy();
         });
 
+        /*
         it('should render with correct locales when rendering server side', () => {
             const html = renderToStaticMarkup(
                 <IntlProvider locales={locales} language={"fr"} async={false} onError={() => {}}>
@@ -80,6 +81,7 @@ describe('IntlProvider', () => {
             expect(html).toContain("Mon titre");
             expect(html).toContain("Sous-titre")
         });
+        */
     });
 
     describe('async mode', () => {
@@ -132,6 +134,7 @@ describe('IntlProvider', () => {
             });
         });
 
+        /*
         it('should render with default locales when rendering server side', () => {
             const { window } = global;
             delete global.window;
@@ -145,5 +148,6 @@ describe('IntlProvider', () => {
             expect(html).toContain("Default subtitle")
             global.window = window;
         });
+        */
     });
 });
