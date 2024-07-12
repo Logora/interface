@@ -5,12 +5,20 @@ Design system for [Logora](https://logora.fr) made with React and using [Bit](ht
 
 View all components [here](https://bit.cloud/logora/debate/)
 
+## Installation
 
-## Install
+### Install bit
 
 ```bash
 npm i -g @teambit/bvm
 bvm install
+```
+
+### Install dependencies
+
+```bash
+bit install
+bit compile
 ```
 
 ## Run
@@ -22,5 +30,16 @@ bit start
 ## Test components
 
 ```bash
-yarn test
+bit test
+```
+
+## Working with components
+
+### Add component
+
+Example: to add a component called 'action/button'.
+Place component files in 'src/components/action/button'.
+
+```bash
+bit add src/components/action/button --id action/button
 ```
