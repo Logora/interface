@@ -1,5 +1,4 @@
 @import '~@logora/debate.styles.theme/_theme.scss';
-@import '~@logora/debate.styles.display/_display.scss';
 @import '~@logora/debate.styles.spacing/_spacing.scss';
 
 .container {
@@ -42,8 +41,6 @@
 .dropdownItem {
     display: block;
     width: 100%;
-    @include p(2, xs);
-    @include px(3, xs);
     clear: both;
     text-align: inherit; 
     white-space: nowrap;
@@ -51,6 +48,8 @@
     border: 0;
     text-align: left;
     font-size: $font-size-small;
+    @include p(2, xs);
+    @include px(3, xs);
     &:hover{
         background-color: rgba(0, 0, 0, 0.03);
     }
