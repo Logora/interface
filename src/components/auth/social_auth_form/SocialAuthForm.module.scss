@@ -103,10 +103,11 @@
 	border: $box-border;
 	box-shadow: $box-shadow;
 	border-radius: $box-border-radius;
-	@include p(3, xs);
+	cursor: pointer;
 	width: 300px !important;
 	height: 50px !important;
 	margin-bottom: 15px;
+	@include p(3, xs);
 	&:hover {
 		box-shadow: 0 0 3px 3px rgba(66, 133, 244, 0.3);
 	}
@@ -116,7 +117,6 @@
 		border-right: 1px solid $background-color-secondary;
 		@include pr(2, xs);
 	}
-	cursor: pointer;
 }
 
 .textMailLoginButton {

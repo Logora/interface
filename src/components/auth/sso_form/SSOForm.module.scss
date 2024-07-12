@@ -1,5 +1,4 @@
 @import '~@logora/debate.styles.theme/_theme.scss';
-@import '~@logora/debate.styles.display/_display.scss';
 @import '~@logora/debate.styles.spacing/_spacing.scss';
 
 .ssoForm {
@@ -9,9 +8,9 @@
 }
 
 .logo {
+  align-self: center;
   @include mt(0, sm);
   @include mb(3, xs);
-  align-self: center;
 }
 
 .logoImage {
@@ -30,11 +29,11 @@
 
 .mainText {
   font-size: $font-size-normal;
+  font-weight: $font-weight-normal;
   color: $text-primary;
   text-align: center;
   @include mx(2, xs);
   @include mx(4, sm);
-  font-weight: $font-weight-normal;
 }
 
 .title {
@@ -61,8 +60,8 @@
   color: $call-primary;
   color: $call-primary !important;
   text-decoration: underline;
-  @include ml(2, xs);
   cursor: pointer;
+  @include ml(2, xs);
 }
 
 .cguButton {
@@ -82,8 +81,8 @@
 }
 
 .error {
+  color: $cancel-primary;
   @include pb(2, xs);
-  color: $cancel-primary
 }
 
 .termsTarget {
