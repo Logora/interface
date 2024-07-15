@@ -43,11 +43,11 @@
 .listItem {
     text-decoration: none !important;
     color: inherit !important;
-    border: $box-border;
-    border-radius: $box-border-radius;
+    border: $box-border !important;
+    border-radius: $box-border-radius !important;
     @include p(3, xs);
 
     &:hover {
-        border: 1px solid black;
+        border: 1px solid black !important;
     }
 }
