@@ -57,7 +57,7 @@
     "react-use-id-hook": "^1.0.1",
     "use-debounce": "^10.0.0",
     "use-onclickoutside": "^0.4.1",
-    "uuid": "^9.0.1",
+    "uuid": "^10.0.0",
     "webfontloader": "^1.6.28"
   },
   "devDependencies": {
