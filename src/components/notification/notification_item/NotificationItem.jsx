@@ -1,8 +1,8 @@
 import React from 'react';
-import { useRelativeTime } from '@logora/debate.hooks.use_relative_time';
-import { useRoutes } from '@logora/debate.data.config_provider';
 import { useHistory } from 'react-router-dom';
+import { useRoutes } from '@logora/debate.data.config_provider';
 import { useDataProvider } from '@logora/debate.data.data_provider';
+import { useRelativeTime } from '@logora/debate.hooks.use_relative_time';
 import { useIntl } from 'react-intl';
 import PropTypes from "prop-types";
 import cx from 'classnames';
