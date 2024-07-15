@@ -1,0 +1,52 @@
+@import '~@logora/debate.styles.theme/_theme.scss';
+@import '~@logora/debate.styles.spacing/_spacing.scss';
+@import '~@logora/debate.styles.flex/_flex.scss';
+@import '~@logora/debate.styles.display/_display.scss';
+
+.notificationMenuHeader {
+    @include display(flex, xs);
+    @include justify-content(space-between, xs);
+    align-items: center;
+    @include p(3, xs);
+    @include pr(1, xs);
+    @include pr(3, sm);
+    font-size: $font-size-small;
+    border-bottom: 1px solid $text-tertiary;
+    background-color: $text-tertiary;
+    cursor: default;
+}
+
+.notificationMenuHeaderText {
+    font-weight: $font-weight-bold;
+    font-size: $font-size-normal;
+    font-family: $font-family;
+}
+
+.readNotificationsButton {
+    cursor: pointer;
+    color: $text-primary;
+    text-align: right;
+    font-size: $font-size-small;
+    text-decoration: underline;
+}
+
+.readNotificationsButton:hover {
+    opacity: 0.9;
+}
+
+.notificationList {
+    list-style: none !important;
+    font-size: $font-size-normal;
+    @include display(flex, xs);
+    @include flex-direction(column, xs);
+    @include p(0, xs);
+    @include mb(2, xs);
+    overflow-y: scroll;
+    max-height: 50vh;
+}
+
+@media screen and (max-width: 767px) {
+    .notificationList {
+        max-height: calc(100vh - 320px);
+    }
+}
