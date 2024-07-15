@@ -513,6 +513,14 @@
         "mainFile": "index.js",
         "rootDir": "src/components/modal/side_modal"
     },
+    "notification/notification_item": {
+        "name": "notification/notification_item",
+        "scope": "",
+        "version": "",
+        "defaultScope": "logora.debate",
+        "mainFile": "index.js",
+        "rootDir": "src/components/notification/notification_item"
+    },
     "progress/loader": {
         "name": "progress/loader",
         "scope": "logora.debate",
