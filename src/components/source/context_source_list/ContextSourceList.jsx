@@ -13,7 +13,7 @@ export const ContextSourceList = ({ sources = [] }) => {
 
     const displaySource = (source) => {
         return (
-            <Link to={source.source_url} key={source.id} target="_blank" external>
+            <Link className={styles.listItem} to={source.source_url} key={source.id} target="_blank" external>
                 <ContextSourceBox imageUrl={source.origin_image_url} author={source.publisher} title={source.title} date={source.published_date} />
             </Link>
         )
