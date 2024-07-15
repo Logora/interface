@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import styles from './TogglePosition.module.scss';
 import cx from "classnames";
 
-export const TogglePosition = ({ activeLabel, firstLabel, firstLabelClassName = styles.firstLabelDefault, secondLabel, secondLabelClassName = styles.firstLabelDefault, onChange }) => {
+export const TogglePosition = ({ activeLabel, firstLabel, firstLabelClassName = styles.firstLabelDefault, secondLabel, secondLabelClassName = styles.secondLabelDefault, onChange }) => {
     const [activatedLabel, setActivatedLabel] = useState(activeLabel);
 
     useEffect(() => {
