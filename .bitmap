@@ -515,17 +515,10 @@
     },
     "notification/notification_item": {
         "name": "notification/notification_item",
-        "scope": "",
-        "version": "",
-        "defaultScope": "logora.debate",
+        "scope": "logora.debate",
+        "version": "0.0.1",
         "mainFile": "index.js",
-        "rootDir": "src/components/notification/notification_item",
-        "config": {
-            "teambit.react/react-env@1.0.85": {},
-            "teambit.envs/envs": {
-                "env": "teambit.react/react-env"
-            }
-        }
+        "rootDir": "src/components/notification/notification_item"
     },
     "progress/loader": {
         "name": "progress/loader",
