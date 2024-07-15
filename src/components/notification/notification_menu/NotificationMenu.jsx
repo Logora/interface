@@ -8,8 +8,8 @@ import PropTypes from "prop-types";
 
 
 export const NotificationMenu = ({
-  Notification,
-  NotificationDefinitions,
+    notification,
+    notificationDefinitions = {},
 }) => {
   const intl = useIntl();
   const api = useDataProvider();
@@ -59,7 +59,7 @@ export const NotificationMenu = ({
           gap={"0px"}
         >
           <Notification 
-            notificationDefinitions={NotificationDefinitions}
+            notificationDefinitions={notificationDefinitions}
             isOpen={readAll} 
           />
         </PaginatedList>
@@ -69,12 +69,8 @@ export const NotificationMenu = ({
 }
 
 NotificationMenu.propTypes = {
-  Notification: PropTypes.elementType.isRequired,
-  NotificationDefinitions: PropTypes.object.isRequired,
-  initialReadAll: PropTypes.bool,
+  notification: PropTypes.elementType.isRequired,
+  notificationDefinitions: PropTypes.object.isRequired,
 };
 
-NotificationMenu.defaultProps = {
-  initialReadAll: false,
-};
 
