@@ -23,8 +23,8 @@ const notificationDefinitions = {
 }
 
 const httpClient = {
-  post: (url, data, config) => {
-    return new Promise(function (resolve, reject) {
+  post: () => {
+    return new Promise(function (resolve) {
       resolve({ data: { success: true, data: {} } });
     });
   }
