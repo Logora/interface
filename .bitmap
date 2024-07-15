@@ -513,6 +513,20 @@
         "mainFile": "index.js",
         "rootDir": "src/components/modal/side_modal"
     },
+    "notification/notification_item": {
+        "name": "notification/notification_item",
+        "scope": "",
+        "version": "",
+        "defaultScope": "logora.debate",
+        "mainFile": "index.js",
+        "rootDir": "src/components/notification/notification_item",
+        "config": {
+            "teambit.react/react-env@1.0.85": {},
+            "teambit.envs/envs": {
+                "env": "teambit.react/react-env"
+            }
+        }
+    },
     "progress/loader": {
         "name": "progress/loader",
         "scope": "logora.debate",

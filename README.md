@@ -41,5 +41,5 @@ Example: to add a component called 'action/button'.
 Place component files in 'src/components/action/button'.
 
 ```bash
-bit add src/components/action/button --id action/button
+bit add src/components/action/button --id action/button --env teambit.react/react-env
 ```

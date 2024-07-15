@@ -1,0 +1,35 @@
+---
+description: A component to display a notification item with details.
+labels: ['notification']
+---
+
+A component to display a notification item.  
+It shows the notification type, content, and creation date.
+
+### Component usage
+
+```js
+import { NotificationItem } from '@logora/debate.notification.notification_item';
+```
+
+```js
+const notificationItem = {
+    id: 415,
+    created_at: "2024-02-07T10:34:16.888Z",
+    notify_type: 'new_comment',
+};
+
+const notificationDefinitions = {
+    new_comment: {
+        getRedirectUrl: () => '/comments/1',
+        getImage: () => <img src="image_url" />,
+        getContent: () => "New comment on your post."
+    },
+};
+
+<NotificationItem
+    notification={notificationItem}
+    notificationDefinitions={notificationDefinitions}
+    isRead={false}
+/>
+```
