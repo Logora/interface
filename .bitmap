@@ -586,7 +586,7 @@
     "source/context_source_list": {
         "name": "source/context_source_list",
         "scope": "logora.debate",
-        "version": "0.0.49",
+        "version": "0.0.50",
         "mainFile": "index.js",
         "rootDir": "src/components/source/context_source_list"
     },
