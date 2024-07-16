@@ -238,7 +238,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel, debatePositi
 									setTimeout(() => {
 										toggleReplyInput();
 										toggleReplies();
-									}, 1000)
+									}, 1000);
 								}}
 								isReply
 								avatarSize={40}
