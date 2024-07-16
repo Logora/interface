@@ -1,0 +1,56 @@
+@import '~@logora/debate.styles.theme/_theme.scss';
+@import '~@logora/debate.styles.spacing/_spacing.scss';
+
+.notificationItem {
+  cursor: pointer;
+  list-style-type: none;
+  @include p(0, xs);
+}
+
+.notificationItem a {
+  color: inherit;
+}
+
+.notificationItemBody {
+  display: flex !important;
+  flex-direction: row !important;
+  border-bottom: 2px dotted $darken-text-tertiary;
+  background-color: $darken-text-tertiary;
+  @include p(3, xs);
+
+  &:hover {
+    background-color: $darkest-text-tertiary;
+  }
+}
+
+.notificationItemBody.read {
+  background-color: $background-color-primary;
+
+  &:hover {
+    background-color: $text-tertiary;
+  }
+}
+
+.notificationImageContainer {
+  svg {
+    fill: $call-primary;
+  }
+
+  img {
+    border-radius: 50%;
+    width: 50px !important;
+    height: 50px !important;
+  }
+}
+
+.notificationItemContent {
+  font-size: $font-size-small;
+  @include ml(3, xs);
+}
+
+.notificationItemDate {
+  font-weight: $font-weight-normal;
+  color: $text-secondary;
+  font-size: $font-size-extra-small;
+  @include mt(1, xs);
+}

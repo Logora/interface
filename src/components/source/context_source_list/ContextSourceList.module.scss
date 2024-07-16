@@ -2,8 +2,6 @@
 @import '~@logora/debate.styles.spacing/_spacing.scss';
 
 .container {
-    @include p(4, sm);
-    @include p(3, xs);
     background-color: $background-color-primary;
     box-shadow: $box-shadow;
     border: $box-border-main-container;
@@ -11,6 +9,9 @@
     display: flex;
     flex-direction: column;
     gap: $spacer-lg;
+    @include p(4, sm);
+    @include p(3, xs);
+
     @include media-breakpoint-down(xs) {
         gap: $spacer;
     }
@@ -25,13 +26,28 @@
 .content {
     display: grid;
     gap: $spacer-lg;
+
     &.contentMobile {
         grid-template-columns: repeat(1, 1fr);
     }
+
     &.contentTablet {
         grid-template-columns: repeat(2, 1fr);
     }
+
     &.contentDesktop {
         grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.listItem {
+    text-decoration: none !important;
+    color: inherit !important;
+    border: $box-border !important;
+    border-radius: $box-border-radius !important;
+    @include p(3, xs);
+
+    &:hover {
+        border: 1px solid black !important;
     }
 }

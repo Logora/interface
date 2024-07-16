@@ -61,7 +61,7 @@
     "argument/argument": {
         "name": "argument/argument",
         "scope": "logora.debate",
-        "version": "0.0.85",
+        "version": "0.0.87",
         "mainFile": "index.js",
         "rootDir": "src/components/argument/argument"
     },
@@ -390,7 +390,7 @@
     "icons/spiegel_icons": {
         "name": "icons/spiegel_icons",
         "scope": "logora.debate",
-        "version": "0.0.21",
+        "version": "0.0.22",
         "mainFile": "index.js",
         "rootDir": "src/components/icons/spiegel_icons"
     },
@@ -404,7 +404,7 @@
     "input/argument_input": {
         "name": "input/argument_input",
         "scope": "logora.debate",
-        "version": "0.0.68",
+        "version": "0.0.70",
         "mainFile": "index.js",
         "rootDir": "src/components/input/argument_input"
     },
@@ -474,7 +474,7 @@
     "input/toggle_position": {
         "name": "input/toggle_position",
         "scope": "logora.debate",
-        "version": "0.0.17",
+        "version": "0.0.19",
         "mainFile": "index.js",
         "rootDir": "src/components/input/toggle_position"
     },
@@ -512,6 +512,13 @@
         "version": "0.0.37",
         "mainFile": "index.js",
         "rootDir": "src/components/modal/side_modal"
+    },
+    "notification/notification_item": {
+        "name": "notification/notification_item",
+        "scope": "logora.debate",
+        "version": "0.0.1",
+        "mainFile": "index.js",
+        "rootDir": "src/components/notification/notification_item"
     },
     "progress/loader": {
         "name": "progress/loader",
@@ -579,14 +586,14 @@
     "source/context_source_box": {
         "name": "source/context_source_box",
         "scope": "logora.debate",
-        "version": "0.0.50",
+        "version": "0.0.51",
         "mainFile": "index.js",
         "rootDir": "src/components/source/context_source_box"
     },
     "source/context_source_list": {
         "name": "source/context_source_list",
         "scope": "logora.debate",
-        "version": "0.0.48",
+        "version": "0.0.50",
         "mainFile": "index.js",
         "rootDir": "src/components/source/context_source_list"
     },

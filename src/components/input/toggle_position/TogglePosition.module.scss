@@ -10,8 +10,6 @@
 }
 
 .label {
-    @include py(1.5, xs);
-    @include px(2.5, xs);
     font-size: $font-size-small;
     color: $text-primary;
     cursor: pointer;
@@ -19,6 +17,8 @@
     font-weight: $font-weight-bold;
     transition: all .3s ease-in;
     border: 1px solid $darkest-text-tertiary;
+    @include py(1.5, xs);
+    @include px(2.5, xs);
 }
 
 .labelActive {

@@ -18,6 +18,9 @@
   "teambit.preview/preview": {
     "bundlingStrategy": "component"
   },
+  "teambit.generator/generator": {
+    "envs": ["teambit.react/react-env"]
+  },
   "teambit.harmony/bit": {
     "engine": "1.7.41"
   },
