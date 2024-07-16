@@ -1,9 +1,9 @@
-import React from "react";
-import { useLocation } from "react-router";
-import OauthPopup from "react-oauth-popup";
-import styles from "./OAuth2Button.module.scss";
-import classnames from "classnames";
-import PropTypes from "prop-types";
+import React from 'react';
+import { useLocation } from 'react-router';
+import OauthPopup from 'react-oauth-popup';
+import styles from './OAuth2Button.module.scss';
+import classnames from 'classnames';
+import PropTypes from 'prop-types';
 
 export const OAuth2Button = ({
   provider,
@@ -32,15 +32,15 @@ export const OAuth2Button = ({
 
   const getDialogUrl = () => {
     let baseUrl = new URL(authDialogUrl);
-    baseUrl.searchParams.append("client_id", clientId);
-    baseUrl.searchParams.append("redirect_uri", redirectUri);
-    baseUrl.searchParams.append("scope", scope);
+    baseUrl.searchParams.append('client_id', clientId);
+    baseUrl.searchParams.append('redirect_uri', redirectUri);
+    baseUrl.searchParams.append('scope', scope);
     if (responseType) {
-      baseUrl.searchParams.append("response_type", responseType);
+      baseUrl.searchParams.append('response_type', responseType);
     }
-    if (typeof window !== "undefined") {
+    if (typeof window !== 'undefined') {
       baseUrl.searchParams.append(
-        "state",
+        'state',
         window.btoa(
           window.location.origin +
             location.pathname +
@@ -66,9 +66,7 @@ export const OAuth2Button = ({
           <div className={styles.oauthPopupContainer}>{children}</div>
         </OauthPopup>
       ) : (
-        <a href={getDialogUrl()} className={className}>
-          {children}
-        </a>
+        <a href={getDialogUrl()}>{children}</a>
       )}
     </div>
   );
