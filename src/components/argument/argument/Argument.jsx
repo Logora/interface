@@ -234,9 +234,11 @@ export const Argument = ({ argument, argumentReplies, nestingLevel, debatePositi
 								positionId={vote?.position_id}
 								disabled={!debateIsActive}
 								hideSourceAction={config?.actions?.disableUserSources || false}
-								onSubmit={() => { 
-									toggleReplyInput();
-									toggleReplies();
+								onSubmit={() => {
+									setTimeout(() => {
+										toggleReplyInput();
+										toggleReplies();
+									}, 1000)
 								}}
 								isReply
 								avatarSize={40}
