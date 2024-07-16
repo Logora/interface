@@ -21,41 +21,34 @@ export const NotificationMenu = ({ notificationDefinitions = {} }) => {
     <>
       <div className={styles.notificationMenuHeader}>
         <div className={styles.notificationMenuHeaderText}>
-          {intl.formatMessage({ id: 'header.notifications' })}
+          {intl.formatMessage({ id: 'header.notifications', defaultMessage: "Alerts" })}
         </div>
         <div
           id='read_all_notifications'
           data-tid={"action_read_all_notifications"}
           className={styles.readNotificationsButton}
           tabIndex='0'
-          onKeyDown={(event) => {}}
           onClick={handleClick}
         >
-          {intl.formatMessage({ id: 'notifications.read_all' })}
+          {intl.formatMessage({ id: 'notifications.read_all', defaultMessage: "Mark all as read" })}
         </div>
       </div>
       <div className={styles.notificationList}>
-        <PaginatedList 
+        <PaginatedList
           currentListId={"notificationList"}
           loadingComponent={<UserContentSkeleton numberLines={0} />}
           resourcePropName="notification"
-          resource={'notifications'} 
+          resource={'notifications'}
           sort={"-created_at"}
           perPage={10}
           withToken={true}
           display={"column"}
           gap={"0px"}
         >
-          {(notifications) => (
-            notifications.map((notification) => (
-              <NotificationItem 
-                key={notification.id}
-                notification={notification}
-                notificationDefinitions={notificationDefinitions}
-                isRead={readAll} 
-              />
-            ))
-          )}
+          <NotificationItem
+            notificationDefinitions={notificationDefinitions}
+            isRead={readAll}
+          />
         </PaginatedList>
       </div>
     </>
@@ -63,5 +56,6 @@ export const NotificationMenu = ({ notificationDefinitions = {} }) => {
 }
 
 NotificationMenu.propTypes = {
+  /** Definitions for the notification types */
   notificationDefinitions: PropTypes.object.isRequired,
 };

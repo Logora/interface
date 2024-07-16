@@ -4,16 +4,16 @@
 @import '~@logora/debate.styles.display/_display.scss';
 
 .notificationMenuHeader {
-    @include display(flex, xs);
-    @include justify-content(space-between, xs);
-    align-items: center;
-    @include p(3, xs);
-    @include pr(1, xs);
-    @include pr(3, sm);
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
     font-size: $font-size-small;
     border-bottom: 1px solid $text-tertiary;
     background-color: $text-tertiary;
     cursor: default;
+    @include p(3, xs);
+    @include pr(1, xs);
+    @include pr(3, sm);
 }
 
 .notificationMenuHeaderText {
@@ -37,12 +37,12 @@
 .notificationList {
     list-style: none !important;
     font-size: $font-size-normal;
-    @include display(flex, xs);
-    @include flex-direction(column, xs);
-    @include p(0, xs);
-    @include mb(2, xs);
+    display: flex !important;
+    flex-direction: column !important;
     overflow-y: scroll;
     max-height: 50vh;
+    @include p(0, xs);
+    @include mb(2, xs);
 }
 
 @media screen and (max-width: 767px) {
