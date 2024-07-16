@@ -26,14 +26,6 @@ const httpClient = {
 
 const data = dataProvider(httpClient, "https://mock.example.api");
 
-const NotificationComponent = () => {
-  return (
-    <div>
-      {}
-    </div>
-  );
-};
-
 export const DefaultNotificationMenu = () => {
   return (
     <MemoryRouter>
@@ -41,10 +33,7 @@ export const DefaultNotificationMenu = () => {
         <DataProviderContext.Provider value={{ dataProvider: data }}>
           <IntlProvider locale="en">
             <IconProvider library={regularIcons}>
-              <NotificationMenu
-                Notification={NotificationComponent}
-                NotificationDefinitions={notificationDefinitions}
-              />
+              <NotificationMenu notificationDefinitions={notificationDefinitions} />
             </IconProvider>
           </IntlProvider>
         </DataProviderContext.Provider>
@@ -60,11 +49,7 @@ export const NotificationMenuWithReadAll = () => {
         <DataProviderContext.Provider value={{ dataProvider: data }}>
           <IntlProvider locale="en">
             <IconProvider library={regularIcons}>
-              <NotificationMenu
-                Notification={NotificationComponent}
-                NotificationDefinitions={notificationDefinitions}
-                initialReadAll={true}
-              />
+              <NotificationMenu notificationDefinitions={notificationDefinitions} readAll={true} />
             </IconProvider>
           </IntlProvider>
         </DataProviderContext.Provider>

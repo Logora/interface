@@ -2,48 +2,36 @@ import React, { useState } from "react";
 import { useDataProvider } from '@logora/debate.data.data_provider';
 import { useIntl } from "react-intl";
 import { PaginatedList } from "@logora/debate.list.paginated_list";
+import { NotificationItem } from '@logora/debate.notification.notification_item';
 import { UserContentSkeleton } from '@logora/debate.skeleton.user_content_skeleton';
 import styles from "./NotificationMenu.module.scss";
 import PropTypes from "prop-types";
 
-
-export const NotificationMenu = ({
-    notification,
-    notificationDefinitions = {},
-}) => {
+export const NotificationMenu = ({ notificationDefinitions = {} }) => {
   const intl = useIntl();
   const api = useDataProvider();
   const [readAll, setReadAll] = useState(false);
 
   const handleClick = () => {
     setReadAll(true);
-    api.create("notifications/read/all", {}).then((response) => {});
-  };
-
-  const handleKeyDown = (event, method) => {
-    const ENTER_KEY = 13;
-    if (event.keyCode == ENTER_KEY) {
-      if (method === "readAllNotifications") {
-        handleClick();
-      }
-    }
+    api.create("notifications/read/all", {}).then(() => {});
   };
 
   return (
     <>
       <div className={styles.notificationMenuHeader}>
         <div className={styles.notificationMenuHeaderText}>
-          { intl.formatMessage({ id: 'header.notifications' }) }
+          {intl.formatMessage({ id: 'header.notifications' })}
         </div>
         <div
           id='read_all_notifications'
           data-tid={"action_read_all_notifications"}
           className={styles.readNotificationsButton}
           tabIndex='0'
-          onKeyDown={(event) => handleKeyDown(event, "readAllNotifications")}
+          onKeyDown={(event) => {}}
           onClick={handleClick}
         >
-          { intl.formatMessage({ id: 'notifications.read_all' }) }
+          {intl.formatMessage({ id: 'notifications.read_all' })}
         </div>
       </div>
       <div className={styles.notificationList}>
@@ -58,10 +46,16 @@ export const NotificationMenu = ({
           display={"column"}
           gap={"0px"}
         >
-          <Notification 
-            notificationDefinitions={notificationDefinitions}
-            isOpen={readAll} 
-          />
+          {(notifications) => (
+            notifications.map((notification) => (
+              <NotificationItem 
+                key={notification.id}
+                notification={notification}
+                notificationDefinitions={notificationDefinitions}
+                isRead={readAll} 
+              />
+            ))
+          )}
         </PaginatedList>
       </div>
     </>
@@ -69,8 +63,5 @@ export const NotificationMenu = ({
 }
 
 NotificationMenu.propTypes = {
-  notification: PropTypes.elementType.isRequired,
   notificationDefinitions: PropTypes.object.isRequired,
 };
-
-
