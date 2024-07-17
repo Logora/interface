@@ -99,4 +99,6 @@ OAuth2Button.propTypes = {
   className: PropTypes.string,
   /**  Open a popup on click. If false, the button will be a link */
   popup: PropTypes.bool,
+  /**  State to be passed to the OAuth2 server */
+  state: PropTypes.string,
 };
