@@ -17,7 +17,7 @@ export const OAuth2Button = ({
   popup = true,
   children,
   className,
-  state = undefined,
+  state = "",
 }) => {
   const location = useLocation();
 
