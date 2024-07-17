@@ -520,6 +520,20 @@
         "mainFile": "index.js",
         "rootDir": "src/components/notification/notification_item"
     },
+    "notification/notification_menu": {
+        "name": "notification/notification_menu",
+        "scope": "",
+        "version": "",
+        "defaultScope": "logora.debate",
+        "mainFile": "index.js",
+        "rootDir": "src/components/notification/notification_menu",
+        "config": {
+            "teambit.react/react-env@1.0.86": {},
+            "teambit.envs/envs": {
+                "env": "teambit.react/react-env"
+            }
+        }
+    },
     "progress/loader": {
         "name": "progress/loader",
         "scope": "logora.debate",
