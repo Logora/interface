@@ -1,9 +1,9 @@
-import React from 'react';
-import { useLocation } from 'react-router';
-import OauthPopup from 'react-oauth-popup';
-import styles from './OAuth2Button.module.scss';
-import classnames from 'classnames';
-import PropTypes from 'prop-types';
+import React from "react";
+import { useLocation } from "react-router";
+import OauthPopup from "react-oauth-popup";
+import styles from "./OAuth2Button.module.scss";
+import classnames from "classnames";
+import PropTypes from "prop-types";
 
 export const OAuth2Button = ({
   provider,
@@ -17,6 +17,7 @@ export const OAuth2Button = ({
   popup = true,
   children,
   className,
+  state = "",
 }) => {
   const location = useLocation();
 
@@ -32,21 +33,24 @@ export const OAuth2Button = ({
 
   const getDialogUrl = () => {
     let baseUrl = new URL(authDialogUrl);
-    baseUrl.searchParams.append('client_id', clientId);
-    baseUrl.searchParams.append('redirect_uri', redirectUri);
-    baseUrl.searchParams.append('scope', scope);
+    baseUrl.searchParams.append("client_id", clientId);
+    baseUrl.searchParams.append("redirect_uri", redirectUri);
+    baseUrl.searchParams.append("scope", scope);
     if (responseType) {
-      baseUrl.searchParams.append('response_type', responseType);
+      baseUrl.searchParams.append("response_type", responseType);
     }
-    if (typeof window !== 'undefined') {
+
+    if (typeof window !== "undefined") {
       baseUrl.searchParams.append(
-        'state',
-        window.btoa(
-          window.location.origin +
-            location.pathname +
-            location.hash +
-            location.search
-        )
+        "state",
+        state
+          ? window.btoa(state)
+          : window.btoa(
+              window.location.origin +
+                location.pathname +
+                location.hash +
+                location.search
+            )
       );
     }
     return baseUrl.href;
@@ -95,4 +99,6 @@ OAuth2Button.propTypes = {
   className: PropTypes.string,
   /**  Open a popup on click. If false, the button will be a link */
   popup: PropTypes.bool,
+  /**  State to be passed to the OAuth2 server */
+  state: PropTypes.string,
 };
