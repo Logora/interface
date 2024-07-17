@@ -1,0 +1,25 @@
+---
+description: A component to display a list of notifications with details and actions.
+labels: ['notification']
+---
+
+A component to display a notification menu with a list of notifications.
+It shows a list of notifications with their type, content, and creation date.
+
+### Component usage
+
+```js
+import NotificationMenu from '@logora/debate.notification.notification_menu';
+```
+
+```js
+const notificationDefinitions = {
+  new_comment: {
+    getRedirectUrl: () => '/comments/1',
+    getImage: () => <img src={faker.image.abstract()} alt="notification-image" />,
+    getContent: (notification) => faker.commerce.productDescription()
+  },
+}
+
+<NotificationMenu notificationDefinitions={notificationDefinitions} />
+```

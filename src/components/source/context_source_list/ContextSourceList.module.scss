@@ -8,13 +8,9 @@
     border-radius: $box-border-radius;
     display: flex;
     flex-direction: column;
-    gap: $spacer-lg;
+    gap: $spacer;
     @include p(4, sm);
     @include p(3, xs);
-
-    @include media-breakpoint-down(xs) {
-        gap: $spacer;
-    }
 }
 
 .title {
@@ -48,6 +44,6 @@
     @include p(3, xs);
 
     &:hover {
-        border: 1px solid black !important;
+        border: 1px solid $text-primary !important;
     }
 }
