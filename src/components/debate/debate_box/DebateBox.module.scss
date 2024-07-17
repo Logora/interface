@@ -101,7 +101,7 @@
 .debateBoxTitle {
   font-weight: $font-weight-bold;
   min-height: 2.7em;
-  line-height: $line-height-loose;
+  line-height: $line-height-normal;
   a {
     color: $text-primary;
     &:hover{
@@ -155,7 +155,8 @@
 }
 
 .debateBoxNumbers {
-  font-size: $font-size-small;
+  font-size: $font-size-normal;
+  line-height: $line-height-none;
   display: flex !important;
   flex-direction: row !important;
   align-items: flex-end !important;
@@ -181,4 +182,5 @@
   align-items: center;
   color: $text-primary;
   font-size: $font-size-extra-small;
+  line-height: $line-height-tight;
 }
