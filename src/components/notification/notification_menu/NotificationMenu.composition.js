@@ -60,7 +60,7 @@ export const DefaultNotificationMenu = () => {
 };
 
 export const NotificationMenuEmpty = () => {
-  const httpClientEmpty = httpClient;
+  const httpClientEmpty = { ...httpClient };
   httpClientEmpty.get = () => {
     return new Promise(function (resolve) {
       resolve({ data: { success: true, data: [] } });
