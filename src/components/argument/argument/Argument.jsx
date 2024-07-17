@@ -16,11 +16,11 @@ import { ContentFooter } from '@logora/debate.user_content.content_footer';
 import { VoteButton } from '@logora/debate.vote.vote_button';
 import { Button } from '@logora/debate.action.button';
 import { VotePaginatedList } from '@logora/debate.list.paginated_list';
+import { HashScroll } from '@logora/debate.tools.hash_scroll';
 import cx from "classnames";
 import draftToHtml from "draftjs-to-html";
 import styles from "./Argument.module.scss";
 const ArgumentInput = lazy(() => import('@logora/debate.input.argument_input'));
-import { HashScroll } from '@logora/debate.tools.hash_scroll';
 import PropTypes from "prop-types";
 
 export const Argument = ({ argument, argumentReplies, nestingLevel, debatePositions, disableLinks, replyToArgument, flashParent, expandable, debateIsActive, isComment, hideReplies, debateName, vote, fixedContentHeight, enableEdition = true, deleteListId }) => {
