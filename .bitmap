@@ -61,7 +61,7 @@
     "argument/argument": {
         "name": "argument/argument",
         "scope": "logora.debate",
-        "version": "0.0.95",
+        "version": "0.0.96",
         "mainFile": "index.js",
         "rootDir": "src/components/argument/argument"
     },
@@ -194,7 +194,7 @@
     "debate/debate_box": {
         "name": "debate/debate_box",
         "scope": "logora.debate",
-        "version": "0.0.73",
+        "version": "0.0.74",
         "mainFile": "index.js",
         "rootDir": "src/components/debate/debate_box"
     },
@@ -264,7 +264,7 @@
     "embed/embed_header": {
         "name": "embed/embed_header",
         "scope": "logora.debate",
-        "version": "0.0.52",
+        "version": "0.0.53",
         "mainFile": "index.js",
         "rootDir": "src/components/embed/embed_header"
     },
@@ -593,14 +593,14 @@
     "source/context_source_box": {
         "name": "source/context_source_box",
         "scope": "logora.debate",
-        "version": "0.0.51",
+        "version": "0.0.52",
         "mainFile": "index.js",
         "rootDir": "src/components/source/context_source_box"
     },
     "source/context_source_list": {
         "name": "source/context_source_list",
         "scope": "logora.debate",
-        "version": "0.0.51",
+        "version": "0.0.52",
         "mainFile": "index.js",
         "rootDir": "src/components/source/context_source_list"
     },
