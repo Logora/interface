@@ -522,17 +522,10 @@
     },
     "notification/notification_menu": {
         "name": "notification/notification_menu",
-        "scope": "",
-        "version": "",
-        "defaultScope": "logora.debate",
+        "scope": "logora.debate",
+        "version": "0.0.1",
         "mainFile": "index.js",
-        "rootDir": "src/components/notification/notification_menu",
-        "config": {
-            "teambit.react/react-env@1.0.86": {},
-            "teambit.envs/envs": {
-                "env": "teambit.react/react-env"
-            }
-        }
+        "rootDir": "src/components/notification/notification_menu"
     },
     "progress/loader": {
         "name": "progress/loader",
