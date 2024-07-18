@@ -115,6 +115,7 @@
   display: block;
   @include line-clamp(2);
   font-size: $font-size-medium;
+  line-height: $line-height-normal;
   &.debateTitleMobile{
     -webkit-line-clamp: 3;
   }
