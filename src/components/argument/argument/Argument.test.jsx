@@ -338,11 +338,7 @@ describe('Argument', () => {
             await userEvent.click(submitButton);
         });
 
-        expect(getByText('Your position')).toBeInTheDocument();
-        expect(getByText("Your answer")).toBeInTheDocument();
-        expect(getByText(debatePositions[1].name)).toBeInTheDocument();
         expect(getByText("Your contribution has been sent !")).toBeInTheDocument();
-
     });
     
 });

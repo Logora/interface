@@ -90,6 +90,12 @@ export const Argument = ({ argument, argumentReplies, nestingLevel, debatePositi
 		setActiveAnchor(true);
 	};
 
+    const addReply = (newReply) => {
+        setReplies([...replies, newReply]);
+        toggleReplyInput();
+        toggleReplies();
+    }
+
 	return (
 		<HashScroll elementId={componentId} onScroll={() => setFlash(true)}>
 			<div
@@ -234,12 +240,17 @@ export const Argument = ({ argument, argumentReplies, nestingLevel, debatePositi
 								positionId={vote?.position_id}
 								disabled={!debateIsActive}
 								hideSourceAction={config?.actions?.disableUserSources || false}
-								onSubmit={() => {
-									setTimeout(() => {
-										toggleReplyInput();
-										toggleReplies();
-									}, 1000);
-								}}
+                                onSubmit={(replyData) => {
+                                    const newReply = {
+                                        ...replyData,
+                                        id: `tempID-${Date.now()}`,
+                                        created_at: new Date().toISOString(),
+                                        author: currentUser,
+                                        is_reply: true,
+                                        reply_to_id: argument.id,
+                                    };
+                                    addReply(newReply);
+                                }}
 								isReply
 								avatarSize={40}
 								placeholder={intl.formatMessage({ id:"input.reply_input.your_answer", defaultMessage: "Your answer" })}
