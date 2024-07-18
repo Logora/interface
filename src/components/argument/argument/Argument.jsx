@@ -243,7 +243,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel, debatePositi
                                 onSubmit={(replyData) => {
                                     const newReply = {
                                         ...replyData,
-                                        id: `temp-${Date.now()}`,
+                                        id: `tempID-${Date.now()}`,
                                         created_at: new Date().toISOString(),
                                         author: currentUser,
                                         is_reply: true,
