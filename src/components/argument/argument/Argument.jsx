@@ -240,16 +240,14 @@ export const Argument = ({ argument, argumentReplies, nestingLevel, debatePositi
 								positionId={vote?.position_id}
 								disabled={!debateIsActive}
 								hideSourceAction={config?.actions?.disableUserSources || false}
-                                onSubmit={(formData) => {
+                                onSubmit={(replyData) => {
                                     const newReply = {
-                                        ...formData,
+                                        ...replyData,
                                         id: `temp-${Date.now()}`,
                                         created_at: new Date().toISOString(),
                                         author: currentUser,
                                         is_reply: true,
                                         reply_to_id: argument.id,
-                                        score: 0,
-                                        upvotes: 0,
                                     };
                                     addReply(newReply);
                                 }}
