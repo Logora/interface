@@ -46,6 +46,7 @@ export const Argument = ({
     const [startReplyInput, setStartReplyInput] = useState(false);
     const [richContent, setRichContent] = useState(null);
     const [replies, setReplies] = useState([]);
+	const [currentReply, setCurrentReply] = useState(undefined);
     const [activeAnchor, setActiveAnchor] = useState(false);
     const intl = useIntl();
     const { isLoggedIn, currentUser } = useAuth();
@@ -111,7 +112,7 @@ export const Argument = ({
 
     const onReplySubmit = (reply) => {
         toggleReplyInput();
-        setReplies(prevReplies => [reply, ...prevReplies]);
+        setCurrentReply(reply)
 		toggleReplies();
     };
 
@@ -281,7 +282,7 @@ export const Argument = ({
                                 debateIsActive={debateIsActive}
                                 debateName={debateName}
                                 debatePositions={debatePositions && debatePositions}
-                                argumentReplies={argumentReplies ? [...replies, ...argumentReplies] : replies}
+                                argumentReplies={argumentReplies}
                                 replyToArgument={argument}
                                 flashParent={(argumentId) => scrollToArgument(`argument_${argumentId}`)}
                                 isComment={isComment}
@@ -289,7 +290,7 @@ export const Argument = ({
                         </VotePaginatedList>
                     </div>
                 }
-                { argumentReplies?.length > 0 && replies?.length > 0 && !expandReplies && !activeAnchor &&
+                { (currentReply || (argumentReplies?.length > 0 && replies?.length > 0)) && !expandReplies && !activeAnchor &&
                     <div className={styles.repliesList}>
                         <ArgumentContainer
                             argument={replies[0]}
