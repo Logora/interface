@@ -73,10 +73,6 @@ export const Argument = ({
         }
     }, [argumentReplies])
 
-	useEffect(() => {
-		console.log(replies)
-	}, [replies])
-
     const scrollToArgument = (argumentId) => {
         const currentArgumentId = componentId;
         if (currentArgumentId === argumentId) {
@@ -285,7 +281,7 @@ export const Argument = ({
                                 debateIsActive={debateIsActive}
                                 debateName={debateName}
                                 debatePositions={debatePositions && debatePositions}
-                                argumentReplies={argumentReplies}
+                                argumentReplies={argumentReplies ? [...replies, ...argumentReplies] : replies}
                                 replyToArgument={argument}
                                 flashParent={(argumentId) => scrollToArgument(`argument_${argumentId}`)}
                                 isComment={isComment}
