@@ -48,7 +48,7 @@
     position: relative;
     max-width: 80%;
     @include mt(3, xs);
-    
+
     .suggestionProgress {
         @include mt(1, xs);
         height: 12px;
@@ -94,6 +94,7 @@
         display: flex;
         font-size: $font-size-small;
         @include mb(2, xs);
+
         svg {
             @include mx(1, xs);
             @include mb(1, xs);
@@ -118,7 +119,7 @@
         transform: translateX(50%);
         opacity: 0;
     }
-    
+
     50% {
         transform: translateX(0);
         opacity: 1;

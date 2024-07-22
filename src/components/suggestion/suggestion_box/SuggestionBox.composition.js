@@ -37,7 +37,6 @@ const generateSuggestion = (overrides) => ({
     name: faker.lorem.words(),
     ...overrides
 });
-// Configuration de la suggestion simulée
 const suggestion = generateSuggestion();
 
 const config = {
