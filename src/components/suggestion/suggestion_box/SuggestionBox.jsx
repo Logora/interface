@@ -6,13 +6,15 @@ import { useResponsive } from "@logora/debate.hooks.use_responsive";
 import { useAuth } from "@logora/debate.auth.use_auth";
 import { ContentFooter } from '@logora/debate.user_content.content_footer';
 import { SuggestionVoteBox } from '@logora/debate.vote.suggestion_vote_box';
-import { Button } from '@logora/debate.action.button'; 
+import { Button } from '@logora/debate.action.button';
 import { ProgressBar } from "@logora/debate.progress.progress_bar";
 import { Icon } from '@logora/debate.icons.icon';
 import { useTranslatedContent } from '@logora/debate.translation.translated_content';
 import { TranslationButton } from '@logora/debate.translation.translation_button';
 import styles from './SuggestionBox.module.scss';
 import cx from 'classnames';
+import PropTypes from "prop-types";
+
 
 export const SuggestionBox = ({ suggestion, disabled = false }) => {
     const intl = useIntl();
@@ -37,9 +39,9 @@ export const SuggestionBox = ({ suggestion, disabled = false }) => {
     }
 
     const getTag = () => {
-        if(suggestion.is_accepted) {
+        if (suggestion.is_accepted) {
             return intl.formatMessage({ id: "suggestion.selected", defaultMessage: "Selected" });
-        } else if(suggestion.is_expired === true || endDate < startDate) {
+        } else if (suggestion.is_expired === true || endDate < startDate) {
             return intl.formatMessage({ id: "suggestion.ended", defaultMessage: "Expired" });
         } else {
             return null;
@@ -47,9 +49,9 @@ export const SuggestionBox = ({ suggestion, disabled = false }) => {
     }
 
     const getTagClassName = () => {
-        if(suggestion.is_accepted) {
+        if (suggestion.is_accepted) {
             return styles.selected;
-        } else if(suggestion.is_expired === true || endDate < startDate) {
+        } else if (suggestion.is_expired === true || endDate < startDate) {
             return styles.expired;
         } else {
             return null;
@@ -59,10 +61,10 @@ export const SuggestionBox = ({ suggestion, disabled = false }) => {
     return (
         <div className={styles.container}>
             <ContentHeader
-                author={suggestion.author} 
+                author={suggestion.author}
                 tag={getTag()}
                 tagClassName={getTagClassName()}
-                date={endDate < startDate ? null : endDate.getTime()} 
+                date={endDate < startDate ? null : endDate.getTime()}
             />
             <div className={styles.suggestion}>
                 {content.translatedContent}
@@ -71,44 +73,49 @@ export const SuggestionBox = ({ suggestion, disabled = false }) => {
                 }
             </div>
             <div className={styles.footer}>
-                <ContentFooter 
+                <ContentFooter
                     resource={suggestion}
                     reportType={"DebateSuggestion"}
                     deleteType={"debate_suggestions"}
-					deleteListId={"suggestionsList"}
+                    deleteListId={"suggestionsList"}
                     disabled={disabled}
                     enableEdition={false}
                     showActions={suggestion.is_accepted !== true}
                     containerClassName={styles.footerContainer}
                     voteActionClassName={styles.footerActionContainer}
                 >
-                    { suggestion.is_published && suggestion.is_accepted && suggestion.group && 
+                    {suggestion.is_published && suggestion.is_accepted && suggestion.group &&
                         <div className={styles.voteButton}>
-                            <Button rightIcon={<Icon name="lightArrow" width={10} height={10} className={styles.arrowIcon} />} className={styles.linkToDebate} to={routes.debateShowLocation.toUrl({debateSlug: suggestion.group.slug})}>
-                                <span>{ intl.formatMessage({ id: "action.link_to_debate", defaultMessage: "Go to debate" }) }</span>
+                            <Button rightIcon={<Icon name="lightArrow" width={10} height={10} className={styles.arrowIcon} />} className={styles.linkToDebate} to={routes.debateShowLocation.toUrl({ debateSlug: suggestion.group.slug })}>
+                                <span>{intl.formatMessage({ id: "action.link_to_debate", defaultMessage: "Go to debate" })}</span>
                             </Button>
                         </div>
                     }
-                    { suggestion.is_accepted === false && suggestion.is_expired === false &&
-                        <SuggestionVoteBox 
-                            voteableType={"DebateSuggestion"} 
-                            voteableId={suggestion.id} 
-                            totalUpvote={totalUpvotes} 
-                            totalDownvote={suggestion.total_downvotes} 
-                            onVote={(isUpvote) => activeVote(isUpvote)} 
+                    {suggestion.is_accepted === false && suggestion.is_expired === false &&
+                        <SuggestionVoteBox
+                            voteableType={"DebateSuggestion"}
+                            voteableId={suggestion.id}
+                            totalUpvote={totalUpvotes}
+                            totalDownvote={suggestion.total_downvotes}
+                            onVote={(isUpvote) => activeVote(isUpvote)}
                             disabled={disabled || (currentUser?.id === suggestion?.author?.id)}
                         />
                     }
-                    <div className={cx(styles.progressBarContainer, {[styles.progressBarContainerIsMobile]: isMobile, [styles.progressBarSelected]: suggestion.is_accepted && suggestion.is_published === false, [styles.hideElement]: suggestion.is_accepted && suggestion.is_published, [styles.active]: isVoted})}>
+                    <div className={cx(styles.progressBarContainer, { [styles.progressBarContainerIsMobile]: isMobile, [styles.progressBarSelected]: suggestion.is_accepted && suggestion.is_published === false, [styles.hideElement]: suggestion.is_accepted && suggestion.is_published, [styles.active]: isVoted })}>
                         <div className={styles.userProgress}>
                             <span className={styles.voteGoalText}>{totalUpvotes || 0}/{config.modules?.suggestions?.vote_goal || 30}</span>
-                            <FormattedMessage id='suggestion.goal' values={{ count: config.modules?.suggestions?.vote_goal || 30 }} />
+                            <FormattedMessage
+                                id="suggestion.goal"
+                                defaultMessage="Goal: {count}"
+                                values={{ count: config.modules?.suggestions?.vote_goal || 30 }}
+                            />
+
                         </div>
                         <div className={styles.goals}>
-                            <ProgressBar 
-                                className={styles.suggestionProgress} 
-                                innerClassName={styles.bar} 
-                                progress={totalUpvotes} 
+                            <ProgressBar
+                                className={styles.suggestionProgress}
+                                innerClassName={styles.bar}
+                                progress={totalUpvotes}
                                 goal={config.modules.suggestions?.vote_goal ? parseInt(config.modules.suggestions?.vote_goal) : 30}
                             />
                         </div>
