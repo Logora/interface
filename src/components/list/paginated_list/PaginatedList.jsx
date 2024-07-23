@@ -52,7 +52,6 @@ export const PaginatedList = ({
     countless,
     onElementClick,
     withUrlParams = false,
-    onLoad
 }) => {
     const intl = useIntl();
     const list = useList();
@@ -233,10 +232,6 @@ export const PaginatedList = ({
                 }
                 addElements(newElements);
                 setIsLoading(false);
-
-                if (onLoad) {
-                    onLoad(newElements);
-                }
             }).catch((error) => {
                 console.error(error);
                 setLoadError(true);
