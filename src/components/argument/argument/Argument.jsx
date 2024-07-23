@@ -17,7 +17,6 @@ import { VoteButton } from '@logora/debate.vote.vote_button';
 import { Button } from '@logora/debate.action.button';
 import { VotePaginatedList } from '@logora/debate.list.paginated_list';
 import { HashScroll } from '@logora/debate.tools.hash_scroll';
-import { useList } from "@logora/debate.list.list_provider";
 import cx from "classnames";
 import draftToHtml from "draftjs-to-html";
 import styles from "./Argument.module.scss";
@@ -37,7 +36,6 @@ export const Argument = ({ argument, argumentReplies, nestingLevel, debatePositi
 	const position = useTranslatedContent(argument.position?.name, argument.position?.language, "name", argument.position?.translation_entries);
 	const config = useConfig();
 	const componentId = "argument_" + argument.id;
-	const list = useList();
 
 	useEffect(() => {
         if (argument.rich_content && argument.is_deleted != true) {
@@ -75,8 +73,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel, debatePositi
 		setStartReplyInput(!startReplyInput);
 	};
 
-	const toggleReplies = (currentReply) => {
-		if (currentReply) { list.setAddElements(currentReply); }
+	const toggleReplies = () => {
 		setExpandReplies(!expandReplies);
 		setActiveAnchor(true);
 	};
@@ -237,9 +234,11 @@ export const Argument = ({ argument, argumentReplies, nestingLevel, debatePositi
 								positionId={vote?.position_id}
 								disabled={!debateIsActive}
 								hideSourceAction={config?.actions?.disableUserSources || false}
-								onSubmit={(reply) => {
-									toggleReplyInput();
-									toggleReplies(reply);
+								onSubmit={() => {
+									setTimeout(() => {
+										toggleReplyInput();
+										toggleReplies();
+									}, 1000);
 								}}
 								isReply
 								avatarSize={40}
