@@ -210,8 +210,8 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
             api.create("messages", data).then(response => {
                 if(response.data.success) {
                     if (isReply) {
-                        onSubmit();
-					    toast(intl.formatMessage({ id: "alert.argument_create", defaultMessage: "Your contribution has been sent !" }), { type: "success", points:  intl.formatMessage({ id: "alert.reply_gain" }) });
+                        onSubmit(response.data.data.resource);
+					    toast(intl.formatMessage({ id: "alert.argument_create", defaultMessage: "Your contribution has been sent !" }), { type: "success", points:  intl.formatMessage({ id: "alert.reply_gain", defaultMessage: " " }) });
                     } else {
                         const argument = response.data.data.resource;
                         let listId = argumentListId;
