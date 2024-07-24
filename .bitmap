@@ -26,7 +26,7 @@
     "action/icon_text_link": {
         "name": "action/icon_text_link",
         "scope": "logora.debate",
-        "version": "0.0.47",
+        "version": "0.0.48",
         "mainFile": "index.js",
         "rootDir": "src/components/action/icon_text_link"
     },
@@ -593,14 +593,14 @@
     "source/context_source_box": {
         "name": "source/context_source_box",
         "scope": "logora.debate",
-        "version": "0.0.53",
+        "version": "0.0.54",
         "mainFile": "index.js",
         "rootDir": "src/components/source/context_source_box"
     },
     "source/context_source_list": {
         "name": "source/context_source_list",
         "scope": "logora.debate",
-        "version": "0.0.53",
+        "version": "0.0.54",
         "mainFile": "index.js",
         "rootDir": "src/components/source/context_source_list"
     },
