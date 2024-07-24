@@ -11,6 +11,7 @@ import { ProgressBar } from "@logora/debate.progress.progress_bar";
 import { Icon } from '@logora/debate.icons.icon';
 import { useTranslatedContent } from '@logora/debate.translation.translated_content';
 import { TranslationButton } from '@logora/debate.translation.translation_button';
+import { Link } from 'react-router-dom';
 import styles from './SuggestionBox.module.scss';
 import cx from 'classnames';
 import PropTypes from "prop-types";
@@ -64,7 +65,7 @@ export const SuggestionBox = ({ suggestion, disabled = false }) => {
                 author={suggestion.author}
                 tag={getTag()}
                 tagClassName={getTagClassName()}
-                date={endDate < startDate ? null : endDate.getTime()}
+                date={endDate < startDate ? "" : endDate.toDateString()}
             />
             <div className={styles.suggestion}>
                 {content.translatedContent}

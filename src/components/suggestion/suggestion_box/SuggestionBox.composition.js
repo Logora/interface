@@ -11,6 +11,7 @@ import { ListProvider } from '@logora/debate.list.list_provider';
 import { ResponsiveProvider } from '@logora/debate.hooks.use_responsive';
 import { ToastProvider } from '@logora/debate.dialog.toast_provider';
 import { VoteProvider } from '@logora/debate.vote.vote_provider';
+import { BrowserRouter } from 'react-router-dom';
 import * as regularIcons from '@logora/debate.icons.regular_icons';
 import { faker } from '@faker-js/faker';
 

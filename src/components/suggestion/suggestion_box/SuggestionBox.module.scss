@@ -8,10 +8,11 @@
     box-shadow: $box-shadow;
     border: $box-border;
     color: $text-primary;
-    border-radius: $box-border-radius;
+    border-radius:0 !important;
     background: $background-color-primary;
     gap: $box-spacing;
     padding: $box-spacing;
+
 }
 
 .selected {

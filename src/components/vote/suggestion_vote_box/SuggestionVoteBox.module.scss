@@ -7,8 +7,12 @@
     gap: $spacer;
 }
 
+.voteButtonsContainer button.voteButton {
+    border-radius: 0 !important;
+}
+
 .voteButtonsContainer button.voteButton svg {
-    transform: rotate(-90deg);
+    transform: none;
 }
 
 .numberVotes {
@@ -16,6 +20,6 @@
 }
 
 .text {
-    font-size: $font-size-extra-small;
+    font-size: $font-size-small;
     font-weight: $font-weight-bold;
 }
