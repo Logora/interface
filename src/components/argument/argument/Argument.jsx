@@ -29,7 +29,6 @@ export const Argument = ({ argument, argumentReplies, nestingLevel, debatePositi
 	const [startReplyInput, setStartReplyInput] = useState(false);
 	const [richContent, setRichContent] = useState(null);
 	const [replies, setReplies] = useState([]);
-	const [activeAnchor, setActiveAnchor] = useState(false);
 	const intl = useIntl();
 	const { isLoggedIn, currentUser } = useAuth();
 	const content = useTranslatedContent(argument.content, argument.language, "content", argument.translation_entries);
@@ -70,11 +69,11 @@ export const Argument = ({ argument, argumentReplies, nestingLevel, debatePositi
 	};
 
 	const toggleReplyInput = () => {
-		setStartReplyInput(!startReplyInput);
+		setStartReplyInput(startReplyInput => !startReplyInput);
 	};
 
 	const toggleReplies = () => {
-		setExpandReplies(!expandReplies);
+		setExpandReplies(expandReplies => !expandReplies);
 		setActiveAnchor(true);
 	};
 
@@ -83,11 +82,6 @@ export const Argument = ({ argument, argumentReplies, nestingLevel, debatePositi
 		if (filteredReplies.length > 0) {
 			setReplies(filteredReplies);
 		}
-	};
-
-	const expandAnchorReplies = () => {
-		setExpandReplies(true);
-		setActiveAnchor(true);
 	};
 
 	return (
@@ -273,7 +267,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel, debatePositi
 							</VotePaginatedList>
 						</div>
 					}
-					{ argumentReplies?.length > 0 && replies?.length > 0 && !expandReplies && !activeAnchor &&
+					{ argumentReplies?.length > 0 && replies?.length > 0 && !expandReplies &&
 						<div className={styles.repliesList}>
 							<ArgumentContainer 
 								argument={replies[0]}
@@ -292,7 +286,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel, debatePositi
 									<Button 
 										role="link" 
 										rightIcon={<Icon name="lightArrow" height={10} width={10} />}
-										handleClick={() => expandAnchorReplies()}
+										handleClick={toggleReplies}
 									>
 										{ intl.formatMessage({ id: "argument.argument.see_more", defaultMessage: "See more" }) }
 									</Button>
