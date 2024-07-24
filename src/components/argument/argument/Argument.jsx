@@ -276,7 +276,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel, debatePositi
 					}
 					{extraReplies?.length > 0 && !expandReplies &&
 						<div className={styles.repliesList}>
-							{ displayReply(extraReplies[0]) }
+							{ extraReplies.map(r => displayReply(r)) }
 							{argument.number_replies > 1 &&
 								<div className={styles.readMoreLink}>
 									<Button
