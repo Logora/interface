@@ -31,7 +31,6 @@
 }
 
 .sourceAuthor {
-    font-size: $font-size-small;
     line-height: $line-height-tight;
 }
 
@@ -43,8 +42,4 @@
 
 .separator {
     @include px(1, xs);
-}
-
-.sourcePublishedDate {
-    font-size: $font-size-small;
 }
