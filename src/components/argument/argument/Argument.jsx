@@ -119,7 +119,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel, debatePositi
 					</div>
 				:
 					<>
-						<div className={cx(styles.argumentBody, { [styles.fixedHeight]: fixedContentHeight, [styles.commentArgument]: isComment })}>
+						<div className={cx(styles.argumentBody, { [styles.fixedHeight]: fixedContentHeight })}>
 							{ argument.is_reply && replyToArgument && 
 								<div className={styles.replyTo} onClick={() => flashParent(replyToArgument.id)}>
 									{ intl.formatMessage({ id: "info.replying_to", defaultMessage: "Replying to" }) }
@@ -198,7 +198,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel, debatePositi
 					</ContentFooter>
 				}
 				{ argument.number_replies > 0 && !hideReplies &&
-					<div className={cx(styles.replyFooter, {[styles.commentReplyFooter]: isComment})} onClick={toggleReplies}>
+					<div className={styles.replyFooter} onClick={toggleReplies}>
 						{ argument.replies_authors.map((author, index) => 
 							<Avatar key={index} avatarUrl={author.image_url} userName={author.full_name} size={32} showTooltip />
 						)}
