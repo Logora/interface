@@ -23,7 +23,7 @@ import styles from "./Argument.module.scss";
 const ArgumentInput = lazy(() => import('@logora/debate.input.argument_input'));
 import PropTypes from "prop-types";
 
-export const Argument = ({ argument, argumentReplies, nestingLevel, debatePositions, disableLinks, replyToArgument, flashParent, expandable, debateIsActive, isComment, hideReplies, debateName, vote, fixedContentHeight, enableEdition = true, deleteListId }) => {
+export const Argument = ({ argument, argumentReplies, nestingLevel, debatePositions, disableLinks, replyToArgument, flashParent, expandable, disabled = false, isComment, hideReplies, debateName, vote, fixedContentHeight, enableEdition = true, deleteListId }) => {
 	const [expandReplies, setExpandReplies] = useState(false);
 	const [flash, setFlash] = useState(false);
 	const [startReplyInput, setStartReplyInput] = useState(false);
@@ -169,7 +169,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel, debatePositi
 				{ !argument.is_deleted &&
 					<ContentFooter
 						resource={argument}
-                    	disabled={!debateIsActive || (!isLoggedIn && config?.actions?.disableInputForVisitor === true)}
+                    	disabled={disabled || (!isLoggedIn && config?.actions?.disableInputForVisitor === true)}
 						reportType={"Message"}
 						softDelete={config.actions?.softDelete}
 						deleteType={"messages"}
@@ -193,7 +193,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel, debatePositi
 							totalUpvote={argument.upvotes}
 							totalDownvote={0}
 							activeClassName={styles[`voteButtonPosition-${debatePositions?.map((e) => e.id).indexOf(argument.position.id) + 1}`]}
-							disabled={!debateIsActive || (currentUser?.id === argument?.author?.id)}
+							disabled={disabled || (currentUser?.id === argument?.author?.id)}
 						/>
 					</ContentFooter>
 				}
@@ -232,7 +232,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel, debatePositi
 								positions={debatePositions}
 								parentId={argument.id}
 								positionId={vote?.position_id}
-								disabled={!debateIsActive}
+								disabled={disabled}
 								hideSourceAction={config?.actions?.disableUserSources || false}
 								onSubmit={() => {
 									setTimeout(() => {
@@ -262,7 +262,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel, debatePositi
 								<ArgumentContainer 
 									positionIndex={debatePositions && debatePositions.map((e) => e.id).indexOf(argument.position.id) + 1}
 									nestingLevel={nestingLevel + 1}
-									debateIsActive={debateIsActive}
+									disabled={disabled}
 									debateName={debateName}
 									debatePositions={debatePositions && debatePositions}
 									argumentReplies={argumentReplies}
@@ -279,7 +279,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel, debatePositi
 								argument={replies[0]}
 								positionIndex={debatePositions && debatePositions.map((e) => e.id).indexOf(argument.position.id) + 1}
 								nestingLevel={nestingLevel + 1}
-								debateIsActive={debateIsActive}
+								disabled={disabled}
 								debateName={debateName}
 								debatePositions={debatePositions && debatePositions}
 								argumentReplies={argumentReplies}
@@ -325,8 +325,8 @@ Argument.propTypes = {
     flashParent: PropTypes.func,
 	/** If true, content is expandable */
     expandable: PropTypes.bool,
-	/** If false, disabled mode in argument */
-    debateIsActive: PropTypes.bool,
+	/** If true, disabled mode in argument */
+    disabled: PropTypes.bool,
 	/** If true, enabled comment styles */
     isComment: PropTypes.bool,
 	/** If true, hide replies */

@@ -186,7 +186,6 @@ describe('Argument', () => {
             debatePositions,
             debateName,
             nestingLevel: 0,
-            debateIsActive: true
         });
 
         expect(getByText(argument.author.full_name)).toBeInTheDocument();
@@ -201,7 +200,6 @@ describe('Argument', () => {
             debatePositions,
             debateName,
             nestingLevel: 0,
-            debateIsActive: true
         });
 
         expect(getByText("View answers")).toBeInTheDocument();
@@ -222,7 +220,6 @@ describe('Argument', () => {
             debatePositions,
             debateName,
             nestingLevel: 0,
-            debateIsActive: true
         });
 
         const argumentContainer = container.querySelector(`#argument_${argumentReply.id}`);
@@ -234,8 +231,7 @@ describe('Argument', () => {
             argument,
             debatePositions,
             debateName,
-            nestingLevel: 0,
-            debateIsActive: true,
+            nestingLevel: 0,,
             isComment: true
         });
 
@@ -251,7 +247,6 @@ describe('Argument', () => {
             debateName,
             replies: false,
             nestingLevel: 0,
-            debateIsActive: true
         });
 
         expect(queryByText(argumentDeleted.author.full_name)).not.toBeInTheDocument();
@@ -265,7 +260,6 @@ describe('Argument', () => {
             debatePositions,
             debateName,
             nestingLevel: 0,
-            debateIsActive: true
         });
 
         const dropdown = getByTestId("dropdown");
@@ -279,7 +273,6 @@ describe('Argument', () => {
             debatePositions,
             debateName,
             nestingLevel: 0,
-            debateIsActive: true
         });
 
         expect(getByText("0")).toBeInTheDocument();
@@ -296,7 +289,6 @@ describe('Argument', () => {
             debatePositions,
             debateName,
             nestingLevel: 0,
-            debateIsActive: true
         });
 
         const replyButton = getByTestId("action-reply-button");
@@ -307,15 +299,14 @@ describe('Argument', () => {
     });
 
     it('should allow the user to add a reply to an argument', async () => {
-        const { container, getByTestId, getByText, findByText } = renderArgument({
+        const { getByTestId, getByText } = renderArgument({
             argument,
             debatePositions: [
                 { id: 1, name: 'Yes', language: 'en', translation_entries: [] },
                 { id: 2, name: 'No', language: 'en', translation_entries: [] },
             ],
             debateName: 'Test Debate',
-            nestingLevel: 0,
-            debateIsActive: true,
+            nestingLevel: 0,,
         });
 
         const replyButton = getByText('Reply');
@@ -323,7 +314,6 @@ describe('Argument', () => {
             await userEvent.click(replyButton);
         });
 
-        // Allow User to choose position to prevent errors
         const positionButton = getByText(debatePositions[1].name);
         await act(async () => {
             await userEvent.click(positionButton);

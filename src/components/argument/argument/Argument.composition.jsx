@@ -137,9 +137,7 @@ export const DefaultArgument = () => (
                 argument={argument}
                 debatePositions={debatePositions}
                 debateName={debateName}
-                replies={false}
                 nestingLevel={0}
-                debateIsActive
             />
         </Providers>
     </div>
@@ -152,25 +150,49 @@ export const ArgumentIsComment = () => (
                 argument={argument}
                 debatePositions={debatePositions}
                 debateName={debateName}
-                replies={false}
                 nestingLevel={0}
-                debateIsActive
                 isComment
             />
         </Providers>
     </div>
 );
 
-export const ArgumentReplyComponent = () => (
+export const ArgumentDisabled = () => (
+    <div style={{ width: "400px", height: "230px" }}>
+        <Providers>
+            <Argument
+                argument={argument}
+                debatePositions={debatePositions}
+                debateName={debateName}
+                nestingLevel={0}
+                disabled
+            />
+        </Providers>
+    </div>
+);
+
+export const ArgumentDisabledLinks = () => (
+    <div style={{ width: "400px", height: "230px" }}>
+        <Providers>
+            <Argument
+                argument={argument}
+                debatePositions={debatePositions}
+                debateName={debateName}
+                nestingLevel={0}
+                disableLinks={true}
+            />
+        </Providers>
+    </div>
+);
+
+export const ArgumentReply = () => (
     <div style={{ width: "400px", height: "230px" }}>
         <Providers>
             <Argument
                 argument={argumentReply}
                 debatePositions={debatePositions}
                 debateName={debateName}
-                replies={false}
                 nestingLevel={1}
-                debateIsActive
             />
         </Providers>
     </div>
@@ -183,9 +205,7 @@ export const DeletedArgumentComponent = () => (
                 argument={argumentDeleted}
                 debatePositions={debatePositions}
                 debateName={debateName}
-                replies={false}
                 nestingLevel={0}
-                debateIsActive
             />
         </Providers>
     </div>
@@ -198,9 +218,7 @@ export const ArgumentWithRepliesComponent = () => (
                 argument={argumentWithReplies}
                 debatePositions={debatePositions}
                 debateName={debateName}
-                replies={false}
                 nestingLevel={0}
-                debateIsActive
             />
         </Providers>
     </div>
