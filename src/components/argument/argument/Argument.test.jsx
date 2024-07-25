@@ -231,7 +231,7 @@ describe('Argument', () => {
             argument,
             debatePositions,
             debateName,
-            nestingLevel: 0,,
+            nestingLevel: 0,
             isComment: true
         });
 
@@ -306,7 +306,7 @@ describe('Argument', () => {
                 { id: 2, name: 'No', language: 'en', translation_entries: [] },
             ],
             debateName: 'Test Debate',
-            nestingLevel: 0,,
+            nestingLevel: 0,
         });
 
         const replyButton = getByText('Reply');
