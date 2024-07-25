@@ -80,7 +80,8 @@ const generateArgument = (overrides) => ({
 });
 
 const argument = generateArgument();
-const argumentReply = generateArgument({ id: 415, is_reply: true });
+const longArgument = generateArgument({ content: faker.lorem.sentences(15) })
+const argumentReply = generateArgument({ id: 415, is_reply: true, reply_to_id: argument.id });
 const argumentDeleted = generateArgument({ id: 416, is_deleted: true });
 const argumentWithReplies = generateArgument({
     id: 414,
@@ -143,7 +144,35 @@ export const DefaultArgument = () => (
     </div>
 );
 
-export const ArgumentIsComment = () => (
+export const ExpandableArgument = () => (
+    <div style={{ width: "400px", height: "240px" }}>
+        <Providers>
+            <Argument
+                argument={longArgument}
+                debatePositions={debatePositions}
+                debateName={debateName}
+                nestingLevel={0}
+                expandable
+            />
+        </Providers>
+    </div>
+);
+
+export const ExpandedArgument = () => (
+    <div style={{ width: "400px", height: "240px" }}>
+        <Providers>
+            <Argument
+                argument={longArgument}
+                debatePositions={debatePositions}
+                debateName={debateName}
+                nestingLevel={0}
+                expandable={false}
+            />
+        </Providers>
+    </div>
+);
+
+export const Comment = () => (
     <div style={{ width: "400px", height: "230px" }}>
         <Providers>
             <Argument
@@ -219,6 +248,20 @@ export const ArgumentWithRepliesComponent = () => (
                 debatePositions={debatePositions}
                 debateName={debateName}
                 nestingLevel={0}
+            />
+        </Providers>
+    </div>
+);
+
+export const ArgumentWithArgumentReplies = () => (
+    <div style={{ width: "400px", height: "260px" }}>
+        <Providers>
+            <Argument
+                argument={argument}
+                debatePositions={debatePositions}
+                debateName={debateName}
+                nestingLevel={0}
+                argumentReplies={[argumentReply]}
             />
         </Providers>
     </div>
