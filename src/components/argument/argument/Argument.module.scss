@@ -107,10 +107,6 @@
 	}
 }
 
-.commentArgument {
-	border-bottom: 0;
-}
-
 .argumentContent {
 	line-height: $line-height-loose;
 	overflow-wrap: break-word;
@@ -181,19 +177,12 @@
 }
 
 .replyFooter {
-	font-size: $font-size-small;
+	font-size: $font-size-normal;
 	font-weight: $font-weight-normal;
 	display: flex !important;
 	align-items: center !important;
 	justify-content: flex-start !important;
 	cursor: pointer;
-	&.commentReplyFooter {
-		@include pt(3, xs);
-		border-top: 1px solid $text-tertiary;
-		@include media-breakpoint-down(sm) {
-			@include pl(4, xs);
-		}
-	}
 }
 
 .expandRepliesContainer {
@@ -211,6 +200,7 @@
 	align-items: center;
 	gap: $spacer-sm;
 	background-color: $background-color-primary;
+	font-size: $font-size-normal;
 	svg {
 		display: inline-block;
 		path {
