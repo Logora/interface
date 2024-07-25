@@ -29,6 +29,7 @@ export const SuggestionBox = ({ suggestion, disabled = false }) => {
     const config = useConfig();
     const { currentUser } = useAuth();
 
+
     const activeVote = (isUpvote) => {
         if (isUpvote) {
             setTotalUpvotes(totalUpvotes + 1);

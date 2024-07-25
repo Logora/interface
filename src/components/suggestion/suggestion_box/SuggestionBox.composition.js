@@ -11,10 +11,16 @@ import { ListProvider } from '@logora/debate.list.list_provider';
 import { ResponsiveProvider } from '@logora/debate.hooks.use_responsive';
 import { ToastProvider } from '@logora/debate.dialog.toast_provider';
 import { VoteProvider } from '@logora/debate.vote.vote_provider';
-import { BrowserRouter } from 'react-router-dom';
+import { Location } from '@logora/debate.util.location';
 import * as regularIcons from '@logora/debate.icons.regular_icons';
 import { faker } from '@faker-js/faker';
 
+
+let DebateShowLocation = new Location('espace-debat/group/:debateSlug', { debateSlug: "" })
+
+const routes = {
+    debateShowLocation: DebateShowLocation
+}
 
 const generateSuggestion = (overrides) => ({
     id: faker.datatype.number(),
@@ -56,16 +62,21 @@ const httpClient = {
     }
 };
 
-const currentUser = {};
+const currentUser = {
+    id: faker.datatype.number(),
+    full_name: faker.name.fullName(),
+    image_url: faker.image.avatar(),
+    points: faker.datatype.number()
+}
 const data = dataProvider(httpClient, "https://mock.example.api");
 
 // Composant SuggestionBox par défaut
 export const DefaultSuggestionBox = () => {
     return (
         <MemoryRouter>
-            <ConfigProvider config={config}>
+            <ConfigProvider routes={{...routes}} config={config}>
                 <DataProviderContext.Provider value={{ dataProvider: data }}>
-                    <AuthContext.Provider value={{ currentUser, isLoggedIn: true }}>
+                    <AuthContext.Provider value={{ currentUser: currentUser, isLoggedIn: true }}>
                         <ResponsiveProvider>
                             <ModalProvider>
                                 <ListProvider>
@@ -95,9 +106,9 @@ export const DefaultSuggestionBox = () => {
 export const DisabledSuggestionBox = () => {
     return (
         <MemoryRouter>
-            <ConfigProvider config={config}>
+            <ConfigProvider routes={{...routes}} config={config}>
                 <DataProviderContext.Provider value={{ dataProvider: data }}>
-                    <AuthContext.Provider value={{ currentUser, isLoggedIn: true }}>
+                    <AuthContext.Provider value={{ currentUser: currentUser, isLoggedIn: true }}>
                         <ResponsiveProvider>
                             <ModalProvider>
                                 <ListProvider>
