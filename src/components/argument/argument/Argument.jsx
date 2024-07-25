@@ -74,7 +74,6 @@ export const Argument = ({ argument, argumentReplies, nestingLevel, debatePositi
 
 	const toggleReplies = () => {
 		setExpandReplies(expandReplies => !expandReplies);
-		setActiveAnchor(true);
 	};
 
 	const displayRepliesThread = () => {
@@ -90,7 +89,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel, debatePositi
 				{...(argument ? {argument: argument} : {})}
 				positionIndex={debatePositions && debatePositions.map((e) => e.id).indexOf(argument.position.id) + 1}
 				nestingLevel={nestingLevel + 1}
-				debateIsActive={debateIsActive}
+				disabled={disabled}
 				debateName={debateName}
 				debatePositions={debatePositions && debatePositions}
 				argumentReplies={argumentReplies}
@@ -245,11 +244,10 @@ export const Argument = ({ argument, argumentReplies, nestingLevel, debatePositi
 								positionId={vote?.position_id}
 								disabled={disabled}
 								hideSourceAction={config?.actions?.disableUserSources || false}
-								onSubmit={() => {
-									setTimeout(() => {
-										toggleReplyInput();
-										toggleReplies();
-									}, 1000);
+								onSubmit={(reply) => {
+									toggleReplyInput();
+									setExtraReplies([reply]);
+									setExpandReplies(false);
 								}}
 								isReply
 								avatarSize={40}
@@ -277,7 +275,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel, debatePositi
 					{extraReplies?.length > 0 && !expandReplies &&
 						<div className={styles.repliesList}>
 							{ extraReplies.map(r => displayReply(r)) }
-							{argument.number_replies > 1 &&
+							{ argument.number_replies > 1 &&
 								<div className={styles.readMoreLink}>
 									<Button
 										role="link"
