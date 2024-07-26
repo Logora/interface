@@ -44,6 +44,7 @@ const generateSuggestion = (overrides) => ({
     name: faker.lorem.words(),
     ...overrides
 });
+
 const suggestion = generateSuggestion();
 
 const config = {
@@ -68,6 +69,7 @@ const currentUser = {
     image_url: faker.image.avatar(),
     points: faker.datatype.number()
 }
+
 const data = dataProvider(httpClient, "https://mock.example.api");
 
 // Composant SuggestionBox par défaut

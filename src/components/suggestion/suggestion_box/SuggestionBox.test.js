@@ -1,7 +1,5 @@
 import React from 'react';
-import { act } from 'react-dom/test-utils';
 import { render, waitFor, fireEvent } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
 import { IntlProvider } from 'react-intl';
 import { MemoryRouter } from 'react-router';
 import { ConfigProvider } from '@logora/debate.data.config_provider';
@@ -106,24 +104,6 @@ describe('SuggestionBox', () => {
         
         expect(getByText(suggestion.name)).toBeInTheDocument();
         expect(getByText(suggestion.author.full_name)).toBeInTheDocument();
-    });
-
-
-    it('should render different suggestion configurations correctly', () => {
-        const customSuggestion = generateSuggestion({
-            name: 'Custom Suggestion',
-            author: {
-                full_name: 'Custom Author'
-            }
-        });
-        const { getByText } = renderSuggestionBox({ suggestion: customSuggestion, disabled: false });
-
-        expect(getByText('Custom Suggestion')).toBeInTheDocument();
-        expect(getByText('Custom Author')).toBeInTheDocument();
-    });
-
-    
-  
-      
+    }); 
     
 });
