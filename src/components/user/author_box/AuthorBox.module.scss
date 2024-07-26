@@ -21,7 +21,7 @@
 
 .authorName {
     font-weight: $font-weight-bold;
-    font-size: $font-size-small;
+    font-size: $font-size-normal;
     cursor: pointer;
     color: $text-primary;
     line-height: $line-height-loose;
@@ -75,7 +75,7 @@
     flex-direction: row !important;
     align-items: center !important;
     font-weight: $font-weight-normal;
-    font-size: $font-size-extra-small;
+    font-size: $font-size-small;
     color: $text-primary;
     gap: $spacer-xs;
 }
