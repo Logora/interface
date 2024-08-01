@@ -10,10 +10,6 @@
     gap: $spacer-lg;
 }
 
-.container svg {
-    fill-rule: evenodd;
-}
-
 .voteAction {
     @include p(0, xs);
 }

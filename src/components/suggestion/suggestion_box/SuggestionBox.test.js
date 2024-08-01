@@ -19,7 +19,7 @@ const generateSuggestion = (overrides) => ({
     id: faker.datatype.number(),
     created_at: faker.date.recent().toISOString(),
     expires_at: faker.date.future().toISOString(),
-    total_upvotes: faker.datatype.number({ min: 0, max: 100 }),
+    total_upvotes: 20,
     total_downvotes: faker.datatype.number({ min: 0, max: 100 }),
     is_accepted: faker.datatype.boolean(),
     is_expired: faker.datatype.boolean(),
@@ -59,9 +59,18 @@ const currentUser = {
 };
 const data = dataProvider(httpClient, "https://mock.example.api");
 
+const routes = {
+    debateShowLocation: {
+        toUrl: ({ debateSlug }) => `/espace-debat/group/${debateSlug}`
+    }
+};
+const callback = jest.fn();
+
+
+
 const Providers = ({ children }) => (
     <MemoryRouter>
-        <ConfigProvider config={config}>
+        <ConfigProvider config={{}} routes={{ ...routes }}>
             <DataProviderContext.Provider value={{ dataProvider: data }}>
                 <AuthContext.Provider value={{ currentUser, isLoggedIn: true }}>
                     <ResponsiveProvider>
@@ -94,16 +103,41 @@ const renderSuggestionBox = (props) => render(
 describe('SuggestionBox', () => {
     it('should render SuggestionBox correctly', () => {
         const { getByText } = renderSuggestionBox({ suggestion, disabled: false });
-        
         expect(getByText(suggestion.name)).toBeInTheDocument();
         expect(getByText(suggestion.author.full_name)).toBeInTheDocument();
-    });
+        });
 
     it('should disable SuggestionBox correctly', () => {
         const { getByText } = renderSuggestionBox({ suggestion, disabled: true });
         
         expect(getByText(suggestion.name)).toBeInTheDocument();
         expect(getByText(suggestion.author.full_name)).toBeInTheDocument();
-    }); 
+    });
+    
+     // Cas d'une suggestion publiée
+    it('should render published SuggestionBox correctly', () => {
+        const publishedSuggestion = generateSuggestion({ is_published: true, is_accepted: true, is_expired: false });
+        const { getByText } = renderSuggestionBox({ suggestion: publishedSuggestion, disabled: false });
+        expect(getByText(publishedSuggestion.name)).toBeInTheDocument();
+        expect(getByText(publishedSuggestion.author.full_name)).toBeInTheDocument();
+        expect(getByText(/Go to debate/)).toBeInTheDocument();
+    });
+   
+    // Cas où on vote: le nombre de personnes intéressées est correct
+    it('should update totalUpvotes when voting', async () => {
+        const suggestionvote = generateSuggestion({
+            is_accepted: false,
+            is_expired: false,
+            total_upvotes: 6,
+            total_downvotes: 5,
+        });
+        const { getByText, getByTestId } = renderSuggestionBox({ suggestion: suggestionvote, disabled: false });
+        const upvoteButton = getByTestId('upvote-icon');
+        fireEvent.click(upvoteButton);
+        await waitFor(() => expect(getByText(`${suggestionvote.total_upvotes + 1 } supports`)).toBeInTheDocument()); 
+
+    });
+    
+  
     
 });

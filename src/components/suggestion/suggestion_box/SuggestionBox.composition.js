@@ -18,6 +18,7 @@ import { faker } from '@faker-js/faker';
 
 let DebateShowLocation = new Location('espace-debat/group/:debateSlug', { debateSlug: "" })
 
+
 const routes = {
     debateShowLocation: DebateShowLocation
 }
@@ -28,9 +29,9 @@ const generateSuggestion = (overrides) => ({
     expires_at: faker.date.future().toISOString(),
     total_upvotes: faker.datatype.number({ min: 0, max: 100 }),
     total_downvotes: faker.datatype.number({ min: 0, max: 100 }),
-    is_accepted: faker.datatype.boolean(),
-    is_expired: faker.datatype.boolean(),
-    is_published: faker.datatype.boolean(),
+    is_accepted: false,
+    is_expired: false,
+    is_published: false,
     group: {
         slug: faker.lorem.slug()
     },
@@ -45,7 +46,10 @@ const generateSuggestion = (overrides) => ({
     ...overrides
 });
 
-const suggestion = generateSuggestion();
+const suggestion = generateSuggestion({ is_published: false, is_accepted: false, is_expired: false });
+
+const publishedSuggestion = generateSuggestion({ is_published: true, is_accepted: true, is_expired: false });
+
 
 const config = {
     modules: {
@@ -121,6 +125,38 @@ export const DisabledSuggestionBox = () => {
                                                     <SuggestionBox
                                                         suggestion={suggestion}
                                                         disabled={true}
+                                                    />
+                                                </IconProvider>
+                                            </IntlProvider>
+                                        </VoteProvider>
+                                    </ToastProvider>
+                                </ListProvider>
+                            </ModalProvider>
+                        </ResponsiveProvider>
+                    </AuthContext.Provider>
+                </DataProviderContext.Provider>
+            </ConfigProvider>
+        </MemoryRouter>
+    );
+};
+
+// Composant SuggestionBox publié
+export const PublishedSuggestionBox = () => {
+    return (
+        <MemoryRouter>
+            <ConfigProvider routes={{...routes}} config={config}>
+                <DataProviderContext.Provider value={{ dataProvider: data }}>
+                    <AuthContext.Provider value={{ currentUser: currentUser, isLoggedIn: true }}>
+                        <ResponsiveProvider>
+                            <ModalProvider>
+                                <ListProvider>
+                                    <ToastProvider>
+                                        <VoteProvider>
+                                            <IntlProvider locale="en">
+                                                <IconProvider library={regularIcons}>
+                                                    <SuggestionBox
+                                                        suggestion={publishedSuggestion}
+                                                        disabled={false}
                                                     />
                                                 </IconProvider>
                                             </IntlProvider>

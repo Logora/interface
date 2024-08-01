@@ -50,18 +50,6 @@
     max-width: 80%;
     @include mt(3, xs);
 
-    .suggestionProgress {
-        @include mt(1, xs);
-        height: 12px;
-        width: 100%;
-        border-radius: $box-border-radius;
-        background-color: $background-color-secondary !important;
-    }
-
-    .bar {
-        background-color: $info-primary;
-    }
-
     &.progressBarSelected {
         width: 70%;
         @include m(0, xs);
@@ -91,16 +79,6 @@
         animation-iteration-count: 1;
     }
 
-    .userProgress {
-        display: flex;
-        font-size: $font-size-small;
-        @include mb(2, xs);
-
-        svg {
-            @include mx(1, xs);
-            @include mb(1, xs);
-        }
-    }
 
     .voteGoalText {
         @include mr(1, xs);
