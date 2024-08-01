@@ -1,0 +1,54 @@
+@import '~@logora/debate.styles.theme/_theme.scss';
+@import '~@logora/debate.styles.spacing/_spacing.scss';
+
+.container {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    box-shadow: $box-shadow;
+    border: $box-border;
+    color: $text-primary;
+    border-radius: $box-border-radius;
+    background: $background-color-primary;
+    gap: $box-spacing;
+    padding: $box-spacing;
+}
+
+.selected {
+    background-color: $success-primary !important;
+    color: $text-light;
+}
+
+.expired {
+    background-color: $background-color-primary;
+    color: $text-secondary;
+    border: none !important;
+}
+
+.suggestion {
+    font-weight: $font-weight-bold;
+    font-size: $font-size-normal;
+    line-height: $line-height-normal;
+    min-height: 2em;
+}
+
+.arrowIcon {
+    transform: rotate(-90deg);
+}
+
+.voteButton {
+    width: fit-content;
+}
+
+.voteResultsContainer {
+    max-width: 100%;
+    @include mt(3, xs);
+}
+
+.footerContainer {
+    align-items: flex-end;
+}
+
+.footerActionContainer {
+    width: 100%;
+}
