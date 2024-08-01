@@ -31,6 +31,7 @@ export const SuggestionBox = ({ suggestion, disabled = false }) => {
             setTotalUpvotes(totalUpvotes => totalUpvotes + 1);
             setIsVoted(true);
         } else {
+            styles
             setTotalUpvotes(totalUpvotes => totalUpvotes - 1);
             setIsVoted(false);
         }
@@ -38,9 +39,9 @@ export const SuggestionBox = ({ suggestion, disabled = false }) => {
 
     const getTag = () => {
         if (suggestion.is_accepted) {
-            return intl.formatMessage({ id: "suggestion.selected", defaultMessage: "Selected" });
+            return intl.formatMessage({ id: "suggestion.suggestion_box.selected", defaultMessage: "Selected" });
         } else if (suggestion.is_expired === true || endDate < startDate) {
-            return intl.formatMessage({ id: "suggestion.ended", defaultMessage: "Expired" });
+            return intl.formatMessage({ id: "suggestion.suggestion_box.ended", defaultMessage: "Expired" });
         } else {
             return null;
         }
@@ -87,13 +88,6 @@ export const SuggestionBox = ({ suggestion, disabled = false }) => {
                             <Button rightIcon={<Icon name="lightArrow" width={10} height={10} className={styles.arrowIcon} />} className={styles.linkToDebate} to={routes.debateShowLocation.toUrl({ debateSlug: suggestion.group.slug })}>
                                 <span>{intl.formatMessage({ id: "action.link_to_debate", defaultMessage: "Go to debate" })}</span>
                             </Button>
-                            <div className={cx(styles.progressBarContainer, { [styles.progressBarContainerIsMobile]: isMobile })}>
-                                <span className={styles.voteGoalText}>{totalUpvotes || 0}</span>
-                                <FormattedMessage
-                                    id="suggestion.goal"
-                                    defaultMessage="supports"
-                                />
-                            </div>
                         </div>
                     }
                     {suggestion.is_accepted === false && suggestion.is_expired === false &&
@@ -107,11 +101,10 @@ export const SuggestionBox = ({ suggestion, disabled = false }) => {
                             data-testid="upvote-icon"
                         />
                     }
-                    <div className={cx(styles.progressBarContainer, { [styles.progressBarContainerIsMobile]: isMobile, [styles.progressBarSelected]: suggestion.is_accepted && suggestion.is_published === false, [styles.hideElement]: suggestion.is_accepted && suggestion.is_published, [styles.active]: isVoted })}>
-                        <span className={styles.voteGoalText}>{totalUpvotes || 0}</span>
+                    <div className={cx(styles.voteResultsContainer)}>
                         <FormattedMessage
                             id="suggestion.goal"
-                            defaultMessage="{totalUpvotes, plural, one {support} other {supports}}"
+                            defaultMessage="{totalUpvotes} supports"
                             values={{ totalUpvotes }}
                         />
                     </div>
