@@ -31,7 +31,6 @@ export const SuggestionBox = ({ suggestion, disabled = false }) => {
             setTotalUpvotes(totalUpvotes => totalUpvotes + 1);
             setIsVoted(true);
         } else {
-            styles
             setTotalUpvotes(totalUpvotes => totalUpvotes - 1);
             setIsVoted(false);
         }

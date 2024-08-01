@@ -106,7 +106,7 @@ describe('UpDownVoteBox', () => {
         expect(voteBox).not.toHaveClass('active');
         expect(upvoteIcon).not.toBeInTheDocument();
         expect(callback).toHaveBeenCalledTimes(1);
-    });*/
+    });
 
   /*  it('should add user upvote and delete it when clicking again', async () => {
         const container = render(
