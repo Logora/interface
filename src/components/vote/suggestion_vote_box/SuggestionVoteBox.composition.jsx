@@ -9,26 +9,25 @@ import { ModalProvider } from '@logora/debate.dialog.modal';
 import { IconProvider } from '@logora/debate.icons.icon_provider';
 import * as regularIcons from '@logora/debate.icons.regular_icons';
 import { faker } from '@faker-js/faker';
-import { BrowserRouter } from 'react-router-dom/cjs/react-router-dom.min';
 
 const vote = {
     id: faker.datatype.number(),
     voteable_type: faker.lorem.word(),
-    voteable_id: faker.datatype.number(), 
+    voteable_id: faker.datatype.number(),
     user_id: faker.datatype.number()
 };
 
 const httpClient = {
     get: () => null,
     post: (url, data, config) => {
-        return new Promise(function(resolve, reject) {
-            resolve({ data: { success: true, data: { resource: vote } }});
+        return new Promise(function (resolve, reject) {
+            resolve({ data: { success: true, data: { resource: vote } } });
         });
     },
     patch: () => null,
     delete: (url, data, config) => {
-        return new Promise(function(resolve, reject) {
-            resolve({ data: { success: true, data: {} }});
+        return new Promise(function (resolve, reject) {
+            resolve({ data: { success: true, data: {} } });
         });
     }
 };
@@ -41,7 +40,6 @@ const data = dataProvider(httpClient, "https://mock.example.api");
 
 export const DefaultSuggestionVoteBox = () => {
     return (
-        <BrowserRouter>
         <ConfigProvider config={{}}>
             <IntlProvider locale='en'>
                 <DataProviderContext.Provider value={{ dataProvider: data }}>
@@ -62,13 +60,11 @@ export const DefaultSuggestionVoteBox = () => {
                 </DataProviderContext.Provider>
             </IntlProvider>
         </ConfigProvider>
-        </BrowserRouter>
     );
 };
 
 export const DisabledSuggestinVoteBox = () => {
     return (
-        <BrowserRouter>
         <ConfigProvider config={{}}>
             <IntlProvider locale='en'>
                 <DataProviderContext.Provider value={{ dataProvider: data }}>
@@ -90,6 +86,5 @@ export const DisabledSuggestinVoteBox = () => {
                 </DataProviderContext.Provider>
             </IntlProvider>
         </ConfigProvider>
-        </BrowserRouter>
     );
 };
