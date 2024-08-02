@@ -108,7 +108,7 @@ describe('UpDownVoteBox', () => {
         expect(callback).toHaveBeenCalledTimes(1);
     });
 
-  /*  it('should add user upvote and delete it when clicking again', async () => {
+   it('should add user upvote and delete it when clicking again', async () => {
         const container = render(
             <ConfigProvider config={{}}>
                 <IntlProvider locale='en'>
