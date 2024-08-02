@@ -268,7 +268,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel, debatePositi
 								display={"column"}
 								resourcePropName={'argument'}
 							>
-								{ displayReply() }
+								{ displayReply(argument) }
 							</VotePaginatedList>
 						</div>
 					}
