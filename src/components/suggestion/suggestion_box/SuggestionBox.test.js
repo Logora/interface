@@ -16,6 +16,20 @@ import * as regularIcons from '@logora/debate.icons.regular_icons';
 import { SuggestionBox } from './SuggestionBox';
 import { faker } from '@faker-js/faker';
 
+const vote = {
+    id: faker.datatype.number(),
+    voteable_type: faker.lorem.word(),
+    voteable_id: faker.datatype.number(),
+    user_id: faker.datatype.number()
+};
+
+const currentUser = {
+    id: faker.datatype.number(),
+    full_name: faker.name.fullName(),
+    image_url: faker.image.avatar(),
+    points: faker.datatype.number()
+};
+
 const generateSuggestion = (overrides) => ({
     id: faker.datatype.number(),
     created_at: faker.date.recent().toISOString(),
@@ -49,15 +63,10 @@ const config = {
 };
 
 const httpClient = {
-    post: jest.fn(() => Promise.resolve({ data: { success: true, data: {} } }))
+    post: jest.fn(() => Promise.resolve({ data: { success: true, data: { resource: vote } } }))
 };
 
-const currentUser = {
-    id: faker.datatype.number(),
-    full_name: faker.name.fullName(),
-    image_url: faker.image.avatar(),
-    points: faker.datatype.number()
-};
+
 const data = dataProvider(httpClient, "https://mock.example.api");
 
 const routes = {
@@ -65,11 +74,10 @@ const routes = {
         toUrl: ({ debateSlug }) => `/espace-debat/group/${debateSlug}`
     }
 };
-const callback = jest.fn();
 
 const Providers = ({ children }) => (
     <MemoryRouter>
-        <ConfigProvider config={{}} routes={{ ...routes }}>
+        <ConfigProvider config={{ config }} routes={{ ...routes }}>
             <DataProviderContext.Provider value={{ dataProvider: data }}>
                 <AuthContext.Provider value={{ currentUser, isLoggedIn: true }}>
                     <ResponsiveProvider>
@@ -126,7 +134,7 @@ describe('SuggestionBox', () => {
     });
 
     // Cas où on vote: le nombre de personnes intéressées est correct
-    /*it('should update totalUpvotes when voting', async () => {
+    it('should update totalUpvotes when voting', async () => {
         const suggestionVote = generateSuggestion({
             is_accepted: false,
             is_expired: false,
@@ -137,6 +145,6 @@ describe('SuggestionBox', () => {
         const upvoteButton = getByTestId('upvote-icon');
 
         await userEvent.click(upvoteButton);
-        expect(getByText(`${suggestionVote.total_upvotes + 1} supports`)).toBeInTheDocument();
-    });*/
+        expect(getByText('7 supports')).toBeInTheDocument();
+    });
 });

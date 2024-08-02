@@ -44,25 +44,25 @@ export const SuggestionVoteBox = ({ voteableType, voteableId, totalUpvote = 0, t
     <div className={styles.voteButtonsContainer}>
       <Button
         className={styles.voteButton}
-        onClick={!disabled ? null : () => handleVote(true)}
+        onClick={disabled ? null : () => handleVote(true)}
         data-testid="upvote-button"
         disabled={disabled}
-        rightIcon={<Icon name="check" width={20} height={20} data-testid="upvote-icon" />}
+        rightIcon={activeVote && voteSide ? null : <Icon name="check" width={20} height={20} data-testid="upvote-icon" />}
         active={!(activeVote && voteSide)}
       >
         <span className={styles.text}>
-          { intl.formatMessage({ id: "vote.suggestion_vote_box.upvote", defaultMessage: "I'm interested" }) }
+          {intl.formatMessage({ id: "vote.suggestion_vote_box.upvote", defaultMessage: "I'm interested" })}
         </span>
       </Button>
       <Button
         className={styles.voteButton}
         onClick={disabled ? null : () => handleDownvote()}
         disabled={disabled}
-        rightIcon={<Icon name="close" width={10} height={10} />}
+        rightIcon={activeVote && !voteSide ? null : <Icon name="close" width={10} height={10} />}
         active={!(activeVote && !voteSide)}
       >
         <span className={styles.text}>
-          { intl.formatMessage({ id: "vote.suggestion_vote_box.downvote", defaultMessage: "Not relevant" }) }
+          {intl.formatMessage({ id: "vote.suggestion_vote_box.downvote", defaultMessage: "Not relevant" })}
         </span>
       </Button>
     </div>
