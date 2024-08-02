@@ -71,10 +71,7 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
         if(typeof window !== 'undefined') {
             const initFocus = focusOnInit || urlParams.get('initArgument');
             if (initFocus === true || initFocus === 'true') {
-                if(!isLoggedIn) {
-                    requireAuthentication({ loginAction: "argument" });
-                }
-                focusEditor();
+                setFocus(true);
                 flashEditor();
             }
         }
@@ -83,7 +80,6 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
     useEffect(() => {
         if (focus) {
             scrollToEditor();
-            focusEditor();
             setFocus(false);
         }
     }, [focus])
@@ -91,7 +87,7 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
     useEffect(() => {
         if (inputContent?.id) {
             setEditArgument(inputContent);
-            focusEditor();
+            setFocus(true);
         }
     }, [inputContent])
 
@@ -114,10 +110,6 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
 
     const scrollToEditor = () => {
         inputForm.current.scrollIntoView(false);
-    }
-
-    const focusEditor = () => {
-        setFocus(true);
     }
 
     const resetInputs = () => {

@@ -29,6 +29,7 @@ export const Drawer = ({ isOpen = false, onClose, title, size = '50vw', enableOv
                 size={size}
                 enableOverlay={enableOverlay}
                 className={styles.drawer}
+                zIndex={1000000}
             >
                 <div className={styles.header}>
                     {title &&

@@ -69,6 +69,6 @@
 	gap: $spacer-xs;
 	flex-wrap: wrap;
 	@include media-breakpoint-down(xs) {
-		font-size: $font-size-extra-small;
+		font-size: $font-size-small;
 	}
 }
