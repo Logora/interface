@@ -18,9 +18,22 @@ import { faker } from '@faker-js/faker';
 
 let DebateShowLocation = new Location('espace-debat/group/:debateSlug', { debateSlug: "" })
 
-
 const routes = {
     debateShowLocation: DebateShowLocation
+}
+
+const vote = {
+    id: faker.datatype.number(),
+    voteable_type: faker.lorem.word(),
+    voteable_id: faker.datatype.number(),
+    user_id: faker.datatype.number()
+};
+
+const currentUser = {
+    id: faker.datatype.number(),
+    full_name: faker.name.fullName(),
+    image_url: faker.image.avatar(),
+    points: faker.datatype.number()
 }
 
 const generateSuggestion = (overrides) => ({
@@ -62,17 +75,11 @@ const config = {
 const httpClient = {
     post: () => {
         return new Promise(function (resolve) {
-            resolve({ data: { success: true, data: {} } });
+            resolve({ data: { success: true, data: { resource: vote } } });
         });
     }
 };
 
-const currentUser = {
-    id: faker.datatype.number(),
-    full_name: faker.name.fullName(),
-    image_url: faker.image.avatar(),
-    points: faker.datatype.number()
-}
 
 const data = dataProvider(httpClient, "https://mock.example.api");
 
@@ -80,7 +87,7 @@ const data = dataProvider(httpClient, "https://mock.example.api");
 export const DefaultSuggestionBox = () => {
     return (
         <MemoryRouter>
-            <ConfigProvider routes={{...routes}} config={config}>
+            <ConfigProvider routes={{ ...routes }} config={config}>
                 <DataProviderContext.Provider value={{ dataProvider: data }}>
                     <AuthContext.Provider value={{ currentUser: currentUser, isLoggedIn: true }}>
                         <ResponsiveProvider>
@@ -112,7 +119,7 @@ export const DefaultSuggestionBox = () => {
 export const DisabledSuggestionBox = () => {
     return (
         <MemoryRouter>
-            <ConfigProvider routes={{...routes}} config={config}>
+            <ConfigProvider routes={{ ...routes }} config={config}>
                 <DataProviderContext.Provider value={{ dataProvider: data }}>
                     <AuthContext.Provider value={{ currentUser: currentUser, isLoggedIn: true }}>
                         <ResponsiveProvider>
@@ -144,7 +151,7 @@ export const DisabledSuggestionBox = () => {
 export const PublishedSuggestionBox = () => {
     return (
         <MemoryRouter>
-            <ConfigProvider routes={{...routes}} config={config}>
+            <ConfigProvider routes={{ ...routes }} config={config}>
                 <DataProviderContext.Provider value={{ dataProvider: data }}>
                     <AuthContext.Provider value={{ currentUser: currentUser, isLoggedIn: true }}>
                         <ResponsiveProvider>

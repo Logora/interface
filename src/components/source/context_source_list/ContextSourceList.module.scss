@@ -22,7 +22,7 @@
 
 .content {
     display: grid;
-    gap: $spacer-lg;
+    gap: $spacer-md;
 
     &.contentMobile {
         grid-template-columns: repeat(1, 1fr);
