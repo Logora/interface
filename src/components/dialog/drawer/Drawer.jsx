@@ -6,7 +6,7 @@ import 'react-modern-drawer/dist/index.css';
 import styles from './Drawer.module.scss';
 import PropTypes from 'prop-types';
 
-export const Drawer = ({ isOpen = false, onClose, title, size = '50vw', enableOverlay = false, children }) => {
+export const Drawer = ({ isOpen = false, onClose, title, size = '50vw', enableOverlay = false, children, lockBackgroundScroll = true }) => {
     const [isdrawerOpen, setIsDrawerOpen] = useState(isOpen);
 
     const closeDrawer = () => {
@@ -28,6 +28,7 @@ export const Drawer = ({ isOpen = false, onClose, title, size = '50vw', enableOv
                 direction='right'
                 size={size}
                 enableOverlay={enableOverlay}
+                lockBackgroundScroll={lockBackgroundScroll}
                 className={styles.drawer}
                 zIndex={1000000}
             >
