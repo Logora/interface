@@ -110,7 +110,7 @@ export const ContentFooter = ({ resource,
 			{ showActions && 
 				<div className={styles.moreAction} title={intl.formatMessage({ id: "user_content.content_footer.more", defaultMessage: "More options" })}>
 					<Dropdown horizontalPosition={'right'}>
-						<Icon name="ellipsis" width={25} height={25} data-testid="dropdown" />
+						<Icon name="ellipsis" width={17} height={17} data-testid="dropdown" />
 						<div>
 							{ currentUserIsAuthor() &&
 								<>

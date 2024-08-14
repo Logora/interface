@@ -47,7 +47,7 @@ export const SuggestionVoteBox = ({ voteableType, voteableId, totalUpvote = 0, t
         onClick={disabled ? null : () => handleVote(true)}
         data-testid="upvote-button"
         disabled={disabled}
-        rightIcon={activeVote && voteSide ? null : <Icon name="check" width={20} height={20} data-testid="upvote-icon" />}
+        rightIcon={<Icon name="check" width={20} height={20} data-testid="upvote-icon" />}
         active={!(activeVote && voteSide)}
       >
         <span className={styles.text}>
