@@ -115,9 +115,7 @@ const targetContent = {"root":{"children":[{"children":[{"detail":0,"format":1,"
 const AddContentComponent = () => {
     const { setInputRichContent } = useInput();
 
-    const setContent = (event) => {
-        setInputRichContent(targetContent);
-    }
+    const setContent = (event) => { setInputRichContent(targetContent); }
 
     return (
         <>
