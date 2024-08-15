@@ -29,7 +29,6 @@
   },
   "homepage": "https://github.com/Logora/interface#readme",
   "dependencies": {
-    "@babel/core": "^7.25.2",
     "@lexical/headless": "^0.16.1",
     "@lexical/html": "^0.16.1",
     "@lexical/react": "^0.16.1",
