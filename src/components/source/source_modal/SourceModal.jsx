@@ -6,7 +6,6 @@ import { SourceBox } from '@logora/debate.source.source_box';
 import { Button } from '@logora/debate.action.button';
 import { Loader } from '@logora/debate.progress.loader';
 import { SearchInput } from '@logora/debate.input.search_input';
-import { useConfig } from '@logora/debate.data.config_provider';
 import styles from './SourceModal.module.scss';
 import PropTypes from "prop-types";
 
