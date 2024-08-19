@@ -24,6 +24,7 @@ import { SourceModal } from '@logora/debate.source.source_modal';
 import { SourceListItem } from '@logora/debate.source.source_list_item';
 import { useIntl } from 'react-intl';
 import { useId } from "react-use-id-hook";
+import { useConfig } from '@logora/debate.data.config_provider';
 import styles from './TextEditor.module.scss';
 import EditorTheme from './EditorTheme';
 import cx from "classnames";
@@ -35,6 +36,7 @@ export const TextEditor = ({ placeholder, onSubmit, sources, hideSubmit = false,
     const [editorRichText, setEditorRichText] = useState("");
     const [editorSources, setEditorSources] = useState([]);
     const { showModal } = useModal();
+    const config = useConfig();
     const intl = useIntl();
     const uid = useId();
 
@@ -97,7 +99,8 @@ export const TextEditor = ({ placeholder, onSubmit, sources, hideSubmit = false,
 
     const handleShowSourceModal = () => {
         showModal(
-            <SourceModal onAddSource={handleAddSource} />
+            <SourceModal onAddSource={handleAddSource} 
+            allowedSources={config.allowed_sources} />
         )
     }
 

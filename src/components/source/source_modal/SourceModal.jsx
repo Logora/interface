@@ -6,27 +6,33 @@ import { SourceBox } from '@logora/debate.source.source_box';
 import { Button } from '@logora/debate.action.button';
 import { Loader } from '@logora/debate.progress.loader';
 import { SearchInput } from '@logora/debate.input.search_input';
+import { useConfig } from '@logora/debate.data.config_provider';
 import styles from './SourceModal.module.scss';
 import PropTypes from "prop-types";
 
-export const SourceModal = ({ onAddSource, onHideModal }) => {
+export const SourceModal = ({ onAddSource, onHideModal, allowedSources }) => {
     const [disabled, setDisabled] = useState(false);
     const [source, setSource] = useState({});
     const [showPreview, setShowPreview] = useState(false);
     const [showPreviewError, setShowPreviewError] = useState(false);
-
     const dataProvider = useDataProvider();
+    
     const intl = useIntl();
     const { hideModal } = useModal();
     
     const handleAddSource = () => {
-        onAddSource(source);
-        setSource({});
-        setShowPreview(false);
-        hideModal();
-        if (onHideModal) {
-            onHideModal();
-        }
+        if (allowedSources.includes(source.source_url)) {
+            onAddSource(source);
+            setSource({});
+            setShowPreview(false);
+            hideModal();
+            if (onHideModal) {
+              onHideModal();
+            }
+          } else {
+            alert(`La source ${source.source_url} n'est pas autorisée.`);
+          }
+    
     }
   
     const fetchSource = (input) => {
@@ -98,4 +104,5 @@ SourceModal.propTypes = {
     onAddSource: PropTypes.func.isRequired,
     /** Callback triggered when modal is closed */
     onHideModal: PropTypes.func,
+    allowedSources: PropTypes.arrayOf(PropTypes.string)
 }
