@@ -14,11 +14,6 @@
   "teambit.dependencies/dependency-resolver": {
     "packageManager": "teambit.dependencies/pnpm",
     "policy": {
-      "dependencies": {
-        "@babel/core": "^7.25.2",
-        "babel": "^6.23.0",
-        "lexical": "^0.17.0"
-      },
       "peerDependencies": {}
     },
     "linkCoreAspects": true
