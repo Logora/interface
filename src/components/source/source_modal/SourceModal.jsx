@@ -9,17 +9,22 @@ import { SearchInput } from '@logora/debate.input.search_input';
 import styles from './SourceModal.module.scss';
 import PropTypes from "prop-types";
 
-export const SourceModal = ({ onAddSource, onHideModal }) => {
+export const SourceModal = ({ onAddSource, onHideModal, allowedSources, enableSourceCheck }) => {
     const [disabled, setDisabled] = useState(false);
     const [source, setSource] = useState({});
     const [showPreview, setShowPreview] = useState(false);
     const [showPreviewError, setShowPreviewError] = useState(false);
-
     const dataProvider = useDataProvider();
+    
     const intl = useIntl();
     const { hideModal } = useModal();
     
+    
     const handleAddSource = () => {
+        if (enableSourceCheck && !allowedSources.includes(source.source_url)) {
+            alert(`La source ${source.source_url} n'est pas autorisée.`);
+            return;
+        }
         onAddSource(source);
         setSource({});
         setShowPreview(false);
@@ -98,4 +103,8 @@ SourceModal.propTypes = {
     onAddSource: PropTypes.func.isRequired,
     /** Callback triggered when modal is closed */
     onHideModal: PropTypes.func,
+    /** Liste des sources autorisées */
+    allowedSources: PropTypes.arrayOf(PropTypes.string),
+    /** Activer la vérification des sources */
+    enableSourceCheck: PropTypes.bool
 }

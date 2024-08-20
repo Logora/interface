@@ -97,7 +97,9 @@ export const TextEditor = ({ placeholder, onSubmit, sources, hideSubmit = false,
 
     const handleShowSourceModal = () => {
         showModal(
-            <SourceModal onAddSource={handleAddSource} />
+            <SourceModal onAddSource={handleAddSource} 
+            allowedSources={config.allowed_sources}
+            enableSourceCheck={false}  />
         )
     }
 
