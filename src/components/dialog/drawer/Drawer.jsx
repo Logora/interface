@@ -20,6 +20,15 @@ export const Drawer = ({ isOpen = false, onClose, title, size = '50vw', enableOv
         setIsDrawerOpen(isOpen)
     }, [isOpen])
 
+    useEffect(() => {
+        if(typeof window !== "undefined") {
+            window.addEventListener('logora:drawer:close', closeDrawer);
+            return () => {
+                window.addEventListener('logora:drawer:close', closeDrawer);
+            };
+        }
+    }, []);
+
     return (
         <>
             <ReactDrawer
