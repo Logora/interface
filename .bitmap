@@ -61,54 +61,30 @@
     "argument/argument": {
         "name": "argument/argument",
         "scope": "logora.debate",
-        "version": "0.0.121",
+        "version": "0.0.122",
         "mainFile": "index.js",
-        "rootDir": "src/components/argument/argument",
-        "nextVersion": {
-            "version": "patch",
-            "message": "",
-            "username": "hboisgibault",
-            "email": "h.boisgibault@gmail.com"
-        }
+        "rootDir": "src/components/argument/argument"
     },
     "argument/top_arguments": {
         "name": "argument/top_arguments",
         "scope": "logora.debate",
-        "version": "0.0.61",
+        "version": "0.0.62",
         "mainFile": "index.js",
-        "rootDir": "src/components/argument/top_arguments",
-        "nextVersion": {
-            "version": "patch",
-            "message": "",
-            "username": "hboisgibault",
-            "email": "h.boisgibault@gmail.com"
-        }
+        "rootDir": "src/components/argument/top_arguments"
     },
     "auth/auth_initializer": {
         "name": "auth/auth_initializer",
         "scope": "logora.debate",
-        "version": "0.0.78",
+        "version": "0.0.79",
         "mainFile": "index.js",
-        "rootDir": "src/components/auth/auth_initializer",
-        "nextVersion": {
-            "version": "patch",
-            "message": "bump dependencies versions",
-            "username": "hboisgibault",
-            "email": "h.boisgibault@gmail.com"
-        }
+        "rootDir": "src/components/auth/auth_initializer"
     },
     "auth/auth_modal": {
         "name": "auth/auth_modal",
         "scope": "logora.debate",
-        "version": "0.0.75",
+        "version": "0.0.76",
         "mainFile": "index.js",
-        "rootDir": "src/components/auth/auth_modal",
-        "nextVersion": {
-            "version": "patch",
-            "message": "",
-            "username": "hboisgibault",
-            "email": "h.boisgibault@gmail.com"
-        }
+        "rootDir": "src/components/auth/auth_modal"
     },
     "auth/facebook_login_button": {
         "name": "auth/facebook_login_button",
@@ -127,15 +103,9 @@
     "auth/login_form": {
         "name": "auth/login_form",
         "scope": "logora.debate",
-        "version": "0.0.72",
+        "version": "0.0.73",
         "mainFile": "index.js",
-        "rootDir": "src/components/auth/login_form",
-        "nextVersion": {
-            "version": "patch",
-            "message": "",
-            "username": "hboisgibault",
-            "email": "h.boisgibault@gmail.com"
-        }
+        "rootDir": "src/components/auth/login_form"
     },
     "auth/oauth2_button": {
         "name": "auth/oauth2_button",
@@ -154,41 +124,23 @@
     "auth/signup_form": {
         "name": "auth/signup_form",
         "scope": "logora.debate",
-        "version": "0.0.75",
+        "version": "0.0.76",
         "mainFile": "index.js",
-        "rootDir": "src/components/auth/signup_form",
-        "nextVersion": {
-            "version": "patch",
-            "message": "",
-            "username": "hboisgibault",
-            "email": "h.boisgibault@gmail.com"
-        }
+        "rootDir": "src/components/auth/signup_form"
     },
     "auth/social_auth_form": {
         "name": "auth/social_auth_form",
         "scope": "logora.debate",
-        "version": "0.0.81",
+        "version": "0.0.82",
         "mainFile": "index.js",
-        "rootDir": "src/components/auth/social_auth_form",
-        "nextVersion": {
-            "version": "patch",
-            "message": "",
-            "username": "hboisgibault",
-            "email": "h.boisgibault@gmail.com"
-        }
+        "rootDir": "src/components/auth/social_auth_form"
     },
     "auth/sso_form": {
         "name": "auth/sso_form",
         "scope": "logora.debate",
-        "version": "0.0.70",
+        "version": "0.0.71",
         "mainFile": "index.js",
-        "rootDir": "src/components/auth/sso_form",
-        "nextVersion": {
-            "version": "patch",
-            "message": "",
-            "username": "hboisgibault",
-            "email": "h.boisgibault@gmail.com"
-        }
+        "rootDir": "src/components/auth/sso_form"
     },
     "auth/use_auth": {
         "name": "auth/use_auth",
@@ -200,41 +152,23 @@
     "chart/line_chart": {
         "name": "chart/line_chart",
         "scope": "logora.debate",
-        "version": "0.0.27",
+        "version": "0.0.28",
         "mainFile": "index.js",
-        "rootDir": "src/components/chart/line_chart",
-        "nextVersion": {
-            "version": "patch",
-            "message": "",
-            "username": "hboisgibault",
-            "email": "h.boisgibault@gmail.com"
-        }
+        "rootDir": "src/components/chart/line_chart"
     },
     "chart/pie_chart": {
         "name": "chart/pie_chart",
         "scope": "logora.debate",
-        "version": "0.0.14",
+        "version": "0.0.15",
         "mainFile": "index.js",
-        "rootDir": "src/components/chart/pie_chart",
-        "nextVersion": {
-            "version": "patch",
-            "message": "",
-            "username": "hboisgibault",
-            "email": "h.boisgibault@gmail.com"
-        }
+        "rootDir": "src/components/chart/pie_chart"
     },
     "consultation/consultation_box": {
         "name": "consultation/consultation_box",
         "scope": "logora.debate",
-        "version": "0.0.57",
+        "version": "0.0.58",
         "mainFile": "index.js",
-        "rootDir": "src/components/consultation/consultation_box",
-        "nextVersion": {
-            "version": "patch",
-            "message": "",
-            "username": "hboisgibault",
-            "email": "h.boisgibault@gmail.com"
-        }
+        "rootDir": "src/components/consultation/consultation_box"
     },
     "data/axios_client": {
         "name": "data/axios_client",
@@ -260,15 +194,9 @@
     "debate/debate_box": {
         "name": "debate/debate_box",
         "scope": "logora.debate",
-        "version": "0.0.76",
+        "version": "0.0.77",
         "mainFile": "index.js",
-        "rootDir": "src/components/debate/debate_box",
-        "nextVersion": {
-            "version": "patch",
-            "message": "",
-            "username": "hboisgibault",
-            "email": "h.boisgibault@gmail.com"
-        }
+        "rootDir": "src/components/debate/debate_box"
     },
     "dialog/announcement_dialog": {
         "name": "dialog/announcement_dialog",
@@ -287,28 +215,16 @@
     "dialog/dialog_box": {
         "name": "dialog/dialog_box",
         "scope": "logora.debate",
-        "version": "0.0.35",
+        "version": "0.0.36",
         "mainFile": "index.js",
-        "rootDir": "src/components/dialog/dialog_box",
-        "nextVersion": {
-            "version": "patch",
-            "message": "",
-            "username": "hboisgibault",
-            "email": "h.boisgibault@gmail.com"
-        }
+        "rootDir": "src/components/dialog/dialog_box"
     },
     "dialog/drawer": {
         "name": "dialog/drawer",
         "scope": "logora.debate",
-        "version": "0.0.19",
+        "version": "0.0.20",
         "mainFile": "index.js",
-        "rootDir": "src/components/dialog/drawer",
-        "nextVersion": {
-            "version": "patch",
-            "message": "",
-            "username": "hboisgibault",
-            "email": "h.boisgibault@gmail.com"
-        }
+        "rootDir": "src/components/dialog/drawer"
     },
     "dialog/dropdown": {
         "name": "dialog/dropdown",
@@ -348,15 +264,9 @@
     "embed/embed_header": {
         "name": "embed/embed_header",
         "scope": "logora.debate",
-        "version": "0.0.54",
+        "version": "0.0.55",
         "mainFile": "index.js",
-        "rootDir": "src/components/embed/embed_header",
-        "nextVersion": {
-            "version": "patch",
-            "message": "",
-            "username": "hboisgibault",
-            "email": "h.boisgibault@gmail.com"
-        }
+        "rootDir": "src/components/embed/embed_header"
     },
     "error/standard_error_boundary": {
         "name": "error/standard_error_boundary",
@@ -368,28 +278,16 @@
     "follow/follow_button": {
         "name": "follow/follow_button",
         "scope": "logora.debate",
-        "version": "0.0.71",
+        "version": "0.0.72",
         "mainFile": "index.js",
-        "rootDir": "src/components/follow/follow_button",
-        "nextVersion": {
-            "version": "patch",
-            "message": "",
-            "username": "hboisgibault",
-            "email": "h.boisgibault@gmail.com"
-        }
+        "rootDir": "src/components/follow/follow_button"
     },
     "follow/use_follow": {
         "name": "follow/use_follow",
         "scope": "logora.debate",
-        "version": "0.0.42",
+        "version": "0.0.43",
         "mainFile": "index.js",
-        "rootDir": "src/components/follow/use_follow",
-        "nextVersion": {
-            "version": "patch",
-            "message": "bump dependencies versions",
-            "username": "hboisgibault",
-            "email": "h.boisgibault@gmail.com"
-        }
+        "rootDir": "src/components/follow/use_follow"
     },
     "forms/form": {
         "name": "forms/form",
@@ -401,28 +299,16 @@
     "forms/use_form_validation": {
         "name": "forms/use_form_validation",
         "scope": "logora.debate",
-        "version": "0.0.12",
+        "version": "0.0.13",
         "mainFile": "index.js",
-        "rootDir": "src/components/forms/use_form_validation",
-        "nextVersion": {
-            "version": "patch",
-            "message": "",
-            "username": "hboisgibault",
-            "email": "h.boisgibault@gmail.com"
-        }
+        "rootDir": "src/components/forms/use_form_validation"
     },
     "gamification/badge_box": {
         "name": "gamification/badge_box",
         "scope": "logora.debate",
-        "version": "0.0.17",
+        "version": "0.0.18",
         "mainFile": "index.js",
-        "rootDir": "src/components/gamification/badge_box",
-        "nextVersion": {
-            "version": "patch",
-            "message": "",
-            "username": "hboisgibault",
-            "email": "h.boisgibault@gmail.com"
-        }
+        "rootDir": "src/components/gamification/badge_box"
     },
     "gamification/point_box": {
         "name": "gamification/point_box",
@@ -434,15 +320,9 @@
     "hooks/use_auth_required": {
         "name": "hooks/use_auth_required",
         "scope": "logora.debate",
-        "version": "0.0.48",
+        "version": "0.0.49",
         "mainFile": "index.js",
-        "rootDir": "src/components/hooks/use_auth_required",
-        "nextVersion": {
-            "version": "patch",
-            "message": "bump dependencies versions",
-            "username": "hboisgibault",
-            "email": "h.boisgibault@gmail.com"
-        }
+        "rootDir": "src/components/hooks/use_auth_required"
     },
     "hooks/use_css_theme": {
         "name": "hooks/use_css_theme",
@@ -468,15 +348,9 @@
     "hooks/use_relative_time": {
         "name": "hooks/use_relative_time",
         "scope": "logora.debate",
-        "version": "0.0.20",
+        "version": "0.0.21",
         "mainFile": "index.js",
-        "rootDir": "src/components/hooks/use_relative_time",
-        "nextVersion": {
-            "version": "patch",
-            "message": "",
-            "username": "hboisgibault",
-            "email": "h.boisgibault@gmail.com"
-        }
+        "rootDir": "src/components/hooks/use_relative_time"
     },
     "hooks/use_responsive": {
         "name": "hooks/use_responsive",
@@ -523,28 +397,16 @@
     "information/information_box": {
         "name": "information/information_box",
         "scope": "logora.debate",
-        "version": "0.0.34",
+        "version": "0.0.35",
         "mainFile": "index.js",
-        "rootDir": "src/components/information/information_box",
-        "nextVersion": {
-            "version": "patch",
-            "message": "",
-            "username": "hboisgibault",
-            "email": "h.boisgibault@gmail.com"
-        }
+        "rootDir": "src/components/information/information_box"
     },
     "input/argument_input": {
         "name": "input/argument_input",
         "scope": "logora.debate",
-        "version": "0.0.80",
+        "version": "0.0.81",
         "mainFile": "index.js",
-        "rootDir": "src/components/input/argument_input",
-        "nextVersion": {
-            "version": "patch",
-            "message": "",
-            "username": "hboisgibault",
-            "email": "h.boisgibault@gmail.com"
-        }
+        "rootDir": "src/components/input/argument_input"
     },
     "input/checkbox/hidden": {
         "name": "input/checkbox/hidden",
@@ -591,15 +453,9 @@
     "input/text_editor": {
         "name": "input/text_editor",
         "scope": "logora.debate",
-        "version": "0.0.61",
+        "version": "0.0.62",
         "mainFile": "index.js",
-        "rootDir": "src/components/input/text_editor",
-        "nextVersion": {
-            "version": "patch",
-            "message": "",
-            "username": "hboisgibault",
-            "email": "h.boisgibault@gmail.com"
-        }
+        "rootDir": "src/components/input/text_editor"
     },
     "input/text_input": {
         "name": "input/text_input",
@@ -618,28 +474,16 @@
     "input/toggle_position": {
         "name": "input/toggle_position",
         "scope": "logora.debate",
-        "version": "0.0.20",
+        "version": "0.0.21",
         "mainFile": "index.js",
-        "rootDir": "src/components/input/toggle_position",
-        "nextVersion": {
-            "version": "patch",
-            "message": "",
-            "username": "hboisgibault",
-            "email": "h.boisgibault@gmail.com"
-        }
+        "rootDir": "src/components/input/toggle_position"
     },
     "intl/intl_provider": {
         "name": "intl/intl_provider",
         "scope": "logora.debate",
-        "version": "0.0.15",
+        "version": "0.0.16",
         "mainFile": "index.js",
-        "rootDir": "src/components/intl/intl_provider",
-        "nextVersion": {
-            "version": "patch",
-            "message": "",
-            "username": "hboisgibault",
-            "email": "h.boisgibault@gmail.com"
-        }
+        "rootDir": "src/components/intl/intl_provider"
     },
     "list/list_provider": {
         "name": "list/list_provider",
@@ -651,15 +495,9 @@
     "list/paginated_list": {
         "name": "list/paginated_list",
         "scope": "logora.debate",
-        "version": "0.0.107",
+        "version": "0.0.108",
         "mainFile": "index.js",
-        "rootDir": "src/components/list/paginated_list",
-        "nextVersion": {
-            "version": "patch",
-            "message": "",
-            "username": "hboisgibault",
-            "email": "h.boisgibault@gmail.com"
-        }
+        "rootDir": "src/components/list/paginated_list"
     },
     "list/pagination": {
         "name": "list/pagination",
@@ -671,41 +509,23 @@
     "modal/side_modal": {
         "name": "modal/side_modal",
         "scope": "logora.debate",
-        "version": "0.0.38",
+        "version": "0.0.39",
         "mainFile": "index.js",
-        "rootDir": "src/components/modal/side_modal",
-        "nextVersion": {
-            "version": "patch",
-            "message": "",
-            "username": "hboisgibault",
-            "email": "h.boisgibault@gmail.com"
-        }
+        "rootDir": "src/components/modal/side_modal"
     },
     "notification/notification_item": {
         "name": "notification/notification_item",
         "scope": "logora.debate",
-        "version": "0.0.3",
+        "version": "0.0.4",
         "mainFile": "index.js",
-        "rootDir": "src/components/notification/notification_item",
-        "nextVersion": {
-            "version": "patch",
-            "message": "",
-            "username": "hboisgibault",
-            "email": "h.boisgibault@gmail.com"
-        }
+        "rootDir": "src/components/notification/notification_item"
     },
     "notification/notification_menu": {
         "name": "notification/notification_menu",
         "scope": "logora.debate",
-        "version": "0.0.9",
+        "version": "0.0.10",
         "mainFile": "index.js",
-        "rootDir": "src/components/notification/notification_menu",
-        "nextVersion": {
-            "version": "patch",
-            "message": "",
-            "username": "hboisgibault",
-            "email": "h.boisgibault@gmail.com"
-        }
+        "rootDir": "src/components/notification/notification_menu"
     },
     "progress/loader": {
         "name": "progress/loader",
@@ -738,93 +558,51 @@
     "share/share_box": {
         "name": "share/share_box",
         "scope": "logora.debate",
-        "version": "0.0.70",
+        "version": "0.0.71",
         "mainFile": "index.js",
-        "rootDir": "src/components/share/share_box",
-        "nextVersion": {
-            "version": "patch",
-            "message": "",
-            "username": "hboisgibault",
-            "email": "h.boisgibault@gmail.com"
-        }
+        "rootDir": "src/components/share/share_box"
     },
     "share/share_button": {
         "name": "share/share_button",
         "scope": "logora.debate",
-        "version": "0.0.82",
+        "version": "0.0.83",
         "mainFile": "index.js",
-        "rootDir": "src/components/share/share_button",
-        "nextVersion": {
-            "version": "patch",
-            "message": "",
-            "username": "hboisgibault",
-            "email": "h.boisgibault@gmail.com"
-        }
+        "rootDir": "src/components/share/share_button"
     },
     "share/share_modal": {
         "name": "share/share_modal",
         "scope": "logora.debate",
-        "version": "0.0.70",
+        "version": "0.0.71",
         "mainFile": "index.js",
-        "rootDir": "src/components/share/share_modal",
-        "nextVersion": {
-            "version": "patch",
-            "message": "",
-            "username": "hboisgibault",
-            "email": "h.boisgibault@gmail.com"
-        }
+        "rootDir": "src/components/share/share_modal"
     },
     "skeleton/box_skeleton": {
         "name": "skeleton/box_skeleton",
         "scope": "logora.debate",
-        "version": "0.0.20",
+        "version": "0.0.21",
         "mainFile": "index.js",
-        "rootDir": "src/components/skeleton/box_skeleton",
-        "nextVersion": {
-            "version": "patch",
-            "message": "",
-            "username": "hboisgibault",
-            "email": "h.boisgibault@gmail.com"
-        }
+        "rootDir": "src/components/skeleton/box_skeleton"
     },
     "skeleton/user_content_skeleton": {
         "name": "skeleton/user_content_skeleton",
         "scope": "logora.debate",
-        "version": "0.0.44",
+        "version": "0.0.45",
         "mainFile": "index.js",
-        "rootDir": "src/components/skeleton/user_content_skeleton",
-        "nextVersion": {
-            "version": "patch",
-            "message": "",
-            "username": "hboisgibault",
-            "email": "h.boisgibault@gmail.com"
-        }
+        "rootDir": "src/components/skeleton/user_content_skeleton"
     },
     "source/context_source_box": {
         "name": "source/context_source_box",
         "scope": "logora.debate",
-        "version": "0.0.54",
+        "version": "0.0.55",
         "mainFile": "index.js",
-        "rootDir": "src/components/source/context_source_box",
-        "nextVersion": {
-            "version": "patch",
-            "message": "",
-            "username": "hboisgibault",
-            "email": "h.boisgibault@gmail.com"
-        }
+        "rootDir": "src/components/source/context_source_box"
     },
     "source/context_source_list": {
         "name": "source/context_source_list",
         "scope": "logora.debate",
-        "version": "0.0.56",
+        "version": "0.0.57",
         "mainFile": "index.js",
-        "rootDir": "src/components/source/context_source_list",
-        "nextVersion": {
-            "version": "patch",
-            "message": "",
-            "username": "hboisgibault",
-            "email": "h.boisgibault@gmail.com"
-        }
+        "rootDir": "src/components/source/context_source_list"
     },
     "source/source_box": {
         "name": "source/source_box",
@@ -843,15 +621,9 @@
     "source/source_modal": {
         "name": "source/source_modal",
         "scope": "logora.debate",
-        "version": "0.0.108",
+        "version": "0.0.109",
         "mainFile": "index.js",
-        "rootDir": "src/components/source/source_modal",
-        "nextVersion": {
-            "version": "patch",
-            "message": "",
-            "username": "hboisgibault",
-            "email": "h.boisgibault@gmail.com"
-        }
+        "rootDir": "src/components/source/source_modal"
     },
     "styles/display": {
         "name": "styles/display",
@@ -891,15 +663,9 @@
     "suggestion/suggestion_box": {
         "name": "suggestion/suggestion_box",
         "scope": "logora.debate",
-        "version": "0.0.2",
+        "version": "0.0.3",
         "mainFile": "index.js",
-        "rootDir": "src/components/suggestion/suggestion_box",
-        "nextVersion": {
-            "version": "patch",
-            "message": "",
-            "username": "hboisgibault",
-            "email": "h.boisgibault@gmail.com"
-        }
+        "rootDir": "src/components/suggestion/suggestion_box"
     },
     "summary/argument_summary_box": {
         "name": "summary/argument_summary_box",
@@ -911,15 +677,9 @@
     "summary/keyword_box": {
         "name": "summary/keyword_box",
         "scope": "logora.debate",
-        "version": "0.0.17",
+        "version": "0.0.18",
         "mainFile": "index.js",
-        "rootDir": "src/components/summary/keyword_box",
-        "nextVersion": {
-            "version": "patch",
-            "message": "",
-            "username": "hboisgibault",
-            "email": "h.boisgibault@gmail.com"
-        }
+        "rootDir": "src/components/summary/keyword_box"
     },
     "tag/tag": {
         "name": "tag/tag",
@@ -959,184 +719,100 @@
     "translation/translated_content": {
         "name": "translation/translated_content",
         "scope": "logora.debate",
-        "version": "0.0.11",
+        "version": "0.0.12",
         "mainFile": "index.js",
-        "rootDir": "src/components/translation/translated_content",
-        "nextVersion": {
-            "version": "patch",
-            "message": "",
-            "username": "hboisgibault",
-            "email": "h.boisgibault@gmail.com"
-        }
+        "rootDir": "src/components/translation/translated_content"
     },
     "translation/translation_button": {
         "name": "translation/translation_button",
         "scope": "logora.debate",
-        "version": "0.0.19",
+        "version": "0.0.20",
         "mainFile": "index.js",
-        "rootDir": "src/components/translation/translation_button",
-        "nextVersion": {
-            "version": "patch",
-            "message": "",
-            "username": "hboisgibault",
-            "email": "h.boisgibault@gmail.com"
-        }
+        "rootDir": "src/components/translation/translation_button"
     },
     "user/author_box": {
         "name": "user/author_box",
         "scope": "logora.debate",
-        "version": "0.0.89",
+        "version": "0.0.90",
         "mainFile": "index.js",
-        "rootDir": "src/components/user/author_box",
-        "nextVersion": {
-            "version": "patch",
-            "message": "",
-            "username": "hboisgibault",
-            "email": "h.boisgibault@gmail.com"
-        }
+        "rootDir": "src/components/user/author_box"
     },
     "user/avatar": {
         "name": "user/avatar",
         "scope": "logora.debate",
-        "version": "0.0.48",
+        "version": "0.0.49",
         "mainFile": "index.js",
-        "rootDir": "src/components/user/avatar",
-        "nextVersion": {
-            "version": "patch",
-            "message": "",
-            "username": "hboisgibault",
-            "email": "h.boisgibault@gmail.com"
-        }
+        "rootDir": "src/components/user/avatar"
     },
     "user/avatar_selector": {
         "name": "user/avatar_selector",
         "scope": "logora.debate",
-        "version": "0.0.65",
+        "version": "0.0.66",
         "mainFile": "index.js",
-        "rootDir": "src/components/user/avatar_selector",
-        "nextVersion": {
-            "version": "patch",
-            "message": "",
-            "username": "hboisgibault",
-            "email": "h.boisgibault@gmail.com"
-        }
+        "rootDir": "src/components/user/avatar_selector"
     },
     "user/update_user_info_modal": {
         "name": "user/update_user_info_modal",
         "scope": "logora.debate",
-        "version": "0.0.35",
+        "version": "0.0.36",
         "mainFile": "index.js",
-        "rootDir": "src/components/user/update_user_info_modal",
-        "nextVersion": {
-            "version": "patch",
-            "message": "",
-            "username": "hboisgibault",
-            "email": "h.boisgibault@gmail.com"
-        }
+        "rootDir": "src/components/user/update_user_info_modal"
     },
     "user/user_box": {
         "name": "user/user_box",
         "scope": "logora.debate",
-        "version": "0.0.52",
+        "version": "0.0.53",
         "mainFile": "index.js",
-        "rootDir": "src/components/user/user_box",
-        "nextVersion": {
-            "version": "patch",
-            "message": "",
-            "username": "hboisgibault",
-            "email": "h.boisgibault@gmail.com"
-        }
+        "rootDir": "src/components/user/user_box"
     },
     "user/user_box_small": {
         "name": "user/user_box_small",
         "scope": "logora.debate",
-        "version": "0.0.30",
+        "version": "0.0.31",
         "mainFile": "index.js",
-        "rootDir": "src/components/user/user_box_small",
-        "nextVersion": {
-            "version": "patch",
-            "message": "",
-            "username": "hboisgibault",
-            "email": "h.boisgibault@gmail.com"
-        }
+        "rootDir": "src/components/user/user_box_small"
     },
     "user_content/content_footer": {
         "name": "user_content/content_footer",
         "scope": "logora.debate",
-        "version": "0.0.67",
+        "version": "0.0.68",
         "mainFile": "index.js",
-        "rootDir": "src/components/user_content/content_footer",
-        "nextVersion": {
-            "version": "patch",
-            "message": "",
-            "username": "hboisgibault",
-            "email": "h.boisgibault@gmail.com"
-        }
+        "rootDir": "src/components/user_content/content_footer"
     },
     "user_content/content_header": {
         "name": "user_content/content_header",
         "scope": "logora.debate",
-        "version": "0.0.32",
+        "version": "0.0.33",
         "mainFile": "index.js",
-        "rootDir": "src/components/user_content/content_header",
-        "nextVersion": {
-            "version": "patch",
-            "message": "",
-            "username": "hboisgibault",
-            "email": "h.boisgibault@gmail.com"
-        }
+        "rootDir": "src/components/user_content/content_header"
     },
     "user_content/summary_content_box": {
         "name": "user_content/summary_content_box",
         "scope": "logora.debate",
-        "version": "0.0.35",
+        "version": "0.0.36",
         "mainFile": "index.js",
-        "rootDir": "src/components/user_content/summary_content_box",
-        "nextVersion": {
-            "version": "patch",
-            "message": "",
-            "username": "hboisgibault",
-            "email": "h.boisgibault@gmail.com"
-        }
+        "rootDir": "src/components/user_content/summary_content_box"
     },
     "user_content/use_delete_content": {
         "name": "user_content/use_delete_content",
         "scope": "logora.debate",
-        "version": "0.0.51",
+        "version": "0.0.52",
         "mainFile": "index.js",
-        "rootDir": "src/components/user_content/use_delete_content",
-        "nextVersion": {
-            "version": "patch",
-            "message": "",
-            "username": "hboisgibault",
-            "email": "h.boisgibault@gmail.com"
-        }
+        "rootDir": "src/components/user_content/use_delete_content"
     },
     "user_content/use_report_content": {
         "name": "user_content/use_report_content",
         "scope": "logora.debate",
-        "version": "0.0.51",
+        "version": "0.0.52",
         "mainFile": "index.js",
-        "rootDir": "src/components/user_content/use_report_content",
-        "nextVersion": {
-            "version": "patch",
-            "message": "",
-            "username": "hboisgibault",
-            "email": "h.boisgibault@gmail.com"
-        }
+        "rootDir": "src/components/user_content/use_report_content"
     },
     "util/location": {
         "name": "util/location",
         "scope": "logora.debate",
-        "version": "0.0.13",
+        "version": "0.0.14",
         "mainFile": "index.js",
-        "rootDir": "src/components/util/location",
-        "nextVersion": {
-            "version": "patch",
-            "message": "",
-            "username": "hboisgibault",
-            "email": "h.boisgibault@gmail.com"
-        }
+        "rootDir": "src/components/util/location"
     },
     "util/unique_by": {
         "name": "util/unique_by",
@@ -1148,67 +824,37 @@
     "vote/suggestion_vote_box": {
         "name": "vote/suggestion_vote_box",
         "scope": "logora.debate",
-        "version": "0.0.57",
+        "version": "0.0.58",
         "mainFile": "index.js",
-        "rootDir": "src/components/vote/suggestion_vote_box",
-        "nextVersion": {
-            "version": "patch",
-            "message": "",
-            "username": "hboisgibault",
-            "email": "h.boisgibault@gmail.com"
-        }
+        "rootDir": "src/components/vote/suggestion_vote_box"
     },
     "vote/up_down_vote_box": {
         "name": "vote/up_down_vote_box",
         "scope": "logora.debate",
-        "version": "0.0.56",
+        "version": "0.0.57",
         "mainFile": "index.js",
-        "rootDir": "src/components/vote/up_down_vote_box",
-        "nextVersion": {
-            "version": "patch",
-            "message": "",
-            "username": "hboisgibault",
-            "email": "h.boisgibault@gmail.com"
-        }
+        "rootDir": "src/components/vote/up_down_vote_box"
     },
     "vote/use_vote": {
         "name": "vote/use_vote",
         "scope": "logora.debate",
-        "version": "0.0.48",
+        "version": "0.0.49",
         "mainFile": "index.js",
-        "rootDir": "src/components/vote/use_vote",
-        "nextVersion": {
-            "version": "patch",
-            "message": "bump dependencies versions",
-            "username": "hboisgibault",
-            "email": "h.boisgibault@gmail.com"
-        }
+        "rootDir": "src/components/vote/use_vote"
     },
     "vote/vote_box": {
         "name": "vote/vote_box",
         "scope": "logora.debate",
-        "version": "0.0.71",
+        "version": "0.0.72",
         "mainFile": "index.js",
-        "rootDir": "src/components/vote/vote_box",
-        "nextVersion": {
-            "version": "patch",
-            "message": "",
-            "username": "hboisgibault",
-            "email": "h.boisgibault@gmail.com"
-        }
+        "rootDir": "src/components/vote/vote_box"
     },
     "vote/vote_button": {
         "name": "vote/vote_button",
         "scope": "logora.debate",
-        "version": "0.0.62",
+        "version": "0.0.63",
         "mainFile": "index.js",
-        "rootDir": "src/components/vote/vote_button",
-        "nextVersion": {
-            "version": "patch",
-            "message": "",
-            "username": "hboisgibault",
-            "email": "h.boisgibault@gmail.com"
-        }
+        "rootDir": "src/components/vote/vote_button"
     },
     "vote/vote_provider": {
         "name": "vote/vote_provider",
