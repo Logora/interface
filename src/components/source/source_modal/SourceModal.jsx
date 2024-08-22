@@ -16,7 +16,6 @@ export const SourceModal = ({ onAddSource, onHideModal, allowedSources = [] }) =
     const [source, setSource] = useState({});
     const [showPreview, setShowPreview] = useState(false);
     const [showPreviewError, setShowPreviewError] = useState(false);
-    const [errorMessage, setErrorMessage] = useState(null);
     const dataProvider = useDataProvider();
     const [showErrorSource, setShowErrorSource] = useState(false);
     const intl = useIntl();
@@ -69,11 +68,6 @@ export const SourceModal = ({ onAddSource, onHideModal, allowedSources = [] }) =
                         onSearchSubmit={(query) => fetchSource(query)}
                         disabled={disabled}
                     />
-                    {errorMessage && (
-                        <div className={styles.sourcePreviewError}>
-                            {errorMessage}
-                        </div>
-                    )}
                     {allowedSources.length > 0 && (
                                                     <div className={styles.sourceinfo}>
 

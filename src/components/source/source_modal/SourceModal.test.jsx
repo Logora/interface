@@ -20,9 +20,6 @@ const source = {
     publisher: faker.vehicle.manufacturer()
 };
 
-const allowedDomains = [
-    "example.com",
-];
 
 const httpClient = {
     get: () => null,
