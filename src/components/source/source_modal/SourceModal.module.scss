@@ -5,6 +5,7 @@
   @include py(2, xs);
   max-height: calc(100vh - 80px);
   overflow-y: auto;
+  line-height: $line-height-normal;
 }
 
 .sourcePreviewBox {
@@ -25,4 +26,10 @@ button.sourcePreviewButton {
 
 .sourcePreviewError {
   text-align: center;
+}
+.sourceinfo {
+  font-size: $font-size-small;
+  color: $text-secondary;
+  white-space: nowrap;
+  margin-top: 1rem; 
 }

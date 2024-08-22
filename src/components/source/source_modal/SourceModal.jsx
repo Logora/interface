@@ -6,25 +6,24 @@ import { SourceBox } from '@logora/debate.source.source_box';
 import { Button } from '@logora/debate.action.button';
 import { Loader } from '@logora/debate.progress.loader';
 import { SearchInput } from '@logora/debate.input.search_input';
+import { AnnouncementDialog } from "@logora/debate.dialog.announcement_dialog";
+
 import styles from './SourceModal.module.scss';
 import PropTypes from "prop-types";
 
-export const SourceModal = ({ onAddSource, onHideModal, allowedSources, enableSourceCheck }) => {
+export const SourceModal = ({ onAddSource, onHideModal, allowedSources = [] }) => {
     const [disabled, setDisabled] = useState(false);
     const [source, setSource] = useState({});
     const [showPreview, setShowPreview] = useState(false);
     const [showPreviewError, setShowPreviewError] = useState(false);
+    const [errorMessage, setErrorMessage] = useState(null);
     const dataProvider = useDataProvider();
-    
+    const [showErrorSource, setShowErrorSource] = useState(false);
     const intl = useIntl();
     const { hideModal } = useModal();
-    
-    
+
+
     const handleAddSource = () => {
-        if (enableSourceCheck && !allowedSources.includes(source.source_url)) {
-            alert(`La source ${source.source_url} n'est pas autorisée.`);
-            return;
-        }
         onAddSource(source);
         setSource({});
         setShowPreview(false);
@@ -33,16 +32,22 @@ export const SourceModal = ({ onAddSource, onHideModal, allowedSources, enableSo
             onHideModal();
         }
     }
-  
+
     const fetchSource = (input) => {
+
         const data = {
             query: input,
         };
+        if (allowedSources.length > 0 && !allowedSources.includes(input)) {
+            setShowErrorSource(true);
+
+            return;
+        }
         setShowPreview(true);
         setDisabled(true);
         setShowPreviewError(false);
         dataProvider.create("sources/fetch", data).then(response => {
-            if(response.data.success) {
+            if (response.data.success) {
                 setSource(response.data.data.resource);
                 setDisabled(false);
             } else {
@@ -60,18 +65,33 @@ export const SourceModal = ({ onAddSource, onHideModal, allowedSources, enableSo
             <div className={styles.sourceModalBody}>
                 <div className={styles.sourceInputContainer}>
                     <SearchInput
-                        placeholder={intl.formatMessage({ id:"source.source_modal.input_placeholder", defaultMessage: "Entrez l'URL de la source..."}) }
+                        placeholder={intl.formatMessage({ id: "source.source_modal.input_placeholder", defaultMessage: "Entrez l'URL de la source..." })}
                         onSearchSubmit={(query) => fetchSource(query)}
                         disabled={disabled}
                     />
+                    {errorMessage && (
+                        <div className={styles.sourcePreviewError}>
+                            {errorMessage}
+                        </div>
+                    )}
+                    {allowedSources.length > 0 && (
+                                                    <div className={styles.sourceinfo}>
+
+                        <FormattedMessage
+                            id="source.source_modal.info_label"
+                            defaultMessage="Choisissez parmi : SPIEGEL.de, manager-magazin.de, 11FREUNDE.de"
+
+                        />
+                        </div>
+                    )}
                 </div>
                 <div className={styles.sourcePreviewBox}>
-                    { showPreview ? (
+                    {showPreview ? (
                         !showPreviewError ? (
                             <div>
-                                { !disabled ?
+                                {!disabled ?
                                     <>
-                                        <SourceBox 
+                                        <SourceBox
                                             title={source.title}
                                             description={source.description}
                                             url={source.source_url}
@@ -82,11 +102,11 @@ export const SourceModal = ({ onAddSource, onHideModal, allowedSources, enableSo
                                             <FormattedMessage id="source.source_modal.submit_label" defaultMessage="Ajouter" />
                                         </Button>
                                     </>
-                                :
+                                    :
                                     <Loader />
                                 }
                             </div>
-                        ) :  (
+                        ) : (
                             <div className={styles.sourcePreviewError}>
                                 <FormattedMessage id="source.source_modal.error" defaultMessage="Problème lors de la récupération de la source" />
                             </div>
@@ -94,7 +114,14 @@ export const SourceModal = ({ onAddSource, onHideModal, allowedSources, enableSo
                     ) : null}
                 </div>
             </div>
+            {showErrorSource && (
+                <AnnouncementDialog
+                    message={intl.formatMessage({ id: "source.source_modal.error_unauthorized", defaultMessage: "Source non autorisée" })}
+                    fullWidth
+                />
+            )}
         </Modal>
+
     );
 }
 
@@ -105,6 +132,4 @@ SourceModal.propTypes = {
     onHideModal: PropTypes.func,
     /** Liste des sources autorisées */
     allowedSources: PropTypes.arrayOf(PropTypes.string),
-    /** Activer la vérification des sources */
-    enableSourceCheck: PropTypes.bool
 }

@@ -10,10 +10,14 @@ import { faker } from '@faker-js/faker';
 const source = { 
     title: faker.music.songName(),
     description: faker.lorem.sentence(),
-    source_url: faker.internet.url(),
+    source_url: `ggg.com`, 
     origin_image_url: faker.image.nature(),
     publisher: faker.vehicle.manufacturer()
 };
+
+const allowedDomains = [
+    "SPIEGEL.de",
+];
 
 const httpClient = {
     get: () => null,
@@ -37,6 +41,28 @@ export const DefaultSourceModal = () => {
                             <SourceModal 
                                 onAddSource={() => console.log("Add source")} 
                                 onHideModal={() => console.log("Hide modal")} 
+                            />
+                        </DataProviderContext.Provider>
+                    </IconProvider>
+                </IntlProvider>
+            </ModalProvider>
+        </div>
+    )
+};
+
+export const SourceModalWithError = () => {
+    const data = dataProvider(httpClient, "https://mock.example.api");
+
+    return (
+        <div style={{width: "250px", height: "100px"}}>
+            <ModalProvider>
+                <IntlProvider locale="en">
+                    <IconProvider library={regularIcons}>
+                        <DataProviderContext.Provider value={{ dataProvider: data }}>
+                            <SourceModal 
+                                onAddSource={() => console.log("Add source")} 
+                                onHideModal={() => console.log("Hide modal")} 
+                                allowedSources={allowedDomains}
                             />
                         </DataProviderContext.Provider>
                     </IconProvider>
