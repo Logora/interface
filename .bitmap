@@ -16,7 +16,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/action/back_link",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "action/button": {
@@ -26,7 +26,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/action/button",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "action/icon_text_link": {
@@ -36,7 +36,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/action/icon_text_link",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "action/link": {
@@ -46,7 +46,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/action/link",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "ad/ad_unit": {
@@ -56,7 +56,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/ad/ad_unit",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "ad/use_google_ad_manager": {
@@ -66,7 +66,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/ad/use_google_ad_manager",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "ad/with_ad": {
@@ -76,7 +76,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/ad/with_ad",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "argument/argument": {
@@ -86,7 +86,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/argument/argument",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "argument/top_arguments": {
@@ -96,7 +96,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/argument/top_arguments",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "auth/auth_initializer": {
@@ -106,7 +106,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/auth/auth_initializer",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "auth/auth_modal": {
@@ -116,7 +116,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/auth/auth_modal",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "auth/facebook_login_button": {
@@ -126,7 +126,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/auth/facebook_login_button",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "auth/google_login_button": {
@@ -136,7 +136,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/auth/google_login_button",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "auth/login_form": {
@@ -146,7 +146,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/auth/login_form",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "auth/oauth2_button": {
@@ -156,7 +156,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/auth/oauth2_button",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "auth/providers": {
@@ -166,7 +166,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/auth/providers",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "auth/signup_form": {
@@ -176,7 +176,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/auth/signup_form",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "auth/social_auth_form": {
@@ -186,7 +186,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/auth/social_auth_form",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "auth/sso_form": {
@@ -196,7 +196,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/auth/sso_form",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "auth/use_auth": {
@@ -206,7 +206,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/auth/use_auth",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "chart/line_chart": {
@@ -216,7 +216,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/chart/line_chart",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "chart/pie_chart": {
@@ -226,7 +226,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/chart/pie_chart",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "consultation/consultation_box": {
@@ -236,7 +236,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/consultation/consultation_box",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "data/axios_client": {
@@ -246,7 +246,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/data/axios_client",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "data/config_provider": {
@@ -256,7 +256,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/data/config_provider",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "data/data_provider": {
@@ -266,7 +266,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/data/data_provider",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "debate/debate_box": {
@@ -276,7 +276,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/debate/debate_box",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "dialog/announcement_dialog": {
@@ -286,7 +286,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/dialog/announcement_dialog",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "dialog/confirm_modal": {
@@ -296,7 +296,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/dialog/confirm_modal",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "dialog/dialog_box": {
@@ -306,7 +306,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/dialog/dialog_box",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "dialog/drawer": {
@@ -316,7 +316,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/dialog/drawer",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "dialog/dropdown": {
@@ -326,7 +326,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/dialog/dropdown",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "dialog/modal": {
@@ -336,7 +336,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/dialog/modal",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "dialog/toast": {
@@ -346,7 +346,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/dialog/toast",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "dialog/toast_provider": {
@@ -356,7 +356,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/dialog/toast_provider",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "dialog/tooltip": {
@@ -366,7 +366,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/dialog/tooltip",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "embed/embed_header": {
@@ -376,7 +376,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/embed/embed_header",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "error/standard_error_boundary": {
@@ -386,7 +386,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/error/standard_error_boundary",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "follow/follow_button": {
@@ -396,7 +396,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/follow/follow_button",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "follow/use_follow": {
@@ -406,7 +406,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/follow/use_follow",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "forms/form": {
@@ -416,7 +416,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/forms/form",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "forms/use_form_validation": {
@@ -426,7 +426,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/forms/use_form_validation",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "gamification/badge_box": {
@@ -436,7 +436,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/gamification/badge_box",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "gamification/point_box": {
@@ -446,7 +446,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/gamification/point_box",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "hooks/use_auth_required": {
@@ -456,7 +456,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/hooks/use_auth_required",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "hooks/use_css_theme": {
@@ -466,7 +466,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/hooks/use_css_theme",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "hooks/use_font_loader": {
@@ -476,7 +476,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/hooks/use_font_loader",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "hooks/use_matomo": {
@@ -486,7 +486,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/hooks/use_matomo",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "hooks/use_relative_time": {
@@ -496,7 +496,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/hooks/use_relative_time",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "hooks/use_responsive": {
@@ -506,7 +506,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/hooks/use_responsive",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "icons/hero_icons": {
@@ -516,7 +516,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/icons/hero_icons",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "icons/icon": {
@@ -526,7 +526,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/icons/icon",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "icons/icon_provider": {
@@ -536,7 +536,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/icons/icon_provider",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "icons/regular_icons": {
@@ -546,7 +546,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/icons/regular_icons",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "icons/spiegel_icons": {
@@ -556,7 +556,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/icons/spiegel_icons",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "information/information_box": {
@@ -566,7 +566,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/information/information_box",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "input/argument_input": {
@@ -576,7 +576,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/input/argument_input",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "input/checkbox/hidden": {
@@ -586,7 +586,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/input/checkbox/hidden",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "input/checkbox/indicator": {
@@ -596,7 +596,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/input/checkbox/indicator",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "input/checkbox/label": {
@@ -606,7 +606,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/input/checkbox/label",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "input/input_provider": {
@@ -616,7 +616,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/input/input_provider",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "input/search_input": {
@@ -626,7 +626,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/input/search_input",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "input/select": {
@@ -636,7 +636,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/input/select",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "input/text_editor": {
@@ -646,7 +646,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/input/text_editor",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "input/text_input": {
@@ -656,7 +656,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/input/text_input",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "input/toggle": {
@@ -666,7 +666,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/input/toggle",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "input/toggle_position": {
@@ -676,7 +676,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/input/toggle_position",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "intl/intl_provider": {
@@ -686,7 +686,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/intl/intl_provider",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "list/list_provider": {
@@ -696,7 +696,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/list/list_provider",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "list/paginated_list": {
@@ -706,7 +706,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/list/paginated_list",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "list/pagination": {
@@ -716,7 +716,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/list/pagination",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "modal/side_modal": {
@@ -726,7 +726,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/modal/side_modal",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "notification/notification_item": {
@@ -736,7 +736,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/notification/notification_item",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "notification/notification_menu": {
@@ -746,7 +746,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/notification/notification_menu",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "progress/loader": {
@@ -756,7 +756,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/progress/loader",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "progress/progress_bar": {
@@ -766,7 +766,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/progress/progress_bar",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "section/section_box": {
@@ -776,7 +776,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/section/section_box",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "section/section_header": {
@@ -786,7 +786,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/section/section_header",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "share/share_box": {
@@ -796,7 +796,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/share/share_box",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "share/share_button": {
@@ -806,7 +806,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/share/share_button",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "share/share_modal": {
@@ -816,7 +816,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/share/share_modal",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "skeleton/box_skeleton": {
@@ -826,7 +826,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/skeleton/box_skeleton",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "skeleton/user_content_skeleton": {
@@ -836,7 +836,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/skeleton/user_content_skeleton",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "source/context_source_box": {
@@ -846,7 +846,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/source/context_source_box",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "source/context_source_list": {
@@ -856,7 +856,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/source/context_source_list",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "source/source_box": {
@@ -866,7 +866,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/source/source_box",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "source/source_list_item": {
@@ -876,7 +876,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/source/source_list_item",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "source/source_modal": {
@@ -886,7 +886,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/source/source_modal",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "styles/display": {
@@ -896,7 +896,7 @@
         "mainFile": "_display.scss",
         "rootDir": "src/components/styles/display",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "styles/flex": {
@@ -906,7 +906,7 @@
         "mainFile": "_flex.scss",
         "rootDir": "src/components/styles/flex",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "styles/spacing": {
@@ -916,7 +916,7 @@
         "mainFile": "_spacing.scss",
         "rootDir": "src/components/styles/spacing",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "styles/tabs": {
@@ -926,7 +926,7 @@
         "mainFile": "_tabs.scss",
         "rootDir": "src/components/styles/tabs",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "styles/theme": {
@@ -936,7 +936,7 @@
         "mainFile": "_theme.scss",
         "rootDir": "src/components/styles/theme",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "suggestion/suggestion_box": {
@@ -946,7 +946,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/suggestion/suggestion_box",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "summary/argument_summary_box": {
@@ -956,7 +956,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/summary/argument_summary_box",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "summary/keyword_box": {
@@ -966,7 +966,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/summary/keyword_box",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "tag/tag": {
@@ -976,7 +976,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/tag/tag",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "text/expandable_text": {
@@ -986,7 +986,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/text/expandable_text",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "text/read_more": {
@@ -996,7 +996,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/text/read_more",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "tools/hash_scroll": {
@@ -1006,7 +1006,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/tools/hash_scroll",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "tools/scroll_to_top": {
@@ -1016,7 +1016,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/tools/scroll_to_top",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "translation/translated_content": {
@@ -1026,7 +1026,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/translation/translated_content",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "translation/translation_button": {
@@ -1036,7 +1036,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/translation/translation_button",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "user/author_box": {
@@ -1046,7 +1046,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/user/author_box",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "user/avatar": {
@@ -1056,7 +1056,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/user/avatar",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "user/avatar_selector": {
@@ -1066,7 +1066,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/user/avatar_selector",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "user/update_user_info_modal": {
@@ -1076,7 +1076,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/user/update_user_info_modal",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "user/user_box": {
@@ -1086,7 +1086,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/user/user_box",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "user/user_box_small": {
@@ -1096,7 +1096,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/user/user_box_small",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "user_content/content_footer": {
@@ -1106,7 +1106,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/user_content/content_footer",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "user_content/content_header": {
@@ -1116,7 +1116,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/user_content/content_header",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "user_content/summary_content_box": {
@@ -1126,7 +1126,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/user_content/summary_content_box",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "user_content/use_delete_content": {
@@ -1136,7 +1136,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/user_content/use_delete_content",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "user_content/use_report_content": {
@@ -1146,7 +1146,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/user_content/use_report_content",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "util/location": {
@@ -1156,7 +1156,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/util/location",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "util/unique_by": {
@@ -1166,7 +1166,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/util/unique_by",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "vote/suggestion_vote_box": {
@@ -1176,7 +1176,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/vote/suggestion_vote_box",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "vote/up_down_vote_box": {
@@ -1186,7 +1186,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/vote/up_down_vote_box",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "vote/use_vote": {
@@ -1196,7 +1196,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/vote/use_vote",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "vote/vote_box": {
@@ -1206,7 +1206,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/vote/vote_box",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "vote/vote_button": {
@@ -1216,7 +1216,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/vote/vote_button",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "vote/vote_provider": {
@@ -1226,7 +1226,7 @@
         "mainFile": "index.js",
         "rootDir": "src/components/vote/vote_provider",
         "config": {
-            "teambit.react/react-env@1.0.96": {}
+            "teambit.react/react-env@1.0.97": {}
         }
     },
     "$schema-version": "17.0.0"
