@@ -10,9 +10,15 @@ export const DefaultDrawer = () => {
         setIsOpen((prevState) => !prevState);
     };
 
+    const closeDrawer = () => {
+        const event = new CustomEvent("logora:drawer:close");
+        window.dispatchEvent(event);
+    }
+
     return (
         <IconProvider library={regularIcons}>
             <div onClick={toggleDrawer} data-testid="open-button">Click here to toggle drawer</div>
+            <div onClick={closeDrawer} data-testid="close-button">Click here to close drawer</div>
 
             <Drawer isOpen={isOpen} onClose={() => setIsOpen(false)}>
                 <div>Drawer content</div>
@@ -28,9 +34,15 @@ export const DrawerWithOverlay = () => {
         setIsOpen((prevState) => !prevState);
     };
 
+    const closeDrawer = () => {
+        const event = new CustomEvent("logora:drawer:close");
+        window.dispatchEvent(event);
+    }
+
     return (
         <IconProvider library={regularIcons}>
             <div onClick={toggleDrawer}>Click here to toggle drawer</div>
+            <div onClick={closeDrawer} data-testid="close-button">Click here to close drawer</div>
 
             <Drawer isOpen={isOpen} onClose={() => setIsOpen(false)} enableOverlay>
                 <div>Drawer content</div>
