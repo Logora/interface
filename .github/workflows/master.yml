@@ -19,6 +19,8 @@ jobs:
 
       - name: Initialize Bit
         uses: bit-tasks/init@v2
+        with:
+          cache: true
 
       - name: Resolve component packages from bit.cloud registry
         run: |
