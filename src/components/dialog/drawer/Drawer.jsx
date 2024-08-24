@@ -16,6 +16,10 @@ export const Drawer = ({ isOpen = false, onClose, title, size = '50vw', enableOv
         }
     }
 
+    const openDrawer = () => {
+        setIsDrawerOpen(true);
+    }
+
     useEffect(() => {
         setIsDrawerOpen(isOpen)
     }, [isOpen])
@@ -25,6 +29,15 @@ export const Drawer = ({ isOpen = false, onClose, title, size = '50vw', enableOv
             window.addEventListener('logora:drawer:close', closeDrawer);
             return () => {
                 window.removeEventListener('logora:drawer:close', closeDrawer);
+            };
+        }
+    }, []);
+
+    useEffect(() => {
+        if(typeof window !== "undefined") {
+            window.addEventListener('logora:drawer:display', openDrawer);
+            return () => {
+                window.removeEventListener('logora:drawer:display', openDrawer);
             };
         }
     }, []);
