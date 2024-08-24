@@ -19,8 +19,6 @@ jobs:
 
       - name: Initialize Bit
         uses: bit-tasks/init@v2
-        with:
-          docker: true
 
       - name: Resolve component packages from bit.cloud registry
         run: |
