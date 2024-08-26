@@ -7,15 +7,10 @@
     "name": "Logora",
     "icon": "https://logora.fr/assets/logora-logo-3f7b41aec2d1ae4d6582ba3f7be5f73b42b086e49d69f46ae387b006c41e7046.png",
     "defaultDirectory": "src/components/{name}",
-    "defaultScope": "logora.debate",
-    "resolveAspectsFromNodeModules": true,
-    "resolveEnvsFromRoots": true
+    "defaultScope": "logora.debate"
   },
   "teambit.dependencies/dependency-resolver": {
     "packageManager": "teambit.dependencies/pnpm",
-    "policy": {
-      "peerDependencies": {}
-    },
     "linkCoreAspects": true
   },
   "teambit.preview/preview": {
