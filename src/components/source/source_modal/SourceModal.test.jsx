@@ -50,7 +50,7 @@ describe('SourceModal', () => {
             </ModalProvider>
         );
 
-        expect(screen.getByText("Ajouter une source")).toBeTruthy();
+        expect(screen.getByText("Add a source")).toBeTruthy();
         expect(screen.getByRole("input")).toBeTruthy();
         expect(document.body.style.overflowY).toEqual("hidden");
     });
@@ -80,7 +80,7 @@ describe('SourceModal', () => {
         expect(screen.getByText(source.title)).toBeTruthy();
         expect(screen.getByText(source.publisher)).toBeTruthy();
 
-        const addSourceButton = screen.getByText("Ajouter");
+        const addSourceButton = screen.getByText("Add");
         expect(addSourceButton).toBeTruthy();
         await userEvent.click(addSourceButton);
 
@@ -114,7 +114,7 @@ it('should display an error message when adding a source with a non-allowed doma
     await userEvent.type(input, "https://ggg.com{Enter}"); 
     expect(input.value).toBe("https://ggg.com");
     await waitFor(() => {
-        expect(screen.getByText("Source non autorisée")).toBeInTheDocument();
+        expect(screen.getByText("Unauthorized source")).toBeInTheDocument();
     });
     expect(addSourceCallback).not.toHaveBeenCalled();
 });

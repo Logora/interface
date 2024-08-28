@@ -60,22 +60,21 @@ export const SourceModal = ({ onAddSource, onHideModal, allowedSources = [] }) =
     }
 
     return (
-        <Modal title={intl.formatMessage({ id: "source.source_modal.modal_title", defaultMessage: "Ajouter une source" })} showCloseButton>
+        <Modal title={intl.formatMessage({ id: "source.source_modal.modal_title", defaultMessage: "Add a source" })} showCloseButton>
             <div className={styles.sourceModalBody}>
                 <div className={styles.sourceInputContainer}>
                     <SearchInput
-                        placeholder={intl.formatMessage({ id: "source.source_modal.input_placeholder", defaultMessage: "Entrez l'URL de la source..." })}
+                        placeholder={intl.formatMessage({ id: "source.source_modal.input_placeholder", defaultMessage: "Enter the URL of the source..." })}
                         onSearchSubmit={(query) => fetchSource(query)}
                         disabled={disabled}
                     />
                     {allowedSources.length > 0 && (
-                                                    <div className={styles.sourceinfo}>
-
-                        <FormattedMessage
-                            id="source.source_modal.info_label"
-                            defaultMessage="Choisissez parmi : SPIEGEL.de, manager-magazin.de, 11FREUNDE.de"
-
-                        />
+                        <div className={styles.sourceinfo}>
+                            <FormattedMessage
+                                id="source.source_modal.info_label"
+                                defaultMessage="Choose from : {domains}"
+                                values={{ domains: allowedSources.join(', ') }}
+                            />
                         </div>
                     )}
                 </div>
@@ -93,7 +92,7 @@ export const SourceModal = ({ onAddSource, onHideModal, allowedSources = [] }) =
                                             publisher={source.publisher}
                                         />
                                         <Button data-tid={"action_submit_source"} className={styles.sourcePreviewButton} handleClick={handleAddSource}>
-                                            <FormattedMessage id="source.source_modal.submit_label" defaultMessage="Ajouter" />
+                                            <FormattedMessage id="source.source_modal.submit_label" defaultMessage="Add" />
                                         </Button>
                                     </>
                                     :
@@ -110,7 +109,7 @@ export const SourceModal = ({ onAddSource, onHideModal, allowedSources = [] }) =
             </div>
             {showErrorSource && (
                 <AnnouncementDialog
-                    message={intl.formatMessage({ id: "source.source_modal.error_unauthorized", defaultMessage: "Source non autorisée" })}
+                    message={intl.formatMessage({ id: "source.source_modal.error_unauthorized", defaultMessage: "Unauthorized source" })}
                     fullWidth
                 />
             )}

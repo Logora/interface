@@ -7,17 +7,17 @@ import { IconProvider } from '@logora/debate.icons.icon_provider';
 import * as regularIcons from '@logora/debate.icons.regular_icons';
 import { faker } from '@faker-js/faker';
 
+const allowedDomains = Array.from({ length: 3}, () => faker.internet.domainName());
+
 const source = { 
     title: faker.music.songName(),
     description: faker.lorem.sentence(),
-    source_url: `ggg.com`, 
+    source_url: faker.internet.url(),
     origin_image_url: faker.image.nature(),
     publisher: faker.vehicle.manufacturer()
 };
 
-const allowedDomains = [
-    "SPIEGEL.de",
-];
+
 
 const httpClient = {
     get: () => null,
