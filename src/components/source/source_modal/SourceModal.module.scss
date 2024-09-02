@@ -31,4 +31,6 @@ button.sourcePreviewButton {
   color: $text-secondary;
   white-space: nowrap;
   margin-top: 1rem; 
+  white-space: normal; 
+  word-break: break-word; 
 }
