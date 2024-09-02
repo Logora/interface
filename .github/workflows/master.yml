@@ -8,6 +8,7 @@ on:
 jobs:
   tag-and-export:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       GIT_USER_NAME: ${{ github.actor }}

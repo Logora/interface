@@ -61,7 +61,7 @@
     "argument/argument": {
         "name": "argument/argument",
         "scope": "logora.debate",
-        "version": "0.0.124",
+        "version": "0.0.125",
         "mainFile": "index.js",
         "rootDir": "src/components/argument/argument"
     },
@@ -404,7 +404,7 @@
     "input/argument_input": {
         "name": "input/argument_input",
         "scope": "logora.debate",
-        "version": "0.0.83",
+        "version": "0.0.84",
         "mainFile": "index.js",
         "rootDir": "src/components/input/argument_input"
     },
@@ -453,7 +453,7 @@
     "input/text_editor": {
         "name": "input/text_editor",
         "scope": "logora.debate",
-        "version": "0.0.64",
+        "version": "0.0.65",
         "mainFile": "index.js",
         "rootDir": "src/components/input/text_editor"
     },
@@ -621,7 +621,7 @@
     "source/source_modal": {
         "name": "source/source_modal",
         "scope": "logora.debate",
-        "version": "0.0.111",
+        "version": "0.0.112",
         "mainFile": "index.js",
         "rootDir": "src/components/source/source_modal"
     },
