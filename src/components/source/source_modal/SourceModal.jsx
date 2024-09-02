@@ -6,19 +6,22 @@ import { SourceBox } from '@logora/debate.source.source_box';
 import { Button } from '@logora/debate.action.button';
 import { Loader } from '@logora/debate.progress.loader';
 import { SearchInput } from '@logora/debate.input.search_input';
+import { AnnouncementDialog } from "@logora/debate.dialog.announcement_dialog";
+
 import styles from './SourceModal.module.scss';
 import PropTypes from "prop-types";
 
-export const SourceModal = ({ onAddSource, onHideModal }) => {
+export const SourceModal = ({ onAddSource, onHideModal, allowedSources = [] }) => {
     const [disabled, setDisabled] = useState(false);
     const [source, setSource] = useState({});
     const [showPreview, setShowPreview] = useState(false);
     const [showPreviewError, setShowPreviewError] = useState(false);
-
     const dataProvider = useDataProvider();
+    const [showErrorSource, setShowErrorSource] = useState(false);
     const intl = useIntl();
     const { hideModal } = useModal();
-    
+
+
     const handleAddSource = () => {
         onAddSource(source);
         setSource({});
@@ -28,16 +31,22 @@ export const SourceModal = ({ onAddSource, onHideModal }) => {
             onHideModal();
         }
     }
-  
+
     const fetchSource = (input) => {
+
         const data = {
             query: input,
         };
+        if (allowedSources.length > 0 && !allowedSources.includes(input)) {
+            setShowErrorSource(true);
+
+            return;
+        }
         setShowPreview(true);
         setDisabled(true);
         setShowPreviewError(false);
         dataProvider.create("sources/fetch", data).then(response => {
-            if(response.data.success) {
+            if (response.data.success) {
                 setSource(response.data.data.resource);
                 setDisabled(false);
             } else {
@@ -51,22 +60,31 @@ export const SourceModal = ({ onAddSource, onHideModal }) => {
     }
 
     return (
-        <Modal title={intl.formatMessage({ id: "source.source_modal.modal_title", defaultMessage: "Ajouter une source" })} showCloseButton>
+        <Modal title={intl.formatMessage({ id: "source.source_modal.modal_title", defaultMessage: "Add a source" })} showCloseButton>
             <div className={styles.sourceModalBody}>
                 <div className={styles.sourceInputContainer}>
                     <SearchInput
-                        placeholder={intl.formatMessage({ id:"source.source_modal.input_placeholder", defaultMessage: "Entrez l'URL de la source..."}) }
+                        placeholder={intl.formatMessage({ id: "source.source_modal.input_placeholder", defaultMessage: "Enter the URL of the source..." })}
                         onSearchSubmit={(query) => fetchSource(query)}
                         disabled={disabled}
                     />
+                    {allowedSources.length > 0 && (
+                        <div className={styles.sourceinfo}>
+                            <FormattedMessage
+                                id="source.source_modal.info_label"
+                                defaultMessage="Choose from : {domains}"
+                                values={{ domains: allowedSources.join(', ') }}
+                            />
+                        </div>
+                    )}
                 </div>
                 <div className={styles.sourcePreviewBox}>
-                    { showPreview ? (
+                    {showPreview ? (
                         !showPreviewError ? (
                             <div>
-                                { !disabled ?
+                                {!disabled ?
                                     <>
-                                        <SourceBox 
+                                        <SourceBox
                                             title={source.title}
                                             description={source.description}
                                             url={source.source_url}
@@ -74,14 +92,14 @@ export const SourceModal = ({ onAddSource, onHideModal }) => {
                                             publisher={source.publisher}
                                         />
                                         <Button data-tid={"action_submit_source"} className={styles.sourcePreviewButton} handleClick={handleAddSource}>
-                                            <FormattedMessage id="source.source_modal.submit_label" defaultMessage="Ajouter" />
+                                            <FormattedMessage id="source.source_modal.submit_label" defaultMessage="Add" />
                                         </Button>
                                     </>
-                                :
+                                    :
                                     <Loader />
                                 }
                             </div>
-                        ) :  (
+                        ) : (
                             <div className={styles.sourcePreviewError}>
                                 <FormattedMessage id="source.source_modal.error" defaultMessage="Problème lors de la récupération de la source" />
                             </div>
@@ -89,7 +107,14 @@ export const SourceModal = ({ onAddSource, onHideModal }) => {
                     ) : null}
                 </div>
             </div>
+            {showErrorSource && (
+                <AnnouncementDialog
+                    message={intl.formatMessage({ id: "source.source_modal.error_unauthorized", defaultMessage: "Unauthorized source" })}
+                    fullWidth
+                />
+            )}
         </Modal>
+
     );
 }
 
@@ -98,4 +123,6 @@ SourceModal.propTypes = {
     onAddSource: PropTypes.func.isRequired,
     /** Callback triggered when modal is closed */
     onHideModal: PropTypes.func,
+    /** Liste des sources autorisées */
+    allowedSources: PropTypes.arrayOf(PropTypes.string),
 }

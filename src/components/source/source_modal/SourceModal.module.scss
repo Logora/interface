@@ -26,3 +26,11 @@ button.sourcePreviewButton {
 .sourcePreviewError {
   text-align: center;
 }
+.sourceinfo {
+  font-size: $font-size-small;
+  color: $text-secondary;
+  white-space: nowrap;
+  margin-top: 1rem; 
+  white-space: normal; 
+  word-break: break-word; 
+}

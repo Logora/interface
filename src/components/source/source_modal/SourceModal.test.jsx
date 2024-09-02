@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import { SourceModal } from './SourceModal';
 import { ModalProvider } from '@logora/debate.dialog.modal';
 import { dataProvider, DataProviderContext } from '@logora/debate.data.data_provider';
@@ -19,6 +19,7 @@ const source = {
     origin_image_url: faker.image.nature(),
     publisher: faker.vehicle.manufacturer()
 };
+
 
 const httpClient = {
     get: () => null,
@@ -49,7 +50,7 @@ describe('SourceModal', () => {
             </ModalProvider>
         );
 
-        expect(screen.getByText("Ajouter une source")).toBeTruthy();
+        expect(screen.getByText("Add a source")).toBeTruthy();
         expect(screen.getByRole("input")).toBeTruthy();
         expect(document.body.style.overflowY).toEqual("hidden");
     });
@@ -79,10 +80,42 @@ describe('SourceModal', () => {
         expect(screen.getByText(source.title)).toBeTruthy();
         expect(screen.getByText(source.publisher)).toBeTruthy();
 
-        const addSourceButton = screen.getByText("Ajouter");
+        const addSourceButton = screen.getByText("Add");
         expect(addSourceButton).toBeTruthy();
         await userEvent.click(addSourceButton);
 
         expect(addSourceCallback).toHaveBeenCalledTimes(1);
     });
+ 
+   
+it('should display an error message when adding a source with a non-allowed domain', async () => {
+    const data = dataProvider(httpClient, "https://mock.example.api");
+    const allowedDomains = ["example.com"];
+    const addSourceCallback = jest.fn();
+    const hideModalCallback = jest.fn();
+    
+    render(
+        <ModalProvider>
+            <IntlProvider locale="en">
+                <IconProvider library={regularIcons}>
+                    <DataProviderContext.Provider value={{ dataProvider: data }}>
+                        <SourceModal 
+                            onAddSource={addSourceCallback} 
+                            onHideModal={hideModalCallback} 
+                            allowedSources={allowedDomains}
+                        />
+                    </DataProviderContext.Provider>
+                </IconProvider>
+            </IntlProvider>
+        </ModalProvider>
+    );
+
+    const input = screen.getByRole('input'); 
+    await userEvent.type(input, "https://ggg.com{Enter}"); 
+    expect(input.value).toBe("https://ggg.com");
+    await waitFor(() => {
+        expect(screen.getByText("Unauthorized source")).toBeInTheDocument();
+    });
+    expect(addSourceCallback).not.toHaveBeenCalled();
+});
 });
