@@ -33,7 +33,7 @@ export const SuggestionVoteBox = ({ voteableType, voteableId, totalUpvote = 0, t
             })}
             confirmLabel={intl.formatMessage({ id: "info.yes", defaultMessage: "Yes" })}
             cancelLabel={intl.formatMessage({ id: "info.no", defaultMessage: "No" })}
-            onConfirmCallback={() => handleVote(false)}
+            onConfirmCallback={ () => handleVote(false) }
           />
         </Suspense>
       );
