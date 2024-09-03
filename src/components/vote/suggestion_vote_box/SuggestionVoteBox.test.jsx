@@ -71,7 +71,7 @@ describe('UpDownVoteBox', () => {
             </ConfigProvider>
         );
 
-        expect(queryByText("Not relevant")).toBeInTheDocument();
+        expect(queryByText("Not interested")).toBeInTheDocument();
         expect(queryByText("I'm interested")).toBeInTheDocument();
     });
 
