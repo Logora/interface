@@ -105,6 +105,7 @@ describe('UpDownVoteBox', () => {
         await userEvent.click(voteBox);
 
         expect(voteBox).not.toHaveClass('active');
+        expect(upvoteIcon).toBeInTheDocument();        
         expect(callback).toHaveBeenCalledTimes(1);
     });
 
