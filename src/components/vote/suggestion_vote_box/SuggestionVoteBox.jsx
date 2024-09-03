@@ -26,7 +26,7 @@ export const SuggestionVoteBox = ({ voteableType, voteableId, totalUpvote = 0, t
       showModal(
         <Suspense fallback={null}>
           <ConfirmModal
-            title={intl.formatMessage({ id: "vote.suggestion_vote_box.downvote", defaultMessage: "Not relevant" })}
+            title={intl.formatMessage({ id: "vote.suggestion_vote_box.downvote", defaultMessage: "Not interested" })}
             question={intl.formatMessage({
               id: "vote.suggestion_vote_box.confirm_suggestion_downvote",
               defaultMessage: "Your vote should judge the quality of the question. Are you sure you want to continue ?"
@@ -62,7 +62,7 @@ export const SuggestionVoteBox = ({ voteableType, voteableId, totalUpvote = 0, t
         active={!(activeVote && !voteSide)}
       >
         <span className={styles.text}>
-          {intl.formatMessage({ id: "vote.suggestion_vote_box.downvote", defaultMessage: "Not relevant" })}
+          {intl.formatMessage({ id: "vote.suggestion_vote_box.downvote", defaultMessage: "Not interested" })}
         </span>
       </Button>
     </div>

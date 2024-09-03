@@ -62,7 +62,6 @@ export const SuggestionBox = ({ suggestion, disabled = false }) => {
                 author={suggestion.author}
                 tag={getTag()}
                 tagClassName={getTagClassName()}
-                date={endDate < startDate ? "" : endDate.toDateString()}
             />
             <div className={styles.suggestion}>
                 {content.translatedContent}
