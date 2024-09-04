@@ -83,11 +83,11 @@ export const Argument = ({ argument, argumentReplies, nestingLevel, debatePositi
 		}
 	};
 
-	const displayReply = (reply = null) => {
+	const displayReply = (argument = null) => {
 		return (
 			<ArgumentContainer
-				{...(reply ? { argument: reply } : {})}
-				positionIndex={debatePositions && debatePositions.map((e) => e.id).indexOf(reply?.position?.id) + 1}
+				{...(argument ? { argument: argument } : {})}
+				positionIndex={debatePositions && debatePositions.map((e) => e.id).indexOf(argument?.position?.id) + 1}
 				nestingLevel={nestingLevel + 1}
 				disabled={disabled}
 				debateName={debateName}
