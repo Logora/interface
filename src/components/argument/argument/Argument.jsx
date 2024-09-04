@@ -74,6 +74,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel, debatePositi
 
 	const toggleReplies = () => {
 		setExpandReplies(expandReplies => !expandReplies);
+		setExtraReplies([]); // reset extraReplies
 	};
 
 	const displayRepliesThread = () => {
@@ -83,11 +84,11 @@ export const Argument = ({ argument, argumentReplies, nestingLevel, debatePositi
 		}
 	};
 
-	const displayReply = (argument = null) => {
+	const displayReply = (reply = null) => {
 		return (
 			<ArgumentContainer
-				{...(argument ? { argument: argument } : {})}
-				positionIndex={debatePositions && debatePositions.map((e) => e.id).indexOf(argument?.position?.id) + 1}
+				{...(reply ? { argument: reply } : {})}
+				positionIndex={debatePositions && debatePositions.map((e) => e.id).indexOf(reply?.position?.id) + 1}
 				nestingLevel={nestingLevel + 1}
 				disabled={disabled}
 				debateName={debateName}
@@ -255,7 +256,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel, debatePositi
 							/>
 						</Suspense>
 					)}
-					{expandReplies &&
+					{ expandReplies &&
 						<div className={styles.repliesList}>
 							<VotePaginatedList
 								voteableType={"Message"}
@@ -272,7 +273,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel, debatePositi
 							</VotePaginatedList>
 						</div>
 					}
-					{extraReplies?.length > 0 && !expandReplies &&
+					{ extraReplies?.length > 0 && !expandReplies &&
 						<div className={styles.repliesList}>
 							{ extraReplies.map(r => displayReply(r)) }
 							{ argument.number_replies > 1 &&
