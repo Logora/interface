@@ -74,7 +74,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel, debatePositi
 
 	const toggleReplies = () => {
 		setExpandReplies(expandReplies => !expandReplies);
-		setExtraReplies([]); // reset extraReplies
+		setExtraReplies([]);
 	};
 
 	const displayRepliesThread = () => {
