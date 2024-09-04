@@ -79,9 +79,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel, debatePositi
 
 	const displayRepliesThread = () => {
 		let filteredReplies = argumentReplies && argumentReplies.filter((reply) => reply.reply_to_id == argument.id);
-		if (filteredReplies.length > 0) {
-			setExtraReplies(filteredReplies);
-		}
+		if (filteredReplies.length > 0) { setExtraReplies(filteredReplies); }
 	};
 
 	const displayReply = (reply = null) => {
