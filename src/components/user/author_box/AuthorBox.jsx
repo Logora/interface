@@ -13,12 +13,12 @@ export const AuthorBox = ({
         slug, 
         avatarUrl, 
         lastActivity, 
-        isExpert = false, 
+        showBadge = false, 
         points = 0, 
         eloquenceTitle, 
         occupation, 
         disableLinks = false, 
-        isDeleted = false 
+        isDeleted = false ,
     }) => {
     const intl = useIntl();
     const routes = useRoutes();
@@ -47,7 +47,7 @@ export const AuthorBox = ({
                                 </Link>
                             </div>
                         }
-                        { isExpert && !isDeleted &&
+                        { showBadge && !isDeleted &&
                             <div className={styles.expertContainer}>
                                 <Icon name="expertBadge" width={14} height={14} />
                                 <span className={styles.expertBadge}>{ intl.formatMessage({ id: "user.author_box.expert", defaultMessage: "Journalist" }) }</span>
@@ -57,6 +57,7 @@ export const AuthorBox = ({
                 </div>
                 { !isDeleted &&
                     <>
+                    
                         <div className={styles.authorPointsBox}>
                             <div className={styles.authorPoints}>
                                 <span>
@@ -101,8 +102,8 @@ AuthorBox.propTypes = {
     slug: PropTypes.string,
     /** User last activity date time */
     lastActivity: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date) ]),
-    /** Whether an user has a special "expert" status or not */ 
-    isExpert: PropTypes.bool,
+    /** Whether an user has a special 'journalist' status or not */ 
+    showBadge: PropTypes.bool,
     /** User eloquence points total */ 
     points: PropTypes.number,
     /** User eloquence title */ 
@@ -112,5 +113,5 @@ AuthorBox.propTypes = {
     /** Should a click on the user redirect on his/her profile */ 
     disableLinks: PropTypes.bool,
     /** Give information about the current status of the content displayed and whether to show the user as deleted or not */ 
-    isDeleted: PropTypes.bool
+    isDeleted: PropTypes.bool,
 }

@@ -8,29 +8,33 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 
 export const UserBox = ({ user }) => {
-  const routes = useRoutes();
+	const routes = useRoutes();
 
-  return (
+	return (
 		<div className={cx(styles.userBox, "author-box")}>
 			<div className={styles.userBoxHeader}>
-				<Link to={routes.userShowLocation.toUrl({userSlug: user.hash_id})}>
-					<Avatar data-tid={"action_view_user_image"} userName={user.full_name} avatarUrl={user.image_url} isOnline={(new Date(user.last_activity) > Date.now() )} size={60} />
+				<Link to={routes.userShowLocation.toUrl({ userSlug: user.hash_id })}>
+					<Avatar data-tid={"action_view_user_image"} userName={user.full_name} avatarUrl={user.image_url} isOnline={(new Date(user.last_activity) > Date.now())} size={60} />
 				</Link>
 			</div>
 			<div className={styles.userBoxDescription}>
-				<Link to={routes.userShowLocation.toUrl({userSlug: user.hash_id})}>
+				<Link to={routes.userShowLocation.toUrl({ userSlug: user.hash_id })}>
 					<div data-tid={"action_view_user_name"} className={styles.userBoxName} title={user.full_name}>
 						{user.full_name}
 					</div>
 				</Link>
-				<Link to={routes.userShowLocation.toUrl({userSlug: user.hash_id})} hash={"activity"}>
-					<div className={styles.userBoxPoints}>
-						<span>
-							<FormattedMessage id="user.user_box.points" values={{ count: user.points }} defaultMessage="{count} points" />
-						</span>
-					</div>
-				</Link>
-				<Link to={routes.userShowLocation.toUrl({userSlug: user.hash_id})}>
+					<Link to={routes.userShowLocation.toUrl({ userSlug: user.hash_id })} hash={"activity"}>
+						<div className={styles.userBoxPoints}>
+							<span>
+								<FormattedMessage
+									id="user.user_box.points"
+									values={{ count: user.points }}
+									defaultMessage="{count} points"
+								/>
+							</span>
+						</div>
+					</Link>
+				<Link to={routes.userShowLocation.toUrl({ userSlug: user.hash_id })}>
 					<div className={styles.userBoxStats}>
 						<div className={styles.userDebates}>
 							<FormattedMessage id="user.user_box.user_arguments" values={{ count: user.messages_count }} defaultMessage="{count} arguments" />
@@ -46,6 +50,6 @@ export const UserBox = ({ user }) => {
 }
 
 UserBox.propTypes = {
-    /** User object, must contains : image_url, last_activity, full_name, points, hash_id, messages_count, upvotes */
-    user: PropTypes.object,
+	/** User object, must contains : image_url, last_activity, full_name, points, hash_id, messages_count, upvotes */
+	user: PropTypes.object,
 }
