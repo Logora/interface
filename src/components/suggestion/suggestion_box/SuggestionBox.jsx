@@ -94,11 +94,7 @@ export const SuggestionBox = ({ suggestion, disabled = false }) => {
                         />
                     }
                     <div className={cx(styles.voteResultsContainer)}>
-                        { intl.formatMessage({ 
-                            id: "suggestion.goal", 
-                            defaultMessage: `${totalUpvotes} supports`, 
-                            values: { count: totalUpvotes } 
-                        })}
+                        <FormattedMessage id="suggestion.goal" defaultMessage={"{count} supports"}  values={{ count: totalUpvotes }} />
                     </div>
                 </ContentFooter>
             </div>
