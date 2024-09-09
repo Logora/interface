@@ -18,7 +18,7 @@ const author = {
     occupation: faker.vehicle.bicycle(),
     last_activity: faker.date.recent(),
     description: faker.name.jobTitle(),
-    is_expert: false
+    role: "contributor"
   };
   
 
