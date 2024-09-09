@@ -3,7 +3,6 @@ import React from "react";
 export const Check = (props) => (
   <svg
     viewBox="0 0 50 50"
-    fill="black"
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
