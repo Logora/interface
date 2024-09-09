@@ -103,7 +103,7 @@ export const SuggestionBox = ({ suggestion, disabled = false }) => {
                         <FormattedMessage
                             id="suggestion.goal"
                             defaultMessage="{totalUpvotes} supports"
-                            values={{ totalUpvotes }}
+                            values={{ count: totalUpvotes }}
                         />
                     </div>
                 </ContentFooter>
