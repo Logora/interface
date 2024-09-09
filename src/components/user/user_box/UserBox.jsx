@@ -23,13 +23,19 @@ export const UserBox = ({ user }) => {
 						{user.full_name}
 					</div>
 				</Link>
-				<Link to={routes.userShowLocation.toUrl({userSlug: user.hash_id})} hash={"activity"}>
-					<div className={styles.userBoxPoints}>
-						<span>
-							<FormattedMessage id="user.user_box.points" values={{ count: user.points }} defaultMessage="{count} points" />
-						</span>
-					</div>
-				</Link>
+				{user.role === 'contributor' && (
+					<Link to={routes.userShowLocation.toUrl({ userSlug: user.hash_id })} hash={"activity"}>
+						<div className={styles.userBoxPoints}>
+							<span>
+								<FormattedMessage
+									id="user.user_box.points"
+									values={{ count: user.points }}
+									defaultMessage="{count} points"
+								/>
+							</span>
+						</div>
+					</Link>
+				)}
 				<Link to={routes.userShowLocation.toUrl({userSlug: user.hash_id})}>
 					<div className={styles.userBoxStats}>
 						<div className={styles.userDebates}>
