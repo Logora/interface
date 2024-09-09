@@ -35,7 +35,7 @@ export const DefaultAuthorBox = () => {
               avatarUrl={author.image_url}
               slug={author.hash_id}
               points={author.points}
-              isExpert={author.is_expert}
+              showBadge={author.is_expert}
             />
           </IconProvider>
         </IntlProvider>
@@ -55,7 +55,7 @@ export const AuthorBoxWithoutLinks = () => {
               avatarUrl={author.image_url}
               slug={author.hash_id}
               points={author.points}
-              isExpert={author.is_expert}
+              showBadge={author.is_expert}
               disableLinks
             />
           </IconProvider>
