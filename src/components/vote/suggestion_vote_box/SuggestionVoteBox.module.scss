@@ -7,10 +7,6 @@
     gap: $spacer;
 }
 
-.numberVotes {
-    @include mx(2, xs);
-}
-
 .text {
     font-size: $font-size-extra-small;
     font-weight: $font-weight-bold;

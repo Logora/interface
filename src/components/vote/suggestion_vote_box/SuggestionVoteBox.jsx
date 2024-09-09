@@ -43,7 +43,6 @@ export const SuggestionVoteBox = ({ voteableType, voteableId, totalUpvote = 0, t
   return (
     <div className={styles.voteButtonsContainer}>
       <Button
-        className={styles.voteButton}
         onClick={disabled ? null : () => handleVote(true)}
         data-testid="upvote-button"
         disabled={disabled}
@@ -55,7 +54,6 @@ export const SuggestionVoteBox = ({ voteableType, voteableId, totalUpvote = 0, t
         </span>
       </Button>
       <Button
-        className={styles.voteButton}
         onClick={disabled ? null : () => handleDownvote()}
         disabled={disabled}
         rightIcon={<Icon name="close" width={10} height={10} />}
