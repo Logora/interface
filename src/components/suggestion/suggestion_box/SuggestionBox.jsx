@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useIntl, FormattedMessage } from 'react-intl';
-import { useConfig, useRoutes } from '@logora/debate.data.config_provider';
-import { useResponsive } from "@logora/debate.hooks.use_responsive";
+import { useRoutes } from '@logora/debate.data.config_provider';
 import { useAuth } from "@logora/debate.auth.use_auth";
 import { useTranslatedContent } from '@logora/debate.translation.translated_content';
 import { ContentHeader } from '@logora/debate.user_content.content_header';
@@ -17,22 +16,17 @@ import PropTypes from "prop-types";
 export const SuggestionBox = ({ suggestion, disabled = false }) => {
     const intl = useIntl();
     const routes = useRoutes();
-    const config = useConfig();
     const startDate = new Date(suggestion.created_at);
     const endDate = new Date(suggestion.expires_at);
     const [totalUpvotes, setTotalUpvotes] = useState(suggestion.total_upvotes);
-    const [isVoted, setIsVoted] = useState(false);
-    const { isMobile } = useResponsive();
     const content = useTranslatedContent(suggestion.name, suggestion.language, "name", suggestion.translation_entries);
     const { currentUser } = useAuth();
 
     const activeVote = (isUpvote) => {
         if (isUpvote) {
             setTotalUpvotes(totalUpvotes => totalUpvotes + 1);
-            setIsVoted(true);
         } else {
             setTotalUpvotes(totalUpvotes => totalUpvotes - 1);
-            setIsVoted(false);
         }
     }
 
