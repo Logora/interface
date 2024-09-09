@@ -17,7 +17,30 @@ const author = {
   occupation: faker.vehicle.bicycle(),
   last_activity: faker.date.recent(),
   description: faker.name.jobTitle(),
-  is_expert: false
+};
+
+const authorContibutor = {
+  image_url: faker.image.avatar(),
+  full_name: faker.name.fullName(),
+  hash_id: faker.lorem.slug(),
+  points: 52,
+  role: "contributor",
+  eloquence_title: faker.science.chemicalElement().symbol,
+  occupation: faker.vehicle.bicycle(),
+  last_activity: faker.date.recent(),
+  description: faker.name.jobTitle(),
+};
+
+const authorJournalist = {
+  image_url: faker.image.avatar(),
+  full_name: faker.name.fullName(),
+  hash_id: faker.lorem.slug(),
+  points: 52,
+  role: "editor",
+  eloquence_title: faker.science.chemicalElement().symbol,
+  occupation: faker.vehicle.bicycle(),
+  last_activity: faker.date.recent(),
+  description: faker.name.jobTitle(),
 };
 
 const routes = {
@@ -31,11 +54,11 @@ export const DefaultAuthorBox = () => {
         <IntlProvider locale="en">
           <IconProvider library={regularIcons}>
             <AuthorBox
-              fullName={author.full_name}
-              avatarUrl={author.image_url}
-              slug={author.hash_id}
-              points={author.points}
-              isExpert={author.is_expert}
+              fullName={authorContibutor.full_name}
+              avatarUrl={authorContibutor.image_url}
+              slug={authorContibutor.hash_id}
+              points={authorContibutor.points}
+              role={authorContibutor.role}
             />
           </IconProvider>
         </IntlProvider>
@@ -51,11 +74,11 @@ export const AuthorBoxWithoutLinks = () => {
         <IntlProvider locale="en">
           <IconProvider library={regularIcons}>
             <AuthorBox
-              fullName={author.full_name}
-              avatarUrl={author.image_url}
-              slug={author.hash_id}
-              points={author.points}
-              isExpert={author.is_expert}
+              fullName={authorContibutor.full_name}
+              avatarUrl={authorContibutor.image_url}
+              slug={authorContibutor.hash_id}
+              points={authorContibutor.points}
+              role={authorContibutor.role}
               disableLinks
             />
           </IconProvider>
@@ -72,11 +95,12 @@ export const AuthorBoxWithTitle = () => {
           <IntlProvider locale="en">
             <IconProvider library={regularIcons}>
               <AuthorBox 
-                fullName={author.full_name}
-                avatarUrl={author.image_url}
-                slug={author.hash_id}
-                points={author.points}
-                eloquenceTitle={author.eloquence_title}
+                fullName={authorContibutor.full_name}
+                avatarUrl={authorContibutor.image_url}
+                slug={authorContibutor.hash_id}
+                points={authorContibutor.points}
+                eloquenceTitle={authorContibutor.eloquence_title}
+                role={authorContibutor.role}
               />
             </IconProvider>
           </IntlProvider>
@@ -92,11 +116,12 @@ export const AuthorBoxWithOccupation = () => {
           <IntlProvider locale="en">
             <IconProvider library={regularIcons}>
               <AuthorBox 
-                fullName={author.full_name}
-                avatarUrl={author.image_url}
-                slug={author.hash_id}
-                points={author.points}
-                occupation={author.occupation}
+                fullName={authorContibutor.full_name}
+                avatarUrl={authorContibutor.image_url}
+                slug={authorContibutor.hash_id}
+                points={authorContibutor.points}
+                role={authorContibutor.role}
+                occupation={authorContibutor.occupation}
               />
             </IconProvider>
           </IntlProvider>
@@ -112,11 +137,11 @@ export const AuthorBoxExpert = () => {
         <IntlProvider locale="en">
           <IconProvider library={regularIcons}>
             <AuthorBox 
-              fullName={author.full_name}
-              avatarUrl={author.image_url}
-              slug={author.hash_id}
-              points={author.points}
-              isExpert={true}
+              fullName={authorJournalist.full_name}
+              avatarUrl={authorJournalist.image_url}
+              slug={authorJournalist.hash_id}
+              points={authorJournalist.points}
+              role={authorJournalist.role}
             />
           </IconProvider>
         </IntlProvider>
@@ -132,11 +157,30 @@ export const AuthorBoxDeletedUser = () => {
         <IntlProvider locale="en">
           <IconProvider library={regularIcons}>
             <AuthorBox 
+              fullName={authorContibutor.full_name}
+              avatarUrl={authorContibutor.image_url}
+              slug={authorContibutor.hash_id}
+              points={authorContibutor.points}
+              isDeleted={true}
+            />
+          </IconProvider>
+        </IntlProvider>
+      </ConfigProvider>
+    </BrowserRouter>
+  );
+};
+
+export const AuthorBoxWithoutPoints = () => {
+  return (
+    <BrowserRouter>
+      <ConfigProvider routes={{ ...routes }}>
+        <IntlProvider locale="en">
+          <IconProvider library={regularIcons}>
+            <AuthorBox
               fullName={author.full_name}
               avatarUrl={author.image_url}
               slug={author.hash_id}
               points={author.points}
-              isDeleted={true}
             />
           </IconProvider>
         </IntlProvider>

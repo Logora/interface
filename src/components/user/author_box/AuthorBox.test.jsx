@@ -18,9 +18,31 @@ const author = {
     occupation: faker.vehicle.bicycle(),
     last_activity: faker.date.recent(),
     description: faker.name.jobTitle(),
-    is_expert: false
   };
   
+const authorContibutor = {
+  image_url: faker.image.avatar(),
+  full_name: faker.name.fullName(),
+  hash_id: faker.lorem.slug(),
+  points: 52,
+  role: "contributor",
+  eloquence_title: faker.science.chemicalElement().symbol,
+  occupation: faker.vehicle.bicycle(),
+  last_activity: faker.date.recent(),
+  description: faker.name.jobTitle(),
+};
+
+const authorJournalist = {
+    image_url: faker.image.avatar(),
+    full_name: faker.name.fullName(),
+    hash_id: faker.lorem.slug(),
+    points: 52,
+    role: "editor",
+    eloquence_title: faker.science.chemicalElement().symbol,
+    occupation: faker.vehicle.bicycle(),
+    last_activity: faker.date.recent(),
+    description: faker.name.jobTitle(),
+  };
 
 let UserShowLocation = new Location('espace-debat/user/:userSlug', { userSlug: "" })
 
@@ -36,13 +58,13 @@ describe('AuthorBox', () => {
                     <IntlProvider locale="en">
                         <IconProvider library={regularIcons}>
                             <AuthorBox
-                                fullName={author.full_name}
-                                avatarUrl={author.image_url}
-                                slug={author.hash_id}
-                                points={author.points}
-                                eloquenceTitle={author.eloquence_title}
-                                lastActivity={author.last_activity}
-                                isExpert={false}
+                                fullName={authorContibutor.full_name}
+                                avatarUrl={authorContibutor.image_url}
+                                slug={authorContibutor.hash_id}
+                                points={authorContibutor.points}
+                                role={authorContibutor.role}
+                                eloquenceTitle={authorContibutor.eloquence_title}
+                                lastActivity={authorContibutor.last_activity}
                             />
                         </IconProvider>
                     </IntlProvider>
@@ -50,10 +72,10 @@ describe('AuthorBox', () => {
             </BrowserRouter>
         );
 
-        const avatarImg = getByAltText(author.full_name + "'s profile picture");
+        const avatarImg = getByAltText(authorContibutor.full_name + "'s profile picture");
         expect(avatarImg).toBeInTheDocument();
-        expect(avatarImg).toHaveAttribute('src', author.image_url);
-        expect(getByText(author.full_name)).toBeTruthy();
+        expect(avatarImg).toHaveAttribute('src', authorContibutor.image_url);
+        expect(getByText(authorContibutor.full_name)).toBeTruthy();
         //expect(getByText("1.5K points")).toBeTruthy();
         expect(getByText("Eloquence title")).toBeTruthy();
 
@@ -61,7 +83,7 @@ describe('AuthorBox', () => {
         expect(authorLinkElements.length).toBe(2);
         expect(authorLinkElements[0]).toHaveAttribute(
             'href',
-            `/espace-debat/user/${author.hash_id}`
+            `/espace-debat/user/${authorContibutor.hash_id}`
         );
     });
 
@@ -72,13 +94,13 @@ describe('AuthorBox', () => {
                     <IntlProvider locale="en">
                         <IconProvider library={regularIcons}>
                             <AuthorBox 
-                                fullName={author.full_name}
-                                avatarUrl={author.image_url}
-                                slug={author.hash_id}
-                                points={author.points}
-                                eloquenceTitle={author.eloquence_title}
-                                lastActivity={author.last_activity} 
-                                isExpert={false}
+                                fullName={authorContibutor.full_name}
+                                avatarUrl={authorContibutor.image_url}
+                                slug={authorContibutor.hash_id}
+                                points={authorContibutor.points}
+                                role={authorContibutor.role}
+                                eloquenceTitle={authorContibutor.eloquence_title}
+                                lastActivity={authorContibutor.last_activity} 
                                 disableLinks={true} 
                             />
                         </IconProvider>
@@ -87,7 +109,7 @@ describe('AuthorBox', () => {
             </BrowserRouter>
         );
 
-        expect(getByText(author.full_name)).toBeTruthy();
+        expect(getByText(authorContibutor.full_name)).toBeTruthy();
         //expect(getByText("1.5K points")).toBeTruthy();
         expect(getByText("Eloquence title")).toBeTruthy();
         expect(queryByRole('link')).not.toBeInTheDocument();
@@ -126,14 +148,14 @@ describe('AuthorBox', () => {
                     <IntlProvider locale="en">
                         <IconProvider library={regularIcons}>
                             <AuthorBox 
-                                fullName={author.full_name}
-                                avatarUrl={author.image_url}
-                                slug={author.hash_id}
-                                points={author.points}
-                                eloquenceTitle={author.eloquence_title}
-                                lastActivity={author.last_activity} 
-                                occupation={author.occupation}
-                                isExpert={true}
+                                fullName={authorJournalist.full_name}
+                                avatarUrl={authorJournalist.image_url}
+                                slug={authorJournalist.hash_id}
+                                points={authorJournalist.points}
+                                role={authorJournalist.role}
+                                eloquenceTitle={authorJournalist.eloquence_title}
+                                lastActivity={authorJournalist.last_activity} 
+                                occupation={authorJournalist.occupation}
                             />
                         </IconProvider>
                     </IntlProvider>
@@ -169,4 +191,33 @@ describe('AuthorBox', () => {
         expect(queryByText(author.full_name)).toBeNull();
         expect(getByText("Deleted")).toBeTruthy();
     });
+    /*it('should render without points', () => {
+        const { getByText, getByAltText, getAllByRole } = render(
+            <BrowserRouter>
+                <ConfigProvider config={{}} routes={{ ...routes }}>
+                    <IntlProvider locale="en">
+                        <IconProvider library={regularIcons}>
+                            <AuthorBox
+                                fullName={author.full_name}
+                                avatarUrl={author.image_url}
+                                slug={author.hash_id}
+                                points={author.points}
+                                eloquenceTitle={author.eloquence_title}
+                                lastActivity={author.last_activity}
+                            />
+                        </IconProvider>
+                    </IntlProvider>
+                </ConfigProvider>
+            </BrowserRouter>
+        );
+
+        const avatarImg = getByAltText(author.full_name + "'s profile picture");
+        expect(avatarImg).toBeInTheDocument();
+        expect(avatarImg).toHaveAttribute('src', author.image_url);
+        expect(getByText(author.points + " points")).not.toBeInTheDocument();
+
+
+
+      
+    });*/
 });

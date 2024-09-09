@@ -13,7 +13,7 @@ export const AuthorBox = ({
         slug, 
         avatarUrl, 
         lastActivity, 
-        isExpert = false, 
+        role, 
         points = 0, 
         eloquenceTitle, 
         occupation, 
@@ -47,7 +47,7 @@ export const AuthorBox = ({
                                 </Link>
                             </div>
                         }
-                        { isExpert && !isDeleted &&
+                        { role == "editor" && !isDeleted &&
                             <div className={styles.expertContainer}>
                                 <Icon name="expertBadge" width={14} height={14} />
                                 <span className={styles.expertBadge}>{ intl.formatMessage({ id: "user.author_box.expert", defaultMessage: "Journalist" }) }</span>
@@ -57,27 +57,29 @@ export const AuthorBox = ({
                 </div>
                 { !isDeleted &&
                     <>
-                        <div className={styles.authorPointsBox}>
-                            <div className={styles.authorPoints}>
-                                <span>
-                                    { intl.formatNumber(points, { notation: 'compact', maximumFractionDigits: 1, roundingMode: "floor" }) }
-                                    {" "}
-                                    <FormattedMessage 
-                                        id="user.author_box.points" 
-                                        defaultMessage={"points"} 
-                                        values={{ count: points }} 
-                                    />
-                                </span>
+                           { role === "contributor" && (
+                            <div className={styles.authorPointsBox}>
+                                <div className={styles.authorPoints}>
+                                    <span>
+                                        { intl.formatNumber(points, { notation: 'compact', maximumFractionDigits: 1, roundingMode: "floor" }) }
+                                        {" "}
+                                        <FormattedMessage 
+                                            id="user.author_box.points" 
+                                            defaultMessage={"points"} 
+                                            values={{ count: points }} 
+                                        />
+                                    </span>
+                                </div>
+                                { eloquenceTitle &&
+                                    <>
+                                        <span className={styles.separator}></span>
+                                        <div className={styles.authorEloquence}>
+                                            <span>{ intl.formatMessage({ id: "badge." + eloquenceTitle + ".reward", defaultMessage: "Eloquence title" }) }</span>
+                                        </div>
+                                    </>
+                                }
                             </div>
-                            { eloquenceTitle &&
-                                <>
-                                    <span className={styles.separator}></span>
-                                    <div className={styles.authorEloquence}>
-                                        <span>{ intl.formatMessage({ id: "badge." + eloquenceTitle + ".reward", defaultMessage: "Eloquence title" }) }</span>
-                                    </div>
-                                </>
-                            }
-                        </div>
+                        )}
                         { occupation &&
                             <div className={styles.occupationBox}>
                                 <span className={styles.authorPoints}>
@@ -102,7 +104,7 @@ AuthorBox.propTypes = {
     /** User last activity date time */
     lastActivity: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date) ]),
     /** Whether an user has a special "expert" status or not */ 
-    isExpert: PropTypes.bool,
+    role: PropTypes.string,
     /** User eloquence points total */ 
     points: PropTypes.number,
     /** User eloquence title */ 
