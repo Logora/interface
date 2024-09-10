@@ -103,7 +103,7 @@ AuthorBox.propTypes = {
     slug: PropTypes.string,
     /** User last activity date time */
     lastActivity: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date) ]),
-    /** Whether an user has a special "expert" status or not */ 
+    /** Whether an user has a special status or not */ 
     showBadge: PropTypes.bool,
     /** User eloquence points total */ 
     points: PropTypes.number,

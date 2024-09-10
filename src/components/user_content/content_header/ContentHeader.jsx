@@ -33,7 +33,7 @@ export const ContentHeader = ({ author, tag, tagClassName, date, oneLine = false
 							lastActivity={author.last_activity}
 							occupation={author.occupation}
 							eloquenceTitle={author.eloquence_title}
-							showBadge={author.show_badge}
+							showBadge={author.role}
 							disableLinks={disableLinks} 
 							isDeleted={isDeleted} 
 						/>
