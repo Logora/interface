@@ -21,7 +21,7 @@ const author = {
     description: faker.name.jobTitle(),
   };
   
-  const authorJournlist = {
+  const authorEditor = {
     image_url: faker.image.avatar(),
     full_name: faker.name.fullName(),
     hash_id: faker.lorem.slug(),
@@ -54,7 +54,7 @@ describe('AuthorBox', () => {
                                 points={author.points}
                                 eloquenceTitle={author.eloquence_title}
                                 lastActivity={author.last_activity}
-                                showBadge={author.role}
+                                showBadge={author.role === "contributor" || author.role === "moderator"}
                             />
                         </IconProvider>
                     </IntlProvider>
@@ -90,7 +90,7 @@ describe('AuthorBox', () => {
                                 points={author.points}
                                 eloquenceTitle={author.eloquence_title}
                                 lastActivity={author.last_activity} 
-                                showBadge={author.role}
+                                showBadge={author.role === "contributor" || author.role === "moderator"}
                                 disableLinks={true} 
                             />
                         </IconProvider>
@@ -119,7 +119,7 @@ describe('AuthorBox', () => {
                                 eloquenceTitle={author.eloquence_title}
                                 lastActivity={author.last_activity} 
                                 occupation={author.occupation}
-                                showBadge={author.role}
+                                showBadge={author.role === "contributor" || author.role === "moderator"}
                                 disableLinks={true}
                             />
                         </IconProvider>
@@ -145,7 +145,7 @@ describe('AuthorBox', () => {
                                 eloquenceTitle={author.eloquence_title}
                                 lastActivity={author.last_activity} 
                                 occupation={author.occupation}
-                                showBadge={authorJournlist.role}
+                                showBadge={authorEditor.role}
                             />
                         </IconProvider>
                     </IntlProvider>
