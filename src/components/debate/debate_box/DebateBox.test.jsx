@@ -3,6 +3,27 @@ import { DefaultDebateBox } from './DebateBox.composition';
 import { render } from '@testing-library/react';
 import { faker } from '@faker-js/faker';
 
+const createUser = () => {
+	return {
+		id: faker.datatype.number(10000000),
+		hash_id: faker.lorem.slug(),
+		first_name: faker.name.firstName(),
+		last_name: faker.name.lastName(),
+		slug: faker.lorem.slug(),
+		image_url: faker.image.avatar(),
+		full_name: faker.name.fullName(),
+		description: null,
+		last_activity: faker.date.recent(),
+		role: "contributor",
+		is_admin: false,
+		points: 41,
+		eloquence_title: null,
+		occupation: null
+	};
+};
+
+const participants = Array.from([1, 2, 3], s => createUser());
+
 const debate = {
 	id: 243,
 	is_public: true,
@@ -11,7 +32,7 @@ const debate = {
 	description: null,
 	created_at: faker.date.recent(),
 	score: 0,
-	image_url: faker.image.avatar(),
+	image_url: faker.image.nature(),
 	banner_image_url: faker.image.avatar(),
 	votes_count: {
 		655: "2",
@@ -43,55 +64,9 @@ const debate = {
     			translation_entries: []
 			}
 		],
-		author: {
-			id: 2,
-			first_name: faker.name.firstName(),
-			last_name: faker.name.lastName(),
-			slug: faker.lorem.slug(),
-			image_url: faker.image.avatar(),
-			full_name: faker.name.fullName(),
-			description: null,
-			last_activity: faker.date.recent(),
-			role: "contributor",
-			is_admin: true,
-			points: 13800,
-			eloquence_title: "debate_suggestion_accepted"
-		}
+		author: createUser()
 	},
-	participants: [
-		{
-			id: 39,
-			hash_id: faker.lorem.slug(),
-			first_name: faker.name.firstName(),
-			last_name: faker.name.lastName(),
-			slug: faker.lorem.slug(),
-			image_url: faker.image.avatar(),
-			full_name: faker.name.fullName(),
-			description: null,
-			last_activity: faker.date.recent(),
-			role: "contributor",
-			is_admin: false,
-			points: 41,
-			eloquence_title: null,
-			occupation: null
-		},
-		{
-			id: 82,
-			hash_id: faker.lorem.slug(),
-			first_name: faker.name.firstName(),
-			last_name: faker.name.lastName(),
-			slug: faker.lorem.slug(),
-			image_url: faker.image.avatar(),
-			full_name: faker.name.fullName(),
-			description: null,
-			last_activity: faker.date.recent(),
-			role: "contributor",
-			is_admin: false,
-			points: 1589,
-			eloquence_title: null,
-			occupation: null
-		}
-	],
+	participants: participants,
 	language: "en",
     translation_entries: []
 }

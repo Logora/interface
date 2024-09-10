@@ -196,7 +196,27 @@
         "scope": "logora.debate",
         "version": "0.0.79",
         "mainFile": "index.js",
-        "rootDir": "src/components/debate/debate_box"
+        "rootDir": "src/components/debate/debate_box",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "devDependencies": {
+                        "@types/testing-library__jest-dom": "-",
+                        "@types/jest": "-",
+                        "@types/node": "-",
+                        "@testing-library/dom": "^10.4.0",
+                        "@testing-library/react": "^16.0.0"
+                    },
+                    "peerDependencies": {
+                        "react": "^17.0.0||^18.0.0",
+                        "react-dom": "^17.0.0||^18.0.0"
+                    },
+                    "dependencies": {
+                        "@testing-library/react": "^16.0.0"
+                    }
+                }
+            }
+        }
     },
     "dialog/announcement_dialog": {
         "name": "dialog/announcement_dialog",
