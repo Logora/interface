@@ -58,17 +58,19 @@ export const AuthorBox = ({
                 { !isDeleted &&
                     <>
                         <div className={styles.authorPointsBox}>
-                            <div className={styles.authorPoints}>
-                                <span>
-                                    { intl.formatNumber(points, { notation: 'compact', maximumFractionDigits: 1, roundingMode: "floor" }) }
-                                    {" "}
-                                    <FormattedMessage 
-                                        id="user.author_box.points" 
-                                        defaultMessage={"points"} 
-                                        values={{ count: points }} 
-                                    />
-                                </span>
-                            </div>
+                        { points != null && 
+                                <div className={styles.authorPoints}>
+                                    <span>
+                                        { intl.formatNumber(points, { notation: 'compact', maximumFractionDigits: 1, roundingMode: "floor" }) }
+                                        {" "}
+                                        <FormattedMessage 
+                                            id="user.author_box.points" 
+                                            defaultMessage={"points"} 
+                                            values={{ count: points }} 
+                                        />
+                                    </span>
+                                </div>
+                            }
                             { eloquenceTitle &&
                                 <>
                                     <span className={styles.separator}></span>

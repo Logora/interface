@@ -17,7 +17,7 @@ const author = {
   occupation: faker.vehicle.bicycle(),
   last_activity: faker.date.recent(),
   description: faker.name.jobTitle(),
-  role: "contributor"
+  show_badge: false
 };
 
 const routes = {
@@ -35,7 +35,7 @@ export const DefaultAuthorBox = () => {
               avatarUrl={author.image_url}
               slug={author.hash_id}
               points={author.points}
-              showBadge={author.is_expert}
+              showBadge={author.show_badge}
             />
           </IconProvider>
         </IntlProvider>
@@ -55,7 +55,7 @@ export const AuthorBoxWithoutLinks = () => {
               avatarUrl={author.image_url}
               slug={author.hash_id}
               points={author.points}
-              showBadge={author.is_expert}
+              showBadge={author.show_badge}
               disableLinks
             />
           </IconProvider>
@@ -116,7 +116,7 @@ export const AuthorBoxExpert = () => {
               avatarUrl={author.image_url}
               slug={author.hash_id}
               points={author.points}
-              isExpert={true}
+              showBadge={true}
             />
           </IconProvider>
         </IntlProvider>
