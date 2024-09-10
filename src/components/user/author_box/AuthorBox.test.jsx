@@ -18,7 +18,7 @@ const author = {
     occupation: faker.vehicle.bicycle(),
     last_activity: faker.date.recent(),
     description: faker.name.jobTitle(),
-    role: "contributor"
+    show_badge: false
   };
   
 
@@ -42,7 +42,7 @@ describe('AuthorBox', () => {
                                 points={author.points}
                                 eloquenceTitle={author.eloquence_title}
                                 lastActivity={author.last_activity}
-                                isExpert={false}
+                                showBadge={false}
                             />
                         </IconProvider>
                     </IntlProvider>
@@ -78,7 +78,7 @@ describe('AuthorBox', () => {
                                 points={author.points}
                                 eloquenceTitle={author.eloquence_title}
                                 lastActivity={author.last_activity} 
-                                isExpert={false}
+                                showBadge={false}
                                 disableLinks={true} 
                             />
                         </IconProvider>
@@ -107,7 +107,7 @@ describe('AuthorBox', () => {
                                 eloquenceTitle={author.eloquence_title}
                                 lastActivity={author.last_activity} 
                                 occupation={author.occupation}
-                                isExpert={false}
+                                showBadge={false}
                                 disableLinks={true}
                             />
                         </IconProvider>
@@ -133,7 +133,7 @@ describe('AuthorBox', () => {
                                 eloquenceTitle={author.eloquence_title}
                                 lastActivity={author.last_activity} 
                                 occupation={author.occupation}
-                                isExpert={true}
+                                showBadge={true}
                             />
                         </IconProvider>
                     </IntlProvider>
