@@ -75,7 +75,7 @@ export const SuggestionBox = ({ suggestion, disabled = false }) => {
                     containerClassName={styles.footerContainer}
                     voteActionClassName={styles.footerActionContainer}
                 >
-                    {suggestion.is_published && suggestion.is_accepted && suggestion.group &&
+                    {suggestion.is_published && suggestion.group &&
                         <div className={styles.voteButton}>
                             <Button rightIcon={<Icon name="lightArrow" width={10} height={10} className={styles.arrowIcon} />} className={styles.linkToDebate} to={routes.debateShowLocation.toUrl({ debateSlug: suggestion.group.slug })}>
                                 <span>{intl.formatMessage({ id: "action.link_to_debate", defaultMessage: "Go to debate" })}</span>
