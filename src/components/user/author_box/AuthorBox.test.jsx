@@ -138,13 +138,13 @@ describe('AuthorBox', () => {
                     <IntlProvider locale="en">
                         <IconProvider library={regularIcons}>
                             <AuthorBox 
-                                fullName={author.full_name}
-                                avatarUrl={author.image_url}
-                                slug={author.hash_id}
-                                points={author.points}
-                                eloquenceTitle={author.eloquence_title}
-                                lastActivity={author.last_activity} 
-                                occupation={author.occupation}
+                                fullName={authorEditor.full_name}
+                                avatarUrl={authorEditor.image_url}
+                                slug={authorEditor.hash_id}
+                                points={authorEditor.points}
+                                eloquenceTitle={authorEditor.eloquence_title}
+                                lastActivity={authorEditor.last_activity} 
+                                occupation={authorEditor.occupation}
                                 showBadge={authorEditor.role}
                             />
                         </IconProvider>
