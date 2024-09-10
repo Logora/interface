@@ -31,7 +31,7 @@ export const SuggestionBox = ({ suggestion, disabled = false }) => {
     }
 
     const getTag = () => {
-        if (suggestion.is_accepted) {
+        if (suggestion.is_accepted || suggestion.is_published) {
             return intl.formatMessage({ id: "suggestion.suggestion_box.selected", defaultMessage: "Selected" });
         } else if (suggestion.is_expired === true || endDate < startDate) {
             return intl.formatMessage({ id: "suggestion.suggestion_box.ended", defaultMessage: "Expired" });
