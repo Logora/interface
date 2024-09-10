@@ -41,7 +41,7 @@ export const SuggestionBox = ({ suggestion, disabled = false }) => {
     }
 
     const getTagClassName = () => {
-        if (suggestion.is_accepted) {
+        if (suggestion.is_accepted || suggestion.is_published) {
             return styles.selected;
         } else if (suggestion.is_expired === true || endDate < startDate) {
             return styles.expired;
