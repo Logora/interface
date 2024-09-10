@@ -22,7 +22,7 @@ const SideModal = lazy(() => import('@logora/debate.modal.side_modal'));
 import cx from 'classnames';
 import styles from './ArgumentInput.module.scss';
 
-export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = false, positions, disabledPositions = [], groupId, groupName, groupType, hideSourceAction = false, isReply = false, onSubmit, parentId, placeholder, positionId, focusOnInit = false, showPosition }) => {
+export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = false, positions, disabledPositions = [], groupId, groupName, groupType, hideSourceAction = false, isReply = false, onSubmit, parentId, placeholder, positionId, focusOnInit = false }) => {
     const intl = useIntl();
     const api = useDataProvider();
     const list = useList();
@@ -146,8 +146,8 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
             if (argumentId) {
                 updateArgument();
             } else {
-                if ((!disabledPositions?.find(pos => pos.id === userPositionId) && (userPositionId || !positions)) || (showPosition && !isReply)) {
-                    submitArgument(isReply && showPosition && positions[0].id);
+                if ((!disabledPositions?.find(pos => pos.id === userPositionId) && (userPositionId || !positions)) || (positions?.length > 0  && !isReply)) {
+                    submitArgument(isReply && positions?.length > 0 && positions[0].id);
                 } else {
                     showSideModal();
                 }
@@ -290,7 +290,7 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
             <div className={cx(styles.argumentInput, { [styles.flash]: flash, [styles.replyInputContainer]: isReply })}>
                 <div data-tid={"action_add_argument"} ref={inputForm}>
                     <div className={styles.argumentInputBox}>
-                        {positions && isLoggedIn && (!isReply || !showPosition) &&
+                    {positions?.length > 0 && isLoggedIn && !isReply && (
                             <div className={styles.userPosition}>
                                 <div>{intl.formatMessage({ id: "input.position", defaultMessage: "Your position" })}</div>
                                 <TogglePosition 
@@ -300,7 +300,7 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
                                     onChange={(label) => setUserPositionId(positions[label].id)}
                                 />
                             </div>
-                        }
+                    )}
                         <div className={cx(styles.argumentTextInputBox, {[styles.argumentTextInputBoxisTablet]: !isMobile, [styles.replyEditorRow]: isReply})}>
                             <div className={cx(styles.argumentAuthorContainer,{[styles.argumentAuthorContainerMobile]: isMobile, [styles.argumentAuthorContainerActivated]: inputActivation || isReply})}>
                                 { inputActivation || isReply ?
@@ -380,6 +380,4 @@ ArgumentInput.propTypes = {
     positionId: PropTypes.number,
     /** Focus input on initialization */
     focusOnInit: PropTypes.bool,
-    /** Whether a user has a special status or not*/
-    showPosition: PropTypes.bool,
 };

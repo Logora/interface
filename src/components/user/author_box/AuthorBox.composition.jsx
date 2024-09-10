@@ -13,14 +13,14 @@ const author = {
   full_name: faker.name.fullName(),
   hash_id: faker.lorem.slug(),
   points: 52,
-  role: "contibutor",
+  role: "contributor",
   eloquence_title: faker.science.chemicalElement().symbol,
   occupation: faker.vehicle.bicycle(),
   last_activity: faker.date.recent(),
   description: faker.name.jobTitle(),
 };
 
-const authorJournalist = {
+const authorEditor = {
   image_url: faker.image.avatar(),
   full_name: faker.name.fullName(),
   hash_id: faker.lorem.slug(),
@@ -47,7 +47,7 @@ export const DefaultAuthorBox = () => {
               avatarUrl={author.image_url}
               slug={author.hash_id}
               points={author.points}
-              showBadge={author.role}
+              showBadge={author.role === "contributor" || author.role === "moderator"}
             />
           </IconProvider>
         </IntlProvider>
@@ -67,7 +67,7 @@ export const AuthorBoxWithoutLinks = () => {
               avatarUrl={author.image_url}
               slug={author.hash_id}
               points={author.points}
-              showBadge={author.role}
+              showBadge={author.role === "contributor" || author.role === "moderator"}
               disableLinks
             />
           </IconProvider>
@@ -124,11 +124,11 @@ export const AuthorBoxExpert = () => {
         <IntlProvider locale="en">
           <IconProvider library={regularIcons}>
             <AuthorBox 
-              fullName={authorJournalist.full_name}
-              avatarUrl={authorJournalist.image_url}
-              slug={authorJournalist.hash_id}
-              points={authorJournalist.points}
-              showBadge={authorJournalist.role}
+              fullName={authorEditor.full_name}
+              avatarUrl={authorEditor.image_url}
+              slug={authorEditor.hash_id}
+              points={authorEditor.points}
+              showBadge={authorEditor.role}
             />
           </IconProvider>
         </IntlProvider>
