@@ -13,12 +13,24 @@ const author = {
     image_url: faker.image.avatar(),
     full_name: faker.name.fullName(),
     hash_id: faker.lorem.slug(),
-    points: 1463,
+    points: 52,
+    role: "contibutor",
     eloquence_title: faker.science.chemicalElement().symbol,
     occupation: faker.vehicle.bicycle(),
     last_activity: faker.date.recent(),
     description: faker.name.jobTitle(),
-    show_badge: false
+  };
+  
+  const authorJournlist = {
+    image_url: faker.image.avatar(),
+    full_name: faker.name.fullName(),
+    hash_id: faker.lorem.slug(),
+    points: 52,
+    role: "editor",
+    eloquence_title: faker.science.chemicalElement().symbol,
+    occupation: faker.vehicle.bicycle(),
+    last_activity: faker.date.recent(),
+    description: faker.name.jobTitle(),
   };
   
 
@@ -42,7 +54,7 @@ describe('AuthorBox', () => {
                                 points={author.points}
                                 eloquenceTitle={author.eloquence_title}
                                 lastActivity={author.last_activity}
-                                showBadge={false}
+                                showBadge={author.role}
                             />
                         </IconProvider>
                     </IntlProvider>
@@ -78,7 +90,7 @@ describe('AuthorBox', () => {
                                 points={author.points}
                                 eloquenceTitle={author.eloquence_title}
                                 lastActivity={author.last_activity} 
-                                showBadge={false}
+                                showBadge={author.role}
                                 disableLinks={true} 
                             />
                         </IconProvider>
@@ -107,7 +119,7 @@ describe('AuthorBox', () => {
                                 eloquenceTitle={author.eloquence_title}
                                 lastActivity={author.last_activity} 
                                 occupation={author.occupation}
-                                showBadge={false}
+                                showBadge={author.role}
                                 disableLinks={true}
                             />
                         </IconProvider>
@@ -133,7 +145,7 @@ describe('AuthorBox', () => {
                                 eloquenceTitle={author.eloquence_title}
                                 lastActivity={author.last_activity} 
                                 occupation={author.occupation}
-                                showBadge={true}
+                                showBadge={authorJournlist.role}
                             />
                         </IconProvider>
                     </IntlProvider>
