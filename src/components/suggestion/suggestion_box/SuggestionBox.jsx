@@ -82,7 +82,7 @@ export const SuggestionBox = ({ suggestion, disabled = false }) => {
                             </Button>
                         </div>
                     }
-                    {suggestion.is_accepted === false && suggestion.is_expired === false &&
+                    {suggestion.is_accepted === false && suggestion.is_expired === false && !suggestion.is_published &&
                         <SuggestionVoteBox
                             voteableType={"DebateSuggestion"}
                             voteableId={suggestion.id}
