@@ -138,6 +138,7 @@ describe('SuggestionBox', () => {
         const suggestionVote = generateSuggestion({
             is_accepted: false,
             is_expired: false,
+            is_published: false,
             total_upvotes: 6,
             total_downvotes: 5,
         });
