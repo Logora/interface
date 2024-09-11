@@ -37,9 +37,9 @@ export const SourceModal = ({ onAddSource, onHideModal, allowedSources = [] }) =
         const data = {
             query: input,
         };
+        setShowErrorSource(false);
         if (allowedSources.length > 0 && !allowedSources.includes(input)) {
             setShowErrorSource(true);
-
             return;
         }
         setShowPreview(true);
