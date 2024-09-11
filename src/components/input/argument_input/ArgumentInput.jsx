@@ -331,6 +331,8 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
                                     disableRichText={config?.actions?.disableRichText || inputDisabledForVisitors}
                                     shortBar={isReply}
                                     hideSubmit={inputDisabledForVisitors}
+                                    allowedDomains = {config?.allowed_sources}
+
                                 />
                                 { (errors && errors.content) && <div className={styles.argumentInputWarning}>{errors && Object.values(errors).map((e, index) => <div key={index}>{e}</div>)}</div> }
                                 { inputActivation && disabledPositions?.find(pos => pos.id === userPositionId) &&
