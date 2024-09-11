@@ -40,6 +40,7 @@ export const SourceModal = ({ onAddSource, onHideModal, allowedSources = [] }) =
         setShowErrorSource(false);
         if (allowedSources.length > 0 && !allowedSources.includes(input)) {
             setShowErrorSource(true);
+            setShowPreview(false); 
             return;
         }
         setShowPreview(true);
