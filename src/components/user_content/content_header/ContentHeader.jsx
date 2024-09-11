@@ -28,7 +28,7 @@ export const ContentHeader = ({ author, tag, tagClassName, date, oneLine = false
 						<AuthorBox 
 							fullName={author.full_name}
 							avatarUrl={author.image_url}
-                            points={author.points}
+                            points={author.role === "contributor" ? author.points : null}
                             slug={author.hash_id} 
 							lastActivity={author.last_activity}
 							occupation={author.occupation}

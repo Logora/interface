@@ -309,7 +309,7 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
                                     <AuthorBox
                                         fullName={currentUser?.full_name || intl.formatMessage({ id: "default_author.full_name" })}
                                         avatarUrl={currentUser?.image_url}
-                                        points={currentUser?.points || 0}
+                                        points={currentUser?.role === "contributor" ? (currentUser?.points || 0) : null}
                                         slug={currentUser?.hash_id}
                                     />
                                 }
