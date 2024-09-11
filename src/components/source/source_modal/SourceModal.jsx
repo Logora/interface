@@ -7,56 +7,75 @@ import { Button } from '@logora/debate.action.button';
 import { Loader } from '@logora/debate.progress.loader';
 import { SearchInput } from '@logora/debate.input.search_input';
 import { AnnouncementDialog } from "@logora/debate.dialog.announcement_dialog";
-
 import styles from './SourceModal.module.scss';
 import PropTypes from "prop-types";
 
 export const SourceModal = ({ onAddSource, onHideModal, allowedSources = [] }) => {
     const [disabled, setDisabled] = useState(false);
-    const [source, setSource] = useState({});
-    const [showPreview, setShowPreview] = useState(false);
+    const [source, setSource] = useState();
     const [showPreviewError, setShowPreviewError] = useState(false);
     const dataProvider = useDataProvider();
-    const [showErrorSource, setShowErrorSource] = useState(false);
+    const [showUnauthorizedError, setShowUnauthorizedError] = useState(false);
     const intl = useIntl();
     const { hideModal } = useModal();
 
-
     const handleAddSource = () => {
         onAddSource(source);
-        setSource({});
-        setShowPreview(false);
+        setSource(null);
         hideModal();
         if (onHideModal) {
             onHideModal();
         }
     }
 
-    const fetchSource = (input) => {
-
-        const data = {
-            query: input,
-        };
-        if (allowedSources.length > 0 && !allowedSources.includes(input)) {
-            setShowErrorSource(true);
-
-            return;
+    const isSourceAuthorized = (sourceUrl) => {
+        if (!allowedSources || allowedSources.length === 0) {
+            return true;
         }
-        setShowPreview(true);
-        setDisabled(true);
+
+        const domain = sourceUrl.hostname.replace('www.', '');
+
+        if (allowedSources.includes(domain)) {
+            return true;
+        }
+        return false;
+    }
+
+    const fetchSource = (input) => {
+        setShowUnauthorizedError(false);
+        setSource(null);
         setShowPreviewError(false);
-        dataProvider.create("sources/fetch", data).then(response => {
-            if (response.data.success) {
-                setSource(response.data.data.resource);
-                setDisabled(false);
-            } else {
+
+        if (!input) {
+            return false;
+        }
+
+        let inputUrl;
+
+        try {
+            inputUrl = new URL(input);
+        } catch {
+            setShowPreviewError(true);
+            return false;
+        }
+
+        if (!isSourceAuthorized(inputUrl)) {
+            setShowUnauthorizedError(true);
+        } else {
+            setDisabled(true);
+            dataProvider.create("sources/fetch", { query: input }).then(response => {
+                if (response.data.success) {
+                    setSource(response.data.data.resource);
+                    setDisabled(false);
+                } else {
+                    setDisabled(false);
+                    setShowPreviewError(true);
+                }
+            }, error => {
                 setDisabled(false);
                 setShowPreviewError(true);
-            }
-        }, error => {
-            setDisabled(false);
-            setShowPreviewError(true);
-        });
+            });
+        }
     }
 
     return (
@@ -67,9 +86,10 @@ export const SourceModal = ({ onAddSource, onHideModal, allowedSources = [] }) =
                         placeholder={intl.formatMessage({ id: "source.source_modal.input_placeholder", defaultMessage: "Enter the URL of the source..." })}
                         onSearchSubmit={(query) => fetchSource(query)}
                         disabled={disabled}
+                        type="url"
                     />
                     {allowedSources.length > 0 && (
-                        <div className={styles.sourceinfo}>
+                        <div className={styles.allowedSourcesInfo}>
                             <FormattedMessage
                                 id="source.source_modal.info_label"
                                 defaultMessage="Choose from : {domains}"
@@ -79,42 +99,41 @@ export const SourceModal = ({ onAddSource, onHideModal, allowedSources = [] }) =
                     )}
                 </div>
                 <div className={styles.sourcePreviewBox}>
-                    {showPreview ? (
-                        !showPreviewError ? (
-                            <div>
-                                {!disabled ?
-                                    <>
-                                        <SourceBox
-                                            title={source.title}
-                                            description={source.description}
-                                            url={source.source_url}
-                                            imageUrl={source.origin_image_url}
-                                            publisher={source.publisher}
-                                        />
-                                        <Button data-tid={"action_submit_source"} className={styles.sourcePreviewButton} handleClick={handleAddSource}>
-                                            <FormattedMessage id="source.source_modal.submit_label" defaultMessage="Add" />
-                                        </Button>
-                                    </>
-                                    :
-                                    <Loader />
-                                }
-                            </div>
-                        ) : (
-                            <div className={styles.sourcePreviewError}>
-                                <FormattedMessage id="source.source_modal.error" defaultMessage="Problème lors de la récupération de la source" />
-                            </div>
-                        )
-                    ) : null}
+                    {showPreviewError && (
+                        <AnnouncementDialog
+                            message={intl.formatMessage({ id: "source.source_modal.error", defaultMessage: "Error when fetching source" })}
+                            fullWidth
+                        />
+                    )}
+                    {showUnauthorizedError && (
+                        <AnnouncementDialog
+                            message={intl.formatMessage({ id: "source.source_modal.error_unauthorized", defaultMessage: "Unauthorized source" })}
+                            fullWidth
+                        />
+                    )}
+                    {source && (
+                        <div>
+                            {!disabled ?
+                                <>
+                                    <SourceBox
+                                        title={source.title}
+                                        description={source.description}
+                                        url={source.source_url}
+                                        imageUrl={source.origin_image_url}
+                                        publisher={source.publisher}
+                                    />
+                                    <Button data-tid={"action_submit_source"} className={styles.sourcePreviewButton} handleClick={handleAddSource}>
+                                        <FormattedMessage id="source.source_modal.submit_label" defaultMessage="Add" />
+                                    </Button>
+                                </>
+                                :
+                                <Loader />
+                            }
+                        </div>
+                    )}
                 </div>
             </div>
-            {showErrorSource && (
-                <AnnouncementDialog
-                    message={intl.formatMessage({ id: "source.source_modal.error_unauthorized", defaultMessage: "Unauthorized source" })}
-                    fullWidth
-                />
-            )}
         </Modal>
-
     );
 }
 
@@ -123,6 +142,6 @@ SourceModal.propTypes = {
     onAddSource: PropTypes.func.isRequired,
     /** Callback triggered when modal is closed */
     onHideModal: PropTypes.func,
-    /** Liste des sources autorisées */
+    /** List of authorized source domains */
     allowedSources: PropTypes.arrayOf(PropTypes.string),
 }
