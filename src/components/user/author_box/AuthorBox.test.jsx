@@ -14,19 +14,6 @@ const author = {
     full_name: faker.name.fullName(),
     hash_id: faker.lorem.slug(),
     points: 52,
-    role: "contibutor",
-    eloquence_title: faker.science.chemicalElement().symbol,
-    occupation: faker.vehicle.bicycle(),
-    last_activity: faker.date.recent(),
-    description: faker.name.jobTitle(),
-  };
-  
-  const authorEditor = {
-    image_url: faker.image.avatar(),
-    full_name: faker.name.fullName(),
-    hash_id: faker.lorem.slug(),
-    points: 52,
-    role: "editor",
     eloquence_title: faker.science.chemicalElement().symbol,
     occupation: faker.vehicle.bicycle(),
     last_activity: faker.date.recent(),
@@ -54,7 +41,7 @@ describe('AuthorBox', () => {
                                 points={author.points}
                                 eloquenceTitle={author.eloquence_title}
                                 lastActivity={author.last_activity}
-                                showBadge={author.role === "contributor" || author.role === "moderator"}
+                                showBadge={false}
                             />
                         </IconProvider>
                     </IntlProvider>
@@ -90,7 +77,7 @@ describe('AuthorBox', () => {
                                 points={author.points}
                                 eloquenceTitle={author.eloquence_title}
                                 lastActivity={author.last_activity} 
-                                showBadge={author.role === "contributor" || author.role === "moderator"}
+                                showBadge={false}
                                 disableLinks={true} 
                             />
                         </IconProvider>
@@ -119,7 +106,7 @@ describe('AuthorBox', () => {
                                 eloquenceTitle={author.eloquence_title}
                                 lastActivity={author.last_activity} 
                                 occupation={author.occupation}
-                                showBadge={author.role === "contributor" || author.role === "moderator"}
+                                showBadge={false}
                                 disableLinks={true}
                             />
                         </IconProvider>
@@ -138,14 +125,14 @@ describe('AuthorBox', () => {
                     <IntlProvider locale="en">
                         <IconProvider library={regularIcons}>
                             <AuthorBox 
-                                fullName={authorEditor.full_name}
-                                avatarUrl={authorEditor.image_url}
-                                slug={authorEditor.hash_id}
-                                points={authorEditor.points}
-                                eloquenceTitle={authorEditor.eloquence_title}
-                                lastActivity={authorEditor.last_activity} 
-                                occupation={authorEditor.occupation}
-                                showBadge={authorEditor.role}
+                                fullName={author.full_name}
+                                avatarUrl={author.image_url}
+                                slug={author.hash_id}
+                                points={author.points}
+                                eloquenceTitle={author.eloquence_title}
+                                lastActivity={author.last_activity} 
+                                occupation={author.occupation}
+                                showBadge={true}
                             />
                         </IconProvider>
                     </IntlProvider>
