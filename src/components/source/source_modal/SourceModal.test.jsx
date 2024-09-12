@@ -12,7 +12,7 @@ import { faker } from '@faker-js/faker';
 const addSourceCallback = jest.fn();
 const hideModalCallback = jest.fn();
 
-const source = { 
+const source = {
     title: faker.music.songName(),
     description: faker.lorem.sentence(),
     source_url: faker.internet.url(),
@@ -23,26 +23,26 @@ const source = {
 
 const httpClient = {
     get: () => null,
-    post: (url, data, config) => {
-        return new Promise(function(resolve, reject) {
-            resolve({ data: { success: true, data: { resource: source } }});
+    post: (_url, _data, _config) => {
+        return new Promise(function (resolve, _reject) {
+            resolve({ data: { success: true, data: { resource: source } } });
         });
     },
     patch: () => null
 };
 
+const data = dataProvider(httpClient, "https://mock.example.api");
+
 describe('SourceModal', () => {
     it('should render modal with content and title', () => {
-        const data = dataProvider(httpClient, "https://mock.example.api");
-
         const modal = render(
             <ModalProvider>
                 <IntlProvider locale="en">
                     <IconProvider library={regularIcons}>
                         <DataProviderContext.Provider value={{ dataProvider: data }}>
-                            <SourceModal 
-                                onAddSource={addSourceCallback} 
-                                onHideModal={hideModalCallback} 
+                            <SourceModal
+                                onAddSource={addSourceCallback}
+                                onHideModal={hideModalCallback}
                             />
                         </DataProviderContext.Provider>
                     </IconProvider>
@@ -56,16 +56,14 @@ describe('SourceModal', () => {
     });
 
     it('should trigger addSourceCallback when adding source', async () => {
-        const data = dataProvider(httpClient, "https://mock.example.api");
-
         const modal = render(
             <ModalProvider>
                 <IntlProvider locale="en">
                     <IconProvider library={regularIcons}>
                         <DataProviderContext.Provider value={{ dataProvider: data }}>
-                            <SourceModal 
-                                onAddSource={addSourceCallback} 
-                                onHideModal={hideModalCallback} 
+                            <SourceModal
+                                onAddSource={addSourceCallback}
+                                onHideModal={hideModalCallback}
                             />
                         </DataProviderContext.Provider>
                     </IconProvider>
@@ -86,36 +84,89 @@ describe('SourceModal', () => {
 
         expect(addSourceCallback).toHaveBeenCalledTimes(1);
     });
- 
-   
-it('should display an error message when adding a source with a non-allowed domain', async () => {
-    const data = dataProvider(httpClient, "https://mock.example.api");
-    const allowedDomains = ["example.com"];
-    const addSourceCallback = jest.fn();
-    const hideModalCallback = jest.fn();
-    
-    render(
-        <ModalProvider>
-            <IntlProvider locale="en">
-                <IconProvider library={regularIcons}>
-                    <DataProviderContext.Provider value={{ dataProvider: data }}>
-                        <SourceModal 
-                            onAddSource={addSourceCallback} 
-                            onHideModal={hideModalCallback} 
-                            allowedSources={allowedDomains}
-                        />
-                    </DataProviderContext.Provider>
-                </IconProvider>
-            </IntlProvider>
-        </ModalProvider>
-    );
 
-    const input = screen.getByRole('input'); 
-    await userEvent.type(input, "https://ggg.com{Enter}"); 
-    expect(input.value).toBe("https://ggg.com");
-    await waitFor(() => {
-        expect(screen.getByText("Unauthorized source")).toBeInTheDocument();
+    it('should show error if input is not well formed', async () => {
+        const allowedDomains = ["example.com"];
+        const addSourceCallback = jest.fn();
+
+        render(
+            <ModalProvider>
+                <IntlProvider locale="en">
+                    <IconProvider library={regularIcons}>
+                        <DataProviderContext.Provider value={{ dataProvider: data }}>
+                            <SourceModal
+                                onAddSource={addSourceCallback}
+                                allowedSources={allowedDomains}
+                            />
+                        </DataProviderContext.Provider>
+                    </IconProvider>
+                </IntlProvider>
+            </ModalProvider>
+        );
+
+        const input = screen.getByRole('input');
+        await userEvent.type(input, "example/test{Enter}");
+        expect(input.value).toBe("example/test");
+
+        expect(screen.getByText("Error when fetching source")).toBeTruthy();
     });
-    expect(addSourceCallback).not.toHaveBeenCalled();
+
+    it('should display an error message when adding a source with a non-allowed domain', async () => {
+        const allowedDomains = ["example.com"];
+        const addSourceCallback = jest.fn();
+
+        render(
+            <ModalProvider>
+                <IntlProvider locale="en">
+                    <IconProvider library={regularIcons}>
+                        <DataProviderContext.Provider value={{ dataProvider: data }}>
+                            <SourceModal
+                                onAddSource={addSourceCallback}
+                                allowedSources={allowedDomains}
+                            />
+                        </DataProviderContext.Provider>
+                    </IconProvider>
+                </IntlProvider>
+            </ModalProvider>
+        );
+
+        const input = screen.getByRole('input');
+        await userEvent.type(input, "https://ggg.com{Enter}");
+        expect(input.value).toBe("https://ggg.com");
+        await waitFor(() => {
+            expect(screen.getByText("Unauthorized source")).toBeInTheDocument();
+        });
+        expect(addSourceCallback).not.toHaveBeenCalled();
+    });
+
+    it('should add source if domain is in allowed domains', async () => {
+        const allowedDomains = ["example.com"];
+        const addSourceCallback = jest.fn();
+
+        render(
+            <ModalProvider>
+                <IntlProvider locale="en">
+                    <IconProvider library={regularIcons}>
+                        <DataProviderContext.Provider value={{ dataProvider: data }}>
+                            <SourceModal
+                                onAddSource={addSourceCallback}
+                                allowedSources={allowedDomains}
+                            />
+                        </DataProviderContext.Provider>
+                    </IconProvider>
+                </IntlProvider>
+            </ModalProvider>
+        );
+
+        const input = screen.getByRole('input');
+        await userEvent.type(input, "https://example.com/test{Enter}");
+        expect(input.value).toBe("https://example.com/test");
+
+        const addSourceButton = screen.getByText("Add");
+        expect(addSourceButton).toBeTruthy();
+        await userEvent.click(addSourceButton);
+        
+        expect(addSourceCallback).toHaveBeenCalledTimes(1);
+    });
 });
-});
+
