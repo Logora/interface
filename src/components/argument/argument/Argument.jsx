@@ -111,14 +111,14 @@ export const Argument = ({ argument, argumentReplies, nestingLevel, debatePositi
 						[styles.argumentReply]: argument.is_reply == true,
 					},
 					styles[`level-${nestingLevel}`],
-					styles[`position-${!argument.author.is_expert && debatePositions && debatePositions.map((e) => e.id).indexOf(argument.position.id) + 1}`]
+					styles[`position-${!(argument.author.role == "editor" || argument.author.role == "moderator") && debatePositions && debatePositions.map((e) => e.id).indexOf(argument.position.id) + 1}`]
 				)}
 				id={componentId}
 			>
 				<ContentHeader
 					selectedContent={argument.score == 99}
 					author={argument.author}
-					tag={(argument.author.is_expert && argument.is_reply) ? null : position.translatedContent}
+					tag={(argument.author.role == "editor"|| argument.author.role == "moderator")  && argument.is_reply ? null : position.translatedContent}
 					date={argument.created_at}
 					tagClassName={styles[`headerPosition-${debatePositions && debatePositions.map((e) => e.id).indexOf(argument.position.id) + 1}`]}
 					disableLinks={disableLinks}
