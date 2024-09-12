@@ -417,3 +417,45 @@ describe("ArgumentInput", () => {
         expect(callback).toHaveBeenCalled();
     });
 });
+
+it("should render correctly when there is no position", () => {
+    const { queryByText } = render(
+      <BrowserRouter>
+        <ConfigProvider>
+          <IconProvider library={regularIcons}>
+            <IntlProvider locale="en">
+              <DataProviderContext.Provider value={{ dataProvider: data }}>
+                <AuthContext.Provider value={{ currentUser: currentUser, isLoggedIn: true }}>
+                  <ToastProvider>
+                    <ModalProvider>
+                      <ListProvider>
+                        <IdProvider>
+                          <InputProvider>
+                            <ArgumentInput
+                              onSubmit={callback}
+                              groupId={debate.id}
+                              groupName={debate.name}
+                              positions={[]} 
+                              disabledPositions={[]}
+                              listId={"argumentList"}
+                              positionId={null} 
+                              hideSourceAction={false}
+                              avatarSize={48}
+                              placeholder={"Add an argument..."}
+                            />
+                          </InputProvider>
+                        </IdProvider>
+                      </ListProvider>
+                    </ModalProvider>
+                  </ToastProvider>
+                </AuthContext.Provider>
+              </DataProviderContext.Provider>
+            </IntlProvider>
+          </IconProvider>
+        </ConfigProvider>
+      </BrowserRouter>
+    );
+  
+    expect(queryByText("Add an argument...")).toBeInTheDocument();
+    expect(queryByText("Your position")).not.toBeInTheDocument();
+  });

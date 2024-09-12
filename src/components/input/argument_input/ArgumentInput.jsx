@@ -146,11 +146,7 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
             if (argumentId) {
                 updateArgument();
             } else {
-                if ((!disabledPositions?.find(pos => pos.id === userPositionId) && (userPositionId || !positions)) || (positions?.length > 0  && !isReply)) {
-                    submitArgument(isReply && positions?.length > 0 && positions[0].id);
-                } else {
-                    showSideModal();
-                }
+                submitArgument(null)
             }
         } else {
             requireAuthentication({ loginAction: "argument" });
@@ -178,7 +174,7 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
     ]
 
     const submitArgument = (position) => {
-        const userPosition = position ? position : userPositionId;
+        const userPosition = position || userPositionId;;
         const data = {
             content: argumentContent,
             rich_content: argumentRichContent,
