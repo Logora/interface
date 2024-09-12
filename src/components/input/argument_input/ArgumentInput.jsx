@@ -49,6 +49,8 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
     const { toast } = useToast() || {};
     const urlParams = new URLSearchParams(window !== "undefined" ? window.location.search : location.search);
     const inputDisabledForVisitors = (!isLoggedIn && config?.actions?.disableInputForVisitor)
+    // Checks if the user has the role of editor or moderator
+    const isEditorOrModerator = currentUser?.role === "editor" || currentUser?.role === "moderator"
 
     useEffect(() => {
         let positionIdParam = null;
@@ -146,7 +148,11 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
             if (argumentId) {
                 updateArgument();
             } else {
-                submitArgument(null)
+                if ((!positions || positions?.length === 0) || (!disabledPositions?.find(pos => pos.id === userPositionId) && userPositionId) || (isEditorOrModerator && !isReply)) {
+                    submitArgument(isReply && isEditorOrModerator && positions[0].id);
+                } else {
+                    showSideModal();
+                }
             }
         } else {
             requireAuthentication({ loginAction: "argument" });
@@ -174,7 +180,7 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
     ]
 
     const submitArgument = (position) => {
-        const userPosition = position || userPositionId;;
+        const userPosition = position ? position : userPositionId;
         const data = {
             content: argumentContent,
             rich_content: argumentRichContent,
@@ -286,7 +292,7 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
             <div className={cx(styles.argumentInput, { [styles.flash]: flash, [styles.replyInputContainer]: isReply })}>
                 <div data-tid={"action_add_argument"} ref={inputForm}>
                     <div className={styles.argumentInputBox}>
-                    {positions?.length > 0 && isLoggedIn && !isReply && (
+                        {positions.length > 0  && isLoggedIn && (!isReply || !isEditorOrModerator) &&
                             <div className={styles.userPosition}>
                                 <div>{intl.formatMessage({ id: "input.position", defaultMessage: "Your position" })}</div>
                                 <TogglePosition 
@@ -296,7 +302,7 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
                                     onChange={(label) => setUserPositionId(positions[label].id)}
                                 />
                             </div>
-                    )}
+                        }
                         <div className={cx(styles.argumentTextInputBox, {[styles.argumentTextInputBoxisTablet]: !isMobile, [styles.replyEditorRow]: isReply})}>
                             <div className={cx(styles.argumentAuthorContainer,{[styles.argumentAuthorContainerMobile]: isMobile, [styles.argumentAuthorContainerActivated]: inputActivation || isReply})}>
                                 { inputActivation || isReply ?
@@ -305,7 +311,7 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
                                     <AuthorBox
                                         fullName={currentUser?.full_name || intl.formatMessage({ id: "default_author.full_name" })}
                                         avatarUrl={currentUser?.image_url}
-                                        points={currentUser?.role === "contributor" ? (currentUser?.points || 0) : null}
+                                        points={currentUser?.points || 0}
                                         slug={currentUser?.hash_id}
                                     />
                                 }
@@ -327,6 +333,8 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
                                     disableRichText={config?.actions?.disableRichText || inputDisabledForVisitors}
                                     shortBar={isReply}
                                     hideSubmit={inputDisabledForVisitors}
+                                    allowedDomains = {config?.allowed_sources}
+
                                 />
                                 { (errors && errors.content) && <div className={styles.argumentInputWarning}>{errors && Object.values(errors).map((e, index) => <div key={index}>{e}</div>)}</div> }
                                 { inputActivation && disabledPositions?.find(pos => pos.id === userPositionId) &&
@@ -375,5 +383,5 @@ ArgumentInput.propTypes = {
     /** Position of the argument */
     positionId: PropTypes.number,
     /** Focus input on initialization */
-    focusOnInit: PropTypes.bool,
+    focusOnInit: PropTypes.bool
 };
