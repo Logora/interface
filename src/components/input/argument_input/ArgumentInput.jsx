@@ -313,7 +313,6 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
                                         avatarUrl={currentUser?.image_url}
                                         points={currentUser?.points || 0}
                                         slug={currentUser?.hash_id}
-                                        language={config?.translation?.enable === true && currentUser.language ? currentUser.language : null}
                                     />
                                 }
                                 
