@@ -10,6 +10,7 @@ const author = {
     hash_id: faker.lorem.slug(),
     last_activity: faker.date.recent(),
     points: 1234,
+    role:"contributor",
     eloquence_title: 'gold',
     occupation: faker.name.jobTitle(),
 }

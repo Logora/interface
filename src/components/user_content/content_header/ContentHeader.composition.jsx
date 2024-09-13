@@ -13,6 +13,7 @@ const author = {
     full_name: faker.name.fullName(),
     slug: faker.lorem.slug(),
     points: 52,
+    role:"contributor",
     last_activity: new Date(),
     description: faker.name.jobTitle(),
     hash_id: faker.lorem.slug(),
