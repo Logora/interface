@@ -807,6 +807,14 @@
         "mainFile": "index.js",
         "rootDir": "src/components/user_content/use_report_content"
     },
+    "util/lang_emojis": {
+        "name": "util/lang_emojis",
+        "scope": "",
+        "version": "",
+        "defaultScope": "logora.debate",
+        "mainFile": "index.js",
+        "rootDir": "src/components/util/lang_emojis"
+    },
     "util/location": {
         "name": "util/location",
         "scope": "logora.debate",
