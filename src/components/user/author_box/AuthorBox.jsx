@@ -57,7 +57,7 @@ export const AuthorBox = ({
                         }
                         { language && LANGUAGES.find(lang => lang.name === language) &&
                             <div className={styles.languageContainer}>
-                                <span className={styles.languageBadge}>{ LANGUAGES.find(lang => lang.name === language)?.icon }</span>
+                                { LANGUAGES.find(lang => lang.name === language)?.icon }
                             </div>
                         }
                     </div>
