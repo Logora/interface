@@ -121,5 +121,7 @@ AuthorBox.propTypes = {
     /** Should a click on the user redirect on his/her profile */ 
     disableLinks: PropTypes.bool,
     /** Give information about the current status of the content displayed and whether to show the user as deleted or not */ 
-    isDeleted: PropTypes.bool
+    isDeleted: PropTypes.bool,
+    /** User language */
+    language: PropTypes.string
 }

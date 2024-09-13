@@ -15,6 +15,7 @@ const author = {
     hash_id: faker.lorem.slug(),
     slug: faker.lorem.slug(),
     points: 52,
+    role:"contributor",
     last_activity: new Date(),
     description: faker.name.jobTitle()
 }
