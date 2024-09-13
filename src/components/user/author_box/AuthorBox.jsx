@@ -14,7 +14,7 @@ export const AuthorBox = ({
         slug, 
         avatarUrl, 
         lastActivity, 
-        isExpert = false, 
+        showBadge = false, 
         points = 0, 
         eloquenceTitle, 
         occupation, 
@@ -49,7 +49,7 @@ export const AuthorBox = ({
                                 </Link>
                             </div>
                         }
-                        { isExpert && !isDeleted &&
+                        { showBadge && !isDeleted &&
                             <div className={styles.expertContainer}>
                                 <Icon name="expertBadge" width={14} height={14} />
                                 <span className={styles.expertBadge}>{ intl.formatMessage({ id: "user.author_box.expert", defaultMessage: "Journalist" }) }</span>
@@ -65,17 +65,19 @@ export const AuthorBox = ({
                 { !isDeleted &&
                     <>
                         <div className={styles.authorPointsBox}>
-                            <div className={styles.authorPoints}>
-                                <span>
-                                    { intl.formatNumber(points, { notation: 'compact', maximumFractionDigits: 1, roundingMode: "floor" }) }
-                                    {" "}
-                                    <FormattedMessage 
-                                        id="user.author_box.points" 
-                                        defaultMessage={"points"} 
-                                        values={{ count: points }} 
-                                    />
-                                </span>
-                            </div>
+                        { points != null && 
+                                <div className={styles.authorPoints}>
+                                    <span>
+                                        { intl.formatNumber(points, { notation: 'compact', maximumFractionDigits: 1, roundingMode: "floor" }) }
+                                        {" "}
+                                        <FormattedMessage 
+                                            id="user.author_box.points" 
+                                            defaultMessage={"points"} 
+                                            values={{ count: points }} 
+                                        />
+                                    </span>
+                                </div>
+                            }
                             { eloquenceTitle &&
                                 <>
                                     <span className={styles.separator}></span>
@@ -108,8 +110,8 @@ AuthorBox.propTypes = {
     slug: PropTypes.string,
     /** User last activity date time */
     lastActivity: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date) ]),
-    /** Whether an user has a special "expert" status or not */ 
-    isExpert: PropTypes.bool,
+    /** Whether an user has a special status or not */ 
+    showBadge: PropTypes.bool,
     /** User eloquence points total */ 
     points: PropTypes.number,
     /** User eloquence title */ 

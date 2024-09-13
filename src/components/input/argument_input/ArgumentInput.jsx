@@ -22,7 +22,7 @@ const SideModal = lazy(() => import('@logora/debate.modal.side_modal'));
 import cx from 'classnames';
 import styles from './ArgumentInput.module.scss';
 
-export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = false, positions, disabledPositions = [], groupId, groupName, groupType, hideSourceAction = false, isReply = false, onSubmit, parentId, placeholder, positionId, focusOnInit = false }) => {
+export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = false, positions = [], disabledPositions = [], groupId, groupName, groupType, hideSourceAction = false, isReply = false, onSubmit, parentId, placeholder, positionId, focusOnInit = false }) => {
     const intl = useIntl();
     const api = useDataProvider();
     const list = useList();
@@ -49,6 +49,8 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
     const { toast } = useToast() || {};
     const urlParams = new URLSearchParams(window !== "undefined" ? window.location.search : location.search);
     const inputDisabledForVisitors = (!isLoggedIn && config?.actions?.disableInputForVisitor)
+    // Checks if the user has the role of editor or moderator
+    const isEditorOrModerator = currentUser?.role === "editor" || currentUser?.role === "moderator"
 
     useEffect(() => {
         let positionIdParam = null;
@@ -146,8 +148,8 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
             if (argumentId) {
                 updateArgument();
             } else {
-                if ((!disabledPositions?.find(pos => pos.id === userPositionId) && (userPositionId || !positions)) || (currentUser.is_expert && !isReply)) {
-                    submitArgument(isReply && currentUser.is_expert && positions[0].id);
+                if ((!positions || positions?.length === 0) || (!disabledPositions?.find(pos => pos.id === userPositionId) && userPositionId) || (isEditorOrModerator && !isReply)) {
+                    submitArgument(isReply && isEditorOrModerator && positions[0].id);
                 } else {
                     showSideModal();
                 }
@@ -290,7 +292,7 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
             <div className={cx(styles.argumentInput, { [styles.flash]: flash, [styles.replyInputContainer]: isReply })}>
                 <div data-tid={"action_add_argument"} ref={inputForm}>
                     <div className={styles.argumentInputBox}>
-                        {positions && isLoggedIn && (!isReply || !currentUser.is_expert) &&
+                        {positions.length > 0  && isLoggedIn && (!isReply || !isEditorOrModerator) &&
                             <div className={styles.userPosition}>
                                 <div>{intl.formatMessage({ id: "input.position", defaultMessage: "Your position" })}</div>
                                 <TogglePosition 

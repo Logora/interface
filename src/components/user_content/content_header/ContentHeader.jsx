@@ -28,12 +28,12 @@ export const ContentHeader = ({ author, tag, tagClassName, date, oneLine = false
 						<AuthorBox 
 							fullName={author.full_name}
 							avatarUrl={author.image_url}
-                            points={author.points}
+                            points={author.role === "contributor" ? author.points : null}
                             slug={author.hash_id} 
 							lastActivity={author.last_activity}
 							occupation={author.occupation}
 							eloquenceTitle={author.eloquence_title}
-							isExpert={author.is_expert}
+							showBadge={author.role === "editor" || author.role === "moderator"}
 							disableLinks={disableLinks} 
 							isDeleted={isDeleted} 
 						/>

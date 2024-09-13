@@ -19,6 +19,8 @@ const author = {
     occupation: faker.name.jobTitle(),
 }
 
+const expertAuthor = {...author, role: "editor"}
+
 const date = faker.date.recent();
 
 const routes = {
@@ -138,6 +140,27 @@ export const ContentHeaderSelected = (props) => {
                             tag={props.tag || tag}
                             date={props.date || date}
                             selectedContent
+                        />
+                    </IntlProvider>
+                </IconProvider>
+            </ConfigProvider>
+        </BrowserRouter>
+    );
+};
+
+export const ContentHeaderWithBadge = (props) => {
+    return (
+        <BrowserRouter>
+            <ConfigProvider routes={{ ...routes }}>
+                <IconProvider library={regularIcons}>
+                    <IntlProvider locale="en">
+                        <ContentHeader
+                            author={props.author || expertAuthor}
+                            tag={props.tag || tag}
+                            date={props.date || date}
+                            positionIndex={1}
+                            oneLine={false}
+                            disableLinks={false}
                         />
                     </IntlProvider>
                 </IconProvider>
