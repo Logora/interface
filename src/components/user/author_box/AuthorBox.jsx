@@ -4,6 +4,7 @@ import { useIntl, FormattedMessage } from 'react-intl';
 import { Avatar } from '@logora/debate.user.avatar';
 import { Link } from '@logora/debate.action.link';
 import { Icon } from '@logora/debate.icons.icon';
+import { LANGUAGES } from '@logora/debate.util.lang_emojis';
 import styles from './AuthorBox.module.scss';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
@@ -18,7 +19,8 @@ export const AuthorBox = ({
         eloquenceTitle, 
         occupation, 
         disableLinks = false, 
-        isDeleted = false 
+        isDeleted = false,
+        language = null
     }) => {
     const intl = useIntl();
     const routes = useRoutes();
@@ -51,6 +53,11 @@ export const AuthorBox = ({
                             <div className={styles.expertContainer}>
                                 <Icon name="expertBadge" width={14} height={14} />
                                 <span className={styles.expertBadge}>{ intl.formatMessage({ id: "user.author_box.expert", defaultMessage: "Journalist" }) }</span>
+                            </div>
+                        }
+                        { language && LANGUAGES.find(lang => lang.name === language) &&
+                            <div className={styles.languageContainer}>
+                                { LANGUAGES.find(lang => lang.name === language)?.icon }
                             </div>
                         }
                     </div>

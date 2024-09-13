@@ -164,3 +164,23 @@ export const AuthorBoxWithoutPoints = () => {
     </BrowserRouter>
   );
 };
+
+export const AuthorBoxWithLang = () => {
+  return (
+    <BrowserRouter>
+      <ConfigProvider routes={{ ...routes }}>
+        <IntlProvider locale="en">
+          <IconProvider library={regularIcons}>
+            <AuthorBox 
+              fullName={author.full_name}
+              avatarUrl={author.image_url}
+              slug={author.hash_id}
+              language={"es"}
+              showBadge={true}
+            />
+          </IconProvider>
+        </IntlProvider>
+      </ConfigProvider>
+    </BrowserRouter>
+  );
+};
