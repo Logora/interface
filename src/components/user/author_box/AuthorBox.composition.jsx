@@ -144,3 +144,23 @@ export const AuthorBoxDeletedUser = () => {
     </BrowserRouter>
   );
 };
+
+export const AuthorBoxWithLang = () => {
+  return (
+    <BrowserRouter>
+      <ConfigProvider routes={{ ...routes }}>
+        <IntlProvider locale="en">
+          <IconProvider library={regularIcons}>
+            <AuthorBox 
+              fullName={author.full_name}
+              avatarUrl={author.image_url}
+              slug={author.hash_id}
+              points={author.points}
+              language={"es"}
+            />
+          </IconProvider>
+        </IntlProvider>
+      </ConfigProvider>
+    </BrowserRouter>
+  );
+};
