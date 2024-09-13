@@ -4,6 +4,7 @@ import { AuthorBox } from '@logora/debate.user.author_box';
 import { UserBoxSmall } from '@logora/debate.user.user_box_small';
 import { Icon } from '@logora/debate.icons.icon';
 import { useIntl } from "react-intl";
+import { useConfig } from '@logora/debate.data.config_provider';
 import cx from "classnames";
 import styles from "./ContentHeader.module.scss";
 import PropTypes from "prop-types";
@@ -11,6 +12,7 @@ import PropTypes from "prop-types";
 export const ContentHeader = ({ author, tag, tagClassName, date, oneLine = false, disableLinks = false, selectedContent = false, isDeleted = false }) => {
 	const relativeTime = useRelativeTime(new Date(date).getTime());
 	const intl = useIntl();
+	const config = useConfig();
 
 	return (
 		<div className={styles.contentHeaderContainer}>
