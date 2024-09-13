@@ -35,7 +35,8 @@ export const ContentHeader = ({ author, tag, tagClassName, date, oneLine = false
 							eloquenceTitle={author.eloquence_title}
 							showBadge={author.role === "editor" || author.role === "moderator"}
 							disableLinks={disableLinks} 
-							isDeleted={isDeleted} 
+							isDeleted={isDeleted}
+							language={config?.actions?.showUserLanguage ? author.language : null}
 						/>
 					}
 				</div>
