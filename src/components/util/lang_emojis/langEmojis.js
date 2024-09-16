@@ -36,10 +36,6 @@ const LANGUAGES = [
         icon: " 🇨🇭🇫🇷"
     },
     {
-        name: "en-CH",
-        icon: " 🇨🇭🇬🇧"
-    },
-    {
         name: "de-CH",
         icon: " 🇨🇭🇩🇪"
     },
