@@ -1,4 +1,4 @@
-export const LANGUAGES = [
+const LANGUAGES = [
     {
         name: "fr",
         icon: " 🇫🇷"
@@ -30,5 +30,31 @@ export const LANGUAGES = [
     {
         name: "pt-BR",
         icon: " 🇧🇷"
-    }
+    },
+    {
+        name: "fr-CH",
+        icon: " 🇨🇭🇫🇷"
+    },
+    {
+        name: "en-CH",
+        icon: " 🇨🇭🇬🇧"
+    },
+    {
+        name: "de-CH",
+        icon: " 🇨🇭🇩🇪"
+    },
+    {
+        name: "it-CH",
+        icon: " 🇨🇭🇮🇹"
+    },
 ]
+
+const getLocaleIcon = (locale) => {
+    return LANGUAGES.find(lang => lang.name === locale)?.icon
+}
+
+const getLocaleName = (locale) => {
+    return LANGUAGES.find(lang => lang.name === locale)?.name
+}
+
+export { getLocaleIcon, getLocaleName, LANGUAGES }

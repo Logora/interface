@@ -175,8 +175,8 @@ export const AuthorBoxWithLang = () => {
               fullName={author.full_name}
               avatarUrl={author.image_url}
               slug={author.hash_id}
-              language={"es"}
-              showBadge={true}
+              language={"fr-CH"}
+              showBadge={false}
             />
           </IconProvider>
         </IntlProvider>
