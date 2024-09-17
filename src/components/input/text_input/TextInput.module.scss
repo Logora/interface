@@ -3,39 +3,41 @@
 
 .container {
   position: relative;
+
   // by default, the label shows at the top left corner of the input
   label {
     color: $text-secondary;
     pointer-events: none;
     transition: top 300ms, font-size 300ms, padding-top 300ms, transform 300ms, color 300ms,
-    background-color 300ms ease-in-out;
+      background-color 300ms ease-in-out;
     font-size: 0.8rem;
     position: absolute;
     top: -0.6em;
-    left: $spacer-md;
+    left: $spacer;
     z-index: 1;
     background-color: $background-color-primary;
     transform: unset;
-    padding: 0 $spacer-xxs;
+    padding: 0 $spacer;
+
   }
 }
 
-input.textInput {
+.textInput {
   width: 100%;
   box-sizing: border-box;
   outline: 0;
   @include px(3, xs);
-	@include py(2.5, xs);
+  @include py(2.5, xs);
   font-size: inherit;
   font-family: inherit;
   border: $box-border;
-	border-radius: $box-border-radius;
+  border-radius: $box-border-radius;
   background-color: $background-color-primary;
   color: $text-primary;
 
   // when no content in the input and not focused, display the label as the placeholder
   &:placeholder-shown:not(:focus) {
-    & ~ label {
+    &~label {
       transition: top 300ms, font-size 300ms, padding-top 300ms, transform 300ms, color 300ms ease-in-out;
       top: 50%;
       transform: translateY(-50%);
@@ -48,49 +50,60 @@ input.textInput {
   &.filled {
     background-color: $background-color-secondary;
   }
+
   &::placeholder {
     color: $text-secondary;
   }
+
   &:hover {
     border: 1px solid $text-secondary;
   }
+
   &:focus {
     border: 1px solid $text-secondary !important;
     background-color: $background-color-primary;
-    & ~ label {
+
+    &~label {
       color: $text-secondary !important;
     }
   }
 
   &.success {
     border: 1px solid $success-primary !important;
-    & ~ label {
+
+    &~label {
       color: $success-primary;
     }
   }
+
   &.error {
     border: 1px solid $cancel-primary !important;
-    & ~ label {
+
+    &~label {
       color: $cancel-primary;
     }
   }
+
   &:disabled {
     cursor: not-allowed;
     background-color: $text-tertiary;
     border: 1px solid $darken-text-tertiary;
-    & ~ label {
+
+    &~label {
       color: $darkest-text-tertiary;
     }
   }
 }
 
+
 .textInputWithIcon {
   position: relative;
   font-size: inherit;
+
   .textInput {
     padding-right: 2em !important;
   }
-  // icon element
+  // right icon element
   > :last-child {
     font-size: inherit;
     color: inherit;
@@ -99,6 +112,19 @@ input.textInput {
     top: calc(50% - 0.6rem);
     width: 16px;
   }
+}
+
+.withIconLeft {
+  padding-left: 2em !important;
+}
+
+.iconLeftContainer {
+  font-size: inherit;
+  color: inherit;
+  position: absolute;
+  left: $spacer-md;
+  top: calc(50% - 0.6rem);
+  width: 16px;
 }
 
 .errorMessage {
