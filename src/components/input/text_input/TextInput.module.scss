@@ -3,7 +3,6 @@
 
 .container {
   position: relative;
-
   // by default, the label shows at the top left corner of the input
   label {
     color: $text-secondary;
@@ -34,7 +33,6 @@
   border-radius: $box-border-radius;
   background-color: $background-color-primary;
   color: $text-primary;
-
   // when no content in the input and not focused, display the label as the placeholder
   &:placeholder-shown:not(:focus) {
     &~label {
@@ -88,7 +86,6 @@
     cursor: not-allowed;
     background-color: $text-tertiary;
     border: 1px solid $darken-text-tertiary;
-
     &~label {
       color: $darkest-text-tertiary;
     }
@@ -99,7 +96,6 @@
 .textInputWithIcon {
   position: relative;
   font-size: inherit;
-
   .textInput {
     padding-right: 2em !important;
   }

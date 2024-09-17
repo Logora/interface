@@ -67,6 +67,7 @@ export const TextInputWithImage = () => (
     }
   />
 );
+
 export const TextInputWithLeftIcon = () => (
   <TextInput
     placeholder="search..."

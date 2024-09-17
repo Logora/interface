@@ -42,7 +42,6 @@ export const SearchInput = ({ onSearchSubmit, placeholder, disabled, reducedByDe
 						}
 						iconLeft={<Icon name="search" className={styles.searchSubmit} role="submit" data-tid={"action_search_submit"} height={16} width={16} onClick={(e) => handleSubmit(e)} />
 						}
-						
 					/>
 				</form>
 			)
