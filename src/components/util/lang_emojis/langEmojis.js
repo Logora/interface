@@ -33,15 +33,15 @@ const LANGUAGES = [
     },
     {
         name: "fr-CH",
-        icon: " 🇨🇭🇫🇷"
+        icon: " 🇨🇭 🇫🇷"
     },
     {
         name: "de-CH",
-        icon: " 🇨🇭🇩🇪"
+        icon: " 🇨🇭 🇩🇪"
     },
     {
         name: "it-CH",
-        icon: " 🇨🇭🇮🇹"
+        icon: " 🇨🇭 🇮🇹"
     },
 ]
 
