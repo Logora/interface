@@ -8,7 +8,7 @@
     color: $text-secondary;
     pointer-events: none;
     transition: top 300ms, font-size 300ms, padding-top 300ms, transform 300ms, color 300ms,
-      background-color 300ms ease-in-out;
+    background-color 300ms ease-in-out;
     font-size: 0.8rem;
     position: absolute;
     top: -0.6em;
@@ -43,45 +43,35 @@
       background-color: unset;
     }
   }
-
   // keep precedence! filled < hover < success < error < disabled
   &.filled {
     background-color: $background-color-secondary;
   }
-
   &::placeholder {
     color: $text-secondary;
   }
-
   &:hover {
     border: 1px solid $text-secondary;
   }
-
   &:focus {
     border: 1px solid $text-secondary !important;
     background-color: $background-color-primary;
-
     &~label {
       color: $text-secondary !important;
     }
   }
-
   &.success {
     border: 1px solid $success-primary !important;
-
     &~label {
       color: $success-primary;
     }
   }
-
   &.error {
     border: 1px solid $cancel-primary !important;
-
     &~label {
       color: $cancel-primary;
     }
   }
-
   &:disabled {
     cursor: not-allowed;
     background-color: $text-tertiary;
@@ -110,7 +100,7 @@
   }
 }
 
-.withIconLeft {
+.textInputwithIconLeft {
   padding-left: 2em !important;
 }
 
