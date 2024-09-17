@@ -7,6 +7,7 @@
     @include media-breakpoint-down(sm) {
         width: 99% !important;
     }
+    @include px(3, xs);
 }
 
 .header {
@@ -14,7 +15,6 @@
     align-items: center !important;
     color: $text-primary;
     background-color: $background-color-primary;
-    @include px(3, xs);
     @include py(3, xs);
     min-height: 30px;
 }
