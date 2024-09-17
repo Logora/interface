@@ -176,7 +176,7 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
         { content: ["length", 3] },
         { content: ["required", null] },
         { content: ["url", null]},
-        ...(!positions ? [] : [{ position_id: ["required", null] }])
+        ...((!positions || positions?.length === 0) ? [] : [{ position_id: ["required", null] }])
     ]
 
     const submitArgument = (position) => {
