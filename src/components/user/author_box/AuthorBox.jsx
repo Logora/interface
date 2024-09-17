@@ -55,11 +55,11 @@ export const AuthorBox = ({
                                 <span className={styles.expertBadge}>{ intl.formatMessage({ id: "user.author_box.expert", defaultMessage: "Journalist" }) }</span>
                             </div>
                         }
-                        { language &&
+                        {/* { language &&
                             <div className={styles.languageContainer}>
                                 { getLocaleIcon(language) }
                             </div>
-                        }
+                        } */}
                     </div>
                 </div>
                 { !isDeleted &&
