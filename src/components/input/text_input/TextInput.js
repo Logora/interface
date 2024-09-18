@@ -12,7 +12,8 @@ export const TextInput = forwardRef(function TextInputWithRef(
     error,
     success,
     filled,
-    icon,
+    iconRight,
+    iconLeft,
     placeholder,
     inputClass,
     messageClass,
@@ -27,7 +28,8 @@ export const TextInput = forwardRef(function TextInputWithRef(
 
   return (
     <>
-      <div className={classNames(styles.container, icon && styles.textInputWithIcon, className)} style={style}>
+      <div className={classNames(styles.container, iconRight && styles.textInputWithRightIcon, iconLeft && styles.textInputWithLeftIcon, className)} style={style}>
+        {iconLeft}
         <input
           ref={ref}
           className={classNames(styles.textInput, filled && styles.filled, accent, inputClass)}
@@ -36,7 +38,7 @@ export const TextInput = forwardRef(function TextInputWithRef(
           onChange={onChange || rest.onChange}
         />
         {activeLabel && <label>{placeholder}</label>}
-        {icon}
+        {iconRight}
       </div>
       <Message message={message} className={messageClass} />
     </>
