@@ -28,15 +28,11 @@ export const TextInput = forwardRef(function TextInputWithRef(
 
   return (
     <>
-      <div className={classNames(styles.container, iconRight && styles.textInputWithIcon, className)} style={style}>
-        {iconLeft && (
-          <div className={styles.iconLeftContainer}>
-            {iconLeft}
-          </div>
-        )}
+      <div className={classNames(styles.container, iconRight && styles.textInputWithRightIcon, iconLeft && styles.textInputWithLeftIcon, className)} style={style}>
+        {iconLeft}
         <input
           ref={ref}
-          className={classNames(styles.textInput, filled && styles.filled, accent, iconLeft && styles.textInputwithIconLeft, inputClass)}
+          className={classNames(styles.textInput, filled && styles.filled, accent, inputClass)}
           {...rest}
           placeholder={activeLabel ? ' ' : placeholder}
           onChange={onChange || rest.onChange}

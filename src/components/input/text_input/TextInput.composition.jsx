@@ -30,7 +30,7 @@ export const BigTextInput = () => (
   <TextInput style={{ fontSize: 24 }} placeholder="enter text..." data-testid="test-input" />
 );
 
-export const SmallTextInputWithIcon = () => (
+export const SmallTextInputWithRightIcon = () => (
   <TextInput
     style={{ fontSize: 12 }}
     placeholder="enter text..."
@@ -39,7 +39,7 @@ export const SmallTextInputWithIcon = () => (
   />
 );
 
-export const BigTextInputWithIcon = () => (
+export const BigTextInputWithRightIcon = () => (
   <TextInput
     style={{ fontSize: 24 }}
     placeholder="enter text..."
@@ -48,7 +48,7 @@ export const BigTextInputWithIcon = () => (
   />
 );
 
-export const TextInputWithIcon = () => (
+export const TextInputWithRightIcon = () => (
   <TextInput
     placeholder="search..."
     iconRight={<Announcement style={{ cursor: 'pointer' }} onClick={() => alert('on icon click')} />}
