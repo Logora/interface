@@ -27,12 +27,27 @@ import { TextInput } from '@logora/debate.input.text_input';
 };
 ```
 
-TextInput with icon:
+TextInput with icon on the right side:
 
 ```js live
 <TextInput
   placeholder="search..."
-  icon={
+  iconRight={
+    <img
+      src="https://static.bit.dev/bit-icons/filter.svg"
+      style={{ cursor: 'pointer' }}
+      onClick={() => alert('on icon click')}
+    />
+  }
+/>
+```
+
+TextInput with icon on the left side:
+
+```js live
+<TextInput
+  placeholder="search..."
+  iconLeft={
     <img
       src="https://static.bit.dev/bit-icons/filter.svg"
       style={{ cursor: 'pointer' }}
@@ -49,7 +64,8 @@ TextInput with icon:
 | <font color='#4646c6'>inputClass</font> | <font color="#397300">string</font> | &cross; | - | <font color="grey">*input class name*</font> |
 | <font color='#4646c6'>messageClass</font> | <font color="#397300">string</font> | &cross; | - | <font color="grey">*message class name*</font> |
 | <font color='#4646c6'>placeholder</font> | <font color="#397300">string</font> | &cross; | - | <font color="grey">*input placeholder*</font> |
-| <font color='#4646c6'>icon</font> | <font color="#397300">React element</font> | &cross; | - | <font color="grey">*left-side icon*</font> |
+| <font color='#4646c6'>iconRight</font> | <font color="#397300">React element</font> | &cross; | - | <font color="grey">*right-side icon*</font> |
+| <font color='#4646c6'>iconLeft</font> | <font color="#397300">React element</font> | &cross; | - | <font color="grey">*left-side icon*</font> |
 | <font color='#4646c6'>error</font> | <font color="#397300">boolean</font> | &cross; | false | <font color="grey">*if true, will show input with error style*</font> |
 | <font color='#4646c6'>success</font> | <font color="#397300">boolean</font> | &cross; | false | <font color="grey">*if true, will show input with success style*</font> |
 | <font color='#4646c6'>filled</font> | <font color="#397300">boolean</font> | &cross; | false | <font color="grey">*if true, will make input filled*</font> |

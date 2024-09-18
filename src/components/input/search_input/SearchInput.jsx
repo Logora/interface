@@ -23,7 +23,7 @@ export const SearchInput = ({ onSearchSubmit, placeholder, disabled, reducedByDe
 	};
 
 	return (
-		!reducedByDefault || openSearch ? 
+		!reducedByDefault || openSearch ?
 			(
 				<form data-tid={"form_search"} onSubmit={handleSubmit} method='get' autoComplete='off' ref={searchRef}>
 					<TextInput
@@ -36,15 +36,16 @@ export const SearchInput = ({ onSearchSubmit, placeholder, disabled, reducedByDe
 						onChange={e => setQuery(e.target.value)}
 						data-testid={"input_search_query"}
 						data-tid={"input_search_query"}
-						icon={query ? 
-							<Icon name="close" className={styles.searchReset} role="submit" data-tid={"action_search_reset"} height={16} width={16} onClick={(e) => handleReset(e)} /> 
-							: 
-							<Icon name="search" className={styles.searchSubmit} role="submit" data-tid={"action_search_submit"} height={16} width={16} onClick={(e) => handleSubmit(e)} />
+						iconRight=
+						{query &&
+							<Icon name="close" className={styles.searchReset} role="reset" data-tid={"action_search_reset"} height={16} width={16} onClick={(e) => handleReset(e)} />
+						}
+						iconLeft={<Icon name="search" className={styles.searchSubmit} role="submit" data-tid={"action_search_submit"} height={16} width={16} onClick={(e) => handleSubmit(e)} />
 						}
 					/>
-				</form>	
-			) 
-		:
+				</form>
+			)
+			:
 			(
 				<div className={styles.searchReducedButton} onClick={() => setOpenSearch(true)}>
 					<Icon name="search" className={styles.searchSubmit} data-tid={"action_search_submit"} height={20.8} width={16} />
@@ -54,12 +55,12 @@ export const SearchInput = ({ onSearchSubmit, placeholder, disabled, reducedByDe
 }
 
 SearchInput.propTypes = {
-    /** Callback function for submit */
-    onSearchSubmit: PropTypes.func.isRequired,
-    /** Text of the placeholder */
-    placeholder: PropTypes.string,
-    /** If true, the component is disabled  */
-    disabled: PropTypes.bool,
-    /**  If true, the component is reduced by default */
-    reducedByDefault: PropTypes.bool,
+	/** Callback function for submit */
+	onSearchSubmit: PropTypes.func.isRequired,
+	/** Text of the placeholder */
+	placeholder: PropTypes.string,
+	/** If true, the component is disabled  */
+	disabled: PropTypes.bool,
+	/**  If true, the component is reduced by default */
+	reducedByDefault: PropTypes.bool,
 };
