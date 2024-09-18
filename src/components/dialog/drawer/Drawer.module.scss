@@ -33,4 +33,9 @@
 
 .body {
     @include py(2, xs);
+    display: flex !important;
+    flex-direction: column !important;
+    gap: $spacer;
+    width: 100% !important;
+    margin: auto;
 }
