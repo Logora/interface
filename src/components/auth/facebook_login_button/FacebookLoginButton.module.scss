@@ -17,7 +17,7 @@
   cursor: pointer;
   @include p(3, xs);
   &:hover{
-    box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.10);
+    box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.2);
   }
   span {
     @include pl(2, xs);
