@@ -148,7 +148,7 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
             if (argumentId) {
                 updateArgument();
             } else {
-                if ((!positions || positions?.length === 0) || (!disabledPositions?.find(pos => pos.id === userPositionId) && userPositionId) || (isEditorOrModerator && !isReply)) {
+                if ((!positions || positions?.length === 0) || (!disabledPositions?.find(pos => pos.id === userPositionId) && userPositionId) || (isEditorOrModerator && isReply)) {
                     submitArgument(isReply && isEditorOrModerator && positions[0].id);
                 } else {
                     showSideModal();
