@@ -109,7 +109,7 @@
 	margin-bottom: 15px;
 	@include p(3, xs);
 	&:hover {
-		box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.15);;
+		box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.10);;
 	}
 	svg {
 		height: 35px;
