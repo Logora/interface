@@ -12,12 +12,11 @@
   margin-bottom: 15px;
   align-self: center;
   border: $box-border;
-  box-shadow: $box-shadow;
   border-radius: $box-border-radius;
   cursor: pointer;
   @include p(3, xs);
   &:hover{
-    box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.05);
   }
   span {
     @include pl(2, xs);
