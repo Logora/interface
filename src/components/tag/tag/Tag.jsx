@@ -4,7 +4,7 @@ import styles from './Tag.module.scss';
 import PropTypes from "prop-types";
 import { Icon } from "@logora/debate.icons.icon";
 
-export const Tag = ({ dataTid, active, text, className, ...rest }) => {
+export const Tag = ({ active, text, className, ...rest }) => {
     return (
         <span data-testid="tag" className={cx(styles.tag, styles.className, className, { [styles.active]: active })} {...rest}>
 			{ text } 
