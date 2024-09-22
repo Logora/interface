@@ -61,7 +61,7 @@
     "argument/argument": {
         "name": "argument/argument",
         "scope": "logora.debate",
-        "version": "0.0.152",
+        "version": "0.0.153",
         "mainFile": "index.js",
         "rootDir": "src/components/argument/argument"
     },
@@ -152,7 +152,7 @@
     "chart/line_chart": {
         "name": "chart/line_chart",
         "scope": "logora.debate",
-        "version": "0.0.31",
+        "version": "0.0.32",
         "mainFile": "index.js",
         "rootDir": "src/components/chart/line_chart"
     },
@@ -515,7 +515,7 @@
     "list/paginated_list": {
         "name": "list/paginated_list",
         "scope": "logora.debate",
-        "version": "0.0.115",
+        "version": "0.0.116",
         "mainFile": "index.js",
         "rootDir": "src/components/list/paginated_list"
     },
@@ -543,7 +543,7 @@
     "notification/notification_menu": {
         "name": "notification/notification_menu",
         "scope": "logora.debate",
-        "version": "0.0.17",
+        "version": "0.0.18",
         "mainFile": "index.js",
         "rootDir": "src/components/notification/notification_menu"
     },
@@ -704,7 +704,7 @@
     "tag/tag": {
         "name": "tag/tag",
         "scope": "logora.debate",
-        "version": "0.0.58",
+        "version": "0.0.59",
         "mainFile": "index.js",
         "rootDir": "src/components/tag/tag"
     },
