@@ -4,9 +4,9 @@ import styles from './Tag.module.scss';
 import PropTypes from "prop-types";
 import { Icon } from "@logora/debate.icons.icon";
 
-export const Tag = ({ dataTid, active, text, className }) => {
+export const Tag = ({ dataTid, active, text, className, ...rest }) => {
     return (
-        <span data-testid="tag" data-tid={dataTid ? dataTid : null} className={cx(styles.tag, styles.className, className, { [styles.active]: active })}>
+        <span data-testid="tag" className={cx(styles.tag, styles.className, className, { [styles.active]: active })} {...rest}>
 			{ text } 
 			{ active && <Icon name="close" height={10} width={10} /> }
 		</span>
@@ -14,8 +14,6 @@ export const Tag = ({ dataTid, active, text, className }) => {
 }
 
 Tag.propTypes = {
-	/** Used for tracking purposes */
-	dataTid: PropTypes.string,
 	/** If true, apply active style */
 	active: PropTypes.bool,
 	/** Text to display */
