@@ -3,7 +3,8 @@
 
 .tag {
     display: flex !important;
-    align-items: center !important;
+    align-items: center;
+    justify-content: center;
     border: 1px solid;
     color: $tag-text-color;
     border-color: $tag-border-color;
@@ -13,6 +14,8 @@
     text-transform: capitalize;
     text-align: left;
     white-space: nowrap;
+    gap: $spacer-sm;
+    width: fit-content;
     @include px(3, xs);
 	@include py(1.5, xs);
     &:hover {
@@ -23,10 +26,11 @@
         background-color: $tag-border-color;
         border-color: $tag-border-color;
         color: $tag-text-color-active !important;
+
+        > svg {
+            fill: $tag-text-color-active !important;
+            cursor: pointer;
+        }
     };
-    > svg {
-        fill: $tag-text-color-active !important;
-        @include ml(2.5, xs);
-        cursor: pointer;
-    }
+    
 }
