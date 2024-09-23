@@ -144,22 +144,19 @@ export const ToolbarPlugin = (props) => {
                             >
                                 <Icon name="orderedList" width={24} height={24} className={cx(styles.format, styles.numberedList)} />
                             </button>
+                            {!props.hideSourceAction && (
+                            <button
+                                onClick={props.onAddSource}
+                                className={styles.toolbarItem}
+                                aria-label="Add Link"
+                            >
+                                <Icon name="link" width={24} height={24} className={cx(styles.format, styles.link)} />
+                            </button>
+                        )}
                         </div>
                     )
                     : null}
                 <div className={styles.actionButton}>
-                    {props.hideSourceAction ? null
-                        :
-                        props.isActive ?
-                            <Button
-                                active
-                                handleClick={props.onAddSource}
-                                className={styles.inputSubmitActionButton}
-                            >
-                                <Icon name="link" width={24} height={24} />
-                            </Button>
-                            : null
-                    }
                     {props.hideSubmit ? null
                         :
                         <Button
