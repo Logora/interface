@@ -38,7 +38,7 @@ export const ContentHeader = ({ author, tag, tagClassName, date, oneLine = false
 							showBadge={author.role === "editor" || author.role === "moderator"}
 							disableLinks={disableLinks} 
 							isDeleted={isDeleted}
-							// language={config?.translation?.enable === true && author.language ? author.language : null}
+							language={config?.translation?.enable === true && author.language ? author.language : null}
 						/>
 					}
 				</div>
