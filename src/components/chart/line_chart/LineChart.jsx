@@ -59,9 +59,11 @@ export const LineChart = ({ data, labels, onFilterChange, title, className, filt
   }
 
   const displayTags = (tag) => {
+    const tagIsActive = activeTagId === tag.id;
+
     return (
       <div className={styles.tagItem} key={tag.id} onClick={() => setActiveTagId(tag.id == activeTagId ? null : tag.id)}>
-        <Tag active={activeTagId === tag.id ? true : false} text={tag.display_name ? tag.display_name : tag.name} />
+        <Tag text={tag.display_name || tag.name}  active={tagIsActive} rightIcon={<Icon name="close" height={10} width={10} />} />
       </div>
     );
   }

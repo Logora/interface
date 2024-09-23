@@ -6,8 +6,7 @@ import PropTypes from "prop-types";
 export const Tag = ({ text, active = false, leftIcon, rightIcon, className, ...rest }) => {
     return (
         <div data-testid="tag" className={cx(
-			styles.tag, 
-			styles.className, 
+			styles.tag,
 			className, 
 			(leftIcon || rightIcon) && styles.withIcon,
             leftIcon && styles.withLeftIcon,
