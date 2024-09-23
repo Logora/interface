@@ -10,7 +10,7 @@ export const SourceListItem = ({ index = 0, url, title, publisher }) => {
             <Icon name="link" width={16} height={16} />
             <div className={styles.sourceListItemLink} >
                 <span>[ { index + 1} ]</span> 
-                <span>{ publisher && `${publisher} - `} {title}</span>
+                <span>{ publisher && `${publisher} – `} {title}</span>
             </div>
         </Link>
     );
