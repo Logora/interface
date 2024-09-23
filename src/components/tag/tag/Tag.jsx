@@ -2,24 +2,34 @@ import React from 'react';
 import cx from 'classnames';
 import styles from './Tag.module.scss';
 import PropTypes from "prop-types";
-import { Icon } from "@logora/debate.icons.icon";
 
-export const Tag = ({ dataTid, active, text, className }) => {
+export const Tag = ({ text, active = false, leftIcon, rightIcon, className, ...rest }) => {
     return (
-        <span data-testid="tag" data-tid={dataTid ? dataTid : null} className={cx(styles.tag, styles.className, className, { [styles.active]: active })}>
+        <div data-testid="tag" className={cx(
+			styles.tag,
+			className, 
+			(leftIcon || rightIcon) && styles.withIcon,
+            leftIcon && styles.withLeftIcon,
+            rightIcon && styles.withRightIcon,
+			active && styles.active
+		)} {...rest}>
+			{ leftIcon }
 			{ text } 
-			{ active && <Icon name="close" height={10} width={10} /> }
-		</span>
+			{ active }
+			{ rightIcon }
+		</div>
     )
 }
 
 Tag.propTypes = {
-	/** Used for tracking purposes */
-	dataTid: PropTypes.string,
-	/** If true, apply active style */
-	active: PropTypes.bool,
 	/** Text to display */
 	text: PropTypes.string,
+	/** If true, apply active style */
+	active: PropTypes.bool,
+	/** Left icon */
+	leftIcon: PropTypes.node,
+	/** Right icon */
+	rightIcon: PropTypes.node,
     /** Tag extra className */
 	className: PropTypes.string,
 };

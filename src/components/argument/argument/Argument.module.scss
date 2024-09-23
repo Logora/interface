@@ -66,16 +66,16 @@
 	-moz-transition: box-shadow 0.8s ease-in-out;
 	-o-transition: box-shadow 0.8s ease-in-out;
 	transition: box-shadow 0.8s ease-in-out;
-	box-shadow: 0 0 15px $call-primary;
+	box-shadow: -4px 4px 15px 3px rgba(0, 0, 0, 0.15);
 }
 .position-1.flash {
-	box-shadow: 0 0 15px $for-primary;
+	border-color: $for-primary;
 }
 .position-2.flash {
-	box-shadow: 0 0 15px $against-primary;
+	border-color: $against-primary;
 }
 .position-3.flash {
-	box-shadow: 0 0 15px $third-position-color-primary;
+	border-color: $third-position-color-primary;
 	@include mt(2, xs);
 }
 
