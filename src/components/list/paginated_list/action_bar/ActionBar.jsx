@@ -72,7 +72,7 @@ export const ActionBar = ({ title, sortOptions, defaultSelectOption, searchBar =
         
         return (
             <div className={styles.tagItem} key={tag.id} onClick={() => handleActiveTag(tag)}>
-                <Tag text={tag.display_name} active={tagIsActive} rightIcon={<Icon name="close" height={10} width={10} />} />
+                <Tag text={tag.display_name} active={tagIsActive} rightIcon={tagIsActive && <Icon name="close" height={10} width={10} />} />
             </div>
         );
     }
