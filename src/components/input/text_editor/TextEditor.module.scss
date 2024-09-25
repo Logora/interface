@@ -120,7 +120,6 @@ pre::-webkit-scrollbar-thumb {
     @include mt(2, xs);
     @include px(0, xs);
     @include py(2, xs);
-    border-top: 1px solid $darkest-text-tertiary;
 }
 
 .sourceList {
