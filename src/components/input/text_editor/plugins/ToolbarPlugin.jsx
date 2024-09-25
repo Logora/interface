@@ -150,7 +150,7 @@ export const ToolbarPlugin = (props) => {
                                 className={styles.toolbarItem}
                                 aria-label="Add Link"
                             >
-                                <Icon name="link" width={24} height={24} className={cx(styles.format, styles.link)} />
+                                <Icon name="link" width={20} height={20} className={cx(styles.format, styles.link)} />
                             </button>
                         )}
                         </div>
