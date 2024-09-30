@@ -187,3 +187,28 @@ export const ActiveTextEditor = () => {
         </IntlProvider>
     );
 };
+
+export const TextEditorWithSourceAndMaxLenght = () => {
+    return (
+        <IntlProvider locale="en">
+            <DataProviderContext.Provider value={{ dataProvider: data }}>
+                <ModalProvider>
+                    <IconProvider library={regularIcons}>
+                        <IdProvider>
+                            <InputProvider>
+                                <TextEditor 
+                                    placeholder={"Add an argument"}
+                                    onSubmit={handleSubmit}
+                                    onActivation={() => null}
+                                    shortBar={true}
+                                    sources={[{publisher: "test.com", source_url: "http://test.com", title: "Source Test"}]}
+                                    maxLength={500}
+                                />
+                            </InputProvider>
+                        </IdProvider>
+                    </IconProvider>
+                </ModalProvider>
+            </DataProviderContext.Provider>
+        </IntlProvider>
+    );
+};
