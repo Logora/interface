@@ -6,7 +6,7 @@ import 'react-modern-drawer/dist/index.css';
 import styles from './Drawer.module.scss';
 import PropTypes from 'prop-types';
 
-export const Drawer = ({ isOpen = false, onClose, title, size = '50vw', enableOverlay = false, children }) => {
+export const Drawer = ({ isOpen = false, onClose, title, size = '30vw', enableOverlay = false, children }) => {
     const [isdrawerOpen, setIsDrawerOpen] = useState(isOpen);
 
     const closeDrawer = () => {
