@@ -32,45 +32,40 @@ const config = {
     }
 };
 
+const suggestion = [{
+    id: faker.datatype.number(),
+    created_at: faker.date.recent().toISOString(),
+    expires_at: faker.date.future().toISOString(),
+    total_upvotes: faker.datatype.number({ min: 0, max: 100 }),
+    total_downvotes: faker.datatype.number({ min: 0, max: 100 }),
+    is_accepted: false,
+    is_expired: false,
+    is_published: false,
+    group: {
+        slug: faker.lorem.slug()
+    },
+    author: {
+        id: faker.datatype.number(),
+        full_name: faker.name.fullName(),
+        image_url: faker.image.avatar()
+    },
+    language: faker.random.locale(),
+    translation_entries: [],
+    name: faker.lorem.words(),
+}];
 const httpClient = {
-    get: () => {
-        return new Promise(function (resolve) {
-            const suggestion = {
-                id: faker.datatype.number(),
-                created_at: faker.date.recent().toISOString(),
-                expires_at: faker.date.future().toISOString(),
-                total_upvotes: faker.datatype.number({ min: 0, max: 100 }),
-                total_downvotes: faker.datatype.number({ min: 0, max: 100 }),
-                is_accepted: false,
-                is_expired: false,
-                is_published: false,
-                group: {
-                    slug: faker.lorem.slug()
-                },
-                author: {
-                    id: faker.datatype.number(),
-                    full_name: faker.name.fullName(),
-                    image_url: faker.image.avatar()
-                },
-                language: faker.random.locale(),
-                translation_entries: [],
-                name: faker.lorem.words(),
-            };
-            resolve({
-
+    get: () => 
+         Promise.resolve( {
                 data: {
                     success: true,
-                    data: {
-                        resource: suggestion
-                    }
+                    data: 
+                         suggestion
+                    
                 }
-            });
-        });
-    },
+    }),
     post: () => {
-        return new Promise(function (resolve) {
-            resolve({ data: { success: true, data: { resource: {} } } });
-        });
+        Promise.resolve({
+         data: { success: true, data: {  } } });
     }
 
 
@@ -82,7 +77,6 @@ const currentUser = {
     image_url: faker.image.avatar(),
     points: faker.datatype.number()
 }
-
 const data = dataProvider(httpClient, "https://mock.example.api");
 
 export const DefaultSuggestionsBanner = () => {
