@@ -105,7 +105,7 @@ describe('TextEditor', () => {
         const editor = render(
             <TextEditorWithSource />
         );
-        expect(screen.getByText(/test.com - Source Test/)).toBeTruthy();
+        expect(screen.getByText(/test.com – Source Test/)).toBeTruthy();
         
     });
 
