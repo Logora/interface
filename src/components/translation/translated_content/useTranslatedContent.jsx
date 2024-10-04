@@ -22,7 +22,7 @@ export const useTranslatedContent = (originalContent, originalLanguage, targetFi
     const [translatedContent, setTranslatedContent] = useState(getTranslatedContent());
 
     useEffect(() => {
-        if (originalContent) {
+        if(originalContent) {
             setTranslatedContent(getTranslatedContent());
         }
     }, [originalContent]);

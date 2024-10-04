@@ -719,7 +719,7 @@
     "translation/translated_content": {
         "name": "translation/translated_content",
         "scope": "logora.debate",
-        "version": "0.0.14",
+        "version": "0.0.15",
         "mainFile": "index.js",
         "rootDir": "src/components/translation/translated_content"
     },
