@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Drawer } from './Drawer';
 import { IconProvider } from '@logora/debate.icons.icon_provider';
 import * as regularIcons from '@logora/debate.icons.regular_icons';
+import { faker } from '@faker-js/faker';
+
 
 export const DefaultDrawer = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -82,6 +84,30 @@ export const SmallDrawer = () => {
 
             <Drawer isOpen={isOpen} onClose={() => setIsOpen(false)} size={400}>
                 <div>Drawer content</div>
+            </Drawer>
+        </IconProvider>
+    )
+};
+
+export const DrawerWithScrollParagraphe = () => {
+    const [isOpen, setIsOpen] = useState(false);
+
+    const toggleDrawer = () => {
+        setIsOpen((prevState) => !prevState);
+    };
+    
+    const generatedParagraph = faker.lorem.paragraphs(20, '\n'); 
+
+    return (
+        <IconProvider library={regularIcons}>
+            <div onClick={toggleDrawer}>Click here to toggle drawer</div>
+
+            <Drawer isOpen={isOpen} title={"My drawer"} onClose={() => setIsOpen(false)}>
+                <div>
+                    <p>
+                    {generatedParagraph}
+                    </p>
+                </div>
             </Drawer>
         </IconProvider>
     )

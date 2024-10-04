@@ -17,6 +17,9 @@
     background-color: $background-color-primary;
     @include py(3, xs);
     min-height: 30px;
+    position: sticky; 
+    top: 0; 
+    z-index: 1001; 
 }
 
 .closeButton {
@@ -29,7 +32,10 @@
     svg {
         fill: $text-secondary;
     }
+    top: 0;
+    z-index: 1002; 
 }
+
 
 .body {
     @include py(2, xs);
