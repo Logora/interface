@@ -6,7 +6,7 @@ export const useTranslatedContent = (originalContent, originalLanguage, targetFi
     const [isTranslated, setIsTranslated] = useState(false);
 
     const isValidTranslation = (translationEntry) => {
-        return translationEntry.target_language === intl.locale.substring(0, 2) && translationEntry.is_approved && translationEntry.origin_field === targetField
+        return translationEntry.target_language.substring(0, 2) === intl.locale.substring(0, 2) && translationEntry.is_approved && translationEntry.origin_field === targetField
     }
     
     const getTranslatedContent = () => {
