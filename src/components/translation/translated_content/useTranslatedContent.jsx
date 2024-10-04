@@ -10,7 +10,7 @@ export const useTranslatedContent = (originalContent, originalLanguage, targetFi
     }
     
     const getTranslatedContent = () => {
-        if (intl.locale !== originalLanguage && translations?.length > 0) {
+        if (intl.locale.substring(0, 2) !== originalLanguage && translations?.length > 0) {
             let currentTranslatedContent = translations.filter(t => isValidTranslation(t))[0];
             if (currentTranslatedContent) {
                 return currentTranslatedContent.translated_content;
