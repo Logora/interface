@@ -6,11 +6,11 @@ export const useTranslatedContent = (originalContent, originalLanguage, targetFi
     const [isTranslated, setIsTranslated] = useState(false);
 
     const isValidTranslation = (translationEntry) => {
-        return translationEntry.target_language.substring(0, 2) === intl.locale.substring(0, 2) && translationEntry.is_approved && translationEntry.origin_field === targetField
+        return translationEntry.target_language?.substring(0, 2) === intl.locale?.substring(0, 2) && translationEntry.is_approved && translationEntry.origin_field === targetField
     }
     
     const getTranslatedContent = () => {
-        if (intl.locale.substring(0, 2) !== originalLanguage.substring(0, 2) && translations?.length > 0) {
+        if (intl.locale?.substring(0, 2) !== originalLanguage?.substring(0, 2) && translations?.length > 0) {
             let currentTranslatedContent = translations.filter(t => isValidTranslation(t))[0];
             if (currentTranslatedContent) {
                 return currentTranslatedContent.translated_content;
@@ -22,7 +22,7 @@ export const useTranslatedContent = (originalContent, originalLanguage, targetFi
     const [translatedContent, setTranslatedContent] = useState(getTranslatedContent());
 
     useEffect(() => {
-        if (originalContent) {
+        if(originalContent) {
             setTranslatedContent(getTranslatedContent());
         }
     }, [originalContent]);
