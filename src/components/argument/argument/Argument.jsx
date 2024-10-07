@@ -248,7 +248,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel, debatePositi
 								onSubmit={(reply) => {
 									toggleReplyInput();
 									setExtraReplies([reply]);
-									setExpandReplies(false);
+									setExpandReplies(true);
 								}}
 								isReply
 								avatarSize={40}
@@ -256,6 +256,11 @@ export const Argument = ({ argument, argumentReplies, nestingLevel, debatePositi
 							/>
 						</Suspense>
 					)}
+					{ extraReplies?.length > 0 && !expandReplies &&
+						<div className={styles.repliesList}>
+							{ extraReplies.map(r => displayReply(r)) }
+						</div>
+					}
 					{ expandReplies &&
 						<div className={styles.repliesList}>
 							<VotePaginatedList
@@ -275,7 +280,6 @@ export const Argument = ({ argument, argumentReplies, nestingLevel, debatePositi
 					}
 					{ extraReplies?.length > 0 && !expandReplies &&
 						<div className={styles.repliesList}>
-							{ extraReplies.map(r => displayReply(r)) }
 							{ argument.number_replies > 1 &&
 								<div className={styles.readMoreLink}>
 									<Button
