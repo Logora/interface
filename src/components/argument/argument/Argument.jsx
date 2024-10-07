@@ -256,7 +256,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel, debatePositi
 							/>
 						</Suspense>
 					)}
-					{ extraReplies?.length > 0 && !expandReplies &&
+					{ extraReplies?.length > 0 && expandReplies &&
 						<div className={styles.repliesList}>
 							{ extraReplies.map(r => displayReply(r)) }
 						</div>
