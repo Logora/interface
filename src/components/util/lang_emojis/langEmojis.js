@@ -47,7 +47,7 @@ const LANGUAGES = [
 
 const getLocaleIcon = (locale, dialect) => {
     if (dialect) {
-        return LANGUAGES.find(lang => lang.name === `${locale}-${dialect}`)?.icon
+        return LANGUAGES.find(lang => lang.name === `${locale}-${dialect}`)?.icon || LANGUAGES.find(lang => lang.name === locale)?.icon
     } else {
         return LANGUAGES.find(lang => lang.name === locale)?.icon
     }
@@ -55,7 +55,7 @@ const getLocaleIcon = (locale, dialect) => {
 
 const getLocaleName = (locale, dialect) => {
     if (dialect) {
-        return LANGUAGES.find(lang => lang.name === `${locale}-${dialect}`)?.name
+        return LANGUAGES.find(lang => lang.name === `${locale}-${dialect}`)?.name | LANGUAGES.find(lang => lang.name === locale)?.name
     } else {
         return LANGUAGES.find(lang => lang.name === locale)?.name
     }
