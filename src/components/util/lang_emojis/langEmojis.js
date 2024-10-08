@@ -45,12 +45,20 @@ const LANGUAGES = [
     },
 ]
 
-const getLocaleIcon = (locale) => {
-    return LANGUAGES.find(lang => lang.name === locale)?.icon
+const getLocaleIcon = (locale, dialect) => {
+    if (dialect) {
+        return LANGUAGES.find(lang => lang.name === `${locale}-${dialect}`)?.icon
+    } else {
+        return LANGUAGES.find(lang => lang.name === locale)?.icon
+    }
 }
 
-const getLocaleName = (locale) => {
-    return LANGUAGES.find(lang => lang.name === locale)?.name
+const getLocaleName = (locale, dialect) => {
+    if (dialect) {
+        return LANGUAGES.find(lang => lang.name === `${locale}-${dialect}`)?.name
+    } else {
+        return LANGUAGES.find(lang => lang.name === locale)?.name
+    }
 }
 
 export { getLocaleIcon, getLocaleName, LANGUAGES }

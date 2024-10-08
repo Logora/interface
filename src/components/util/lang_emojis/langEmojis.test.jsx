@@ -23,7 +23,7 @@ describe('LANGUAGES', () => {
 
 describe('getLocaleIcon', () => {
     it('should return the correct icon for a given locale', () => {
-        expect(getLocaleIcon('fr-CH')).toBe(' 🇨🇭 🇫🇷');
+        expect(getLocaleIcon('fr', 'CH')).toBe(' 🇨🇭 🇫🇷');
         expect(getLocaleIcon('en')).toBe(' 🇬🇧');
         expect(getLocaleIcon('de')).toBe(' 🇩🇪');
     });
