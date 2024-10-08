@@ -55,7 +55,7 @@ const getLocaleIcon = (locale, dialect) => {
 
 const getLocaleName = (locale, dialect) => {
     if (dialect) {
-        return LANGUAGES.find(lang => lang.name === `${locale}-${dialect}`)?.name | LANGUAGES.find(lang => lang.name === locale)?.name
+        return LANGUAGES.find(lang => lang.name === `${locale}-${dialect}`)?.name || LANGUAGES.find(lang => lang.name === locale)?.name
     } else {
         return LANGUAGES.find(lang => lang.name === locale)?.name
     }
