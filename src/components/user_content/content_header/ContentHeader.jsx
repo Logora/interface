@@ -39,7 +39,7 @@ export const ContentHeader = ({ author, tag, tagClassName, date, oneLine = false
 							disableLinks={disableLinks} 
 							isDeleted={isDeleted}
 							language={config?.translation?.enable === true ? `${author.language}` : null}
-							languageDialect={config?.actions?.appDialect || null}
+							languageDialect={config?.transaltion?.dialect || null}
 						/>
 					}
 				</div>
