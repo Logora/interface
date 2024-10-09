@@ -20,7 +20,8 @@ export const AuthorBox = ({
         occupation, 
         disableLinks = false, 
         isDeleted = false,
-        language = null
+        language = null,
+        languageDialect = null,
     }) => {
     const intl = useIntl();
     const routes = useRoutes();
@@ -55,9 +56,9 @@ export const AuthorBox = ({
                                 <span className={styles.expertBadge}>{ intl.formatMessage({ id: "user.author_box.expert", defaultMessage: "Journalist" }) }</span>
                             </div>
                         }
-                        { language &&
+                        { language && languageDialect &&
                             <div className={styles.languageContainer}>
-                                { getLocaleIcon(language) }
+                                { getLocaleIcon(language, languageDialect) }
                             </div>
                         }
                     </div>
