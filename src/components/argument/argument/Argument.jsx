@@ -111,7 +111,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel, debatePositi
 						[styles.argumentReply]: argument.is_reply == true,
 					},
 					styles[`level-${nestingLevel}`],
-					styles[`position-${!(argument.author.role == "editor" || argument.author.role == "moderator") && debatePositions && debatePositions.map((e) => e.id).indexOf(argument.position.id) + 1}`]
+					styles[`position-${!(argument.author.role == "editor" || argument.author.role == "moderator") && argument.position && debatePositions && debatePositions.map((e) => e.id).indexOf(argument.position.id) + 1}`]
 				)}
 				id={componentId}
 			>
@@ -120,7 +120,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel, debatePositi
 					author={argument.author}
 					tag={(argument.author.role == "editor"|| argument.author.role == "moderator")  && argument.is_reply ? null : position.translatedContent}
 					date={argument.created_at}
-					tagClassName={styles[`headerPosition-${debatePositions && debatePositions.map((e) => e.id).indexOf(argument.position.id) + 1}`]}
+					tagClassName={styles[`headerPosition-${argument.position && debatePositions && debatePositions.map((e) => e.id).indexOf(argument.position.id) + 1}`]}
 					disableLinks={disableLinks}
 					isDeleted={argument.is_deleted}
 				/>
@@ -203,7 +203,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel, debatePositi
 							voteableId={argument.id}
 							totalUpvote={argument.upvotes}
 							totalDownvote={0}
-							activeClassName={styles[`voteButtonPosition-${debatePositions?.map((e) => e.id).indexOf(argument.position.id) + 1}`]}
+							activeClassName={styles[`voteButtonPosition-${argument.position && debatePositions?.map((e) => e.id).indexOf(argument.position.id) + 1}`]}
 							disabled={disabled || (currentUser?.id === argument?.author?.id)}
 						/>
 					</ContentFooter>
