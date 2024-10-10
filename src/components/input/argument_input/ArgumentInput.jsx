@@ -165,6 +165,7 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
         } else {
             setArgumentContent(content);
             setArgumentRichContent(richContent);
+            validate({ content: content }, [{ content: ["url", null] }])
         }
     }
 
