@@ -84,6 +84,11 @@ export const Argument = ({ argument, argumentReplies, nestingLevel, debatePositi
 		}
 	};
 
+	const transformReplies = (reply) => {
+		if (extraReplies && extraReplies.find(r => r.id === reply.id)) { return; }
+		return reply;
+	}
+
 	const displayReply = (reply = null) => {
 		return (
 			<ArgumentContainer
@@ -273,6 +278,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel, debatePositi
 								perPage={5}
 								display={"column"}
 								resourcePropName={'argument'}
+								transformData={(reply) => transformReplies(reply)}
 							>
 								{ displayReply(argument) }
 							</VotePaginatedList>
