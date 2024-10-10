@@ -344,9 +344,9 @@ describe("ArgumentInput", () => {
         const setUrlContentButton = screen.getByText("Click to set url content");
         await act(async () => { await userEvent.click(setUrlContentButton) });
         expect(queryByText("I write https://mysite.com")).toBeInTheDocument();
-        
-        await act(async () => { await userEvent.click(onSubmit) });
         expect(queryByText("content must not contain any links")).toBeInTheDocument();
+        
+        // await act(async () => { await userEvent.click(onSubmit) });
     });
 
     it("should call submit callback", async () => {

@@ -171,6 +171,7 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
         } else {
             setArgumentContent(content);
             setArgumentRichContent(richContent);
+            validate({ content: content }, [{ content: ["url", null] }])
         }
     }
 
@@ -181,7 +182,6 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
     const argumentValidationRules = [
         { content: ["length", 3] },
         { content: ["required", null] },
-        { content: ["url", null]},
         ...(!positions ? [] : [{ position_id: ["required", null] }])
     ]
 
