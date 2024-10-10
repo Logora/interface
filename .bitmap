@@ -660,6 +660,20 @@
         "mainFile": "_theme.scss",
         "rootDir": "src/components/styles/theme"
     },
+    "suggestion/suggestion_banner": {
+        "name": "suggestion/suggestion_banner",
+        "scope": "",
+        "version": "",
+        "defaultScope": "logora.debate",
+        "mainFile": "index.js",
+        "rootDir": "src/components/suggestion/suggestion_banner",
+        "config": {
+            "teambit.react/react-env@1.0.97": {},
+            "teambit.envs/envs": {
+                "env": "teambit.react/react-env"
+            }
+        }
+    },
     "suggestion/suggestion_box": {
         "name": "suggestion/suggestion_box",
         "scope": "logora.debate",

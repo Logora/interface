@@ -1,0 +1,63 @@
+@import '~@logora/debate.styles.theme/_theme.scss';
+@import '~@logora/debate.styles.spacing/_spacing.scss';
+@import '~@logora/debate.styles.flex/_flex.scss';
+@import '~@logora/debate.styles.display/_display.scss';
+
+.suggestionsBannerContainer {
+    @include display(flex, xs);
+    @include flex-direction(column, xs);
+    @include flex-direction(row, md);
+    box-shadow: $box-shadow;
+    border: $box-border-main-container;
+    color: $text-primary;
+    border-radius: $box-border-radius;
+    background: $background-color-primary;
+    @include p(4, sm);
+    @include p(3, xs);
+    gap: $spacer-lg;
+    @include media-breakpoint-down(xs) {
+        gap: $spacer;
+    }
+}
+
+.suggestionBannerContext {
+    @include display(flex, xs);
+    @include justify-content(center, xs);
+    @include justify-content(flex-start, sm);
+    @include flex-direction(column, xs);
+    max-width: 50%;
+    gap: $spacer-lg;
+    @include media-breakpoint-down(sm) {
+        max-width: 100%;
+    }
+    @include media-breakpoint-down(xs) {
+        gap: $spacer;
+    }
+    &.isMobile {
+        max-width: 100%;
+    }
+}
+
+.suggestionsBannerTitle {
+    width: 100%;
+    font-family: $title-font-family;
+    font-size: $font-size-large;
+    font-weight: $font-weight-bold;
+    line-height: $line-height-loose;
+}
+
+.suggestionsBannerDescription {
+    font-size: $font-size-normal;
+    line-height: $line-height-loose;
+}
+
+.suggestionBannerList {
+    width: 100%;
+}
+
+.suggestionBannerButton {
+    width: fit-content !important;
+    svg {
+        transform: rotate(-90deg);
+    }
+}
