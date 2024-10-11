@@ -30,7 +30,7 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
     const { focus, setFocus, setReset, inputContent, setInputContent, setInputRichContent } = useInput();
     const { isLoggedIn, currentUser } = useAuth();
     const { errors, validate } = useFormValidation();
-    const { isMobile } = useResponsive();
+    const { isMobile, isDesktop } = useResponsive();
     const location = useLocation();
     // REFS
     const inputForm = useRef(null);
@@ -304,7 +304,7 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
                                 />
                             </div>
                         }
-                        <div className={cx(styles.argumentTextInputBox, {[styles.argumentTextInputBoxisTablet]: !isMobile, [styles.replyEditorRow]: isReply})}>
+                        <div className={cx(styles.argumentTextInputBox, {[styles.argumentTextInputBoxisTablet]: isDesktop, [styles.replyEditorRow]: isReply})}>
                             <div className={cx(styles.argumentAuthorContainer,{[styles.argumentAuthorContainerMobile]: isMobile, [styles.argumentAuthorContainerActivated]: inputActivation || isReply})}>
                                 { inputActivation || isReply ?
                                     <Avatar avatarUrl={currentUser.image_url} userName={currentUser.full_name} size={avatarSize} />
