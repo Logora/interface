@@ -1,0 +1,36 @@
+---
+description: A component to display a suggestions banner in a debate context.
+labels: ['suggestions', 'banner']
+---
+
+A component to display a debate suggestion.
+
+### Component usage
+
+```js
+  import { SuggestionBanner } from '@logora.debate/suggestion/suggestion_banner';
+```
+```js
+
+const suggestion = [{
+=    id: 414,
+    created_at: "2024-02-07T10:34:16.888Z",
+    expires_at: "",
+    total_upvotes: 0,
+    total_downvotes: 0,
+    is_accepted: false,
+    is_expired: false,
+    is_published: false,
+    group: {
+      slug: "default-slug"
+    },
+    author: {
+        id: 120
+        full_name: "John Doe",
+        image_url: "https://example.com/avatar.jpg",
+    },
+}];
+
+<SuggestionsBanner />
+
+```

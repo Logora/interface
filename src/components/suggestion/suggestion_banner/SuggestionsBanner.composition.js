@@ -31,7 +31,12 @@ const config = {
         }
     }
 };
-
+const vote = {
+    id: faker.datatype.number(),
+    voteable_type: faker.lorem.word(),
+    voteable_id: faker.datatype.number(),
+    user_id: faker.datatype.number()
+};
 const suggestion = [{
     id: faker.datatype.number(),
     created_at: faker.date.recent().toISOString(),
@@ -53,6 +58,7 @@ const suggestion = [{
     translation_entries: [],
     name: faker.lorem.words(),
 }];
+
 const httpClient = {
     get: () => 
          Promise.resolve( {
@@ -64,12 +70,13 @@ const httpClient = {
                 }
     }),
     post: () => {
-        Promise.resolve({
-         data: { success: true, data: {  } } });
+        return new Promise(function (resolve) {
+            resolve({ data: { success: true, data: { resource: vote } } });
+        });
     }
 
-
 };
+
 
 const currentUser = {
     id: faker.datatype.number(),
@@ -77,14 +84,15 @@ const currentUser = {
     image_url: faker.image.avatar(),
     points: faker.datatype.number()
 }
+
 const data = dataProvider(httpClient, "https://mock.example.api");
 
 export const DefaultSuggestionsBanner = () => {
     return (
         <MemoryRouter>
             <ConfigProvider config={config} routes={{ ...routes }}>
-                <DataProviderContext.Provider value={{ currentUser: currentUser, dataProvider: data }}>
-                    <AuthContext.Provider value={{ isLoggedIn: true }}>
+                <DataProviderContext.Provider value={{ dataProvider: data }}>
+                    <AuthContext.Provider value={{currentUser, isLoggedIn: true }}>
                         <ResponsiveProvider>
                             <ModalProvider>
                                 <ListProvider>
