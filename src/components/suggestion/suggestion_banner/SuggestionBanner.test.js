@@ -149,9 +149,9 @@ describe('SuggestionBanner', () => {
             get: () => Promise.resolve({ data: { success: true, data: [] } }),
             post: () => Promise.resolve({ data: { success: true, data: { resource: {} } } })
         };
-    
+
         const data = dataProvider(httpClient, "https://mock.example.api");
-    
+
         const { getByText } = render(
             <Providers>
                 <DataProviderContext.Provider value={{ dataProvider: data }}>
@@ -160,15 +160,7 @@ describe('SuggestionBanner', () => {
             </Providers>
         );
         await waitFor(() => {
-            expect(getByText('Add suggestion')).toBeInTheDocument(); 
+            expect(getByText('Add suggestion')).toBeInTheDocument();
         });
     });
-    
-
-
-
-
-
-
-
 });
