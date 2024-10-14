@@ -60,15 +60,15 @@ const suggestion = [{
 }];
 
 const httpClient = {
-    get: () => 
-         Promise.resolve( {
-                data: {
-                    success: true,
-                    data: 
-                         suggestion
-                    
-                }
-    }),
+    get: () =>
+        Promise.resolve({
+            data: {
+                success: true,
+                data:
+                    suggestion
+
+            }
+        }),
     post: () => {
         return new Promise(function (resolve) {
             resolve({ data: { success: true, data: { resource: vote } } });
@@ -92,7 +92,7 @@ export const DefaultSuggestionBanner = () => {
         <MemoryRouter>
             <ConfigProvider config={config} routes={{ ...routes }}>
                 <DataProviderContext.Provider value={{ dataProvider: data }}>
-                    <AuthContext.Provider value={{currentUser, isLoggedIn: true }}>
+                    <AuthContext.Provider value={{ currentUser, isLoggedIn: true }}>
                         <ResponsiveProvider>
                             <ModalProvider>
                                 <ListProvider>

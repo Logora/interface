@@ -15,6 +15,7 @@
     @include p(4, sm);
     @include p(3, xs);
     gap: $spacer-lg;
+
     @include media-breakpoint-down(xs) {
         gap: $spacer;
     }
@@ -27,12 +28,15 @@
     @include flex-direction(column, xs);
     max-width: 50%;
     gap: $spacer-lg;
+
     @include media-breakpoint-down(sm) {
         max-width: 100%;
     }
+
     @include media-breakpoint-down(xs) {
         gap: $spacer;
     }
+
     &.isMobile {
         max-width: 100%;
     }
@@ -57,6 +61,7 @@
 
 .suggestionBannerButton {
     width: fit-content !important;
+
     svg {
         transform: rotate(-90deg);
     }

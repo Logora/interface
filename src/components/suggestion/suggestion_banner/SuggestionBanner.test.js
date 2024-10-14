@@ -61,18 +61,19 @@ const suggestion = [{
 }];
 
 const httpClient = {
-    get: () => 
-         Promise.resolve( {
-                data: {
-                    success: true,
-                    data: 
-                         suggestion
-                    
-                }
-    }),
+    get: () =>
+        Promise.resolve({
+            data: {
+                success: true,
+                data:
+                    suggestion
+
+            }
+        }),
     post: () => {
         Promise.resolve({
-         data: { success: true, data: {  } } });
+            data: { success: true, data: {} }
+        });
     }
 
 
@@ -92,12 +93,12 @@ const Providers = ({ children }) => (
                             <ListProvider>
                                 <ToastProvider>
                                     <VoteProvider>
-                                    <IdProvider>
-                                        <IntlProvider locale="en">
-                                            <IconProvider library={regularIcons}>
-                                                {children}
-                                            </IconProvider>
-                                        </IntlProvider>
+                                        <IdProvider>
+                                            <IntlProvider locale="en">
+                                                <IconProvider library={regularIcons}>
+                                                    {children}
+                                                </IconProvider>
+                                            </IntlProvider>
                                         </IdProvider>
                                     </VoteProvider>
                                 </ToastProvider>
@@ -126,27 +127,27 @@ describe('SuggestionBanner', () => {
 
     it('should render SuggestionBox correctly', async () => {
         const { getByText } = renderSuggestionBanner();
-    
+
         await waitFor(() => {
             expect(getByText(suggestion[0].name)).toBeInTheDocument();
             expect(getByText(suggestion[0].author.full_name)).toBeInTheDocument();
             expect(getByText(`${suggestion[0].total_upvotes} supports`)).toBeInTheDocument();
         });
     });
-    
+
     it('should render the suggest button correctly', () => {
         const { getByText } = renderSuggestionBanner();
         const button = getByText('Suggest');
         expect(button).toBeInTheDocument();
-            const expectedHref = `/${routes.suggestionLocation.toUrl()}`;
+        const expectedHref = `/${routes.suggestionLocation.toUrl()}`;
         expect(button.closest('a')).toHaveAttribute('href', expectedHref);
     });
 
-  
 
-    
-    
 
-    
-  
+
+
+
+
+
 });
