@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, waitFor, fireEvent } from '@testing-library/react';
-import { SuggestionsBanner } from './SuggestionsBanner';
+import { SuggestionBanner } from './SuggestionBanner';
 import { IconProvider } from '@logora/debate.icons.icon_provider';
 import { IntlProvider } from 'react-intl';
 import { ConfigProvider } from '@logora/debate.data.config_provider';
@@ -110,22 +110,22 @@ const Providers = ({ children }) => (
     </MemoryRouter>
 );
 
-const renderSuggestionsBanner = () => render(
+const renderSuggestionBanner = () => render(
     <Providers>
-        <SuggestionsBanner />
+        <SuggestionBanner />
     </Providers>
 );
 
-describe('SuggestionsBanner', () => {
+describe('SuggestionBanner', () => {
     it('renders the title and description correctly', () => {
-        const { getByText } = renderSuggestionsBanner();
+        const { getByText } = renderSuggestionBanner();
 
         expect(getByText('Suggest a debate question')).toBeInTheDocument();
         expect(getByText('Propose your own debate question and vote for your favourite. Questions that generate community interest are submitted to the editorial team.')).toBeInTheDocument();
     });
 
     it('should render SuggestionBox correctly', async () => {
-        const { getByText } = renderSuggestionsBanner();
+        const { getByText } = renderSuggestionBanner();
     
         await waitFor(() => {
             expect(getByText(suggestion[0].name)).toBeInTheDocument();
@@ -135,7 +135,7 @@ describe('SuggestionsBanner', () => {
     });
     
     it('should render the suggest button correctly', () => {
-        const { getByText } = renderSuggestionsBanner();
+        const { getByText } = renderSuggestionBanner();
         const button = getByText('Suggest');
         expect(button).toBeInTheDocument();
             const expectedHref = `/${routes.suggestionLocation.toUrl()}`;

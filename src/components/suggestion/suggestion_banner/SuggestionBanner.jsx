@@ -9,9 +9,9 @@ import { FormattedMessage } from "react-intl";
 import { UserContentSkeleton } from '@logora/debate.skeleton.user_content_skeleton';
 import { SuggestionBox } from '@logora/debate.suggestion.suggestion_box';
 import cx from 'classnames';
-import styles from "./SuggestionsBanner.module.scss";
+import styles from "./SuggestionBanner.module.scss";
 
-export const SuggestionsBanner = () => {
+export const SuggestionBanner = () => {
     const seed = useMemo(() => Math.random(), []);
     const config = useConfig();
     const routes = useRoutes();
@@ -19,12 +19,12 @@ export const SuggestionsBanner = () => {
 	const { isMobile } = useResponsive();
 
     return (
-        <div className={styles.suggestionsBannerContainer}>
+        <div className={styles.suggestionBannerContainer}>
             <div className={cx(styles.suggestionBannerContext, { [styles.isMobile]: isMobile })}>
-                <div className={styles.suggestionsBannerTitle}>
+                <div className={styles.suggestionBannerTitle}>
                     <FormattedMessage id="suggestion.banner_title" defaultMessage="Suggest a debate question"/>
                 </div>
-                <div className={styles.suggestionsBannerDescription}>
+                <div className={styles.suggestionBannerDescription}>
                     <FormattedMessage 
                     id="suggestion.banner_description"
                     defaultMessage="Propose your own debate question and vote for your favourite. Questions that generate community interest are submitted to the editorial team." 
@@ -66,4 +66,4 @@ export const SuggestionsBanner = () => {
     )
 }
 
-export default SuggestionsBanner;
+export default SuggestionBanner;

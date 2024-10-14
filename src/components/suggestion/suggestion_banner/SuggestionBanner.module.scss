@@ -3,7 +3,7 @@
 @import '~@logora/debate.styles.flex/_flex.scss';
 @import '~@logora/debate.styles.display/_display.scss';
 
-.suggestionsBannerContainer {
+.suggestionBannerContainer {
     @include display(flex, xs);
     @include flex-direction(column, xs);
     @include flex-direction(row, md);
@@ -38,7 +38,7 @@
     }
 }
 
-.suggestionsBannerTitle {
+.suggestionBannerTitle {
     width: 100%;
     font-family: $title-font-family;
     font-size: $font-size-large;
@@ -46,7 +46,7 @@
     line-height: $line-height-loose;
 }
 
-.suggestionsBannerDescription {
+.suggestionBannerDescription {
     font-size: $font-size-normal;
     line-height: $line-height-loose;
 }

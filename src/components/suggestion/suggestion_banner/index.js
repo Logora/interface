@@ -1,1 +1,1 @@
-export { SuggestionsBanner } from "./SuggestionsBanner"
+export { SuggestionBanner } from "./SuggestionBanner"

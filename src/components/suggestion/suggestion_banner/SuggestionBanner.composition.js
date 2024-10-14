@@ -1,5 +1,5 @@
 import React from 'react';
-import { SuggestionsBanner } from './SuggestionsBanner';
+import { SuggestionBanner } from './SuggestionBanner';
 import { IconProvider } from '@logora/debate.icons.icon_provider';
 import { IntlProvider } from 'react-intl';
 import { ConfigProvider } from '@logora/debate.data.config_provider';
@@ -87,7 +87,7 @@ const currentUser = {
 
 const data = dataProvider(httpClient, "https://mock.example.api");
 
-export const DefaultSuggestionsBanner = () => {
+export const DefaultSuggestionBanner = () => {
     return (
         <MemoryRouter>
             <ConfigProvider config={config} routes={{ ...routes }}>
@@ -101,7 +101,7 @@ export const DefaultSuggestionsBanner = () => {
                                             <IdProvider>
                                                 <IntlProvider locale="en">
                                                     <IconProvider library={regularIcons}>
-                                                        <SuggestionsBanner />
+                                                        <SuggestionBanner />
                                                     </IconProvider>
                                                 </IntlProvider>
                                             </IdProvider>
@@ -118,7 +118,7 @@ export const DefaultSuggestionsBanner = () => {
 };
 
 
-export const EmptySuggestionsBanner = () => {
+export const EmptySuggestionBanner = () => {
     const httpClient = {
         get: () => Promise.resolve({ data: { success: true, data: [] } }),
         post: () => Promise.resolve({ data: { success: true, data: { resource: {} } } })
@@ -138,7 +138,7 @@ export const EmptySuggestionsBanner = () => {
                                             <IdProvider>
                                                 <IntlProvider locale="en">
                                                     <IconProvider library={regularIcons}>
-                                                        <SuggestionsBanner />
+                                                        <SuggestionBanner />
                                                     </IconProvider>
                                                 </IntlProvider>
                                             </IdProvider>
