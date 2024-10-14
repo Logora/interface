@@ -117,3 +117,40 @@ export const DefaultSuggestionsBanner = () => {
     );
 };
 
+
+export const EmptySuggestionsBanner = () => {
+    const httpClient = {
+        get: () => Promise.resolve({ data: { success: true, data: [] } }),
+        post: () => Promise.resolve({ data: { success: true, data: { resource: {} } } })
+    };
+    const data = dataProvider(httpClient, "https://mock.example.api");
+
+    return (
+        <MemoryRouter>
+            <ConfigProvider config={config} routes={{ ...routes }}>
+                <DataProviderContext.Provider value={{ dataProvider: data }}>
+                    <AuthContext.Provider value={{ currentUser, isLoggedIn: true }}>
+                        <ResponsiveProvider>
+                            <ModalProvider>
+                                <ListProvider>
+                                    <ToastProvider>
+                                        <VoteProvider>
+                                            <IdProvider>
+                                                <IntlProvider locale="en">
+                                                    <IconProvider library={regularIcons}>
+                                                        <SuggestionsBanner />
+                                                    </IconProvider>
+                                                </IntlProvider>
+                                            </IdProvider>
+                                        </VoteProvider>
+                                    </ToastProvider>
+                                </ListProvider>
+                            </ModalProvider>
+                        </ResponsiveProvider>
+                    </AuthContext.Provider>
+                </DataProviderContext.Provider>
+            </ConfigProvider>
+        </MemoryRouter>
+    );
+};
+
