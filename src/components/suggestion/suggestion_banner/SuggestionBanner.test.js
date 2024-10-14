@@ -144,6 +144,27 @@ describe('SuggestionBanner', () => {
     });
 
 
+    it('renders empty state when there are no suggestions', async () => {
+        const httpClient = {
+            get: () => Promise.resolve({ data: { success: true, data: [] } }),
+            post: () => Promise.resolve({ data: { success: true, data: { resource: {} } } })
+        };
+    
+        const data = dataProvider(httpClient, "https://mock.example.api");
+    
+        const { getByText } = render(
+            <Providers>
+                <DataProviderContext.Provider value={{ dataProvider: data }}>
+                    <SuggestionBanner />
+                </DataProviderContext.Provider>
+            </Providers>
+        );
+        await waitFor(() => {
+            expect(getByText('Add suggestion')).toBeInTheDocument(); 
+        });
+    });
+    
+
 
 
 
