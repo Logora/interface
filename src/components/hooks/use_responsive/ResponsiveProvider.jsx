@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { ResponsiveContext } from './ResponsiveContext';
 import PropTypes from 'prop-types';
 
-export const ResponsiveProvider = ({ containerPath, containerWidth, children }) => {
+export const ResponsiveProvider = ({ containerPath, containerWidth, children, isMobile }) => {
     const [elementWidth, setElementWidth] = useState(containerWidth);
 
     useEffect(() => {
@@ -16,7 +16,7 @@ export const ResponsiveProvider = ({ containerPath, containerWidth, children }) 
     
 
     return (
-        <ResponsiveContext.Provider value={{ isMobile: elementWidth <= 576, isTablet: elementWidth > 576, isDesktop: elementWidth >= 769 }}>
+        <ResponsiveContext.Provider value={{ isMobile: isMobile || elementWidth <= 576, isTablet: !isMobile && elementWidth > 576, isDesktop: !isMobile && elementWidth >= 769 }}>
             { children }
         </ResponsiveContext.Provider>
     )
@@ -28,5 +28,7 @@ ResponsiveProvider.propTypes = {
     /** Width of container to use for responsive queries */
     containerWidth: PropTypes.number,
     /** Provider children */
-    children: PropTypes.node
+    children: PropTypes.node,
+    /** Overriding calculation and force mobile design */
+    isMobile: PropTypes.bool
 }
