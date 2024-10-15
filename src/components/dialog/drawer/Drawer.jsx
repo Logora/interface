@@ -24,9 +24,9 @@ export const Drawer = ({ isOpen = false, onClose, title, size = '30vw', enableOv
 
     useEffect(() => {
         if (pathParameter && location?.pathname) {
-            const searchParams = new URLSearchParams(window?.location.search)
-            searchParams.set(pathParameter, location.pathname)
-            window.location.search = searchParams.toString()
+            const url = new URL(window?.location);
+            url.searchParams.set(pathParameter, location.pathname);
+            window.history.pushState({}, '', url);
         }
     }, [location])
 
