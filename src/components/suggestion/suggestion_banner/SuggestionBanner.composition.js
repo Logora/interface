@@ -16,27 +16,19 @@ import { ToastProvider } from '@logora/debate.dialog.toast_provider';
 import { faker } from '@faker-js/faker';
 import * as regularIcons from '@logora/debate.icons.regular_icons';
 
-
-
 let SuggestionBannerShowLocation = new Location('espace-debat/suggestions');
 
 const routes = {
     suggestionLocation: SuggestionBannerShowLocation
 };
 
-const config = {
-    modules: {
-        suggestions: {
-            vote_goal: 30
-        }
-    }
-};
 const vote = {
     id: faker.datatype.number(),
     voteable_type: faker.lorem.word(),
     voteable_id: faker.datatype.number(),
     user_id: faker.datatype.number()
 };
+
 const suggestion = [{
     id: faker.datatype.number(),
     created_at: faker.date.recent().toISOString(),
@@ -77,7 +69,6 @@ const httpClient = {
 
 };
 
-
 const currentUser = {
     id: faker.datatype.number(),
     full_name: faker.name.fullName(),
@@ -90,7 +81,7 @@ const data = dataProvider(httpClient, "https://mock.example.api");
 export const DefaultSuggestionBanner = () => {
     return (
         <MemoryRouter>
-            <ConfigProvider config={config} routes={{ ...routes }}>
+            <ConfigProvider config={{}} routes={{ ...routes }}>
                 <DataProviderContext.Provider value={{ dataProvider: data }}>
                     <AuthContext.Provider value={{ currentUser, isLoggedIn: true }}>
                         <ResponsiveProvider>
@@ -116,7 +107,6 @@ export const DefaultSuggestionBanner = () => {
         </MemoryRouter>
     );
 };
-
 
 export const EmptySuggestionBanner = () => {
     const httpClient = {
@@ -127,7 +117,7 @@ export const EmptySuggestionBanner = () => {
 
     return (
         <MemoryRouter>
-            <ConfigProvider config={config} routes={{ ...routes }}>
+            <ConfigProvider config={{}} routes={{ ...routes }}>
                 <DataProviderContext.Provider value={{ dataProvider: data }}>
                     <AuthContext.Provider value={{ currentUser, isLoggedIn: true }}>
                         <ResponsiveProvider>
@@ -153,4 +143,3 @@ export const EmptySuggestionBanner = () => {
         </MemoryRouter>
     );
 };
-

@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
 import { useResponsive } from "@logora/debate.hooks.use_responsive";
-import { useConfig, useRoutes } from '@logora/debate.data.config_provider';
+import { useRoutes } from '@logora/debate.data.config_provider';
 import { useIntl } from 'react-intl';
 import { Button } from '@logora/debate.action.button';
 import { VotePaginatedList } from "@logora/debate.list.paginated_list";
@@ -13,7 +13,6 @@ import styles from "./SuggestionBanner.module.scss";
 
 export const SuggestionBanner = () => {
     const seed = useMemo(() => Math.random(), []);
-    const config = useConfig();
     const routes = useRoutes();
     const intl = useIntl();
     const { isMobile } = useResponsive();
@@ -28,7 +27,7 @@ export const SuggestionBanner = () => {
                     <FormattedMessage
                         id="suggestion.banner_description"
                         defaultMessage="Propose your own debate question and vote for your favourite. Questions that generate community interest are submitted to the editorial team."
-                        values={{ variable: config.modules.suggestions && config.modules.suggestions.vote_goal || 30 }} />
+                    />
                 </div>
                 <Button
                     to={routes.suggestionLocation.toUrl()}
@@ -65,5 +64,3 @@ export const SuggestionBanner = () => {
         </div>
     )
 }
-
-export default SuggestionBanner;
