@@ -83,7 +83,7 @@ const SuggestionInput = (props) => {
         if (isLoggedIn) {
             const data = {
                 name: suggestion,
-                position_list: intl.formatMessage({ id: "suggestion.position_list" }),
+                position_list: intl.formatMessage({ id: "suggestion.position_list" , defaultMessage:"Yes,No"}),
             };
             const suggestionValidationRules = [
                 { name: ["length", 3] },
@@ -98,7 +98,7 @@ const SuggestionInput = (props) => {
                     if (response.data.success) {
                         const suggestion = response.data.data.resource;
                         list.add("suggestionsList", [suggestion]);
-                        toast(intl.formatMessage({ id: "alert.suggestion_create" }), { type: "success" });
+                        toast(intl.formatMessage({ id: "alert.suggestion_create", defaultMessage:"Your suggestion has been sent !" }), { type: "success" });
                         if (props.onSubmit) { props.onSubmit(); }
                     }
                 });
@@ -113,14 +113,14 @@ const SuggestionInput = (props) => {
             <>
                 <div className={cx(styles.suggestionInputItem)}>
                     <div className={styles.suggestionInputTitle}>
-                        <FormattedMessage id="suggestion.input_title" />
+                        <FormattedMessage id="suggestion.input_title" defaultMessage="Your suggestion" />
                     </div>
                     <TextInput 
                         ref={inputForm}
                         type="text" 
                         name="suggestionInput"
                         role="input"
-                        placeholder={intl.formatMessage({ id:"suggestion.input_placeholder" })} 
+                        placeholder={intl.formatMessage({ id:"suggestion.input_placeholder", defaultMessage:"Suggest a debate question" })} 
                         onChange={(e) => {setSuggestion(e.target.value);}} 
                         value={suggestion}
                         disabled={props.disabled}
@@ -134,11 +134,11 @@ const SuggestionInput = (props) => {
                         { 140 - suggestion.length } { intl.formatMessage({ id: "input.remaining_chars", defaultMessage: "remaining characters" }) }
                     </div>
                     <div className={styles.suggestionInputSubtitle}>
-                        <FormattedMessage id="suggestion.input_info" />
+                        <FormattedMessage id="suggestion.input_info" defaultMessage="The positions supported will be YES \/ NO. You can only post 5 suggestions at a time. Suggestions may not exceed 140 characters." />
                     </div>
                 </div>
                 <Button handleClick={() => handleSubmit()} className={styles.suggestionInputSubmit}>
-                    <FormattedMessage id="action.submit"/>
+                    <FormattedMessage id="action.submit" defaultMessage="Submit"/>
                 </Button>
             </>
         </div>
