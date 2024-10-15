@@ -53,7 +53,7 @@ export const DefaultSuggestionInput = () => {
                                         <ListProvider>
                                             <IdProvider>
                                                 <InputProvider>
-                                                    <SuggestionInput />
+                                                    <SuggestionInput  disabled={false} />
                                                 </InputProvider>
                                             </IdProvider>
                                         </ListProvider>
@@ -68,3 +68,30 @@ export const DefaultSuggestionInput = () => {
     );
 };
 
+export const DisabledSuggestionInput = () => {
+    return (
+        <BrowserRouter>
+            <ConfigProvider >
+                <IconProvider library={regularIcons} >
+                    <IntlProvider locale="en">
+                        <DataProviderContext.Provider value={{ dataProvider: data }}>
+                            <AuthContext.Provider value={{ currentUser: currentUser, isLoggedIn: true }}>
+                                <ToastProvider>
+                                    <ModalProvider>
+                                        <ListProvider>
+                                            <IdProvider>
+                                                <InputProvider>
+                                                    <SuggestionInput disabled={true} />
+                                                </InputProvider>
+                                            </IdProvider>
+                                        </ListProvider>
+                                    </ModalProvider>
+                                </ToastProvider>
+                            </AuthContext.Provider>
+                        </DataProviderContext.Provider>
+                    </IntlProvider>
+                </IconProvider>
+            </ConfigProvider>
+        </BrowserRouter>
+    );
+};
