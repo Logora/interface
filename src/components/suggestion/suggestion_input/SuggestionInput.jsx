@@ -13,7 +13,7 @@ import { useToast } from '@logora/debate.dialog.toast_provider';
 import cx from 'classnames';
 import styles from './SuggestionInput.module.scss';
 
-const SuggestionInput = (props) => {
+export const SuggestionInput = (props) => {
     const intl = useIntl();
     const api = useDataProvider();
     const list = useList();
@@ -144,5 +144,3 @@ const SuggestionInput = (props) => {
         </div>
     )
 }
-
-export default SuggestionInput;
