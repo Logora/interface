@@ -17,7 +17,7 @@ export const SSOForm = ({ authType, providerName, loginUrl, signupUrl, termsUrl,
 
 	const getLinkWithRedirect = (url) => {
 		if (typeof window !== "undefined") {
-			let redirectUrl = url === "CURRENT_LOCATION" ? window.location.origin + location.pathname + location.hash + location.search : url;
+			let redirectUrl = url === "CURRENT_LOCATION" ? window.location.toString() : url;
 			let parsedUrl = new URL(redirectUrl, window.location.origin);
 			let params = parsedUrl.searchParams;
 			let originalParams = new URLSearchParams(location.search);
