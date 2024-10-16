@@ -13,7 +13,7 @@ import { useToast } from '@logora/debate.dialog.toast_provider';
 import cx from 'classnames';
 import styles from './SuggestionInput.module.scss';
 
-export const SuggestionInput = (props) => {
+export const SuggestionInput = ({ onSubmit = null, maxLength = 140, disabled = false }) => {
     const intl = useIntl();
     const api = useDataProvider();
     const list = useList();
@@ -87,7 +87,7 @@ export const SuggestionInput = (props) => {
             };
             const suggestionValidationRules = [
                 { name: ["length", 3] },
-                { name: ["maxChar", 140] },
+                { name: ["maxChar", maxLength] },
 			    { name: ["question", null] }
             ]
             if (validate(data, suggestionValidationRules)) {
@@ -99,7 +99,9 @@ export const SuggestionInput = (props) => {
                         const suggestion = response.data.data.resource;
                         list.add("suggestionsList", [suggestion]);
                         toast(intl.formatMessage({ id: "alert.suggestion_create", defaultMessage:"Your suggestion has been sent !" }), { type: "success" });
-                        if (props.onSubmit) { props.onSubmit(); }
+                        if (onSubmit) { 
+                            onSubmit(); 
+                        }
                     }
                 });
             }
@@ -123,15 +125,15 @@ export const SuggestionInput = (props) => {
                         placeholder={intl.formatMessage({ id:"suggestion.input_placeholder", defaultMessage:"Suggest a debate question" })} 
                         onChange={(e) => {setSuggestion(e.target.value);}} 
                         value={suggestion}
-                        disabled={props.disabled}
+                        disabled={disabled}
                         error={Object.keys(errors).length > 0}
                         required
                         message={errors?.name}
-                        maxLength="140"
+                        maxLength={maxLength}
                         activeLabel={false}
                     />
                     <div className={styles.charactersCount}>
-                        { 140 - suggestion.length } { intl.formatMessage({ id: "input.remaining_chars", defaultMessage: "remaining characters" }) }
+                        { maxLength - suggestion.length } { intl.formatMessage({ id: "input.remaining_chars", defaultMessage: "remaining characters" }) }
                     </div>
                     <div className={styles.suggestionInputSubtitle}>
                         <FormattedMessage id="suggestion.input_info" defaultMessage="The positions supported will be YES \/ NO. You can only post 5 suggestions at a time. Suggestions may not exceed 140 characters." />
