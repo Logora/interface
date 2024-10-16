@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, waitFor, fireEvent } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import { IntlProvider } from 'react-intl';
 import { IconProvider } from '@logora/debate.icons.icon_provider';
 import { ConfigProvider } from '@logora/debate.data.config_provider';
@@ -8,14 +8,12 @@ import { AuthContext } from '@logora/debate.auth.use_auth';
 import { ModalProvider } from '@logora/debate.dialog.modal';
 import { ListProvider } from '@logora/debate.list.list_provider';
 import { ToastProvider } from '@logora/debate.dialog.toast_provider';
-import * as regularIcons from '@logora/debate.icons.regular_icons';
 import { faker } from '@faker-js/faker';
-import SuggestionInput from './SuggestionInput';
 import { IdProvider } from "react-use-id-hook";
 import { BrowserRouter } from 'react-router-dom';
 import { InputProvider } from '@logora/debate.input.input_provider';
-
-
+import { SuggestionInput } from './SuggestionInput';
+import * as regularIcons from '@logora/debate.icons.regular_icons';
 
 const currentUser = {
     id: faker.datatype.number(),
@@ -23,8 +21,6 @@ const currentUser = {
     image_url: faker.image.avatar(),
     points: faker.datatype.number()
 };
-
-
 
 const httpClient = {
     post: () => {
@@ -36,32 +32,30 @@ const httpClient = {
 
 const data = dataProvider(httpClient, "https://mock.example.api");
 
-
-
 const Providers = ({ children }) => (
     <BrowserRouter>
-            <ConfigProvider >
-                <IconProvider library={regularIcons} >
-                    <IntlProvider locale="en">
-                        <DataProviderContext.Provider value={{ dataProvider: data }}>
-                            <AuthContext.Provider value={{ currentUser: currentUser, isLoggedIn: true }}>
-                                <ToastProvider>
-                                    <ModalProvider>
-                                        <ListProvider>
-                                            <IdProvider>
-                                                <InputProvider>
-                                                {children}
-                                                </InputProvider>
-                                            </IdProvider>
-                                        </ListProvider>
-                                    </ModalProvider>
-                                </ToastProvider>
-                            </AuthContext.Provider>
-                        </DataProviderContext.Provider>
-                    </IntlProvider>
-                </IconProvider>
-            </ConfigProvider>
-        </BrowserRouter>
+        <ConfigProvider >
+            <IconProvider library={regularIcons} >
+                <IntlProvider locale="en">
+                    <DataProviderContext.Provider value={{ dataProvider: data }}>
+                        <AuthContext.Provider value={{ currentUser: currentUser, isLoggedIn: true }}>
+                            <ToastProvider>
+                                <ModalProvider>
+                                    <ListProvider>
+                                        <IdProvider>
+                                            <InputProvider>
+                                            {children}
+                                            </InputProvider>
+                                        </IdProvider>
+                                    </ListProvider>
+                                </ModalProvider>
+                            </ToastProvider>
+                        </AuthContext.Provider>
+                    </DataProviderContext.Provider>
+                </IntlProvider>
+            </IconProvider>
+        </ConfigProvider>
+    </BrowserRouter>
 );
 
 const renderSuggestionInput = () => render(
