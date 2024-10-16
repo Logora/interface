@@ -152,7 +152,7 @@
     "chart/line_chart": {
         "name": "chart/line_chart",
         "scope": "logora.debate",
-        "version": "0.0.37",
+        "version": "0.0.38",
         "mainFile": "index.js",
         "rootDir": "src/components/chart/line_chart"
     },
