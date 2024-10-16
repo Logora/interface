@@ -22,7 +22,7 @@ export const SSOForm = ({ authType, providerName, loginUrl, signupUrl, termsUrl,
 			let params = parsedUrl.searchParams;
 			let originalParams = new URLSearchParams(location.search);
 			if (redirectParameter) {
-				params.append(redirectParameter, window.location.origin + location.pathname + location.hash + location.search);
+				params.append(redirectParameter, window.location.toString());
 			}
 			if (trackingParameter && trackingValue && originalParams.get("utm_campaign")) {
 				const trackingId = trackingValue + originalParams.get("utm_campaign");
