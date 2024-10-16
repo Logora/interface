@@ -151,3 +151,17 @@
 .replyTextEditorBox {
     @include pt(0, xs);
 }
+
+.guideMessage {
+    font-size: $font-size-small;
+    color: $text-secondary;
+    white-space: nowrap;
+    margin-top: 1rem; 
+    white-space: normal; 
+    word-break: break-word; 
+
+    a {
+        font-size: $font-size-small;
+        color: $text-secondary;
+    }
+}

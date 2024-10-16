@@ -258,6 +258,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel, debatePositi
 								isReply
 								avatarSize={40}
 								placeholder={intl.formatMessage({ id: "input.reply_input.your_answer", defaultMessage: "Your answer" })}
+								userGuideUrl={config?.provider?.userGuideUrl}
 							/>
 						</Suspense>
 					)}
