@@ -349,7 +349,7 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
                                     <div className={styles.guideMessage}>
                                         <FormattedMessage
                                             id="alert.guide_message "
-                                            defaultMessage="Comments are subject to moderation rules. Link here: "
+                                            defaultMessage={"Comments are subject to moderation rules. Link here: "}
                                         />
                                         <a href={userGuideUrl} target="_blank" >
                                             {userGuideUrl}
