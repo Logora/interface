@@ -4,6 +4,7 @@ import 'chart.js/auto';
 import { Line } from 'react-chartjs-2';
 import { Select } from '@logora/debate.input.select';
 import { Tag } from '@logora/debate.tag.tag';
+import { Icon } from '@logora/debate.icons.icon'
 import { Loader } from '@logora/debate.progress.loader';
 import styles from "./LineChart.module.scss";
 import StandardErrorBoundary from "@logora/debate.error.standard_error_boundary";
