@@ -9,13 +9,10 @@ import { ListProvider } from '@logora/debate.list.list_provider';
 import { ToastProvider } from '@logora/debate.dialog.toast_provider';
 import * as regularIcons from '@logora/debate.icons.regular_icons';
 import { faker } from '@faker-js/faker';
-import SuggestionInput from './SuggestionInput';
+import { SuggestionInput } from './SuggestionInput';
 import { IdProvider } from "react-use-id-hook";
 import { BrowserRouter } from 'react-router-dom';
 import { InputProvider } from '@logora/debate.input.input_provider';
-
-
-
 
 
 const currentUser = {
