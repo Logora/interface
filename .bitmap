@@ -674,6 +674,20 @@
         "mainFile": "index.js",
         "rootDir": "src/components/suggestion/suggestion_box"
     },
+    "suggestion/suggestion_input": {
+        "name": "suggestion/suggestion_input",
+        "scope": "",
+        "version": "",
+        "defaultScope": "logora.debate",
+        "mainFile": "index.js",
+        "rootDir": "src/components/suggestion/suggestion_input",
+        "config": {
+            "teambit.react/react-env@1.0.97": {},
+            "teambit.envs/envs": {
+                "env": "teambit.react/react-env"
+            }
+        }
+    },
     "summary/argument_summary_box": {
         "name": "summary/argument_summary_box",
         "scope": "logora.debate",
