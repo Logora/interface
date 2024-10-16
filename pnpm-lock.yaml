@@ -703,6 +703,12 @@ importers:
         specifier: ^13.4.0
         version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
 
+  src/components/suggestion/suggestion_input:
+    devDependencies:
+      '@testing-library/react':
+        specifier: ^13.4.0
+        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+
   src/components/summary/argument_summary_box:
     devDependencies:
       '@testing-library/react':
