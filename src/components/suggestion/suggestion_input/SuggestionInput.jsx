@@ -6,10 +6,10 @@ import { useInput } from "@logora/debate.input.input_provider";
 import { useList } from '@logora/debate.list.list_provider';
 import { useAuthRequired } from '@logora/debate.hooks.use_auth_required';
 import { useFormValidation } from '@logora/debate.forms.use_form_validation';
-import useSessionStorageState from '@rooks/use-sessionstorage-state';
 import { Button } from '@logora/debate.action.button';
 import { TextInput } from '@logora/debate.input.text_input';
 import { useToast } from '@logora/debate.dialog.toast_provider';
+import useSessionStorageState from '@rooks/use-sessionstorage-state';
 import cx from 'classnames';
 import styles from './SuggestionInput.module.scss';
 
