@@ -66,7 +66,7 @@ const Providers = ({ children }) => (
 
 const renderSuggestionInput = () => render(
     <Providers>
-        <SuggestionInput />
+        <SuggestionInput/>
     </Providers>
 );
 
@@ -83,7 +83,5 @@ describe('SuggestionInput', () => {
         const button = getByText('Submit');
         expect(button).toBeInTheDocument();
     });
-
-  
 
 });
