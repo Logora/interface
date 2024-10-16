@@ -14,15 +14,12 @@ import { IdProvider } from "react-use-id-hook";
 import { BrowserRouter } from 'react-router-dom';
 import { InputProvider } from '@logora/debate.input.input_provider';
 
-
 const currentUser = {
     id: faker.datatype.number(),
     full_name: faker.name.fullName(),
     image_url: faker.image.avatar(),
     points: faker.datatype.number()
 };
-
-
 
 const httpClient = {
     post: () => {
@@ -33,9 +30,6 @@ const httpClient = {
 };
 
 const data = dataProvider(httpClient, "https://mock.example.api");
-
-
-
 
 export const DefaultSuggestionInput = () => {
     return (
@@ -79,6 +73,34 @@ export const DisabledSuggestionInput = () => {
                                             <IdProvider>
                                                 <InputProvider>
                                                     <SuggestionInput disabled={true} />
+                                                </InputProvider>
+                                            </IdProvider>
+                                        </ListProvider>
+                                    </ModalProvider>
+                                </ToastProvider>
+                            </AuthContext.Provider>
+                        </DataProviderContext.Provider>
+                    </IntlProvider>
+                </IconProvider>
+            </ConfigProvider>
+        </BrowserRouter>
+    );
+};
+
+export const SuggestionInputMaxLength = () => {
+    return (
+        <BrowserRouter>
+            <ConfigProvider >
+                <IconProvider library={regularIcons} >
+                    <IntlProvider locale="en">
+                        <DataProviderContext.Provider value={{ dataProvider: data }}>
+                            <AuthContext.Provider value={{ currentUser: currentUser, isLoggedIn: true }}>
+                                <ToastProvider>
+                                    <ModalProvider>
+                                        <ListProvider>
+                                            <IdProvider>
+                                                <InputProvider>
+                                                    <SuggestionInput disabled={true} maxLength={30} />
                                                 </InputProvider>
                                             </IdProvider>
                                         </ListProvider>

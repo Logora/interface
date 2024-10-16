@@ -77,5 +77,4 @@ describe('SuggestionInput', () => {
         const button = getByText('Submit');
         expect(button).toBeInTheDocument();
     });
-
 });
