@@ -159,9 +159,9 @@
     margin-top: 1rem; 
     white-space: normal; 
     word-break: break-word; 
-
     a {
         font-size: $font-size-small;
         color: $announcement-text-primary !important;
+        text-decoration: underline; 
     }
 }
