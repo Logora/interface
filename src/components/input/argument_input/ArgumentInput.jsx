@@ -349,11 +349,15 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
                                     <div className={styles.guideMessage}>
                                         <FormattedMessage
                                             id="alert.guide_message"
-                                            defaultMessage={"Comments are subject to moderation rules. Link here: "}
+                                            defaultMessage={"Contributions must comply with our {userCharter}."}
+                                            values={{
+                                                userCharter: (
+                                                    <a className={styles.guideMessage} href={userGuideUrl} target="_blank" >
+                                                       <FormattedMessage id="alert.user_charter" defaultMessage="user charter" />
+                                                    </a>
+                                                ),
+                                            }}
                                         />
-                                        <a href={userGuideUrl} target="_blank" >
-                                            {userGuideUrl}
-                                        </a>
                                     </div>
                                 )}
                             </div>
