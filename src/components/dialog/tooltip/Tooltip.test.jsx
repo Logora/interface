@@ -30,6 +30,17 @@ describe('Tooltip', () => {
         const renderedTooltip = document.querySelector('.tooltipText.tooltipTextTop');
         expect(renderedTooltip).toBeTruthy();
     });
+
+    it("should apply the custom className correctly", () => {
+        const { container } = render(
+            <Tooltip text="Hover tooltip" className="custom-tooltip">
+                <span>Child</span>
+            </Tooltip>
+        );
+        const tooltipContainer = container.querySelector(".custom-tooltip");
+        expect(tooltipContainer).toBeTruthy();
+        expect(tooltipContainer).toHaveClass("custom-tooltip");
+    });
 });
 
 

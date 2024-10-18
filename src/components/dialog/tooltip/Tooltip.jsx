@@ -3,7 +3,7 @@ import styles from "./Tooltip.module.scss";
 import cx from "classnames";
 import PropTypes from "prop-types";
 
-export const Tooltip = ({ position = "bottom", text, onClickText, children }) => {
+export const Tooltip = ({ position = "bottom", text, onClickText, children, className }) => {
     const [clicked, setClicked] = useState(false);
 
     const switchText = () => {
@@ -15,7 +15,9 @@ export const Tooltip = ({ position = "bottom", text, onClickText, children }) =>
 
     if(text) {
       return (
-        <div className={styles.tooltipChild} onClick={onClickText ? switchText : null}>
+        <div 
+        className={cx(className, styles.tooltipChild)} 
+        onClick={onClickText ? switchText : null}>
           { children }
           <span className={cx(styles.tooltipText, { [styles.tooltipTextTop]: position === "top", [styles.tooltipTextLeft]: position === "left", [styles.tooltipTextRight]: position === "right" })}>
             { clicked ? onClickText : text }
@@ -39,6 +41,8 @@ Tooltip.propTypes = {
     onClickText: PropTypes.string,
     /** Tooltip position, can be `top`, `bottom`, `left` or `right` */
     position: PropTypes.string,
-    /**  Component on which the tooltip is displayed */
+    /** Component on which the tooltip is displayed */
     children: PropTypes.node,
+    /** Class name to style the tooltip */
+    className: PropTypes.string,
 };
