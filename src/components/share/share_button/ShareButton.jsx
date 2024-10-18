@@ -61,7 +61,7 @@ export const ShareButton = ({ showText, shareUrl, shareTitle, shareText = false,
 				className={cx(styles.popoverWrapper, { [styles.popoverActive]: popoverActive})}
 			>
 				<Icon name="share" height={iconSize} width={iconSize} />
-				<div className={styles.shareButtonText}>{showText && intl.formatMessage({ id: "share.share_button.text", defaultMessage: "Share" })}</div>
+				{ showText && <div className={styles.shareButtonText}>{intl.formatMessage({ id: "share.share_button.text", defaultMessage: "Share" })}</div> }
 				<div ref={popoverContentRef} className={cx(styles.popoverContent, {[styles.popoverContentWithCode]: showShareCode})}>
 					{ popoverActive && <ShareBox shareUrl={shareUrlBuild} shareTitle={shareTitle} shareText={shareText} showShareCode={showShareCode} shareCode={shareCode} tooltipPosition={tooltipPosition} /> }
 				</div>

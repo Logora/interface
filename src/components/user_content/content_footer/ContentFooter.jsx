@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useRef, useEffect, useState } from "react";
 import { useConfig } from '@logora/debate.data.config_provider';
 import { useAuth } from "@logora/debate.auth.use_auth";
 import { useInput } from "@logora/debate.input.input_provider";
@@ -46,6 +46,8 @@ export const ContentFooter = ({ resource,
 	const { setInputContent } = useInput() || {};
 	const { reportContent } = useReportContent(reportType, resource.id);
 	const { deleteContent } = useDeleteContent(resource, deleteType, deleteListId, softDelete);
+    const containerRef = useRef(null);
+    const [containerWidth, setContainerWidth] = useState(0);
 
 	const currentUserIsAuthor = () => {
 		return resource.author.id === currentUser.id;
@@ -78,8 +80,27 @@ export const ContentFooter = ({ resource,
         );
     }
 
+    useEffect(() => {
+        const resizeObserver = new ResizeObserver(entries => {
+            for (let entry of entries) {
+                const newWidth = entry.contentRect.width;
+                setContainerWidth(newWidth);
+            }
+        });
+    
+        if (containerRef.current) {
+            resizeObserver.observe(containerRef.current);
+        }
+    
+        return () => {
+            if (containerRef.current) {
+                resizeObserver.unobserve(containerRef.current);
+            }
+        };
+    }, []);
+
 	return (
-		<div className={cx(styles.container, containerClassName)}>
+		<div ref={containerRef} className={cx(styles.container, containerClassName)}>
             <div className={cx(styles.voteAction, voteActionClassName)} data-tid={"action_vote_argument"}>
                 { children }
             </div>
@@ -92,7 +113,7 @@ export const ContentFooter = ({ resource,
                         data-testid="action-reply-button"
                     >
                         <Icon name="reply" data-tid={"action_reply_argument"} height={17} width={17} />
-                        <span className={styles.replyText}>{intl.formatMessage({ id:"user_content.content_footer.reply", defaultMessage: "Reply" })}</span>
+                        { containerWidth > 300 && <span className={styles.replyText}>{intl.formatMessage({ id:"user_content.content_footer.reply", defaultMessage: "Reply" })}</span> }
                     </div>
                 </div>
             }
@@ -103,7 +124,7 @@ export const ContentFooter = ({ resource,
                     shareText={shareText}
                     showShareCode={showShareCode}
                     shareCode={shareCode}
-                    showText={showShareText}
+                    showText={containerWidth > 300 && showShareText}
                     iconSize={17}
                 />
             }
