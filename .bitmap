@@ -61,14 +61,14 @@
     "argument/argument": {
         "name": "argument/argument",
         "scope": "logora.debate",
-        "version": "0.0.195",
+        "version": "0.0.196",
         "mainFile": "index.js",
         "rootDir": "src/components/argument/argument"
     },
     "argument/top_arguments": {
         "name": "argument/top_arguments",
         "scope": "logora.debate",
-        "version": "0.0.89",
+        "version": "0.0.90",
         "mainFile": "index.js",
         "rootDir": "src/components/argument/top_arguments"
     },
@@ -166,7 +166,7 @@
     "consultation/consultation_box": {
         "name": "consultation/consultation_box",
         "scope": "logora.debate",
-        "version": "0.0.67",
+        "version": "0.0.68",
         "mainFile": "index.js",
         "rootDir": "src/components/consultation/consultation_box"
     },
@@ -194,7 +194,7 @@
     "debate/debate_box": {
         "name": "debate/debate_box",
         "scope": "logora.debate",
-        "version": "0.0.87",
+        "version": "0.0.88",
         "mainFile": "index.js",
         "rootDir": "src/components/debate/debate_box"
     },
@@ -355,7 +355,7 @@
     "hooks/use_responsive": {
         "name": "hooks/use_responsive",
         "scope": "logora.debate",
-        "version": "0.0.20",
+        "version": "0.0.21",
         "mainFile": "index.js",
         "rootDir": "src/components/hooks/use_responsive"
     },
@@ -404,7 +404,7 @@
     "input/argument_input": {
         "name": "input/argument_input",
         "scope": "logora.debate",
-        "version": "0.0.137",
+        "version": "0.0.138",
         "mainFile": "index.js",
         "rootDir": "src/components/input/argument_input"
     },
@@ -495,7 +495,7 @@
     "list/paginated_list": {
         "name": "list/paginated_list",
         "scope": "logora.debate",
-        "version": "0.0.123",
+        "version": "0.0.124",
         "mainFile": "index.js",
         "rootDir": "src/components/list/paginated_list"
     },
@@ -523,7 +523,7 @@
     "notification/notification_menu": {
         "name": "notification/notification_menu",
         "scope": "logora.debate",
-        "version": "0.0.25",
+        "version": "0.0.26",
         "mainFile": "index.js",
         "rootDir": "src/components/notification/notification_menu"
     },
@@ -565,7 +565,7 @@
     "share/share_button": {
         "name": "share/share_button",
         "scope": "logora.debate",
-        "version": "0.0.89",
+        "version": "0.0.90",
         "mainFile": "index.js",
         "rootDir": "src/components/share/share_button"
     },
@@ -600,7 +600,7 @@
     "source/context_source_list": {
         "name": "source/context_source_list",
         "scope": "logora.debate",
-        "version": "0.0.60",
+        "version": "0.0.61",
         "mainFile": "index.js",
         "rootDir": "src/components/source/context_source_list"
     },
@@ -663,14 +663,14 @@
     "suggestion/suggestion_banner": {
         "name": "suggestion/suggestion_banner",
         "scope": "logora.debate",
-        "version": "0.0.5",
+        "version": "0.0.6",
         "mainFile": "index.js",
         "rootDir": "src/components/suggestion/suggestion_banner"
     },
     "suggestion/suggestion_box": {
         "name": "suggestion/suggestion_box",
         "scope": "logora.debate",
-        "version": "0.0.52",
+        "version": "0.0.53",
         "mainFile": "index.js",
         "rootDir": "src/components/suggestion/suggestion_box"
     },
@@ -768,7 +768,7 @@
     "user/update_user_info_modal": {
         "name": "user/update_user_info_modal",
         "scope": "logora.debate",
-        "version": "0.0.48",
+        "version": "0.0.49",
         "mainFile": "index.js",
         "rootDir": "src/components/user/update_user_info_modal"
     },
@@ -789,7 +789,7 @@
     "user_content/content_footer": {
         "name": "user_content/content_footer",
         "scope": "logora.debate",
-        "version": "0.0.84",
+        "version": "0.0.85",
         "mainFile": "index.js",
         "rootDir": "src/components/user_content/content_footer"
     },
