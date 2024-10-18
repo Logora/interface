@@ -16,7 +16,7 @@ export const ResponsiveProvider = ({ containerPath, containerWidth, children, is
     
 
     return (
-        <ResponsiveContext.Provider value={{ isMobile: isMobile || elementWidth <= 576, isTablet: !isMobile && elementWidth > 576, isDesktop: !isMobile && elementWidth >= 769 }}>
+        <ResponsiveContext.Provider value={{ elementWidth: elementWidth, isMobile: isMobile || elementWidth <= 576, isTablet: !isMobile && elementWidth > 576, isDesktop: !isMobile && elementWidth >= 769 }}>
             { children }
         </ResponsiveContext.Provider>
     )

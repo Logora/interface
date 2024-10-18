@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { ResponsiveContext } from './ResponsiveContext';
 
 export const useResponsive = () => {
-  const { isMobile, isTablet, isDesktop } = useContext(ResponsiveContext) || {};
+  const { isMobile, isTablet, isDesktop, elementWidth } = useContext(ResponsiveContext) || {};
 
-  return { isMobile, isTablet, isDesktop };
+  return { isMobile, isTablet, isDesktop, elementWidth };
 }

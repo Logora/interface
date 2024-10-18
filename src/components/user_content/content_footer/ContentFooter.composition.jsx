@@ -14,6 +14,7 @@ import { faker } from '@faker-js/faker';
 import { VoteButton } from '@logora/debate.vote.vote_button';
 import { UpDownVoteBox } from '@logora/debate.vote.up_down_vote_box';
 import { ProgressBar } from "@logora/debate.progress.progress_bar";
+import { ResponsiveProvider } from '@logora/debate.hooks.use_responsive';
 
 const vote = { 
     id: faker.datatype.number(),
@@ -63,32 +64,34 @@ export const DefaultContentFooter = () => {
                         <AuthContext.Provider value={{ currentUser: currentUser, isLoggedIn: true }}>
                             <ListProvider>
                                 <IconProvider library={regularIcons}>
-                                    <ModalProvider>
-                                        <ToastProvider>
-                                            <VoteProvider>
-                                                <ContentFooter 
-                                                    resource={resource}
-                                                    showActions
-                                                    shareButton
-                                                    enableReply
-                                                    shareUrl={"https://test.com"}
-                                                    shareTitle={"Share title"}
-                                                    shareText={"Share text"}
-                                                    showShareText
-                                                    showShareCode
-                                                    shareCode={"</>"}
-                                                >
-                                                    <VoteButton
-                                                        voteableType={"Message"}
-                                                        voteableId={45}
-                                                        totalUpvote={10}
-                                                        totalDownvote={0}
-                                                        disabled={false}
-                                                    />
-                                                </ContentFooter>
-                                            </VoteProvider>
-                                        </ToastProvider>
-                                    </ModalProvider>
+                                    <ResponsiveProvider elementWidth={1000} iMobile>
+                                        <ModalProvider>
+                                            <ToastProvider>
+                                                <VoteProvider>
+                                                    <ContentFooter 
+                                                        resource={resource}
+                                                        showActions
+                                                        shareButton
+                                                        enableReply
+                                                        shareUrl={"https://test.com"}
+                                                        shareTitle={"Share title"}
+                                                        shareText={"Share text"}
+                                                        showShareText
+                                                        showShareCode
+                                                        shareCode={"</>"}
+                                                    >
+                                                        <VoteButton
+                                                            voteableType={"Message"}
+                                                            voteableId={45}
+                                                            totalUpvote={10}
+                                                            totalDownvote={0}
+                                                            disabled={false}
+                                                        />
+                                                    </ContentFooter>
+                                                </VoteProvider>
+                                            </ToastProvider>
+                                        </ModalProvider>
+                                    </ResponsiveProvider>
                                 </IconProvider>
                             </ListProvider>
                         </AuthContext.Provider>
@@ -108,33 +111,35 @@ export const ContentFooterShareModal = () => {
                         <AuthContext.Provider value={{ currentUser: currentUser, isLoggedIn: true }}>
                             <ListProvider>
                                 <IconProvider library={regularIcons}>
-                                    <ModalProvider>
-                                        <ToastProvider>
-                                            <VoteProvider>
-                                                <ContentFooter 
-                                                    resource={resource}
-                                                    showActions
-                                                    shareModal
-                                                    enableReply
-                                                    shareUrl={"https://test.com"}
-                                                    shareTitle={"Share title"}
-                                                    shareText={"Share text"}
-                                                    showShareText
-                                                    showShareCode
-                                                    shareCode={"</>"}
-                                                    shareModalTitle={"Share content"}
-                                                >
-                                                    <VoteButton
-                                                        voteableType={"Message"}
-                                                        voteableId={45}
-                                                        totalUpvote={10}
-                                                        totalDownvote={0}
-                                                        disabled={false}
-                                                    />
-                                                </ContentFooter>
-                                            </VoteProvider>
-                                        </ToastProvider>
-                                    </ModalProvider>
+                                    <ResponsiveProvider>
+                                        <ModalProvider>
+                                            <ToastProvider>
+                                                <VoteProvider>
+                                                    <ContentFooter 
+                                                        resource={resource}
+                                                        showActions
+                                                        shareModal
+                                                        enableReply
+                                                        shareUrl={"https://test.com"}
+                                                        shareTitle={"Share title"}
+                                                        shareText={"Share text"}
+                                                        showShareText
+                                                        showShareCode
+                                                        shareCode={"</>"}
+                                                        shareModalTitle={"Share content"}
+                                                    >
+                                                        <VoteButton
+                                                            voteableType={"Message"}
+                                                            voteableId={45}
+                                                            totalUpvote={10}
+                                                            totalDownvote={0}
+                                                            disabled={false}
+                                                        />
+                                                    </ContentFooter>
+                                                </VoteProvider>
+                                            </ToastProvider>
+                                        </ModalProvider>
+                                    </ResponsiveProvider>
                                 </IconProvider>
                             </ListProvider>
                         </AuthContext.Provider>
@@ -154,34 +159,36 @@ export const ContentFooterUpDownVoteBox = () => {
                         <AuthContext.Provider value={{ currentUser: currentUser, isLoggedIn: true }}>
                             <ListProvider>
                                 <IconProvider library={regularIcons}>
-                                    <ModalProvider>
-                                        <ToastProvider>
-                                            <VoteProvider>
-                                                <ContentFooter 
-                                                    resource={resource}
-                                                    showActions
-                                                    shareModal
-                                                    upDownVoteBox
-                                                    shareUrl={"https://test.com"}
-                                                    shareTitle={"Share title"}
-                                                    shareText={"Share text"}
-                                                    voteableType={vote.voteable_type}
-                                                    showShareText
-                                                    showShareCode
-                                                    shareCode={"</>"}
-                                                    shareModalTitle={"Share content"}
-                                                >
-                                                    <UpDownVoteBox
-                                                        voteableType={"Message"}
-                                                        voteableId={45}
-                                                        totalUpvote={10}
-                                                        totalDownvote={5}
-                                                        disabled={false}
-                                                    />
-                                                </ContentFooter>
-                                            </VoteProvider>
-                                        </ToastProvider>
-                                    </ModalProvider>
+                                    <ResponsiveProvider>
+                                        <ModalProvider>
+                                            <ToastProvider>
+                                                <VoteProvider>
+                                                    <ContentFooter 
+                                                        resource={resource}
+                                                        showActions
+                                                        shareModal
+                                                        upDownVoteBox
+                                                        shareUrl={"https://test.com"}
+                                                        shareTitle={"Share title"}
+                                                        shareText={"Share text"}
+                                                        voteableType={vote.voteable_type}
+                                                        showShareText
+                                                        showShareCode
+                                                        shareCode={"</>"}
+                                                        shareModalTitle={"Share content"}
+                                                    >
+                                                        <UpDownVoteBox
+                                                            voteableType={"Message"}
+                                                            voteableId={45}
+                                                            totalUpvote={10}
+                                                            totalDownvote={5}
+                                                            disabled={false}
+                                                        />
+                                                    </ContentFooter>
+                                                </VoteProvider>
+                                            </ToastProvider>
+                                        </ModalProvider>
+                                    </ResponsiveProvider>
                                 </IconProvider>
                             </ListProvider>
                         </AuthContext.Provider>
@@ -201,34 +208,36 @@ export const ContentFooterDisabled = () => {
                         <AuthContext.Provider value={{ currentUser: currentUser, isLoggedIn: true }}>
                             <ListProvider>
                                 <IconProvider library={regularIcons}>
-                                    <ModalProvider>
-                                        <ToastProvider>
-                                            <VoteProvider>
-                                                <ContentFooter 
-                                                    resource={resource}
-                                                    disabled
-                                                    showActions
-                                                    shareModal
-                                                    enableReply
-                                                    shareUrl={"https://test.com"}
-                                                    shareTitle={"Share title"}
-                                                    shareText={"Share text"}
-                                                    showShareText
-                                                    showShareCode
-                                                    shareCode={"</>"}
-                                                    shareModalTitle={"Share content"}
-                                                >
-                                                    <VoteButton
-                                                        voteableType={"Message"}
-                                                        voteableId={45}
-                                                        totalUpvote={10}
-                                                        totalDownvote={0}
-                                                        disabled={true}
-                                                    />
-                                                </ContentFooter>
-                                            </VoteProvider>
-                                        </ToastProvider>
-                                    </ModalProvider>
+                                    <ResponsiveProvider>
+                                        <ModalProvider>
+                                            <ToastProvider>
+                                                <VoteProvider>
+                                                    <ContentFooter 
+                                                        resource={resource}
+                                                        disabled
+                                                        showActions
+                                                        shareModal
+                                                        enableReply
+                                                        shareUrl={"https://test.com"}
+                                                        shareTitle={"Share title"}
+                                                        shareText={"Share text"}
+                                                        showShareText
+                                                        showShareCode
+                                                        shareCode={"</>"}
+                                                        shareModalTitle={"Share content"}
+                                                    >
+                                                        <VoteButton
+                                                            voteableType={"Message"}
+                                                            voteableId={45}
+                                                            totalUpvote={10}
+                                                            totalDownvote={0}
+                                                            disabled={true}
+                                                        />
+                                                    </ContentFooter>
+                                                </VoteProvider>
+                                            </ToastProvider>
+                                        </ModalProvider>
+                                    </ResponsiveProvider>
                                 </IconProvider>
                             </ListProvider>
                         </AuthContext.Provider>
@@ -248,31 +257,33 @@ export const ContentFooterWithoutReply = () => {
                         <AuthContext.Provider value={{ currentUser: currentUser, isLoggedIn: true }}>
                             <ListProvider>
                                 <IconProvider library={regularIcons}>
-                                    <ModalProvider>
-                                        <ToastProvider>
-                                            <VoteProvider>
-                                                <ContentFooter 
-                                                    resource={resource}
-                                                    showActions
-                                                    shareButton
-                                                    shareUrl={"https://test.com"}
-                                                    shareTitle={"Share title"}
-                                                    shareText={"Share text"}
-                                                    showShareText
-                                                    showShareCode
-                                                    shareCode={"</>"}
-                                                >
-                                                    <VoteButton
-                                                        voteableType={"Message"}
-                                                        voteableId={45}
-                                                        totalUpvote={10}
-                                                        totalDownvote={0}
-                                                        disabled={false}
-                                                    />
-                                                </ContentFooter>
-                                            </VoteProvider>
-                                        </ToastProvider>
-                                    </ModalProvider>
+                                    <ResponsiveProvider>
+                                        <ModalProvider>
+                                            <ToastProvider>
+                                                <VoteProvider>
+                                                    <ContentFooter 
+                                                        resource={resource}
+                                                        showActions
+                                                        shareButton
+                                                        shareUrl={"https://test.com"}
+                                                        shareTitle={"Share title"}
+                                                        shareText={"Share text"}
+                                                        showShareText
+                                                        showShareCode
+                                                        shareCode={"</>"}
+                                                    >
+                                                        <VoteButton
+                                                            voteableType={"Message"}
+                                                            voteableId={45}
+                                                            totalUpvote={10}
+                                                            totalDownvote={0}
+                                                            disabled={false}
+                                                        />
+                                                    </ContentFooter>
+                                                </VoteProvider>
+                                            </ToastProvider>
+                                        </ModalProvider>
+                                    </ResponsiveProvider>
                                 </IconProvider>
                             </ListProvider>
                         </AuthContext.Provider>
@@ -292,34 +303,36 @@ export const ContentFooterLeftReply = () => {
                         <AuthContext.Provider value={{ currentUser: currentUser, isLoggedIn: true }}>
                             <ListProvider>
                                 <IconProvider library={regularIcons}>
-                                    <ModalProvider>
-                                        <ToastProvider>
-                                            <VoteProvider>
-                                                <ContentFooter 
-                                                    resource={resource}
-                                                    showActions
-                                                    shareModal
-                                                    shareUrl={"https://test.com"}
-                                                    shareTitle={"Share title"}
-                                                    shareText={"Share text"}
-                                                    showShareText
-                                                    showShareCode
-                                                    shareCode={"</>"}
-                                                    shareModalTitle={"Share content"}
-                                                    enableReply
-                                                    leftReply
-                                                >
-                                                    <VoteButton
-                                                        voteableType={"Message"}
-                                                        voteableId={45}
-                                                        totalUpvote={10}
-                                                        totalDownvote={0}
-                                                        disabled={false}
-                                                    />
-                                                </ContentFooter>
-                                            </VoteProvider>
-                                        </ToastProvider>
-                                    </ModalProvider>
+                                    <ResponsiveProvider>
+                                        <ModalProvider>
+                                            <ToastProvider>
+                                                <VoteProvider>
+                                                    <ContentFooter 
+                                                        resource={resource}
+                                                        showActions
+                                                        shareModal
+                                                        shareUrl={"https://test.com"}
+                                                        shareTitle={"Share title"}
+                                                        shareText={"Share text"}
+                                                        showShareText
+                                                        showShareCode
+                                                        shareCode={"</>"}
+                                                        shareModalTitle={"Share content"}
+                                                        enableReply
+                                                        leftReply
+                                                    >
+                                                        <VoteButton
+                                                            voteableType={"Message"}
+                                                            voteableId={45}
+                                                            totalUpvote={10}
+                                                            totalDownvote={0}
+                                                            disabled={false}
+                                                        />
+                                                    </ContentFooter>
+                                                </VoteProvider>
+                                            </ToastProvider>
+                                        </ModalProvider>
+                                    </ResponsiveProvider>
                                 </IconProvider>
                             </ListProvider>
                         </AuthContext.Provider>
@@ -339,24 +352,26 @@ export const ContentFooterProgressBar = () => {
                         <AuthContext.Provider value={{ currentUser: currentUser, isLoggedIn: true }}>
                             <ListProvider>
                                 <IconProvider library={regularIcons}>
-                                    <ModalProvider>
-                                        <ToastProvider>
-                                            <VoteProvider>
-                                                <ContentFooter 
-                                                    resource={resource}
-                                                    showActions
-                                                >
-                                                    <div>25/30 supports</div>
-                                                    <ProgressBar 
-                                                        progress={25} 
-                                                        goal={30}
+                                    <ResponsiveProvider>
+                                        <ModalProvider>
+                                            <ToastProvider>
+                                                <VoteProvider>
+                                                    <ContentFooter 
+                                                        resource={resource}
+                                                        showActions
                                                     >
-                                                        Nice progress !
-                                                    </ProgressBar>
-                                                </ContentFooter>
-                                            </VoteProvider>
-                                        </ToastProvider>
-                                    </ModalProvider>
+                                                        <div>25/30 supports</div>
+                                                        <ProgressBar 
+                                                            progress={25} 
+                                                            goal={30}
+                                                        >
+                                                            Nice progress !
+                                                        </ProgressBar>
+                                                    </ContentFooter>
+                                                </VoteProvider>
+                                            </ToastProvider>
+                                        </ModalProvider>
+                                    </ResponsiveProvider>
                                 </IconProvider>
                             </ListProvider>
                         </AuthContext.Provider>
@@ -376,33 +391,35 @@ export const ContentFooterWithoutEdition = () => {
                         <AuthContext.Provider value={{ currentUser: currentUser, isLoggedIn: true }}>
                             <ListProvider>
                                 <IconProvider library={regularIcons}>
-                                    <ModalProvider>
-                                        <ToastProvider>
-                                            <VoteProvider>
-                                                <ContentFooter 
-                                                    resource={resource}
-                                                    showActions
-                                                    shareButton
-                                                    enableReply
-                                                    shareUrl={"https://test.com"}
-                                                    shareTitle={"Share title"}
-                                                    shareText={"Share text"}
-                                                    showShareText
-                                                    showShareCode
-                                                    shareCode={"</>"}
-                                                    enableEdition={false}
-                                                >
-                                                    <VoteButton
-                                                        voteableType={"Message"}
-                                                        voteableId={45}
-                                                        totalUpvote={10}
-                                                        totalDownvote={0}
-                                                        disabled={false}
-                                                    />
-                                                </ContentFooter>
-                                            </VoteProvider>
-                                        </ToastProvider>
-                                    </ModalProvider>
+                                    <ResponsiveProvider>
+                                        <ModalProvider>
+                                            <ToastProvider>
+                                                <VoteProvider>
+                                                    <ContentFooter 
+                                                        resource={resource}
+                                                        showActions
+                                                        shareButton
+                                                        enableReply
+                                                        shareUrl={"https://test.com"}
+                                                        shareTitle={"Share title"}
+                                                        shareText={"Share text"}
+                                                        showShareText
+                                                        showShareCode
+                                                        shareCode={"</>"}
+                                                        enableEdition={false}
+                                                    >
+                                                        <VoteButton
+                                                            voteableType={"Message"}
+                                                            voteableId={45}
+                                                            totalUpvote={10}
+                                                            totalDownvote={0}
+                                                            disabled={false}
+                                                        />
+                                                    </ContentFooter>
+                                                </VoteProvider>
+                                            </ToastProvider>
+                                        </ModalProvider>
+                                    </ResponsiveProvider>
                                 </IconProvider>
                             </ListProvider>
                         </AuthContext.Provider>
@@ -422,33 +439,35 @@ export const ContentFooterWithoutDeletion = () => {
                         <AuthContext.Provider value={{ currentUser: currentUser, isLoggedIn: true }}>
                             <ListProvider>
                                 <IconProvider library={regularIcons}>
-                                    <ModalProvider>
-                                        <ToastProvider>
-                                            <VoteProvider>
-                                                <ContentFooter 
-                                                    resource={resource}
-                                                    showActions
-                                                    shareButton
-                                                    enableReply
-                                                    shareUrl={"https://test.com"}
-                                                    shareTitle={"Share title"}
-                                                    shareText={"Share text"}
-                                                    showShareText
-                                                    showShareCode
-                                                    shareCode={"</>"}
-                                                    enableDeletion={false}
-                                                >
-                                                    <VoteButton
-                                                        voteableType={"Message"}
-                                                        voteableId={45}
-                                                        totalUpvote={10}
-                                                        totalDownvote={0}
-                                                        disabled={false}
-                                                    />
-                                                </ContentFooter>
-                                            </VoteProvider>
-                                        </ToastProvider>
-                                    </ModalProvider>
+                                    <ResponsiveProvider>
+                                        <ModalProvider>
+                                            <ToastProvider>
+                                                <VoteProvider>
+                                                    <ContentFooter 
+                                                        resource={resource}
+                                                        showActions
+                                                        shareButton
+                                                        enableReply
+                                                        shareUrl={"https://test.com"}
+                                                        shareTitle={"Share title"}
+                                                        shareText={"Share text"}
+                                                        showShareText
+                                                        showShareCode
+                                                        shareCode={"</>"}
+                                                        enableDeletion={false}
+                                                    >
+                                                        <VoteButton
+                                                            voteableType={"Message"}
+                                                            voteableId={45}
+                                                            totalUpvote={10}
+                                                            totalDownvote={0}
+                                                            disabled={false}
+                                                        />
+                                                    </ContentFooter>
+                                                </VoteProvider>
+                                            </ToastProvider>
+                                        </ModalProvider>
+                                    </ResponsiveProvider>
                                 </IconProvider>
                             </ListProvider>
                         </AuthContext.Provider>
