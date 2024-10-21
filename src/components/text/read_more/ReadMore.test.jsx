@@ -75,3 +75,25 @@ it('should show all content when clicking on "Read more" if url is not provided'
     expect(screen.getByText(text + "...")).toBeTruthy();
     expect(readLessButton).toBeTruthy();
 });
+
+it('should toggle content when clicking on text', () => {
+    render(
+        <ReadMore 
+            content={text}
+            contentCharCount={250}
+            readMoreText="Read more"
+            readLessText="Read less"
+        />
+    );
+    const slicedText = text.slice(0, 250) + "...";
+    const contentElement = screen.getByText(slicedText);
+    expect(contentElement).toBeTruthy();
+
+    fireEvent.click(contentElement);
+    expect(screen.getByText(text + "...")).toBeTruthy();
+    expect(screen.getByText("Read less")).toBeTruthy();
+
+    fireEvent.click(contentElement);
+    expect(screen.getByText(slicedText)).toBeTruthy();
+    expect(screen.getByText("Read more")).toBeTruthy();
+});
