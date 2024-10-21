@@ -7,7 +7,6 @@
 .tooltipText {
     width: 120px;
     visibility: hidden;
-    background-color: $text-secondary;
     color: $background-color-primary;
     text-align: center;
     border-radius: $box-border-radius;
@@ -21,6 +20,16 @@
     transition: opacity 0.3s;
     font-weight: $font-weight-normal !important;
     font-size: $font-size-small !important;
+    
+    &.info {
+        background-color: $text-secondary !important; 
+    }
+    &.success {
+        background-color: $success-primary !important; 
+    }
+    &.error {
+        background-color: $cancel-primary !important;
+    }
 }
 
 //Arrow
@@ -30,12 +39,19 @@
     margin-left: -5px;
     border-width: 5px;
     border-style: solid;
-    border-color: $text-secondary transparent transparent transparent;
     top: -10px;
     left: 50%;
     transform: rotate(180deg);
 }
-
+.tooltipText.info::after {
+    border-color: $text-secondary transparent transparent transparent; 
+}
+.tooltipText.success::after {
+    border-color: $success-primary transparent transparent transparent; 
+}
+.tooltipText.error::after {
+    border-color: $cancel-primary transparent transparent transparent;
+}
 .tooltipChild:hover .tooltipText {
     visibility: visible;
     opacity: 1;    
