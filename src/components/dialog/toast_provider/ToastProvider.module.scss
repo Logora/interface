@@ -9,5 +9,6 @@
     }
     @include media-breakpoint-up(sm) {
         min-width: 400px;
+        z-index: 1000002 !important;
     }
 }
