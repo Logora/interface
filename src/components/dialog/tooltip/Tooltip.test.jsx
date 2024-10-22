@@ -41,8 +41,27 @@ describe('Tooltip', () => {
         expect(tooltipContainer).toBeTruthy();
         expect(tooltipContainer).toHaveClass("custom-tooltip");
     });
+    
+    it('should render with info variant', () => {
+        const { getByText } = render(<Tooltip text="Info tooltip" className="info">Child</Tooltip>);
+        fireEvent.mouseOver(getByText(/child/i));
+        expect(getByText(/info tooltip/i)).toBeTruthy();
+        expect(document.querySelector('.tooltipText.info')).toBeTruthy();
+    });
+
+    it('should render with success variant', () => {
+        const { getByText } = render(<Tooltip text="Success tooltip" variant="success">Child</Tooltip>);
+        fireEvent.mouseOver(getByText(/child/i));
+        expect(getByText(/success tooltip/i)).toBeTruthy();
+        expect(document.querySelector('.tooltipText.success')).toBeTruthy();
+    });
+
+    it('should render with error variant', () => {
+        const { getByText } = render(<Tooltip text="Error tooltip" variant="error">Child</Tooltip>);
+        fireEvent.mouseOver(getByText(/child/i));
+        expect(getByText(/error tooltip/i)).toBeTruthy();
+        expect(document.querySelector('.tooltipText.error')).toBeTruthy();
+    });
+
 });
-
-
-
 
