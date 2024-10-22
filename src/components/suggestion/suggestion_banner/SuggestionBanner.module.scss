@@ -4,9 +4,8 @@
 @import '~@logora/debate.styles.display/_display.scss';
 
 .suggestionBannerContainer {
-    display: flex !important;
-    @include flex-direction(column, xs);
-    @include flex-direction(row, md);
+    display: flex ;
+    flex-wrap: wrap !important;
     box-shadow: $box-shadow;
     border: $box-border-main-container;
     color: $text-primary;
@@ -56,7 +55,7 @@
 }
 
 .suggestionBannerList {
-    width: 100%;
+   flex-grow: 1;
 }
 
 .suggestionBannerButton {
