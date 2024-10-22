@@ -4,11 +4,11 @@
 
 .toaster {
     font-family: $font-family;
+    z-index: 1000002 !important;
     @include media-breakpoint-down(sm) {
         @include m(2, xs);
     }
     @include media-breakpoint-up(sm) {
         min-width: 400px;
-        z-index: 1000002 !important;
     }
 }
