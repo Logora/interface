@@ -4,7 +4,7 @@ import { useConfig } from '@logora/debate.data.config_provider';
 import { useIntl, FormattedMessage } from "react-intl";
 import { useTranslatedContent } from '@logora/debate.translation.translated_content';
 import { ContentHeader } from '@logora/debate.user_content.content_header';
-import { ExpandableText } from '@logora/debate.text.expandable_text';
+import { ReadMore } from '@logora/debate.text.read_more';
 import { Icon } from '@logora/debate.icons.icon';
 import { lexicalToHtml } from "@logora/debate.input.text_editor";
 import { TranslationButton } from '@logora/debate.translation.translation_button';
@@ -23,7 +23,7 @@ import styles from "./Argument.module.scss";
 const ArgumentInput = lazy(() => import('@logora/debate.input.argument_input'));
 import PropTypes from "prop-types";
 
-export const Argument = ({ argument, argumentReplies, nestingLevel, debatePositions, disableLinks, replyToArgument, flashParent, expandable, disabled = false, isComment, hideReplies, debateName, vote, fixedContentHeight, enableEdition = true, deleteListId }) => {
+export const Argument = ({ argument, argumentReplies, nestingLevel, debatePositions, disableLinks, replyToArgument, flashParent, disabled = false, isComment, hideReplies, debateName, vote, fixedContentHeight, enableEdition = true, deleteListId }) => {
 	const [expandReplies, setExpandReplies] = useState(false);
 	const [flash, setFlash] = useState(false);
 	const [startReplyInput, setStartReplyInput] = useState(false);
@@ -79,8 +79,8 @@ export const Argument = ({ argument, argumentReplies, nestingLevel, debatePositi
 
 	const displayRepliesThread = () => {
 		let filteredReplies = argumentReplies && argumentReplies.filter((reply) => reply.reply_to_id == argument.id);
-		if (filteredReplies.length > 0) { 
-			setExtraReplies(filteredReplies); 
+		if (filteredReplies.length > 0) {
+			setExtraReplies(filteredReplies);
 		}
 	};
 
@@ -123,7 +123,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel, debatePositi
 				<ContentHeader
 					selectedContent={argument.score == 99}
 					author={argument.author}
-					tag={(argument.author.role == "editor"|| argument.author.role == "moderator")  && argument.is_reply ? null : position.translatedContent}
+					tag={(argument.author.role == "editor" || argument.author.role == "moderator") && argument.is_reply ? null : position.translatedContent}
 					date={argument.created_at}
 					tagClassName={styles[`headerPosition-${argument.position && debatePositions && debatePositions.map((e) => e.id).indexOf(argument.position.id) + 1}`]}
 					disableLinks={disableLinks}
@@ -156,25 +156,22 @@ export const Argument = ({ argument, argumentReplies, nestingLevel, debatePositi
 									/>
 								</div>
 								:
-								<ExpandableText
-									expandable={expandable}
-									expandText={intl.formatMessage({ id: "action.read_more", defaultMessage: "Read more" })}
-									collapseText={intl.formatMessage({ id: "action.read_less", defaultMessage: "Read less" })}
-									isReply={argument.is_reply}
+								<ReadMore
+									content={richContent && !content.isTranslated ? richContent : content.translatedContent}
+									readMoreText={intl.formatMessage({ id: "action.read_more", defaultMessage: "Read more" })}
+									readLessText={intl.formatMessage({ id: "action.read_less", defaultMessage: "Read less" })}
+									contentCharCount={150}  
 								>
-									{argument.edited_at && <div className={styles.edited}>{intl.formatMessage({ id: "argument.argument.updated", defaultMessage: "Updated argument" })}</div>}
-									{richContent && !content.isTranslated ? (
-										<div
-											className={styles.argumentContent}
-											dangerouslySetInnerHTML={{ __html: richContent }}
-										></div>
-									) : (
-										<div className={styles.argumentContent}>{content.translatedContent}</div>
+									{argument.edited_at && (
+										<div className={styles.edited}>
+											{intl.formatMessage({ id: "argument.argument.updated", defaultMessage: "Updated argument" })}
+										</div>
 									)}
-									{content.isTranslated &&
+									{content.isTranslated && (
 										<TranslationButton language={argument.language} callback={() => content.toggleContent()} />
-									}
-								</ExpandableText>
+									)}
+								</ReadMore>
+
 							}
 						</div>
 						{(!argument.sources || argument.sources.length === 0) ? null : (
@@ -185,7 +182,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel, debatePositi
 				{!argument.is_deleted &&
 					<ContentFooter
 						resource={argument}
-                    	disabled={disabled || (!isLoggedIn && config?.actions?.disableInputForVisitor === true)}
+						disabled={disabled || (!isLoggedIn && config?.actions?.disableInputForVisitor === true)}
 						reportType={"Message"}
 						softDelete={config.actions?.softDelete}
 						deleteType={"messages"}
@@ -262,12 +259,12 @@ export const Argument = ({ argument, argumentReplies, nestingLevel, debatePositi
 							/>
 						</Suspense>
 					)}
-					{ extraReplies?.length > 0 && expandReplies &&
+					{extraReplies?.length > 0 && expandReplies &&
 						<div className={styles.repliesList}>
-							{ extraReplies.map(r => displayReply(r)) }
+							{extraReplies.map(r => displayReply(r))}
 						</div>
 					}
-					{ expandReplies &&
+					{expandReplies &&
 						<div className={styles.repliesList}>
 							<VotePaginatedList
 								voteableType={"Message"}
@@ -281,13 +278,13 @@ export const Argument = ({ argument, argumentReplies, nestingLevel, debatePositi
 								resourcePropName={'argument'}
 								transformData={(reply) => transformReplies(reply)}
 							>
-								{ displayReply(argument) }
+								{displayReply(argument)}
 							</VotePaginatedList>
 						</div>
 					}
-					{ extraReplies?.length > 0 && !expandReplies &&
+					{extraReplies?.length > 0 && !expandReplies &&
 						<div className={styles.repliesList}>
-							{ argument.number_replies > 1 &&
+							{argument.number_replies > 1 &&
 								<div className={styles.readMoreLink}>
 									<Button
 										role="link"
@@ -323,10 +320,8 @@ Argument.propTypes = {
 	replyToArgument: PropTypes.object,
 	/** Flash border of parent argument */
 	flashParent: PropTypes.func,
-	/** If true, content is expandable */
-    expandable: PropTypes.bool,
 	/** If true, disabled mode in argument */
-    disabled: PropTypes.bool,
+	disabled: PropTypes.bool,
 	/** If true, enabled comment styles */
 	isComment: PropTypes.bool,
 	/** If true, hide replies */
