@@ -16,7 +16,7 @@
 
 .dropdownList {
 	position: absolute;
-	z-index: 3;
+	z-index: 99999;
 	background: $background-color-primary;
 	box-shadow: $box-shadow;
 	border: $box-border;
