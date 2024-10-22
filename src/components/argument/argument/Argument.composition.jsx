@@ -152,7 +152,6 @@ export const ExpandableArgument = () => (
                 debatePositions={debatePositions}
                 debateName={debateName}
                 nestingLevel={0}
-                expandable
             />
         </Providers>
     </div>
@@ -166,7 +165,6 @@ export const ExpandedArgument = () => (
                 debatePositions={debatePositions}
                 debateName={debateName}
                 nestingLevel={0}
-                expandable={false}
             />
         </Providers>
     </div>
