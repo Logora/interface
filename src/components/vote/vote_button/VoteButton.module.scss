@@ -14,7 +14,7 @@
     font-weight: $font-weight-bold;
     color: $call-primary;
     & svg {
-        fill: $call-primary;
+        fill: $call-primary !important;
         fill-rule: evenodd;
     }
 }
