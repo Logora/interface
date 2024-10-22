@@ -4,7 +4,7 @@
 @import '~@logora/debate.styles.display/_display.scss';
 
 .suggestionBannerContainer {
-    display: flex ;
+    display: flex !important;
     flex-wrap: wrap !important;
     box-shadow: $box-shadow;
     border: $box-border-main-container;
