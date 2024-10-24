@@ -10,7 +10,7 @@ export const DefaultReadMore = () => {
         <ReadMore 
             content={text}
             contentCharCount={250}
-            to={url}
+            lineCount={4}
             readMoreText="Read more"
             readLessText="Read less"
             target="_top"
@@ -34,21 +34,7 @@ export const LineClampedReadMore = () => {
     )
 }
 
-export const NextLineReadMore = () => {
-    return (
-        <ReadMore 
-            content={text}
-            contentCharCount={250}
-            to={url}
-            nextLine={true}
-            nextLineSpacing={30}
-            readMoreText="Read more"
-            readLessText="Read less"
-            target="_top"
-            external
-        />
-    )
-}
+
 
 export const ButtonReadMore = () => {
     return (
@@ -63,12 +49,14 @@ export const ButtonReadMore = () => {
     )
 }
 
-export const ButtonNextLineReadMore = () => {
+
+export const ExpandableReadMore = () => {
     return (
         <ReadMore 
             content={text}
             contentCharCount={250}
-            nextLine={true}
+            to={url}
+            expandable={false}
             readMoreText="Read more"
             readLessText="Read less"
             target="_top"
