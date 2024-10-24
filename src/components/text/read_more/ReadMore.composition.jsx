@@ -56,11 +56,11 @@ export const ExpandableReadMore = () => {
             content={text}
             contentCharCount={250}
             to={url}
+            expandable={false}
             readMoreText="Read more"
             readLessText="Read less"
             target="_top"
             external
-            expandable={false}
         />
     )
 }
