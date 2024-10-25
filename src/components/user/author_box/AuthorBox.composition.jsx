@@ -17,8 +17,8 @@ const author = {
   occupation: faker.vehicle.bicycle(),
   last_activity: faker.date.recent(),
   description: faker.name.jobTitle(),
-  is_expert: false
 };
+
 
 const routes = {
   userShowLocation: new Location('espace-debat/user/:userSlug', { userSlug: '' })
@@ -35,7 +35,7 @@ export const DefaultAuthorBox = () => {
               avatarUrl={author.image_url}
               slug={author.hash_id}
               points={author.points}
-              isExpert={author.is_expert}
+              showBadge={false}
             />
           </IconProvider>
         </IntlProvider>
@@ -55,7 +55,7 @@ export const AuthorBoxWithoutLinks = () => {
               avatarUrl={author.image_url}
               slug={author.hash_id}
               points={author.points}
-              isExpert={author.is_expert}
+              showBadge={false}
               disableLinks
             />
           </IconProvider>
@@ -116,7 +116,7 @@ export const AuthorBoxExpert = () => {
               avatarUrl={author.image_url}
               slug={author.hash_id}
               points={author.points}
-              isExpert={true}
+              showBadge={true}
             />
           </IconProvider>
         </IntlProvider>
@@ -137,6 +137,46 @@ export const AuthorBoxDeletedUser = () => {
               slug={author.hash_id}
               points={author.points}
               isDeleted={true}
+            />
+          </IconProvider>
+        </IntlProvider>
+      </ConfigProvider>
+    </BrowserRouter>
+  );
+};
+
+export const AuthorBoxWithoutPoints = () => {
+  return (
+    <BrowserRouter>
+      <ConfigProvider routes={{ ...routes }}>
+        <IntlProvider locale="en">
+          <IconProvider library={regularIcons}>
+            <AuthorBox 
+              fullName={author.full_name}
+              avatarUrl={author.image_url}
+              slug={author.hash_id}
+              points={null}
+              showBadge={true}
+            />
+          </IconProvider>
+        </IntlProvider>
+      </ConfigProvider>
+    </BrowserRouter>
+  );
+};
+
+export const AuthorBoxWithLang = () => {
+  return (
+    <BrowserRouter>
+      <ConfigProvider routes={{ ...routes }}>
+        <IntlProvider locale="en">
+          <IconProvider library={regularIcons}>
+            <AuthorBox 
+              fullName={author.full_name}
+              avatarUrl={author.image_url}
+              slug={author.hash_id}
+              language={"fr-CH"}
+              showBadge={false}
             />
           </IconProvider>
         </IntlProvider>

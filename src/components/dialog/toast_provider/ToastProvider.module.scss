@@ -4,6 +4,7 @@
 
 .toaster {
     font-family: $font-family;
+    z-index: 1000002 !important;
     @include media-breakpoint-down(sm) {
         @include m(2, xs);
     }

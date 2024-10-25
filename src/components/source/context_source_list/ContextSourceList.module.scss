@@ -14,14 +14,15 @@
 }
 
 .title {
-    font-size: $font-size-extra-large;
+    font-size: $font-size-large;
+    line-height: $line-height-tight;
     font-weight: $font-weight-bold;
     font-family: $title-font-family;
 }
 
 .content {
     display: grid;
-    gap: $spacer-lg;
+    gap: $spacer;
 
     &.contentMobile {
         grid-template-columns: repeat(1, 1fr);

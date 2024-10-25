@@ -4,6 +4,7 @@ import { useIntl, FormattedMessage } from 'react-intl';
 import { Avatar } from '@logora/debate.user.avatar';
 import { Link } from '@logora/debate.action.link';
 import { Icon } from '@logora/debate.icons.icon';
+import { getLocaleIcon } from '@logora/debate.util.lang_emojis';
 import styles from './AuthorBox.module.scss';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
@@ -13,12 +14,14 @@ export const AuthorBox = ({
         slug, 
         avatarUrl, 
         lastActivity, 
-        isExpert = false, 
+        showBadge = false, 
         points = 0, 
         eloquenceTitle, 
         occupation, 
         disableLinks = false, 
-        isDeleted = false 
+        isDeleted = false,
+        language = null,
+        languageDialect = null,
     }) => {
     const intl = useIntl();
     const routes = useRoutes();
@@ -47,10 +50,15 @@ export const AuthorBox = ({
                                 </Link>
                             </div>
                         }
-                        { isExpert && !isDeleted &&
+                        { showBadge && !isDeleted &&
                             <div className={styles.expertContainer}>
                                 <Icon name="expertBadge" width={14} height={14} />
                                 <span className={styles.expertBadge}>{ intl.formatMessage({ id: "user.author_box.expert", defaultMessage: "Journalist" }) }</span>
+                            </div>
+                        }
+                        { language && languageDialect &&
+                            <div className={styles.languageContainer}>
+                                { getLocaleIcon(language, languageDialect) }
                             </div>
                         }
                     </div>
@@ -58,17 +66,19 @@ export const AuthorBox = ({
                 { !isDeleted &&
                     <>
                         <div className={styles.authorPointsBox}>
-                            <div className={styles.authorPoints}>
-                                <span>
-                                    { intl.formatNumber(points, { notation: 'compact', maximumFractionDigits: 1, roundingMode: "floor" }) }
-                                    {" "}
-                                    <FormattedMessage 
-                                        id="user.author_box.points" 
-                                        defaultMessage={"points"} 
-                                        values={{ count: points }} 
-                                    />
-                                </span>
-                            </div>
+                        { points != null && 
+                                <div className={styles.authorPoints}>
+                                    <span>
+                                        { intl.formatNumber(points, { notation: 'compact', maximumFractionDigits: 1, roundingMode: "floor" }) }
+                                        {" "}
+                                        <FormattedMessage 
+                                            id="user.author_box.points" 
+                                            defaultMessage={"points"} 
+                                            values={{ count: points }} 
+                                        />
+                                    </span>
+                                </div>
+                            }
                             { eloquenceTitle &&
                                 <>
                                     <span className={styles.separator}></span>
@@ -101,8 +111,8 @@ AuthorBox.propTypes = {
     slug: PropTypes.string,
     /** User last activity date time */
     lastActivity: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date) ]),
-    /** Whether an user has a special "expert" status or not */ 
-    isExpert: PropTypes.bool,
+    /** Whether an user has a special status or not */ 
+    showBadge: PropTypes.bool,
     /** User eloquence points total */ 
     points: PropTypes.number,
     /** User eloquence title */ 
@@ -112,5 +122,7 @@ AuthorBox.propTypes = {
     /** Should a click on the user redirect on his/her profile */ 
     disableLinks: PropTypes.bool,
     /** Give information about the current status of the content displayed and whether to show the user as deleted or not */ 
-    isDeleted: PropTypes.bool
+    isDeleted: PropTypes.bool,
+    /** User language */
+    language: PropTypes.string
 }

@@ -3,9 +3,11 @@
 
 .drawer {
     overflow: auto;
+    height: 100% !important;
     @include media-breakpoint-down(sm) {
         width: 99% !important;
     }
+    @include px(3, xs);
 }
 
 .header {
@@ -13,9 +15,11 @@
     align-items: center !important;
     color: $text-primary;
     background-color: $background-color-primary;
-    @include px(3, xs);
     @include py(3, xs);
     min-height: 30px;
+    position: sticky; 
+    top: 0; 
+    z-index: 1001; 
 }
 
 .closeButton {
@@ -28,8 +32,16 @@
     svg {
         fill: $text-secondary;
     }
+    top: 0;
+    z-index: 1002; 
 }
+
 
 .body {
     @include py(2, xs);
+    display: flex !important;
+    flex-direction: column !important;
+    gap: $spacer;
+    width: 100% !important;
+    margin: auto;
 }

@@ -9,7 +9,7 @@ export const DefaultTooltip = () => {
 
 export const TooltipWithoutText = () => {
     return (
-        <Tooltip>
+        <Tooltip variant={"info"}>
             <h3>Default tooltip</h3>
         </Tooltip>
     );
@@ -36,5 +36,17 @@ export const LeftTooltip = () => {
 export const RightTooltip = () => {
     return <Tooltip text="Right text" position="right">
         <h3>Right tooltip</h3>
+    </Tooltip>;
+};
+
+export const SuccessTooltip = () => {
+    return <Tooltip text="Success Tooltip!" variant={"success"}>
+        <h3>Success tooltip</h3>
+    </Tooltip>;
+};
+
+export const ErrorTooltip = () => {
+    return <Tooltip text="Error Tooltip!"  variant={"error"}>
+        <h3>Error tooltip</h3>
     </Tooltip>;
 };

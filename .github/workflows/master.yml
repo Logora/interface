@@ -8,6 +8,7 @@ on:
 jobs:
   tag-and-export:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       GIT_USER_NAME: ${{ github.actor }}
@@ -18,7 +19,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Initialize Bit
-        uses: bit-tasks/init@v1
+        uses: bit-tasks/init@v2
 
       - name: Resolve component packages from bit.cloud registry
         run: |

@@ -26,14 +26,14 @@ export const SuggestionVoteBox = ({ voteableType, voteableId, totalUpvote = 0, t
       showModal(
         <Suspense fallback={null}>
           <ConfirmModal
-            title={intl.formatMessage({ id: "vote.suggestion_vote_box.downvote", defaultMessage: "Not relevant" })}
+            title={intl.formatMessage({ id: "vote.suggestion_vote_box.downvote", defaultMessage: "Not interested" })}
             question={intl.formatMessage({
               id: "vote.suggestion_vote_box.confirm_suggestion_downvote",
               defaultMessage: "Your vote should judge the quality of the question. Are you sure you want to continue ?"
             })}
             confirmLabel={intl.formatMessage({ id: "info.yes", defaultMessage: "Yes" })}
             cancelLabel={intl.formatMessage({ id: "info.no", defaultMessage: "No" })}
-            onConfirmCallback={() => handleVote(false)}
+            onConfirmCallback={ () => handleVote(false) }
           />
         </Suspense>
       );
@@ -43,26 +43,24 @@ export const SuggestionVoteBox = ({ voteableType, voteableId, totalUpvote = 0, t
   return (
     <div className={styles.voteButtonsContainer}>
       <Button
-        className={styles.voteButton}
         onClick={disabled ? null : () => handleVote(true)}
         data-testid="upvote-button"
         disabled={disabled}
-        rightIcon={activeVote && voteSide ? null : <Icon name="lightArrow" width={10} height={10} data-testid="upvote-icon" />}
+        rightIcon={<Icon name="check" width={20} height={20} data-testid="upvote-icon" />}
         active={!(activeVote && voteSide)}
       >
         <span className={styles.text}>
-          { intl.formatMessage({ id: "vote.suggestion_vote_box.upvote", defaultMessage: "I'm interested" }) }
+          {intl.formatMessage({ id: "vote.suggestion_vote_box.upvote", defaultMessage: "I'm interested" })}
         </span>
       </Button>
       <Button
-        className={styles.voteButton}
         onClick={disabled ? null : () => handleDownvote()}
         disabled={disabled}
-        rightIcon={activeVote && !voteSide ? null : <Icon name="lightArrow" width={10} height={10} />}
+        rightIcon={<Icon name="close" width={10} height={10} />}
         active={!(activeVote && !voteSide)}
       >
         <span className={styles.text}>
-          { intl.formatMessage({ id: "vote.suggestion_vote_box.downvote", defaultMessage: "Not relevant" }) }
+          {intl.formatMessage({ id: "vote.suggestion_vote_box.downvote", defaultMessage: "Not interested" })}
         </span>
       </Button>
     </div>

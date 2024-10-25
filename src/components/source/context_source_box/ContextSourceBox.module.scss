@@ -25,23 +25,21 @@
     display: flex !important;
     flex-wrap: wrap;
     font-size: $font-size-small;
+    line-height: $line-height-none;
     color: $text-secondary;
     @include mb(1, xs);
 }
 
 .sourceAuthor {
-    font-size: $font-size-extra-small;
+    line-height: $line-height-tight;
 }
 
 .sourceTitle {
     font-size: $font-size-normal;
+    line-height: $line-height-normal;
     font-weight: $font-weight-bold;
 }
 
 .separator {
     @include px(1, xs);
-}
-
-.sourcePublishedDate {
-    font-size: $font-size-extra-small;
 }

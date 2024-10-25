@@ -16,15 +16,10 @@ export const ReadMore = (props) => {
         }
     }
 
-    const showContent = () => {
+    const handleContentToggle = () => {
         setShowMore(!showMore);
-        setContentLength(content.toString().length);
-    }
-
-    const hideContent = () => {
-        setShowMore(!showMore);
-        setContentLength(contentCharCount);
-    }
+        setContentLength(showMore ? contentCharCount : content.toString().length);
+    };
 
     const lineClampingStyle = {
         WebkitLineClamp: lineCount,
@@ -36,7 +31,7 @@ export const ReadMore = (props) => {
     
     return (
         <div className={styles.readMore}>
-            <span className={lineCount ? styles.contentBody : {}} style={lineCount ? lineClampingStyle : {}}>
+            <span className={lineCount ? styles.contentBody : {}} style={lineCount ? lineClampingStyle : {}}  onClick={handleContentToggle} >
                 { lineCount ? content : formatContent(content) }
             </span>
             <span className={nextLine ? styles.nextLine : {}} style={ nextLine ? nextLineStyle : {}}>
@@ -51,7 +46,7 @@ export const ReadMore = (props) => {
                 :
                     <span 
                         className={cx(styles.readMoreElement, className)} 
-                        onClick={showMore ? hideContent : showContent}
+                        onClick={handleContentToggle} 
                         {...rest}
                     >
                         { showMore ?  readLessText  : readMoreText  }

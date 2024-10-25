@@ -13,12 +13,11 @@ const author = {
     image_url: faker.image.avatar(),
     full_name: faker.name.fullName(),
     hash_id: faker.lorem.slug(),
-    points: 1463,
+    points: 52,
     eloquence_title: faker.science.chemicalElement().symbol,
     occupation: faker.vehicle.bicycle(),
     last_activity: faker.date.recent(),
     description: faker.name.jobTitle(),
-    is_expert: false
   };
   
 
@@ -42,7 +41,7 @@ describe('AuthorBox', () => {
                                 points={author.points}
                                 eloquenceTitle={author.eloquence_title}
                                 lastActivity={author.last_activity}
-                                isExpert={false}
+                                showBadge={false}
                             />
                         </IconProvider>
                     </IntlProvider>
@@ -78,7 +77,7 @@ describe('AuthorBox', () => {
                                 points={author.points}
                                 eloquenceTitle={author.eloquence_title}
                                 lastActivity={author.last_activity} 
-                                isExpert={false}
+                                showBadge={false}
                                 disableLinks={true} 
                             />
                         </IconProvider>
@@ -107,7 +106,7 @@ describe('AuthorBox', () => {
                                 eloquenceTitle={author.eloquence_title}
                                 lastActivity={author.last_activity} 
                                 occupation={author.occupation}
-                                isExpert={false}
+                                showBadge={false}
                                 disableLinks={true}
                             />
                         </IconProvider>
@@ -133,7 +132,7 @@ describe('AuthorBox', () => {
                                 eloquenceTitle={author.eloquence_title}
                                 lastActivity={author.last_activity} 
                                 occupation={author.occupation}
-                                isExpert={true}
+                                showBadge={true}
                             />
                         </IconProvider>
                     </IntlProvider>

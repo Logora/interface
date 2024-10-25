@@ -32,7 +32,7 @@
 	border-top-right-radius: $box-border-radius;
 	border-bottom-right-radius: $box-border-radius;
 	border-left: 6px solid;
-	border-left-color: $call-primary !important;
+	border-left-color: $text-secondary !important;
 	&.position-1 {
 		border-left-color: $for-primary !important;
 	}
@@ -66,21 +66,22 @@
 	-moz-transition: box-shadow 0.8s ease-in-out;
 	-o-transition: box-shadow 0.8s ease-in-out;
 	transition: box-shadow 0.8s ease-in-out;
-	box-shadow: 0 0 15px $call-primary;
+	box-shadow: -4px 4px 15px 3px rgba(0, 0, 0, 0.15);
 }
 .position-1.flash {
-	box-shadow: 0 0 15px $for-primary;
+	border-color: $for-primary;
 }
 .position-2.flash {
-	box-shadow: 0 0 15px $against-primary;
+	border-color: $against-primary;
 }
 .position-3.flash {
-	box-shadow: 0 0 15px $third-position-color-primary;
+	border-color: $third-position-color-primary;
 	@include mt(2, xs);
 }
 
 .argumentBody {
-	font-size: $font-size-small;
+	font-size: $font-size-normal;
+	line-height: $line-height-loose;
 }
 
 .argumentDeletedBody {
@@ -106,15 +107,11 @@
 	}
 }
 
-.commentArgument {
-	border-bottom: 0;
-}
-
 .argumentContent {
 	line-height: $line-height-loose;
 	overflow-wrap: break-word;
 	& * {
-		font-size: $font-size-small;
+		font-size: $font-size-normal;
 	}
 }
 
@@ -180,19 +177,12 @@
 }
 
 .replyFooter {
-	font-size: $font-size-small;
+	font-size: $font-size-normal;
 	font-weight: $font-weight-normal;
 	display: flex !important;
 	align-items: center !important;
 	justify-content: flex-start !important;
 	cursor: pointer;
-	&.commentReplyFooter {
-		@include pt(3, xs);
-		border-top: 1px solid $text-tertiary;
-		@include media-breakpoint-down(sm) {
-			@include pl(4, xs);
-		}
-	}
 }
 
 .expandRepliesContainer {
@@ -210,6 +200,7 @@
 	align-items: center;
 	gap: $spacer-sm;
 	background-color: $background-color-primary;
+	font-size: $font-size-normal;
 	svg {
 		display: inline-block;
 		path {

@@ -65,3 +65,13 @@ export const ProgressBarWithProgressSubtitleFullBar = () => {
         </ProgressBar>
     )
 }
+
+export const ProgressBarWithoutChildren = () => {
+    return (
+        <ProgressBar 
+            progress={25} 
+            goal={100}
+        >
+        </ProgressBar>
+    )
+}

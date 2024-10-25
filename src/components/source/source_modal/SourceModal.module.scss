@@ -2,13 +2,12 @@
 @import '~@logora/debate.styles.spacing/_spacing.scss';
 
 .sourceModalBody {
-  @include py(2, xs);
   max-height: calc(100vh - 80px);
   overflow-y: auto;
+  @include py(2, xs);
 }
 
 .sourcePreviewBox {
-  border-radius: $box-border-radius;
   width: 100%;
   @include p(0, xs);
   @include my(3, xs);
@@ -23,6 +22,11 @@ button.sourcePreviewButton {
   width: 100%;
 }
 
-.sourcePreviewError {
-  text-align: center;
+.allowedSourcesInfo {
+  font-size: $font-size-small;
+  color: $text-secondary;
+  white-space: nowrap;
+  margin-top: 1rem; 
+  white-space: normal; 
+  word-break: break-word; 
 }

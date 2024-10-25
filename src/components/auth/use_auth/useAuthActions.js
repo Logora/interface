@@ -20,6 +20,7 @@ export const useAuthActions = (httpClient, authUrl, tokenKey) => {
         setIsLoggingIn(false);
         setCurrentUser({});
         removeToken();
+        dispatchLogoutEvent();
     }
 
     const fetchUser = () => {
@@ -48,6 +49,14 @@ export const useAuthActions = (httpClient, authUrl, tokenKey) => {
                         user: currentUser
                     }
                 })
+            );
+        }
+    }
+
+    const dispatchLogoutEvent = () => {
+        if(typeof window !== "undefined") {
+            window.dispatchEvent(
+                new CustomEvent("logora:authentication:logout")
             );
         }
     }

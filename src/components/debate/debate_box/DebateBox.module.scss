@@ -101,7 +101,7 @@
 .debateBoxTitle {
   font-weight: $font-weight-bold;
   min-height: 2.7em;
-  line-height: $line-height-loose;
+  line-height: $line-height-normal;
   a {
     color: $text-primary;
     &:hover{
@@ -115,6 +115,7 @@
   display: block;
   @include line-clamp(2);
   font-size: $font-size-medium;
+  line-height: $line-height-normal;
   &.debateTitleMobile{
     -webkit-line-clamp: 3;
   }
@@ -155,7 +156,8 @@
 }
 
 .debateBoxNumbers {
-  font-size: $font-size-small;
+  font-size: $font-size-normal;
+  line-height: $line-height-none;
   display: flex !important;
   flex-direction: row !important;
   align-items: flex-end !important;
@@ -181,4 +183,5 @@
   align-items: center;
   color: $text-primary;
   font-size: $font-size-extra-small;
+  line-height: $line-height-tight;
 }

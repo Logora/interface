@@ -1,6 +1,6 @@
 import React from 'react';
 import { act } from 'react';
-import { render } from '@testing-library/react';
+import { render, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { IntlProvider } from 'react-intl';
 import { ConfigProvider } from '@logora/debate.data.config_provider';
@@ -12,12 +12,12 @@ import { ModalProvider } from '@logora/debate.dialog.modal';
 import { ListProvider } from '@logora/debate.list.list_provider';
 import { ToastProvider } from '@logora/debate.dialog.toast_provider';
 import { VoteProvider } from '@logora/debate.vote.vote_provider';
-import { InputProvider } from '@logora/debate.input.input_provider';
 import { IdProvider } from "react-use-id-hook";
 import { Argument } from './Argument';
 import { IconProvider } from '@logora/debate.icons.icon_provider';
 import { ResponsiveProvider } from '@logora/debate.hooks.use_responsive';
 import * as regularIcons from '@logora/debate.icons.regular_icons';
+import { InputProvider, useInput } from '@logora/debate.input.input_provider';
 import { faker } from '@faker-js/faker';
 
 const routes = {
@@ -32,7 +32,7 @@ const vote = {
 };
 
 const httpClient = {
-    get: () => null,
+    get: () => Promise.resolve({ data: { success: true, data: [argumentReply] } }),
     post: (url, data, config) => {
         return new Promise((resolve, reject) => {
             let response;
@@ -95,6 +95,7 @@ const argumentReply = createArgument({
     id: 415,
     is_reply: true,
     upvotes: 12,
+    reply_to_id: argument.id,
     position: { id: 2, name: "No", language: "en" }
 });
 const argumentDeleted = createArgument({
@@ -108,6 +109,20 @@ const debatePositions = [
     { id: 2, name: "No", language: "en", translation_entries: [] }
 ];
 const debateName = faker.lorem.sentence(5);
+
+const targetContent = {"root":{"children":[{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"I write an argument","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}};
+        
+const AddContentComponent = () => {
+    const { setInputRichContent } = useInput();
+
+    const setContent = (event) => { setInputRichContent(targetContent); }
+
+    return (
+        <>
+            <div onClick={setContent}>Click to set content</div>
+        </>
+    )
+}
 
 const Providers = ({ children }) => (
     <BrowserRouter>
@@ -123,6 +138,7 @@ const Providers = ({ children }) => (
                                             <InputProvider>
                                                 <IconProvider library={regularIcons}>
                                                     <IntlProvider locale="en">
+                                                        <AddContentComponent />
                                                         {children}
                                                     </IntlProvider>
                                                 </IconProvider>
@@ -146,13 +162,28 @@ const renderArgument = (props) => render(
 );
 
 describe('Argument', () => {
+    beforeAll(() => {
+        Object.defineProperty(window, 'matchMedia', {
+            writable: true,
+            value: jest.fn().mockImplementation((query) => ({
+                matches: false,
+                media: query,
+                onchange: null,
+                addListener: jest.fn(),
+                removeListener: jest.fn(),
+                addEventListener: jest.fn(),
+                removeEventListener: jest.fn(),
+                dispatchEvent: jest.fn(),
+            })),
+        });
+    });
+
     it('should render argument correctly', () => {
         const { getByText } = renderArgument({
             argument,
             debatePositions,
             debateName,
             nestingLevel: 0,
-            debateIsActive: true
         });
 
         expect(getByText(argument.author.full_name)).toBeInTheDocument();
@@ -167,7 +198,6 @@ describe('Argument', () => {
             debatePositions,
             debateName,
             nestingLevel: 0,
-            debateIsActive: true
         });
 
         expect(getByText("View answers")).toBeInTheDocument();
@@ -188,7 +218,6 @@ describe('Argument', () => {
             debatePositions,
             debateName,
             nestingLevel: 0,
-            debateIsActive: true
         });
 
         const argumentContainer = container.querySelector(`#argument_${argumentReply.id}`);
@@ -201,7 +230,6 @@ describe('Argument', () => {
             debatePositions,
             debateName,
             nestingLevel: 0,
-            debateIsActive: true,
             isComment: true
         });
 
@@ -217,7 +245,6 @@ describe('Argument', () => {
             debateName,
             replies: false,
             nestingLevel: 0,
-            debateIsActive: true
         });
 
         expect(queryByText(argumentDeleted.author.full_name)).not.toBeInTheDocument();
@@ -231,7 +258,6 @@ describe('Argument', () => {
             debatePositions,
             debateName,
             nestingLevel: 0,
-            debateIsActive: true
         });
 
         const dropdown = getByTestId("dropdown");
@@ -245,7 +271,6 @@ describe('Argument', () => {
             debatePositions,
             debateName,
             nestingLevel: 0,
-            debateIsActive: true
         });
 
         expect(getByText("0")).toBeInTheDocument();
@@ -262,7 +287,6 @@ describe('Argument', () => {
             debatePositions,
             debateName,
             nestingLevel: 0,
-            debateIsActive: true
         });
 
         const replyButton = getByTestId("action-reply-button");
@@ -271,4 +295,38 @@ describe('Argument', () => {
         expect(getByText("Your answer")).toBeInTheDocument();
         expect(getByText(debatePositions[1].name)).toBeInTheDocument();
     });
+
+    it('should allow the user to add a reply to an argument', async () => {
+        const { getByTestId, getByText } = renderArgument({
+            argument,
+            debatePositions: [
+                { id: 1, name: 'Yes', language: 'en', translation_entries: [] },
+                { id: 2, name: 'No', language: 'en', translation_entries: [] },
+            ],
+            debateName: 'Test Debate',
+            nestingLevel: 0,
+        });
+
+        const replyButton = getByText('Reply');
+        await act(async () => {
+            await userEvent.click(replyButton);
+        });
+
+        const positionButton = getByText(debatePositions[1].name);
+        await act(async () => {
+            await userEvent.click(positionButton);
+        });
+
+        const setContentButton = getByText("Click to set content");
+        await act(async () => { await userEvent.click(setContentButton) });
+        expect(getByText("I write an argument")).toBeInTheDocument();
+
+        const submitButton = getByTestId('submit-button');
+        await act(async () => {
+            await userEvent.click(submitButton);
+        });
+
+        expect(getByText("Your contribution has been sent !")).toBeInTheDocument();
+    });
+    
 });

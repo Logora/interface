@@ -13,11 +13,14 @@ const author = {
     full_name: faker.name.fullName(),
     slug: faker.lorem.slug(),
     points: 52,
+    role:"contributor",
     last_activity: new Date(),
     description: faker.name.jobTitle(),
     hash_id: faker.lorem.slug(),
     occupation: faker.name.jobTitle(),
 }
+
+const expertAuthor = {...author, role: "editor"}
 
 const date = faker.date.recent();
 
@@ -138,6 +141,27 @@ export const ContentHeaderSelected = (props) => {
                             tag={props.tag || tag}
                             date={props.date || date}
                             selectedContent
+                        />
+                    </IntlProvider>
+                </IconProvider>
+            </ConfigProvider>
+        </BrowserRouter>
+    );
+};
+
+export const ContentHeaderWithBadge = (props) => {
+    return (
+        <BrowserRouter>
+            <ConfigProvider routes={{ ...routes }}>
+                <IconProvider library={regularIcons}>
+                    <IntlProvider locale="en">
+                        <ContentHeader
+                            author={props.author || expertAuthor}
+                            tag={props.tag || tag}
+                            date={props.date || date}
+                            positionIndex={1}
+                            oneLine={false}
+                            disableLinks={false}
                         />
                     </IntlProvider>
                 </IconProvider>

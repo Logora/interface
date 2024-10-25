@@ -1,0 +1,1 @@
+export { LANGUAGES, getLocaleIcon, getLocaleName } from './langEmojis';

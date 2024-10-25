@@ -1,18 +1,10 @@
 @import '~@logora/debate.styles.theme/_theme.scss';
 @import '~@logora/debate.styles.spacing/_spacing.scss';
 
-.voteButtonsContainer{
+.voteButtonsContainer {
     display: flex !important;
     align-items: center !important;
     gap: $spacer;
-}
-
-.voteButtonsContainer button.voteButton svg {
-    transform: rotate(-90deg);
-}
-
-.numberVotes {
-    @include mx(2, xs);
 }
 
 .text {

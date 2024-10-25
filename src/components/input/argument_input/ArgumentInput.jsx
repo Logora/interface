@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef, lazy, Suspense } from 'react';
 import PropTypes from "prop-types";
+import { FormattedMessage } from "react-intl";
 import { useAuth } from "@logora/debate.auth.use_auth";
 import { useList } from '@logora/debate.list.list_provider';
 import { useModal } from '@logora/debate.dialog.modal';
@@ -22,7 +23,7 @@ const SideModal = lazy(() => import('@logora/debate.modal.side_modal'));
 import cx from 'classnames';
 import styles from './ArgumentInput.module.scss';
 
-export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = false, positions, disabledPositions = [], groupId, groupName, groupType, hideSourceAction = false, isReply = false, onSubmit, parentId, placeholder, positionId, focusOnInit = false }) => {
+export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = false, positions = [], disabledPositions = [], groupId, groupName, groupType, hideSourceAction = false, isReply = false, onSubmit, parentId, placeholder, positionId, focusOnInit = false, userGuideUrl }) => {
     const intl = useIntl();
     const api = useDataProvider();
     const list = useList();
@@ -30,7 +31,7 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
     const { focus, setFocus, setReset, inputContent, setInputContent, setInputRichContent } = useInput();
     const { isLoggedIn, currentUser } = useAuth();
     const { errors, validate } = useFormValidation();
-    const { isMobile } = useResponsive();
+    const { isMobile, isDesktop } = useResponsive();
     const location = useLocation();
     // REFS
     const inputForm = useRef(null);
@@ -44,21 +45,23 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
     const [inputActivation, setInputActivation] = useState(false);
     const [editElement, setEditElement] = useState({});
     const [savedArgument, setSavedArgument] = useSessionStorageState("userSide", {});
-	const requireAuthentication = useAuthRequired();
-	const { showModal } = useModal();
+    const requireAuthentication = useAuthRequired();
+    const { showModal } = useModal();
     const { toast } = useToast() || {};
     const urlParams = new URLSearchParams(window !== "undefined" ? window.location.search : location.search);
     const inputDisabledForVisitors = (!isLoggedIn && config?.actions?.disableInputForVisitor)
+    // Checks if the user has the role of editor or moderator
+    const isEditorOrModerator = currentUser?.role === "editor" || currentUser?.role === "moderator"
 
     useEffect(() => {
         let positionIdParam = null;
-        if(typeof window !== 'undefined') {
+        if (typeof window !== 'undefined') {
             positionIdParam = urlParams.get('positionId');
         }
 
         if (positionId && positionId !== positions[2]?.id && positions?.find(pos => pos.id === positionId)) {
             setUserPositionId(positionId);
-        } else if(positionIdParam) {
+        } else if (positionIdParam) {
             setUserPositionId(positionIdParam);
         } else {
             if (savedArgument && (savedArgument.groupId == groupId) && (savedArgument.positionId !== positions[2]?.id)) {
@@ -68,13 +71,10 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
     }, [positionId])
 
     useEffect(() => {
-        if(typeof window !== 'undefined') {
+        if (typeof window !== 'undefined') {
             const initFocus = focusOnInit || urlParams.get('initArgument');
             if (initFocus === true || initFocus === 'true') {
-                if(!isLoggedIn) {
-                    requireAuthentication({ loginAction: "argument" });
-                }
-                focusEditor();
+                setFocus(true);
                 flashEditor();
             }
         }
@@ -83,7 +83,6 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
     useEffect(() => {
         if (focus) {
             scrollToEditor();
-            focusEditor();
             setFocus(false);
         }
     }, [focus])
@@ -91,7 +90,7 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
     useEffect(() => {
         if (inputContent?.id) {
             setEditArgument(inputContent);
-            focusEditor();
+            setFocus(true);
         }
     }, [inputContent])
 
@@ -105,7 +104,7 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
         scrollToEditor();
         setUserPositionId(eElement.position?.id);
         const rawContent = JSON.parse(eElement.rich_content);
-        if(rawContent.hasOwnProperty("root")) {
+        if (rawContent.hasOwnProperty("root")) {
             setInputRichContent(eElement.rich_content);
         } else {
             setInputContent(eElement.content);
@@ -116,28 +115,24 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
         inputForm.current.scrollIntoView(false);
     }
 
-    const focusEditor = () => {
-        setFocus(true);
-    }
-
     const resetInputs = () => {
-       setArgumentContent("");
-       setArgumentRichContent(null);
-       setEditElement({});
-       setArgumentId(null);
-       setSources([]);
-       setReset(true);
+        setArgumentContent("");
+        setArgumentRichContent(null);
+        setEditElement({});
+        setArgumentId(null);
+        setSources([]);
+        setReset(true);
     }
 
     const handleChooseSide = (positionId) => {
-		setUserPositionId(positionId);
+        setUserPositionId(positionId);
         submitArgument(positionId);
-	}
+    }
 
     const showSideModal = () => {
         showModal(
             <Suspense fallback={null}>
-                <SideModal 
+                <SideModal
                     modalTitle={intl.formatMessage({ id: "modal.side_modal.modal_title", defaultMessage: "Choose your side" })}
                     onChooseSide={handleChooseSide}
                     positions={positions}
@@ -154,8 +149,8 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
             if (argumentId) {
                 updateArgument();
             } else {
-                if ((!disabledPositions?.find(pos => pos.id === userPositionId) && (userPositionId || !positions)) || (currentUser.is_expert && !isReply)) {
-                    submitArgument(isReply && currentUser.is_expert && positions[0].id);
+                if ((!positions || positions?.length === 0) || (!disabledPositions?.find(pos => pos.id === userPositionId) && userPositionId) || (isEditorOrModerator && isReply)) {
+                    submitArgument(isReply && isEditorOrModerator && positions[0].id);
                 } else {
                     showSideModal();
                 }
@@ -171,6 +166,7 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
         } else {
             setArgumentContent(content);
             setArgumentRichContent(richContent);
+            validate({ content: content }, [{ content: ["url", null] }])
         }
     }
 
@@ -181,8 +177,8 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
     const argumentValidationRules = [
         { content: ["length", 3] },
         { content: ["required", null] },
-        { content: ["url", null]},
-        ...(!positions ? [] : [{ position_id: ["required", null] }])
+        { content: ["url", null] },
+        ...((!positions || positions?.length === 0) ? [] : [{ position_id: ["required", null] }])
     ]
 
     const submitArgument = (position) => {
@@ -208,10 +204,10 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
             }
             resetInputs();
             api.create("messages", data).then(response => {
-                if(response.data.success) {
+                if (response.data.success) {
                     if (isReply) {
-                        onSubmit();
-					    toast(intl.formatMessage({ id: "alert.argument_create", defaultMessage: "Your contribution has been sent !" }), { type: "success", points:  intl.formatMessage({ id: "alert.reply_gain" }) });
+                        onSubmit(response.data.data.resource);
+                        toast(intl.formatMessage({ id: "alert.argument_create", defaultMessage: "Your contribution has been sent !" }), { type: "success", points: intl.formatMessage({ id: "alert.reply_gain", defaultMessage: " " }) });
                     } else {
                         const argument = response.data.data.resource;
                         let listId = argumentListId;
@@ -219,10 +215,10 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
                             listId = `argumentList${argument.position.id}`;
                         }
                         if (onSubmit) {
-                            onSubmit(argumentContent, positions.find(pos => pos.id === userPosition));
+                            onSubmit(argumentContent, positions.find(pos => pos.id === userPosition) || null);
                         }
                         list.add(listId, [argument]);
-                        toast(intl.formatMessage({ id: "alert.argument_create", defaultMessage: "Your contribution has been sent !" }), { type: "success", points:  intl.formatMessage({ id: "alert.argument_create_gain", defaultMessage: "Up to 10 eloquence points" }), category: "ARGUMENT", contentKey: currentUser.messages_count === 2 ? "alert.third_argument" : "alert.first_argument" });
+                        toast(intl.formatMessage({ id: "alert.argument_create", defaultMessage: "Your contribution has been sent !" }), { type: "success", points: intl.formatMessage({ id: "alert.argument_create_gain", defaultMessage: "Up to 10 eloquence points" }), category: "ARGUMENT", contentKey: currentUser.messages_count === 2 ? "alert.third_argument" : "alert.first_argument" });
                     }
                     window.dispatchEvent(
                         new CustomEvent("logora:user_content:created", {
@@ -246,7 +242,7 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
 
         if (validate(data, argumentValidationRules)) {
             api.update("messages", argumentId, data).then(response => {
-                if(response.data.success) {
+                if (response.data.success) {
                     const argument = response.data.data.resource;
                     let listId = argumentListId;
                     if (userPositionId && !isMobile) {
@@ -260,7 +256,7 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
                     } else {
                         list.update(listId, [argument]);
                     }
-					toast(intl.formatMessage({ id: "alert.argument_modify" }), { type: "success" });
+                    toast(intl.formatMessage({ id: "alert.argument_modify" }), { type: "success" });
                     resetInputs();
                 }
             });
@@ -268,10 +264,10 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
     }
 
     const flashEditor = () => {
-        if(!flash) {
+        if (!flash) {
             setFlash(true);
             const timer = setTimeout(() => {
-              setFlash(false);
+                setFlash(false);
             }, 2000);
             return () => clearTimeout(timer);
         }
@@ -287,21 +283,21 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
 
     const displayArgumentLimitWarning = () => {
         let disabledPosition = disabledPositions.find(pos => pos.id === userPositionId);
-        if(disabledPosition) {
+        if (disabledPosition) {
             return intl.formatMessage({ id: "info.argument_side_limit", defaultMessage: "You have reached the argument limit (10) for position {position}." }, { position: disabledPosition.name })
         }
     }
 
     return (
         <div className={styles.inputContainer}>
-            { disabled && (<div className={styles.disabledInputMask}>{ intl.formatMessage({ id: "info.debate_is_inactive", defaultMessage: "Debate is closed" }) }</div>) }
+            {disabled && (<div className={styles.disabledInputMask}>{intl.formatMessage({ id: "info.debate_is_inactive", defaultMessage: "Debate is closed" })}</div>)}
             <div className={cx(styles.argumentInput, { [styles.flash]: flash, [styles.replyInputContainer]: isReply })}>
                 <div data-tid={"action_add_argument"} ref={inputForm}>
                     <div className={styles.argumentInputBox}>
-                        {positions && isLoggedIn && (!isReply || !currentUser.is_expert) &&
+                        {positions.length > 0 && isLoggedIn && (!isReply || !isEditorOrModerator) &&
                             <div className={styles.userPosition}>
                                 <div>{intl.formatMessage({ id: "input.position", defaultMessage: "Your position" })}</div>
-                                <TogglePosition 
+                                <TogglePosition
                                     activeLabel={userPositionId === positions[0].id ? 0 : (userPositionId === positions[1].id ? 1 : null)}
                                     firstLabel={positions[0]}
                                     secondLabel={positions[1]}
@@ -309,11 +305,11 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
                                 />
                             </div>
                         }
-                        <div className={cx(styles.argumentTextInputBox, {[styles.argumentTextInputBoxisTablet]: !isMobile, [styles.replyEditorRow]: isReply})}>
-                            <div className={cx(styles.argumentAuthorContainer,{[styles.argumentAuthorContainerMobile]: isMobile, [styles.argumentAuthorContainerActivated]: inputActivation || isReply})}>
-                                { inputActivation || isReply ?
+                        <div className={cx(styles.argumentTextInputBox, { [styles.argumentTextInputBoxisTablet]: !isMobile, [styles.replyEditorRow]: isReply })}>
+                            <div className={cx(styles.argumentAuthorContainer, { [styles.argumentAuthorContainerMobile]: isMobile, [styles.argumentAuthorContainerActivated]: (!isMobile && inputActivation) || isReply })}>
+                                {(!isMobile && inputActivation) || isReply ?
                                     <Avatar avatarUrl={currentUser.image_url} userName={currentUser.full_name} size={avatarSize} />
-                                :
+                                    :
                                     <AuthorBox
                                         fullName={currentUser?.full_name || intl.formatMessage({ id: "default_author.full_name" })}
                                         avatarUrl={currentUser?.image_url}
@@ -321,12 +317,12 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
                                         slug={currentUser?.hash_id}
                                     />
                                 }
-                                
+
                             </div>
-                            <div onClick={handleTextEditorActivation} data-testid="argument-input" className={cx(styles.textEditorBox, {[styles.replyTextEditorBox]: isReply})}>
-                                <TextEditor 
-                                    handleChange={(value, rawValue) => { handleChange(value, rawValue); } }
-                                    handleSourcesChange={(sources) => { handleSourcesChange(sources); } }
+                            <div onClick={handleTextEditorActivation} data-testid="argument-input" className={cx(styles.textEditorBox, { [styles.replyTextEditorBox]: isReply })}>
+                                <TextEditor
+                                    handleChange={(value, rawValue) => { handleChange(value, rawValue); }}
+                                    handleSourcesChange={(sources) => { handleSourcesChange(sources); }}
                                     placeholder={placeholder}
                                     onSubmit={handleFormSubmit}
                                     sources={sources}
@@ -339,17 +335,33 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
                                     disableRichText={config?.actions?.disableRichText || inputDisabledForVisitors}
                                     shortBar={isReply}
                                     hideSubmit={inputDisabledForVisitors}
+                                    allowedDomains={config?.allowed_sources}
+
                                 />
-                                { (errors && errors.content) && <div className={styles.argumentInputWarning}>{errors && Object.values(errors).map((e, index) => <div key={index}>{e}</div>)}</div> }
-                                { inputActivation && disabledPositions?.find(pos => pos.id === userPositionId) &&
+                                {(errors && errors.content) && <div className={styles.argumentInputWarning}>{errors && Object.values(errors).map((e, index) => <div key={index}>{e}</div>)}</div>}
+                                {inputActivation && disabledPositions?.find(pos => pos.id === userPositionId) &&
                                     <div className={cx(styles.argumentInputWarning, styles.disabledPositionWarning)}>
-                                        <Icon name="announcement" className={styles.warningIcon} height={20} width={20} /> 
-                                        <div className={styles.argumentInputWarningText}>{ displayArgumentLimitWarning() }</div>
+                                        <Icon name="announcement" className={styles.warningIcon} height={20} width={20} />
+                                        <div className={styles.argumentInputWarningText}>{displayArgumentLimitWarning()}</div>
                                     </div>
                                 }
+                                {userGuideUrl && (
+                                    <div className={styles.guideMessage}>
+                                        <FormattedMessage
+                                            id="alert.guide_message"
+                                            defaultMessage={"Contributions must comply with our {userCharter}."}
+                                            values={{
+                                                userCharter: (
+                                                    <a className={styles.guideMessage} href={userGuideUrl} target="_blank" >
+                                                       <FormattedMessage id="alert.user_charter" defaultMessage="user charter" />
+                                                    </a>
+                                                ),
+                                            }}
+                                        />
+                                    </div>
+                                )}
                             </div>
                         </div>
-                        
                     </div>
                 </div>
             </div>
@@ -387,5 +399,7 @@ ArgumentInput.propTypes = {
     /** Position of the argument */
     positionId: PropTypes.number,
     /** Focus input on initialization */
-    focusOnInit: PropTypes.bool
+    focusOnInit: PropTypes.bool,
+    /** URL leading to the user charter or moderation rules */
+    userGuideUrl: PropTypes.string,
 };

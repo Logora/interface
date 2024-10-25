@@ -29,7 +29,7 @@ import EditorTheme from './EditorTheme';
 import cx from "classnames";
 import PropTypes from "prop-types";
 
-export const TextEditor = ({ placeholder, onSubmit, sources, hideSubmit = false, hideSourceAction = false, onActivation, disabled = false, handleChange, handleSourcesChange, shortBar = false, active = false, maxLength, disableRichText = false, editorRef }) => {
+export const TextEditor = ({ placeholder, onSubmit, sources, hideSubmit = false, hideSourceAction = false, onActivation, disabled = false, handleChange, handleSourcesChange, shortBar = false, active = false, maxLength, disableRichText = false, editorRef, allowedDomains = [] }) => {
     const [isActive, setIsActive] = useState(false);
     const [editorText, setEditorText] = useState("");
     const [editorRichText, setEditorRichText] = useState("");
@@ -97,7 +97,9 @@ export const TextEditor = ({ placeholder, onSubmit, sources, hideSubmit = false,
 
     const handleShowSourceModal = () => {
         showModal(
-            <SourceModal onAddSource={handleAddSource} />
+            <SourceModal onAddSource={handleAddSource} 
+            allowedSources={allowedDomains}
+             />
         )
     }
 
@@ -190,5 +192,7 @@ TextEditor.propTypes = {
     /** If true, hide rich text buttons */
     disableRichText: PropTypes.bool,
     /** Editor ref */
-    editorRef: PropTypes.any
+    editorRef: PropTypes.any,
+    /** Allowed domain for sources */
+    allowedDomains: PropTypes.array
 };

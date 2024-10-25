@@ -2,6 +2,7 @@ import React from "react";
 import { Select } from '@logora/debate.input.select';
 import { SearchInput } from "@logora/debate.input.search_input";
 import { Tag } from '@logora/debate.tag.tag';
+import { Icon } from '@logora/debate.icons.icon';
 import { useIntl } from "react-intl";
 import { useResponsive } from "@logora/debate.hooks.use_responsive";
 import { useHistory } from 'react-router-dom';
@@ -67,9 +68,11 @@ export const ActionBar = ({ title, sortOptions, defaultSelectOption, searchBar =
     }
 
     const displayTags = (tag) => {
+        const tagIsActive = activeTagId === tag.id;
+        
         return (
             <div className={styles.tagItem} key={tag.id} onClick={() => handleActiveTag(tag)}>
-                <Tag active={activeTagId === tag.id} text={tag.display_name} />
+                <Tag text={tag.display_name} active={tagIsActive} rightIcon={tagIsActive && <Icon name="close" height={10} width={10} />} />
             </div>
         );
     }

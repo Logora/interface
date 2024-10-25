@@ -80,7 +80,8 @@ const generateArgument = (overrides) => ({
 });
 
 const argument = generateArgument();
-const argumentReply = generateArgument({ id: 415, is_reply: true });
+const longArgument = generateArgument({ content: faker.lorem.sentences(15) })
+const argumentReply = generateArgument({ id: 415, is_reply: true, reply_to_id: argument.id });
 const argumentDeleted = generateArgument({ id: 416, is_deleted: true });
 const argumentWithReplies = generateArgument({
     id: 414,
@@ -137,40 +138,90 @@ export const DefaultArgument = () => (
                 argument={argument}
                 debatePositions={debatePositions}
                 debateName={debateName}
-                replies={false}
                 nestingLevel={0}
-                debateIsActive
             />
         </Providers>
     </div>
 );
 
-export const ArgumentIsComment = () => (
+export const ExpandableArgument = () => (
+    <div style={{ width: "400px", height: "240px" }}>
+        <Providers>
+            <Argument
+                argument={longArgument}
+                debatePositions={debatePositions}
+                debateName={debateName}
+                nestingLevel={0}
+                expandable
+            />
+        </Providers>
+    </div>
+);
+
+export const ExpandedArgument = () => (
+    <div style={{ width: "400px", height: "240px" }}>
+        <Providers>
+            <Argument
+                argument={longArgument}
+                debatePositions={debatePositions}
+                debateName={debateName}
+                nestingLevel={0}
+                expandable={false}
+            />
+        </Providers>
+    </div>
+);
+
+export const Comment = () => (
     <div style={{ width: "400px", height: "230px" }}>
         <Providers>
             <Argument
                 argument={argument}
                 debatePositions={debatePositions}
                 debateName={debateName}
-                replies={false}
                 nestingLevel={0}
-                debateIsActive
                 isComment
             />
         </Providers>
     </div>
 );
 
-export const ArgumentReplyComponent = () => (
+export const ArgumentDisabled = () => (
+    <div style={{ width: "400px", height: "230px" }}>
+        <Providers>
+            <Argument
+                argument={argument}
+                debatePositions={debatePositions}
+                debateName={debateName}
+                nestingLevel={0}
+                disabled
+            />
+        </Providers>
+    </div>
+);
+
+export const ArgumentDisabledLinks = () => (
+    <div style={{ width: "400px", height: "230px" }}>
+        <Providers>
+            <Argument
+                argument={argument}
+                debatePositions={debatePositions}
+                debateName={debateName}
+                nestingLevel={0}
+                disableLinks={true}
+            />
+        </Providers>
+    </div>
+);
+
+export const ArgumentReply = () => (
     <div style={{ width: "400px", height: "230px" }}>
         <Providers>
             <Argument
                 argument={argumentReply}
                 debatePositions={debatePositions}
                 debateName={debateName}
-                replies={false}
                 nestingLevel={1}
-                debateIsActive
             />
         </Providers>
     </div>
@@ -183,9 +234,7 @@ export const DeletedArgumentComponent = () => (
                 argument={argumentDeleted}
                 debatePositions={debatePositions}
                 debateName={debateName}
-                replies={false}
                 nestingLevel={0}
-                debateIsActive
             />
         </Providers>
     </div>
@@ -198,9 +247,21 @@ export const ArgumentWithRepliesComponent = () => (
                 argument={argumentWithReplies}
                 debatePositions={debatePositions}
                 debateName={debateName}
-                replies={false}
                 nestingLevel={0}
-                debateIsActive
+            />
+        </Providers>
+    </div>
+);
+
+export const ArgumentWithArgumentReplies = () => (
+    <div style={{ width: "400px", height: "260px" }}>
+        <Providers>
+            <Argument
+                argument={argument}
+                debatePositions={debatePositions}
+                debateName={debateName}
+                nestingLevel={0}
+                argumentReplies={[argumentReply]}
             />
         </Providers>
     </div>

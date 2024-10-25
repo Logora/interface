@@ -16,6 +16,20 @@ import { faker } from '@faker-js/faker';
 import { DefaultContentFooter, ContentFooterShareModal, ContentFooterUpDownVoteBox, ContentFooterDisabled, ContentFooterWithoutReply, ContentFooterLeftReply, ContentFooterProgressBar, ContentFooterWithoutEdition, ContentFooterWithoutDeletion } from './ContentFooter.composition';
 import { VoteButton } from '@logora/debate.vote.vote_button';
 
+beforeAll(() => {
+    class ResizeObserver {
+        constructor(callback) {
+            this.callback = callback;
+        }
+        observe() {
+            this.callback([{ contentRect: { width: 1200, height: 800 } }]);
+        }
+        unobserve() {}
+    }
+
+    global.ResizeObserver = ResizeObserver;
+});
+
 const vote = { 
     id: faker.datatype.number(),
     voteable_type: faker.lorem.word(),

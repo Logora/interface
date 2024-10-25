@@ -30,40 +30,47 @@ export const BigTextInput = () => (
   <TextInput style={{ fontSize: 24 }} placeholder="enter text..." data-testid="test-input" />
 );
 
-export const SmallTextInputWithIcon = () => (
+export const SmallTextInputWithRightIcon = () => (
   <TextInput
     style={{ fontSize: 12 }}
     placeholder="enter text..."
     data-testid="test-input"
-    icon={<Announcement style={{ cursor: 'pointer' }} onClick={() => alert('on icon click')} />}
+    iconRight={<Announcement style={{ cursor: 'pointer' }} onClick={() => alert('on icon click')} />}
   />
 );
 
-export const BigTextInputWithIcon = () => (
+export const BigTextInputWithRightIcon = () => (
   <TextInput
     style={{ fontSize: 24 }}
     placeholder="enter text..."
     data-testid="test-input"
-    icon={<Announcement style={{ cursor: 'pointer' }} onClick={() => alert('on icon click')} />}
+    iconRight={<Announcement style={{ cursor: 'pointer' }} onClick={() => alert('on icon click')} />}
   />
 );
 
-export const TextInputWithIcon = () => (
+export const TextInputWithRightIcon = () => (
   <TextInput
     placeholder="search..."
-    icon={<Announcement style={{ cursor: 'pointer' }} onClick={() => alert('on icon click')} />}
+    iconRight={<Announcement style={{ cursor: 'pointer' }} onClick={() => alert('on icon click')} />}
   />
 );
 
 export const TextInputWithImage = () => (
   <TextInput
     placeholder="search..."
-    icon={
+    iconRight={
       <img
         src="https://static.bit.dev/bit-icons/filter.svg"
         style={{ cursor: 'pointer' }}
         onClick={() => alert('on icon click')}
       />
     }
+  />
+);
+
+export const TextInputWithLeftIcon = () => (
+  <TextInput
+    placeholder="search..."
+    iconLeft={<Announcement style={{ cursor: 'pointer' }} onClick={() => alert('on icon click')} />}
   />
 );

@@ -4,6 +4,7 @@ import 'chart.js/auto';
 import { Line } from 'react-chartjs-2';
 import { Select } from '@logora/debate.input.select';
 import { Tag } from '@logora/debate.tag.tag';
+import { Icon } from '@logora/debate.icons.icon'
 import { Loader } from '@logora/debate.progress.loader';
 import styles from "./LineChart.module.scss";
 import StandardErrorBoundary from "@logora/debate.error.standard_error_boundary";
@@ -59,9 +60,11 @@ export const LineChart = ({ data, labels, onFilterChange, title, className, filt
   }
 
   const displayTags = (tag) => {
+    const tagIsActive = activeTagId === tag.id;
+
     return (
       <div className={styles.tagItem} key={tag.id} onClick={() => setActiveTagId(tag.id == activeTagId ? null : tag.id)}>
-        <Tag active={activeTagId === tag.id ? true : false} text={tag.display_name ? tag.display_name : tag.name} />
+        <Tag text={tag.display_name || tag.name}  active={tagIsActive} rightIcon={tagIsActive && <Icon name="close" height={10} width={10} />} />
       </div>
     );
   }

@@ -55,7 +55,7 @@ export const TopArguments = ({ argumentFor, argumentAgainst, debateUrl, argument
 
     return (
         <>
-            { config.synthesis.newDesign === true || (isMobile && config.synthesis.onlyShowTopArgument === true) ? 
+            { (config.synthesis.newDesign !== false) || (isMobile && config.synthesis.onlyShowTopArgument === true) ? 
                 <div className={styles.topArgumentsUnique}>
                     <div className={styles.topArgument}>
                         { displayArgument(topArgument, topArgument === argumentAgainst ? 1 : 0, true) }

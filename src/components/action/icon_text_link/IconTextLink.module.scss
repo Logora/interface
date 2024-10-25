@@ -27,8 +27,8 @@ a.iconTextLink {
 }
 
 .iconText {
+	font-size: $font-size-small;
 	@include mt(1, xs);
-	font-size: $font-size-extra-small;
 }
 
 .iconPinContainer {
