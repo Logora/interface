@@ -12,6 +12,7 @@ export const OAuth2Button = ({
   redirectUri,
   scope,
   responseType,
+  accessType,
   onCode,
   onClose,
   popup = true,
@@ -38,6 +39,9 @@ export const OAuth2Button = ({
     baseUrl.searchParams.append("scope", scope);
     if (responseType) {
       baseUrl.searchParams.append("response_type", responseType);
+    }
+    if (accessType) {
+      baseUrl.searchParams.append("access_type", accessType);
     }
 
     if (typeof window !== "undefined") {
