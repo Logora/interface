@@ -146,7 +146,7 @@ export const ToolbarPlugin = (props) => {
                                 <Icon name="orderedList" width={24} height={24} className={cx(styles.format, styles.numberedList)} />
                             </button>
                             {!props.hideSourceAction && (
-                                <Tooltip text={props.sourceTooltip && props.sourceTooltip}  variant={"success"}>
+                                <Tooltip text={props.sourceTooltip && props.sourceTooltip} variant={"success"} className={styles.tooltip}>
                                     <button
                                         onClick={props.onAddSource}
                                         className={styles.toolbarItem}
