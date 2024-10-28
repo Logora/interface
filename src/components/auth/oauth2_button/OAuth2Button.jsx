@@ -12,7 +12,7 @@ export const OAuth2Button = ({
   redirectUri,
   scope,
   responseType,
-  accessType,
+  accessType = "",
   onCode,
   onClose,
   popup = true,
@@ -93,6 +93,8 @@ OAuth2Button.propTypes = {
   scope: PropTypes.string,
   /** OAuth2 response type */
   responseType: PropTypes.string,
+  /** OAuth2 access type */
+  accessType: PropTypes.string,
   /** Callback triggered if auth is sucessful */
   onCode: PropTypes.func,
   /** Callback triggered if popup is closed */
