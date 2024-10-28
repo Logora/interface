@@ -19,6 +19,7 @@ import styles from './ToolbarPlugin.module.scss';
 import cx from "classnames";
 import { Icon } from '@logora/debate.icons.icon';
 import { Button } from '@logora/debate.action.button';
+import { Tooltip } from '@logora/debate.dialog.tooltip';
 
 export const ToolbarPlugin = (props) => {
     const LowPriority = 1;
@@ -145,14 +146,16 @@ export const ToolbarPlugin = (props) => {
                                 <Icon name="orderedList" width={24} height={24} className={cx(styles.format, styles.numberedList)} />
                             </button>
                             {!props.hideSourceAction && (
-                            <button
-                                onClick={props.onAddSource}
-                                className={styles.toolbarItem}
-                                aria-label="Add Link"
-                            >
-                                <Icon name="link" width={20} height={20} className={cx(styles.format, styles.link)} />
-                            </button>
-                        )}
+                                <Tooltip text={props.sourceTooltip && props.sourceTooltip}  variant={"success"}>
+                                    <button
+                                        onClick={props.onAddSource}
+                                        className={styles.toolbarItem}
+                                        aria-label="Add Link"
+                                    >
+                                        <Icon name="link" width={20} height={20} className={cx(styles.format, styles.link)} />
+                                    </button>
+                                </Tooltip>
+                            )}
                         </div>
                     )
                     : null}
