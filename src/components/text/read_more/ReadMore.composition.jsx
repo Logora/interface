@@ -2,7 +2,7 @@ import React from 'react';
 import { ReadMore } from './ReadMore';
 import { faker } from '@faker-js/faker';
 
-let text = faker.lorem.paragraph(35);
+let text = faker.lorem.paragraph(40);
 let url = faker.internet.url();
 
 export const DefaultReadMore = () => {
@@ -34,8 +34,6 @@ export const LineClampedReadMore = () => {
     )
 }
 
-
-
 export const ButtonReadMore = () => {
     return (
         <ReadMore 
@@ -44,11 +42,11 @@ export const ButtonReadMore = () => {
             readMoreText="Read more"
             readLessText="Read less"
             target="_top"
+            lineCount={3}
             external
         />
     )
 }
-
 
 export const ExpandableReadMore = () => {
     return (

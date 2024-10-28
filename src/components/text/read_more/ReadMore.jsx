@@ -9,7 +9,7 @@ export const ReadMore = ({content, contentCharCount = 250, to, lineCount = false
 
     const formatContent = (content) => {
         if (!expandable) {
-            return content; 
+            return content;
         }
         if (content.length > contentCharCount) {
             return `${content.replace(/[\n\r]/g, ' ').slice(0, contentLength)}...`;
@@ -31,8 +31,9 @@ export const ReadMore = ({content, contentCharCount = 250, to, lineCount = false
             <span className={lineCount ? styles.contentBody : {}} style={lineCount ? lineClampingStyle : {}} onClick={expandable ? handleContentToggle : undefined} >
                 {lineCount ? content : formatContent(content)}
             </span>
-            {expandable && (
-                <span>
+            {expandable &&  (
+                <span className={styles.readMoreWrapper} >
+                    <span className={styles.ellipsis}>...</span>
                     {to ?
                         <Link
                             to={to}
