@@ -48,12 +48,11 @@ export const ButtonReadMore = () => {
     )
 }
 
-export const ExpandableReadMore = () => {
+export const DisabledReadMore = () => {
     return (
         <ReadMore 
             content={text}
             contentCharCount={250}
-            to={url}
             expandable={false}
             readMoreText="Read more"
             readLessText="Read less"
