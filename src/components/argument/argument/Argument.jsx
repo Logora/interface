@@ -24,7 +24,7 @@ import styles from "./Argument.module.scss";
 const ArgumentInput = lazy(() => import('@logora/debate.input.argument_input'));
 import PropTypes from "prop-types";
 
-export const Argument = ({ argument, argumentReplies, nestingLevel = 0, debatePositions, disableLinks = false, parentArgument, expandable, disabled = false, isComment = false, hideReplies, debateName, vote, fixedContentHeight = false, enableEdition = true, deleteListId }) => {
+export const Argument = ({ argument, argumentReplies, nestingLevel = 0, debatePositions = [], disableLinks = false, parentArgument, expandable, disabled = false, isComment = false, hideFooter = false, hideReplies, debateName, vote, fixedContentHeight = false, enableEdition = true, deleteListId }) => {
 	const intl = useIntl();
 	const { isLoggedIn, currentUser } = useAuth();
 	const config = useConfig();
@@ -174,7 +174,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, debatePo
 						)}
 					</>
 				}
-				{!argument.is_deleted &&
+				{!hideFooter && !argument.is_deleted &&
 					<ContentFooter
 						resource={argument}
 						disabled={disabled || (!isLoggedIn && config?.actions?.disableInputForVisitor === true)}
@@ -205,7 +205,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, debatePo
 						/>
 					</ContentFooter>
 				}
-				{!hideReplies &&
+				{!hideFooter && !hideReplies &&
 					<ReplyFooter
 						numberReplies={argument.number_replies}
 						repliesAuthors={argument.replies_authors}
@@ -305,6 +305,8 @@ Argument.propTypes = {
 	disabled: PropTypes.bool,
 	/** If true, enabled comment styles */
 	isComment: PropTypes.bool,
+	/** If true, hides footer, including replies */
+	hideFooter: PropTypes.bool,
 	/** If true, hide replies */
 	hideReplies: PropTypes.bool,
 	/** Name of the debate */
