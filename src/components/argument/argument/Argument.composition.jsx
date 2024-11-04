@@ -221,6 +221,7 @@ export const ArgumentReply = () => (
                 argument={argumentReply}
                 debatePositions={debatePositions}
                 debateName={debateName}
+                parentArgument={argument}
                 nestingLevel={1}
             />
         </Providers>

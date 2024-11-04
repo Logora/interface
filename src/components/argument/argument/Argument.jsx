@@ -1,6 +1,7 @@
 import React, { Suspense, lazy, useEffect, useState } from "react";
 import { useAuth } from "@logora/debate.auth.use_auth";
 import { useConfig } from '@logora/debate.data.config_provider';
+import { useHistory } from 'react-router-dom';
 import { useIntl, FormattedMessage } from "react-intl";
 import { useTranslatedContent } from '@logora/debate.translation.translated_content';
 import { ContentHeader } from '@logora/debate.user_content.content_header';
@@ -23,17 +24,19 @@ import styles from "./Argument.module.scss";
 const ArgumentInput = lazy(() => import('@logora/debate.input.argument_input'));
 import PropTypes from "prop-types";
 
-export const Argument = ({ argument, argumentReplies, nestingLevel, debatePositions, disableLinks, replyToArgument, flashParent, expandable, disabled = false, isComment, hideReplies, debateName, vote, fixedContentHeight, enableEdition = true, deleteListId }) => {
+export const Argument = ({ argument, argumentReplies, nestingLevel = 0, debatePositions, disableLinks = false, parentArgument, expandable, disabled = false, isComment, hideReplies, debateName, vote, fixedContentHeight = false, enableEdition = true, deleteListId }) => {
+	const intl = useIntl();
+	const { isLoggedIn, currentUser } = useAuth();
+	const config = useConfig();
+	const history = useHistory()
+
 	const [expandReplies, setExpandReplies] = useState(false);
 	const [flash, setFlash] = useState(false);
 	const [startReplyInput, setStartReplyInput] = useState(false);
 	const [richContent, setRichContent] = useState(null);
 	const [extraReplies, setExtraReplies] = useState();
-	const intl = useIntl();
-	const { isLoggedIn, currentUser } = useAuth();
 	const content = useTranslatedContent(argument.content, argument.language, "content", argument.translation_entries);
 	const position = useTranslatedContent(argument.position?.name, argument.position?.language, "name", argument.position?.translation_entries);
-	const config = useConfig();
 	const componentId = "argument_" + argument.id;
 
 	useEffect(() => {
@@ -52,17 +55,6 @@ export const Argument = ({ argument, argumentReplies, nestingLevel, debatePositi
 	useEffect(() => {
 		if (argumentReplies !== undefined) { displayRepliesThread() }
 	}, [argumentReplies])
-
-	const scrollToArgument = (argumentId) => {
-		const currentArgumentId = componentId;
-		if (currentArgumentId === argumentId) {
-			let argumentElement = document.getElementById(argumentId);
-			if (argumentElement) {
-				argumentElement.scrollIntoView({ behavior: "smooth" });
-			}
-			setFlash(true);
-		}
-	};
 
 	const displaySource = (source, index) => {
 		return <SourceListItem key={index} publisher={source.publisher} url={source.source_url} title={source.title} index={index} />;
@@ -100,8 +92,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel, debatePositi
 				debateName={debateName}
 				debatePositions={debatePositions && debatePositions}
 				argumentReplies={argumentReplies}
-				replyToArgument={argument}
-				flashParent={(argumentId) => scrollToArgument(`argument_${argumentId}`)}
+				parentArgument={argument}
 				isComment={isComment}
 			/>
 		)
@@ -137,11 +128,11 @@ export const Argument = ({ argument, argumentReplies, nestingLevel, debatePositi
 					:
 					<>
 						<div className={cx(styles.argumentBody, { [styles.fixedHeight]: fixedContentHeight })}>
-							{argument.is_reply && replyToArgument &&
-								<div className={styles.replyTo} onClick={() => flashParent(replyToArgument.id)}>
+							{argument.is_reply && parentArgument &&
+								<div className={styles.replyTo} onClick={() => history.push({ hash: `argument_${parentArgument.id}` })}>
 									{intl.formatMessage({ id: "info.replying_to", defaultMessage: "Replying to" })}
 									<span className={styles.replyingTo}>
-										{replyToArgument.is_deleted ? intl.formatMessage({ id: "info.deleted", defaultMessage: "Deleted" }) : replyToArgument.author.full_name}
+										{parentArgument.is_deleted ? intl.formatMessage({ id: "info.deleted", defaultMessage: "Deleted" }) : parentArgument.author.full_name}
 										<Icon name="chat" height={16} />
 									</span>
 								</div>
@@ -321,9 +312,7 @@ Argument.propTypes = {
 	/** If true, disables links */
 	disableLinks: PropTypes.bool,
 	/** Parent argument */
-	replyToArgument: PropTypes.object,
-	/** Flash border of parent argument */
-	flashParent: PropTypes.func,
+	parentArgument: PropTypes.object,
 	/** If true, content is expandable */
     expandable: PropTypes.bool,
 	/** If true, disabled mode in argument */
