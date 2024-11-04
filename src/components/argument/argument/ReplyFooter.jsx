@@ -2,7 +2,7 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { Icon } from '@logora/debate.icons.icon';
 import { Avatar } from '@logora/debate.user.avatar';
-import styles from './ReplyList.module.scss';
+import styles from './ReplyFooter.module.scss';
 import cx from 'classnames';
 
 export const ReplyFooter = ({ numberReplies, repliesAuthors = [], onToggleReplies, expandReplies }) => {

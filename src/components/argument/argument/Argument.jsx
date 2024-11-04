@@ -24,7 +24,7 @@ import styles from "./Argument.module.scss";
 const ArgumentInput = lazy(() => import('@logora/debate.input.argument_input'));
 import PropTypes from "prop-types";
 
-export const Argument = ({ argument, argumentReplies, nestingLevel = 0, debatePositions, disableLinks = false, parentArgument, expandable, disabled = false, isComment, hideReplies, debateName, vote, fixedContentHeight = false, enableEdition = true, deleteListId }) => {
+export const Argument = ({ argument, argumentReplies, nestingLevel = 0, debatePositions, disableLinks = false, parentArgument, expandable, disabled = false, isComment = false, hideReplies, debateName, vote, fixedContentHeight = false, enableEdition = true, deleteListId }) => {
 	const intl = useIntl();
 	const { isLoggedIn, currentUser } = useAuth();
 	const config = useConfig();
@@ -169,7 +169,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, debatePo
 								</ExpandableText>
 							}
 						</div>
-						{(!argument.sources || argument.sources.length === 0) ? null : (
+						{argument.sources?.length > 0 && (
 							<div className={styles.argumentSourcesList}>{argument.sources.map(displaySource)}</div>
 						)}
 					</>
