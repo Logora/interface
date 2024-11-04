@@ -246,7 +246,7 @@ export const ArgumentWithoutFooter = () => (
     </div>
 );
 
-export const ArgumentWithRepliesComponent = () => (
+export const ArgumentWithReplies = () => (
     <div style={{ width: "400px", height: "260px" }}>
         <Providers>
             <Argument

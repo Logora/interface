@@ -32,7 +32,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, debatePo
 
 	const [expandReplies, setExpandReplies] = useState(false);
 	const [flash, setFlash] = useState(false);
-	const [startReplyInput, setStartReplyInput] = useState(false);
+	const [showReplyInput, setShowReplyInput] = useState(false);
 	const [richContent, setRichContent] = useState(null);
 	const [extraReplies, setExtraReplies] = useState();
 	const content = useTranslatedContent(argument.content, argument.language, "content", argument.translation_entries);
@@ -61,7 +61,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, debatePo
 	}, [])
 
 	const toggleReplyInput = () => {
-		setStartReplyInput(startReplyInput => !startReplyInput);
+		setShowReplyInput(showReplyInput => !showReplyInput);
 	};
 
 	const toggleReplies = () => {
@@ -216,7 +216,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, debatePo
 			</div>
 			{!hideReplies &&
 				<>
-					{startReplyInput && (
+					{showReplyInput && (
 						<Suspense fallback={null}>
 							<ArgumentInput
 								key={`Reply${argument.id}`}
