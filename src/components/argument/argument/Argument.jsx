@@ -181,14 +181,12 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupTyp
 						deleteListId={deleteListId}
 						enableReply={nestingLevel <= 2}
 						handleReplyTo={toggleReplyInput}
-						shareButton={!isComment}
 						shareUrl={"https://app.logora.fr/share/a/" + argument.id}
 						shareTitle={intl.formatMessage({ id: "share.argument.title", defaultMessage: "Share a debate" })}
 						shareText={intl.formatMessage({ id: "share.argument.text", defaultMessage: "This argument may interest you" })}
 						shareCode={'<iframe src="https://cdn.logora.com/embed.html?shortname=' + config.shortname + '&id=' + argument.id + '&resource=argument" frameborder="0" width="100%" height="275px" scrolling="no"></iframe>'}
 						showShareCode={config?.actions?.hideCodeShare != true}
 						showShareText
-						leftReply={isComment}
 						enableReport={!(argument.score == 100 && argument.manual_score)}
 						enableEdition={enableEdition}
 					>

@@ -223,20 +223,6 @@ describe('Argument', () => {
         expect(argumentContainer).toHaveClass('argumentReply');
     });
 
-    it('should render comment argument', () => {
-        const { queryByText, getByTestId } = renderArgument({
-            argument,
-            positions,
-            groupName,
-            nestingLevel: 0,
-            isComment: true
-        });
-
-        expect(queryByText("Share")).not.toBeInTheDocument();
-        const replyButton = getByTestId('reply-button');
-        expect(replyButton).toHaveClass('leftReply');
-    });
-
     it('should render deleted argument', () => {
         const { queryByText } = renderArgument({
             argument: argumentDeleted,
