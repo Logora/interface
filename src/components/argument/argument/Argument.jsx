@@ -85,6 +85,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupTyp
 				nestingLevel={nestingLevel + 1}
 				disabled={disabled}
 				groupName={groupName}
+				groupType={groupType}
 				debatePositions={debatePositions && debatePositions}
 				argumentReplies={argumentReplies}
 				parentArgument={argument}
