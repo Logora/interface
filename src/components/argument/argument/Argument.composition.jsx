@@ -138,7 +138,6 @@ export const DefaultArgument = () => (
                 argument={argument}
                 debatePositions={debatePositions}
                 debateName={debateName}
-                nestingLevel={0}
             />
         </Providers>
     </div>
@@ -151,7 +150,6 @@ export const ExpandableArgument = () => (
                 argument={longArgument}
                 debatePositions={debatePositions}
                 debateName={debateName}
-                nestingLevel={0}
                 expandable
             />
         </Providers>
@@ -165,7 +163,6 @@ export const ExpandedArgument = () => (
                 argument={longArgument}
                 debatePositions={debatePositions}
                 debateName={debateName}
-                nestingLevel={0}
                 expandable={false}
             />
         </Providers>
@@ -179,22 +176,7 @@ export const Comment = () => (
                 argument={argument}
                 debatePositions={debatePositions}
                 debateName={debateName}
-                nestingLevel={0}
                 isComment
-            />
-        </Providers>
-    </div>
-);
-
-export const ArgumentDisabled = () => (
-    <div style={{ width: "400px", height: "230px" }}>
-        <Providers>
-            <Argument
-                argument={argument}
-                debatePositions={debatePositions}
-                debateName={debateName}
-                nestingLevel={0}
-                disabled
             />
         </Providers>
     </div>
@@ -207,7 +189,6 @@ export const ArgumentDisabledLinks = () => (
                 argument={argument}
                 debatePositions={debatePositions}
                 debateName={debateName}
-                nestingLevel={0}
                 disableLinks={true}
             />
         </Providers>
@@ -221,33 +202,57 @@ export const ArgumentReply = () => (
                 argument={argumentReply}
                 debatePositions={debatePositions}
                 debateName={debateName}
+                parentArgument={argument}
                 nestingLevel={1}
             />
         </Providers>
     </div>
 );
 
-export const DeletedArgumentComponent = () => (
+export const DisabledArgument = () => (
+    <div style={{ width: "400px", height: "230px" }}>
+        <Providers>
+            <Argument
+                argument={argument}
+                debatePositions={debatePositions}
+                debateName={debateName}
+                disabled
+            />
+        </Providers>
+    </div>
+);
+
+export const DeletedArgument = () => (
     <div style={{ width: "400px" }}>
         <Providers>
             <Argument
                 argument={argumentDeleted}
                 debatePositions={debatePositions}
                 debateName={debateName}
-                nestingLevel={0}
             />
         </Providers>
     </div>
 );
 
-export const ArgumentWithRepliesComponent = () => (
+export const ArgumentWithoutFooter = () => (
+    <div style={{ width: "400px", height: "240px" }}>
+        <Providers>
+            <Argument
+                argument={argument}
+                debateName={debateName}
+                hideFooter={true}
+            />
+        </Providers>
+    </div>
+);
+
+export const ArgumentWithReplies = () => (
     <div style={{ width: "400px", height: "260px" }}>
         <Providers>
             <Argument
                 argument={argumentWithReplies}
                 debatePositions={debatePositions}
                 debateName={debateName}
-                nestingLevel={0}
             />
         </Providers>
     </div>
@@ -260,7 +265,6 @@ export const ArgumentWithArgumentReplies = () => (
                 argument={argument}
                 debatePositions={debatePositions}
                 debateName={debateName}
-                nestingLevel={0}
                 argumentReplies={[argumentReply]}
             />
         </Providers>

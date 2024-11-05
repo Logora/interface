@@ -1,6 +1,9 @@
 @import '~@logora/debate.styles.theme/_theme.scss';
 
 .readMore {
+    position: relative;
+    display: flex;
+    flex-direction: column;
     a.readMoreElement {
         font-weight: $font-weight-bold;
         text-decoration: none;
@@ -15,7 +18,25 @@
     overflow: hidden;
 }
 
-.nextLine {
-    display: block;
-    width: 100%;
+.readMoreWrapper {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: white;
+    display: flex;
+    align-items: center;
+}
+
+.readMoreElement {
+    display: inline;
+    white-space: nowrap;
+    font-weight: $font-weight-bold;
+    cursor: pointer;
+}
+
+.ellipsis {
+    display: inline;
+    white-space: nowrap;
+    margin: 0; 
+    padding: 0;
 }
