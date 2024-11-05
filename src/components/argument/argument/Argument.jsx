@@ -6,7 +6,6 @@ import { useTranslatedContent } from '@logora/debate.translation.translated_cont
 import { ContentHeader } from '@logora/debate.user_content.content_header';
 import { ExpandableText } from '@logora/debate.text.expandable_text';
 import { Icon } from '@logora/debate.icons.icon';
-import { lexicalToHtml } from "@logora/debate.input.text_editor";
 import { TranslationButton } from '@logora/debate.translation.translation_button';
 import { UserContentSkeleton } from '@logora/debate.skeleton.user_content_skeleton';
 import { AnnouncementDialog } from "@logora/debate.dialog.announcement_dialog";
@@ -17,8 +16,8 @@ import { Button } from '@logora/debate.action.button';
 import { VotePaginatedList } from '@logora/debate.list.paginated_list';
 import { HashScroll } from '@logora/debate.tools.hash_scroll';
 import { ReplyFooter } from "./ReplyFooter";
+import { useRichContent } from "./useRichContent";
 import cx from "classnames";
-import draftToHtml from "draftjs-to-html";
 import styles from "./Argument.module.scss";
 const ArgumentInput = lazy(() => import('@logora/debate.input.argument_input'));
 import PropTypes from "prop-types";
@@ -31,24 +30,11 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, debatePo
 	const [expandReplies, setExpandReplies] = useState(false);
 	const [flash, setFlash] = useState(false);
 	const [showReplyInput, setShowReplyInput] = useState(false);
-	const [richContent, setRichContent] = useState(null);
+	const richContent = useRichContent(argument);
 	const [extraReplies, setExtraReplies] = useState();
 	const content = useTranslatedContent(argument.content, argument.language, "content", argument.translation_entries);
 	const position = useTranslatedContent(argument.position?.name, argument.position?.language, "name", argument.position?.translation_entries);
 	const componentId = "argument_" + argument.id;
-
-	useEffect(() => {
-		if (argument.rich_content && argument.is_deleted != true) {
-			const rawContent = JSON.parse(argument.rich_content);
-			if (rawContent.hasOwnProperty("root")) {
-				const html = lexicalToHtml(rawContent);
-				setRichContent(html);
-			} else {
-				const htmlContent = draftToHtml(rawContent);
-				setRichContent(htmlContent);
-			}
-		}
-	}, [argument.rich_content]);
 
 	useEffect(() => {
 		if (argumentReplies !== undefined) { displayRepliesThread() }
@@ -72,8 +58,13 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, debatePo
 	const toggleReplies = () => {
 		setExpandReplies(expandReplies => !expandReplies);
 		setExtraReplies([]);
-	};
+	}
 
+	const transformReplies = (reply) => {
+		if (extraReplies && extraReplies.find(r => r.id === reply.id)) { return; }
+		return reply;
+	}
+	
 	const displaySource = useCallback((source, index) => {
 		return <SourceListItem key={index} publisher={source.publisher} url={source.source_url} title={source.title} index={index} />;
 	}, [])
@@ -85,11 +76,6 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, debatePo
 			setExpandReplies(true);
 		}
 	};
-
-	const transformReplies = (reply) => {
-		if (extraReplies && extraReplies.find(r => r.id === reply.id)) { return; }
-		return reply;
-	}
 
 	const displayReply = (reply = null) => {
 		return (
