@@ -3,9 +3,11 @@ import { useDataProvider } from '@logora/debate.data.data_provider';
 import { useResponsive } from "@logora/debate.hooks.use_responsive";
 import { useIntl } from "react-intl";
 import { useList } from "@logora/debate.list.list_provider";
+import { useAuth } from "@logora/debate.auth.use_auth";
 import { ActionBar } from './action_bar/ActionBar';
 import { Pagination } from '@logora/debate.list.pagination';
 import { uniqueBy } from '@logora/debate.util.unique_by';
+import { useAuthRequired } from '@logora/debate.hooks.use_auth_required';
 import StandardErrorBoundary from '@logora/debate.error.standard_error_boundary';
 import usePrevious from "@rooks/use-previous";
 import cx from "classnames";
@@ -52,12 +54,14 @@ export const PaginatedList = ({
     countless,
     onElementClick,
     withUrlParams = false,
+    mustBeLoggedInToLoadNewPage = false
 }) => {
     const intl = useIntl();
     const list = useList();
     const api = useDataProvider();
     const location = useLocation();
     const { isMobile, isTablet, isDesktop } = useResponsive();
+    const { isLoggedIn } = useAuth();
     const [isLoading, setIsLoading] = useState(false);
     const [loadError, setLoadError] = useState(false);
     const [currentResources, setCurrentResources] = useState(staticContext && staticResourceName && staticResourceName in staticContext ? staticContext[staticResourceName] : []);
@@ -67,6 +71,7 @@ export const PaginatedList = ({
     const [activeTagId, setActiveTagId] = useState(null);
     const [defaultSelectOption, setDefaultSelectOption] = useState(null);
     const urlParams = new URLSearchParams(window !== "undefined" ? window.location.search : location.search);
+    const requireAuthentication = useAuthRequired();
 
     const getInitSort = () => {
         return (sortOptions && sortOptions[0].type === "sort" && sortOptions[0].value) || sort || "";
@@ -196,6 +201,14 @@ export const PaginatedList = ({
             setCurrentFilters(filters ? { ...filters } : {});
         }
     };
+
+    const handleLoadNewPage = () => {
+        if (mustBeLoggedInToLoadNewPage && !isLoggedIn) {
+            requireAuthentication({});
+        } else {
+            setPage(page + 1)
+        }
+    }
 
     const loadResources = (pageNumber) => {
         const loadFunction = withToken ? api.getListWithToken : api.getList;
@@ -338,7 +351,7 @@ export const PaginatedList = ({
                             currentPage={page}
                             perPage={perPage}
                             totalElements={numberElements || totalElements}
-                            onLoad={() => setPage(page + 1)}
+                            onLoad={handleLoadNewPage}
                             isLoading={isLoading}
                             hideLoader={true} // Disable loader when there is loading components to display instead
                         />
@@ -387,5 +400,6 @@ PaginatedList.propTypes = {
     numberElements: PropTypes.number,
     countless: PropTypes.bool,
     withUrlParams: PropTypes.bool,
-    onLoad: PropTypes.func
+    onLoad: PropTypes.func,
+    mustBeLoggedInToLoadNewPage: PropTypes.bool
 };
