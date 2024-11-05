@@ -22,7 +22,7 @@ import styles from "./Argument.module.scss";
 const ArgumentInput = lazy(() => import('@logora/debate.input.argument_input'));
 import PropTypes from "prop-types";
 
-export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupType, groupName, debatePositions = [], disableLinks = false, parentArgument, flashParent, expandable, disabled = false, isComment = false, hideFooter = false, hideReplies, vote, fixedContentHeight = false, enableEdition = true, deleteListId }) => {
+export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupType, groupName, positions = [], disableLinks = false, parentArgument, flashParent, expandable, disabled = false, isComment = false, hideFooter = false, hideReplies, vote, fixedContentHeight = false, enableEdition = true, deleteListId }) => {
 	const intl = useIntl();
 	const { isLoggedIn, currentUser } = useAuth();
 	const config = useConfig();
@@ -35,6 +35,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupTyp
 	const content = useTranslatedContent(argument.content, argument.language, "content", argument.translation_entries);
 	const position = useTranslatedContent(argument.position?.name, argument.position?.language, "name", argument.position?.translation_entries);
 	const componentId = "argument_" + argument.id;
+	const positionIndex = argument.position && positions?.map((e) => e.id).indexOf(argument.position.id) + 1;
 
 	useEffect(() => {
 		if (argumentReplies !== undefined) { displayRepliesThread() }
@@ -81,12 +82,11 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupTyp
 		return (
 			<ArgumentContainer
 				{...(reply ? { argument: reply } : {})}
-				positionIndex={debatePositions && debatePositions.map((e) => e.id).indexOf(reply?.position?.id) + 1}
 				nestingLevel={nestingLevel + 1}
 				disabled={disabled}
 				groupName={groupName}
 				groupType={groupType}
-				debatePositions={debatePositions && debatePositions}
+				positions={positions}
 				argumentReplies={argumentReplies}
 				parentArgument={argument}
 				flashParent={(argumentId) => scrollToArgument(`argument_${argumentId}`)}
@@ -105,7 +105,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupTyp
 						[styles.argumentReply]: argument.is_reply == true,
 					},
 					styles[`level-${nestingLevel}`],
-					styles[`position-${!(argument.author.role == "editor" || argument.author.role == "moderator") && argument.position && debatePositions && debatePositions.map((e) => e.id).indexOf(argument.position.id) + 1}`]
+					styles[`position-${!(argument.author.role == "editor" || argument.author.role == "moderator") && positionIndex}`]
 				)}
 				id={componentId}
 			>
@@ -114,7 +114,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupTyp
 					author={argument.author}
 					tag={(argument.author.role == "editor" || argument.author.role == "moderator") && argument.is_reply ? null : position.translatedContent}
 					date={argument.created_at}
-					tagClassName={styles[`headerPosition-${argument.position && debatePositions && debatePositions.map((e) => e.id).indexOf(argument.position.id) + 1}`]}
+					tagClassName={styles[`headerPosition-${positionIndex}`]}
 					disableLinks={disableLinks}
 					isDeleted={argument.is_deleted}
 				/>
@@ -197,7 +197,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupTyp
 							voteableId={argument.id}
 							totalUpvote={argument.upvotes}
 							totalDownvote={0}
-							activeClassName={styles[`voteButtonPosition-${argument.position && debatePositions?.map((e) => e.id).indexOf(argument.position.id) + 1}`]}
+							activeClassName={styles[`voteButtonPosition-${positionIndex}`]}
 							disabled={disabled || (currentUser?.id === argument?.author?.id)}
 						/>
 					</ContentFooter>
@@ -220,7 +220,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupTyp
 								groupId={argument.group_id}
 								groupType={groupType}
 								groupName={groupName}
-								positions={debatePositions}
+								positions={positions}
 								parentId={argument.id}
 								positionId={vote?.position_id}
 								disabled={disabled}
@@ -291,7 +291,7 @@ Argument.propTypes = {
 	/** Nesting level of the argument */
 	nestingLevel: PropTypes.number,
 	/** Positions of the debate */
-	debatePositions: PropTypes.array.isRequired,
+	positions: PropTypes.array.isRequired,
 	/** If true, disables links */
 	disableLinks: PropTypes.bool,
 	/** Flash border of parent argument */
