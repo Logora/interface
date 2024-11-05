@@ -77,9 +77,9 @@
 }
 
 .textEditorBox {
+    width: 100%;
     @include pt(2, sm);
     @include pt(0, xs);
-    width: 100%;
 }
 
 .argumentInputWarning {
@@ -120,14 +120,11 @@
 }
 
 .replyInputContainer {
-    border-radius: $box-border-radius;
-    box-shadow: $box-shadow;
     transition: margin-top 2s;
-    border: $box-border;
+    position: relative;
     @include mt(2, xs);
     @include p(3, xs);
-    position: relative;
-    background-color: $background-color-primary;
+
     &::before {
         content: "";
         border-left: 4px solid $text-secondary;
