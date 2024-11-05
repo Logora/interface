@@ -108,7 +108,7 @@ const debatePositions = [
     { id: 1, name: "Yes", language: "en", translation_entries: [] },
     { id: 2, name: "No", language: "en", translation_entries: [] }
 ];
-const debateName = faker.lorem.sentence(5);
+const groupName = faker.lorem.sentence(5);
 
 const targetContent = {"root":{"children":[{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"I write an argument","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}};
         
@@ -182,7 +182,6 @@ describe('Argument', () => {
         const { getByText } = renderArgument({
             argument,
             debatePositions,
-            debateName,
             nestingLevel: 0,
         });
 
@@ -196,7 +195,7 @@ describe('Argument', () => {
         const { getByText, getByAltText } = renderArgument({
             argument: argumentWithReplies,
             debatePositions,
-            debateName,
+            groupName,
             nestingLevel: 0,
         });
 
@@ -216,7 +215,7 @@ describe('Argument', () => {
         const { container } = renderArgument({
             argument: argumentReply,
             debatePositions,
-            debateName,
+            groupName,
             nestingLevel: 0,
         });
 
@@ -228,7 +227,7 @@ describe('Argument', () => {
         const { queryByText, getByTestId } = renderArgument({
             argument,
             debatePositions,
-            debateName,
+            groupName,
             nestingLevel: 0,
             isComment: true
         });
@@ -242,7 +241,7 @@ describe('Argument', () => {
         const { queryByText } = renderArgument({
             argument: argumentDeleted,
             debatePositions,
-            debateName,
+            groupName,
             replies: false,
             nestingLevel: 0,
         });
@@ -256,7 +255,7 @@ describe('Argument', () => {
         const { getByText, getByTestId } = renderArgument({
             argument,
             debatePositions,
-            debateName,
+            groupName,
             nestingLevel: 0,
         });
 
@@ -269,7 +268,7 @@ describe('Argument', () => {
         const { getByText, getByTestId, queryByText } = renderArgument({
             argument,
             debatePositions,
-            debateName,
+            groupName,
             nestingLevel: 0,
         });
 
@@ -285,7 +284,7 @@ describe('Argument', () => {
         const { getByText, getByTestId } = renderArgument({
             argument,
             debatePositions,
-            debateName,
+            groupName,
             nestingLevel: 0,
         });
 
@@ -303,7 +302,7 @@ describe('Argument', () => {
                 { id: 1, name: 'Yes', language: 'en', translation_entries: [] },
                 { id: 2, name: 'No', language: 'en', translation_entries: [] },
             ],
-            debateName: 'Test Debate',
+            groupName: 'Test Debate',
             nestingLevel: 0,
         });
 

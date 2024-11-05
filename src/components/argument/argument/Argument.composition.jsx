@@ -98,7 +98,7 @@ const debatePositions = [
     { id: 2, name: "No", language: "en", translation_entries: [] }
 ];
 
-const debateName = faker.lorem.sentence(5);
+const groupeName = faker.lorem.sentence(5);
 
 const Providers = ({ children }) => (
     <BrowserRouter>
@@ -137,7 +137,7 @@ export const DefaultArgument = () => (
             <Argument
                 argument={argument}
                 debatePositions={debatePositions}
-                debateName={debateName}
+                groupName={groupeName}
             />
         </Providers>
     </div>
@@ -149,7 +149,6 @@ export const ExpandableArgument = () => (
             <Argument
                 argument={longArgument}
                 debatePositions={debatePositions}
-                debateName={debateName}
                 expandable
             />
         </Providers>
@@ -162,7 +161,6 @@ export const ExpandedArgument = () => (
             <Argument
                 argument={longArgument}
                 debatePositions={debatePositions}
-                debateName={debateName}
                 expandable={false}
             />
         </Providers>
@@ -175,7 +173,6 @@ export const Comment = () => (
             <Argument
                 argument={argument}
                 debatePositions={debatePositions}
-                debateName={debateName}
                 isComment
             />
         </Providers>
@@ -188,7 +185,6 @@ export const ArgumentDisabledLinks = () => (
             <Argument
                 argument={argument}
                 debatePositions={debatePositions}
-                debateName={debateName}
                 disableLinks={true}
             />
         </Providers>
@@ -201,7 +197,6 @@ export const ArgumentReply = () => (
             <Argument
                 argument={argumentReply}
                 debatePositions={debatePositions}
-                debateName={debateName}
                 parentArgument={argument}
                 nestingLevel={1}
             />
@@ -215,7 +210,6 @@ export const DisabledArgument = () => (
             <Argument
                 argument={argument}
                 debatePositions={debatePositions}
-                debateName={debateName}
                 disabled
             />
         </Providers>
@@ -228,7 +222,6 @@ export const DeletedArgument = () => (
             <Argument
                 argument={argumentDeleted}
                 debatePositions={debatePositions}
-                debateName={debateName}
             />
         </Providers>
     </div>
@@ -239,7 +232,6 @@ export const ArgumentWithoutFooter = () => (
         <Providers>
             <Argument
                 argument={argument}
-                debateName={debateName}
                 hideFooter={true}
             />
         </Providers>
@@ -252,7 +244,6 @@ export const ArgumentWithReplies = () => (
             <Argument
                 argument={argumentWithReplies}
                 debatePositions={debatePositions}
-                debateName={debateName}
             />
         </Providers>
     </div>
@@ -264,7 +255,6 @@ export const ArgumentWithArgumentReplies = () => (
             <Argument
                 argument={argument}
                 debatePositions={debatePositions}
-                debateName={debateName}
                 argumentReplies={[argumentReply]}
             />
         </Providers>

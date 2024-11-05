@@ -22,7 +22,7 @@ import styles from "./Argument.module.scss";
 const ArgumentInput = lazy(() => import('@logora/debate.input.argument_input'));
 import PropTypes from "prop-types";
 
-export const Argument = ({ argument, argumentReplies, nestingLevel = 0, debatePositions = [], disableLinks = false, parentArgument, flashParent, expandable, disabled = false, isComment = false, hideFooter = false, hideReplies, debateName, vote, fixedContentHeight = false, enableEdition = true, deleteListId }) => {
+export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupType, groupName, debatePositions = [], disableLinks = false, parentArgument, flashParent, expandable, disabled = false, isComment = false, hideFooter = false, hideReplies, vote, fixedContentHeight = false, enableEdition = true, deleteListId }) => {
 	const intl = useIntl();
 	const { isLoggedIn, currentUser } = useAuth();
 	const config = useConfig();
@@ -84,7 +84,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, debatePo
 				positionIndex={debatePositions && debatePositions.map((e) => e.id).indexOf(reply?.position?.id) + 1}
 				nestingLevel={nestingLevel + 1}
 				disabled={disabled}
-				debateName={debateName}
+				groupName={groupName}
 				debatePositions={debatePositions && debatePositions}
 				argumentReplies={argumentReplies}
 				parentArgument={argument}
@@ -217,8 +217,8 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, debatePo
 							<ArgumentInput
 								key={`Reply${argument.id}`}
 								groupId={argument.group_id}
-								groupType={isComment && "Source"}
-								groupName={debateName}
+								groupType={groupType}
+								groupName={groupName}
 								positions={debatePositions}
 								parentId={argument.id}
 								positionId={vote?.position_id}
@@ -307,8 +307,10 @@ Argument.propTypes = {
 	hideFooter: PropTypes.bool,
 	/** If true, hide replies */
 	hideReplies: PropTypes.bool,
-	/** Name of the debate */
-	debateName: PropTypes.string,
+	/** Type of the group */
+	groupType: PropTypes.string,
+	/** Name of the group the argument is in */
+	groupName: PropTypes.string,
 	/** Vote data */
 	vote: PropTypes.object,
 	/** If true, fix argument height */
