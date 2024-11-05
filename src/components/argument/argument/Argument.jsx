@@ -1,7 +1,6 @@
 import React, { Suspense, lazy, useEffect, useState, useCallback } from "react";
 import { useAuth } from "@logora/debate.auth.use_auth";
 import { useConfig } from '@logora/debate.data.config_provider';
-import { useHistory } from 'react-router-dom';
 import { useIntl } from "react-intl";
 import { useTranslatedContent } from '@logora/debate.translation.translated_content';
 import { ContentHeader } from '@logora/debate.user_content.content_header';
@@ -24,11 +23,10 @@ import styles from "./Argument.module.scss";
 const ArgumentInput = lazy(() => import('@logora/debate.input.argument_input'));
 import PropTypes from "prop-types";
 
-export const Argument = ({ argument, argumentReplies, nestingLevel = 0, debatePositions = [], disableLinks = false, parentArgument, expandable, disabled = false, isComment = false, hideFooter = false, hideReplies, debateName, vote, fixedContentHeight = false, enableEdition = true, deleteListId }) => {
+export const Argument = ({ argument, argumentReplies, nestingLevel = 0, debatePositions = [], disableLinks = false, parentArgument, flashParent, expandable, disabled = false, isComment = false, hideFooter = false, hideReplies, debateName, vote, fixedContentHeight = false, enableEdition = true, deleteListId }) => {
 	const intl = useIntl();
 	const { isLoggedIn, currentUser } = useAuth();
 	const config = useConfig();
-	const history = useHistory()
 
 	const [expandReplies, setExpandReplies] = useState(false);
 	const [flash, setFlash] = useState(false);
@@ -56,9 +54,16 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, debatePo
 		if (argumentReplies !== undefined) { displayRepliesThread() }
 	}, [argumentReplies])
 
-	const displaySource = useCallback((source, index) => {
-		return <SourceListItem key={index} publisher={source.publisher} url={source.source_url} title={source.title} index={index} />;
-	}, [])
+	const scrollToArgument = (argumentId) => {
+		const currentArgumentId = componentId;
+		if (currentArgumentId === argumentId) {
+			let argumentElement = document.getElementById(argumentId);
+			if (argumentElement) {
+				argumentElement.scrollIntoView({ behavior: "smooth" });
+			}
+			setFlash(true);
+		}
+	};
 
 	const toggleReplyInput = () => {
 		setShowReplyInput(showReplyInput => !showReplyInput);
@@ -68,6 +73,10 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, debatePo
 		setExpandReplies(expandReplies => !expandReplies);
 		setExtraReplies([]);
 	};
+
+	const displaySource = useCallback((source, index) => {
+		return <SourceListItem key={index} publisher={source.publisher} url={source.source_url} title={source.title} index={index} />;
+	}, [])
 
 	const displayRepliesThread = () => {
 		let filteredReplies = argumentReplies && argumentReplies.filter((reply) => reply.reply_to_id == argument.id);
@@ -93,6 +102,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, debatePo
 				debatePositions={debatePositions && debatePositions}
 				argumentReplies={argumentReplies}
 				parentArgument={argument}
+				flashParent={(argumentId) => scrollToArgument(`argument_${argumentId}`)}
 				isComment={isComment}
 			/>
 		)
@@ -129,7 +139,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, debatePo
 					<>
 						<div className={cx(styles.argumentBody, { [styles.fixedHeight]: fixedContentHeight })}>
 							{argument.is_reply && parentArgument &&
-								<div className={styles.replyTo} onClick={() => history.push({ hash: `argument_${parentArgument.id}` })}>
+								<div className={styles.replyTo} onClick={() => flashParent(replyToArgument.id)}>
 									{intl.formatMessage({ id: "info.replying_to", defaultMessage: "Replying to" })}
 									<span className={styles.replyingTo}>
 										{parentArgument.is_deleted ? intl.formatMessage({ id: "info.deleted", defaultMessage: "Deleted" }) : parentArgument.author.full_name}
@@ -297,6 +307,8 @@ Argument.propTypes = {
 	debatePositions: PropTypes.array.isRequired,
 	/** If true, disables links */
 	disableLinks: PropTypes.bool,
+	/** Flash border of parent argument */
+	flashParent: PropTypes.func,
 	/** Parent argument */
 	parentArgument: PropTypes.object,
 	/** If true, content is expandable */
