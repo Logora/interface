@@ -93,7 +93,7 @@ const argumentWithReplies = generateArgument({
     }))
 });
 
-const debatePositions = [
+const positions = [
     { id: 1, name: "Yes", language: "en", translation_entries: [] },
     { id: 2, name: "No", language: "en", translation_entries: [] }
 ];
@@ -136,7 +136,7 @@ export const DefaultArgument = () => (
         <Providers>
             <Argument
                 argument={argument}
-                debatePositions={debatePositions}
+                positions={positions}
                 groupName={groupeName}
             />
         </Providers>
@@ -148,7 +148,7 @@ export const ExpandableArgument = () => (
         <Providers>
             <Argument
                 argument={longArgument}
-                debatePositions={debatePositions}
+                positions={positions}
                 expandable
             />
         </Providers>
@@ -160,7 +160,7 @@ export const ExpandedArgument = () => (
         <Providers>
             <Argument
                 argument={longArgument}
-                debatePositions={debatePositions}
+                positions={positions}
                 expandable={false}
             />
         </Providers>
@@ -172,7 +172,7 @@ export const Comment = () => (
         <Providers>
             <Argument
                 argument={argument}
-                debatePositions={debatePositions}
+                positions={positions}
                 isComment
             />
         </Providers>
@@ -184,7 +184,7 @@ export const ArgumentDisabledLinks = () => (
         <Providers>
             <Argument
                 argument={argument}
-                debatePositions={debatePositions}
+                positions={positions}
                 disableLinks={true}
             />
         </Providers>
@@ -196,7 +196,7 @@ export const ArgumentReply = () => (
         <Providers>
             <Argument
                 argument={argumentReply}
-                debatePositions={debatePositions}
+                positions={positions}
                 parentArgument={argument}
                 nestingLevel={1}
             />
@@ -209,7 +209,7 @@ export const DisabledArgument = () => (
         <Providers>
             <Argument
                 argument={argument}
-                debatePositions={debatePositions}
+                positions={positions}
                 disabled
             />
         </Providers>
@@ -221,7 +221,7 @@ export const DeletedArgument = () => (
         <Providers>
             <Argument
                 argument={argumentDeleted}
-                debatePositions={debatePositions}
+                positions={positions}
             />
         </Providers>
     </div>
@@ -243,7 +243,7 @@ export const ArgumentWithReplies = () => (
         <Providers>
             <Argument
                 argument={argumentWithReplies}
-                debatePositions={debatePositions}
+                positions={positions}
             />
         </Providers>
     </div>
@@ -254,7 +254,7 @@ export const ArgumentWithArgumentReplies = () => (
         <Providers>
             <Argument
                 argument={argument}
-                debatePositions={debatePositions}
+                positions={positions}
                 argumentReplies={[argumentReply]}
             />
         </Providers>
