@@ -48,33 +48,25 @@ const DefaultList = () => {
     <BrowserRouter>
       <IntlProvider locale="en">
         <ListProvider>
-          <ConfigProvider>
-            <AuthContext.Provider value={{ isLoggedIn: true }}>
-              <IconProvider library={regularIcons}>
-                <ResponsiveProvider>
-                  <ModalProvider>
-                    <DataProviderContext.Provider
-                      value={{ dataProvider: data }}
-                    >
-                      <PaginatedList
-                        currentListId={"itemList"}
-                        resource={"items"}
-                        sort={"-created_at"}
-                        resourcePropName={"item"}
-                        perPage={10}
-                        withPagination={false}
-                        countless={true}
-                        display="column"
-                        perPageParam={"porut"}
-                      >
-                        <ListItem />
-                      </PaginatedList>
-                    </DataProviderContext.Provider>
-                  </ModalProvider>
-                </ResponsiveProvider>
-              </IconProvider>
-            </AuthContext.Provider>
-          </ConfigProvider>
+          <IconProvider library={regularIcons}>
+            <ResponsiveProvider>
+              <DataProviderContext.Provider value={{ dataProvider: data }}>
+                <PaginatedList
+                  currentListId={"itemList"}
+                  resource={"items"}
+                  sort={"-created_at"}
+                  resourcePropName={"item"}
+                  perPage={10}
+                  withPagination={false}
+                  countless={true}
+                  display="column"
+                  perPageParam={"porut"}
+                >
+                  <ListItem />
+                </PaginatedList>
+              </DataProviderContext.Provider>
+            </ResponsiveProvider>
+          </IconProvider>
         </ListProvider>
       </IntlProvider>
     </BrowserRouter>
@@ -107,33 +99,25 @@ describe("PaginatedList", () => {
       <BrowserRouter>
         <IntlProvider locale="en">
           <ListProvider>
-            <ConfigProvider>
-              <AuthContext.Provider value={{ isLoggedIn: true }}>
-                <IconProvider library={regularIcons}>
-                  <ResponsiveProvider>
-                    <ModalProvider>
-                      <DataProviderContext.Provider
-                        value={{ dataProvider: data }}
-                      >
-                        <PaginatedList
-                          currentListId={"itemList"}
-                          resource={"items"}
-                          sort={"-created_at"}
-                          resourcePropName={"item"}
-                          perPage={1}
-                          withPagination
-                          display="column"
-                          numberElements={3}
-                          loadingComponent={<p>Loading...</p>}
-                        >
-                          <ListItem />
-                        </PaginatedList>
-                      </DataProviderContext.Provider>
-                    </ModalProvider>
-                  </ResponsiveProvider>
-                </IconProvider>
-              </AuthContext.Provider>
-            </ConfigProvider>
+            <IconProvider library={regularIcons}>
+              <ResponsiveProvider>
+                <DataProviderContext.Provider value={{ dataProvider: data }}>
+                  <PaginatedList
+                    currentListId={"itemList"}
+                    resource={"items"}
+                    sort={"-created_at"}
+                    resourcePropName={"item"}
+                    perPage={1}
+                    withPagination
+                    display="column"
+                    numberElements={3}
+                    loadingComponent={<p>Loading...</p>}
+                  >
+                    <ListItem />
+                  </PaginatedList>
+                </DataProviderContext.Provider>
+              </ResponsiveProvider>
+            </IconProvider>
           </ListProvider>
         </IntlProvider>
       </BrowserRouter>
@@ -158,33 +142,27 @@ describe("PaginatedList", () => {
           <StandardErrorBoundary>
             <IntlProvider locale="en">
               <ListProvider>
-                <ConfigProvider>
-                  <AuthContext.Provider value={{ isLoggedIn: true }}>
-                    <IconProvider library={regularIcons}>
-                      <ResponsiveProvider>
-                        <ModalProvider>
-                          <DataProviderContext.Provider
-                            value={{ dataProvider: data }}
-                          >
-                            <PaginatedList
-                              currentListId={"itemList"}
-                              resource={"items"}
-                              sort={"-created_at"}
-                              resourcePropName={"item"}
-                              perPage={1}
-                              withPagination
-                              display="column"
-                              numberElements={3}
-                              loadingComponent={<p>Loading...</p>}
-                            >
-                              <ListItem />
-                            </PaginatedList>
-                          </DataProviderContext.Provider>
-                        </ModalProvider>
-                      </ResponsiveProvider>
-                    </IconProvider>
-                  </AuthContext.Provider>
-                </ConfigProvider>
+                <IconProvider library={regularIcons}>
+                  <ResponsiveProvider>
+                    <DataProviderContext.Provider
+                      value={{ dataProvider: data }}
+                    >
+                      <PaginatedList
+                        currentListId={"itemList"}
+                        resource={"items"}
+                        sort={"-created_at"}
+                        resourcePropName={"item"}
+                        perPage={1}
+                        withPagination
+                        display="column"
+                        numberElements={3}
+                        loadingComponent={<p>Loading...</p>}
+                      >
+                        <ListItem />
+                      </PaginatedList>
+                    </DataProviderContext.Provider>
+                  </ResponsiveProvider>
+                </IconProvider>
               </ListProvider>
             </IntlProvider>
           </StandardErrorBoundary>
@@ -227,31 +205,23 @@ describe("PaginatedList", () => {
         <BrowserRouter>
           <IntlProvider locale="en">
             <ListProvider>
-              <ConfigProvider>
-                <AuthContext.Provider value={{ isLoggedIn: true }}>
-                  <IconProvider library={regularIcons}>
-                    <ResponsiveProvider>
-                      <ModalProvider>
-                        <DataProviderContext.Provider
-                          value={{ dataProvider: data }}
-                        >
-                          <PaginatedList
-                            currentListId={"itemList"}
-                            resource={"items"}
-                            sort={"-created_at"}
-                            resourcePropName={"item"}
-                            perPage={1}
-                            numberElements={3}
-                            display="column"
-                          >
-                            <ListItem />
-                          </PaginatedList>
-                        </DataProviderContext.Provider>
-                      </ModalProvider>
-                    </ResponsiveProvider>
-                  </IconProvider>
-                </AuthContext.Provider>
-              </ConfigProvider>
+              <IconProvider library={regularIcons}>
+                <ResponsiveProvider>
+                  <DataProviderContext.Provider value={{ dataProvider: data }}>
+                    <PaginatedList
+                      currentListId={"itemList"}
+                      resource={"items"}
+                      sort={"-created_at"}
+                      resourcePropName={"item"}
+                      perPage={1}
+                      numberElements={3}
+                      display="column"
+                    >
+                      <ListItem />
+                    </PaginatedList>
+                  </DataProviderContext.Provider>
+                </ResponsiveProvider>
+              </IconProvider>
             </ListProvider>
           </IntlProvider>
         </BrowserRouter>
@@ -269,32 +239,24 @@ describe("PaginatedList", () => {
         <BrowserRouter>
           <IntlProvider locale="en">
             <ListProvider>
-              <ConfigProvider>
-                <AuthContext.Provider value={{ isLoggedIn: true }}>
-                  <IconProvider library={regularIcons}>
-                    <ResponsiveProvider>
-                      <ModalProvider>
-                        <DataProviderContext.Provider
-                          value={{ dataProvider: data }}
-                        >
-                          <PaginatedList
-                            currentListId={"itemList"}
-                            resource={"items"}
-                            sort={"-created_at"}
-                            resourcePropName={"item"}
-                            perPage={1}
-                            display="column"
-                            numberElements={3}
-                            searchBar
-                          >
-                            <ListItem />
-                          </PaginatedList>
-                        </DataProviderContext.Provider>
-                      </ModalProvider>
-                    </ResponsiveProvider>
-                  </IconProvider>
-                </AuthContext.Provider>
-              </ConfigProvider>
+              <IconProvider library={regularIcons}>
+                <ResponsiveProvider>
+                  <DataProviderContext.Provider value={{ dataProvider: data }}>
+                    <PaginatedList
+                      currentListId={"itemList"}
+                      resource={"items"}
+                      sort={"-created_at"}
+                      resourcePropName={"item"}
+                      perPage={1}
+                      display="column"
+                      numberElements={3}
+                      searchBar
+                    >
+                      <ListItem />
+                    </PaginatedList>
+                  </DataProviderContext.Provider>
+                </ResponsiveProvider>
+              </IconProvider>
             </ListProvider>
           </IntlProvider>
         </BrowserRouter>
@@ -312,32 +274,24 @@ describe("PaginatedList", () => {
         <BrowserRouter>
           <IntlProvider locale="en">
             <ListProvider>
-              <ConfigProvider>
-                <AuthContext.Provider value={{ isLoggedIn: true }}>
-                  <IconProvider library={regularIcons}>
-                    <ResponsiveProvider>
-                      <ModalProvider>
-                        <DataProviderContext.Provider
-                          value={{ dataProvider: data }}
-                        >
-                          <PaginatedList
-                            currentListId={"itemList"}
-                            resource={"items"}
-                            sort={"-created_at"}
-                            resourcePropName={"item"}
-                            perPage={1}
-                            display="column"
-                            numberElements={3}
-                            title={"My title"}
-                          >
-                            <ListItem />
-                          </PaginatedList>
-                        </DataProviderContext.Provider>
-                      </ModalProvider>
-                    </ResponsiveProvider>
-                  </IconProvider>
-                </AuthContext.Provider>
-              </ConfigProvider>
+              <IconProvider library={regularIcons}>
+                <ResponsiveProvider>
+                  <DataProviderContext.Provider value={{ dataProvider: data }}>
+                    <PaginatedList
+                      currentListId={"itemList"}
+                      resource={"items"}
+                      sort={"-created_at"}
+                      resourcePropName={"item"}
+                      perPage={1}
+                      display="column"
+                      numberElements={3}
+                      title={"My title"}
+                    >
+                      <ListItem />
+                    </PaginatedList>
+                  </DataProviderContext.Provider>
+                </ResponsiveProvider>
+              </IconProvider>
             </ListProvider>
           </IntlProvider>
         </BrowserRouter>
@@ -355,46 +309,38 @@ describe("PaginatedList", () => {
         <BrowserRouter>
           <IntlProvider locale="en">
             <ListProvider>
-              <ConfigProvider>
-                <AuthContext.Provider value={{ isLoggedIn: true }}>
-                  <IconProvider library={regularIcons}>
-                    <ResponsiveProvider>
-                      <ModalProvider>
-                        <DataProviderContext.Provider
-                          value={{ dataProvider: data }}
-                        >
-                          <PaginatedList
-                            currentListId={"itemList"}
-                            resource={"items"}
-                            sort={"-created_at"}
-                            resourcePropName={"item"}
-                            perPage={1}
-                            withPagination
-                            display="column"
-                            numberElements={3}
-                            sortOptions={[
-                              {
-                                name: "recent",
-                                value: "-created_at",
-                                type: "sort",
-                                text: "recent",
-                              },
-                              {
-                                name: "old",
-                                type: "sort",
-                                value: "+created_at",
-                                text: "oldest",
-                              },
-                            ]}
-                          >
-                            <ListItem />
-                          </PaginatedList>
-                        </DataProviderContext.Provider>
-                      </ModalProvider>
-                    </ResponsiveProvider>
-                  </IconProvider>
-                </AuthContext.Provider>
-              </ConfigProvider>
+              <IconProvider library={regularIcons}>
+                <ResponsiveProvider>
+                  <DataProviderContext.Provider value={{ dataProvider: data }}>
+                    <PaginatedList
+                      currentListId={"itemList"}
+                      resource={"items"}
+                      sort={"-created_at"}
+                      resourcePropName={"item"}
+                      perPage={1}
+                      withPagination
+                      display="column"
+                      numberElements={3}
+                      sortOptions={[
+                        {
+                          name: "recent",
+                          value: "-created_at",
+                          type: "sort",
+                          text: "recent",
+                        },
+                        {
+                          name: "old",
+                          type: "sort",
+                          value: "+created_at",
+                          text: "oldest",
+                        },
+                      ]}
+                    >
+                      <ListItem />
+                    </PaginatedList>
+                  </DataProviderContext.Provider>
+                </ResponsiveProvider>
+              </IconProvider>
             </ListProvider>
           </IntlProvider>
         </BrowserRouter>
@@ -420,33 +366,25 @@ describe("PaginatedList", () => {
         <BrowserRouter>
           <IntlProvider locale="en">
             <ListProvider>
-              <ConfigProvider>
-                <AuthContext.Provider value={{ isLoggedIn: true }}>
-                  <IconProvider library={regularIcons}>
-                    <ResponsiveProvider>
-                      <ModalProvider>
-                        <DataProviderContext.Provider
-                          value={{ dataProvider: data }}
-                        >
-                          <PaginatedList
-                            currentListId={"itemList"}
-                            resource={"items"}
-                            sort={"-created_at"}
-                            resourcePropName={"item"}
-                            perPage={1}
-                            withPagination
-                            display="column"
-                            numberElements={3}
-                            emptyListComponent={<p>Empty list</p>}
-                          >
-                            <ListItem />
-                          </PaginatedList>
-                        </DataProviderContext.Provider>
-                      </ModalProvider>
-                    </ResponsiveProvider>
-                  </IconProvider>
-                </AuthContext.Provider>
-              </ConfigProvider>
+              <IconProvider library={regularIcons}>
+                <ResponsiveProvider>
+                  <DataProviderContext.Provider value={{ dataProvider: data }}>
+                    <PaginatedList
+                      currentListId={"itemList"}
+                      resource={"items"}
+                      sort={"-created_at"}
+                      resourcePropName={"item"}
+                      perPage={1}
+                      withPagination
+                      display="column"
+                      numberElements={3}
+                      emptyListComponent={<p>Empty list</p>}
+                    >
+                      <ListItem />
+                    </PaginatedList>
+                  </DataProviderContext.Provider>
+                </ResponsiveProvider>
+              </IconProvider>
             </ListProvider>
           </IntlProvider>
         </BrowserRouter>
@@ -464,45 +402,37 @@ describe("PaginatedList", () => {
         <BrowserRouter>
           <IntlProvider locale="en">
             <ListProvider>
-              <ConfigProvider>
-                <AuthContext.Provider value={{ isLoggedIn: true }}>
-                  <IconProvider library={regularIcons}>
-                    <ResponsiveProvider>
-                      <ModalProvider>
-                        <DataProviderContext.Provider
-                          value={{ dataProvider: data }}
-                        >
-                          <PaginatedList
-                            currentListId={"itemList"}
-                            resource={"items"}
-                            resourcePropName={"item"}
-                            perPage={1}
-                            withPagination
-                            display="column"
-                            numberElements={3}
-                            sortOptions={[
-                              {
-                                name: "recent",
-                                value: "-created_at",
-                                type: "sort",
-                                text: "recent",
-                              },
-                              {
-                                name: "old",
-                                type: "sort",
-                                value: "+created_at",
-                                text: "oldest",
-                              },
-                            ]}
-                          >
-                            <ListItem />
-                          </PaginatedList>
-                        </DataProviderContext.Provider>
-                      </ModalProvider>
-                    </ResponsiveProvider>
-                  </IconProvider>
-                </AuthContext.Provider>
-              </ConfigProvider>
+              <IconProvider library={regularIcons}>
+                <ResponsiveProvider>
+                  <DataProviderContext.Provider value={{ dataProvider: data }}>
+                    <PaginatedList
+                      currentListId={"itemList"}
+                      resource={"items"}
+                      resourcePropName={"item"}
+                      perPage={1}
+                      withPagination
+                      display="column"
+                      numberElements={3}
+                      sortOptions={[
+                        {
+                          name: "recent",
+                          value: "-created_at",
+                          type: "sort",
+                          text: "recent",
+                        },
+                        {
+                          name: "old",
+                          type: "sort",
+                          value: "+created_at",
+                          text: "oldest",
+                        },
+                      ]}
+                    >
+                      <ListItem />
+                    </PaginatedList>
+                  </DataProviderContext.Provider>
+                </ResponsiveProvider>
+              </IconProvider>
             </ListProvider>
           </IntlProvider>
         </BrowserRouter>
@@ -530,44 +460,36 @@ describe("PaginatedList", () => {
         <BrowserRouter>
           <IntlProvider locale="en">
             <ListProvider>
-              <ConfigProvider>
-                <AuthContext.Provider value={{ isLoggedIn: true }}>
-                  <IconProvider library={regularIcons}>
-                    <ResponsiveProvider>
-                      <ModalProvider>
-                        <DataProviderContext.Provider
-                          value={{ dataProvider: data }}
-                        >
-                          <PaginatedList
-                            currentListId={"itemList"}
-                            resource={"items"}
-                            resourcePropName={"item"}
-                            perPage={1}
-                            display="column"
-                            numberElements={10}
-                            sortOptions={[
-                              {
-                                name: "recent",
-                                value: "-created_at",
-                                type: "sort",
-                                text: "recent",
-                              },
-                              {
-                                name: "old",
-                                type: "sort",
-                                value: "+created_at",
-                                text: "oldest",
-                              },
-                            ]}
-                          >
-                            <ListItem />
-                          </PaginatedList>
-                        </DataProviderContext.Provider>
-                      </ModalProvider>
-                    </ResponsiveProvider>
-                  </IconProvider>
-                </AuthContext.Provider>
-              </ConfigProvider>
+              <IconProvider library={regularIcons}>
+                <ResponsiveProvider>
+                  <DataProviderContext.Provider value={{ dataProvider: data }}>
+                    <PaginatedList
+                      currentListId={"itemList"}
+                      resource={"items"}
+                      resourcePropName={"item"}
+                      perPage={1}
+                      display="column"
+                      numberElements={10}
+                      sortOptions={[
+                        {
+                          name: "recent",
+                          value: "-created_at",
+                          type: "sort",
+                          text: "recent",
+                        },
+                        {
+                          name: "old",
+                          type: "sort",
+                          value: "+created_at",
+                          text: "oldest",
+                        },
+                      ]}
+                    >
+                      <ListItem />
+                    </PaginatedList>
+                  </DataProviderContext.Provider>
+                </ResponsiveProvider>
+              </IconProvider>
             </ListProvider>
           </IntlProvider>
         </BrowserRouter>
@@ -594,44 +516,36 @@ describe("PaginatedList", () => {
         <BrowserRouter>
           <IntlProvider locale="en">
             <ListProvider>
-              <ConfigProvider>
-                <AuthContext.Provider value={{ isLoggedIn: true }}>
-                  <IconProvider library={regularIcons}>
-                    <ResponsiveProvider>
-                      <ModalProvider>
-                        <DataProviderContext.Provider
-                          value={{ dataProvider: data }}
-                        >
-                          <PaginatedList
-                            currentListId={"itemList"}
-                            resource={"items"}
-                            resourcePropName={"item"}
-                            perPage={1}
-                            display="column"
-                            numberElements={10}
-                            sortOptions={[
-                              {
-                                name: "recent",
-                                value: "-created_at",
-                                type: "sort",
-                                text: "recent",
-                              },
-                              {
-                                name: "old",
-                                type: "sort",
-                                value: "-oldest",
-                                text: "oldest",
-                              },
-                            ]}
-                          >
-                            <ListItem />
-                          </PaginatedList>
-                        </DataProviderContext.Provider>
-                      </ModalProvider>
-                    </ResponsiveProvider>
-                  </IconProvider>
-                </AuthContext.Provider>
-              </ConfigProvider>
+              <IconProvider library={regularIcons}>
+                <ResponsiveProvider>
+                  <DataProviderContext.Provider value={{ dataProvider: data }}>
+                    <PaginatedList
+                      currentListId={"itemList"}
+                      resource={"items"}
+                      resourcePropName={"item"}
+                      perPage={1}
+                      display="column"
+                      numberElements={10}
+                      sortOptions={[
+                        {
+                          name: "recent",
+                          value: "-created_at",
+                          type: "sort",
+                          text: "recent",
+                        },
+                        {
+                          name: "old",
+                          type: "sort",
+                          value: "-oldest",
+                          text: "oldest",
+                        },
+                      ]}
+                    >
+                      <ListItem />
+                    </PaginatedList>
+                  </DataProviderContext.Provider>
+                </ResponsiveProvider>
+              </IconProvider>
             </ListProvider>
           </IntlProvider>
         </BrowserRouter>
@@ -676,46 +590,38 @@ describe("PaginatedList", () => {
         <BrowserRouter>
           <IntlProvider locale="en">
             <ListProvider>
-              <ConfigProvider>
-                <AuthContext.Provider value={{ isLoggedIn: true }}>
-                  <IconProvider library={regularIcons}>
-                    <ResponsiveProvider>
-                      <ModalProvider>
-                        <DataProviderContext.Provider
-                          value={{ dataProvider: data }}
-                        >
-                          <PaginatedList
-                            currentListId={"itemList"}
-                            resource={"items"}
-                            resourcePropName={"item"}
-                            perPage={1}
-                            withPagination
-                            display="column"
-                            numberElements={3}
-                            query={"test"}
-                            sortOptions={[
-                              {
-                                name: "recent",
-                                value: "-created_at",
-                                type: "sort",
-                                text: "recent",
-                              },
-                              {
-                                name: "old",
-                                type: "sort",
-                                value: "+created_at",
-                                text: "oldest",
-                              },
-                            ]}
-                          >
-                            <ListItem />
-                          </PaginatedList>
-                        </DataProviderContext.Provider>
-                      </ModalProvider>
-                    </ResponsiveProvider>
-                  </IconProvider>
-                </AuthContext.Provider>
-              </ConfigProvider>
+              <IconProvider library={regularIcons}>
+                <ResponsiveProvider>
+                  <DataProviderContext.Provider value={{ dataProvider: data }}>
+                    <PaginatedList
+                      currentListId={"itemList"}
+                      resource={"items"}
+                      resourcePropName={"item"}
+                      perPage={1}
+                      withPagination
+                      display="column"
+                      numberElements={3}
+                      query={"test"}
+                      sortOptions={[
+                        {
+                          name: "recent",
+                          value: "-created_at",
+                          type: "sort",
+                          text: "recent",
+                        },
+                        {
+                          name: "old",
+                          type: "sort",
+                          value: "+created_at",
+                          text: "oldest",
+                        },
+                      ]}
+                    >
+                      <ListItem />
+                    </PaginatedList>
+                  </DataProviderContext.Provider>
+                </ResponsiveProvider>
+              </IconProvider>
             </ListProvider>
           </IntlProvider>
         </BrowserRouter>
@@ -734,46 +640,38 @@ describe("PaginatedList", () => {
         <BrowserRouter>
           <IntlProvider locale="en">
             <ListProvider>
-              <ConfigProvider>
-                <AuthContext.Provider value={{ isLoggedIn: true }}>
-                  <IconProvider library={regularIcons}>
-                    <ResponsiveProvider>
-                      <ModalProvider>
-                        <DataProviderContext.Provider
-                          value={{ dataProvider: data }}
-                        >
-                          <PaginatedList
-                            currentListId={"itemList"}
-                            resource={"items"}
-                            resourcePropName={"item"}
-                            perPage={1}
-                            withPagination
-                            display="column"
-                            numberElements={3}
-                            searchBar
-                            sortOptions={[
-                              {
-                                name: "recent",
-                                value: "-created_at",
-                                type: "sort",
-                                text: "recent",
-                              },
-                              {
-                                name: "old",
-                                type: "sort",
-                                value: "+created_at",
-                                text: "oldest",
-                              },
-                            ]}
-                          >
-                            <ListItem />
-                          </PaginatedList>
-                        </DataProviderContext.Provider>
-                      </ModalProvider>
-                    </ResponsiveProvider>
-                  </IconProvider>
-                </AuthContext.Provider>
-              </ConfigProvider>
+              <IconProvider library={regularIcons}>
+                <ResponsiveProvider>
+                  <DataProviderContext.Provider value={{ dataProvider: data }}>
+                    <PaginatedList
+                      currentListId={"itemList"}
+                      resource={"items"}
+                      resourcePropName={"item"}
+                      perPage={1}
+                      withPagination
+                      display="column"
+                      numberElements={3}
+                      searchBar
+                      sortOptions={[
+                        {
+                          name: "recent",
+                          value: "-created_at",
+                          type: "sort",
+                          text: "recent",
+                        },
+                        {
+                          name: "old",
+                          type: "sort",
+                          value: "+created_at",
+                          text: "oldest",
+                        },
+                      ]}
+                    >
+                      <ListItem />
+                    </PaginatedList>
+                  </DataProviderContext.Provider>
+                </ResponsiveProvider>
+              </IconProvider>
             </ListProvider>
           </IntlProvider>
         </BrowserRouter>
@@ -802,46 +700,38 @@ describe("PaginatedList", () => {
         <BrowserRouter>
           <IntlProvider locale="en">
             <ListProvider>
-              <ConfigProvider>
-                <AuthContext.Provider value={{ isLoggedIn: true }}>
-                  <IconProvider library={regularIcons}>
-                    <ResponsiveProvider>
-                      <ModalProvider>
-                        <DataProviderContext.Provider
-                          value={{ dataProvider: data }}
-                        >
-                          <PaginatedList
-                            currentListId={"itemList"}
-                            resource={"items"}
-                            resourcePropName={"item"}
-                            perPage={1}
-                            withPagination
-                            display="column"
-                            numberElements={3}
-                            onElementClick={callback}
-                            sortOptions={[
-                              {
-                                name: "recent",
-                                value: "-created_at",
-                                type: "sort",
-                                text: "recent",
-                              },
-                              {
-                                name: "old",
-                                type: "sort",
-                                value: "+created_at",
-                                text: "oldest",
-                              },
-                            ]}
-                          >
-                            <ListItem />
-                          </PaginatedList>
-                        </DataProviderContext.Provider>
-                      </ModalProvider>
-                    </ResponsiveProvider>
-                  </IconProvider>
-                </AuthContext.Provider>
-              </ConfigProvider>
+              <IconProvider library={regularIcons}>
+                <ResponsiveProvider>
+                  <DataProviderContext.Provider value={{ dataProvider: data }}>
+                    <PaginatedList
+                      currentListId={"itemList"}
+                      resource={"items"}
+                      resourcePropName={"item"}
+                      perPage={1}
+                      withPagination
+                      display="column"
+                      numberElements={3}
+                      onElementClick={callback}
+                      sortOptions={[
+                        {
+                          name: "recent",
+                          value: "-created_at",
+                          type: "sort",
+                          text: "recent",
+                        },
+                        {
+                          name: "old",
+                          type: "sort",
+                          value: "+created_at",
+                          text: "oldest",
+                        },
+                      ]}
+                    >
+                      <ListItem />
+                    </PaginatedList>
+                  </DataProviderContext.Provider>
+                </ResponsiveProvider>
+              </IconProvider>
             </ListProvider>
           </IntlProvider>
         </BrowserRouter>
@@ -881,47 +771,39 @@ describe("PaginatedList", () => {
         <BrowserRouter>
           <IntlProvider locale="en">
             <ListProvider>
-              <ConfigProvider>
-                <AuthContext.Provider value={{ isLoggedIn: true }}>
-                  <IconProvider library={regularIcons}>
-                    <ResponsiveProvider>
-                      <ModalProvider>
-                        <DataProviderContext.Provider
-                          value={{ dataProvider: data }}
-                        >
-                          <PaginatedList
-                            currentListId={"itemList"}
-                            resource={"items"}
-                            resourcePropName={"item"}
-                            perPage={1}
-                            withPagination
-                            display="column"
-                            numberElements={3}
-                            onElementClick={callback}
-                            emptyText={"Empty text"}
-                            sortOptions={[
-                              {
-                                name: "recent",
-                                value: "-created_at",
-                                type: "sort",
-                                text: "recent",
-                              },
-                              {
-                                name: "old",
-                                type: "sort",
-                                value: "+created_at",
-                                text: "oldest",
-                              },
-                            ]}
-                          >
-                            <ListItem />
-                          </PaginatedList>
-                        </DataProviderContext.Provider>
-                      </ModalProvider>
-                    </ResponsiveProvider>
-                  </IconProvider>
-                </AuthContext.Provider>
-              </ConfigProvider>
+              <IconProvider library={regularIcons}>
+                <ResponsiveProvider>
+                  <DataProviderContext.Provider value={{ dataProvider: data }}>
+                    <PaginatedList
+                      currentListId={"itemList"}
+                      resource={"items"}
+                      resourcePropName={"item"}
+                      perPage={1}
+                      withPagination
+                      display="column"
+                      numberElements={3}
+                      onElementClick={callback}
+                      emptyText={"Empty text"}
+                      sortOptions={[
+                        {
+                          name: "recent",
+                          value: "-created_at",
+                          type: "sort",
+                          text: "recent",
+                        },
+                        {
+                          name: "old",
+                          type: "sort",
+                          value: "+created_at",
+                          text: "oldest",
+                        },
+                      ]}
+                    >
+                      <ListItem />
+                    </PaginatedList>
+                  </DataProviderContext.Provider>
+                </ResponsiveProvider>
+              </IconProvider>
             </ListProvider>
           </IntlProvider>
         </BrowserRouter>
@@ -942,46 +824,38 @@ describe("PaginatedList", () => {
         <BrowserRouter>
           <IntlProvider locale="en">
             <ListProvider>
-              <ConfigProvider>
-                <AuthContext.Provider value={{ isLoggedIn: true }}>
-                  <IconProvider library={regularIcons}>
-                    <ResponsiveProvider>
-                      <ModalProvider>
-                        <DataProviderContext.Provider
-                          value={{ dataProvider: data }}
-                        >
-                          <PaginatedList
-                            currentListId={"itemList"}
-                            resource={"items"}
-                            resourcePropName={"item"}
-                            perPage={1}
-                            withPagination
-                            countless={true}
-                            display="column"
-                            numberElements={3}
-                            sortOptions={[
-                              {
-                                name: "recent",
-                                value: "-created_at",
-                                type: "sort",
-                                text: "recent",
-                              },
-                              {
-                                name: "old",
-                                type: "sort",
-                                value: "+created_at",
-                                text: "oldest",
-                              },
-                            ]}
-                          >
-                            <ListItem />
-                          </PaginatedList>
-                        </DataProviderContext.Provider>
-                      </ModalProvider>
-                    </ResponsiveProvider>
-                  </IconProvider>
-                </AuthContext.Provider>
-              </ConfigProvider>
+              <IconProvider library={regularIcons}>
+                <ResponsiveProvider>
+                  <DataProviderContext.Provider value={{ dataProvider: data }}>
+                    <PaginatedList
+                      currentListId={"itemList"}
+                      resource={"items"}
+                      resourcePropName={"item"}
+                      perPage={1}
+                      withPagination
+                      countless={true}
+                      display="column"
+                      numberElements={3}
+                      sortOptions={[
+                        {
+                          name: "recent",
+                          value: "-created_at",
+                          type: "sort",
+                          text: "recent",
+                        },
+                        {
+                          name: "old",
+                          type: "sort",
+                          value: "+created_at",
+                          text: "oldest",
+                        },
+                      ]}
+                    >
+                      <ListItem />
+                    </PaginatedList>
+                  </DataProviderContext.Provider>
+                </ResponsiveProvider>
+              </IconProvider>
             </ListProvider>
           </IntlProvider>
         </BrowserRouter>
@@ -1012,45 +886,37 @@ describe("PaginatedList", () => {
         <BrowserRouter>
           <IntlProvider locale="en">
             <ListProvider>
-              <ConfigProvider>
-                <AuthContext.Provider value={{ isLoggedIn: true }}>
-                  <IconProvider library={regularIcons}>
-                    <ResponsiveProvider>
-                      <ModalProvider>
-                        <DataProviderContext.Provider
-                          value={{ dataProvider: data }}
-                        >
-                          <PaginatedList
-                            currentListId={"itemList"}
-                            resource={"items"}
-                            resourcePropName={"item"}
-                            perPage={1}
-                            withPagination
-                            display="column"
-                            numberElements={3}
-                            sortOptions={[
-                              {
-                                name: "recent",
-                                value: "-created_at",
-                                type: "sort",
-                                text: "recent",
-                              },
-                              {
-                                name: "old",
-                                type: "sort",
-                                value: "+created_at",
-                                text: "oldest",
-                              },
-                            ]}
-                          >
-                            <ListItem />
-                          </PaginatedList>
-                        </DataProviderContext.Provider>
-                      </ModalProvider>
-                    </ResponsiveProvider>
-                  </IconProvider>
-                </AuthContext.Provider>
-              </ConfigProvider>
+              <IconProvider library={regularIcons}>
+                <ResponsiveProvider>
+                  <DataProviderContext.Provider value={{ dataProvider: data }}>
+                    <PaginatedList
+                      currentListId={"itemList"}
+                      resource={"items"}
+                      resourcePropName={"item"}
+                      perPage={1}
+                      withPagination
+                      display="column"
+                      numberElements={3}
+                      sortOptions={[
+                        {
+                          name: "recent",
+                          value: "-created_at",
+                          type: "sort",
+                          text: "recent",
+                        },
+                        {
+                          name: "old",
+                          type: "sort",
+                          value: "+created_at",
+                          text: "oldest",
+                        },
+                      ]}
+                    >
+                      <ListItem />
+                    </PaginatedList>
+                  </DataProviderContext.Provider>
+                </ResponsiveProvider>
+              </IconProvider>
             </ListProvider>
           </IntlProvider>
         </BrowserRouter>
@@ -1073,45 +939,37 @@ describe("PaginatedList", () => {
         <BrowserRouter>
           <IntlProvider locale="en">
             <ListProvider>
-              <ConfigProvider>
-                <AuthContext.Provider value={{ isLoggedIn: true }}>
-                  <IconProvider library={regularIcons}>
-                    <ResponsiveProvider>
-                      <ModalProvider>
-                        <DataProviderContext.Provider
-                          value={{ dataProvider: data }}
-                        >
-                          <PaginatedList
-                            currentListId={"itemList"}
-                            resource={"items"}
-                            resourcePropName={"item"}
-                            perPage={1}
-                            withPagination
-                            display="column"
-                            numberElements={3}
-                            sortOptions={[
-                              {
-                                name: "test",
-                                value: "-test",
-                                type: "sort",
-                                text: "test",
-                              },
-                              {
-                                name: "old",
-                                type: "sort",
-                                value: "+created_at",
-                                text: "oldest",
-                              },
-                            ]}
-                          >
-                            <ListItem />
-                          </PaginatedList>
-                        </DataProviderContext.Provider>
-                      </ModalProvider>
-                    </ResponsiveProvider>
-                  </IconProvider>
-                </AuthContext.Provider>
-              </ConfigProvider>
+              <IconProvider library={regularIcons}>
+                <ResponsiveProvider>
+                  <DataProviderContext.Provider value={{ dataProvider: data }}>
+                    <PaginatedList
+                      currentListId={"itemList"}
+                      resource={"items"}
+                      resourcePropName={"item"}
+                      perPage={1}
+                      withPagination
+                      display="column"
+                      numberElements={3}
+                      sortOptions={[
+                        {
+                          name: "test",
+                          value: "-test",
+                          type: "sort",
+                          text: "test",
+                        },
+                        {
+                          name: "old",
+                          type: "sort",
+                          value: "+created_at",
+                          text: "oldest",
+                        },
+                      ]}
+                    >
+                      <ListItem />
+                    </PaginatedList>
+                  </DataProviderContext.Provider>
+                </ResponsiveProvider>
+              </IconProvider>
             </ListProvider>
           </IntlProvider>
         </BrowserRouter>
@@ -1147,44 +1005,36 @@ describe("PaginatedList", () => {
         <BrowserRouter>
           <IntlProvider locale="en">
             <ListProvider>
-              <ConfigProvider>
-                <AuthContext.Provider value={{ isLoggedIn: true }}>
-                  <IconProvider library={regularIcons}>
-                    <ResponsiveProvider>
-                      <ModalProvider>
-                        <DataProviderContext.Provider
-                          value={{ dataProvider: data }}
-                        >
-                          <PaginatedList
-                            currentListId={"itemList"}
-                            resource={"items"}
-                            resourcePropName={"item"}
-                            perPage={1}
-                            display="column"
-                            onUpdateTotal={callback}
-                            sortOptions={[
-                              {
-                                name: "recent",
-                                value: "-created_at",
-                                type: "sort",
-                                text: "recent",
-                              },
-                              {
-                                name: "old",
-                                type: "sort",
-                                value: "+created_at",
-                                text: "oldest",
-                              },
-                            ]}
-                          >
-                            <ListItem />
-                          </PaginatedList>
-                        </DataProviderContext.Provider>
-                      </ModalProvider>
-                    </ResponsiveProvider>
-                  </IconProvider>
-                </AuthContext.Provider>
-              </ConfigProvider>
+              <IconProvider library={regularIcons}>
+                <ResponsiveProvider>
+                  <DataProviderContext.Provider value={{ dataProvider: data }}>
+                    <PaginatedList
+                      currentListId={"itemList"}
+                      resource={"items"}
+                      resourcePropName={"item"}
+                      perPage={1}
+                      display="column"
+                      onUpdateTotal={callback}
+                      sortOptions={[
+                        {
+                          name: "recent",
+                          value: "-created_at",
+                          type: "sort",
+                          text: "recent",
+                        },
+                        {
+                          name: "old",
+                          type: "sort",
+                          value: "+created_at",
+                          text: "oldest",
+                        },
+                      ]}
+                    >
+                      <ListItem />
+                    </PaginatedList>
+                  </DataProviderContext.Provider>
+                </ResponsiveProvider>
+              </IconProvider>
             </ListProvider>
           </IntlProvider>
         </BrowserRouter>
@@ -1204,49 +1054,41 @@ describe("PaginatedList", () => {
         <BrowserRouter>
           <IntlProvider locale="en">
             <ListProvider>
-              <ConfigProvider>
-                <AuthContext.Provider value={{ isLoggedIn: true }}>
-                  <IconProvider library={regularIcons}>
-                    <ResponsiveProvider>
-                      <ModalProvider>
-                        <DataProviderContext.Provider
-                          value={{ dataProvider: data }}
-                        >
-                          <PaginatedList
-                            currentListId={"itemList"}
-                            resource={"items"}
-                            resourcePropName={"item"}
-                            perPage={1}
-                            withPagination
-                            display="column"
-                            numberElements={3}
-                            sortOptions={[
-                              {
-                                name: "popular",
-                                value: "true",
-                                type: "filter",
-                                textKey: "info.sort_by_popular",
-                              },
-                              {
-                                name: "recent",
-                                value: "-created_at",
-                                textKey: "info.sort_by_newest",
-                              },
-                              {
-                                name: "old",
-                                value: "+created_at",
-                                textKey: "info.sort_by_oldest",
-                              },
-                            ]}
-                          >
-                            <ListItem />
-                          </PaginatedList>
-                        </DataProviderContext.Provider>
-                      </ModalProvider>
-                    </ResponsiveProvider>
-                  </IconProvider>
-                </AuthContext.Provider>
-              </ConfigProvider>
+              <IconProvider library={regularIcons}>
+                <ResponsiveProvider>
+                  <DataProviderContext.Provider value={{ dataProvider: data }}>
+                    <PaginatedList
+                      currentListId={"itemList"}
+                      resource={"items"}
+                      resourcePropName={"item"}
+                      perPage={1}
+                      withPagination
+                      display="column"
+                      numberElements={3}
+                      sortOptions={[
+                        {
+                          name: "popular",
+                          value: "true",
+                          type: "filter",
+                          textKey: "info.sort_by_popular",
+                        },
+                        {
+                          name: "recent",
+                          value: "-created_at",
+                          textKey: "info.sort_by_newest",
+                        },
+                        {
+                          name: "old",
+                          value: "+created_at",
+                          textKey: "info.sort_by_oldest",
+                        },
+                      ]}
+                    >
+                      <ListItem />
+                    </PaginatedList>
+                  </DataProviderContext.Provider>
+                </ResponsiveProvider>
+              </IconProvider>
             </ListProvider>
           </IntlProvider>
         </BrowserRouter>
@@ -1280,44 +1122,36 @@ describe("PaginatedList", () => {
         <BrowserRouter>
           <IntlProvider locale="en">
             <ListProvider>
-              <ConfigProvider>
-                <AuthContext.Provider value={{ isLoggedIn: true }}>
-                  <IconProvider library={regularIcons}>
-                    <ResponsiveProvider>
-                      <ModalProvider>
-                        <DataProviderContext.Provider
-                          value={{ dataProvider: data }}
-                        >
-                          <PaginatedList
-                            currentListId={"itemList"}
-                            resource={"items"}
-                            resourcePropName={"item"}
-                            perPage={1}
-                            display="column"
-                            transformData={(elm) => elm.id !== 1}
-                            sortOptions={[
-                              {
-                                name: "recent",
-                                value: "-created_at",
-                                type: "sort",
-                                text: "recent",
-                              },
-                              {
-                                name: "old",
-                                type: "sort",
-                                value: "+created_at",
-                                text: "oldest",
-                              },
-                            ]}
-                          >
-                            <ListItem />
-                          </PaginatedList>
-                        </DataProviderContext.Provider>
-                      </ModalProvider>
-                    </ResponsiveProvider>
-                  </IconProvider>
-                </AuthContext.Provider>
-              </ConfigProvider>
+              <IconProvider library={regularIcons}>
+                <ResponsiveProvider>
+                  <DataProviderContext.Provider value={{ dataProvider: data }}>
+                    <PaginatedList
+                      currentListId={"itemList"}
+                      resource={"items"}
+                      resourcePropName={"item"}
+                      perPage={1}
+                      display="column"
+                      transformData={(elm) => elm.id !== 1}
+                      sortOptions={[
+                        {
+                          name: "recent",
+                          value: "-created_at",
+                          type: "sort",
+                          text: "recent",
+                        },
+                        {
+                          name: "old",
+                          type: "sort",
+                          value: "+created_at",
+                          text: "oldest",
+                        },
+                      ]}
+                    >
+                      <ListItem />
+                    </PaginatedList>
+                  </DataProviderContext.Provider>
+                </ResponsiveProvider>
+              </IconProvider>
             </ListProvider>
           </IntlProvider>
         </BrowserRouter>
@@ -1341,46 +1175,38 @@ describe("PaginatedList", () => {
         <BrowserRouter>
           <IntlProvider locale="en">
             <ListProvider>
-              <ConfigProvider>
-                <AuthContext.Provider value={{ isLoggedIn: true }}>
-                  <IconProvider library={regularIcons}>
-                    <ResponsiveProvider>
-                      <ModalProvider>
-                        <DataProviderContext.Provider
-                          value={{ dataProvider: data }}
-                        >
-                          <PaginatedList
-                            currentListId={"itemList"}
-                            resource={"items"}
-                            resourcePropName={"item"}
-                            perPage={1}
-                            withPagination
-                            display="column"
-                            numberElements={3}
-                            onElementsLoad={callback}
-                            sortOptions={[
-                              {
-                                name: "recent",
-                                value: "-created_at",
-                                type: "sort",
-                                text: "recent",
-                              },
-                              {
-                                name: "old",
-                                type: "sort",
-                                value: "+created_at",
-                                text: "oldest",
-                              },
-                            ]}
-                          >
-                            <ListItem />
-                          </PaginatedList>
-                        </DataProviderContext.Provider>
-                      </ModalProvider>
-                    </ResponsiveProvider>
-                  </IconProvider>
-                </AuthContext.Provider>
-              </ConfigProvider>
+              <IconProvider library={regularIcons}>
+                <ResponsiveProvider>
+                  <DataProviderContext.Provider value={{ dataProvider: data }}>
+                    <PaginatedList
+                      currentListId={"itemList"}
+                      resource={"items"}
+                      resourcePropName={"item"}
+                      perPage={1}
+                      withPagination
+                      display="column"
+                      numberElements={3}
+                      onElementsLoad={callback}
+                      sortOptions={[
+                        {
+                          name: "recent",
+                          value: "-created_at",
+                          type: "sort",
+                          text: "recent",
+                        },
+                        {
+                          name: "old",
+                          type: "sort",
+                          value: "+created_at",
+                          text: "oldest",
+                        },
+                      ]}
+                    >
+                      <ListItem />
+                    </PaginatedList>
+                  </DataProviderContext.Provider>
+                </ResponsiveProvider>
+              </IconProvider>
             </ListProvider>
           </IntlProvider>
         </BrowserRouter>
@@ -1414,32 +1240,26 @@ describe("PaginatedList", () => {
         <BrowserRouter>
           <IntlProvider locale="en">
             <ResponsiveProvider>
-              <ModalProvider>
-                <DataProviderContext.Provider value={{ dataProvider: data }}>
-                  <IconProvider library={regularIcons}>
-                    <ListProvider>
-                      <ConfigProvider>
-                        <AuthContext.Provider value={{ isLoggedIn: true }}>
-                          <AddElementsComponent />
-                          <PaginatedList
-                            currentListId={"itemList"}
-                            resource={"items"}
-                            sort={"-created_at"}
-                            resourcePropName={"item"}
-                            perPage={10}
-                            withPagination={false}
-                            countless={true}
-                            display="column"
-                            onElementsLoad={callback}
-                          >
-                            <ListItem />
-                          </PaginatedList>
-                        </AuthContext.Provider>
-                      </ConfigProvider>
-                    </ListProvider>
-                  </IconProvider>
-                </DataProviderContext.Provider>
-              </ModalProvider>
+              <DataProviderContext.Provider value={{ dataProvider: data }}>
+                <IconProvider library={regularIcons}>
+                  <ListProvider>
+                    <AddElementsComponent />
+                    <PaginatedList
+                      currentListId={"itemList"}
+                      resource={"items"}
+                      sort={"-created_at"}
+                      resourcePropName={"item"}
+                      perPage={10}
+                      withPagination={false}
+                      countless={true}
+                      display="column"
+                      onElementsLoad={callback}
+                    >
+                      <ListItem />
+                    </PaginatedList>
+                  </ListProvider>
+                </IconProvider>
+              </DataProviderContext.Provider>
             </ResponsiveProvider>
           </IntlProvider>
         </BrowserRouter>
@@ -1456,5 +1276,63 @@ describe("PaginatedList", () => {
     });
 
     expect(screen.getAllByTestId("list-item")).toHaveLength(7);
+  });
+
+  it("should use callback if passed on pagination click", async () => {
+    const callback = jest.fn();
+
+    await act(async () => {
+      render(
+        <BrowserRouter>
+          <IntlProvider locale="en">
+            <ListProvider>
+              <IconProvider library={regularIcons}>
+                <ResponsiveProvider>
+                  <DataProviderContext.Provider value={{ dataProvider: data }}>
+                    <PaginatedList
+                      currentListId={"itemList"}
+                      resource={"items"}
+                      resourcePropName={"item"}
+                      perPage={1}
+                      display="column"
+                      numberElements={10}
+                      onLoadNewPage={callback}
+                      sortOptions={[
+                        {
+                          name: "recent",
+                          value: "-created_at",
+                          type: "sort",
+                          text: "recent",
+                        },
+                        {
+                          name: "old",
+                          type: "sort",
+                          value: "+created_at",
+                          text: "oldest",
+                        },
+                      ]}
+                    >
+                      <ListItem />
+                    </PaginatedList>
+                  </DataProviderContext.Provider>
+                </ResponsiveProvider>
+              </IconProvider>
+            </ListProvider>
+          </IntlProvider>
+        </BrowserRouter>
+      );
+    });
+
+    expect(mock).toHaveBeenLastCalledWith(
+      "https://mock.example.api/items?page=1&per_page=1&sort=-created_at&api_key="
+    );
+    expect(mock).toHaveBeenCalledTimes(1);
+
+    expect(screen.getAllByTestId("list-item")).toHaveLength(3);
+    const paginationButton = screen.getByText(/See more/i);
+    expect(paginationButton).toBeTruthy();
+
+    await userEvent.click(paginationButton);
+    expect(callback).toHaveBeenCalled();
   });
 });
