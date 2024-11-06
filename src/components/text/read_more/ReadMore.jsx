@@ -5,7 +5,7 @@ import cx from 'classnames';
 
 export const ReadMore = ({
     content,
-    contentCharCount = 250,
+    charCount = 250,
     lineCount,
     to,
     className,
@@ -17,13 +17,13 @@ export const ReadMore = ({
     const [expanded, setExpanded] = useState(false);
     const [isClamped, setIsClamped] = useState(false);
     const contentRef = useRef(null);
-    const showToggle = expandable && ((lineCount && isClamped) || (contentCharCount && content.length > contentCharCount))
+    const showToggle = expandable && ((lineCount && isClamped) || (charCount && content.length > charCount))
 
     const formatContent = (content) => {
         if (expanded) {
             return content.toString();
-        } else if (content.length > contentCharCount) {
-            return content.replace(/[\n\r]/g, ' ').slice(0, contentCharCount);
+        } else if (content.length > charCount) {
+            return content.replace(/[\n\r]/g, ' ').slice(0, charCount);
         }
         return content;
     }

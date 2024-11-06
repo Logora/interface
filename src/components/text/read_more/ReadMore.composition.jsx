@@ -72,7 +72,7 @@ export const DisabledReadMore = () => {
     return (
         <ReadMore 
             content={text}
-            contentCharCount={250}
+            charCount={250}
             expandable={false}
             readMoreText="Read more"
             readLessText="Read less"

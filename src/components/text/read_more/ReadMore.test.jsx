@@ -22,12 +22,12 @@ describe('ReadMore', () => {
         expect(screen.queryByText(/Read more/i)).not.toBeInTheDocument();
     });
 
-    describe('with contentCharCount', () => {
+    describe('with charCount', () => {
         it('should expand and reduce text on click', async () => {
             render(
                 <ReadMore
                     content={text}
-                    contentCharCount={250}
+                    charCount={250}
                     readMoreText="Read more"
                     readLessText="Read less"
                 />
@@ -54,7 +54,7 @@ describe('ReadMore', () => {
             render(
                 <ReadMore
                     content={shortText}
-                    contentCharCount={250}
+                    charCount={250}
                     readMoreText="Read more"
                     readLessText="Read less"
                 />
