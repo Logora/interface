@@ -4,15 +4,18 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    a.readMoreElement {
-        font-weight: $font-weight-bold;
-        text-decoration: none;
-        color: $text-primary !important;
-        cursor: pointer;
-    }
 }
 
-.contentBody {
+.readMoreElement {
+    display: inline;
+    white-space: nowrap;
+    font-weight: $font-weight-bold;
+    text-decoration: none;
+    color: $text-primary !important;
+    cursor: pointer;
+}
+
+.lineClamp {
     display: -webkit-box;
     -webkit-box-orient: vertical;
     overflow: hidden;
@@ -22,16 +25,9 @@
     position: absolute;
     bottom: 0;
     right: 0;
-    background: white;
+    background: $background-color-primary;
     display: flex;
     align-items: center;
-}
-
-.readMoreElement {
-    display: inline;
-    white-space: nowrap;
-    font-weight: $font-weight-bold;
-    cursor: pointer;
 }
 
 .ellipsis {
