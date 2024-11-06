@@ -17,12 +17,12 @@ export const LineCountReadMore = () => {
 }
 
 export const LineCountWithShortText = () => {
-    const shortText = faker.lorem.words(3);
+    const shortText = faker.lorem.words(40);
 
     return (
         <ReadMore 
             content={shortText}
-            lineCount={4}
+            lineCount={7}
             readMoreText="Read more"
             readLessText="Read less"
         />

@@ -5,7 +5,7 @@ import cx from 'classnames';
 
 export const ReadMore = ({
     content,
-    charCount = 250,
+    charCount,
     lineCount,
     to,
     className,
@@ -15,9 +15,8 @@ export const ReadMore = ({
     ...rest
 }) => {
     const [expanded, setExpanded] = useState(false);
-    const [isClamped, setIsClamped] = useState(false);
     const contentRef = useRef(null);
-    const showToggle = expandable && ((lineCount && isClamped) || (charCount && content.length > charCount))
+    const [showToggle, setShowToggle] = useState(false);
 
     const formatContent = (content) => {
         if (expanded) {
@@ -37,11 +36,15 @@ export const ReadMore = ({
     }
 
     useEffect(() => {
-        if (contentRef.current && lineCount) {
-            const element = contentRef.current;
-            setIsClamped(element.scrollHeight > element.clientHeight);
+        if (expandable) {
+            if(charCount) {
+                setShowToggle(content.length > charCount);
+            } else if (lineCount && contentRef.current) {
+                const element = contentRef.current;
+                setShowToggle(element.scrollHeight > element.clientHeight);
+            }
         }
-    }, [content, lineCount]);
+    }, [expandable, lineCount, charCount, content.length]);
 
     return (
         <div className={styles.readMore}>

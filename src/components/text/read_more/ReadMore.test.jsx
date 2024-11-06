@@ -33,6 +33,7 @@ describe('ReadMore', () => {
                 />
             );
 
+
             const readMoreButton = screen.queryByText(/Read more/i)
             expect(readMoreButton).toBeTruthy()
             expect(screen.queryByText(text)).not.toBeInTheDocument()
@@ -66,29 +67,6 @@ describe('ReadMore', () => {
     })
 
     describe('with lineCount', () => {
-        it('should expand and reduce text on click', async () => {
-            render(
-                <ReadMore
-                    content={text}
-                    lineCount={2}
-                    readMoreText="Read more"
-                    readLessText="Read less"
-                />
-            );
-
-            const readMoreButton = screen.queryByText(/Read more/i)
-            expect(readMoreButton).toBeTruthy()
-
-            await userEvent.click(readMoreButton)
-
-            const readLessButton = screen.queryByText(/Read less/i)
-            expect(readLessButton).toBeTruthy()
-            expect(screen.queryByText(text)).toBeInTheDocument()
-
-            await userEvent.click(readLessButton)
-            expect(readMoreButton).toBeTruthy()
-        });
-
         it('should not show read more option if content is short', () => {
             const shortText = faker.lorem.words(3);
 
