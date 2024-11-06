@@ -1,99 +1,109 @@
 import React from 'react';
 import { ReadMore } from './ReadMore';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { faker } from '@faker-js/faker';
 
-let text = faker.lorem.paragraph(35);
+let text = faker.lorem.paragraph(10);
 let url = faker.internet.url();
 
-it('should render correctly with sliced content', () => {
-    render(
-        <ReadMore 
-            content={text}
-            contentCharCount={250}
-            to={url}
-            readMoreText="Read more"
-            readLessText="Read less"
-            target="_top"
-            external
-        />
-    );
-    const slicedText = text.slice(0, 250) + "...";
-    expect(screen.getByText(slicedText)).toBeTruthy();
-    expect(screen.getByText("Read more")).toBeTruthy();
-});
+describe('ReadMore', () => {
+    it('should render the full content when not expandable', () => {
+        render(
+            <ReadMore
+                content={text}
+                expandable={false}
+                readMoreText="Read more"
+                readLessText="Read less"
+            />
+        );
 
-it('should render correctly with content even if content is shorter than contentCharCount', () => {
-    render(
-        <ReadMore 
-            content={text}
-            contentCharCount={2500}
-            to={url}
-            readMoreText="Read more"
-            readLessText="Read less"
-            target="_top"
-            external
-        />
-    );
-    expect(screen.getByText(text + "...")).toBeTruthy();
-    expect(screen.getByText("Read more")).toBeTruthy();
-});
+        expect(screen.getByText(text)).toBeInTheDocument();
+        expect(screen.queryByText(/Read more/i)).not.toBeInTheDocument();
+    });
 
+    describe('with contentCharCount', () => {
+        it('should expand and reduce text on click', async () => {
+            render(
+                <ReadMore
+                    content={text}
+                    contentCharCount={250}
+                    readMoreText="Read more"
+                    readLessText="Read less"
+                />
+            );
 
-it('should render correct url', () => {
-    render(
-        <ReadMore 
-            content={text}
-            contentCharCount={250}
-            to={url}
-            readMoreText="Read more"
-            readLessText="Read less"
-            target="_top"
-            external
-        />
-    );
-    const slicedText = text.slice(0, 250) + "...";
-    expect(screen.getByText(slicedText)).toBeTruthy();
-    expect(screen.getByRole('link').getAttribute('href')).toEqual(url);
-});
+            const readMoreButton = screen.queryByText(/Read more/i)
+            expect(readMoreButton).toBeTruthy()
+            expect(screen.queryByText(text)).not.toBeInTheDocument()
 
-it('should show all content when clicking on "Read more" if url is not provided', () => {
-    render(
-        <ReadMore 
-            content={text}
-            contentCharCount={250}
-            readMoreText="Read more"
-            readLessText="Read less"
-        />
-    );
-    const slicedText = text.slice(0, 250) + "...";
-    const readMoreButton = screen.getByText("Read more");
-    expect(screen.getByText(slicedText)).toBeTruthy();
+            await userEvent.click(readMoreButton)
 
-    fireEvent.click(readMoreButton);
-    const readLessButton = screen.getByText("Read less");
-    expect(screen.getByText(text + "...")).toBeTruthy();
-    expect(readLessButton).toBeTruthy();
-});
+            const readLessButton = screen.queryByText(/Read less/i)
+            expect(readLessButton).toBeTruthy()
+            expect(screen.getByText(text)).toBeInTheDocument()
 
-it('should toggle content when clicking on text', () => {
-    render(
-        <ReadMore 
-            content={text}
-            contentCharCount={250}
-            readMoreText="Read more"
-            readLessText="Read less"
-        />
-    );
-    const slicedText = text.slice(0, 250) + "...";
-    const contentElement = screen.getByText(slicedText);
-    expect(contentElement).toBeTruthy();
+            await userEvent.click(readLessButton)
+            expect(readMoreButton).toBeTruthy()
+            expect(screen.queryByText(text)).not.toBeInTheDocument()
+        });
 
-    fireEvent.click(contentElement);
-    expect(screen.getByText(text + "...")).toBeTruthy();
-    expect(screen.getByText("Read less")).toBeTruthy();
+        it('should not show read more option if content is short', () => {
+            const shortText = faker.lorem.words(3);
 
-    fireEvent.click(contentElement);
-    expect(screen.getByText(slicedText)).toBeTruthy();
-    expect(screen.getByText("Read more")).toBeTruthy();
+            render(
+                <ReadMore
+                    content={shortText}
+                    contentCharCount={250}
+                    readMoreText="Read more"
+                    readLessText="Read less"
+                />
+            );
+
+            expect(screen.queryByText(/Read more/i)).not.toBeInTheDocument();
+            expect(screen.getByText(shortText)).toBeInTheDocument();
+        });
+    })
+
+    describe('with lineCount', () => {
+        it('should expand and reduce text on click', async () => {
+            render(
+                <ReadMore
+                    content={text}
+                    lineCount={2}
+                    readMoreText="Read more"
+                    readLessText="Read less"
+                />
+            );
+
+            const readMoreButton = screen.queryByText(/Read more/i)
+            expect(readMoreButton).toBeTruthy()
+
+            await userEvent.click(readMoreButton)
+
+            const readLessButton = screen.queryByText(/Read less/i)
+            expect(readLessButton).toBeTruthy()
+            expect(screen.queryByText(text)).toBeInTheDocument()
+
+            await userEvent.click(readLessButton)
+            expect(readMoreButton).toBeTruthy()
+        });
+
+        it('should not show read more option if content is short', () => {
+            const shortText = faker.lorem.words(3);
+
+            render(
+                <ReadMore
+                    content={shortText}
+                    lineCount={4}
+                    readMoreText="Read more"
+                    readLessText="Read less"
+                />
+            );
+
+            expect(screen.queryByText(/Read more/i)).not.toBeInTheDocument();
+            expect(screen.getByText(shortText)).toBeInTheDocument();
+        });
+
+    })
 });

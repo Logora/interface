@@ -32,6 +32,7 @@ export const SummaryContentBox = ({ author, tag, date, title = '', content, link
                         content={translatedContent.translatedContent}
                         contentCharCount={150}
                         to={link} 
+                        lineCount={1}
                         data-tid={"link_argument_read_more"}
                         target="_top"
                         external

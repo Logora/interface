@@ -1,13 +1,12 @@
 ---
-description: An truncated text component.
+description: A component to truncate text with a read more button.
 ---
-
-import { ReadMore } from './ReadMore';
 
 A component that displays truncated text with the possibility to go to the full text version with a link or can be expanded to show the full text.
 
 
 ### Component usage
+
 ```js
 import { ReadMore } from '@logora/debate.text.read_more';
 ```
@@ -15,26 +14,10 @@ import { ReadMore } from '@logora/debate.text.read_more';
 ```js
     <ReadMore
         content={"My super long content"}
-        contentCharCount={250}
+        lineCount={4}
         to="/link/to/read/more"
-        nextLine={false}
-        lineCount={false}
-        nextLineSpacing={0}
         className="MyClassName"
         readMoreText="Read more"
         readLessText="Read less"
     />
 ```
-
-### Properties
-| **Name**      | **Type** | **Required** | **Default** | **Description**
-| ----------- | ----------- | ----------- | ----------- | ----------- |
-| <font color='#4646c6'>contentCharCount</font> | <font color="#397300">number</font> | &cross; | 250 | <font color="grey">*maximum character count to be displayed*</font> |
-| <font color='#4646c6'>to</font> | <font color="#397300">any</font> | &cross; | - | <font color="grey">*url to be used for the read more link. The read more button acts as a toggle for the remaining content*</font> |
-| <font color='#4646c6'>nextLine</font> | <font color="#397300">boolean</font> | &cross; | false | <font color="grey">*whether the read more text should be displayed on the next line*</font> |
-| <font color='#4646c6'>lineCount</font> | <font color="#397300">boolean</font> | &cross; | false | <font color="grey">*whether the content should be limited to a certain line count instead of character count*</font>
-| <font color='#4646c6'>nextLineSpacing</font> | <font color="#397300">number</font> | &cross; | 0 | <font color="grey">*spacing between the collapsed text and the read more link*</font> |
-| <font color='#4646c6'>className</font> | <font color="#397300">string</font> | &cross; | - | <font color="grey">*className to be applied to the read more button text*</font> |
-| <font color='#4646c6'>rest</font> | <font color="#397300">Object</font> | &cross; | - | <font color="grey">*rest of props that should be passed to the read more link*</font> |
-| <font color='#4646c6'>readMoreText</font> | <font color="#397300">string</font> | &check; | - | <font color="grey">*Text to display for the "Read more" action*</font> |
-| <font color='#4646c6'>readLessText</font> | <font color="#397300">Object</font> | &cross; | - | <font color="grey">*Text to display for the "Read less" action*</font> |
