@@ -61,7 +61,7 @@
     "argument/argument": {
         "name": "argument/argument",
         "scope": "logora.debate",
-        "version": "0.0.217",
+        "version": "0.0.218",
         "mainFile": "index.js",
         "rootDir": "src/components/argument/argument"
     },
@@ -404,7 +404,7 @@
     "input/argument_input": {
         "name": "input/argument_input",
         "scope": "logora.debate",
-        "version": "0.0.149",
+        "version": "0.0.150",
         "mainFile": "index.js",
         "rootDir": "src/components/input/argument_input"
     },
@@ -439,7 +439,7 @@
     "input/search_input": {
         "name": "input/search_input",
         "scope": "logora.debate",
-        "version": "0.0.77",
+        "version": "0.0.78",
         "mainFile": "index.js",
         "rootDir": "src/components/input/search_input"
     },
@@ -453,7 +453,7 @@
     "input/text_editor": {
         "name": "input/text_editor",
         "scope": "logora.debate",
-        "version": "0.0.83",
+        "version": "0.0.84",
         "mainFile": "index.js",
         "rootDir": "src/components/input/text_editor"
     },
@@ -495,7 +495,7 @@
     "list/paginated_list": {
         "name": "list/paginated_list",
         "scope": "logora.debate",
-        "version": "0.0.130",
+        "version": "0.0.131",
         "mainFile": "index.js",
         "rootDir": "src/components/list/paginated_list"
     },
@@ -523,7 +523,7 @@
     "notification/notification_menu": {
         "name": "notification/notification_menu",
         "scope": "logora.debate",
-        "version": "0.0.32",
+        "version": "0.0.33",
         "mainFile": "index.js",
         "rootDir": "src/components/notification/notification_menu"
     },
@@ -621,7 +621,7 @@
     "source/source_modal": {
         "name": "source/source_modal",
         "scope": "logora.debate",
-        "version": "0.0.124",
+        "version": "0.0.125",
         "mainFile": "index.js",
         "rootDir": "src/components/source/source_modal"
     },
@@ -663,7 +663,7 @@
     "suggestion/suggestion_banner": {
         "name": "suggestion/suggestion_banner",
         "scope": "logora.debate",
-        "version": "0.0.21",
+        "version": "0.0.22",
         "mainFile": "index.js",
         "rootDir": "src/components/suggestion/suggestion_banner"
     },
