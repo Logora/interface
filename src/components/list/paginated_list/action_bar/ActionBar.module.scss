@@ -30,6 +30,7 @@
     display: flex;
     gap: $spacer;
     flex-wrap: wrap;
+    width: 100%;
     @include media-breakpoint-down(xs) {
         width: 100%;
         justify-content: space-between;
@@ -44,7 +45,7 @@
 
 .search {
     flex: 1;
-    max-width: 100%;
+    max-width: 35%;
     @include media-breakpoint-down(xs) {
         max-width: 100%;
         width: 100%;
