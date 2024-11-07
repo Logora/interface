@@ -43,8 +43,8 @@
 }
 
 .search {
-    flex: 2;
-    max-width: 35%;
+    flex: 1;
+    max-width: 100%;
     @include media-breakpoint-down(xs) {
         max-width: 100%;
         width: 100%;
