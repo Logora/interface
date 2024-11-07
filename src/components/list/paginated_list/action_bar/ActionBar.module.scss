@@ -7,7 +7,7 @@
     justify-content: space-between;
     align-items: center;
 	position: relative;
-    flex-wrap: wrap;
+    flex-wrap: wrap !important;
     @include media-breakpoint-down(xs) {
         gap: $spacer;
         flex-direction: column;
@@ -29,7 +29,8 @@
 .rightBar {
     display: flex;
     gap: $spacer;
-    flex-wrap: wrap;
+    flex-wrap: wrap !important;
+    flex-grow: 1;
     @include media-breakpoint-down(xs) {
         width: 100%;
         justify-content: space-between;
@@ -40,13 +41,11 @@
     flex: 2;
     justify-content: flex-end;
     align-items: center;
-    width: 100%;
 }
 
 .search {
     flex-grow: 1;
-    flex-shrink: 1;
-    flex-basis: 0;
+    max-width: 35%;
     @include media-breakpoint-down(xs) {
         max-width: 100%;
         width: 100%;
