@@ -40,11 +40,12 @@
     flex: 2;
     justify-content: flex-end;
     align-items: center;
+    flex-shrink: 1;
 }
 
 .search {
     flex: 1;
-    max-width: 50%;
+    max-width: 35%;
     @include media-breakpoint-down(xs) {
         max-width: 100%;
     }
