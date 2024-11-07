@@ -7,6 +7,7 @@
     justify-content: space-between;
     align-items: center;
 	position: relative;
+    flex-wrap: wrap;
     @include media-breakpoint-down(xs) {
         gap: $spacer;
         flex-direction: column;
@@ -28,6 +29,7 @@
 .rightBar {
     display: flex;
     gap: $spacer;
+    flex-wrap: wrap;
     @include media-breakpoint-down(xs) {
         width: 100%;
         justify-content: space-between;
@@ -45,6 +47,7 @@
     max-width: 35%;
     @include media-breakpoint-down(xs) {
         max-width: 100%;
+        width: 100%;
     }
 }
 
