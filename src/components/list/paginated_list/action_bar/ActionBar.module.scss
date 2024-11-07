@@ -30,7 +30,7 @@
     display: flex;
     gap: $spacer;
     flex-wrap: wrap;
-    width: 100%;
+    flex-grow: 1;
     @include media-breakpoint-down(xs) {
         width: 100%;
         justify-content: space-between;
