@@ -20,13 +20,12 @@ export const ContentFooter = ({ resource,
     deleteType, 
     deleteListId, 
     softDelete = false,
-    disabled = false, 
-    leftReply, 
+    disabled = false,
     children, 
     enableReply, 
     handleReplyTo, 
     showActions = true, 
-    shareButton, 
+    showShareButton = true, 
     shareModal,
     shareUrl,
     shareTitle,
@@ -86,7 +85,7 @@ export const ContentFooter = ({ resource,
                 { children }
             </div>
             { !disabled && enableReply &&
-                <div className={cx({[styles.leftReply]: leftReply})} data-tid={"action_reply_argument"} data-testid="reply-button">
+                <div data-tid={"action_reply_argument"} data-testid="reply-button">
                     <div
                         className={styles.replyAction}
                         tabIndex='0'
@@ -98,7 +97,7 @@ export const ContentFooter = ({ resource,
                     </div>
                 </div>
             }
-            { shareButton && 
+            { showShareButton && 
                 <ShareButton 
                     shareUrl={shareUrl} 
                     shareTitle={shareTitle}
@@ -158,9 +157,7 @@ ContentFooter.propTypes = {
     /** If true, will use PATCH method to delete content instead of DELETE */
     softDelete: PropTypes.bool,
     /** If true, disabled replies and dropdown actions */
-    disabled: PropTypes.bool, 
-    /** If true, the reply button will be as far to the left as possible and the elements will no longer be in space-between */
-    leftReply: PropTypes.bool, 
+    disabled: PropTypes.bool,
     /** Show reply button */
     enableReply: PropTypes.bool, 
     /** Callback function */
@@ -168,7 +165,7 @@ ContentFooter.propTypes = {
     /** If true, show dropdown actions */
     showActions: PropTypes.bool, 
     /** If true, show share button action */
-    shareButton: PropTypes.bool, 
+    showShareButton: PropTypes.bool, 
     /** If true, show share modal action in the dropdown */
     shareModal: PropTypes.bool,
     /** Url to share */

@@ -71,7 +71,7 @@ export const DefaultContentFooter = () => {
                                                     <ContentFooter 
                                                         resource={resource}
                                                         showActions
-                                                        shareButton
+                                                        showShareButton
                                                         enableReply
                                                         shareUrl={"https://test.com"}
                                                         shareTitle={"Share title"}
@@ -119,6 +119,7 @@ export const ContentFooterShareModal = () => {
                                                         resource={resource}
                                                         showActions
                                                         shareModal
+                                                        showShareButton={false}
                                                         enableReply
                                                         shareUrl={"https://test.com"}
                                                         shareTitle={"Share title"}
@@ -264,62 +265,13 @@ export const ContentFooterWithoutReply = () => {
                                                     <ContentFooter 
                                                         resource={resource}
                                                         showActions
-                                                        shareButton
+                                                        showShareButton
                                                         shareUrl={"https://test.com"}
                                                         shareTitle={"Share title"}
                                                         shareText={"Share text"}
                                                         showShareText
                                                         showShareCode
                                                         shareCode={"</>"}
-                                                    >
-                                                        <VoteButton
-                                                            voteableType={"Message"}
-                                                            voteableId={45}
-                                                            totalUpvote={10}
-                                                            totalDownvote={0}
-                                                            disabled={false}
-                                                        />
-                                                    </ContentFooter>
-                                                </VoteProvider>
-                                            </ToastProvider>
-                                        </ModalProvider>
-                                    </ResponsiveProvider>
-                                </IconProvider>
-                            </ListProvider>
-                        </AuthContext.Provider>
-                    </DataProviderContext.Provider>
-                </ConfigProvider>
-            </IntlProvider>
-        </div>
-    );
-};
-
-export const ContentFooterLeftReply = () => {
-    return (
-        <div style={{ width: "400px", height: "60px" }}>
-            <IntlProvider locale="en">
-                <ConfigProvider config={{ auth: { disableLoginModal: true } }}>
-                    <DataProviderContext.Provider value={{ dataProvider: data }}>
-                        <AuthContext.Provider value={{ currentUser: currentUser, isLoggedIn: true }}>
-                            <ListProvider>
-                                <IconProvider library={regularIcons}>
-                                    <ResponsiveProvider>
-                                        <ModalProvider>
-                                            <ToastProvider>
-                                                <VoteProvider>
-                                                    <ContentFooter 
-                                                        resource={resource}
-                                                        showActions
-                                                        shareModal
-                                                        shareUrl={"https://test.com"}
-                                                        shareTitle={"Share title"}
-                                                        shareText={"Share text"}
-                                                        showShareText
-                                                        showShareCode
-                                                        shareCode={"</>"}
-                                                        shareModalTitle={"Share content"}
-                                                        enableReply
-                                                        leftReply
                                                     >
                                                         <VoteButton
                                                             voteableType={"Message"}
@@ -398,7 +350,7 @@ export const ContentFooterWithoutEdition = () => {
                                                     <ContentFooter 
                                                         resource={resource}
                                                         showActions
-                                                        shareButton
+                                                        showShareButton
                                                         enableReply
                                                         shareUrl={"https://test.com"}
                                                         shareTitle={"Share title"}
@@ -446,7 +398,7 @@ export const ContentFooterWithoutDeletion = () => {
                                                     <ContentFooter 
                                                         resource={resource}
                                                         showActions
-                                                        shareButton
+                                                        showShareButton
                                                         enableReply
                                                         shareUrl={"https://test.com"}
                                                         shareTitle={"Share title"}

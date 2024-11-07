@@ -122,6 +122,12 @@
 .replyInputContainer {
     transition: margin-top 2s;
     position: relative;
+
+    background-color: $background-color-primary;
+    border-radius: $box-border-radius;
+    box-shadow: $box-shadow;
+    border: $box-border;
+    
     @include mt(2, xs);
     @include p(3, xs);
 

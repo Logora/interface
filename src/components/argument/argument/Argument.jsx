@@ -22,7 +22,7 @@ import styles from "./Argument.module.scss";
 const ArgumentInput = lazy(() => import('@logora/debate.input.argument_input'));
 import PropTypes from "prop-types";
 
-export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupType, groupName, positions = [], disableLinks = false, parentArgument, flashParent, expandable, disabled = false, isComment = false, hideFooter = false, hideReplies, vote, fixedContentHeight = false, enableEdition = true, deleteListId }) => {
+export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupType, groupName, positions = [], disableLinks = false, parentArgument, flashParent, expandable, disabled = false, hideFooter = false, hideReplies, vote, fixedContentHeight = false, enableEdition = true, deleteListId }) => {
 	const intl = useIntl();
 	const { isLoggedIn, currentUser } = useAuth();
 	const config = useConfig();
@@ -90,7 +90,6 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupTyp
 				argumentReplies={argumentReplies}
 				parentArgument={argument}
 				flashParent={(argumentId) => scrollToArgument(`argument_${argumentId}`)}
-				isComment={isComment}
 			/>
 		)
 	}
@@ -181,14 +180,12 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupTyp
 						deleteListId={deleteListId}
 						enableReply={nestingLevel <= 2}
 						handleReplyTo={toggleReplyInput}
-						shareButton={!isComment}
 						shareUrl={"https://app.logora.fr/share/a/" + argument.id}
 						shareTitle={intl.formatMessage({ id: "share.argument.title", defaultMessage: "Share a debate" })}
 						shareText={intl.formatMessage({ id: "share.argument.text", defaultMessage: "This argument may interest you" })}
 						shareCode={'<iframe src="https://cdn.logora.com/embed.html?shortname=' + config.shortname + '&id=' + argument.id + '&resource=argument" frameborder="0" width="100%" height="275px" scrolling="no"></iframe>'}
 						showShareCode={config?.actions?.hideCodeShare != true}
 						showShareText
-						leftReply={isComment}
 						enableReport={!(argument.score == 100 && argument.manual_score)}
 						enableEdition={enableEdition}
 					>
@@ -302,8 +299,6 @@ Argument.propTypes = {
 	expandable: PropTypes.bool,
 	/** If true, disabled mode in argument */
 	disabled: PropTypes.bool,
-	/** If true, enabled comment styles */
-	isComment: PropTypes.bool,
 	/** If true, hides footer, including replies */
 	hideFooter: PropTypes.bool,
 	/** If true, hide replies */

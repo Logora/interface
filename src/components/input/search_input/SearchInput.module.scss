@@ -16,3 +16,9 @@
 	@include py(2.5, xs);
 	cursor: pointer;
 }
+
+.search {
+    display: flex;              
+    flex-grow: 1;               
+    width: 100%;               
+}

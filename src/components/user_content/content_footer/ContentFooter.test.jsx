@@ -13,7 +13,7 @@ import { dataProvider, DataProviderContext } from '@logora/debate.data.data_prov
 import { ToastProvider } from '@logora/debate.dialog.toast_provider';
 import { VoteProvider } from '@logora/debate.vote.vote_provider';
 import { faker } from '@faker-js/faker';
-import { DefaultContentFooter, ContentFooterShareModal, ContentFooterUpDownVoteBox, ContentFooterDisabled, ContentFooterWithoutReply, ContentFooterLeftReply, ContentFooterProgressBar, ContentFooterWithoutEdition, ContentFooterWithoutDeletion } from './ContentFooter.composition';
+import { DefaultContentFooter, ContentFooterShareModal, ContentFooterUpDownVoteBox, ContentFooterDisabled, ContentFooterWithoutReply, ContentFooterProgressBar, ContentFooterWithoutEdition, ContentFooterWithoutDeletion } from './ContentFooter.composition';
 import { VoteButton } from '@logora/debate.vote.vote_button';
 
 beforeAll(() => {
@@ -71,7 +71,6 @@ describe('ContentFooter', () => {
         expect(queryByText(10)).toBeInTheDocument();
         expect(queryByText("Reply")).toBeInTheDocument();
         expect(queryByText("Share")).toBeInTheDocument();
-        expect(queryByTestId("reply-button")).not.toHaveClass("leftReply");
 
         const dropdown = queryByTestId("dropdown");
         await act(async () => { await userEvent.click(dropdown) });
@@ -100,7 +99,6 @@ describe('ContentFooter', () => {
                                                 <ContentFooter 
                                                     resource={resource}
                                                     showActions
-                                                    shareButton
                                                     enableReply
                                                     shareUrl={"https://test.com"}
                                                     shareTitle={"Share title"}
@@ -131,7 +129,6 @@ describe('ContentFooter', () => {
         expect(queryByText(10)).toBeInTheDocument();
         expect(queryByText("Reply")).toBeInTheDocument();
         expect(queryByText("Share")).toBeInTheDocument();
-        expect(queryByTestId("reply-button")).not.toHaveClass("leftReply");
 
         const dropdown = queryByTestId("dropdown");
         await act(async () => { await userEvent.click(dropdown) });
@@ -149,7 +146,6 @@ describe('ContentFooter', () => {
         expect(queryByText(10)).toBeInTheDocument();
         expect(queryByText("Reply")).toBeInTheDocument();
         expect(queryByText("Share")).toBeInTheDocument();
-        expect(queryByTestId("reply-button")).not.toHaveClass("leftReply");
 
         const dropdown = queryByTestId("dropdown");
         await act(async () => { await userEvent.click(dropdown) });
@@ -167,7 +163,6 @@ describe('ContentFooter', () => {
         expect(queryByText(10)).toBeInTheDocument();
         expect(queryByText("Reply")).toBeInTheDocument();
         expect(queryByText("Share")).toBeInTheDocument();
-        expect(queryByTestId("reply-button")).not.toHaveClass("leftReply");
 
         const dropdown = queryByTestId("dropdown");
         await act(async () => { await userEvent.click(dropdown) });
@@ -185,7 +180,6 @@ describe('ContentFooter', () => {
         expect(queryByText(10)).toBeInTheDocument();
         expect(queryByText("Reply")).toBeInTheDocument();
         expect(queryByText("Share")).toBeNull();
-        expect(queryByTestId("reply-button")).not.toHaveClass("leftReply");
 
         const dropdown = queryByTestId("dropdown");
         await act(async () => { await userEvent.click(dropdown) });
@@ -209,7 +203,7 @@ describe('ContentFooter', () => {
         expect(queryByText('10 supporters')).toBeInTheDocument();
         expect(queryByText('5 opponents')).toBeInTheDocument();
         expect(queryByText("Reply")).toBeNull();
-        expect(queryByText("Share")).toBeNull();
+        expect(queryByText("Share")).toBeInTheDocument();
     });
 
     it('should be disabled', async () => {
@@ -219,7 +213,7 @@ describe('ContentFooter', () => {
 
         expect(queryByText(10)).toBeInTheDocument();
         expect(queryByText("Reply")).toBeNull();
-        expect(queryByText("Share")).toBeNull();
+        expect(queryByText("Share")).toBeInTheDocument();
 
         const voteButton = queryByText(10);
         await userEvent.click(voteButton);
@@ -235,17 +229,6 @@ describe('ContentFooter', () => {
         expect(queryByText(10)).toBeInTheDocument();
         expect(queryByText("Reply")).toBeNull();
         expect(queryByText("Share")).toBeInTheDocument();
-    });
-
-    it('should render with left reply', async () => {
-        const { queryByText, queryByTestId } = render(
-            <ContentFooterLeftReply />
-        );
-
-        expect(queryByText(10)).toBeInTheDocument();
-        expect(queryByText("Reply")).toBeInTheDocument();
-        expect(queryByTestId("reply-button")).toHaveClass("leftReply");
-        expect(queryByText("Share")).toBeNull();
     });
 
     it('should render with progress bar', async () => {

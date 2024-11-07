@@ -167,18 +167,6 @@ export const ExpandedArgument = () => (
     </div>
 );
 
-export const Comment = () => (
-    <div style={{ width: "400px", height: "230px" }}>
-        <Providers>
-            <Argument
-                argument={argument}
-                positions={positions}
-                isComment
-            />
-        </Providers>
-    </div>
-);
-
 export const ArgumentDisabledLinks = () => (
     <div style={{ width: "400px", height: "230px" }}>
         <Providers>
