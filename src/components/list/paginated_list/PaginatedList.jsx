@@ -350,6 +350,7 @@ export const PaginatedList = ({
                             onLoad={handleLoadNewPage}
                             isLoading={isLoading}
                             hideLoader={true} // Disable loader when there is loading components to display instead
+                            data-tid={"list_read_more"}
                         />
                     )}
                 </>
