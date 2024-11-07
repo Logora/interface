@@ -61,7 +61,7 @@ describe('SummaryContentBox', () => {
         expect(getByText(argument.author.full_name)).toBeInTheDocument();
         expect(getByText(argument.position.name)).toBeInTheDocument();
         expect(getByText("52 points")).toBeInTheDocument();
-        expect(getByText(argument.content.slice(0,30), { exact: false })).toBeInTheDocument();
+        expect(getByText(argument.content.slice(0, 50), { exact: false })).toBeInTheDocument();
         expect(queryByText(argument.title)).not.toBeInTheDocument();
         const readMoreLink = getByText("Read more").parentElement;
         expect(readMoreLink.href).toBe(debateUrl);
@@ -88,7 +88,7 @@ describe('SummaryContentBox', () => {
             </BrowserRouter>
         );
 
-        expect(getByText(argument.content.slice(0,30), { exact: false })).toBeInTheDocument();
+        expect(getByText(argument.content.slice(0,50), { exact: false })).toBeInTheDocument();
         expect(queryByText(argument.title)).toBeInTheDocument();
     });
 

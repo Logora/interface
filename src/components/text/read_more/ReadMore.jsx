@@ -50,7 +50,7 @@ export const ReadMore = ({
         <div className={styles.readMore}>
             <span
                 ref={contentRef}
-                className={lineCount ? styles.lineClamp : {}}
+                className={lineCount ? styles.lineClamp : null}
                 style={lineCount ? lineClampingStyle : {}}
                 onClick={expandable ? handleContentToggle : undefined}
             >
