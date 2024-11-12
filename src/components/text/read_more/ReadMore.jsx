@@ -58,7 +58,9 @@ export const ReadMore = ({
             </span>
             {showToggle && (
                 <span className={styles.readMoreWrapper}>
-                    <span className={styles.ellipsis}>...</span>
+                    {!expanded && (
+                        <span className={styles.ellipsis}>...</span>
+                    )}
                     {to ? (
                         <Link
                             to={to}
