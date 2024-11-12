@@ -4,7 +4,7 @@ import { useConfig } from '@logora/debate.data.config_provider';
 import { useIntl } from "react-intl";
 import { useTranslatedContent } from '@logora/debate.translation.translated_content';
 import { ContentHeader } from '@logora/debate.user_content.content_header';
-import { ExpandableText } from '@logora/debate.text.expandable_text';
+import { ReadMore } from '@logora/debate.text.read_more';
 import { Icon } from '@logora/debate.icons.icon';
 import { TranslationButton } from '@logora/debate.translation.translation_button';
 import { UserContentSkeleton } from '@logora/debate.skeleton.user_content_skeleton';
@@ -144,25 +144,30 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupTyp
 									/>
 								</div>
 								:
-								<ExpandableText
-									expandable={expandable}
-									expandText={intl.formatMessage({ id: "action.read_more", defaultMessage: "Read more" })}
-									collapseText={intl.formatMessage({ id: "action.read_less", defaultMessage: "Read less" })}
-									isReply={argument.is_reply}
-								>
-									{argument.edited_at && <div className={styles.edited}>{intl.formatMessage({ id: "argument.argument.updated", defaultMessage: "Updated argument" })}</div>}
-									{richContent && !content.isTranslated ? (
-										<div
-											className={styles.argumentContent}
-											dangerouslySetInnerHTML={{ __html: richContent }}
-										></div>
-									) : (
-										<div className={styles.argumentContent}>{content.translatedContent}</div>
-									)}
-									{content.isTranslated &&
-										<TranslationButton language={argument.language} callback={() => content.toggleContent()} />
-									}
-								</ExpandableText>
+								<ReadMore
+								content={
+									<>
+										{argument.edited_at && (
+											<div className={styles.edited}>
+												{intl.formatMessage({ id: "argument.argument.updated", defaultMessage: "Updated argument" })}
+											</div>
+										)}
+										{richContent && !content.isTranslated ? (
+											<div className={styles.argumentContent} dangerouslySetInnerHTML={{ __html: richContent }}></div>
+										) : (
+											<div className={styles.argumentContent}>{content.translatedContent}</div>
+										)}
+										{content.isTranslated && (
+											<TranslationButton language={argument.language} callback={() => content.toggleContent()} />
+										)}
+									</>
+								}
+								lineCount={5}
+								readMoreText={intl.formatMessage({ id: "action.read_more", defaultMessage: "Read more" })}
+								readLessText={intl.formatMessage({ id: "action.read_less", defaultMessage: "Read less" })}
+								expandable={expandable}
+							/>
+							
 							}
 						</div>
 						{argument.sources?.length > 0 && (
