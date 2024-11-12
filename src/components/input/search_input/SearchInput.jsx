@@ -25,7 +25,7 @@ export const SearchInput = ({ onSearchSubmit, placeholder, disabled, reducedByDe
 	return (
 		!reducedByDefault || openSearch ?
 			(
-				<form data-tid={"form_search"} onSubmit={handleSubmit} method='get' autoComplete='off' ref={searchRef} className={styles.search}>
+				<form data-tid={"form_search"} onSubmit={handleSubmit} method='get' autoComplete='off' ref={searchRef}>
 					<TextInput
 						type={"text"}
 						name={"q"}
