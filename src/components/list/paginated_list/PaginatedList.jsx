@@ -199,7 +199,7 @@ export const PaginatedList = ({
     };
 
     const handleLoadNewPage = () => {
-        if (onLoadNewPage) {
+        if (onLoadNewPage != undefined) {
             onLoadNewPage();
         } else {
             setPage(page + 1)
