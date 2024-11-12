@@ -199,12 +199,11 @@ export const PaginatedList = ({
     };
 
     const handleLoadNewPage = () => {
-        if (onLoadNewPage != undefined) {
-            onLoadNewPage();
+        if (typeof onLoadNewPage === 'function' && onLoadNewPage() !== null) {
         } else {
-            setPage(page + 1)
+            setPage(page + 1);
         }
-    }
+    };
 
     const loadResources = (pageNumber) => {
         const loadFunction = withToken ? api.getListWithToken : api.getList;

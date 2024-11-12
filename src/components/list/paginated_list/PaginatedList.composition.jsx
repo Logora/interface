@@ -230,3 +230,33 @@ export const RowPaginatedList = () => {
     </div>
   );
 };
+
+export const PaginatedListWithOnLoadNewPage = () => {
+  return (
+    <BrowserRouter>
+      <IntlProvider locale="en">
+        <ListProvider>
+          <IconProvider library={regularIcons}>
+            <ResponsiveProvider>
+              <DataProviderContext.Provider value={{ dataProvider: data }}>
+                <PaginatedList
+                  currentListId={"itemList"}
+                  resource={"/items"}
+                  sort={"-created_at"}
+                  resourcePropName={"item"}
+                  perPage={3}
+                  numberElements={9}
+                  withPagination
+                  display="column"
+                  onLoadNewPage={() => null}
+                >
+                  <ListItem />
+                </PaginatedList>
+              </DataProviderContext.Provider>
+            </ResponsiveProvider>
+          </IconProvider>
+        </ListProvider>
+      </IntlProvider>
+    </BrowserRouter>
+  );
+};
