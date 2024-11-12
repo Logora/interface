@@ -71,7 +71,7 @@ export const ReadMore = ({
                         </Link>
                     ) : (
                         <span
-                            className={cx(styles.readMoreElement, className, expanded ? styles.readLessElement : null)}
+                            className={cx(styles.readMoreElement, className)}
                             onClick={handleContentToggle}
                             {...rest}
                         >
