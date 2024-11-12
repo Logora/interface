@@ -30,7 +30,7 @@ export const SummaryContentBox = ({ author, tag, date, title = '', content, link
                     }
                     <ReadMore 
                         content={translatedContent.translatedContent}
-                        charCount={100}
+                        lineCount={1}
                         to={link} 
                         data-tid={"link_argument_read_more"}
                         target="_top"
