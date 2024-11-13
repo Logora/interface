@@ -248,3 +248,22 @@ export const ArgumentWithArgumentReplies = () => (
         </Providers>
     </div>
 );
+
+export const EmptyArgumentNoReplies = () => {
+    const emptyArgument = {
+        ...argument,           
+        content: "",          
+    };
+    return (
+        <div style={{ width: "400px", height: "240px" }}>
+            <Providers>
+                <Argument
+                    argument={emptyArgument} 
+                    positions={positions}
+                    expandable
+                />
+            </Providers>
+        </div>
+    );
+};
+
