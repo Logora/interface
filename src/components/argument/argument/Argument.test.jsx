@@ -104,11 +104,11 @@ const argumentDeleted = createArgument({
     content: faker.lorem.sentences(1),
     upvotes: 12
 });
-const positions = [
+const debatePositions = [
     { id: 1, name: "Yes", language: "en", translation_entries: [] },
     { id: 2, name: "No", language: "en", translation_entries: [] }
 ];
-const groupName = faker.lorem.sentence(5);
+const debateName = faker.lorem.sentence(5);
 
 const targetContent = {"root":{"children":[{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"I write an argument","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}};
         
@@ -181,7 +181,8 @@ describe('Argument', () => {
     it('should render argument correctly', () => {
         const { getByText } = renderArgument({
             argument,
-            positions,
+            debatePositions,
+            debateName,
             nestingLevel: 0,
         });
 
@@ -194,8 +195,8 @@ describe('Argument', () => {
     it('should render argument with replies', () => {
         const { getByText, getByAltText } = renderArgument({
             argument: argumentWithReplies,
-            positions,
-            groupName,
+            debatePositions,
+            debateName,
             nestingLevel: 0,
         });
 
@@ -214,8 +215,8 @@ describe('Argument', () => {
     it('should render argument as a reply', () => {
         const { container } = renderArgument({
             argument: argumentReply,
-            positions,
-            groupName,
+            debatePositions,
+            debateName,
             nestingLevel: 0,
         });
 
@@ -223,11 +224,25 @@ describe('Argument', () => {
         expect(argumentContainer).toHaveClass('argumentReply');
     });
 
+    it('should render comment argument', () => {
+        const { queryByText, getByTestId } = renderArgument({
+            argument,
+            debatePositions,
+            debateName,
+            nestingLevel: 0,
+            isComment: true
+        });
+
+        expect(queryByText("Share")).not.toBeInTheDocument();
+        const replyButton = getByTestId('reply-button');
+        expect(replyButton).toHaveClass('leftReply');
+    });
+
     it('should render deleted argument', () => {
         const { queryByText } = renderArgument({
             argument: argumentDeleted,
-            positions,
-            groupName,
+            debatePositions,
+            debateName,
             replies: false,
             nestingLevel: 0,
         });
@@ -240,8 +255,8 @@ describe('Argument', () => {
     it('should render dropdown', async () => {
         const { getByText, getByTestId } = renderArgument({
             argument,
-            positions,
-            groupName,
+            debatePositions,
+            debateName,
             nestingLevel: 0,
         });
 
@@ -253,8 +268,8 @@ describe('Argument', () => {
     it('should add vote', async () => {
         const { getByText, getByTestId, queryByText } = renderArgument({
             argument,
-            positions,
-            groupName,
+            debatePositions,
+            debateName,
             nestingLevel: 0,
         });
 
@@ -269,8 +284,8 @@ describe('Argument', () => {
     it('should render argument input', async () => {
         const { getByText, getByTestId } = renderArgument({
             argument,
-            positions,
-            groupName,
+            debatePositions,
+            debateName,
             nestingLevel: 0,
         });
 
@@ -278,17 +293,17 @@ describe('Argument', () => {
         await act(async () => { await userEvent.click(replyButton) });
         expect(getByText("Your position")).toBeInTheDocument();
         expect(getByText("Your answer")).toBeInTheDocument();
-        expect(getByText(positions[1].name)).toBeInTheDocument();
+        expect(getByText(debatePositions[1].name)).toBeInTheDocument();
     });
 
     it('should allow the user to add a reply to an argument', async () => {
         const { getByTestId, getByText } = renderArgument({
             argument,
-            positions: [
+            debatePositions: [
                 { id: 1, name: 'Yes', language: 'en', translation_entries: [] },
                 { id: 2, name: 'No', language: 'en', translation_entries: [] },
             ],
-            groupName: 'Test Debate',
+            debateName: 'Test Debate',
             nestingLevel: 0,
         });
 
@@ -297,7 +312,7 @@ describe('Argument', () => {
             await userEvent.click(replyButton);
         });
 
-        const positionButton = getByText(positions[1].name);
+        const positionButton = getByText(debatePositions[1].name);
         await act(async () => {
             await userEvent.click(positionButton);
         });

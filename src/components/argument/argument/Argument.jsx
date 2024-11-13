@@ -1,41 +1,54 @@
-import React, { Suspense, lazy, useEffect, useState, useCallback } from "react";
+import React, { Suspense, lazy, useEffect, useState } from "react";
 import { useAuth } from "@logora/debate.auth.use_auth";
 import { useConfig } from '@logora/debate.data.config_provider';
-import { useIntl } from "react-intl";
+import { useIntl, FormattedMessage } from "react-intl";
 import { useTranslatedContent } from '@logora/debate.translation.translated_content';
 import { ContentHeader } from '@logora/debate.user_content.content_header';
+import { ExpandableText } from '@logora/debate.text.expandable_text';
 import { ReadMore } from '@logora/debate.text.read_more';
 import { Icon } from '@logora/debate.icons.icon';
+import { lexicalToHtml } from "@logora/debate.input.text_editor";
 import { TranslationButton } from '@logora/debate.translation.translation_button';
 import { UserContentSkeleton } from '@logora/debate.skeleton.user_content_skeleton';
 import { AnnouncementDialog } from "@logora/debate.dialog.announcement_dialog";
 import { SourceListItem } from "@logora/debate.source.source_list_item";
+import { Avatar } from "@logora/debate.user.avatar";
 import { ContentFooter } from '@logora/debate.user_content.content_footer';
 import { VoteButton } from '@logora/debate.vote.vote_button';
 import { Button } from '@logora/debate.action.button';
 import { VotePaginatedList } from '@logora/debate.list.paginated_list';
 import { HashScroll } from '@logora/debate.tools.hash_scroll';
-import { ReplyFooter } from "./ReplyFooter";
-import { useRichContent } from "./useRichContent";
 import cx from "classnames";
+import draftToHtml from "draftjs-to-html";
 import styles from "./Argument.module.scss";
 const ArgumentInput = lazy(() => import('@logora/debate.input.argument_input'));
 import PropTypes from "prop-types";
 
-export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupType, groupName, positions = [], disableLinks = false, parentArgument, flashParent, expandable, disabled = false, hideFooter = false, hideReplies, vote, fixedContentHeight = false, enableEdition = true, deleteListId }) => {
-	const intl = useIntl();
-	const { isLoggedIn, currentUser } = useAuth();
-	const config = useConfig();
-
+export const Argument = ({ argument, argumentReplies, nestingLevel, debatePositions, disableLinks, replyToArgument, flashParent, expandable, disabled = false, isComment, hideReplies, debateName, vote, fixedContentHeight, enableEdition = true, deleteListId }) => {
 	const [expandReplies, setExpandReplies] = useState(false);
 	const [flash, setFlash] = useState(false);
-	const [showReplyInput, setShowReplyInput] = useState(false);
-	const richContent = useRichContent(argument);
+	const [startReplyInput, setStartReplyInput] = useState(false);
+	const [richContent, setRichContent] = useState(null);
 	const [extraReplies, setExtraReplies] = useState();
+	const intl = useIntl();
+	const { isLoggedIn, currentUser } = useAuth();
 	const content = useTranslatedContent(argument.content, argument.language, "content", argument.translation_entries);
 	const position = useTranslatedContent(argument.position?.name, argument.position?.language, "name", argument.position?.translation_entries);
+	const config = useConfig();
 	const componentId = "argument_" + argument.id;
-	const positionIndex = argument.position && positions?.map((e) => e.id).indexOf(argument.position.id) + 1;
+
+	useEffect(() => {
+		if (argument.rich_content && argument.is_deleted != true) {
+			const rawContent = JSON.parse(argument.rich_content);
+			if (rawContent.hasOwnProperty("root")) {
+				const html = lexicalToHtml(rawContent);
+				setRichContent(html);
+			} else {
+				const htmlContent = draftToHtml(rawContent);
+				setRichContent(htmlContent);
+			}
+		}
+	}, [argument.rich_content]);
 
 	useEffect(() => {
 		if (argumentReplies !== undefined) { displayRepliesThread() }
@@ -52,44 +65,44 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupTyp
 		}
 	};
 
+	const displaySource = (source, index) => {
+		return <SourceListItem key={index} publisher={source.publisher} url={source.source_url} title={source.title} index={index} />;
+	};
+
 	const toggleReplyInput = () => {
-		setShowReplyInput(showReplyInput => !showReplyInput);
+		setStartReplyInput(startReplyInput => !startReplyInput);
 	};
 
 	const toggleReplies = () => {
 		setExpandReplies(expandReplies => !expandReplies);
 		setExtraReplies([]);
-	}
+	};
+
+	const displayRepliesThread = () => {
+		let filteredReplies = argumentReplies && argumentReplies.filter((reply) => reply.reply_to_id == argument.id);
+		if (filteredReplies.length > 0) { 
+			setExtraReplies(filteredReplies); 
+		}
+	};
 
 	const transformReplies = (reply) => {
 		if (extraReplies && extraReplies.find(r => r.id === reply.id)) { return; }
 		return reply;
 	}
-	
-	const displaySource = useCallback((source, index) => {
-		return <SourceListItem key={index} publisher={source.publisher} url={source.source_url} title={source.title} index={index} />;
-	}, [])
-
-	const displayRepliesThread = () => {
-		let filteredReplies = argumentReplies && argumentReplies.filter((reply) => reply.reply_to_id == argument.id);
-		if (filteredReplies.length > 0) {
-			setExtraReplies(filteredReplies);
-			setExpandReplies(true);
-		}
-	};
 
 	const displayReply = (reply = null) => {
 		return (
 			<ArgumentContainer
 				{...(reply ? { argument: reply } : {})}
+				positionIndex={debatePositions && debatePositions.map((e) => e.id).indexOf(reply?.position?.id) + 1}
 				nestingLevel={nestingLevel + 1}
 				disabled={disabled}
-				groupName={groupName}
-				groupType={groupType}
-				positions={positions}
+				debateName={debateName}
+				debatePositions={debatePositions && debatePositions}
 				argumentReplies={argumentReplies}
-				parentArgument={argument}
+				replyToArgument={argument}
 				flashParent={(argumentId) => scrollToArgument(`argument_${argumentId}`)}
+				isComment={isComment}
 			/>
 		)
 	}
@@ -104,16 +117,16 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupTyp
 						[styles.argumentReply]: argument.is_reply == true,
 					},
 					styles[`level-${nestingLevel}`],
-					styles[`position-${!(argument.author.role == "editor" || argument.author.role == "moderator") && positionIndex}`]
+					styles[`position-${!(argument.author.role == "editor" || argument.author.role == "moderator") && argument.position && debatePositions && debatePositions.map((e) => e.id).indexOf(argument.position.id) + 1}`]
 				)}
 				id={componentId}
 			>
 				<ContentHeader
 					selectedContent={argument.score == 99}
 					author={argument.author}
-					tag={(argument.author.role == "editor" || argument.author.role == "moderator") && argument.is_reply ? null : position.translatedContent}
+					tag={(argument.author.role == "editor"|| argument.author.role == "moderator")  && argument.is_reply ? null : position.translatedContent}
 					date={argument.created_at}
-					tagClassName={styles[`headerPosition-${positionIndex}`]}
+					tagClassName={styles[`headerPosition-${argument.position && debatePositions && debatePositions.map((e) => e.id).indexOf(argument.position.id) + 1}`]}
 					disableLinks={disableLinks}
 					isDeleted={argument.is_deleted}
 				/>
@@ -124,11 +137,11 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupTyp
 					:
 					<>
 						<div className={cx(styles.argumentBody, { [styles.fixedHeight]: fixedContentHeight })}>
-							{argument.is_reply && parentArgument &&
+							{argument.is_reply && replyToArgument &&
 								<div className={styles.replyTo} onClick={() => flashParent(replyToArgument.id)}>
 									{intl.formatMessage({ id: "info.replying_to", defaultMessage: "Replying to" })}
 									<span className={styles.replyingTo}>
-										{parentArgument.is_deleted ? intl.formatMessage({ id: "info.deleted", defaultMessage: "Deleted" }) : parentArgument.author.full_name}
+										{replyToArgument.is_deleted ? intl.formatMessage({ id: "info.deleted", defaultMessage: "Deleted" }) : replyToArgument.author.full_name}
 										<Icon name="chat" height={16} />
 									</span>
 								</div>
@@ -167,30 +180,31 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupTyp
 								readLessText={intl.formatMessage({ id: "action.read_less", defaultMessage: "Read less" })}
 								expandable={expandable}
 							/>
-							
 							}
 						</div>
-						{argument.sources?.length > 0 && (
+						{(!argument.sources || argument.sources.length === 0) ? null : (
 							<div className={styles.argumentSourcesList}>{argument.sources.map(displaySource)}</div>
 						)}
 					</>
 				}
-				{!hideFooter && !argument.is_deleted &&
+				{!argument.is_deleted &&
 					<ContentFooter
 						resource={argument}
-						disabled={disabled || (!isLoggedIn && config?.actions?.disableInputForVisitor === true)}
+                    	disabled={disabled || (!isLoggedIn && config?.actions?.disableInputForVisitor === true)}
 						reportType={"Message"}
 						softDelete={config.actions?.softDelete}
 						deleteType={"messages"}
 						deleteListId={deleteListId}
 						enableReply={nestingLevel <= 2}
 						handleReplyTo={toggleReplyInput}
+						shareButton={!isComment}
 						shareUrl={"https://app.logora.fr/share/a/" + argument.id}
 						shareTitle={intl.formatMessage({ id: "share.argument.title", defaultMessage: "Share a debate" })}
 						shareText={intl.formatMessage({ id: "share.argument.text", defaultMessage: "This argument may interest you" })}
 						shareCode={'<iframe src="https://cdn.logora.com/embed.html?shortname=' + config.shortname + '&id=' + argument.id + '&resource=argument" frameborder="0" width="100%" height="275px" scrolling="no"></iframe>'}
 						showShareCode={config?.actions?.hideCodeShare != true}
 						showShareText
+						leftReply={isComment}
 						enableReport={!(argument.score == 100 && argument.manual_score)}
 						enableEdition={enableEdition}
 					>
@@ -199,30 +213,44 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupTyp
 							voteableId={argument.id}
 							totalUpvote={argument.upvotes}
 							totalDownvote={0}
-							activeClassName={styles[`voteButtonPosition-${positionIndex}`]}
+							activeClassName={styles[`voteButtonPosition-${argument.position && debatePositions?.map((e) => e.id).indexOf(argument.position.id) + 1}`]}
 							disabled={disabled || (currentUser?.id === argument?.author?.id)}
 						/>
 					</ContentFooter>
 				}
-				{!hideFooter && !hideReplies &&
-					<ReplyFooter
-						numberReplies={argument.number_replies}
-						repliesAuthors={argument.replies_authors}
-						expandReplies={expandReplies}
-						onToggleReplies={toggleReplies}
-					/>
+				{argument.number_replies > 0 && !hideReplies &&
+					<div className={styles.replyFooter} onClick={toggleReplies}>
+						{argument.replies_authors.map((author, index) =>
+							<Avatar key={index} avatarUrl={author.image_url} userName={author.full_name} size={32} showTooltip />
+						)}
+						<div
+							className={styles.expandRepliesContainer}
+						>
+							<button
+								tabIndex='0'
+								className={cx(styles.expandRepliesButton, { [styles.repliesExpanded]: expandReplies })}
+							>
+								<FormattedMessage
+									id={expandReplies ? "alt.hide_answers" : "alt.view_answers"}
+									values={{ number_replies: argument.number_replies }}
+									defaultMessage={expandReplies ? "Hide answers" : "View answers"}
+								/>
+								<Icon name="lightArrow" width={10} height={10} />
+							</button>
+						</div>
+					</div>
 				}
 			</div>
 			{!hideReplies &&
 				<>
-					{showReplyInput && (
+					{startReplyInput && (
 						<Suspense fallback={null}>
 							<ArgumentInput
 								key={`Reply${argument.id}`}
 								groupId={argument.group_id}
-								groupType={groupType}
-								groupName={groupName}
-								positions={positions}
+								groupType={isComment && "Source"}
+								groupName={debateName}
+								positions={debatePositions}
 								parentId={argument.id}
 								positionId={vote?.position_id}
 								disabled={disabled}
@@ -239,12 +267,12 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupTyp
 							/>
 						</Suspense>
 					)}
-					{extraReplies?.length > 0 && expandReplies &&
+					{ extraReplies?.length > 0 && expandReplies &&
 						<div className={styles.repliesList}>
-							{extraReplies.map(r => displayReply(r))}
+							{ extraReplies.map(r => displayReply(r)) }
 						</div>
 					}
-					{expandReplies &&
+					{ expandReplies &&
 						<div className={styles.repliesList}>
 							<VotePaginatedList
 								voteableType={"Message"}
@@ -258,13 +286,13 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupTyp
 								resourcePropName={'argument'}
 								transformData={(reply) => transformReplies(reply)}
 							>
-								{displayReply(argument)}
+								{ displayReply(argument) }
 							</VotePaginatedList>
 						</div>
 					}
-					{extraReplies?.length > 0 && !expandReplies &&
+					{ extraReplies?.length > 0 && !expandReplies &&
 						<div className={styles.repliesList}>
-							{argument.number_replies > 1 &&
+							{ argument.number_replies > 1 &&
 								<div className={styles.readMoreLink}>
 									<Button
 										role="link"
@@ -293,25 +321,23 @@ Argument.propTypes = {
 	/** Nesting level of the argument */
 	nestingLevel: PropTypes.number,
 	/** Positions of the debate */
-	positions: PropTypes.array.isRequired,
+	debatePositions: PropTypes.array.isRequired,
 	/** If true, disables links */
 	disableLinks: PropTypes.bool,
+	/** Parent argument */
+	replyToArgument: PropTypes.object,
 	/** Flash border of parent argument */
 	flashParent: PropTypes.func,
-	/** Parent argument */
-	parentArgument: PropTypes.object,
 	/** If true, content is expandable */
-	expandable: PropTypes.bool,
+    expandable: PropTypes.bool,
 	/** If true, disabled mode in argument */
-	disabled: PropTypes.bool,
-	/** If true, hides footer, including replies */
-	hideFooter: PropTypes.bool,
+    disabled: PropTypes.bool,
+	/** If true, enabled comment styles */
+	isComment: PropTypes.bool,
 	/** If true, hide replies */
 	hideReplies: PropTypes.bool,
-	/** Type of the group */
-	groupType: PropTypes.string,
-	/** Name of the group the argument is in */
-	groupName: PropTypes.string,
+	/** Name of the debate */
+	debateName: PropTypes.string,
 	/** Vote data */
 	vote: PropTypes.object,
 	/** If true, fix argument height */
