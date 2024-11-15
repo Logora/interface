@@ -2,9 +2,9 @@
 
 .readMore {
     position: relative;
-    display: flex;
-    flex-direction: column;
+    display: inline-flex;
     align-items: flex-start;
+    max-width: 100%;
 }
 
 .readMoreElement {
@@ -21,18 +21,17 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
-    flex: 1;
     white-space: pre-wrap;
+    flex-shrink: 1; 
 }
 
 .readMoreWrapper {
-    position: absolute;
+    position: absolute; 
     bottom: 0;
     right: 0;
     background: $background-color-primary;
-    display: flex;
-    align-items: center;
     z-index: 1; 
+    white-space: nowrap;
 }
 
 .ellipsis {
