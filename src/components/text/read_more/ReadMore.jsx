@@ -36,16 +36,18 @@ export const ReadMore = ({
     }
 
     useEffect(() => {
-        if (expandable) {
-            if(charCount) {
+        if (expandable && content) {  
+            if (charCount) {
                 setShowToggle(content.length > charCount);
             } else if (lineCount && contentRef.current) {
                 const element = contentRef.current;
                 setShowToggle(element.scrollHeight > element.clientHeight);
             }
+        } else {
+            setShowToggle(false); 
         }
-    }, [expandable, lineCount, charCount, content.length]);
-
+    }, [expandable, lineCount, charCount, content]);
+    
     return (
         <div className={styles.readMore}>
             <span

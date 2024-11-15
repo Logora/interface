@@ -79,3 +79,14 @@ export const DisabledReadMore = () => {
         />
     )
 }
+
+export const EmptyContentReadMore = () => {
+    return (
+        <ReadMore
+            content=""
+            charCount={200}
+            readMoreText="Read more"
+            readLessText="Read less"
+        />
+    )
+}
