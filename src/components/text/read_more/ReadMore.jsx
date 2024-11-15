@@ -42,14 +42,16 @@ export const ReadMore = ({
             } else if (lineCount && contentRef.current) {
                 const element = contentRef.current;
                 setTimeout(() => {
-                    setShowToggle(element.scrollHeight > element.clientHeight);
-                }, 0);
+                    const isOverflowing = element.scrollHeight > element.clientHeight + 1;
+                    setShowToggle(isOverflowing);
+                }, 0); 
             }
         } else {
             setShowToggle(false); 
         }
     }, [expandable, lineCount, charCount, content]);
     
+
     return (
         <div className={styles.readMore}>
             <span
