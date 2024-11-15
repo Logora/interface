@@ -6,11 +6,11 @@ import { useList } from "@logora/debate.list.list_provider";
 import { ActionBar } from './action_bar/ActionBar';
 import { Pagination } from '@logora/debate.list.pagination';
 import { uniqueBy } from '@logora/debate.util.unique_by';
+import { useLocation } from 'react-router';
 import StandardErrorBoundary from '@logora/debate.error.standard_error_boundary';
 import usePrevious from "@rooks/use-previous";
 import cx from "classnames";
 import styles from "./PaginatedList.module.scss";
-import { useLocation } from 'react-router';
 import PropTypes from "prop-types";
 
 export const PaginatedList = ({
@@ -52,6 +52,7 @@ export const PaginatedList = ({
     countless,
     onElementClick,
     withUrlParams = false,
+    onLoadNewPage
 }) => {
     const intl = useIntl();
     const list = useList();
@@ -197,6 +198,13 @@ export const PaginatedList = ({
         }
     };
 
+    const handleLoadNewPage = () => {
+        if (typeof onLoadNewPage === 'function' && onLoadNewPage() !== null) {
+        } else {
+            setPage(page + 1);
+        }
+    };
+
     const loadResources = (pageNumber) => {
         const loadFunction = withToken ? api.getListWithToken : api.getList;
         if (((pageNumber - 1) * perPage < (numberElements || totalElements)) || pageNumber === 1) {
@@ -338,9 +346,10 @@ export const PaginatedList = ({
                             currentPage={page}
                             perPage={perPage}
                             totalElements={numberElements || totalElements}
-                            onLoad={() => setPage(page + 1)}
+                            onLoad={handleLoadNewPage}
                             isLoading={isLoading}
                             hideLoader={true} // Disable loader when there is loading components to display instead
+                            data-tid={"list_read_more"}
                         />
                     )}
                 </>
@@ -387,5 +396,6 @@ PaginatedList.propTypes = {
     numberElements: PropTypes.number,
     countless: PropTypes.bool,
     withUrlParams: PropTypes.bool,
-    onLoad: PropTypes.func
+    onLoad: PropTypes.func,
+    onLoadNewPage: PropTypes.func
 };

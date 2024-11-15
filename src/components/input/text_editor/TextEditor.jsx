@@ -97,9 +97,10 @@ export const TextEditor = ({ placeholder, onSubmit, sources, hideSubmit = false,
 
     const handleShowSourceModal = () => {
         showModal(
-            <SourceModal onAddSource={handleAddSource} 
-            allowedSources={allowedDomains}
-             />
+            <SourceModal 
+                onAddSource={handleAddSource} 
+                allowedSources={allowedDomains}
+            />
         )
     }
 
@@ -134,6 +135,7 @@ export const TextEditor = ({ placeholder, onSubmit, sources, hideSubmit = false,
                             onSubmit={handleSubmit}
                             onAddSource={handleShowSourceModal}
                             isActive={isActive || active}
+                            sourceTooltip={allowedDomains?.length > 0 && intl.formatMessage({ id: "input.allowed_domains_tooltip", defaultMessage: "With the new source function, you can add links to your article." })}
                         />
                         {isActive && maxLength &&
                             <div className={styles.charactersCount}>

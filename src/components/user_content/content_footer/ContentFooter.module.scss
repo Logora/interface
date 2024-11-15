@@ -11,17 +11,12 @@
 }
 
 .voteAction {
-    @include p(0, xs);
+    padding: 0 !important;
 }
 
 .moreAction {
     cursor: pointer;
     text-align: right;
-}
-
-.leftReply {
-    display: flex !important;
-    flex-grow: 2;
 }
 
 .replyAction {

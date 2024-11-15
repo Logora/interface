@@ -1,21 +1,41 @@
 @import '~@logora/debate.styles.theme/_theme.scss';
 
 .readMore {
-    a.readMoreElement {
-        font-weight: $font-weight-bold;
-        text-decoration: none;
-        color: $text-primary !important;
-        cursor: pointer;
-    }
+    position: relative;
+    display: flex;
+    align-items: flex-end;
 }
 
-.contentBody {
+.readMoreElement {
+    display: inline;
+    white-space: nowrap;
+    font-weight: $font-weight-bold;
+    text-decoration: none;
+    color: $text-primary !important;
+    cursor: pointer;
+}
+
+.lineClamp {
     display: -webkit-box;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    text-overflow: ellipsis;
+    flex: 1;
+    white-space: pre-wrap;
 }
 
-.nextLine {
-    display: block;
-    width: 100%;
+.readMoreWrapper {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: $background-color-primary;
+    display: flex;
+    align-items: center;
+}
+
+.ellipsis {
+    display: inline;
+    white-space: nowrap;
+    margin: 0; 
+    padding: 0;
 }

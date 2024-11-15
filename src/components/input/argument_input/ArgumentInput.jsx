@@ -189,8 +189,8 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
             group_id: groupId,
             ...(groupType && { group_type: groupType }),
             ...(userPosition && { position_id: userPosition }),
-            is_reply: isReply,
-            message_id: isReply ? parentId : null,
+            is_reply: Boolean(parentId),
+            message_id: parentId || null,
             source_ids: sources && sources.map(source => source.id),
         };
 
@@ -205,7 +205,7 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
             resetInputs();
             api.create("messages", data).then(response => {
                 if (response.data.success) {
-                    if (isReply) {
+                    if (parentId) {
                         onSubmit(response.data.data.resource);
                         toast(intl.formatMessage({ id: "alert.argument_create", defaultMessage: "Your contribution has been sent !" }), { type: "success", points: intl.formatMessage({ id: "alert.reply_gain", defaultMessage: " " }) });
                     } else {

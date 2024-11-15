@@ -1,58 +1,87 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Link } from '@logora/debate.action.link';
 import styles from './ReadMore.module.scss';
 import cx from 'classnames';
 
-export const ReadMore = (props) => {
-    const { content, contentCharCount = 250, to, nextLine = false, lineCount = false, nextLineSpacing = 0, className, readMoreText, readLessText, ...rest } = props;
-    const [showMore, setShowMore] = useState(false);
-    const [contentLength, setContentLength] = useState(contentCharCount)
+export const ReadMore = ({
+    content,
+    charCount,
+    lineCount,
+    to,
+    className,
+    readMoreText,
+    readLessText,
+    expandable = true,
+    ...rest
+}) => {
+    const [expanded, setExpanded] = useState(false);
+    const contentRef = useRef(null);
+    const [showToggle, setShowToggle] = useState(false);
 
     const formatContent = (content) => {
-        if (content.length > contentCharCount) {
-            return `${content.replace(/[\n\r]/g, ' ').slice(0, contentLength)}...`;
-        } else {
-            return content + "...";
+        if (expanded) {
+            return content.toString();
+        } else if (content.length > charCount) {
+            return content.replace(/[\n\r]/g, ' ').slice(0, charCount);
         }
+        return content;
     }
 
     const handleContentToggle = () => {
-        setShowMore(!showMore);
-        setContentLength(showMore ? contentCharCount : content.toString().length);
-    };
+        setExpanded(!expanded);
+    }
 
     const lineClampingStyle = {
-        WebkitLineClamp: lineCount,
+        WebkitLineClamp: expanded ? 'unset' : lineCount,
     }
 
-    const nextLineStyle = {
-        paddingTop: `${nextLineSpacing}px`,
-    }
+    useEffect(() => {
+        if (expandable && content) {  
+            if (charCount) {
+                setShowToggle(content.length > charCount);
+            } else if (lineCount && contentRef.current) {
+                const element = contentRef.current;
+                setShowToggle(element.scrollHeight > element.clientHeight);
+            }
+        } else {
+            setShowToggle(false); 
+        }
+    }, [expandable, lineCount, charCount, content]);
     
     return (
         <div className={styles.readMore}>
-            <span className={lineCount ? styles.contentBody : {}} style={lineCount ? lineClampingStyle : {}}  onClick={handleContentToggle} >
-                { lineCount ? content : formatContent(content) }
+            <span
+                ref={contentRef}
+                className={lineCount ? styles.lineClamp : null}
+                style={lineCount ? lineClampingStyle : {}}
+                onClick={expandable ? handleContentToggle : undefined}
+            >
+                {(!expandable || lineCount) ? content : formatContent(content)}
             </span>
-            <span className={nextLine ? styles.nextLine : {}} style={ nextLine ? nextLineStyle : {}}>
-                { to ?
-                    <Link 
-                        to={to} 
-                        className={cx(styles.readMoreElement, className)}
-                        {...rest}
-                    >
-                        { readMoreText }
-                    </Link>
-                :
-                    <span 
-                        className={cx(styles.readMoreElement, className)} 
-                        onClick={handleContentToggle} 
-                        {...rest}
-                    >
-                        { showMore ?  readLessText  : readMoreText  }
-                    </span>
-                }
-            </span>
+            {showToggle && (
+                <span className={styles.readMoreWrapper}>
+                    {!expanded && (
+                        <span className={styles.ellipsis}>...</span>
+                    )}
+                    {to ? (
+                        <Link
+                            to={to}
+                            className={cx(styles.readMoreElement, className)}
+                            {...rest}
+                        >
+                            {readMoreText}
+                        </Link>
+                    ) : (
+                        <span
+                            className={cx(styles.readMoreElement, className)}
+                            onClick={handleContentToggle}
+                            {...rest}
+                        >
+                            {expanded ? readLessText : readMoreText}
+                        </span>
+                    )}
+                </span>
+            )}
         </div>
     );
-}
+};

@@ -16,11 +16,10 @@ export const Tooltip = ({ position = "bottom", text, onClickText, children, clas
     if(text) {
       return (
         <div 
-        className={cx(className, styles.tooltipChild)} 
-        
+        className={styles.tooltipChild} 
         onClick={onClickText ? switchText : null}>
           { children }
-          <span className={cx(styles.tooltipText, styles[variant],{ [styles.tooltipTextTop]: position === "top", [styles.tooltipTextLeft]: position === "left", [styles.tooltipTextRight]: position === "right" })}>
+          <span className={cx(className, styles.tooltipText, styles[variant],{ [styles.tooltipTextTop]: position === "top", [styles.tooltipTextLeft]: position === "left", [styles.tooltipTextRight]: position === "right" })}>
             { clicked ? onClickText : text }
           </span>
         </div>

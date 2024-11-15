@@ -1,2 +1,2 @@
 export { Argument } from './Argument';
-export { ArgumentContainer } from './Argument';
+export { useRichContent } from './useRichContent';

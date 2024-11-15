@@ -1,0 +1,43 @@
+@import '~@logora/debate.styles.theme/_theme.scss';
+@import "~@logora/debate.styles.display/_display.scss";
+@import "~@logora/debate.styles.spacing/_spacing.scss";
+
+.replyFooter {
+	font-size: $font-size-normal;
+	font-weight: $font-weight-normal;
+	display: flex !important;
+	align-items: center !important;
+	justify-content: flex-start !important;
+	cursor: pointer;
+}
+
+.expandRepliesContainer {
+	text-align: right;
+    padding: 0 !important;
+}
+
+.expandRepliesButton {
+	border: none;
+	position: relative;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	gap: $spacer-sm;
+	background-color: $background-color-primary;
+	font-size: $font-size-normal;
+
+	@include p(0, xs);
+	@include px(2.5, xs);
+
+	svg {
+		display: inline-block;
+		path {
+			stroke: $text-primary;
+		}
+	}
+	&.repliesExpanded {
+		svg {
+			transform: rotate(180deg);
+		}
+	}
+}
