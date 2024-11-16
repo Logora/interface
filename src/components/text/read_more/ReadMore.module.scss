@@ -4,6 +4,11 @@
     position: relative;
 }
 
+.readMoreWrapper {
+    background: $background-color-primary;
+    text-align: right;
+}
+
 .readMoreElement {
     display: inline;
     white-space: nowrap;
@@ -20,9 +25,4 @@
     text-overflow: ellipsis;
     word-wrap: break-word;
     transition: 'max-height 0.3s';
-}
-
-.readMoreWrapper {
-    background: $background-color-primary;
-    text-align: right;
 }

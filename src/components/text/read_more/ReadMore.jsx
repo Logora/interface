@@ -32,7 +32,7 @@ export const ReadMore = ({
     }
 
     const lineClampingStyle = {
-        WebkitLineClamp: isExpanded ? 'none' : lineCount
+        WebkitLineClamp: lineCount
     }
 
     useEffect(() => {
@@ -55,8 +55,8 @@ export const ReadMore = ({
         <div className={styles.readMore}>
             <div
                 ref={contentRef}
-                className={lineCount ? styles.lineClamp : null}
-                style={lineCount ? lineClampingStyle : {}}
+                className={lineCount && !isExpanded ? styles.lineClamp : null}
+                style={lineCount && !isExpanded ? lineClampingStyle : {}}
                 onClick={expandable ? handleContentToggle : undefined}
             >
                 {(!expandable || lineCount) ? content : formatContent(content)}
