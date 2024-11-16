@@ -2,9 +2,6 @@
 
 .readMore {
     position: relative;
-    display: inline-flex;
-    align-items: flex-start;
-    max-width: 100%;
 }
 
 .readMoreElement {
@@ -26,17 +23,6 @@
 }
 
 .readMoreWrapper {
-    position: absolute; 
-    bottom: 0;
-    right: 0;
     background: $background-color-primary;
-    z-index: 1; 
-    white-space: nowrap;
-}
-
-.ellipsis {
-    display: inline;
-    white-space: nowrap;
-    margin: 0; 
-    padding: 0;
+    text-align: right;
 }

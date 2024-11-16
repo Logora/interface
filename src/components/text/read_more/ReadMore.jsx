@@ -37,20 +37,19 @@ export const ReadMore = ({
 
     useEffect(() => {
         if (expandable && content) {
-            if (charCount) {
-                setShowToggle(content.length > charCount);
-            } else if (lineCount && contentRef.current) {
+            if (lineCount && contentRef.current) {
                 const element = contentRef.current;
-                const totalHeight = element.scrollHeight;
-                const lineHeight = parseFloat(window.getComputedStyle(element).lineHeight);
-                const collapsedHeight = lineCount * lineHeight;
-                setShowToggle(totalHeight > collapsedHeight);
+                const { clientHeight, scrollHeight } = element;
+                setShowToggle(clientHeight !== scrollHeight);
             }
-        } else {
-            setShowToggle(false);
         }
-    }, [expandable, lineCount, charCount, content]);
+    }, [lineCount, content, contentRef]);
 
+    useEffect(() => {
+        if (expandable && content && charCount) {
+            setShowToggle(content.length > charCount);
+        }
+    }, [charCount, content]);
 
     return (
         <div className={styles.readMore}>
@@ -63,10 +62,7 @@ export const ReadMore = ({
                 {(!expandable || lineCount) ? content : formatContent(content)}
             </div>
             {showToggle && (
-                <span className={styles.readMoreWrapper}>
-                    {!isExpanded && (
-                        <span className={styles.ellipsis}>...</span>
-                    )}
+                <div className={styles.readMoreWrapper}>
                     {to ? (
                         <Link
                             to={to}
@@ -84,7 +80,7 @@ export const ReadMore = ({
                             {isExpanded ? readLessText : readMoreText}
                         </span>
                     )}
-                </span>
+                </div>
             )}
         </div>
     );
