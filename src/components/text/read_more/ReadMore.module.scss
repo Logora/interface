@@ -17,12 +17,3 @@
     color: $text-primary !important;
     cursor: pointer;
 }
-
-.lineClamp {
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    word-wrap: break-word;
-    transition: 'max-height 0.3s';
-}

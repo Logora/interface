@@ -32,8 +32,12 @@ export const ReadMore = ({
     }
 
     const lineClampingStyle = {
-        WebkitLineClamp: lineCount
-    }
+        display: '-webkit-box',
+        WebkitLineClamp: lineCount,
+        WebkitBoxOrient: 'vertical',
+        overflow: 'hidden',
+        textOverflow: 'ellipsis'
+    };
 
     useEffect(() => {
         if (expandable && content) {
@@ -55,7 +59,6 @@ export const ReadMore = ({
         <div className={styles.readMore}>
             <div
                 ref={contentRef}
-                className={lineCount && !isExpanded ? styles.lineClamp : null}
                 style={lineCount && !isExpanded ? lineClampingStyle : {}}
                 onClick={expandable ? handleContentToggle : undefined}
             >
