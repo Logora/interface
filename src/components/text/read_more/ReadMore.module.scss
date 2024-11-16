@@ -21,8 +21,7 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
-    white-space: pre-wrap;
-    flex-shrink: 1; 
+    word-wrap: break-word;
 }
 
 .readMoreWrapper {
