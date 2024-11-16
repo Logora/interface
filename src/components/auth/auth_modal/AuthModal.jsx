@@ -89,8 +89,7 @@ export const AuthModal = ({ onHideModal = null }) => {
 									signupUrl={config.auth.registration_url || config.auth.login_url}
 									termsUrl={config.provider?.cguUrl || "https://www.logora.com/blog-posts/cgu"}
 									redirectParameter={config.auth.redirectParameter}
-									trackingParameter={config.auth.trackingParameter}
-									trackingValue={config.auth.trackingValue}
+									trackingParameters={config.auth.trackingParameters}
 									providerName={config.provider?.companyName}
 									hideActions={config.auth.hideModalActions}
 									showEmailConsent={config.auth.showEmailConsent}
