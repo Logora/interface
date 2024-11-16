@@ -144,29 +144,31 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupTyp
 									/>
 								</div>
 								:
-								<ReadMore
-									content={
-										<>
-											{argument.edited_at && (
-												<div className={styles.edited}>
-													{intl.formatMessage({ id: "argument.argument.updated", defaultMessage: "Updated argument" })}
-												</div>
-											)}
-											{richContent && !content.isTranslated ? (
-												<div className={styles.argumentContent} dangerouslySetInnerHTML={{ __html: richContent }}></div>
-											) : (
-												<div className={styles.argumentContent}>{content.translatedContent}</div>
-											)}
-											{content.isTranslated && (
-												<TranslationButton language={argument.language} callback={() => content.toggleContent()} />
-											)}
-										</>
-									}
-									lineCount={5}
-									readMoreText={intl.formatMessage({ id: "action.read_more", defaultMessage: "Read more" })}
-									readLessText={intl.formatMessage({ id: "action.read_less", defaultMessage: "Read less" })}
-									expandable={expandable}
-								/>
+								<>
+									{argument.edited_at && (
+										<div className={styles.edited}>
+											{intl.formatMessage({ id: "argument.argument.updated", defaultMessage: "Updated argument" })}
+										</div>
+									)}
+									<ReadMore
+										content={
+											<>
+												{richContent && !content.isTranslated ? (
+													<div className={styles.argumentContent} dangerouslySetInnerHTML={{ __html: richContent }}></div>
+												) : (
+													<div className={styles.argumentContent}>{content.translatedContent}</div>
+												)}
+											</>
+										}
+										lineCount={5}
+										readMoreText={intl.formatMessage({ id: "action.read_more", defaultMessage: "Read more" })}
+										readLessText={intl.formatMessage({ id: "action.read_less", defaultMessage: "Read less" })}
+										expandable={expandable}
+									/>
+									{content.isTranslated && (
+										<TranslationButton language={argument.language} callback={() => content.toggleContent()} />
+									)}
+								</>
 							}
 						</div>
 						{argument.sources?.length > 0 && (
