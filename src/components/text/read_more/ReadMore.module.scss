@@ -22,6 +22,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     word-wrap: break-word;
+    transition: 'max-height 0.3s';
 }
 
 .readMoreWrapper {
