@@ -47,8 +47,16 @@ export const SSOForm = ({ authType, providerName, loginUrl, signupUrl, termsUrl,
 		return baseUrl.href;
 	};
 
-	const loginLink = authType == "oauth2_server" ? getOAuthDialogUrl(loginUrl) : getLinkWithRedirect(loginUrl);
-	const signupLink = authType == "oauth2_server" ? getOAuthDialogUrl(signupUrl) : getLinkWithRedirect(signupUrl);
+	const getAuthLink = (url) => {
+		if(authType === "oauth2_server") {
+			return getOAuthDialogUrl(url)
+		} else {
+			return getLinkWithRedirect(url)
+		}
+	}
+
+	const loginLink = getAuthLink(loginUrl);
+	const signupLink = getAuthLink(signupUrl);
 
 	return (
 		<div className={styles.ssoForm}>
@@ -158,7 +166,7 @@ SSOForm.propTypes = {
 	/** Name of the parameter passed in the URL that will contain the current page URL to redirect after authentication */
 	redirectParameter: PropTypes.string,
 	/** Custom hash of parameters to add to the auth URL */
-	trackingParameters: PropTypes.string,
+	trackingParameters: PropTypes.object,
 	/** If `true`, will only show header and subtitle */
 	hideActions: PropTypes.bool,
 	/** If `true`, will show a toggle for email consent */

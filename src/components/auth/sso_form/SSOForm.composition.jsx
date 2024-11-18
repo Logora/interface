@@ -19,7 +19,7 @@ export const DefaultSSOForm = () => {
                         loginUrl={"https://example.com/login"}
                         signupUrl={"https://example.com/signup"}
                         redirectParameter={"customRedirect"}
-                        trackingParameters={{ tracking: "test" }}
+                        trackingParameters={{ test: "OK" }}
                         termsUrl={"https://example.com/terms"}
                     />
                 </IntlProvider>
