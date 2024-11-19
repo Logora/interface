@@ -10,7 +10,6 @@ import { ListProvider } from '@logora/debate.list.list_provider';
 import { ToastProvider } from '@logora/debate.dialog.toast_provider';
 import { VoteProvider } from '@logora/debate.vote.vote_provider';
 import { InputProvider } from '@logora/debate.input.input_provider';
-import { IdProvider } from "react-use-id-hook";
 import { Argument } from './Argument';
 import { IconProvider } from '@logora/debate.icons.icon_provider';
 import { ResponsiveProvider } from '@logora/debate.hooks.use_responsive';
@@ -110,15 +109,13 @@ const Providers = ({ children }) => (
                             <ListProvider>
                                 <ToastProvider>
                                     <VoteProvider>
-                                        <IdProvider>
-                                            <InputProvider>
-                                                <IconProvider library={regularIcons}>
-                                                    <IntlProvider locale="en">
-                                                        {children}
-                                                    </IntlProvider>
-                                                </IconProvider>
-                                            </InputProvider>
-                                        </IdProvider>
+                                        <InputProvider>
+                                            <IconProvider library={regularIcons}>
+                                                <IntlProvider locale="en">
+                                                    {children}
+                                                </IntlProvider>
+                                            </IconProvider>
+                                        </InputProvider>
                                     </VoteProvider>
                                 </ToastProvider>
                             </ListProvider>
@@ -251,14 +248,14 @@ export const ArgumentWithArgumentReplies = () => (
 
 export const EmptyArgumentNoReplies = () => {
     const emptyArgument = {
-        ...argument,           
-        content: "",          
+        ...argument,
+        content: "",
     };
     return (
         <div style={{ width: "400px", height: "240px" }}>
             <Providers>
                 <Argument
-                    argument={emptyArgument} 
+                    argument={emptyArgument}
                     positions={positions}
                     expandable
                 />

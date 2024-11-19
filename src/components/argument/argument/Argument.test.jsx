@@ -12,7 +12,6 @@ import { ModalProvider } from '@logora/debate.dialog.modal';
 import { ListProvider } from '@logora/debate.list.list_provider';
 import { ToastProvider } from '@logora/debate.dialog.toast_provider';
 import { VoteProvider } from '@logora/debate.vote.vote_provider';
-import { IdProvider } from "react-use-id-hook";
 import { Argument } from './Argument';
 import { IconProvider } from '@logora/debate.icons.icon_provider';
 import { ResponsiveProvider } from '@logora/debate.hooks.use_responsive';
@@ -110,8 +109,8 @@ const positions = [
 ];
 const groupName = faker.lorem.sentence(5);
 
-const targetContent = {"root":{"children":[{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"I write an argument","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}};
-        
+const targetContent = { "root": { "children": [{ "children": [{ "detail": 0, "format": 1, "mode": "normal", "style": "", "text": "I write an argument", "type": "text", "version": 1 }], "direction": "ltr", "format": "", "indent": 0, "type": "paragraph", "version": 1 }], "direction": "ltr", "format": "", "indent": 0, "type": "root", "version": 1 } };
+
 const AddContentComponent = () => {
     const { setInputRichContent } = useInput();
 
@@ -134,16 +133,14 @@ const Providers = ({ children }) => (
                             <ListProvider>
                                 <ToastProvider>
                                     <VoteProvider>
-                                        <IdProvider>
-                                            <InputProvider>
-                                                <IconProvider library={regularIcons}>
-                                                    <IntlProvider locale="en">
-                                                        <AddContentComponent />
-                                                        {children}
-                                                    </IntlProvider>
-                                                </IconProvider>
-                                            </InputProvider>
-                                        </IdProvider>
+                                        <InputProvider>
+                                            <IconProvider library={regularIcons}>
+                                                <IntlProvider locale="en">
+                                                    <AddContentComponent />
+                                                    {children}
+                                                </IntlProvider>
+                                            </IconProvider>
+                                        </InputProvider>
                                     </VoteProvider>
                                 </ToastProvider>
                             </ListProvider>
@@ -313,5 +310,5 @@ describe('Argument', () => {
 
         expect(getByText("Your contribution has been sent !")).toBeInTheDocument();
     });
-    
+
 });

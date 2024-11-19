@@ -12,19 +12,18 @@ import { dataProvider, DataProviderContext } from '@logora/debate.data.data_prov
 import { AuthContext } from '@logora/debate.auth.use_auth';
 import { ListProvider } from '@logora/debate.list.list_provider';
 import { InputProvider } from '@logora/debate.input.input_provider';
-import { IdProvider } from "react-use-id-hook";
 
 const httpClient = {
     get: () => null,
     post: (url, data, config) => {
-        return new Promise(function(resolve, reject) {
-            resolve({ data: { success: true, data: { resource: vote } }});
+        return new Promise(function (resolve, reject) {
+            resolve({ data: { success: true, data: { resource: vote } } });
         });
     },
     patch: () => null,
     delete: (url, data, config) => {
-        return new Promise(function(resolve, reject) {
-            resolve({ data: { success: true, data: {} }});
+        return new Promise(function (resolve, reject) {
+            resolve({ data: { success: true, data: {} } });
         });
     }
 };
@@ -65,22 +64,20 @@ export const DefaultArgumentInput = () => {
                                 <ToastProvider>
                                     <ModalProvider>
                                         <ListProvider>
-                                            <IdProvider>
-                                                <InputProvider>
-                                                    <ArgumentInput
-                                                        onSubmit={() => {}}
-                                                        groupId={debate.id}
-                                                        groupName={debate.name}
-                                                        positions={debate.positions}
-                                                        disabledPositions={[]}
-                                                        listId={"argumentList"}
-                                                        positionId={debate.positions[0].id}
-                                                        hideSourceAction={false}
-                                                        avatarSize={48}
-                                                        placeholder={"Add an argument..."}
-                                                    />
-                                                </InputProvider>
-                                            </IdProvider>
+                                            <InputProvider>
+                                                <ArgumentInput
+                                                    onSubmit={() => { }}
+                                                    groupId={debate.id}
+                                                    groupName={debate.name}
+                                                    positions={debate.positions}
+                                                    disabledPositions={[]}
+                                                    listId={"argumentList"}
+                                                    positionId={debate.positions[0].id}
+                                                    hideSourceAction={false}
+                                                    avatarSize={48}
+                                                    placeholder={"Add an argument..."}
+                                                />
+                                            </InputProvider>
                                         </ListProvider>
                                     </ModalProvider>
                                 </ToastProvider>
@@ -104,23 +101,21 @@ export const ReplyArgumentInput = () => {
                                 <ToastProvider>
                                     <ModalProvider>
                                         <ListProvider>
-                                            <IdProvider>
-                                                <InputProvider>
-                                                    <ArgumentInput
-                                                        onSubmit={() => {}}
-                                                        groupId={debate.id}
-                                                        groupName={debate.name}
-                                                        positions={debate.positions}
-                                                        disabledPositions={[]}
-                                                        listId={"argumentList"}
-                                                        positionId={debate.positions[0].id}
-                                                        hideSourceAction={false}
-                                                        avatarSize={40}
-                                                        isReply
-                                                        placeholder={"Your reply..."}
-                                                    />
-                                                </InputProvider>
-                                            </IdProvider>
+                                            <InputProvider>
+                                                <ArgumentInput
+                                                    onSubmit={() => { }}
+                                                    groupId={debate.id}
+                                                    groupName={debate.name}
+                                                    positions={debate.positions}
+                                                    disabledPositions={[]}
+                                                    listId={"argumentList"}
+                                                    positionId={debate.positions[0].id}
+                                                    hideSourceAction={false}
+                                                    avatarSize={40}
+                                                    isReply
+                                                    placeholder={"Your reply..."}
+                                                />
+                                            </InputProvider>
                                         </ListProvider>
                                     </ModalProvider>
                                 </ToastProvider>
@@ -144,22 +139,20 @@ export const ArgumentInputWithoutSourceAction = () => {
                                 <ToastProvider>
                                     <ModalProvider>
                                         <ListProvider>
-                                            <IdProvider>
-                                                <InputProvider>
-                                                    <ArgumentInput
-                                                        onSubmit={() => {}}
-                                                        groupId={debate.id}
-                                                        groupName={debate.name}
-                                                        positions={debate.positions}
-                                                        disabledPositions={[]}
-                                                        listId={"argumentList"}
-                                                        positionId={debate.positions[0].id}
-                                                        hideSourceAction
-                                                        avatarSize={48}
-                                                        placeholder={"Add an argument..."}
-                                                    />
-                                                </InputProvider>
-                                            </IdProvider>
+                                            <InputProvider>
+                                                <ArgumentInput
+                                                    onSubmit={() => { }}
+                                                    groupId={debate.id}
+                                                    groupName={debate.name}
+                                                    positions={debate.positions}
+                                                    disabledPositions={[]}
+                                                    listId={"argumentList"}
+                                                    positionId={debate.positions[0].id}
+                                                    hideSourceAction
+                                                    avatarSize={48}
+                                                    placeholder={"Add an argument..."}
+                                                />
+                                            </InputProvider>
                                         </ListProvider>
                                     </ModalProvider>
                                 </ToastProvider>
@@ -183,23 +176,21 @@ export const ArgumentInputDisabled = () => {
                                 <ToastProvider>
                                     <ModalProvider>
                                         <ListProvider>
-                                            <IdProvider>
-                                                <InputProvider>
-                                                    <ArgumentInput
-                                                        onSubmit={() => {}}
-                                                        groupId={debate.id}
-                                                        groupName={debate.name}
-                                                        positions={debate.positions}
-                                                        disabledPositions={[]}
-                                                        disabled
-                                                        listId={"argumentList"}
-                                                        positionId={debate.positions[0].id}
-                                                        hideSourceAction
-                                                        avatarSize={48}
-                                                        placeholder={"Add an argument..."}
-                                                    />
-                                                </InputProvider>
-                                            </IdProvider>
+                                            <InputProvider>
+                                                <ArgumentInput
+                                                    onSubmit={() => { }}
+                                                    groupId={debate.id}
+                                                    groupName={debate.name}
+                                                    positions={debate.positions}
+                                                    disabledPositions={[]}
+                                                    disabled
+                                                    listId={"argumentList"}
+                                                    positionId={debate.positions[0].id}
+                                                    hideSourceAction
+                                                    avatarSize={48}
+                                                    placeholder={"Add an argument..."}
+                                                />
+                                            </InputProvider>
                                         </ListProvider>
                                     </ModalProvider>
                                 </ToastProvider>
@@ -223,22 +214,20 @@ export const ArgumentPositionDisabled = () => {
                                 <ToastProvider>
                                     <ModalProvider>
                                         <ListProvider>
-                                            <IdProvider>
-                                                <InputProvider>
-                                                    <ArgumentInput
-                                                        onSubmit={() => {}}
-                                                        groupId={debate.id}
-                                                        groupName={debate.name}
-                                                        positions={debate.positions}
-                                                        disabledPositions={[{id: debate.positions[0].id, name: debate.positions[0].name}]}
-                                                        listId={"argumentList"}
-                                                        positionId={debate.positions[0].id}
-                                                        hideSourceAction
-                                                        avatarSize={48}
-                                                        placeholder={"Add an argument..."}
-                                                    />
-                                                </InputProvider>
-                                            </IdProvider>
+                                            <InputProvider>
+                                                <ArgumentInput
+                                                    onSubmit={() => { }}
+                                                    groupId={debate.id}
+                                                    groupName={debate.name}
+                                                    positions={debate.positions}
+                                                    disabledPositions={[{ id: debate.positions[0].id, name: debate.positions[0].name }]}
+                                                    listId={"argumentList"}
+                                                    positionId={debate.positions[0].id}
+                                                    hideSourceAction
+                                                    avatarSize={48}
+                                                    placeholder={"Add an argument..."}
+                                                />
+                                            </InputProvider>
                                         </ListProvider>
                                     </ModalProvider>
                                 </ToastProvider>
@@ -262,22 +251,20 @@ export const DisabledArgumentInputForVisitors = () => {
                                 <ToastProvider>
                                     <ModalProvider>
                                         <ListProvider>
-                                            <IdProvider>
-                                                <InputProvider>
-                                                    <ArgumentInput
-                                                        onSubmit={() => {}}
-                                                        groupId={debate.id}
-                                                        groupName={debate.name}
-                                                        positions={debate.positions}
-                                                        disabledPositions={[]}
-                                                        listId={"argumentList"}
-                                                        positionId={debate.positions[0].id}
-                                                        hideSourceAction={false}
-                                                        avatarSize={48}
-                                                        placeholder={"Add an argument..."}
-                                                    />
-                                                </InputProvider>
-                                            </IdProvider>
+                                            <InputProvider>
+                                                <ArgumentInput
+                                                    onSubmit={() => { }}
+                                                    groupId={debate.id}
+                                                    groupName={debate.name}
+                                                    positions={debate.positions}
+                                                    disabledPositions={[]}
+                                                    listId={"argumentList"}
+                                                    positionId={debate.positions[0].id}
+                                                    hideSourceAction={false}
+                                                    avatarSize={48}
+                                                    placeholder={"Add an argument..."}
+                                                />
+                                            </InputProvider>
                                         </ListProvider>
                                     </ModalProvider>
                                 </ToastProvider>
@@ -301,23 +288,21 @@ export const FocusOnInitArgumentInput = () => {
                                 <ToastProvider>
                                     <ModalProvider>
                                         <ListProvider>
-                                            <IdProvider>
-                                                <InputProvider>
-                                                    <ArgumentInput
-                                                        onSubmit={() => {}}
-                                                        groupId={debate.id}
-                                                        groupName={debate.name}
-                                                        positions={debate.positions}
-                                                        disabledPositions={[{id: debate.positions[0].id, name: debate.positions[0].name}]}
-                                                        listId={"argumentList"}
-                                                        positionId={debate.positions[0].id}
-                                                        hideSourceAction
-                                                        avatarSize={48}
-                                                        placeholder={"Add an argument..."}
-                                                        focusOnInit={true}
-                                                    />
-                                                </InputProvider>
-                                            </IdProvider>
+                                            <InputProvider>
+                                                <ArgumentInput
+                                                    onSubmit={() => { }}
+                                                    groupId={debate.id}
+                                                    groupName={debate.name}
+                                                    positions={debate.positions}
+                                                    disabledPositions={[{ id: debate.positions[0].id, name: debate.positions[0].name }]}
+                                                    listId={"argumentList"}
+                                                    positionId={debate.positions[0].id}
+                                                    hideSourceAction
+                                                    avatarSize={48}
+                                                    placeholder={"Add an argument..."}
+                                                    focusOnInit={true}
+                                                />
+                                            </InputProvider>
                                         </ListProvider>
                                     </ModalProvider>
                                 </ToastProvider>
@@ -341,22 +326,20 @@ export const ArgumentInputWithoutPositions = () => {
                                 <ToastProvider>
                                     <ModalProvider>
                                         <ListProvider>
-                                            <IdProvider>
-                                                <InputProvider>
-                                                    <ArgumentInput
-                                                        onSubmit={() => {}}
-                                                        groupId={debate.id}
-                                                        groupName={debate.name}
-                                                        positions={[]}
-                                                        disabledPositions={[]}
-                                                        listId={"argumentList"}
-                                                        positionId={null}
-                                                        hideSourceAction={false}
-                                                        avatarSize={48}
-                                                        placeholder={"Add an argument..."}
-                                                    />
-                                                </InputProvider>
-                                            </IdProvider>
+                                            <InputProvider>
+                                                <ArgumentInput
+                                                    onSubmit={() => { }}
+                                                    groupId={debate.id}
+                                                    groupName={debate.name}
+                                                    positions={[]}
+                                                    disabledPositions={[]}
+                                                    listId={"argumentList"}
+                                                    positionId={null}
+                                                    hideSourceAction={false}
+                                                    avatarSize={48}
+                                                    placeholder={"Add an argument..."}
+                                                />
+                                            </InputProvider>
                                         </ListProvider>
                                     </ModalProvider>
                                 </ToastProvider>
@@ -369,7 +352,7 @@ export const ArgumentInputWithoutPositions = () => {
     );
 };
 export const ArgumentInputWithGuideMessageLink = () => {
-    const userGuideUrl = "https://example.com/user-guide"; 
+    const userGuideUrl = "https://example.com/user-guide";
     return (
         <BrowserRouter>
             <ConfigProvider>
@@ -380,23 +363,21 @@ export const ArgumentInputWithGuideMessageLink = () => {
                                 <ToastProvider>
                                     <ModalProvider>
                                         <ListProvider>
-                                            <IdProvider>
-                                                <InputProvider>
-                                                    <ArgumentInput
-                                                        onSubmit={() => {}}
-                                                        groupId={debate.id}
-                                                        groupName={debate.name}
-                                                        positions={debate.positions}
-                                                        disabledPositions={[]}
-                                                        listId={"argumentList"}
-                                                        positionId={debate.positions[0].id}
-                                                        hideSourceAction={false}
-                                                        avatarSize={48}
-                                                        placeholder={"Add an argument..."}
-                                                        userGuideUrl={userGuideUrl} 
-                                                    />
-                                                </InputProvider>
-                                            </IdProvider>
+                                            <InputProvider>
+                                                <ArgumentInput
+                                                    onSubmit={() => { }}
+                                                    groupId={debate.id}
+                                                    groupName={debate.name}
+                                                    positions={debate.positions}
+                                                    disabledPositions={[]}
+                                                    listId={"argumentList"}
+                                                    positionId={debate.positions[0].id}
+                                                    hideSourceAction={false}
+                                                    avatarSize={48}
+                                                    placeholder={"Add an argument..."}
+                                                    userGuideUrl={userGuideUrl}
+                                                />
+                                            </InputProvider>
                                         </ListProvider>
                                     </ModalProvider>
                                 </ToastProvider>
@@ -420,22 +401,20 @@ export const ArgumentInputWithTooltipOnSourcesButton = () => {
                                 <ToastProvider>
                                     <ModalProvider>
                                         <ListProvider>
-                                            <IdProvider>
-                                                <InputProvider>
-                                                    <ArgumentInput
-                                                        onSubmit={() => {}}
-                                                        groupId={debate.id}
-                                                        groupName={debate.name}
-                                                        positions={debate.positions}
-                                                        disabledPositions={[]}
-                                                        listId={"argumentList"}
-                                                        positionId={debate.positions[0].id}
-                                                        hideSourceAction={false}
-                                                        avatarSize={48}
-                                                        placeholder={"Add an argument..."}
-                                                    />
-                                                </InputProvider>
-                                            </IdProvider>
+                                            <InputProvider>
+                                                <ArgumentInput
+                                                    onSubmit={() => { }}
+                                                    groupId={debate.id}
+                                                    groupName={debate.name}
+                                                    positions={debate.positions}
+                                                    disabledPositions={[]}
+                                                    listId={"argumentList"}
+                                                    positionId={debate.positions[0].id}
+                                                    hideSourceAction={false}
+                                                    avatarSize={48}
+                                                    placeholder={"Add an argument..."}
+                                                />
+                                            </InputProvider>
                                         </ListProvider>
                                     </ModalProvider>
                                 </ToastProvider>

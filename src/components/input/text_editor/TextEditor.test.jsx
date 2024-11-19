@@ -11,7 +11,6 @@ import { ListItemNode, ListNode, $createListItemNode, $createListNode } from "@l
 import { IconProvider } from '@logora/debate.icons.icon_provider';
 import * as regularIcons from '@logora/debate.icons.regular_icons';
 import { IntlProvider } from 'react-intl';
-import { IdProvider } from "react-use-id-hook";
 
 const callback = jest.fn();
 
@@ -29,19 +28,17 @@ describe('TextEditor', () => {
             <IntlProvider locale="en">
                 <InputProvider>
                     <IconProvider library={regularIcons}>
-                        <IdProvider>
-                            <ModalProvider>
-                                <TextEditor 
-                                    handleChange={() => null}
-                                    onSubmit={callback}
-                                    onActivation={() => null}
-                                    shortBar={true}
-                                    uid={"34"}
-                                    placeholder={"Add an argument"}
-                                    sources={[{publisher: "test.com", source_url: "http://test.com", title: "Source Test"}]}
-                                />
-                            </ModalProvider>
-                        </IdProvider>
+                        <ModalProvider>
+                            <TextEditor
+                                handleChange={() => null}
+                                onSubmit={callback}
+                                onActivation={() => null}
+                                shortBar={true}
+                                uid={"34"}
+                                placeholder={"Add an argument"}
+                                sources={[{ publisher: "test.com", source_url: "http://test.com", title: "Source Test" }]}
+                            />
+                        </ModalProvider>
                     </IconProvider>
                 </InputProvider>
             </IntlProvider>
@@ -58,19 +55,17 @@ describe('TextEditor', () => {
             <IntlProvider locale="en">
                 <InputProvider>
                     <IconProvider library={regularIcons}>
-                        <IdProvider>
-                            <ModalProvider>
-                                <TextEditor 
-                                    handleChange={() => null}
-                                    onSubmit={() => null}
-                                    onActivation={callback}
-                                    shortBar={true}
-                                    uid={"34"}
-                                    placeholder={"Add an argument"}
-                                    sources={[{publisher: "test.com", source_url: "http://test.com", title: "Source Test"}]}
-                                />
-                            </ModalProvider>
-                        </IdProvider>
+                        <ModalProvider>
+                            <TextEditor
+                                handleChange={() => null}
+                                onSubmit={() => null}
+                                onActivation={callback}
+                                shortBar={true}
+                                uid={"34"}
+                                placeholder={"Add an argument"}
+                                sources={[{ publisher: "test.com", source_url: "http://test.com", title: "Source Test" }]}
+                            />
+                        </ModalProvider>
                     </IconProvider>
                 </InputProvider>
             </IntlProvider>
@@ -106,7 +101,7 @@ describe('TextEditor', () => {
             <TextEditorWithSource />
         );
         expect(screen.getByText(/test.com – Source Test/)).toBeTruthy();
-        
+
     });
 
     it('should render with text', () => {
@@ -118,9 +113,9 @@ describe('TextEditor', () => {
             namespace: 'MyEditor',
             theme: {
                 text: {
-                bold: 'editor-text-bold',
-                italic: 'editor-text-italic',
-                underline: 'editor-text-underline',
+                    bold: 'editor-text-bold',
+                    italic: 'editor-text-italic',
+                    underline: 'editor-text-underline',
                 },
             },
         });
@@ -136,9 +131,9 @@ describe('TextEditor', () => {
         editor.setRootElement(rootElement);
 
         expect(container.innerHTML).toBe(
-        '<div style="user-select: text; white-space: pre-wrap; word-break: break-word;" data-lexical-editor="true"><p dir="ltr"><span data-lexical-text="true">Some text</span></p></div>',
+            '<div style="user-select: text; white-space: pre-wrap; word-break: break-word;" data-lexical-editor="true"><p dir="ltr"><span data-lexical-text="true">Some text</span></p></div>',
         );
-        
+
         container.removeChild(rootElement);
         container = null;
     });
@@ -152,9 +147,9 @@ describe('TextEditor', () => {
             namespace: 'MyEditor',
             theme: {
                 text: {
-                bold: 'editor-text-bold',
-                italic: 'editor-text-italic',
-                underline: 'editor-text-underline',
+                    bold: 'editor-text-bold',
+                    italic: 'editor-text-italic',
+                    underline: 'editor-text-underline',
                 },
             },
         });
@@ -186,9 +181,9 @@ describe('TextEditor', () => {
             namespace: 'MyEditor',
             theme: {
                 text: {
-                bold: 'editor-text-bold',
-                italic: 'editor-text-italic',
-                underline: 'editor-text-underline',
+                    bold: 'editor-text-bold',
+                    italic: 'editor-text-italic',
+                    underline: 'editor-text-underline',
                 },
             },
         });
@@ -220,9 +215,9 @@ describe('TextEditor', () => {
             namespace: 'MyEditor',
             theme: {
                 text: {
-                bold: 'editor-text-bold',
-                italic: 'editor-text-italic',
-                underline: 'editor-text-underline',
+                    bold: 'editor-text-bold',
+                    italic: 'editor-text-italic',
+                    underline: 'editor-text-underline',
                 },
             },
         });
@@ -254,9 +249,9 @@ describe('TextEditor', () => {
             namespace: 'MyEditor',
             theme: {
                 text: {
-                bold: 'editor-text-bold',
-                italic: 'editor-text-italic',
-                underline: 'editor-text-underline',
+                    bold: 'editor-text-bold',
+                    italic: 'editor-text-italic',
+                    underline: 'editor-text-underline',
                 },
             },
         });
@@ -354,21 +349,21 @@ describe('TextEditor', () => {
         const container = render(
             <IntlProvider locale="en">
                 <InputProvider>
-                    <IdProvider>
-                        <ModalProvider>
-                            <IconProvider library={regularIcons}>
-                                <FocusInputComponent />
-                                <TextEditor 
-                                    handleChange={() => null}
-                                    onSubmit={() => null}
-                                    onActivation={() => null}
-                                    shortBar={true}
-                                    uid={"34"}
-                                    placeholder={"Add something"}
-                                />
-                            </IconProvider>
-                        </ModalProvider>
-                    </IdProvider>
+
+                    <ModalProvider>
+                        <IconProvider library={regularIcons}>
+                            <FocusInputComponent />
+                            <TextEditor
+                                handleChange={() => null}
+                                onSubmit={() => null}
+                                onActivation={() => null}
+                                shortBar={true}
+                                uid={"34"}
+                                placeholder={"Add something"}
+                            />
+                        </IconProvider>
+                    </ModalProvider>
+
                 </InputProvider>
             </IntlProvider>
         );
@@ -386,7 +381,7 @@ describe('TextEditor', () => {
 
 
     it('should set content in editor when setContent called from outside', async () => {
-        const targetContent = {"root":{"children":[{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"Integer pretium varius odio ac eleifend.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}};
+        const targetContent = { "root": { "children": [{ "children": [{ "detail": 0, "format": 1, "mode": "normal", "style": "", "text": "Integer pretium varius odio ac eleifend.", "type": "text", "version": 1 }], "direction": "ltr", "format": "", "indent": 0, "type": "paragraph", "version": 1 }], "direction": "ltr", "format": "", "indent": 0, "type": "root", "version": 1 } };
 
         const SetInputContentComponent = (props) => {
             const { setInputRichContent } = useInput();
@@ -403,21 +398,21 @@ describe('TextEditor', () => {
         const container = render(
             <IntlProvider locale="en">
                 <InputProvider>
-                    <IdProvider>
-                        <ModalProvider>
-                            <IconProvider library={regularIcons}>
-                                <SetInputContentComponent />
-                                <TextEditor 
-                                    handleChange={() => null}
-                                    onSubmit={() => null}
-                                    onActivation={() => null}
-                                    shortBar={true}
-                                    uid={"34"}
-                                    placeholder={"Add something"}
-                                />
-                            </IconProvider>
-                        </ModalProvider>
-                    </IdProvider>
+
+                    <ModalProvider>
+                        <IconProvider library={regularIcons}>
+                            <SetInputContentComponent />
+                            <TextEditor
+                                handleChange={() => null}
+                                onSubmit={() => null}
+                                onActivation={() => null}
+                                shortBar={true}
+                                uid={"34"}
+                                placeholder={"Add something"}
+                            />
+                        </IconProvider>
+                    </ModalProvider>
+
                 </InputProvider>
             </IntlProvider>
         );
@@ -433,7 +428,7 @@ describe('TextEditor', () => {
     });
 
     it('should display max length and update it', async () => {
-        const targetContent = {"root":{"children":[{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"Integer pretium varius odio ac eleifend.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}};
+        const targetContent = { "root": { "children": [{ "children": [{ "detail": 0, "format": 1, "mode": "normal", "style": "", "text": "Integer pretium varius odio ac eleifend.", "type": "text", "version": 1 }], "direction": "ltr", "format": "", "indent": 0, "type": "paragraph", "version": 1 }], "direction": "ltr", "format": "", "indent": 0, "type": "root", "version": 1 } };
 
         const SetInputContentComponent = (props) => {
             const { setInputRichContent } = useInput();
@@ -450,22 +445,22 @@ describe('TextEditor', () => {
         const { getByText } = render(
             <IntlProvider locale="en">
                 <InputProvider>
-                    <IdProvider>
-                        <IconProvider library={regularIcons}>
-                            <ModalProvider>
-                                <SetInputContentComponent />
-                                <TextEditor 
-                                    handleChange={() => null}
-                                    onSubmit={() => null}
-                                    onActivation={callback}
-                                    shortBar={true}
-                                    uid={"34"}
-                                    placeholder={"Add an argument"}
-                                    maxLength={500}
-                                />
-                            </ModalProvider>
-                        </IconProvider>
-                    </IdProvider>
+
+                    <IconProvider library={regularIcons}>
+                        <ModalProvider>
+                            <SetInputContentComponent />
+                            <TextEditor
+                                handleChange={() => null}
+                                onSubmit={() => null}
+                                onActivation={callback}
+                                shortBar={true}
+                                uid={"34"}
+                                placeholder={"Add an argument"}
+                                maxLength={500}
+                            />
+                        </ModalProvider>
+                    </IconProvider>
+
                 </InputProvider>
             </IntlProvider>
         );
@@ -485,7 +480,7 @@ describe('TextEditor', () => {
 // describe('ResetPlugin', () => {
 //     const sessionStorageMock = (function() {
 //         let store = {}
-    
+
 //         return {
 //             name: "sessionStorage",
 //             getItem: function(key) {
@@ -508,21 +503,21 @@ describe('TextEditor', () => {
 //         value: sessionStorageMock
 //     })
 
-    
+
 //     it('should reset content in editor when setReset called from outside', async () => {
 //         const targetContent = {"root":{"children":[{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"Integer pretium varius odio ac eleifend.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}};
-    
+
 //         const ResetContentComponent = (props) => {
 //             const { setInputRichContent, setReset } = useInput();
-    
+
 //             const setContent = (event) => {
 //                 setInputRichContent(targetContent);
 //             }
-    
+
 //             const resetContent = (event) => {
 //                 setReset(true);
 //             }
-    
+
 //             return (
 //                 <>
 //                     <div onClick={setContent}>Click to set content</div>
@@ -530,11 +525,11 @@ describe('TextEditor', () => {
 //                 </>
 //             )
 //         }
-    
+
 //         const container = render(
 //             <IntlProvider locale="en">
 //                 <InputProvider>
-//                     <IdProvider>
+//                     
 //                         <ModalProvider>
 //                             <IconProvider library={regularIcons}>
 //                                 <ResetContentComponent />
@@ -548,43 +543,43 @@ describe('TextEditor', () => {
 //                                 />
 //                             </IconProvider>
 //                         </ModalProvider>
-//                     </IdProvider>
+//                     
 //                 </InputProvider>
 //             </IntlProvider>
 //         );
-    
+
 //         expect(screen.getByText("Add something")).toBeTruthy();
-    
+
 //         const setContentButton = screen.getByText("Click to set content");
 //         const resetContentButton = screen.getByText("Click to reset content");
 //         expect(document.activeElement.tagName).toBe("BODY");
-    
+
 //         await act(async () => { await userEvent.click(setContentButton) });
-    
+
 //         expect(container.getByText("Integer pretium varius odio ac eleifend.")).toBeTruthy();
-    
+
 //         await act(async () => { await userEvent.click(resetContentButton) });
-    
+
 //         expect(container.queryByText("Integer pretium varius odio ac eleifend.")).toBeNull();
 //     });
 // });
 
 describe('AutoSavePlugin', () => {
-    const sessionStorageMock = (function() {
+    const sessionStorageMock = (function () {
         let store = {}
-    
+
         return {
             name: "sessionStorage",
-            getItem: function(key) {
+            getItem: function (key) {
                 return store[key] || null
             },
-            setItem: function(key, value) {
+            setItem: function (key, value) {
                 store[key] = value.toString()
             },
-            removeItem: function(key) {
+            removeItem: function (key) {
                 delete store[key]
             },
-            clear: function() {
+            clear: function () {
                 store = {}
             }
         }
@@ -596,7 +591,7 @@ describe('AutoSavePlugin', () => {
     })
 
     it('should auto save content in session storage', async () => {
-        const targetContent = {"root":{"children":[{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"Integer pretium varius odio ac eleifend.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}};
+        const targetContent = { "root": { "children": [{ "children": [{ "detail": 0, "format": 1, "mode": "normal", "style": "", "text": "Integer pretium varius odio ac eleifend.", "type": "text", "version": 1 }], "direction": "ltr", "format": "", "indent": 0, "type": "paragraph", "version": 1 }], "direction": "ltr", "format": "", "indent": 0, "type": "root", "version": 1 } };
         const getItemMock = jest.spyOn(window.sessionStorage, 'getItem');
 
         const AutoSaveContentComponent = (props) => {
@@ -612,25 +607,25 @@ describe('AutoSavePlugin', () => {
                 </>
             )
         }
-        
+
         const container = render(
             <IntlProvider locale="en">
                 <InputProvider>
-                    <IdProvider>
-                        <ModalProvider>
-                            <IconProvider library={regularIcons}>
-                                <AutoSaveContentComponent />
-                                <TextEditor 
-                                    handleChange={() => null}
-                                    onSubmit={() => null}
-                                    onActivation={() => null}
-                                    shortBar={true}
-                                    uid={"34"}
-                                    placeholder={"Add something"}
-                                />
-                            </IconProvider>
-                        </ModalProvider>
-                    </IdProvider>
+
+                    <ModalProvider>
+                        <IconProvider library={regularIcons}>
+                            <AutoSaveContentComponent />
+                            <TextEditor
+                                handleChange={() => null}
+                                onSubmit={() => null}
+                                onActivation={() => null}
+                                shortBar={true}
+                                uid={"34"}
+                                placeholder={"Add something"}
+                            />
+                        </IconProvider>
+                    </ModalProvider>
+
                 </InputProvider>
             </IntlProvider>
         );

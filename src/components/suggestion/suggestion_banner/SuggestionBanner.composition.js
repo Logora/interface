@@ -11,7 +11,6 @@ import { AuthContext } from '@logora/debate.auth.use_auth';
 import { ListProvider } from '@logora/debate.list.list_provider';
 import { VoteProvider } from '@logora/debate.vote.vote_provider';
 import { MemoryRouter } from 'react-router';
-import { IdProvider } from "react-use-id-hook";
 import { ToastProvider } from '@logora/debate.dialog.toast_provider';
 import { faker } from '@faker-js/faker';
 import * as regularIcons from '@logora/debate.icons.regular_icons';
@@ -89,13 +88,11 @@ export const DefaultSuggestionBanner = () => {
                                 <ListProvider>
                                     <ToastProvider>
                                         <VoteProvider>
-                                            <IdProvider>
-                                                <IntlProvider locale="en">
-                                                    <IconProvider library={regularIcons}>
-                                                        <SuggestionBanner />
-                                                    </IconProvider>
-                                                </IntlProvider>
-                                            </IdProvider>
+                                            <IntlProvider locale="en">
+                                                <IconProvider library={regularIcons}>
+                                                    <SuggestionBanner />
+                                                </IconProvider>
+                                            </IntlProvider>
                                         </VoteProvider>
                                     </ToastProvider>
                                 </ListProvider>
@@ -125,13 +122,11 @@ export const EmptySuggestionBanner = () => {
                                 <ListProvider>
                                     <ToastProvider>
                                         <VoteProvider>
-                                            <IdProvider>
-                                                <IntlProvider locale="en">
-                                                    <IconProvider library={regularIcons}>
-                                                        <SuggestionBanner />
-                                                    </IconProvider>
-                                                </IntlProvider>
-                                            </IdProvider>
+                                            <IntlProvider locale="en">
+                                                <IconProvider library={regularIcons}>
+                                                    <SuggestionBanner />
+                                                </IconProvider>
+                                            </IntlProvider>
                                         </VoteProvider>
                                     </ToastProvider>
                                 </ListProvider>
