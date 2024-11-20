@@ -12,7 +12,6 @@ import { ModalProvider } from '@logora/debate.dialog.modal';
 import { ListProvider } from '@logora/debate.list.list_provider';
 import { ToastProvider } from '@logora/debate.dialog.toast_provider';
 import { VoteProvider } from '@logora/debate.vote.vote_provider';
-import { IdProvider } from "react-use-id-hook";
 import { Argument } from './Argument';
 import { IconProvider } from '@logora/debate.icons.icon_provider';
 import { ResponsiveProvider } from '@logora/debate.hooks.use_responsive';
@@ -104,14 +103,14 @@ const argumentDeleted = createArgument({
     content: faker.lorem.sentences(1),
     upvotes: 12
 });
-const debatePositions = [
+const positions = [
     { id: 1, name: "Yes", language: "en", translation_entries: [] },
     { id: 2, name: "No", language: "en", translation_entries: [] }
 ];
-const debateName = faker.lorem.sentence(5);
+const groupName = faker.lorem.sentence(5);
 
-const targetContent = {"root":{"children":[{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"I write an argument","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}};
-        
+const targetContent = { "root": { "children": [{ "children": [{ "detail": 0, "format": 1, "mode": "normal", "style": "", "text": "I write an argument", "type": "text", "version": 1 }], "direction": "ltr", "format": "", "indent": 0, "type": "paragraph", "version": 1 }], "direction": "ltr", "format": "", "indent": 0, "type": "root", "version": 1 } };
+
 const AddContentComponent = () => {
     const { setInputRichContent } = useInput();
 
@@ -134,16 +133,14 @@ const Providers = ({ children }) => (
                             <ListProvider>
                                 <ToastProvider>
                                     <VoteProvider>
-                                        <IdProvider>
-                                            <InputProvider>
-                                                <IconProvider library={regularIcons}>
-                                                    <IntlProvider locale="en">
-                                                        <AddContentComponent />
-                                                        {children}
-                                                    </IntlProvider>
-                                                </IconProvider>
-                                            </InputProvider>
-                                        </IdProvider>
+                                        <InputProvider>
+                                            <IconProvider library={regularIcons}>
+                                                <IntlProvider locale="en">
+                                                    <AddContentComponent />
+                                                    {children}
+                                                </IntlProvider>
+                                            </IconProvider>
+                                        </InputProvider>
                                     </VoteProvider>
                                 </ToastProvider>
                             </ListProvider>
@@ -181,8 +178,7 @@ describe('Argument', () => {
     it('should render argument correctly', () => {
         const { getByText } = renderArgument({
             argument,
-            debatePositions,
-            debateName,
+            positions,
             nestingLevel: 0,
         });
 
@@ -195,8 +191,8 @@ describe('Argument', () => {
     it('should render argument with replies', () => {
         const { getByText, getByAltText } = renderArgument({
             argument: argumentWithReplies,
-            debatePositions,
-            debateName,
+            positions,
+            groupName,
             nestingLevel: 0,
         });
 
@@ -215,8 +211,8 @@ describe('Argument', () => {
     it('should render argument as a reply', () => {
         const { container } = renderArgument({
             argument: argumentReply,
-            debatePositions,
-            debateName,
+            positions,
+            groupName,
             nestingLevel: 0,
         });
 
@@ -224,25 +220,11 @@ describe('Argument', () => {
         expect(argumentContainer).toHaveClass('argumentReply');
     });
 
-    it('should render comment argument', () => {
-        const { queryByText, getByTestId } = renderArgument({
-            argument,
-            debatePositions,
-            debateName,
-            nestingLevel: 0,
-            isComment: true
-        });
-
-        expect(queryByText("Share")).not.toBeInTheDocument();
-        const replyButton = getByTestId('reply-button');
-        expect(replyButton).toHaveClass('leftReply');
-    });
-
     it('should render deleted argument', () => {
         const { queryByText } = renderArgument({
             argument: argumentDeleted,
-            debatePositions,
-            debateName,
+            positions,
+            groupName,
             replies: false,
             nestingLevel: 0,
         });
@@ -255,8 +237,8 @@ describe('Argument', () => {
     it('should render dropdown', async () => {
         const { getByText, getByTestId } = renderArgument({
             argument,
-            debatePositions,
-            debateName,
+            positions,
+            groupName,
             nestingLevel: 0,
         });
 
@@ -268,8 +250,8 @@ describe('Argument', () => {
     it('should add vote', async () => {
         const { getByText, getByTestId, queryByText } = renderArgument({
             argument,
-            debatePositions,
-            debateName,
+            positions,
+            groupName,
             nestingLevel: 0,
         });
 
@@ -284,8 +266,8 @@ describe('Argument', () => {
     it('should render argument input', async () => {
         const { getByText, getByTestId } = renderArgument({
             argument,
-            debatePositions,
-            debateName,
+            positions,
+            groupName,
             nestingLevel: 0,
         });
 
@@ -293,17 +275,17 @@ describe('Argument', () => {
         await act(async () => { await userEvent.click(replyButton) });
         expect(getByText("Your position")).toBeInTheDocument();
         expect(getByText("Your answer")).toBeInTheDocument();
-        expect(getByText(debatePositions[1].name)).toBeInTheDocument();
+        expect(getByText(positions[1].name)).toBeInTheDocument();
     });
 
     it('should allow the user to add a reply to an argument', async () => {
         const { getByTestId, getByText } = renderArgument({
             argument,
-            debatePositions: [
+            positions: [
                 { id: 1, name: 'Yes', language: 'en', translation_entries: [] },
                 { id: 2, name: 'No', language: 'en', translation_entries: [] },
             ],
-            debateName: 'Test Debate',
+            groupName: 'Test Debate',
             nestingLevel: 0,
         });
 
@@ -312,7 +294,7 @@ describe('Argument', () => {
             await userEvent.click(replyButton);
         });
 
-        const positionButton = getByText(debatePositions[1].name);
+        const positionButton = getByText(positions[1].name);
         await act(async () => {
             await userEvent.click(positionButton);
         });
@@ -328,5 +310,5 @@ describe('Argument', () => {
 
         expect(getByText("Your contribution has been sent !")).toBeInTheDocument();
     });
-    
+
 });

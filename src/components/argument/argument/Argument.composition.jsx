@@ -10,7 +10,6 @@ import { ListProvider } from '@logora/debate.list.list_provider';
 import { ToastProvider } from '@logora/debate.dialog.toast_provider';
 import { VoteProvider } from '@logora/debate.vote.vote_provider';
 import { InputProvider } from '@logora/debate.input.input_provider';
-import { IdProvider } from "react-use-id-hook";
 import { Argument } from './Argument';
 import { IconProvider } from '@logora/debate.icons.icon_provider';
 import { ResponsiveProvider } from '@logora/debate.hooks.use_responsive';
@@ -93,12 +92,12 @@ const argumentWithReplies = generateArgument({
     }))
 });
 
-const debatePositions = [
+const positions = [
     { id: 1, name: "Yes", language: "en", translation_entries: [] },
     { id: 2, name: "No", language: "en", translation_entries: [] }
 ];
 
-const debateName = faker.lorem.sentence(5);
+const groupeName = faker.lorem.sentence(5);
 
 const Providers = ({ children }) => (
     <BrowserRouter>
@@ -110,15 +109,13 @@ const Providers = ({ children }) => (
                             <ListProvider>
                                 <ToastProvider>
                                     <VoteProvider>
-                                        <IdProvider>
-                                            <InputProvider>
-                                                <IconProvider library={regularIcons}>
-                                                    <IntlProvider locale="en">
-                                                        {children}
-                                                    </IntlProvider>
-                                                </IconProvider>
-                                            </InputProvider>
-                                        </IdProvider>
+                                        <InputProvider>
+                                            <IconProvider library={regularIcons}>
+                                                <IntlProvider locale="en">
+                                                    {children}
+                                                </IntlProvider>
+                                            </IconProvider>
+                                        </InputProvider>
                                     </VoteProvider>
                                 </ToastProvider>
                             </ListProvider>
@@ -136,9 +133,8 @@ export const DefaultArgument = () => (
         <Providers>
             <Argument
                 argument={argument}
-                debatePositions={debatePositions}
-                debateName={debateName}
-                nestingLevel={0}
+                positions={positions}
+                groupName={groupeName}
             />
         </Providers>
     </div>
@@ -149,9 +145,7 @@ export const ExpandableArgument = () => (
         <Providers>
             <Argument
                 argument={longArgument}
-                debatePositions={debatePositions}
-                debateName={debateName}
-                nestingLevel={0}
+                positions={positions}
                 expandable
             />
         </Providers>
@@ -163,38 +157,8 @@ export const ExpandedArgument = () => (
         <Providers>
             <Argument
                 argument={longArgument}
-                debatePositions={debatePositions}
-                debateName={debateName}
-                nestingLevel={0}
+                positions={positions}
                 expandable={false}
-            />
-        </Providers>
-    </div>
-);
-
-export const Comment = () => (
-    <div style={{ width: "400px", height: "230px" }}>
-        <Providers>
-            <Argument
-                argument={argument}
-                debatePositions={debatePositions}
-                debateName={debateName}
-                nestingLevel={0}
-                isComment
-            />
-        </Providers>
-    </div>
-);
-
-export const ArgumentDisabled = () => (
-    <div style={{ width: "400px", height: "230px" }}>
-        <Providers>
-            <Argument
-                argument={argument}
-                debatePositions={debatePositions}
-                debateName={debateName}
-                nestingLevel={0}
-                disabled
             />
         </Providers>
     </div>
@@ -205,9 +169,7 @@ export const ArgumentDisabledLinks = () => (
         <Providers>
             <Argument
                 argument={argument}
-                debatePositions={debatePositions}
-                debateName={debateName}
-                nestingLevel={0}
+                positions={positions}
                 disableLinks={true}
             />
         </Providers>
@@ -219,35 +181,54 @@ export const ArgumentReply = () => (
         <Providers>
             <Argument
                 argument={argumentReply}
-                debatePositions={debatePositions}
-                debateName={debateName}
+                positions={positions}
+                parentArgument={argument}
                 nestingLevel={1}
             />
         </Providers>
     </div>
 );
 
-export const DeletedArgumentComponent = () => (
-    <div style={{ width: "400px" }}>
+export const DisabledArgument = () => (
+    <div style={{ width: "400px", height: "230px" }}>
         <Providers>
             <Argument
-                argument={argumentDeleted}
-                debatePositions={debatePositions}
-                debateName={debateName}
-                nestingLevel={0}
+                argument={argument}
+                positions={positions}
+                disabled
             />
         </Providers>
     </div>
 );
 
-export const ArgumentWithRepliesComponent = () => (
+export const DeletedArgument = () => (
+    <div style={{ width: "400px" }}>
+        <Providers>
+            <Argument
+                argument={argumentDeleted}
+                positions={positions}
+            />
+        </Providers>
+    </div>
+);
+
+export const ArgumentWithoutFooter = () => (
+    <div style={{ width: "400px", height: "240px" }}>
+        <Providers>
+            <Argument
+                argument={argument}
+                hideFooter={true}
+            />
+        </Providers>
+    </div>
+);
+
+export const ArgumentWithReplies = () => (
     <div style={{ width: "400px", height: "260px" }}>
         <Providers>
             <Argument
                 argument={argumentWithReplies}
-                debatePositions={debatePositions}
-                debateName={debateName}
-                nestingLevel={0}
+                positions={positions}
             />
         </Providers>
     </div>
@@ -258,11 +239,27 @@ export const ArgumentWithArgumentReplies = () => (
         <Providers>
             <Argument
                 argument={argument}
-                debatePositions={debatePositions}
-                debateName={debateName}
-                nestingLevel={0}
+                positions={positions}
                 argumentReplies={[argumentReply]}
             />
         </Providers>
     </div>
 );
+
+export const EmptyArgumentNoReplies = () => {
+    const emptyArgument = {
+        ...argument,
+        content: "",
+    };
+    return (
+        <div style={{ width: "400px", height: "240px" }}>
+            <Providers>
+                <Argument
+                    argument={emptyArgument}
+                    positions={positions}
+                    expandable
+                />
+            </Providers>
+        </div>
+    );
+};

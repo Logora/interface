@@ -14,19 +14,18 @@ import { dataProvider, DataProviderContext } from '@logora/debate.data.data_prov
 import { AuthContext } from '@logora/debate.auth.use_auth';
 import { ListProvider } from '@logora/debate.list.list_provider';
 import { InputProvider, useInput } from '@logora/debate.input.input_provider';
-import { IdProvider } from "react-use-id-hook";
 
 const httpClient = {
     get: () => null,
     post: (url, data, config) => {
-        return new Promise(function(resolve, reject) {
-            resolve({ data: { success: true, data: { resource: argument } }});
+        return new Promise(function (resolve, reject) {
+            resolve({ data: { success: true, data: { resource: argument } } });
         });
     },
     patch: () => null,
     delete: (url, data, config) => {
-        return new Promise(function(resolve, reject) {
-            resolve({ data: { success: true, data: {} }});
+        return new Promise(function (resolve, reject) {
+            resolve({ data: { success: true, data: {} } });
         });
     }
 };
@@ -50,7 +49,7 @@ const debate = {
 }
 
 const argument = {
-    position : {
+    position: {
         id: debate.positions[0].id
     }
 }
@@ -92,22 +91,22 @@ describe("ArgumentInput", () => {
                                     <ToastProvider>
                                         <ModalProvider>
                                             <ListProvider>
-                                                <IdProvider>
-                                                    <InputProvider>
-                                                        <ArgumentInput
-                                                            onSubmit={callback}
-                                                            groupId={debate.id}
-                                                            groupName={debate.name}
-                                                            positions={debate.positions}
-                                                            disabledPositions={[]}
-                                                            listId={"argumentList"}
-                                                            positionId={debate.positions[0].id}
-                                                            hideSourceAction={false}
-                                                            avatarSize={48}
-                                                            placeholder={"Add an argument..."}
-                                                        />
-                                                    </InputProvider>
-                                                </IdProvider>
+
+                                                <InputProvider>
+                                                    <ArgumentInput
+                                                        onSubmit={callback}
+                                                        groupId={debate.id}
+                                                        groupName={debate.name}
+                                                        positions={debate.positions}
+                                                        disabledPositions={[]}
+                                                        listId={"argumentList"}
+                                                        positionId={debate.positions[0].id}
+                                                        hideSourceAction={false}
+                                                        avatarSize={48}
+                                                        placeholder={"Add an argument..."}
+                                                    />
+                                                </InputProvider>
+
                                             </ListProvider>
                                         </ModalProvider>
                                     </ToastProvider>
@@ -137,23 +136,23 @@ describe("ArgumentInput", () => {
                                     <ToastProvider>
                                         <ModalProvider>
                                             <ListProvider>
-                                                <IdProvider>
-                                                    <InputProvider>
-                                                        <ArgumentInput
-                                                            onSubmit={callback}
-                                                            groupId={debate.id}
-                                                            groupName={debate.name}
-                                                            positions={debate.positions}
-                                                            disabledPositions={[]}
-                                                            listId={"argumentList"}
-                                                            positionId={debate.positions[0].id}
-                                                            hideSourceAction={false}
-                                                            avatarSize={40}
-                                                            isReply
-                                                            placeholder={"Your reply..."}
-                                                        />
-                                                    </InputProvider>
-                                                </IdProvider>
+
+                                                <InputProvider>
+                                                    <ArgumentInput
+                                                        onSubmit={callback}
+                                                        groupId={debate.id}
+                                                        groupName={debate.name}
+                                                        positions={debate.positions}
+                                                        disabledPositions={[]}
+                                                        listId={"argumentList"}
+                                                        positionId={debate.positions[0].id}
+                                                        hideSourceAction={false}
+                                                        avatarSize={40}
+                                                        isReply
+                                                        placeholder={"Your reply..."}
+                                                    />
+                                                </InputProvider>
+
                                             </ListProvider>
                                         </ModalProvider>
                                     </ToastProvider>
@@ -182,23 +181,23 @@ describe("ArgumentInput", () => {
                                     <ToastProvider>
                                         <ModalProvider>
                                             <ListProvider>
-                                                <IdProvider>
-                                                    <InputProvider>
-                                                        <ArgumentInput
-                                                            onSubmit={callback}
-                                                            groupId={debate.id}
-                                                            groupName={debate.name}
-                                                            positions={debate.positions}
-                                                            disabledPositions={[]}
-                                                            disabled
-                                                            listId={"argumentList"}
-                                                            positionId={debate.positions[0].id}
-                                                            hideSourceAction={false}
-                                                            avatarSize={48}
-                                                            placeholder={"Add an argument..."}
-                                                        />
-                                                    </InputProvider>
-                                                </IdProvider>
+
+                                                <InputProvider>
+                                                    <ArgumentInput
+                                                        onSubmit={callback}
+                                                        groupId={debate.id}
+                                                        groupName={debate.name}
+                                                        positions={debate.positions}
+                                                        disabledPositions={[]}
+                                                        disabled
+                                                        listId={"argumentList"}
+                                                        positionId={debate.positions[0].id}
+                                                        hideSourceAction={false}
+                                                        avatarSize={48}
+                                                        placeholder={"Add an argument..."}
+                                                    />
+                                                </InputProvider>
+
                                             </ListProvider>
                                         </ModalProvider>
                                     </ToastProvider>
@@ -224,22 +223,22 @@ describe("ArgumentInput", () => {
                                     <ToastProvider>
                                         <ModalProvider>
                                             <ListProvider>
-                                                <IdProvider>
-                                                    <InputProvider>
-                                                        <ArgumentInput
-                                                            onSubmit={() => {}}
-                                                            groupId={debate.id}
-                                                            groupName={debate.name}
-                                                            positions={debate.positions}
-                                                            disabledPositions={[{id: debate.positions[0].id, name: debate.positions[0].name}]}
-                                                            listId={"argumentList"}
-                                                            positionId={debate.positions[0].id}
-                                                            hideSourceAction
-                                                            avatarSize={48}
-                                                            placeholder={"Add an argument..."}
-                                                        />
-                                                    </InputProvider>
-                                                </IdProvider>
+
+                                                <InputProvider>
+                                                    <ArgumentInput
+                                                        onSubmit={() => { }}
+                                                        groupId={debate.id}
+                                                        groupName={debate.name}
+                                                        positions={debate.positions}
+                                                        disabledPositions={[{ id: debate.positions[0].id, name: debate.positions[0].name }]}
+                                                        listId={"argumentList"}
+                                                        positionId={debate.positions[0].id}
+                                                        hideSourceAction
+                                                        avatarSize={48}
+                                                        placeholder={"Add an argument..."}
+                                                    />
+                                                </InputProvider>
+
                                             </ListProvider>
                                         </ModalProvider>
                                     </ToastProvider>
@@ -262,9 +261,9 @@ describe("ArgumentInput", () => {
     });
 
     it("should display error if the validation rules are not met", async () => {
-        const targetContent = {"root":{"children":[{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"I write","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}};
-        const targetUrlContent = {"root":{"children":[{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"I write https://mysite.com","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}};
-        
+        const targetContent = { "root": { "children": [{ "children": [{ "detail": 0, "format": 1, "mode": "normal", "style": "", "text": "I write", "type": "text", "version": 1 }], "direction": "ltr", "format": "", "indent": 0, "type": "paragraph", "version": 1 }], "direction": "ltr", "format": "", "indent": 0, "type": "root", "version": 1 } };
+        const targetUrlContent = { "root": { "children": [{ "children": [{ "detail": 0, "format": 1, "mode": "normal", "style": "", "text": "I write https://mysite.com", "type": "text", "version": 1 }], "direction": "ltr", "format": "", "indent": 0, "type": "paragraph", "version": 1 }], "direction": "ltr", "format": "", "indent": 0, "type": "root", "version": 1 } };
+
         const AddContentComponent = () => {
             const { setInputRichContent } = useInput();
 
@@ -294,24 +293,24 @@ describe("ArgumentInput", () => {
                                     <ToastProvider>
                                         <ModalProvider>
                                             <ListProvider>
-                                                <IdProvider>
-                                                    <InputProvider>
-                                                        <AddContentComponent />
-                                                        <ArgumentInput
-                                                            onSubmit={callback}
-                                                            groupId={debate.id}
-                                                            groupName={debate.name}
-                                                            positions={debate.positions}
-                                                            disabledPositions={[]}
-                                                            disabled
-                                                            listId={"argumentList"}
-                                                            positionId={debate.positions[0].id}
-                                                            hideSourceAction={false}
-                                                            avatarSize={48}
-                                                            placeholder={"Add an argument..."}
-                                                        />
-                                                    </InputProvider>
-                                                </IdProvider>
+
+                                                <InputProvider>
+                                                    <AddContentComponent />
+                                                    <ArgumentInput
+                                                        onSubmit={callback}
+                                                        groupId={debate.id}
+                                                        groupName={debate.name}
+                                                        positions={debate.positions}
+                                                        disabledPositions={[]}
+                                                        disabled
+                                                        listId={"argumentList"}
+                                                        positionId={debate.positions[0].id}
+                                                        hideSourceAction={false}
+                                                        avatarSize={48}
+                                                        placeholder={"Add an argument..."}
+                                                    />
+                                                </InputProvider>
+
                                             </ListProvider>
                                         </ModalProvider>
                                     </ToastProvider>
@@ -336,7 +335,7 @@ describe("ArgumentInput", () => {
         const setContentButton = screen.getByText("Click to set short content");
         await act(async () => { await userEvent.click(setContentButton) });
         expect(queryByText("I write")).toBeInTheDocument();
-        
+
         await act(async () => { await userEvent.click(onSubmit) });
         expect(queryByText("content is too short. It must be at least 3 long.")).toBeInTheDocument();
 
@@ -345,13 +344,13 @@ describe("ArgumentInput", () => {
         await act(async () => { await userEvent.click(setUrlContentButton) });
         expect(queryByText("I write https://mysite.com")).toBeInTheDocument();
         expect(queryByText("content must not contain any links")).toBeInTheDocument();
-        
+
         // await act(async () => { await userEvent.click(onSubmit) });
     });
 
     it("should call submit callback", async () => {
-        const targetContent = {"root":{"children":[{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"I write an argument","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}};
-        
+        const targetContent = { "root": { "children": [{ "children": [{ "detail": 0, "format": 1, "mode": "normal", "style": "", "text": "I write an argument", "type": "text", "version": 1 }], "direction": "ltr", "format": "", "indent": 0, "type": "paragraph", "version": 1 }], "direction": "ltr", "format": "", "indent": 0, "type": "root", "version": 1 } };
+
         const AddContentComponent = () => {
             const { setInputRichContent } = useInput();
 
@@ -376,24 +375,24 @@ describe("ArgumentInput", () => {
                                     <ToastProvider>
                                         <ModalProvider>
                                             <ListProvider>
-                                                <IdProvider>
-                                                    <InputProvider>
-                                                        <AddContentComponent />
-                                                        <ArgumentInput
-                                                            onSubmit={callback}
-                                                            groupId={debate.id}
-                                                            groupName={debate.name}
-                                                            positions={debate.positions}
-                                                            disabledPositions={[]}
-                                                            disabled
-                                                            listId={"argumentList"}
-                                                            positionId={debate.positions[0].id}
-                                                            hideSourceAction={false}
-                                                            avatarSize={48}
-                                                            placeholder={"Add an argument..."}
-                                                        />
-                                                    </InputProvider>
-                                                </IdProvider>
+
+                                                <InputProvider>
+                                                    <AddContentComponent />
+                                                    <ArgumentInput
+                                                        onSubmit={callback}
+                                                        groupId={debate.id}
+                                                        groupName={debate.name}
+                                                        positions={debate.positions}
+                                                        disabledPositions={[]}
+                                                        disabled
+                                                        listId={"argumentList"}
+                                                        positionId={debate.positions[0].id}
+                                                        hideSourceAction={false}
+                                                        avatarSize={48}
+                                                        placeholder={"Add an argument..."}
+                                                    />
+                                                </InputProvider>
+
                                             </ListProvider>
                                         </ModalProvider>
                                     </ToastProvider>
@@ -411,7 +410,7 @@ describe("ArgumentInput", () => {
         const setContentButton = screen.getByText("Click to set content");
         await act(async () => { await userEvent.click(setContentButton) });
         expect(queryByText("I write an argument")).toBeInTheDocument();
-        
+
         const onSubmit = getByRole('button', { type: 'submit' });
         await act(async () => { await userEvent.click(onSubmit) });
         expect(callback).toHaveBeenCalled();
@@ -419,44 +418,44 @@ describe("ArgumentInput", () => {
 
     it("should render correctly when there is no position", () => {
         const { queryByText } = render(
-          <BrowserRouter>
-            <ConfigProvider>
-              <IconProvider library={regularIcons}>
-                <IntlProvider locale="en">
-                  <DataProviderContext.Provider value={{ dataProvider: data }}>
-                    <AuthContext.Provider value={{ currentUser: currentUser, isLoggedIn: true }}>
-                      <ToastProvider>
-                        <ModalProvider>
-                          <ListProvider>
-                            <IdProvider>
-                              <InputProvider>
-                                <ArgumentInput
-                                  onSubmit={callback}
-                                  groupId={debate.id}
-                                  groupName={debate.name}
-                                  positions={[]} 
-                                  disabledPositions={[]}
-                                  listId={"argumentList"}
-                                  positionId={null} 
-                                  hideSourceAction={false}
-                                  avatarSize={48}
-                                  placeholder={"Add an argument..."}
-                                />
-                              </InputProvider>
-                            </IdProvider>
-                          </ListProvider>
-                        </ModalProvider>
-                      </ToastProvider>
-                    </AuthContext.Provider>
-                  </DataProviderContext.Provider>
-                </IntlProvider>
-              </IconProvider>
-            </ConfigProvider>
-          </BrowserRouter>
+            <BrowserRouter>
+                <ConfigProvider>
+                    <IconProvider library={regularIcons}>
+                        <IntlProvider locale="en">
+                            <DataProviderContext.Provider value={{ dataProvider: data }}>
+                                <AuthContext.Provider value={{ currentUser: currentUser, isLoggedIn: true }}>
+                                    <ToastProvider>
+                                        <ModalProvider>
+                                            <ListProvider>
+
+                                                <InputProvider>
+                                                    <ArgumentInput
+                                                        onSubmit={callback}
+                                                        groupId={debate.id}
+                                                        groupName={debate.name}
+                                                        positions={[]}
+                                                        disabledPositions={[]}
+                                                        listId={"argumentList"}
+                                                        positionId={null}
+                                                        hideSourceAction={false}
+                                                        avatarSize={48}
+                                                        placeholder={"Add an argument..."}
+                                                    />
+                                                </InputProvider>
+
+                                            </ListProvider>
+                                        </ModalProvider>
+                                    </ToastProvider>
+                                </AuthContext.Provider>
+                            </DataProviderContext.Provider>
+                        </IntlProvider>
+                    </IconProvider>
+                </ConfigProvider>
+            </BrowserRouter>
         );
-      
+
         expect(queryByText("Add an argument...")).toBeInTheDocument();
         expect(queryByText("Your position")).not.toBeInTheDocument();
-      });
+    });
 });
 

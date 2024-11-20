@@ -2,7 +2,11 @@
 
 .readMore {
     position: relative;
-    display: inline;
+}
+
+.readMoreWrapper {
+    background: $background-color-primary;
+    text-align: right;
 }
 
 .readMoreElement {
@@ -12,26 +16,4 @@
     text-decoration: none;
     color: $text-primary !important;
     cursor: pointer;
-}
-
-.lineClamp {
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-}
-
-.readMoreWrapper {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    background: $background-color-primary;
-    display: flex;
-    align-items: center;
-}
-
-.ellipsis {
-    display: inline;
-    white-space: nowrap;
-    margin: 0; 
-    padding: 0;
 }

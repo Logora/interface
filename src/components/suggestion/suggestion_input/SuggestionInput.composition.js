@@ -10,7 +10,6 @@ import { ToastProvider } from '@logora/debate.dialog.toast_provider';
 import * as regularIcons from '@logora/debate.icons.regular_icons';
 import { faker } from '@faker-js/faker';
 import { SuggestionInput } from './SuggestionInput';
-import { IdProvider } from "react-use-id-hook";
 import { BrowserRouter } from 'react-router-dom';
 import { InputProvider } from '@logora/debate.input.input_provider';
 
@@ -24,7 +23,7 @@ const currentUser = {
 const httpClient = {
     post: () => {
         return new Promise((resolve) => {
-            resolve({ data: { success: true, data: { } } });
+            resolve({ data: { success: true, data: {} } });
         });
     }
 };
@@ -42,11 +41,9 @@ export const DefaultSuggestionInput = () => {
                                 <ToastProvider>
                                     <ModalProvider>
                                         <ListProvider>
-                                            <IdProvider>
-                                                <InputProvider>
-                                                    <SuggestionInput  disabled={false} />
-                                                </InputProvider>
-                                            </IdProvider>
+                                            <InputProvider>
+                                                <SuggestionInput disabled={false} />
+                                            </InputProvider>
                                         </ListProvider>
                                     </ModalProvider>
                                 </ToastProvider>
@@ -70,11 +67,9 @@ export const DisabledSuggestionInput = () => {
                                 <ToastProvider>
                                     <ModalProvider>
                                         <ListProvider>
-                                            <IdProvider>
-                                                <InputProvider>
-                                                    <SuggestionInput disabled={true} />
-                                                </InputProvider>
-                                            </IdProvider>
+                                            <InputProvider>
+                                                <SuggestionInput disabled={true} />
+                                            </InputProvider>
                                         </ListProvider>
                                     </ModalProvider>
                                 </ToastProvider>
@@ -98,11 +93,9 @@ export const SuggestionInputMaxLength = () => {
                                 <ToastProvider>
                                     <ModalProvider>
                                         <ListProvider>
-                                            <IdProvider>
-                                                <InputProvider>
-                                                    <SuggestionInput disabled={true} maxLength={30} />
-                                                </InputProvider>
-                                            </IdProvider>
+                                            <InputProvider>
+                                                <SuggestionInput disabled={true} maxLength={30} />
+                                            </InputProvider>
                                         </ListProvider>
                                     </ModalProvider>
                                 </ToastProvider>

@@ -13,6 +13,7 @@ export const OAuth2Button = ({
   scope,
   responseType,
   accessType = "",
+  forceAuth = false,
   onCode,
   onClose,
   popup = true,
@@ -37,6 +38,11 @@ export const OAuth2Button = ({
     baseUrl.searchParams.append("client_id", clientId);
     baseUrl.searchParams.append("redirect_uri", redirectUri);
     baseUrl.searchParams.append("scope", scope);
+
+    if (forceAuth) {
+      baseUrl.searchParams.append("force_authentication", "1");
+    }
+
     if (responseType) {
       baseUrl.searchParams.append("response_type", responseType);
     }

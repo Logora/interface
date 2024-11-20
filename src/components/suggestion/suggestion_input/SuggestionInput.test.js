@@ -9,7 +9,6 @@ import { ModalProvider } from '@logora/debate.dialog.modal';
 import { ListProvider } from '@logora/debate.list.list_provider';
 import { ToastProvider } from '@logora/debate.dialog.toast_provider';
 import { faker } from '@faker-js/faker';
-import { IdProvider } from "react-use-id-hook";
 import { BrowserRouter } from 'react-router-dom';
 import { InputProvider } from '@logora/debate.input.input_provider';
 import { SuggestionInput } from './SuggestionInput';
@@ -25,7 +24,7 @@ const currentUser = {
 const httpClient = {
     post: () => {
         return new Promise((resolve) => {
-            resolve({ data: { success: true, data: { } } });
+            resolve({ data: { success: true, data: {} } });
         });
     }
 };
@@ -42,11 +41,9 @@ const Providers = ({ children }) => (
                             <ToastProvider>
                                 <ModalProvider>
                                     <ListProvider>
-                                        <IdProvider>
-                                            <InputProvider>
+                                        <InputProvider>
                                             {children}
-                                            </InputProvider>
-                                        </IdProvider>
+                                        </InputProvider>
                                     </ListProvider>
                                 </ModalProvider>
                             </ToastProvider>
@@ -60,7 +57,7 @@ const Providers = ({ children }) => (
 
 const renderSuggestionInput = () => render(
     <Providers>
-        <SuggestionInput/>
+        <SuggestionInput />
     </Providers>
 );
 

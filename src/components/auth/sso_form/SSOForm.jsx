@@ -10,7 +10,7 @@ import cx from "classnames";
 import styles from "./SSOForm.module.scss";
 import PropTypes from "prop-types";
 
-export const SSOForm = ({ authType, providerName, loginUrl, signupUrl, termsUrl, logoUrl, clientId, oAuthRedirectUri, scope, redirectParameter = "logora_redirect", trackingParameter, trackingValue, hideActions = false, showEmailConsent = false, showTerms = false, error = false }) => {
+export const SSOForm = ({ authType, providerName, loginUrl, signupUrl, termsUrl, logoUrl, clientId, oAuthRedirectUri, scope, redirectParameter = "logora_redirect", trackingParameters = {}, hideActions = false, showEmailConsent = false, showTerms = false, error = false }) => {
 	const [emailConsent, setEmailConsent] = useSessionStorageState("logora:emailConsent", false);
 	const intl = useIntl();
 	const location = useLocation();
@@ -24,15 +24,14 @@ export const SSOForm = ({ authType, providerName, loginUrl, signupUrl, termsUrl,
 			if (redirectParameter) {
 				params.append(redirectParameter, window.location.toString());
 			}
-			if (trackingParameter && trackingValue && originalParams.get("utm_campaign")) {
-				const trackingId = trackingValue + originalParams.get("utm_campaign");
-				params.append(trackingParameter, encodeURIComponent(trackingId));
+			for (let [key, value] of Object.entries(trackingParameters)) {
+				const parsedValue = value.replace("{{UTM_CAMPAIGN}}", originalParams.get("utm_campaign"));
+				params.append(key, encodeURIComponent(parsedValue));
 			}
 			parsedUrl.search = params.toString();
 			return parsedUrl.toString();
-		} else {
-			return "";
 		}
+		return "";
 	}
 
 	const getOAuthDialogUrl = (url) => {
@@ -48,8 +47,16 @@ export const SSOForm = ({ authType, providerName, loginUrl, signupUrl, termsUrl,
 		return baseUrl.href;
 	};
 
-	const loginLink = authType == "oauth2_server" ? getOAuthDialogUrl(loginUrl) : getLinkWithRedirect(loginUrl);
-	const signupLink = authType == "oauth2_server" ? getOAuthDialogUrl(signupUrl) : getLinkWithRedirect(signupUrl);
+	const getAuthLink = (url) => {
+		if(authType === "oauth2_server") {
+			return getOAuthDialogUrl(url)
+		} else {
+			return getLinkWithRedirect(url)
+		}
+	}
+
+	const loginLink = getAuthLink(loginUrl);
+	const signupLink = getAuthLink(signupUrl);
 
 	return (
 		<div className={styles.ssoForm}>
@@ -158,10 +165,8 @@ SSOForm.propTypes = {
 	scope: PropTypes.string,
 	/** Name of the parameter passed in the URL that will contain the current page URL to redirect after authentication */
 	redirectParameter: PropTypes.string,
-	/** Custom parameter name to add to the auth URL */
-	trackingParameter: PropTypes.string,
-	/** Custom parameter value to add to the auth URL */
-	trackingValue: PropTypes.string,
+	/** Custom hash of parameters to add to the auth URL */
+	trackingParameters: PropTypes.object,
 	/** If `true`, will only show header and subtitle */
 	hideActions: PropTypes.bool,
 	/** If `true`, will show a toggle for email consent */

@@ -14,12 +14,12 @@ export const ReadMore = ({
     expandable = true,
     ...rest
 }) => {
-    const [expanded, setExpanded] = useState(false);
-    const contentRef = useRef(null);
+    const [isExpanded, setIsExpanded] = useState(false);
     const [showToggle, setShowToggle] = useState(false);
+    const contentRef = useRef(null);
 
     const formatContent = (content) => {
-        if (expanded) {
+        if (isExpanded) {
             return content.toString();
         } else if (content.length > charCount) {
             return content.replace(/[\n\r]/g, ' ').slice(0, charCount);
@@ -28,39 +28,44 @@ export const ReadMore = ({
     }
 
     const handleContentToggle = () => {
-        setExpanded(!expanded);
+        setIsExpanded(isExpanded => !isExpanded);
     }
 
     const lineClampingStyle = {
-        WebkitLineClamp: expanded ? 'unset' : lineCount,
-    }
+        display: '-webkit-box',
+        WebkitLineClamp: lineCount,
+        WebkitBoxOrient: 'vertical',
+        overflow: 'hidden',
+        textOverflow: 'ellipsis'
+    };
 
     useEffect(() => {
-        if (expandable) {
-            if(charCount) {
-                setShowToggle(content.length > charCount);
-            } else if (lineCount && contentRef.current) {
+        if (expandable && content) {
+            if (lineCount && contentRef.current) {
                 const element = contentRef.current;
-                setShowToggle(element.scrollHeight > element.clientHeight);
+                const { clientHeight, scrollHeight } = element;
+                setShowToggle(clientHeight !== scrollHeight);
             }
         }
-    }, [expandable, lineCount, charCount, content.length]);
+    }, [lineCount, content, contentRef]);
+
+    useEffect(() => {
+        if (expandable && content && charCount) {
+            setShowToggle(content.length > charCount);
+        }
+    }, [charCount, content]);
 
     return (
         <div className={styles.readMore}>
-            <span
+            <div
                 ref={contentRef}
-                className={lineCount ? styles.lineClamp : null}
-                style={lineCount ? lineClampingStyle : {}}
+                style={lineCount && !isExpanded ? lineClampingStyle : {}}
                 onClick={expandable ? handleContentToggle : undefined}
             >
                 {(!expandable || lineCount) ? content : formatContent(content)}
-            </span>
+            </div>
             {showToggle && (
-                <span className={styles.readMoreWrapper}>
-                    {!expanded && (
-                        <span className={styles.ellipsis}>...</span>
-                    )}
+                <div className={styles.readMoreWrapper}>
                     {to ? (
                         <Link
                             to={to}
@@ -75,10 +80,10 @@ export const ReadMore = ({
                             onClick={handleContentToggle}
                             {...rest}
                         >
-                            {expanded ? readLessText : readMoreText}
+                            {isExpanded ? readLessText : readMoreText}
                         </span>
                     )}
-                </span>
+                </div>
             )}
         </div>
     );
