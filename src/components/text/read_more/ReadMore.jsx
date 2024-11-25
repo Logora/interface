@@ -66,7 +66,9 @@ export const ReadMore = ({
             </div>
             {showToggle && (
                 <div className={styles.readMoreWrapper}>
-                    {to ? (
+                    {!isExpanded && (
+                        <span className={styles.ellipsis}>...</span>
+                    )}                    {to ? (
                         <Link
                             to={to}
                             className={cx(styles.readMoreElement, className)}
