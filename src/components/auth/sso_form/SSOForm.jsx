@@ -29,7 +29,7 @@ export const SSOForm = ({ authType, providerName, loginUrl, signupUrl, termsUrl,
 				if (parsedValue) {
 					const currentPath = location.pathname.slice(0, location.pathname.lastIndexOf('/'))
 					parsedValue = parsedValue.replace("{{UTM_CAMPAIGN}}", originalParams.get("utm_campaign"));
-					parsedValue = parsedValue.replace("{{CURRENT_PATH}}", currentPath)
+					parsedValue = parsedValue.replace("{{CURRENT_PATH}}", decodeURIComponent(currentPath))
 				}
 				params.append(key, encodeURIComponent(parsedValue));
 			}
