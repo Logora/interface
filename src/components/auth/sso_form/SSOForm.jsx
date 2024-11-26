@@ -25,9 +25,12 @@ export const SSOForm = ({ authType, providerName, loginUrl, signupUrl, termsUrl,
 				params.append(redirectParameter, window.location.toString());
 			}
 			for (let [key, value] of Object.entries(trackingParameters)) {
-				const currentPath = location.pathname.slice(0, location.pathname.lastIndexOf('/'))
-				let parsedValue = value.replace("{{UTM_CAMPAIGN}}", originalParams.get("utm_campaign"));
-				parsedValue = parsedValue.replace("{{CURRENT_PATH}}", currentPath)
+				let parsedValue = value
+				if (parsedValue) {
+					const currentPath = location.pathname.slice(0, location.pathname.lastIndexOf('/'))
+					parsedValue = parsedValue.replace("{{UTM_CAMPAIGN}}", originalParams.get("utm_campaign"));
+					parsedValue = parsedValue.replace("{{CURRENT_PATH}}", currentPath)
+				}
 				params.append(key, encodeURIComponent(parsedValue));
 			}
 			parsedUrl.search = params.toString();
@@ -42,15 +45,15 @@ export const SSOForm = ({ authType, providerName, loginUrl, signupUrl, termsUrl,
 		baseUrl.searchParams.append("redirect_uri", oAuthRedirectUri);
 		baseUrl.searchParams.append("scope", scope);
 		baseUrl.searchParams.append("response_type", "code");
-		if(typeof window !== 'undefined') {
+		if (typeof window !== 'undefined') {
 			baseUrl.searchParams.append("state", window.btoa(window.location.href));
 		}
-		
+
 		return baseUrl.href;
 	};
 
 	const getAuthLink = (url) => {
-		if(authType === "oauth2_server") {
+		if (authType === "oauth2_server") {
 			return getOAuthDialogUrl(url)
 		} else {
 			return getLinkWithRedirect(url)
@@ -62,21 +65,21 @@ export const SSOForm = ({ authType, providerName, loginUrl, signupUrl, termsUrl,
 
 	return (
 		<div className={styles.ssoForm}>
-            <div className={styles.logo}>
-				{ logoUrl ?
+			<div className={styles.logo}>
+				{logoUrl ?
 					<img height={100} width={100} className={styles.logoImage} src={logoUrl} alt={"Logo " + providerName} />
-				:
+					:
 					<Icon name="next" height={50} width={50} className={styles.loginIcon} />
 				}
-            </div>
-            <div className={styles.mainText}>
+			</div>
+			<div className={styles.mainText}>
 				<div className={styles.title}>
-					{ intl.formatMessage({ id: 'auth.sso_form.title', defaultMessage: "Debate now !" }) }
+					{intl.formatMessage({ id: 'auth.sso_form.title', defaultMessage: "Debate now !" })}
 					<br />
 				</div>
-				{ intl.formatMessage({ id: 'auth.sso_form.subtitle', defaultMessage: "Sign up right now and receive alerts by email." }, { provider: providerName }) }
+				{intl.formatMessage({ id: 'auth.sso_form.subtitle', defaultMessage: "Sign up right now and receive alerts by email." }, { provider: providerName })}
 			</div>
-			{ hideActions ? null :
+			{hideActions ? null :
 				<>
 					<Button
 						data-tid={"link_signup"}
@@ -86,10 +89,10 @@ export const SSOForm = ({ authType, providerName, loginUrl, signupUrl, termsUrl,
 						external
 						border={false}
 					>
-						{ intl.formatMessage({ id: 'auth.sso_form.signup', defaultMessage: 'Sign up' }) }
+						{intl.formatMessage({ id: 'auth.sso_form.signup', defaultMessage: 'Sign up' })}
 					</Button>
 					<div className={styles.cgu}>
-						{ intl.formatMessage({ id: 'auth.sso_form.already_account', defaultMessage: "Already have an account ?" }) }
+						{intl.formatMessage({ id: 'auth.sso_form.already_account', defaultMessage: "Already have an account ?" })}
 						<a
 							className={styles.signupButton}
 							role="link"
@@ -98,29 +101,29 @@ export const SSOForm = ({ authType, providerName, loginUrl, signupUrl, termsUrl,
 							rel='nofollow'
 							href={loginLink}
 						>
-							{ intl.formatMessage({ id: 'auth.sso_form.signin', defaultMessage: 'Sign in' }) }
+							{intl.formatMessage({ id: 'auth.sso_form.signin', defaultMessage: 'Sign in' })}
 						</a>
 					</div>
-					{ showEmailConsent ? (
+					{showEmailConsent ? (
 						<div className={cx(styles.switchBox)}>
-							<Toggle 
-								type={"checkbox"} 
-								name={"accepts_provider_email"} 
+							<Toggle
+								type={"checkbox"}
+								name={"accepts_provider_email"}
 								role="input"
 								style={{ fontSize: 18 }}
-								checked={emailConsent} 
-								label={ intl.formatMessage({ id: "auth.sso_form.consent_label", defaultMessage: "I agree to receive emails from the editor" }, { variable: providerName }) }
-								onInputChanged={(e) => setEmailConsent(!emailConsent)} 
+								checked={emailConsent}
+								label={intl.formatMessage({ id: "auth.sso_form.consent_label", defaultMessage: "I agree to receive emails from the editor" }, { variable: providerName })}
+								onInputChanged={(e) => setEmailConsent(!emailConsent)}
 								data-testid={"accepts-email-input"}
 							/>
 						</div>
 					) : null}
-					{ error ? (
+					{error ? (
 						<div className={styles.error}>
-							{ intl.formatMessage({ id: "auth.sso_form.error", defaultMessage: "An error occurred during sign in. Please try again in a few moments." }) }
+							{intl.formatMessage({ id: "auth.sso_form.error", defaultMessage: "An error occurred during sign in. Please try again in a few moments." })}
 						</div>
 					) : null}
-					{ showTerms &&
+					{showTerms &&
 						<>
 							<div className={styles.cguButton}>
 								<FormattedMessage
@@ -142,7 +145,7 @@ export const SSOForm = ({ authType, providerName, loginUrl, signupUrl, termsUrl,
 					}
 				</>
 			}
-        </div>
+		</div>
 	);
 }
 
