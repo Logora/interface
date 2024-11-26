@@ -25,7 +25,9 @@ export const SSOForm = ({ authType, providerName, loginUrl, signupUrl, termsUrl,
 				params.append(redirectParameter, window.location.toString());
 			}
 			for (let [key, value] of Object.entries(trackingParameters)) {
-				const parsedValue = value.replace("{{UTM_CAMPAIGN}}", originalParams.get("utm_campaign"));
+				const currentPath = location.pathname.slice(0, location.pathname.lastIndexOf('/'))
+				let parsedValue = value.replace("{{UTM_CAMPAIGN}}", originalParams.get("utm_campaign"));
+				parsedValue = parsedValue.replace("{{CURRENT_PATH}}", currentPath)
 				params.append(key, encodeURIComponent(parsedValue));
 			}
 			parsedUrl.search = params.toString();
