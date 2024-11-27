@@ -36,7 +36,7 @@ export const ReadMore = ({
         WebkitLineClamp: lineCount,
         WebkitBoxOrient: 'vertical',
         overflow: 'hidden',
-        textOverflow: 'ellipsis'
+        textOverflow: 'clip'
     };
 
     useEffect(() => {
