@@ -142,7 +142,7 @@ export const PaginatedList = ({
         } else {
             setIsLoading(false);
         }
-    }, [currentSort, currentFilters, currentQuery, resource, activeTagId]);
+    }, [currentSort, currentFilters, currentQuery, resource, activeTagId, perPage]);
 
     useEffect(() => {
         if (page > 1) {
