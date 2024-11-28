@@ -9,5 +9,6 @@
     @include media-breakpoint-down(sm) {
         margin-top: $modal-margin-top;
         margin-bottom: $modal-margin-bottom ;
+        @include mx(2, xs);
     }
 }
