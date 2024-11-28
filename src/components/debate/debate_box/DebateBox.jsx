@@ -41,7 +41,15 @@ export const DebateBox = ({ debate }) => {
             <div className={styles.debateBoxHeader}>
                 <div className={styles.debateBoxImageBox}>
                     <Link to={routes.debateShowLocation.toUrl({ debateSlug: debate.slug })} className={styles.imageLink}>
-                        <img data-tid={"view_debate_image"} loading={"lazy"} className={styles.debateBoxImage} src={debate.image_url} height={200} alt={debate?.image_alt ? debate.image_alt : intl.formatMessage({ id:"debate.debate_box.alt_debate_image", defaultMessage: "Debate image" }) } />
+                        <img 
+                            data-tid={"view_debate_image"} 
+                            loading={"lazy"} 
+                            className={styles.debateBoxImage} 
+                            src={debate.image_url} 
+                            height={200} 
+                            alt={debate?.image_alt ? debate.image_alt : intl.formatMessage({ id:"debate.debate_box.alt_debate_image", defaultMessage: "Debate image" }) }
+                            title={debate?.image_alt ? debate.image_alt : intl.formatMessage({ id:"debate.debate_box.alt_debate_image", defaultMessage: "Debate image" }) }
+                        />
                     </Link>
                     {debate.is_active === false &&
                         <div className={styles.inactiveDebate}>
