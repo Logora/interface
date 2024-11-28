@@ -4,9 +4,12 @@
 
 .toaster {
     font-family: $font-family;
-    margin-top: $modal-margin-top;
-    margin-bottom: $modal-margin-bottom ;
     z-index: 1000002 !important;
+
+    @media screen and (max-width:767px) {
+        margin-top: $modal-margin-top;
+        margin-bottom: $modal-margin-bottom ;
+    }
 
     @include media-breakpoint-down(sm) {
         @include m(2, xs);
