@@ -190,319 +190,119 @@ importers:
         specifier: ^5.9.5
         version: 5.14.9
 
-  src/components/action/back_link:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/action/back_link: {}
 
   src/components/action/button: {}
 
-  src/components/action/icon_text_link:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/action/icon_text_link: {}
 
-  src/components/action/link:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/action/link: {}
 
-  src/components/ad/ad_unit:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/ad/ad_unit: {}
 
-  src/components/ad/use_google_ad_manager:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/ad/use_google_ad_manager: {}
 
-  src/components/ad/with_ad:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/ad/with_ad: {}
 
-  src/components/argument/argument:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/argument/argument: {}
 
-  src/components/argument/top_arguments:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/argument/top_arguments: {}
 
   src/components/auth/auth_initializer: {}
 
   src/components/auth/auth_modal: {}
 
-  src/components/auth/facebook_login_button:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/auth/facebook_login_button: {}
 
-  src/components/auth/google_login_button:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/auth/google_login_button: {}
 
-  src/components/auth/login_form:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/auth/login_form: {}
 
-  src/components/auth/oauth2_button:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/auth/oauth2_button: {}
 
   src/components/auth/providers: {}
 
-  src/components/auth/signup_form:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/auth/signup_form: {}
 
-  src/components/auth/social_auth_form:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/auth/social_auth_form: {}
 
-  src/components/auth/sso_form:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/auth/sso_form: {}
 
-  src/components/auth/use_auth:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/auth/use_auth: {}
 
-  src/components/chart/line_chart:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/chart/line_chart: {}
 
-  src/components/chart/pie_chart:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/chart/pie_chart: {}
 
-  src/components/consultation/consultation_box:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/consultation/consultation_box: {}
 
   src/components/data/axios_client: {}
 
-  src/components/data/config_provider:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/data/config_provider: {}
 
-  src/components/data/data_provider:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/data/data_provider: {}
 
   src/components/debate/debate_box: {}
 
-  src/components/dialog/announcement_dialog:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/dialog/announcement_dialog: {}
 
-  src/components/dialog/confirm_modal:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/dialog/confirm_modal: {}
 
-  src/components/dialog/dialog_box:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/dialog/dialog_box: {}
 
-  src/components/dialog/drawer:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/dialog/drawer: {}
 
-  src/components/dialog/dropdown:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/dialog/dropdown: {}
 
-  src/components/dialog/modal:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/dialog/modal: {}
 
-  src/components/dialog/toast:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/dialog/toast: {}
 
-  src/components/dialog/toast_provider:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/dialog/toast_provider: {}
 
-  src/components/dialog/tooltip:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/dialog/tooltip: {}
 
-  src/components/embed/embed_header:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/embed/embed_header: {}
 
-  src/components/error/standard_error_boundary:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/error/standard_error_boundary: {}
 
-  src/components/follow/follow_button:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/follow/follow_button: {}
 
-  src/components/follow/use_follow:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/follow/use_follow: {}
 
   src/components/forms/form: {}
 
-  src/components/forms/use_form_validation:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/forms/use_form_validation: {}
 
-  src/components/gamification/badge_box:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/gamification/badge_box: {}
 
-  src/components/gamification/point_box:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/gamification/point_box: {}
 
-  src/components/hooks/use_auth_required:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/hooks/use_auth_required: {}
 
-  src/components/hooks/use_css_theme:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/hooks/use_css_theme: {}
 
-  src/components/hooks/use_font_loader:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/hooks/use_font_loader: {}
 
-  src/components/hooks/use_matomo:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/hooks/use_matomo: {}
 
-  src/components/hooks/use_relative_time:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/hooks/use_relative_time: {}
 
-  src/components/hooks/use_responsive:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/hooks/use_responsive: {}
 
-  src/components/icons/hero_icons:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/icons/hero_icons: {}
 
-  src/components/icons/icon:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/icons/icon: {}
 
-  src/components/icons/icon_provider:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/icons/icon_provider: {}
 
-  src/components/icons/regular_icons:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/icons/regular_icons: {}
 
-  src/components/icons/spiegel_icons:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/icons/spiegel_icons: {}
 
-  src/components/information/information_box:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/information/information_box: {}
 
-  src/components/input/argument_input:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/input/argument_input: {}
 
   src/components/input/checkbox/hidden: {}
 
@@ -510,173 +310,61 @@ importers:
 
   src/components/input/checkbox/label: {}
 
-  src/components/input/input_provider:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/input/input_provider: {}
 
-  src/components/input/search_input:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/input/search_input: {}
 
-  src/components/input/select:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/input/select: {}
 
-  src/components/input/text_editor:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/input/text_editor: {}
 
-  src/components/input/text_input:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/input/text_input: {}
 
-  src/components/input/toggle:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/input/toggle: {}
 
-  src/components/input/toggle_position:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/input/toggle_position: {}
 
-  src/components/intl/intl_provider:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/intl/intl_provider: {}
 
-  src/components/list/list_provider:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/list/list_provider: {}
 
-  src/components/list/paginated_list:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/list/paginated_list: {}
 
-  src/components/list/pagination:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/list/pagination: {}
 
-  src/components/modal/side_modal:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/modal/side_modal: {}
 
-  src/components/notification/notification_item:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/notification/notification_item: {}
 
-  src/components/notification/notification_menu:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/notification/notification_menu: {}
 
-  src/components/progress/loader:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/progress/loader: {}
 
-  src/components/progress/progress_bar:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/progress/progress_bar: {}
 
-  src/components/section/section_box:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/section/section_box: {}
 
-  src/components/section/section_header:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/section/section_header: {}
 
-  src/components/share/share_box:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/share/share_box: {}
 
-  src/components/share/share_button:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/share/share_button: {}
 
-  src/components/share/share_modal:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/share/share_modal: {}
 
-  src/components/skeleton/box_skeleton:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/skeleton/box_skeleton: {}
 
-  src/components/skeleton/user_content_skeleton:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/skeleton/user_content_skeleton: {}
 
-  src/components/source/context_source_box:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/source/context_source_box: {}
 
-  src/components/source/context_source_list:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/source/context_source_list: {}
 
-  src/components/source/source_box:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/source/source_box: {}
 
-  src/components/source/source_list_item:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/source/source_list_item: {}
 
-  src/components/source/source_modal:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/source/source_modal: {}
 
   src/components/styles/display: {}
 
@@ -688,135 +376,51 @@ importers:
 
   src/components/styles/theme: {}
 
-  src/components/suggestion/suggestion_banner:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/suggestion/suggestion_banner: {}
 
-  src/components/suggestion/suggestion_box:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/suggestion/suggestion_box: {}
 
-  src/components/suggestion/suggestion_input:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/suggestion/suggestion_input: {}
 
-  src/components/summary/argument_summary_box:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/summary/argument_summary_box: {}
 
-  src/components/summary/keyword_box:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/summary/keyword_box: {}
 
-  src/components/tag/tag:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/tag/tag: {}
 
-  src/components/text/expandable_text:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/text/expandable_text: {}
 
-  src/components/text/read_more:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/text/read_more: {}
 
   src/components/tools/hash_scroll: {}
 
-  src/components/tools/scroll_to_top:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/tools/scroll_to_top: {}
 
-  src/components/translation/translated_content:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/translation/translated_content: {}
 
-  src/components/translation/translation_button:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/translation/translation_button: {}
 
-  src/components/user/author_box:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/user/author_box: {}
 
   src/components/user/avatar: {}
 
-  src/components/user/avatar_selector:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/user/avatar_selector: {}
 
-  src/components/user/update_user_info_modal:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/user/update_user_info_modal: {}
 
-  src/components/user/user_box:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/user/user_box: {}
 
-  src/components/user/user_box_small:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/user/user_box_small: {}
 
-  src/components/user_content/content_footer:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/user_content/content_footer: {}
 
-  src/components/user_content/content_header:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/user_content/content_header: {}
 
-  src/components/user_content/summary_content_box:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/user_content/summary_content_box: {}
 
-  src/components/user_content/use_delete_content:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/user_content/use_delete_content: {}
 
-  src/components/user_content/use_report_content:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/user_content/use_report_content: {}
 
   src/components/util/lang_emojis:
     devDependencies:
@@ -828,41 +432,17 @@ importers:
 
   src/components/util/unique_by: {}
 
-  src/components/vote/suggestion_vote_box:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/vote/suggestion_vote_box: {}
 
-  src/components/vote/up_down_vote_box:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/vote/up_down_vote_box: {}
 
-  src/components/vote/use_vote:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/vote/use_vote: {}
 
-  src/components/vote/vote_box:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/vote/vote_box: {}
 
-  src/components/vote/vote_button:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/vote/vote_button: {}
 
-  src/components/vote/vote_provider:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/vote/vote_provider: {}
 
 packages:
 
@@ -3072,20 +2652,9 @@ packages:
     resolution: {integrity: sha512-pemlzrSESWbdAloYml3bAJMEfNh1Z7EduzqPKprCH5S341frlpYnUEW0H72dLxa6IsYr+mPno20GiSm+h9dEdQ==}
     engines: {node: '>=18'}
 
-  '@testing-library/dom@8.20.1':
-    resolution: {integrity: sha512-/DiOQ5xBxgdYRC8LNk7U+RWat0S3qRLeIw3ZIkMQ9kkVlRmwD/Eg8k8CqIpD6GW7u20JIUOfMKbxtiLutpjQ4g==}
-    engines: {node: '>=12'}
-
   '@testing-library/jest-dom@5.16.5':
     resolution: {integrity: sha512-N5ixQ2qKpi5OLYfwQmUb/5mSV9LneAcaUfp32pn4yCnpb8r/Yz0pXFPck21dIicKmi+ta5WRAknkZCfA8refMA==}
     engines: {node: '>=8', npm: '>=6', yarn: '>=1'}
-
-  '@testing-library/react@13.4.0':
-    resolution: {integrity: sha512-sXOGON+WNTh3MLE9rve97ftaZukN3oNf2KjDy7YTx6hcTO2uuLHuCGynMDhFwGw/jYf4OJ2Qk0i4i79qMNNkyw==}
-    engines: {node: '>=12'}
-    peerDependencies:
-      react: ^18.0.0
-      react-dom: ^18.0.0
 
   '@testing-library/react@16.0.1':
     resolution: {integrity: sha512-dSmwJVtJXmku+iocRhWOUFbrERC76TX2Mnf0ATODz8brzAZrMBbzLwQixlBSanZxR6LddK3eiwpSFZgDET1URg==}
@@ -3677,9 +3246,6 @@ packages:
   args@5.0.3:
     resolution: {integrity: sha512-h6k/zfFgusnv3i5TU08KQkVKuCPBtL/PWQbWkHUxvJrZ2nAyeaUupneemcrgn1xmqxPQsPIzwkUhOpoqPDRZuA==}
     engines: {node: '>= 6.0.0'}
-
-  aria-query@5.1.3:
-    resolution: {integrity: sha512-R5iJ5lkuHybztUfuOAznmboyjWq8O6sqNqtK7CLOqdydi54VNbORp49mb14KbWgG1QD3JFO9hJdZ+y4KutfdOQ==}
 
   aria-query@5.3.0:
     resolution: {integrity: sha512-b0P0sZPKtyu8HkeRAfCq0IfURZK+SuwMjY1UXGBU27wpAiTwQAIlq56IbIO+ytk/JjS1fMR14ee5WBBfKi5J6A==}
@@ -4511,10 +4077,6 @@ packages:
       babel-plugin-macros:
         optional: true
 
-  deep-equal@2.2.3:
-    resolution: {integrity: sha512-ZIwpnevOurS8bpT4192sqAowWM76JDKSHYzMLty3BZGSswgq6pBaH3DhCSW5xVAZICZyKdOBPjwww5wfgT/6PA==}
-    engines: {node: '>= 0.4'}
-
   deep-is@0.1.4:
     resolution: {integrity: sha512-oIPzksmTg4/MriiaYGO+okXDT7ztn/w3Eptv/+gSIdMdKsJo0u4CfYNFJPy+4SKMuCqGw2wxnA+URMg3t8a/bQ==}
 
@@ -4737,9 +4299,6 @@ packages:
   es-errors@1.3.0:
     resolution: {integrity: sha512-Zf5H2Kxt2xjTvbJvP2ZWLEICxA6j+hAmMzIlypy4xcBg1vKVnx89Wy0GbS+kf5cwCVFFzdCFh2XSCFNULS6csw==}
     engines: {node: '>= 0.4'}
-
-  es-get-iterator@1.1.3:
-    resolution: {integrity: sha512-sPZmqHBe6JIiTfN5q2pEi//TwxmAFHwj/XEuYjTuse78i8KxaqMTTzxPoFKuzRpDpTJ+0NAbpfenkmH2rePtuw==}
 
   es-iterator-helpers@1.2.0:
     resolution: {integrity: sha512-tpxqxncxnpw3c93u8n3VOzACmRFoVmWJqbWXvX/JfKbkhBw1oslgPrUfeSt2psuqyEJFD6N/9lg5i7bsKpoq+Q==}
@@ -8194,10 +7753,6 @@ packages:
   statuses@2.0.1:
     resolution: {integrity: sha512-RwNA9Z/7PrK06rYLIzFMlaF+l73iwpzsqRIFgbMLbTcLD6cOao82TaWefPXQvB2fOC4AjuYSEndS7N/mTCbkdQ==}
     engines: {node: '>= 0.8'}
-
-  stop-iteration-iterator@1.0.0:
-    resolution: {integrity: sha512-iCGQj+0l0HOdZ2AEeBADlsRC+vsnDsZsbdSiH1yNSjcfKM7fdpCMfqAL/dwF5BLiw/XhRft/Wax6zQbhq2BcjQ==}
-    engines: {node: '>= 0.4'}
 
   stream-browserify@3.0.0:
     resolution: {integrity: sha512-H73RAHsVBapbim0tU2JwwOiXUj+fikfiaoYAKHF3VJfA0pe2BCzkhAHBlLG6REzE+2WNZcxOXjK7lkso+9euLA==}
@@ -13102,17 +12657,6 @@ snapshots:
       lz-string: 1.5.0
       pretty-format: 27.5.1
 
-  '@testing-library/dom@8.20.1':
-    dependencies:
-      '@babel/code-frame': 7.24.7
-      '@babel/runtime': 7.20.0
-      '@types/aria-query': 5.0.4
-      aria-query: 5.1.3
-      chalk: 4.1.2
-      dom-accessibility-api: 0.5.16
-      lz-string: 1.5.0
-      pretty-format: 27.5.1
-
   '@testing-library/jest-dom@5.16.5':
     dependencies:
       '@adobe/css-tools': 4.4.1
@@ -13124,14 +12668,6 @@ snapshots:
       dom-accessibility-api: 0.5.16
       lodash: 4.17.21
       redent: 3.0.0
-
-  '@testing-library/react@13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
-    dependencies:
-      '@babel/runtime': 7.25.4
-      '@testing-library/dom': 8.20.1
-      '@types/react-dom': 18.3.0
-      react: 18.3.1
-      react-dom: 18.3.1(react@18.3.1)
 
   '@testing-library/react@16.0.1(@testing-library/dom@10.4.0)(@types/react-dom@18.3.0)(@types/react@18.3.4)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
@@ -13847,10 +13383,6 @@ snapshots:
       chalk: 2.4.2
       leven: 2.1.0
       mri: 1.1.4
-
-  aria-query@5.1.3:
-    dependencies:
-      deep-equal: 2.2.3
 
   aria-query@5.3.0:
     dependencies:
@@ -14854,27 +14386,6 @@ snapshots:
 
   dedent@1.5.3: {}
 
-  deep-equal@2.2.3:
-    dependencies:
-      array-buffer-byte-length: 1.0.1
-      call-bind: 1.0.7
-      es-get-iterator: 1.1.3
-      get-intrinsic: 1.2.4
-      is-arguments: 1.1.1
-      is-array-buffer: 3.0.4
-      is-date-object: 1.0.5
-      is-regex: 1.1.4
-      is-shared-array-buffer: 1.0.3
-      isarray: 2.0.5
-      object-is: 1.1.6
-      object-keys: 1.1.1
-      object.assign: 4.1.5
-      regexp.prototype.flags: 1.5.2
-      side-channel: 1.0.6
-      which-boxed-primitive: 1.0.2
-      which-collection: 1.0.2
-      which-typed-array: 1.1.15
-
   deep-is@0.1.4: {}
 
   deepmerge@4.3.1: {}
@@ -15127,18 +14638,6 @@ snapshots:
       get-intrinsic: 1.2.4
 
   es-errors@1.3.0: {}
-
-  es-get-iterator@1.1.3:
-    dependencies:
-      call-bind: 1.0.7
-      get-intrinsic: 1.2.4
-      has-symbols: 1.0.3
-      is-arguments: 1.1.1
-      is-map: 2.0.3
-      is-set: 2.0.3
-      is-string: 1.0.7
-      isarray: 2.0.5
-      stop-iteration-iterator: 1.0.0
 
   es-iterator-helpers@1.2.0:
     dependencies:
@@ -19414,10 +18913,6 @@ snapshots:
   statuses@1.5.0: {}
 
   statuses@2.0.1: {}
-
-  stop-iteration-iterator@1.0.0:
-    dependencies:
-      internal-slot: 1.0.7
 
   stream-browserify@3.0.0:
     dependencies:
