@@ -162,7 +162,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupTyp
 										)}
 									</>
 								}
-								lineCount={5}
+								lineCount={6}
 								readMoreText={intl.formatMessage({ id: "action.read_more", defaultMessage: "Read more" })}
 								readLessText={intl.formatMessage({ id: "action.read_less", defaultMessage: "Read less" })}
 								expandable={expandable}
