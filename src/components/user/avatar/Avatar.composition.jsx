@@ -4,7 +4,6 @@ import { IntlProvider } from 'react-intl';
 import { faker } from '@faker-js/faker';
 
 const avatarUrl = faker.image.avatar();
-const defaultAvatarUrl = faker.image.avatar();
 const userName = faker.name.fullName();
 
 export const DefaultAvatar = () => {

@@ -10,14 +10,12 @@ const messages = {
 };
 
 const defaultUrls = {
-    avatarUrl: faker.image.avatar(),
-    defaultAvatarUrl: faker.image.avatar(),
+    avatarUrl: faker.image.avatar()
 }
 
 describe('Avatar', () => {
     const defaultProps = {
         avatarUrl: defaultUrls.avatarUrl,
-        defaultAvatarUrl: defaultUrls.defaultAvatarUrl,
         userName: 'John',
         isOnline: true,
         className: 'custom-class',
@@ -40,7 +38,7 @@ describe('Avatar', () => {
     });
 
     it('renders default avatar picture if avatarUrl is empty', () => {
-        const props = { userName: "John", className: "avatar-class", avatarUrl: null, defaultAvatarUrl: null };
+        const props = { userName: "John", className: "avatar-class", avatarUrl: null };
         render(
           <IntlProvider locale="en" messages={messages}>
             <Avatar {...props} />
