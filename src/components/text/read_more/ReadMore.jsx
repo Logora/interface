@@ -53,7 +53,7 @@ export const ReadMore = ({
         if (expandable && content && charCount) {
             setShowToggle(content.length > charCount);
         }
-    }, [expandable, charCount, content]);
+    }, [charCount, content]);
 
     return (
         <div className={styles.readMore}>
