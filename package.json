@@ -40,7 +40,7 @@
     "classnames": "^2.5.1",
     "core-js": "^3.37.1",
     "draftjs-to-html": "^0.9.1",
-    "flat": "^6.0.1",
+    "flat": "^5.0.2",
     "lexical": "^0.16.1",
     "path-to-regexp": "^6.2.2",
     "prop-types": "^15.8.1",

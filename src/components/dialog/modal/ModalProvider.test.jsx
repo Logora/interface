@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, waitFor } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { ModalProvider } from './ModalProvider';
 import { useModal } from './useModal';
@@ -27,17 +27,13 @@ describe('ModalProvider', () => {
 		expect(modalApp.getByText(/open modal/i)).toBeTruthy()
 		expect(modalApp.queryByTestId("modal")).toBeNull()
 
-		userEvent.click(modalApp.getByText('open modal'))
+		await userEvent.click(modalApp.getByText('open modal'))
 
-		await waitFor(() => {
-			expect(modalApp.queryByTestId("modal")).toBeTruthy()
-			expect(modalApp.getByText(/close modal/i)).toBeTruthy()
-		});
+		expect(modalApp.queryByTestId("modal")).toBeTruthy()
+		expect(modalApp.getByText(/close modal/i)).toBeTruthy()
 
-		userEvent.click(modalApp.getByText('close modal'))
+		await userEvent.click(modalApp.getByText('close modal'))
 
-		await waitFor(() => {
-			expect(modalApp.queryByText(/my modal/i)).toBeNull()
-		});
+		expect(modalApp.queryByText(/my modal/i)).toBeNull()
 	});
 });
