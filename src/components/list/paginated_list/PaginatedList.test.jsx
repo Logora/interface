@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen, waitFor, act } from "@testing-library/react";
+import { render, screen, act } from "@testing-library/react";
 import { IntlProvider } from "react-intl";
 import { ConfigProvider } from "@logora/debate.data.config_provider";
 import { ModalProvider } from "@logora/debate.dialog.modal";
