@@ -11,7 +11,12 @@
   },
   "teambit.dependencies/dependency-resolver": {
     "packageManager": "teambit.dependencies/pnpm",
-    "linkCoreAspects": true
+    "linkCoreAspects": true,
+    "policy": {
+      "dependencies": {
+        "@testing-library/react": "^16.0.1"
+      }
+    }
   },
   "teambit.preview/preview": {
     "bundlingStrategy": "component"
