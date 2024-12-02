@@ -93,7 +93,7 @@ export const ContentFooter = ({ resource,
                         data-testid="action-reply-button"
                     >
                         <Icon name="reply" data-tid={"action_reply_argument"} height={17} width={17} />
-                        { !(isMobile && elementWidth < 375) && <span className={styles.replyText}>{intl.formatMessage({ id:"user_content.content_footer.reply", defaultMessage: "Reply" })}</span> }
+                       <span className={styles.replyText}>{intl.formatMessage({ id:"user_content.content_footer.reply", defaultMessage: "Reply" })}</span> 
                     </div>
                 </div>
             }
@@ -104,7 +104,7 @@ export const ContentFooter = ({ resource,
                     shareText={shareText}
                     showShareCode={showShareCode}
                     shareCode={shareCode}
-                    showText={!(isMobile && elementWidth < 375) && showShareText}
+                    showText={showShareText}
                     iconSize={17}
                 />
             }
