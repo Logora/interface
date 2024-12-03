@@ -826,7 +826,21 @@
         "scope": "logora.debate",
         "version": "0.0.9",
         "mainFile": "index.js",
-        "rootDir": "src/components/util/lang_emojis"
+        "rootDir": "src/components/util/lang_emojis",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "devDependencies": {
+                        "@testing-library/react": "^13.4.0",
+                        "@testing-library/dom": "^10.4.0"
+                    },
+                    "dependencies": {
+                        "@types/jest": "-",
+                        "@types/node": "-"
+                    }
+                }
+            }
+        }
     },
     "util/location": {
         "name": "util/location",
