@@ -17,6 +17,8 @@ dist
 .env
 .env.test
 
+.vscode/
+
 
 # bit directories
 .bit/
