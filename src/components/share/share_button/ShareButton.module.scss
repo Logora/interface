@@ -66,9 +66,3 @@
 .shareButtonText {
   @include pl(1, xs);
 }
-
-@media (max-width: 375px) {
-  .shareButtonText {
-      display: none;
-  }
-}
