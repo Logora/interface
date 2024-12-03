@@ -11,7 +11,7 @@
   },
   "teambit.dependencies/dependency-resolver": {
     "packageManager": "teambit.dependencies/pnpm",
-    "linkCoreAspects": false
+    "linkCoreAspects": true
   },
   "teambit.preview/preview": {
     "bundlingStrategy": "component"
