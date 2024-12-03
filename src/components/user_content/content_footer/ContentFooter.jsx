@@ -46,7 +46,7 @@ export const ContentFooter = ({ resource,
 	const { setInputContent } = useInput() || {};
 	const { reportContent } = useReportContent(reportType, resource.id);
 	const { deleteContent } = useDeleteContent(resource, deleteType, deleteListId, softDelete);
-    const { isMobile, elementWidth } = useResponsive();
+    const { isTablet, elementWidth } = useResponsive();
 
 	const currentUserIsAuthor = () => {
 		return resource.author.id === currentUser.id;
@@ -93,8 +93,8 @@ export const ContentFooter = ({ resource,
                         data-testid="action-reply-button"
                     >
                         <Icon name="reply" data-tid={"action_reply_argument"} height={17} width={17} />
-                       <span className={styles.replyText}>{intl.formatMessage({ id:"user_content.content_footer.reply", defaultMessage: "Reply" })}</span> 
-                    </div>
+                        { !(isTablet && elementWidth < 768) && <span className={styles.replyText}>{intl.formatMessage({ id:"user_content.content_footer.reply", defaultMessage: "Reply" })}</span> }                 
+                         </div>
                 </div>
             }
             { showShareButton && 
@@ -104,7 +104,7 @@ export const ContentFooter = ({ resource,
                     shareText={shareText}
                     showShareCode={showShareCode}
                     shareCode={shareCode}
-                    showText={showShareText}
+                    showText={!(isTablet && elementWidth < 768) && showShareText}
                     iconSize={17}
                 />
             }
