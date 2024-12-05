@@ -21,6 +21,11 @@ export const SSOForm = ({ authType, providerName, loginUrl, signupUrl, termsUrl,
 			let parsedUrl = new URL(redirectUrl, window.location.origin);
 			let params = parsedUrl.searchParams;
 			let originalParams = new URLSearchParams(location.search);
+			
+			if (params.has('code')) {
+				params.delete('code');
+			}
+			
 			if (redirectParameter) {
 				params.append(redirectParameter, window.location.toString());
 			}
