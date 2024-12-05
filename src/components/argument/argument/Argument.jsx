@@ -166,6 +166,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupTyp
 								readMoreText={intl.formatMessage({ id: "action.read_more", defaultMessage: "Read more" })}
 								readLessText={intl.formatMessage({ id: "action.read_less", defaultMessage: "Read less" })}
 								expandable={expandable}
+								readMoreClassName={argument.is_reply ? styles.replyStyle : styles.argumentStyle} 
 							/>
 							}
 						</div>

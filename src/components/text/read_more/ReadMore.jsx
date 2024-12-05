@@ -12,6 +12,7 @@ export const ReadMore = ({
     readMoreText,
     readLessText,
     expandable = true,
+    readMoreClassName,
     ...rest
 }) => {
     const [isExpanded, setIsExpanded] = useState(false);
@@ -66,7 +67,7 @@ export const ReadMore = ({
             </div>
             {showToggle && (
                 <>
-                    <div className={styles.readMoreWrapper}>
+                    <div className={cx(styles.readMoreWrapper, readMoreClassName)}>
                         {!isExpanded && (
                             <span className={styles.ellipsis}>...</span>
                         )}
