@@ -33,20 +33,25 @@
 	border-bottom-right-radius: $box-border-radius;
 	border-left: 6px solid;
 	border-left-color: $text-secondary !important;
+
 	&.position-1 {
 		border-left-color: $for-primary !important;
 	}
+
 	&.position-2 {
 		border-left-color: $against-primary !important;
 	}
+
 	&.position-3 {
 		border-left-color: $third-position-color-primary !important;
 	}
+
 	@for $i from 1 through 5 {
 		&.level-#{$i} {
 			margin-left: #{$i}em !important;
 		}
 	}
+
 	&::before {
 		content: "";
 		border-left: 4px solid $text-secondary;
@@ -56,6 +61,7 @@
 		top: -10px;
 		left: 2em;
 	}
+
 	@include media-breakpoint-down(xs) {
 		border-left: 4px solid;
 	}
@@ -68,12 +74,15 @@
 	transition: box-shadow 0.8s ease-in-out;
 	box-shadow: -4px 4px 15px 3px rgba(0, 0, 0, 0.15);
 }
+
 .position-1.flash {
 	border-color: $for-primary;
 }
+
 .position-2.flash {
 	border-color: $against-primary;
 }
+
 .position-3.flash {
 	border-color: $third-position-color-primary;
 	@include mt(2, xs);
@@ -93,6 +102,7 @@
 	height: 100px;
 	overflow: hidden;
 	position: relative;
+
 	&:after {
 		content: "";
 		position: absolute;
@@ -110,6 +120,7 @@
 .argumentContent {
 	line-height: $line-height-loose;
 	overflow-wrap: break-word;
+
 	& * {
 		font-size: $font-size-normal;
 	}
@@ -148,11 +159,13 @@
 	cursor: pointer;
 	overflow: hidden;
 	white-space: nowrap;
+
 	span {
 		@include pl(1, xs);
 		cursor: pointer;
 		text-decoration: underline;
 	}
+
 	svg {
 		padding: 2px 0 0 2px;
 		fill: $text-secondary;
@@ -166,33 +179,50 @@
 .headerPosition-0 {
 	background-color: $call-primary !important;
 }
+
 .headerPosition-1 {
 	background-color: $for-primary !important;
 }
+
 .headerPosition-2 {
 	background-color: $against-primary !important;
 }
+
 .headerPosition-3 {
 	background-color: $third-position-color-primary !important;
 }
 
 .voteButtonPosition-1 {
-    color: $for-primary !important;
-    & svg {
-      fill: $for-primary !important;
-    }
+	color: $for-primary !important;
+
+	& svg {
+		fill: $for-primary !important;
+	}
 }
 
 .voteButtonPosition-2 {
-    color: $against-primary !important;
-    & svg {
-      fill: $against-primary !important;
-    }
+	color: $against-primary !important;
+
+	& svg {
+		fill: $against-primary !important;
+	}
 }
 
 .voteButtonPosition-3 {
-    color: $third-position-color-primary !important;
-    & svg {
-      fill: $third-position-color-primary !important;
-    }
+	color: $third-position-color-primary !important;
+
+	& svg {
+		fill: $third-position-color-primary !important;
+	}
+}
+
+
+@media (prefers-color-scheme: dark) {
+	.replyStyle {
+		background-color: $text-tertiary;
+	}
+
+	.argumentStyle {
+		background-color: $background-color-primary;
+	}
 }
