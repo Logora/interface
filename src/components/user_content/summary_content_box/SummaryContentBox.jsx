@@ -28,7 +28,7 @@ export const SummaryContentBox = ({ author, tag, date, title = '', content, link
                             { translatedTitle.translatedContent }
                         </div>
                     }
-                    <ReadMore charCount
+                    <ReadMore 
                         content={translatedContent.translatedContent}
                         lineCount={2}
                         to={link} 
