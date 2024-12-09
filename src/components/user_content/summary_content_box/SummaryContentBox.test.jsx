@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { IntlProvider } from 'react-intl';
 import { ConfigProvider } from '@logora/debate.data.config_provider';
 import { BrowserRouter } from 'react-router-dom';
@@ -63,7 +63,7 @@ describe('SummaryContentBox', () => {
         expect(getByText("52 points")).toBeInTheDocument();
         expect(getByText(argument.content.slice(0, 50), { exact: false })).toBeInTheDocument();
         expect(queryByText(argument.title)).not.toBeInTheDocument();
-        const readMoreLink = getByText("Read more").parentElement;
+        const readMoreLink = screen.getByText("Read more").parentElement;
         expect(readMoreLink.href).toBe(debateUrl);
     });
 
