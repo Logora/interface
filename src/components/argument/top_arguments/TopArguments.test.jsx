@@ -7,9 +7,9 @@ import { TopArgumentsWithEmptyArgument } from './TopArguments.composition';
 
 describe('TopArguments', () => {
     it ('renders TopArguments component', () => {  
-        const { getByText } = render(<DefaultTopArguments />);
-        expect(getByText('Read 5 arguments "For"')).toBeInTheDocument();
-        expect(getByText('Read 3 arguments "Against"')).toBeInTheDocument();
+        const { container } = render(<DefaultTopArguments />);
+        expect(screen.queryByText('Read 5 arguments "For"')).toBeInTheDocument();
+        expect(screen.queryByText('Read 3 arguments "Against"')).toBeInTheDocument();
     });
 
     it ('renders correct arguments', () => {  
@@ -18,8 +18,8 @@ describe('TopArguments', () => {
         const topArguments = container.getElementsByClassName('topArgument');
         expect(topArguments.length).toBe(2);
 
-        expect(screen.getByText("An argument to support the 'For' position")).toBeInTheDocument();
-        expect(screen.getByText("An argument to support the 'Against' position")).toBeInTheDocument();
+        expect(screen.queryByText("An argument to support the 'For' position")).toBeInTheDocument();
+        expect(screen.queryByText("An argument to support the 'Against' position")).toBeInTheDocument();
     });
 
     it ('renders the argument with the highest score when new design is true', () => {  
