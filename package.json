@@ -30,7 +30,7 @@
   "homepage": "https://github.com/Logora/interface#readme",
   "dependencies": {
     "@lexical/headless": "^0.16.1",
-    "@lexical/html": "^0.16.1",
+    "@lexical/html": "^0.21.0",
     "@lexical/react": "^0.16.1",
     "@rooks/use-previous": "^4.11.2",
     "@rooks/use-sessionstorage-state": "^4.11.2",
