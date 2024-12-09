@@ -23,7 +23,7 @@ export const ReadMore = ({
         if (isExpanded) {
             return content.toString();
         } else if (content.length > charCount) {
-            return `${content.replace(/[\n\r]/g, ' ').slice(0, charCount)}...`;
+            return `${content.replace(/[\n\r]/g, ' ').slice(0, charCount)}`;
         }
         return content;
     }
