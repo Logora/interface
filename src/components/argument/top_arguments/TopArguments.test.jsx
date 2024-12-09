@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, getByTestId } from '@testing-library/react';
 import { DefaultTopArguments } from './TopArguments.composition';
 import { TopArgumentsNewDesign } from './TopArguments.composition';
 import { TopArgumentsNewDesignWithEmptyArgument } from './TopArguments.composition';
@@ -15,8 +15,8 @@ describe('TopArguments', () => {
     it ('renders correct arguments', () => {  
         const { container } = render(<DefaultTopArguments />);
 
-        const topArguments = container.getElementsByClassName('topArgument');
-        expect(topArguments.length).toBe(2);
+        const topArguments = screen.getByTestId('topArgumentsContainer');
+        expect(topArguments.childNodes.length).toBe(2);
 
         expect(screen.queryByText("An argument to support the 'For' position")).toBeInTheDocument();
         expect(screen.queryByText("An argument to support the 'Against' position")).toBeInTheDocument();

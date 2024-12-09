@@ -56,13 +56,13 @@ export const TopArguments = ({ argumentFor, argumentAgainst, debateUrl, argument
     return (
         <>
             { (config.synthesis.newDesign !== false) || (isMobile && config.synthesis.onlyShowTopArgument === true) ? 
-                <div className={styles.topArgumentsUnique}>
+                <div className={styles.topArgumentsUnique} data-testid={"topArgumentsContainerUnique"}>
                     <div className={styles.topArgument}>
                         { displayArgument(topArgument, topArgument === argumentAgainst ? 1 : 0, true) }
                     </div>
                 </div>
             :
-                <div className={styles.topArguments}>
+                <div className={styles.topArguments} data-testid={"topArgumentsContainer"}>
                     <div className={styles.topArgument}>
                         { displayArgument(argumentFor, 0, false) }
                     </div>
