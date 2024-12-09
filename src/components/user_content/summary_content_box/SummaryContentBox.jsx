@@ -30,7 +30,7 @@ export const SummaryContentBox = ({ author, tag, date, title = '', content, link
                     }
                     <ReadMore 
                         content={translatedContent.translatedContent}
-                        lineCount={2}
+                        charCount={200}
                         to={link} 
                         data-tid={"link_argument_read_more"}
                         target="_top"
@@ -41,6 +41,7 @@ export const SummaryContentBox = ({ author, tag, date, title = '', content, link
                                 <Icon name="arrow" height={25} width={25} className={styles.arrow} />
                             </div>
                         }
+                        readMoreClassName={styles.readMoreClass}
                     />
                 </div>
                 { showFooter &&
