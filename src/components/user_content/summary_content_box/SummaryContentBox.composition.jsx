@@ -23,7 +23,7 @@ const argument = {
   id: 43,
   author: author,
   created_at: faker.date.recent(),
-  content: faker.lorem.sentences(5),
+  content: faker.lorem.sentences(8),
   position: {
     name: faker.lorem.word()
   }
