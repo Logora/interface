@@ -35,6 +35,7 @@ export const SummaryContentBox = ({ author, tag, date, title = '', content, link
                         data-tid={"link_argument_read_more"}
                         target="_top"
                         external
+                        expandable={true}
                         readMoreText={
                             <div className={styles.readMore}>
                                 <FormattedMessage id="user_content.summary_content_box.read_more" defaultMessage={"Read more"} />

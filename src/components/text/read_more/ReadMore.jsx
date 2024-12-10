@@ -22,7 +22,7 @@ export const ReadMore = ({
     const formatContent = (content) => {
         if (isExpanded) {
             return content.toString();
-        } else if (content.length > charCount) {
+        } else if (content.toString().length > charCount) {
             return `${content.replace(/[\n\r]/g, ' ').slice(0, charCount)}`;
         }
         return content;
@@ -52,7 +52,7 @@ export const ReadMore = ({
 
     useEffect(() => {
         if (expandable && content && charCount) {
-            setShowToggle(content.length > charCount);
+            setShowToggle(content.toString().length > charCount);
         }
     }, [charCount, content]);
 
