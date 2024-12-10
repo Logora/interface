@@ -42,7 +42,6 @@ export const SummaryContentBox = ({ author, tag, date, title = '', content, link
                                 <Icon name="arrow" height={25} width={25} className={styles.arrow} />
                             </div>
                         }
-                        readMoreClassName={styles.readMoreClass}
                     />
                 </div>
                 { showFooter &&
