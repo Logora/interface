@@ -16,13 +16,13 @@ export const ReadMore = ({
     ...rest
 }) => {
     const [isExpanded, setIsExpanded] = useState(false);
-    const [showToggle, setShowToggle] = useState(false);
+    const [showToggle, setShowToggle] = useState((expandable && content && charCount) ? content.length > charCount : false);
     const contentRef = useRef(null);
 
     const formatContent = (content) => {
         if (isExpanded) {
             return content.toString();
-        } else if (content.toString().length > charCount) {
+        } else if (content.length > charCount) {
             return `${content.replace(/[\n\r]/g, ' ').slice(0, charCount)}`;
         }
         return content;
@@ -49,12 +49,6 @@ export const ReadMore = ({
             }
         }
     }, [lineCount, content, contentRef]);
-
-    useEffect(() => {
-        if (expandable && content && charCount) {
-            setShowToggle(content.toString().length > charCount);
-        }
-    }, [charCount, content]);
 
     return (
         <div className={styles.readMore}>
