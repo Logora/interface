@@ -51,7 +51,7 @@ export const ReadMore = ({
     }, [lineCount, content, contentRef]);
 
     return (
-        <div className={styles.readMore}>
+        <div className={cx(styles.readMore, { [styles.pointer]: showToggle })}>
             <div
                 ref={contentRef}
                 style={lineCount && !isExpanded ? lineClampingStyle : {}}
