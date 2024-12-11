@@ -25,7 +25,7 @@ export const useAuthActions = (httpClient, authUrl, tokenKey) => {
 
     const fetchUser = () => {
         api.getOneWithToken('me', '').then(response => {
-            if(response.data.success) {
+            if (response.data.success) {
                 const currentUser = response.data.data.resource;
                 setCurrentUser(currentUser);
                 setIsLoggedIn(true);
@@ -35,14 +35,20 @@ export const useAuthActions = (httpClient, authUrl, tokenKey) => {
                 setAuthError(true);
                 setIsLoggedIn(false);
                 setIsLoggingIn(false);
+                setCurrentUser({});
+                removeToken();
             }
         }).catch(error => {
             setAuthError(true);
+            setIsLoggedIn(false);
+            setIsLoggingIn(false);
+            setCurrentUser({});
+            removeToken();
         });
     }
 
     const dispatchLoginEvent = (currentUser) => {
-        if(typeof window !== "undefined") {
+        if (typeof window !== "undefined") {
             window.dispatchEvent(
                 new CustomEvent("logora:authentication:success", {
                     detail: {
@@ -54,7 +60,7 @@ export const useAuthActions = (httpClient, authUrl, tokenKey) => {
     }
 
     const dispatchLogoutEvent = () => {
-        if(typeof window !== "undefined") {
+        if (typeof window !== "undefined") {
             window.dispatchEvent(
                 new CustomEvent("logora:authentication:logout")
             );
