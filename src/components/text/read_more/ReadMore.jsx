@@ -59,7 +59,7 @@ export const ReadMore = ({
             >
                 {(!expandable || lineCount) ? content : formatContent(content)}
             </div>
-            {showToggle && content?.length > 0 && (
+            {showToggle && (
                 <>
                     <div className={cx(styles.readMoreWrapper, readMoreClassName)}>
                         {!isExpanded && (
