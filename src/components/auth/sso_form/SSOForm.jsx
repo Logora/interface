@@ -21,11 +21,11 @@ export const SSOForm = ({ authType, providerName, loginUrl, signupUrl, termsUrl,
 			let parsedUrl = new URL(redirectUrl, window.location.origin);
 			let params = parsedUrl.searchParams;
 			let originalParams = new URLSearchParams(location.search);
-			
+
 			if (params.has('code')) {
 				params.delete('code');
 			}
-			
+
 			if (redirectParameter) {
 				params.append(redirectParameter, window.location.toString());
 			}
@@ -51,11 +51,13 @@ export const SSOForm = ({ authType, providerName, loginUrl, signupUrl, termsUrl,
 		baseUrl.searchParams.append("scope", scope);
 		baseUrl.searchParams.append("response_type", "code");
 		if (typeof window !== 'undefined') {
-			baseUrl.searchParams.append("state", window.btoa(window.location.href));
+			let parsedUrl = new URL(window.location.href);
+			parsedUrl.searchParams.delete("code");
+			baseUrl.searchParams.append("state", window.btoa(parsedUrl.toString()));
 		}
 
 		return baseUrl.href;
-	};
+	}
 
 	const getAuthLink = (url) => {
 		if (authType === "oauth2_server") {
