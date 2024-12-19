@@ -4,6 +4,12 @@ import styles from './Tag.module.scss';
 import PropTypes from "prop-types";
 
 export const Tag = ({ text, active = false, leftIcon, rightIcon, className, ...rest }) => {
+
+	const capitalizeFirstLetter = (str) => {
+        if (!str) return '';
+        return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+    };
+
     return (
         <div data-testid="tag" className={cx(
 			styles.tag,
@@ -14,7 +20,7 @@ export const Tag = ({ text, active = false, leftIcon, rightIcon, className, ...r
 			active && styles.active
 		)} {...rest}>
 			{ leftIcon }
-			{ text } 
+			{ capitalizeFirstLetter(text) } 
 			{ active }
 			{ rightIcon }
 		</div>
