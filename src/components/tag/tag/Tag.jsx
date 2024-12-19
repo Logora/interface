@@ -4,21 +4,27 @@ import styles from './Tag.module.scss';
 import PropTypes from "prop-types";
 
 export const Tag = ({ text, active = false, leftIcon, rightIcon, className, ...rest }) => {
-    return (
-        <div data-testid="tag" className={cx(
+
+	const capitalizeFirstLetter = (str) => {
+		if (!str) return '';
+		return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+	};
+
+	return (
+		<div data-testid="tag" className={cx(
 			styles.tag,
-			className, 
+			className,
 			(leftIcon || rightIcon) && styles.withIcon,
-            leftIcon && styles.withLeftIcon,
-            rightIcon && styles.withRightIcon,
+			leftIcon && styles.withLeftIcon,
+			rightIcon && styles.withRightIcon,
 			active && styles.active
 		)} {...rest}>
-			{ leftIcon }
-			{ text } 
-			{ active }
-			{ rightIcon }
+			{leftIcon}
+			{capitalizeFirstLetter(text)}
+			{active}
+			{rightIcon}
 		</div>
-    )
+	)
 }
 
 Tag.propTypes = {
@@ -30,6 +36,6 @@ Tag.propTypes = {
 	leftIcon: PropTypes.node,
 	/** Right icon */
 	rightIcon: PropTypes.node,
-    /** Tag extra className */
+	/** Tag extra className */
 	className: PropTypes.string,
 };
