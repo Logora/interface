@@ -80,11 +80,20 @@ export const ToolbarPlugin = (props) => {
         );
     }, [editor, updateToolbar]);
 
+    const formatParagraph = () => {
+        editor.update(() => {
+            const selection = $getSelection();
+            if ($isRangeSelection(selection)) {
+                $setBlocksType(selection, () => $createParagraphNode());
+            }
+        });
+    };
+
     const formatNumberedList = () => {
-        if (blockType !== "ol") {
+        if (blockType !== 'number') {
             editor.dispatchCommand(INSERT_ORDERED_LIST_COMMAND);
         } else {
-            editor.dispatchCommand(REMOVE_LIST_COMMAND);
+            formatParagraph(editor);
         }
     };
 
@@ -132,14 +141,14 @@ export const ToolbarPlugin = (props) => {
                                 <Icon name="underline" width={24} height={24} className={cx(styles.format, styles.underline)} />
                             </button>
                             <button
-                                onClick={formatQuote}
+                                onClick={() => formatQuote()}
                                 className={styles.toolbarItem}
                                 aria-label="Format Quote"
                             >
                                 <Icon name="blockquote" width={24} height={24} className={cx(styles.format, styles.quote)} />
                             </button>
                             <button
-                                onClick={formatNumberedList}
+                                onClick={() => formatNumberedList()}
                                 className={styles.toolbarItem}
                                 aria-label="Format List"
                             >
