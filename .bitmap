@@ -362,7 +362,7 @@
     "icons/bild_icons": {
         "name": "icons/bild_icons",
         "scope": "logora.debate",
-        "version": "0.0.2",
+        "version": "0.0.3",
         "mainFile": "index.js",
         "rootDir": "src/components/icons/bild_icons"
     },
