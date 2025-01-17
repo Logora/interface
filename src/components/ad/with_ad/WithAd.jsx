@@ -23,9 +23,9 @@ export const WithAd = ({ id, adPath, targeting, sizes, index, frequency = 3, ena
 
 WithAd.propTypes = {
     /** A string to be used as ad container div id */
-    id: PropTypes.string.isRequired,
+    id: PropTypes.string,
     /** Ad slot path */
-    adPath: PropTypes.string.isRequired,
+    adPath: PropTypes.string,
     /** An optional object which includes ad targeting key-value pairs */
     targeting: PropTypes.object,
     /** Sizes of slot */
