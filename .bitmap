@@ -359,6 +359,20 @@
         "mainFile": "index.js",
         "rootDir": "src/components/hooks/use_responsive"
     },
+    "icons/bild_icons": {
+        "name": "icons/bild_icons",
+        "scope": "",
+        "version": "",
+        "defaultScope": "logora.debate",
+        "mainFile": "index.js",
+        "rootDir": "src/components/icons/bild_icons",
+        "config": {
+            "teambit.react/react-env@1.0.97": {},
+            "teambit.envs/envs": {
+                "env": "teambit.react/react-env"
+            }
+        }
+    },
     "icons/hero_icons": {
         "name": "icons/hero_icons",
         "scope": "logora.debate",
