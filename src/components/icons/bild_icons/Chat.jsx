@@ -1,10 +1,16 @@
 import React from "react";
 
 export const Chat = (props) => (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" {...props}>
-        <path d="M24,11.247A12.012,12.012,0,1,0,12.017,24H19a5.005,5.005,0,0,0,5-5V11.247ZM22,19a3,3,0,0,1-3,3H12.017a10.041,10.041,0,0,1-7.476-3.343,9.917,9.917,0,0,1-2.476-7.814,10.043,10.043,0,0,1,8.656-8.761A10.564,10.564,0,0,1,12.021,2,9.921,9.921,0,0,1,18.4,4.3,10.041,10.041,0,0,1,22,11.342Z"/>
-        <path d="M8,9h4a1,1,0,0,0,0-2H8A1,1,0,0,0,8,9Z"/>
-        <path d="M16,11H8a1,1,0,0,0,0,2h8a1,1,0,0,0,0-2Z"/>
-        <path d="M16,15H8a1,1,0,0,0,0,2h8a1,1,0,0,0,0-2Z"/>
+    <svg width="50" height="50" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+        <g clip-path="url(#clip0_323_1559)">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M2 4.47833H22V20.4844H10.7734L4 24.4783V20.4844H2V4.47833ZM4 18.4783H6V20.9809L10 18.4783H20V6.47833H4V18.4783Z" fill="#212529"/>
+            <rect x="6" y="9.47833" width="12" height="2" fill="#159EA9"/>
+            <rect x="6" y="13.4783" width="10" height="2" fill="#D00101"/>
+        </g>
+        <defs>
+            <clipPath id="clip0_323_1559">
+            <rect width="24" height="24" fill="white" transform="translate(0 0.478333)"/>
+            </clipPath>
+        </defs>
     </svg>
 )

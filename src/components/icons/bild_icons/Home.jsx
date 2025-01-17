@@ -1,16 +1,7 @@
 import React from 'react';
 
 export const Home = (props) => (
-    <svg width="50" height="50" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
-        <g clip-path="url(#clip0_323_1559)">
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M2 4.47833H22V20.4844H10.7734L4 24.4783V20.4844H2V4.47833ZM4 18.4783H6V20.9809L10 18.4783H20V6.47833H4V18.4783Z" fill="#212529"/>
-            <rect x="6" y="9.47833" width="12" height="2" fill="#159EA9"/>
-            <rect x="6" y="13.4783" width="10" height="2" fill="#D00101"/>
-        </g>
-        <defs>
-            <clipPath id="clip0_323_1559">
-            <rect width="24" height="24" fill="white" transform="translate(0 0.478333)"/>
-            </clipPath>
-        </defs>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" {...props}>
+        <path d="M23.121,9.069,15.536,1.483a5.008,5.008,0,0,0-7.072,0L.879,9.069A2.978,2.978,0,0,0,0,11.19v9.817a3,3,0,0,0,3,3H21a3,3,0,0,0,3-3V11.19A2.978,2.978,0,0,0,23.121,9.069ZM15,22.007H9V18.073a3,3,0,0,1,6,0Zm7-1a1,1,0,0,1-1,1H17V18.073a5,5,0,0,0-10,0v3.934H3a1,1,0,0,1-1-1V11.19a1.008,1.008,0,0,1,.293-.707L9.878,2.9a3.008,3.008,0,0,1,4.244,0l7.585,7.586A1.008,1.008,0,0,1,22,11.19Z"/>
     </svg>
 )
