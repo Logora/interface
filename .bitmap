@@ -361,17 +361,10 @@
     },
     "icons/bild_icons": {
         "name": "icons/bild_icons",
-        "scope": "",
-        "version": "",
-        "defaultScope": "logora.debate",
+        "scope": "logora.debate",
+        "version": "0.0.1",
         "mainFile": "index.js",
-        "rootDir": "src/components/icons/bild_icons",
-        "config": {
-            "teambit.react/react-env@1.0.97": {},
-            "teambit.envs/envs": {
-                "env": "teambit.react/react-env"
-            }
-        }
+        "rootDir": "src/components/icons/bild_icons"
     },
     "icons/hero_icons": {
         "name": "icons/hero_icons",
