@@ -11,17 +11,31 @@
 }
 
 .headerBox {
-    @include mb(4, xs);
     @include pr(4, xs);
     position: relative;
     display: flex;
     justify-content: space-between;
     width: 100%;
-    font-size: $font-size-large;
-    font-weight: $font-weight-bold;
 }
 
 
 .arrowDown {
     flex-shrink: 0;
+}
+
+.titleContainer {
+    display: flex;
+    align-items: baseline;
+    gap: 8px; 
+}
+
+.title {
+    font-size: $font-size-large;
+    font-weight: $font-weight-bold;
+    color: $text-primary;
+}
+
+.subTitle {
+    font-size: $font-size-extra-small;
+    color: $text-secondary;
 }

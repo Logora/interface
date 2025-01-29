@@ -12,6 +12,7 @@ export const DefaultSectionBox = () => {
         <IconProvider library={regularIcons}>
             <SectionBox
                 title="Section Title"
+                subTitle="Voici un exemple ici"
                 isCollapsible={true}
                 isCollapsibleByDefault={false}
             >

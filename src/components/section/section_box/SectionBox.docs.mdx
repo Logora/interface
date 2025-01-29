@@ -5,12 +5,14 @@ labels: ['section']
 
 import { SectionBox } from './SectionBox';
 
-A component that renders a box with a styled title. Content has been passed as a child.
+A component that renders a box with a styled title and optional collapsible behavior. Content has been passed as a child.
 
 ### Component usage
 ```js
 <SectionBox 
-    titleText="Section Title"
+    title="Section Title"
+    subTitle="Section sub title"
+    isCollapsibleByDefault={true}
 >
     Content
 </SectionBox>
@@ -19,4 +21,6 @@ A component that renders a box with a styled title. Content has been passed as a
 ### Properties
 | **Name**      | **Type** | **Required** | **Default** | **Description** |
 | ----------- | ----------- | :-----------: | ----------- | ----------- |
-| <font color='#4646c6'>titleText</font> | <font color="#397300">string</font> | &cross; | - | <font color="grey">*text for section's title*</font> |
+| <font color='#4646c6'>title</font> | <font color="#397300">string</font> | &cross; | - | <font color="grey">*text for section's title*</font> |
+| <font color='#4646c6'>subTitle</font> | <font color="#397300">string</font> | &cross; | - | <font color="grey">*optional text for the section's subtitle*</font> |
+| <font color='#4646c6'>isCollapsibleByDefault</font> | <font color="#397300">boolean</font> | &cross; | false | <font color="grey">*controls whether the section is collapsible by default*</font> |
