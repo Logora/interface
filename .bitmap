@@ -555,13 +555,6 @@
         "mainFile": "index.js",
         "rootDir": "src/components/section/section_box"
     },
-    "section/section_header": {
-        "name": "section/section_header",
-        "scope": "logora.debate",
-        "version": "0.0.52",
-        "mainFile": "index.js",
-        "rootDir": "src/components/section/section_header"
-    },
     "share/share_box": {
         "name": "share/share_box",
         "scope": "logora.debate",
