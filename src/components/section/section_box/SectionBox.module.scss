@@ -9,3 +9,19 @@
     border-radius: $box-border-radius;
     background-color: $background-color-primary;
 }
+
+.headerBox {
+    @include mb(4, xs);
+    @include pr(4, xs);
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    font-size: $font-size-large;
+    font-weight: $font-weight-bold;
+}
+
+
+.arrowDown {
+    flex-shrink: 0;
+}
