@@ -26,7 +26,7 @@ it('should toggle content visibility when clicked', () => {
 			<SectionBox
 				title="Section Title"
 				isCollapsible={true}
-				isExpandedByDefault={false}
+				isCollapsibleByDefault={false}
 			>
 				<p>Voici le contenu de la section.</p>
 			</SectionBox>

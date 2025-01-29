@@ -4,9 +4,9 @@ import { Icon } from '@logora/debate.icons.icon';
 import cx from "classnames";
 
 
-export const SectionBox = ({ isCollapsible = false, isExpandedByDefault = false, title, className, titleClassName, children }) => {
+export const SectionBox = ({ isCollapsible = false, isCollapsibleByDefault = false, title, className, titleClassName, children }) => {
 
-  const [isExpanded, setIsExpanded] = useState(isExpandedByDefault);
+  const [isExpanded, setIsExpanded] = useState(isCollapsibleByDefault);
 
   const toggleExpand = () => {
     if (isCollapsible) {
