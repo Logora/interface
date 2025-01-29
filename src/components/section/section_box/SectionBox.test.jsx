@@ -1,13 +1,45 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 import { SectionBox } from './SectionBox';
+import { IconProvider } from '@logora/debate.icons.icon_provider';
+import * as regularIcons from '@logora/debate.icons.regular_icons';
 
 const callback = jest.fn();
 
 it('should render with the correct text', () => {
 	const section = render(
-        <SectionBox titleText="Section Title">Section Box</SectionBox>
+		<IconProvider library={regularIcons}>
+			<SectionBox
+				title="Section Title"
+			>
+				<p>Voici le contenu de la section.</p>
+			</SectionBox>
+		</IconProvider>
 	);
-	const renderedSection = section.getByText(/section box/i);
+	const renderedSection = section.getByText(/section title/i);
 	expect(renderedSection).toBeTruthy();
 });
+
+it('should toggle content visibility when clicked', () => {
+	const { getByText, queryByText } = render(
+		<IconProvider library={regularIcons}>
+			<SectionBox
+				title="Section Title"
+				isCollapsible={true}
+				isExpandedByDefault={false}
+			>
+				<p>Voici le contenu de la section.</p>
+			</SectionBox>
+		</IconProvider>
+	);
+
+	expect(queryByText(/section content/i)).toBeNull();
+
+	const headerElement = getByText(/section title/i);
+	fireEvent.click(headerElement);
+
+	const expandedContent = getByText(/Voici le contenu de la section/i);
+	expect(expandedContent).toBeTruthy();
+});
+
+
