@@ -20,7 +20,7 @@ export const ContextSourceList = ({ sources = [] }) => {
         )
     }
     return (
-        <SectionBox isCollapsible title={intl.formatMessage({ id: "source.context_source_list.title", defaultMessage: "Debate context" })}>
+        <SectionBox isCollapsible isCollapsedByDefault={false} title={intl.formatMessage({ id: "source.context_source_list.title", defaultMessage: "Debate context" })}>
             <div className={cx(styles.content, { [styles.contentDesktop]: isDesktop, [styles.contentTablet]: isTablet, [styles.contentMobile]: isMobile })}>
                 {sources.map(displaySource)}
             </div>
