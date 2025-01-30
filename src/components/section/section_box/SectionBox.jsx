@@ -24,7 +24,7 @@ export const SectionBox = ({ isCollapsible = false, isCollapsedByDefault = false
         )}
       </div>
 
-      {(isCollapsed || !isCollapsible) && <div className={cx(styles.body, className)}>{children}</div>}
+      {(!isCollapsed || !isCollapsible) && <div className={cx(styles.body, className)}>{children}</div>}
     </div>
   );
 }
