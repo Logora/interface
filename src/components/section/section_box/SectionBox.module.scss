@@ -21,6 +21,14 @@
     cursor: pointer;
 }
 
+.iconLightArrow {
+    transition: transform 0.3s;
+}
+
+.iconRotated {
+    transform: rotate(180deg);
+}
+
 .titleContainer {
     display: flex;
     align-items: baseline;
