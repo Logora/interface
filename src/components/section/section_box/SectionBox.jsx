@@ -24,7 +24,7 @@ export const SectionBox = ({ isCollapsible = false, isCollapsibleByDefault = fal
         )}
       </div>
 
-      {isExpanded && <div className={className}>{children}</div>}
+      {(isExpanded || !isCollapsible) && <div className={className}>{children}</div>}
     </div>
   );
 }
