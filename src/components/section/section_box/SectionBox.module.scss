@@ -11,6 +11,7 @@
 }
 
 .headerBox {
+    @include mb(4, xs);
     @include pr(4, xs);
     position: relative;
     display: flex;
