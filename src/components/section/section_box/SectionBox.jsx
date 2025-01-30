@@ -14,8 +14,8 @@ export const SectionBox = ({ isCollapsible = false, isCollapsibleByDefault = fal
 
   return (
     <div className={styles.sectionBoxContainer}>
-      <div className={styles.headerBox} onClick={toggleExpand}>
-      <div className={styles.titleContainer}>
+      <div className={cx(styles.headerBox, { [styles.collapsible]: isCollapsible })} onClick={toggleExpand}>
+        <div className={styles.titleContainer}>
           <div className={cx(titleClassName, styles.title)}>{title}</div>
           {subTitle && <div className={cx(className, styles.subTitle)}>{subTitle}</div>}
         </div>
