@@ -19,6 +19,9 @@
     width: 100%;
 }
 
+.collapsible {
+    cursor: pointer;
+}
 
 .arrowDown {
     flex-shrink: 0;
@@ -41,3 +44,4 @@
     color: $text-secondary;
     
 }
+

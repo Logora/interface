@@ -4,15 +4,13 @@ import { IconProvider } from '@logora/debate.icons.icon_provider';
 import * as regularIcons from '@logora/debate.icons.regular_icons';
 
 
-
-
 export const DefaultSectionBox = () => {
     return (
 
         <IconProvider library={regularIcons}>
             <SectionBox
                 title="Section Title"
-                subTitle="Voici un exemple ici"
+                subTitle="Ceci est une section"
                 isCollapsible={true}
                 isCollapsibleByDefault={false}
             >
@@ -21,3 +19,16 @@ export const DefaultSectionBox = () => {
         </IconProvider>
     );
 };
+
+export const NoCollapsibleSectionBox = () => {
+    return (
+        <SectionBox
+            title="Section Non Repliable"
+            subTitle="Ceci est une section"
+            isCollapsible={false}
+        >
+            <p>Voici le contenu de la section.</p>
+        </SectionBox>
+    );
+};
+
