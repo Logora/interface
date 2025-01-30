@@ -1,18 +1,6 @@
 @import '~@logora/debate.styles.theme/_theme.scss';
 @import '~@logora/debate.styles.spacing/_spacing.scss';
 
-.container {
-    background-color: $background-color-primary;
-    box-shadow: $box-shadow;
-    border: $box-border-main-container;
-    border-radius: $box-border-radius;
-    display: flex;
-    flex-direction: column;
-    gap: $spacer;
-    @include p(4, sm);
-    @include p(3, xs);
-}
-
 .title {
     font-size: $font-size-large;
     line-height: $line-height-tight;

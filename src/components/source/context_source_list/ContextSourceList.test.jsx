@@ -1,8 +1,10 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import { ContextSourceList } from './ContextSourceList';
 import { IntlProvider } from 'react-intl';
 import { ResponsiveProvider } from '@logora/debate.hooks.use_responsive';
+import { IconProvider } from '@logora/debate.icons.icon_provider';
+import * as regularIcons from '@logora/debate.icons.regular_icons';
 import { faker } from '@faker-js/faker';
 
 const createSource = () => {
@@ -23,12 +25,15 @@ describe('ContextSourceList', () => {
         const box = render(
             <IntlProvider locale="en">
                 <ResponsiveProvider>
-                    <ContextSourceList 
-                        sources={sources}
-                    />
+                    <IconProvider library={regularIcons}>
+                        <ContextSourceList
+                            sources={sources}
+                        />
+                    </IconProvider>
                 </ResponsiveProvider>
             </IntlProvider>
         );
+        fireEvent.click(screen.getByText("Debate context"));
 
         expect(screen.getByText("Debate context")).toBeTruthy();
         const links = screen.queryAllByRole("link");
@@ -38,5 +43,6 @@ describe('ContextSourceList', () => {
         expect(screen.getByText(sources[2].title)).toBeTruthy();
         expect(links[0]).toHaveAttribute('href', sources[0].source_url);
         expect(links[1]).toHaveAttribute('href', sources[1].source_url);
+
     });
 });
