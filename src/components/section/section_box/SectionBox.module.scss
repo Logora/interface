@@ -2,21 +2,18 @@
 @import '~@logora/debate.styles.spacing/_spacing.scss';
 
 .sectionBoxContainer {
-    @include p(3, xs);
     box-shadow: $box-shadow;
     border: $box-border;
     color: $text-primary;
     border-radius: $box-border-radius;
     background-color: $background-color-primary;
+    @include p(3, xs);
 }
 
-.headerBox {
-    @include mb(4, xs);
-    @include pr(4, xs);
-    position: relative;
+.header {
     display: flex;
     justify-content: space-between;
-    align-items: center; 
+    align-items: center;
     width: 100%;
 }
 
@@ -24,14 +21,10 @@
     cursor: pointer;
 }
 
-.arrowDown {
-    flex-shrink: 0;
-}
-
 .titleContainer {
     display: flex;
     align-items: baseline;
-    gap: 8px; 
+    gap: 0.5em;
 }
 
 .title {
@@ -40,9 +33,11 @@
     color: $text-primary;
 }
 
-.subTitle {
-    font-size: $font-size-extra-small;
+.subtitle {
+    font-size: $font-size-small;
     color: $text-secondary;
-    
 }
 
+.body {
+    @include pt(3, xs)
+}

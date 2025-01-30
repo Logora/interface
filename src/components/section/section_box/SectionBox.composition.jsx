@@ -14,7 +14,7 @@ export const DefaultSectionBox = () => {
                 isCollapsible={true}
                 isCollapsibleByDefault={false}
             >
-                <p>Voici le contenu de la section.</p>
+                <div>Voici le contenu de la section.</div>
             </SectionBox>
         </IconProvider>
     );
@@ -27,7 +27,7 @@ export const NoCollapsibleSectionBox = () => {
             subTitle="Ceci est une section"
             isCollapsible={false}
         >
-            <p>Voici le contenu de la section.</p>
+            <div>Voici le contenu de la section.</div>
         </SectionBox>
     );
 };
