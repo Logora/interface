@@ -560,7 +560,12 @@
         "scope": "logora.debate",
         "version": "0.0.52",
         "mainFile": "index.js",
-        "rootDir": "src/components/section/section_header"
+        "rootDir": "src/components/section/section_header",
+        "config": {
+            "teambit.component/remove": {
+                "removed": true
+            }
+        }
     },
     "share/share_box": {
         "name": "share/share_box",
