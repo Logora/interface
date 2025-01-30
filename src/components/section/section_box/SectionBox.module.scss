@@ -2,11 +2,11 @@
 @import '~@logora/debate.styles.spacing/_spacing.scss';
 
 .sectionBoxContainer {
-    box-shadow: $box-shadow;
-    border: $box-border;
-    color: $text-primary;
-    border-radius: $box-border-radius;
     background-color: $background-color-primary;
+    box-shadow: $box-shadow;
+    border: $box-border-main-container;
+    border-radius: $box-border-radius;
+    color: $text-primary;
     @include p(3, xs);
 }
 
@@ -29,7 +29,9 @@
 
 .title {
     font-size: $font-size-large;
+    line-height: $line-height-tight;
     font-weight: $font-weight-bold;
+    font-family: $title-font-family;
     color: $text-primary;
 }
 
