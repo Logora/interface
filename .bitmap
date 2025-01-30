@@ -551,7 +551,7 @@
     "section/section_box": {
         "name": "section/section_box",
         "scope": "logora.debate",
-        "version": "0.0.58",
+        "version": "0.0.59",
         "mainFile": "index.js",
         "rootDir": "src/components/section/section_box"
     },
