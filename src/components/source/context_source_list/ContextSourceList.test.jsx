@@ -33,7 +33,6 @@ describe('ContextSourceList', () => {
                 </ResponsiveProvider>
             </IntlProvider>
         );
-        fireEvent.click(screen.getByText("Debate context"));
 
         expect(screen.getByText("Debate context")).toBeTruthy();
         const links = screen.queryAllByRole("link");

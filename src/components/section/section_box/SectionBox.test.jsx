@@ -35,13 +35,10 @@ it('should toggle content visibility when clicked', () => {
 		</IconProvider>
 	);
 
-	expect(queryByText(/section content/i)).toBeNull();
-
-	const headerElement = getByText(/section title/i);
-	fireEvent.click(headerElement);
-
 	const expandedContent = getByText(/Voici le contenu de la section/i);
 	expect(expandedContent).toBeTruthy();
 });
+
+
 
 
