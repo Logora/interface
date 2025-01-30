@@ -12,7 +12,7 @@ export const DefaultSectionBox = () => {
                 title="Section Title"
                 subTitle="Ceci est une section"
                 isCollapsible={true}
-                isCollapsibleByDefault={false}
+                isCollapsedByDefault={false}
             >
                 <div>Voici le contenu de la section.</div>
             </SectionBox>

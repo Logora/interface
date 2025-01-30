@@ -3,12 +3,12 @@ import styles from './SectionBox.module.scss';
 import { Icon } from '@logora/debate.icons.icon';
 import cx from "classnames";
 
-export const SectionBox = ({ isCollapsible = false, isCollapsibleByDefault = false, title, subTitle = "", className, titleClassName, children }) => {
-  const [isExpanded, setIsExpanded] = useState(isCollapsibleByDefault);
+export const SectionBox = ({ isCollapsible = false, isCollapsedByDefault = false, title, subTitle = "", className, titleClassName, children }) => {
+  const [isCollapsed, setIsCollapsed] = useState(isCollapsedByDefault);
 
   const toggleExpand = () => {
     if (isCollapsible) {
-      setIsExpanded(isExpanded => !isExpanded);
+      setIsCollapsed(isCollapsed => !isCollapsed);
     }
   }
 
@@ -24,7 +24,7 @@ export const SectionBox = ({ isCollapsible = false, isCollapsibleByDefault = fal
         )}
       </div>
 
-      {(isExpanded || !isCollapsible) && <div className={cx(styles.body, className)}>{children}</div>}
+      {(isCollapsed || !isCollapsible) && <div className={cx(styles.body, className)}>{children}</div>}
     </div>
   );
 }
