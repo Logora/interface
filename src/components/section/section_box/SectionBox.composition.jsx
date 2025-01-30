@@ -10,7 +10,7 @@ export const DefaultSectionBox = () => {
         <IconProvider library={regularIcons}>
             <SectionBox
                 title="Section Title"
-                subTitle="Ceci est une section"
+                subtitle="Ceci est une section"
                 isCollapsible={true}
                 isCollapsedByDefault={false}
             >
@@ -24,7 +24,7 @@ export const NoCollapsibleSectionBox = () => {
     return (
         <SectionBox
             title="Section Non Repliable"
-            subTitle="Ceci est une section"
+            subtitle="Ceci est une section"
             isCollapsible={false}
         >
             <div>Voici le contenu de la section.</div>

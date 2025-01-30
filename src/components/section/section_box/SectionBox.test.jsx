@@ -11,7 +11,7 @@ it('should render with the correct text', () => {
 		<IconProvider library={regularIcons}>
 			<SectionBox
 				title="Section Title"
-				subTitle="Sub Title"
+				subtitle="Sub Title"
 			>
 				<p>Voici le contenu de la section.</p>
 			</SectionBox>
@@ -26,7 +26,7 @@ it('should toggle content visibility when clicked', () => {
 		<IconProvider library={regularIcons}>
 			<SectionBox
 				title="Section Title"
-				subTitle="Sub Title"
+				subtitle="Sub Title"
 				isCollapsible={true}
 				isCollapsedByDefault={false}
 			>
