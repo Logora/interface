@@ -3,6 +3,7 @@ import { useIntl } from "react-intl";
 import { useResponsive } from "@logora/debate.hooks.use_responsive";
 import { Link } from '@logora/debate.action.link';
 import { ContextSourceBox } from "@logora/debate.source.context_source_box";
+import { SectionBox } from "@logora/debate.section.section_box"
 import styles from './ContextSourceList.module.scss';
 import cx from "classnames";
 import PropTypes from "prop-types";
@@ -18,16 +19,12 @@ export const ContextSourceList = ({ sources = [] }) => {
             </Link>
         )
     }
-
     return (
-        <div className={styles.container}>
-            <div className={styles.title}>
-                <span>{intl.formatMessage({ id: "source.context_source_list.title", defaultMessage: "Debate context"})}</span>
-            </div>
-            <div className={cx(styles.content, {[styles.contentDesktop]: isDesktop, [styles.contentTablet]: isTablet, [styles.contentMobile]: isMobile})}>
+        <SectionBox isCollapsible  title={intl.formatMessage({ id: "source.context_source_list.title", defaultMessage: "Debate context" })}>
+            <div className={cx(styles.content, { [styles.contentDesktop]: isDesktop, [styles.contentTablet]: isTablet, [styles.contentMobile]: isMobile })}>
                 {sources.map(displaySource)}
             </div>
-        </div>
+        </SectionBox>
     )
 }
 
@@ -38,7 +35,7 @@ ContextSourceList.propTypes = {
         id: PropTypes.number,
         title: PropTypes.string,
         source_url: PropTypes.string,
-        published_date: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date) ]),
+        published_date: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]),
         publisher: PropTypes.string,
         origin_image_url: PropTypes.string
     }))

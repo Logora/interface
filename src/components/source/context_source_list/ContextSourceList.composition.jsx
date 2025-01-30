@@ -2,6 +2,8 @@ import React from 'react';
 import { IntlProvider } from 'react-intl';
 import { ResponsiveProvider } from '@logora/debate.hooks.use_responsive';
 import { ContextSourceList } from './ContextSourceList';
+import { IconProvider } from '@logora/debate.icons.icon_provider';
+import * as regularIcons from '@logora/debate.icons.regular_icons';
 import { faker } from '@faker-js/faker';
 
 const createSource = () => {
@@ -21,7 +23,9 @@ export const DefaultContextSourceList = () => {
     return (
         <IntlProvider locale="en">
             <ResponsiveProvider>
-                <ContextSourceList sources={sources} />
+                <IconProvider library={regularIcons}>
+                    <ContextSourceList sources={sources} />
+                </IconProvider>
             </ResponsiveProvider>
         </IntlProvider>
     );
