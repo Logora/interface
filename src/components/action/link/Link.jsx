@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link as RouterLink } from 'react-router';
+import { Link as RouterLink } from 'react-router-dom';
 import PropTypes from "prop-types";
 
 export const Link = ({ className, to, external, rel = "nofollow", target = "_self", children, ...rest }) => {
