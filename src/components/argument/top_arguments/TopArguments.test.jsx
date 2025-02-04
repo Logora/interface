@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen, getByTestId } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { DefaultTopArguments } from './TopArguments.composition';
 import { TopArgumentsNewDesign } from './TopArguments.composition';
 import { TopArgumentsNewDesignWithEmptyArgument } from './TopArguments.composition';

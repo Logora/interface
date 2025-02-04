@@ -1,7 +1,7 @@
 import React from 'react';
 import { IntlProvider } from 'react-intl';
 import { ConfigProvider } from '@logora/debate.data.config_provider';
-import { BrowserRouter } from 'react-router-dom';
+import { MemoryRouter } from 'react-router-dom';
 import { Location } from '@logora/debate.util.location';
 import { TopArguments } from './TopArguments';
 import { IconProvider } from '@logora/debate.icons.icon_provider';
@@ -80,7 +80,7 @@ const argumentAgainst = {
 
 export const DefaultTopArguments = () => {
     return (
-        <BrowserRouter>
+        <MemoryRouter>
             <ConfigProvider routes={{ ...routes }} config={{synthesis: {newDesign: false}}}>
                 <ResponsiveProvider>
                     <IconProvider library={regularIcons}>
@@ -96,13 +96,13 @@ export const DefaultTopArguments = () => {
                     </IconProvider>
                 </ResponsiveProvider>
             </ConfigProvider>
-        </BrowserRouter>
+        </MemoryRouter>
     );
 };
 
 export const TopArgumentsNewDesign = () => {
     return (
-        <BrowserRouter>
+        <MemoryRouter>
             <ConfigProvider routes={{ ...routes }} config={{synthesis: {newDesign: true}}}>
                 <ResponsiveProvider>
                     <IconProvider library={regularIcons}>
@@ -117,13 +117,13 @@ export const TopArgumentsNewDesign = () => {
                     </IconProvider>
                 </ResponsiveProvider>
             </ConfigProvider>
-        </BrowserRouter>
+        </MemoryRouter>
     );
 };
 
 export const TopArgumentsWithEmptyArgument = () => {
     return (
-        <BrowserRouter>
+        <MemoryRouter>
             <ConfigProvider routes={{ ...routes }} config={{synthesis: {newDesign: false}}}>
                 <ResponsiveProvider>
                     <IconProvider library={regularIcons}>
@@ -138,13 +138,13 @@ export const TopArgumentsWithEmptyArgument = () => {
                     </IconProvider>
                 </ResponsiveProvider>
             </ConfigProvider>
-        </BrowserRouter>
+        </MemoryRouter>
     );
 };
 
 export const TopArgumentsNewDesignWithEmptyArgument = () => {
     return (
-        <BrowserRouter>
+        <MemoryRouter>
             <ConfigProvider routes={{ ...routes }} config={{synthesis: {newDesign: true}}}>
                 <ResponsiveProvider>
                     <IconProvider library={regularIcons}>
@@ -158,6 +158,6 @@ export const TopArgumentsNewDesignWithEmptyArgument = () => {
                     </IconProvider>
                 </ResponsiveProvider>
             </ConfigProvider>
-        </BrowserRouter>
+        </MemoryRouter>
     );
 };

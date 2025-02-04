@@ -1,11 +1,10 @@
 import React from "react";
-import { useIntl } from "react-intl";
-import { useLocation } from "react-router";
+import { useIntl, FormattedMessage } from "react-intl";
+import { useLocation } from "react-router-dom";
 import useSessionStorageState from '@rooks/use-sessionstorage-state';
 import { Icon } from "@logora/debate.icons.icon";
 import { Toggle } from "@logora/debate.input.toggle";
 import { Button } from '@logora/debate.action.button';
-import { FormattedMessage } from "react-intl";
 import cx from "classnames";
 import styles from "./SSOForm.module.scss";
 import PropTypes from "prop-types";
