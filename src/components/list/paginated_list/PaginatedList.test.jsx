@@ -1,9 +1,7 @@
 import React from "react";
 import { render, screen, act } from "@testing-library/react";
 import { IntlProvider } from "react-intl";
-import { BrowserRouter } from "react-router";
-import { ConfigProvider } from "@logora/debate.data.config_provider";
-import { ModalProvider } from "@logora/debate.dialog.modal";
+import { BrowserRouter } from "react-router-dom";
 import {
   dataProvider,
   DataProviderContext,
@@ -11,7 +9,6 @@ import {
 import { ResponsiveProvider } from "@logora/debate.hooks.use_responsive";
 import { ListProvider, useList } from "@logora/debate.list.list_provider";
 import { PaginatedList } from "./PaginatedList";
-import { AuthContext } from "@logora/debate.auth.use_auth";
 import StandardErrorBoundary from "@logora/debate.error.standard_error_boundary";
 import userEvent from "@testing-library/user-event";
 import { IconProvider } from "@logora/debate.icons.icon_provider";

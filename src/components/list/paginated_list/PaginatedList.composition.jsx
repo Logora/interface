@@ -1,7 +1,7 @@
 import React from "react";
 import { PaginatedList } from "./PaginatedList";
 import { IntlProvider } from "react-intl";
-import { BrowserRouter } from "react-router";
+import { BrowserRouter } from "react-router-dom";
 import {
   dataProvider,
   DataProviderContext,

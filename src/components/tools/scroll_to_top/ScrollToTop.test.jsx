@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter } from 'react-router';
+import { BrowserRouter } from 'react-router-dom';
 import { ScrollToTop } from './ScrollToTop';
 import { render } from '@testing-library/react';
 

@@ -1,7 +1,7 @@
 import React from "react";
 import { HashScroll } from "./HashScroll";
 import { render } from '@testing-library/react';
-import { StaticRouter } from "react-router";
+import { MemoryRouter } from "react-router-dom";
 
 const hash = "my-element";
 
@@ -15,9 +15,9 @@ describe('HashScroll', () => {
 
   it("should return children and call scrollIntoView", async () => {
     const dom = render(
-      <StaticRouter location={{ hash: hash }}>
+      <MemoryRouter initialEntries={[`/#${hash}`]}>
         <HashScroll elementId={hash}><div id={hash}>Hello World!</div></HashScroll>
-      </StaticRouter>
+      </MemoryRouter>
     );
 
     const el = dom.baseElement.firstChild?.firstChild;
@@ -31,9 +31,9 @@ describe('HashScroll', () => {
 
   it("should not call scrollIntoView if element not present", async () => {
     const dom = render(
-      <StaticRouter location={{ hash: hash }}>
+      <MemoryRouter initialEntries={[`/#${hash}`]}>
         <HashScroll elementId={hash}><div id="random-id">Hello World!</div></HashScroll>
-      </StaticRouter>
+      </MemoryRouter>
     );
 
     const el = dom.baseElement.firstChild?.firstChild;
@@ -47,9 +47,9 @@ describe('HashScroll', () => {
     const onScroll = jest.fn();
     
     const dom = render(
-      <StaticRouter location={{ hash: hash }}>
+      <MemoryRouter initialEntries={[`/#${hash}`]}>
         <HashScroll elementId={hash} onScroll={onScroll}><div id={hash}>Hello World!</div></HashScroll>
-      </StaticRouter>
+      </MemoryRouter>
     );
 
     const el = dom.baseElement.firstChild?.firstChild;

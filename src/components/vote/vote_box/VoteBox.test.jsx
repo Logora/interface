@@ -1,6 +1,6 @@
 import React from 'react';
 import { IntlProvider } from 'react-intl';
-import { BrowserRouter } from 'react-router';
+import { BrowserRouter } from 'react-router-dom';
 import { render, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { VoteBox } from './VoteBox';

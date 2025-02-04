@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Drawer } from './Drawer';
-import { BrowserRouter } from "react-router";
+import { BrowserRouter } from "react-router-dom";
 import { IconProvider } from '@logora/debate.icons.icon_provider';
 import * as regularIcons from '@logora/debate.icons.regular_icons';
 import { faker } from '@faker-js/faker';

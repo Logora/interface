@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import { IntlProvider } from 'react-intl';
-import { BrowserRouter } from 'react-router';
+import { BrowserRouter } from 'react-router-dom';
 import { IconProvider } from '@logora/debate.icons.icon_provider';
 import { ConfigProvider } from '@logora/debate.data.config_provider';
 import { dataProvider, DataProviderContext } from '@logora/debate.data.data_provider';
