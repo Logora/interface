@@ -1,10 +1,10 @@
 import React from 'react';
 import { NotificationMenu } from './NotificationMenu';
 import { IntlProvider } from 'react-intl';
+import { MemoryRouter } from "react-router-dom";
 import { IconProvider } from '@logora/debate.icons.icon_provider';
 import { ConfigProvider } from '@logora/debate.data.config_provider';
 import { dataProvider, DataProviderContext } from '@logora/debate.data.data_provider';
-import { MemoryRouter } from "react-router";
 import { ListProvider } from '@logora/debate.list.list_provider';
 import * as regularIcons from '@logora/debate.icons.regular_icons';
 import { faker } from '@faker-js/faker';

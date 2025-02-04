@@ -2,7 +2,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import { Link } from './Link';
-import { MemoryRouter } from "react-router";
+import { MemoryRouter } from "react-router-dom";
 
 describe('Link', () => {
     it('should render a link', () => {

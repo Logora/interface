@@ -2,7 +2,7 @@ import React from 'react';
 import { render, waitFor, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { IntlProvider } from 'react-intl';
-import { MemoryRouter } from 'react-router';
+import { MemoryRouter } from 'react-router-dom';
 import { ConfigProvider } from '@logora/debate.data.config_provider';
 import { dataProvider, DataProviderContext } from '@logora/debate.data.data_provider';
 import { AuthContext } from '@logora/debate.auth.use_auth';

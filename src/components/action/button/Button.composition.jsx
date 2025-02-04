@@ -3,7 +3,7 @@ import { IconProvider } from '@logora/debate.icons.icon_provider';
 import * as regularIcons from '@logora/debate.icons.regular_icons';
 import { Icon } from '@logora/debate.icons.icon';
 import { Button } from './Button';
-import { MemoryRouter } from "react-router";
+import { MemoryRouter } from "react-router-dom";
 
 export const ActiveButton = () => {
     return <Button active handleClick={() => null}>Active</Button>;

@@ -1,5 +1,5 @@
 import React from "react";
-import { MemoryRouter } from "react-router";
+import { MemoryRouter } from "react-router-dom";
 import { render, screen } from "@testing-library/react";
 import { OAuth2Button } from "./OAuth2Button";
 import userEvent from "@testing-library/user-event";

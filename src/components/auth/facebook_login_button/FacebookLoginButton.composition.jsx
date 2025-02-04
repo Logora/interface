@@ -1,5 +1,5 @@
 import React from 'react';
-import { MemoryRouter } from "react-router";
+import { MemoryRouter } from "react-router-dom";
 import { FacebookLoginButton } from './FacebookLoginButton';
 import { IconProvider } from '@logora/debate.icons.icon_provider';
 import * as regularIcons from '@logora/debate.icons.regular_icons';

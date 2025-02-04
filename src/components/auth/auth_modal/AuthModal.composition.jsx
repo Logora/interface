@@ -1,5 +1,5 @@
 import React from 'react';
-import { MemoryRouter } from "react-router";
+import { MemoryRouter } from "react-router-dom";
 import { IntlProvider } from 'react-intl';
 import { dataProvider, DataProviderContext } from '@logora/debate.data.data_provider';
 import { ModalProvider } from '@logora/debate.dialog.modal';

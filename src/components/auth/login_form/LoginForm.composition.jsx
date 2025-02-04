@@ -1,5 +1,5 @@
 import React from 'react';
-import { MemoryRouter } from "react-router";
+import { MemoryRouter } from "react-router-dom";
 import { IntlProvider } from 'react-intl';
 import { LoginForm } from './LoginForm';
 

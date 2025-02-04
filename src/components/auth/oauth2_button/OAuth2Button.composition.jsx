@@ -1,5 +1,5 @@
 import React from "react";
-import { MemoryRouter } from "react-router";
+import { MemoryRouter } from "react-router-dom";
 import { OAuth2Button } from "./OAuth2Button";
 
 export const DefaultOAuth2Button = () => {

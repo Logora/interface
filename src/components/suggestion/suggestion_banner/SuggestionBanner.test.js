@@ -1,8 +1,9 @@
 import React from 'react';
 import { render, waitFor, fireEvent } from '@testing-library/react';
 import { SuggestionBanner } from './SuggestionBanner';
-import { IconProvider } from '@logora/debate.icons.icon_provider';
 import { IntlProvider } from 'react-intl';
+import { MemoryRouter } from 'react-router-dom';
+import { IconProvider } from '@logora/debate.icons.icon_provider';
 import { ConfigProvider } from '@logora/debate.data.config_provider';
 import { ResponsiveProvider } from '@logora/debate.hooks.use_responsive';
 import { ModalProvider } from '@logora/debate.dialog.modal';
@@ -11,7 +12,6 @@ import { dataProvider, DataProviderContext } from '@logora/debate.data.data_prov
 import { AuthContext } from '@logora/debate.auth.use_auth';
 import { ListProvider } from '@logora/debate.list.list_provider';
 import { VoteProvider } from '@logora/debate.vote.vote_provider';
-import { MemoryRouter } from 'react-router';
 import { ToastProvider } from '@logora/debate.dialog.toast_provider';
 import { faker } from '@faker-js/faker';
 import * as regularIcons from '@logora/debate.icons.regular_icons';
