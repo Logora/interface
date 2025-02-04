@@ -1,6 +1,7 @@
 import React from "react";
 import { PaginatedList } from "./PaginatedList";
 import { IntlProvider } from "react-intl";
+import { BrowserRouter } from "react-router";
 import {
   dataProvider,
   DataProviderContext,
@@ -9,7 +10,6 @@ import { ListProvider } from "@logora/debate.list.list_provider";
 import { IconProvider } from "@logora/debate.icons.icon_provider";
 import { ResponsiveProvider } from "@logora/debate.hooks.use_responsive";
 import * as regularIcons from "@logora/debate.icons.regular_icons";
-import { BrowserRouter } from "react-router-dom";
 import { faker } from "@faker-js/faker";
 
 const ListItem = (props) => {

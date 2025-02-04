@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter } from 'react-router';
 import { ConfigProvider } from '@logora/debate.data.config_provider';
 import { IntlProvider } from 'react-intl';
 import { AuthorBox } from './AuthorBox';

@@ -1,5 +1,6 @@
 import React from 'react';
 import { IntlProvider } from 'react-intl';
+import { BrowserRouter } from 'react-router';
 import { IconProvider } from '@logora/debate.icons.icon_provider';
 import { ConfigProvider } from '@logora/debate.data.config_provider';
 import { dataProvider, DataProviderContext } from '@logora/debate.data.data_provider';
@@ -10,7 +11,6 @@ import { ToastProvider } from '@logora/debate.dialog.toast_provider';
 import * as regularIcons from '@logora/debate.icons.regular_icons';
 import { faker } from '@faker-js/faker';
 import { SuggestionInput } from './SuggestionInput';
-import { BrowserRouter } from 'react-router-dom';
 import { InputProvider } from '@logora/debate.input.input_provider';
 
 const currentUser = {

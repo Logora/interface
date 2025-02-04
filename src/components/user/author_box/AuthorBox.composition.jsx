@@ -1,9 +1,9 @@
 import React from 'react';
-import { ConfigProvider } from '@logora/debate.data.config_provider';
 import { IntlProvider } from 'react-intl';
+import { BrowserRouter } from 'react-router';
 import { AuthorBox } from './AuthorBox';
+import { ConfigProvider } from '@logora/debate.data.config_provider';
 import { Location } from '@logora/debate.util.location';
-import { BrowserRouter } from 'react-router-dom';
 import { IconProvider } from '@logora/debate.icons.icon_provider';
 import * as regularIcons from '@logora/debate.icons.regular_icons';
 import { faker } from '@faker-js/faker';

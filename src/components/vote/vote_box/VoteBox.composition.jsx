@@ -1,8 +1,8 @@
 import React from 'react';
 import { IntlProvider } from 'react-intl';
+import { BrowserRouter } from 'react-router';
 import { VoteBox } from './VoteBox';
 import { ConfigProvider } from '@logora/debate.data.config_provider';
-import { BrowserRouter } from 'react-router-dom';
 import { Location } from '@logora/debate.util.location';
 import { ModalProvider } from '@logora/debate.dialog.modal';
 import { dataProvider, DataProviderContext } from '@logora/debate.data.data_provider';

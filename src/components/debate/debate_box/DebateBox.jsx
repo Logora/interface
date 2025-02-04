@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import { useConfig, useRoutes } from '@logora/debate.data.config_provider';
 import { Avatar } from '@logora/debate.user.avatar';
 import { useIntl, FormattedMessage } from 'react-intl';

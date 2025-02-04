@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './InformationBox.module.scss';
 import { Icon } from '@logora/debate.icons.icon';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import { useIntl, FormattedMessage } from "react-intl";
 import PropTypes from "prop-types";
 

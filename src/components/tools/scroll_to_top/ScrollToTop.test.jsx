@@ -1,7 +1,7 @@
 import React from 'react';
+import { BrowserRouter } from 'react-router';
 import { ScrollToTop } from './ScrollToTop';
 import { render } from '@testing-library/react';
-import { BrowserRouter } from 'react-router-dom';
 
 describe('ScrollToTop', () => {  
     beforeEach(() => {

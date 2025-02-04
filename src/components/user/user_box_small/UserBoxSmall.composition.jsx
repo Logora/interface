@@ -1,9 +1,9 @@
 import React from 'react';
-import { ConfigProvider } from '@logora/debate.data.config_provider';
 import { UserBoxSmall } from './UserBoxSmall';
 import { IntlProvider } from 'react-intl';
+import { BrowserRouter } from 'react-router';
+import { ConfigProvider } from '@logora/debate.data.config_provider';
 import { Location } from '@logora/debate.util.location';
-import { BrowserRouter } from 'react-router-dom';
 import { faker } from '@faker-js/faker';
 
 const user = {

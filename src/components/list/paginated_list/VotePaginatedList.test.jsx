@@ -1,13 +1,13 @@
 import React from 'react';
 import { render, screen, waitFor, act } from '@testing-library/react';
 import { IntlProvider } from 'react-intl';
+import { BrowserRouter } from 'react-router';
 import { dataProvider, DataProviderContext } from '@logora/debate.data.data_provider';
 import { ResponsiveProvider } from '@logora/debate.hooks.use_responsive';
 import { ListProvider, useList } from '@logora/debate.list.list_provider';
 import { VotePaginatedList } from './VotePaginatedList';
 import StandardErrorBoundary from "@logora/debate.error.standard_error_boundary";
 import userEvent from '@testing-library/user-event';
-import { BrowserRouter } from 'react-router-dom';
 import { IconProvider } from '@logora/debate.icons.icon_provider';
 import * as regularIcons from '@logora/debate.icons.regular_icons';
 import { AuthContext } from '@logora/debate.auth.use_auth';

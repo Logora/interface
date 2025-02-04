@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation } from "react-router-dom";
+import { useLocation } from "react-router";
 import ReactDrawer from 'react-modern-drawer';
 import { Icon } from '@logora/debate.icons.icon';
 import cx from 'classnames';

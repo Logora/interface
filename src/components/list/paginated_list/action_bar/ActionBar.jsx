@@ -5,7 +5,6 @@ import { Tag } from '@logora/debate.tag.tag';
 import { Icon } from '@logora/debate.icons.icon';
 import { useIntl } from "react-intl";
 import { useResponsive } from "@logora/debate.hooks.use_responsive";
-import { useHistory } from 'react-router-dom';
 import { useLocation } from 'react-router';
 import cx from "classnames";
 import styles from "./ActionBar.module.scss";
@@ -13,7 +12,6 @@ import PropTypes from "prop-types";
 
 export const ActionBar = ({ title, sortOptions, defaultSelectOption, searchBar = false, tagList, activeTagId, withUrlParams = false, onSearch, onSortChange, onTagChange }) => {
     const intl = useIntl();
-    const history = useHistory();
     const location = useLocation();
     const { isMobile } = useResponsive();
     const urlParams = new URLSearchParams(window !== "undefined" ? window.location.search : location.search);
@@ -29,10 +27,6 @@ export const ActionBar = ({ title, sortOptions, defaultSelectOption, searchBar =
             }
             urlParams.delete("sort");
             urlParams.set(selectOption.type === "filter" ? selectOption.name : "sort", selectOption.value);
-            history.push({
-                pathname: location.pathname,
-                search: urlParams.toString()
-            });
         }
         onSortChange(selectOption)
     };
@@ -44,10 +38,6 @@ export const ActionBar = ({ title, sortOptions, defaultSelectOption, searchBar =
             } else {
                 urlParams.set("tagId", tag.id);
             }
-            history.push({
-                pathname: location.pathname,
-                search: urlParams.toString()
-            })
         }
         onTagChange(tag.id == activeTagId ? null : tag.id)
     }
@@ -59,10 +49,6 @@ export const ActionBar = ({ title, sortOptions, defaultSelectOption, searchBar =
             } else {
                 urlParams.set("search", query);
             }
-            history.push({
-                pathname: location.pathname,
-                search: urlParams.toString()
-            })
         }
         onSearch(query);
     }

@@ -1,6 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import { IntlProvider } from 'react-intl';
+import { BrowserRouter } from 'react-router';
 import { IconProvider } from '@logora/debate.icons.icon_provider';
 import { ConfigProvider } from '@logora/debate.data.config_provider';
 import { dataProvider, DataProviderContext } from '@logora/debate.data.data_provider';
@@ -9,7 +10,6 @@ import { ModalProvider } from '@logora/debate.dialog.modal';
 import { ListProvider } from '@logora/debate.list.list_provider';
 import { ToastProvider } from '@logora/debate.dialog.toast_provider';
 import { faker } from '@faker-js/faker';
-import { BrowserRouter } from 'react-router-dom';
 import { InputProvider } from '@logora/debate.input.input_provider';
 import { SuggestionInput } from './SuggestionInput';
 import * as regularIcons from '@logora/debate.icons.regular_icons';

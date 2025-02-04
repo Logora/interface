@@ -5,7 +5,7 @@ import { IconProvider } from '@logora/debate.icons.icon_provider';
 import { ResponsiveProvider } from '@logora/debate.hooks.use_responsive';
 import { DebateBox } from './DebateBox';
 import { Location } from '@logora/debate.util.location';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter } from 'react-router';
 import * as regularIcons from '@logora/debate.icons.regular_icons';
 import { faker } from '@faker-js/faker';
 

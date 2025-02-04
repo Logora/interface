@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useIntl } from "react-intl";
-import { useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router';
 import { Button } from '@logora/debate.action.button';
 import { TextInput } from '@logora/debate.input.text_input';
 import styles from "./LoginForm.module.scss";

@@ -2,7 +2,7 @@ import React from "react";
 import { render, screen, act } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { ArgumentInput } from "./ArgumentInput";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter } from "react-router";
 import { ConfigProvider } from "@logora/debate.data.config_provider";
 import { IconProvider } from '@logora/debate.icons.icon_provider';
 import * as regularIcons from '@logora/debate.icons.regular_icons';

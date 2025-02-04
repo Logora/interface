@@ -1,7 +1,7 @@
 import React from 'react';
 import { IntlProvider } from 'react-intl';
 import { ConfigProvider } from '@logora/debate.data.config_provider';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter } from 'react-router';
 import { Location } from '@logora/debate.util.location';
 import { dataProvider, DataProviderContext } from '@logora/debate.data.data_provider';
 import { AuthContext } from '@logora/debate.auth.use_auth';

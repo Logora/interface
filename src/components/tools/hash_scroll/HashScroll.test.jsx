@@ -1,7 +1,7 @@
 import React from "react";
 import { HashScroll } from "./HashScroll";
 import { render } from '@testing-library/react';
-import { StaticRouter } from "react-router-dom";
+import { StaticRouter } from "react-router";
 
 const hash = "my-element";
 

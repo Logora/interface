@@ -38,7 +38,7 @@
     "@lexical/utils": "^0.23.1",
     "@rooks/use-previous": "^4.11.2",
     "@rooks/use-sessionstorage-state": "^4.11.2",
-    "axios": "^1.7.8",
+    "axios": "^1.7.9",
     "chart.js": "^4.4.7",
     "chartjs-plugin-datalabels": "^2.2.0",
     "classnames": "^2.5.1",
@@ -56,11 +56,11 @@
     "react-loading-skeleton": "^3.5.0",
     "react-modern-drawer": "^1.4.0",
     "react-oauth-popup": "^1.0.5",
-    "react-router": "^5.3.4",
-    "react-router-dom": "^5.3.4",
+    "react-router": "^6.29.0",
+    "react-router-dom": "^6.29.0",
     "use-debounce": "^10.0.4",
     "use-onclickoutside": "^0.4.1",
-    "uuid": "^11.0.3",
+    "uuid": "^11.0.5",
     "webfontloader": "^1.6.28"
   },
   "devDependencies": {
@@ -72,7 +72,7 @@
   "peerDependencies": {
     "react": "^17.0.0 || ^18.0.0",
     "react-dom": "^17.0.0 || ^18.0.0",
-    "react-router": "^5.3.4",
-    "react-router-dom": "^5.3.4"
+    "react-router": "^6.29.0",
+    "react-router-dom": "^6.29.0"
   }
 }

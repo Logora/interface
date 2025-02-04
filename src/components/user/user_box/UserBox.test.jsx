@@ -1,10 +1,10 @@
 import React from "react";
+import { BrowserRouter } from 'react-router';
+import { IntlProvider } from 'react-intl';
 import { UserBox  } from "./UserBox";
 import { render } from '@testing-library/react';
 import { faker } from '@faker-js/faker';
 import { Location } from '@logora/debate.util.location';
-import { BrowserRouter } from 'react-router-dom';
-import { IntlProvider } from 'react-intl';
 import { ConfigProvider } from '@logora/debate.data.config_provider';
 
 const contributorUser = {

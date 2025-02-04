@@ -1,7 +1,7 @@
 import React from 'react';
+import { useNavigate } from 'react-router';
 import { useRelativeTime } from '@logora/debate.hooks.use_relative_time';
 import { useRoutes } from '@logora/debate.data.config_provider';
-import { useHistory } from 'react-router-dom';
 import { useDataProvider } from '@logora/debate.data.data_provider';
 import { useIntl } from 'react-intl';
 import PropTypes from "prop-types";
@@ -13,7 +13,7 @@ export const NotificationItem = ({ notification, notificationDefinitions = {}, i
     const intl = useIntl();
     const routes = useRoutes();
     const api = useDataProvider();
-    const history = useHistory();
+    const navigate = useNavigate();
     const relativeTime = useRelativeTime(new Date(created_at).getTime());
 
     if (!(notify_type in notificationDefinitions)) {
@@ -25,7 +25,7 @@ export const NotificationItem = ({ notification, notificationDefinitions = {}, i
     const handleClick = () => {
         if (typeof window !== 'undefined') {
             const redirectUrl = notificationSettings.getRedirectUrl(notification, routes);
-            history.push(redirectUrl);
+            navigate(redirectUrl);
         }
         if (is_opened == false) {
             api.create(`notifications/read/${id}`, {}).then(() => {
