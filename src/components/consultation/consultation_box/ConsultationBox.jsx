@@ -1,8 +1,8 @@
 import React, { useMemo } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { useRelativeTime } from '@logora/debate.hooks.use_relative_time';
+import { Link } from '@logora/debate.action.link';
 import { Icon } from "@logora/debate.icons.icon";
-import { Link } from 'react-router';
 import { ProgressBar } from "@logora/debate.progress.progress_bar";
 import { useResponsive } from "@logora/debate.hooks.use_responsive";
 import { useRoutes } from '@logora/debate.data.config_provider';

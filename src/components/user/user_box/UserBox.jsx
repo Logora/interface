@@ -1,6 +1,6 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
-import { Link } from 'react-router';
+import { Link } from '@logora/debate.action.link';
 import { useRoutes } from '@logora/debate.data.config_provider';
 import { Avatar } from '@logora/debate.user.avatar';
 import styles from './UserBox.module.scss';

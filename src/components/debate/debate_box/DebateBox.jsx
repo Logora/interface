@@ -1,7 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router';
 import { useConfig, useRoutes } from '@logora/debate.data.config_provider';
 import { Avatar } from '@logora/debate.user.avatar';
+import { Link } from '@logora/debate.action.link';
 import { useIntl, FormattedMessage } from 'react-intl';
 import { Icon } from '@logora/debate.icons.icon';
 import { Tooltip } from '@logora/debate.dialog.tooltip';
