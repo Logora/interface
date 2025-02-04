@@ -20,7 +20,7 @@ export const SectionBox = ({ isCollapsible = false, isCollapsedByDefault = false
           {subtitle && <div className={cx(className, styles.subtitle)}>{subtitle}</div>}
         </div>
         {isCollapsible && (
-          <Icon name="lightArrow" height={15} width={15} />
+          <Icon name="lightArrow" className={cx(styles.iconLightArrow, { [styles.iconRotated]: !isCollapsed })} height={15} width={15} />
         )}
       </div>
 
