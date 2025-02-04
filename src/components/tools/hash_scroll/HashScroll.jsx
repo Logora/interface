@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import { useLocation } from "react-router";
 
 export const HashScroll = ({ elementId, onScroll, children }) => {
-    const { hash } = useLocation();
+    const location = useLocation();
 
 	useEffect(() => {
 		if (!elementId) return;
 
 		if (typeof window !== "undefined") {
-			let pageAnchor = hash.slice(1);
+			let pageAnchor = location.hash.slice(1);
 			const anchorRegex = new RegExp(elementId);
 			if(pageAnchor.match(anchorRegex)) {
 				const element = document.getElementById(elementId);
@@ -21,7 +21,7 @@ export const HashScroll = ({ elementId, onScroll, children }) => {
 				}
 			}
 		}
-	}, [hash])
+	}, [location.hash])
 
 	return <>{ children }</>;
 }
