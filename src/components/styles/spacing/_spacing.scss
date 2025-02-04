@@ -1,3 +1,4 @@
+@use "sass:map";
 @import '~@logora/debate.styles.display/_display.scss';
 
 $spacer: var(--space-unit, 1em) !default;
@@ -8,7 +9,7 @@ $spacer-md: var(--spacer-md, calc($spacer * .75));
 $spacer-lg: var(--spacer-lg, calc($spacer * 1.5));
 $spacer-xl: var(--spacer-xl, calc($spacer * 3));
 $spacers: () !default;
-$spacers: map-merge(
+$spacers: map.merge(
         (
                 0: 0,
                 1: $spacer-xxs,
@@ -28,31 +29,31 @@ $box-element-spacing: var(--box-element-spacing, $spacer-lg);
 
 @mixin m($value, $breakpoint) {
   @include media-breakpoint-up($breakpoint) {
-    margin: map-get($spacers, $value) !important;
+    margin: map.get($spacers, $value) !important;
   }
 }
 
 @mixin mt($value, $breakpoint) {
   @include media-breakpoint-up($breakpoint) {
-    margin-top: map-get($spacers, $value) !important;
+    margin-top: map.get($spacers, $value) !important;
   }
 }
 
 @mixin ml($value, $breakpoint) {
   @include media-breakpoint-up($breakpoint) {
-    margin-left: map-get($spacers, $value) !important;
+    margin-left: map.get($spacers, $value) !important;
   }
 }
 
 @mixin mb($value, $breakpoint) {
   @include media-breakpoint-up($breakpoint) {
-    margin-bottom: map-get($spacers, $value) !important;
+    margin-bottom: map.get($spacers, $value) !important;
   }
 }
 
 @mixin mr($value, $breakpoint) {
   @include media-breakpoint-up($breakpoint) {
-    margin-right: map-get($spacers, $value) !important;
+    margin-right: map.get($spacers, $value) !important;
   }
 }
 
@@ -70,31 +71,31 @@ $box-element-spacing: var(--box-element-spacing, $spacer-lg);
 
 @mixin p($value, $breakpoint) {
   @include media-breakpoint-up($breakpoint) {
-    padding: map-get($spacers, $value) !important;
+    padding: map.get($spacers, $value) !important;
   }
 }
 
 @mixin pt($value, $breakpoint) {
   @include media-breakpoint-up($breakpoint) {
-    padding-top: map-get($spacers, $value) !important;
+    padding-top: map.get($spacers, $value) !important;
   }
 }
 
 @mixin pl($value, $breakpoint) {
   @include media-breakpoint-up($breakpoint) {
-    padding-left: map-get($spacers, $value) !important;
+    padding-left: map.get($spacers, $value) !important;
   }
 }
 
 @mixin pb($value, $breakpoint) {
   @include media-breakpoint-up($breakpoint) {
-    padding-bottom: map-get($spacers, $value) !important;
+    padding-bottom: map.get($spacers, $value) !important;
   }
 }
 
 @mixin pr($value, $breakpoint) {
   @include media-breakpoint-up($breakpoint) {
-    padding-right: map-get($spacers, $value) !important;
+    padding-right: map.get($spacers, $value) !important;
   }
 }
 
