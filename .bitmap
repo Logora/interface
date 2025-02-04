@@ -18,16 +18,7 @@
         "config": {
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
-                    "devDependencies": {
-                        "@types/testing-library__jest-dom": "-",
-                        "@types/jest": "-",
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
-                    },
                     "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0",
                         "react-router-dom": "^6.29.0",
                         "react-router": "^6.29.0"
                     }
@@ -45,8 +36,6 @@
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
                     "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
                     },
@@ -72,16 +61,7 @@
         "config": {
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
-                    "devDependencies": {
-                        "@types/testing-library__jest-dom": "-",
-                        "@types/jest": "-",
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
-                    },
                     "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0",
                         "react-router-dom": "^6.29.0",
                         "react-router": "^6.29.0"
                     }
@@ -98,16 +78,7 @@
         "config": {
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
-                    "devDependencies": {
-                        "@types/jest": "-",
-                        "@types/testing-library__jest-dom": "-",
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
-                    },
                     "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
                     }
@@ -124,16 +95,7 @@
         "config": {
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
-                    "devDependencies": {
-                        "@types/jest": "-",
-                        "@types/testing-library__jest-dom": "-",
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
-                    },
                     "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
                     }
@@ -151,15 +113,8 @@
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
                     "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
-                    },
-                    "devDependencies": {
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
                     }
                 }
             }
@@ -175,15 +130,8 @@
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
                     "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
-                    },
-                    "devDependencies": {
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
                     }
                 }
             }
@@ -199,15 +147,8 @@
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
                     "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
-                    },
-                    "devDependencies": {
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
                     }
                 }
             }
@@ -223,15 +164,8 @@
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
                     "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
-                    },
-                    "devDependencies": {
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
                     }
                 }
             }
@@ -246,13 +180,6 @@
         "config": {
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
-                    "devDependencies": {
-                        "@types/jest": "-",
-                        "@types/testing-library__jest-dom": "-",
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
-                    },
                     "dependencies": {
                         "react": "^17.0.0 || ^18.0.0",
                         "react-dom": "^17.0.0 || ^18.0.0"
@@ -274,16 +201,7 @@
         "config": {
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
-                    "devDependencies": {
-                        "@types/jest": "-",
-                        "@types/testing-library__jest-dom": "-",
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
-                    },
                     "peerDependencies": {
-                        "react": "^17.0.0||^18.0.0",
-                        "react-dom": "^17.0.0||^18.0.0",
                         "react-router-dom": "^6.29.0",
                         "react-router": "^6.29.0"
                     }
@@ -300,16 +218,7 @@
         "config": {
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
-                    "devDependencies": {
-                        "@types/testing-library__jest-dom": "-",
-                        "@types/jest": "-",
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
-                    },
                     "peerDependencies": {
-                        "react": "^17.0.0||^18.0.0",
-                        "react-dom": "^17.0.0||^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
                     }
@@ -326,16 +235,7 @@
         "config": {
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
-                    "devDependencies": {
-                        "@types/testing-library__jest-dom": "-",
-                        "@types/jest": "-",
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
-                    },
                     "peerDependencies": {
-                        "react": "^17.0.0||^18.0.0",
-                        "react-dom": "^17.0.0||^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
                     }
@@ -355,16 +255,7 @@
                     "dependencies": {
                         "@teambit/design.inputs.input-text": "-"
                     },
-                    "devDependencies": {
-                        "@types/testing-library__jest-dom": "-",
-                        "@types/jest": "-",
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
-                    },
                     "peerDependencies": {
-                        "react": "^17.0.0||^18.0.0",
-                        "react-dom": "^17.0.0||^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
                     }
@@ -381,16 +272,7 @@
         "config": {
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
-                    "devDependencies": {
-                        "@types/testing-library__jest-dom": "-",
-                        "@types/jest": "-",
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
-                    },
                     "peerDependencies": {
-                        "react": "^17.0.0||^18.0.0",
-                        "react-dom": "^17.0.0||^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
                     }
@@ -407,16 +289,7 @@
         "config": {
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
-                    "devDependencies": {
-                        "@types/jest": "-",
-                        "@types/testing-library__jest-dom": "-",
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
-                    },
                     "peerDependencies": {
-                        "react": "^17.0.0||^18.0.0",
-                        "react-dom": "^17.0.0||^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
                     }
@@ -433,16 +306,7 @@
         "config": {
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
-                    "devDependencies": {
-                        "@types/testing-library__jest-dom": "-",
-                        "@types/jest": "-",
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
-                    },
                     "peerDependencies": {
-                        "react": "^17.0.0||^18.0.0",
-                        "react-dom": "^17.0.0||^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
                     }
@@ -459,16 +323,7 @@
         "config": {
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
-                    "devDependencies": {
-                        "@types/testing-library__jest-dom": "-",
-                        "@types/jest": "-",
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
-                    },
                     "peerDependencies": {
-                        "react": "^17.0.0||^18.0.0",
-                        "react-dom": "^17.0.0||^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
                     }
@@ -485,16 +340,7 @@
         "config": {
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
-                    "devDependencies": {
-                        "@types/jest": "-",
-                        "@types/testing-library__jest-dom": "-",
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
-                    },
                     "peerDependencies": {
-                        "react": "^17.0.0||^18.0.0",
-                        "react-dom": "^17.0.0||^18.0.0",
                         "react-router-dom": "^6.29.0",
                         "react-router": "^6.29.0"
                     }
@@ -511,16 +357,7 @@
         "config": {
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
-                    "devDependencies": {
-                        "@types/jest": "-",
-                        "@types/testing-library__jest-dom": "-",
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
-                    },
                     "peerDependencies": {
-                        "react": "^17.0.0||^18.0.0",
-                        "react-dom": "^17.0.0||^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
                     }
@@ -538,15 +375,8 @@
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
                     "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
-                    },
-                    "devDependencies": {
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
                     }
                 }
             }
@@ -562,15 +392,8 @@
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
                     "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
-                    },
-                    "devDependencies": {
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
                     }
                 }
             }
@@ -585,16 +408,7 @@
         "config": {
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
-                    "devDependencies": {
-                        "@types/jest": "-",
-                        "@types/testing-library__jest-dom": "-",
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
-                    },
                     "peerDependencies": {
-                        "react": "^17.0.0||^18.0.0",
-                        "react-dom": "^17.0.0||^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
                     }
@@ -611,16 +425,7 @@
         "config": {
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
-                    "devDependencies": {
-                        "@types/jest": "-",
-                        "@types/testing-library__jest-dom": "-",
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
-                    },
                     "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
                     }
@@ -637,16 +442,7 @@
         "config": {
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
-                    "devDependencies": {
-                        "@types/testing-library__jest-dom": "-",
-                        "@types/jest": "-",
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
-                    },
                     "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
                     }
@@ -663,16 +459,7 @@
         "config": {
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
-                    "devDependencies": {
-                        "@types/testing-library__jest-dom": "-",
-                        "@types/jest": "-",
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
-                    },
                     "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
                     }
@@ -689,21 +476,9 @@
         "config": {
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
-                    "devDependencies": {
-                        "@types/testing-library__jest-dom": "-",
-                        "@types/jest": "-",
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
-                    },
                     "peerDependencies": {
-                        "react": "^17.0.0||^18.0.0",
-                        "react-dom": "^17.0.0||^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
-                    },
-                    "dependencies": {
-                        "@testing-library/react": "^16.0.0"
                     }
                 }
             }
@@ -718,16 +493,7 @@
         "config": {
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
-                    "devDependencies": {
-                        "@types/testing-library__jest-dom": "-",
-                        "@types/jest": "-",
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
-                    },
                     "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
                     }
@@ -744,16 +510,7 @@
         "config": {
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
-                    "devDependencies": {
-                        "@types/testing-library__jest-dom": "-",
-                        "@types/jest": "-",
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
-                    },
                     "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
                     }
@@ -770,16 +527,7 @@
         "config": {
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
-                    "devDependencies": {
-                        "@types/jest": "-",
-                        "@types/testing-library__jest-dom": "-",
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
-                    },
                     "peerDependencies": {
-                        "react": "^17.0.0||^18.0.0",
-                        "react-dom": "^17.0.0||^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
                     }
@@ -801,11 +549,6 @@
                         "react": "^17.0.0 || ^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
-                    },
-                    "devDependencies": {
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
                     }
                 }
             }
@@ -820,16 +563,7 @@
         "config": {
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
-                    "devDependencies": {
-                        "@types/testing-library__jest-dom": "-",
-                        "@types/jest": "-",
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
-                    },
                     "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
                     }
@@ -852,8 +586,6 @@
                         "@testing-library/react": "^13.4.0"
                     },
                     "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
                     }
@@ -870,16 +602,7 @@
         "config": {
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
-                    "devDependencies": {
-                        "@types/jest": "-",
-                        "@types/testing-library__jest-dom": "-",
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
-                    },
                     "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
                     }
@@ -896,16 +619,7 @@
         "config": {
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
-                    "devDependencies": {
-                        "@types/jest": "-",
-                        "@types/testing-library__jest-dom": "-",
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
-                    },
                     "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
                     }
@@ -922,16 +636,7 @@
         "config": {
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
-                    "devDependencies": {
-                        "@types/jest": "-",
-                        "@types/testing-library__jest-dom": "-",
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
-                    },
                     "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
                     }
@@ -954,8 +659,6 @@
                         "@testing-library/react": "^13.4.0"
                     },
                     "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
                     }
@@ -972,16 +675,7 @@
         "config": {
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
-                    "devDependencies": {
-                        "@types/testing-library__jest-dom": "-",
-                        "@types/jest": "-",
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
-                    },
                     "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
                     }
@@ -999,15 +693,8 @@
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
                     "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
-                    },
-                    "devDependencies": {
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
                     }
                 }
             }
@@ -1023,15 +710,8 @@
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
                     "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
-                    },
-                    "devDependencies": {
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
                     }
                 }
             }
@@ -1046,16 +726,7 @@
         "config": {
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
-                    "devDependencies": {
-                        "@types/testing-library__jest-dom": "-",
-                        "@types/jest": "-",
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
-                    },
                     "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
                     }
@@ -1073,15 +744,8 @@
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
                     "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
-                    },
-                    "devDependencies": {
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
                     }
                 }
             }
@@ -1097,15 +761,8 @@
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
                     "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
-                    },
-                    "devDependencies": {
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
                     }
                 }
             }
@@ -1120,16 +777,7 @@
         "config": {
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
-                    "devDependencies": {
-                        "@types/jest": "-",
-                        "@types/testing-library__jest-dom": "-",
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
-                    },
                     "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
                     }
@@ -1146,16 +794,7 @@
         "config": {
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
-                    "devDependencies": {
-                        "@types/jest": "-",
-                        "@types/testing-library__jest-dom": "-",
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
-                    },
                     "peerDependencies": {
-                        "react": "^17.0.0||^18.0.0",
-                        "react-dom": "^17.0.0||^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
                     }
@@ -1178,8 +817,6 @@
                         "@testing-library/react": "^13.4.0"
                     },
                     "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
                     }
@@ -1197,15 +834,8 @@
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
                     "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
-                    },
-                    "devDependencies": {
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
                     }
                 }
             }
@@ -1221,15 +851,8 @@
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
                     "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
-                    },
-                    "devDependencies": {
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
                     }
                 }
             }
@@ -1244,16 +867,7 @@
         "config": {
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
-                    "devDependencies": {
-                        "@types/jest": "-",
-                        "@types/testing-library__jest-dom": "-",
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
-                    },
                     "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
                     }
@@ -1270,16 +884,7 @@
         "config": {
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
-                    "devDependencies": {
-                        "@types/testing-library__jest-dom": "-",
-                        "@types/jest": "-",
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
-                    },
                     "peerDependencies": {
-                        "react": "^17.0.0||^18.0.0",
-                        "react-dom": "^17.0.0||^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
                     }
@@ -1317,11 +922,6 @@
                         "react": "^17.0.0 || ^18.0.0",
                         "react-dom": "^17.0.0 || ^18.0.0"
                     },
-                    "devDependencies": {
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
-                    },
                     "peerDependencies": {
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
@@ -1340,15 +940,8 @@
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
                     "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
-                    },
-                    "devDependencies": {
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
                     }
                 }
             }
@@ -1364,15 +957,8 @@
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
                     "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
-                    },
-                    "devDependencies": {
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
                     }
                 }
             }
@@ -1388,15 +974,8 @@
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
                     "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
-                    },
-                    "devDependencies": {
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
                     }
                 }
             }
@@ -1412,15 +991,8 @@
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
                     "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
-                    },
-                    "devDependencies": {
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
                     }
                 }
             }
@@ -1435,16 +1007,7 @@
         "config": {
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
-                    "devDependencies": {
-                        "@types/testing-library__jest-dom": "-",
-                        "@types/jest": "-",
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
-                    },
                     "peerDependencies": {
-                        "react": "^17.0.0||^18.0.0",
-                        "react-dom": "^17.0.0||^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
                     }
@@ -1462,8 +1025,6 @@
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
                     "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
                     },
@@ -1487,16 +1048,7 @@
         "config": {
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
-                    "devDependencies": {
-                        "@types/testing-library__jest-dom": "-",
-                        "@types/jest": "-",
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
-                    },
                     "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
                     }
@@ -1513,16 +1065,7 @@
         "config": {
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
-                    "devDependencies": {
-                        "@types/testing-library__jest-dom": "-",
-                        "@types/jest": "-",
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
-                    },
                     "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
                     }
@@ -1539,16 +1082,7 @@
         "config": {
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
-                    "devDependencies": {
-                        "@types/testing-library__jest-dom": "-",
-                        "@types/jest": "-",
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
-                    },
                     "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
                     }
@@ -1565,16 +1099,7 @@
         "config": {
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
-                    "devDependencies": {
-                        "@types/jest": "-",
-                        "@types/testing-library__jest-dom": "-",
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
-                    },
                     "peerDependencies": {
-                        "react": "^17.0.0||^18.0.0",
-                        "react-dom": "^17.0.0||^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
                     }
@@ -1591,16 +1116,7 @@
         "config": {
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
-                    "devDependencies": {
-                        "@types/testing-library__jest-dom": "-",
-                        "@types/jest": "-",
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
-                    },
                     "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
                     }
@@ -1617,16 +1133,7 @@
         "config": {
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
-                    "devDependencies": {
-                        "@types/testing-library__jest-dom": "-",
-                        "@types/jest": "-",
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
-                    },
                     "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
                     }
@@ -1643,16 +1150,7 @@
         "config": {
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
-                    "devDependencies": {
-                        "@types/jest": "-",
-                        "@types/testing-library__jest-dom": "-",
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
-                    },
                     "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
                     }
@@ -1669,16 +1167,7 @@
         "config": {
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
-                    "devDependencies": {
-                        "@types/testing-library__jest-dom": "-",
-                        "@types/jest": "-",
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
-                    },
                     "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
                     }
@@ -1705,8 +1194,6 @@
                         "@testing-library/react": "^13.4.0"
                     },
                     "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
                     }
@@ -1723,16 +1210,7 @@
         "config": {
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
-                    "devDependencies": {
-                        "@types/jest": "-",
-                        "@types/testing-library__jest-dom": "-",
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
-                    },
                     "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
                     }
@@ -1750,15 +1228,8 @@
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
                     "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
-                    },
-                    "devDependencies": {
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
                     }
                 }
             }
@@ -1773,16 +1244,7 @@
         "config": {
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
-                    "devDependencies": {
-                        "@types/jest": "-",
-                        "@types/testing-library__jest-dom": "-",
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
-                    },
                     "peerDependencies": {
-                        "react": "^17.0.0||^18.0.0",
-                        "react-dom": "^17.0.0||^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
                     }
@@ -1809,8 +1271,6 @@
                         "@testing-library/react": "^13.4.0"
                     },
                     "peerDependencies": {
-                        "react": "^17.0.0||^18.0.0",
-                        "react-dom": "^17.0.0||^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
                     }
@@ -1827,16 +1287,7 @@
         "config": {
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
-                    "devDependencies": {
-                        "@types/testing-library__jest-dom": "-",
-                        "@types/jest": "-",
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
-                    },
                     "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
                     }
@@ -1853,16 +1304,7 @@
         "config": {
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
-                    "devDependencies": {
-                        "@types/jest": "-",
-                        "@types/testing-library__jest-dom": "-",
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
-                    },
                     "peerDependencies": {
-                        "react": "^17.0.0||^18.0.0",
-                        "react-dom": "^17.0.0||^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
                     }
@@ -1921,16 +1363,7 @@
         "config": {
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
-                    "devDependencies": {
-                        "@types/testing-library__jest-dom": "-",
-                        "@types/jest": "-",
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
-                    },
                     "peerDependencies": {
-                        "react": "^17.0.0||^18.0.0",
-                        "react-dom": "^17.0.0||^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
                     }
@@ -1948,15 +1381,8 @@
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
                     "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
-                    },
-                    "devDependencies": {
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
                     }
                 }
             }
@@ -1971,16 +1397,7 @@
         "config": {
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
-                    "devDependencies": {
-                        "@types/testing-library__jest-dom": "-",
-                        "@types/jest": "-",
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
-                    },
                     "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
                     }
@@ -1997,16 +1414,7 @@
         "config": {
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
-                    "devDependencies": {
-                        "@types/testing-library__jest-dom": "-",
-                        "@types/jest": "-",
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
-                    },
                     "peerDependencies": {
-                        "react": "^17.0.0||^18.0.0",
-                        "react-dom": "^17.0.0||^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
                     }
@@ -2023,16 +1431,7 @@
         "config": {
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
-                    "devDependencies": {
-                        "@types/testing-library__jest-dom": "-",
-                        "@types/jest": "-",
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
-                    },
                     "peerDependencies": {
-                        "react": "^17.0.0||^18.0.0",
-                        "react-dom": "^17.0.0||^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
                     }
@@ -2049,16 +1448,7 @@
         "config": {
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
-                    "devDependencies": {
-                        "@types/testing-library__jest-dom": "-",
-                        "@types/jest": "-",
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
-                    },
                     "peerDependencies": {
-                        "react": "^17.0.0||^18.0.0",
-                        "react-dom": "^17.0.0||^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
                     }
@@ -2075,16 +1465,7 @@
         "config": {
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
-                    "devDependencies": {
-                        "@types/testing-library__jest-dom": "-",
-                        "@types/jest": "-",
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
-                    },
                     "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
                     }
@@ -2101,16 +1482,7 @@
         "config": {
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
-                    "devDependencies": {
-                        "@types/testing-library__jest-dom": "-",
-                        "@types/jest": "-",
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
-                    },
                     "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
                     }
@@ -2127,16 +1499,7 @@
         "config": {
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
-                    "devDependencies": {
-                        "@types/testing-library__jest-dom": "-",
-                        "@types/jest": "-",
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
-                    },
                     "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
                     }
@@ -2153,16 +1516,7 @@
         "config": {
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
-                    "devDependencies": {
-                        "@types/jest": "-",
-                        "@types/testing-library__jest-dom": "-",
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
-                    },
                     "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
                     }
@@ -2179,16 +1533,7 @@
         "config": {
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
-                    "devDependencies": {
-                        "@types/testing-library__jest-dom": "-",
-                        "@types/jest": "-",
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
-                    },
                     "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
                     }
@@ -2205,16 +1550,7 @@
         "config": {
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
-                    "devDependencies": {
-                        "@types/testing-library__jest-dom": "-",
-                        "@types/jest": "-",
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
-                    },
                     "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
                     }
@@ -2231,16 +1567,7 @@
         "config": {
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
-                    "devDependencies": {
-                        "@types/jest": "-",
-                        "@types/testing-library__jest-dom": "-",
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
-                    },
                     "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
                     }
@@ -2257,16 +1584,7 @@
         "config": {
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
-                    "devDependencies": {
-                        "@types/testing-library__jest-dom": "-",
-                        "@types/jest": "-",
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
-                    },
                     "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
                     }
@@ -2283,16 +1601,7 @@
         "config": {
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
-                    "devDependencies": {
-                        "@types/testing-library__jest-dom": "-",
-                        "@types/jest": "-",
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
-                    },
                     "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
                     }
@@ -2309,16 +1618,7 @@
         "config": {
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
-                    "devDependencies": {
-                        "@types/testing-library__jest-dom": "-",
-                        "@types/jest": "-",
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
-                    },
                     "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
                     }
@@ -2335,16 +1635,7 @@
         "config": {
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
-                    "devDependencies": {
-                        "@types/jest": "-",
-                        "@types/testing-library__jest-dom": "-",
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
-                    },
                     "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
                     }
@@ -2361,16 +1652,7 @@
         "config": {
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
-                    "devDependencies": {
-                        "@types/testing-library__jest-dom": "-",
-                        "@types/jest": "-",
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
-                    },
                     "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
                     }
@@ -2387,10 +1669,6 @@
         "config": {
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
-                    "devDependencies": {
-                        "@testing-library/react": "^13.4.0",
-                        "@testing-library/dom": "^10.4.0"
-                    },
                     "peerDependencies": {
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
@@ -2408,10 +1686,6 @@
         "config": {
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
-                    "devDependencies": {
-                        "@testing-library/react": "^13.4.0",
-                        "@testing-library/dom": "^10.4.0"
-                    },
                     "peerDependencies": {
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
@@ -2429,10 +1703,6 @@
         "config": {
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
-                    "devDependencies": {
-                        "@testing-library/react": "^13.4.0",
-                        "@testing-library/dom": "^10.4.0"
-                    },
                     "peerDependencies": {
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
@@ -2450,16 +1720,7 @@
         "config": {
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
-                    "devDependencies": {
-                        "@types/jest": "-",
-                        "@types/testing-library__jest-dom": "-",
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
-                    },
                     "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
                     }
@@ -2476,16 +1737,7 @@
         "config": {
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
-                    "devDependencies": {
-                        "@types/jest": "-",
-                        "@types/testing-library__jest-dom": "-",
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
-                    },
                     "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
                     }
@@ -2502,16 +1754,7 @@
         "config": {
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
-                    "devDependencies": {
-                        "@types/testing-library__jest-dom": "-",
-                        "@types/jest": "-",
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
-                    },
                     "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
                     }
@@ -2528,14 +1771,7 @@
         "config": {
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
-                    "devDependencies": {
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
-                    },
                     "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
                     }
@@ -2552,14 +1788,7 @@
         "config": {
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
-                    "devDependencies": {
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
-                    },
                     "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
                     }
@@ -2576,18 +1805,7 @@
         "config": {
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
-                    "devDependencies": {
-                        "@types/jest": "-",
-                        "@types/testing-library__jest-dom": "-",
-                        "@testing-library/react": "^13.4.0",
-                        "@types/node": "-",
-                        "@types/react": "-",
-                        "@types/react-dom": "-",
-                        "@testing-library/dom": "^10.4.0"
-                    },
                     "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
                     }
@@ -2604,14 +1822,7 @@
         "config": {
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
-                    "devDependencies": {
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
-                    },
                     "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
                     }
@@ -2629,15 +1840,8 @@
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
                     "peerDependencies": {
-                        "react-dom": "^17.0.0 || ^18.0.0",
-                        "react": "^17.0.0 || ^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
-                    },
-                    "devDependencies": {
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
                     }
                 }
             }
@@ -2653,15 +1857,8 @@
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
                     "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
-                    },
-                    "devDependencies": {
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
                     }
                 }
             }
@@ -2676,16 +1873,7 @@
         "config": {
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
-                    "devDependencies": {
-                        "@types/jest": "-",
-                        "@types/testing-library__jest-dom": "-",
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
-                    },
                     "peerDependencies": {
-                        "react": "^17.0.0||^18.0.0",
-                        "react-dom": "^17.0.0||^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
                     }
@@ -2702,16 +1890,7 @@
         "config": {
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
-                    "devDependencies": {
-                        "@testing-library/react": "^13.4.0",
-                        "@types/react": "-",
-                        "@types/react-dom": "-",
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0"
-                    },
                     "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
                     }
@@ -2728,16 +1907,7 @@
         "config": {
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
-                    "devDependencies": {
-                        "@types/jest": "-",
-                        "@types/testing-library__jest-dom": "-",
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
-                    },
                     "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
                     }
@@ -2754,16 +1924,7 @@
         "config": {
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
-                    "devDependencies": {
-                        "@types/jest": "-",
-                        "@types/testing-library__jest-dom": "-",
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
-                    },
                     "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
                     }
@@ -2780,16 +1941,7 @@
         "config": {
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
-                    "devDependencies": {
-                        "@types/jest": "-",
-                        "@types/testing-library__jest-dom": "-",
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
-                    },
                     "peerDependencies": {
-                        "react": "^17.0.0||^18.0.0",
-                        "react-dom": "^17.0.0||^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
                     }
@@ -2806,16 +1958,7 @@
         "config": {
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
-                    "devDependencies": {
-                        "@types/jest": "-",
-                        "@types/testing-library__jest-dom": "-",
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
-                    },
                     "peerDependencies": {
-                        "react": "^17.0.0||^18.0.0",
-                        "react-dom": "^17.0.0||^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
                     }
@@ -2833,15 +1976,8 @@
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
                     "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
-                    },
-                    "devDependencies": {
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
                     }
                 }
             }
@@ -2857,15 +1993,8 @@
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
                     "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
-                    },
-                    "devDependencies": {
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
                     }
                 }
             }
@@ -2881,15 +2010,8 @@
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
                     "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
-                    },
-                    "devDependencies": {
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
                     }
                 }
             }
@@ -2905,15 +2027,8 @@
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
                     "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
-                    },
-                    "devDependencies": {
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
                     }
                 }
             }
@@ -2929,15 +2044,8 @@
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
                     "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
-                    },
-                    "devDependencies": {
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
                     }
                 }
             }
@@ -2952,14 +2060,6 @@
         "config": {
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
-                    "devDependencies": {
-                        "@testing-library/react": "^13.4.0",
-                        "@testing-library/dom": "^10.4.0"
-                    },
-                    "dependencies": {
-                        "@types/jest": "-",
-                        "@types/node": "-"
-                    },
                     "peerDependencies": {
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
@@ -2977,16 +2077,7 @@
         "config": {
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
-                    "devDependencies": {
-                        "@types/testing-library__jest-dom": "-",
-                        "@types/jest": "-",
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
-                    },
                     "peerDependencies": {
-                        "react": "^17.0.0||^18.0.0",
-                        "react-dom": "^17.0.0||^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
                     }
@@ -3003,16 +2094,7 @@
         "config": {
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
-                    "devDependencies": {
-                        "@types/jest": "-",
-                        "@types/testing-library__jest-dom": "-",
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
-                    },
                     "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
                     }
@@ -3030,15 +2112,8 @@
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
                     "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
-                    },
-                    "devDependencies": {
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
                     }
                 }
             }
@@ -3054,15 +2129,8 @@
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
                     "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
-                    },
-                    "devDependencies": {
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
                     }
                 }
             }
@@ -3078,15 +2146,8 @@
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
                     "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
-                    },
-                    "devDependencies": {
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
                     }
                 }
             }
@@ -3101,16 +2162,7 @@
         "config": {
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
-                    "devDependencies": {
-                        "@types/testing-library__jest-dom": "-",
-                        "@types/jest": "-",
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
-                    },
                     "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
                     }
@@ -3128,15 +2180,8 @@
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
                     "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
-                    },
-                    "devDependencies": {
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
                     }
                 }
             }
@@ -3151,16 +2196,7 @@
         "config": {
             "teambit.dependencies/dependency-resolver": {
                 "policy": {
-                    "devDependencies": {
-                        "@types/jest": "-",
-                        "@types/testing-library__jest-dom": "-",
-                        "@types/node": "-",
-                        "@testing-library/dom": "^10.4.0",
-                        "@testing-library/react": "^13.4.0"
-                    },
                     "peerDependencies": {
-                        "react": "^17.0.0 || ^18.0.0",
-                        "react-dom": "^17.0.0 || ^18.0.0",
                         "react-router": "^6.29.0",
                         "react-router-dom": "^6.29.0"
                     }

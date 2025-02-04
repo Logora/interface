@@ -274,11 +274,7 @@ importers:
         specifier: ^13.4.0
         version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
 
-  src/components/auth/providers:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/auth/providers: {}
 
   src/components/auth/signup_form:
     devDependencies:
@@ -322,11 +318,7 @@ importers:
         specifier: ^13.4.0
         version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
 
-  src/components/data/axios_client:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/data/axios_client: {}
 
   src/components/data/config_provider:
     devDependencies:
@@ -424,11 +416,7 @@ importers:
         specifier: ^13.4.0
         version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
 
-  src/components/forms/form:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/forms/form: {}
 
   src/components/forms/use_form_validation:
     devDependencies:
@@ -532,23 +520,11 @@ importers:
         specifier: ^13.4.0
         version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
 
-  src/components/input/checkbox/hidden:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/input/checkbox/hidden: {}
 
-  src/components/input/checkbox/indicator:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/input/checkbox/indicator: {}
 
-  src/components/input/checkbox/label:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/input/checkbox/label: {}
 
   src/components/input/input_provider:
     devDependencies:
@@ -712,35 +688,15 @@ importers:
         specifier: ^13.4.0
         version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
 
-  src/components/styles/display:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/styles/display: {}
 
-  src/components/styles/flex:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/styles/flex: {}
 
-  src/components/styles/spacing:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/styles/spacing: {}
 
-  src/components/styles/tabs:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/styles/tabs: {}
 
-  src/components/styles/theme:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/styles/theme: {}
 
   src/components/suggestion/suggestion_banner:
     devDependencies:
@@ -880,23 +836,11 @@ importers:
         specifier: ^13.4.0
         version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
 
-  src/components/util/lang_emojis:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/util/lang_emojis: {}
 
-  src/components/util/location:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/util/location: {}
 
-  src/components/util/unique_by:
-    devDependencies:
-      '@testing-library/react':
-        specifier: ^13.4.0
-        version: 13.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+  src/components/util/unique_by: {}
 
   src/components/vote/suggestion_vote_box:
     devDependencies:
