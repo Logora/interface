@@ -2,7 +2,7 @@ import React, { act } from 'react';
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { IntlProvider } from 'react-intl';
-import { MemoryRouter } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import { ConfigProvider } from '@logora/debate.data.config_provider';
 import { Location } from '@logora/debate.util.location';
 import { dataProvider, DataProviderContext } from '@logora/debate.data.data_provider';
@@ -123,7 +123,7 @@ const AddContentComponent = () => {
 }
 
 const Providers = ({ children }) => (
-    <MemoryRouter>
+    <BrowserRouter>
         <ConfigProvider routes={{ ...routes }} config={{ translation: { enable: false } }}>
             <DataProviderContext.Provider value={{ dataProvider: data }}>
                 <AuthContext.Provider value={{ currentUser, isLoggedIn: true }}>
@@ -148,7 +148,7 @@ const Providers = ({ children }) => (
                 </AuthContext.Provider>
             </DataProviderContext.Provider>
         </ConfigProvider>
-    </MemoryRouter>
+    </BrowserRouter>
 );
 
 const renderArgument = (props) => render(

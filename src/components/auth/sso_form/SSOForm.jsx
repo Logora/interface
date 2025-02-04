@@ -1,6 +1,6 @@
 import React from "react";
 import { useIntl, FormattedMessage } from "react-intl";
-import { useLocation } from "react-router-dom";
+import { useLocation } from "react-router";
 import useSessionStorageState from '@rooks/use-sessionstorage-state';
 import { Icon } from "@logora/debate.icons.icon";
 import { Toggle } from "@logora/debate.input.toggle";
