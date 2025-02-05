@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useDataProvider } from '@logora/debate.data.data_provider';
+import { useDataProvider, useData } from '@logora/debate.data.data_provider';
 import { useResponsive } from "@logora/debate.hooks.use_responsive";
 import { useIntl } from "react-intl";
 import { useLocation } from 'react-router';
@@ -14,8 +14,6 @@ import styles from "./PaginatedList.module.scss";
 import PropTypes from "prop-types";
 
 export const PaginatedList = ({
-    staticContext,
-    staticResourceName,
     query,
     sortOptions,
     sort,
@@ -61,7 +59,7 @@ export const PaginatedList = ({
     const { isMobile, isTablet, isDesktop } = useResponsive();
     const [isLoading, setIsLoading] = useState(false);
     const [loadError, setLoadError] = useState(false);
-    const [currentResources, setCurrentResources] = useState(staticContext && staticResourceName && staticResourceName in staticContext ? staticContext[staticResourceName] : []);
+    const [currentResources, setCurrentResources] = useData(currentListId, []);
     const [totalElements, setTotalElements] = useState(currentResources?.length || 0);
     const [page, setPage] = useState(currentPage || 1);
     const [currentQuery, setCurrentQuery] = useState(query || null);
@@ -360,8 +358,6 @@ export const PaginatedList = ({
 
 PaginatedList.propTypes = {
     resource: PropTypes.string,
-    staticContext: PropTypes.object,
-    staticResourceName: PropTypes.string,
     query: PropTypes.string,
     sortOptions: PropTypes.any,
     sort: PropTypes.string,
