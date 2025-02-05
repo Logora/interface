@@ -67,7 +67,7 @@ export const PaginatedList = ({
     const [currentQuery, setCurrentQuery] = useState(query || null);
     const [activeTagId, setActiveTagId] = useState(null);
     const [defaultSelectOption, setDefaultSelectOption] = useState(null);
-    const urlParams = new URLSearchParams(window !== "undefined" ? window.location.search : location.search);
+    const urlParams = new URLSearchParams(typeof window !== "undefined" ? window.location.search : location.search);
 
     const getInitSort = () => {
         return (sortOptions && sortOptions[0].type === "sort" && sortOptions[0].value) || sort || "";
