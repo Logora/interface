@@ -8,11 +8,13 @@ export const useAuthRequired = () => {
     const { showModal } = useModal();
 
     const requireAuthentication = (modalParams = {}) => {
-        window.dispatchEvent(
-            new CustomEvent("LOGORA::authenticationRequired", { detail: { redirectUrl: window.location.href } })
-        );
-        if (config?.auth?.disableLoginModal === true) { 
-            return; 
+        if (typeof window !== 'undefined') {
+            window.dispatchEvent(
+                new CustomEvent("LOGORA::authenticationRequired", { detail: { redirectUrl: window.location.href } })
+            );
+        }
+        if (config?.auth?.disableLoginModal === true) {
+            return;
         }
         showModal(<Suspense fallback={null}><AuthModal {...modalParams} /></Suspense>);
     }

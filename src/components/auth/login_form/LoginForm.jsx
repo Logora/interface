@@ -22,7 +22,7 @@ export const LoginForm = ({ onSubmit, forgotPasswordUrl, error = false }) => {
 
 	const getUrlWithRedirect = () => {
 		let baseUrl = new URL(forgotPasswordUrl);
-		baseUrl.searchParams.append("redirect_url", encodeURIComponent(window.location.origin + location.pathname + location.hash + location.search));
+		baseUrl.searchParams.append("redirect_url", encodeURIComponent(window?.location.origin + location.pathname + location.hash + location.search));
 		return baseUrl.href;
 	};
 

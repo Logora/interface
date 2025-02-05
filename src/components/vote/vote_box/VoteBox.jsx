@@ -81,7 +81,7 @@ export const VoteBox = ({ numberVotes, votePositions, voteableType, voteableId, 
         if (savedVote && Object.keys(savedVote).length !== 0) {
             return [true, savedVote.positionId]
         } else {
-            const urlParams = new URLSearchParams(window !== "undefined" ? window.location.search : location.search);
+            const urlParams = new URLSearchParams(typeof window !== "undefined" ? window.location.search : location.search);
             const initVote = Boolean(urlParams.get('initVote'));
             const positionId = parseInt(urlParams.get('positionId')) || false;
             return [initVote, positionId];

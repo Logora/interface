@@ -23,7 +23,7 @@ export const Drawer = ({ isOpen = false, onClose, title, size = '30vw', enableOv
     }, [isOpen])
 
     useEffect(() => {
-        if (pathParameter && location?.pathname) {
+        if (pathParameter && location?.pathname && typeof window !== 'undefined') {
             const url = new URL(window?.location);
             url.searchParams.set(pathParameter, location.pathname);
             window.history.pushState({}, '', url);

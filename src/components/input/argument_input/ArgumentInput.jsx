@@ -48,7 +48,7 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
     const requireAuthentication = useAuthRequired();
     const { showModal } = useModal();
     const { toast } = useToast() || {};
-    const urlParams = new URLSearchParams(window !== "undefined" ? window.location.search : location.search);
+    const urlParams = new URLSearchParams(typeof window !== "undefined" ? window.location.search : location.search);
     const inputDisabledForVisitors = (!isLoggedIn && config?.actions?.disableInputForVisitor)
     // Checks if the user has the role of editor or moderator
     const isEditorOrModerator = currentUser?.role === "editor" || currentUser?.role === "moderator"
@@ -220,13 +220,15 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
                         list.add(listId, [argument]);
                         toast(intl.formatMessage({ id: "alert.argument_create", defaultMessage: "Your contribution has been sent !" }), { type: "success", points: intl.formatMessage({ id: "alert.argument_create_gain", defaultMessage: "Up to 10 eloquence points" }), category: "ARGUMENT", contentKey: currentUser.messages_count === 2 ? "alert.third_argument" : "alert.first_argument" });
                     }
-                    window.dispatchEvent(
-                        new CustomEvent("logora:user_content:created", {
-                            detail: {
-                                content: response.data.data?.resource
-                            }
-                        })
-                    );
+                    if (typeof window !== 'undefined') {
+                        window.dispatchEvent(
+                            new CustomEvent("logora:user_content:created", {
+                                detail: {
+                                    content: response.data.data?.resource
+                                }
+                            })
+                        );
+                    }
                 }
             });
         }
@@ -353,7 +355,7 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
                                             values={{
                                                 userCharter: (
                                                     <a className={styles.guideMessage} href={userGuideUrl} target="_blank" >
-                                                       <FormattedMessage id="alert.user_charter" defaultMessage="user charter" />
+                                                        <FormattedMessage id="alert.user_charter" defaultMessage="user charter" />
                                                     </a>
                                                 ),
                                             }}

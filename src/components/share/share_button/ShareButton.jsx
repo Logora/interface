@@ -13,12 +13,12 @@ export const ShareButton = ({ showText, shareUrl, shareTitle, shareText = false,
 	const [popoverActive, setPopoverActive] = useState(false);
 
 	const buildShareLink = () => {
-        let shareUrlBuild = shareUrl;
-        if(typeof window !== 'undefined') {
-            shareUrlBuild += "?redirect_url=" + window.location.protocol + "//" + window.location.hostname;
-        }
-        return shareUrlBuild;
-    }
+		let shareUrlBuild = shareUrl;
+		if (typeof window !== 'undefined') {
+			shareUrlBuild += "?redirect_url=" + window.location.protocol + "//" + window.location.hostname;
+		}
+		return shareUrlBuild;
+	}
 
 	const shareUrlBuild = buildShareLink();
 
@@ -29,22 +29,26 @@ export const ShareButton = ({ showText, shareUrl, shareTitle, shareText = false,
 	};
 
 	const handleShare = () => {
-		let mql = window.matchMedia("(max-width: 600px)");
-		if ((typeof window !== 'undefined') && window.navigator.share && window.navigator.maxTouchPoints && window.navigator?.maxTouchPoints > 0 && mql.matches) {
-			handleMobileShare();
-		} else {
-			setPopoverActive(true);
+		if (typeof window !== 'undefined') {
+			let mql = window.matchMedia("(max-width: 600px)");
+			if ((typeof window !== 'undefined') && window.navigator.share && window.navigator.maxTouchPoints && window.navigator?.maxTouchPoints > 0 && mql.matches) {
+				handleMobileShare();
+			} else {
+				setPopoverActive(true);
+			}
 		}
 	};
 
 	const handleMobileShare = () => {
-		window.navigator.share({
-			text: shareText,
-			title: shareTitle,
-			url: shareUrlBuild
-		}).catch(error => {
-			// DO NOTHING
-		});
+		if (typeof window !== 'undefined') {
+			window.navigator.share({
+				text: shareText,
+				title: shareTitle,
+				url: shareUrlBuild
+			}).catch(error => {
+				// DO NOTHING
+			});
+		}
 	}
 
 	useOnClickOutside(popoverContentRef, handleClickOutsidePopover);
@@ -58,12 +62,12 @@ export const ShareButton = ({ showText, shareUrl, shareTitle, shareText = false,
 			data-tid="action_share_button"
 		>
 			<div
-				className={cx(styles.popoverWrapper, { [styles.popoverActive]: popoverActive})}
+				className={cx(styles.popoverWrapper, { [styles.popoverActive]: popoverActive })}
 			>
 				<Icon name="share" height={iconSize} width={iconSize} />
-				{ showText && <div className={styles.shareButtonText}>{intl.formatMessage({ id: "share.share_button.text", defaultMessage: "Share" })}</div> }
-				<div ref={popoverContentRef} className={cx(styles.popoverContent, {[styles.popoverContentWithCode]: showShareCode})}>
-					{ popoverActive && <ShareBox shareUrl={shareUrlBuild} shareTitle={shareTitle} shareText={shareText} showShareCode={showShareCode} shareCode={shareCode} tooltipPosition={tooltipPosition} /> }
+				{showText && <div className={styles.shareButtonText}>{intl.formatMessage({ id: "share.share_button.text", defaultMessage: "Share" })}</div>}
+				<div ref={popoverContentRef} className={cx(styles.popoverContent, { [styles.popoverContentWithCode]: showShareCode })}>
+					{popoverActive && <ShareBox shareUrl={shareUrlBuild} shareTitle={shareTitle} shareText={shareText} showShareCode={showShareCode} shareCode={shareCode} tooltipPosition={tooltipPosition} />}
 				</div>
 			</div>
 		</div>
@@ -78,7 +82,7 @@ ShareButton.propTypes = {
 	/** Title of the content that will be shared */
 	shareTitle: PropTypes.string.isRequired,
 	/** Description of the shared content */
-    shareText: PropTypes.string,
+	shareText: PropTypes.string,
 	/** Code to share */
 	shareCode: PropTypes.string,
 	/** If `true`, show copy code icon */
