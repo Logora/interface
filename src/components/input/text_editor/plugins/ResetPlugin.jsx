@@ -18,8 +18,8 @@ export const ResetPlugin = ({ storageUid }) => {
                 root.append(p);
                 setReset(false);
                 removeContent();
+                editor.blur();
             });
-            editor.blur();
         }
     }, [reset]);
 
