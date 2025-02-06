@@ -1,15 +1,15 @@
 import React from 'react';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { BrowserRouter } from 'react-router-dom';
-import { ScrollToTop } from './ScrollToTop';
-import { render } from '@testing-library/react';
+import { InnerComponent } from './ScrollToTop.composition';
 
 describe('ScrollToTop', () => {  
     beforeEach(() => {
         jest.clearAllMocks();
     });
 
-    it('should scroll to the element with the specified ID', async () => {
-        // Mock the window and its properties
+    it('should scroll to the element with the specified ID on location change', async () => {
         const scrollIntoViewMock = jest.fn();
         const getElementByIdMock = jest.fn(() => ({
             scrollIntoView: scrollIntoViewMock
@@ -17,32 +17,20 @@ describe('ScrollToTop', () => {
         window.document.getElementById = getElementByIdMock;
         window.scrollTo = jest.fn();
 
-        // Render the component with a dummy element
         render(
             <BrowserRouter>
-                <ScrollToTop elementId="my-element" />
-                <div id="my-element">Dummy element</div>
+                <InnerComponent />
             </BrowserRouter>
         );
 
-        // Expect that the DOM methods were called as expected
-        expect(getElementByIdMock).toHaveBeenCalledWith('my-element');
-        expect(scrollIntoViewMock).toHaveBeenCalled();
-    });
+        expect(getElementByIdMock).not.toHaveBeenCalledWith('test');
+        expect(scrollIntoViewMock).not.toHaveBeenCalled();
 
-    it('should not scroll when the location changes and an element ID is provided, but the element is not found', () => {
-        const getElementByIdMock = jest.fn(() => null);
-        jest.spyOn(document, 'getElementById').mockImplementation(getElementByIdMock);
-    
-        const { rerender } = render(
-          <BrowserRouter>
-            <ScrollToTop elementId="non-existent-element" />
-          </BrowserRouter>
-        );
-    
-        // Expect that getElementById and scrollIntoView were not called
-        expect(getElementByIdMock).toHaveBeenCalledTimes(1);
-        expect(getElementByIdMock).toHaveBeenCalledWith('non-existent-element');
-        expect(getElementByIdMock.mock.results[0].value).toBeNull();
-    });       
+        const button = screen.getByText("Navigate")
+        expect(button).toBeTruthy();
+        await userEvent.click(button)
+
+        expect(getElementByIdMock).toHaveBeenCalledWith('test');
+        expect(scrollIntoViewMock).toHaveBeenCalled();
+    });  
 });
