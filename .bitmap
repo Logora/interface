@@ -726,7 +726,7 @@
     "tools/scroll_to_top": {
         "name": "tools/scroll_to_top",
         "scope": "logora.debate",
-        "version": "0.0.22",
+        "version": "0.0.23",
         "mainFile": "index.js",
         "rootDir": "src/components/tools/scroll_to_top"
     },
