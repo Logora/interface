@@ -59,12 +59,12 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
             positionIdParam = urlParams.get('positionId');
         }
 
-        if (positionId && positionId !== positions[2]?.id && positions?.find(pos => pos.id === positionId)) {
+        if (positionId && positionId != positions[2]?.id && positions?.find(pos => pos.id === positionId)) {
             setUserPositionId(positionId);
-        } else if (positionIdParam && positionIdParam !== positions[2]?.id) {
+        } else if (positionIdParam && positionIdParam != positions[2]?.id) {
             setUserPositionId(positionIdParam);
         } else {
-            if (savedArgument && (savedArgument.groupId == groupId) && (savedArgument.positionId !== positions[2]?.id)) {
+            if (savedArgument && (savedArgument.groupId == groupId) && (savedArgument.positionId != positions[2]?.id)) {
                 setUserPositionId(savedArgument.positionId);
             }
         }
