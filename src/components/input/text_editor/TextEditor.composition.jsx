@@ -3,7 +3,7 @@ import { TextEditor } from './TextEditor';
 import { ModalProvider } from '@logora/debate.dialog.modal';
 import { IntlProvider } from 'react-intl';
 import { dataProvider, DataProviderContext } from '@logora/debate.data.data_provider';
-import { InputProvider } from '@logora/debate.input.input_provider';
+import { InputProvider, useInput } from '@logora/debate.input.input_provider';
 import { IconProvider } from '@logora/debate.icons.icon_provider';
 import * as regularIcons from '@logora/debate.icons.regular_icons';
 
@@ -20,6 +20,18 @@ const handleSubmit = (textContent, richContent, sources) => {
     console.log(richContent)
 }
 
+const CustomTextEditor = () => {
+    const { setReset } = useInput();
+    return (
+        < TextEditor
+            placeholder={"Add an argument"}
+            onSubmit={() => setReset(true)}
+            onActivation={() => null}
+            shortBar={true}
+        />
+    )
+}
+
 export const DefaultTextEditor = () => {
     return (
         <IntlProvider locale="en">
@@ -27,12 +39,7 @@ export const DefaultTextEditor = () => {
                 <ModalProvider>
                     <IconProvider library={regularIcons}>
                         <InputProvider>
-                            <TextEditor
-                                placeholder={"Add an argument"}
-                                onSubmit={handleSubmit}
-                                onActivation={() => null}
-                                shortBar={true}
-                            />
+                            <CustomTextEditor />
                         </InputProvider>
                     </IconProvider>
                 </ModalProvider>

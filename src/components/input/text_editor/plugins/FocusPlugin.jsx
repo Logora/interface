@@ -2,7 +2,7 @@ import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext
 import { useEffect } from "react";
 import { useInput } from '@logora/debate.input.input_provider';
 
-export const FocusPlugin = (props) => {
+export const FocusPlugin = () => {
     const [editor] = useLexicalComposerContext();
     const { focus } = useInput();
     

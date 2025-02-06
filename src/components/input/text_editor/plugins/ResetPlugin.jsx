@@ -4,10 +4,10 @@ import { useInput } from '@logora/debate.input.input_provider';
 import { $getRoot, $createParagraphNode } from "lexical";
 import useSessionStorageState from '@rooks/use-sessionstorage-state';
 
-export const ResetPlugin = (props) => {
+export const ResetPlugin = ({ storageUid }) => {
     const [editor] = useLexicalComposerContext();
     const { reset, setReset } = useInput();
-    const [content, setContent, removeContent] = useSessionStorageState(`TextEditor:content_${props.storageUid}`, {});
+    const [content, setContent, removeContent] = useSessionStorageState(`TextEditor:content_${storageUid}`, {});
 
     useEffect(() => {
         if (reset) {
@@ -19,6 +19,7 @@ export const ResetPlugin = (props) => {
                 setReset(false);
                 removeContent();
             });
+            editor.blur();
         }
     }, [reset]);
 
