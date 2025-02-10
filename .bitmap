@@ -697,17 +697,10 @@
     },
     "summary/summary_box": {
         "name": "summary/summary_box",
-        "scope": "",
-        "version": "",
-        "defaultScope": "logora.debate",
+        "scope": "logora.debate",
+        "version": "0.0.1",
         "mainFile": "index.js",
-        "rootDir": "src/components/summary/summary_box",
-        "config": {
-            "teambit.react/react-env@1.0.111": {},
-            "teambit.envs/envs": {
-                "env": "teambit.react/react-env"
-            }
-        }
+        "rootDir": "src/components/summary/summary_box"
     },
     "tag/tag": {
         "name": "tag/tag",
