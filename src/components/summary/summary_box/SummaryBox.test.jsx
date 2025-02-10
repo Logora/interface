@@ -1,6 +1,7 @@
 import React from "react";
 import { SummaryBox } from './SummaryBox';
 import { render } from '@testing-library/react';
+import styles from './SummaryBox.module.scss';
 
 
 describe('SummaryBox', () => {
@@ -13,7 +14,7 @@ describe('SummaryBox', () => {
         const { getByText } = render(
             <SummaryBox
                 contentItems={contentItems}
-                color={"blue"}
+                className={styles.navy}
                 tag={"Yes"}
             />
         );
@@ -34,7 +35,7 @@ describe('SummaryBox', () => {
         const { getByText, queryByText } = render(
             <SummaryBox
                 contentItems={contentItems}
-                color={"darksalmon"}
+                className={styles.darksalmon}
             />
         );
 
