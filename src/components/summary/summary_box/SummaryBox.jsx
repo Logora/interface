@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './SummaryBox.module.scss';
 import PropTypes from "prop-types";
 
-export const SummaryBox = ({contentItems, color, tag}) => {
+export const SummaryBox = ({contentItems = [], color, tag}) => {
     return (
         <div className={styles.box}>
             <div className={styles.stats}>
