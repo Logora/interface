@@ -40,7 +40,7 @@
 }
 
 .contentItem::before {
-    content: "○";
+    content: "\25CF";;
     font-size: $font-size-small; 
     color: $call-primary; 
 }
