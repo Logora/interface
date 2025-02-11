@@ -41,7 +41,7 @@ describe('SummaryBox', () => {
 
         expect(queryByText("Yes")).not.toBeInTheDocument();
 
-        summarytems.forEach(item => {
+        summaryItems.forEach(item => {
             expect(getByText(item)).toBeInTheDocument();
         });
     });
