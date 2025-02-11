@@ -1,0 +1,11 @@
+@import '~@logora/debate.styles.theme/_theme.scss';
+@import "~@logora/debate.styles.spacing/_spacing.scss";
+
+.argumentsListContainer {
+    display: flex !important;
+    align-items: flex-start !important;
+    gap: 10px;
+    @include media-breakpoint-down(sm) {
+        flex-direction: column !important;
+    }
+}
