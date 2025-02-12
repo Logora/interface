@@ -59,9 +59,9 @@ export const Summary = ({ contentId, positions = [] }) => {
                     positions.map((position) => (
                         <div key={position.id}>
                             <SummaryBox
-                                contentItems={summarys[position.id] || []}
+                                summaryItemsItems={summarys[position.id] || []}
                                 tag={position.name}
-                                className={styles.test}
+                                tagClassName={styles.tag}
                             />
                         </div>
                     ))
