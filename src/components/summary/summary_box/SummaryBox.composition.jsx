@@ -5,17 +5,17 @@ import styles from './SummaryBox.module.scss';
 
 export const DefaultSummaryBox = () => {
     const generateContent = () => {
-        const contentItems = [];
+        const summaryItems = [];
         for (let i = 0; i < 5; i++) {
-            contentItems.push(faker.lorem.sentence());
+            summaryItems.push(faker.lorem.sentence());
         }
-        return contentItems;
+        return summaryItems;
     };
 
     return (
         <SummaryBox
-            contentItems={generateContent()}
-            className={styles.navy}
+            summaryItems={generateContent()}
+            tagClassName={styles.navy}
             tag={"Yes"}
         />
     );
@@ -23,17 +23,17 @@ export const DefaultSummaryBox = () => {
 
 export const SummaryBoxRed = () => {
     const generateContent = () => {
-        const contentItems = [];
+        const summaryItems = [];
         for (let i = 0; i < 5; i++) {
-            contentItems.push(faker.lorem.sentence());
+            summaryItems.push(faker.lorem.sentence());
         }
-        return contentItems;
+        return summaryItems;
     };
 
     return (
         <SummaryBox
-            contentItems={generateContent()}
-            className={styles.darksalmon}
+            summaryItems={generateContent()}
+            tagClassName={styles.darksalmon}
             tag={"No"}
         />
     );
@@ -42,15 +42,15 @@ export const SummaryBoxRed = () => {
 
 export const SummaryBoxWithoutTag = () => {
     const generateContent = () => {
-        const contentItems = [];
+        const summaryItems = [];
         for (let i = 0; i < 5; i++) {
-            contentItems.push(faker.lorem.sentence());
+            summaryItems.push(faker.lorem.sentence());
         }
-        return contentItems;
+        return summaryItems;
     };
     return (
         <SummaryBox
-            contentItems={generateContent()}
+            summaryItems={generateContent()}
         />
     );
 };

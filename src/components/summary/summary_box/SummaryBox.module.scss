@@ -28,18 +28,18 @@
     text-transform: uppercase;
 }
 
-.contentItems {
+.summaryItems {
     padding: 0;
     margin: 0;
 }
 
-.contentItem {
+.summaryItem {
     display: flex;
     gap: 8px; 
     padding: $spacer-xs;
 }
 
-.contentItem::before {
+.summaryItem::before {
     content: "\25CF";;
     font-size: $font-size-extra-small; 
     color: $call-primary; 
