@@ -6,27 +6,49 @@ import { IconProvider } from '@logora/debate.icons.icon_provider';
 import { ResponsiveProvider } from '@logora/debate.hooks.use_responsive';
 import * as regularIcons from '@logora/debate.icons.regular_icons';
 
-const mockDebate = {
-    id: faker.datatype.uuid(),  
+const summaryWithPositions = {
+    id: faker.datatype.uuid(),
     group_context: {
         positions: Array.from({ length: 3 }, (_, index) => ({
-            id: faker.datatype.uuid(),  
-            name: faker.lorem.word()    
+            id: faker.datatype.uuid(),
+            name: faker.lorem.word()
         }))
     }
 };
 
-export const DefaultSummary = () => {
-    const contentId = mockDebate.id; 
-    const positions = mockDebate.group_context.positions;  
+export const DefaultSummaryWithPositions = () => {
+    const contentId = summaryWithPositions.id;
+    const positions = summaryWithPositions.group_context.positions;
 
     return (
-            <ResponsiveProvider>
-                <IconProvider library={regularIcons}>
-                    <IntlProvider locale="en">
-                        <Summary contentId={contentId} positions={positions} />
-                    </IntlProvider>
-                </IconProvider>
-            </ResponsiveProvider>
+        <ResponsiveProvider>
+            <IconProvider library={regularIcons}>
+                <IntlProvider locale="en">
+                    <Summary contentId={contentId} positions={positions} />
+                </IntlProvider>
+            </IconProvider>
+        </ResponsiveProvider>
+    );
+};
+
+const summaryWithoutPositions = {
+    id: faker.datatype.uuid(),
+    group_context: {
+        positions: []  
+    }
+};
+
+export const DefaultSummaryWithoutPositions = () => {
+    const contentId = summaryWithoutPositions.id;
+    const positions = summaryWithoutPositions.group_context.positions;
+
+    return (
+        <ResponsiveProvider>
+            <IconProvider library={regularIcons}>
+                <IntlProvider locale="en">
+                    <Summary contentId={contentId} positions={positions} />
+                </IntlProvider>
+            </IconProvider>
+        </ResponsiveProvider>
     );
 };

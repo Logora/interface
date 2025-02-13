@@ -6,7 +6,7 @@ import { BoxSkeleton } from '@logora/debate.skeleton.box_skeleton';
 import { useIntl } from 'react-intl';
 
 export const Summary = ({ contentId, positions = [] }) => {
-    const [summarys, setSummarys] = useState({});
+    const [summaries, setSummaries] = useState({});
     const [isLoading, setIsLoading] = useState(true);
     const intl = useIntl();
 
@@ -15,21 +15,30 @@ export const Summary = ({ contentId, positions = [] }) => {
             try {
                 const summariesData = {};
 
-                await Promise.all(
-                    positions.map(async (position) => {
-                        try {
-                            const response = await fetch(`https://nlp.logora.fr/analysis/argument-summary-${contentId}-${position.id}`);
-                            if (!response.ok) {
-                                throw new Error('HTTP error');
+                if (positions.length === 0) {
+                    const response = await fetch(`https://nlp.logora.fr/analysis/argument-summary-${contentId}`);
+                    if (!response.ok) {
+                        throw new Error('HTTP error');
+                    }
+                    const json = await response.json();
+                    summariesData['no-position'] = json.data;
+                } else {
+                    await Promise.all(
+                        positions.map(async (position) => {
+                            try {
+                                const response = await fetch(`https://nlp.logora.fr/analysis/argument-summary-${contentId}-${position.id}`);
+                                if (!response.ok) {
+                                    throw new Error('HTTP error');
+                                }
+                                const json = await response.json();
+                                summariesData[position.id] = json.data;
+                            } catch (error) {
+                                console.error(error);
                             }
-                            const json = await response.json();
-                            summariesData[position.id] = json.data;
-                        } catch (error) {
-                            console.error(error);
-                        }
-                    })
-                );
-                setSummarys(summariesData);
+                        })
+                    );
+                }
+                setSummaries(summariesData);
                 setIsLoading(false);
             } catch (error) {
                 console.error(error);
@@ -39,7 +48,6 @@ export const Summary = ({ contentId, positions = [] }) => {
 
         fetchSummaries();
     }, [contentId, positions]);
-
 
     return (
         <SectionBox
@@ -52,19 +60,31 @@ export const Summary = ({ contentId, positions = [] }) => {
         >
             <div className={styles.summaryContainer}>
                 {isLoading ? (
-                    positions.map((position) => (
-                        <BoxSkeleton key={position.id} onlyEdgeBox boxHeight={120} />
-                    ))
+                    positions.length === 0 ? (
+                        <BoxSkeleton key="no-position" onlyEdgeBox boxHeight={120} />
+                    ) : (
+                        positions.map((position) => (
+                            <BoxSkeleton key={position.id} onlyEdgeBox boxHeight={120} />
+                        ))
+                    )
                 ) : (
-                    positions.map((position) => (
-                        <div key={position.id}>
+                    positions.length === 0 ? (
+                        <div key="no-position">
                             <SummaryBox
-                                summaryItemsItems={summarys[position.id] || []}
-                                tag={position.name}
-                                tagClassName={styles.tag}
+                                summaryItems={summaries['no-position'] || []}
                             />
                         </div>
-                    ))
+                    ) : (
+                        positions.map((position) => (
+                            <div key={position.id}>
+                                <SummaryBox
+                                    summaryItems={summaries[position.id] || []}
+                                    tag={position.name}
+                                    tagClassName={styles.tag}
+                                />
+                            </div>
+                        ))
+                    )
                 )}
             </div>
         </SectionBox>
