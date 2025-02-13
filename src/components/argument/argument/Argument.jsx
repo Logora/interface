@@ -244,7 +244,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupTyp
 							{extraReplies.map(r => displayReply(r))}
 						</div>
 					}
-					{expandReplies &&
+					{extraReplies?.length == 0 && expandReplies &&
 						<div className={styles.repliesList}>
 							<VotePaginatedList
 								voteableType={"Message"}
