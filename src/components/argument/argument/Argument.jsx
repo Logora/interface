@@ -256,7 +256,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupTyp
 								perPage={5}
 								display={"column"}
 								resourcePropName={'argument'}
-								emptyListComponent={<>""</>}
+								emptyListComponent={<></>}
 								transformData={(reply) => transformReplies(reply)}
 							>
 								{displayReply(argument)}
