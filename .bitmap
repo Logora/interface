@@ -61,7 +61,7 @@
     "argument/argument": {
         "name": "argument/argument",
         "scope": "logora.debate",
-        "version": "0.0.302",
+        "version": "0.0.303",
         "mainFile": "index.js",
         "rootDir": "src/components/argument/argument"
     },
