@@ -242,9 +242,23 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupTyp
 					{extraReplies?.length > 0 && expandReplies &&
 						<div className={styles.repliesList}>
 							{extraReplies.map(r => displayReply(r))}
+							<VotePaginatedList
+								voteableType={"Message"}
+								currentListId={"argument_" + argument.id + "_reply_list"}
+								loadingComponent={<UserContentSkeleton />}
+								resource={"messages"}
+								sort={"+created_at"}
+								filters={{ message_id: argument.id, is_reply: true, status: "accepted" }}
+								perPage={5}
+								display={"column"}
+								resourcePropName={'argument'}
+								transformData={(reply) => transformReplies(reply)}
+							>
+								{displayReply(argument)}
+							</VotePaginatedList>
 						</div>
 					}
-					{extraReplies?.length == 0 && expandReplies &&
+					{expandReplies && extraReplies?.length === 0 &&
 						<div className={styles.repliesList}>
 							<VotePaginatedList
 								voteableType={"Message"}
