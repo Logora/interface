@@ -31,17 +31,7 @@ const summaryWithPositions = {
 export const SummaryWithPositions = () => {
     const contentId = summaryWithPositions.id;
     const tags = summaryWithPositions.group_context.tags;
-    const [summaryData, setSummaryData] = useState(null);
 
-    useEffect(() => {
-        const fetchData = async () => {
-            const response = await fetch();
-            const data = await response.json();
-            setSummaryData(data.data);
-        };
-
-        fetchData();
-    }, []);
 
     return (
         <ResponsiveProvider>
@@ -70,17 +60,6 @@ const summaryWithoutPositions = {
 export const SummaryWithoutPositions = () => {
     const contentId = summaryWithoutPositions.id;
     const tags = summaryWithoutPositions.group_context.tags;
-    const [summaryData, setSummaryData] = useState(null);
-
-    useEffect(() => {
-        const fetchData = async () => {
-            const response = await fetch();
-            const data = await response.json();
-            setSummaryData(data.data);
-        };
-
-        fetchData();
-    }, []);
 
     return (
         <ResponsiveProvider>
