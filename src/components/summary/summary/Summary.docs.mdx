@@ -1,0 +1,22 @@
+---
+description: A component that renders a summary section with or without tags.It fetches summary data based on the provided summaryId and tags, and displays the content using SummaryBox components.If no tags are provided, it displays a single summary box.
+---
+
+import { Summary } from './Summary';
+
+### Component usage
+```js
+import { Summary } from '@logora/debate.summary.summary';
+```
+```js
+<Summary
+    summaryId="12345"
+    tags={[
+        { id: "1", name: "tag1" },
+        { id: "2", name: "tag2" }
+    ]}
+    tagClassNames={[styles.tagBlue, styles.tagGreen]}
+    title="Summary with Tags"
+    subtitle="This is a summary"
+/>
+```
