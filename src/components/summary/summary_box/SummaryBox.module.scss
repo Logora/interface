@@ -11,6 +11,7 @@
 .stats {
     display: flex !important;
     justify-content: flex-start !important;
+    align-items: center;
     margin-bottom: .4em;
     gap: 10px;
 }
@@ -24,7 +25,7 @@
     overflow: hidden;
     word-wrap: break-word;
     @include line-clamp(2);
-	max-height: 3.4em;
+    max-height: 3.4em;
     text-transform: uppercase;
 }
 
@@ -35,14 +36,11 @@
 
 .summaryItem {
     display: flex;
-    gap: 8px; 
+    gap: 8px;
     padding: $spacer-xs;
-}
-
-.summaryItem::before {
-    content: "\25CF";;
-    font-size: $font-size-extra-small; 
-    color: $call-primary; 
+    align-items: flex-start;
+    font-size: $font-size-small;
+    color: $call-primary
 }
 
 .navy {

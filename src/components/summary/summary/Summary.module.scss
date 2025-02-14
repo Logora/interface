@@ -5,12 +5,14 @@
     display: flex !important;
     align-items: flex-start !important;
     gap: 10px;
+
     @include media-breakpoint-down(sm) {
         flex-direction: column !important;
     }
 }
 
-.tag{
-    color: white;
-    background-color: $call-primary;;
+.tag {
+    color: $text-light;
+    background-color: $call-primary;
+    ;
 }

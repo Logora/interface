@@ -1,86 +1,75 @@
 import React, { useEffect, useState } from 'react';
-import styles from './Summary.module.scss';
 import { SectionBox } from '@logora/debate.section.section_box';
 import { SummaryBox } from '@logora/debate.summary.summary_box';
 import { BoxSkeleton } from '@logora/debate.skeleton.box_skeleton';
-import { useIntl } from 'react-intl';
+import styles from './Summary.module.scss';
 
-export const Summary = ({ contentId, positions = [] }) => {
+export const Summary = ({ summaryId, tags = [], tagClassNames = [], title, subtitle }) => {
     const [summaries, setSummaries] = useState({});
-    const [isLoading, setIsLoading] = useState(true);
-    const intl = useIntl();
+
+    const fetchSummary = async (summaryId, tagId = '') => {
+        try {
+            const url = `https://nlp.logora.fr/analysis/argument-summary-${summaryId}${tagId ? `-${tagId}` : ''}`;
+            const response = await fetch(url);
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+
+            const json = await response.json();
+            return json.data || [];
+        } catch (error) {
+            console.error(error);
+        }
+    };
 
     useEffect(() => {
         const fetchSummaries = async () => {
             try {
                 const summariesData = {};
 
-                if (positions.length === 0) {
-                    const response = await fetch(`https://nlp.logora.fr/analysis/argument-summary-${contentId}`);
-                    if (!response.ok) {
-                        throw new Error('HTTP error');
-                    }
-                    const json = await response.json();
-                    summariesData['no-position'] = json.data;
+                if (tags.length === 0) {
+                    summariesData['no-position'] = await fetchSummary(summaryId);
                 } else {
-                    await Promise.all(
-                        positions.map(async (position) => {
-                            try {
-                                const response = await fetch(`https://nlp.logora.fr/analysis/argument-summary-${contentId}-${position.id}`);
-                                if (!response.ok) {
-                                    throw new Error('HTTP error');
-                                }
-                                const json = await response.json();
-                                summariesData[position.id] = json.data;
-                            } catch (error) {
-                                console.error(error);
-                            }
-                        })
+                    const results = await Promise.all(
+                        tags.map((tag) => fetchSummary(summaryId, tag.id))
                     );
+
+                    tags.forEach((tag, index) => {
+                        summariesData[tag.id] = results[index];
+                    });
                 }
+
                 setSummaries(summariesData);
-                setIsLoading(false);
             } catch (error) {
                 console.error(error);
-                setIsLoading(false);
             }
         };
 
         fetchSummaries();
-    }, [contentId, positions]);
+    }, [summaryId, tags]);
 
     return (
-        <SectionBox
-            isCollapsible
-            isCollapsedByDefault={false}
-            title={intl.formatMessage({
-                id: "source.context_source_list.title",
-                defaultMessage: "Summary"
-            })}
-        >
+        <SectionBox isCollapsible isCollapsedByDefault={false} title={title} subtitle={subtitle}>
             <div className={styles.summaryContainer}>
-                {isLoading ? (
-                    positions.length === 0 ? (
-                        <BoxSkeleton key="no-position" onlyEdgeBox boxHeight={120} />
+                {Object.keys(summaries).length === 0 ? (
+                    tags.length === 0 ? (
+                        <BoxSkeleton onlyEdgeBox boxHeight={120} />
                     ) : (
-                        positions.map((position) => (
-                            <BoxSkeleton key={position.id} onlyEdgeBox boxHeight={120} />
-                        ))
+                        tags.map((tag) => <BoxSkeleton key={tag.id} onlyEdgeBox boxHeight={120} />)
                     )
                 ) : (
-                    positions.length === 0 ? (
-                        <div key="no-position">
-                            <SummaryBox
-                                summaryItems={summaries['no-position'] || []}
-                            />
+                    tags.length === 0 ? (
+                        <div>
+                            <SummaryBox summaryItems={summaries['no-position'] || []} />
                         </div>
                     ) : (
-                        positions.map((position) => (
-                            <div key={position.id}>
+                        tags.map((tag) => (
+                            <div key={tag.id}>
                                 <SummaryBox
-                                    summaryItems={summaries[position.id] || []}
-                                    tag={position.name}
-                                    tagClassName={styles.tag}
+                                    summaryItems={summaries[tag.id] || []}
+                                    tag={tag.name}
+                                    tagClassName={tagClassNames}
                                 />
                             </div>
                         ))
