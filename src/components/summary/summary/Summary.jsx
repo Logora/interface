@@ -50,7 +50,7 @@ export const Summary = ({ summaryId, tags = [], tagClassNames = [], title, subti
     }, [summaryId, tags]);
 
     return (
-        <SectionBox isCollapsible isCollapsedByDefault={false} title={title} subtitle={subtitle}>
+        <SectionBox isCollapsible isCollapsedByDefault={true} title={title} subtitle={subtitle}>
             <div className={styles.summaryContainer}>
                 {Object.keys(summaries).length === 0 ? (
                     tags.length === 0 ? (
