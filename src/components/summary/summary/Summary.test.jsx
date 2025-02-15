@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen, waitFor } from '@testing-library/react';
+import { render, screen, waitFor, fireEvent } from '@testing-library/react';
 import { Summary } from './Summary';
 import { IntlProvider } from 'react-intl';
 import { IconProvider } from '@logora/debate.icons.icon_provider';
@@ -15,7 +15,6 @@ beforeEach(() => {
         })
     );
 });
-
 
 describe('Summary Component', () => {
     const mockTags = [
@@ -44,6 +43,8 @@ describe('Summary Component', () => {
 
         expect(screen.getByText('Summary')).toBeInTheDocument();
 
+        fireEvent.click(screen.getByText('Summary'));
+
         await waitFor(() => {
             const summaries = screen.getAllByText((content) => content.includes('mocked summary data'));
             expect(summaries.length).toBe(mockTags.length);
@@ -68,6 +69,8 @@ describe('Summary Component', () => {
 
         expect(screen.getByText('Summary')).toBeInTheDocument();
 
+        fireEvent.click(screen.getByText('Summary'));
+
         await waitFor(() => expect(screen.getByText('mocked summary data')).toBeInTheDocument());
     });
 
@@ -88,6 +91,8 @@ describe('Summary Component', () => {
             </ResponsiveProvider>
         );
 
-        await waitFor(() => expect(fetch).toHaveBeenCalled());
+        fireEvent.click(screen.getByText('Summary'));
+
+        await waitFor(() => expect(global.fetch).toHaveBeenCalled());
     });
 });
