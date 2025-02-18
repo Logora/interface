@@ -90,6 +90,9 @@ export const TextEditor = ({ placeholder, onSubmit, sources, hideSubmit = false,
         if (onSubmit) {
             event.preventDefault();
             onSubmit(textContent, richContent, sources);
+            if (editorRef?.current) {
+                editorRef.current.blur();
+            }
         }
         setEditorSources([]);
     }
