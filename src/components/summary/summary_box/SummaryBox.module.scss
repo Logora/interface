@@ -2,10 +2,14 @@
 @import "~@logora/debate.styles.spacing/_spacing.scss";
 
 .box {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
     padding: .7em;
     border-radius: $box-border-radius;
     box-shadow: $box-shadow;
     border: $box-border;
+    flex: 1
 }
 
 .stats {
@@ -32,6 +36,7 @@
 .summaryItems {
     padding: 0;
     margin: 0;
+    flex-grow: 1;
 }
 
 .summaryItem {
