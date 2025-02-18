@@ -1,1 +1,1 @@
-export { SSOForm } from './SSOForm';
+export { SSOForm, EMAIL_CONSENT_STORAGE_KEY } from './SSOForm';
