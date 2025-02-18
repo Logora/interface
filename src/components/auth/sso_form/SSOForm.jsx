@@ -45,6 +45,7 @@ export const SSOForm = ({ authType, providerName, loginUrl, signupUrl, termsUrl,
 
 	const getOAuthDialogUrl = (url) => {
 		let baseUrl = new URL(url);
+		baseUrl.searchParams.delete("code");
 		baseUrl.searchParams.append("client_id", clientId);
 		baseUrl.searchParams.append("redirect_uri", oAuthRedirectUri);
 		baseUrl.searchParams.append("scope", scope);
