@@ -59,4 +59,20 @@ describe('OAuth2ServerAuth', () => {
 			expect(authorizationParams.session_id).toBe(null);
 		});
 	});
+
+	describe("code parameter handling", () => {
+		it('should not duplicate code parameter', () => {
+			const assertion = "new-code";
+			const existingCode = "old-code";
+
+			delete window.location;
+			window.location = { search: `?code=${existingCode}` };
+
+			const oauth2ServerAuth = new OAuth2ServerAuth("provider", assertion);
+			const urlParams = new URLSearchParams(window.location.search);
+			
+			expect(urlParams.getAll('code').length).toBe(1);
+			expect(urlParams.get('code')).toBe(existingCode);
+		});
+	});
 });
