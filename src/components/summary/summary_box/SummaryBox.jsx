@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 export const SummaryBox = ({ summaryItems = [], tagClassName, tag }) => {
     return (
         <div className={styles.box}>
-            <div className={styles.stats}>
+            <div className={`${styles.stats} ${tag ? styles.withTag : ''}`}>
                 {tag && (
                     <div className={`${styles.tag} ${tagClassName}`} >
                         {tag}

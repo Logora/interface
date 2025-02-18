@@ -16,8 +16,11 @@
     display: flex !important;
     justify-content: flex-start !important;
     align-items: center;
-    margin-bottom: .4em;
     gap: 10px;
+}
+
+.stats.withTag {
+    margin-bottom: .4em;
 }
 
 .tag {
