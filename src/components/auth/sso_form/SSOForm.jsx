@@ -9,8 +9,10 @@ import cx from "classnames";
 import styles from "./SSOForm.module.scss";
 import PropTypes from "prop-types";
 
-export const SSOForm = ({ authType, providerName, loginUrl, signupUrl, termsUrl, logoUrl, clientId, oAuthRedirectUri, scope, redirectParameter = "logora_redirect", trackingParameters = {}, hideActions = false, showEmailConsent = false, showTerms = false, error = false }) => {
-	const [emailConsent, setEmailConsent] = useSessionStorageState("logora:emailConsent", false);
+export const EMAIL_CONSENT_STORAGE_KEY = "logora:emailConsent";
+
+export const SSOForm = ({authType, providerName, loginUrl, signupUrl, termsUrl, logoUrl, clientId, oAuthRedirectUri, scope, redirectParameter = "logora_redirect", trackingParameters = {}, hideActions = false, showEmailConsent = false, showTerms = false, error = false }) => {
+	const [emailConsent, setEmailConsent] = showEmailConsent ? useSessionStorageState(EMAIL_CONSENT_STORAGE_KEY, false) : [false, () => {}];
 	const intl = useIntl();
 	const location = useLocation();
 

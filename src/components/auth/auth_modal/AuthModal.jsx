@@ -6,7 +6,7 @@ import useSessionStorageState from '@rooks/use-sessionstorage-state';
 import { httpClient } from '@logora/debate.data.axios_client';
 import AuthProviderFactory from '@logora/debate.auth.providers';
 import { SocialAuthForm } from '@logora/debate.auth.social_auth_form';
-import { SSOForm } from '@logora/debate.auth.sso_form';
+import { SSOForm, EMAIL_CONSENT_STORAGE_KEY } from '@logora/debate.auth.sso_form';
 import { Loader } from '@logora/debate.progress.loader';
 import styles from "./AuthModal.module.scss";
 import PropTypes from "prop-types";
@@ -17,7 +17,7 @@ export const AuthModal = ({ onHideModal = null }) => {
 	const { isLoggedIn, authError } = useAuth();
 	const [initAuth, setInitAuth] = useState(false);
 	const [method, setMethod] = useState(null);
-	const [acceptsEmails, setAcceptsEmails] = useSessionStorageState("logora:emailConsent", false);
+	const [acceptsEmails, setAcceptsEmails] = useSessionStorageState(EMAIL_CONSENT_STORAGE_KEY, false);
     const { loginUser } = useAuthActions(httpClient, process.env.API_AUTH_URL, 'logora_user_token');
 
 	useEffect(() => {
