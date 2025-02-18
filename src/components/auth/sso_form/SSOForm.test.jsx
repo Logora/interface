@@ -45,7 +45,7 @@ describe('SSOForm', () => {
             <SSOFormWithEmailConsent />
         )
 
-        const toggle = screen.queryByRole("input");
+        const toggle = screen.queryByTestId("accepts-email-input");
         expect(toggle).toBeTruthy();
     });
 
@@ -54,7 +54,7 @@ describe('SSOForm', () => {
             <DefaultSSOForm />
         )
 
-        const toggle = screen.queryByRole("input");
+        const toggle = screen.queryByTestId("accepts-email-input");
         expect(toggle).toBeNull();
     });
 
