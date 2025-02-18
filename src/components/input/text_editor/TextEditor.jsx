@@ -90,8 +90,10 @@ export const TextEditor = ({ placeholder, onSubmit, sources, hideSubmit = false,
         if (onSubmit) {
             event.preventDefault();
             onSubmit(textContent, richContent, sources);
-            if (editorRef?.current) {
-                editorRef.current.blur();
+            // Find and blur the contenteditable element to close mobile keyboard
+            const editableElement = document.querySelector(`.${styles.editorInput}`);
+            if (editableElement) {
+                editableElement.blur();
             }
         }
         setEditorSources([]);
