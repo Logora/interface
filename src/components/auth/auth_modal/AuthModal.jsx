@@ -17,7 +17,7 @@ export const AuthModal = ({ onHideModal = null }) => {
 	const { isLoggedIn, authError } = useAuth();
 	const [initAuth, setInitAuth] = useState(false);
 	const [method, setMethod] = useState(null);
-	const [acceptsEmails, setAcceptsEmails] = useSessionStorageState(EMAIL_CONSENT_STORAGE_KEY, false);
+	const [emailConsent, setEmailConsent] = config.auth?.showEmailConsent ? useSessionStorageState(EMAIL_CONSENT_STORAGE_KEY, false) : [false, () => {}];
     const { loginUser } = useAuthActions(httpClient, process.env.API_AUTH_URL, 'logora_user_token');
 
 	useEffect(() => {
@@ -27,10 +27,10 @@ export const AuthModal = ({ onHideModal = null }) => {
 	}, [isLoggedIn])
 
 	useEffect(() => {
-		if (method) { 
+		if (method && authError) { 
 			setInitAuth(false); 
 		}
-	}, [authError])
+	}, [method, authError])
 
 	const hideAuthModal = () => {
 		hideModal();
@@ -42,7 +42,7 @@ export const AuthModal = ({ onHideModal = null }) => {
 	const handleAssertion = (assertion, socialProvider, method, acceptsEmails) => {
 		setMethod(method);
 		if(acceptsEmails) {
-			setAcceptsEmails(true);
+			setEmailConsent(true);
 		}
 		setInitAuth(true);
 		
@@ -58,8 +58,7 @@ export const AuthModal = ({ onHideModal = null }) => {
 	return (
 		<Modal data-vid={"login_modal"}>
 			<div className={styles.loginModalBody}>
-				<>
-					{initAuth ? (
+				{initAuth ? (
 						<Loader />
 					) : (
 						<>
@@ -73,7 +72,7 @@ export const AuthModal = ({ onHideModal = null }) => {
 									oAuthRedirectUri={process.env.OAUTH_REDIRECT_URI} 
 									logoUrl={config.logo?.desktop}
 									providerName={config.provider?.companyName}
-									forgotPasswordUrl={"https://admin.logora.fr/?application=" + config.shortname + "#/forgot_password"}
+									forgotPasswordUrl={`https://admin.logora.fr/?application=${config.shortname}#/forgot_password`}
 									termsUrl={config.provider?.cguUrl || "https://www.logora.com/blog-posts/cgu"}
 									privacyUrl={config.provider?.privacyUrl || "https://www.logora.com/blog-posts/privacy-policy"}
 								/>
@@ -98,7 +97,6 @@ export const AuthModal = ({ onHideModal = null }) => {
 							)}
 						</>
 					)}
-				</>
 			</div>
 		</Modal>
 	);

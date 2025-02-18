@@ -30,7 +30,7 @@ export const SSOForm = ({authType, providerName, loginUrl, signupUrl, termsUrl, 
 			if (redirectParameter) {
 				params.append(redirectParameter, window.location.toString());
 			}
-			for (let [key, value] of Object.entries(trackingParameters)) {
+			for (const [key, value] of Object.entries(trackingParameters)) {
 				let parsedValue = value
 				if (parsedValue) {
 					const currentPath = location.pathname.slice(0, location.pathname.lastIndexOf('/'))
@@ -64,9 +64,8 @@ export const SSOForm = ({authType, providerName, loginUrl, signupUrl, termsUrl, 
 	const getAuthLink = (url) => {
 		if (authType === "oauth2_server") {
 			return getOAuthDialogUrl(url)
-		} else {
-			return getLinkWithRedirect(url)
 		}
+		return getLinkWithRedirect(url)
 	}
 
 	const loginLink = getAuthLink(loginUrl);
@@ -76,7 +75,7 @@ export const SSOForm = ({authType, providerName, loginUrl, signupUrl, termsUrl, 
 		<div className={styles.ssoForm}>
 			<div className={styles.logo}>
 				{logoUrl ?
-					<img height={100} width={100} className={styles.logoImage} src={logoUrl} alt={"Logo " + providerName} />
+					<img height={100} width={100} className={styles.logoImage} src={logoUrl} alt={`Logo ${providerName}`} />
 					:
 					<Icon name="next" height={50} width={50} className={styles.loginIcon} />
 				}
@@ -104,7 +103,6 @@ export const SSOForm = ({authType, providerName, loginUrl, signupUrl, termsUrl, 
 						{intl.formatMessage({ id: 'auth.sso_form.already_account', defaultMessage: "Already have an account ?" })}
 						<a
 							className={styles.signupButton}
-							role="link"
 							data-testid={"signin-link"}
 							data-tid={"link_login"}
 							rel='nofollow'
@@ -118,11 +116,10 @@ export const SSOForm = ({authType, providerName, loginUrl, signupUrl, termsUrl, 
 							<Toggle
 								type={"checkbox"}
 								name={"accepts_provider_email"}
-								role="input"
 								style={{ fontSize: 18 }}
 								checked={emailConsent}
 								label={intl.formatMessage({ id: "auth.sso_form.consent_label", defaultMessage: "I agree to receive emails from the editor" }, { variable: providerName })}
-								onInputChanged={(e) => setEmailConsent(!emailConsent)}
+								onInputChanged={(_e) => setEmailConsent(!emailConsent)}
 								data-testid={"accepts-email-input"}
 							/>
 						</div>
