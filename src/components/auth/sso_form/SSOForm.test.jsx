@@ -40,18 +40,22 @@ describe('SSOForm', () => {
         expect(screen.queryByText("An error occurred during sign in. Please try again in a few moments.")).toBeNull();
     });
 
-    it('should render with consent toggle', () => {
+    it('should render with consent toggle when showEmailConsent is true', () => {
         const component = render(
             <SSOFormWithEmailConsent />
         )
 
         const toggle = screen.queryByRole("input");
-        const signupButton = screen.getByTestId('signup-button');
-        const signinLink = screen.getByTestId('signin-link');
-
-        expect(signupButton).toBeTruthy();
-        expect(signinLink).toBeTruthy();
         expect(toggle).toBeTruthy();
+    });
+
+    it('should not render consent toggle when showEmailConsent is false', () => {
+        const component = render(
+            <DefaultSSOForm />
+        )
+
+        const toggle = screen.queryByRole("input");
+        expect(toggle).toBeNull();
     });
 
     it('should render with error', () => {
