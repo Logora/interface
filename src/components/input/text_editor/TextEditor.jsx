@@ -2,6 +2,7 @@ import React, { useState, useEffect, useId } from 'react';
 import { LexicalComposer } from "@lexical/react/LexicalComposer";
 import { RichTextPlugin } from "@lexical/react/LexicalRichTextPlugin";
 import { ContentEditable } from "@lexical/react/LexicalContentEditable";
+import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext';
 import { ToolbarPlugin } from "./plugins/ToolbarPlugin";
 import { OnChangePlugin } from '@lexical/react/LexicalOnChangePlugin';
 import { EditorRefPlugin } from '@lexical/react/LexicalEditorRefPlugin'
@@ -27,8 +28,10 @@ import styles from './TextEditor.module.scss';
 import EditorTheme from './EditorTheme';
 import cx from "classnames";
 import PropTypes from "prop-types";
+import { KeyboardPlugin } from './plugins/KeyboardPlugin';
 
 export const TextEditor = ({ placeholder, onSubmit, sources, hideSubmit = false, hideSourceAction = false, onActivation, disabled = false, handleChange, handleSourcesChange, shortBar = false, active = false, maxLength, disableRichText = false, editorRef, allowedDomains = [] }) => {
+    const [editor] = useLexicalComposerContext();
     const [isActive, setIsActive] = useState(false);
     const [editorText, setEditorText] = useState("");
     const [editorRichText, setEditorRichText] = useState("");
@@ -90,9 +93,7 @@ export const TextEditor = ({ placeholder, onSubmit, sources, hideSubmit = false,
         if (onSubmit) {
             event.preventDefault();
             onSubmit(textContent, richContent, sources);
-            if (editorRef?.current) {
-                editorRef.current.blur();
-            }
+            editor.dispatchCommand('SUBMIT_EDITOR');
         }
         setEditorSources([]);
     }
@@ -129,6 +130,7 @@ export const TextEditor = ({ placeholder, onSubmit, sources, hideSubmit = false,
                             contentEditable={<ContentEditable className={cx(styles.editorInput, { [styles.editorInputInactive]: !isActive })} />}
                             placeholder={placeholder && <Placeholder />}
                         />
+                        <KeyboardPlugin />
                         <ToolbarPlugin
                             hideSourceAction={hideSourceAction}
                             hideSubmit={hideSubmit}
