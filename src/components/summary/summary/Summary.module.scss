@@ -3,8 +3,10 @@
 
 .summaryContainer {
     display: flex !important;
+    flex-direction: row;
+    flex-wrap: wrap;
     align-items: stretch !important;
-    gap: 10px;
+    gap: 1em;
 
     @include media-breakpoint-down(sm) {
         flex-direction: column !important;
@@ -15,11 +17,4 @@
         display: flex;
         flex-direction: column;
     }
-}
-
-
-.tag {
-    color: $text-light;
-    background-color: $call-primary;
-    ;
 }

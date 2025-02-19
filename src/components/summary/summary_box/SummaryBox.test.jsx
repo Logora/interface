@@ -3,7 +3,6 @@ import { SummaryBox } from './SummaryBox';
 import { render } from '@testing-library/react';
 import styles from './SummaryBox.module.scss';
 
-
 describe('SummaryBox', () => {
     it('renders SummaryBox component correctly with tag', () => {
         const summaryItems = [

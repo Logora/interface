@@ -16,6 +16,8 @@ beforeEach(() => {
     );
 });
 
+const apiUrl = "https://example.com"
+
 describe('Summary Component', () => {
     const mockTags = [
         { id: 'tag1', name: 'Tag 1' },
@@ -24,12 +26,13 @@ describe('Summary Component', () => {
 
     const mockSummaryId = 'summary123';
 
-    it('renders without crashing with positions', async () => {
+    it('renders without crashing with tags', async () => {
         render(
             <ResponsiveProvider>
                 <IconProvider library={regularIcons}>
                     <IntlProvider locale="en">
                         <Summary
+                            apiUrl={apiUrl}
                             summaryId={mockSummaryId}
                             tags={mockTags}
                             tagClassNames={styles.tag}
@@ -51,12 +54,13 @@ describe('Summary Component', () => {
         });
     });
 
-    it('renders without crashing without positions', async () => {
+    it('renders without crashing without tags', async () => {
         render(
             <ResponsiveProvider>
                 <IconProvider library={regularIcons}>
                     <IntlProvider locale="en">
                         <Summary
+                            apiUrl={apiUrl}
                             summaryId={mockSummaryId}
                             tags={[]}
                             title="Summary"
@@ -80,6 +84,7 @@ describe('Summary Component', () => {
                 <IconProvider library={regularIcons}>
                     <IntlProvider locale="en">
                         <Summary
+                            apiUrl={apiUrl}
                             summaryId={mockSummaryId}
                             tags={mockTags}
                             tagClassNames={styles.tag}

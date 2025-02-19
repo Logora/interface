@@ -4,12 +4,12 @@ import { SummaryBox } from '@logora/debate.summary.summary_box';
 import { BoxSkeleton } from '@logora/debate.skeleton.box_skeleton';
 import styles from './Summary.module.scss';
 
-export const Summary = ({ summaryId, tags = [], tagClassNames = [], title, subtitle }) => {
+export const Summary = ({ apiUrl, summaryId, tags = [], tagClassNames = [], title, subtitle }) => {
     const [summaries, setSummaries] = useState({});
 
     const fetchSummary = async (summaryId, tagId = '') => {
         try {
-            const url = `https://nlp.logora.fr/analysis/argument-summary-${summaryId}${tagId ? `-${tagId}` : ''}`;
+            const url = `${apiUrl}/${summaryId}${tagId ? `-${tagId}` : ''}`;
             const response = await fetch(url);
 
             if (!response.ok) {

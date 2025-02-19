@@ -18,7 +18,7 @@ global.fetch = async () => ({
     })
 });
 
-const summaryWithPositions = {
+const summaryWithTags = {
     id: faker.datatype.uuid(),
     group_context: {
         tags: Array.from({ length: 3 }, (_, index) => ({
@@ -28,16 +28,18 @@ const summaryWithPositions = {
     }
 };
 
-export const SummaryWithPositions = () => {
-    const contentId = summaryWithPositions.id;
-    const tags = summaryWithPositions.group_context.tags;
+const apiUrl = "https://example.com"
 
+export const SummaryWithTags = () => {
+    const contentId = summaryWithTags.id;
+    const tags = summaryWithTags.group_context.tags;
 
     return (
         <ResponsiveProvider>
             <IconProvider library={regularIcons}>
                 <IntlProvider locale="en">
                     <Summary
+                        apiUrl={apiUrl}
                         summaryId={contentId}
                         tags={tags}
                         tagClassNames={styles.tag}
@@ -50,22 +52,23 @@ export const SummaryWithPositions = () => {
     );
 };
 
-const summaryWithoutPositions = {
+const summaryWithoutTags = {
     id: faker.datatype.uuid(),
     group_context: {
         tags: []
     }
 };
 
-export const SummaryWithoutPositions = () => {
-    const contentId = summaryWithoutPositions.id;
-    const tags = summaryWithoutPositions.group_context.tags;
+export const SummaryWithoutTags = () => {
+    const contentId = summaryWithoutTags.id;
+    const tags = summaryWithoutTags.group_context.tags;
 
     return (
         <ResponsiveProvider>
             <IconProvider library={regularIcons}>
                 <IntlProvider locale="en">
                     <Summary
+                        apiUrl={apiUrl}
                         summaryId={contentId}
                         tags={tags}
                         tagClassNames={styles.tag}

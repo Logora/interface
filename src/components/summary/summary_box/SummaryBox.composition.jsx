@@ -1,7 +1,7 @@
 import React from 'react';
 import { SummaryBox } from './SummaryBox';
 import { faker } from '@faker-js/faker';
-import styles from './SummaryBox.module.scss';
+import styles from './SummaryBoxComposition.module.scss';
 
 export const DefaultSummaryBox = () => {
     const generateContent = () => {
@@ -15,7 +15,6 @@ export const DefaultSummaryBox = () => {
     return (
         <SummaryBox
             summaryItems={generateContent()}
-            tagClassName={styles.navy}
             tag={"Yes"}
         />
     );
