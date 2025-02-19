@@ -18,10 +18,10 @@ export const SSOForm = ({authType, providerName, loginUrl, signupUrl, termsUrl, 
 
 	const getLinkWithRedirect = (url) => {
 		if (typeof window !== "undefined") {
-			let redirectUrl = url === "CURRENT_LOCATION" ? window.location : url;
-			let parsedUrl = new URL(redirectUrl, window.location.origin);
-			let params = parsedUrl.searchParams;
-			let originalParams = new URLSearchParams(location.search);
+			const redirectUrl = url === "CURRENT_LOCATION" ? window.location : url;
+			const parsedUrl = new URL(redirectUrl, window.location.origin);
+			const params = parsedUrl.searchParams;
+			const originalParams = new URLSearchParams(location.search);
 
 			if (params.has('code')) {
 				params.delete('code');
@@ -46,14 +46,14 @@ export const SSOForm = ({authType, providerName, loginUrl, signupUrl, termsUrl, 
 	}
 
 	const getOAuthDialogUrl = (url) => {
-		let baseUrl = new URL(url);
+		const baseUrl = new URL(url);
 		baseUrl.searchParams.delete("code");
 		baseUrl.searchParams.append("client_id", clientId);
 		baseUrl.searchParams.append("redirect_uri", oAuthRedirectUri);
 		baseUrl.searchParams.append("scope", scope);
 		baseUrl.searchParams.append("response_type", "code");
 		if (typeof window !== 'undefined') {
-			let parsedUrl = new URL(window.location.href);
+			const parsedUrl = new URL(window.location.href);
 			parsedUrl.searchParams.delete("code");
 			baseUrl.searchParams.append("state", window.btoa(parsedUrl.toString()));
 		}
@@ -137,7 +137,7 @@ export const SSOForm = ({authType, providerName, loginUrl, signupUrl, termsUrl, 
 									defaultMessage="By clicking on « Sign up », I declare that I have read the <var1> General Conditions of Use </var1> of the debate space and accept them"
 									values={{
 										var1: (chunks) => (
-											<a className={styles.termsTarget} target='_blank' href={termsUrl}>
+											<a className={styles.termsTarget} target='_blank' href={termsUrl} rel="noreferrer">
 												{chunks}
 											</a>
 										),

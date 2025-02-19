@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
+import { EMAIL_CONSENT_STORAGE_KEY } from "@logora/debate.auth.sso_form";
 import { FacebookLoginButton } from '@logora/debate.auth.facebook_login_button';
 import { GoogleLoginButton } from '@logora/debate.auth.google_login_button';
 import { LoginForm } from "@logora/debate.auth.login_form";
@@ -13,7 +14,7 @@ import PropTypes from "prop-types";
 export const SocialAuthForm = ({ lastStep, providerName, logoUrl, termsUrl, privacyUrl, forgotPasswordUrl, oAuthRedirectUri, facebookClientId, googleClientId, error = false, onSubmit }) => {
 	const [mainMenu, setMainMenu] = useState(!(lastStep === "LOGIN" || lastStep === "SIGNUP"));
 	const [loginStep, setLoginStep] = useState(lastStep !== "SIGNUP");
-	const [acceptsEmails, setAcceptsEmails] = useState(false);
+	const [emailConsent, setEmailConsent] =  useSessionStorageState(EMAIL_CONSENT_STORAGE_KEY, false);
 	const intl = useIntl();
 
 	const handleSignUp = (first_name, last_name, email, password, password_confirmation, accepts_provider_email) => {
@@ -38,7 +39,7 @@ export const SocialAuthForm = ({ lastStep, providerName, logoUrl, termsUrl, priv
 	};
 
 	const handleAuthorizationCode = (code, provider) => {
-		onSubmit(code, provider, "SOCIAL", acceptsEmails);
+		onSubmit(code, provider, "SOCIAL");
 	};
 
 	const displayTerms = () => {
@@ -48,12 +49,12 @@ export const SocialAuthForm = ({ lastStep, providerName, logoUrl, termsUrl, priv
 					id='auth.social_auth_form.terms_text'
 					values={{
 						var1: (chunks) => (
-							<a className={styles.termsLink} target='_blank' href={termsUrl}>
+							<a className={styles.termsLink} target='_blank' href={termsUrl} rel="noreferrer">
 								{chunks}
 							</a>
 						),
 						var2: (chunks) => (
-							<a className={styles.termsLink} target='_blank' href={privacyUrl}>
+							<a className={styles.termsLink} target='_blank' href={privacyUrl} rel="noreferrer">
 								{chunks}
 							</a>
 						),
@@ -91,7 +92,7 @@ export const SocialAuthForm = ({ lastStep, providerName, logoUrl, termsUrl, priv
 							width={200}
 							height={50}
 							role="img"
-							alt={"Logo " + providerName}
+							alt={`Logo ${providerName}`}
 						/>
 					}
 					<div className={styles.socialLoginText}>
@@ -122,9 +123,9 @@ export const SocialAuthForm = ({ lastStep, providerName, logoUrl, termsUrl, priv
 								name={"accepts_emails"} 
 								role="input"
 								style={{ fontSize: 18 }}
-								checked={acceptsEmails} 
+								checked={emailConsent} 
 								label={intl.formatMessage({ id: "auth.social_auth_form.accepts_emails_label", defaultMessage: "I agree to receive emails from the editor" }, { variable: providerName } )}
-								onInputChanged={(e) => setAcceptsEmails(!acceptsEmails)} 
+								onInputChanged={(_e) => setEmailConsent(!emailConsent)} 
 							/>
 						</div>
 					}

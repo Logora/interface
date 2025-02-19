@@ -29,10 +29,9 @@ export const SignupForm = ({ onSubmit, providerName, error = false }) => {
     const validatePassword = (password, confirmPassword) => {
         if (password === confirmPassword) { 
             return true 
-        } else { 
-            setPasswordError(intl.formatMessage({ id: "auth.signup_form.password_error", defaultMessage: "Password and confirmation are not matching." }))
-            return false 
         }
+        setPasswordError(intl.formatMessage({ id: "auth.signup_form.password_error", defaultMessage: "Password and confirmation are not matching." }))
+        return false
     }
 
     return (
@@ -111,7 +110,7 @@ export const SignupForm = ({ onSubmit, providerName, error = false }) => {
                         style={{ fontSize: 18 }}
                         checked={acceptsProviderEmail} 
                         label={intl.formatMessage({ id:"auth.signup_form.accepts_email_label", defaultMessage: "I agree to receive emails from the editor" }, { variable: providerName } )}
-                        onInputChanged={(e) => setAcceptsProviderEmail(!acceptsProviderEmail)} 
+                        onInputChanged={(_e) => setAcceptsProviderEmail(!acceptsProviderEmail)} 
                         data-testid={"accepts-email-input"}
                     />
                 </div>
