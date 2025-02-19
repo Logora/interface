@@ -43,6 +43,7 @@ export const SummaryWithPositions = () => {
                         tagClassNames={styles.tag}
                         title={"Summary"}
                         subtitle={"this is a summary"}
+                        apiUrl={"https://demo-nlp.logora.fr"}
                     />
                 </IntlProvider>
             </IconProvider>
@@ -71,6 +72,7 @@ export const SummaryWithoutPositions = () => {
                         tagClassNames={styles.tag}
                         title={"Summary"}
                         subtitle={"this is a summary"}
+                        apiUrl={"https://demo-nlp.logora.fr"}
                     />
                 </IntlProvider>
             </IconProvider>

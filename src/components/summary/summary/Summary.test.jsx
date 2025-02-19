@@ -35,6 +35,7 @@ describe('Summary Component', () => {
                             tagClassNames={styles.tag}
                             title="Summary"
                             subtitle="This is a summary"
+                            apiUrl="https://test-nlp.logora.fr"
                         />
                     </IntlProvider>
                 </IconProvider>
@@ -61,6 +62,7 @@ describe('Summary Component', () => {
                             tags={[]}
                             title="Summary"
                             subtitle="This is a summary"
+                            apiUrl="https://test-nlp.logora.fr"
                         />
                     </IntlProvider>
                 </IconProvider>
@@ -85,6 +87,7 @@ describe('Summary Component', () => {
                             tagClassNames={styles.tag}
                             title="Summary"
                             subtitle="This is a summary"
+                            apiUrl="https://test-nlp.logora.fr"
                         />
                     </IntlProvider>
                 </IconProvider>
