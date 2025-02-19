@@ -4,10 +4,29 @@
 .voteButtonsContainer {
     display: flex !important;
     align-items: center !important;
+    flex-wrap: wrap !important;
     gap: $spacer;
+    width: 100%;
+}
+
+.voteButton {
+    flex: 1 1 auto;
+    min-width: fit-content;
+    max-width: 100%;
+}
+
+.voteButtonsContainer button.voteButton svg {
+    transform: rotate(-90deg);
+}
+
+.numberVotes {
+    @include mx(2, xs);
 }
 
 .text {
     font-size: $font-size-extra-small;
     font-weight: $font-weight-bold;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
