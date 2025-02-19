@@ -17,6 +17,9 @@ import { MaxLengthPlugin } from "./plugins/MaxLengthPlugin";
 import { ListItemNode, ListNode } from "@lexical/list";
 import { ListPlugin } from "@lexical/react/LexicalListPlugin";
 import { HistoryPlugin } from "@lexical/react/LexicalHistoryPlugin";
+import { MarkdownShortcutPlugin } from '@lexical/react/LexicalMarkdownShortcutPlugin';
+import { LinkPlugin } from '@lexical/react/LexicalLinkPlugin';
+import { LinkNode } from '@lexical/link';
 import { $getRoot } from "lexical";
 import { useModal } from '@logora/debate.dialog.modal';
 import { CharacterLimitPlugin } from '@lexical/react/LexicalCharacterLimitPlugin';
@@ -64,7 +67,7 @@ export const TextEditor = ({ placeholder, onSubmit, sources, hideSubmit = false,
         onError(error) {
             throw error;
         },
-        nodes: [ListNode, ListItemNode, QuoteNode, OverflowNode],
+        nodes: [ListNode, ListItemNode, QuoteNode, OverflowNode, LinkNode],
     };
 
     const setFocus = () => {
@@ -147,6 +150,8 @@ export const TextEditor = ({ placeholder, onSubmit, sources, hideSubmit = false,
                         <ListPlugin />
                         <HistoryPlugin />
                         <OnChangePlugin onChange={onChange} ignoreSelectionChange />
+                        <LinkPlugin />
+                        <MarkdownShortcutPlugin />
                         <AutoSavePlugin onSetContent={activate} storageUid={uid} />
                         <SetContentPlugin />
                         <SetRichContentPlugin />

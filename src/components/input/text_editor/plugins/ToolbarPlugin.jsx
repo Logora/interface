@@ -4,7 +4,9 @@ import {
     SELECTION_CHANGE_COMMAND,
     FORMAT_TEXT_COMMAND,
     $getSelection,
-    $isRangeSelection
+    $isRangeSelection,
+    $isAtNodeEnd,
+    COMMAND_PRIORITY_CRITICAL
 } from "lexical";
 import { $setBlocksType } from "@lexical/selection";
 import { $getNearestNodeOfType, mergeRegister } from "@lexical/utils";
@@ -15,6 +17,7 @@ import {
     ListNode
 } from "@lexical/list";
 import { $createQuoteNode, $isHeadingNode } from "@lexical/rich-text";
+import { $createLinkNode, $isLinkNode, TOGGLE_LINK_COMMAND } from '@lexical/link';
 import styles from './ToolbarPlugin.module.scss';
 import cx from "classnames";
 import { Icon } from '@logora/debate.icons.icon';
@@ -30,6 +33,7 @@ export const ToolbarPlugin = (props) => {
     const [isBold, setIsBold] = useState(false);
     const [isItalic, setIsItalic] = useState(false);
     const [isUnderline, setIsUnderline] = useState(false);
+    const [isLink, setIsLink] = useState(false);
     const isDisabled = props.hideSubmit && props.hideSourceAction && props.disableRichText
 
     const updateToolbar = useCallback(() => {
@@ -59,6 +63,11 @@ export const ToolbarPlugin = (props) => {
             setIsBold(selection.hasFormat("bold"));
             setIsItalic(selection.hasFormat("italic"));
             setIsUnderline(selection.hasFormat("underline"));
+            
+            // Check if current selection has a link
+            const node = getSelectedNode(selection);
+            const parent = node.getParent();
+            setIsLink($isLinkNode(parent) || $isLinkNode(node));
         }
     }, [editor]);
 
@@ -89,11 +98,35 @@ export const ToolbarPlugin = (props) => {
         });
     };
 
+    const handleLinkClick = () => {
+        if (isLink) {
+            editor.dispatchCommand(TOGGLE_LINK_COMMAND, null);
+        } else {
+            props.onAddSource();
+        }
+    };
+
     const formatNumberedList = () => {
         if (blockType !== 'number') {
             editor.dispatchCommand(INSERT_ORDERED_LIST_COMMAND);
         } else {
             formatParagraph(editor);
+        }
+    };
+
+    const getSelectedNode = (selection) => {
+        const anchor = selection.anchor;
+        const focus = selection.focus;
+        const anchorNode = selection.anchor.getNode();
+        const focusNode = selection.focus.getNode();
+        if (anchorNode === focusNode) {
+            return anchorNode;
+        }
+        const isBackward = selection.isBackward();
+        if (isBackward) {
+            return $isAtNodeEnd(focus) ? anchorNode : focusNode;
+        } else {
+            return $isAtNodeEnd(anchor) ? focusNode : anchorNode;
         }
     };
 
@@ -155,15 +188,21 @@ export const ToolbarPlugin = (props) => {
                                 <Icon name="orderedList" width={24} height={24} className={cx(styles.format, styles.numberedList)} />
                             </button>
                             {!props.hideSourceAction && (
-                                // <Tooltip text={props.sourceTooltip && props.sourceTooltip} variant={"success"} className={styles.tooltip}>
+                                <Tooltip text={props.sourceTooltip && props.sourceTooltip} variant={"success"} className={styles.tooltip}>
                                     <button
-                                        onClick={props.onAddSource}
-                                        className={styles.toolbarItem}
+                                        onClick={() => {
+                                            if (isLink) {
+                                                editor.dispatchCommand(TOGGLE_LINK_COMMAND, null);
+                                            } else {
+                                                props.onAddSource();
+                                            }
+                                        }}
+                                        className={cx(styles.toolbarItem, { [styles.active]: isLink })}
                                         aria-label="Add Link"
                                     >
                                         <Icon name="link" width={20} height={20} className={cx(styles.format, styles.link)} />
                                     </button>
-                                // </Tooltip>
+                                </Tooltip>
                             )}
                         </div>
                     )
