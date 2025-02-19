@@ -2,7 +2,7 @@ import React from "react";
 import { useIntl, FormattedMessage } from "react-intl";
 import { useLocation } from "react-router";
 import useSessionStorageState from '@rooks/use-sessionstorage-state';
-import { EMAIL_CONSENT_STORAGE_KEY } from '@logora/debate.auth.auth_modal';
+import { EMAIL_CONSENT_STORAGE_KEY } from '@logora/debate.auth.use_auth';
 import { Icon } from "@logora/debate.icons.icon";
 import { Toggle } from "@logora/debate.input.toggle";
 import { Button } from '@logora/debate.action.button';

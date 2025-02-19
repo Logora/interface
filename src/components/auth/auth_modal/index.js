@@ -1,1 +1,1 @@
-export { AuthModal as default, EMAIL_CONSENT_STORAGE_KEY } from './AuthModal';
+export { AuthModal as default } from './AuthModal';

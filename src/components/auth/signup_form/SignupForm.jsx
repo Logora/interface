@@ -4,7 +4,7 @@ import useSessionStorageState from '@rooks/use-sessionstorage-state';
 import { Button } from '@logora/debate.action.button';
 import { TextInput } from '@logora/debate.input.text_input';
 import { Toggle } from "@logora/debate.input.toggle";
-import { EMAIL_CONSENT_STORAGE_KEY } from '@logora/debate.auth.auth_modal';
+import { EMAIL_CONSENT_STORAGE_KEY } from '@logora/debate.auth.use_auth';
 import cx from 'classnames';
 import styles from './SignupForm.module.scss';
 import PropTypes from "prop-types";
