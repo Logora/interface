@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
+import useSessionStorageState from '@rooks/use-sessionstorage-state';
 import { EMAIL_CONSENT_STORAGE_KEY } from "@logora/debate.auth.sso_form";
 import { FacebookLoginButton } from '@logora/debate.auth.facebook_login_button';
 import { GoogleLoginButton } from '@logora/debate.auth.google_login_button';

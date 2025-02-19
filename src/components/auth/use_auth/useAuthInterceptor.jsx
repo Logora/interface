@@ -24,7 +24,7 @@ export const useAuthInterceptor = (httpClient, authUrl, tokenKey) => {
                         config.url !== authUrl
                     ) {
                         return refreshToken().then((accessToken) => {
-                            const header = "Bearer " + accessToken;
+                            const header = `Bearer ${accessToken}`;
                             originalRequest.headers.authorization = header;
                             return Promise.resolve(originalRequest);
                         });
