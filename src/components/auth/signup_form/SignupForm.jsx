@@ -13,7 +13,7 @@ export const SignupForm = ({ onSubmit, providerName, error = false }) => {
     const [lastName, setLastName] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
-    const [acceptsProviderEmail, setAcceptsProviderEmail] = useState(false);
+    const [emailConsent, setEmailConsent] =  useSessionStorageState(EMAIL_CONSENT_STORAGE_KEY, false);
     const [passwordError, setPasswordError] = useState("");
     const intl = useIntl();
 
@@ -21,7 +21,7 @@ export const SignupForm = ({ onSubmit, providerName, error = false }) => {
         event.preventDefault();
         if (validatePassword(password, confirmPassword)) {
             if (onSubmit) {
-                onSubmit(firstName, lastName, email, password, confirmPassword, acceptsProviderEmail);
+                onSubmit(firstName, lastName, email, password, confirmPassword, emailConsent);
             }
         }
     }
@@ -108,9 +108,9 @@ export const SignupForm = ({ onSubmit, providerName, error = false }) => {
                         name={"accepts_provider_email"} 
                         role="input"
                         style={{ fontSize: 18 }}
-                        checked={acceptsProviderEmail} 
+                        checked={emailConsent} 
                         label={intl.formatMessage({ id:"auth.signup_form.accepts_email_label", defaultMessage: "I agree to receive emails from the editor" }, { variable: providerName } )}
-                        onInputChanged={(_e) => setAcceptsProviderEmail(!acceptsProviderEmail)} 
+                        onInputChanged={(_e) => setEmailConsent(!emailConsent)} 
                         data-testid={"accepts-email-input"}
                     />
                 </div>

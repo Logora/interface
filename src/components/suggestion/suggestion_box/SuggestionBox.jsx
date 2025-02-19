@@ -33,21 +33,21 @@ export const SuggestionBox = ({ suggestion, disabled = false }) => {
     const getTag = () => {
         if (suggestion.is_accepted || suggestion.is_published) {
             return intl.formatMessage({ id: "suggestion.suggestion_box.selected", defaultMessage: "Selected" });
-        } else if (suggestion.is_expired === true || endDate < startDate) {
-            return intl.formatMessage({ id: "suggestion.suggestion_box.ended", defaultMessage: "Expired" });
-        } else {
-            return null;
         }
+        if (suggestion.is_expired === true || endDate < startDate) {
+            return intl.formatMessage({ id: "suggestion.suggestion_box.ended", defaultMessage: "Expired" });
+        }
+        return null;
     }
 
     const getTagClassName = () => {
         if (suggestion.is_accepted || suggestion.is_published) {
             return styles.selected;
-        } else if (suggestion.is_expired === true || endDate < startDate) {
+        } 
+        if (suggestion.is_expired === true || endDate < startDate) {
             return styles.expired;
-        } else {
-            return null;
         }
+        return null;
     }
 
     return (
