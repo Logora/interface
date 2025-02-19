@@ -2,14 +2,13 @@ import React from "react";
 import { useIntl, FormattedMessage } from "react-intl";
 import { useLocation } from "react-router";
 import useSessionStorageState from '@rooks/use-sessionstorage-state';
+import { EMAIL_CONSENT_STORAGE_KEY } from '@logora/debate.auth.auth_modal';
 import { Icon } from "@logora/debate.icons.icon";
 import { Toggle } from "@logora/debate.input.toggle";
 import { Button } from '@logora/debate.action.button';
 import cx from "classnames";
 import styles from "./SSOForm.module.scss";
 import PropTypes from "prop-types";
-
-export const EMAIL_CONSENT_STORAGE_KEY = "logora:emailConsent";
 
 export const SSOForm = ({authType, providerName, loginUrl, signupUrl, termsUrl, logoUrl, clientId, oAuthRedirectUri, scope, redirectParameter = "logora_redirect", trackingParameters = {}, hideActions = false, showEmailConsent = false, showTerms = false, error = false }) => {
 	const [emailConsent, setEmailConsent] = showEmailConsent ? useSessionStorageState(EMAIL_CONSENT_STORAGE_KEY, false) : [false, () => {}];

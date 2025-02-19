@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { useIntl } from 'react-intl';
+import useSessionStorageState from '@rooks/use-sessionstorage-state';
 import { Button } from '@logora/debate.action.button';
 import { TextInput } from '@logora/debate.input.text_input';
 import { Toggle } from "@logora/debate.input.toggle";
+import { EMAIL_CONSENT_STORAGE_KEY } from '@logora/debate.auth.auth_modal';
 import cx from 'classnames';
 import styles from './SignupForm.module.scss';
 import PropTypes from "prop-types";
@@ -13,7 +15,7 @@ export const SignupForm = ({ onSubmit, providerName, error = false }) => {
     const [lastName, setLastName] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
-    const [emailConsent, setEmailConsent] =  useSessionStorageState(EMAIL_CONSENT_STORAGE_KEY, false);
+    const [emailConsent, setEmailConsent] = useSessionStorageState(EMAIL_CONSENT_STORAGE_KEY, false);
     const [passwordError, setPasswordError] = useState("");
     const intl = useIntl();
 

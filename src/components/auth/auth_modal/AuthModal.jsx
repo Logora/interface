@@ -10,6 +10,8 @@ import { Loader } from '@logora/debate.progress.loader';
 import styles from "./AuthModal.module.scss";
 import PropTypes from "prop-types";
 
+export const EMAIL_CONSENT_STORAGE_KEY = "logora:emailConsent";
+
 export const AuthModal = ({ onHideModal = null }) => {
 	const config = useConfig();
 	const { hideModal } = useModal();
