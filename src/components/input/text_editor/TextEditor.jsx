@@ -13,7 +13,6 @@ import { SetContentPlugin } from "./plugins/SetContentPlugin";
 import { SetRichContentPlugin } from "./plugins/SetRichContentPlugin";
 import { ResetPlugin } from "./plugins/ResetPlugin";
 import { FocusPlugin } from "./plugins/FocusPlugin";
-import { MaxLengthPlugin } from "./plugins/MaxLengthPlugin";
 import { ListItemNode, ListNode } from "@lexical/list";
 import { ListPlugin } from "@lexical/react/LexicalListPlugin";
 import { HistoryPlugin } from "@lexical/react/LexicalHistoryPlugin";
@@ -139,11 +138,16 @@ export const TextEditor = ({ placeholder, onSubmit, sources, hideSubmit = false,
                             isActive={isActive || active}
                             sourceTooltip={allowedDomains?.length > 0 && intl.formatMessage({ id: "input.allowed_domains_tooltip", defaultMessage: "With the new source function, you can add links to your article." })}
                         />
-                        {isActive && maxLength &&
-                            <div className={styles.charactersCount}>
-                                <CharacterLimitPlugin maxLength={maxLength} /> {intl.formatMessage({ id: "input.remaining_chars", defaultMessage: "remaining characters" })}
-                            </div>
-                        }
+                        {maxLength && (
+                            <>
+                                <CharacterLimitPlugin maxLength={maxLength} />
+                                {isActive && (
+                                    <div className={styles.charactersCount}>
+                                        <span>{intl.formatMessage({ id: "input.remaining_chars", defaultMessage: "remaining characters" })}</span>
+                                    </div>
+                                )}
+                            </>
+                        )}
                         <ListPlugin />
                         <HistoryPlugin />
                         <OnChangePlugin onChange={onChange} ignoreSelectionChange />
@@ -151,7 +155,6 @@ export const TextEditor = ({ placeholder, onSubmit, sources, hideSubmit = false,
                         <SetContentPlugin />
                         <SetRichContentPlugin />
                         <FocusPlugin />
-                        {maxLength && <MaxLengthPlugin maxLength={maxLength} />}
                         <ResetPlugin storageUid={uid} />
                         <EditorRefPlugin editorRef={editorRef} />
                     </div>
