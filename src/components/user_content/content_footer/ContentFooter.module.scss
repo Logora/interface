@@ -15,6 +15,9 @@
 }
 
 .moreAction {
+    display: flex;
+    align-items: center !important;
+    justify-content: center !important;
     cursor: pointer;
     text-align: right;
 }

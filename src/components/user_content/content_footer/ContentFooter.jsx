@@ -58,10 +58,11 @@ export const ContentFooter = ({ resource,
 
 	const isEditable = () => {
         if (resource.created_at && config.actions?.editionTime) {
-            let limitDate = new Date(new Date(resource.created_at).setSeconds(new Date(resource.created_at).getSeconds() + config.actions?.editionTime));
-			let now = new Date();
+            const limitDate = new Date(new Date(resource.created_at).setSeconds(new Date(resource.created_at).getSeconds() + config.actions?.editionTime));
+			const now = new Date();
             return now < limitDate;
-        } else { return true; }
+        }
+        return true; 
 	}
 
     const handleShowShareModal = () => {
