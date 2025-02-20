@@ -13,7 +13,7 @@ export const FocusPlugin = () => {
                 rootElement.focus();
             });
         }
-    }, [focus]);
+    }, [focus, editor]);
 
     return null;
 };

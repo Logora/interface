@@ -26,7 +26,6 @@ const participants = Array.from([1, 2, 3], s => createUser());
 
 const debate = {
 	id: 243,
-	is_public: true,
 	name: faker.music.songName(),
 	slug: faker.lorem.slug(),
 	description: null,

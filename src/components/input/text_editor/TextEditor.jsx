@@ -60,7 +60,7 @@ export const TextEditor = ({ placeholder, onSubmit, sources, hideSubmit = false,
     }
 
     const editorConfig = {
-        editable: disabled ? false : true,
+        editable: !disabled,
         theme: EditorTheme,
         onError(error) {
             throw error;
