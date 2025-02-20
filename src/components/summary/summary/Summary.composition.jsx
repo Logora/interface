@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Summary } from './Summary';
 import { faker } from '@faker-js/faker';
 import { IntlProvider } from 'react-intl';
@@ -10,13 +10,18 @@ import * as regularIcons from '@logora/debate.icons.regular_icons';
 global.fetch = async () => ({
     ok: true,
     json: () => Promise.resolve({
-        data: [
-            faker.lorem.sentences(3),
-            faker.lorem.sentences(2),
-            faker.lorem.sentences(4),
-        ]
+        data: {
+            content: {
+                arguments: [
+                    { argument: faker.lorem.sentences(3), id: 0, weight: 5 },
+                    { argument: faker.lorem.sentences(2), id: 1, weight: 3 },
+                    { argument: faker.lorem.sentences(4), id: 1, weight: 3 }
+                ]
+            }
+        }
     })
 });
+
 
 const summaryWithTags = {
     id: faker.datatype.uuid(),

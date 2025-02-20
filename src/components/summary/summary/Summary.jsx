@@ -10,7 +10,6 @@ export const Summary = ({ apiUrl, summaryId, tags = [], tagClassNames = [], titl
     const [summaries, setSummaries] = useState({});
     const intl = useIntl();
 
-
     const fetchSummary = async (summaryId, tagId = '') => {
         try {
             const url = `${apiUrl}/${summaryId}${tagId ? `-${tagId}` : ''}`;
@@ -21,7 +20,7 @@ export const Summary = ({ apiUrl, summaryId, tags = [], tagClassNames = [], titl
             }
 
             const json = await response.json();
-            return json.data || [];
+            return json.data?.content?.arguments || [];
         } catch (error) {
             console.error(error);
         }
@@ -68,13 +67,17 @@ export const Summary = ({ apiUrl, summaryId, tags = [], tagClassNames = [], titl
                 ) : (
                     tags.length === 0 ? (
                         <div>
-                            <SummaryBox summaryItems={summaries['no-position'] || []} />
+                            <SummaryBox
+                                summaryItems={(summaries['no-position'] || []).map(item => item.argument)}
+                                emptySummaryText={intl.formatMessage({ id: "info.emptysummary", defaultMessage: "No resume found." })}
+
+                            />
                         </div>
                     ) : (
                         tags.map((tag) => (
                             <div key={tag.id}>
                                 <SummaryBox
-                                    summaryItems={summaries[tag.id] || []}
+                                    summaryItems={(summaries[tag.id] || []).map(item => item.argument)}
                                     tag={tag.name}
                                     tagClassName={tagClassNames}
                                     emptySummaryText={intl.formatMessage({ id: "info.emptysummary", defaultMessage: "No resume found." })}

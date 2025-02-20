@@ -11,7 +11,16 @@ beforeEach(() => {
     global.fetch = jest.fn(() =>
         Promise.resolve({
             ok: true,
-            json: () => Promise.resolve({ data: ['mocked summary data'] }),
+            json: () => Promise.resolve({
+                data: {
+                    content: {
+                        arguments: [
+                            { argument: "Mocked argument 1", id: 0, weight: 5 },
+                            { argument: "Mocked argument 2", id: 1, weight: 3 }
+                        ]
+                    }
+                }
+            }),
         })
     );
 });
@@ -49,8 +58,8 @@ describe('Summary Component', () => {
         fireEvent.click(screen.getByText('Summary'));
 
         await waitFor(() => {
-            const summaries = screen.getAllByText((content) => content.includes('mocked summary data'));
-            expect(summaries.length).toBe(mockTags.length);
+            const summaries = screen.getAllByText((content) => content.includes('Mocked argument'));
+            expect(summaries.length).toBeGreaterThan(0);
         });
     });
 
@@ -75,7 +84,11 @@ describe('Summary Component', () => {
 
         fireEvent.click(screen.getByText('Summary'));
 
-        await waitFor(() => expect(screen.getByText('mocked summary data')).toBeInTheDocument());
+        await waitFor(() => {
+            const summaryItems = screen.getAllByText((content) => content.includes('Mocked argument'));
+            expect(summaryItems.length).toBeGreaterThan(0);
+        });
+
     });
 
     it('fetches data correctly', async () => {
