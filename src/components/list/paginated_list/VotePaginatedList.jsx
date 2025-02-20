@@ -18,7 +18,6 @@ export const VotePaginatedList = (props) => {
 						{ ...props }
 						{ ...context }
 						onElementsLoad={(elements) => loadVotes(elements, context)}
-						onVote={(vote) => props.onVote && props.onVote(vote, context)}
 					/>
 				}
 			</VoteContext.Consumer>

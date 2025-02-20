@@ -42,11 +42,6 @@ export const SuggestionBanner = () => {
                 <VotePaginatedList
                     voteableType={"DebateSuggestion"}
                     currentListId={"bannerSuggestionsList"}
-                    onVote={(vote, context) => {
-                        if (context?.setPage) {
-                            context.setPage(context.page + 1);
-                        }
-                    }}
                     resource={"debate_suggestions"}
                     resourcePropName="suggestion"
                     filters={{ "is_expired": false, "is_accepted": false, "status": "accepted", "is_admin": false, "random": seed }}

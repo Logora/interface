@@ -28,8 +28,8 @@ const vote = {
     user_id: faker.datatype.number()
 };
 
-const suggestion = [{
-    id: faker.datatype.number(),
+const createFakeSuggestion = (id, authorName, suggestionName) => ({
+    id,
     created_at: faker.date.recent().toISOString(),
     expires_at: faker.date.future().toISOString(),
     total_upvotes: faker.datatype.number({ min: 0, max: 100 }),
@@ -42,22 +42,25 @@ const suggestion = [{
     },
     author: {
         id: faker.datatype.number(),
-        full_name: faker.name.fullName(),
+        full_name: authorName,
         image_url: faker.image.avatar()
     },
     language: faker.random.locale(),
     translation_entries: [],
-    name: faker.lorem.words(),
-}];
+    name: suggestionName
+});
+
+const suggestions = [
+    createFakeSuggestion(1, "First Author", "First Suggestion"),
+    createFakeSuggestion(2, "Second Author", "Second Suggestion")
+];
 
 const httpClient = {
     get: () =>
         Promise.resolve({
             data: {
                 success: true,
-                data:
-                    suggestion
-
+                data: suggestions
             }
         }),
     post: () => {
