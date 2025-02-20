@@ -24,7 +24,7 @@ export const SuggestionInput = ({ onSubmit = null, maxLength = 140, disabled = f
     const [active, setActive] = useState(true);
     const [flash, setFlash] = useState(false);
     const [suggestion, setSuggestion] = useState("");
-    const [savedSuggestion, setSavedSuggestion, removeSavedSuggestion] = useSessionStorageState(`userSuggestion`, {});
+    const [savedSuggestion, setSavedSuggestion, removeSavedSuggestion] = useSessionStorageState("userSuggestion", {});
     const suggestionInputContainer = useRef(null);
     const inputForm = useRef(null);
 	const requireAuthentication = useAuthRequired();

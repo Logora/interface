@@ -1,5 +1,6 @@
 import React from 'react';
-import { render, waitFor, fireEvent } from '@testing-library/react';
+import { render, waitFor } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { SuggestionBanner } from './SuggestionBanner';
 import { IntlProvider } from 'react-intl';
 import { MemoryRouter } from 'react-router-dom';
@@ -16,7 +17,7 @@ import { ToastProvider } from '@logora/debate.dialog.toast_provider';
 import { faker } from '@faker-js/faker';
 import * as regularIcons from '@logora/debate.icons.regular_icons';
 
-let SuggestionBannerShowLocation = new Location('espace-debat/suggestions');
+const SuggestionBannerShowLocation = new Location('espace-debat/suggestions');
 
 const routes = {
     suggestionLocation: SuggestionBannerShowLocation
@@ -29,14 +30,9 @@ const config = {
         }
     }
 };
-const vote = {
-    id: faker.datatype.number(),
-    voteable_type: faker.lorem.word(),
-    voteable_id: faker.datatype.number(),
-    user_id: faker.datatype.number()
-};
-const suggestion = [{
-    id: faker.datatype.number(),
+
+const createFakeSuggestion = (id, authorName, suggestionName) => ({
+    id,
     created_at: faker.date.recent().toISOString(),
     expires_at: faker.date.future().toISOString(),
     total_upvotes: faker.datatype.number({ min: 0, max: 100 }),
@@ -49,31 +45,36 @@ const suggestion = [{
     },
     author: {
         id: faker.datatype.number(),
-        full_name: faker.name.fullName(),
+        full_name: authorName,
         image_url: faker.image.avatar()
     },
     language: faker.random.locale(),
     translation_entries: [],
-    name: faker.lorem.words(),
-}];
+    name: suggestionName
+});
+
+const vote = {
+    id: faker.datatype.number(),
+    voteable_type: faker.lorem.word(),
+    voteable_id: faker.datatype.number(),
+    user_id: faker.datatype.number()
+};
+
+const suggestions = [
+    createFakeSuggestion(1, "First Author", "First Suggestion"),
+    createFakeSuggestion(2, "Second Author", "Second Suggestion")
+];
 
 const httpClient = {
-    get: () =>
-        Promise.resolve({
-            data: {
-                success: true,
-                data:
-                    suggestion
-
-            }
-        }),
-    post: () => {
-        Promise.resolve({
-            data: { success: true, data: {} }
-        });
-    }
-
-
+    get: () => Promise.resolve({
+        data: {
+            success: true,
+            data: [suggestions[0]]
+        }
+    }),
+    post: () => Promise.resolve({
+        data: { success: true, data: { resource: {} } }
+    })
 };
 
 const currentUser = { id: vote.user_id };
@@ -123,21 +124,17 @@ describe('SuggestionBanner', () => {
     it('should render SuggestionBox correctly', async () => {
         const { getByText } = renderSuggestionBanner();
 
-        await waitFor(() => {
-            expect(getByText(suggestion[0].name)).toBeInTheDocument();
-            expect(getByText(suggestion[0].author.full_name)).toBeInTheDocument();
-            expect(getByText(`${suggestion[0].total_upvotes} supports`)).toBeInTheDocument();
-        });
-    });
-
-    it('should render the suggest button correctly', () => {
-        const { getByText } = renderSuggestionBanner();
         const button = getByText('Suggest');
         expect(button).toBeInTheDocument();
         const expectedHref = `/${routes.suggestionLocation.toUrl()}`;
         expect(button.closest('a')).toHaveAttribute('href', expectedHref);
-    });
 
+        await waitFor(() => {
+            expect(getByText(suggestions[0].name)).toBeInTheDocument();
+            expect(getByText(suggestions[0].author.full_name)).toBeInTheDocument();
+            expect(getByText(`${suggestions[0].total_upvotes} supports`)).toBeInTheDocument();
+        });
+    });
 
     it('renders empty state when there are no suggestions', async () => {
         const httpClient = {
@@ -154,8 +151,79 @@ describe('SuggestionBanner', () => {
                 </DataProviderContext.Provider>
             </Providers>
         );
+
         await waitFor(() => {
             expect(getByText('Add suggestion')).toBeInTheDocument();
         });
     });
+
+    /*
+    it('loads next suggestion after downvoting', async () => {
+        const testSuggestions = [
+            createFakeSuggestion(1, "First Author", "First Suggestion"),
+            createFakeSuggestion(2, "Second Author", "Second Suggestion")
+        ];
+        let currentPage = 1;
+        const httpClient = {
+            get: () => Promise.resolve({ 
+                data: { success: true, data: [testSuggestions[currentPage - 1]] },
+                headers: { total: testSuggestions.length }
+            }),
+            post: () => Promise.resolve({ data: { success: true, data: { resource: {} } } })
+        };
+
+        const { getByText, getByTestId } = render(
+            <Providers>
+                <DataProviderContext.Provider value={{ dataProvider: dataProvider(httpClient, "https://mock.example.api") }}>
+                    <SuggestionBanner />
+                </DataProviderContext.Provider>
+            </Providers>
+        );
+
+        await waitFor(() => {
+            expect(getByText("First Suggestion")).toBeInTheDocument();
+            expect(getByText("First Author")).toBeInTheDocument();
+        });
+
+        currentPage = 2;
+        await userEvent.click(getByTestId("downvote-button"));
+
+        await waitFor(() => {
+            expect(getByText("Second Suggestion")).toBeInTheDocument();
+            expect(getByText("Second Author")).toBeInTheDocument();
+        });
+    });
+
+    it('shows empty state after voting on last suggestion', async () => {
+        const lastSuggestion = [createFakeSuggestion(1, "Last Author", "Last Suggestion")];
+        let currentPage = 1;
+        const httpClient = {
+            get: () => Promise.resolve({ 
+                data: { success: true, data: currentPage === 1 ? lastSuggestion : [] },
+                headers: { total: 1 }
+            }),
+            post: () => Promise.resolve({ data: { success: true, data: { resource: {} } } })
+        };
+
+        const { getByText, getByTestId } = render(
+            <Providers>
+                <DataProviderContext.Provider value={{ dataProvider: dataProvider(httpClient, "https://mock.example.api") }}>
+                    <SuggestionBanner />
+                </DataProviderContext.Provider>
+            </Providers>
+        );
+
+        await waitFor(() => {
+            expect(getByText("Last Suggestion")).toBeInTheDocument();
+            expect(getByText("Last Author")).toBeInTheDocument();
+        });
+
+        currentPage = 2;
+        await userEvent.click(getByTestId("upvote-button"));
+
+        await waitFor(() => {
+            expect(getByText("Add suggestion")).toBeInTheDocument();
+        });
+    });
+    */
 });
