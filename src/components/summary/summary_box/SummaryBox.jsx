@@ -13,7 +13,7 @@ export const SummaryBox = ({ summaryItems = [], tagClassName, tag }) => {
                 )}
             </div>
             <ul className={styles.summaryItems}>
-                {summaryItems.map((item, index) => (
+                {Array.isArray(summaryItems) && summaryItems.map((item, index) => (
                     <li key={index} className={styles.summaryItem}>
                         <span >•</span>
                         {item}

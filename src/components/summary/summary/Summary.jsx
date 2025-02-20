@@ -61,13 +61,13 @@ export const Summary = ({ summaryId, tags = [], tagClassNames = [], title, subti
                 ) : (
                     tags.length === 0 ? (
                         <div>
-                            <SummaryBox summaryItems={summaries['no-position'] || []} />
+                            <SummaryBox summaryItems={Array.isArray(summaries['no-position']) ? summaries['no-position'] : []} />
                         </div>
                     ) : (
                         tags.map((tag) => (
                             <div key={tag.id}>
                                 <SummaryBox
-                                    summaryItems={summaries[tag.id] || []}
+                                    summaryItems={Array.isArray(summaries[tag.id]) ? summaries[tag.id] : []}
                                     tag={tag.name}
                                     tagClassName={tagClassNames}
                                 />
