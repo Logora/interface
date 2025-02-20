@@ -698,7 +698,7 @@
     "summary/summary": {
         "name": "summary/summary",
         "scope": "logora.debate",
-        "version": "0.0.6",
+        "version": "0.0.7",
         "mainFile": "index.js",
         "rootDir": "src/components/summary/summary"
     },
