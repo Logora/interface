@@ -27,6 +27,7 @@ import styles from './TextEditor.module.scss';
 import EditorTheme from './EditorTheme';
 import cx from "classnames";
 import PropTypes from "prop-types";
+import { KeyboardPlugin } from './plugins/KeyboardPlugin';
 
 export const TextEditor = ({ placeholder, onSubmit, sources, hideSubmit = false, hideSourceAction = false, onActivation, disabled = false, handleChange, handleSourcesChange, shortBar = false, active = false, maxLength, disableRichText = false, editorRef, allowedDomains = [] }) => {
     const [isActive, setIsActive] = useState(false);
@@ -59,7 +60,7 @@ export const TextEditor = ({ placeholder, onSubmit, sources, hideSubmit = false,
     }
 
     const editorConfig = {
-        editable: disabled ? false : true,
+        editable: !disabled,
         theme: EditorTheme,
         onError(error) {
             throw error;
@@ -90,9 +91,6 @@ export const TextEditor = ({ placeholder, onSubmit, sources, hideSubmit = false,
         if (onSubmit) {
             event.preventDefault();
             onSubmit(textContent, richContent, sources);
-            if (editorRef?.current) {
-                editorRef.current.blur();
-            }
         }
         setEditorSources([]);
     }
@@ -129,6 +127,7 @@ export const TextEditor = ({ placeholder, onSubmit, sources, hideSubmit = false,
                             contentEditable={<ContentEditable className={cx(styles.editorInput, { [styles.editorInputInactive]: !isActive })} />}
                             placeholder={placeholder && <Placeholder />}
                         />
+                        <KeyboardPlugin onSubmit={handleSubmit} />
                         <ToolbarPlugin
                             hideSourceAction={hideSourceAction}
                             hideSubmit={hideSubmit}
