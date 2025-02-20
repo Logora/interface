@@ -15,7 +15,7 @@ import { ToastProvider } from '@logora/debate.dialog.toast_provider';
 import { faker } from '@faker-js/faker';
 import * as regularIcons from '@logora/debate.icons.regular_icons';
 
-let SuggestionBannerShowLocation = new Location('espace-debat/suggestions');
+const SuggestionBannerShowLocation = new Location('espace-debat/suggestions');
 
 const routes = {
     suggestionLocation: SuggestionBannerShowLocation
@@ -61,7 +61,7 @@ const httpClient = {
             }
         }),
     post: () => {
-        return new Promise(function (resolve) {
+        return new Promise((resolve) => {
             resolve({ data: { success: true, data: { resource: vote } } });
         });
     }

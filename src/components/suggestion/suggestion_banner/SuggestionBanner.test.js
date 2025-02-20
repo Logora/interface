@@ -16,7 +16,7 @@ import { ToastProvider } from '@logora/debate.dialog.toast_provider';
 import { faker } from '@faker-js/faker';
 import * as regularIcons from '@logora/debate.icons.regular_icons';
 
-let SuggestionBannerShowLocation = new Location('espace-debat/suggestions');
+const SuggestionBannerShowLocation = new Location('espace-debat/suggestions');
 
 const routes = {
     suggestionLocation: SuggestionBannerShowLocation
@@ -153,7 +153,6 @@ describe('SuggestionBanner', () => {
         const expectedHref = `/${routes.suggestionLocation.toUrl()}`;
         expect(button.closest('a')).toHaveAttribute('href', expectedHref);
     });
-
 
     it('renders empty state when there are no suggestions', async () => {
         const httpClient = {
