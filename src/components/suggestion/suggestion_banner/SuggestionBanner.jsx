@@ -43,8 +43,8 @@ export const SuggestionBanner = () => {
                     voteableType={"DebateSuggestion"}
                     currentListId={"bannerSuggestionsList"}
                     onVote={(vote, context) => {
-                        if (context && context.handleLoadNewPage) {
-                            context.handleLoadNewPage();
+                        if (context && context.setPage) {
+                            context.setPage(context.page + 1);
                         }
                     }}
                     resource={"debate_suggestions"}
