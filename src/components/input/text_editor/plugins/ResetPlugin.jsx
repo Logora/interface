@@ -1,7 +1,13 @@
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 import { useEffect } from "react";
 import { useInput } from "@logora/debate.input.input_provider";
-import { $getRoot, $createParagraphNode, $getSelection } from "lexical";
+import {
+	$getRoot,
+	$createParagraphNode,
+	$getSelection,
+	$isRangeSelection,
+    $addUpdateTag
+} from "lexical";
 import useSessionStorageState from "@rooks/use-sessionstorage-state";
 
 export const ResetPlugin = ({ storageUid }) => {
@@ -15,21 +21,21 @@ export const ResetPlugin = ({ storageUid }) => {
 	useEffect(() => {
 		if (reset) {
 			editor.update(() => {
+				$addUpdateTag("skip-dom-selection");
 				const root = $getRoot();
+				const selection = $getSelection();
+				const paragraph = $createParagraphNode();
 				root.clear();
-				const p = $createParagraphNode();
-				root.append(p);
-				removeContent();
+				root.append(paragraph);
 
-				const rootElement = editor.getRootElement();
-				if (rootElement) {
-					rootElement.blur();
-					const selection = $getSelection();
-					if (selection) {
-						selection.clear();
-					}
+				if (selection !== null) {
+					paragraph.select();
+				}
+				if ($isRangeSelection(selection)) {
+					selection.format = 0;
 				}
 
+				removeContent();
 				setReset(false);
 			});
 		}
