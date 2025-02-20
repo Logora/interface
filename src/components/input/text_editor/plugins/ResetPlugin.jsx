@@ -21,7 +21,7 @@ export const ResetPlugin = ({ storageUid }) => {
 	useEffect(() => {
 		if (reset) {
 			editor.update(() => {
-				$addUpdateTag("skip-dom-selection");
+				//$addUpdateTag("skip-dom-selection");
 				const root = $getRoot();
 				const selection = $getSelection();
 				const paragraph = $createParagraphNode();
