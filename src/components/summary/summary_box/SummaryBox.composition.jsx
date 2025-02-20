@@ -53,3 +53,23 @@ export const SummaryBoxWithoutTag = () => {
         />
     );
 };
+
+export const SummaryBoxEmpty = () => {
+    return (
+        <SummaryBox
+            summaryItems={[]}
+            emptySummaryText="No elements found"
+        />
+    );
+};
+
+export const SummaryBoxEmptyWithTag = () => {
+    return (
+        <SummaryBox
+            summaryItems={[]}
+            emptySummaryText="No elements found"
+            tag={"tag"}
+
+        />
+    );
+};
