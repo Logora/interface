@@ -35,27 +35,50 @@ const vote = {
     voteable_id: faker.datatype.number(),
     user_id: faker.datatype.number()
 };
-const suggestion = [{
-    id: faker.datatype.number(),
-    created_at: faker.date.recent().toISOString(),
-    expires_at: faker.date.future().toISOString(),
-    total_upvotes: faker.datatype.number({ min: 0, max: 100 }),
-    total_downvotes: faker.datatype.number({ min: 0, max: 100 }),
-    is_accepted: false,
-    is_expired: false,
-    is_published: false,
-    group: {
-        slug: faker.lorem.slug()
+const suggestions = [
+    {
+        id: 1,
+        created_at: faker.date.recent().toISOString(),
+        expires_at: faker.date.future().toISOString(),
+        total_upvotes: faker.datatype.number({ min: 0, max: 100 }),
+        total_downvotes: faker.datatype.number({ min: 0, max: 100 }),
+        is_accepted: false,
+        is_expired: false,
+        is_published: false,
+        group: {
+            slug: faker.lorem.slug()
+        },
+        author: {
+            id: faker.datatype.number(),
+            full_name: "First Author",
+            image_url: faker.image.avatar()
+        },
+        language: faker.random.locale(),
+        translation_entries: [],
+        name: "First Suggestion"
     },
-    author: {
-        id: faker.datatype.number(),
-        full_name: faker.name.fullName(),
-        image_url: faker.image.avatar()
-    },
-    language: faker.random.locale(),
-    translation_entries: [],
-    name: faker.lorem.words(),
-}];
+    {
+        id: 2,
+        created_at: faker.date.recent().toISOString(),
+        expires_at: faker.date.future().toISOString(),
+        total_upvotes: faker.datatype.number({ min: 0, max: 100 }),
+        total_downvotes: faker.datatype.number({ min: 0, max: 100 }),
+        is_accepted: false,
+        is_expired: false,
+        is_published: false,
+        group: {
+            slug: faker.lorem.slug()
+        },
+        author: {
+            id: faker.datatype.number(),
+            full_name: "Second Author",
+            image_url: faker.image.avatar()
+        },
+        language: faker.random.locale(),
+        translation_entries: [],
+        name: "Second Suggestion"
+    }
+];
 
 const httpClient = {
     get: () =>
