@@ -158,4 +158,70 @@ describe('SuggestionBanner', () => {
             expect(getByText('Add suggestion')).toBeInTheDocument();
         });
     });
+
+    it('loads next suggestion after downvoting', async () => {
+        let currentPage = 1;
+        const httpClient = {
+            get: () => Promise.resolve({ 
+                data: { success: true, data: [suggestions[currentPage - 1]] },
+                headers: { total: suggestions.length }
+            }),
+            post: () => Promise.resolve({ data: { success: true, data: { resource: {} } } })
+        };
+
+        const { getByText, getByTestId } = render(
+            <Providers>
+                <DataProviderContext.Provider value={{ dataProvider: dataProvider(httpClient, "https://mock.example.api") }}>
+                    <SuggestionBanner />
+                </DataProviderContext.Provider>
+            </Providers>
+        );
+
+        // First suggestion should be visible
+        await waitFor(() => {
+            expect(getByText("First Suggestion")).toBeInTheDocument();
+            expect(getByText("First Author")).toBeInTheDocument();
+        });
+
+        // Simulate voting
+        currentPage = 2;
+        fireEvent.click(getByTestId("downvote-button"));
+
+        // Second suggestion should be visible
+        await waitFor(() => {
+            expect(getByText("Second Suggestion")).toBeInTheDocument();
+            expect(getByText("Second Author")).toBeInTheDocument();
+        });
+    });
+
+    it('shows empty state after voting on last suggestion', async () => {
+        let currentPage = 1;
+        const lastSuggestion = [suggestions[suggestions.length - 1]];
+        const httpClient = {
+            get: () => Promise.resolve({ 
+                data: { success: true, data: currentPage === 1 ? lastSuggestion : [] },
+                headers: { total: 1 }
+            }),
+            post: () => Promise.resolve({ data: { success: true, data: { resource: {} } } })
+        };
+
+        const { getByText, getByTestId } = render(
+            <Providers>
+                <DataProviderContext.Provider value={{ dataProvider: dataProvider(httpClient, "https://mock.example.api") }}>
+                    <SuggestionBanner />
+                </DataProviderContext.Provider>
+            </Providers>
+        );
+
+        await waitFor(() => {
+            expect(getByText(lastSuggestion[0].name)).toBeInTheDocument();
+        });
+
+        currentPage = 2;
+        fireEvent.click(getByTestId("upvote-button"));
+
+        await waitFor(() => {
+            expect(getByText("Add suggestion")).toBeInTheDocument();
+        });
+    });
 });
