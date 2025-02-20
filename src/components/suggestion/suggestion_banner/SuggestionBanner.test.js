@@ -35,49 +35,31 @@ const vote = {
     voteable_id: faker.datatype.number(),
     user_id: faker.datatype.number()
 };
-const suggestions = [
-    {
-        id: 1,
-        created_at: faker.date.recent().toISOString(),
-        expires_at: faker.date.future().toISOString(),
-        total_upvotes: faker.datatype.number({ min: 0, max: 100 }),
-        total_downvotes: faker.datatype.number({ min: 0, max: 100 }),
-        is_accepted: false,
-        is_expired: false,
-        is_published: false,
-        group: {
-            slug: faker.lorem.slug()
-        },
-        author: {
-            id: faker.datatype.number(),
-            full_name: "First Author",
-            image_url: faker.image.avatar()
-        },
-        language: faker.random.locale(),
-        translation_entries: [],
-        name: "First Suggestion"
+const createFakeSuggestion = (id, authorName, suggestionName) => ({
+    id,
+    created_at: faker.date.recent().toISOString(),
+    expires_at: faker.date.future().toISOString(),
+    total_upvotes: faker.datatype.number({ min: 0, max: 100 }),
+    total_downvotes: faker.datatype.number({ min: 0, max: 100 }),
+    is_accepted: false,
+    is_expired: false,
+    is_published: false,
+    group: {
+        slug: faker.lorem.slug()
     },
-    {
-        id: 2,
-        created_at: faker.date.recent().toISOString(),
-        expires_at: faker.date.future().toISOString(),
-        total_upvotes: faker.datatype.number({ min: 0, max: 100 }),
-        total_downvotes: faker.datatype.number({ min: 0, max: 100 }),
-        is_accepted: false,
-        is_expired: false,
-        is_published: false,
-        group: {
-            slug: faker.lorem.slug()
-        },
-        author: {
-            id: faker.datatype.number(),
-            full_name: "Second Author",
-            image_url: faker.image.avatar()
-        },
-        language: faker.random.locale(),
-        translation_entries: [],
-        name: "Second Suggestion"
-    }
+    author: {
+        id: faker.datatype.number(),
+        full_name: authorName,
+        image_url: faker.image.avatar()
+    },
+    language: faker.random.locale(),
+    translation_entries: [],
+    name: suggestionName
+});
+
+const suggestions = [
+    createFakeSuggestion(1, "First Author", "First Suggestion"),
+    createFakeSuggestion(2, "Second Author", "Second Suggestion")
 ];
 
 const httpClient = {
