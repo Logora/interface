@@ -4,16 +4,16 @@ import { OnChangePlugin } from "@lexical/react/LexicalOnChangePlugin";
 import { useDebouncedCallback } from 'use-debounce';
 import useSessionStorageState from '@rooks/use-sessionstorage-state';
 
-export const AutoSavePlugin = (props) => {
+export const AutoSavePlugin = ({ storageUid, onSetContent }) => {
     const [editor] = useLexicalComposerContext();
-    const [content, setContent, removeContent] = useSessionStorageState(`TextEditor:content_${props.storageUid}`, {});
+    const [content, setContent, removeContent] = useSessionStorageState(`TextEditor:content_${storageUid}`, {});
 
     useEffect(() => {
         if (content) {
             if(Object.keys(content).length !== 0) {
                 const editorState = editor.parseEditorState(content.editorState);
                 editor.setEditorState(editorState);
-                props.onSetContent();
+                onSetContent?.();
             }
         }
     }, []);
@@ -21,7 +21,7 @@ export const AutoSavePlugin = (props) => {
     const onChange = useDebouncedCallback(
         (editorState, editor) => {
             editorState.read(() => {
-                let sessionUserContent = {
+                const sessionUserContent = {
                     editorState: editor.getEditorState()
                 };
                 setContent(sessionUserContent);
