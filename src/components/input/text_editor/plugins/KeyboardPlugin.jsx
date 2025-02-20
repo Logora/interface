@@ -1,5 +1,4 @@
 import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext';
-import { $getSelection } from 'lexical';
 import { useEffect, useCallback } from 'react';
 
 export function KeyboardPlugin({ onSubmit }) {
@@ -9,16 +8,7 @@ export function KeyboardPlugin({ onSubmit }) {
         if (onSubmit) {
             onSubmit(event);
         }
-        const rootElement = editor.getRootElement();
-        if (rootElement) {
-            rootElement.blur();
-            editor.update(() => {
-                const selection = $getSelection();
-                if (selection) {
-                    selection.clear();
-                }
-            });
-        }
+        editor.blur();
     }, [editor, onSubmit]);
 
     useEffect(() => {
