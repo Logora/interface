@@ -35,49 +35,31 @@ const vote = {
     voteable_id: faker.datatype.number(),
     user_id: faker.datatype.number()
 };
-const suggestions = [
-    {
-        id: 1,
-        created_at: faker.date.recent().toISOString(),
-        expires_at: faker.date.future().toISOString(),
-        total_upvotes: faker.datatype.number({ min: 0, max: 100 }),
-        total_downvotes: faker.datatype.number({ min: 0, max: 100 }),
-        is_accepted: false,
-        is_expired: false,
-        is_published: false,
-        group: {
-            slug: faker.lorem.slug()
-        },
-        author: {
-            id: faker.datatype.number(),
-            full_name: "First Author",
-            image_url: faker.image.avatar()
-        },
-        language: faker.random.locale(),
-        translation_entries: [],
-        name: "First Suggestion"
+const createFakeSuggestion = (id, authorName, suggestionName) => ({
+    id,
+    created_at: faker.date.recent().toISOString(),
+    expires_at: faker.date.future().toISOString(),
+    total_upvotes: faker.datatype.number({ min: 0, max: 100 }),
+    total_downvotes: faker.datatype.number({ min: 0, max: 100 }),
+    is_accepted: false,
+    is_expired: false,
+    is_published: false,
+    group: {
+        slug: faker.lorem.slug()
     },
-    {
-        id: 2,
-        created_at: faker.date.recent().toISOString(),
-        expires_at: faker.date.future().toISOString(),
-        total_upvotes: faker.datatype.number({ min: 0, max: 100 }),
-        total_downvotes: faker.datatype.number({ min: 0, max: 100 }),
-        is_accepted: false,
-        is_expired: false,
-        is_published: false,
-        group: {
-            slug: faker.lorem.slug()
-        },
-        author: {
-            id: faker.datatype.number(),
-            full_name: "Second Author",
-            image_url: faker.image.avatar()
-        },
-        language: faker.random.locale(),
-        translation_entries: [],
-        name: "Second Suggestion"
-    }
+    author: {
+        id: faker.datatype.number(),
+        full_name: authorName,
+        image_url: faker.image.avatar()
+    },
+    language: faker.random.locale(),
+    translation_entries: [],
+    name: suggestionName
+});
+
+const suggestions = [
+    createFakeSuggestion(1, "First Author", "First Suggestion"),
+    createFakeSuggestion(2, "Second Author", "Second Suggestion")
 ];
 
 const httpClient = {
@@ -175,11 +157,15 @@ describe('SuggestionBanner', () => {
     });
 
     it('loads next suggestion after downvoting', async () => {
+        const testSuggestions = [
+            createFakeSuggestion(1, "First Author", "First Suggestion"),
+            createFakeSuggestion(2, "Second Author", "Second Suggestion")
+        ];
         let currentPage = 1;
         const httpClient = {
             get: () => Promise.resolve({ 
-                data: { success: true, data: [suggestions[currentPage - 1]] },
-                headers: { total: suggestions.length }
+                data: { success: true, data: [testSuggestions[currentPage - 1]] },
+                headers: { total: testSuggestions.length }
             }),
             post: () => Promise.resolve({ data: { success: true, data: { resource: {} } } })
         };
@@ -210,8 +196,8 @@ describe('SuggestionBanner', () => {
     });
 
     it('shows empty state after voting on last suggestion', async () => {
+        const lastSuggestion = [createFakeSuggestion(1, "Last Author", "Last Suggestion")];
         let currentPage = 1;
-        const lastSuggestion = [suggestions[suggestions.length - 1]];
         const httpClient = {
             get: () => Promise.resolve({ 
                 data: { success: true, data: currentPage === 1 ? lastSuggestion : [] },
@@ -229,7 +215,8 @@ describe('SuggestionBanner', () => {
         );
 
         await waitFor(() => {
-            expect(getByText(lastSuggestion[0].name)).toBeInTheDocument();
+            expect(getByText("Last Suggestion")).toBeInTheDocument();
+            expect(getByText("Last Author")).toBeInTheDocument();
         });
 
         currentPage = 2;
