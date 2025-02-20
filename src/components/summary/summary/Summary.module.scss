@@ -18,3 +18,9 @@
         flex-direction: column;
     }
 }
+
+.description {
+    color: $text-secondary;
+    font-size: $font-size-small;
+    margin-bottom: 1em;
+}

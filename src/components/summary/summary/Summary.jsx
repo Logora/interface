@@ -55,6 +55,9 @@ export const Summary = ({ apiUrl, summaryId, tags = [], tagClassNames = [], titl
 
     return (
         <SectionBox isCollapsible isCollapsedByDefault={true} title={title} subtitle={subtitle}>
+            <div className={styles.description}>
+                {intl.formatMessage({ id: "summary.description.argument_summary", defaultMessage: "Our algorithm produces comprehensive, well-structured summaries of the most recurrent arguments. Each published argument influences the content of this summary. The better structured the argument, the more weight it carries." })}
+            </div>
             <div className={styles.summaryContainer}>
                 {Object.keys(summaries).length === 0 ? (
                     tags.length === 0 ? (
