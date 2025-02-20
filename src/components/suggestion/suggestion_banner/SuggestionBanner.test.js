@@ -81,22 +81,15 @@ const suggestions = [
 ];
 
 const httpClient = {
-    get: () =>
-        Promise.resolve({
-            data: {
-                success: true,
-                data:
-                    suggestion
-
-            }
-        }),
-    post: () => {
-        Promise.resolve({
-            data: { success: true, data: {} }
-        });
-    }
-
-
+    get: () => Promise.resolve({
+        data: {
+            success: true,
+            data: [suggestions[0]]
+        }
+    }),
+    post: () => Promise.resolve({
+        data: { success: true, data: { resource: {} } }
+    })
 };
 
 const currentUser = { id: vote.user_id };
@@ -147,9 +140,9 @@ describe('SuggestionBanner', () => {
         const { getByText } = renderSuggestionBanner();
 
         await waitFor(() => {
-            expect(getByText(suggestion[0].name)).toBeInTheDocument();
-            expect(getByText(suggestion[0].author.full_name)).toBeInTheDocument();
-            expect(getByText(`${suggestion[0].total_upvotes} supports`)).toBeInTheDocument();
+            expect(getByText(suggestions[0].name)).toBeInTheDocument();
+            expect(getByText(suggestions[0].author.full_name)).toBeInTheDocument();
+            expect(getByText(`${suggestions[0].total_upvotes} supports`)).toBeInTheDocument();
         });
     });
 
