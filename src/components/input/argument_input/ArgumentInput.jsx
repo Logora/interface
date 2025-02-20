@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef, lazy, Suspense } from 'react';
-import PropTypes from "prop-types";
 import { FormattedMessage } from "react-intl";
 import { useAuth } from "@logora/debate.auth.use_auth";
 import { useList } from '@logora/debate.list.list_provider';
@@ -22,6 +21,7 @@ import TextEditor from "@logora/debate.input.text_editor";
 const SideModal = lazy(() => import('@logora/debate.modal.side_modal'));
 import cx from 'classnames';
 import styles from './ArgumentInput.module.scss';
+import PropTypes from "prop-types";
 
 export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = false, positions = [], disabledPositions = [], groupId, groupName, groupType, hideSourceAction = false, isReply = false, onSubmit, parentId, placeholder, positionId, focusOnInit = false, userGuideUrl }) => {
     const intl = useIntl();
@@ -31,7 +31,7 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
     const { focus, setFocus, setReset, inputContent, setInputContent, setInputRichContent } = useInput();
     const { isLoggedIn, currentUser } = useAuth();
     const { errors, validate } = useFormValidation();
-    const { isMobile, isDesktop } = useResponsive();
+    const { isMobile } = useResponsive();
     const location = useLocation();
     // REFS
     const inputForm = useRef(null);
@@ -138,7 +138,7 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
                     positions={positions}
                     title={groupName}
                     disabledPositions={!isReply && disabledPositions}
-                    isNeutral={savedArgument && (savedArgument.groupId == groupId) && (savedArgument.positionId === (positions[2] && positions[2].id))}
+                    isNeutral={savedArgument && (savedArgument.groupId == groupId) && (savedArgument.positionId === (positions[2]?.id))}
                 />
             </Suspense>
         );
@@ -191,7 +191,7 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
             ...(userPosition && { position_id: userPosition }),
             is_reply: Boolean(parentId),
             message_id: parentId || null,
-            source_ids: sources && sources.map(source => source.id),
+            source_ids: sources?.map(source => source.id),
         };
 
         if (validate(data, argumentValidationRules)) {
@@ -238,7 +238,7 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
         const data = {
             content: argumentContent,
             rich_content: argumentRichContent,
-            source_ids: sources && sources.map(source => source.id),
+            source_ids: sources?.map(source => source.id),
             ...(userPositionId && { position_id: userPositionId }),
         };
 
@@ -251,8 +251,8 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
                         listId = `argumentList${argument.position?.id}`;
                     }
                     if (editElement?.position?.id != argument.position?.id && !isMobile && !argument.is_reply) {
-                        let oldListId = `argumentList${editElement.position.id}`;
-                        let newListId = `argumentList${argument.position.id}`;
+                        const oldListId = `argumentList${editElement.position.id}`;
+                        const newListId = `argumentList${argument.position.id}`;
                         list.remove(oldListId, [argument]);
                         list.add(newListId, [argument]);
                     } else {
@@ -340,7 +340,7 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
                                     allowedDomains={config?.allowed_sources}
 
                                 />
-                                {(errors && errors.content) && <div className={styles.argumentInputWarning}>{errors && Object.values(errors).map((e, index) => <div key={index}>{e}</div>)}</div>}
+                                {(errors?.content) && <div className={styles.argumentInputWarning}>{errors && Object.values(errors).map((e, index) => <div key={index}>{e}</div>)}</div>}
                                 {inputActivation && disabledPositions?.find(pos => pos.id === userPositionId) &&
                                     <div className={cx(styles.argumentInputWarning, styles.disabledPositionWarning)}>
                                         <Icon name="announcement" className={styles.warningIcon} height={20} width={20} />

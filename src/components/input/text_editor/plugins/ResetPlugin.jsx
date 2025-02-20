@@ -16,12 +16,23 @@ export const ResetPlugin = ({ storageUid }) => {
                 root.clear();
                 const p = $createParagraphNode();
                 root.append(p);
-                setReset(false);
                 removeContent();
-                editor.blur();
+
+                const rootElement = editor.getRootElement();
+                if (rootElement) {
+                    rootElement.blur();
+                    editor.update(() => {
+                        const selection = $getSelection();
+                        if (selection) {
+                            selection.clear();
+                        }
+                    });
+                }
+
+                setReset(false);
             });
         }
-    }, [reset]);
+    }, [reset, editor, removeContent, setReset]);
 
     return null;
 };
