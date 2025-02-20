@@ -2,10 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { SectionBox } from '@logora/debate.section.section_box';
 import { SummaryBox } from '@logora/debate.summary.summary_box';
 import { BoxSkeleton } from '@logora/debate.skeleton.box_skeleton';
+import { useIntl } from "react-intl";
+
 import styles from './Summary.module.scss';
 
 export const Summary = ({ apiUrl, summaryId, tags = [], tagClassNames = [], title, subtitle }) => {
     const [summaries, setSummaries] = useState({});
+    const intl = useIntl();
+
 
     const fetchSummary = async (summaryId, tagId = '') => {
         try {
@@ -70,6 +74,8 @@ export const Summary = ({ apiUrl, summaryId, tags = [], tagClassNames = [], titl
                                     summaryItems={summaries[tag.id] || []}
                                     tag={tag.name}
                                     tagClassName={tagClassNames}
+                                    emptySummaryText={intl.formatMessage({ id: "info.emptysummary", defaultMessage: "No resume found." })}
+
                                 />
                             </div>
                         ))

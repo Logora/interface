@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './SummaryBox.module.scss';
 import PropTypes from "prop-types";
 
-export const SummaryBox = ({ summaryItems = [], tagClassName, tag }) => {
+export const SummaryBox = ({ summaryItems = [], tagClassName, tag, emptySummaryText = "" }) => {
     return (
         <div className={styles.box}>
             <div className={`${styles.stats} ${tag ? styles.withTag : ''}`}>
@@ -12,14 +12,17 @@ export const SummaryBox = ({ summaryItems = [], tagClassName, tag }) => {
                     </div>
                 )}
             </div>
-            <ul className={styles.summaryItems}>
-                {summaryItems.map((item, index) => (
+            {summaryItems.length === 0 ? (
+                <span className={styles.emptySummaryText}>{emptySummaryText}</span>
+            ) : (
+                summaryItems.map((item, index) => (
                     <li key={index} className={styles.summaryItem}>
-                        <span >•</span>
+                        {item && <span>•</span>}
                         {item}
                     </li>
-                ))}
-            </ul>
+                ))
+            )}
+
         </div>
     )
 };
@@ -30,5 +33,7 @@ SummaryBox.propTypes = {
     /** Class name to style the tag */
     tagClassName: PropTypes.string,
     /**  Tag displaying in the left corner of the box */
-    tag: PropTypes.string
+    tag: PropTypes.string,
+    /** Message to display when summaryItems is empty */
+    emptySummaryText: PropTypes.string,
 };

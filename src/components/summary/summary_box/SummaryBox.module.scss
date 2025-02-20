@@ -37,12 +37,6 @@
     text-transform: uppercase;
 }
 
-.summaryItems {
-    padding: 0;
-    margin: 0;
-    flex-grow: 1;
-}
-
 .summaryItem {
     display: flex;
     gap: 8px;
@@ -50,4 +44,12 @@
     align-items: flex-start;
     font-size: $font-size-small;
     color: $call-primary
+}
+
+.emptySummaryText {
+    font-style: italic;
+    color: $call-primary;
+    font-size: $font-size-small;
+    text-align: start;
+    padding: 10px 0;
 }
