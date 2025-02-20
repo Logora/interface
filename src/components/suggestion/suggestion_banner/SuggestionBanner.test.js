@@ -158,11 +158,15 @@ describe('SuggestionBanner', () => {
     });
 
     it('loads next suggestion after downvoting', async () => {
+        const testSuggestions = [
+            createFakeSuggestion(1, "First Author", "First Suggestion"),
+            createFakeSuggestion(2, "Second Author", "Second Suggestion")
+        ];
         let currentPage = 1;
         const httpClient = {
             get: () => Promise.resolve({ 
-                data: { success: true, data: [suggestions[currentPage - 1]] },
-                headers: { total: suggestions.length }
+                data: { success: true, data: [testSuggestions[currentPage - 1]] },
+                headers: { total: testSuggestions.length }
             }),
             post: () => Promise.resolve({ data: { success: true, data: { resource: {} } } })
         };
@@ -193,8 +197,8 @@ describe('SuggestionBanner', () => {
     });
 
     it('shows empty state after voting on last suggestion', async () => {
+        const lastSuggestion = [createFakeSuggestion(1, "Last Author", "Last Suggestion")];
         let currentPage = 1;
-        const lastSuggestion = [suggestions[suggestions.length - 1]];
         const httpClient = {
             get: () => Promise.resolve({ 
                 data: { success: true, data: currentPage === 1 ? lastSuggestion : [] },
@@ -212,7 +216,8 @@ describe('SuggestionBanner', () => {
         );
 
         await waitFor(() => {
-            expect(getByText(lastSuggestion[0].name)).toBeInTheDocument();
+            expect(getByText("Last Suggestion")).toBeInTheDocument();
+            expect(getByText("Last Author")).toBeInTheDocument();
         });
 
         currentPage = 2;
