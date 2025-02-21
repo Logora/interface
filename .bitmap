@@ -61,7 +61,7 @@
     "argument/argument": {
         "name": "argument/argument",
         "scope": "logora.debate",
-        "version": "0.0.315",
+        "version": "0.0.316",
         "mainFile": "index.js",
         "rootDir": "src/components/argument/argument"
     },
@@ -411,7 +411,7 @@
     "input/argument_input": {
         "name": "input/argument_input",
         "scope": "logora.debate",
-        "version": "0.0.192",
+        "version": "0.0.193",
         "mainFile": "index.js",
         "rootDir": "src/components/input/argument_input"
     },
@@ -460,7 +460,7 @@
     "input/text_editor": {
         "name": "input/text_editor",
         "scope": "logora.debate",
-        "version": "0.0.108",
+        "version": "0.0.109",
         "mainFile": "index.js",
         "rootDir": "src/components/input/text_editor"
     },
