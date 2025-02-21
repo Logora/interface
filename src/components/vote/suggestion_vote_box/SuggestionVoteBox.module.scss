@@ -1,5 +1,5 @@
-@import '~@logora/debate.styles.theme/_theme.scss';
-@import '~@logora/debate.styles.spacing/_spacing.scss';
+@use '@logora/debate.styles.theme/_theme.scss' as *;
+@use '@logora/debate.styles.spacing/_spacing.scss' as *;
 
 .voteButtonsContainer {
     display: flex !important;

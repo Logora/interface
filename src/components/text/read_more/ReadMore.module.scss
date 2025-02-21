@@ -1,4 +1,4 @@
-@import '~@logora/debate.styles.theme/_theme.scss';
+@use '@logora/debate.styles.theme/_theme.scss' as *;
 
 .readMore {
     position: relative;

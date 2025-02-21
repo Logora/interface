@@ -1,7 +1,7 @@
-@import '~@logora/debate.styles.theme/_theme.scss';
-@import '~@logora/debate.styles.spacing/_spacing.scss';
-@import '~@logora/debate.styles.flex/_flex.scss';
-@import '~@logora/debate.styles.display/_display.scss';
+@use '@logora/debate.styles.theme/_theme.scss' as *;
+@use '@logora/debate.styles.spacing/_spacing.scss' as *;
+@use '@logora/debate.styles.flex/_flex.scss' as *;
+@use '@logora/debate.styles.display/_display.scss' as *;
 
 .progressContainer {
     display: flex !important;

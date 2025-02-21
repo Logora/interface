@@ -1,5 +1,5 @@
 @use "sass:map";
-@import '~@logora/debate.styles.display/_display.scss';
+@use '@logora/debate.styles.display/_display.scss' as *;
 
 $spacer: var(--space-unit, 1em) !default;
 $spacer-xxs: var(--spacer-xxs, calc($spacer * .25));

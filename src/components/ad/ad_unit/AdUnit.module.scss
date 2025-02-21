@@ -1,4 +1,4 @@
-@import '~@logora/debate.styles.spacing/_spacing.scss';
+@use '@logora/debate.styles.spacing/_spacing.scss' as *;
 
 .adContainer {
   display: flex !important;

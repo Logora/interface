@@ -1,6 +1,6 @@
-@import '~@logora/debate.styles.theme/_theme.scss';
-@import '~@logora/debate.styles.display/_display.scss';
-@import '~@logora/debate.styles.spacing/_spacing.scss';
+@use '@logora/debate.styles.theme/_theme.scss' as *;
+@use '@logora/debate.styles.display/_display.scss' as *;
+@use '@logora/debate.styles.spacing/_spacing.scss' as *;
 
 .authorBox {
     display: flex !important;
