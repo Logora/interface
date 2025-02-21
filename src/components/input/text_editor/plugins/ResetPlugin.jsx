@@ -4,9 +4,7 @@ import { useInput } from "@logora/debate.input.input_provider";
 import {
 	$getRoot,
 	$createParagraphNode,
-	$getSelection,
-	$isRangeSelection,
-    $addUpdateTag
+	$addUpdateTag,
 } from "lexical";
 import useSessionStorageState from "@rooks/use-sessionstorage-state";
 
@@ -21,19 +19,11 @@ export const ResetPlugin = ({ storageUid }) => {
 	useEffect(() => {
 		if (reset) {
 			editor.update(() => {
-				//$addUpdateTag("skip-dom-selection");
+				$addUpdateTag("skip-dom-selection");
 				const root = $getRoot();
-				const selection = $getSelection();
 				const paragraph = $createParagraphNode();
 				root.clear();
 				root.append(paragraph);
-
-				if (selection !== null) {
-					paragraph.select();
-				}
-				if ($isRangeSelection(selection)) {
-					selection.format = 0;
-				}
 
 				removeContent();
 				setReset(false);
