@@ -29,7 +29,7 @@ export const ResetPlugin = ({ storageUid }) => {
 				setReset(false);
 			});
 		}
-	}, [reset, editor, removeContent, setReset]);
+	}, [reset]);
 
 	return null;
 };
