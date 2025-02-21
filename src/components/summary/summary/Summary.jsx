@@ -74,12 +74,12 @@ export const Summary = ({ apiUrl, summaryId, tags = [], tagClassNames = [], titl
                             />
                         </div>
                     ) : (
-                        tags.map((tag) => (
+                        tags.map((tag, index) => (
                             <div key={tag.id}>
                                 <SummaryBox
                                     summaryItems={(summaries[tag.id] || []).map(item => item.argument)}
                                     tag={tag.name}
-                                    tagClassName={tagClassNames}
+                                    tagClassName={tagClassNames[index]}
                                     emptySummaryText={intl.formatMessage({ id: "info.emptysummary", defaultMessage: "No resume found." })}
 
                                 />
