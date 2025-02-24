@@ -52,7 +52,7 @@
     "react-chartjs-2": "^5.2.0",
     "react-copy-to-clipboard": "^5.1.0",
     "react-hot-toast": "^2.4.1",
-    "react-intl": "^7.0.1",
+    "react-intl": "^7.1.6",
     "react-loading-skeleton": "^3.5.0",
     "react-modern-drawer": "^1.4.0",
     "react-oauth-popup": "^1.0.5",
