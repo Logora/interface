@@ -35,6 +35,9 @@ export const SSOForm = ({ authType, providerName, loginUrl, signupUrl, termsUrl,
 					parsedValue = parsedValue.replace("{{UTM_CAMPAIGN}}", originalParams.get("utm_campaign"));
 					parsedValue = parsedValue.replace("{{CURRENT_PATH}}", decodeURIComponent(currentPath))
 				}
+				if (key === "metadata" && parsedValue) {
+					parsedValue = window.btoa(parsedValue);
+				}
 				params.append(key, encodeURIComponent(parsedValue));
 			}
 			parsedUrl.search = params.toString();
