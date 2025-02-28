@@ -94,7 +94,7 @@ export const SuggestionInput = ({
 				position_list: intl.formatMessage({
 					id: "suggestion.position_list",
 					defaultMessage: "Yes,No",
-				}),
+				}).split(","),
 				is_suggestion: true,
 				is_published: false,
 			};
