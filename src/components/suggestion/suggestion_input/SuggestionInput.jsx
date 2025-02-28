@@ -95,6 +95,8 @@ export const SuggestionInput = ({
 					id: "suggestion.position_list",
 					defaultMessage: "Yes,No",
 				}),
+				is_suggestion: true,
+				is_published: false,
 			};
 			const suggestionValidationRules = [
 				{ name: ["length", 3] },
@@ -105,7 +107,7 @@ export const SuggestionInput = ({
 				setSuggestion("");
 				resetEditor();
 				setActive(false);
-				api.create("debate_suggestions", data).then((response) => {
+				api.create("groups", data).then((response) => {
 					if (response.data.success) {
 						const suggestion = response.data.data.resource;
 						list.add("suggestionsList", [suggestion]);
