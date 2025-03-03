@@ -40,7 +40,17 @@ const generateSuggestion = (overrides) => ({
     is_expired: faker.datatype.boolean(),
     is_published: faker.datatype.boolean(),
     group: {
-        slug: faker.lorem.slug()
+        id: faker.datatype.number(),
+        name: faker.lorem.words(),
+        slug: faker.lorem.slug(),
+        created_at: faker.date.recent().toISOString(),
+        score: faker.datatype.number(),
+        language: faker.random.locale(),
+        is_active: true,
+        messages_count: faker.datatype.number(),
+        image_url: faker.image.url(),
+        is_published: true,
+        published_at: faker.date.recent().toISOString()
     },
     author: {
         id: faker.datatype.number(),
@@ -50,6 +60,7 @@ const generateSuggestion = (overrides) => ({
     language: faker.random.locale(),
     translation_entries: [],
     name: faker.lorem.words(),
+    reformulated_content: faker.lorem.paragraph(),
     ...overrides
 });
 const suggestion = generateSuggestion();
@@ -126,7 +137,24 @@ describe('SuggestionBox', () => {
 
     // Cas d'une suggestion publiée
     it('should render published SuggestionBox correctly', () => {
-        const publishedSuggestion = generateSuggestion({ is_published: true, is_accepted: true, is_expired: false });
+        const publishedSuggestion = generateSuggestion({ 
+            is_published: true, 
+            is_accepted: true, 
+            is_expired: false,
+            group: {
+                id: faker.datatype.number(),
+                name: faker.lorem.words(),
+                slug: faker.lorem.slug(),
+                created_at: faker.date.recent().toISOString(),
+                score: faker.datatype.number(),
+                language: faker.random.locale(),
+                is_active: true,
+                messages_count: faker.datatype.number(),
+                image_url: faker.image.url(),
+                is_published: true,
+                published_at: faker.date.recent().toISOString()
+            }
+        });
         const { getByText } = renderSuggestionBox({ suggestion: publishedSuggestion, disabled: false });
         expect(getByText(publishedSuggestion.name)).toBeInTheDocument();
         expect(getByText(publishedSuggestion.author.full_name)).toBeInTheDocument();
@@ -141,6 +169,7 @@ describe('SuggestionBox', () => {
             is_published: false,
             total_upvotes: 6,
             total_downvotes: 5,
+            group: null // Ensure no group for this test case
         });
         const { getByText, getByTestId } = renderSuggestionBox({ suggestion: suggestionVote, disabled: false });
         const upvoteButton = getByTestId('upvote-icon');
