@@ -34,7 +34,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupTyp
 	const [extraReplies, setExtraReplies] = useState();
 	const content = useTranslatedContent(argument.content, argument.language, "content", argument.translation_entries);
 	const position = useTranslatedContent(argument.position?.name, argument.position?.language, "name", argument.position?.translation_entries);
-	const componentId = "argument_" + argument.id;
+	const componentId = `argument_${argument.id}`;
 	const positionIndex = argument.position && positions?.map((e) => e.id).indexOf(argument.position.id) + 1;
 
 	useEffect(() => {
@@ -44,7 +44,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupTyp
 	const scrollToArgument = (argumentId) => {
 		const currentArgumentId = componentId;
 		if (currentArgumentId === argumentId) {
-			let argumentElement = document.getElementById(argumentId);
+			const argumentElement = document.getElementById(argumentId);
 			if (argumentElement) {
 				argumentElement.scrollIntoView({ behavior: "smooth" });
 			}
@@ -62,7 +62,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupTyp
 	}
 
 	const transformReplies = (reply) => {
-		if (extraReplies && extraReplies.find(r => r.id === reply.id)) { return; }
+		if (extraReplies?.find(r => r.id === reply.id)) { return; }
 		return reply;
 	}
 
@@ -71,7 +71,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupTyp
 	}, [])
 
 	const displayRepliesThread = () => {
-		let filteredReplies = argumentReplies && argumentReplies.filter((reply) => reply.reply_to_id == argument.id);
+		const filteredReplies = argumentReplies?.filter((reply) => reply.reply_to_id === argument.id);
 		if (filteredReplies.length > 0) {
 			setExtraReplies(filteredReplies);
 			setExpandReplies(true);
@@ -101,17 +101,17 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupTyp
 					styles.argument,
 					{
 						[styles.flash]: flash,
-						[styles.argumentReply]: argument.is_reply == true,
+						[styles.argumentReply]: argument.is_reply === true,
 					},
 					styles[`level-${nestingLevel}`],
-					styles[`position-${!(argument.author.role == "editor" || argument.author.role == "moderator") && positionIndex}`]
+					styles[`position-${!(argument.author.role === "editor" || argument.author.role === "moderator") && positionIndex}`]
 				)}
 				id={componentId}
 			>
 				<ContentHeader
-					selectedContent={argument.score == 99}
+					selectedContent={argument.score === 99}
 					author={argument.author}
-					tag={(argument.author.role == "editor" || argument.author.role == "moderator") && argument.is_reply ? null : position.translatedContent}
+					tag={(argument.author.role === "editor" || argument.author.role === "moderator") && argument.is_reply ? null : position.translatedContent}
 					date={argument.created_at}
 					tagClassName={styles[`headerPosition-${positionIndex}`]}
 					disableLinks={disableLinks}
@@ -153,7 +153,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupTyp
 											</div>
 										)}
 										{richContent && !content.isTranslated ? (
-											<div className={styles.argumentContent} dangerouslySetInnerHTML={{ __html: richContent }}></div>
+											<div className={styles.argumentContent} dangerouslySetInnerHTML={{ __html: richContent }} />
 										) : (
 											<div className={styles.argumentContent}>{content.translatedContent}</div>
 										)}
@@ -185,13 +185,13 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupTyp
 						deleteListId={deleteListId}
 						enableReply={nestingLevel <= 2}
 						handleReplyTo={toggleReplyInput}
-						shareUrl={"https://app.logora.fr/share/a/" + argument.id}
+						shareUrl={`https://app.logora.fr/share/a/${argument.id}`}
 						shareTitle={intl.formatMessage({ id: "share.argument.title", defaultMessage: "Share a debate" })}
 						shareText={intl.formatMessage({ id: "share.argument.text", defaultMessage: "This argument may interest you" })}
-						shareCode={'<iframe src="https://cdn.logora.com/embed.html?shortname=' + config.shortname + '&id=' + argument.id + '&resource=argument" frameborder="0" width="100%" height="275px" scrolling="no"></iframe>'}
-						showShareCode={config?.actions?.hideCodeShare != true}
+						shareCode={`<iframe src="https://cdn.logora.com/embed.html?shortname=${config.shortname}&id=${argument.id}&resource=argument" frameborder="0" width="100%" height="275px" scrolling="no"></iframe>`}
+						showShareCode={config?.actions?.hideCodeShare !== true}
 						showShareText
-						enableReport={!(argument.score == 100 && argument.manual_score)}
+						enableReport={!(argument.score === 100 && argument.manual_score)}
 						enableEdition={enableEdition}
 					>
 						<VoteButton
@@ -248,7 +248,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupTyp
 						<div className={styles.repliesList}>
 							<VotePaginatedList
 								voteableType={"Message"}
-								currentListId={"argument_" + argument.id + "_reply_list"}
+								currentListId={`argument_${argument.id}_reply_list`}
 								loadingComponent={<UserContentSkeleton />}
 								resource={"messages"}
 								sort={"+created_at"}
