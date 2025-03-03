@@ -14,6 +14,18 @@ export const TranslationButton = ({ className, language, callback, ...rest }) =>
         callback();
     }
 
+    const getLocaleAbbreviation = (locale) => {
+        const localeMap = {
+            english: 'EN',
+            french: 'FR',
+            spanish: 'ES',
+            italian: 'IT',
+            romansh: 'RM',
+            german: 'DE',
+        };
+        return localeMap[locale.toLowerCase()] || locale;
+    };
+
     return (
         <div 
             onClick={handleClick}
@@ -23,14 +35,14 @@ export const TranslationButton = ({ className, language, callback, ...rest }) =>
             { !isOriginal ?
                 <FormattedMessage 
                     id="translations.translated_from" 
-                    values={{ variable: intl.formatMessage({ id: "translations." + language, defaultMessage: "French" }) }} 
-                    defaultMessage={`Translated from French - Show original`} 
+                    values={{ variable: getLocaleAbbreviation(language) }} 
+                    defaultMessage={`Translated from ${getLocaleAbbreviation(language)} - Show original`} 
                 />
             :
                 <FormattedMessage 
                     id="translations.translate_to" 
-                    values={{ variable: intl.formatMessage({ id: "translations." + intl.locale, defaultMessage: "English" }) }} 
-                    defaultMessage={`Translate to English`} 
+                    values={{ variable: getLocaleAbbreviation(intl.locale) }} 
+                    defaultMessage={`Translate to ${getLocaleAbbreviation(intl.locale)}`} 
                 />
             }
         </div>
