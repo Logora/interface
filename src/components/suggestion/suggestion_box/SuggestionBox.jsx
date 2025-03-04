@@ -66,7 +66,7 @@ export const SuggestionBox = ({ suggestion, disabled = false }) => {
             <div className={styles.footer}>
                 <ContentFooter
                     resource={suggestion}
-                    reportType={"DebateSuggestion"}
+                    reportType={"Group"}
                     deleteType={"groups"}
                     deleteListId={"suggestionsList"}
                     disabled={disabled}
