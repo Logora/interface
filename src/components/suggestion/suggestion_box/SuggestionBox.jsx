@@ -85,9 +85,9 @@ export const SuggestionBox = ({ suggestion, disabled = false }) => {
                     {suggestion.debate_suggestion.is_accepted === false && suggestion.debate_suggestion.is_expired === false && !suggestion.is_published &&
                         <SuggestionVoteBox
                             voteableType={"DebateSuggestion"}
-                            voteableId={suggestion.id}
+                            voteableId={suggestion.debate_suggestion.id}
                             totalUpvote={totalUpvotes}
-                            totalDownvote={suggestion.total_downvotes}
+                            totalDownvote={suggestion.debate_suggestion.total_downvotes}
                             onVote={(isUpvote) => activeVote(isUpvote)}
                             disabled={disabled || (currentUser?.id === suggestion?.debate_suggestion?.author?.id)}
                             data-testid="upvote-icon"
