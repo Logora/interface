@@ -48,9 +48,9 @@ export const ContentFooter = ({ resource,
 	const { deleteContent } = useDeleteContent(resource, deleteType, deleteListId, softDelete);
     const {elementWidth } = useResponsive();
 
-	const currentUserIsAuthor = () => {
-		return resource.author.id === currentUser.id || resource.debate_suggestion?.author.id === currentUser.id;
-	};
+    const currentUserIsAuthor = () => {
+        return resource.author?.id === currentUser.id || resource.debate_suggestion?.author?.id === currentUser.id;
+    };
 
 	const handleEdit = () => {
 		setInputContent(resource);
