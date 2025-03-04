@@ -663,14 +663,14 @@
     "suggestion/suggestion_banner": {
         "name": "suggestion/suggestion_banner",
         "scope": "logora.debate",
-        "version": "0.0.80",
+        "version": "0.0.81",
         "mainFile": "index.js",
         "rootDir": "src/components/suggestion/suggestion_banner"
     },
     "suggestion/suggestion_box": {
         "name": "suggestion/suggestion_box",
         "scope": "logora.debate",
-        "version": "0.0.101",
+        "version": "0.0.102",
         "mainFile": "index.js",
         "rootDir": "src/components/suggestion/suggestion_box"
     },
