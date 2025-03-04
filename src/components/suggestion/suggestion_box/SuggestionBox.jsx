@@ -17,8 +17,8 @@ export const SuggestionBox = ({ suggestion, disabled = false }) => {
     const intl = useIntl();
     const routes = useRoutes();
     const startDate = new Date(suggestion.created_at);
-    const endDate = new Date(suggestion.expires_at);
-    const [totalUpvotes, setTotalUpvotes] = useState(suggestion.total_upvotes);
+    const endDate = new Date(suggestion.debate_suggestion.expires_at);
+    const [totalUpvotes, setTotalUpvotes] = useState(suggestion.debate_suggestion.total_upvotes);
     const content = useTranslatedContent(suggestion.name, suggestion.language, "name", suggestion.translation_entries);
     const { currentUser } = useAuth();
 
@@ -34,7 +34,7 @@ export const SuggestionBox = ({ suggestion, disabled = false }) => {
         if (suggestion.is_accepted || suggestion.is_published) {
             return intl.formatMessage({ id: "suggestion.suggestion_box.selected", defaultMessage: "Selected" });
         }
-        if (suggestion.is_expired === true || endDate < startDate) {
+        if (suggestion.debate_suggestion.is_expired === true || endDate < startDate) {
             return intl.formatMessage({ id: "suggestion.suggestion_box.ended", defaultMessage: "Expired" });
         }
         return null;
@@ -44,7 +44,7 @@ export const SuggestionBox = ({ suggestion, disabled = false }) => {
         if (suggestion.is_accepted || suggestion.is_published) {
             return styles.selected;
         } 
-        if (suggestion.is_expired === true || endDate < startDate) {
+        if (suggestion.debate_suggestion.is_expired === true || endDate < startDate) {
             return styles.expired;
         }
         return null;
@@ -53,7 +53,7 @@ export const SuggestionBox = ({ suggestion, disabled = false }) => {
     return (
         <div className={styles.container}>
             <ContentHeader
-                author={suggestion.author}
+                author={suggestion.debate_suggestion.author}
                 tag={getTag()}
                 tagClassName={getTagClassName()}
             />
@@ -65,7 +65,7 @@ export const SuggestionBox = ({ suggestion, disabled = false }) => {
             </div>
             <div className={styles.footer}>
                 <ContentFooter
-                    resource={suggestion}
+                    resource={suggestion.debate_suggestion}
                     reportType={"DebateSuggestion"}
                     deleteType={"debate_suggestions"}
                     deleteListId={"suggestionsList"}
@@ -75,21 +75,21 @@ export const SuggestionBox = ({ suggestion, disabled = false }) => {
                     containerClassName={styles.footerContainer}
                     voteActionClassName={styles.footerActionContainer}
                 >
-                    {suggestion.is_published && suggestion.group &&
+                    {suggestion.is_published &&
                         <div className={styles.voteButton}>
-                            <Button rightIcon={<Icon name="lightArrow" width={10} height={10} className={styles.arrowIcon} />} className={styles.linkToDebate} to={routes.debateShowLocation.toUrl({ debateSlug: suggestion.group.slug })}>
+                            <Button rightIcon={<Icon name="lightArrow" width={10} height={10} className={styles.arrowIcon} />} className={styles.linkToDebate} to={routes.debateShowLocation.toUrl({ debateSlug: suggestion.slug })}>
                                 <span>{intl.formatMessage({ id: "action.link_to_debate", defaultMessage: "Go to debate" })}</span>
                             </Button>
                         </div>
                     }
-                    {suggestion.is_accepted === false && suggestion.is_expired === false && !suggestion.is_published &&
+                    {suggestion.debate_suggestion.is_accepted === false && suggestion.debate_suggestion.is_expired === false && !suggestion.is_published &&
                         <SuggestionVoteBox
                             voteableType={"DebateSuggestion"}
                             voteableId={suggestion.id}
                             totalUpvote={totalUpvotes}
                             totalDownvote={suggestion.total_downvotes}
                             onVote={(isUpvote) => activeVote(isUpvote)}
-                            disabled={disabled || (currentUser?.id === suggestion?.author?.id)}
+                            disabled={disabled || (currentUser?.id === suggestion?.debate_suggestion?.author?.id)}
                             data-testid="upvote-icon"
                         />
                     }
