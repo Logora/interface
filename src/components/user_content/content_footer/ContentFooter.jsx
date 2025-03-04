@@ -49,7 +49,7 @@ export const ContentFooter = ({ resource,
     const {elementWidth } = useResponsive();
 
 	const currentUserIsAuthor = () => {
-		return resource.author.id === currentUser.id || resource.debate_suggestion.author.id === currentUser.id;
+		return resource.author.id === currentUser.id || resource.debate_suggestion?.author.id === currentUser.id;
 	};
 
 	const handleEdit = () => {
