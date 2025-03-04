@@ -42,7 +42,7 @@ export const SuggestionBanner = () => {
                 <VotePaginatedList
                     voteableType={"DebateSuggestion"}
                     currentListId={"bannerSuggestionsList"}
-                    resource={"debate_suggestions"}
+                    resource={"groups"}
                     resourcePropName="suggestion"
                     filters={{ "is_expired": false, "is_accepted": false, "status": "accepted", "is_admin": false, "random": seed }}
                     perPage={1}

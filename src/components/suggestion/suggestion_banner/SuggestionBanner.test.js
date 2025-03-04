@@ -32,25 +32,33 @@ const config = {
 };
 
 const createFakeSuggestion = (id, authorName, suggestionName) => ({
-    id,
+    id: id,
+    name: suggestionName,
+    slug: faker.lorem.slug(),
     created_at: faker.date.recent().toISOString(),
-    expires_at: faker.date.future().toISOString(),
-    total_upvotes: faker.datatype.number({ min: 0, max: 100 }),
-    total_downvotes: faker.datatype.number({ min: 0, max: 100 }),
-    is_accepted: false,
-    is_expired: false,
-    is_published: false,
-    group: {
-        slug: faker.lorem.slug()
-    },
-    author: {
-        id: faker.datatype.number(),
-        full_name: authorName,
-        image_url: faker.image.avatar()
-    },
+    score: faker.datatype.number(),
     language: faker.random.locale(),
-    translation_entries: [],
-    name: suggestionName
+    is_active: true,
+    messages_count: faker.datatype.number(),
+    is_published: false,
+    published_at: faker.date.recent().toISOString(),
+    debate_suggestion: {
+        id: faker.datatype.number(),
+        created_at: faker.date.recent().toISOString(),
+        expires_at: faker.date.future().toISOString(),
+        total_upvotes: 20,
+        total_downvotes: faker.datatype.number({ min: 0, max: 100 }),
+        is_accepted: false,
+        is_expired: false,
+        author: {
+            id: faker.datatype.number(),
+            full_name: authorName,
+            image_url: faker.image.avatar()
+        },
+        language: faker.random.locale(),
+        translation_entries: [],
+        name: faker.lorem.words(),
+    },
 });
 
 const vote = {
@@ -131,8 +139,8 @@ describe('SuggestionBanner', () => {
 
         await waitFor(() => {
             expect(getByText(suggestions[0].name)).toBeInTheDocument();
-            expect(getByText(suggestions[0].author.full_name)).toBeInTheDocument();
-            expect(getByText(`${suggestions[0].total_upvotes} supports`)).toBeInTheDocument();
+            expect(getByText(suggestions[0].debate_suggestion.author.full_name)).toBeInTheDocument();
+            expect(getByText(`${suggestions[0].debate_suggestion.total_upvotes} supports`)).toBeInTheDocument();
         });
     });
 
