@@ -67,7 +67,7 @@ export const SuggestionBox = ({ suggestion, disabled = false }) => {
                 <ContentFooter
                     resource={suggestion.debate_suggestion}
                     reportType={"DebateSuggestion"}
-                    deleteType={"debate_suggestions"}
+                    deleteType={"groups"}
                     deleteListId={"suggestionsList"}
                     disabled={disabled}
                     enableEdition={false}
