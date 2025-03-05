@@ -91,10 +91,10 @@ export const SuggestionInput = ({
 		if (isLoggedIn) {
 			const data = {
 				name: suggestion,
-				position_list: intl.formatMessage({
+				position_list: JSON.stringify(intl.formatMessage({
 					id: "suggestion.position_list",
 					defaultMessage: "Yes,No",
-				}).split(","),
+				}).split(",")),
 				is_suggestion: true,
 				is_published: false,
 			};
