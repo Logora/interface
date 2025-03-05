@@ -17,7 +17,7 @@ export const SuggestionBox = ({ suggestion, disabled = false }) => {
     const intl = useIntl();
     const routes = useRoutes();
     const startDate = new Date(suggestion.created_at);
-    const endDate = new Date(suggestion.debate_suggestion.expires_at);
+    const endDate = new Date(suggestion.expires_at);
     const [totalUpvotes, setTotalUpvotes] = useState(suggestion.debate_suggestion.total_upvotes);
     const content = useTranslatedContent(suggestion.name, suggestion.language, "name", suggestion.translation_entries);
     const { currentUser } = useAuth();
