@@ -7,7 +7,10 @@ export const VotePaginatedList = (props) => {
 		if(props.onElementsLoad) {
 			props.onElementsLoad(elements);
 		}
-		context.addVoteableIds(elements.map(e => e.id));
+		const voteableIds = props.voteableType === "DebateSuggestion" 
+			? elements.map(e => e.debate_suggestion.id) 
+			: elements.map(e => e.id);
+		context.addVoteableIds(voteableIds);
 	}
 
     return (
