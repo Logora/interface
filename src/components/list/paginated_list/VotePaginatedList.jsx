@@ -4,14 +4,10 @@ import { PaginatedList } from './PaginatedList';
 
 export const VotePaginatedList = (props) => {
 	const loadVotes = (elements, context) => {
-		console.log("ELEMENTS", elements)
 		if(props.onElementsLoad) {
 			props.onElementsLoad(elements);
 		}
-		const voteableIds = props.voteableType === "DebateSuggestion" 
-			? elements.map(e => e.debate_suggestion.id) 
-			: elements.map(e => e.id);
-		context.addVoteableIds(voteableIds);
+		context.addVoteableIds(elements.map(e => e.id));
 	}
 
     return (
