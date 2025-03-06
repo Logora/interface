@@ -4,6 +4,7 @@ import { PaginatedList } from './PaginatedList';
 
 export const VotePaginatedList = (props) => {
 	const loadVotes = (elements, context) => {
+		console.log("ELEMENTS", elements)
 		if(props.onElementsLoad) {
 			props.onElementsLoad(elements);
 		}
