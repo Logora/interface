@@ -7,7 +7,7 @@ export const VotePaginatedList = (props) => {
 		if(props.onElementsLoad) {
 			props.onElementsLoad(elements);
 		}
-		context.addVoteableIds(elements.map(e => e.id));
+		context.addVoteableIds(elements.map(e => props.voteableIdFormat ? props.voteableIdFormat(e) : e.id));
 	}
 
     return (

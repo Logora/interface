@@ -31,8 +31,8 @@ export const useVote = (
         const initVote = votes[voteableId];
         setHasVoted(true);
         setActiveVote(Boolean(initVote));
-        setVoteSide(initVote && initVote.is_upvote);
-        setVoteId(initVote && initVote.id);
+        setVoteSide(initVote?.is_upvote);
+        setVoteId(initVote?.id);
       }
     }
   }, [votes, isLoggedIn]);
