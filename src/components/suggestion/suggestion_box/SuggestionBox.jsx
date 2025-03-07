@@ -70,6 +70,7 @@ export const SuggestionBox = ({ suggestion, disabled = false }) => {
                     deleteType={"groups"}
                     deleteListId={"suggestionsList"}
                     disabled={disabled}
+                    showShareButton={false}
                     enableEdition={false}
                     showActions={suggestion.is_accepted !== true}
                     containerClassName={styles.footerContainer}
