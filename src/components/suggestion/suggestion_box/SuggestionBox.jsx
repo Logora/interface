@@ -108,7 +108,7 @@ export const SuggestionBox = ({ suggestion, disabled = false, onVoteCallback = n
 
 SuggestionBox.propTypes = {
     /** Suggestion object */
-    suggestion: PropTypes.object.isRequired,
+    suggestion: PropTypes.object,
     /** Indicates if the suggestion is disabled */
     disabled: PropTypes.bool,
 };

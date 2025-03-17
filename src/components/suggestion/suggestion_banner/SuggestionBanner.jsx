@@ -51,6 +51,7 @@ export const SuggestionBanner = () => {
                     searchBar={false}
                     currentPage={currentPage}
                     display={"column"}
+                    numberElements={1}
                     loadingComponent={<UserContentSkeleton />}
                     emptyListComponent={
                         <UserContentSkeleton border enableAnimation={false} numberLines={3}>
