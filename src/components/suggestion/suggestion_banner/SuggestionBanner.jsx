@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import { useResponsive } from "@logora/debate.hooks.use_responsive";
 import { useRoutes } from '@logora/debate.data.config_provider';
 import { useIntl } from 'react-intl';
@@ -12,6 +12,7 @@ import cx from 'classnames';
 import styles from "./SuggestionBanner.module.scss";
 
 export const SuggestionBanner = () => {
+    const [currentPage, setCurrentPage] = useState(1);
     const seed = useMemo(() => Math.random(), []);
     const routes = useRoutes();
     const intl = useIntl();
@@ -48,6 +49,7 @@ export const SuggestionBanner = () => {
                     perPage={1}
                     withPagination={false}
                     searchBar={false}
+                    currentPage={currentPage}
                     display={"column"}
                     loadingComponent={<UserContentSkeleton />}
                     emptyListComponent={
@@ -58,7 +60,7 @@ export const SuggestionBanner = () => {
                         </UserContentSkeleton>
                     }
                 >
-                    <SuggestionBox />
+                    <SuggestionBox onVoteCallback={() => setCurrentPage(currentPage + 1)}/>
                 </VotePaginatedList>
             </div>
         </div>

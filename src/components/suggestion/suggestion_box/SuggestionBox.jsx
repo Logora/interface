@@ -13,7 +13,7 @@ import styles from './SuggestionBox.module.scss';
 import cx from 'classnames';
 import PropTypes from "prop-types";
 
-export const SuggestionBox = ({ suggestion, disabled = false }) => {
+export const SuggestionBox = ({ suggestion, disabled = false, onVoteCallback = null }) => {
     const intl = useIntl();
     const routes = useRoutes();
     const startDate = new Date(suggestion.created_at);
@@ -23,6 +23,9 @@ export const SuggestionBox = ({ suggestion, disabled = false }) => {
     const { currentUser } = useAuth();
 
     const activeVote = (isUpvote) => {
+        if (onVoteCallback) {
+            onVoteCallback();
+        }
         if (isUpvote) {
             setTotalUpvotes(totalUpvotes => totalUpvotes + 1);
         } else {
