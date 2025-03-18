@@ -21,7 +21,7 @@ export const SuggestionBanner = () => {
     const { isMobile } = useResponsive();
 
     const handleVoteCallback = (suggestion) => {
-        list.removeElements("bannerSuggestionsList", [suggestion]);
+        list.remove("bannerSuggestionsList", [suggestion]);
         setCurrentPage(currentPage + 1);
     }
 
