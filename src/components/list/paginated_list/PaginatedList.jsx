@@ -205,7 +205,7 @@ export const PaginatedList = ({
 
     const loadResources = (pageNumber) => {
         const loadFunction = withToken ? api.getListWithToken : api.getList;
-        if (((pageNumber - 1) * perPage < (numberElements || totalElements)) || pageNumber === 1) {
+        if (((pageNumber - 1) * perPage <= (numberElements || totalElements)) || pageNumber === 1) {
             const params = {
                 [pageParam]: pageNumber,
                 [perPageParam]: perPage,
