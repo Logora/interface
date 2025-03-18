@@ -71,7 +71,7 @@ export const SuggestionBanner = () => {
                         </UserContentSkeleton>
                     }
                 >
-                    <SuggestionBox onVoteCallback={handleVoteCallback}/>
+                    <SuggestionBox onVoteCallback={handleVoteCallback} />
                 </VotePaginatedList>
             </div>
         </div>

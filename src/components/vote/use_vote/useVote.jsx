@@ -40,7 +40,7 @@ export const useVote = (
   const activateVote = (isUpvote) => {
     setActiveVote(true);
     setVoteSide(isUpvote);
-    if (isUpvote && onVote) {
+    if (onVote) {
       onVote(true);
     }
     if (isUpvote) {
@@ -53,7 +53,7 @@ export const useVote = (
   const deactivateVote = (isUpvote) => {
     setActiveVote(false);
     setVoteSide(!isUpvote);
-    if (isUpvote && onVote) {
+    if (onVote) {
       onVote(false);
     }
     if (isUpvote) {
