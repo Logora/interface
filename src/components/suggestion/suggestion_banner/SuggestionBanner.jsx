@@ -8,15 +8,22 @@ import { Icon } from "@logora/debate.icons.icon";
 import { FormattedMessage } from "react-intl";
 import { UserContentSkeleton } from '@logora/debate.skeleton.user_content_skeleton';
 import { SuggestionBox } from '@logora/debate.suggestion.suggestion_box';
+import { useList } from "@logora/debate.list.list_provider";
 import cx from 'classnames';
 import styles from "./SuggestionBanner.module.scss";
 
 export const SuggestionBanner = () => {
     const [currentPage, setCurrentPage] = useState(1);
+    const list = useList();
     const seed = useMemo(() => Math.random(), []);
     const routes = useRoutes();
     const intl = useIntl();
     const { isMobile } = useResponsive();
+
+    const handleVoteCallback = (suggestion) => {
+        list.removeElements("bannerSuggestionsList", [suggestion]);
+        setCurrentPage(currentPage + 1);
+    }
 
     return (
         <div className={styles.suggestionBannerContainer}>
@@ -61,7 +68,7 @@ export const SuggestionBanner = () => {
                         </UserContentSkeleton>
                     }
                 >
-                    <SuggestionBox onVoteCallback={() => setCurrentPage(currentPage + 1)}/>
+                    <SuggestionBox onVoteCallback={handleVoteCallback}/>
                 </VotePaginatedList>
             </div>
         </div>
