@@ -14,6 +14,7 @@ import styles from "./SuggestionBanner.module.scss";
 
 export const SuggestionBanner = () => {
     const [currentPage, setCurrentPage] = useState(1);
+    const [maxPage, setMaxPage] = useState(1);
     const list = useList();
     const seed = useMemo(() => Math.random(), []);
     const routes = useRoutes();
@@ -22,7 +23,9 @@ export const SuggestionBanner = () => {
 
     const handleVoteCallback = (suggestion) => {
         list.remove("bannerSuggestionsList", [suggestion]);
-        setCurrentPage(currentPage + 1);
+        if (currentPage + 1 < maxPage) {
+            setCurrentPage(currentPage + 1);
+        }
     }
 
     return (
@@ -58,6 +61,7 @@ export const SuggestionBanner = () => {
                     searchBar={false}
                     currentPage={currentPage}
                     display={"column"}
+                    onUpdateTotal={(total) => setMaxPage(total)}
                     loadingComponent={<UserContentSkeleton />}
                     emptyListComponent={
                         <UserContentSkeleton border enableAnimation={false} numberLines={3}>
