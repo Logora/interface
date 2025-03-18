@@ -9,6 +9,7 @@ import { FormattedMessage } from "react-intl";
 import { UserContentSkeleton } from '@logora/debate.skeleton.user_content_skeleton';
 import { SuggestionBox } from '@logora/debate.suggestion.suggestion_box';
 import { useList } from "@logora/debate.list.list_provider";
+import { useToast } from '@logora/debate.dialog.toast_provider';
 import cx from 'classnames';
 import styles from "./SuggestionBanner.module.scss";
 
@@ -20,9 +21,11 @@ export const SuggestionBanner = () => {
     const routes = useRoutes();
     const intl = useIntl();
     const { isMobile } = useResponsive();
+    const { toast } = useToast() || {};
 
     const handleVoteCallback = (suggestion) => {
         list.remove("bannerSuggestionsList", [suggestion]);
+        toast(intl.formatMessage({ id: "header.vote_confirm_modal", defaultMessage: "Your vote has been saved !" }), { type: "success" });
         if (currentPage + 1 < maxPage) {
             setCurrentPage(currentPage + 1);
         }
