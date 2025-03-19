@@ -663,7 +663,7 @@
     "suggestion/suggestion_banner": {
         "name": "suggestion/suggestion_banner",
         "scope": "logora.debate",
-        "version": "0.0.98",
+        "version": "0.0.99",
         "mainFile": "index.js",
         "rootDir": "src/components/suggestion/suggestion_banner"
     },
