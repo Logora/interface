@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 export const useGoogleAdManager = (enable = true, enableDidomi = false, refreshRate = 8000) => {
     useEffect(() => {
         if (enable === true && typeof window !== 'undefined') {
-            if (!(window.googletag && window.googletag.apiReady)) {
+            if (!(window.googletag?.apiReady)) {
                 const libScript = document.createElement("script");
                 libScript.src = "https://securepubads.g.doubleclick.net/tag/js/gpt.js";
                 libScript.async = true;
@@ -17,14 +17,14 @@ export const useGoogleAdManager = (enable = true, enableDidomi = false, refreshR
 
             const googletag = window.googletag || (window.googletag = { cmd: [] });
 
-            googletag.cmd.push(function () {
+            googletag.cmd.push(() => {
                 googletag.pubads().enableSingleRequest();
                 googletag.pubads().disableInitialLoad();
                 googletag.enableServices();
 
-                googletag.pubads().addEventListener('impressionViewable', function (event) {
-                    setTimeout(function () {
-                        googletag.cmd.push(function () {
+                googletag.pubads().addEventListener('impressionViewable', (event) => {
+                    setTimeout(() => {
+                        googletag.cmd.push(() => {
                             googletag.pubads().refresh([event.slot]);
                         });
                     }, refreshRate);
