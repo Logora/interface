@@ -16,7 +16,7 @@ export const AutoSavePlugin = ({ storageUid, onSetContent }) => {
                 onSetContent?.();
             }
         }
-    }, []);
+    }, [content]);
 
     const onChange = useDebouncedCallback(
         (editorState, editor) => {
