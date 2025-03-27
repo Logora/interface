@@ -263,6 +263,7 @@ export const EmptyArgumentNoReplies = () => {
         </div>
     );
 };
+
 export const RejectedArgument = () => {
     const rejectedArgument = {
         ...argument,
@@ -272,15 +273,42 @@ export const RejectedArgument = () => {
             moderator_notes: faker.lorem.paragraph()
         },
     };
-
+    const config = {
+        moderation: {
+            showFeedback: true,
+            policyUrl: "https://www.example.com/moderation-policy" 
+        }
+    };
     return (
         <div style={{ width: "400px", height: "240px" }}>
-            <Providers>
-                <Argument
-                    argument={rejectedArgument}
-                    positions={positions}
-                />
-            </Providers>
+            <BrowserRouter>
+                <ConfigProvider routes={{ ...routes }} config={config}>
+                    <DataProviderContext.Provider value={{ dataProvider: data }}>
+                        <AuthContext.Provider value={{ currentUser, isLoggedIn: true }}>
+                            <ResponsiveProvider>
+                                <ModalProvider>
+                                    <ListProvider>
+                                        <ToastProvider>
+                                            <VoteProvider>
+                                                <InputProvider>
+                                                    <IconProvider library={regularIcons}>
+                                                        <IntlProvider locale="en">
+                                                            <Argument
+                                                                argument={rejectedArgument}
+                                                                positions={positions}
+                                                            />                                                
+                                                        </IntlProvider>
+                                                    </IconProvider>
+                                                </InputProvider>
+                                            </VoteProvider>
+                                        </ToastProvider>
+                                    </ListProvider>
+                                </ModalProvider>
+                            </ResponsiveProvider>
+                        </AuthContext.Provider>
+                    </DataProviderContext.Provider>
+                </ConfigProvider>
+            </BrowserRouter>
         </div>
     );
 };

@@ -17,7 +17,7 @@ export const ContentHeader = ({ author, tag, tagClassName, date, oneLine = false
 
 	return (
 		<div className={styles.contentHeaderContainer}>
-			{(moderationReason || moderationNotes || moderationPolicyUrl) && (
+			{moderationReason  && (
 				<div className={styles.moderationInfo}>
 					{moderationReason && (
 						<div className={styles.moderationReason}>
@@ -46,7 +46,7 @@ export const ContentHeader = ({ author, tag, tagClassName, date, oneLine = false
 						<div>
 							{intl.formatMessage(
 								{
-									id: "user_content.content_header.charte_moderation",
+									id: "user_content.content_header.moderationPolicyUrl",
 									defaultMessage: "Please keep contributions respectful. See rules:",
 								}
 							)} <a href={moderationPolicyUrl} target="_blank" rel="noopener noreferrer" className={styles.moderationLink} >
