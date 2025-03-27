@@ -49,6 +49,8 @@ import { Upvote } from "./Upvote";
 import { User } from "./User"
 import { Votebox } from './Votebox';
 import { Versus } from'./Versus';
+import { Flag } from './Flag';
+
 
 export const RegularIconsLibrary = () => {
     return (
@@ -101,8 +103,9 @@ export const RegularIconsLibrary = () => {
             <Underline width={50} height={50} data-testid={"underline-icon"} style={{margin: "15px"}} />
             <Upvote width={50} height={50} data-testid={"upvote-icon"} style={{margin: "15px"}} />
             <User width={50} height={50} data-testid={"user-icon"} style={{margin: "15px"}} />
-            <Votebox width={50} height={50} data-testid={"vote-box-icon"}  style={{margin: "15px"}} />
-            <Versus width={50} height={50} data-testid={"versus-icon"}  style={{margin: "15px"}} />
+            <Votebox width={50} height={50} data-testid={"vote-box-icon"} style={{margin: "15px"}} />
+            <Versus width={50} height={50} data-testid={"versus-icon"} style={{margin: "15px"}} />
+            <Flag width={50} height={50} data-testid={"flag-icon"} style={{margin: "15px"}} />
         </div>
     )
 };
