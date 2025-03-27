@@ -263,3 +263,25 @@ export const EmptyArgumentNoReplies = () => {
         </div>
     );
 };
+export const RejectedArgument = () => {
+    const rejectedArgument = {
+        ...argument,
+        status: "rejected",
+        moderation_entry: {
+            moderation_reason: faker.lorem.sentence(),
+            moderator_notes: faker.lorem.paragraph()
+        },
+    };
+
+    return (
+        <div style={{ width: "400px", height: "240px" }}>
+            <Providers>
+                <Argument
+                    argument={rejectedArgument}
+                    positions={positions}
+                />
+            </Providers>
+        </div>
+    );
+};
+

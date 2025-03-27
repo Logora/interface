@@ -9,34 +9,74 @@ import cx from "classnames";
 import styles from "./ContentHeader.module.scss";
 import PropTypes from "prop-types";
 
-export const ContentHeader = ({ author, tag, tagClassName, date, oneLine = false, disableLinks = false, selectedContent = false, isDeleted = false }) => {
+export const ContentHeader = ({ author, tag, tagClassName, date, oneLine = false, disableLinks = false, selectedContent = false, isDeleted = false, moderationReason,
+	moderationNotes, moderationPolicyUrl }) => {
 	const relativeTime = useRelativeTime(new Date(date).getTime());
 	const intl = useIntl();
 	const config = useConfig();
 
 	return (
 		<div className={styles.contentHeaderContainer}>
-			{ selectedContent && !isDeleted &&
+			{(moderationReason || moderationNotes || moderationPolicyUrl) && (
+				<div className={styles.moderationInfo}>
+					{moderationReason && (
+						<div className={styles.moderationReason}>
+							<Icon name="Flag" width={18} height={18} className={styles.flagIcon} />
+							{intl.formatMessage(
+								{
+									id: "user_content.content_header.moderation_reason",
+									defaultMessage: 'Content rejected for reason :"{reason}"',
+								},
+								{ reason: moderationReason }
+							)}
+						</div>
+					)}
+					{moderationNotes && (
+						<div>
+							{intl.formatMessage(
+								{
+									id: "user_content.content_header.moderation_notes",
+									defaultMessage: "Moderation Notes: {notes}",
+								},
+								{ notes: moderationNotes }
+							)}
+						</div>
+					)}
+					{moderationPolicyUrl && (
+						<div>
+							{intl.formatMessage(
+								{
+									id: "user_content.content_header.charte_moderation",
+									defaultMessage: "Please keep contributions respectful. See rules:",
+								}
+							)} <a href={moderationPolicyUrl} target="_blank" rel="noopener noreferrer" className={styles.moderationLink} >
+								{intl.formatMessage({ id: "user_content.content_header.moderation_policy_link", defaultMessage: "moderation policy." })}
+							</a>
+						</div>
+					)}
+				</div>
+			)}
+			{selectedContent && !isDeleted &&
 				<div className={styles.selectedContent}>
 					<Icon name="expertBadge" width={18} height={18} />
-					{ intl.formatMessage({ id: "user_content.content_header.selected", defaultMessage: "Selected by editor" }) }
-				</div> 
+					{intl.formatMessage({ id: "user_content.content_header.selected", defaultMessage: "Selected by editor" })}
+				</div>
 			}
 			<div className={styles.contentHeader}>
 				<div className={styles.contentHeaderAuthorBox}>
-					{ oneLine === true ?
+					{oneLine === true ?
 						<UserBoxSmall userName={author.full_name} avatarUrl={author.image_url} userSlug={author.hash_id} />
-					:
-						<AuthorBox 
+						:
+						<AuthorBox
 							fullName={author.full_name}
 							avatarUrl={author.image_url}
-                            points={author.role === "contributor" ? author.points : null}
-                            slug={author.hash_id} 
+							points={author.role === "contributor" ? author.points : null}
+							slug={author.hash_id}
 							lastActivity={author.last_activity}
 							occupation={author.occupation}
 							eloquenceTitle={author.eloquence_title}
 							showBadge={author.role === "editor" || author.role === "moderator"}
-							disableLinks={disableLinks} 
+							disableLinks={disableLinks}
 							isDeleted={isDeleted}
 							language={config?.translation?.enable === true ? `${author.language}` : null}
 							languageDialect={config?.translation?.dialect || null}
@@ -44,18 +84,18 @@ export const ContentHeader = ({ author, tag, tagClassName, date, oneLine = false
 					}
 				</div>
 				<div className={styles.contentHeaderRight}>
-					{ tag &&
+					{tag &&
 						<div className={cx(styles.contentHeaderTagBox, tagClassName)}>
 							<div className={styles.contentHeaderTag} title={tag}>
-								{ tag }
+								{tag}
 							</div>
 						</div>
 					}
-					{ !date || oneLine ? null :
+					{!date || oneLine ? null :
 						<div data-testid={"content-header-date"} className={cx(styles.contentHeaderDate)}>
-							{ relativeTime }
+							{relativeTime}
 						</div>
-					}	
+					}
 				</div>
 			</div>
 		</div>
@@ -70,7 +110,7 @@ ContentHeader.propTypes = {
 	/** A custom class name for the tag container */
 	tagClassName: PropTypes.string,
 	/** The date the argument was posted */
-	date: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date) ]),
+	date: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]),
 	/** If `true`, will render the author box in a single line  */
 	oneLine: PropTypes.bool,
 	/** If `true`, will disable the links to the author profile */
@@ -79,4 +119,10 @@ ContentHeader.propTypes = {
 	selectedContent: PropTypes.bool,
 	/** If `true`, will display the deleted content style */
 	isDeleted: PropTypes.bool,
+	/** Reason for moderation */
+	moderationReason: PropTypes.string,
+	/** Notes related to moderation */
+	moderationNotes: PropTypes.string,
+	/** Charte of moderation */
+	moderationPolicyUrl: PropTypes.string,
 };

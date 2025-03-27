@@ -68,7 +68,29 @@
 	font-size: $font-size-small;
 	gap: $spacer-xs;
 	flex-wrap: wrap;
+
 	@include media-breakpoint-down(xs) {
 		font-size: $font-size-small;
 	}
+}
+
+.moderationInfo {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: $spacer;
+	gap: $spacer;
+}
+
+.moderationReason {
+	color: $cancel-primary;
+	font-style: italic;
+}
+
+
+.flagIcon {
+	fill: $cancel-primary;
+}
+
+.moderationLink {
+	color: $call-primary;
 }

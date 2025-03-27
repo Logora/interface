@@ -116,6 +116,9 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupTyp
 					tagClassName={styles[`headerPosition-${positionIndex}`]}
 					disableLinks={disableLinks}
 					isDeleted={argument.is_deleted}
+					moderationReason={argument.status === "rejected" ? argument.moderation_entry?.moderation_reason : undefined}
+					moderationNotes={argument.status === "rejected" ? argument.moderation_entry?.moderator_notes : undefined}
+					moderationPolicyUrl={argument.status === "rejected" ? "https://www.logora.com/blog-posts/moderation" : undefined}
 				/>
 				{argument.is_deleted ?
 					<div className={styles.argumentDeletedBody}>
