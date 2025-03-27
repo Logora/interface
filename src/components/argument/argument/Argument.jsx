@@ -117,10 +117,10 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupTyp
 					disableLinks={disableLinks}
 					isDeleted={argument.is_deleted}
 					{...(config.moderation?.showFeedback && {
-						moderationReason: argument.status === "rejected" ? argument.moderation_entry?.moderation_reason : "",
-						moderationNotes: argument.status === "rejected" ? argument.moderation_entry?.moderator_notes : "",
-						moderationPolicyUrl: argument.status === "rejected" ? config.moderation?.policyUrl : ""
-					  })}
+						moderationReason: argument.status === "rejected" && argument.moderation_entry?.moderation_reason,
+						moderationNotes: argument.status === "rejected" && argument.moderation_entry?.moderator_notes,
+						moderationPolicyUrl: argument.status === "rejected" && config.moderation?.policyUrl
+					})}
 				/>
 				{argument.is_deleted ?
 					<div className={styles.argumentDeletedBody}>
@@ -150,29 +150,29 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupTyp
 								</div>
 								:
 								<ReadMore
-								content={
-									<>
-										{argument.edited_at && (
-											<div className={styles.edited}>
-												{intl.formatMessage({ id: "argument.argument.updated", defaultMessage: "Updated argument" })}
-											</div>
-										)}
-										{richContent && !content.isTranslated ? (
-											<div className={styles.argumentContent} dangerouslySetInnerHTML={{ __html: richContent }}></div>
-										) : (
-											<div className={styles.argumentContent}>{content.translatedContent}</div>
-										)}
-										{content.isTranslated && (
-											<TranslationButton language={argument.language} callback={() => content.toggleContent()} />
-										)}
-									</>
-								}
-								lineCount={5}
-								readMoreText={intl.formatMessage({ id: "action.read_more", defaultMessage: "Read more" })}
-								readLessText={intl.formatMessage({ id: "action.read_less", defaultMessage: "Read less" })}
-								expandable={expandable}
-								readMoreClassName={argument.is_reply ? styles.replyStyle : styles.argumentStyle} 
-							/>
+									content={
+										<>
+											{argument.edited_at && (
+												<div className={styles.edited}>
+													{intl.formatMessage({ id: "argument.argument.updated", defaultMessage: "Updated argument" })}
+												</div>
+											)}
+											{richContent && !content.isTranslated ? (
+												<div className={styles.argumentContent} dangerouslySetInnerHTML={{ __html: richContent }}></div>
+											) : (
+												<div className={styles.argumentContent}>{content.translatedContent}</div>
+											)}
+											{content.isTranslated && (
+												<TranslationButton language={argument.language} callback={() => content.toggleContent()} />
+											)}
+										</>
+									}
+									lineCount={5}
+									readMoreText={intl.formatMessage({ id: "action.read_more", defaultMessage: "Read more" })}
+									readLessText={intl.formatMessage({ id: "action.read_less", defaultMessage: "Read less" })}
+									expandable={expandable}
+									readMoreClassName={argument.is_reply ? styles.replyStyle : styles.argumentStyle}
+								/>
 							}
 						</div>
 						{argument.sources?.length > 0 && (

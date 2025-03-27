@@ -17,7 +17,7 @@ export const ContentHeader = ({ author, tag, tagClassName, date, oneLine = false
 
 	return (
 		<div className={styles.contentHeaderContainer}>
-			{moderationReason  && (
+			{moderationReason && (
 				<div className={styles.moderationInfo}>
 					{moderationReason && (
 						<div className={styles.moderationReason}>

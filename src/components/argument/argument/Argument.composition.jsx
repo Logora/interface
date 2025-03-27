@@ -276,7 +276,7 @@ export const RejectedArgument = () => {
     const config = {
         moderation: {
             showFeedback: true,
-            policyUrl: "https://www.example.com/moderation-policy" 
+            policyUrl: "https://www.example.com/moderation-policy"
         }
     };
     return (
@@ -296,7 +296,7 @@ export const RejectedArgument = () => {
                                                             <Argument
                                                                 argument={rejectedArgument}
                                                                 positions={positions}
-                                                            />                                                
+                                                            />
                                                         </IntlProvider>
                                                     </IconProvider>
                                                 </InputProvider>
