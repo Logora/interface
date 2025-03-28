@@ -119,7 +119,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupTyp
 					{...(config.moderation?.showFeedback && {
 						moderationReason: argument.status === "rejected" && argument.moderation_entry?.moderation_reason,
 						moderationNotes: argument.status === "rejected" && argument.moderation_entry?.moderator_notes,
-						moderationPolicyUrl: argument.status === "rejected" && config.moderation?.policyUrl
+						moderationPolicyUrl: argument.status === "rejected" && config.provider?.userGuideUrl
 					})}
 				/>
 				{argument.is_deleted ?

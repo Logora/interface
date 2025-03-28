@@ -276,7 +276,9 @@ export const RejectedArgument = () => {
     const config = {
         moderation: {
             showFeedback: true,
-            policyUrl: "https://www.example.com/moderation-policy"
+        },
+        provider: {
+            userGuideUrl: "https://www.example.com/moderation-policy"
         }
     };
     return (
