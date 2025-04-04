@@ -86,6 +86,7 @@ export const AuthModal = ({ onHideModal = null }) => {
 									trackingParameters={config.auth.trackingParameters}
 									providerName={config.provider?.companyName}
 									hideActions={config.auth.hideModalActions}
+									hideLoginButton={config.auth.hideModalLoginButton}
 									showEmailConsent={config.auth.showEmailConsent}
 									showTerms={config.auth.hideCgu !== true}
 								/>
