@@ -22,9 +22,9 @@ export const AutoSavePlugin = ({ storageUid, onSetContent }) => {
         (editorState, editor) => {
             editorState.read(() => {
                 const sessionUserContent = {
-                    editorState: JSON.stringify(editor.getEditorState())
+                    editorState: editor.getEditorState()
                 };
-                setContent(sessionUserContent);
+                setContent(JSON.stringify(sessionUserContent));
             })
         },
         1000,
