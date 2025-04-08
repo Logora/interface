@@ -65,7 +65,7 @@ export const AuthModal = ({ onHideModal = null }) => {
 									facebookClientId={process.env.FACEBOOK_CLIENT_ID}
 									googleClientId={process.env.GOOGLE_CLIENT_ID}
 									oAuthRedirectUri={process.env.OAUTH_REDIRECT_URI} 
-									logoUrl={config.logo?.desktop}
+									logoUrl={config.logo_url}
 									providerName={config.provider?.companyName}
 									forgotPasswordUrl={`https://admin.logora.fr/?application=${config.shortname}#/forgot_password`}
 									termsUrl={config.provider?.cguUrl || "https://www.logora.com/blog-posts/cgu"}
@@ -78,7 +78,7 @@ export const AuthModal = ({ onHideModal = null }) => {
 									oAuthRedirectUri={process.env.OAUTH_REDIRECT_URI}
 									clientId={config.auth.clientId}
 									scope={config.auth.scope}
-									logoUrl={config.logo?.desktop}
+									logoUrl={config.logo_url}
 									loginUrl={config.auth.login_url}
 									signupUrl={config.auth.registration_url || config.auth.login_url}
 									termsUrl={config.provider?.cguUrl || "https://www.logora.com/blog-posts/cgu"}
