@@ -80,7 +80,7 @@ export const PaginatedList = ({
             initFilters = Object.assign({}, initFilters, filters);
         }
         return initFilters;
-    };
+    }
 
     const [currentSort, setCurrentSort] = useState(getInitSort());
     const [currentFilters, setCurrentFilters] = useState(getInitFilters());
@@ -101,7 +101,7 @@ export const PaginatedList = ({
 
     useEffect(() => {
         if (urlParams.get('tagId')) {
-            setActiveTagId(parseInt(urlParams.get('tagId')));
+            setActiveTagId(Number.parseInt(urlParams.get('tagId')));
         }
         if (urlParams.get('search')) {
             setCurrentQuery(urlParams.get('search'));
@@ -153,7 +153,7 @@ export const PaginatedList = ({
         if (list.addElements && (currentListId in list.addElements)) {
             if (list.addElements[currentListId].length > 0) {
                 handleAddElements(list.addElements[currentListId]);
-                let addElements = list.addElements;
+                const addElements = list.addElements;
                 delete addElements[currentListId];
                 list.setAddElements(addElements);
             }
@@ -164,7 +164,7 @@ export const PaginatedList = ({
         if (list.updateElements && (currentListId in list.updateElements)) {
             if (list.updateElements[currentListId].length > 0) {
                 handleEditElements(list.updateElements[currentListId]);
-                let updateElements = list.updateElements;
+                const updateElements = list.updateElements;
                 delete updateElements[currentListId];
                 list.setUpdateElements(updateElements);
             }
@@ -175,7 +175,7 @@ export const PaginatedList = ({
         if (list.removeElements && (currentListId in list.removeElements)) {
             if (list.removeElements[currentListId].length > 0) {
                 handleRemoveElements(list.removeElements[currentListId]);
-                let removeElements = list.removeElements;
+                const removeElements = list.removeElements;
                 delete removeElements[currentListId];
                 list.setRemoveElements(removeElements);
             }
@@ -194,14 +194,14 @@ export const PaginatedList = ({
             setCurrentSort(selectOption.value);
             setCurrentFilters(filters ? { ...filters } : {});
         }
-    };
+    }
 
     const handleLoadNewPage = () => {
         if (typeof onLoadNewPage === 'function' && onLoadNewPage() !== null) {
         } else {
             setPage(page + 1);
         }
-    };
+    }
 
     const loadResources = (pageNumber) => {
         const loadFunction = withToken ? api.getListWithToken : api.getList;
@@ -219,7 +219,7 @@ export const PaginatedList = ({
                 const headers = response.headers;
                 if (headers) {
                     if (totalHeaderParam in headers) {
-                        setTotalElements(parseInt(headers[totalHeaderParam || "total"], 10));
+                        setTotalElements(Number.parseInt(headers[totalHeaderParam || "total"], 10));
                         if (onUpdateTotal) {
                             onUpdateTotal(headers[totalHeaderParam || "total"]);
                         }
@@ -246,14 +246,14 @@ export const PaginatedList = ({
         } else {
             setIsLoading(false);
         }
-    };
+    }
 
     const handleAddElements = (elements) => {
         setCurrentResources(prevElements => uniqueBy([...elements, ...prevElements], uniqueIdKey || "id"));
         if (onElementsLoad) {
             onElementsLoad(elements);
         }
-    };
+    }
 
     const handleEditElements = (elements) => {
         let newElements = currentResources;
@@ -261,20 +261,20 @@ export const PaginatedList = ({
             newElements = newElements.map((a) => (a.id === element.id ? element : a))
         );
         setCurrentResources(uniqueBy(newElements, uniqueIdKey || "id"));
-    };
+    }
 
     const handleRemoveElements = (elements) => {
-        let removedElementsIds = elements.map(elm => elm.id);
+        const removedElementsIds = elements.map(elm => elm.id);
         const newElements = currentResources.filter(elm => removedElementsIds.indexOf(elm.id) === -1);
         setCurrentResources(uniqueBy(newElements, uniqueIdKey || "id"));
-    };
+    }
 
     const addElements = (newElements) => {
         setCurrentResources(prevElements => uniqueBy([...prevElements, ...newElements], uniqueIdKey || "id"));
-    };
+    }
 
     const displayResource = (resource, index) => {
-        if (resource != undefined) {
+        if (resource !== undefined) {
             return (
                 <div className={styles.paginatedListItem} data-testid={"list-item"} key={resource[uniqueIdKey || "id"]} onClick={onElementClick}>
                     <StandardErrorBoundary hideMessage={true}>
@@ -282,10 +282,9 @@ export const PaginatedList = ({
                     </StandardErrorBoundary>
                 </div>
             );
-        } else {
-            return null;
         }
-    };
+        return null;
+    }
 
     const displayLoadingComponent = (index) => {
         if (loadingComponent) {
@@ -294,10 +293,9 @@ export const PaginatedList = ({
                     {loadingComponent}
                 </div>
             );
-        } else {
-            return null;
         }
-    };
+        return null;
+    }
 
     if (loadError) {
         throw new Error(intl.formatMessage({ id: "error.list", defaultMessage: "Error when loading content." }));
@@ -353,7 +351,7 @@ export const PaginatedList = ({
                 </>
             }
         </div>
-    );
+    )
 };
 
 PaginatedList.propTypes = {

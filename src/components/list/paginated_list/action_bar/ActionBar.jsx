@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Select } from '@logora/debate.input.select';
 import { SearchInput } from "@logora/debate.input.search_input";
 import { Tag } from '@logora/debate.tag.tag';
@@ -14,6 +14,7 @@ export const ActionBar = ({ title, sortOptions, defaultSelectOption, searchBar =
     const intl = useIntl();
     const location = useLocation();
     const { isMobile } = useResponsive();
+    const [searchActive, setSearchActive] = useState(false);
     const urlParams = new URLSearchParams(typeof window !== "undefined" ? window.location.search : location.search);
 
     const handleSortChange = (selectOption) => {
@@ -33,13 +34,13 @@ export const ActionBar = ({ title, sortOptions, defaultSelectOption, searchBar =
 
     const handleActiveTag = (tag) => {
         if (withUrlParams) {
-            if (tag.id == activeTagId) {
+            if (tag.id === activeTagId) {
                 urlParams.delete("tagId");
             } else {
                 urlParams.set("tagId", tag.id);
             }
         }
-        onTagChange(tag.id == activeTagId ? null : tag.id)
+        onTagChange(tag.id === activeTagId ? null : tag.id)
     }
 
     const handleSearch = (query) => {
@@ -51,6 +52,7 @@ export const ActionBar = ({ title, sortOptions, defaultSelectOption, searchBar =
             }
         }
         onSearch(query);
+        setSearchActive(query !== "");
     }
 
     const displayTags = (tag) => {
@@ -88,6 +90,7 @@ export const ActionBar = ({ title, sortOptions, defaultSelectOption, searchBar =
                                         options={sortOptions}
                                         defaultOption={defaultSelectOption}
                                         horizontalPosition={"right"}
+                                        disabled={searchActive}
                                         className={styles.select}
                                     />
                                 ) : null}
