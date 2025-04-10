@@ -40,32 +40,28 @@ export const useVote = (
   const activateVote = (isUpvote) => {
     setActiveVote(true);
     setVoteSide(isUpvote);
-    if (onVote) {
-      onVote(true);
-    }
+    onVote?.(isUpvote);
     if (isUpvote) {
       setTotalUpvotes((prevState) => prevState + 1)
     } else {
       setTotalDownvotes((prevState) => prevState + 1)
     }
-  };
-
+  }
+  
   const deactivateVote = (isUpvote) => {
     setActiveVote(false);
     setVoteSide(!isUpvote);
-    if (onVote) {
-      onVote(false);
-    }
+    onVote?.(isUpvote);
     if (isUpvote) {
       setTotalUpvotes((prevState) => prevState - 1)
     } else {
       setTotalDownvotes((prevState) => prevState - 1)
     }
-  };
+  }
 
   const voteAction = (isUpvote) => {
     if (activeVote) {
-      if (voteSide == isUpvote) {
+      if (voteSide === isUpvote) {
         deactivateVote(isUpvote);
         setVoteDisabled(true);
         api.delete("votes", voteId).then(

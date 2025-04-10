@@ -23,9 +23,7 @@ export const SuggestionBox = ({ suggestion, disabled = false, onVoteCallback = n
     const { currentUser } = useAuth();
 
     const activeVote = (isUpvote) => {
-        if (onVoteCallback) {
-            onVoteCallback(suggestion);
-        }
+        onVoteCallback?.(suggestion);
         if (isUpvote) {
             setTotalUpvotes(totalUpvotes => totalUpvotes + 1);
         } else {
