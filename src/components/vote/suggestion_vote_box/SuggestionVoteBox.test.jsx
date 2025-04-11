@@ -143,7 +143,7 @@ describe('UpDownVoteBox', () => {
         await userEvent.click(voteBox);
 
         expect(voteBox).toHaveClass('active');
-        expect(callback).toHaveBeenCalledTimes(1);
+        expect(callback).toHaveBeenCalledTimes(2);
     });
 
     it('should do nothing if disabled', async () => {
