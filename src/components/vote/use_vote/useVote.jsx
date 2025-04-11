@@ -40,21 +40,22 @@ export const useVote = (
   const activateVote = (isUpvote) => {
     setActiveVote(true);
     setVoteSide(isUpvote);
-    onVote?.(isUpvote);
     if (isUpvote) {
-      setTotalUpvotes((prevState) => prevState + 1)
+      setTotalUpvotes(prevState => prevState + 1)
     } else {
-      setTotalDownvotes((prevState) => prevState + 1)
+      setTotalDownvotes(prevState => prevState + 1)
     }
+    onVote?.(isUpvote, activeVote, totalUpvotes, totalDownvotes);
   }
   
   const deactivateVote = (isUpvote) => {
     setActiveVote(false);
     if (isUpvote) {
-      setTotalUpvotes((prevState) => prevState - 1)
+      setTotalUpvotes(prevState => prevState - 1)
     } else {
-      setTotalDownvotes((prevState) => prevState - 1)
+      setTotalDownvotes(prevState => prevState - 1)
     }
+    onVote?.(isUpvote, activeVote, totalUpvotes, totalDownvotes);
   }
 
   const voteAction = (isUpvote) => {

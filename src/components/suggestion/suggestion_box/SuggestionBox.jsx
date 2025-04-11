@@ -22,13 +22,9 @@ export const SuggestionBox = ({ suggestion, disabled = false, onVoteCallback = n
     const content = useTranslatedContent(suggestion.name, suggestion.language, "name", suggestion.translation_entries);
     const { currentUser } = useAuth();
 
-    const activeVote = (isUpvote) => {
+    const handleVote = (isUpvote, activeVote, totalUpvotes, totalDownvotes) => {
         onVoteCallback?.(suggestion);
-        if (isUpvote) {
-            setTotalUpvotes(totalUpvotes => totalUpvotes + 1);
-        } else {
-            setTotalUpvotes(totalUpvotes => totalUpvotes - 1);
-        }
+        setTotalUpvotes(totalUpvotes);
     }
 
     const getTag = () => {
@@ -90,7 +86,7 @@ export const SuggestionBox = ({ suggestion, disabled = false, onVoteCallback = n
                             voteableId={suggestion.debate_suggestion.id}
                             totalUpvote={totalUpvotes}
                             totalDownvote={suggestion.debate_suggestion.total_downvotes}
-                            onVote={(isUpvote) => activeVote(isUpvote)}
+                            onVote={handleVote}
                             disabled={disabled || (currentUser?.id === suggestion?.debate_suggestion?.author?.id)}
                             data-testid="upvote-icon"
                         />
