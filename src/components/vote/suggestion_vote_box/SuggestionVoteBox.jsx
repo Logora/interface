@@ -23,20 +23,24 @@ export const SuggestionVoteBox = ({ voteableType, voteableId, totalUpvote = 0, t
 
   const handleDownvote = () => {
     if (isLoggedIn) {
-      showModal(
-        <Suspense fallback={null}>
-          <ConfirmModal
-            title={intl.formatMessage({ id: "vote.suggestion_vote_box.downvote", defaultMessage: "Not interested" })}
-            question={intl.formatMessage({
-              id: "vote.suggestion_vote_box.confirm_suggestion_downvote",
-              defaultMessage: "Your vote should judge the quality of the question. Are you sure you want to continue ?"
-            })}
-            confirmLabel={intl.formatMessage({ id: "info.yes", defaultMessage: "Yes" })}
-            cancelLabel={intl.formatMessage({ id: "info.no", defaultMessage: "No" })}
-            onConfirmCallback={ () => handleVote(false) }
-          />
-        </Suspense>
-      );
+      if(!(activeVote && !voteSide)) {
+        showModal(
+          <Suspense fallback={null}>
+            <ConfirmModal
+              title={intl.formatMessage({ id: "vote.suggestion_vote_box.downvote", defaultMessage: "Not interested" })}
+              question={intl.formatMessage({
+                id: "vote.suggestion_vote_box.confirm_suggestion_downvote",
+                defaultMessage: "Your vote should judge the quality of the question. Are you sure you want to continue ?"
+              })}
+              confirmLabel={intl.formatMessage({ id: "info.yes", defaultMessage: "Yes" })}
+              cancelLabel={intl.formatMessage({ id: "info.no", defaultMessage: "No" })}
+              onConfirmCallback={ () => handleVote(false) }
+            />
+          </Suspense>
+        )
+      } else {
+        handleVote(false)
+      }
     }
   };
 

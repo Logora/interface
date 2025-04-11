@@ -50,8 +50,6 @@ export const useVote = (
   
   const deactivateVote = (isUpvote) => {
     setActiveVote(false);
-    setVoteSide(!isUpvote);
-    onVote?.(isUpvote);
     if (isUpvote) {
       setTotalUpvotes((prevState) => prevState - 1)
     } else {

@@ -22,7 +22,7 @@
     ]
   },
   "teambit.harmony/bit": {
-    "engine": "1.8.52"
+    "engine": "1.9.100"
   },
   "teambit.workspace/variants": {
     "*": {
