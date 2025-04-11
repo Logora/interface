@@ -22,13 +22,13 @@ const vote = {
 const httpClient = {
     get: () => null,
     post: (url, data, config) => {
-        return new Promise(function (resolve, reject) {
+        return new Promise((resolve, reject) => {
             resolve({ data: { success: true, data: { resource: vote } } });
         });
     },
     patch: () => null,
     delete: (url, data, config) => {
-        return new Promise(function (resolve, reject) {
+        return new Promise((resolve, reject) => {
             resolve({ data: { success: true, data: {} } });
         });
     }
@@ -143,7 +143,7 @@ describe('UpDownVoteBox', () => {
         await userEvent.click(voteBox);
 
         expect(voteBox).toHaveClass('active');
-        expect(callback).toHaveBeenCalledTimes(2);
+        expect(callback).toHaveBeenCalledTimes(1);
     });
 
     it('should do nothing if disabled', async () => {

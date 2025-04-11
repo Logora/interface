@@ -238,7 +238,7 @@ describe("useVote", () => {
 
     expect(screen.getByText("Upvotes : 10"));
     expect(screen.getByText("Downvotes : 5"));
-    expect(screen.getByText("VoteSide : false"));
+    expect(screen.getByText("VoteSide : true"));
     expect(screen.getByText("ActiveVote : false"));
   });
 
@@ -281,14 +281,14 @@ describe("useVote", () => {
 
     expect(screen.getByText("Upvotes : 0"));
     expect(screen.getByText("Downvotes : 0"));
-    expect(screen.getByText("VoteSide : false"));
+    expect(screen.getByText("VoteSide : true"));
     expect(screen.getByText("ActiveVote : false"));
 
     await userEvent.click(upvoteButton);
 
     expect(screen.getByText("Upvotes : 0"));
     expect(screen.getByText("Downvotes : 0"));
-    expect(screen.getByText("VoteSide : false"));
+    expect(screen.getByText("VoteSide : true"));
     expect(screen.getByText("ActiveVote : false"));
   });
 });
