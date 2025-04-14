@@ -21,7 +21,7 @@ export const ContentHeader = ({ author, tag, tagClassName, date, oneLine = false
 				<div className={styles.moderationInfo}>
 					{moderationReason && (
 						<div className={styles.moderationReason}>
-							<Icon name="Flag" width={18} height={18} className={styles.flagIcon} />
+							<Icon name="announcement" width={18} height={18} className={styles.warningIcon}/>
 							{intl.formatMessage(
 								{
 									id: "user_content.content_header.moderation_reason",
@@ -47,10 +47,10 @@ export const ContentHeader = ({ author, tag, tagClassName, date, oneLine = false
 							{intl.formatMessage(
 								{
 									id: "user_content.content_header.moderationPolicyUrl",
-									defaultMessage: "Please keep contributions respectful. See rules:",
+									defaultMessage: "Please keep contributions respectful. See rules:"
 								}
 							)} <a href={moderationPolicyUrl} target="_blank" rel="noopener noreferrer" className={styles.moderationLink} >
-								{intl.formatMessage({ id: "user_content.content_header.moderation_policy_link", defaultMessage: "moderation policy." })}
+								{intl.formatMessage({ id: "user_content.content_header.moderation_policy_link", defaultMessage: "moderation policy" })}
 							</a>
 						</div>
 					)}

@@ -77,20 +77,27 @@
 .moderationInfo {
 	display: flex;
 	flex-direction: column;
-	margin-bottom: $spacer;
-	gap: $spacer;
+	gap: $spacer-xs;
 }
 
 .moderationReason {
-	color: $cancel-primary;
-	font-style: italic;
-}
-
-
-.flagIcon {
-	fill: $cancel-primary !important;
+	display: flex;
+	color: $info-primary;
+	gap: $spacer-xs;
 }
 
 .moderationLink {
 	color: $call-primary;
+	font-weight: bold;
+	text-decoration: underline !important;
+}
+
+svg.warningIcon {
+	circle {
+		stroke: $info-primary;
+		stroke-width: 1.5px;
+	}
+	path {
+		fill: $info-primary;
+	}
 }
