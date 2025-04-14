@@ -2,11 +2,12 @@ import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext
 import React, { useEffect } from "react";
 import { OnChangePlugin } from "@lexical/react/LexicalOnChangePlugin";
 import { useDebouncedCallback } from 'use-debounce';
+import useLocalstorageState from "@rooks/use-localstorage-state";
 import useSessionStorageState from '@rooks/use-sessionstorage-state';
 
 export const AutoSavePlugin = ({ storageUid, onSetContent }) => {
     const [editor] = useLexicalComposerContext();
-    const [content, setContent, removeContent] = useSessionStorageState(`TextEditor:content_${storageUid}`, {});
+    const [content, setContent, removeContent] = useLocalstorageState(`TextEditor:content_${storageUid}`, "");
 
     useEffect(() => {
         if (content) {
