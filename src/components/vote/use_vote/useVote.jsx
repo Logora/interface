@@ -43,13 +43,13 @@ export const useVote = (
 
 		const newTotalUpvotes = isUpvote ? totalUpvotes + 1 : totalUpvotes;
 		const newTotalDownvotes = isUpvote ? totalDownvotes : totalDownvotes + 1;
+		onVote?.(isUpvote, activeVote, newTotalUpvotes, newTotalDownvotes);
 
 		if (isUpvote) {
-			setTotalUpvotes(newTotalUpvotes);
+			setTotalUpvotes(prevState => prevState + 1);
 		} else {
-			setTotalDownvotes(newTotalDownvotes);
+			setTotalDownvotes(prevState => prevState + 1);
 		}
-		onVote?.(isUpvote, activeVote, newTotalUpvotes, newTotalDownvotes);
 	};
 
 	const deactivateVote = (isUpvote) => {
@@ -57,13 +57,13 @@ export const useVote = (
 
 		const newTotalUpvotes = isUpvote ? totalUpvotes + 1 : totalUpvotes;
 		const newTotalDownvotes = isUpvote ? totalDownvotes : totalDownvotes + 1;
+		onVote?.(isUpvote, activeVote, newTotalUpvotes, newTotalDownvotes);
 
 		if (isUpvote) {
-			setTotalUpvotes(newTotalUpvotes);
+			setTotalUpvotes(prevState => prevState - 1);
 		} else {
-			setTotalDownvotes(newTotalDownvotes);
+			setTotalDownvotes(prevState => prevState - 1);
 		}
-		onVote?.(isUpvote, activeVote, newTotalUpvotes, newTotalDownvotes);
 	};
 
 	const voteAction = (isUpvote) => {

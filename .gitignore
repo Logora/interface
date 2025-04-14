@@ -19,7 +19,6 @@ dist
 
 .vscode/
 
-
 # bit directories
 .bit/
 .bit.cache/
