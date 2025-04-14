@@ -9,10 +9,12 @@ export const AutoSavePlugin = ({ storageUid, onSetContent }) => {
     const [content, setContent, removeContent] = useLocalstorageState(`TextEditor:content_${storageUid}`, {});
 
     useEffect(() => {
-        if (content && Object.keys(content).length !== 0) {
-            const editorState = editor.parseEditorState(content.editorState);
-            editor.setEditorState(editorState);
-            onSetContent?.();
+        if (content) {
+            if(Object.keys(content).length !== 0) {
+                const editorState = editor.parseEditorState(content.editorState);
+                editor.setEditorState(editorState);
+                onSetContent?.();
+            }
         }
     }, []);
 
@@ -20,9 +22,9 @@ export const AutoSavePlugin = ({ storageUid, onSetContent }) => {
         (editorState, editor) => {
             editorState.read(() => {
                 const sessionUserContent = {
-                    editorState: JSON.stringify(editor.getEditorState()) // SEULE MODIFICATION
+                    editorState: JSON.stringify(editor.getEditorState()) 
                 };
-                setContent(sessionUserContent); // CONSERVÉ tel quel
+                setContent(sessionUserContent); 
             })
         },
         1000,
