@@ -36,6 +36,7 @@
     "@lexical/rich-text": "^0.30.0",
     "@lexical/selection": "^0.30.0",
     "@lexical/utils": "^0.30.0",
+    "@lexical/overflow": "^0.30.0",
     "@rooks/use-previous": "^4.11.2",
     "@rooks/use-sessionstorage-state": "^4.11.2",
     "axios": "^1.7.9",
