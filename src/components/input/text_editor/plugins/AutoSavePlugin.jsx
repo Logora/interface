@@ -6,15 +6,13 @@ import useLocalstorageState from "@rooks/use-localstorage-state";
 
 export const AutoSavePlugin = ({ storageUid, onSetContent }) => {
     const [editor] = useLexicalComposerContext();
-    const [content, setContent, removeContent] = useLocalstorageState(`TextEditor:content_${storageUid}`, "");
+    const [content, setContent, removeContent] = useLocalstorageState(`TextEditor:content_${storageUid}`, {});
 
     useEffect(() => {
-        if (content) {
-            if(Object.keys(content).length !== 0) {
-                const editorState = editor.parseEditorState(content.editorState);
-                editor.setEditorState(editorState);
-                onSetContent?.();
-            }
+        if (content && Object.keys(content).length !== 0) {
+            const editorState = editor.parseEditorState(content.editorState);
+            editor.setEditorState(editorState);
+            onSetContent?.();
         }
     }, []);
 
@@ -22,9 +20,9 @@ export const AutoSavePlugin = ({ storageUid, onSetContent }) => {
         (editorState, editor) => {
             editorState.read(() => {
                 const sessionUserContent = {
-                    editorState: editor.getEditorState()
+                    editorState: JSON.stringify(editor.getEditorState()) // SEULE MODIFICATION
                 };
-                setContent(JSON.stringify(sessionUserContent));
+                setContent(sessionUserContent); // CONSERVÉ tel quel
             })
         },
         1000,

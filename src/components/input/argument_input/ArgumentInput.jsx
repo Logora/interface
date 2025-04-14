@@ -11,7 +11,7 @@ import { useResponsive } from "@logora/debate.hooks.use_responsive";
 import { useIntl } from 'react-intl';
 import { useLocation } from "react-router";
 import { useAuthRequired } from '@logora/debate.hooks.use_auth_required';
-import useSessionStorageState from '@rooks/use-sessionstorage-state';
+import useLocalstorageState from "@rooks/use-localstorage-state";
 import { useToast } from '@logora/debate.dialog.toast_provider';
 import { Avatar } from '@logora/debate.user.avatar';
 import { AuthorBox } from '@logora/debate.user.author_box';
@@ -44,7 +44,7 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
     const [flash, setFlash] = useState(false);
     const [inputActivation, setInputActivation] = useState(false);
     const [editElement, setEditElement] = useState({});
-    const [savedArgument, setSavedArgument] = useSessionStorageState("userSide", {});
+    const [savedArgument, setSavedArgument] = useLocalstorageState("userSide", {});
     const requireAuthentication = useAuthRequired();
     const { showModal } = useModal();
     const { toast } = useToast() || {};

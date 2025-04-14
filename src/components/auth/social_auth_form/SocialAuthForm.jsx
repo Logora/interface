@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
-import useSessionStorageState from '@rooks/use-sessionstorage-state';
+import useLocalstorageState from '@rooks/use-localstorage-state';
 import { EMAIL_CONSENT_STORAGE_KEY } from '@logora/debate.auth.use_auth';
 import { FacebookLoginButton } from '@logora/debate.auth.facebook_login_button';
 import { GoogleLoginButton } from '@logora/debate.auth.google_login_button';
@@ -15,7 +15,7 @@ import PropTypes from "prop-types";
 export const SocialAuthForm = ({ lastStep, providerName, logoUrl, termsUrl, privacyUrl, forgotPasswordUrl, oAuthRedirectUri, facebookClientId, googleClientId, error = false, onSubmit }) => {
 	const [mainMenu, setMainMenu] = useState(!(lastStep === "LOGIN" || lastStep === "SIGNUP"));
 	const [loginStep, setLoginStep] = useState(lastStep !== "SIGNUP");
-	const [emailConsent, setEmailConsent] =  useSessionStorageState(EMAIL_CONSENT_STORAGE_KEY, false);
+	const [emailConsent, setEmailConsent] =  useLocalstorageState(EMAIL_CONSENT_STORAGE_KEY, false);
 	const intl = useIntl();
 
 	const handleSignUp = (first_name, last_name, email, password, password_confirmation, accepts_provider_email) => {

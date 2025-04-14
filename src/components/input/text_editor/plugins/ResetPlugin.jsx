@@ -6,12 +6,12 @@ import {
 	$createParagraphNode,
 	$addUpdateTag,
 } from "lexical";
-import useSessionStorageState from "@rooks/use-sessionstorage-state";
+import useLocalstorageState from "@rooks/use-localstorage-state";
 
 export const ResetPlugin = ({ storageUid }) => {
 	const [editor] = useLexicalComposerContext();
 	const { reset, setReset } = useInput();
-	const [content, setContent, removeContent] = useSessionStorageState(
+	const [content, setContent, removeContent] = useLocalstorageState(
 		`TextEditor:content_${storageUid}`,
 		{},
 	);
