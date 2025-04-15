@@ -565,11 +565,11 @@ describe('TextEditor', () => {
 // });
 
 describe('AutoSavePlugin', () => {
-    const sessionStorageMock = (function () {
+    const localStorageMock = (function () {
         let store = {}
 
         return {
-            name: "sessionStorage",
+            name: "localStorage",
             getItem: function (key) {
                 return store[key] || null
             },
@@ -585,14 +585,14 @@ describe('AutoSavePlugin', () => {
         }
     })()
 
-    Object.defineProperty(window, 'sessionStorage', {
+    Object.defineProperty(window, 'localStorage', {
         configurable: true,
-        value: sessionStorageMock
+        value: localStorageMock
     })
 
-    it('should auto save content in session storage', async () => {
+    it('should auto save content in local storage', async () => {
         const targetContent = { "root": { "children": [{ "children": [{ "detail": 0, "format": 1, "mode": "normal", "style": "", "text": "Integer pretium varius odio ac eleifend.", "type": "text", "version": 1 }], "direction": "ltr", "format": "", "indent": 0, "type": "paragraph", "version": 1 }], "direction": "ltr", "format": "", "indent": 0, "type": "root", "version": 1 } };
-        const getItemMock = jest.spyOn(window.sessionStorage, 'getItem');
+        const getItemMock = jest.spyOn(window.localStorage, 'getItem');
 
         const AutoSaveContentComponent = (props) => {
             const { setInputRichContent } = useInput();
