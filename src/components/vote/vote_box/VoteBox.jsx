@@ -7,7 +7,7 @@ import { useAuth } from "@logora/debate.auth.use_auth";
 import { useIntl, FormattedMessage } from 'react-intl';
 import { useAuthRequired } from '@logora/debate.hooks.use_auth_required';
 import { useToast } from '@logora/debate.dialog.toast_provider';
-import useLocalstorageState from "@rooks/use-localstorage-state";
+import useSessionStorageState from '@rooks/use-sessionstorage-state';
 import { useTranslatedContent } from '@logora/debate.translation.translated_content';
 import { Link } from '@logora/debate.action.link';
 import { ProgressBar } from "@logora/debate.progress.progress_bar";
@@ -24,8 +24,8 @@ export const VoteBox = ({ numberVotes, votePositions, voteableType, voteableId, 
     const firstPosition = useTranslatedContent(votePositions[0]?.name, votePositions[0]?.language, "name", votePositions[0]?.translation_entries);
     const secondPosition = useTranslatedContent(votePositions[1]?.name, votePositions[1]?.language, "name", votePositions[1]?.translation_entries);
     const neutralPosition = useTranslatedContent(votePositions[2]?.name, votePositions[2]?.language, "name", votePositions[2]?.translation_entries);
-    const [savedVote, setSavedVote, removeSavedVote] = useLocalstorageState("storedUserVote", {});
-    const [savedUserSide, setSavedUserSide, removeSavedUserSide] = useLocalstorageState("userSide", {});
+    const [savedVote, setSavedVote, removeSavedVote] = useSessionStorageState("storedUserVote", {});
+    const [savedUserSide, setSavedUserSide, removeSavedUserSide] = useSessionStorageState("userSide", {});
     const { toast } = useToast() || {};
 
     const initVotesCount = () => {

@@ -9,7 +9,7 @@ import { useFormValidation } from "@logora/debate.forms.use_form_validation";
 import { Button } from "@logora/debate.action.button";
 import { TextInput } from "@logora/debate.input.text_input";
 import { useToast } from "@logora/debate.dialog.toast_provider";
-import useLocalstorageState from "@rooks/use-localstorage-state";
+import useSessionStorageState from '@rooks/use-sessionstorage-state';
 import cx from "classnames";
 import styles from "./SuggestionInput.module.scss";
 
@@ -30,7 +30,7 @@ export const SuggestionInput = ({
 	const [flash, setFlash] = useState(false);
 	const [suggestion, setSuggestion] = useState("");
 	const [savedSuggestion, setSavedSuggestion, removeSavedSuggestion] =
-	    useLocalstorageState("userSuggestion", {});
+	    useSessionStorageState("userSuggestion", {});
 	const suggestionInputContainer = useRef(null);
 	const inputForm = useRef(null);
 	const requireAuthentication = useAuthRequired();

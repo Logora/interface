@@ -18,7 +18,7 @@ const IntlComponent = () => {
 
 describe('IntlProvider', () => {
     beforeEach(() => {
-        window.localStorage.clear();
+        window.sessionStorage.clear();
     });
 
     describe('sync mode', () => {

@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import { IntlContext } from "./IntlContext";
 import { IntlProvider as ReactIntlProvider } from 'react-intl';
 import { flatten } from 'flat';
-import useLocalstorageState from "@rooks/use-localstorage-state";
+import useSessionStorageState from '@rooks/use-sessionstorage-state';
 import PropTypes from 'prop-types';
 
 export const IntlProvider = ({ language, locales, async = false, customMessages = {}, children, onError }) => {
-  const [storedLocale, setStoredLocale] = useLocalstorageState("logora:locale", null);
+  const [storedLocale, setStoredLocale] = useSessionStorageState("logora:locale", null);
 
   const getLocale = () => {
     if (storedLocale) {

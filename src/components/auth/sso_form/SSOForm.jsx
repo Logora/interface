@@ -1,7 +1,7 @@
 import React from "react";
 import { useIntl, FormattedMessage } from "react-intl";
 import { useLocation } from "react-router";
-import useLocalstorageState from "@rooks/use-localstorage-state"; 
+import useSessionStorageState from '@rooks/use-sessionstorage-state';
 import { EMAIL_CONSENT_STORAGE_KEY } from "@logora/debate.auth.use_auth";
 import { Icon } from "@logora/debate.icons.icon";
 import { Toggle } from "@logora/debate.input.toggle";
@@ -29,7 +29,7 @@ export const SSOForm = ({
 	error = false,
 }) => {
 	const [emailConsent, setEmailConsent] = showEmailConsent
-		? useLocalstorageState(EMAIL_CONSENT_STORAGE_KEY, false)
+		? useSessionStorageState(EMAIL_CONSENT_STORAGE_KEY, false)
 		: [false, () => {}];
 	const intl = useIntl();
 	const location = useLocation();
