@@ -21,14 +21,18 @@ export const ContentHeader = ({ author, tag, tagClassName, date, oneLine = false
 				<div className={styles.moderationInfo}>
 					{moderationReason && (
 						<div className={styles.moderationReason}>
-							<Icon name="announcement" width={18} height={18} className={styles.warningIcon}/>
-							{intl.formatMessage(
-								{
-									id: "user_content.content_header.moderation_reason",
-									defaultMessage: 'Content rejected for reason :"{reason}"',
-								},
-								{ reason: moderationReason }
-							)}
+							<Icon name="announcement" width={18} height={18} className={styles.warningIcon} />
+							{intl.formatMessage({
+								id: "user_content.content_header.moderation_reason",
+								defaultMessage: "Content rejected by moderation."
+							})}
+							{intl.messages[`user_content.content_header.moderation_reason.${moderationReason.toLowerCase()}`]
+								? intl.formatMessage({
+									id: `user_content.content_header.moderation_reason.${moderationReason.toLowerCase()}`,
+									defaultMessage: "" 
+								})
+								: null
+							}
 						</div>
 					)}
 					{moderationNotes && (
