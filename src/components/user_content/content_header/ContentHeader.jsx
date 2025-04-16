@@ -24,13 +24,14 @@ export const ContentHeader = ({ author, tag, tagClassName, date, oneLine = false
 							<Icon name="announcement" width={18} height={18} className={styles.warningIcon} />
 							{intl.formatMessage({
 								id: "user_content.content_header.moderation_raison",
-								defaultMessage: "Contenu rejeté par la modération. "
+								defaultMessage: "Content rejected by moderation."
 							})}
-							{intl.messages.hasOwnProperty(`user_content.content_header.moderation_reason.${moderationReason.toLowerCase()}`) &&
-								intl.formatMessage({
+							{intl.messages[`user_content.content_header.moderation_reason.${moderationReason.toLowerCase()}`]
+								? intl.formatMessage({
 									id: `user_content.content_header.moderation_reason.${moderationReason.toLowerCase()}`,
-									defaultMessage: ""
+									defaultMessage: "" 
 								})
+								: null
 							}
 						</div>
 					)}
