@@ -26,7 +26,7 @@ const moderationEntry = {
     id: faker.datatype.number({ min: 1000000, max: 9999999 }),
     status: "accepted",
     moderation_score: faker.datatype.float({ min: 0, max: 1, precision: 0.001 }),
-    moderation_reason: "TOXICITY",
+    moderation_reason: "INCOHERENT",
     moderator_notes: faker.datatype.boolean() ? faker.lorem.sentence() : null,
     is_moderated: true,
     moderation_mode: "mistral",
