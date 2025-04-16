@@ -15,58 +15,6 @@ export const ContentHeader = ({ author, tag, tagClassName, date, oneLine = false
 	const intl = useIntl();
 	const config = useConfig();
 
-	const reasonMessages = {
-		"ATTACK-ON-DEBATER": {
-			id: "moderation_reason.attack_on_debater",
-			defaultMessage: "This content attacks another debater."
-		},
-		"ATTACK-ON-AUTHOR": {
-			id: "moderation_reason.attack_on_author",
-			defaultMessage: "This content attacks the author."
-		},
-		"INCOHERENT": {
-			id: "moderation_reason.incoherent",
-			defaultMessage: "This content was found to be incoherent."
-		},
-		"HATE-SPEECH": {
-			id: "moderation_reason.hate_speech",
-			defaultMessage: "This content was flagged as hate speech."
-		},
-		"OBSCENE": {
-			id: "moderation_reason.obscene",
-			defaultMessage: "This content contains obscene material."
-		},
-		"SPAM": {
-			id: "moderation_reason.spam",
-			defaultMessage: "This content was flagged as spam."
-		},
-		"UNSUBSTANTIAL": {
-			id: "moderation_reason.unsubstantial",
-			defaultMessage: "This content lacks substance or arguments."
-		},
-		"GROUP_IS_PENDING": {
-			id: "moderation_reason.group_is_pending",
-			defaultMessage: "This content is pending approval."
-		},
-		"USER_IS_PENDING": {
-			id: "moderation_reason.user_is_pending",
-			defaultMessage: "The user is currently pending approval."
-		},
-		"USER_IS_BANNED": {
-			id: "moderation_reason.user_is_banned",
-			defaultMessage: "The user has been banned."
-		},
-		"USER_IS_UNTOUCHABLE": {
-			id: "moderation_reason.user_is_untouchable",
-			defaultMessage: "The user is protected."
-		},
-		"BLACKLIST": {
-			id: "moderation_reason.blacklist",
-			defaultMessage: "This content comes from a blacklisted source."
-		}
-	};
-
-
 	return (
 		<div className={styles.contentHeaderContainer}>
 			{moderationReason && (
@@ -78,9 +26,11 @@ export const ContentHeader = ({ author, tag, tagClassName, date, oneLine = false
 								id: "user_content.content_header.moderation_raison",
 								defaultMessage: "Contenu rejeté par la modération. "
 							})}
-							{reasonMessages[moderationReason]
-								? intl.formatMessage(reasonMessages[moderationReason])
-								: null
+							{intl.messages.hasOwnProperty(`user_content.content_header.moderation_reason.${moderationReason.toLowerCase()}`) &&
+								intl.formatMessage({
+									id: `user_content.content_header.moderation_reason.${moderationReason.toLowerCase()}`,
+									defaultMessage: ""
+								})
 							}
 						</div>
 					)}
