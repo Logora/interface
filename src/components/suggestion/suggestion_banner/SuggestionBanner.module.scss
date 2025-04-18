@@ -17,6 +17,8 @@
 
     @include media-breakpoint-down(xs) {
         gap: $spacer;
+        flex-direction: column !important;
+        width: 100% !important;
     }
 }
 
@@ -56,6 +58,10 @@
 
 .suggestionBannerList {
    flex-grow: 1;
+   @include media-breakpoint-down(xs) {
+      width: 100% !important;
+      max-width: 100% !important;
+   }
 }
 
 .suggestionBannerButton {
@@ -63,5 +69,10 @@
 
     svg {
         transform: rotate(-90deg);
+    }
+    
+    &.isMobile {
+        width: auto !important;
+        max-width: 100% !important;
     }
 }
