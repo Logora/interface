@@ -5,12 +5,10 @@
 
 .suggestionBannerContainer {
     display: flex !important;
-    flex-wrap: nowrap;
-
+    flex-wrap: wrap;
     @include media-breakpoint-down(sm) {
         flex-wrap: wrap !important;
     }
-
     box-shadow: $box-shadow;
     border: $box-border-main-container;
     color: $text-primary;
