@@ -20,7 +20,7 @@ export const SuggestionBanner = () => {
     const seed = useMemo(() => Math.random(), []);
     const routes = useRoutes();
     const intl = useIntl();
-    const { isMobile } = useResponsive();
+    const { isMobile, elementWidth } = useResponsive();
     const { toast } = useToast() || {};
 
     const handleVoteCallback = (suggestion) => {
@@ -32,7 +32,9 @@ export const SuggestionBanner = () => {
     }
 
     return (
-        <div className={styles.suggestionBannerContainer}>
+        <div className={cx(styles.suggestionBannerContainer, {
+            [styles.suggestionBannerContainerWrapped]: elementWidth < 768
+        })}>
             <div className={cx(styles.suggestionBannerContext, { [styles.isMobile]: isMobile })}>
                 <div className={styles.suggestionBannerTitle}>
                     <FormattedMessage id="suggestion.banner_title" defaultMessage="Suggest a debate question" />
@@ -52,7 +54,9 @@ export const SuggestionBanner = () => {
                     <span><FormattedMessage id="suggestion.suggest" defaultMessage="Suggest" /></span>
                 </Button>
             </div>
-            <div className={styles.suggestionBannerList}>
+            <div className={cx(styles.suggestionBannerList, {
+                [styles.suggestionBannerListWrapped]: elementWidth < 768
+            })}>
                 <VotePaginatedList
                     voteableType={"DebateSuggestion"}
                     currentListId={"bannerSuggestionsList"}

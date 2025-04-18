@@ -5,9 +5,12 @@
 
 .suggestionBannerContainer {
     display: flex !important;
+    flex-wrap: nowrap;
+
     @include media-breakpoint-down(sm) {
         flex-wrap: wrap !important;
     }
+
     box-shadow: $box-shadow;
     border: $box-border-main-container;
     color: $text-primary;
@@ -21,6 +24,10 @@
         gap: $spacer;
         flex-direction: column !important;
         width: 100% !important;
+    }
+
+    &.suggestionBannerContainerWrapped {
+        flex-wrap: wrap !important;
     }
 }
 
@@ -59,11 +66,12 @@
 }
 
 .suggestionBannerList {
-   flex-grow: 1;
-   @include media-breakpoint-down(xs) {
-      width: 100% !important;
-      max-width: 100% !important;
-   }
+    flex-grow: 1;
+
+    @include media-breakpoint-down(xs) {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
 }
 
 .suggestionBannerButton {
@@ -72,9 +80,16 @@
     svg {
         transform: rotate(-90deg);
     }
-    
+
     &.isMobile {
         width: auto !important;
         max-width: 100% !important;
     }
+}
+
+
+.suggestionBannerListWrapped {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
 }
