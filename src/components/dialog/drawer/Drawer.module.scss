@@ -4,6 +4,7 @@
 .drawer {
     overflow: auto;
     height: 100% !important;
+    min-width: 300px;
     @include media-breakpoint-down(sm) {
         width: 99% !important;
     }
