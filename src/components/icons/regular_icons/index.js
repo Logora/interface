@@ -50,5 +50,4 @@ export { Votebox } from './Votebox';
 export { Versus } from './Versus';
 export { Flag } from './Flag';
 export { CircleCheck } from './CircleCheck';
-export { FileMinus } from './FileMinus';
 export { MinusCircle} from './MinusCircle'

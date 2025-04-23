@@ -48,3 +48,5 @@ export { Upvote } from "./Upvote";
 export { User } from "./User"
 export { Votebox } from './Votebox';
 export { Versus } from'./Versus';
+export { CircleCheck } from './CircleCheck';
+export { MinusCircle} from './MinusCircle'
