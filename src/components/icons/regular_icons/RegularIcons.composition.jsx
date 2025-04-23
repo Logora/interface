@@ -50,7 +50,7 @@ import { User } from "./User"
 import { Votebox } from './Votebox';
 import { Versus } from './Versus';
 import { Flag } from './Flag';
-import { CircleCheck } from './CircleCheck';
+import { CheckCircle } from './CheckCircle';
 import { MinusCircle } from './MinusCircle';
 
 
@@ -108,8 +108,8 @@ export const RegularIconsLibrary = () => {
             <Votebox width={50} height={50} data-testid={"vote-box-icon"} style={{ margin: "15px" }} />
             <Versus width={50} height={50} data-testid={"versus-icon"} style={{ margin: "15px" }} />
             <Flag width={50} height={50} data-testid={"flag-icon"} style={{ margin: "15px" }} />
-            <CircleCheck width={50} height={50} data-testid={"circlecheck-icon"} style={{ margin: "15px" }} />
-            <MinusCircle width={50} height={50} data-testid={"circlecheck-icon"} style={{ margin: "15px" }} />
+            <CheckCircle width={50} height={50} data-testid={"circlecheck-icon"} style={{ margin: "15px" }} />
+            <MinusCircle width={50} height={50} data-testid={"MinusCircle-icon"} style={{ margin: "15px" }} />
         </div>
     )
 };
