@@ -62,7 +62,7 @@ export const TextEditor = ({ placeholder, onSubmit, sources, hideSubmit = false,
         editable: !disabled,
         theme: EditorTheme,
         onError(error) {
-            throw error;
+            console.error("TextEditor error:", error);
         },
         nodes: [ListNode, ListItemNode, QuoteNode, OverflowNode],
     };

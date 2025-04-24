@@ -9,9 +9,14 @@ export const SetRichContentPlugin = () => {
     useEffect(() => {
         if (inputRichContent) {
             editor.update(() => {
-                const editorState = editor.parseEditorState(inputRichContent);
-                editor.setEditorState(editorState);
-                setInputRichContent(null);
+                try {
+                    const editorState = editor.parseEditorState(inputRichContent);
+                    editor.setEditorState(editorState);
+                    setInputRichContent(null);
+                } catch (error) {
+                    console.error("Error parsing rich content:", error);
+                    setInputRichContent(null); // Clear invalid content
+                }
             });
         }
     }, [inputRichContent]);

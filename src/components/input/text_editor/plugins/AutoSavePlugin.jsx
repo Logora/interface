@@ -11,9 +11,14 @@ export const AutoSavePlugin = ({ storageUid, onSetContent }) => {
     useEffect(() => {
         if (content) {
             if(Object.keys(content).length !== 0) {
-                const editorState = editor.parseEditorState(content.editorState);
-                editor.setEditorState(editorState);
-                onSetContent?.();
+                try {
+                    const editorState = editor.parseEditorState(content.editorState);
+                    editor.setEditorState(editorState);
+                    onSetContent?.();
+                } catch (error) {
+                    console.error("Error parsing saved editor state:", error);
+                    removeContent();
+                }
             }
         }
     }, []);
@@ -22,7 +27,8 @@ export const AutoSavePlugin = ({ storageUid, onSetContent }) => {
         (editorState, editor) => {
             editorState.read(() => {
                 const sessionUserContent = {
-                    editorState: JSON.stringify(editor.getEditorState()) 
+                    editorState: JSON.stringify(editor.getEditorState()),
+                    lexicalVersion: "0.30.0"
                 };
                 setContent(sessionUserContent); 
             })
