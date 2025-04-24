@@ -34,7 +34,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupTyp
 	const [extraReplies, setExtraReplies] = useState();
 	const content = useTranslatedContent(argument.content, argument.language, "content", argument.translation_entries);
 	const position = useTranslatedContent(argument.position?.name, argument.position?.language, "name", argument.position?.translation_entries);
-	const componentId = "argument_" + argument.id;
+	const componentId = `argument_${argument.id}`;
 	const positionIndex = argument.position && positions?.map((e) => e.id).indexOf(argument.position.id) + 1;
 
 	useEffect(() => {
@@ -44,7 +44,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupTyp
 	const scrollToArgument = (argumentId) => {
 		const currentArgumentId = componentId;
 		if (currentArgumentId === argumentId) {
-			let argumentElement = document.getElementById(argumentId);
+			const argumentElement = document.getElementById(argumentId);
 			if (argumentElement) {
 				argumentElement.scrollIntoView({ behavior: "smooth" });
 			}
@@ -62,7 +62,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupTyp
 	}
 
 	const transformReplies = (reply) => {
-		if (extraReplies && extraReplies.find(r => r.id === reply.id)) { return; }
+		if (extraReplies?.find(r => r.id === reply.id)) { return; }
 		return reply;
 	}
 
@@ -71,7 +71,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupTyp
 	}, [])
 
 	const displayRepliesThread = () => {
-		let filteredReplies = argumentReplies && argumentReplies.filter((reply) => reply.reply_to_id == argument.id);
+		const filteredReplies = argumentReplies?.filter((reply) => reply.reply_to_id === argument.id);
 		if (filteredReplies.length > 0) {
 			setExtraReplies(filteredReplies);
 			setExpandReplies(true);
@@ -101,17 +101,17 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupTyp
 					styles.argument,
 					{
 						[styles.flash]: flash,
-						[styles.argumentReply]: argument.is_reply == true,
+						[styles.argumentReply]: argument.is_reply === true,
 					},
 					styles[`level-${nestingLevel}`],
-					styles[`position-${!(argument.author.role == "editor" || argument.author.role == "moderator") && positionIndex}`]
+					styles[`position-${!(argument.author.role === "editor" || argument.author.role === "moderator") && positionIndex}`]
 				)}
 				id={componentId}
 			>
 				<ContentHeader
-					selectedContent={argument.score == 99}
+					selectedContent={argument.score === 99}
 					author={argument.author}
-					tag={(argument.author.role == "editor" || argument.author.role == "moderator") && argument.is_reply ? null : position.translatedContent}
+					tag={(argument.author.role === "editor" || argument.author.role === "moderator") && argument.is_reply ? null : position.translatedContent}
 					date={argument.created_at}
 					tagClassName={styles[`headerPosition-${positionIndex}`]}
 					disableLinks={disableLinks}
