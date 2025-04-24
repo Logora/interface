@@ -362,14 +362,14 @@
     "icons/bild_icons": {
         "name": "icons/bild_icons",
         "scope": "logora.debate",
-        "version": "0.0.6",
+        "version": "0.0.7",
         "mainFile": "index.js",
         "rootDir": "src/components/icons/bild_icons"
     },
     "icons/hero_icons": {
         "name": "icons/hero_icons",
         "scope": "logora.debate",
-        "version": "0.0.23",
+        "version": "0.0.24",
         "mainFile": "index.js",
         "rootDir": "src/components/icons/hero_icons"
     },
@@ -397,7 +397,7 @@
     "icons/spiegel_icons": {
         "name": "icons/spiegel_icons",
         "scope": "logora.debate",
-        "version": "0.0.33",
+        "version": "0.0.34",
         "mainFile": "index.js",
         "rootDir": "src/components/icons/spiegel_icons"
     },
