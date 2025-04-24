@@ -13,11 +13,11 @@ export const useUpdateUserInfo = () => {
 		if (
 			isLoggedIn &&
 			currentUser.is_onboarded === false &&
-			config.auth.showOnboarding === true
+			config.auth?.showOnboarding === true
 		) {
 			showUpdateUserInfoModal();
 		}
-	}, [currentUser, isLoggedIn]);
+	}, [currentUser, isLoggedIn, config.auth.showOnboarding]);
 
 	const showUpdateUserInfoModal = () => {
 		showModal(
@@ -36,4 +36,4 @@ export const useUpdateUserInfo = () => {
 	};
 
 	return null;
-}
+};

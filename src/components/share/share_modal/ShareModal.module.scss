@@ -1,16 +1,17 @@
-@import '~@logora/debate.styles.theme/_theme.scss';
-@import '~@logora/debate.styles.spacing/_spacing.scss';
+@use '~@logora/debate.styles.theme/_theme.scss' as theme;
+@use '~@logora/debate.styles.spacing/_spacing.scss' as spacing;
+@use "~@logora/debate.styles.display/_display.scss" as display;
 
 .modalContainer {
-    @include py(3, xs);
     display: flex;
     justify-content: center;
-    border-radius: $box-border-radius;
-    box-shadow: $box-shadow;
-    border: $box-border;
-    @include media-breakpoint-down(xs) {
-        @include mb(3, xs);
-        @include mt(1, xs);
+    border-radius: theme.$box-border-radius;
+    box-shadow: theme.$box-shadow;
+    border: theme.$box-border;
+    @include spacing.py(3, xs);
+    @include display.media-breakpoint-down(xs) {
+        @include spacing.mb(3, xs);
+        @include spacing.mt(1, xs);
     }
     svg {
         cursor: pointer;

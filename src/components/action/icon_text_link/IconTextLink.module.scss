@@ -1,5 +1,5 @@
-@import '~@logora/debate.styles.theme/_theme.scss';
-@import '~@logora/debate.styles.spacing/_spacing.scss';
+@use '~@logora/debate.styles.theme/_theme.scss' as theme;
+@use '~@logora/debate.styles.spacing/_spacing.scss' as spacing;
 
 .iconTextContainer {
 	display: flex !important;
@@ -18,7 +18,7 @@
 	left: 0;
 	bottom: -4px;
 	z-index: 2;
-	background-color: $text-primary !important;
+	background-color: theme.$text-primary !important;
 }
 
 a.iconTextLink {
@@ -27,8 +27,8 @@ a.iconTextLink {
 }
 
 .iconText {
-	font-size: $font-size-small;
-	@include mt(1, xs);
+	font-size: theme.$font-size-small;
+	@include spacing.mt(1, xs);
 }
 
 .iconPinContainer {
@@ -48,10 +48,10 @@ a.iconTextLink {
 	border-radius: 10px;
 	transform: scale(1) translate(50%, -50%);
 	z-index: 2;
-	font-size: $font-size-extra-small;
-	font-weight: $font-weight-bold;
-	color: $text-light;
-	background-color: $cancel-primary;
+	font-size: theme.$font-size-extra-small;
+	font-weight: theme.$font-weight-bold;
+	color: theme.$text-light;
+	background-color: theme.$cancel-primary;
 	padding: 0 6px;
 	top: 0;
 	right: 0;

@@ -1,9 +1,9 @@
-@import '~@logora/debate.styles.spacing/_spacing.scss';
+@use '~@logora/debate.styles.spacing/_spacing.scss' as spacing;
 
 .loginModalBody {
   display: flex !important;
   flex-direction: column !important;
   align-items: center !important;
-  @include py(1, xs);
-  @include px(1, xs);
+  @include spacing.py(1, xs);
+  @include spacing.px(1, xs);
 }

@@ -1,23 +1,23 @@
-@import '~@logora/debate.styles.theme/_theme.scss';
-@import '~@logora/debate.styles.spacing/_spacing.scss';
+@use '~@logora/debate.styles.theme/_theme.scss' as theme;
+@use '~@logora/debate.styles.spacing/_spacing.scss' as spacing;
 
 a.backLink {
     display: flex !important;
     align-items: center !important;
-    font-weight: $font-weight-normal;
-    font-size: $font-size-small;
-    color: $text-secondary;
+    font-weight: theme.$font-weight-normal;
+    font-size: theme.$font-size-small;
+    color: theme.$text-secondary;
     text-decoration: none !important;
     svg {
-        fill: $text-secondary;
+        fill: theme.$text-secondary;
         fill-rule: evenodd;
     }
     &:hover {
-        color: $text-primary;
+        color: theme.$text-primary;
         text-decoration: none;
     
         svg {
-            fill: $text-primary;
+            fill: theme.$text-primary;
             fill-rule: evenodd;
         }
     }
@@ -30,5 +30,5 @@ a.backLink {
 }
 
 .arrowIcon {
-    @include ml(2, xs);
+    @include spacing.ml(2, xs);
 }
