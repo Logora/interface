@@ -50,6 +50,7 @@ import { Votebox } from './Votebox';
 import { Versus } from './Versus';
 import { CheckCircle } from './CheckCircle';
 import { MinusCircle } from './MinusCircle';
+import { Flag } from './Flag'
 
 export const HeroIconsLibrary = () => {
     return (
@@ -105,6 +106,7 @@ export const HeroIconsLibrary = () => {
             <Versus width={50} height={50} data-testid={"versus-icon"} style={{ margin: "15px" }} />
             <CheckCircle width={50} height={50} data-testid={"CheckCircle-icon"} style={{ margin: "15px" }} />
             <MinusCircle width={50} height={50} data-testid={"MinusCircle-icon"} style={{ margin: "15px" }} />
+            <Flag width={50} height={50} data-testid={"flag-icon"} style={{ margin: "15px" }} />
         </div>
     )
 };

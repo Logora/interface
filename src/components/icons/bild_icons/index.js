@@ -49,4 +49,5 @@ export { User } from "./User"
 export { Votebox } from './Votebox';
 export { Versus } from'./Versus';
 export { CheckCircle } from './CheckCircle';
-export { MinusCircle} from './MinusCircle'
+export { MinusCircle} from './MinusCircle';
+export { Flag } from './Flag';
