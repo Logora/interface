@@ -49,7 +49,11 @@ export const authTokenHandler = (httpClient, authUrl, tokenKey) => {
                     const token = response.data;
                     setToken(token, tokenObject.session_id);
                     resolve(token.access_token);
+                } else {
+                    reject(response);
                 }
+            }).catch(error => {
+                reject(error);
             });
         });
     }
@@ -59,5 +63,5 @@ export const authTokenHandler = (httpClient, authUrl, tokenKey) => {
         removeToken,
         fetchToken,
         refreshToken
-    };
+    }
 }
