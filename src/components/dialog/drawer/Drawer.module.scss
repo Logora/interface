@@ -7,10 +7,11 @@
     min-width: 300px;
     max-width: 100vw; 
     @include media-breakpoint-down(sm) {
-        width: 100% !important;
+        width: 95vw !important;
         min-width: unset;
         position: fixed;
-        z-index: 1000; 
+        z-index: 1000;
+        box-sizing: border-box !important;
     }
     @include px(3, xs);
 }
@@ -48,5 +49,11 @@
     flex-direction: column !important;
     gap: $spacer;
     width: 100% !important;
+    max-width: 100% !important;
     margin: auto;
+    
+    @include media-breakpoint-down(sm) {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
 }
