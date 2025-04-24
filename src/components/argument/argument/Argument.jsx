@@ -190,13 +190,13 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupTyp
 						deleteListId={deleteListId}
 						enableReply={nestingLevel <= 2}
 						handleReplyTo={toggleReplyInput}
-						shareUrl={"https://app.logora.fr/share/a/" + argument.id}
+						shareUrl={`https://app.logora.fr/share/a/${argument.id}`}
 						shareTitle={intl.formatMessage({ id: "share.argument.title", defaultMessage: "Share a debate" })}
 						shareText={intl.formatMessage({ id: "share.argument.text", defaultMessage: "This argument may interest you" })}
-						shareCode={'<iframe src="https://cdn.logora.com/embed.html?shortname=' + config.shortname + '&id=' + argument.id + '&resource=argument" frameborder="0" width="100%" height="275px" scrolling="no"></iframe>'}
-						showShareCode={config?.actions?.hideCodeShare != true}
+						shareCode={`<iframe src="https://cdn.logora.com/embed.html?shortname=${config.shortname}&id=${argument.id}&resource=argument" frameborder="0" width="100%" height="275px" scrolling="no"></iframe>`}
+						showShareCode={config?.actions?.hideCodeShare !== true}
 						showShareText
-						enableReport={!(argument.score == 100 && argument.manual_score)}
+						enableReport={!(argument.score === 100 && argument.manual_score)}
 						enableEdition={enableEdition}
 					>
 						<VoteButton
@@ -253,7 +253,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupTyp
 						<div className={styles.repliesList}>
 							<VotePaginatedList
 								voteableType={"Message"}
-								currentListId={"argument_" + argument.id + "_reply_list"}
+								currentListId={`argument_${argument.id}_reply_list`}
 								loadingComponent={<UserContentSkeleton />}
 								resource={"messages"}
 								sort={"+created_at"}
