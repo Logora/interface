@@ -1,0 +1,80 @@
+@use '~@logora/debate.styles.theme/_theme.scss' as theme;
+@use '~@logora/debate.styles.spacing/_spacing.scss' as spacing;
+@use '~@logora/debate.styles.display/_display.scss' as display;
+
+.proposalBoxContainer {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    position: relative;
+    box-shadow: theme.$box-shadow;
+    border: theme.$box-border;
+    color: theme.$text-primary;
+    border-radius: theme.$box-border-radius;
+    background-color: theme.$background-color-primary;
+    scroll-margin-top: 150px;
+    padding: spacing.$box-spacing;
+    gap: spacing.$box-element-spacing;
+
+    &.flash {
+        -webkit-transition: box-shadow 0.8s ease-in-out;
+        -moz-transition: box-shadow 0.8s ease-in-out;
+        -o-transition: box-shadow 0.8s ease-in-out;
+        transition: box-shadow 0.8s ease-in-out;
+        box-shadow: 0 0 15px theme.$call-primary;
+    }
+}
+
+.edited {
+    font-size: theme.$font-size-extra-small;
+    color: theme.$text-secondary;
+    line-height: theme.$line-height-loose;
+    @include spacing.mb(1.5, xs);
+}
+
+.proposalBoxContent {
+    font-size: theme.$font-size-small;
+    text-align: left;
+    white-space: pre-line;
+    line-height: theme.$line-height-loose;
+    font-size: theme.$font-size-small;
+
+    @include display.media-breakpoint-up(md) {
+        min-height: 185px;
+    }
+
+    .proposalTitle {
+        font-size: theme.$font-size-normal;
+        font-weight: theme.$font-weight-bold;
+        @include spacing.pb(2, xs);
+
+        &::first-letter {
+            text-transform: uppercase;
+        }
+    }
+
+    .proposalContent {
+        & * {
+            font-size: theme.$font-size-small;
+        }
+    }
+}
+
+.fixedHeight {
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+
+    &:after {
+        content: "";
+        position: absolute;
+        z-index: 1;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        pointer-events: none;
+        background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 90%);
+        width: 100%;
+        height: 5em;
+    }
+}
