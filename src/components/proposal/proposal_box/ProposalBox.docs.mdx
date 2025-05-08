@@ -1,0 +1,39 @@
+---
+description: A component that renders a proposal box.
+---
+
+import { ProposalBox } from './ProposalBox';
+
+A component that renders a proposal box. 
+
+### Component usage
+```js
+import { ProposalBox } from '@logora/debate.proposal.proposal_box';
+```
+```js
+ <BrowserRouter>
+        <ConfigProvider routes={{ ...routes }} config={{ translation: { enable: true } }}>
+            <DataProviderContext.Provider value={{ dataProvider: data }}>
+                <AuthContext.Provider value={{ currentUser, isLoggedIn: true }}>
+                    <ResponsiveProvider>
+                        <ModalProvider>
+                            <ListProvider>
+                                <ToastProvider>
+                                    <VoteProvider>
+                                        <InputProvider>
+                                            <IconProvider library={regularIcons}>
+                                                <IntlProvider locale="en">
+                                                       <Proposal proposal={taggedProposal}/>
+                                                </IntlProvider>
+                                            </IconProvider>
+                                        </InputProvider>
+                                    </VoteProvider>
+                                </ToastProvider>
+                            </ListProvider>
+                        </ModalProvider>
+                    </ResponsiveProvider>
+                </AuthContext.Provider>
+            </DataProviderContext.Provider>
+        </ConfigProvider>
+    </BrowserRouter>
+```

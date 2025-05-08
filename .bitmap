@@ -548,6 +548,20 @@
         "mainFile": "index.js",
         "rootDir": "src/components/progress/progress_bar"
     },
+    "proposal/proposal_box": {
+        "name": "proposal/proposal_box",
+        "scope": "",
+        "version": "",
+        "defaultScope": "logora.debate",
+        "mainFile": "index.js",
+        "rootDir": "src/components/proposal/proposal_box",
+        "config": {
+            "teambit.react/react-env@1.0.131": {},
+            "teambit.envs/envs": {
+                "env": "teambit.react/react-env"
+            }
+        }
+    },
     "section/section_box": {
         "name": "section/section_box",
         "scope": "logora.debate",
