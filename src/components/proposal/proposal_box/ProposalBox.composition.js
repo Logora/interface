@@ -75,6 +75,19 @@ const longProposal = generateProposal({
 });
 const editedProposal = generateProposal({ edited_at: faker.date.recent() });
 
+const authoredProposal = generateProposal({
+    author: {
+        id: currentUser.id, 
+        image_url: faker.image.avatar(),
+        full_name: faker.name.fullName(),
+        hash_id: faker.lorem.slug(),
+        slug: faker.lorem.slug(),
+        points: faker.datatype.number(5000),
+        last_activity: new Date(),
+        description: faker.name.jobTitle()
+    }
+});
+
 const Providers = ({ children }) => (
     <BrowserRouter>
         <ConfigProvider routes={{ ...routes }} config={{ translation: { enable: true } }}>
@@ -152,3 +165,15 @@ export const ProposalWithTag = () => {
         </div>
     );
 };
+
+export const OwnProposal = () => (
+    <div style={{ width: "400px", height: "240px" }}>
+        <Providers>
+            <ProposalBox 
+                proposal={authoredProposal}
+            />
+        </Providers>
+    </div>
+);
+
+
