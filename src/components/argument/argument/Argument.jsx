@@ -71,10 +71,12 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupTyp
 	}, [])
 
 	const displayRepliesThread = () => {
-		const filteredReplies = argumentReplies?.filter((reply) => reply.reply_to_id === argument.id);
-		if (filteredReplies.length > 0) {
-			setExtraReplies(filteredReplies);
-			setExpandReplies(true);
+		if (argumentReplies && Array.isArray(argumentReplies)) {
+			const filteredReplies = argumentReplies.filter((reply) => reply.reply_to_id === argument.id);
+			if (filteredReplies.length > 0) {
+				setExtraReplies(filteredReplies);
+				setExpandReplies(true);
+			}
 		}
 	};
 
