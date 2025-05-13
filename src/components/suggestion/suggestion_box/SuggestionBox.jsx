@@ -13,7 +13,7 @@ import styles from './SuggestionBox.module.scss';
 import cx from 'classnames';
 import PropTypes from "prop-types";
 
-export const SuggestionBox = ({ suggestion, disabled = false, onVoteCallback = null }) => {
+export const SuggestionBox = ({ suggestion, disabled = false, onVoteCallback = null, hideFooter = false }) => {
     const intl = useIntl();
     const routes = useRoutes();
     const startDate = new Date(suggestion.created_at);
@@ -61,6 +61,7 @@ export const SuggestionBox = ({ suggestion, disabled = false, onVoteCallback = n
                 }
             </div>
             <div className={styles.footer}>
+            {!hideFooter &&
                 <ContentFooter
                     resource={suggestion}
                     reportType={"Group"}
@@ -95,6 +96,7 @@ export const SuggestionBox = ({ suggestion, disabled = false, onVoteCallback = n
                         <FormattedMessage id="suggestion.goal" defaultMessage={"{count} supports"}  values={{ count: totalUpvotes }} />
                     </div>
                 </ContentFooter>
+}
             </div>
         </div>
     )

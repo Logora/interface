@@ -14,7 +14,7 @@ import draftToHtml from "draftjs-to-html";
 import cx from "classnames";
 import styles from './ProposalBox.module.scss';
 
-export const ProposalBox = ({ proposal, disabled = false, fixedContentHeight, contentMaxHeight = 156, enableEdition = true }) => {
+export const ProposalBox = ({ proposal, disabled = false, fixedContentHeight, contentMaxHeight = 156, enableEdition = true, hideFooter = false }) => {
     const [richContent, setRichContent] = useState(null);
     const [flash, setFlash] = useState(false);
     const intl = useIntl();
@@ -79,30 +79,32 @@ export const ProposalBox = ({ proposal, disabled = false, fixedContentHeight, co
                         />
                     </div>
                 </div>
-                <ContentFooter
-                    resource={proposal}
-                    disabled={disabled}
-                    reportType={"Proposal"}
-                    deleteType={"proposals"}
-                    deleteListId={"proposalsList"}
-                    shareModal
-                    shareModalTitle={intl.formatMessage({ id: "share.proposal" })}
-                    shareUrl={`https://app.logora.fr/share/p/${proposal.id}`}
-                    shareTitle={intl.formatMessage({ id: "share.proposal.title" })}
-                    shareText={intl.formatMessage({ id: "share.proposal.text" })}
-                    shareCode={`<iframe src="https://cdn.logora.com/embed.html?shortname=${config.shortname}&id=${proposal.id}&resource=proposal" frameborder="0" width="100%" height="335px" scrolling="no"></iframe>`}
-                    showShareCode={config?.actions?.hideCodeShare !== true}
-                    showActions={!proposal.author.consultation_id}
-                    enableEdition={enableEdition}
-                >
-                    <UpDownVoteBox
-                        voteableType={"Proposal"}
-                        voteableId={proposal.id}
-                        totalUpvote={proposal.total_upvotes}
-                        totalDownvote={proposal.total_downvotes}
-                        disabled={disabled || (currentUser?.id === proposal?.author?.id)}
-                    />
-                </ContentFooter>
+                {!hideFooter &&
+                    <ContentFooter
+                        resource={proposal}
+                        disabled={disabled}
+                        reportType={"Proposal"}
+                        deleteType={"proposals"}
+                        deleteListId={"proposalsList"}
+                        shareModal
+                        shareModalTitle={intl.formatMessage({ id: "share.proposal" })}
+                        shareUrl={`https://app.logora.fr/share/p/${proposal.id}`}
+                        shareTitle={intl.formatMessage({ id: "share.proposal.title" })}
+                        shareText={intl.formatMessage({ id: "share.proposal.text" })}
+                        shareCode={`<iframe src="https://cdn.logora.com/embed.html?shortname=${config.shortname}&id=${proposal.id}&resource=proposal" frameborder="0" width="100%" height="335px" scrolling="no"></iframe>`}
+                        showShareCode={config?.actions?.hideCodeShare !== true}
+                        showActions={!proposal.author.consultation_id}
+                        enableEdition={enableEdition}
+                    >
+                        <UpDownVoteBox
+                            voteableType={"Proposal"}
+                            voteableId={proposal.id}
+                            totalUpvote={proposal.total_upvotes}
+                            totalDownvote={proposal.total_downvotes}
+                            disabled={disabled || (currentUser?.id === proposal?.author?.id)}
+                        />
+                    </ContentFooter>
+                }
             </div>
         </HashScroll>
     )
