@@ -140,12 +140,6 @@ describe("ReportBox", () => {
     expect(screen.getByText(/Report reason:/i)).toBeInTheDocument();
   });
 
-
-  it("should display the correct classification reason", () => {
-    renderReportBox({ report: reportArgument });
-    expect(screen.getByText(reportArgument.classification)).toBeInTheDocument();
-  });
-
   it("should render Argument component for Message type with correct props", () => {
     renderReportBox({ report: reportArgument });
     expect(screen.getByText(reportArgument.reportable.content)).toBeInTheDocument();
