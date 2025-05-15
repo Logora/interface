@@ -34,29 +34,29 @@ export const ReportBox = ({ report }) => {
       case "accepted":
         return (
           <div className={styles.statusMessage}>
-              {intl.formatMessage({
-                id: "report.content_header.status_accepted",
-                defaultMessage: "Thank you for your report. After verification, the content has been removed."
-              })}
+            {intl.formatMessage({
+              id: "report.content_header.status_accepted",
+              defaultMessage: "Thank you for your report. After verification, the content has been removed."
+            })}
           </div>
         );
       case "pending":
         return (
           <div className={styles.statusMessage}>
-              {intl.formatMessage({
-                id: "report.content_header.status_pending",
-                defaultMessage: "Thank you for your report. The content is pending."
-              })}
+            {intl.formatMessage({
+              id: "report.content_header.status_pending",
+              defaultMessage: "Thank you for your report. The content is pending."
+            })}
           </div>
         );
       case "rejected":
         return (
           <div className={styles.statusMessage}>
-              {intl.formatMessage({
-                id: "report.content_header.status_rejected",
-                defaultMessage: "Thank you for your report. After verification, we have not removed the content."
-              })}
-            </div>
+            {intl.formatMessage({
+              id: "report.content_header.status_rejected",
+              defaultMessage: "Thank you for your report. After verification, we have not removed the content."
+            })}
+          </div>
         );
       default:
         return null;
@@ -65,9 +65,10 @@ export const ReportBox = ({ report }) => {
 
   return (
     <div className={styles.reportBox}>
-      {processedReport &&
-        <div className={styles.reportItem}>
-          <div className={styles.reportHeader}>
+    {processedReport && (
+      <div className={styles.reportItem}>
+        <div className={styles.reportHeader}>
+          {processedReport.classification && ( 
             <div className={styles.reportReason}>
               <Icon name="announcement" width={18} height={18} className={styles.warningIcon} />
               {intl.formatMessage({
@@ -75,16 +76,23 @@ export const ReportBox = ({ report }) => {
                 defaultMessage: "Report reason:"
               })}
               {" "}
-              <span>{processedReport.classification}</span>
+              {intl.messages[`user_content.content_header.moderation_reason.${processedReport.classification.toLowerCase()}`]
+                ? intl.formatMessage({
+                    id: `user_content.content_header.moderation_reason.${processedReport.classification.toLowerCase()}`,
+                    defaultMessage: processedReport.classification
+                  })
+                : processedReport.classification
+              }
             </div>
-            {renderStatusMessage(processedReport.reportable?.status)}
-          </div>
-          {renderReportContent(processedReport)}
+          )}
+          {renderStatusMessage(processedReport.reportable?.status)}
         </div>
-      }
-    </div>
+        {renderReportContent(processedReport)}
+      </div>
+    )}
+  </div>
   );
-  
+
 };
 
 export default ReportBox;

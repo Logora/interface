@@ -43,7 +43,7 @@ const data = dataProvider(httpClient, "https://mock.example.api");
 const reportArgumentPending = 
     {
       id: 1,
-      classification: "Spam",
+      classification: "INCOHERENT",
       description: faker.lorem.sentence(),
       is_processed: true,
       reportable_type: "Message",
@@ -81,7 +81,7 @@ const reportArgumentPending =
 const reportProposal = 
     {
       id: 1,
-      classification: "Spam",
+      classification: "INCOHERENT",
       description: faker.lorem.sentence(),
       is_processed: true,
       reportable_type: "Proposal",
@@ -109,7 +109,7 @@ const reportProposal =
   const reportSuggestion= 
     {
       id: 1,
-      classification: "Spam",
+      classification: "INCOHERENT",
       description: faker.lorem.sentence(),
       is_processed: true,
       reportable_type: "Group",
@@ -164,7 +164,7 @@ const reportProposal =
     const reportArgumentAccepted = 
     {
       id: 1,
-      classification: "Spam",
+      classification: "INCOHERENT",
       description: faker.lorem.sentence(),
       is_processed: true,
       reportable_type: "Message",
@@ -193,7 +193,7 @@ const reportProposal =
     const reportArgumentRejected = 
     {
       id: 1,
-      classification: "Spam",
+      classification: "INCOHERENT",
       description: faker.lorem.sentence(),
       is_processed: true,
       reportable_type: "Message",
