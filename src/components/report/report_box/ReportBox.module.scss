@@ -26,7 +26,7 @@
   color: $info-primary;
   gap: $spacer-xs;
   margin-bottom: $spacer-md;
-  font-size: $font-size-extra-small;
+  font-size: $font-size-small;
 }
 
 svg.warningIcon {
@@ -42,5 +42,5 @@ svg.warningIcon {
 
 .statusMessage {
   margin-top: $spacer-xs;
-  font-size: $font-size-extra-small;
+  font-size: $font-size-small;
 }
