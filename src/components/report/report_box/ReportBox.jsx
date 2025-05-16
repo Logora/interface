@@ -16,7 +16,7 @@ export const ReportBox = ({ report }) => {
 
     switch (reportable_type) {
       case "Message":
-        return <Argument argument={reportable} hideReplies={true} hideFooter={true} />;
+        return <Argument argument={reportable} hideReplies={true} hideFooter={true}  hideModerationReason = {true} />;
       case "Proposal":
         return <ProposalBox proposal={reportable} hideFooter={true} />;
       case "Group":
@@ -64,33 +64,33 @@ export const ReportBox = ({ report }) => {
   };
 
   return (
-    <div className={styles.reportBox}>
-    {processedReport && (
-      <div className={styles.reportItem}>
-        <div className={styles.reportHeader}>
-          {processedReport.classification && ( 
-            <div className={styles.reportReason}>
-              <Icon name="announcement" width={18} height={18} className={styles.warningIcon} />
-              {intl.formatMessage({
-                id: "report.content_header.moderation_reason",
-                defaultMessage: "Report reason:"
-              })}
-              {" "}
-              {intl.messages[`user_content.content_header.moderation_reason.${processedReport.classification.toLowerCase()}`]
-                ? intl.formatMessage({
-                    id: `user_content.content_header.moderation_reason.${processedReport.classification.toLowerCase()}`,
-                    defaultMessage: processedReport.classification
-                  })
-                : processedReport.classification
-              }
-            </div>
-          )}
-          {renderStatusMessage(processedReport.reportable?.status)}
-        </div>
-        {renderReportContent(processedReport)}
+  <div className={styles.reportBox}>
+  {processedReport && (
+    <div className={styles.reportItem}>
+      <div className={styles.reportHeader}>
+        {processedReport.classification && ( // Vérification si la raison existe
+          <div className={styles.reportReason}>
+            <Icon name="announcement" width={18} height={18} className={styles.warningIcon} />
+            {intl.formatMessage({
+              id: "report.content_header.moderation_reason",
+              defaultMessage: "Report reason:"
+            })}
+            {" "}
+            {intl.messages[`user_content.content_header.moderation_reason.${processedReport.classification.toLowerCase()}`]
+              ? intl.formatMessage({
+                  id: `user_content.content_header.moderation_reason.${processedReport.classification.toLowerCase()}`,
+                  defaultMessage: processedReport.classification
+                })
+              : processedReport.classification
+            }
+          </div>
+        )}
+        {renderStatusMessage(processedReport.reportable?.status)}
       </div>
-    )}
-  </div>
+      {renderReportContent(processedReport)}
+    </div>
+  )}
+</div>
   );
 
 };
