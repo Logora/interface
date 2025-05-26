@@ -9,7 +9,8 @@ import styles from './ReportBox.module.scss';
 export const ReportBox = ({ report }) => {
   const intl = useIntl();
 
-  const processedReport = report && report.is_processed ? report : null;
+  const shouldDisplayReport = report && (report.is_processed || report.reportable?.status === 'pending');
+  const displayedReport = shouldDisplayReport ? report : null;
 
   const renderReportContent = (report) => {
     const { reportable_type, reportable } = report;
@@ -35,8 +36,8 @@ export const ReportBox = ({ report }) => {
         return (
           <div className={styles.statusMessage}>
             {intl.formatMessage({
-              id: "report.content_header.status_accepted",
-              defaultMessage: "Thank you for your report. After verification, the content has been removed."
+              id: "report.content_header.status_rejected",
+              defaultMessage: "Thank you for your report. After verification, we have not removed the content."
             })}
           </div>
         );
@@ -53,8 +54,8 @@ export const ReportBox = ({ report }) => {
         return (
           <div className={styles.statusMessage}>
             {intl.formatMessage({
-              id: "report.content_header.status_rejected",
-              defaultMessage: "Thank you for your report. After verification, we have not removed the content."
+              id: "report.content_header.status_accepted",
+              defaultMessage: "Thank you for your report. After verification, the content has been removed."
             })}
           </div>
         );
@@ -65,10 +66,10 @@ export const ReportBox = ({ report }) => {
 
   return (
     <div className={styles.reportBox}>
-      {processedReport && (
+      {displayedReport && (
         <div className={styles.reportItem}>
           <div className={styles.reportHeader}>
-            {processedReport.classification && (
+            {displayedReport.classification && (
               <div className={styles.reportReason}>
                 <Icon name="announcement" width={18} height={18} className={styles.warningIcon} />
                 {intl.formatMessage({
@@ -76,18 +77,18 @@ export const ReportBox = ({ report }) => {
                   defaultMessage: "Report reason:"
                 })}
                 {" "}
-                {intl.messages[`user_content.content_header.moderation_reason.${processedReport.classification.toLowerCase()}`]
+                {intl.messages[`user_content.content_header.moderation_reason.${displayedReport.classification.toLowerCase()}`]
                   ? intl.formatMessage({
-                    id: `user_content.content_header.moderation_reason.${processedReport.classification.toLowerCase()}`,
-                    defaultMessage: processedReport.classification
+                    id: `user_content.content_header.moderation_reason.${displayedReport.classification.toLowerCase()}`,
+                    defaultMessage: displayedReport.classification
                   })
-                  : processedReport.classification
+                  : displayedReport.classification
                 }
               </div>
             )}
-            {renderStatusMessage(processedReport.reportable?.status)}
+            {renderStatusMessage(displayedReport.reportable?.status)}
           </div>
-          {renderReportContent(processedReport)}
+          {renderReportContent(displayedReport)}
         </div>
       )}
     </div>

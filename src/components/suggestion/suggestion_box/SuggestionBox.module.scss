@@ -1,34 +1,35 @@
-@import '~@logora/debate.styles.theme/_theme.scss';
-@import '~@logora/debate.styles.spacing/_spacing.scss';
+@use '~@logora/debate.styles.theme/_theme.scss' as theme;
+@use '~@logora/debate.styles.spacing/_spacing.scss' as spacing;
+
 
 .container {
     display: flex !important;
     flex-direction: column !important;
     justify-content: space-between !important;
-    box-shadow: $box-shadow;
-    border: $box-border;
-    color: $text-primary;
-    border-radius: $box-border-radius;
-    background: $background-color-primary;
-    gap: $box-spacing;
-    padding: $box-spacing;
+    box-shadow: theme.$box-shadow;
+    border: theme.$box-border;
+    color: theme.$text-primary;
+    border-radius: theme.$box-border-radius;
+    background: theme.$background-color-primary;
+    gap: spacing.$box-spacing;
+    padding: spacing.$box-spacing;
 }
 
 .selected {
-    background-color: $success-primary !important;
-    color: $text-light;
+    background-color: theme.$success-primary !important;
+    color: theme.$text-light;
 }
 
 .expired {
-    background-color: $background-color-primary;
-    color: $text-secondary;
+    background-color: theme.$background-color-primary;
+    color: theme.$text-secondary;
     border: none !important;
 }
 
 .suggestion {
-    font-weight: $font-weight-bold;
-    font-size: $font-size-normal;
-    line-height: $line-height-normal;
+    font-weight: theme.$font-weight-bold;
+    font-size: theme.$font-size-normal;
+    line-height: theme.$line-height-normal;
     min-height: 2em;
 }
 
@@ -42,7 +43,7 @@
 
 .voteResultsContainer {
     max-width: 100%;
-    @include mt(3, xs);
+    @include spacing.mt(3, xs);
 }
 
 .footerContainer {

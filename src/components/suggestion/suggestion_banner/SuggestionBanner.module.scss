@@ -1,25 +1,26 @@
-@import '~@logora/debate.styles.theme/_theme.scss';
-@import '~@logora/debate.styles.spacing/_spacing.scss';
-@import '~@logora/debate.styles.flex/_flex.scss';
-@import '~@logora/debate.styles.display/_display.scss';
+@use '~@logora/debate.styles.theme/_theme.scss' as theme;
+@use '~@logora/debate.styles.spacing/_spacing.scss' as spacing;
+@use "~@logora/debate.styles.flex/_flex.scss" as flex;
+@use '~@logora/debate.styles.display/_display.scss' as display;
+
 
 .suggestionBannerContainer {
     display: flex !important;
     flex-wrap: wrap;
-    @include media-breakpoint-down(sm) {
+    @include display.media-breakpoint-down(sm) {
         flex-wrap: wrap !important;
     }
-    box-shadow: $box-shadow;
-    border: $box-border-main-container;
-    color: $text-primary;
-    border-radius: $box-border-radius;
-    background: $background-color-primary;
-    gap: $spacer-lg;
-    @include p(4, sm);
-    @include p(3, xs);
+    box-shadow: theme.$box-shadow;
+    border: theme.$box-border-main-container;
+    color: theme.$text-primary;
+    border-radius: theme.$box-border-radius;
+    background: theme.$background-color-primary;
+    gap: spacing.$spacer-lg;
+    @include spacing.p(4, sm);
+    @include spacing.p(3, xs);
 
-    @include media-breakpoint-down(xs) {
-        gap: $spacer;
+    @include display.media-breakpoint-down(xs) {
+        gap: spacing.$spacer;
         flex-direction: column !important;
         width: 100% !important;
     }
@@ -32,17 +33,17 @@
 .suggestionBannerContext {
     display: flex !important;
     flex-direction: column !important;
-    @include justify-content(center, xs);
-    @include justify-content(flex-start, sm);
+    @include flex.justify-content(center, xs);
+    @include flex.justify-content(flex-start, sm);
     max-width: 50%;
-    gap: $spacer-lg;
+    gap: spacing.$spacer-lg;
 
-    @include media-breakpoint-down(sm) {
+    @include display.media-breakpoint-down(sm) {
         max-width: 100%;
     }
 
-    @include media-breakpoint-down(xs) {
-        gap: $spacer;
+    @include display.media-breakpoint-down(xs) {
+        gap: spacing.$spacer;
     }
 
     &.isMobile {
@@ -52,21 +53,21 @@
 
 .suggestionBannerTitle {
     width: 100%;
-    font-family: $title-font-family;
-    font-size: $font-size-large;
-    font-weight: $font-weight-bold;
-    line-height: $line-height-loose;
+    font-family: theme.$title-font-family;
+    font-size: theme.$font-size-large;
+    font-weight: theme.$font-weight-bold;
+    line-height: theme.$line-height-loose;
 }
 
 .suggestionBannerDescription {
-    font-size: $font-size-normal;
-    line-height: $line-height-loose;
+    font-size: theme.$font-size-normal;
+    line-height: theme.$line-height-loose;
 }
 
 .suggestionBannerList {
     flex-grow: 1;
 
-    @include media-breakpoint-down(xs) {
+    @include display.media-breakpoint-down(xs) {
         width: 100% !important;
         max-width: 100% !important;
     }

@@ -1,43 +1,43 @@
-@import '~@logora/debate.styles.theme/_theme.scss';
-@import "~@logora/debate.styles.display/_display.scss";
-@import "~@logora/debate.styles.spacing/_spacing.scss";
+@use '~@logora/debate.styles.spacing/_spacing.scss' as spacing;
+@use '~@logora/debate.styles.theme/_theme.scss' as theme;
+
 
 .reportBox {
   width: 100%;
 }
 
 .reportItem {
-  border: $box-border;
-  border-radius: $box-border-radius;
-  box-shadow: $box-shadow;
+  border: theme.$box-border;
+  border-radius: theme.$box-border-radius;
+  box-shadow: theme.$box-shadow;
   transition: margin-top 2s;
-  background-color: $background-color-primary;
+  background-color: theme.$background-color-primary;
 }
 
 .reportHeader {
-  padding: $spacer-md $spacer-md;
+  padding: spacing.$spacer-md spacing.$spacer-md;
 }
 
 .reportReason {
   display: flex;
-  color: $info-primary;
-  gap: $spacer-xs;
-  margin-bottom: $spacer-md;
-  font-size: $font-size-small;
+  color: theme.$info-primary;
+  gap: spacing.$spacer-xs;
+  margin-bottom: spacing.$spacer-md;
+  font-size: theme.$font-size-small;
 }
 
 svg.warningIcon {
   circle {
-    stroke: $info-primary;
+    stroke: theme.$info-primary;
     stroke-width: 1.5px;
   }
 
   path {
-    fill: $info-primary;
+    fill: theme.$info-primary;
   }
 }
 
 .statusMessage {
-  margin-top: $spacer-xs;
-  font-size: $font-size-small;
+  margin-top: spacing.$spacer-xs;
+  font-size: theme.$font-size-small;
 }

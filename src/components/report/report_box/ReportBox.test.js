@@ -48,7 +48,7 @@ const generateReportPending = (overrides) => ({
   id: faker.datatype.number(),
   classification: "Spam",
   description: faker.lorem.sentence(),
-  is_processed: true,
+  is_processed: false,
   reportable_type: "Message",
   created_at: faker.date.recent().toISOString(),
   reportable: {
@@ -188,7 +188,7 @@ describe("ReportBox", () => {
   });
 
   it("should display status message for pending status", () => {
-    renderReportBox({ report: reportArgument });
+    renderReportBox({ report: reportArgumentPending });
     expect(screen.getByText(/The report is currently in process/i)).toBeInTheDocument();
   });
 
@@ -197,7 +197,7 @@ describe("ReportBox", () => {
       reportable: { ...reportArgument.reportable, status: "accepted" }
     });
     renderReportBox({ report: acceptedReport });
-    expect(screen.getByText(/content has been removed/i)).toBeInTheDocument();
+    expect(screen.getByText(/not removed the content/i)).toBeInTheDocument();
   });
 
   it("should display status message for rejected status", () => {
@@ -205,7 +205,7 @@ describe("ReportBox", () => {
       reportable: { ...reportArgument.reportable, status: "rejected" }
     });
     renderReportBox({ report: rejectedReport });
-    expect(screen.getByText(/not removed the content/i)).toBeInTheDocument();
+    expect(screen.getByText(/content has been removed/i)).toBeInTheDocument();
   });
 
 });
