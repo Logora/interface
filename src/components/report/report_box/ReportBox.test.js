@@ -188,8 +188,8 @@ describe("ReportBox", () => {
   });
 
   it("should display status message for pending status", () => {
-    renderReportBox({ report: reportArgumentPending });
-    expect(screen.getByText(/content is pending/i)).toBeInTheDocument();
+    renderReportBox({ report: reportArgument });
+    expect(screen.getByText(/The report is currently in process/i)).toBeInTheDocument();
   });
 
   it("should display status message for accepted status", () => {
