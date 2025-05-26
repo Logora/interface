@@ -38,27 +38,24 @@ export const ReportBox = ({ report }) => {
         </div>
       );
     } else {
-      switch (contentStatus) {
-        case "accepted":
-          return (
-            <div className={styles.statusMessage}>
-              {intl.formatMessage({
-                id: "report.content_header.status_rejected",
-                defaultMessage: "Thank you for your report. After verification, we have not removed the content."
-              })}
-            </div>
-          );
-        case "rejected":
-          return (
-            <div className={styles.statusMessage}>
-              {intl.formatMessage({
-                id: "report.content_header.status_accepted",
-                defaultMessage: "Thank you for your report. After verification, the content has been removed."
-              })}
-            </div>
-          );
-        default:
-          return null;
+      if (contentStatus === "rejected") {
+        return (
+          <div className={styles.statusMessage}>
+            {intl.formatMessage({
+              id: "report.content_header.status_accepted",
+              defaultMessage: "Thank you for your report. After verification, the content has been removed."
+            })}
+          </div>
+        );
+      } else {
+        return (
+          <div className={styles.statusMessage}>
+            {intl.formatMessage({
+              id: "report.content_header.status_rejected",
+              defaultMessage: "Thank you for your report. After verification, we have not removed the content."
+            })}
+          </div>
+        );
       }
     }
   };
