@@ -1,4 +1,4 @@
-@import '~@logora/debate.styles.theme/_theme.scss';
+@use '~@logora/debate.styles.theme/_theme.scss' as theme;
 
 .tooltipChild {
     position: relative;
@@ -6,10 +6,10 @@
 
 .tooltipText {
     width: 120px;
-    visibility: hidden;
-    color: $background-color-primary;
+    visibility:hidden;
+    color: theme.$background-color-primary;
     text-align: center;
-    border-radius: $box-border-radius;
+    border-radius: theme.$box-border-radius;
     padding: 5px;
     position: absolute;
     z-index: 3;
@@ -18,17 +18,17 @@
     margin-left: -60px;
     opacity: 0;
     transition: opacity 0.3s;
-    font-weight: $font-weight-normal !important;
-    font-size: $font-size-small !important;
+    font-weight: theme.$font-weight-normal !important;
+    font-size: theme.$font-size-small !important;
     
     &.info {
-        background-color: $text-secondary !important; 
+        background-color: theme.$text-secondary !important; 
     }
     &.success {
-        background-color: $success-primary !important; 
+        background-color: theme.$success-primary !important; 
     }
     &.error {
-        background-color: $cancel-primary !important;
+        background-color: theme.$cancel-primary !important;
     }
 }
 
@@ -44,13 +44,13 @@
     transform: rotate(180deg);
 }
 .tooltipText.info::after {
-    border-color: $text-secondary transparent transparent transparent; 
+    border-color: theme.$text-secondary transparent transparent transparent; 
 }
 .tooltipText.success::after {
-    border-color: $success-primary transparent transparent transparent; 
+    border-color: theme.$success-primary transparent transparent transparent; 
 }
 .tooltipText.error::after {
-    border-color: $cancel-primary transparent transparent transparent;
+    border-color: theme.$cancel-primary transparent transparent transparent;
 }
 .tooltipChild:hover .tooltipText {
     visibility: visible;

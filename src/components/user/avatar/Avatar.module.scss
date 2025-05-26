@@ -1,4 +1,4 @@
-@import '~@logora/debate.styles.theme/_theme.scss';
+@use '~@logora/debate.styles.theme/_theme.scss' as theme;
 
 .avatarContainer {
     display: flex !important;
@@ -11,8 +11,8 @@
 .onlinePin {
     content: "";
     position: absolute;
-    background: $connected-green;
-    border: 2px solid $background-color-primary;
+    background: theme.$connected-green;
+    border: 2px solid theme.$background-color-primary;
     border-radius: 50%;
     bottom: 0;
     right: 0;
