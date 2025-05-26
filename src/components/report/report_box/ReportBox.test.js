@@ -44,7 +44,36 @@ const generateReport = (overrides) => ({
   ...overrides
 });
 
+const generateReportPending = (overrides) => ({
+  id: faker.datatype.number(),
+  classification: "Spam",
+  description: faker.lorem.sentence(),
+  is_processed: false,
+  reportable_type: "Message",
+  created_at: faker.date.recent().toISOString(),
+  reportable: {
+    id: faker.datatype.number(),
+    content: faker.lorem.sentence(),
+    author: { full_name: faker.name.fullName() },
+    created_at: faker.date.recent().toISOString(),
+    upvotes: faker.datatype.number(),
+    language: "en",
+    status: "pending",
+  },
+  author: {
+    full_name: faker.name.fullName(),
+  },
+  position: {
+    id: faker.datatype.number(),
+    name: "Yes",
+    language: "en",
+    translation_entries: []
+  },
+  ...overrides
+});
+
 const reportArgument = generateReport({ reportable_type: "Message" });
+const reportArgumentPending = generateReportPending({ reportable_type: "Message" });
 const reportProposal = generateReport({
   reportable_type: "Proposal",
   reportable: {
@@ -159,7 +188,7 @@ describe("ReportBox", () => {
   });
 
   it("should display status message for pending status", () => {
-    renderReportBox({ report: reportArgument });
+    renderReportBox({ report: reportArgumentPending });
     expect(screen.getByText(/content is pending/i)).toBeInTheDocument();
   });
 

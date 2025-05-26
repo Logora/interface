@@ -45,7 +45,7 @@ const reportArgumentPending =
       id: 1,
       classification: "INCOHERENT",
       description: faker.lorem.sentence(),
-      is_processed: true,
+      is_processed: false,
       reportable_type: "Message",
       created_at: faker.date.recent().toISOString(),
       reportable: {
@@ -93,7 +93,7 @@ const reportProposal =
         created_at: faker.date.recent().toISOString(),
         upvotes: 10,
         language: "en",
-        status: "pending",
+        status: "accepted",
       },
       author: {
         full_name: faker.name.fullName(),
@@ -121,7 +121,7 @@ const reportProposal =
         created_at: faker.date.recent().toISOString(),
         upvotes: 10,
         language: "en",
-        status: "pending",
+        status: "accepted",
         name: faker.lorem.words(),
         slug: faker.lorem.slug(),
         created_at: faker.date.recent().toISOString(),
