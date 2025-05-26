@@ -9,8 +9,7 @@ import styles from './ReportBox.module.scss';
 export const ReportBox = ({ report }) => {
   const intl = useIntl();
 
-  const shouldDisplayReport = report && (report.is_processed || report.reportable?.status === 'pending');
-  const displayedReport = shouldDisplayReport ? report : null;
+  const displayedReport = report;
 
   const renderReportContent = (report) => {
     const { reportable_type, reportable } = report;
@@ -75,15 +74,13 @@ export const ReportBox = ({ report }) => {
                 {intl.formatMessage({
                   id: "report.content_header.moderation_reason",
                   defaultMessage: "Report reason:"
-                })}
-                {" "}
+                })}{" "}
                 {intl.messages[`user_content.content_header.moderation_reason.${displayedReport.classification.toLowerCase()}`]
                   ? intl.formatMessage({
-                    id: `user_content.content_header.moderation_reason.${displayedReport.classification.toLowerCase()}`,
-                    defaultMessage: displayedReport.classification
-                  })
-                  : displayedReport.classification
-                }
+                      id: `user_content.content_header.moderation_reason.${displayedReport.classification.toLowerCase()}`,
+                      defaultMessage: displayedReport.classification
+                    })
+                  : displayedReport.classification}
               </div>
             )}
             {renderStatusMessage(displayedReport.reportable?.status)}
@@ -93,7 +90,7 @@ export const ReportBox = ({ report }) => {
       )}
     </div>
   );
-
+  
 };
 
 export default ReportBox;
