@@ -8,12 +8,10 @@ import styles from './ReportBox.module.scss';
 
 export const ReportBox = ({ report }) => {
   const intl = useIntl();
-
   const displayedReport = report;
 
   const renderReportContent = (report) => {
     const { reportable_type, reportable } = report;
-
     switch (reportable_type) {
       case "Message":
         return <Argument argument={reportable} hideReplies={true} hideFooter={true} hideModerationReason={true} />;
@@ -29,37 +27,39 @@ export const ReportBox = ({ report }) => {
     }
   };
 
-  const renderStatusMessage = (status) => {
-    switch (status) {
-      case "accepted":
-        return (
-          <div className={styles.statusMessage}>
-            {intl.formatMessage({
-              id: "report.content_header.status_rejected",
-              defaultMessage: "Thank you for your report. After verification, we have not removed the content."
-            })}
-          </div>
-        );
-      case "pending":
-        return (
-          <div className={styles.statusMessage}>
-            {intl.formatMessage({
-              id: "report.content_header.status_pending",
-              defaultMessage: "The report is currently in process"
-            })}
-          </div>
-        );
-      case "rejected":
-        return (
-          <div className={styles.statusMessage}>
-            {intl.formatMessage({
-              id: "report.content_header.status_accepted",
-              defaultMessage: "Thank you for your report. After verification, the content has been removed."
-            })}
-          </div>
-        );
-      default:
-        return null;
+  const renderStatusMessage = (isProcessed, contentStatus) => {
+    if (!isProcessed) {
+      return (
+        <div className={styles.statusMessage}>
+          {intl.formatMessage({
+            id: "report.content_header.status_pending",
+            defaultMessage: "The report is currently in process"
+          })}
+        </div>
+      );
+    } else {
+      switch (contentStatus) {
+        case "accepted":
+          return (
+            <div className={styles.statusMessage}>
+              {intl.formatMessage({
+                id: "report.content_header.status_rejected",
+                defaultMessage: "Thank you for your report. After verification, we have not removed the content."
+              })}
+            </div>
+          );
+        case "rejected":
+          return (
+            <div className={styles.statusMessage}>
+              {intl.formatMessage({
+                id: "report.content_header.status_accepted",
+                defaultMessage: "Thank you for your report. After verification, the content has been removed."
+              })}
+            </div>
+          );
+        default:
+          return null;
+      }
     }
   };
 
@@ -83,14 +83,13 @@ export const ReportBox = ({ report }) => {
                   : displayedReport.classification}
               </div>
             )}
-            {renderStatusMessage(displayedReport.reportable?.status)}
+            {renderStatusMessage(displayedReport.is_processed, displayedReport.reportable?.status)}
           </div>
           {renderReportContent(displayedReport)}
         </div>
       )}
     </div>
   );
-  
 };
 
 export default ReportBox;
