@@ -48,7 +48,7 @@ const generateReportPending = (overrides) => ({
   id: faker.datatype.number(),
   classification: "Spam",
   description: faker.lorem.sentence(),
-  is_processed: false,
+  is_processed: true,
   reportable_type: "Message",
   created_at: faker.date.recent().toISOString(),
   reportable: {

@@ -45,7 +45,7 @@ const reportArgumentPending =
       id: 1,
       classification: "INCOHERENT",
       description: faker.lorem.sentence(),
-      is_processed: false,
+      is_processed: true,
       reportable_type: "Message",
       created_at: faker.date.recent().toISOString(),
       reportable: {
