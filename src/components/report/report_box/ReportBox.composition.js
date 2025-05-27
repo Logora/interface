@@ -176,7 +176,10 @@ const reportProposal =
         created_at: faker.date.recent().toISOString(),
         upvotes: 10,
         language: "en",
-        status: "accepted",
+        status: "rejected",
+        moderation_entry: {
+          status: "rejected"
+        },
       },
       author: {
         full_name: faker.name.fullName(),
@@ -205,7 +208,10 @@ const reportProposal =
         created_at: faker.date.recent().toISOString(),
         upvotes: 10,
         language: "en",
-        status: "rejected",
+        status: "accepted",
+        moderation_entry: {
+          status: "accepted"
+        },
       },
       author: {
         full_name: faker.name.fullName(),

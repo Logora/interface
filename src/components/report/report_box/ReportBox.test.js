@@ -35,6 +35,9 @@ const generateReport = (overrides) => ({
   author: {
     full_name: faker.name.fullName(),
   },
+  moderation_entry: {
+    status: "pending"
+  },
   position: {
     id: faker.datatype.number(),
     name: "Yes",
@@ -59,6 +62,9 @@ const generateReportPending = (overrides) => ({
     upvotes: faker.datatype.number(),
     language: "en",
     status: "pending",
+  },
+  moderation_entry: {
+    status: "pending"
   },
   author: {
     full_name: faker.name.fullName(),
@@ -194,7 +200,9 @@ describe("ReportBox", () => {
 
   it("should display status message for accepted status", () => {
     const acceptedReport = generateReport({
-      reportable: { ...reportArgument.reportable, status: "accepted" }
+      reportable: { ...reportArgument.reportable, status: "accepted", moderation_entry: {
+        status: "accepted"
+      }, }
     });
     renderReportBox({ report: acceptedReport });
     expect(screen.getByText(/not removed the content/i)).toBeInTheDocument();
@@ -202,7 +210,9 @@ describe("ReportBox", () => {
 
   it("should display status message for rejected status", () => {
     const rejectedReport = generateReport({
-      reportable: { ...reportArgument.reportable, status: "rejected" }
+      reportable: { ...reportArgument.reportable, status: "rejected" , moderation_entry: {
+        status: "rejected"
+      },}
     });
     renderReportBox({ report: rejectedReport });
     expect(screen.getByText(/content has been removed/i)).toBeInTheDocument();

@@ -80,7 +80,7 @@ export const ReportBox = ({ report }) => {
                   : displayedReport.classification}
               </div>
             )}
-            {renderStatusMessage(displayedReport.is_processed, displayedReport.reportable?.status)}
+            {renderStatusMessage(displayedReport.is_processed, displayedReport.reportable?.moderation_entry?.status)}
           </div>
           {renderReportContent(displayedReport)}
         </div>
