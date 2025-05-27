@@ -42,7 +42,7 @@ export const ReportBox = ({ report }) => {
         return (
           <div className={styles.statusMessage}>
             {intl.formatMessage({
-              id: "report.content_header.status_accepted",
+              id: "report.content_header.status_rejected ",
               defaultMessage: "Thank you for your report. After verification, the content has been removed."
             })}
           </div>
@@ -51,7 +51,7 @@ export const ReportBox = ({ report }) => {
         return (
           <div className={styles.statusMessage}>
             {intl.formatMessage({
-              id: "report.content_header.status_rejected",
+              id: "report.content_header.status_accepted",
               defaultMessage: "Thank you for your report. After verification, we have not removed the content."
             })}
           </div>
@@ -80,7 +80,7 @@ export const ReportBox = ({ report }) => {
                   : displayedReport.classification}
               </div>
             )}
-            {renderStatusMessage(displayedReport.is_processed, displayedReport.reportable?.moderation_entry?.status)}
+            {renderStatusMessage(displayedReport.is_processed, displayedReport.reportable?.status)}
           </div>
           {renderReportContent(displayedReport)}
         </div>
