@@ -69,7 +69,7 @@ export const ActionBar = ({ title, sortOptions, defaultSelectOption, searchBar =
         <>
             {(title || sortOptions || searchBar) && (
                 <>
-                    <div className={cx(styles.listHeader, { [styles.listHeaderOneItem]: (!searchBar || !sortOptions) })}>
+                    <div className={styles.listHeader}>
                         {title &&
                             <div className={styles.listTitle}>{title}</div>
                         }
