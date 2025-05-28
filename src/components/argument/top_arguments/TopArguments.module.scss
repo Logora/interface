@@ -1,14 +1,14 @@
-@import '~@logora/debate.styles.theme/_theme.scss';
-@import '~@logora/debate.styles.spacing/_spacing.scss';
-@import '~@logora/debate.styles.display/_display.scss';
+@use '~@logora/debate.styles.spacing/_spacing.scss' as spacing;
+@use '~@logora/debate.styles.theme/_theme.scss' as theme;
+@use '~@logora/debate.styles.display/_display.scss' as display;
 
 .topArguments {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: $spacer;
+    gap: spacing.$spacer;
 }
 
-@include media-breakpoint-down(xs) {
+@include display.media-breakpoint-down(xs) {
     .topArguments {
         grid-template-columns: repeat(1, 1fr) !important;
     }
@@ -27,11 +27,11 @@
 }
 
 .positionBackground-0 {
-    color: $text-light !important;
-    background-color: $for-primary !important;
+    color: theme.$text-light !important;
+    background-color: theme.$for-primary !important;
 }
 
 .positionBackground-1 {
-    color: $text-light !important;
-    background-color: $against-primary !important;
+    color: theme.$text-light !important;
+    background-color: theme.$against-primary !important;
 }
