@@ -1,69 +1,69 @@
-@import '~@logora/debate.styles.theme/_theme.scss';
-@import '~@logora/debate.styles.spacing/_spacing.scss';
+@use '~@logora/debate.styles.theme/_theme.scss' as theme;
+@use '~@logora/debate.styles.spacing/_spacing.scss' as spacing;
 
 .container {
     display: flex !important;
     flex-direction: column !important;
     justify-content: space-between !important;
-    box-shadow: $box-shadow;
-    border: $box-border;
-    color: $text-primary;
-    border-radius: $box-border-radius;
-    background: $background-color-primary;
+    box-shadow: theme.$box-shadow;
+    border: theme.$box-border;
+    color: theme.$text-primary;
+    border-radius: theme.$box-border-radius;
+    background: theme.$background-color-primary;
     a {
         text-decoration: none !important;
-        color: $text-primary !important;
+        color: theme.$text-primary !important;
     }
 }
 .consultationImage {
-    border-top-right-radius: $box-border-radius;
-    border-top-left-radius: $box-border-radius;
+    border-top-right-radius: theme.$box-border-radius;
+    border-top-left-radius: theme.$box-border-radius;
     width: 100%;
     aspect-ratio: 16 / 9;
     object-fit: cover;
 }
 .consultationTime {
-    @include py(2, xs);
+    @include spacing.py(2, xs);
     width: 100%;
-    background-color: $info-primary;
-    font-size: $font-size-normal;
-    font-weight: $font-weight-bold;
-    color: $text-light;
+    background-color: theme.$info-primary;
+    font-size: theme.$font-size-normal;
+    font-weight: theme.$font-weight-bold;
+    color: theme.$text-light;
     text-align: center;
     &.ended {
-        background-color: $text-secondary;
+        background-color: theme.$text-secondary;
     }
 }
 .consultationTitle {
-    @include pt(4, xs);
-    @include pb(2, xs);
-    @include px(3, xs);
-    font-size: $font-size-normal;
-    font-weight: $font-weight-bold;
+    @include spacing.pt(4, xs);
+    @include spacing.pb(2, xs);
+    @include spacing.px(3, xs);
+    font-size: theme.$font-size-normal;
+    font-weight: theme.$font-weight-bold;
 }
 .consultationButtonContainer {
     display: flex !important;
-    @include px(3, xs);
-    @include pb(4, xs);
-    color: $text-secondary;
-    font-size: $font-size-small;
+    @include spacing.px(3, xs);
+    @include spacing.pb(4, xs);
+    color: theme.$text-secondary;
+    font-size: theme.$font-size-small;
     &:hover {
         text-decoration: underline;
-        text-decoration-color: $text-secondary;
+        text-decoration-color: theme.$text-secondary;
     }
     .arrowIcon {
-        @include ml(1, xs);
+        @include spacing.ml(1, xs);
         transform: rotate(180deg);
-        fill: $text-secondary;
+        fill: theme.$text-secondary;
     }
 }
 .consultationInformations {
     display: flex !important;
     justify-content: space-between !important;
     align-items: center !important;
-    @include px(3, xs);
-    @include py(2, xs);
-    border-top: 1px solid $text-tertiary;
+    @include spacing.px(3, xs);
+    @include spacing.py(2, xs);
+    border-top: 1px solid theme.$text-tertiary;
     min-height: 50px;
     .consultationLeft {
         display: flex !important;
@@ -72,7 +72,7 @@
         display: flex !important;
         align-items: center !important;
         &.consultationGroupRight {
-            @include pr(3, xs);
+            @include spacing.pr(3, xs);
         }
     }
     .progressBarContainer {
@@ -80,26 +80,26 @@
         display: flex !important;
         flex-direction: column !important;
         align-items: flex-end !important;
-        font-size: $font-size-extra-small;
+        font-size: theme.$font-size-extra-small;
         .progress {
-            @include mt(1, xs);
+            @include spacing.mt(1, xs);
             height: 15px;
             width: 100%;
-            border-radius: $box-border-radius;
-            background-color: $background-color-secondary !important;
+            border-radius: theme.$box-border-radius;
+            background-color: theme.$background-color-secondary !important;
         }
         .bar {
-            background-color: $call-primary;
+            background-color: theme.$call-primary;
         }
         .totalVotes {
-            @include mr(1, xs);
+            @include spacing.mr(1, xs);
         }
         .totalVotesPercentage {
-            @include ml(1, xs);
+            @include spacing.ml(1, xs);
         }
     }
     
     .consultationTextInformation {
-        @include pr(1, xs);
+        @include spacing.pr(1, xs);
     }
 }
