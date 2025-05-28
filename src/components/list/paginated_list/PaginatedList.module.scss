@@ -1,6 +1,6 @@
-@import '~@logora/debate.styles.spacing/_spacing.scss';
-@import '~@logora/debate.styles.display/_display.scss';
-@import '~@logora/debate.styles.theme/_theme.scss';
+@use '~@logora/debate.styles.spacing/_spacing.scss' as spacing;
+@use '~@logora/debate.styles.theme/_theme.scss' as theme;
+@use '~@logora/debate.styles.display/_display.scss' as display;
 
 .paginatedList {
 	display: inline-grid;
@@ -44,7 +44,7 @@
 	}
 
 	&.paginatedListIsTablet {
-		@include media-breakpoint-up(md) {
+		@include display.media-breakpoint-up(md) {
 			grid-template-columns: repeat(2, 1fr);
 		}
 	}
@@ -53,24 +53,24 @@
 .listContainer {
 	display: flex;
 	flex-direction: column;
-	gap: $spacer-lg;
+	gap: spacing.$spacer-lg;
 
-	@include media-breakpoint-down(xs) {
-		gap: $spacer;
+	@include display.media-breakpoint-down(xs) {
+		gap: spacing.$spacer;
 	}
 }
 
 .emptyList {
 	text-align: center;
-	@include my(3, xs);
-	@include p(0, xs);
+	@include spacing.my(3, xs);
+	@include spacing.p(0, xs);
 	width: 100%;
 }
 
 .emptyListElement {
 	text-align: center;
-	@include my(0, xs);
-	@include p(0, xs);
+	@include spacing.my(0, xs);
+	@include spacing.p(0, xs);
 	width: 100%;
 }
 
