@@ -42,7 +42,7 @@ export const ReportBox = ({ report }) => {
         return (
           <div className={styles.statusMessage}>
             {intl.formatMessage({
-              id: "report.content_header.status_rejected ",
+              id: "report.content_header.status_rejected",
               defaultMessage: "Thank you for your report. After verification, the content has been removed."
             })}
           </div>
