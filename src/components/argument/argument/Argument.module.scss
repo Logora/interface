@@ -1,49 +1,50 @@
-@import '~@logora/debate.styles.theme/_theme.scss';
-@import "~@logora/debate.styles.display/_display.scss";
-@import "~@logora/debate.styles.flex/_flex.scss";
-@import "~@logora/debate.styles.spacing/_spacing.scss";
+@use '~@logora/debate.styles.spacing/_spacing.scss' as spacing;
+@use '~@logora/debate.styles.theme/_theme.scss' as theme;
+@use "~@logora/debate.styles.flex/_flex.scss" as flex;
+@use '~@logora/debate.styles.display/_display.scss' as display;
+
 
 .argument {
-	border-radius: $box-border-radius;
-	box-shadow: $box-shadow;
+	border-radius: theme.$box-border-radius;
+	box-shadow: theme.$box-shadow;
 	transition: margin-top 2s;
-	border: $box-border;
+	border: theme.$box-border;
 	scroll-margin-top: 150px;
-	background-color: $background-color-primary;
-	@include p(3, xs);
+	background-color: theme.$background-color-primary;
+	@include spacing.p(3, xs);
 	display: flex;
 	flex-direction: column;
-	gap: $spacer;
+	gap: spacing.$spacer;
 }
 
 .edited {
-	font-size: $font-size-extra-small;
-	color: $text-secondary;
-	line-height: $line-height-loose;
-	@include mb(1.5, xs);
+	font-size: theme.$font-size-extra-small;
+	color: theme.$text-secondary;
+	line-height: theme.$line-height-loose;
+	@include spacing.mb(1.5, xs);
 }
 
 .argumentReply {
 	position: relative;
-	background-color: $text-tertiary;
+	background-color: theme.$text-tertiary;
 	border-top-left-radius: 0;
 	border-bottom-left-radius: 0;
-	box-shadow: $box-shadow;
-	border-top-right-radius: $box-border-radius;
-	border-bottom-right-radius: $box-border-radius;
+	box-shadow: theme.$box-shadow;
+	border-top-right-radius: theme.$box-border-radius;
+	border-bottom-right-radius: theme.$box-border-radius;
 	border-left: 6px solid;
-	border-left-color: $text-secondary !important;
+	border-left-color: theme.$text-secondary !important;
 
 	&.position-1 {
-		border-left-color: $for-primary !important;
+		border-left-color: theme.$for-primary !important;
 	}
 
 	&.position-2 {
-		border-left-color: $against-primary !important;
+		border-left-color: theme.$against-primary !important;
 	}
 
 	&.position-3 {
-		border-left-color: $third-position-color-primary !important;
+		border-left-color: theme.$third-position-color-primary !important;
 	}
 
 	@for $i from 1 through 5 {
@@ -54,7 +55,7 @@
 
 	&::before {
 		content: "";
-		border-left: 4px solid $text-secondary;
+		border-left: 4px solid theme.$text-secondary;
 		position: absolute;
 		width: 4px;
 		height: 10px;
@@ -62,7 +63,7 @@
 		left: 2em;
 	}
 
-	@include media-breakpoint-down(xs) {
+	@include display.media-breakpoint-down(xs) {
 		border-left: 4px solid;
 	}
 }
@@ -76,26 +77,26 @@
 }
 
 .position-1.flash {
-	border-color: $for-primary;
+	border-color: theme.$for-primary;
 }
 
 .position-2.flash {
-	border-color: $against-primary;
+	border-color: theme.$against-primary;
 }
 
 .position-3.flash {
-	border-color: $third-position-color-primary;
-	@include mt(2, xs);
+	border-color: theme.$third-position-color-primary;
+	@include spacing.mt(2, xs);
 }
 
 .argumentBody {
-	font-size: $font-size-normal;
-	line-height: $line-height-loose;
+	font-size: theme.$font-size-normal;
+	line-height: theme.$line-height-loose;
 }
 
 .argumentDeletedBody {
-	font-size: $font-size-small;
-	color: $text-secondary;
+	font-size: theme.$font-size-small;
+	color: theme.$text-secondary;
 }
 
 .fixedHeight {
@@ -118,11 +119,11 @@
 }
 
 .argumentContent {
-	line-height: $line-height-loose;
+	line-height: theme.$line-height-loose;
 	overflow-wrap: break-word;
 
 	& * {
-		font-size: $font-size-normal;
+		font-size: theme.$font-size-normal;
 	}
 }
 
@@ -131,8 +132,8 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: flex-start;
-	font-size: $font-size-extra-small;
-	font-weight: $font-weight-normal;
+	font-size: theme.$font-size-extra-small;
+	font-weight: theme.$font-weight-normal;
 }
 
 .argumentSourcesList a {
@@ -140,35 +141,35 @@
 }
 
 .repliesList {
-	@include mt(2, xs);
+	@include spacing.mt(2, xs);
 }
 
 .readMoreLink {
-	@include mt(2.5, xs);
+	@include spacing.mt(2.5, xs);
 	display: flex;
 	justify-content: center;
 }
 
 .replyTo {
-	@include pb(2, xs);
-	@include display(flex, xs);
-	@include flex-direction(row, xs);
-	@include align-items(flex-start, xs);
-	font-size: $font-size-extra-small;
-	color: $text-secondary;
+	@include spacing.pb(2, xs);
+	@include display.display(flex, xs);
+	@include flex.flex-direction(row, xs);
+	@include flex.align-items(flex-start, xs);
+	font-size: theme.$font-size-extra-small;
+	color: theme.$text-secondary;
 	cursor: pointer;
 	overflow: hidden;
 	white-space: nowrap;
 
 	span {
-		@include pl(1, xs);
+		@include spacing.pl(1, xs);
 		cursor: pointer;
 		text-decoration: underline;
 	}
 
 	svg {
 		padding: 2px 0 0 2px;
-		fill: $text-secondary;
+		fill: theme.$text-secondary;
 	}
 }
 
@@ -177,52 +178,52 @@
 }
 
 .headerPosition-0 {
-	background-color: $call-primary !important;
+	background-color: theme.$call-primary !important;
 }
 
 .headerPosition-1 {
-	background-color: $for-primary !important;
+	background-color: theme.$for-primary !important;
 }
 
 .headerPosition-2 {
-	background-color: $against-primary !important;
+	background-color: theme.$against-primary !important;
 }
 
 .headerPosition-3 {
-	background-color: $third-position-color-primary !important;
+	background-color: theme.$third-position-color-primary !important;
 }
 
 .voteButtonPosition-1 {
-	color: $for-primary !important;
+	color: theme.$for-primary !important;
 
 	& svg {
-		fill: $for-primary !important;
+		fill: theme.$for-primary !important;
 	}
 }
 
 .voteButtonPosition-2 {
-	color: $against-primary !important;
+	color: theme.$against-primary !important;
 
 	& svg {
-		fill: $against-primary !important;
+		fill: theme.$against-primary !important;
 	}
 }
 
 .voteButtonPosition-3 {
-	color: $third-position-color-primary !important;
+	color: theme.$third-position-color-primary !important;
 
 	& svg {
-		fill: $third-position-color-primary !important;
+		fill: theme.$third-position-color-primary !important;
 	}
 }
 
 
 @media (prefers-color-scheme: dark) {
 	.replyStyle {
-		background-color: $text-tertiary;
+		background-color: theme.$text-tertiary;
 	}
 
 	.argumentStyle {
-		background-color: $background-color-primary;
+		background-color: theme.$background-color-primary;
 	}
 }

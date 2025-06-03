@@ -52,6 +52,7 @@ import { Versus } from './Versus';
 import { Flag } from './Flag';
 import { CheckCircle } from './CheckCircle';
 import { MinusCircle } from './MinusCircle';
+import { PauseCircle } from './PauseCircle';
 
 
 export const RegularIconsLibrary = () => {
@@ -110,6 +111,7 @@ export const RegularIconsLibrary = () => {
             <Flag width={50} height={50} data-testid={"flag-icon"} style={{ margin: "15px" }} />
             <CheckCircle width={50} height={50} data-testid={"circlecheck-icon"} style={{ margin: "15px" }} />
             <MinusCircle width={50} height={50} data-testid={"MinusCircle-icon"} style={{ margin: "15px" }} />
+            <PauseCircle width={50} height={50} data-testid={"PauseCircle-icon"} style={{ margin: "15px" }} />
         </div>
     )
 };

@@ -10,14 +10,14 @@ import styles from "./ContentHeader.module.scss";
 import PropTypes from "prop-types";
 
 export const ContentHeader = ({ author, tag, tagClassName, date, oneLine = false, disableLinks = false, selectedContent = false, isDeleted = false, moderationReason,
-	moderationNotes, moderationPolicyUrl }) => {
+	moderationNotes, moderationPolicyUrl, hideModerationReason = false }) => {
 	const relativeTime = useRelativeTime(new Date(date).getTime());
 	const intl = useIntl();
 	const config = useConfig();
 
 	return (
 		<div className={styles.contentHeaderContainer}>
-			{moderationReason && (
+			{moderationReason && !hideModerationReason && (
 				<div className={styles.moderationInfo}>
 					{moderationReason && (
 						<div className={styles.moderationReason}>

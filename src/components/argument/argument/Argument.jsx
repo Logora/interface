@@ -22,7 +22,7 @@ import styles from "./Argument.module.scss";
 const ArgumentInput = lazy(() => import('@logora/debate.input.argument_input'));
 import PropTypes from "prop-types";
 
-export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupType, groupName, positions = [], disableLinks = false, parentArgument, flashParent, expandable, disabled = false, hideFooter = false, hideReplies, vote, fixedContentHeight = false, enableEdition = true, deleteListId }) => {
+export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupType, groupName, positions = [], disableLinks = false, parentArgument, flashParent, expandable, disabled = false, hideFooter = false, hideReplies, vote, fixedContentHeight = false, enableEdition = true, deleteListId, hideModerationReason = false }) => {
 	const intl = useIntl();
 	const { isLoggedIn, currentUser } = useAuth();
 	const config = useConfig();
@@ -123,6 +123,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupTyp
 						moderationNotes: argument.status === "rejected" && argument.moderation_entry?.moderator_notes,
 						moderationPolicyUrl: argument.status === "rejected" && config.provider?.userGuideUrl
 					})}
+					hideModerationReason={hideModerationReason}
 				/>
 				{argument.is_deleted ?
 					<div className={styles.argumentDeletedBody}>

@@ -1,29 +1,29 @@
-@import '~@logora/debate.styles.theme/_theme.scss';
-@import '~@logora/debate.styles.spacing/_spacing.scss';
+@use '~@logora/debate.styles.spacing/_spacing.scss' as spacing;
+@use '~@logora/debate.styles.theme/_theme.scss' as theme;
 
 .suggestionInputContainer {
     display: flex !important;
     flex-direction: column !important;
-    color: $text-primary;
-    gap: $spacer;
+    color: theme.$text-primary;
+    gap: spacing.$spacer;
 }
 
 .suggestionInputItem {
     display: flex !important;
     flex-direction: column !important;
-    gap: $spacer;
+    gap: spacing.$spacer;
 }
 
 .suggestionInputTitle {
-    font-size: $font-size-medium;
-    line-height: $line-height-normal;
-    font-weight: $font-weight-bold;
+    font-size: theme.$font-size-medium;
+    line-height: theme.$line-height-normal;
+    font-weight: theme.$font-weight-bold;
     position: relative;
     width: max-content;
 }
 
 .suggestionInputSubtitle {
-    font-size: $font-size-normal;
+    font-size: theme.$font-size-normal;
 }
 
 .suggestionInputSubmit {
@@ -31,7 +31,7 @@
 }
 
 .charactersCount {
-    font-size: $font-size-small;
-    color: $text-secondary;
+    font-size: theme.$font-size-small;
+    color: theme.$text-secondary;
     white-space: nowrap;
 }

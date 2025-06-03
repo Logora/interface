@@ -1,6 +1,6 @@
-@import '~@logora/debate.styles.spacing/_spacing.scss';
-@import '~@logora/debate.styles.display/_display.scss';
-@import '~@logora/debate.styles.theme/_theme.scss';
+@use '~@logora/debate.styles.spacing/_spacing.scss' as spacing;
+@use '~@logora/debate.styles.theme/_theme.scss' as theme;
+@use '~@logora/debate.styles.display/_display.scss' as display;
 
 .listHeader {
 	display: flex;
@@ -8,8 +8,8 @@
     align-items: center;
 	position: relative;
     flex-wrap: wrap !important;
-    @include media-breakpoint-down(xs) {
-        gap: $spacer;
+    @include display.media-breakpoint-down(xs) {
+        gap: spacing.$spacer;
         flex-direction: column;
 		align-items: flex-start;
 		&.listHeaderOneItem {
@@ -20,17 +20,17 @@
 }
 
 .listTitle {
-    font-size: $font-size-extra-large;
-    line-height: $line-height-tight;
-    font-weight: $font-weight-bold;
-	font-family: $title-font-family;
+    font-size: theme.$font-size-extra-large;
+    line-height: theme.$line-height-tight;
+    font-weight: theme.$font-weight-bold;
+	font-family: theme.$title-font-family;
 }
 
 .rightBar {
     display: flex;
-    gap: $spacer;
+    gap: spacing.$spacer;
     flex-wrap: wrap;
-    @include media-breakpoint-down(xs) {
+    @include display.media-breakpoint-down(xs) {
         width: 100%;
         justify-content: space-between;
 		&.rightBarOneItem {
@@ -45,7 +45,7 @@
 .search {
     flex: 1;
     max-width: 35%;
-    @include media-breakpoint-down(xs) {
+    @include display.media-breakpoint-down(xs) {
         max-width: 100%;
     }
 }
@@ -56,23 +56,23 @@
 	justify-content: flex-start;
 	overflow-x: auto;
     overflow-y: hidden;
-    gap: $spacer-md;
-    padding-bottom: $spacer-md;
-	@include media-breakpoint-down(xs) {
-		gap: $spacer-sm;
+    gap: spacing.$spacer-md;
+    padding-bottom: spacing.$spacer-md;
+	@include display.media-breakpoint-down(xs) {
+		gap: spacing.$spacer-sm;
     }
 }
 
 .tagItem {
     display: flex !important;
-    color: $text-secondary;
+    color: theme.$text-secondary;
     cursor: pointer;
     white-space: nowrap;
 }
 
 .select {
 	max-width: 300px;
-	@include media-breakpoint-down(xs) {
+	@include display.media-breakpoint-down(xs) {
 		max-width: 150px;
 	}
 }

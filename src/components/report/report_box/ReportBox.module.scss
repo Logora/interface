@@ -1,0 +1,43 @@
+@use '~@logora/debate.styles.spacing/_spacing.scss' as spacing;
+@use '~@logora/debate.styles.theme/_theme.scss' as theme;
+
+
+.reportBox {
+  width: 100%;
+}
+
+.reportItem {
+  border: theme.$box-border;
+  border-radius: theme.$box-border-radius;
+  box-shadow: theme.$box-shadow;
+  transition: margin-top 2s;
+  background-color: theme.$background-color-primary;
+}
+
+.reportHeader {
+  padding: spacing.$spacer-md spacing.$spacer-md;
+}
+
+.reportReason {
+  display: flex;
+  color: theme.$info-primary;
+  gap: spacing.$spacer-xs;
+  margin-bottom: spacing.$spacer-md;
+  font-size: theme.$font-size-small;
+}
+
+svg.warningIcon {
+  circle {
+    stroke: theme.$info-primary;
+    stroke-width: 1.5px;
+  }
+
+  path {
+    fill: theme.$info-primary;
+  }
+}
+
+.statusMessage {
+  margin-top: spacing.$spacer-xs;
+  font-size: theme.$font-size-small;
+}

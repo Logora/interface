@@ -51,3 +51,4 @@ export { Versus } from './Versus';
 export { Flag } from './Flag';
 export { CheckCircle } from './CheckCircle';
 export { MinusCircle} from './MinusCircle'
+export { PauseCircle} from './PauseCircle'

@@ -52,6 +52,7 @@ import { Versus } from './Versus';
 import { CheckCircle } from './CheckCircle';
 import { MinusCircle } from './MinusCircle';
 import { Flag } from './Flag'
+import { PauseCircle } from './PauseCircle';
 
 export const BildIconsLibrary = () => {
     return (
@@ -109,6 +110,8 @@ export const BildIconsLibrary = () => {
             <CheckCircle width={50} height={50} data-testid={"CheckCircle-icon"} style={{ margin: "15px" }} />
             <MinusCircle width={50} height={50} data-testid={"MinusCircle-icon"} style={{ margin: "15px" }} />
             <Flag width={50} height={50} data-testid={"flag-icon"} style={{ margin: "15px" }} />
+            <PauseCircle width={50} height={50} data-testid={"PauseCircle-icon"} style={{ margin: "15px" }} />
+
         </div>
     )
 };

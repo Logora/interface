@@ -1,4 +1,4 @@
-@import '~@logora/debate.styles.theme/_theme.scss';
+@use '~@logora/debate.styles.theme/_theme.scss' as theme;
 
 .readMore {
     position: relative;
@@ -14,7 +14,7 @@
     position: absolute;
     bottom: 0;
     right: 0;
-    background: $background-color-primary;
+    background: theme.$background-color-primary;
     display: flex;
     align-items: center;
     z-index: 1;
@@ -23,9 +23,9 @@
 .readMoreElement {
     display: inline;
     white-space: nowrap;
-    font-weight: $font-weight-bold;
+    font-weight: theme.$font-weight-bold;
     text-decoration: none;
-    color: $text-primary !important;
+    color: theme.$text-primary !important;
     cursor: pointer;
 }
 
@@ -39,7 +39,7 @@
 .readLessElement {
     display: block;
     margin-top: 0;
-    font-weight: $font-weight-bold;
+    font-weight: theme.$font-weight-bold;
     text-decoration: none;
 }
 
