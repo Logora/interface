@@ -59,7 +59,7 @@ const generateProposal = (overrides) => ({
 });
 
 const proposal = generateProposal();
-const editedProposal = generateProposal({ edited_at: faker.date.recent().toISOString() });
+const editedProposal = generateProposal({ edited_at: faker.date.recent().toISOString(), is_edited: true });
 
 const httpClient = {
     post: jest.fn(() => Promise.resolve({ data: { success: true, data: { resource: vote } } })),

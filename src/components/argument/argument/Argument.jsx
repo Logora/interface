@@ -151,7 +151,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupTyp
 										fullWidth
 									/>
 								</div>
-								:
+							:
 								<ReadMore
 									content={
 										<>
