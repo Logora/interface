@@ -154,7 +154,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupTyp
 								<ReadMore
 									content={
 										<>
-											{argument.edited_at && (
+											{argument.is_edited && (
 												<div className={styles.edited}>
 													{intl.formatMessage({ id: "argument.argument.updated", defaultMessage: "Updated argument" })}
 												</div>

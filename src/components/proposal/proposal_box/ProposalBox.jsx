@@ -56,7 +56,7 @@ export const ProposalBox = ({ proposal, disabled = false, fixedContentHeight, co
                         <ReadMore
                             content={
                                 <>
-                                    {proposal.edited_at && <div className={styles.edited}>{intl.formatMessage({ id: "proposal.updated", defaultMessage: "Updated proposal" })}</div>}
+                                    {proposal.is_edited && <div className={styles.edited}>{intl.formatMessage({ id: "proposal.updated", defaultMessage: "Updated proposal" })}</div>}
                                     <div className={styles.proposalTitle}>
                                         {title.translatedContent}
                                     </div>
