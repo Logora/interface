@@ -2,39 +2,41 @@
 @import '~@logora/debate.styles.spacing/_spacing.scss';
 
 .reportModalBody {
-    display: flex !important;
-    flex-direction: column !important;
+	display: flex !important;
+	flex-direction: column !important;
 	overflow: visible !important;
 }
 
 .reportForm {
-    display: flex !important;
-    flex-direction: column !important;
-    width: 100%;
+	display: flex !important;
+	flex-direction: column !important;
+	width: 100%;
 }
 
 .reportForm textarea:hover {
-    border-color: inherit;
+	border-color: inherit;
 }
 
 .reportFormSubmit {
-    text-align: center;
+	text-align: center;
 }
 
 .successButtonBox {
-    @include mt(4, xs);
+	@include mt(4, xs);
 }
 
 .formGroup {
-    display: flex !important;
+	display: flex !important;
 	flex-flow: column wrap !important;
 	align-items: flex-start !important;
 	@include my(2, xs);
 }
 
 .formControl {
-    display: block;
+	display: block;
 	width: 100%;
+	max-width: 100%;
+	box-sizing: border-box;
 	height: auto;
 	padding: 0.375em 0.75em;
 	font-size: $font-size-normal;
@@ -46,13 +48,16 @@
 	border-radius: 0.25em;
 	transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 	border: $box-border;
+
 	&::placeholder {
 		color: $text-secondary;
 		opacity: 1;
 	}
+
 	&:hover {
-        border: 1px solid $text-secondary;
-    }
+		border: 1px solid $text-secondary;
+	}
+
 	&:focus {
 		border: 1px solid $text-secondary;
 		color: $text-secondary;
@@ -64,7 +69,39 @@
 
 .select {
 	max-width: 436px;
+
 	@include media-breakpoint-down(xs) {
 		max-width: 250px;
+	}
+}
+
+.nameGroup {
+	flex-direction: row !important;
+	gap: $spacer-sm;
+	width: 100%;
+	flex-wrap: wrap;
+	box-sizing: border-box;
+}
+
+
+.nameField {
+	flex: 1;
+	min-width: 0;
+	margin-right: $spacer-sm;
+	max-width: 100%;
+}
+
+.nameField:last-child {
+	margin-right: 0;
+}
+
+@media (max-width: 768px) {
+	.nameGroup {
+		flex-direction: column !important;
+		gap: 0;
+	}
+
+	.nameField {
+		width: 100%;
 	}
 }
