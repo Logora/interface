@@ -29,3 +29,21 @@ export const DefaultReportModal = () => {
         </div>
     )
 };
+
+export const ReportModalUserAnonym = () => {
+    const data = dataProvider(httpClient, "https://mock.example.api");
+
+    return (
+        <div style={{width: "350px", height: "200px"}}>
+            <IntlProvider locale="en">
+                <IconProvider library={regularIcons}>
+                    <ModalProvider>
+                        <DataProviderContext.Provider value={{ dataProvider: data }}>
+                            <ReportModal reportableId={1} reportableType={"argument"} title={"Report this argument"} allowAnonymousUser= {true} />
+                        </DataProviderContext.Provider>
+                    </ModalProvider>
+                </IconProvider>
+            </IntlProvider>
+        </div>
+    )
+};
