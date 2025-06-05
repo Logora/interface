@@ -10,8 +10,14 @@
     "defaultScope": "logora.debate"
   },
   "teambit.dependencies/dependency-resolver": {
-    "packageManager": "teambit.dependencies/pnpm",
-    "linkCoreAspects": true
+    "policy": {
+      "dependencies": {
+        "lexical": "^0.32.1"
+      },
+      "peerDependencies": {}
+    },
+    "linkCoreAspects": true,
+    "packageManager": "teambit.dependencies/pnpm"
   },
   "teambit.preview/preview": {
     "bundlingStrategy": "component"
