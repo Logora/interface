@@ -1,17 +1,8 @@
 import React from 'react';
 
 export const CheckCircle = (props) => (
-    <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        {...props}
-    >
-        <circle cx="12" cy="12" r="10" />
-        <path d="M9 12l2 2 4-4" />
+    <svg width="50" height="50" viewBox="0 0 50 50" fill="#000" xmlns="http://www.w3.org/2000/svg" {...props}>
+        <path d="M50 25C50 38.8071 38.8071 50 25 50C11.1929 50 0 38.8071 0 25C0 11.1929 11.1929 0 25 0C38.8071 0 50 11.1929 50 25Z" fill="#E64415" />
+        <path d="M24.5801 13.3574C25.7924 13.3575 26.9552 13.839 27.8125 14.6963L28.0898 14.9736L28.2568 15.125C28.6636 15.4585 29.1755 15.6426 29.7061 15.6426H35.1426V29.3574H29.7061C28.4938 29.3574 27.3309 28.8757 26.4736 28.0186L26.1963 27.7412C25.7677 27.3126 25.1862 27.0714 24.5801 27.0713H19.1426V38.5H16.8574V13.3574H24.5801Z" fill="white"/>
     </svg>
 );

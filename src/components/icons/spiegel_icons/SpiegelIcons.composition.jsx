@@ -51,7 +51,7 @@ import { Versus } from './Versus';
 import { CheckCircle } from './CheckCircle';
 import { MinusCircle } from './MinusCircle';
 import { Flag } from './Flag';
-import  { PauseCircle} from './PauseCircle'
+import  { PauseCircle } from './PauseCircle'
 
 export const SpiegelIconsLibrary = () => {
     return (
