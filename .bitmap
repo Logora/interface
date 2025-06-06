@@ -397,7 +397,7 @@
     "icons/spiegel_icons": {
         "name": "icons/spiegel_icons",
         "scope": "logora.debate",
-        "version": "0.0.35",
+        "version": "0.0.36",
         "mainFile": "index.js",
         "rootDir": "src/components/icons/spiegel_icons"
     },
