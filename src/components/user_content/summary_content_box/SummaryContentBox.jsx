@@ -30,7 +30,11 @@ export const SummaryContentBox = ({ author, tag, date, title = '', content, link
                     }
                     <ReadMore 
                         content={translatedContent.translatedContent}
+<<<<<<< Updated upstream
                         contentCharCount={150}
+=======
+                        charCount={200}
+>>>>>>> Stashed changes
                         to={link} 
                         data-tid={"link_argument_read_more"}
                         target="_top"
