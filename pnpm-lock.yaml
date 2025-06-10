@@ -132,8 +132,8 @@ importers:
         specifier: 29.3.1
         version: 29.3.1(@types/node@20.12.10)
       lexical:
-        specifier: ^0.30.0
-        version: 0.30.0
+        specifier: ^0.32.1
+        version: 0.32.1
       path-to-regexp:
         specifier: ^6.3.0
         version: 6.3.0
@@ -6427,9 +6427,6 @@ packages:
   levn@0.4.1:
     resolution: {integrity: sha512-+bT2uH4E5LGE7h/n3evcS/sQlJXCpIp6ym8OWJ5eV6+67Dsql/LaaT7qJBAt2rzfoa/5QBGBhxDix1dMt2kQKQ==}
     engines: {node: '>= 0.8.0'}
-
-  lexical@0.30.0:
-    resolution: {integrity: sha512-6gxYeXaJiAcreJD0whCofvO0MuJmnWoIgIl1w7L5FTigfhnEohuCx2SoI/oywzfzXE9gzZnyr3rVvZrMItPL8A==}
 
   lexical@0.32.1:
     resolution: {integrity: sha512-Rvr9p00zUwzjXIqElIjMDyl/24QHw68yaqmXUWIT3lSdSAr8OpjSJK3iWBLZwVZwwpVhwShZRckomc+3vSb/zw==}
@@ -17563,8 +17560,6 @@ snapshots:
     dependencies:
       prelude-ls: 1.2.1
       type-check: 0.4.0
-
-  lexical@0.30.0: {}
 
   lexical@0.32.1: {}
 
