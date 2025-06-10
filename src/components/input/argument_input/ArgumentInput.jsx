@@ -45,11 +45,15 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
     const [inputActivation, setInputActivation] = useState(false);
     const [editElement, setEditElement] = useState({});
     const [savedArgument, setSavedArgument] = useSessionStorageState("userSide", {});
+    const [inputDisabledForVisitors, setInputDisabledForVisitors] = useState(!isLoggedIn && config?.actions?.disableInputForVisitor);
     const requireAuthentication = useAuthRequired();
     const { showModal } = useModal();
     const { toast } = useToast() || {};
     const urlParams = new URLSearchParams(typeof window !== "undefined" ? window.location.search : location.search);
-    const inputDisabledForVisitors = (!isLoggedIn && config?.actions?.disableInputForVisitor)
+
+    useEffect(() => {
+        setInputDisabledForVisitors(!isLoggedIn && config?.actions?.disableInputForVisitor);
+    }, [isLoggedIn, config]);
     // Checks if the user has the role of editor or moderator
     const isEditorOrModerator = currentUser?.role === "editor" || currentUser?.role === "moderator"
 
