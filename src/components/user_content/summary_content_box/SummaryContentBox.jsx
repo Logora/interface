@@ -29,7 +29,7 @@ export const SummaryContentBox = ({ author, tag, date, title = '', content, link
                         </div>
                     }
                     <ReadMore 
-                        content={translatedContent.translatedContent.replace(/&nbsp;/g, '')}
+                        content={translatedContent.translatedContent}
                         charCount={200}
                         to={link} 
                         data-tid={"link_argument_read_more"}
