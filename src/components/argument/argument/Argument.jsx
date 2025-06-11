@@ -191,7 +191,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupTyp
 						softDelete={config.actions?.softDelete}
 						deleteType={"messages"}
 						deleteListId={deleteListId}
-						enableReply={nestingLevel <= 2}
+						enableReply={nestingLevel <= 2 || (argument.author.role === "editor" || argument.author.role === "moderator")}
 						handleReplyTo={toggleReplyInput}
 						shareUrl={`https://app.logora.fr/share/a/${argument.id}`}
 						shareTitle={intl.formatMessage({ id: "share.argument.title", defaultMessage: "Share a debate" })}
