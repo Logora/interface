@@ -10,16 +10,15 @@ import styles from "./ContentHeader.module.scss";
 import PropTypes from "prop-types";
 
 export const ContentHeader = ({ author, tag, tagClassName, date, oneLine = false, disableLinks = false, selectedContent = false, isDeleted = false, moderationReason,
-	moderationNotes, moderationPolicyUrl, hideModerationReason = false }) => {
+	moderationNotes, moderationPolicyUrl, hideModerationReason = false, isModerationRejected, showModerationFeedback= false }) => {
 	const relativeTime = useRelativeTime(new Date(date).getTime());
 	const intl = useIntl();
 	const config = useConfig();
 
 	return (
 		<div className={styles.contentHeaderContainer}>
-			{moderationReason && !hideModerationReason && (
+			{isModerationRejected && showModerationFeedback && !hideModerationReason && (
 				<div className={styles.moderationInfo}>
-					{moderationReason && (
 						<div className={styles.moderationReason}>
 							<Icon name="announcement" width={18} height={18} className={styles.warningIcon} />
 							{intl.formatMessage({
@@ -27,15 +26,14 @@ export const ContentHeader = ({ author, tag, tagClassName, date, oneLine = false
 								defaultMessage: "Content rejected by moderation."
 							})}
 							{" "}
-							{intl.messages[`user_content.content_header.moderation_reason.${moderationReason.toLowerCase()}`]
-								? intl.formatMessage({
-									id: `user_content.content_header.moderation_reason.${moderationReason.toLowerCase()}`,
-									defaultMessage: ""
-								})
-								: null
-							}
+							{moderationReason && intl.messages[`user_content.content_header.moderation_reason.${moderationReason.toLowerCase()}`]
+                            ? intl.formatMessage({
+                                id: `user_content.content_header.moderation_reason.${moderationReason.toLowerCase()}`,
+                                defaultMessage: ""
+                            })
+                            : null
+                        }
 						</div>
-					)}
 					{moderationNotes && (
 						<div>
 							{intl.formatMessage(
@@ -130,4 +128,7 @@ ContentHeader.propTypes = {
 	moderationNotes: PropTypes.string,
 	/** Charte of moderation */
 	moderationPolicyUrl: PropTypes.string,
+	/** moderationStatus of the argument */
+	isModerationRejected: PropTypes.bool, 
+
 };

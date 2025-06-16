@@ -118,11 +118,11 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupTyp
 					tagClassName={styles[`headerPosition-${positionIndex}`]}
 					disableLinks={disableLinks}
 					isDeleted={argument.is_deleted}
-					{...(config.moderation?.showFeedback === true && {
-						moderationReason: argument.status === "rejected" && argument.moderation_entry?.moderation_reason,
-						moderationNotes: argument.status === "rejected" && argument.moderation_entry?.moderator_notes,
-						moderationPolicyUrl: argument.status === "rejected" && config.provider?.userGuideUrl
-					})}
+					isModerationRejected={argument.status == "rejected" }
+					showModerationFeedback={config.moderation?.showFeedback}
+					moderationReason={argument.moderation_entry?.moderation_reason}
+					moderationNotes={argument.moderation_entry?.moderator_notes}
+					moderationPolicyUrl={config.provider?.userGuideUrl}
 					hideModerationReason={hideModerationReason}
 				/>
 				{argument.is_deleted ?

@@ -24,7 +24,7 @@ const moderationPolicyUrl = "https://example.com/debate-rules";
 
 const moderationEntry = {
     id: faker.datatype.number({ min: 1000000, max: 9999999 }),
-    status: "accepted",
+    status: "rejected",
     moderation_score: faker.datatype.float({ min: 0, max: 1, precision: 0.001 }),
     moderation_reason: "INCOHERENT",
     moderator_notes: faker.datatype.boolean() ? faker.lorem.sentence() : null,
@@ -43,6 +43,11 @@ const routes = {
 };
 
 const tag = faker.word.noun(5);
+const config = {
+    moderation: {
+        showFeedback: true,
+    },
+};
 
 export const DefaultContentHeader = (props) => {
     return (
@@ -187,16 +192,18 @@ export const ContentHeaderWithBadge = (props) => {
 export const ContentHeaderWithModeration = (props) => {
     return (
         <BrowserRouter>
-            <ConfigProvider routes={{ ...routes }}>
+            <ConfigProvider routes={{ ...routes }} config={config}>
                 <IconProvider library={regularIcons}>
                     <IntlProvider locale="en">
                         <ContentHeader
                             author={props.author || author}
                             tag={props.tag || tag}
                             date={props.date || date}
+                            showModerationFeedback={config.moderation?.showFeedback}
                             moderationReason={moderationEntry.moderation_reason}
                             moderationNotes={moderationEntry.moderator_notes}
                             moderationPolicyUrl={moderationPolicyUrl}
+                            isModerationRejected={moderationEntry.status}
                         />
                     </IntlProvider>
                 </IconProvider>
