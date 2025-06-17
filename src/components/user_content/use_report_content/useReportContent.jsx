@@ -12,7 +12,7 @@ export const useReportContent = (reportableType, reportableId, modalTitle) => {
 	const requireAuthentication = useAuthRequired();
 
 	const reportContent = () => {
-		if (isLoggedIn) {
+		if (isLoggedIn || config.actions?.allowAnonymousReport === true ) {
 			showModal(
 				<Suspense fallback={null}>
 					<ReportModal
