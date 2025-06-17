@@ -10,7 +10,7 @@ export const EmbedHeader = ({ title, titleRedirectUrl, headerLabel, onlineUsersC
 		<div className={cx(styles.headerBox, className)}>
 			{ headerLabel &&
 				<div className={styles.headerBoxLabel}>
-					<Link to={titleRedirectUrl} target="_top" external data-tid="link_debate_index_embed">
+					<Link to={titleRedirectUrl} target="_top" external data-tid="link_debate_index_embed" rel="nofollow">
 						{ logoUrl ?
 							<img loading={"lazy"} className={styles.headerLogo} src={logoUrl} width={100} height={40} alt={logoAlt} />
 						:
@@ -33,7 +33,7 @@ export const EmbedHeader = ({ title, titleRedirectUrl, headerLabel, onlineUsersC
 				</div>
 			}
 			<div className={cx(styles.debateName, { [styles.left]: textLeft, [styles.debateNameWithLogo]: logoUrl})} data-testid={"debate-name"}>
-				<Link className={styles.debateLink} to={titleRedirectUrl} target="_top" external data-tid="link_debate_title_embed" rel="">
+				<Link className={styles.debateLink} to={titleRedirectUrl} target="_top" external data-tid="link_debate_title_embed" rel="nofollow">
 					{ title }
 				</Link>
 			</div>
