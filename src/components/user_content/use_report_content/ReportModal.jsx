@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Modal, useModal } from '@logora/debate.dialog.modal';
 import { useIntl } from 'react-intl';
 import { useDataProvider } from '@logora/debate.data.data_provider';
+import { useAuth } from "@logora/debate.auth.use_auth";
 import { Select } from '@logora/debate.input.select';
 import { Loader } from '@logora/debate.progress.loader';
 import { Button } from '@logora/debate.action.button';
@@ -19,6 +20,7 @@ export const ReportModal = (props) => {
     const { hideModal } = useModal();
     const dataProvider = useDataProvider();
     const [isChecked, setIsChecked] = useState(false);
+    const { isLoggedIn } = useAuth();
 
 
     const handleReportSubmit = (event) => {
@@ -81,61 +83,61 @@ export const ReportModal = (props) => {
                                             placeholder={intl.formatMessage({ id: "report.report_modal.description_input_placeholder", defaultMessage: "Tell us more" })}
                                         ></textarea>
                                     </div>
-                                    {props.allowAnonymousUser && (
-                                       <>
-                                           <div className={cx(styles.formGroup, styles.nameGroup)}>
-                                               <div className={styles.nameField}>
-                                                   <label htmlFor="firstName">
-                                                       { intl.formatMessage({ id: "report.report_modal.first_name", defaultMessage: "First Name" }) }
-                                                   </label>
-                                                   <input
-                                                       type="text"
-                                                       className={styles.formControl}
-                                                       id="firstName"
-                                                       value={firstName}
-                                                       onChange={(e) => setFirstName(e.target.value)}
-                                                   />
-                                               </div>
-                                               <div className={styles.nameField}>
-                                                   <label htmlFor="lastName">
-                                                       { intl.formatMessage({ id: "report.report_modal.last_name", defaultMessage: "Last Name" }) }
-                                                   </label>
-                                                   <input
-                                                       type="text"
-                                                       className={styles.formControl}
-                                                       id="lastName"
-                                                       value={lastName}
-                                                       onChange={(e) => setLastName(e.target.value)}
-                                                   />
-                                               </div>
-                                           </div>
-                                           <div className={styles.formGroup}>
-                                               <label htmlFor="email">
-                                                   { intl.formatMessage({ id: "report.report_modal.email", defaultMessage: "Email" }) }
-                                               </label>
-                                               <input
-                                                   type="email"
-                                                   className={styles.formControl}
-                                                   id="email"
-                                                   value={email}
-                                                   onChange={(e) => setEmail(e.target.value)}
-                                               />
-                                           </div>
-                                           <div className={styles.formGroup}>
+                                    {props.allowAnonymousUser && !isLoggedIn && (
+                                        <>
+                                            <div className={cx(styles.formGroup, styles.nameGroup)}>
+                                                <div className={styles.nameField}>
+                                                    <label htmlFor="firstName">
+                                                        {intl.formatMessage({ id: "report.report_modal.first_name_input_label", defaultMessage: "First Name" })}
+                                                    </label>
+                                                    <input
+                                                        type="text"
+                                                        className={styles.formControl}
+                                                        id="firstName"
+                                                        value={firstName}
+                                                        onChange={(e) => setFirstName(e.target.value)}
+                                                    />
+                                                </div>
+                                                <div className={styles.nameField}>
+                                                    <label htmlFor="lastName">
+                                                        {intl.formatMessage({ id: "report.report_modal.last_name_input_label", defaultMessage: "Last Name" })}
+                                                    </label>
+                                                    <input
+                                                        type="text"
+                                                        className={styles.formControl}
+                                                        id="lastName"
+                                                        value={lastName}
+                                                        onChange={(e) => setLastName(e.target.value)}
+                                                    />
+                                                </div>
+                                            </div>
+                                            <div className={styles.formGroup}>
+                                                <label htmlFor="email">
+                                                    {intl.formatMessage({ id: "report.report_modal.email_input_label", defaultMessage: "Email" })}
+                                                </label>
+                                                <input
+                                                    type="email"
+                                                    className={styles.formControl}
+                                                    id="email"
+                                                    value={email}
+                                                    onChange={(e) => setEmail(e.target.value)}
+                                                />
+                                            </div>
+                                            <div className={styles.formGroup}>
                                                 <label className={styles.checkboxLabel}>
-                                                    <input 
-                                                        type="checkbox" 
+                                                    <input
+                                                        type="checkbox"
                                                         checked={isChecked}
                                                         onChange={(e) => setIsChecked(e.target.checked)}
                                                     />
-                                                    {intl.formatMessage({ 
-                                                        id: "report.report_modal.declaration", 
-                                                        defaultMessage: "By submitting this report, I declare that the information provided is, to my knowledge, accurate and complete." 
+                                                    {intl.formatMessage({
+                                                        id: "report.report_modal.declaration",
+                                                        defaultMessage: "By submitting this report, I declare that the information provided is, to my knowledge, accurate and complete."
                                                     })}
                                                 </label>
                                             </div>
-                                       </>
-                                   )}
+                                        </>
+                                    )}
                                     <div className={cx(styles.formGroup, styles.reportFormSubmit)}>
                                         <Button handleClick={() => null} data-tid={"action_submit_report"} type="submit">
                                             {intl.formatMessage({ id: "report.report_modal.submit_label", defaultMessage: "Send" })}
