@@ -3,15 +3,13 @@ import { Argument } from "@logora/debate.argument.argument";
 import { SuggestionBox } from "@logora/debate.suggestion.suggestion_box";
 import { ProposalBox } from "@logora/debate.proposal.proposal_box";
 import { useIntl } from "react-intl";
-import { useConfig } from '@logora/debate.data.config_provider';
 import { Icon } from '@logora/debate.icons.icon';
 import styles from './ReportBox.module.scss';
 
 export const ReportBox = ({ report }) => {
   const intl = useIntl();
   const displayedReport = report;
-  const config = useConfig();
-  
+
 
   const renderReportContent = (report) => {
     const { reportable_type, reportable } = report;
@@ -77,9 +75,9 @@ export const ReportBox = ({ report }) => {
                 })}{" "}
                 {intl.messages[`user_content.content_header.moderation_reason.${displayedReport.classification.toLowerCase()}`]
                   ? intl.formatMessage({
-                      id: `user_content.content_header.moderation_reason.${displayedReport.classification.toLowerCase()}`,
-                      defaultMessage: displayedReport.classification
-                    })
+                    id: `user_content.content_header.moderation_reason.${displayedReport.classification.toLowerCase()}`,
+                    defaultMessage: displayedReport.classification
+                  })
                   : displayedReport.classification}
               </div>
             )}
