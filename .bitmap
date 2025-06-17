@@ -68,7 +68,7 @@
     "argument/top_arguments": {
         "name": "argument/top_arguments",
         "scope": "logora.debate",
-        "version": "0.0.155",
+        "version": "0.0.156",
         "mainFile": "index.js",
         "rootDir": "src/components/argument/top_arguments"
     },
@@ -264,7 +264,7 @@
     "embed/embed_header": {
         "name": "embed/embed_header",
         "scope": "logora.debate",
-        "version": "0.0.67",
+        "version": "0.0.68",
         "mainFile": "index.js",
         "rootDir": "src/components/embed/embed_header"
     },
