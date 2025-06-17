@@ -68,9 +68,6 @@ const reportArgumentPending =
     },
     };
   const config = {
-    moderation: {
-        showFeedback: false,
-    },
     modules: {
         suggestions: {
             vote_goal: 30
