@@ -3,18 +3,21 @@ import { Argument } from "@logora/debate.argument.argument";
 import { SuggestionBox } from "@logora/debate.suggestion.suggestion_box";
 import { ProposalBox } from "@logora/debate.proposal.proposal_box";
 import { useIntl } from "react-intl";
+import { useConfig } from '@logora/debate.data.config_provider';
 import { Icon } from '@logora/debate.icons.icon';
 import styles from './ReportBox.module.scss';
 
 export const ReportBox = ({ report }) => {
   const intl = useIntl();
   const displayedReport = report;
+  const config = useConfig();
+  
 
   const renderReportContent = (report) => {
     const { reportable_type, reportable } = report;
     switch (reportable_type) {
       case "Message":
-        return <Argument argument={reportable} hideReplies={true} hideFooter={true} hideModerationReason={true} />;
+        return <Argument argument={reportable} hideReplies={true} hideFooter={true} showModerationFeedback={config.moderation?.showFeedback === false} />;
       case "Proposal":
         return <ProposalBox proposal={reportable} hideFooter={true} />;
       case "Group":

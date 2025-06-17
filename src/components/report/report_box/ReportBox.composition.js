@@ -69,7 +69,7 @@ const reportArgumentPending =
     };
   const config = {
     moderation: {
-        showFeedback: true,
+        showFeedback: false,
     },
     modules: {
         suggestions: {

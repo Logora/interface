@@ -10,30 +10,30 @@ import styles from "./ContentHeader.module.scss";
 import PropTypes from "prop-types";
 
 export const ContentHeader = ({ author, tag, tagClassName, date, oneLine = false, disableLinks = false, selectedContent = false, isDeleted = false, moderationReason,
-	moderationNotes, moderationPolicyUrl, hideModerationReason = false, isModerationRejected, showModerationFeedback= false }) => {
+	moderationNotes, moderationPolicyUrl, showModerationFeedback = false }) => {
 	const relativeTime = useRelativeTime(new Date(date).getTime());
 	const intl = useIntl();
 	const config = useConfig();
 
 	return (
 		<div className={styles.contentHeaderContainer}>
-			{isModerationRejected && showModerationFeedback && !hideModerationReason && (
+			{showModerationFeedback && (
 				<div className={styles.moderationInfo}>
-						<div className={styles.moderationReason}>
-							<Icon name="announcement" width={18} height={18} className={styles.warningIcon} />
-							{intl.formatMessage({
-								id: "user_content.content_header.moderation_reason",
-								defaultMessage: "Content rejected by moderation."
-							})}
-							{" "}
-							{moderationReason && intl.messages[`user_content.content_header.moderation_reason.${moderationReason.toLowerCase()}`]
-                            ? intl.formatMessage({
-                                id: `user_content.content_header.moderation_reason.${moderationReason.toLowerCase()}`,
-                                defaultMessage: ""
-                            })
-                            : null
-                        }
-						</div>
+					<div className={styles.moderationReason}>
+						<Icon name="announcement" width={18} height={18} className={styles.warningIcon} />
+						{intl.formatMessage({
+							id: "user_content.content_header.moderation_reason",
+							defaultMessage: "Content rejected by moderation."
+						})}
+						{" "}
+						{moderationReason && intl.messages[`user_content.content_header.moderation_reason.${moderationReason.toLowerCase()}`]
+							? intl.formatMessage({
+								id: `user_content.content_header.moderation_reason.${moderationReason.toLowerCase()}`,
+								defaultMessage: ""
+							})
+							: null
+						}
+					</div>
 					{moderationNotes && (
 						<div>
 							{intl.formatMessage(
@@ -128,7 +128,4 @@ ContentHeader.propTypes = {
 	moderationNotes: PropTypes.string,
 	/** Charte of moderation */
 	moderationPolicyUrl: PropTypes.string,
-	/** moderationStatus of the argument */
-	isModerationRejected: PropTypes.bool, 
-
 };

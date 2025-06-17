@@ -22,7 +22,7 @@ import styles from "./Argument.module.scss";
 const ArgumentInput = lazy(() => import('@logora/debate.input.argument_input'));
 import PropTypes from "prop-types";
 
-export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupType, groupName, positions = [], disableLinks = false, parentArgument, flashParent, expandable, disabled = false, hideFooter = false, hideReplies, vote, fixedContentHeight = false, enableEdition = true, deleteListId, hideModerationReason = false }) => {
+export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupType, groupName, positions = [], disableLinks = false, parentArgument, flashParent, expandable, disabled = false, hideFooter = false, hideReplies, vote, fixedContentHeight = false, enableEdition = true, deleteListId }) => {
 	const intl = useIntl();
 	const { isLoggedIn, currentUser } = useAuth();
 	const config = useConfig();
@@ -118,12 +118,10 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupTyp
 					tagClassName={styles[`headerPosition-${positionIndex}`]}
 					disableLinks={disableLinks}
 					isDeleted={argument.is_deleted}
-					isModerationRejected={argument.status == "rejected" }
-					showModerationFeedback={config.moderation?.showFeedback}
+					showModerationFeedback={argument.status == "rejected" && config.moderation?.showFeedback === true}
 					moderationReason={argument.moderation_entry?.moderation_reason}
 					moderationNotes={argument.moderation_entry?.moderator_notes}
 					moderationPolicyUrl={config.provider?.userGuideUrl}
-					hideModerationReason={hideModerationReason}
 				/>
 				{argument.is_deleted ?
 					<div className={styles.argumentDeletedBody}>
