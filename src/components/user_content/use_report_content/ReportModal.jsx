@@ -35,7 +35,7 @@ export const ReportModal = (props) => {
             email: email
         };
         setStep('LOADING');
-        dataProvider.create("reports", data).then(response => {
+        dataProvider.create("reports", data, {}, false).then(response => {
             setStep('SUCCESS');
         }, error => {
             setStep('SUCCESS');
