@@ -23,6 +23,7 @@ export const ReportModal = (props) => {
     const { isLoggedIn } = useAuth();
 
 
+
     const handleReportSubmit = (event) => {
         event.preventDefault();
         const data = {
@@ -35,7 +36,7 @@ export const ReportModal = (props) => {
             email: email
         };
         setStep('LOADING');
-        dataProvider.create("reports", data, {}, false).then(response => {
+        dataProvider.create("reports", data, {}, isLoggedIn).then(response => {
             setStep('SUCCESS');
         }, error => {
             setStep('SUCCESS');
