@@ -242,7 +242,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupTyp
 								avatarSize={40}
 								placeholder={intl.formatMessage({ id: "input.reply_input.your_answer", defaultMessage: "Your answer" })}
 								userGuideUrl={config?.provider?.userGuideUrl}
-								hideUserGuideLink={config?.provider?.hideUserGuideLink ?? false}
+								hideUserGuideLink={config?.provider?.hideUserGuideLink}
 							/>
 						</Suspense>
 					)}
