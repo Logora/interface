@@ -83,7 +83,7 @@ export const AuthorBox = ({
                                 <>
                                     <span className={styles.separator}></span>
                                     <div className={styles.authorEloquence}>
-                                        <span>{ intl.formatMessage({ id: "badge." + eloquenceTitle + ".reward", defaultMessage: "Eloquence title" }) }</span>
+                                        <span>{ intl.formatMessage({ id: "gamification.badge_box." + eloquenceTitle + ".reward", defaultMessage: "Eloquence title" }) }</span>
                                     </div>
                                 </>
                             }
