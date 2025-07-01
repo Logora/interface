@@ -9,16 +9,6 @@ export const useUpdateUserInfo = () => {
 	const { showModal } = useModal();
 	const config = useConfig();
 
-	useEffect(() => {
-		if (
-			isLoggedIn &&
-			currentUser.is_onboarded === false &&
-			config.auth?.showOnboarding === true
-		) {
-			showUpdateUserInfoModal();
-		}
-	}, [currentUser, isLoggedIn, config.auth.showOnboarding]);
-
 	const showUpdateUserInfoModal = () => {
 		showModal(
 			<UpdateUserInfoModal
@@ -34,6 +24,16 @@ export const useUpdateUserInfo = () => {
 			/>,
 		);
 	};
+
+	useEffect(() => {
+		if (
+			isLoggedIn &&
+			currentUser.is_onboarded === false &&
+			config.auth?.showOnboarding === true
+		) {
+			showUpdateUserInfoModal();
+		}
+	}, [isLoggedIn, config.auth?.showOnboarding]);
 
 	return null;
 };

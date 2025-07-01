@@ -2,7 +2,7 @@ import React, { createContext, useState } from "react";
 
 export const ModalContext = createContext();
 
-export const ModalProvider = (props) => {
+export const ModalProvider = ({ children }) => {
     const [modalComponent, setModalComponent] = useState(null);
 
     const showModal = (modal) => {
@@ -13,18 +13,14 @@ export const ModalProvider = (props) => {
         setModalComponent(null);
     }
 
+    const isModalPresent = modalComponent !== null;
+
     return (
-        <ModalContext.Provider value={{ showModal, hideModal }}>
-            {props.children}
+        <ModalContext.Provider value={{ showModal, hideModal, isModalPresent }}>
+            {children}
             { modalComponent ?
                 <>{ modalComponent }</>
             : null }
         </ModalContext.Provider>
     );
 }
-
-export const withModal = Component => props => (
-    <ModalContext.Consumer>
-        {context => <Component {...props} {...context} />}
-    </ModalContext.Consumer>
-)
