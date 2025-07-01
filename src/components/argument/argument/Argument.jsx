@@ -22,7 +22,7 @@ import styles from "./Argument.module.scss";
 const ArgumentInput = lazy(() => import('@logora/debate.input.argument_input'));
 import PropTypes from "prop-types";
 
-export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupType, groupName, positions = [], disableLinks = false, parentArgument, flashParent, expandable, disabled = false, hideFooter = false, hideReplies, vote, fixedContentHeight = false, enableEdition = true, deleteListId }) => {
+export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupType, groupName, positions = [], disableLinks = false, parentArgument, flashParent, expandable, disabled = false, hideFooter = false, hideReplies, vote, fixedContentHeight = false, enableEdition = true, deleteListId, showModerationFeedback }) => {
 	const intl = useIntl();
 	const { isLoggedIn, currentUser } = useAuth();
 	const config = useConfig();
@@ -118,7 +118,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupTyp
 					tagClassName={styles[`headerPosition-${positionIndex}`]}
 					disableLinks={disableLinks}
 					isDeleted={argument.is_deleted}
-					showModerationFeedback={argument.status == "rejected" && config.moderation?.showFeedback === true}
+					showModerationFeedback={showModerationFeedback ?? (argument.status === "rejected" && config.moderation?.showFeedback === true)}
 					moderationReason={argument.moderation_entry?.moderation_reason}
 					moderationNotes={argument.moderation_entry?.moderator_notes}
 					moderationPolicyUrl={config.provider?.userGuideUrl}
@@ -149,7 +149,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupTyp
 										fullWidth
 									/>
 								</div>
-							:
+								:
 								<ReadMore
 									content={
 										<>
@@ -242,6 +242,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupTyp
 								avatarSize={40}
 								placeholder={intl.formatMessage({ id: "input.reply_input.your_answer", defaultMessage: "Your answer" })}
 								userGuideUrl={config?.provider?.userGuideUrl}
+								hideUserGuideLink={config?.provider?.hideUserGuideLink}
 							/>
 						</Suspense>
 					)}

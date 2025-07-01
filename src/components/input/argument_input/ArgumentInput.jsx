@@ -23,7 +23,7 @@ import cx from 'classnames';
 import styles from './ArgumentInput.module.scss';
 import PropTypes from "prop-types";
 
-export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = false, positions = [], disabledPositions = [], groupId, groupName, groupType, hideSourceAction = false, isReply = false, onSubmit, parentId, placeholder, positionId, focusOnInit = false, userGuideUrl }) => {
+export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = false, positions = [], disabledPositions = [], groupId, groupName, groupType, hideSourceAction = false, isReply = false, onSubmit, parentId, placeholder, positionId, focusOnInit = false, userGuideUrl, hideUserGuideLink = false }) => {
     const intl = useIntl();
     const api = useDataProvider();
     const list = useList();
@@ -351,7 +351,7 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
                                         <div className={styles.argumentInputWarningText}>{displayArgumentLimitWarning()}</div>
                                     </div>
                                 }
-                                {userGuideUrl && (
+                                {userGuideUrl && !hideUserGuideLink &&(
                                     <div className={styles.guideMessage}>
                                         <FormattedMessage
                                             id="alert.guide_message"

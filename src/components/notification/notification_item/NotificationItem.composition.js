@@ -32,6 +32,23 @@ const httpClient = {
 
 const data = dataProvider(httpClient, "https://mock.example.api");
 
+
+const notificationItemContentRejected = {
+  id: 415,
+  created_at: faker.date.recent(),
+  notify_type: 'content_rejected'
+};
+
+const notificationDefinitionsContentRejected = {
+  content_rejected: {
+    getImage: () => <img src={faker.image.abstract()} />,
+    getContent: () => faker.commerce.productDescription(),
+    getRedirectUrl: () => ({
+      pathname: "https://www.example.com/moderation-policy"
+    })
+  },
+}
+
 export const DefaultNotificationItem = () => {
   return (
     <MemoryRouter>
@@ -63,6 +80,26 @@ export const NotificationItemWithReadStatus = () => {
                 notification={notificationItem}
                 notificationDefinitions={notificationDefinitions}
                 isRead={true}
+              />
+            </IconProvider>
+          </IntlProvider>
+        </DataProviderContext.Provider>
+      </ConfigProvider>
+    </MemoryRouter>
+  );
+};
+
+export const NotificationItemWithRedirectUrl = () => {
+  return (
+    <MemoryRouter>
+      <ConfigProvider config={{}}>
+        <DataProviderContext.Provider value={{ dataProvider: data }}>
+          <IntlProvider locale="en">
+            <IconProvider library={regularIcons}>
+              <NotificationItem
+                notification={notificationItemContentRejected}
+                notificationDefinitions={notificationDefinitionsContentRejected}
+                isRead={false}
               />
             </IconProvider>
           </IntlProvider>

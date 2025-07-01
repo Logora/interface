@@ -4,6 +4,7 @@ import { useRelativeTime } from '@logora/debate.hooks.use_relative_time';
 import { useRoutes } from '@logora/debate.data.config_provider';
 import { useDataProvider } from '@logora/debate.data.data_provider';
 import { useIntl } from 'react-intl';
+import { useConfig } from '@logora/debate.data.config_provider';
 import PropTypes from "prop-types";
 import cx from 'classnames';
 import styles from './NotificationItem.module.scss';
@@ -15,6 +16,8 @@ export const NotificationItem = ({ notification, notificationDefinitions = {}, i
     const api = useDataProvider();
     const navigate = useNavigate();
     const relativeTime = useRelativeTime(new Date(created_at).getTime());
+    const config = useConfig();
+    
 
     if (!(notify_type in notificationDefinitions)) {
         return null;
@@ -24,17 +27,20 @@ export const NotificationItem = ({ notification, notificationDefinitions = {}, i
 
     const handleClick = () => {
         if (typeof window !== 'undefined') {
-            const redirectUrl = notificationSettings.getRedirectUrl(notification, routes);
-            navigate(redirectUrl);
+            const redirectUrl = notificationSettings.getRedirectUrl(notification, routes, config);
+    
+            if (redirectUrl?.pathname?.startsWith("http")) {
+                window.location.href = redirectUrl.pathname;
+            } else {
+                navigate(redirectUrl);
+            }
         }
-        if (is_opened == false) {
-            api.create(`notifications/read/${id}`, {}).then(() => {
-                null;
-            }).catch(() => {
-                null;
-            })
+    
+        if (!is_opened) {
+            api.create(`notifications/read/${id}`, {}).catch(() => {});
         }
-    }
+    };
+    
 
     return (
         <div className={styles.notificationItem} tabIndex="0" onClick={() => handleClick()}>
