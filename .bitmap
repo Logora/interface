@@ -796,7 +796,7 @@
     "user/update_user_info_modal": {
         "name": "user/update_user_info_modal",
         "scope": "logora.debate",
-        "version": "0.0.82",
+        "version": "0.0.83",
         "mainFile": "index.js",
         "rootDir": "src/components/user/update_user_info_modal"
     },
