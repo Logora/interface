@@ -6,7 +6,7 @@ import { UpdateUserInfoModal } from "./UpdateUserInfoModal";
 
 export const useUpdateUserInfo = () => {
 	const { currentUser, isLoggedIn } = useAuth();
-	const { showModal } = useModal();
+	const { showModal, isModalPresent } = useModal();
 	const config = useConfig();
 
 	const showUpdateUserInfoModal = () => {
@@ -27,13 +27,14 @@ export const useUpdateUserInfo = () => {
 
 	useEffect(() => {
 		if (
+			!isModalPresent &&
 			isLoggedIn &&
 			currentUser.is_onboarded === false &&
 			config.auth?.showOnboarding === true
 		) {
 			showUpdateUserInfoModal();
 		}
-	}, [isLoggedIn, config.auth?.showOnboarding]);
+	}, [isModalPresent, isLoggedIn, config.auth?.showOnboarding]);
 
 	return null;
 };
