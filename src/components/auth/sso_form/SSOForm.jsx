@@ -26,11 +26,12 @@ export const SSOForm = ({
 	hideLoginButton = false,
 	showEmailConsent = false,
 	showTerms = false,
+	hideBelowButton = false,
 	error = false,
 }) => {
 	const [emailConsent, setEmailConsent] = showEmailConsent
 		? useSessionStorageState(EMAIL_CONSENT_STORAGE_KEY, false)
-		: [false, () => {}];
+		: [false, () => { }];
 	const intl = useIntl();
 	const location = useLocation();
 
@@ -152,82 +153,87 @@ export const SSOForm = ({
 							defaultMessage: "Sign up",
 						})}
 					</Button>
-					{hideLoginButton === true ? null : (
-						<div className={styles.cgu}>
-							{intl.formatMessage({
-								id: "auth.sso_form.already_account",
-								defaultMessage: "Already have an account ?",
-							})}
-							<a
-								className={styles.signupButton}
-								data-testid={"signin-link"}
-								data-tid={"link_login"}
-								rel="nofollow"
-								href={loginLink}
-							>
-								{intl.formatMessage({
-									id: "auth.sso_form.signin",
-									defaultMessage: "Sign in",
-								})}
-							</a>
-						</div>
-					)}
-					{showEmailConsent ? (
-						<div className={cx(styles.switchBox)}>
-							<Toggle
-								type={"checkbox"}
-								name={"accepts_provider_email"}
-								style={{ fontSize: 18 }}
-								checked={emailConsent}
-								label={intl.formatMessage(
-									{
-										id: "auth.sso_form.consent_label",
-										defaultMessage: "I agree to receive emails from the editor",
-									},
-									{ variable: providerName },
-								)}
-								onInputChanged={(_e) => setEmailConsent(!emailConsent)}
-								data-testid={"accepts-email-input"}
-							/>
-						</div>
-					) : null}
-					{error ? (
-						<div className={styles.error}>
-							{intl.formatMessage({
-								id: "auth.sso_form.error",
-								defaultMessage:
-									"An error occurred during sign in. Please try again in a few moments.",
-							})}
-						</div>
-					) : null}
-					{showTerms && (
+					{hideBelowButton ? null : (
 						<>
-							<div className={styles.cguButton}>
-								<FormattedMessage
-									id="auth.sso_form.terms"
-									defaultMessage="By clicking on « Sign up », I declare that I have read the <var1> General Conditions of Use </var1> of the debate space and accept them"
-									values={{
-										var1: (chunks) => (
-											<a
-												className={styles.termsTarget}
-												target="_blank"
-												href={termsUrl}
-												rel="noreferrer"
-											>
-												{chunks}
-											</a>
-										),
-									}}
-								/>
-							</div>
-							<div className={styles.cguButton}>
-								<FormattedMessage
-									id="auth.sso_form.data_terms"
-									defaultMessage={
-										"Your personal data are being processed by the Editor. For more information and to exercise your rights, see our personal data policy available on the site."
-									}
-								/>
-							</div>
+
+							{hideLoginButton === true ? null : (
+								<div className={styles.cgu}>
+									{intl.formatMessage({
+										id: "auth.sso_form.already_account",
+										defaultMessage: "Already have an account ?",
+									})}
+									<a
+										className={styles.signupButton}
+										data-testid={"signin-link"}
+										data-tid={"link_login"}
+										rel="nofollow"
+										href={loginLink}
+									>
+										{intl.formatMessage({
+											id: "auth.sso_form.signin",
+											defaultMessage: "Sign in",
+										})}
+									</a>
+								</div>
+							)}
+							{showEmailConsent ? (
+								<div className={cx(styles.switchBox)}>
+									<Toggle
+										type={"checkbox"}
+										name={"accepts_provider_email"}
+										style={{ fontSize: 18 }}
+										checked={emailConsent}
+										label={intl.formatMessage(
+											{
+												id: "auth.sso_form.consent_label",
+												defaultMessage: "I agree to receive emails from the editor",
+											},
+											{ variable: providerName },
+										)}
+										onInputChanged={(_e) => setEmailConsent(!emailConsent)}
+										data-testid={"accepts-email-input"}
+									/>
+								</div>
+							) : null}
+							{error ? (
+								<div className={styles.error}>
+									{intl.formatMessage({
+										id: "auth.sso_form.error",
+										defaultMessage:
+											"An error occurred during sign in. Please try again in a few moments.",
+									})}
+								</div>
+							) : null}
+							{showTerms && (
+								<>
+									<div className={styles.cguButton}>
+										<FormattedMessage
+											id="auth.sso_form.terms"
+											defaultMessage="By clicking on « Sign up », I declare that I have read the <var1> General Conditions of Use </var1> of the debate space and accept them"
+											values={{
+												var1: (chunks) => (
+													<a
+														className={styles.termsTarget}
+														target="_blank"
+														href={termsUrl}
+														rel="noreferrer"
+													>
+														{chunks}
+													</a>
+												),
+											}}
+										/>
+									</div>
+									<div className={styles.cguButton}>
+										<FormattedMessage
+											id="auth.sso_form.data_terms"
+											defaultMessage={
+												"Your personal data are being processed by the Editor. For more information and to exercise your rights, see our personal data policy available on the site."
+											}
+										/>
+									</div>
+								</>
+							)}
 						</>
 					)}
 				</>

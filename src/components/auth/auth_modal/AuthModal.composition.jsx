@@ -75,3 +75,34 @@ export const AuthModalSSO = () => {
         </div>
     );
 };
+
+export const AuthModalSSOHideBelowButton = () => {
+    const data = dataProvider(httpClient, "https://mock.example.api");
+    const newConfig = {
+        shortname: "myapp",
+        auth: {
+            type: "sso",
+            hideBelowButton: true,
+        }
+    };
+
+    return (
+        <div style={{width: "400px", height: "300px"}}>
+            <MemoryRouter>
+                <ConfigProvider config={newConfig}>
+                    <IconProvider library={regularIcons}>
+                        <IntlProvider locale="en">
+                            <DataProviderContext.Provider value={{ dataProvider: data }}>
+                                <AuthProvider>
+                                    <ModalProvider>
+                                        <AuthModal onHideModal={null} />
+                                    </ModalProvider>
+                                </AuthProvider>
+                            </DataProviderContext.Provider>
+                        </IntlProvider>
+                    </IconProvider>
+                </ConfigProvider>
+            </MemoryRouter>
+        </div>
+    );
+};
