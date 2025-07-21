@@ -1,18 +1,12 @@
 import React, { useState, useEffect , createContext} from 'react';
 import PropTypes from "prop-types";
 
-export const IconContext = createContext();
+export const IconContext = createContext({ iconLibrary: {} });
 
 export const IconProvider = ({ library, children }) => {
-    const [iconLibrary, setIconLibrary] = useState(null);
-
-    useEffect(() => {
-        setIconLibrary(library);
-    }, [library]);
-
     return (
-        <IconContext.Provider value={{ iconLibrary }}>
-            { children }
+        <IconContext.Provider value={{ iconLibrary: library }}>
+            {children}
         </IconContext.Provider>
     );
 }
