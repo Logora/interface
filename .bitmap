@@ -387,6 +387,20 @@
         "mainFile": "index.js",
         "rootDir": "src/components/icons/icon_provider"
     },
+    "icons/krone_icons": {
+        "name": "icons/krone_icons",
+        "scope": "",
+        "version": "",
+        "defaultScope": "logora.debate",
+        "mainFile": "index.js",
+        "rootDir": "src/components/icons/krone_icons",
+        "config": {
+            "teambit.react/react-env@1.0.131": {},
+            "teambit.envs/envs": {
+                "env": "teambit.react/react-env"
+            }
+        }
+    },
     "icons/regular_icons": {
         "name": "icons/regular_icons",
         "scope": "logora.debate",
