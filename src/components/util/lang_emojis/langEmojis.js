@@ -32,6 +32,10 @@ const LANGUAGES = [
         icon: " 🇧🇷"
     },
     {
+        name: "fi",
+        icon: " 🇫🇮"
+    },
+    {
         name: "fr-CH",
         icon: " 🇨🇭 🇫🇷"
     },
