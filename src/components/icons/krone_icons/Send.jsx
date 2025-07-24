@@ -13,7 +13,7 @@ export const Send = (props) => (
         <rect width="24" height="24" fill="#D9D9D9" />
       </mask>
       <g>
-        <path d="M3 20V14L11 12L3 10V4L22 12L3 20Z" fill="black" />
+        <path d="M3 20V14L11 12L3 10V4L22 12L3 20Z" />
       </g>
     </svg>
 )
