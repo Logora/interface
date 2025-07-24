@@ -6,7 +6,7 @@ import { Blockquote } from "./Blockquote"
 import { Bold } from "./Bold"
 import { Camera } from "./Camera"
 import { Chat } from "./Chat"
-// import { Checkbox } from "./Checkbox"
+import { CheckBox } from "./CheckBox"
 import { Check } from "./Check"
 import { Clap } from "./Clap"
 import { Clock } from "./Clock"
@@ -65,7 +65,7 @@ export const KroneIconsLibrary = () => {
             <Bold width={50} height={50} data-testid={"bold-icon"} style={{ margin: "15px" }} />
             <Camera width={50} height={50} data-testid={"camera-icon"} style={{ margin: "15px" }} />
             <Chat width={50} height={50} data-testid={"chat-icon"} style={{ margin: "15px" }} />
-            {/* <Checkbox width={50} height={50} data-testid={"checkbox-icon"} style={{ margin: "15px" }} /> */}
+            <CheckBox width={50} height={50} data-testid={"checkbox-icon"} style={{ margin: "15px" }} />
             <Check width={50} height={50} data-testid={"checkbox-icon"} style={{ margin: "15px" }} />
             <Clap width={50} height={50} data-testid={"clap-icon"} style={{ margin: "15px" }} />
             <Clock width={50} height={50} data-testid={"clock-icon"} style={{ margin: "15px" }} />

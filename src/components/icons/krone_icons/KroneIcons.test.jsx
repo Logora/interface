@@ -6,8 +6,8 @@ describe('Krone icons', () => {
     it ('renders KroneIconsLibrary component', () => {  
         render(<KroneIconsLibrary />);
 
-        const arrowdropdown = screen.getByTestId("arrowdropdown-icon");
-        expect(arrowdropdown).toBeTruthy();
+        const arrow = screen.getByTestId("arrow-icon");
+        expect(arrow).toBeTruthy();
         
         const checkbox = screen.getByTestId("checkbox-icon");
         expect(checkbox).toBeTruthy();
