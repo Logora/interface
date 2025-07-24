@@ -1,7 +1,7 @@
 import React from 'react';
 
-export const Group = (props) => (
-  <svg
+export const User = (props) => (
+    <svg
     width="24"
     height="24"
     viewBox="0 0 24 24"
@@ -27,4 +27,4 @@ export const Group = (props) => (
       />
     </g>
   </svg>
-);
+)

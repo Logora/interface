@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const ErrorCircle = (props) => (
+export const Announcement = (props) => (
   <svg
     {...props} 
     width={props.width || "50"} 

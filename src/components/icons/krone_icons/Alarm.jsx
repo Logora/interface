@@ -1,7 +1,7 @@
 import React from 'react';
 
-export const NotificationBellIcon = (props) => (
-  <svg
+export const Alarm = (props) => (
+    <svg
     {...props} 
     width={props.width || "24"} 
     height={props.height || "24"}
@@ -27,4 +27,4 @@ export const NotificationBellIcon = (props) => (
       />
     </g>
   </svg>
-);
+)

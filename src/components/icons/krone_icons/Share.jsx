@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const ArrowDropdown = (props) => (
+export const Share = (props) => (
   <svg
     width="24"
     height="24"
@@ -10,8 +10,8 @@ export const ArrowDropdown = (props) => (
     {...props}
   >
     <path
-      d="M17.9999 9.70492L16.5899 8.29492L11.9999 12.8749L7.40991 8.29492L5.99991 9.70492L11.9999 15.7049L17.9999 9.70492Z"
+      d="M12.5147 7.26316C3.84082 7.26316 2.61516 16.4211 3.08657 21C4.97221 13.4211 10.1577 12.1579 12.5147 12.4737V16.7368L21 10.1053L12.5147 3V7.26316Z"
       fill="black"
     />
   </svg>
-);
+)
