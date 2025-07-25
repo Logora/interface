@@ -12,7 +12,7 @@ import styles from './ReportModal.module.scss';
 export const ReportModal = (props) => {
     const [step, setStep] = useState('SUBMIT');
     const [reportDescription, setReportDescription] = useState("");
-    const [reportType, setReportType] = useState(null);
+    const [reportType, setReportType] = useState("TOXICITY");
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
@@ -21,8 +21,6 @@ export const ReportModal = (props) => {
     const dataProvider = useDataProvider();
     const [isChecked, setIsChecked] = useState(false);
     const { isLoggedIn } = useAuth();
-
-
 
     const handleReportSubmit = (event) => {
         event.preventDefault();
