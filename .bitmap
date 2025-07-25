@@ -565,7 +565,7 @@
     "report/report_box": {
         "name": "report/report_box",
         "scope": "logora.debate",
-        "version": "0.0.49",
+        "version": "0.0.50",
         "mainFile": "index.js",
         "rootDir": "src/components/report/report_box"
     },
