@@ -24,16 +24,17 @@
   gap: spacing.$spacer-xs;
   margin-bottom: spacing.$spacer-md;
   font-size: theme.$font-size-small;
+  align-items: center;
 }
 
 svg.warningIcon {
   circle {
-    stroke: theme.$info-primary;
+    stroke: theme.$against-primary;
     stroke-width: 1.5px;
   }
 
   path {
-    fill: theme.$info-primary;
+    fill: theme.$against-primary;
   }
 }
 
