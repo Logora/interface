@@ -16,10 +16,10 @@ export const ReportModal = (props) => {
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
+    const [isChecked, setIsChecked] = useState(false);
     const intl = useIntl();
     const { hideModal } = useModal();
     const dataProvider = useDataProvider();
-    const [isChecked, setIsChecked] = useState(false);
     const { isLoggedIn } = useAuth();
 
     const handleReportSubmit = (event) => {
