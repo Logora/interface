@@ -18,7 +18,7 @@ export const Question = (props) => (
       width="24"
       height="24"
     >
-      <rect width="24" height="24" fill="#D9D9D9" />
+      <rect width="24" height="24" fill="black" />
     </mask>
     <g mask="url(#mask0_182_6044)">
       <path
