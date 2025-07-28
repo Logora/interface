@@ -390,7 +390,7 @@
     "icons/krone_icons": {
         "name": "icons/krone_icons",
         "scope": "logora.debate",
-        "version": "0.0.4",
+        "version": "0.0.5",
         "mainFile": "index.js",
         "rootDir": "src/components/icons/krone_icons"
     },
