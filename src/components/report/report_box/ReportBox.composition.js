@@ -300,39 +300,69 @@ export const ReportSuggestion = () => (
   </div>
 );
 
-export const ReportArgumentWithPositionStyles = () => {
-  const reportWithStyledPosition = {
-    id: 1,
+export const ReportArgumentWithDynamicPositions = () => {
+  const report = {
+    id: 123,
     classification: "INCOHERENT",
     description: faker.lorem.sentence(),
     is_processed: false,
     reportable_type: "Message",
     created_at: faker.date.recent().toISOString(),
     reportable: {
-      id: 101,
-      content:faker.lorem.sentence(),
-      author: { full_name: "Alice Durand" },
+      id: 456,
+      content: "Je suis contre cette idée.",
+      author: { full_name: "Jean Dupont" },
       created_at: faker.date.recent().toISOString(),
-      upvotes: 42,
+      upvotes: 5,
       language: "fr",
       status: "pending",
       position: {
         id: 1,
-        name: "Yes",
-        language: "fr"
+        name: "Yes"
       }
     },
     author: {
-      full_name: "Modérateur",
+      full_name: "Modérateur"
     },
   };
+
+  const config = {
+    positions: [
+      { id: 1, name: "Yes" },
+      { id: 2, name: "No" }
+    ]
+  };
+
   return (
-      <Providers>
-        <ReportBox report={reportWithStyledPosition} />
-      </Providers>
+    <div style={{ width: "400px", height: "240px" }}>
+      <BrowserRouter>
+        <ConfigProvider config={config}>
+          <DataProviderContext.Provider value={{ dataProvider: data }}>
+            <AuthContext.Provider value={{ currentUser, isLoggedIn: true }}>
+              <ResponsiveProvider>
+                <ModalProvider>
+                  <ListProvider>
+                    <ToastProvider>
+                      <VoteProvider>
+                        <InputProvider>
+                          <IconProvider library={regularIcons}>
+                            <IntlProvider locale="fr">
+                              <ReportBox report={report} />
+                            </IntlProvider>
+                          </IconProvider>
+                        </InputProvider>
+                      </VoteProvider>
+                    </ToastProvider>
+                  </ListProvider>
+                </ModalProvider>
+              </ResponsiveProvider>
+            </AuthContext.Provider>
+          </DataProviderContext.Provider>
+        </ConfigProvider>
+      </BrowserRouter>
+    </div>
   );
 };
-
 
 
 
