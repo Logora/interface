@@ -300,6 +300,39 @@ export const ReportSuggestion = () => (
   </div>
 );
 
+export const ReportArgumentWithPositionStyles = () => {
+  const reportWithStyledPosition = {
+    id: 1,
+    classification: "INCOHERENT",
+    description: faker.lorem.sentence(),
+    is_processed: false,
+    reportable_type: "Message",
+    created_at: faker.date.recent().toISOString(),
+    reportable: {
+      id: 101,
+      content:faker.lorem.sentence(),
+      author: { full_name: "Alice Durand" },
+      created_at: faker.date.recent().toISOString(),
+      upvotes: 42,
+      language: "fr",
+      status: "pending",
+      position: {
+        id: 1,
+        name: "Yes",
+        language: "fr"
+      }
+    },
+    author: {
+      full_name: "Modérateur",
+    },
+  };
+  return (
+      <Providers>
+        <ReportBox report={reportWithStyledPosition} />
+      </Providers>
+  );
+};
+
 
 
 
