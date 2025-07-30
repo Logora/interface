@@ -1,26 +1,25 @@
-@import '~@logora/debate.styles.theme/_theme.scss';
-@import '~@logora/debate.styles.display/_display.scss';
-@import '~@logora/debate.styles.spacing/_spacing.scss';
+@use '~@logora/debate.styles.theme/_theme.scss' as theme;
+@use '~@logora/debate.styles.spacing/_spacing.scss' as spacing;
+@use '~@logora/debate.styles.display/_display.scss' as display;
+
+:global(.MuiTab-root:focus) {
+    outline: none !important;
+}
 
 .navTabs {
     display: flex;
+    flex-direction: column;
     flex-wrap: nowrap;
-    gap: $spacer-lg;
+    gap: spacing.$spacer-lg;
     white-space: nowrap;
     padding-left: 0;
     margin-bottom: 0;
     border-bottom: 0 !important;
     list-style: none;
 
-    overflow-x: scroll;
-    overflow-y: hidden;
-
-    scrollbar-width: none;
-    -ms-overflow-style: -ms-autohiding-scrollbar;
-
-    @include media-breakpoint-down(xs) {
-        font-size: $font-size-normal;
-        gap: $spacer;
+    @include display.media-breakpoint-down(xs) {
+        font-size: theme.$font-size-normal;
+        gap: spacing.$spacer;
     }
 
     &::-webkit-scrollbar {
@@ -33,15 +32,16 @@
 
     .navLink {
         border: 1px solid transparent;
-        border-top-left-radius: $box-border-radius;
-        border-top-right-radius: $box-border-radius;
+        border-top-left-radius: theme.$box-border-radius;
+        border-top-right-radius: theme.$box-border-radius;
 
-        &:hover, &:focus {
-            border-color: $text-tertiary $text-tertiary $darken-text-tertiary;
+        &:hover,
+        &:focus {
+            border-color: theme.$text-tertiary theme.$text-tertiary theme.$darken-text-tertiary;
         }
 
         &.disabled {
-            color: $darkest-text-tertiary;
+            color: theme.$darkest-text-tertiary;
             background-color: transparent;
             border-color: transparent;
         }
@@ -49,33 +49,35 @@
 
     .navLink.active,
     .navItem.show .navLink {
-        color: $text-secondary;
-        background-color: $background-color-primary;
-        border-color: $darken-text-tertiary $darken-text-tertiary $background-color-primary;
+        color: theme.$text-secondary;
+        background-color: theme.$background-color-primary;
+        border-color: theme.$darken-text-tertiary theme.$darken-text-tertiary theme.$background-color-primary;
     }
 }
 
 .navLink {
     display: block;
-    padding-bottom: $spacer-xs;
+    padding-bottom: spacing.$spacer-xs;
 
-    &:hover, &:focus{
+    &:hover,
+    &:focus {
         text-decoration: none;
     }
 
     // Disabled state lightens text
     &.disabled {
-        color: $darkest-text-tertiary;
+        color: theme.$darkest-text-tertiary;
         pointer-events: none;
         cursor: default;
     }
 }
 
 .tabContent {
-    > .tabPane {
+    >.tabPane {
         display: none;
     }
-    > .active {
+
+    >.active {
         display: block;
     }
 }
@@ -85,27 +87,30 @@
     position: relative;
 }
 
-.navLink.active, .navLink:focus, .navLink.active:hover {
+.navLink.active,
+.navLink:focus,
+.navLink.active:hover {
     background: transparent;
     border-width: 0 !important;
 }
 
 .navLink {
     border: none !important;
-    color: $text-secondary;
+    color: theme.$text-secondary;
     outline: 0;
 }
 
-.navLink.active, .navLink:hover { 
-    border: none !important; 
-    color: $text-primary !important; 
-    background: transparent; 
-    font-weight: $font-weight-bold; 
+.navLink.active,
+.navLink:hover {
+    border: none !important;
+    color: theme.$text-primary !important;
+    background: transparent;
+    font-weight: theme.$font-weight-bold;
 }
 
-.navLink::after { 
-    content: ""; 
-    background-color: $text-primary;
+.navLink::after {
+    content: "";
+    background-color: theme.$text-primary;
     height: 4px;
     position: absolute;
     width: 100%;
@@ -113,17 +118,43 @@
     bottom: -1px;
     transition: all 250ms ease 0s;
     transform: scale(0);
- }
-
-.navLink.active::after, .navTabs > .navItem:hover > .navLink::after { 
-    transform: scale(1); 
 }
 
-.navLink.active:hover { 
-    background: transparent; 
+.navLink.active::after,
+.navTabs>.navItem:hover>.navLink::after {
+    transform: scale(1);
+}
+
+.navLink.active:hover {
+    background: transparent;
 }
 
 .tabPane {
     padding: 10px 0;
     min-height: 50vh;
+}
+
+.tabContainer {
+    display: flex;
+    flex-direction: column;
+    gap: spacing.$spacer-lg;
+    @include spacing.mt(2.5, xs);
+
+    @include display.media-breakpoint-down(xs) {
+        gap: spacing.$spacer;
+    }
+}
+
+.tab {
+    color: theme.$text-secondary !important;
+    @include spacing.px(0, xs);
+}
+
+.tabSelected {
+    color: theme.$text-primary !important;
+    font-weight: theme.$font-weight-bold !important;
+}
+
+.tabIndicator {
+    background: theme.$text-primary !important;
 }
