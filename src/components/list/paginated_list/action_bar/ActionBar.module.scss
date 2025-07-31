@@ -7,7 +7,6 @@
     justify-content: space-between;
     align-items: center;
 	position: relative;
-    flex-wrap: wrap !important;
     gap: spacing.$spacer;
 
     @include display.media-breakpoint-down(xs) {
