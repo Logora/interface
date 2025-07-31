@@ -8,8 +8,9 @@
     align-items: center;
 	position: relative;
     flex-wrap: wrap !important;
+    gap: spacing.$spacer;
+
     @include display.media-breakpoint-down(xs) {
-        gap: spacing.$spacer;
         flex-direction: column;
 		align-items: flex-start;
 		&.listHeaderOneItem {
