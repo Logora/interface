@@ -7,6 +7,7 @@
     justify-content: space-between;
     align-items: center;
 	position: relative;
+    flex-wrap: wrap !important;
     gap: spacing.$spacer;
 
     @include display.media-breakpoint-down(xs) {
@@ -40,6 +41,7 @@
     flex: 1 1 auto; 
     justify-content: flex-end;
     align-items: center;
+    flex-direction: row;
 }
 
 .search {
