@@ -7,7 +7,7 @@
     justify-content: space-between;
     align-items: center;
 	position: relative;
-    flex-wrap: wrap !important;
+    flex-wrap: wrap;
     gap: spacing.$spacer;
 
     @include display.media-breakpoint-down(xs) {
@@ -16,6 +16,7 @@
 		&.listHeaderOneItem {
 			flex-direction: row;
 			align-items: center;
+            flex-wrap: nowrap !important; 
 		}
     }
 }
