@@ -299,3 +299,45 @@ export const ReportSuggestion = () => (
     </Providers>
   </div>
 );
+
+export const ReportWithPositions = () => {
+  const Report = {
+    id: 999,
+    classification: "INCOHERENT",
+    description:faker.lorem.sentence(),
+    is_processed: true,
+    reportable_type: "Message",
+    created_at: new Date().toISOString(),
+    reportable: {
+      id: 123,
+      content: faker.lorem.sentence(),
+      author: { full_name: "Jean Jean" },
+      created_at: new Date().toISOString(),
+      upvotes: 5,
+      language: "fr",
+      status: "accepted",
+      position: {
+        id: 919, 
+        name: "Oui",
+        language: "fr",
+        translation_entries: []
+      },
+      group: {
+        group_context: {
+          positions: [
+            { id: 919, name: "Oui", language: "fr", translation_entries: [] },
+            { id: 920, name: "Non", language: "fr", translation_entries: [] },
+          ]
+        }
+      }
+    },
+  };
+
+  return (
+    <div style={{ width: "400px", height: "240px" }}>
+      <Providers>
+        <ReportBox report={Report} />
+      </Providers>
+    </div>
+  );
+};
