@@ -29,6 +29,7 @@ export const SearchInput = ({ onSearchSubmit, placeholder, disabled, reducedByDe
 					<TextInput
 						type={"text"}
 						name={"q"}
+						aria-label={intl.formatMessage({ id: "info.search", defaultMessage: "Search bar" })}
 						role={"input"}
 						value={query}
 						placeholder={placeholder}
@@ -40,7 +41,8 @@ export const SearchInput = ({ onSearchSubmit, placeholder, disabled, reducedByDe
 						{query &&
 							<Icon name="close" className={styles.searchReset} role="reset" data-tid={"action_search_reset"} height={16} width={16} onClick={(e) => handleReset(e)} />
 						}
-						iconLeft={<Icon name="search" className={styles.searchSubmit} role="submit" data-tid={"action_search_submit"} height={16} width={16} onClick={(e) => handleSubmit(e)} />
+						iconLeft={<Icon name="search" className={styles.searchSubmit} role="submit" data-tid={"action_search_submit"} height={16} width={16} onClick={(e) => handleSubmit(e)} aria-label={intl.formatMessage({ id: "info.starts_search", defaultMessage: "starts search" })}
+						/>
 						}
 					/>
 				</form>
