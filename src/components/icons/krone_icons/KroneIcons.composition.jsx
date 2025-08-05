@@ -58,7 +58,7 @@ export const KroneIconsLibrary = () => {
     return (
         <>
         <div style={{ display: "flex", justifyContent: "center", flexWrap: "wrap" }}>
-            <Alarm width={50} height={50} data-testid={"alarm-icon"} style={{ margin: "15px", fill: "#000" }} />
+            <Alarm width={50} height={50} data-testid={"alarm-icon"} style={{ margin: "15px", fill: "#000000" }} />
             <Announcement width={50} height={50} data-testid={"announcement-icon"} style={{ margin: "15px", fill: "#000" }} />
             <Arrow width={50} height={50} data-testid={"arrow-icon"} style={{ margin: "15px" }} />
             <Blockquote width={50} height={50} data-testid={"blockquote-icon"} style={{ margin: "15px" }} />
