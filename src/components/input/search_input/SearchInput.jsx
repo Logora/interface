@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+import { useIntl } from "react-intl";
 import { TextInput } from '@logora/debate.input.text_input';
 import { Icon } from '@logora/debate.icons.icon';
 import useOnClickOutside from 'use-onclickoutside';
@@ -6,6 +7,7 @@ import styles from "./SearchInput.module.scss";
 import PropTypes from "prop-types";
 
 export const SearchInput = ({ onSearchSubmit, placeholder, disabled, reducedByDefault }) => {
+	const intl = useIntl();
 	const [query, setQuery] = useState("");
 	const [openSearch, setOpenSearch] = useState(false);
 	const searchRef = useRef(null);
@@ -30,6 +32,10 @@ export const SearchInput = ({ onSearchSubmit, placeholder, disabled, reducedByDe
 						type={"text"}
 						name={"q"}
 						role={"input"}
+						aria-label={intl.formatMessage({
+							id: "input.search_input.aria_label",
+							defaultMessage: "Search bar"
+						})}
 						value={query}
 						placeholder={placeholder}
 						disabled={disabled}
@@ -40,7 +46,7 @@ export const SearchInput = ({ onSearchSubmit, placeholder, disabled, reducedByDe
 						{query &&
 							<Icon name="close" className={styles.searchReset} role="reset" data-tid={"action_search_reset"} height={16} width={16} onClick={(e) => handleReset(e)} />
 						}
-						iconLeft={<Icon name="search" className={styles.searchSubmit} role="submit" data-tid={"action_search_submit"} height={16} width={16} onClick={(e) => handleSubmit(e)} />
+						iconLeft={<Icon name="search" className={styles.searchSubmit} role="submit" data-tid={"action_search_submit"} height={16} width={16} onClick={(e) => handleSubmit(e)} aria-label={intl.formatMessage({id: "input.search_input.submit_icon", defaultMessage: "starts search"})} />
 						}
 					/>
 				</form>

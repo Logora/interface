@@ -1,5 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
+import { IntlProvider } from 'react-intl';
 import userEvent from '@testing-library/user-event';
 import { SearchInput } from './SearchInput';
 import { IconProvider } from '@logora/debate.icons.icon_provider';
@@ -10,9 +11,12 @@ const callback = jest.fn();
 describe('SearchInput', () => {
     it('should render an input search', () => {
         const searchInput = render(
-            <IconProvider library={regularIcons}>
-                <SearchInput onSearchSubmit={callback} placeholder="Search" />
-            </IconProvider>
+
+            <IntlProvider locale="en">
+                <IconProvider library={regularIcons}>
+                    <SearchInput onSearchSubmit={callback} placeholder="Search" />
+                </IconProvider>
+            </IntlProvider>
         );
 
         expect(screen.getByText("Search")).toBeTruthy();
@@ -21,9 +25,11 @@ describe('SearchInput', () => {
     it('should call callback function on submit', async () => {
         const placeholder = "Search for answers";
         const searchInput = render(
-            <IconProvider library={regularIcons}>
-                <SearchInput onSearchSubmit={callback} placeholder={placeholder} />
-            </IconProvider>
+            <IntlProvider locale="en">
+                <IconProvider library={regularIcons}>
+                    <SearchInput onSearchSubmit={callback} placeholder={placeholder} />
+                </IconProvider>
+            </IntlProvider>
         );
 
         const input = screen.getByRole("input");
@@ -41,9 +47,11 @@ describe('SearchInput', () => {
     it('should call callback function and reset query on reset', async () => {
         const placeholder = "Search for answers";
         const searchInput = render(
-            <IconProvider library={regularIcons}>
-                <SearchInput onSearchSubmit={callback} placeholder={placeholder} />
-            </IconProvider>
+            <IntlProvider locale="en">
+                <IconProvider library={regularIcons}>
+                    <SearchInput onSearchSubmit={callback} placeholder={placeholder} />
+                </IconProvider>
+            </IntlProvider>
         );
 
         const input = screen.getByRole("input");
@@ -63,9 +71,11 @@ describe('SearchInput', () => {
     it('should call function when the search icon is clicked', async () => {
         const placeholder = "Search for answers";
         const searchInput = render(
-            <IconProvider library={regularIcons}>
-                <SearchInput onSearchSubmit={callback} placeholder={placeholder} />
-            </IconProvider>
+            <IntlProvider locale="en">
+                <IconProvider library={regularIcons}>
+                    <SearchInput onSearchSubmit={callback} placeholder={placeholder} />
+                </IconProvider>
+            </IntlProvider>
         );
 
         const input = screen.getByRole("input");

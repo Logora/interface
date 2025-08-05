@@ -248,7 +248,7 @@ const Providers = ({ children }) => (
   </BrowserRouter>
 );
 
-// Component exports
+// Components exports
 export const ReportArgumentPending = () => (
   <div style={{ width: "400px", height: "240px" }}>
     <Providers>
