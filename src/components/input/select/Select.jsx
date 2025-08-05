@@ -47,7 +47,7 @@ export const Select = ({ options, defaultOption, onChange, resetSelect = false, 
 		<div className={styles.selectContainer}>
 			<Dropdown horizontalPosition={horizontalPosition}>
 				<div className={cx(styles.selectInput, { [className]: className, [styles.disabled]: disabled })}>
-					<span className={styles.currentOptionText}>{currentOption.text}</span>{" "}
+					<span className={styles.currentOptionText}>{currentOption?.text}</span>{" "}
 					<Icon name="lightArrow" className={styles.arrowDown} height={10} width={10} />
 				</div>
 				{ !disabled && options.map(displayOption) }
