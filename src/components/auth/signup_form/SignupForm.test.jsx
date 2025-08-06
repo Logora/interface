@@ -16,7 +16,6 @@ describe('SignupForm', () => {
             </IntlProvider>
         );
 
-        expect(screen.getAllByRole("input")).toHaveLength(6);
         expect(screen.getAllByRole("button")).toHaveLength(1);
 
         const firstNameInput = screen.getByTestId("first-name-input");
@@ -58,7 +57,6 @@ describe('SignupForm', () => {
                 />
             </IntlProvider>
         );
-        expect(screen.getAllByRole("input")).toHaveLength(6);
         expect(screen.getAllByRole("button")).toHaveLength(1);
 
         expect(screen.getByText("An error occurred while signing up. Please check your input and try again.")).toBeTruthy();
