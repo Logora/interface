@@ -44,7 +44,6 @@ export const SignupForm = ({ onSubmit, providerName, error = false }) => {
                         type={"text"} 
                         name={"first_name"} 
                         aria-label={intl.formatMessage({ id: "auth.signup_form.first_name.aria_label", defaultMessage: "First name" })}
-                        role="input"
                         placeholder={intl.formatMessage({ id:"auth.signup_form.first_name_placeholder", defaultMessage: "First name" })} 
                         onChange={(e) => setFirstName(e.target.value)}
                         error={error}
@@ -57,7 +56,6 @@ export const SignupForm = ({ onSubmit, providerName, error = false }) => {
                         type={"text"} 
                         name={"last_name"}
                         aria-label={intl.formatMessage({ id: "auth.signup_form.last_name.aria_label", defaultMessage: "Last name" })}
-                        role="input"
                         placeholder={intl.formatMessage({ id:"auth.signup_form.last_name_placeholder", defaultMessage: "Last name" })}
                         error={error}
                         onChange={(e) => setLastName(e.target.value)}
@@ -69,7 +67,6 @@ export const SignupForm = ({ onSubmit, providerName, error = false }) => {
                         type={"email"} 
                         name={"email"} 
                         aria-label={intl.formatMessage({ id: "auth.signup_form.email.aria_label", defaultMessage: "Email" })}
-                        role="input"
                         placeholder={intl.formatMessage({ id:"auth.signup_form.email_placeholder", defaultMessage: "Email" }) } 
                         error={error}
                         required
@@ -82,7 +79,6 @@ export const SignupForm = ({ onSubmit, providerName, error = false }) => {
                         type={"password"} 
                         name={"password"} 
                         aria-label={intl.formatMessage({ id: "auth.signup_form.password.aria_label", defaultMessage: "Password" })}
-                        role="input"
                         placeholder={intl.formatMessage({ id:"auth.signup_form.password_placeholder", defaultMessage: "Password"}) }
                         error={error || passwordError} 
                         message={passwordError && passwordError}
@@ -96,7 +92,6 @@ export const SignupForm = ({ onSubmit, providerName, error = false }) => {
                         type={"password"} 
                         name={"password_confirmation"} 
                         aria-label={intl.formatMessage({ id: "auth.signup_form.password_confirmation.aria_label", defaultMessage: "Confirm password" })}
-                        role="input"
                         placeholder={intl.formatMessage({ id:"auth.signup_form.password_confirmation_placeholder", defaultMessage: "Confirm password" })}
                         error={error || passwordError} 
                         required
