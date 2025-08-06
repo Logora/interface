@@ -124,6 +124,7 @@ export const UpdateUserInfoModal = ({ termsUrl, privacyUrl, showEmailConsent = f
                                         <TextInput   
                                             type={"text"} 
                                             name={"first_name"} 
+                                            aria-label={intl.formatMessage({ id: "auth.signup_form.first_name.aria_label", defaultMessage: "First name" })}
                                             role="input"
                                             placeholder={intl.formatMessage({ id:"auth_signup_form_first_name_placeholder", defaultMessage: "First name" })} 
                                             onChange={e => config.actions?.disableOnboardingNameUpdate === true ? null : setFirstName(e.target.value)}
@@ -138,6 +139,7 @@ export const UpdateUserInfoModal = ({ termsUrl, privacyUrl, showEmailConsent = f
                                         <TextInput 
                                             type={"text"} 
                                             name={"last_name"} 
+                                            aria-label={intl.formatMessage({ id: "auth.signup_form.last_name.aria_label", defaultMessage: "Last name" })}
                                             role="input"
                                             placeholder={intl.formatMessage({ id:"auth_signup_form_last_name_placeholder", defaultMessage: "Last name" })} 
                                             onChange={e => config.actions?.disableOnboardingNameUpdate === true ? null : setLastName(e.target.value)}
@@ -185,7 +187,6 @@ export const UpdateUserInfoModal = ({ termsUrl, privacyUrl, showEmailConsent = f
                                 <Toggle 
                                     type={"checkbox"} 
                                     name={"accepts_terms"} 
-                                    role="input"
                                     style={{ fontSize: 18 }}
                                     checked={acceptsTerms} 
                                     label={ <FormattedMessage
@@ -214,7 +215,6 @@ export const UpdateUserInfoModal = ({ termsUrl, privacyUrl, showEmailConsent = f
                                 <Toggle 
                                     type={"checkbox"} 
                                     name={"accepts_provider_email"} 
-                                    role="input"
                                     style={{ fontSize: 18 }}
                                     checked={acceptsProviderEmail} 
                                     label={ intl.formatMessage({ id: "modal.update_user_info_modal.consent_label", defaultMessage: "I agree to receive emails from the editor" }, { provider: config.provider?.companyName }) }

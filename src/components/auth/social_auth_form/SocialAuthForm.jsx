@@ -122,7 +122,6 @@ export const SocialAuthForm = ({ lastStep, providerName, logoUrl, termsUrl, priv
 							<Toggle 
 								type={"checkbox"} 
 								name={"accepts_emails"} 
-								role="input"
 								style={{ fontSize: 18 }}
 								checked={emailConsent} 
 								label={intl.formatMessage({ id: "auth.social_auth_form.accepts_emails_label", defaultMessage: "I agree to receive emails from the editor" }, { variable: providerName } )}
