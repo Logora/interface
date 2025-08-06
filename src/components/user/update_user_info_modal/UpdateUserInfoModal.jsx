@@ -125,7 +125,6 @@ export const UpdateUserInfoModal = ({ termsUrl, privacyUrl, showEmailConsent = f
                                             type={"text"} 
                                             name={"first_name"} 
                                             aria-label={intl.formatMessage({ id: "auth.signup_form.first_name.aria_label", defaultMessage: "First name" })}
-                                            role="input"
                                             placeholder={intl.formatMessage({ id:"auth_signup_form_first_name_placeholder", defaultMessage: "First name" })} 
                                             onChange={e => config.actions?.disableOnboardingNameUpdate === true ? null : setFirstName(e.target.value)}
                                             value={firstName}
@@ -140,7 +139,6 @@ export const UpdateUserInfoModal = ({ termsUrl, privacyUrl, showEmailConsent = f
                                             type={"text"} 
                                             name={"last_name"} 
                                             aria-label={intl.formatMessage({ id: "auth.signup_form.last_name.aria_label", defaultMessage: "Last name" })}
-                                            role="input"
                                             placeholder={intl.formatMessage({ id:"auth_signup_form_last_name_placeholder", defaultMessage: "Last name" })} 
                                             onChange={e => config.actions?.disableOnboardingNameUpdate === true ? null : setLastName(e.target.value)}
                                             value={lastName}
