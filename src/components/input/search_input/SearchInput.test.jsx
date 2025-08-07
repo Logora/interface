@@ -32,7 +32,7 @@ describe('SearchInput', () => {
             </IntlProvider>
         );
 
-        const input = screen.getByRole("input");
+        const input = screen.getByRole("textbox");
 
         await userEvent.click(input);
         await userEvent.keyboard("My query");
@@ -54,7 +54,7 @@ describe('SearchInput', () => {
             </IntlProvider>
         );
 
-        const input = screen.getByRole("input");
+        const input = screen.getByRole("textbox");
 
         await userEvent.click(input);
         await userEvent.keyboard("My query");
@@ -78,7 +78,7 @@ describe('SearchInput', () => {
             </IntlProvider>
         );
 
-        const input = screen.getByRole("input");
+        const input = screen.getByRole("textbox");
 
         await userEvent.click(input);
         await userEvent.keyboard("My query");

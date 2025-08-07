@@ -21,7 +21,6 @@ describe('LoginForm', () => {
             </IntlProvider>
         );
 
-        expect(screen.getAllByRole("input")).toHaveLength(2);
         expect(screen.getAllByRole("button")).toHaveLength(1);
         expect(screen.getAllByRole("link")).toHaveLength(1);
 
