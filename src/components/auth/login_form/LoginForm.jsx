@@ -32,7 +32,6 @@ export const LoginForm = ({ onSubmit, forgotPasswordUrl, error = false }) => {
 				<TextInput
 					type={"email"}
 					name={"email"}
-					role={"input"}
 					required
 					placeholder={intl.formatMessage({ id: "auth.login_form.email_placeholder", defaultMessage: "Email" })}
 					onChange={(e) => setEmail(e.target.value)}
@@ -44,7 +43,6 @@ export const LoginForm = ({ onSubmit, forgotPasswordUrl, error = false }) => {
 				<TextInput
 					type={"password"}
 					name={"password"}
-					role={"input"}
 					required
 					placeholder={intl.formatMessage({ id: "auth.login_form.password_placeholder", defaultMessage: "Password" })}
 					onChange={(e) => setPassword(e.target.value)}

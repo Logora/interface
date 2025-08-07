@@ -31,7 +31,6 @@ export const SearchInput = ({ onSearchSubmit, placeholder, disabled, reducedByDe
 					<TextInput
 						type={"text"}
 						name={"q"}
-						role={"input"}
 						aria-label={intl.formatMessage({
 							id: "input.search_input.aria_label",
 							defaultMessage: "Search bar"
