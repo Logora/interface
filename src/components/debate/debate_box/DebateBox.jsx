@@ -71,7 +71,7 @@ export const DebateBox = ({ debate }) => {
                 <div className={styles.debateBoxTitle} title={name.translatedContent}>
                     { config?.actions?.allowDebateBranding === true && debate.sub_application?.logo &&
                         <span className={styles.subApplication}>
-                            <img data-tid={"view_debate_image"} loading={"lazy"} src={debate.sub_application.logo} />
+                            <img data-tid={"view_debate_image"} loading={"lazy"} src={debate.sub_application.logo} alt={`Logo ${config.display_name}`}/>
                             {debate.sub_application.name}
                         </span>
                     }
