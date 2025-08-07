@@ -1,4 +1,5 @@
 import React from "react";
+import { useIntl } from 'react-intl';
 import { useRoutes } from '@logora/debate.data.config_provider';
 import { Link } from '@logora/debate.action.link';
 import { Avatar } from '@logora/debate.user.avatar';
@@ -7,6 +8,7 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 
 export const UserBoxSmall = ({ userName, avatarUrl, userSlug }) => {
+    const intl = useIntl();
     const routes = useRoutes();
 
     return (
