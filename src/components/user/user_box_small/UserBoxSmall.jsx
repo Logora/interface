@@ -11,11 +11,12 @@ export const UserBoxSmall = ({ userName, avatarUrl, userSlug }) => {
 
     return (
         <div className={cx(styles.authorContainer, "author-box")}>
-            <Link to={routes.userShowLocation.toUrl({ userSlug: userSlug })} className={styles.authorLink} target="_top">
-                <Avatar avatarUrl={avatarUrl} userName={userName} size={25} />
+            <Link to={routes.userShowLocation.toUrl({ userSlug: userSlug })} className={styles.authorLink} target="_top" aria-label={intl.formatMessage({ id: "user.user_box_small.author_link.aria_label", defaultMessage: "View profile" })}
+ >
+                <Avatar avatarUrl={avatarUrl} userName={userName} size={25}  />
             </Link>
             <div className={styles.authorName}>
-                <Link to={routes.userShowLocation.toUrl({ userSlug: userSlug })} className={styles.authorLink} target="_top">
+                <Link to={routes.userShowLocation.toUrl({ userSlug: userSlug })} className={styles.authorLink} target="_top" aria-label={intl.formatMessage({ id: "user.user_box_small.author_link.aria_label", defaultMessage: "View profile" })}>
                     { userName }
                 </Link>
             </div>
