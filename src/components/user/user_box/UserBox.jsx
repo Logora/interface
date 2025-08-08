@@ -13,7 +13,7 @@ export const UserBox = ({ user }) => {
   return (
 		<div className={cx(styles.userBox, "author-box")}>
 			<div className={styles.userBoxHeader}>
-				<Link to={routes.userShowLocation.toUrl({userSlug: user.hash_id})}>
+				<Link to={routes.userShowLocation.toUrl({userSlug: user.hash_id})} aria-label={intl.formatMessage({ id: "user.user_box.author_link.aria_label", defaultMessage: "View profile" })}>
 					<Avatar data-tid={"action_view_user_image"} userName={user.full_name} avatarUrl={user.image_url} isOnline={(new Date(user.last_activity) > Date.now() )} size={60} />
 				</Link>
 			</div>
