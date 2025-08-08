@@ -51,7 +51,7 @@ describe('SourceModal', () => {
         );
 
         expect(screen.getByText("Add a source")).toBeTruthy();
-        expect(screen.getByRole("input")).toBeTruthy();
+        expect(screen.getByRole("textbox")).toBeTruthy();
         expect(document.body.style.overflowY).toEqual("hidden");
     });
 
@@ -71,7 +71,7 @@ describe('SourceModal', () => {
             </ModalProvider>
         );
 
-        const input = screen.getByRole("input");
+        const input = await screen.findByRole("textbox");
         await userEvent.type(input, "https://lemonde.fr[Enter]");
         expect(input.value).toBe("https://lemonde.fr");
 
@@ -104,7 +104,7 @@ describe('SourceModal', () => {
             </ModalProvider>
         );
 
-        const input = screen.getByRole('input');
+        const input = screen.getByRole('textbox');
         await userEvent.type(input, "example/test{Enter}");
         expect(input.value).toBe("example/test");
 
@@ -130,7 +130,7 @@ describe('SourceModal', () => {
             </ModalProvider>
         );
 
-        const input = screen.getByRole('input');
+        const input = screen.getByRole('textbox');
         await userEvent.type(input, "https://ggg.com{Enter}");
         expect(input.value).toBe("https://ggg.com");
         await waitFor(() => {
@@ -158,7 +158,7 @@ describe('SourceModal', () => {
             </ModalProvider>
         );
 
-        const input = screen.getByRole('input');
+        const input = screen.getByRole('textbox');
         await userEvent.type(input, "https://example.com/test{Enter}");
         expect(input.value).toBe("https://example.com/test");
 
