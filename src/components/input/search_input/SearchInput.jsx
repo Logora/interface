@@ -43,9 +43,9 @@ export const SearchInput = ({ onSearchSubmit, placeholder, disabled, reducedByDe
 						data-tid={"input_search_query"}
 						iconRight=
 						{query &&
-							<Icon name="close" className={styles.searchReset} role="reset" data-tid={"action_search_reset"} height={16} width={16} onClick={(e) => handleReset(e)} aria-label={intl.formatMessage({id: "input.search_input.reset_icon.aria_label", defaultMessage: "Reset search"})} />
+							<Icon name="close" className={styles.searchReset} data-tid={"action_search_reset"} height={16} width={16} onClick={(e) => handleReset(e)} aria-label={intl.formatMessage({id: "input.search_input.reset_icon.aria_label", defaultMessage: "Reset search"})} />
 						}
-						iconLeft={<Icon name="search" className={styles.searchSubmit} role="submit" data-tid={"action_search_submit"} height={16} width={16} onClick={(e) => handleSubmit(e)} aria-label={intl.formatMessage({id: "input.search_input.submit_icon.aria_label", defaultMessage: "starts search"})} />
+						iconLeft={<Icon name="search" className={styles.searchSubmit} data-tid={"action_search_submit"} height={16} width={16} onClick={(e) => handleSubmit(e)} aria-label={intl.formatMessage({id: "input.search_input.submit_icon.aria_label", defaultMessage: "starts search"})} />
 						}
 					/>
 				</form>

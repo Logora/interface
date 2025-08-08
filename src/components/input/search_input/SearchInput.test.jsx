@@ -59,8 +59,9 @@ describe('SearchInput', () => {
         await userEvent.click(input);
         await userEvent.keyboard("My query");
 
-        const submitButton = screen.getByRole("reset");
-        await userEvent.click(submitButton);
+
+        const resetButton = screen.getByLabelText("Reset search");
+        await userEvent.click(resetButton);
 
         expect(input.tagName).toBe("INPUT");
         expect(screen.getByText(placeholder)).toBeTruthy();
@@ -83,7 +84,7 @@ describe('SearchInput', () => {
         await userEvent.click(input);
         await userEvent.keyboard("My query");
 
-        const submitButton = screen.getByRole("submit");
+        const submitButton = screen.getByLabelText("starts search");
         await userEvent.click(submitButton);
 
         expect(input.tagName).toBe("INPUT");
