@@ -188,7 +188,7 @@ export const ToolbarPlugin = (props) => {
 								onClick={() => formatNumberedList()}
 								type={"button"}
 								className={styles.toolbarItem}
-								aria-label={intl.formatMessage({ id: "input.text_editor.plugins.toolbar_plugin.Numbered_list.aria_label", defaultMessage: "Insert a numbered list" })}
+								aria-label={intl.formatMessage({ id: "input.text_editor.plugins.toolbar_plugin.numbered_list.aria_label", defaultMessage: "Insert a numbered list" })}
 							>
 								<Icon
 									name="orderedList"
