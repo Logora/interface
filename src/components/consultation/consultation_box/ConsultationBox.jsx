@@ -1,4 +1,5 @@
 import React, { useMemo } from 'react';
+import { useIntl } from 'react-intl';
 import { FormattedMessage } from 'react-intl';
 import { useRelativeTime } from '@logora/debate.hooks.use_relative_time';
 import { Link } from '@logora/debate.action.link';
@@ -12,6 +13,7 @@ import cx from 'classnames';
 import PropTypes from "prop-types";
 
 export const ConsultationBox = ({ consultation }) => {
+    const intl = useIntl();
     const date = useMemo(() => new Date());
     const endDate = new Date(consultation.ends_at);
     const remainingTime = useRelativeTime(endDate.getTime());
@@ -33,7 +35,7 @@ export const ConsultationBox = ({ consultation }) => {
         <>
             <div className={styles.container}>
                 <Link to={routes.consultationShowLocation.toUrl({ consultationSlug: consultation.slug })}>
-                    <img loading={"lazy"} className={styles.consultationImage} src={consultation.image_url} />
+                    <img loading={"lazy"} className={styles.consultationImage} src={consultation.image_url} alt={intl.formatMessage({ id: "consultation.consultation_box.alt", defaultMessage: "Presentation image for the consultation"})}/>
                 </Link>
                 { consultation.ends_at && 
                     <div className={cx(styles.consultationTime, {[styles.ended]: endDate < date})}>
