@@ -1,9 +1,11 @@
 import React from 'react';
+import { useIntl } from "react-intl";
 import cx from 'classnames';
 import styles from './ProgressBar.module.scss';
 import PropTypes from "prop-types";
 
 export const ProgressBar = ({ goal, progress, title, showPercentageSubtitle = false, showProgressSubtitle = false, barFull = false, progressUnit, className, innerClassName, subtitleClassName, children }) => {
+    const intl = useIntl();
     const percentage = Number((((goal === 0 ? 0 : (progress || 0)) / (goal === 0 ? 1 : goal)) * 100).toFixed(1));
 
     return (
@@ -34,7 +36,8 @@ export const ProgressBar = ({ goal, progress, title, showPercentageSubtitle = fa
                 }
             </div>
             <div className={cx(styles.progressBarContainer, className)}>
-                <div className={styles.currentProgressBar} style={{width: (percentage >= 100 || barFull) ? "100%" : percentage + "%"}} role="progressbar" aria-valuemin="0" aria-valuenow={(percentage >= 100 || barFull) ? 100 : percentage} aria-valuemax={"100"}>
+                <div className={styles.currentProgressBar} style={{width: (percentage >= 100 || barFull) ? "100%" : percentage + "%"}} role="progressbar" aria-valuemin="0" aria-valuenow={(percentage >= 100 || barFull) ? 100 : percentage} aria-valuemax={"100"} aria-label={intl.formatMessage({ id: "progress.progress_bar.aria_label", defaultMessage: "Progress bar" })}
+                >
                     <div className={cx(styles.progressBar, innerClassName)}>
                         <div className={styles.progressBarContent}>
                             { children }

@@ -1,19 +1,22 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
+import { IntlProvider } from 'react-intl';
 import { ProgressBar } from './ProgressBar';
 
 describe('ProgressBar', () => {
     it('should render progressBar with children', () => {
         const progressBar = render(
-            <ProgressBar 
-                progress={25} 
-                goal={100}
-                className={"myClass"} 
-                innerClassName={"myInnerClass"}
-                subtitleClassName={"subtitleClassName"}
-            >
-                My progress bar
-            </ProgressBar>
+            <IntlProvider locale="en">
+                <ProgressBar
+                    progress={25}
+                    goal={100}
+                    className={"myClass"}
+                    innerClassName={"myInnerClass"}
+                    subtitleClassName={"subtitleClassName"}
+                >
+                    My progress bar
+                </ProgressBar>
+            </IntlProvider>
         );
 
         expect(screen.getByText("My progress bar")).toBeTruthy();
@@ -22,13 +25,15 @@ describe('ProgressBar', () => {
 
     it('should render progressBar with title', () => {
         const progressBar = render(
-            <ProgressBar 
-                progress={25} 
-                goal={100} 
-                title={"Title"}
-            >
-                My progress bar
-            </ProgressBar>
+            <IntlProvider locale="en">
+                <ProgressBar
+                    progress={25}
+                    goal={100}
+                    title={"Title"}
+                >
+                    My progress bar
+                </ProgressBar>
+            </IntlProvider>
         );
 
         expect(screen.getByText("Title")).toBeTruthy();
@@ -38,12 +43,14 @@ describe('ProgressBar', () => {
 
     it('should render progressBar with progress subtitle', () => {
         const progressBar = render(
-            <ProgressBar 
-                progress={25} 
-                goal={100} 
-                showProgressSubtitle={true}
-                progressUnit={"votes"}
-            />
+            <IntlProvider locale="en">
+                <ProgressBar
+                    progress={25}
+                    goal={100}
+                    showProgressSubtitle={true}
+                    progressUnit={"votes"}
+                />
+            </IntlProvider>
         );
 
         expect(screen.getByText("25 / 100 votes (25%)")).toBeTruthy();
@@ -52,11 +59,13 @@ describe('ProgressBar', () => {
 
     it('should render progressBar with progress subtitle without unit', () => {
         const progressBar = render(
-            <ProgressBar 
-                progress={25} 
-                goal={100} 
-                showProgressSubtitle={true}
-            />
+            <IntlProvider locale="en">
+                <ProgressBar
+                    progress={25}
+                    goal={100}
+                    showProgressSubtitle={true}
+                />
+            </IntlProvider>
         );
 
         expect(screen.getByText("25 / 100 (25%)")).toBeTruthy();
@@ -65,13 +74,15 @@ describe('ProgressBar', () => {
 
     it('should render progressBar with full progress subtitle', () => {
         const progressBar = render(
-            <ProgressBar 
-                progress={25} 
-                goal={100} 
-                showProgressSubtitle={true}
-                barFull={true}
-                progressUnit={"votes"}
-            />
+            <IntlProvider locale="en">
+                <ProgressBar
+                    progress={25}
+                    goal={100}
+                    showProgressSubtitle={true}
+                    barFull={true}
+                    progressUnit={"votes"}
+                />
+            </IntlProvider>
         );
 
         expect(screen.getByText("25 votes")).toBeTruthy();
@@ -80,11 +91,13 @@ describe('ProgressBar', () => {
 
     it('should render progressBar with percentage subtitle', () => {
         const progressBar = render(
-            <ProgressBar 
-                progress={25} 
-                goal={100} 
-                showPercentageSubtitle={true}
-            />
+            <IntlProvider locale="en">
+                <ProgressBar
+                    progress={25}
+                    goal={100}
+                    showPercentageSubtitle={true}
+                />
+            </IntlProvider>
         );
 
         expect(screen.getByText("25%")).toBeTruthy();
@@ -93,14 +106,16 @@ describe('ProgressBar', () => {
 
     it('should render progressBar even if goal is 0', () => {
         const progressBar = render(
-            <ProgressBar 
-                progress={25} 
-                goal={0} 
-                title={"Title"}
-                showPercentageSubtitle={true}
-            >
-                My progress bar
-            </ProgressBar>
+            <IntlProvider locale="en">
+                <ProgressBar
+                    progress={25}
+                    goal={0}
+                    title={"Title"}
+                    showPercentageSubtitle={true}
+                >
+                    My progress bar
+                </ProgressBar>
+            </IntlProvider>
         );
 
         expect(screen.getByText("Title")).toBeTruthy();

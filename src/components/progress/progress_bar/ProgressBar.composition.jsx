@@ -1,77 +1,90 @@
 import React from "react";
+import { IntlProvider } from 'react-intl';
 import { ProgressBar } from "./ProgressBar";
 
 export const DefaultProgressBar = () => {
     return (
-        <ProgressBar 
-            progress={25} 
+        <IntlProvider locale="en">
+        <ProgressBar
+            progress={25}
             goal={100}
         >
             Nice progress !
         </ProgressBar>
+        </IntlProvider>
     )
 }
 
 export const ProgressBarWithTitle = () => {
     return (
-        <ProgressBar 
-            progress={25} 
-            goal={100}
-            title="Progress title"
-        >
-            Nice progress !
-        </ProgressBar>
+        <IntlProvider locale="en">
+            <ProgressBar
+                progress={25}
+                goal={100}
+                title="Progress title"
+            >
+                Nice progress !
+            </ProgressBar>
+        </IntlProvider>
     )
 }
 
 export const ProgressBarWithPercentageSubtitle = () => {
     return (
-        <ProgressBar 
-            progress={25} 
-            goal={100}
-            title="Progress title"
-            showPercentageSubtitle={true}
-        >
-            Nice progress !
-        </ProgressBar>
+        <IntlProvider locale="en">
+            <ProgressBar
+                progress={25}
+                goal={100}
+                title="Progress title"
+                showPercentageSubtitle={true}
+            >
+                Nice progress !
+            </ProgressBar>
+        </IntlProvider>
     )
 }
 
 export const ProgressBarWithProgressSubtitle = () => {
     return (
-        <ProgressBar 
-            progress={25} 
-            goal={100}
-            title="Progress title"
-            showProgressSubtitle={true}
-            progressUnit={"votes"}
-        >
-            Nice progress !
-        </ProgressBar>
+        <IntlProvider locale="en">
+            <ProgressBar
+                progress={25}
+                goal={100}
+                title="Progress title"
+                showProgressSubtitle={true}
+                progressUnit={"votes"}
+            >
+                Nice progress !
+            </ProgressBar>
+        </IntlProvider>
     )
 }
 
 export const ProgressBarWithProgressSubtitleFullBar = () => {
     return (
-        <ProgressBar 
-            progress={100} 
-            goal={100}
-            title="Progress title"
-            showProgressSubtitle={true}
-            barFull={true}
-            progressUnit={"votes"}
-        >
-            Nice progress !
-        </ProgressBar>
+        <IntlProvider locale="en">
+            <ProgressBar
+                progress={100}
+                goal={100}
+                title="Progress title"
+                showProgressSubtitle={true}
+                barFull={true}
+                progressUnit={"votes"}
+            >
+                Nice progress !
+            </ProgressBar>
+        </IntlProvider>
     )
 }
 
 export const ProgressBarWithoutChildren = () => {
     return (
-        <ProgressBar 
-            progress={25} 
-            goal={100}
-        >
-        </ProgressBar>
+        <IntlProvider locale="en">
+            <ProgressBar
+                progress={25}
+                goal={100}
+            >
+            </ProgressBar>
+        </IntlProvider>
     )
 }
