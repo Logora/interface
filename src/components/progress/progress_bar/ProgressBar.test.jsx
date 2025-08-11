@@ -17,7 +17,7 @@ describe('ProgressBar', () => {
         );
 
         expect(screen.getByText("My progress bar")).toBeTruthy();
-        expect(screen.getByRole("progress")).toBeTruthy();
+        expect(screen.getByRole("progressbar")).toBeTruthy();
     });
 
     it('should render progressBar with title', () => {
@@ -33,7 +33,7 @@ describe('ProgressBar', () => {
 
         expect(screen.getByText("Title")).toBeTruthy();
         expect(screen.getByText("My progress bar")).toBeTruthy();
-        expect(screen.getByRole("progress")).toBeTruthy();
+        expect(screen.getByRole("progressbar")).toBeTruthy();
     });
 
     it('should render progressBar with progress subtitle', () => {
@@ -47,7 +47,7 @@ describe('ProgressBar', () => {
         );
 
         expect(screen.getByText("25 / 100 votes (25%)")).toBeTruthy();
-        expect(screen.getByRole("progress")).toBeTruthy();
+        expect(screen.getByRole("progressbar")).toBeTruthy();
     });
 
     it('should render progressBar with progress subtitle without unit', () => {
@@ -60,7 +60,7 @@ describe('ProgressBar', () => {
         );
 
         expect(screen.getByText("25 / 100 (25%)")).toBeTruthy();
-        expect(screen.getByRole("progress")).toBeTruthy();
+        expect(screen.getByRole("progressbar")).toBeTruthy();
     });
 
     it('should render progressBar with full progress subtitle', () => {
@@ -75,7 +75,7 @@ describe('ProgressBar', () => {
         );
 
         expect(screen.getByText("25 votes")).toBeTruthy();
-        expect(screen.getByRole("progress")).toBeTruthy();
+        expect(screen.getByRole("progressbar")).toBeTruthy();
     });
 
     it('should render progressBar with percentage subtitle', () => {
@@ -88,7 +88,7 @@ describe('ProgressBar', () => {
         );
 
         expect(screen.getByText("25%")).toBeTruthy();
-        expect(screen.getByRole("progress")).toBeTruthy();
+        expect(screen.getByRole("progressbar")).toBeTruthy();
     });
 
     it('should render progressBar even if goal is 0', () => {
@@ -105,7 +105,7 @@ describe('ProgressBar', () => {
 
         expect(screen.getByText("Title")).toBeTruthy();
         expect(screen.getByText("My progress bar")).toBeTruthy();
-        expect(screen.getByRole("progress")).toBeTruthy();
+        expect(screen.getByRole("progressbar")).toBeTruthy();
         expect(screen.getByText("0%")).toBeTruthy();
     });
 });

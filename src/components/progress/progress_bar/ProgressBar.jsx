@@ -33,7 +33,7 @@ export const ProgressBar = ({ goal, progress, title, showPercentageSubtitle = fa
                     </div>
                 }
             </div>
-            <div className={cx(styles.progressBarContainer, className)} role="progress">
+            <div className={cx(styles.progressBarContainer, className)}>
                 <div className={styles.currentProgressBar} style={{width: (percentage >= 100 || barFull) ? "100%" : percentage + "%"}} role="progressbar" aria-valuemin="0" aria-valuenow={(percentage >= 100 || barFull) ? 100 : percentage} aria-valuemax={"100"}>
                     <div className={cx(styles.progressBar, innerClassName)}>
                         <div className={styles.progressBarContent}>
