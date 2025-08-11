@@ -61,7 +61,7 @@
     "argument/argument": {
         "name": "argument/argument",
         "scope": "logora.debate",
-        "version": "0.0.403",
+        "version": "0.0.404",
         "mainFile": "index.js",
         "rootDir": "src/components/argument/argument"
     },
@@ -565,7 +565,7 @@
     "report/report_box": {
         "name": "report/report_box",
         "scope": "logora.debate",
-        "version": "0.0.71",
+        "version": "0.0.72",
         "mainFile": "index.js",
         "rootDir": "src/components/report/report_box"
     },
