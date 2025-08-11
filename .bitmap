@@ -166,7 +166,7 @@
     "consultation/consultation_box": {
         "name": "consultation/consultation_box",
         "scope": "logora.debate",
-        "version": "0.0.90",
+        "version": "0.0.91",
         "mainFile": "index.js",
         "rootDir": "src/components/consultation/consultation_box"
     },
