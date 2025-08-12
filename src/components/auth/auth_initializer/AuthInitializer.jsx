@@ -64,7 +64,7 @@ export const AuthInitializer = ({ authUrl, authType, provider, assertion }) => {
 AuthInitializer.propTypes = {
     /** Auth API URL */
     authUrl: PropTypes.string.isRequired,
-    /** Authentication type, can be 'oauth2', 'oauth2_server', 'social' or 'jwt' */
+    /** Authentication type, can be 'oauth2_server', 'social' or 'jwt' */
     authType: PropTypes.string.isRequired,
     /** User provider name */
     provider: PropTypes.string,
