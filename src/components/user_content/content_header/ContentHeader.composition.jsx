@@ -211,3 +211,22 @@ export const ContentHeaderWithModeration = (props) => {
         </BrowserRouter>
     );
 };
+
+export const ContentHeaderSelectedBlue = (props) => {
+    return (
+        <BrowserRouter>
+            <ConfigProvider routes={{ ...routes }} config={{ theme: { enableBlueSelectedContent: true } }}>
+                <IconProvider library={regularIcons}>
+                    <IntlProvider locale="en">
+                        <ContentHeader
+                            author={props.author || author}
+                            tag={props.tag || tag}
+                            date={props.date || date}
+                            selectedContent
+                        />
+                    </IntlProvider>
+                </IconProvider>
+            </ConfigProvider>
+        </BrowserRouter>
+    );
+};

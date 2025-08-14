@@ -59,12 +59,17 @@ export const ContentHeader = ({ author, tag, tagClassName, date, oneLine = false
 					)}
 				</div>
 			)}
-			{selectedContent && !isDeleted &&
-				<div className={styles.selectedContent}>
+			{selectedContent && !isDeleted && (
+				<div
+					className={cx(
+						styles.selectedContent,
+						config?.theme.enableBlueSelectedContent && styles.selectedContentBlue
+					)}
+				>
 					<Icon name="expertBadge" width={18} height={18} />
 					{intl.formatMessage({ id: "user_content.content_header.selected", defaultMessage: "Selected by editor" })}
 				</div>
-			}
+			)}
 			<div className={styles.contentHeader}>
 				<div className={styles.contentHeaderAuthorBox}>
 					{oneLine === true ?
