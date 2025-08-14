@@ -74,6 +74,11 @@
 	}
 }
 
+.selectedContent.selectedContentBlue {
+	fill: $info-primary !important;
+	color: $info-primary !important;  
+  }
+
 .moderationInfo {
 	display: flex;
 	flex-direction: column;
