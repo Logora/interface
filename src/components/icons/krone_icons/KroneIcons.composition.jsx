@@ -76,7 +76,7 @@ export const KroneIconsLibrary = () => {
             <Document width={50} height={50} data-testid={"document-icon"} style={{ margin: "15px" }} />
             <Downvote width={50} height={50} data-testid={"downvote-icon"} style={{ margin: "15px" }} />
             <Ellipsis width={50} height={50} data-testid={"ellipsis-icon"} style={{ margin: "15px", fill: "#000" }} />
-            <ExpertBadge width={50} height={50} data-testid={"expert-badge-icon"} style={{ margin: "15px", fill: "#000" }} />
+            <ExpertBadge width={50} height={50} data-testid={"expert-badge-icon"} style={{ margin: "15px" }} />
             <Facebook width={50} height={50} data-testid={"facebook-icon"} style={{ margin: "15px" }} />
             <FacebookLogin width={50} height={50} data-testid={"facebook-login-icon"} style={{ margin: "15px" }} />
             <Google width={50} height={50} data-testid={"google-icon"} style={{ margin: "15px" }} />
