@@ -67,7 +67,7 @@ export const KroneIconsLibrary = () => {
             <Chat width={50} height={50} data-testid={"chat-icon"} style={{ margin: "15px", fill: "#000" }} />
             <CheckBox width={50} height={50} data-testid={"checkbox-icon"} style={{ margin: "15px" }} />
             <Check width={50} height={50} data-testid={"check-icon"} style={{ margin: "15px" }} />
-            <Clap width={50} height={50} data-testid={"clap-icon"} style={{ margin: "15px" }} />
+            <Clap width={50} height={50} data-testid={"clap-icon"} style={{ margin: "15px", fill: "#000"  }} />
             <Clock width={50} height={50} data-testid={"clock-icon"} style={{ margin: "15px" }} />
             <Close width={50} height={50} data-testid={"close-icon"} style={{ margin: "15px" }} />
             <Code width={50} height={50} data-testid={"code-icon"} style={{ margin: "15px" }} />
