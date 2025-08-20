@@ -48,7 +48,7 @@
 	background-clip: padding-box;
 	border-radius: 0.25em;
 	transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-	border: $box-border;
+	border: theme.$box-border;
 
 	&::placeholder {
 		color: theme.$text-secondary;
