@@ -1,32 +1,31 @@
-@import '~@logora/debate.styles.theme/_theme.scss';
-@import '~@logora/debate.styles.spacing/_spacing.scss';
-@import '~@logora/debate.styles.flex/_flex.scss';
-@import '~@logora/debate.styles.display/_display.scss';
+@use '~@logora/debate.styles.theme/_theme.scss' as theme;
+@use '~@logora/debate.styles.spacing/_spacing.scss' as spacing;
+@use '~@logora/debate.styles.display/_display.scss' as display;
 
 .notificationMenuHeader {
     display: flex !important;
     justify-content: space-between !important;
     align-items: center !important;
-    font-size: $font-size-small;
-    border-bottom: 1px solid $text-tertiary;
-    background-color: $text-tertiary;
+    font-size: theme.$font-size-small;
+    border-bottom: 1px solid theme.$text-tertiary;
+    background-color: theme.$text-tertiary;
     cursor: default;
-    @include p(3, xs);
-    @include pr(1, xs);
-    @include pr(3, sm);
+    @include spacing.p(3, xs);
+    @include spacing.pr(1, xs);
+    @include spacing.pr(3, sm);
 }
 
 .notificationMenuHeaderText {
-    font-weight: $font-weight-bold;
-    font-size: $font-size-normal;
-    font-family: $font-family;
+    font-weight: theme.$font-weight-bold;
+    font-size: theme.$font-size-normal;
+    font-family: theme.$font-family;
 }
 
 .readNotificationsButton {
     cursor: pointer;
-    color: $text-primary;
+    color: theme.$text-primary;
     text-align: right;
-    font-size: $font-size-small;
+    font-size: theme.$font-size-small;
     text-decoration: underline;
 }
 
@@ -36,17 +35,15 @@
 
 .notificationList {
     list-style: none !important;
-    font-size: $font-size-normal;
+    font-size: theme.$font-size-normal;
     display: flex !important;
     flex-direction: column !important;
     overflow-y: scroll;
     max-height: 50vh;
-    @include p(0, xs);
-    @include mb(2, xs);
-}
+    @include spacing.p(0, xs);
+    @include spacing.mb(2, xs);
 
-@media screen and (max-width: 767px) {
-    .notificationList {
+    @include display.media-breakpoint-down(sm) {
         max-height: calc(100vh - 320px);
     }
 }

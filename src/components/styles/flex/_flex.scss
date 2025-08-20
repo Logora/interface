@@ -22,18 +22,6 @@
   }
 }
 
-@mixin flex-wrap-reverse ($breakpoint) {
-  @include media-breakpoint-up($breakpoint) {
-    flex-wrap: wrap-reverse !important;
-  }
-}
-
-@mixin flex-fill ($breakpoint) {
-  @include media-breakpoint-up($breakpoint) {
-    flex: 1 1 auto !important;
-  }
-}
-
 @mixin justify-content($value, $breakpoint) {
   @include media-breakpoint-up($breakpoint) {
     justify-content: $value !important;

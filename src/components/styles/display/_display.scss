@@ -2,11 +2,11 @@
 @use "sass:map";
 
 $grid-breakpoints: (
-        xs: 0,
-        sm: 576px,
-        md: 768px,
-        lg: 992px,
-        xl: 1200px
+    xs: 0,
+    sm: 576px,
+    md: 768px,
+    lg: 992px,
+    xl: 1200px
 );
 
 @mixin display($value, $breakpoint) {
@@ -33,7 +33,7 @@ $grid-breakpoints: (
 @mixin media-breakpoint-up($name, $breakpoints: $grid-breakpoints) {
   $min: breakpoint-min($name, $breakpoints);
   @if $min {
-    @media (min-width: $min) {
+    @container (min-width: $min) {
       @content;
     }
   } @else {
@@ -44,7 +44,7 @@ $grid-breakpoints: (
 @mixin media-breakpoint-down($name, $breakpoints: $grid-breakpoints) {
   $max: breakpoint-max($name, $breakpoints);
   @if $max {
-    @media (max-width: $max) {
+    @container (max-width: $max) {
       @content;
     }
   } @else {
@@ -57,7 +57,7 @@ $grid-breakpoints: (
   $max: breakpoint-max($upper, $breakpoints);
 
   @if $min != null and $max != null {
-    @media (min-width: $min) and (max-width: $max) {
+    @container (min-width: $min) and (max-width: $max) {
       @content;
     }
   } @else if $max == null {
@@ -76,7 +76,7 @@ $grid-breakpoints: (
   $max: breakpoint-max($name, $breakpoints);
 
   @if $min != null and $max != null {
-    @media (min-width: $min) and (max-width: $max) {
+    @container (min-width: $min) and (max-width: $max) {
       @content;
     }
   } @else if $max == null {
@@ -88,18 +88,6 @@ $grid-breakpoints: (
       @content;
     }
   }
-}
-
-@mixin make-col-ready($gutter: 15px) {
-  position: relative;
-  width: 100%;
-  padding-right: $gutter;
-  padding-left: $gutter;
-}
-
-@mixin make-col($size, $columns: 12) {
-  flex: 0 0 percentage(math.div($size, $columns));
-  max-width: percentage(math.div($size, $columns));
 }
 
 @mixin text-truncate() {

@@ -22,8 +22,6 @@ $spacers: map.merge(
         ),
         $spacers
 );
-$title-spacing: var(--title-spacing, $spacer);
-$title-spacing-lg: var(--title-spacing-lg, $spacer-lg);
 $box-spacing: var(--box-spacing, $spacer);
 $box-element-spacing: var(--box-element-spacing, $spacer-lg);
 
@@ -107,32 +105,4 @@ $box-element-spacing: var(--box-element-spacing, $spacer-lg);
 @mixin px($value, $breakpoint) {
   @include pr($value, $breakpoint);
   @include pl($value, $breakpoint);
-}
-
-// AUTO MARGINS
-
-@mixin mt-auto($breakpoint) {
-  margin-top: auto !important;
-}
-
-@mixin mb-auto($breakpoint) {
-  margin-bottom: auto !important;
-}
-
-@mixin mr-auto($breakpoint) {
-  margin-right: auto !important;
-}
-
-@mixin ml-auto($breakpoint) {
-  margin-left: auto !important;
-}
-
-@mixin mx-auto($breakpoint) {
-  @include mr-auto($breakpoint);
-  @include ml-auto($breakpoint);
-}
-
-@mixin my-auto($breakpoint) {
-  @include mt-auto($breakpoint);
-  @include mb-auto($breakpoint);
 }

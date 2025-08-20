@@ -1,35 +1,41 @@
-@import '~@logora/debate.styles.theme/_theme.scss';
-@import '~@logora/debate.styles.display/_display.scss';
-@import '~@logora/debate.styles.spacing/_spacing.scss';
+@use '~@logora/debate.styles.theme/_theme.scss' as theme;
+@use '~@logora/debate.styles.display/_display.scss' as display;
+@use '~@logora/debate.styles.spacing/_spacing.scss' as spacing;
 
 .authorBox {
     display: flex !important;
     flex-direction: row !important;
-    @include p(0, xs);
-    @include pr(2, xs);
     width: 100%;
-    gap: $spacer;
+    gap: spacing.$spacer;
+    @include spacing.p(0, xs);
+    @include spacing.pr(2, xs);
 }
 
 .authorNameBox {
     display: flex !important;
     flex-direction: column !important;
     justify-content: center !important;
-    @include text-truncate();
+    @include display.text-truncate();
     flex: 1;
+
+    @include display.media-breakpoint-down(sm) {
+        .authorNameBox {
+            font-size: theme.$font-size-small;
+        }
+    }
 }
 
 .authorName {
-    font-weight: $font-weight-bold;
-    font-size: $font-size-normal;
+    font-weight: theme.$font-weight-bold;
+    font-size: theme.$font-size-normal;
     cursor: pointer;
-    color: $text-primary;
-    line-height: $line-height-loose;
-    @include pb(1, xs);
+    color: theme.$text-primary;
+    line-height: theme.$line-height-loose;
+    @include spacing.pb(1, xs);
 }
 
 .authorLink {
-    @include text-truncate();
+    @include display.text-truncate();
 }
 
 .authorName a {
@@ -40,32 +46,32 @@
 
 .authorName a:hover {
     text-decoration: underline !important;
-    color: $text-primary !important;
+    color: theme.$text-primary !important;
 }
 
 .authorNameLine {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: $spacer-sm;
+    gap: spacing.$spacer-sm;
     .expertContainer, .deleted {
         cursor: default;
-        color: $text-secondary;
+        color: theme.$text-secondary;
     }
     .linkDisabled {
         cursor: default;
-        color: $text-primary;
+        color: theme.$text-primary;
     }
     .expertContainer {
         display: flex;
         flex-wrap: wrap;
         flex-direction: row;
         align-items: center;
-        gap: $spacer-xs;
+        gap: spacing.$spacer-xs;
     }
     .expertBadge {
-        font-weight: $font-weight-normal;
-        font-size: $font-size-extra-small;
+        font-weight: theme.$font-weight-normal;
+        font-size: theme.$font-size-extra-small;
         overflow: hidden;
     }
 }
@@ -74,37 +80,31 @@
     display: flex !important;
     flex-direction: row !important;
     align-items: center !important;
-    font-weight: $font-weight-normal;
-    font-size: $font-size-small;
-    color: $text-primary;
-    gap: $spacer-xs;
+    font-weight: theme.$font-weight-normal;
+    font-size: theme.$font-size-small;
+    color: theme.$text-primary;
+    gap: spacing.$spacer-xs;
 }
 
 .occupationBox {
     @extend .authorPointsBox;
     align-items: flex-start !important;
-    @include pt(2, xs);
-}
-
-@media(max-width: 768px) {
-    .authorNameBox {
-        font-size: $font-size-small;
-    }
+    @include spacing.pt(2, xs);
 }
 
 .authorPoints {
-    color: $text-secondary;
+    color: theme.$text-secondary;
 }
 
 .authorEloquence {
-    color: $text-secondary;
-    @include text-truncate();
+    color: theme.$text-secondary;
+    @include display.text-truncate();
 }
 
 .separator {
     width: 3px;
     min-width: 3px;
     height: 3px;
-    background-color: $text-secondary;
+    background-color: theme.$text-secondary;
     border-radius: 50%;
 }

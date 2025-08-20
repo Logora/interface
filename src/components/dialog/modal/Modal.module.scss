@@ -1,5 +1,6 @@
-@import '~@logora/debate.styles.theme/_theme.scss';
-@import '~@logora/debate.styles.spacing/_spacing.scss';
+@use '~@logora/debate.styles.theme/_theme.scss' as theme;
+@use '~@logora/debate.styles.spacing/_spacing.scss' as spacing;
+@use '~@logora/debate.styles.display/_display.scss' as display;
 
 .modalWrapper {
   position: fixed;
@@ -18,7 +19,7 @@
 }
 
 .modalWrapperFullScreen {
-  background: $background-color-primary;
+  background: theme.$background-color-primary;
 }
 
 .modalDialog {
@@ -39,30 +40,35 @@
 }
 
 .modalContainer {
-  background: $background-color-primary;
-  border-radius: $box-border-radius;
+  background: theme.$background-color-primary;
+  border-radius: theme.$box-border-radius;
   width: 100%;
   position: relative;
   display: flex !important;
   flex-direction: column !important;
   align-items: center !important;
-  @include p(3, xs);
+  @include spacing.p(3, xs);
+
+  @include display.media-breakpoint-down(xs) {
+    margin: 0.75em;
+  }
 }
 
 .modalHeader {
   display: flex !important;
   align-items: flex-start !important;
   justify-content: space-between !important;
-  @include px(3, xs);
-  @include pb(1, xs);
   width: 100%;
-  font-weight: $font-weight-bold;
+  font-weight: theme.$font-weight-bold;
+  @include spacing.px(3, xs);
+  @include spacing.pb(1, xs);
+
   .modalExitButton {
-    line-height: $line-height-none;
+    line-height: theme.$line-height-none;
     opacity: 1;
     margin-left: auto;
     &:hover {
-      color: $text-secondary;
+      color: theme.$text-secondary;
       cursor: pointer;
     }
 
@@ -75,16 +81,10 @@
 }
 
 .modalHeaderWithTitle {
-  @include mb(3, xs);
+  @include spacing.mb(3, xs);
 }
 
 .modalContent {
-  @include px(3, xs);
   width: 100%;
-}
-
-@media screen and (max-width: 575px) {
-  .modalContainer {
-    margin: 0.75em;
-  }
+  @include spacing.px(3, xs);
 }
