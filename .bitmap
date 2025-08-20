@@ -392,7 +392,13 @@
         "scope": "logora.debate",
         "version": "0.0.7",
         "mainFile": "index.js",
-        "rootDir": "src/components/icons/krone_icons"
+        "rootDir": "src/components/icons/krone_icons",
+        "config": {
+            "teambit.react/react-env@1.0.97": {},
+            "teambit.envs/envs": {
+                "env": "teambit.react/react-env"
+            }
+        }
     },
     "icons/regular_icons": {
         "name": "icons/regular_icons",
@@ -560,14 +566,26 @@
         "scope": "logora.debate",
         "version": "0.0.34",
         "mainFile": "index.js",
-        "rootDir": "src/components/proposal/proposal_box"
+        "rootDir": "src/components/proposal/proposal_box",
+        "config": {
+            "teambit.react/react-env@1.0.97": {},
+            "teambit.envs/envs": {
+                "env": "teambit.react/react-env"
+            }
+        }
     },
     "report/report_box": {
         "name": "report/report_box",
         "scope": "logora.debate",
         "version": "0.0.75",
         "mainFile": "index.js",
-        "rootDir": "src/components/report/report_box"
+        "rootDir": "src/components/report/report_box",
+        "config": {
+            "teambit.react/react-env@1.0.97": {},
+            "teambit.envs/envs": {
+                "env": "teambit.react/react-env"
+            }
+        }
     },
     "section/section_box": {
         "name": "section/section_box",
@@ -721,14 +739,26 @@
         "scope": "logora.debate",
         "version": "0.0.19",
         "mainFile": "index.js",
-        "rootDir": "src/components/summary/summary"
+        "rootDir": "src/components/summary/summary",
+        "config": {
+            "teambit.react/react-env@1.0.97": {},
+            "teambit.envs/envs": {
+                "env": "teambit.react/react-env"
+            }
+        }
     },
     "summary/summary_box": {
         "name": "summary/summary_box",
         "scope": "logora.debate",
         "version": "0.0.12",
         "mainFile": "index.js",
-        "rootDir": "src/components/summary/summary_box"
+        "rootDir": "src/components/summary/summary_box",
+        "config": {
+            "teambit.react/react-env@1.0.97": {},
+            "teambit.envs/envs": {
+                "env": "teambit.react/react-env"
+            }
+        }
     },
     "tag/tag": {
         "name": "tag/tag",

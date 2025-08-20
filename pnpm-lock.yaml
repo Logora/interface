@@ -56,21 +56,12 @@ importers:
       '@testing-library/dom':
         specifier: ^10.4.0
         version: 10.4.0
-      '@testing-library/jest-dom':
-        specifier: 6.5.0
-        version: 6.5.0
       '@testing-library/react':
         specifier: ^16.0.1
         version: 16.3.0(@testing-library/dom@10.4.0)(@types/react-dom@18.3.6(@types/react@18.3.20))(@types/react@18.3.20)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@testing-library/react-hooks':
-        specifier: ^8.0.1
-        version: 8.0.1(@types/react@18.3.20)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@testing-library/user-event':
         specifier: ^14.5.2
         version: 14.6.1(@testing-library/dom@10.4.0)
-      '@types/node':
-        specifier: 20.12.10
-        version: 20.12.10
       '@types/react':
         specifier: ^18.2.12
         version: 18.3.20
@@ -509,19 +500,10 @@ importers:
         version: 13.4.0(@types/react@19.1.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
 
   src/components/icons/krone_icons:
-    dependencies:
-      '@teambit/mdx.ui.mdx-scope-context':
-        specifier: 1.0.7
-        version: 1.0.7(@types/react@19.1.1)(react@18.3.1)
+    devDependencies:
       '@testing-library/react':
         specifier: ^13.4.0
         version: 13.4.0(@types/react@19.1.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      eslint-plugin-mdx:
-        specifier: ^1.17.1
-        version: 1.17.1(eslint@8.56.0)
-      eslint-plugin-react-hooks:
-        specifier: 4.6.2
-        version: 4.6.2(eslint@8.56.0)
 
   src/components/icons/regular_icons:
     devDependencies:
@@ -650,34 +632,16 @@ importers:
         version: 13.4.0(@types/react@19.1.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
 
   src/components/proposal/proposal_box:
-    dependencies:
-      '@teambit/mdx.ui.mdx-scope-context':
-        specifier: 1.0.7
-        version: 1.0.7(@types/react@19.1.1)(react@18.3.1)
+    devDependencies:
       '@testing-library/react':
         specifier: ^13.4.0
         version: 13.4.0(@types/react@19.1.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      eslint-plugin-mdx:
-        specifier: ^1.17.1
-        version: 1.17.1(eslint@8.56.0)
-      eslint-plugin-react-hooks:
-        specifier: 4.6.2
-        version: 4.6.2(eslint@8.56.0)
 
   src/components/report/report_box:
-    dependencies:
-      '@teambit/mdx.ui.mdx-scope-context':
-        specifier: 1.0.7
-        version: 1.0.7(@types/react@19.1.1)(react@18.3.1)
+    devDependencies:
       '@testing-library/react':
         specifier: ^13.4.0
         version: 13.4.0(@types/react@19.1.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      eslint-plugin-mdx:
-        specifier: ^1.17.1
-        version: 1.17.1(eslint@8.56.0)
-      eslint-plugin-react-hooks:
-        specifier: 4.6.2
-        version: 4.6.2(eslint@8.56.0)
 
   src/components/section/section_box:
     devDependencies:
@@ -786,34 +750,16 @@ importers:
         version: 13.4.0(@types/react@19.1.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
 
   src/components/summary/summary:
-    dependencies:
-      '@teambit/mdx.ui.mdx-scope-context':
-        specifier: 1.0.7
-        version: 1.0.7(@types/react@19.1.1)(react@18.3.1)
+    devDependencies:
       '@testing-library/react':
         specifier: ^13.4.0
         version: 13.4.0(@types/react@19.1.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      eslint-plugin-mdx:
-        specifier: ^1.17.1
-        version: 1.17.1(eslint@8.56.0)
-      eslint-plugin-react-hooks:
-        specifier: 4.6.2
-        version: 4.6.2(eslint@8.56.0)
 
   src/components/summary/summary_box:
-    dependencies:
-      '@teambit/mdx.ui.mdx-scope-context':
-        specifier: 1.0.7
-        version: 1.0.7(@types/react@19.1.1)(react@18.3.1)
+    devDependencies:
       '@testing-library/react':
         specifier: ^13.4.0
         version: 13.4.0(@types/react@19.1.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      eslint-plugin-mdx:
-        specifier: ^1.17.1
-        version: 1.17.1(eslint@8.56.0)
-      eslint-plugin-react-hooks:
-        specifier: 4.6.2
-        version: 4.6.2(eslint@8.56.0)
 
   src/components/tag/tag:
     devDependencies:
@@ -12203,11 +12149,6 @@ snapshots:
   '@teambit/mdx.ui.mdx-scope-context@1.0.7(@types/react@18.3.20)(react@18.3.1)':
     dependencies:
       '@types/react': 18.3.20
-      react: 18.3.1
-
-  '@teambit/mdx.ui.mdx-scope-context@1.0.7(@types/react@19.1.1)(react@18.3.1)':
-    dependencies:
-      '@types/react': 19.1.1
       react: 18.3.1
 
   '@teambit/node.deps-detectors.detective-es6@0.0.1':
