@@ -44,7 +44,6 @@
     "chart.js": "^4.4.7",
     "chartjs-plugin-datalabels": "^2.2.0",
     "classnames": "^2.5.1",
-    "core-js": "^3.39.0",
     "draftjs-to-html": "^0.9.1",
     "flat": "^6.0.1",
     "lexical": "^0.32.1",

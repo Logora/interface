@@ -19,7 +19,7 @@ export const SocialAuthForm = ({ lastStep, providerName, logoUrl, termsUrl, priv
 
 	const handleSignUp = (first_name, last_name, email, password, password_confirmation, accepts_provider_email) => {
 		const data = {
-			uid: crypto.randomUUID(),
+			uid: (typeof crypto !== "undefined" && crypto.randomUUID) ? crypto.randomUUID() : "0000-0000-0000-0000",
 			first_name: first_name,
 			last_name: last_name,
 			email: email,
