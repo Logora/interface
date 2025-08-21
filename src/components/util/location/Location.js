@@ -1,5 +1,4 @@
 import { compile } from 'path-to-regexp';
-import qs from 'querystringify';
 
 const cache = {};
 const cacheLimit = 10000;
@@ -70,9 +69,13 @@ export class Location {
                         [key]: params[key],
                         ...acc
                     }
-            }, null);
+            }, {});
 
-        return qs.stringify(queryStringParams);
+        // If no params to serialize, return null
+        if (!queryStringParams || Object.keys(queryStringParams).length === 0) {
+            return null;
+        }
+        return new URLSearchParams(queryStringParams).toString();
     }
 
     isEmptyObject(obj) {

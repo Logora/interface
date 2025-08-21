@@ -46,11 +46,10 @@
     "classnames": "^2.5.1",
     "core-js": "^3.39.0",
     "draftjs-to-html": "^0.9.1",
-    "flat": "^5.0.2",
+    "flat": "^6.0.1",
     "lexical": "^0.32.1",
     "path-to-regexp": "^6.3.0",
     "prop-types": "^15.8.1",
-    "querystringify": "^2.2.0",
     "react-chartjs-2": "^5.2.0",
     "react-copy-to-clipboard": "^5.1.0",
     "react-hot-toast": "^2.4.1",
@@ -62,7 +61,6 @@
     "react-router-dom": "^6.29.0",
     "use-debounce": "^10.0.4",
     "use-onclickoutside": "^0.4.1",
-    "uuid": "^11.0.5",
     "webfontloader": "^1.6.28"
   },
   "devDependencies": {
