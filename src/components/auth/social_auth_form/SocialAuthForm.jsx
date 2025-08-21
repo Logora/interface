@@ -8,7 +8,6 @@ import { LoginForm } from "@logora/debate.auth.login_form";
 import { SignupForm } from "@logora/debate.auth.signup_form";
 import { Toggle } from "@logora/debate.input.toggle";
 import { Icon } from '@logora/debate.icons.icon';
-import { v4 as uuidv4 } from 'uuid';
 import styles from "./SocialAuthForm.module.scss";
 import PropTypes from "prop-types";
 
@@ -20,7 +19,7 @@ export const SocialAuthForm = ({ lastStep, providerName, logoUrl, termsUrl, priv
 
 	const handleSignUp = (first_name, last_name, email, password, password_confirmation, accepts_provider_email) => {
 		const data = {
-			uid: uuidv4(),
+			uid: (typeof crypto !== "undefined" && crypto.randomUUID) ? crypto.randomUUID() : "0000-0000-0000-0000",
 			first_name: first_name,
 			last_name: last_name,
 			email: email,
