@@ -223,6 +223,29 @@ export const ArgumentWithoutFooter = () => (
     </div>
 );
 
+export const ArgumentWithoutDeletion = () => (
+    <div style={{ width: "400px", height: "240px" }}>
+        <Providers>
+            <Argument
+                argument={argument}
+                enableDeletion={false}
+            />
+        </Providers>
+    </div>
+);
+
+export const ArgumentWithoutEdition = () => (
+    <div style={{ width: "400px", height: "240px" }}>
+        <Providers>
+            <Argument
+                argument={argument}
+                enableEdition={false}
+            />
+        </Providers>
+    </div>
+);
+
+
 export const ArgumentWithReplies = () => (
     <div style={{ width: "400px", height: "260px" }}>
         <Providers>
