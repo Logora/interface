@@ -23,7 +23,6 @@ $spacers: map.merge(
         $spacers
 );
 $box-spacing: var(--box-spacing, $spacer);
-$box-element-spacing: var(--box-element-spacing, $spacer-lg);
 
 @mixin m($value, $breakpoint) {
   @include media-breakpoint-up($breakpoint) {

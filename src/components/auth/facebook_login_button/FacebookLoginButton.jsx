@@ -16,7 +16,7 @@ export const FacebookLoginButton = ({ text, facebookClientId, redirectUri, onCod
       redirectUri={redirectUri}
     >
       <div className={styles.facebookButton}>
-        <Icon name="facebookLogin" className={styles.facebookButtonIcon} />&nbsp;
+        <Icon name="facebookLogin" className={styles.icon} />&nbsp;
         <span>
           { text }
         </span>

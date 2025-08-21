@@ -1,11 +1,11 @@
-@import '~@logora/debate.styles.theme/_theme.scss';
-@import "~@logora/debate.styles.spacing/_spacing.scss";
+@use '~@logora/debate.styles.theme/_theme.scss' as theme;
+@use "~@logora/debate.styles.display/_display.scss" as display;
 
 .box {
     padding: .7em;
-    border-radius: $box-border-radius;
-    box-shadow: $box-shadow;
-    border: $box-border;
+    border-radius: theme.$box-border-radius;
+    box-shadow: theme.$box-shadow;
+    border: theme.$box-border;
 }
 
 .stats {
@@ -19,15 +19,15 @@
     display: flex !important;
     align-items: center !important;
     gap: 10px;
-    @include media-breakpoint-down(xs) {
+    @include display.media-breakpoint-down(xs) {
         flex-direction: column !important;
         align-items: flex-start !important;
     }
 }
 
 .label {
-    font-size: $font-size-extra-small;
-    color: $text-secondary;
+    font-size: theme.$font-size-extra-small;
+    color: theme.$text-secondary;
 }
 
 .gauge {
@@ -55,13 +55,13 @@
 
 .tag {
     padding: .5em .75em;
-    color: $text-light;
-    border-radius: $box-border-radius;
-    font-size: $font-size-extra-small;
-    font-weight: $font-weight-bold;
+    color: theme.$text-light;
+    border-radius: theme.$box-border-radius;
+    font-size: theme.$font-size-extra-small;
+    font-weight: theme.$font-weight-bold;
     overflow: hidden;
     word-wrap: break-word;
-    @include line-clamp(2);
+    @include display.line-clamp(2);
 	max-height: 3.4em;
     text-transform: uppercase;
 }

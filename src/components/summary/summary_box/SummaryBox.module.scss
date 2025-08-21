@@ -1,14 +1,15 @@
-@import '~@logora/debate.styles.theme/_theme.scss';
-@import "~@logora/debate.styles.spacing/_spacing.scss";
+@use '~@logora/debate.styles.theme/_theme.scss' as theme;
+@use "~@logora/debate.styles.spacing/_spacing.scss" as spacing;
+@use "~@logora/debate.styles.display/_display.scss" as display;
 
 .box {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     padding: .7em;
-    border-radius: $box-border-radius;
-    box-shadow: $box-shadow;
-    border: $box-border;
+    border-radius: theme.$box-border-radius;
+    box-shadow: theme.$box-shadow;
+    border: theme.$box-border;
     flex: 1
 }
 
@@ -25,14 +26,14 @@
 
 .tag {
     padding: .5em .75em;
-    color: $text-light;
-    background-color: $call-primary;
-    border-radius: $box-border-radius;
-    font-size: $font-size-extra-small;
-    font-weight: $font-weight-bold;
+    color: theme.$text-light;
+    background-color: theme.$call-primary;
+    border-radius: theme.$box-border-radius;
+    font-size: theme.$font-size-extra-small;
+    font-weight: theme.$font-weight-bold;
     overflow: hidden;
     word-wrap: break-word;
-    @include line-clamp(2);
+    @include display.line-clamp(2);
     max-height: 3.4em;
     text-transform: uppercase;
 }
@@ -40,16 +41,16 @@
 .summaryItem {
     display: flex;
     gap: 8px;
-    padding: $spacer-xs;
+    padding: spacing.$spacer-xs;
     align-items: flex-start;
-    font-size: $font-size-small;
-    color: $text-primary
+    font-size: theme.$font-size-small;
+    color: theme.$text-primary
 }
 
 .emptySummaryText {
     font-style: italic;
-    color: $text-primary;
-    font-size: $font-size-small;
+    color: theme.$text-primary;
+    font-size: theme.$font-size-small;
     text-align: start;
     padding: 10px 0;
 }

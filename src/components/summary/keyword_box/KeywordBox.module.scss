@@ -1,23 +1,23 @@
-@import '~@logora/debate.styles.theme/_theme.scss';
+@use '~@logora/debate.styles.theme/_theme.scss' as theme;
 
 .boxContainer {
-    border-radius: $box-border-radius;
+    border-radius: theme.$box-border-radius;
     padding: 15px;
-    color: $text-light;
+    color: theme.$text-light;
     transition: width .5s;
 }
 
 .keywordTitle { 
-    font-weight: $font-weight-bold;
-    font-size: $font-size-large;
+    font-weight: theme.$font-weight-bold;
+    font-size: theme.$font-size-large;
     margin-bottom: 0.5em;
 }
 
 .occurrences {
-    font-size: $font-size-small;
+    font-size: theme.$font-size-small;
     margin-bottom: 1.5em;
     span {
-        font-weight: $font-weight-bold;
+        font-weight: theme.$font-weight-bold;
     }
     .number {
         margin-right: .3em;
@@ -26,13 +26,13 @@
 
 .keywordButton {
     border: 1px solid;
-    border-color: $background-color-primary !important;
-    background-color: $background-color-primary;
-    border-radius: $box-border-radius !important;
+    border-color: theme.$background-color-primary !important;
+    background-color: theme.$background-color-primary;
+    border-radius: theme.$box-border-radius !important;
+    box-shadow: theme.$box-shadow;
     padding: 0.5em 0.7em;
-    box-shadow: $button-box-shadow;
-    font-size: $font-size-normal;
-    font-weight: $font-weight-normal;
+    font-size: theme.$font-size-normal;
+    font-weight: theme.$font-weight-normal;
     cursor: pointer;
     &:hover {
         opacity: 0.9;
@@ -44,8 +44,8 @@
     border-top: none;
     margin: 0 15px;
     padding: 15px;
-    border-bottom-left-radius: $box-border-radius;
-    border-bottom-right-radius: $box-border-radius;
+    border-bottom-left-radius: theme.$box-border-radius;
+    border-bottom-right-radius: theme.$box-border-radius;
     display: none;
     &.contributionsContainerOpen {
         display: block;

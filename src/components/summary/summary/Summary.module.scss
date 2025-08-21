@@ -1,5 +1,5 @@
-@import '~@logora/debate.styles.theme/_theme.scss';
-@import "~@logora/debate.styles.spacing/_spacing.scss";
+@use '~@logora/debate.styles.theme/_theme.scss' as theme;
+@use "~@logora/debate.styles.display/_display.scss" as display;
 
 .summaryContainer {
     display: flex !important;
@@ -8,7 +8,7 @@
     align-items: stretch !important;
     gap: 1em;
 
-    @include media-breakpoint-down(sm) {
+    @include display.media-breakpoint-down(sm) {
         flex-direction: column !important;
     }
 
@@ -20,7 +20,7 @@
 }
 
 .description {
-    color: $text-secondary;
-    font-size: $font-size-small;
+    color: theme.$text-secondary;
+    font-size: theme.$font-size-small;
     margin-bottom: 1em;
 }

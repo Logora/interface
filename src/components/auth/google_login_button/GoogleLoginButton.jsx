@@ -16,8 +16,8 @@ export const GoogleLoginButton = ({ text, googleClientId, redirectUri, onCode, o
             provider={"google"}
             redirectUri={redirectUri}
         >
-            <div className={styles.googleLoginContainer}>
-                <Icon name="google" className={styles.googleLoginIcon} />&nbsp;
+            <div className={styles.container}>
+                <Icon name="google" className={styles.icon} />&nbsp;
                 <span>
                     { text }
                 </span>

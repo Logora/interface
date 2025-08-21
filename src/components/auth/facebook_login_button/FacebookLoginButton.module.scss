@@ -1,5 +1,5 @@
-@import '~@logora/debate.styles.theme/_theme.scss';
-@import '~@logora/debate.styles.spacing/_spacing.scss';
+@use '~@logora/debate.styles.theme/_theme.scss' as theme;
+@use '~@logora/debate.styles.spacing/_spacing.scss' as spacing;
 
 .facebookButton {
   display: flex;
@@ -10,24 +10,23 @@
   width: 300px !important;
   height: 50px !important;
   margin-bottom: 15px;
-  align-self: center;
-  border: $box-border;
-  border-radius: $box-border-radius;
+  border: theme.$box-border;
+  border-radius: theme.$box-border-radius;
   cursor: pointer;
-  @include p(3, xs);
+  @include spacing.p(3, xs);
   &:hover{
     box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.05);
   }
   span {
-    @include pl(2, xs);
+    @include spacing.pl(2, xs);
   }
 }
 
-.facebookButtonIcon {
+.icon {
   fill: #4267B2 !important;
   fill-rule: evenodd;
   height: 25px;
   width: 35px;
-  border-right: 1px solid $background-color-secondary;
-  @include pr(2, xs);
+  border-right: 1px solid theme.$background-color-secondary;
+  @include spacing.pr(2, xs);
 }
