@@ -34,15 +34,15 @@
     display: flex !important;
     flex-direction: column !important;
     justify-content: center !important;
-    gap: $spacer-xs;
+    gap: spacing.$spacer-xs;
 }
 
 .userPosition {
     display: flex !important;
     flex-flow: row wrap;
     align-items: center;
-    gap: $spacer;
-    color: $text-primary;
+    gap: spacing.$spacer;
+    color: theme.$text-primary;
     width: fit-content;
 }
 
@@ -50,7 +50,7 @@
     display: flex !important;
     flex-direction: column !important;
     align-items: flex-start !important;
-    gap: $spacer-lg;
+    gap: spacing.$spacer-lg;
     &.argumentTextInputBoxisTablet {
         flex-direction: row !important;
     }
@@ -133,7 +133,7 @@
 
     &::before {
         content: "";
-        border-left: 4px solid $text-secondary;
+        border-left: 4px solid theme.$text-secondary;
         position: absolute;
         width: 4px;
         height: 10px;
@@ -147,7 +147,7 @@
     flex-direction: row !important;
     justify-content: flex-start !important;
     align-items: flex-start !important;
-    gap: $spacer !important;
+    gap: spacing.$spacer !important;
     width: 100%;
 }
 
