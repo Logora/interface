@@ -17,8 +17,8 @@
 	@include spacing.px(3, xs);
 	@include spacing.py(2.5, xs);
 	background-color: theme.$background-color-primary;
-	border-radius: theme.$box-border-radius;
-	border: theme.$box-border;
+	border-radius: theme.$button-border-radius;
+	border: theme.$button-border;
 	transition: background-color 0.3s;
 	min-width: 130px;
 	display: flex !important;
