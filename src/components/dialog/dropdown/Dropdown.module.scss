@@ -1,5 +1,5 @@
-@import '~@logora/debate.styles.theme/_theme.scss';
-@import '~@logora/debate.styles.spacing/_spacing.scss';
+@use '~@logora/debate.styles.theme/_theme.scss' as theme;
+@use '~@logora/debate.styles.spacing/_spacing.scss' as spacing;
 
 .dropdownWrapper {
 	position: relative;
@@ -11,16 +11,16 @@
 	padding: 0 !important;
 	cursor: pointer;
 	outline: none !important;
-	background-color: $background-color-primary;
+	background-color: theme.$background-color-primary;
 }
 
 .dropdownList {
 	position: absolute;
 	z-index: 3;
-	background: $background-color-primary;
-	box-shadow: $box-shadow;
-	border: $box-border;
-	border-radius: $box-border-radius;
+	background: theme.$background-color-primary;
+	box-shadow: theme.$button-shadow;
+	border: theme.$button-border;
+	border-radius: theme.$button-border-radius;
 	overscroll-behavior-y: contain;
 	width: max-content;
 }

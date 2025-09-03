@@ -1,24 +1,24 @@
-@import '~@logora/debate.styles.theme/_theme.scss';
-@import '~@logora/debate.styles.spacing/_spacing.scss';
+@use '~@logora/debate.styles.theme/_theme.scss' as theme;
+@use '~@logora/debate.styles.spacing/_spacing.scss' as spacing;
 
 button.primaryButton, a.primaryButton {
-  @include px(3, xs);
-	@include py(2.5, xs);
+  @include spacing.px(3, xs);
+	@include spacing.py(2.5, xs);
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: $box-border-radius !important;
+  border-radius: theme.$button-border-radius !important;
   transition: background-color 300ms ease-in-out;
-  background-color: $call-primary !important;
+  background-color: theme.$call-primary !important;
   border: 1px solid;
-  border-color: $call-primary !important;
-  color: $text-light !important;
-  font-size: $font-size-normal;
-  font-weight: $font-weight-bold;
+  border-color: theme.$call-primary !important;
+  color: theme.$text-light !important;
+  font-size: theme.$font-size-normal;
+  font-weight: theme.$font-weight-bold;
   cursor: pointer;
   -webkit-appearance: initial !important;
   text-decoration: none !important;
-  gap: $spacer-sm;
+  gap: spacing.$spacer-sm;
   
   &.iconOnly {
     padding: 0.6em 0.8em;
@@ -28,80 +28,80 @@ button.primaryButton, a.primaryButton {
   }
 
   & > svg {
-    fill: $text-light;
+    fill: theme.$text-light;
     fill-rule: evenodd;
     color: inherit;
   }
 
   &.danger {
-    background-color: $cancel-primary !important;
-    border-color: $cancel-primary !important;
+    background-color: theme.$cancel-primary !important;
+    border-color: theme.$cancel-primary !important;
   }
 
   &.success {
-    background-color: $success-primary !important;
-    border-color: $success-primary !important;
+    background-color: theme.$success-primary !important;
+    border-color: theme.$success-primary !important;
   }
 
   &.active {
-    background-color: $background-color-primary !important;
-    color: $call-primary !important;
+    background-color: theme.$background-color-primary !important;
+    color: theme.$call-primary !important;
 
     &.active > svg {
-      fill: $call-primary;
+      fill: theme.$call-primary;
       fill-rule: evenodd;
     }
 
     &.danger {
-      color: $cancel-primary !important;
-      border-color: $cancel-primary !important;
+      color: theme.$cancel-primary !important;
+      border-color: theme.$cancel-primary !important;
     }
   
     &.success {
-      color: $success-primary !important;
-      border-color: $success-primary !important;
+      color: theme.$success-primary !important;
+      border-color: theme.$success-primary !important;
     }
   }
 
   &:hover:not(:disabled) {
     cursor: pointer;
     opacity: 0.9;
-    color: $text-light !important;
-    background-color: $call-primary !important;
+    color: theme.$text-light !important;
+    background-color: theme.$call-primary !important;
     text-decoration: none !important;
 
     &.danger {
-      background-color: $cancel-primary !important;
+      background-color: theme.$cancel-primary !important;
     }
 
     &.success {
-      background-color: $success-primary !important;
+      background-color: theme.$success-primary !important;
     }
 
     &.active {
-      background-color: $background-color-primary !important;
-      color: $call-primary !important;
+      background-color: theme.$background-color-primary !important;
+      color: theme.$call-primary !important;
       
       &.danger {
-        color: $cancel-primary !important;
+        color: theme.$cancel-primary !important;
       }
   
       &.success {
-        color: $success-primary !important;
+        color: theme.$success-primary !important;
       }
     }
   }
 
   &:disabled {
     opacity: 0.5;
-    background-color: $background-color-secondary;
-    color: $text-secondary;
+    background-color: theme.$background-color-secondary;
+    color: theme.$text-secondary;
     cursor: not-allowed;
   }
 
   &:focus {
     outline: none;
-    box-shadow: 0 0 0 0.125em var(--bit-accent-bg, $darken-text-tertiary);
+    box-shadow: 0 0 0 0.125em var(--bit-accent-bg, theme.$darken-text-tertiary);
   }
 
   &.withoutBorder {
