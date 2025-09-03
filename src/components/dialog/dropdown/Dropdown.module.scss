@@ -18,9 +18,9 @@
 	position: absolute;
 	z-index: 3;
 	background: theme.$background-color-primary;
-	box-shadow: theme.$button-shadow;
-	border: theme.$button-border;
-	border-radius: theme.$button-border-radius;
+	box-shadow: theme.$box-shadow;
+	border: theme.$box-border;
+	border-radius: theme.$box-border-radius;
 	overscroll-behavior-y: contain;
 	width: max-content;
 }
