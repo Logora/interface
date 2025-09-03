@@ -6,7 +6,7 @@
     display: flex;
     justify-content: center;
     border-radius: theme.$box-border-radius;
-    box-shadow: theme.$box-shadow;
+    box-shadow: theme.$box-shadow-main-container;
     border: theme.$box-border;
     @include spacing.py(3, xs);
     @include display.media-breakpoint-down(xs) {
