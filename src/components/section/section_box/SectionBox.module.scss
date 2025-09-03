@@ -1,13 +1,13 @@
-@import '~@logora/debate.styles.theme/_theme.scss';
-@import '~@logora/debate.styles.spacing/_spacing.scss';
+@use '~@logora/debate.styles.theme/_theme.scss' as theme;
+@use '~@logora/debate.styles.spacing/_spacing.scss' as spacing;
 
 .sectionBoxContainer {
-    background-color: $background-color-primary;
-    box-shadow: $box-shadow;
-    border: $box-border-main-container;
-    border-radius: $box-border-radius;
-    color: $text-primary;
-    @include p(3, xs);
+    background-color: theme.$background-color-primary;
+    box-shadow: theme.$box-shadow-main-container;
+    border: theme.$box-border-main-container;
+    border-radius: theme.$box-border-radius;
+    color: theme.$text-primary;
+    @include spacing.p(3, xs);
 }
 
 .header {
@@ -36,18 +36,18 @@
 }
 
 .title {
-    font-size: $font-size-large;
-    line-height: $line-height-tight;
-    font-weight: $font-weight-bold;
-    font-family: $title-font-family;
-    color: $text-primary;
+    font-size: theme.$font-size-large;
+    line-height: theme.$line-height-tight;
+    font-weight: theme.$font-weight-bold;
+    font-family: theme.$title-font-family;
+    color: theme.$text-primary;
 }
 
 .subtitle {
-    font-size: $font-size-small;
-    color: $text-secondary;
+    font-size: theme.$font-size-small;
+    color: theme.$text-secondary;
 }
 
 .body {
-    @include pt(3, xs)
+    @include spacing.pt(3, xs)
 }

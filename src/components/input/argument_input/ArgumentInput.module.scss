@@ -1,7 +1,7 @@
-@import '~@logora/debate.styles.theme/_theme.scss';
-@import '~@logora/debate.styles.spacing/_spacing.scss';
-@import '~@logora/debate.styles.flex/_flex.scss';
-@import '~@logora/debate.styles.display/_display.scss';
+@use '~@logora/debate.styles.theme/_theme.scss' as theme;
+@use '~@logora/debate.styles.spacing/_spacing.scss' as spacing;
+@use "~@logora/debate.styles.flex/_flex.scss" as flex;
+@use '~@logora/debate.styles.display/_display.scss' as display;
 
 .inputContainer {
     position: relative;
@@ -9,12 +9,12 @@
 
 .argumentInput {
     width: 100%;
-    @include p(4, sm);
-    @include p(3, xs);
-    background-color: $background-color-primary;
-    box-shadow: $box-shadow;
-    border: $box-border-main-container;
-    border-radius: $box-border-radius;
+    @include spacing.p(4, sm);
+    @include spacing.p(3, xs);
+    background-color: theme.$background-color-primary;
+    box-shadow: theme.$box-shadow-main-container;
+    border: theme.$box-border-main-container;
+    border-radius: theme.$box-border-radius;
     z-index: 1;
     -webkit-transition: box-shadow 0.8s ease-in-out;
     -moz-transition: box-shadow 0.8s ease-in-out;
@@ -22,11 +22,11 @@
     transition: box-shadow 0.8s ease-in-out;
 
     &:hover, &:focus-within {
-        box-shadow: 0 0 5px $darkest-text-tertiary;
+        box-shadow: 0 0 5px theme.$darkest-text-tertiary;
     }
 
     &.flash, &.flash:hover, &.flash:focus-within {
-        box-shadow: 0 0 15px $call-primary;
+        box-shadow: 0 0 15px theme.$call-primary;
     }
 }
 
@@ -34,15 +34,15 @@
     display: flex !important;
     flex-direction: column !important;
     justify-content: center !important;
-    gap: $spacer-xs;
+    gap: spacing.$spacer-xs;
 }
 
 .userPosition {
     display: flex !important;
     flex-flow: row wrap;
     align-items: center;
-    gap: $spacer;
-    color: $text-primary;
+    gap: spacing.$spacer;
+    color: theme.$text-primary;
     width: fit-content;
 }
 
@@ -50,17 +50,17 @@
     display: flex !important;
     flex-direction: column !important;
     align-items: flex-start !important;
-    gap: $spacer-lg;
+    gap: spacing.$spacer-lg;
     &.argumentTextInputBoxisTablet {
         flex-direction: row !important;
     }
-    @include media-breakpoint-down(xs) {
-        gap: $spacer-xs;
+    @include display.media-breakpoint-down(xs) {
+        gap: spacing.$spacer-xs;
     }
 }
 
 .argumentAuthorContainer {
-    @include mt(2, xs);
+    @include spacing.mt(2, xs);
     overflow: hidden;
     min-width: 175px;
     max-width: 230px;
@@ -78,30 +78,30 @@
 
 .textEditorBox {
     width: 100%;
-    @include pt(2, sm);
-    @include pt(0, xs);
+    @include spacing.pt(2, sm);
+    @include spacing.pt(0, xs);
 }
 
 .argumentInputWarning {
-    font-size: $font-size-extra-small;
-    color: $cancel-primary;
-    @include mt(3, xs);
+    font-size: theme.$font-size-extra-small;
+    color: theme.$cancel-primary;
+    @include spacing.mt(3, xs);
     svg.warningIcon {
         fill: transparent !important;
         min-width: 20px;
         min-height: 20px;
         circle {
-            stroke: $cancel-primary;
+            stroke: theme.$cancel-primary;
             stroke-width: 1.5px;
         }
         path {
-            fill: $cancel-primary;
+            fill: theme.$cancel-primary;
         }
     }
     &.disabledPositionWarning {
         display: flex !important;
         align-items: center !important;
-        gap: $spacer-sm;
+        gap: spacing.$spacer-sm;
     }
 }
 
@@ -111,7 +111,7 @@
     height: 100%;
     z-index: 2;
     opacity: 0.9;
-    background: $text-tertiary;
+    background: theme.$text-tertiary;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -123,17 +123,17 @@
     transition: margin-top 2s;
     position: relative;
 
-    background-color: $background-color-primary;
-    border-radius: $box-border-radius;
-    box-shadow: $box-shadow;
-    border: $box-border;
+    background-color: theme.$background-color-primary;
+    border-radius: theme.$box-border-radius;
+    box-shadow: theme.$box-shadow;
+    border: theme.$box-border;
     
-    @include mt(2, xs);
-    @include p(3, xs);
+    @include spacing.mt(2, xs);
+    @include spacing.p(3, xs);
 
     &::before {
         content: "";
-        border-left: 4px solid $text-secondary;
+        border-left: 4px solid theme.$text-secondary;
         position: absolute;
         width: 4px;
         height: 10px;
@@ -147,24 +147,24 @@
     flex-direction: row !important;
     justify-content: flex-start !important;
     align-items: flex-start !important;
-    gap: $spacer !important;
+    gap: spacing.$spacer !important;
     width: 100%;
 }
 
 .replyTextEditorBox {
-    @include pt(0, xs);
+    @include spacing.pt(0, xs);
 }
 
 .guideMessage {
-    font-size: $font-size-small;
-    color: $text-secondary;
+    font-size: theme.$font-size-small;
+    color: theme.$text-secondary;
     white-space: nowrap;
     margin-top: 1rem; 
     white-space: normal; 
     word-break: break-word; 
     a {
-        font-size: $font-size-small;
-        color: $announcement-text-primary !important;
+        font-size: theme.$font-size-small;
+        color: theme.$announcement-text-primary !important;
         text-decoration: underline !important;
     }
 }
