@@ -10,7 +10,7 @@
     @include display.media-breakpoint-down(sm) {
         flex-wrap: wrap !important;
     }
-    box-shadow: theme.$box-shadow;
+    box-shadow: theme.$box-shadow-main-container;
     border: theme.$box-border-main-container;
     color: theme.$text-primary;
     border-radius: theme.$box-border-radius;
