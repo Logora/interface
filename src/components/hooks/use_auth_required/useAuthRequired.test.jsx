@@ -55,7 +55,7 @@ describe('useAuthRequired', () => {
         fireEvent.click(getByText('Authenticate'));
 
         expect(window.dispatchEvent).toHaveBeenCalledWith(
-            new CustomEvent('LOGORA::authenticationRequired', { detail: { redirectUrl } })
+            new CustomEvent('logora:authentication:requested', { detail: { redirectUrl } })
         );
     });
 
@@ -77,7 +77,7 @@ describe('useAuthRequired', () => {
         fireEvent.click(getByText('Authenticate'));
 
         expect(window.dispatchEvent).toHaveBeenCalledWith(
-            new CustomEvent('LOGORA::authenticationRequired', { detail: { redirectUrl } })
+            new CustomEvent('logora:authentication:requested', { detail: { redirectUrl } })
         );
         
         expect(showModal).not.toHaveBeenCalled();

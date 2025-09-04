@@ -12,6 +12,11 @@ export const useAuthRequired = () => {
             window.dispatchEvent(
                 new CustomEvent("LOGORA::authenticationRequired", { detail: { redirectUrl: window.location.href } })
             );
+            window.dispatchEvent(
+                new CustomEvent("logora:authentication:requested", {
+                    detail: { redirectUrl: window.location.href }
+                })
+            );
         }
         if (config?.auth?.disableLoginModal === true) {
             return;
