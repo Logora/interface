@@ -12,8 +12,8 @@
     @include spacing.p(4, sm);
     @include spacing.p(3, xs);
     background-color: theme.$background-color-primary;
-    box-shadow: theme.$box-shadow-main-container;
-    border: theme.$box-border-main-container;
+    box-shadow: theme.$box-shadow;
+    border: theme.$box-border;
     border-radius: theme.$box-border-radius;
     z-index: 1;
     -webkit-transition: box-shadow 0.8s ease-in-out;
