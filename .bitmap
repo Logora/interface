@@ -901,7 +901,7 @@
     "vote/vote_box": {
         "name": "vote/vote_box",
         "scope": "logora.debate",
-        "version": "0.0.158",
+        "version": "0.0.159",
         "mainFile": "index.js",
         "rootDir": "src/components/vote/vote_box"
     },
