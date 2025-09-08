@@ -287,11 +287,11 @@ export const VoteBox = ({ numberVotes, votePositions, voteableType, voteableId, 
                             {!disabled &&
                                 <div>
                                     {currentVote ?
-                                        <button data-tid={"action_edit_vote"} className={styles.changeVoteButton} type="button" onClick={toggleResults}>
+                                        <button data-tid={"action_edit_vote"} className={styles.voteActionButton} type="button" onClick={toggleResults}>
                                             <FormattedMessage id="vote.vote_box.update" defaultMessage="Modify" />
                                         </button>
                                         :
-                                        <div className={styles.backToVote} onClick={() => setShowResults(false)}>
+                                        <div className={styles.voteActionButton} onClick={() => setShowResults(false)}>
                                             <FormattedMessage id="vote.vote_box.back" defaultMessage="Back to vote" />
                                         </div>
                                     }

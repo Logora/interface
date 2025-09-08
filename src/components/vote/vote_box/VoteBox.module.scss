@@ -51,12 +51,6 @@
     @include p(0, xs);
 }
 
-.backToVote {
-    color: $text-secondary;
-    cursor: pointer;
-    text-decoration: underline;
-}
-
 .voteBoxActions {
     display: flex !important;
     flex-direction: column !important;
@@ -172,17 +166,17 @@ button.voteButton, a.voteButton  {
     }
 }
 
-.changeVoteButton {
+.voteActionButton {
     cursor: pointer;
     -webkit-appearance: initial !important;
     background: none;
-    color: $text-secondary !important;
     border: none;
+    color: $text-secondary !important;
     font-size: inherit;
     padding: 0;
     font-weight: $font-weight-bold;
 }
-
+  
 .sideIcon {
     svg {
         margin-left: 5px;
