@@ -176,7 +176,7 @@ button.voteButton, a.voteButton  {
     cursor: pointer;
     -webkit-appearance: initial !important;
     background: none;
-    color: $text-secondary;
+    color: $text-secondary !important;
     border: none;
     border-bottom: 1px solid $text-secondary;
     font-size: inherit;
