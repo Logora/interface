@@ -173,18 +173,15 @@ button.voteButton, a.voteButton  {
 }
 
 .changeVoteButton {
-    @include pb(1, xs);
-    @include px(3, xs);
-    font-size: $font-size-small;
     cursor: pointer;
     -webkit-appearance: initial !important;
-    color: $text-secondary;
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    border-bottom: 1px solid $text-secondary;
     background: none;
-    font-weight: $font-weight-normal;
+    color: $text-secondary;
+    border: none;
+    border-bottom: 1px solid $text-secondary;
+    font-size: inherit;
+    padding: 0;
+    font-weight: $font-weight-bold;
 }
 
 .sideIcon {
