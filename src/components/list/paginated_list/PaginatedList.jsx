@@ -341,12 +341,16 @@ export const PaginatedList = ({
                     {(!isLoading && withPagination !== false) && (
                         <Pagination
                             buttonText={intl.formatMessage({ id: "action.see_more", defaultMessage: "See more" })}
-                            currentPage={page}
-                            perPage={perPage}
-                            totalElements={numberElements || totalElements}
-                            onLoad={handleLoadNewPage}
-                            isLoading={isLoading}
-                            hideLoader={true} // Disable loader when there is loading components to display instead
+                            lists={{
+                                [currentListId]: {
+                                    currentPage: page,
+                                    perPage: perPage,
+                                    totalElements: numberElements || totalElements,
+                                    onLoad: handleLoadNewPage,
+                                    isLoading: isLoading,
+                                    hideLoader: true
+                                }
+                            }}
                             data-tid={"list_read_more"}
                         />
                     )}
