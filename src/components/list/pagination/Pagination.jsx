@@ -1,36 +1,38 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Loader } from '@logora/debate.progress.loader';
 import { Button } from '@logora/debate.action.button';
 import styles from './Pagination.module.scss';
 import PropTypes from "prop-types";
 import { Icon } from "@logora/debate.icons.icon";
 
-export const Pagination = ({ currentPage, perPage, totalElements, buttonText, onLoad, isLoading, hideLoader, ...rest }) => {
-    const [hasNextPage, setHasNextPage] = useState((currentPage * perPage) < totalElements)
+export const Pagination = ({ lists, buttonText, ...rest }) => {
+    const listEntries = Object.entries(lists || {});
+    const hasNextPage = listEntries.some(([_, list]) => (list.currentPage * list.perPage) < list.totalElements);
+    const isLoading = listEntries.some(([_, list]) => list.isLoading);
+    const hideLoader = listEntries.every(([_, list]) => list.hideLoader);
 
-    useEffect(() => {
-        if (totalElements > 0) {
-            setHasNextPage((currentPage * perPage) < totalElements);
-        }
-    }, [totalElements, currentPage])
-    
+    const handleLoad = () => {
+        listEntries.forEach(([_, list]) => {
+            if ((list.currentPage * list.perPage) < list.totalElements && typeof list.onLoad === 'function') {
+                list.onLoad();
+            }
+        });
+    };
+
     return (
         <>
             { hasNextPage ? (
                 <div className={styles.paginationBox}>
                     { !isLoading ? (
                         <Button
-                            handleClick={onLoad} 
+                            handleClick={handleLoad}
                             {...rest}
                             rightIcon={<Icon name="lightArrow" height={10} width={10} />}
                         >
                             { buttonText }
                         </Button>
                     ) : (
-                        hideLoader ?
-                            null
-                        :
-                            <Loader />
+                        hideLoader ? null : <Loader />
                     )}
                 </div>
             ) : null}
@@ -39,20 +41,13 @@ export const Pagination = ({ currentPage, perPage, totalElements, buttonText, on
 }
 
 Pagination.propTypes = {
-    /** Number of the current page */
-    currentPage: PropTypes.number,
-    /** Number of elements per page */
-    perPage: PropTypes.number,
-    /** Number of elements in total */
-    totalElements: PropTypes.number,
-    /** Text displayed on the button */
-    buttonText: PropTypes.string.isRequired,
-    /** Callback function triggered when clicking on the pagination button */
-    onLoad: PropTypes.func,
-    /** Boolean to control the loading state */
-    isLoading: PropTypes.bool,
-    /** If `true`, will not show the loader on load */
-    hideLoader: PropTypes.bool,
-    /** Extra props passed to the button */
-    rest: PropTypes.object
-  };
+    lists: PropTypes.objectOf(PropTypes.shape({
+        currentPage: PropTypes.number.isRequired,
+        perPage: PropTypes.number.isRequired,
+        totalElements: PropTypes.number.isRequired,
+        onLoad: PropTypes.func,
+        isLoading: PropTypes.bool,
+        hideLoader: PropTypes.bool
+    })),
+    buttonText: PropTypes.string.isRequired
+};

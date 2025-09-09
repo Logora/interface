@@ -12,12 +12,20 @@ A component that renders a button used to handle pagination of lists.
 ```
 ```js
     <Pagination
-        currentPage={1}
-        perPage={10}
-        totalElements={20}
-        onLoad={loadMoreElementsCallback}
-        isLoading={isLoadingVar}
-        hasLoadingComponent={false}
         buttonText={"Next page"}
+        lists={{
+            argumentList: {
+                currentPage: 1,
+                perPage: 10,
+                totalElements: 20,
+                onLoad: loadMoreElementsCallback,
+                isLoading: isLoadingVar,
+                hideLoader: false
+            }
+        }}
     />
 ```
+
+#### Props
+- `lists`: Object of lists keyed by listId, each with pagination state (`currentPage`, `perPage`, `totalElements`, `onLoad`, `isLoading`, `hideLoader`).
+- `buttonText`: Text displayed on the button.
