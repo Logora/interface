@@ -28,7 +28,7 @@
     ]
   },
   "teambit.harmony/bit": {
-    "engine": "1.9.100"
+    "engine": "1.12.67"
   },
   "teambit.workspace/variants": {
     "*": {
