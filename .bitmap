@@ -665,7 +665,16 @@
         "scope": "logora.debate",
         "version": "0.0.27",
         "mainFile": "_spacing.scss",
-        "rootDir": "src/components/styles/spacing"
+        "rootDir": "src/components/styles/spacing",
+        "config": {
+            "teambit.dependencies/dependency-resolver": {
+                "policy": {
+                    "dependencies": {
+                        "sass": "1.92.1"
+                    }
+                }
+            }
+        }
     },
     "styles/tabs": {
         "name": "styles/tabs",
