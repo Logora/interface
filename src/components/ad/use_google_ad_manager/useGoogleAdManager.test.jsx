@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { render } from '@testing-library/react';
-import { useGoogleAdManager } from './useGoogleAdManager.js';
+import { useGoogleAdManager } from './useGoogleAdManager';
 
 const gptSrc = "https://securepubads.g.doubleclick.net/tag/js/gpt.js";
 
