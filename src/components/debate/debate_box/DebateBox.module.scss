@@ -1,15 +1,16 @@
-@import '~@logora/debate.styles.theme/_theme.scss';
-@import '~@logora/debate.styles.spacing/_spacing.scss';
+@use '@logora/debate.styles.theme/_theme.scss' as theme;
+@use '@logora/debate.styles.spacing/_spacing.scss' as spacing;
+@use '@logora/debate.styles.display/_display.scss' as display;
 
 .debateBox {
   position: relative;
-  font-size: $font-size-normal;
-  border: $box-border;
-  box-shadow: $box-shadow;
-  border-radius: $box-border-radius;
-  @include m(0, xs);
-  @include p(0, xs);
-  background-color: $background-color-primary;
+  font-size: theme.$font-size-normal;
+  border: theme.$box-border;
+  box-shadow: theme.$box-shadow;
+  border-radius: theme.$box-border-radius;
+  background-color: theme.$background-color-primary;
+  @include spacing.m(0, xs);
+  @include spacing.p(0, xs);
 }
 
 .imageLink {
@@ -21,8 +22,8 @@
   aspect-ratio: 16 / 9;
   object-fit: cover;
   cursor: pointer;
-  border-top-right-radius: $box-border-radius;
-  border-top-left-radius: $box-border-radius;
+  border-top-right-radius: theme.$box-border-radius;
+  border-top-left-radius: theme.$box-border-radius;
 }
 
 .debateBoxImageBox {
@@ -32,18 +33,18 @@
 .debateSuggestion {
   display: flex !important;
   position: absolute;
-  gap: $spacer-xxs;
-  right: $spacer;
-  top: $spacer;
-  @include px(2.5, xs);
-  @include py(2, xs);
-  background-color: $call-primary;
-  border-radius: $box-border-radius;
+  gap: spacing.$spacer-xxs;
+  right: spacing.$spacer;
+  top: spacing.$spacer;
+  @include spacing.px(2.5, xs);
+  @include spacing.py(2, xs);
+  background-color: theme.$call-primary;
+  border-radius: theme.$box-border-radius;
   max-width: 80%;
-  font-size: $font-size-small;
+  font-size: theme.$font-size-small;
   span {
-    color: $text-light;
-    font-size: $font-size-extra-small;
+    color: theme.$text-light;
+    font-size: theme.$font-size-extra-small;
   }
   .authorSuggestion {
     text-overflow: ellipsis;
@@ -52,61 +53,61 @@
     max-width: 93%;
   }
   .authorName {
-    @include ml(1, xs);
+    @include spacing.ml(1, xs);
   }
   svg {
-    fill: $text-light;
+    fill: theme.$text-light;
   }
 }
 
 .inactiveDebate {
   @extend .debateSuggestion;
   top: unset;
-  left: $spacer;
-  bottom: $spacer;
+  left: spacing.$spacer;
+  bottom: spacing.$spacer;
   right: unset;
-  color: $text-light;
-  @include px(2.5, xs);
-  @include py(2, xs);
+  color: theme.$text-light;
+  @include spacing.px(2.5, xs);
+  @include spacing.py(2, xs);
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
   max-width: 93%;
-  font-size: $font-size-normal;
+  font-size: theme.$font-size-normal;
 }
 
 .debateBoxBody {
   display: flex;
   flex-direction: column;
-  gap: $box-spacing;
-  padding: $box-spacing;
+  gap: spacing.$box-spacing;
+  padding: spacing.$box-spacing;
 }
 
 .subApplication {
   > img {
     height: 20px;
-    @include mr(2, xs);
+    @include spacing.mr(2, xs);
   }
-  @include mb(3, xs);
-  color: $text-secondary;
-  font-size: $font-size-extra-small;
+  @include spacing.mb(3, xs);
+  color: theme.$text-secondary;
+  font-size: theme.$font-size-extra-small;
   display: flex;
   align-items: center;
 }
 
 .debateBoxTitle {
-  font-size: $font-size-medium;
-  font-family: $box-title-font-family;
+  font-size: theme.$font-size-medium;
+  font-family: theme.$box-title-font-family;
 }
 
 .debateBoxTitle {
-  font-weight: $font-weight-bold;
+  font-weight: theme.$font-weight-bold;
   min-height: 2.7em;
-  line-height: $line-height-normal;
+  line-height: theme.$line-height-normal;
   a {
-    color: $text-primary;
+    color: theme.$text-primary;
     &:hover{
-      color: $text-primary;
+      color: theme.$text-primary;
       text-decoration: underline;
     }
   }
@@ -114,38 +115,38 @@
 
 .debateTitle {
   display: block;
-  @include line-clamp(2);
-  font-size: $font-size-medium;
-  line-height: $line-height-normal;
+  @include display.line-clamp(2);
+  font-size: theme.$font-size-medium;
+  line-height: theme.$line-height-normal;
   &.debateTitleMobile{
     -webkit-line-clamp: 3;
   }
 }
 
 .debateBoxFooter {
-  font-size: $font-size-extra-small !important;
+  font-size: theme.$font-size-extra-small !important;
   justify-content: space-between;
   min-height: 40px;
   display: flex !important;
   flex-direction: row !important;
   align-items: center !important;
-  @include p(0, xs);
+  @include spacing.p(0, xs);
   width: 100% !important;
 }
 
 .debateBoxFooter svg {
-  fill: $text-primary;
+  fill: theme.$text-primary;
 }
 
 .debateParticipantsBox {
   display: flex !important;
   flex-direction: row !important;
-  @include p(0, xs);
+  @include spacing.p(0, xs);
 }
 
 .debateParticipantsEmpty {
   font-style: italic;
-  font-size: $font-size-extra-small;
+  font-size: theme.$font-size-extra-small;
 }
 
 .debateParticipantItem {
@@ -157,32 +158,32 @@
 }
 
 .debateBoxNumbers {
-  font-size: $font-size-normal;
-  line-height: $line-height-none;
+  font-size: theme.$font-size-normal;
+  line-height: theme.$line-height-none;
   display: flex !important;
   flex-direction: row !important;
   align-items: flex-end !important;
   justify-content: flex-end !important;
-  @include p(0, xs);
+  @include spacing.p(0, xs);
 }
 
 .debateBoxNumbersText {
-  @include ml(3, xs);
+  @include spacing.ml(3, xs);
   display: block;
-  @include line-clamp(1);
+  @include display.line-clamp(1);
 }
 
 .participantsCountBox {
   min-width: 40px;
   width: 40px;
   height: 40px;
-  background: $background-color-secondary;
+  background: theme.$background-color-secondary;
   border-radius: 50%;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  color: $text-primary;
-  font-size: $font-size-extra-small;
-  line-height: $line-height-tight;
+  color: theme.$text-primary;
+  font-size: theme.$font-size-extra-small;
+  line-height: theme.$line-height-tight;
 }

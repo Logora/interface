@@ -1,18 +1,18 @@
-@import '~@logora/debate.styles.theme/_theme.scss';
-@import "~@logora/debate.styles.display/_display.scss";
-@import "~@logora/debate.styles.spacing/_spacing.scss";
+@use '@logora/debate.styles.theme/_theme.scss' as theme;
+@use '@logora/debate.styles.display/_display.scss' as display;
+@use '@logora/debate.styles.spacing/_spacing.scss' as spacing;
 
 .contentHeaderContainer {
 	display: flex !important;
 	flex-direction: column !important;
-	gap: $spacer;
+	gap: spacing.$spacer;
 }
 
 .contentHeader {
 	display: flex !important;
 	flex-direction: row !important;
 	align-items: flex-start !important;
-	font-size: $font-size-normal;
+	font-size: theme.$font-size-normal;
 }
 
 .contentHeaderAuthorBox {
@@ -25,11 +25,11 @@
 }
 
 .contentHeaderDate {
-	color: $text-secondary;
-	font-size: $font-size-small;
-	font-weight: $font-weight-normal;
+	color: theme.$text-secondary;
+	font-size: theme.$font-size-small;
+	font-weight: theme.$font-weight-normal;
 	text-align: right;
-	@include pt(2, xs);
+	@include spacing.pt(2, xs);
 }
 
 .contentHeaderRight {
@@ -43,61 +43,61 @@
 }
 
 .contentHeaderTagBox {
-	font-weight: $font-weight-bold;
+	font-weight: theme.$font-weight-bold;
 	display: flex !important;
 	align-items: center !important;
 	justify-content: flex-end !important;
-	border-radius: $box-border-radius;
-	background-color: $call-primary;
+	border-radius: theme.$box-border-radius;
+	background-color: theme.$call-primary;
 }
 
 .contentHeaderTag {
-	font-size: $font-size-small;
-	color: $text-light;
-	@include line-clamp(2);
+	font-size: theme.$font-size-small;
+	color: theme.$text-light;
+	@include display.line-clamp(2);
 	max-height: 3.4em;
-	@include px(2.5, xs);
-	@include py(2, xs);
+	@include spacing.px(2.5, xs);
+	@include spacing.py(2, xs);
 }
 
 .selectedContent {
 	display: flex;
 	flex-direction: row;
 	align-items: flex-start;
-	color: $text-primary;
-	font-size: $font-size-small;
-	gap: $spacer-xs;
+	color: theme.$text-primary;
+	font-size: theme.$font-size-small;
+	gap: spacing.$spacer-xs;
 	flex-wrap: wrap;
 
-	@include media-breakpoint-down(xs) {
-		font-size: $font-size-small;
+	@include display.media-breakpoint-down(xs) {
+		font-size: theme.$font-size-small;
 	}
 }
 
 .moderationInfo {
 	display: flex;
 	flex-direction: column;
-	gap: $spacer-xs;
+	gap: spacing.$spacer-xs;
 }
 
 .moderationReason {
 	display: flex;
-	color: $info-primary;
-	gap: $spacer-xs;
+	color: theme.$info-primary;
+	gap: spacing.$spacer-xs;
 }
 
 .moderationLink {
-	color: $call-primary;
+	color: theme.$call-primary;
 	font-weight: bold;
 	text-decoration: underline !important;
 }
 
 svg.warningIcon {
 	circle {
-		stroke: $info-primary;
+		stroke: theme.$info-primary;
 		stroke-width: 1.5px;
 	}
 	path {
-		fill: $info-primary;
+		fill: theme.$info-primary;
 	}
 }

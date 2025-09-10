@@ -1,25 +1,25 @@
-@import '~@logora/debate.styles.theme/_theme.scss';
-@import '~@logora/debate.styles.spacing/_spacing.scss';
-@import '~@logora/debate.styles.display/_display.scss';
+@use '@logora/debate.styles.theme/_theme.scss' as theme;
+@use '@logora/debate.styles.spacing/_spacing.scss' as spacing;
+@use '@logora/debate.styles.display/_display.scss' as display;
 
 .childContainer {
     position: relative;
 }
 .textContainer {
-    @include px(3, xs);
-    @include py(2.5, xs);
+    @include spacing.px(3, xs);
+    @include spacing.py(2.5, xs);
     z-index: 2;
     position: absolute;
     width: 45%;
     height: fit-content;
     min-width: 250px;
-    background-color: $success-primary;
-    color: $text-light;
+    background-color: theme.$success-primary;
+    color: theme.$text-light;
     border-radius: 3px;
     text-align: left;
     visibility: visible;
     opacity: 1;
-    @include media-breakpoint-down(sm) {
+    @include display.media-breakpoint-down(sm) {
         min-width: 150px;
     }
     &.hidden {
@@ -32,7 +32,7 @@
         position: absolute;
         border-width: 10px;
         border-style: solid;
-        border-color: $success-primary transparent transparent transparent;
+        border-color: theme.$success-primary transparent transparent transparent;
     }
     &.top {
         left: 25%;
@@ -42,7 +42,7 @@
             left: 50%;
             transform: none;
         }
-        @include media-breakpoint-down(sm) {
+        @include display.media-breakpoint-down(sm) {
             width: 80%;
             left: 10%;
             bottom: 70%;
@@ -56,7 +56,7 @@
             left: 50%;
             transform: rotate(180deg);
         }
-        @include media-breakpoint-down(sm) {
+        @include display.media-breakpoint-down(sm) {
             width: 80%;
             left: 10%;
             top: 76%;
@@ -71,7 +71,7 @@
             right: -19px;
             transform: rotate(270deg);
         }
-        @include media-breakpoint-down(lg) {
+        @include display.media-breakpoint-down(lg) {
             width: 80%;
             left: -70%;
         }
@@ -85,7 +85,7 @@
             left: -19px;
             transform: rotate(90deg);
         }
-        @include media-breakpoint-down(lg) {
+        @include display.media-breakpoint-down(lg) {
             width: 80%;
             right: -70%;
         }
@@ -94,38 +94,38 @@
 .title {
     display: flex !important;
     align-items: center !important;
-    @include mb(1.5, xs);
-    font-weight: $font-weight-bold;
+    @include spacing.mb(1.5, xs);
+    font-weight: theme.$font-weight-bold;
     text-transform: uppercase;
     svg {
-        @include mr(1, xs);
-        fill: $text-light;
+        @include spacing.mr(1, xs);
+        fill: theme.$text-light;
     }
 }
 
 .textContent {
-    font-size: $font-size-small;
+    font-size: theme.$font-size-small;
     svg {
-        @include ml(1, xs);
+        @include spacing.ml(1, xs);
         fill: transparent;
         path {
-            fill: $text-light;
+            fill: theme.$text-light;
         }
         circle {
-            stroke: $text-light;
+            stroke: theme.$text-light;
         }
     }
 }
 .close {
-    @include p(1, xs);
+    @include spacing.p(1, xs);
     position: absolute;
     top: 4px;
     right: 8px;
 }
 .closeText {
-    @include mt(2, xs);
+    @include spacing.mt(2, xs);
     width: fit-content;
-    font-size: $font-size-small;
+    font-size: theme.$font-size-small;
     text-decoration: underline;
 }
 .close, .closeText {
@@ -137,9 +137,9 @@
 
 .pointIcon {
     circle {
-        stroke: $text-primary;
+        stroke: theme.$text-primary;
     }
     path {
-        fill: $text-primary;
+        fill: theme.$text-primary;
     }
 }

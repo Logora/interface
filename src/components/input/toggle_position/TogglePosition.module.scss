@@ -1,28 +1,28 @@
-@import '~@logora/debate.styles.theme/_theme.scss';
-@import '~@logora/debate.styles.spacing/_spacing.scss';
+@use '@logora/debate.styles.theme/_theme.scss' as theme;
+@use '@logora/debate.styles.spacing/_spacing.scss' as spacing;
 
 .container {
     display: flex;
     flex-wrap: wrap;
-    @include p(1, xs);
+    @include spacing.p(1, xs);
     width: fit-content;
-    gap: $spacer;
+    gap: spacing.$spacer;
 }
 
 .label {
-    font-size: $font-size-small;
-    color: $text-primary;
+    font-size: theme.$font-size-small;
+    color: theme.$text-primary;
     cursor: pointer;
-    border-radius: $box-border-radius;
-    font-weight: $font-weight-bold;
+    border-radius: theme.$box-border-radius;
+    font-weight: theme.$font-weight-bold;
     transition: all .3s ease-in;
-    border: 1px solid $darkest-text-tertiary;
-    @include py(1.5, xs);
-    @include px(2.5, xs);
+    border: 1px solid theme.$darkest-text-tertiary;
+    @include spacing.py(1.5, xs);
+    @include spacing.px(2.5, xs);
 }
 
 .labelActive {
-    color: $text-light;
+    color: theme.$text-light;
     opacity: 1;
     cursor: default;
 }
@@ -32,15 +32,15 @@
 }
 
 .firstLabelDefault {
-    background-color: $for-primary;
+    background-color: theme.$for-primary;
     &.labelActive {
-        border-color: $for-primary;
+        border-color: theme.$for-primary;
     }
 }
 
 .secondLabelDefault {
-    background-color: $against-primary;
+    background-color: theme.$against-primary;
     &.labelActive {
-        border-color: $against-primary;
+        border-color: theme.$against-primary;
     }
 }

@@ -1,20 +1,21 @@
-@import '~@logora/debate.styles.theme/_theme.scss';
-@import '~@logora/debate.styles.spacing/_spacing.scss';
+@use '@logora/debate.styles.theme/_theme.scss' as theme;
+@use '@logora/debate.styles.spacing/_spacing.scss' as spacing;
+@use '@logora/debate.styles.display/_display.scss' as display;
 
 .userBox {
-	border: $box-border;
-	box-shadow: $box-shadow;
-	border-radius: $box-border-radius;
+	border: theme.$box-border;
+	box-shadow: theme.$box-shadow;
+	border-radius: theme.$box-border-radius;
 	display: flex !important;
 	flex-direction: row !important;
 	align-items: center !important;
 	justify-content: flex-start !important;
-	gap: $spacer;
-	@include p(3, xs);
-	background-color: $background-color-primary;
+	gap: spacing.$spacer;
+	@include spacing.p(3, xs);
+	background-color: theme.$background-color-primary;
 	a {
 		text-decoration: none;
-		color: $text-primary;
+		color: theme.$text-primary;
 	}
 }
 
@@ -26,7 +27,7 @@
 		content: "";
 		width: 14px;
 		height: 14px;
-		background: $connected-green;
+		background: theme.$connected-green;
 		border-radius: 50%;
 		right: 3px;
 		bottom: 0;
@@ -43,43 +44,43 @@
 }
 
 .userBoxDescription {
-	@include text-truncate();
+	@include display.text-truncate();
 	display: flex !important;
 	flex-direction: column !important;
-	gap: $spacer-xxs;
+	gap: spacing.$spacer-xxs;
 }
 
 .userBoxName {
 	text-align: left;
-	font-weight: $font-weight-bold;
-	@include text-truncate();
-	color: $text-primary !important;
+	font-weight: theme.$font-weight-bold;
+	@include display.text-truncate();
+	color: theme.$text-primary !important;
 	cursor: pointer;
-	font-size: $font-size-normal;
+	font-size: theme.$font-size-normal;
 	border: 0;
 }
 
 .userBoxName:hover {
-	color: $text-primary;
+	color: theme.$text-primary;
 	text-decoration: underline;
 }
 
 .userBoxPoints {
-	@include text-truncate();
+	@include display.text-truncate();
 	display: flex !important;
 	align-items: center !important;
-	font-size: $font-size-extra-small;
+	font-size: theme.$font-size-extra-small;
 	width: fit-content;
-	color: $text-secondary;
+	color: theme.$text-secondary;
 }
 
 .userBoxStats {
 	display: flex !important;
 	flex-wrap: wrap !important;
-	gap: $spacer-md;
-	font-weight: $font-weight-normal;
-	font-size: $font-size-small;
+	gap: spacing.$spacer-md;
+	font-weight: theme.$font-weight-normal;
+	font-size: theme.$font-size-small;
 	.userCount {
-		@include mr(1, xs);
+		@include spacing.mr(1, xs);
 	}
 }

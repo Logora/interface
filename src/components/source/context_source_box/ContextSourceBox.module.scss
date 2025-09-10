@@ -1,45 +1,46 @@
-@import '~@logora/debate.styles.theme/_theme.scss';
-@import '~@logora/debate.styles.spacing/_spacing.scss';
+@use '@logora/debate.styles.theme/_theme.scss' as theme;
+@use '@logora/debate.styles.spacing/_spacing.scss' as spacing;
+@use '@logora/debate.styles.display/_display.scss' as display;
 
 .container {
     display: flex !important;
-    gap: $spacer-md;
+    gap: spacing.$spacer-md;
     justify-content: space-between;
     cursor: pointer;
     &:hover .sourceTitle {
         text-decoration: underline;
     }
-    @include media-breakpoint-down(sm) {
-        gap: $spacer;
+    @include display.media-breakpoint-down(sm) {
+        gap: spacing.$spacer;
     }
 }
 
 .image {
     width: 48px !important;
     height: 48px !important;
-    border-radius: $box-border-radius;
+    border-radius: theme.$box-border-radius;
     object-fit: cover;
 }
 
 .infos {
     display: flex !important;
     flex-wrap: wrap;
-    font-size: $font-size-small;
-    line-height: $line-height-none;
-    color: $text-secondary;
-    @include mb(1, xs);
+    font-size: theme.$font-size-small;
+    line-height: theme.$line-height-none;
+    color: theme.$text-secondary;
+    @include spacing.mb(1, xs);
 }
 
 .sourceAuthor {
-    line-height: $line-height-tight;
+    line-height: theme.$line-height-tight;
 }
 
 .sourceTitle {
-    font-size: $font-size-normal;
-    line-height: $line-height-normal;
-    font-weight: $font-weight-bold;
+    font-size: theme.$font-size-normal;
+    line-height: theme.$line-height-normal;
+    font-weight: theme.$font-weight-bold;
 }
 
 .separator {
-    @include px(1, xs);
+    @include spacing.px(1, xs);
 }

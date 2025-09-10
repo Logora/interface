@@ -1,5 +1,6 @@
-@import '~@logora/debate.styles.theme/_theme.scss';
-@import '~@logora/debate.styles.spacing/_spacing.scss';
+@use '@logora/debate.styles.theme/_theme.scss' as theme;
+@use '@logora/debate.styles.spacing/_spacing.scss' as spacing;
+@use '@logora/debate.styles.display/_display.scss' as display;
 
 .skeletonContainer {
     position: relative;
@@ -16,7 +17,7 @@
     flex-direction: column !important;
     justify-content: flex-start !important;
     text-align: left;
-    @include m(2, xs);
+    @include spacing.mt(2, xs);
     flex: 1;
     min-width: 80px;
 }
@@ -25,7 +26,7 @@
     display: flex !important;
     flex-direction: column !important;
     justify-content: center !important;
-    @include mt(2, xs);
+    @include spacing.mt(2, xs);
 }
 
 .childrenLayer {
@@ -41,10 +42,10 @@
 }
 
 .border {
-    border-radius: $box-border-radius;
-    box-shadow: $box-shadow;
-    border: $box-border;
-    @include p(3, xs);
+    border-radius: theme.$box-border-radius;
+    box-shadow: theme.$box-shadow;
+    border: theme.$box-border;
+    @include spacing.p(3, xs);
 }
 
 .tagContainer {
@@ -55,23 +56,23 @@
 	padding: 0 !important;
 	width: max-content;
 	margin-left: auto;
-    @include mt(2, xs);
+    @include spacing.mt(2, xs);
 }
 
 .tagBox {
-	font-weight: $font-weight-bold;
+	font-weight: theme.$font-weight-bold;
 	display: flex !important;
 	align-items: center !important;
 	justify-content: flex-end !important;
-	border-radius: $box-border-radius;
-	background-color: $call-primary;
+	border-radius: theme.$box-border-radius;
+	background-color: theme.$call-primary;
 }
 
 .tag {
-	font-size: $font-size-extra-small;
-	color: $text-light;
-	@include line-clamp(2);
+	font-size: theme.$font-size-extra-small;
+	color: theme.$text-light;
+	@include display.line-clamp(2);
 	max-height: 3.4em;
-	@include px(2.5, xs);
-	@include py(2, xs);
+	@include spacing.px(2.5, xs);
+	@include spacing.py(2, xs);
 }

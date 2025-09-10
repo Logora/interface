@@ -1,22 +1,22 @@
-@import '~@logora/debate.styles.theme/_theme.scss';
-@import '~@logora/debate.styles.spacing/_spacing.scss';
-@import '~@logora/debate.styles.flex/_flex.scss';
-@import '~@logora/debate.styles.display/_display.scss';
+@use '@logora/debate.styles.theme/_theme.scss' as theme;
+@use '@logora/debate.styles.spacing/_spacing.scss' as spacing;
+@use '@logora/debate.styles.flex/_flex.scss' as flex;
+@use '@logora/debate.styles.display/_display.scss' as display;
 
 .badgeBox {
-    @include display(flex, xs);
-    @include flex-direction(column, xs);
-    @include align-items(center, xs);
-    @include justify-content(flex-start, xs);
-    @include p(3, xs);
-    box-shadow: $box-shadow;
-    border-radius: $box-border-radius;
-    border: $box-border;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    @include spacing.p(3, xs);
+    box-shadow: theme.$box-shadow;
+    border-radius: theme.$box-border-radius;
+    border: theme.$box-border;
     text-align: center;
     width: 250px;
     max-width: 250px;
     position: relative;
-    background-color: $background-color-primary;
+    background-color: theme.$background-color-primary;
 }
 
 .level-1 {
@@ -32,18 +32,18 @@
 }
 
 .badgeLevel {
-    @include px(2, xs);
-    @include py(1.5, xs);
+    @include spacing.px(2, xs);
+    @include spacing.py(1.5, xs);
     position: absolute;
     top: 0;
     left: 0;
-    font-size: $font-size-small;
-    color: $text-light;
-    border-radius: $box-border-radius 0 $box-border-radius 0;
+    font-size: theme.$font-size-small;
+    color: theme.$text-light;
+    border-radius: theme.$box-border-radius 0 theme.$box-border-radius 0;
 }
 
 .badgeImageBox {
-    @include mb(2, xs);
+    @include spacing.mb(2, xs);
 }
 
 .badgeImage {
@@ -53,51 +53,51 @@
 }
 
 .badgeName {
-    @include py(2, xs);
-    font-weight: $font-weight-bold;
+    @include spacing.py(2, xs);
+    font-weight: theme.$font-weight-bold;
 }
 
 .badgeDescription {
-    font-size: $font-size-small;
+    font-size: theme.$font-size-small;
     min-height: 40px;
 }
 
 .badgeProgressContainer {
-    @include mt(2, xs);
+    @include spacing.mt(2, xs);
     width: 100%;
-    font-size: $font-size-small;
-    color: $text-secondary;
-    font-weight: $font-weight-bold;
+    font-size: theme.$font-size-small;
+    color: theme.$text-secondary;
+    font-weight: theme.$font-weight-bold;
 }
 
 .badgeProgress {
     height: 7px;
     width: 100%;
     border-radius: 8px;
-    background-color: $background-color-secondary !important;
+    background-color: theme.$background-color-secondary !important;
 }
 
 .badgeReward {
-    @include display(flex, xs);
-    @include flex-direction(column, xs);
-    @include mt(3, xs);
-    @include p(1, xs);
-    border-radius: $box-border-radius;
+    display: flex !important;
+    flex-direction: column !important;
+    @include spacing.mt(3, xs);
+    @include spacing.p(1, xs);
+    border-radius: theme.$box-border-radius;
     width: 100%;
-    font-size: $font-size-small;
-    color: $text-secondary;
+    font-size: theme.$font-size-small;
+    color: theme.$text-secondary;
     .rewardName {
-        font-weight: $font-weight-bold;
+        font-weight: theme.$font-weight-bold;
     }
     &.rewardObtained {
-        background: $success-primary;
-        color: $text-light;
+        background: theme.$success-primary;
+        color: theme.$text-light;
         cursor: pointer;
     }
     &.rewardShown {
-        background: $background-color-primary !important;
-        color: $success-primary !important;
+        background: theme.$background-color-primary !important;
+        color: theme.$success-primary !important;
         cursor: pointer;
-        border: 1px solid $success-primary;
+        border: 1px solid theme.$success-primary;
     }
 }

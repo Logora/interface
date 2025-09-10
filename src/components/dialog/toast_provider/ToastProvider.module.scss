@@ -1,14 +1,14 @@
-@import '~@logora/debate.styles.theme/_theme.scss';
-@import '~@logora/debate.styles.spacing/_spacing.scss';
-@import '~@logora/debate.styles.display/_display.scss';
+@use '@logora/debate.styles.theme/_theme.scss' as theme;
+@use '@logora/debate.styles.spacing/_spacing.scss' as spacing;
+@use '@logora/debate.styles.display/_display.scss' as display;
 
 .toaster {
-    font-family: $font-family;
+    font-family: theme.$font-family;
     z-index: 1000002 !important;
 
-    @include media-breakpoint-down(sm) {
-        margin-top: $modal-margin-top;
-        margin-bottom: $modal-margin-bottom ;
-        @include mx(2, xs);
+    @include display.media-breakpoint-down(sm) {
+        margin-top: theme.$modal-margin-top;
+        margin-bottom: theme.$modal-margin-bottom ;
+        @include spacing.mx(2, xs);
     }
 }

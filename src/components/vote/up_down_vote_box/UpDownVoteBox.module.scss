@@ -1,5 +1,5 @@
-@import '~@logora/debate.styles.theme/_theme.scss';
-@import '~@logora/debate.styles.spacing/_spacing.scss';
+@use '@logora/debate.styles.theme/_theme.scss' as theme;
+@use '@logora/debate.styles.spacing/_spacing.scss' as spacing;
 
 .container {
     display: flex !important;
@@ -7,18 +7,18 @@
 }
 
 .upvoteContainer {
-    @include mr(4, xs);
+    @include spacing.mr(4, xs);
 }
 
 .upvoteContainer, .downvoteContainer {
     cursor: pointer;
     display: flex !important;
     align-items: center !important;
-    font-size: $font-size-extra-small;
+    font-size: theme.$font-size-extra-small;
 }
 
 .voteText {
-    @include ml(2, xs);
+    @include spacing.ml(2, xs);
 }
 
 .disabled {
@@ -27,9 +27,9 @@
 }
 
 .active span {
-    color: $call-primary;
+    color: theme.$call-primary;
 }
 
 .active svg {
-    fill: $call-primary;
+    fill: theme.$call-primary;
 }

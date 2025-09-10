@@ -1,36 +1,36 @@
-@import '~@logora/debate.styles.theme/_theme.scss';
-@import '~@logora/debate.styles.spacing/_spacing.scss';
+@use '@logora/debate.styles.theme/_theme.scss' as theme;
+@use '@logora/debate.styles.spacing/_spacing.scss' as spacing;
 
 .loginForm {
-	@include my(3, xs);
-	@include my(4, sm);
+	@include spacing.my(3, xs);
+	@include spacing.my(4, sm);
 }
 
 .formGroup {
-	@include my(3, xs);
+	@include spacing.my(3, xs);
 }
 
 .formSubmitGroup {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	@include my(4, xs);
+	@include spacing.my(4, xs);
 }
 
 .formSubmitButton {
-	border: $box-border;
-	box-shadow: $box-shadow;
-	border-radius: $box-border-radius;
-	background-color: $call-primary !important;
+	border: theme.$box-border;
+	box-shadow: theme.$box-shadow;
+	border-radius: theme.$box-border-radius;
+	background-color: theme.$call-primary !important;
 	height: calc(2.25em + 2px);
 }
 
 .forgotPassword {
-	color: $call-primary !important;
+	color: theme.$call-primary !important;
 	cursor: pointer;
 	width: 100%;
 	display: block;
 	text-align: right;
-	font-size: $font-size-small;
-	@include mt(2, xs);
+	font-size: theme.$font-size-small;
+	@include spacing.mt(2, xs);
 }

@@ -1,5 +1,5 @@
-@import '~@logora/debate.styles.spacing/_spacing.scss';
-@import '~@logora/debate.styles.theme/_theme.scss';
+@use '@logora/debate.styles.spacing/_spacing.scss' as spacing;
+@use '@logora/debate.styles.theme/_theme.scss' as theme;
 
 .shareBox {
     text-align: center;
@@ -7,7 +7,7 @@
     display: flex !important;
     flex-direction: row !important;
     justify-content: space-around !important;
-    gap: $spacer-md;
+    gap: spacing.$spacer-md;
 }
 
 .linkCopyButton {
@@ -22,9 +22,9 @@
 }
 
 .codeIcon path, .codeIcon rect {
-    stroke: $text-primary;
+    stroke: theme.$text-primary;
 }
 
 .twitterIcon path {
-    fill: $text-primary;
+    fill: theme.$text-primary;
 }

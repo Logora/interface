@@ -1,15 +1,15 @@
-@import '~@logora/debate.styles.theme/_theme.scss';
-@import '~@logora/debate.styles.display/_display.scss';
+@use '@logora/debate.styles.theme/_theme.scss' as theme;
+@use '@logora/debate.styles.display/_display.scss' as display;
 
 a.sourceListItem {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    font-size: $font-size-extra-small;
+    font-size: theme.$font-size-extra-small;
     margin-top: 5px;
     padding: 5px;
-    border: 1px solid $background-color-secondary;
-    border-radius: $box-border-radius;
+    border: 1px solid theme.$background-color-secondary;
+    border-radius: theme.$box-border-radius;
     max-width: 100%;
     svg {
         margin-right: 5px;
@@ -17,7 +17,7 @@ a.sourceListItem {
         width: 16px !important;
         height: 16px !important;
     }
-    color: $text-primary !important;
+    color: theme.$text-primary !important;
     text-decoration: none !important;
     outline: none !important;
 }
@@ -25,7 +25,7 @@ a.sourceListItem {
 .sourceListItemLink {
     overflow: hidden;
     text-overflow: ellipsis;
-    @include line-clamp(2);
+    @include display.line-clamp(2);
 
     span {
         margin-right: 5px;

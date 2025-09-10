@@ -1,15 +1,15 @@
-@import '~@logora/debate.styles.theme/_theme.scss';
-@import '~@logora/debate.styles.spacing/_spacing.scss';
+@use '@logora/debate.styles.theme/_theme.scss' as theme;
+@use '@logora/debate.styles.spacing/_spacing.scss' as spacing;
 
 .voteButtonsContainer {
     display: flex !important;
     align-items: center !important;
-    gap: $spacer;
+    gap: spacing.$spacer;
 }
 
 .text {
-    font-size: $font-size-extra-small;
-    font-weight: $font-weight-bold;
+    font-size: theme.$font-size-extra-small;
+    font-weight: theme.$font-weight-bold;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;

@@ -1,28 +1,28 @@
-@import '~@logora/debate.styles.theme/_theme.scss';
-@import '~@logora/debate.styles.spacing/_spacing.scss';
+@use '@logora/debate.styles.theme/_theme.scss' as theme;
+@use '@logora/debate.styles.spacing/_spacing.scss' as spacing;
 
 .container {
     display: flex !important;
     flex-direction: row !important;
-    border: $box-border;
-    border-radius: $box-border-radius;
-    box-shadow: $box-shadow;
+    border: theme.$box-border;
+    border-radius: theme.$box-border-radius;
+    box-shadow: theme.$box-shadow;
     visibility: visible;
     transition: visibility 0s 2s;
-    @include p(3, xs);
+    @include spacing.p(3, xs);
     &.info {
-        background-color: $call-primary;
+        background-color: theme.$call-primary;
     }
     &.success {
-        background-color: $success-primary;
+        background-color: theme.$success-primary;
     }
     &.error {
-        background-color: $cancel-primary;
+        background-color: theme.$cancel-primary;
     }
 }
 
 .body {
-    @include mr(5, xs);
+    @include spacing.mr(5, xs);
 }
 
 .closeContainer {
@@ -33,25 +33,25 @@
     outline: none;
     background-color: none !important;
     border: none !important;
-    color: $text-light !important;
+    color: theme.$text-light !important;
     cursor: pointer;
-    font-size: $font-size-extra-small;
+    font-size: theme.$font-size-extra-small;
 }
 
 .message {
-    font-size: $font-size-normal;
-    color: $text-light;
-    font-weight: $font-weight-bold;
+    font-size: theme.$font-size-normal;
+    color: theme.$text-light;
+    font-weight: theme.$font-weight-bold;
 }
 
 .points {
     display: flex !important;
     align-items: center;
-    gap: $spacer-xxs;
-    @include mt(3, xs);
+    gap: spacing.$spacer-xxs;
+    @include spacing.mt(3, xs);
     width: fit-content;
-    font-size: $font-size-small;
-    color: $text-light;
+    font-size: theme.$font-size-small;
+    color: theme.$text-light;
     .textPoints {
         width: fit-content;
     }

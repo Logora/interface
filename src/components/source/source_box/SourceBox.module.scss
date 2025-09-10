@@ -1,13 +1,12 @@
-@import '~@logora/debate.styles.theme/_theme.scss';
-@import '~@logora/debate.styles.spacing/_spacing.scss';
-@import '~@logora/debate.styles.flex/_flex.scss';
-@import '~@logora/debate.styles.display/_display.scss';
+@use '@logora/debate.styles.theme/_theme.scss' as theme;
+@use '@logora/debate.styles.spacing/_spacing.scss' as spacing;
+@use '@logora/debate.styles.display/_display.scss' as display;
 
 .sourceBox {
-    border: $box-border;
-    box-shadow: $box-shadow;
-    border-radius: $box-border-radius;
-    @include mb(4, xs);
+    border: theme.$box-border;
+    box-shadow: theme.$box-shadow;
+    border-radius: theme.$box-border-radius;
+    @include spacing.mb(4, xs);
 }
 
 .sourceBoxImage {
@@ -16,29 +15,29 @@
 }
 
 .sourceBoxBody {
-    @include px(3, xs);
-    @include py(2, xs);
+    @include spacing.px(3, xs);
+    @include spacing.py(2, xs);
 }
 
 .sourceBoxPublisher {
-    @include text-truncate();
-    color: $text-secondary;
-    font-size: $font-size-normal;
+    @include display.text-truncate();
+    color: theme.$text-secondary;
+    font-size: theme.$font-size-normal;
 }
 
 .sourceBoxTitle {
-    font-weight: $font-weight-bold;
-    font-size: $font-size-large;
-    @include text-truncate();
-    @include my(1, xs);
+    font-weight: theme.$font-weight-bold;
+    font-size: theme.$font-size-large;
+    @include display.text-truncate();
+    @include spacing.my(1, xs);
 }
 
 .sourceBoxDescription {
     display: block;
-    @include line-clamp(2);
+    @include display.line-clamp(2);
 }
 
 a.sourceLink {
     text-decoration: none !important;
-    color: $text-primary !important;
+    color: theme.$text-primary !important;
 }

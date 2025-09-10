@@ -1,15 +1,16 @@
-@import '~@logora/debate.styles.theme/_theme.scss';
-@import '~@logora/debate.styles.spacing/_spacing.scss';
+@use '@logora/debate.styles.theme/_theme.scss' as theme;
+@use '@logora/debate.styles.spacing/_spacing.scss' as spacing;
+@use '@logora/debate.styles.display/_display.scss' as display;
 
 .toolbar {
     display: flex !important;
     justify-content: space-between !important;
     flex-wrap: wrap;
-    background: $background-color-primary;
-    @include pt(2.5, xs);
+    background: theme.$background-color-primary;
+    @include spacing.pt(2.5, xs);
     vertical-align: middle;
     align-items: flex-start;
-    gap: $spacer;
+    gap: spacing.$spacer;
     &.toolbarIsActive {
         border-top: 1px solid lightgray;
     }
@@ -17,16 +18,16 @@
 
 .iconToolbar {
     display: flex !important;
-    gap: $spacer-lg;
+    gap: spacing.$spacer-lg;
     &.shortBar {
-        gap: $spacer-md;
+        gap: spacing.$spacer-md;
     }
 }
 
 .toolbarItem {
     border: 0;
     background: none;
-    @include p(0, xs);
+    @include spacing.p(0, xs);
     cursor: pointer;
     vertical-align: middle;
     &.disabled {
@@ -46,7 +47,7 @@
 
 .actionButton {
     display: flex !important;
-    gap: $spacer;
+    gap: spacing.$spacer;
 }
 
 .inputSubmitActionButton {
@@ -55,15 +56,15 @@
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
-    background-color: $call-primary !important;
+    background-color: theme.$call-primary !important;
     &.submitAction svg {
-        fill: $text-light !important;
+        fill: theme.$text-light !important;
     }
     .inputSourceText {
         display: none !important;
-        @include ml(2, xs);
-        font-size: $font-size-small;
-        @include media-breakpoint-up(sm) {
+        @include spacing.ml(2, xs);
+        font-size: theme.$font-size-small;
+        @include display.media-breakpoint-up(sm) {
             display: block !important;
         }
     }

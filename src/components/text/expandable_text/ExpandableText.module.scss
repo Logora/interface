@@ -1,9 +1,9 @@
-@import '~@logora/debate.styles.theme/_theme.scss';
-@import "~@logora/debate.styles.spacing/_spacing.scss";
+@use '@logora/debate.styles.theme/_theme.scss' as theme;
+@use '@logora/debate.styles.spacing/_spacing.scss' as spacing;
 
 .container {
     position: relative;
-    @include mb(3, xs);
+    @include spacing.mb(3, xs);
 }
 
 .contentMask {
@@ -22,13 +22,13 @@
     height: 70%;
     justify-content: center;
     align-items: flex-end;
-    @include mb(2, xs);
+    @include spacing.mb(2, xs);
     span {
-        font-size: $font-size-small;
+        font-size: theme.$font-size-small;
     }
     &:hover {
         cursor: pointer;
-        color: $text-primary;
+        color: theme.$text-primary;
     }
 }
 
@@ -42,17 +42,17 @@
     justify-content: center;
     align-items: flex-end;
     span {
-        font-size: $font-size-small;
+        font-size: theme.$font-size-small;
     }
     &:hover {
         cursor: pointer;
-        color: $text-primary;
+        color: theme.$text-primary;
     }
 }
 
 .link {
     position: relative;
-    border-bottom: 1px solid $text-primary;
+    border-bottom: 1px solid theme.$text-primary;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -63,7 +63,7 @@
 		transition: transform .5s;
 	}
     span {
-        padding-right: $spacer-xxs;
+        padding-right: spacing.$spacer-xxs;
     }
 }
 

@@ -1,5 +1,5 @@
-@import '~@logora/debate.styles.theme/_theme.scss';
-@import '~@logora/debate.styles.spacing/_spacing.scss';
+@use '@logora/debate.styles.theme/_theme.scss' as theme;
+@use '@logora/debate.styles.spacing/_spacing.scss' as spacing;
 
 .searchSubmit, .searchReset {
 	cursor: pointer;
@@ -10,9 +10,9 @@
 }
 
 .searchReducedButton {
-	border: $box-border;
-	border-radius: $box-border-radius;
-	@include px(3, xs);
-	@include py(2.5, xs);
+	border: theme.$box-border;
+	border-radius: theme.$box-border-radius;
+	@include spacing.px(3, xs);
+	@include spacing.py(2.5, xs);
 	cursor: pointer;
 }

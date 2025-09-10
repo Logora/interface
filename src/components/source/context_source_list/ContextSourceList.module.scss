@@ -1,16 +1,16 @@
-@import '~@logora/debate.styles.theme/_theme.scss';
-@import '~@logora/debate.styles.spacing/_spacing.scss';
+@use '@logora/debate.styles.theme/_theme.scss' as theme;
+@use '@logora/debate.styles.spacing/_spacing.scss' as spacing;
 
 .title {
-    font-size: $font-size-large;
-    line-height: $line-height-tight;
-    font-weight: $font-weight-bold;
-    font-family: $title-font-family;
+    font-size: theme.$font-size-large;
+    line-height: theme.$line-height-tight;
+    font-weight: theme.$font-weight-bold;
+    font-family: theme.$title-font-family;
 }
 
 .content {
     display: grid;
-    gap: $spacer;
+    gap: spacing.$spacer;
 
     &.contentMobile {
         grid-template-columns: repeat(1, 1fr);
@@ -28,11 +28,11 @@
 .listItem {
     text-decoration: none !important;
     color: inherit !important;
-    border: $box-border !important;
-    border-radius: $box-border-radius !important;
-    @include p(3, xs);
+    border: theme.$box-border !important;
+    border-radius: theme.$box-border-radius !important;
+    @include spacing.p(3, xs);
 
     &:hover {
-        border: 1px solid $text-primary !important;
+        border: 1px solid theme.$text-primary !important;
     }
 }
