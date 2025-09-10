@@ -4,7 +4,7 @@ import { Icon } from '@logora/debate.icons.icon';
 import styles from './GoogleLoginButton.module.scss';
 import PropTypes from "prop-types";
 
-export const GoogleLoginButton = ({ text, googleClientId, redirectUri, onCode, onClose }) => {
+export const GoogleLoginButton = ({ text, googleClientId, redirectUri, onCode, onClose, className }) => {
     return (
         <OAuth2Button 
             authDialogUrl={"https://accounts.google.com/o/oauth2/v2/auth"}
@@ -15,6 +15,7 @@ export const GoogleLoginButton = ({ text, googleClientId, redirectUri, onCode, o
             onClose={onClose}
             provider={"google"}
             redirectUri={redirectUri}
+            className={className}
         >
             <div className={styles.container}>
                 <Icon name="google" className={styles.icon} />&nbsp;
