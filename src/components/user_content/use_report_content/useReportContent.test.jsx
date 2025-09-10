@@ -14,8 +14,8 @@ import * as regularIcons from '@logora/debate.icons.regular_icons';
 import { faker } from '@faker-js/faker';
 
 const httpClient = {
-    get: jest.fn(() =>  Promise.resolve(null)),
-    post: jest.fn(() => Promise.resolve(null)),
+    get: jest.fn(() => Promise.resolve(null)),
+    post: jest.fn(() => Promise.resolve({ data: { success: true } })),
     patch: jest.fn(() => Promise.resolve(null)),
     delete: jest.fn(() => Promise.resolve(null))
 };
@@ -96,11 +96,13 @@ describe('useReportContent', () => {
         expect(screen.getByText("Report Post")).toBeTruthy();
         expect(screen.getByText("Tell us more about your report")).toBeTruthy();
         expect(screen.getByText("Send")).toBeTruthy();
+        await userEvent.click(screen.getByRole('button', { name: /select a reason/i }));
+        await userEvent.click(await screen.findByText(/incivility/i));
 
-        const confirmButton = screen.getByText("Send");
-        await userEvent.click(confirmButton)
+        const confirmButton = screen.getByRole('button', { name: /send/i });
+        await userEvent.click(confirmButton);
 
-        expect(screen.getByText("Thank you for your submission !")).toBeTruthy();
+        expect(await screen.findByText(/thank you for your submission/i)).toBeTruthy();
         expect(screen.getByText("Close")).toBeTruthy();
     });
 });

@@ -12,7 +12,7 @@ import styles from './ReportModal.module.scss';
 export const ReportModal = (props) => {
     const [step, setStep] = useState('SUBMIT');
     const [reportDescription, setReportDescription] = useState("");
-    const [reportType, setReportType] = useState("TOXICITY");
+    const [reportType, setReportType] = useState("");
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
@@ -43,7 +43,7 @@ export const ReportModal = (props) => {
 
     return (
         <div>
-            <Modal data-vid={"report_modal"} title={props.title || intl.formatMessage({ id: "report.report_modal.title", defaultMessage: "Report content" })}>
+            <Modal data-vid={"report_modal"} title={props.title || intl.formatMessage({ id: "report.report_modal.title", defaultMessage: "Report content" })} showCloseButton>
                 <div className={cx(styles.reportModalBody)}>
                     {
                         {
@@ -57,6 +57,7 @@ export const ReportModal = (props) => {
                                             onChange={e => setReportType(e.value)}
                                             options={
                                                 [
+                                                    { name: "EMPTY", value: "",  text: intl.formatMessage({ id: "report.report_modal.select_placeholder", defaultMessage: "Select a reason"}) },
                                                     { name: "TOXICITY", value: "TOXICITY", text: intl.formatMessage({ id: "report.report_modal.toxicity_option", defaultMessage: "Incivility" }) },
                                                     { name: "OBSCENE", value: "OBSCENE", text: intl.formatMessage({ id: "report.report_modal.obscene_option", defaultMessage: "Profanity, Sexually explicit, Flirtation, Obscene" }) },
                                                     { name: "HATE_SPEECH", value: "HATE_SPEECH", text: intl.formatMessage({ id: "report.report_modal.hate_speech_option", defaultMessage: "Hate speech or Identity attack" }) },
@@ -138,7 +139,7 @@ export const ReportModal = (props) => {
                                         </>
                                     )}
                                     <div className={cx(styles.formGroup, styles.reportFormSubmit)}>
-                                        <Button handleClick={() => null} data-tid={"action_submit_report"} type="submit">
+                                        <Button handleClick={() => null} data-tid={"action_submit_report"} type="submit"  disabled={!reportType} >
                                             {intl.formatMessage({ id: "report.report_modal.submit_label", defaultMessage: "Send" })}
                                         </Button>
                                     </div>

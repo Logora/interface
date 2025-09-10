@@ -18,9 +18,9 @@ describe('ReportModal', () => {
 			<DefaultReportModal />
 		);
 
-		const dropdownButton = screen.getByText("Incivility");
-        await userEvent.click(dropdownButton)
-
-        expect(screen.getByText("Incomprehensibility")).toBeTruthy();
+		const dropdownButton = screen.getByRole('button', { name: /select a reason/i });
+		await userEvent.click(dropdownButton);
+		expect(await screen.findByText("Incomprehensibility")).toBeTruthy();
 	});
+
 })
