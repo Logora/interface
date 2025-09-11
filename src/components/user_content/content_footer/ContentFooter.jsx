@@ -98,7 +98,7 @@ export const ContentFooter = ({ resource,
                          </div>
                 </div>
             }
-            { showShareButton && 
+            { !disabled && showShareButton && 
                 <ShareButton 
                     shareUrl={shareUrl} 
                     shareTitle={shareTitle}
@@ -109,7 +109,7 @@ export const ContentFooter = ({ resource,
                     iconSize={17}
                 />
             }
-			{ showActions && 
+			{ !disabled && showActions && 
 				<div className={styles.moreAction} title={intl.formatMessage({ id: "user_content.content_footer.more", defaultMessage: "More options" })}>
 					<Dropdown className={styles.moreActionDropdown} horizontalPosition={'right'}>
 						<Icon name="ellipsis" width={17} height={17} data-testid="dropdown" aria-label={intl.formatMessage({ id: "user_content.content_footer.menu.aria_label", defaultMessage: "opens menu"})}
