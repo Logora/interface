@@ -197,8 +197,9 @@ export const PaginatedList = ({
     }
 
     const handleLoadNewPage = () => {
-        if (typeof onLoadNewPage === 'function' && onLoadNewPage() !== null) {
-        } else {
+        if (typeof onLoadNewPage === 'function') {
+            onLoadNewPage();
+        } else if ((page * perPage) < (numberElements || totalElements)) {
             setPage(page + 1);
         }
     }
