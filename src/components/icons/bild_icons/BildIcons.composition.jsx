@@ -19,8 +19,6 @@ import { Downvote } from "./Downvote"
 import { Ellipsis } from "./Ellipsis"
 import { ExpertBadge } from "./ExpertBadge"
 import { Facebook } from "./Facebook"
-import { FacebookLogin } from "./FacebookLogin"
-import { Google } from "./Google"
 import { Home } from "./Home"
 import { Italic } from "./Italic"
 import { LightArrow } from './LightArrow'
@@ -77,8 +75,6 @@ export const BildIconsLibrary = () => {
             <Ellipsis width={50} height={50} data-testid={"ellipsis-icon"} style={{ margin: "15px" }} />
             <ExpertBadge width={50} height={50} data-testid={"expert-badge-icon"} style={{ margin: "15px" }} />
             <Facebook width={50} height={50} data-testid={"facebook-icon"} style={{ margin: "15px" }} />
-            <FacebookLogin width={50} height={50} data-testid={"facebook-login-icon"} style={{ margin: "15px" }} />
-            <Google width={50} height={50} data-testid={"google-icon"} style={{ margin: "15px" }} />
             <Home width={50} height={50} data-testid={"home-icon"} style={{ margin: "15px" }} />
             <Italic width={50} height={50} data-testid={"italic-icon"} style={{ margin: "15px" }} />
             <LightArrow width={50} height={50} data-testid={"light-arrow-icon"} style={{ margin: "15px" }} />

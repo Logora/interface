@@ -1,6 +1,6 @@
 import React from 'react';
 import { OAuth2Button } from '@logora/debate.auth.oauth2_button';
-import { Icon } from '@logora/debate.icons.icon';
+import { FacebookIcon } from "./FacebookIcon";
 import styles from './FacebookLoginButton.module.scss';
 import PropTypes from "prop-types";
 
@@ -16,7 +16,7 @@ export const FacebookLoginButton = ({ text, facebookClientId, redirectUri, onCod
       redirectUri={redirectUri}
     >
       <div className={styles.facebookButton}>
-        <Icon name="facebookLogin" className={styles.icon} />&nbsp;
+        <FacebookIcon height={35} width={35} className={styles.icon} />&nbsp;
         <span>
           { text }
         </span>
