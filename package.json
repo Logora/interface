@@ -40,7 +40,7 @@
     "@rooks/use-localstorage-state": "^4.11.2",
     "@rooks/use-previous": "^4.11.2",
     "@rooks/use-sessionstorage-state": "^4.11.2",
-    "axios": "^1.7.9",
+    "axios": "^1.11.0",
     "chart.js": "^4.4.7",
     "chartjs-plugin-datalabels": "^2.2.0",
     "classnames": "^2.5.1",
