@@ -16,10 +16,10 @@ jobs:
       BIT_CONFIG_ACCESS_TOKEN: ${{ secrets.BIT_TOKEN }}
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Initialize Bit
-        uses: bit-tasks/init@v2
+        uses: bit-tasks/init@v3
 
       - name: Resolve component packages from bit.cloud registry
         run: |
