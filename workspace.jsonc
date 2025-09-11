@@ -33,7 +33,7 @@
     ]
   },
   "teambit.harmony/bit": {
-    "engine": "1.12.67"
+    "engine": "1.12.10"
   },
   "teambit.workspace/variants": {
     "*": {
