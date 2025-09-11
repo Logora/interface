@@ -1,6 +1,6 @@
-@use '~@logora/debate.styles.theme/_theme.scss' as theme;
-@use '~@logora/debate.styles.spacing/_spacing.scss' as spacing;
-@use '~@logora/debate.styles.display/_display.scss' as display;
+@use '@logora/debate.styles.theme/_theme.scss' as theme;
+@use '@logora/debate.styles.spacing/_spacing.scss' as spacing;
+@use '@logora/debate.styles.display/_display.scss' as display;
 
 .selectContainer {
 	display: flex !important;
