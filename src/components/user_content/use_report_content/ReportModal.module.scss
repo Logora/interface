@@ -101,3 +101,9 @@
 .nameField:last-child {
 	margin-right: 0;
 }
+
+.checkboxLabel {
+    display: inline-flex; 
+    align-items: flex-start; 
+	gap: spacing.$spacer-sm; 
+}
