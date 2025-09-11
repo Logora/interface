@@ -240,9 +240,7 @@ export const PaginatedList = ({
                 setIsLoading(false);
             }).catch((error) => {
                 console.error(error);
-                if (!(error?.response?.status === 404)) {
-                    setLoadError(true);
-                }
+                setLoadError(true);
                 setIsLoading(false);
             });
         } else {
