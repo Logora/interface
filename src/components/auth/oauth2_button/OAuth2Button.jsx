@@ -1,5 +1,5 @@
 import React from "react";
-import { useLocation } from "react-router";
+import { useLocation } from "react-router-dom";
 import OauthPopup from "react-oauth-popup";
 import styles from "./OAuth2Button.module.scss";
 import classnames from "classnames";
