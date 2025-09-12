@@ -184,7 +184,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupTyp
 				{!hideFooter && !argument.is_deleted &&
 					<ContentFooter
 						resource={argument}
-						disabled={disabled || (!isLoggedIn && config?.actions?.disableInputForVisitor === true)}
+						disabled={disabled || argument.status === "rejected" || (!isLoggedIn && config?.actions?.disableInputForVisitor === true)}
 						reportType={"Message"}
 						softDelete={config.actions?.softDelete}
 						deleteType={"messages"}
@@ -207,7 +207,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupTyp
 							totalUpvote={argument.upvotes}
 							totalDownvote={0}
 							activeClassName={styles[`voteButtonPosition-${positionIndex}`]}
-							disabled={(currentUser?.id === argument?.author?.id)}
+							disabled={argument.status === "rejected" || (currentUser?.id === argument?.author?.id)}
 						/>
 					</ContentFooter>
 				}
