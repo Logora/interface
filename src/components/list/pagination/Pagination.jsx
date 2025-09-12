@@ -13,7 +13,7 @@ export const Pagination = ({ lists, buttonText, ...rest }) => {
 
     const handleLoad = () => {
         listEntries.forEach(([_, list]) => {
-            if ((list.currentPage * list.perPage) < list.totalElements && typeof list.onLoad === 'function') {
+            if ((list.currentPage * list.perPage) < list.totalElements) {
                 list.onLoad();
             }
         });
