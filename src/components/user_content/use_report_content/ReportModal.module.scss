@@ -103,7 +103,7 @@
 }
 
 .checkboxLabel {
-    display: inline-flex; 
+    display: inline-flex !important ; 
     align-items: flex-start; 
-	gap: spacing.$spacer-sm !important; 
+	gap: spacing.$spacer-md !important; 
 }
