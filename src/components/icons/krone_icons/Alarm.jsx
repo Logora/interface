@@ -3,7 +3,7 @@ import React from 'react';
 export const Alarm = (props) => (
     <svg
         {...props} 
-        viewBox="4 4 27 17"
+        viewBox="0 0 24 24"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
     >
