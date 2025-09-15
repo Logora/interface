@@ -35,6 +35,12 @@
     }
 }
 
+@media (prefers-color-scheme: dark) {
+  .headerLiveStat {
+    color: white !important;
+  }
+}
+
 .headerLiveNow {
     min-width: 8px;
     width: 8px;
@@ -80,9 +86,9 @@
     border-radius: $box-border-radius 0 $box-border-radius 0;
     font-size: $font-size-normal;
     flex-wrap: nowrap;
+    white-space: nowrap;
     @include px(2, xs);
     @include py(2, xs);
-    white-space: nowrap;
 }
 
 .debateName {
