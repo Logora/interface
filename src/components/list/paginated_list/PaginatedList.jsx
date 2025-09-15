@@ -86,6 +86,9 @@ export const PaginatedList = ({
     const [currentFilters, setCurrentFilters] = useState(getInitFilters());
     const previousFilters = usePrevious(filters);
 
+    if (currentPage && (currentPage !== page)) {
+        setPage(currentPage);
+    }
     if (query !== undefined && (query !== currentQuery)) {
         setCurrentQuery(query);
     }
@@ -147,12 +150,6 @@ export const PaginatedList = ({
     }, [page]);
 
     useEffect(() => {
-        if (currentPage && currentPage !== page) {
-            setPage(currentPage);
-        }
-    }, [currentPage]);
-
-    useEffect(() => {
         if (list.addElements && (currentListId in list.addElements)) {
             if (list.addElements[currentListId].length > 0) {
                 handleAddElements(list.addElements[currentListId]);
@@ -200,9 +197,8 @@ export const PaginatedList = ({
     }
 
     const handleLoadNewPage = () => {
-        if (typeof onLoadNewPage === 'function') {
-            onLoadNewPage();
-        } else if ((page * perPage) < (numberElements || totalElements)) {
+        if (typeof onLoadNewPage === 'function' && onLoadNewPage() !== null) {
+        } else {
             setPage(page + 1);
         }
     }
@@ -345,16 +341,12 @@ export const PaginatedList = ({
                     {(!isLoading && withPagination !== false) && (
                         <Pagination
                             buttonText={intl.formatMessage({ id: "action.see_more", defaultMessage: "See more" })}
-                            lists={{
-                                [currentListId]: {
-                                    currentPage: page,
-                                    perPage: perPage,
-                                    totalElements: numberElements || totalElements,
-                                    onLoad: handleLoadNewPage,
-                                    isLoading: isLoading,
-                                    hideLoader: true
-                                }
-                            }}
+                            currentPage={page}
+                            perPage={perPage}
+                            totalElements={numberElements || totalElements}
+                            onLoad={handleLoadNewPage}
+                            isLoading={isLoading}
+                            hideLoader={true}
                             data-tid={"list_read_more"}
                         />
                     )}

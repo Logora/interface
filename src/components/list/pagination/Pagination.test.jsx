@@ -6,35 +6,18 @@ import * as regularIcons from '@logora/debate.icons.regular_icons';
 
 const callback = jest.fn();
 
-const listsSingle = {
-    argumentList: {
-        currentPage: 1,
-        perPage: 10,
-        totalElements: 20,
-        hideLoader: false,
-        isLoading: false,
-        onLoad: callback
-    }
-};
-
-const listsLoading = {
-    argumentList: {
-        currentPage: 1,
-        perPage: 10,
-        totalElements: 30,
-        hideLoader: false,
-        isLoading: true,
-        onLoad: callback
-    }
-};
-
 describe('Pagination', () => {
     it('should render with the correct text', () => {
         const pagination = render(
             <IconProvider library={regularIcons}>
                 <Pagination 
                     buttonText={"Voir plus"} 
-                    lists={listsSingle}
+                    currentPage={1}
+                    perPage={10}
+                    totalElements={20}
+                    hideLoader={false}
+                    isLoading={false}
+                    onLoad={callback}
                 />
             </IconProvider>
         );
@@ -43,11 +26,16 @@ describe('Pagination', () => {
     });
     
     it('should render loader when isLoading is true', () => {
-        const pagination = render(
+        render(
             <IconProvider library={regularIcons}>
                 <Pagination 
                     buttonText={"Voir plus"} 
-                    lists={listsLoading}
+                    currentPage={1}
+                    perPage={10}
+                    totalElements={30}
+                    hideLoader={false}
+                    isLoading={true}
+                    onLoad={callback}
                 />
             </IconProvider>
         );
@@ -59,7 +47,12 @@ describe('Pagination', () => {
             <IconProvider library={regularIcons}>
                 <Pagination 
                     buttonText={"Voir plus"} 
-                    lists={listsSingle}
+                    currentPage={1}
+                    perPage={10}
+                    totalElements={20}
+                    hideLoader={false}
+                    isLoading={false}
+                    onLoad={callback}
                 />
             </IconProvider>
         );
@@ -67,34 +60,21 @@ describe('Pagination', () => {
         fireEvent.click(renderedPagination);
         expect(callback).toHaveBeenCalled();
     });
-    
-    it('should show button if at least one list has next page', () => {
-        const listsMulti = {
-            argumentListA: {
-                currentPage: 1,
-                perPage: 10,
-                totalElements: 5,
-                hideLoader: false,
-                isLoading: false,
-                onLoad: callback
-            },
-            argumentListB: {
-                currentPage: 1,
-                perPage: 10,
-                totalElements: 20,
-                hideLoader: false,
-                isLoading: false,
-                onLoad: callback
-            }
-        };
+
+    it('should not show button if there is no next page', () => {
         const pagination = render(
             <IconProvider library={regularIcons}>
                 <Pagination 
                     buttonText={"Voir plus"} 
-                    lists={listsMulti}
+                    currentPage={2}
+                    perPage={10}
+                    totalElements={20}
+                    hideLoader={false}
+                    isLoading={false}
+                    onLoad={callback}
                 />
             </IconProvider>
         );
-        expect(pagination.getByText(/Voir plus/i)).toBeTruthy();
+        expect(screen.queryByText(/Voir plus/i)).toBeNull();
     });
 });
