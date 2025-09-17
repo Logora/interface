@@ -60,43 +60,43 @@ export const SuggestionBox = ({ suggestion, disabled = false, onVoteCallback = n
                     <TranslationButton language={suggestion.language} callback={() => content.toggleContent()} />
                 }
             </div>
+            {!hideFooter && suggestion.is_published &&
+                <div className={styles.voteButton}>
+                    <Button rightIcon={<Icon name="lightArrow" width={10} height={10} className={styles.arrowIcon} />} className={styles.linkToDebate} to={routes.debateShowLocation.toUrl({ debateSlug: suggestion.slug })}>
+                        <span>{intl.formatMessage({ id: "action.link_to_debate", defaultMessage: "Go to debate" })}</span>
+                    </Button>
+                </div>
+            }
+            {!hideFooter && suggestion.debate_suggestion.is_accepted === false && suggestion.debate_suggestion.is_expired === false && !suggestion.is_published &&
+                <SuggestionVoteBox
+                    voteableType={"DebateSuggestion"}
+                    voteableId={suggestion.debate_suggestion.id}
+                    totalUpvote={totalUpvotes}
+                    totalDownvote={suggestion.debate_suggestion.total_downvotes}
+                    onVote={handleVote}
+                    disabled={disabled || (currentUser?.id === suggestion?.debate_suggestion?.author?.id)}
+                    data-testid="upvote-icon"
+                />
+            }
             <div className={styles.footer}>
-            {!hideFooter &&
-                <ContentFooter
-                    resource={suggestion}
-                    reportType={"Group"}
-                    deleteType={"groups"}
-                    deleteListId={"suggestionsList"}
-                    disabled={disabled}
-                    showShareButton={false}
-                    enableEdition={false}
-                    showActions={suggestion.is_accepted !== true}
-                    containerClassName={styles.footerContainer}
-                    voteActionClassName={styles.footerActionContainer}
-                >
-                    {suggestion.is_published &&
-                        <div className={styles.voteButton}>
-                            <Button rightIcon={<Icon name="lightArrow" width={10} height={10} className={styles.arrowIcon} />} className={styles.linkToDebate} to={routes.debateShowLocation.toUrl({ debateSlug: suggestion.slug })}>
-                                <span>{intl.formatMessage({ id: "action.link_to_debate", defaultMessage: "Go to debate" })}</span>
-                            </Button>
+                {!hideFooter &&
+                    <ContentFooter
+                        resource={suggestion}
+                        reportType={"Group"}
+                        deleteType={"groups"}
+                        deleteListId={"suggestionsList"}
+                        disabled={disabled}
+                        showShareButton={false}
+                        enableEdition={false}
+                        showActions={suggestion.is_accepted !== true}
+                        containerClassName={styles.footerContainer}
+                        voteActionClassName={styles.footerActionContainer}
+                    >
+                        <div className={cx(styles.voteResultsContainer)}>
+                            <FormattedMessage id="suggestion.goal" defaultMessage={"{count} supports"}  values={{ count: totalUpvotes }} />
                         </div>
-                    }
-                    {suggestion.debate_suggestion.is_accepted === false && suggestion.debate_suggestion.is_expired === false && !suggestion.is_published &&
-                        <SuggestionVoteBox
-                            voteableType={"DebateSuggestion"}
-                            voteableId={suggestion.debate_suggestion.id}
-                            totalUpvote={totalUpvotes}
-                            totalDownvote={suggestion.debate_suggestion.total_downvotes}
-                            onVote={handleVote}
-                            disabled={disabled || (currentUser?.id === suggestion?.debate_suggestion?.author?.id)}
-                            data-testid="upvote-icon"
-                        />
-                    }
-                    <div className={cx(styles.voteResultsContainer)}>
-                        <FormattedMessage id="suggestion.goal" defaultMessage={"{count} supports"}  values={{ count: totalUpvotes }} />
-                    </div>
-                </ContentFooter>
-}
+                    </ContentFooter>
+                }
             </div>
         </div>
     )
