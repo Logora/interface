@@ -330,6 +330,7 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
                                     handleChange={(value, rawValue) => { handleChange(value, rawValue); }}
                                     handleSourcesChange={(sources) => { handleSourcesChange(sources); }}
                                     placeholder={placeholder}
+                                    aria-label={intl.formatMessage({id: "input.argument_input.aria_label", defaultMessage: "Message input field" })}
                                     onSubmit={handleFormSubmit}
                                     sources={sources}
                                     hideSourceAction={hideSourceAction || inputDisabledForVisitors}
@@ -342,7 +343,6 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
                                     shortBar={isReply}
                                     hideSubmit={inputDisabledForVisitors}
                                     allowedDomains={config?.allowed_sources}
-
                                 />
                                 {(errors?.content) && <div className={styles.argumentInputWarning}>{errors && Object.values(errors).map((e, index) => <div key={index}>{e}</div>)}</div>}
                                 {inputActivation && disabledPositions?.find(pos => pos.id === userPositionId) &&
