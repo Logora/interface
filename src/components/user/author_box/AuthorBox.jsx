@@ -67,7 +67,7 @@ export const AuthorBox = ({
                     <>
                         <div className={styles.authorPointsBox}>
                             {points != null &&
-                                <div className={styles.authorPoints} aria-label={intl.formatMessage({ id: "user.author_box.aria-label", defaultMessage: "User points" })}>
+                                <div className={styles.authorPoints} aria-label={intl.formatMessage({ id: "user.author_box.aria_label", defaultMessage: "User points" })}>
                                     <span>
                                         {intl.formatNumber(points, { notation: 'compact', maximumFractionDigits: 1, roundingMode: "floor" })}
                                         {" "}
