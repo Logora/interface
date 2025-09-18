@@ -95,7 +95,7 @@ export const ContentHeader = ({ author, tag, tagClassName, date, oneLine = false
 						</div>
 					}
 					{!date || oneLine ? null :
-						<div data-testid={"content-header-date"} className={cx(styles.contentHeaderDate)}>
+						<div data-testid={"content-header-date"} className={cx(styles.contentHeaderDate)} aria-label={intl.formatMessage({ id: "user_content.content_header.date", defaultMessage: "Publication date"})}>
 							{relativeTime}
 						</div>
 					}
