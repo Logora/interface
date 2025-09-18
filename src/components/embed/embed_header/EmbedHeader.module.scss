@@ -36,7 +36,7 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  .headerLiveStat {
+  :global(.logoraDarkMode) {
     color: white !important;
   }
 }
