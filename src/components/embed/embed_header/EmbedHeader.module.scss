@@ -40,6 +40,12 @@
     .headerLiveStat {
       color: white !important;
     }
+    .headerLiveNow {
+        background-color: white !important;
+        &::before{
+            background-color: white !important;
+        }
+    }
   }
 }
 
