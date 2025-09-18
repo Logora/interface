@@ -147,7 +147,7 @@ export const SuggestionInput = ({
 						type="text"
 						aria-label={intl.formatMessage({ id: "suggestion.suggestion_input.aria_label", defaultMessage: "Suggest a debate question" })}
 						name="suggestionInput"
-						role="input"
+						role="textbox"
 						placeholder={intl.formatMessage({
 							id: "suggestion.input_placeholder",
 							defaultMessage: "Suggest a debate question",
