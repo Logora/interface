@@ -131,7 +131,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupTyp
 					<>
 						<div className={cx(styles.argumentBody, { [styles.fixedHeight]: fixedContentHeight })}>
 							{argument.is_reply && parentArgument &&
-								<div className={styles.replyTo} onClick={() => flashParent(replyToArgument.id)}>
+								<div className={styles.replyTo} onClick={() => flashParent(parentArgument.id)}>
 									{intl.formatMessage({ id: "info.replying_to", defaultMessage: "Replying to" })}
 									<span className={styles.replyingTo}>
 										{parentArgument.is_deleted ? intl.formatMessage({ id: "info.deleted", defaultMessage: "Deleted" }) : parentArgument.author.full_name}
