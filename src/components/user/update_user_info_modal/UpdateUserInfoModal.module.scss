@@ -1,183 +1,176 @@
-@import '~@logora/debate.styles.spacing/_spacing.scss';
-@import '~@logora/debate.styles.theme/_theme.scss';
-@import '~@logora/debate.styles.flex/_flex.scss';
-@import '~@logora/debate.styles.display/_display.scss';
+@use "~@logora/debate.styles.spacing/_spacing.scss" as spacing;
+@use "~@logora/debate.styles.theme/_theme.scss" as theme;
+@use "~@logora/debate.styles.flex/_flex.scss" as flex;
+@use "~@logora/debate.styles.display/_display.scss" as display;
 
 .container {
-    @include display(flex, xs);
-    @include flex-direction(column, xs);
-    @include flex-direction(row, sm);
-    @include align-items(flex-start, sm);
-    @include align-items(center, xs);
-    @include mb(4, xs);
+  display: flex !important;
+  @include flex.flex-direction(column, xs);
+  @include flex.flex-direction(row, sm);
+  @include flex.align-items(flex-start, sm);
+  @include flex.align-items(center, xs);
+  @include spacing.mb(4, xs);
 }
 
 .nameContainer {
-    display: flex;
-    flex-direction: row;
-    @include display(flex, xs);
-    @include flex-direction(column, xs);
-    @include flex-direction(row, sm);
-    @include align-items(flex-start, sm);
-    @include justify-content(center, xs);
-    @include justify-content(flex-start, sm);
-    gap: $spacer;
-    
+  display: flex !important;
+  @include flex.flex-direction(column, xs);
+  @include flex.flex-direction(row, sm);
+  @include flex.align-items(flex-start, sm);
+  @include flex.justify-content(center, xs);
+  @include flex.justify-content(flex-start, sm);
+  gap: spacing.$spacer;
 }
 
 .inputsContainer {
-    margin-left: $spacer-xl;
-    display: flex;
-    flex-direction: column;
-    gap: $spacer;
-    @include media-breakpoint-down(xs) {
-        margin-left: 0;
-        margin-top: $spacer-xl;
-    }
+  margin-left: spacing.$spacer-xl;
+  display: flex;
+  flex-direction: column;
+  gap: spacing.$spacer;
+  @include display.media-breakpoint-down(xs) {
+    margin-left: 0;
+    margin-top: spacing.$spacer-xl;
+  }
 }
 
 .hint {
-    width: 100%;
-    font-size: $font-size-small;
-    color: $text-secondary;
+  width: 100%;
+  font-size: theme.$font-size-small;
+  color: theme.$text-secondary;
 }
 
 .langSelect {
-    width: 100%;
+  width: 100%;
 }
 
 .textArea {
-    width: 100%;
-    height: 100px;
-    width: 100%;
-    box-sizing: border-box;
-    outline: 0;
-    padding: 0.69em 1em;
-    font-size: inherit;
-    font-family: inherit;
-    border: $box-border;
-    box-shadow: $box-shadow;
-    border-radius: $box-border-radius;
-    background-color: $background-color-primary;
-    color: $text-primary;
+  width: 100%;
+  height: 100px;
+  box-sizing: border-box;
+  outline: 0;
+  padding: 0.69em 1em;
+  font-size: inherit;
+  font-family: inherit;
+  border: theme.$box-border;
+  box-shadow: theme.$box-shadow;
+  border-radius: theme.$box-border-radius;
+  background-color: theme.$background-color-primary;
+  color: theme.$text-primary;
 
-    // when no content in the input and not focused, display the label as the placeholder
-    &:placeholder-shown:not(:focus) {
-        & ~ label {
-        transition: top 300ms, font-size 300ms, padding-top 300ms, transform 300ms, color 300ms ease-in-out;
-        top: 50%;
-        transform: translateY(-50%);
-        font-size: 1em;
-        background-color: unset;
-        }
+  // when no content in the input and not focused, display the label as the placeholder
+  &:placeholder-shown:not(:focus) {
+    & ~ label {
+      transition: top 300ms, font-size 300ms, padding-top 300ms, transform 300ms,
+        color 300ms ease-in-out;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1em;
+      background-color: unset;
     }
+  }
 
-    // keep precedence! filled < hover < success < error < disabled
-    &.filled {
-        background-color: $background-color-secondary;
+  // keep precedence! filled < hover < success < error < disabled
+  &.filled {
+    background-color: theme.$background-color-secondary;
+  }
+  &::placeholder {
+    color: theme.$text-secondary;
+  }
+  &:hover {
+    border: 1px solid theme.$text-secondary;
+  }
+  &:focus {
+    border: 1px solid theme.$text-secondary !important;
+    background-color: theme.$background-color-primary;
+    & ~ label {
+      color: theme.$text-secondary !important;
     }
-    &::placeholder {
-        color: $text-secondary;
-    }
-    &:hover {
-        border: 1px solid $text-secondary;
-    }
-    &:focus {
-        border: 1px solid $text-secondary !important;
-        background-color: $background-color-primary;
-        & ~ label {
-        color: $text-secondary !important;
-        }
-    }
+  }
 
-    &.success {
-        border: 1px solid $success-primary !important;
-        & ~ label {
-        color: $success-primary;
-        }
+  &.success {
+    border: 1px solid theme.$success-primary !important;
+    & ~ label {
+      color: theme.$success-primary;
     }
-    &.error {
-        border: 1px solid $cancel-primary !important;
-        & ~ label {
-        color: $cancel-primary;
-        }
+  }
+  &.error {
+    border: 1px solid theme.$cancel-primary !important;
+    & ~ label {
+      color: theme.$cancel-primary;
     }
-    &:disabled {
-        cursor: not-allowed;
-        background-color: $text-tertiary;
-        border: 1px solid $darken-text-tertiary;
-        & ~ label {
-        color: $darkest-text-tertiary;
-        }
+  }
+  &:disabled {
+    cursor: not-allowed;
+    background-color: theme.$text-tertiary;
+    border: 1px solid theme.$darken-text-tertiary;
+    & ~ label {
+      color: theme.$darkest-text-tertiary;
     }
+  }
 }
 
 .userSaveBox {
-    float: right;
+  float: right;
+  margin-top: spacing.$spacer;
 }
 
 .dialog {
-    margin-bottom: $spacer;
-}
-
-.userSaveBox {
-    margin-top: $spacer;
+  margin-bottom: spacing.$spacer;
 }
 
 // PROFILE PICTURE
 .userPictureUpload {
-    width: 160px;
-    height: 160px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #666;
-    border-radius: 50%;
-    margin-bottom: $spacer;
-    object-fit: cover;
-    @include media-breakpoint-down(xs) {
-        width: 80px;
-        height: 80px;
-    }
+  width: 160px;
+  height: 160px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #666;
+  border-radius: 50%;
+  margin-bottom: spacing.$spacer;
+  object-fit: cover;
+  @include display.media-breakpoint-down(xs) {
+    width: 80px;
+    height: 80px;
+  }
 }
 
 .userImageContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .formFooterTerms {
-    @include mt(3, xs);
-    font-size: $font-size-small;
-    text-align: center;
+  @include spacing.mt(3, xs);
+  font-size: theme.$font-size-small;
+  text-align: center;
 }
 
 .termsLink {
-    color: $call-primary !important;
+  color: theme.$call-primary !important;
 }
 
 .backButton {
-    width: max-content;
-    margin-top: $spacer-xl;
-    border-bottom: 1px solid $text-secondary;
-    cursor: pointer;
+  width: max-content;
+  margin-top: spacing.$spacer-xl;
+  border-bottom: 1px solid theme.$text-secondary;
+  cursor: pointer;
 }
 
 .toggle {
-    @include mt(3, xs);
-    color: $text-primary;
+  @include spacing.mt(3, xs);
+  color: theme.$text-primary;
 }
 
 .toggle .cgu {
-    color: $text-primary;
-    font-weight: $font-weight-bold;
-    text-decoration: underline !important;
+  color: theme.$text-primary;
+  font-weight: theme.$font-weight-bold;
+  text-decoration: underline !important;
 }
 
 .required {
-    color: $cancel-primary;
-    @include mt(3, xs);
-    font-size: $font-size-small;
+  color: theme.$cancel-primary;
+  @include spacing.mt(3, xs);
+  font-size: theme.$font-size-small;
 }
-

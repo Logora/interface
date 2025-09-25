@@ -114,7 +114,7 @@ export const UpdateUserInfoModal = ({ termsUrl, privacyUrl, showEmailConsent = f
                                             <Icon name="camera" height={20} width={20} alt={intl.formatMessage({ id:"user.user_edit.profile_picture", defaultMessage:"Profile picture" })}/>
                                     </div>
                                 }
-                                <Button data-testid="avatar-button" data-tid={"action_save_profile"} active onClick={() => setShowAvatars(true)} style={{ whiteSpace: "nowrap" }}>
+                                <Button data-testid="avatar-button" data-tid={"action_save_profile"} onClick={() => setShowAvatars(true)} style={{ whiteSpace: "nowrap" }}>
                                     { intl.formatMessage({ id:"user.user_edit.avatar", defaultMessage: "Select an avatar"}) }
                                 </Button>
                             </div>

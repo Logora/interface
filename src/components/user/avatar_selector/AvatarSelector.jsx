@@ -45,8 +45,8 @@ export const AvatarSelector = ({ avatarUrlList, onChooseAvatar, userName, allowU
             </div>
             { (chosenAvatar || uploadedAvatar) && 
                 <div className={styles.confirm}>
-                    <img src={chosenAvatar ? chosenAvatar : (uploadedAvatarPreview ? uploadedAvatarPreview : undefined)} alt={intl.formatMessage({ id: "user.avatar_selector.avatar", defaultMessage: "Selected profile picture" })} className={styles.chosenAvatar} />
-                    <Button handleClick={() => handleChooseAvatar(chosenAvatar ? chosenAvatar : uploadedAvatar)} className={styles.button}>{intl.formatMessage({ id: "user.avatar_selector.confirm", defaultMessage: "Choose this image" })}</Button>
+                    <img src={chosenAvatar || (uploadedAvatarPreview ? uploadedAvatarPreview : undefined)} alt={intl.formatMessage({ id: "user.avatar_selector.avatar", defaultMessage: "Selected profile picture" })} className={styles.chosenAvatar} />
+                    <Button handleClick={() => handleChooseAvatar(chosenAvatar || uploadedAvatar)} className={styles.button}>{intl.formatMessage({ id: "user.avatar_selector.confirm", defaultMessage: "Choose this image" })}</Button>
                 </div>
             }
         </>

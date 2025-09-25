@@ -1,15 +1,15 @@
-@import '~@logora/debate.styles.theme/_theme.scss';
-@import '~@logora/debate.styles.spacing/_spacing.scss';
+@use '~@logora/debate.styles.theme/_theme.scss' as theme;
+@use '~@logora/debate.styles.spacing/_spacing.scss' as spacing;
 
 .title {
-    font-size: $font-size-extra-small;
+    font-size: theme.$font-size-extra-small;
     text-transform: uppercase;
-    @include mb(3, xs);
+    @include spacing.mb(3, xs);
     &.avatarListTitle {
-        @include pt(3, xs);
-        @include mt(3, xs);
-        @include mb(2, xs);
-        border-top: 1px solid $background-color-secondary;
+        @include spacing.pt(3, xs);
+        @include spacing.mt(3, xs);
+        @include spacing.mb(2, xs);
+        border-top: 1px solid theme.$background-color-secondary;
     }
 }
 
@@ -24,11 +24,11 @@
 
 .imageInputLabel {
     height: fit-content !important;
-    @include p(2, xs);
-    border: 1px solid $call-primary !important;
-    border-radius: $box-border-radius !important;
+    @include spacing.p(2, xs);
+    border: 1px solid theme.$call-primary !important;
+    border-radius: theme.$box-border-radius !important;
     cursor: pointer !important;
-    color: $call-primary !important;
+    color: theme.$call-primary !important;
     &:hover {
         opacity: .7;
     }
@@ -40,8 +40,8 @@
     grid-gap: 30px;
     overflow: auto;
     max-height: 350px;
-    @include px(1, xs);
-    @include py(1, xs);
+    @include spacing.px(1, xs);
+    @include spacing.py(1, xs);
     &.userChoice {
         padding-bottom: 60px !important;
     }
@@ -49,13 +49,13 @@
 
 .cancelSelection {
     width: fit-content;
-    @include px(3, xs);
-    @include py(2, xs);
-    @include mb(2, xs);
-    background-color: $background-color-secondary;
-    color: $text-secondary;
+    @include spacing.px(3, xs);
+    @include spacing.py(2, xs);
+    @include spacing.mb(2, xs);
+    background-color: theme.$background-color-secondary;
+    color: theme.$text-secondary;
     border-radius: 30px;
-    font-size: $font-size-extra-small;
+    font-size: theme.$font-size-extra-small;
     cursor: pointer;
     &:hover {
         opacity: .7;
@@ -65,7 +65,7 @@
 .avatar {
     cursor: pointer;
     &.selected {
-        box-shadow: 0 0 0 3px $success-primary;
+        box-shadow: 0 0 0 3px theme.$success-primary;
         box-sizing: border-box;
     }
 }
@@ -74,7 +74,7 @@
     width: 70px;
     height: 70px;
     border-radius: 50%;
-    @include mr(2, xs);
+    @include spacing.mr(2, xs);
     object-fit: cover;
 }
 
@@ -89,10 +89,10 @@
     display: flex !important;
     gap: 20px;
     justify-content: center;
-    background-color: $background-color-primary;
-    @include p(2.5, xs);
-    @include pr(0, xs);
-    @include mt(1, xs);
+    background-color: theme.$background-color-primary;
+    @include spacing.p(2.5, xs);
+    @include spacing.pr(0, xs);
+    @include spacing.mt(1, xs);
     position: absolute;
     bottom: 0px;
     left: 0px;
