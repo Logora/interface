@@ -55,7 +55,7 @@ export const ReadMore = ({
         <div className={cx(styles.readMore, { [styles.pointer]: showToggle })}>
             <div
                 ref={contentRef}
-                style={lineCount && !isExpanded ? lineClampingStyle : {}}
+                style={lineCount && !isExpanded ? lineClampingStyle : { 'width': '100%' }}
                 onClick={expandable ? handleContentToggle : undefined}
             >
                 {(!expandable || lineCount) ? content : formatContent(content)}
