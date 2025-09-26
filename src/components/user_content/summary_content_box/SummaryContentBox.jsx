@@ -39,7 +39,7 @@ export const SummaryContentBox = ({ author, tag, date, title = '', content, link
                         readMoreText={
                             <div className={styles.readMore}>
                                 <FormattedMessage id="user_content.summary_content_box.read_more" defaultMessage={"Read more"} />
-                                <Icon name="arrow" height={25} width={25} className={styles.arrow} />
+                                <Icon name="arrow" height={20} width={20} className={styles.arrow} />
                             </div>
                         }
                     />

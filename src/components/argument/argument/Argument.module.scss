@@ -1,6 +1,5 @@
 @use '@logora/debate.styles.spacing' as spacing;
 @use '@logora/debate.styles.theme' as theme;
-@use '@logora/debate.styles.flex' as flex;
 @use '@logora/debate.styles.display' as display;
 
 
@@ -152,10 +151,10 @@
 }
 
 .replyTo {
+	display: flex !important;
+	flex-direction: row !important;
+	align-items: flex-start !important;
 	@include spacing.pb(2, xs);
-	@include display.display(flex, xs);
-	@include flex.flex-direction(row, xs);
-	@include flex.align-items(flex-start, xs);
 	font-size: theme.$font-size-extra-small;
 	color: theme.$text-secondary;
 	cursor: pointer;

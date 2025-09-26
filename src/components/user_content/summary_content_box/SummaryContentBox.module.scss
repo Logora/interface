@@ -1,43 +1,43 @@
-@import '~@logora/debate.styles.theme/_theme.scss';
-@import "~@logora/debate.styles.spacing/_spacing.scss";
+@use '~@logora/debate.styles.theme/_theme.scss' as theme;
+@use "~@logora/debate.styles.spacing/_spacing.scss" as spacing;
 
 .contentBox {
 	display: flex !important;
 	flex-direction: column !important;
-	gap: $box-spacing;
-	padding: $box-spacing !important;
-	border-radius: $box-border-radius;
-	box-shadow: $box-shadow;
-	border: $box-border;
+	gap: spacing.$box-spacing;
+	padding: spacing.$box-spacing !important;
+	border-radius: theme.$box-border-radius;
+	box-shadow: theme.$box-shadow;
+	border: theme.$box-border;
 	min-width: 0;
 }
 
 .contentBody {
 	display: flex !important;
 	flex-direction: column !important;
-	font-size: $font-size-small;
+	font-size: theme.$font-size-small;
 	white-space: pre-line;
-	line-height: $line-height-loose;
+	line-height: theme.$line-height-loose;
 }
 
 .title {
-	font-size: $font-size-small;
-	font-weight: $font-weight-bold;
+	font-size: theme.$font-size-small;
+	font-weight: theme.$font-weight-bold;
 	&::first-letter {
 		text-transform: uppercase;
 	}
-	@include pb(2, xs);
+	@include spacing.pb(2, xs);
 }
 
 .contentBoxFooter {
 	display: block !important;
-	background-color: $call-primary;
-	color: $text-light;
+	background-color: theme.$call-primary;
+	color: theme.$text-light;
 	text-align: center;
-	border-radius: 0 0 $box-border-radius $box-border-radius;
+	border-radius: 0 0 theme.$box-border-radius theme.$box-border-radius;
 	padding: 0.75em !important;
-	font-weight: $font-weight-bold;
-	font-size: $font-size-small !important;
+	font-weight: theme.$font-weight-bold;
+	font-size: theme.$font-size-small !important;
 	text-decoration: none !important;
 	white-space: nowrap;
 	overflow: hidden;
@@ -45,11 +45,11 @@
 	&:hover {
 		opacity: 0.9;
 		text-decoration: none !important;
-		color: $text-light !important;
+		color: theme.$text-light !important;
 		cursor: pointer;
 	}
 	&:active, &:focus {
-		color: $text-light;
+		color: theme.$text-light;
 	}
 }
 
