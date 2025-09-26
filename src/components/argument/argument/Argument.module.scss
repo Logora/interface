@@ -121,6 +121,7 @@
 .argumentContent {
 	line-height: theme.$line-height-loose;
 	overflow-wrap: break-word;
+	word-wrap: break-word;
 
 	& * {
 		font-size: theme.$font-size-normal;
