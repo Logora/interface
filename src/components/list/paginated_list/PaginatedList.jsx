@@ -278,7 +278,7 @@ export const PaginatedList = ({
     const displayResource = (resource, index) => {
         if (resource !== undefined) {
             return (
-                <div className={styles.paginatedListItem} data-testid={"list-item"} key={resource[uniqueIdKey || "id"]} onClick={onElementClick}>
+                <div className={styles.paginatedListItem} data-testid={"list-item"} role="listitem" key={resource[uniqueIdKey || "id"]} onClick={onElementClick}>
                     <StandardErrorBoundary hideMessage={true}>
                         {React.cloneElement(children, { ...{ index: index, [resourcePropName]: resource } })}
                     </StandardErrorBoundary>
