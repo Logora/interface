@@ -328,7 +328,7 @@ export const PaginatedList = ({
                     </div>
             ) :
                 <>
-                    <div className={cx(styles.paginatedList, { [styles.paginatedListIsTablet]: !isMobile && !isDesktop, [styles.centeredList]: display === "column", [styles.column]: display === "column", [styles.twoElementsPerLine]: elementsPerLine === 2, [styles.oneElementPerLine]: elementsPerLine === 1, [styles.indexLayoutList]: indexLayout, [styles.listIsDesktop]: isDesktop, [styles.listIsTablet]: isTablet && !isDesktop, [styles.listIsMobile]: isMobile })} style={{ gap: gap }}>
+                    <div className={cx(styles.paginatedList, { [styles.paginatedListIsTablet]: !isMobile && !isDesktop, [styles.centeredList]: display === "column", [styles.column]: display === "column", [styles.twoElementsPerLine]: elementsPerLine === 2, [styles.oneElementPerLine]: elementsPerLine === 1, [styles.indexLayoutList]: indexLayout, [styles.listIsDesktop]: isDesktop, [styles.listIsTablet]: isTablet && !isDesktop, [styles.listIsMobile]: isMobile })} role="list" style={{ gap: gap }}>
                         {currentResources.map(displayResource)}
                         {/* Show loading components directly in list when loading more elements */}
                         {isLoading ?
