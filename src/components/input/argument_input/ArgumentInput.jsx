@@ -56,6 +56,7 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
     }, [isLoggedIn, config]);
     // Checks if the user has the role of editor or moderator
     const isEditorOrModerator = currentUser?.role === "editor" || currentUser?.role === "moderator"
+    const userIsBanned = currentUser?.moderation_status === "banned";
 
     useEffect(() => {
         let positionIdParam = null;
@@ -296,7 +297,7 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
 
     return (
         <div className={styles.inputContainer}>
-            {disabled && (<div className={styles.disabledInputMask}>{currentUser?.is_banned ? intl.formatMessage({ id: "input.argument_input.user_banned", defaultMessage: "You are banned from the debate space." }) : intl.formatMessage({ id: "info.debate_is_inactive", defaultMessage: "Debate is closed" })}</div>)}
+            {disabled && (<div className={styles.disabledInputMask}>{userIsBanned ? intl.formatMessage({ id: "input.argument_input.user_banned", defaultMessage: "You are banned from the debate space." }) : intl.formatMessage({ id: "info.debate_is_inactive", defaultMessage: "Debate is closed" })}</div>)}
             <div className={cx(styles.argumentInput, { [styles.flash]: flash, [styles.replyInputContainer]: isReply })}>
                 <div data-tid={"action_add_argument"} ref={inputForm}>
                     <div className={styles.argumentInputBox}>
@@ -337,7 +338,7 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
                                     uid={`Argument${groupId}`}
                                     onActivation={handleTextEditorActivation}
                                     showStylesControls={inputActivation}
-                                    disabled={disabled || inputDisabledForVisitors}
+                                    disabled={disabled || inputDisabledForVisitors || userIsBanned}
                                     maxLength={inputDisabledForVisitors ? false : config?.actions?.argumentMaxLength}
                                     disableRichText={config?.actions?.disableRichText || inputDisabledForVisitors}
                                     shortBar={isReply}
