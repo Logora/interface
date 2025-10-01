@@ -208,7 +208,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupTyp
 							totalUpvote={argument.upvotes}
 							totalDownvote={0}
 							activeClassName={styles[`voteButtonPosition-${positionIndex}`]}
-							disabled={argument.status === "rejected" || (currentUser?.id === argument?.author?.id)}
+							disabled={argument.status === "rejected" || (currentUser?.id === argument?.author?.id) || userIsBanned}
 						/>
 					</ContentFooter>
 				}
