@@ -75,7 +75,7 @@ export const SuggestionBox = ({ suggestion, disabled = false, onVoteCallback = n
                     totalUpvote={totalUpvotes}
                     totalDownvote={suggestion.debate_suggestion.total_downvotes}
                     onVote={handleVote}
-                    disabled={disabled || (currentUser?.id === suggestion?.debate_suggestion?.author?.id)}
+                    disabled={disabled || (currentUser?.id === suggestion?.debate_suggestion?.author?.id)|| userIsBanned}
                     data-testid="upvote-icon"
                 />
             }
