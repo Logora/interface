@@ -15,7 +15,7 @@ export const ReportBox = ({ report }) => {
     const { reportable_type, reportable } = report;
     switch (reportable_type) {
       case "Message":
-        return <Argument argument={reportable}  positions={reportable.group?.group_context?.positions?.slice(0, 2) || []} hideReplies={true} hideFooter={true} showModerationFeedback={false} />;
+        return <Argument argument={reportable} positions={reportable.group?.group_context?.positions?.slice(0, 2) || []} hideReplies={true} hideFooter={true} showModerationFeedback={false} />;
       case "Proposal":
         return <ProposalBox proposal={reportable} hideFooter={true} />;
       case "Group":
