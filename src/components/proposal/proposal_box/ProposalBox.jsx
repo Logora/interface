@@ -102,7 +102,7 @@ export const ProposalBox = ({ proposal, disabled = false, fixedContentHeight, co
                             voteableId={proposal.id}
                             totalUpvote={proposal.total_upvotes}
                             totalDownvote={proposal.total_downvotes}
-                            disabled={disabled || (currentUser?.id === proposal?.author?.id)}
+                            disabled={disabled || (currentUser?.id === proposal?.author?.id) || userIsBanned}
                         />
                     </ContentFooter>
                 }
