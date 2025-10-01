@@ -25,6 +25,7 @@ import PropTypes from "prop-types";
 export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupType, groupName, positions = [], disableLinks = false, parentArgument, flashParent, expandable, disabled = false, hideFooter = false, hideReplies, vote, fixedContentHeight = false, enableEdition = true, enableDeletion = true, deleteListId, showModerationFeedback }) => {
 	const intl = useIntl();
 	const { isLoggedIn, currentUser } = useAuth();
+	const userIsBanned = currentUser?.moderation_status === "banned";
 	const config = useConfig();
 
 	const [expandReplies, setExpandReplies] = useState(false);
@@ -184,7 +185,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupTyp
 				{!hideFooter && !argument.is_deleted &&
 					<ContentFooter
 						resource={argument}
-						disabled={disabled || argument.status === "rejected" || (!isLoggedIn && config?.actions?.disableInputForVisitor === true)}
+						disabled={disabled || argument.status === "rejected" || (!isLoggedIn && config?.actions?.disableInputForVisitor === true) || userIsBanned}
 						reportType={"Message"}
 						softDelete={config.actions?.softDelete}
 						deleteType={"messages"}

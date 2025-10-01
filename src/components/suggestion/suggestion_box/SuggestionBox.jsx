@@ -21,6 +21,7 @@ export const SuggestionBox = ({ suggestion, disabled = false, onVoteCallback = n
     const [totalUpvotes, setTotalUpvotes] = useState(suggestion.debate_suggestion.total_upvotes);
     const content = useTranslatedContent(suggestion.name, suggestion.language, "name", suggestion.translation_entries);
     const { currentUser } = useAuth();
+    const userIsBanned = currentUser?.moderation_status === "banned";
 
     const handleVote = (isUpvote, activeVote, totalUpvotes, totalDownvotes) => {
         onVoteCallback?.(suggestion);
@@ -85,7 +86,7 @@ export const SuggestionBox = ({ suggestion, disabled = false, onVoteCallback = n
                         reportType={"Group"}
                         deleteType={"groups"}
                         deleteListId={"suggestionsList"}
-                        disabled={disabled}
+                        disabled={disabled || userIsBanned}
                         showShareButton={false}
                         enableEdition={false}
                         showActions={suggestion.is_accepted !== true}

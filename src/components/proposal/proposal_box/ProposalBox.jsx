@@ -20,6 +20,7 @@ export const ProposalBox = ({ proposal, disabled = false, fixedContentHeight, co
     const intl = useIntl();
     const config = useConfig();
     const { currentUser } = useAuth();
+    const userIsBanned = currentUser?.moderation_status === "banned";
     const proposalId = `proposal_${proposal.id}`;
     const title = useTranslatedContent(proposal.title, proposal.language, "title", proposal.translation_entries);
     const content = useTranslatedContent(proposal.content, proposal.language, "content", proposal.translation_entries);
@@ -82,7 +83,7 @@ export const ProposalBox = ({ proposal, disabled = false, fixedContentHeight, co
                 {!hideFooter &&
                     <ContentFooter
                         resource={proposal}
-                        disabled={disabled}
+                        disabled={disabled || userIsBanned}
                         reportType={"Proposal"}
                         deleteType={"proposals"}
                         deleteListId={"proposalsList"}
