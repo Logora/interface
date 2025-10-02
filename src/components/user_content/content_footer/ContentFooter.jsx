@@ -15,17 +15,17 @@ import cx from "classnames";
 import styles from "./ContentFooter.module.scss";
 import PropTypes from "prop-types";
 
-export const ContentFooter = ({ resource, 
-    reportType, 
-    deleteType, 
-    deleteListId, 
+export const ContentFooter = ({ resource,
+    reportType,
+    deleteType,
+    deleteListId,
     softDelete = false,
     disabled = false,
-    children, 
-    enableReply, 
-    handleReplyTo, 
-    showActions = true, 
-    showShareButton = true, 
+    children,
+    enableReply,
+    handleReplyTo,
+    showActions = true,
+    showShareButton = true,
     shareModal,
     shareUrl,
     shareTitle,
@@ -38,32 +38,36 @@ export const ContentFooter = ({ resource,
     enableDeletion = true,
     enableReport = true,
     containerClassName,
-    voteActionClassName }) => {
-	const intl = useIntl();
-	const config = useConfig();
-	const { currentUser } = useAuth();
+    voteActionClassName 
+}) => {
+    const intl = useIntl();
+    const config = useConfig();
+    const { currentUser } = useAuth();
     const { showModal } = useModal();
-	const { setInputContent } = useInput() || {};
-	const { reportContent } = useReportContent(reportType, resource.id);
-	const { deleteContent } = useDeleteContent(resource, deleteType, deleteListId, softDelete);
-    const {elementWidth } = useResponsive();
+    const { setInputContent } = useInput() || {};
+    const { reportContent } = useReportContent(reportType, resource.id);
+    const { deleteContent } = useDeleteContent(resource, deleteType, deleteListId, softDelete);
+    const { elementWidth } = useResponsive();
 
     const currentUserIsAuthor = () => {
-        return resource.author?.id === currentUser.id || resource.debate_suggestion?.author?.id === currentUser.id;
+        if(!currentUser?.id) {
+            return false;
+        }
+        return resource.author?.id === currentUser?.id || resource.debate_suggestion?.author?.id === currentUser?.id;
     };
 
-	const handleEdit = () => {
-		setInputContent(resource);
-	};
+    const handleEdit = () => {
+        setInputContent(resource);
+    };
 
-	const isEditable = () => {
+    const isEditable = () => {
         if (resource.created_at && config.actions?.editionTime) {
             const limitDate = new Date(new Date(resource.created_at).setSeconds(new Date(resource.created_at).getSeconds() + config.actions?.editionTime));
-			const now = new Date();
+            const now = new Date();
             return now < limitDate;
         }
-        return true; 
-	}
+        return true;
+    }
 
     const handleShowShareModal = () => {
         showModal(
@@ -80,12 +84,12 @@ export const ContentFooter = ({ resource,
         );
     }
 
-	return (
-		<div className={cx(styles.container, containerClassName)}>
+    return (
+        <div className={cx(styles.container, containerClassName)}>
             <div className={cx(styles.voteAction, voteActionClassName)} data-tid={"action_vote_argument"}>
-                { children }
+                {children}
             </div>
-            { !disabled && enableReply &&
+            {!disabled && enableReply &&
                 <div data-tid={"action_reply_argument"} data-testid="reply-button">
                     <div
                         className={styles.replyAction}
@@ -94,37 +98,32 @@ export const ContentFooter = ({ resource,
                         data-testid="action-reply-button"
                     >
                         <Icon name="reply" data-tid={"action_reply_argument"} height={17} width={17} />
-                        {!(elementWidth < 768) && <span className={styles.replyText}>{intl.formatMessage({ id:"user_content.content_footer.reply", defaultMessage: "Reply" })}</span> }                   
-                         </div>
+                        {!(elementWidth < 768) && <span className={styles.replyText}>{intl.formatMessage({ id: "user_content.content_footer.reply", defaultMessage: "Reply" })}</span>}
+                    </div>
                 </div>
             }
-            { !disabled && showShareButton && 
-                <ShareButton 
-                    shareUrl={shareUrl} 
+            {!disabled && showShareButton &&
+                <ShareButton
+                    shareUrl={shareUrl}
                     shareTitle={shareTitle}
                     shareText={shareText}
                     showShareCode={showShareCode}
                     shareCode={shareCode}
-                    showText={!(elementWidth <768) && showShareText}                   
+                    showText={!(elementWidth < 768) && showShareText}
                     iconSize={17}
                 />
             }
-			{ !disabled && showActions && 
-				<div className={styles.moreAction} title={intl.formatMessage({ id: "user_content.content_footer.more", defaultMessage: "More options" })}>
-					<Dropdown className={styles.moreActionDropdown} horizontalPosition={'right'}>
-						<Icon name="ellipsis" width={17} height={17} data-testid="dropdown" aria-label={intl.formatMessage({ id: "user_content.content_footer.menu.aria_label", defaultMessage: "opens menu"})}
+            {!disabled && showActions &&
+                <div className={styles.moreAction} title={intl.formatMessage({ id: "user_content.content_footer.more", defaultMessage: "More options" })}>
+                    <Dropdown className={styles.moreActionDropdown} horizontalPosition={'right'}>
+                        <Icon name="ellipsis" width={17} height={17} data-testid="dropdown" aria-label={intl.formatMessage({ id: "user_content.content_footer.menu.aria_label", defaultMessage: "opens menu" })}
                         />
-						<div>
-							{ currentUserIsAuthor() &&
-								<>
-									{ !disabled && enableEdition && isEditable() &&
-										<div data-tid={"action_edit_argument"} className={styles.dropdownItem} tabIndex='0' onClick={handleEdit}>
-                                            { intl.formatMessage({ id: "user_content.content_footer.update", defaultMessage: "Update" }) }
-										</div>
-									}
-                                    { enableDeletion &&
-                                        <div data-tid={"action_delete_argument"} className={styles.dropdownItem} tabIndex='0' onClick={deleteContent}>
-                                            { intl.formatMessage({ id: "user_content.content_footer.delete", defaultMessage: "Delete" }) }
+                        <div>
+                            {currentUserIsAuthor() &&
+                                <>
+                                    {!disabled && enableEdition && isEditable() &&
+                                        <div data-tid={"action_edit_argument"} className={styles.dropdownItem} tabIndex='0' onClick={handleEdit}>
+                                            {intl.formatMessage({ id: "user_content.content_footer.update", defaultMessage: "Update" })}
                                         </div>
                                     }
 								</>
@@ -139,35 +138,40 @@ export const ContentFooter = ({ resource,
                                     { intl.formatMessage({ id: "user_content.content_footer.share", defaultMessage: "Share" }) }
                                 </div>
                             }
-						</div>
-					</Dropdown>
-				</div>
-			}
-		</div>
-	);
+                            {shareModal &&
+                                <div data-tid={"action_share_argument"} className={styles.dropdownItem} onClick={handleShowShareModal}>
+                                    {intl.formatMessage({ id: "user_content.content_footer.share", defaultMessage: "Share" })}
+                                </div>
+                            }
+                        </div>
+                    </Dropdown>
+                </div>
+            }
+        </div>
+    );
 };
 
 ContentFooter.propTypes = {
     /** Resource object */
     resource: PropTypes.object,
     /** Report type */
-    reportType: PropTypes.string, 
+    reportType: PropTypes.string,
     /** Delete type */
-    deleteType: PropTypes.string, 
+    deleteType: PropTypes.string,
     /** Delete list id */
-    deleteListId: PropTypes.string, 
+    deleteListId: PropTypes.string,
     /** If true, will use PATCH method to delete content instead of DELETE */
     softDelete: PropTypes.bool,
     /** If true, disabled replies and dropdown actions */
     disabled: PropTypes.bool,
     /** Show reply button */
-    enableReply: PropTypes.bool, 
+    enableReply: PropTypes.bool,
     /** Callback function */
-    handleReplyTo: PropTypes.func, 
+    handleReplyTo: PropTypes.func,
     /** If true, show dropdown actions */
-    showActions: PropTypes.bool, 
+    showActions: PropTypes.bool,
     /** If true, show share button action */
-    showShareButton: PropTypes.bool, 
+    showShareButton: PropTypes.bool,
     /** If true, show share modal action in the dropdown */
     shareModal: PropTypes.bool,
     /** Url to share */
@@ -185,15 +189,15 @@ ContentFooter.propTypes = {
     /** If true, show "Share" text next to icon */
     showShareText: PropTypes.bool,
     /** Item to be displayed on the left */
-	children: PropTypes.node,
+    children: PropTypes.node,
     /** If true, content can be edited */
-	enableEdition: PropTypes.bool,
+    enableEdition: PropTypes.bool,
     /** If true, content can be deleted */
-	enableDeletion: PropTypes.bool,
+    enableDeletion: PropTypes.bool,
     /** If true, content can be reported */
-	enableReport: PropTypes.bool,
+    enableReport: PropTypes.bool,
     /** Custom style for container */
-	containerClassName: PropTypes.string,
+    containerClassName: PropTypes.string,
     /** Custom style for children container */
     voteActionClassName: PropTypes.string,
 };
