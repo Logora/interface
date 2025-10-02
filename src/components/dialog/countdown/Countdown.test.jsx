@@ -2,7 +2,6 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import Countdown from "./Countdown";
 
-// Mock Date.now for consistent testing
 describe("Countdown", () => {
     it("renders and counts down", () => {
         const now = new Date();
