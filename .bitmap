@@ -212,6 +212,20 @@
         "mainFile": "index.js",
         "rootDir": "src/components/dialog/confirm_modal"
     },
+    "dialog/countdown": {
+        "name": "dialog/countdown",
+        "scope": "",
+        "version": "",
+        "defaultScope": "logora.debate",
+        "mainFile": "index.js",
+        "rootDir": "src/components/dialog/countdown",
+        "config": {
+            "teambit.react/react-env@1.0.131": {},
+            "teambit.envs/envs": {
+                "env": "teambit.react/react-env"
+            }
+        }
+    },
     "dialog/dialog_box": {
         "name": "dialog/dialog_box",
         "scope": "logora.debate",
