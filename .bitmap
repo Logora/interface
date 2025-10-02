@@ -61,7 +61,7 @@
     "argument/argument": {
         "name": "argument/argument",
         "scope": "logora.debate",
-        "version": "0.0.457",
+        "version": "0.0.458",
         "mainFile": "index.js",
         "rootDir": "src/components/argument/argument"
     },
@@ -214,17 +214,10 @@
     },
     "dialog/countdown": {
         "name": "dialog/countdown",
-        "scope": "",
-        "version": "",
-        "defaultScope": "logora.debate",
+        "scope": "logora.debate",
+        "version": "0.0.1",
         "mainFile": "index.js",
-        "rootDir": "src/components/dialog/countdown",
-        "config": {
-            "teambit.react/react-env@1.0.131": {},
-            "teambit.envs/envs": {
-                "env": "teambit.react/react-env"
-            }
-        }
+        "rootDir": "src/components/dialog/countdown"
     },
     "dialog/dialog_box": {
         "name": "dialog/dialog_box",
@@ -572,14 +565,14 @@
     "proposal/proposal_box": {
         "name": "proposal/proposal_box",
         "scope": "logora.debate",
-        "version": "0.0.73",
+        "version": "0.0.74",
         "mainFile": "index.js",
         "rootDir": "src/components/proposal/proposal_box"
     },
     "report/report_box": {
         "name": "report/report_box",
         "scope": "logora.debate",
-        "version": "0.0.128",
+        "version": "0.0.129",
         "mainFile": "index.js",
         "rootDir": "src/components/report/report_box"
     },
@@ -698,14 +691,14 @@
     "suggestion/suggestion_banner": {
         "name": "suggestion/suggestion_banner",
         "scope": "logora.debate",
-        "version": "0.0.207",
+        "version": "0.0.208",
         "mainFile": "index.js",
         "rootDir": "src/components/suggestion/suggestion_banner"
     },
     "suggestion/suggestion_box": {
         "name": "suggestion/suggestion_box",
         "scope": "logora.debate",
-        "version": "0.0.198",
+        "version": "0.0.199",
         "mainFile": "index.js",
         "rootDir": "src/components/suggestion/suggestion_box"
     },
@@ -838,7 +831,7 @@
     "user_content/content_footer": {
         "name": "user_content/content_footer",
         "scope": "logora.debate",
-        "version": "0.0.202",
+        "version": "0.0.203",
         "mainFile": "index.js",
         "rootDir": "src/components/user_content/content_footer"
     },
