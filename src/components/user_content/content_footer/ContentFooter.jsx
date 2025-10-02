@@ -50,6 +50,9 @@ export const ContentFooter = ({ resource,
     const { elementWidth } = useResponsive();
 
     const currentUserIsAuthor = () => {
+        if(!currentUser?.id) {
+            return false;
+        }
         return resource.author?.id === currentUser?.id || resource.debate_suggestion?.author?.id === currentUser?.id;
     };
 
