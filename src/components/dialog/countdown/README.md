@@ -1,0 +1,19 @@
+# Countdown Component
+
+A simple React countdown component that displays the time left until a given expiration date.
+
+## Usage
+
+```jsx
+import Countdown from './Countdown';
+
+<Countdown expiresAt="2025-10-02T12:00:00Z" />
+```
+
+## Props
+- `expiresAt` (string): ISO date string representing the expiration time.
+
+## Behavior
+- Displays the time left in `H:MM:SS` format.
+- Updates every second.
+- Shows `0:00:00` when expired.
