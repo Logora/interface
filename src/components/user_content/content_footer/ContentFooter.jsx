@@ -126,16 +126,16 @@ export const ContentFooter = ({ resource,
                                             {intl.formatMessage({ id: "user_content.content_footer.update", defaultMessage: "Update" })}
                                         </div>
                                     }
-								</>
-							}
-							{ enableReport &&
-								<div data-tid={"action_report_argument"} className={styles.dropdownItem} onClick={reportContent} data-testid="report-content">
-                                    { intl.formatMessage({ id: "user_content.content_footer.report", defaultMessage: "Report" }) }
-								</div>
-							}
-                            { shareModal &&
-                                <div data-tid={"action_share_argument"} className={styles.dropdownItem} onClick={handleShowShareModal}>
-                                    { intl.formatMessage({ id: "user_content.content_footer.share", defaultMessage: "Share" }) }
+                                    {enableDeletion &&
+                                        <div data-tid={"action_delete_argument"} className={styles.dropdownItem} tabIndex='0' onClick={deleteContent}>
+                                            {intl.formatMessage({ id: "user_content.content_footer.delete", defaultMessage: "Delete" })}
+                                        </div>
+                                    }
+                                </>
+                            }
+                            {enableReport &&
+                                <div data-tid={"action_report_argument"} className={styles.dropdownItem} onClick={reportContent} data-testid="report-content">
+                                    {intl.formatMessage({ id: "user_content.content_footer.report", defaultMessage: "Report" })}
                                 </div>
                             }
                             {shareModal &&
