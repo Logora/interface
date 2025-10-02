@@ -1,5 +1,5 @@
 import React from "react";
-import Countdown from "./Countdown";
+import { Countdown } from "./Countdown";
 
 export const Default = () => (
   <Countdown expiresAt={new Date(Date.now() + 3600 * 1000).toISOString()} />

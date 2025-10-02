@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import Countdown from "./Countdown";
+import { Countdown } from "./Countdown";
 
 describe("Countdown", () => {
     it("renders and counts down", () => {
