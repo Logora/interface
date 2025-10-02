@@ -14,7 +14,7 @@ const getTimeLeftString = (expiresAt) => {
     }
 };
 
-const Countdown = ({ expiresAt }) => {
+export const Countdown = ({ expiresAt }) => {
     const [timeLeft, setTimeLeft] = useState(() => getTimeLeftString(expiresAt));
 
     useEffect(() => {
@@ -27,5 +27,3 @@ const Countdown = ({ expiresAt }) => {
 
     return <span style={{ marginLeft: 8 }}>{timeLeft}</span>;
 };
-
-export default Countdown;
