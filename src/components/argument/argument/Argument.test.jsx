@@ -68,7 +68,8 @@ const createArgument = overrides => ({
         slug: faker.lorem.slug(),
         points: 1320,
         last_activity: new Date(),
-        description: faker.name.jobTitle()
+        description: faker.name.jobTitle(),
+        moderation_status: "default"
     },
     position: {
         id: 1,
@@ -235,7 +236,7 @@ describe('Argument', () => {
 
     it('should render dropdown', async () => {
         const { getByText, getByTestId } = renderArgument({
-            argument,
+            argument: argument,
             positions,
             groupName,
             nestingLevel: 0,
