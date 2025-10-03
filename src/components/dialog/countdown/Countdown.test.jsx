@@ -11,7 +11,7 @@ describe("Countdown", () => {
         expect(screen.getByText(regex)).toBeInTheDocument();
     });
 
-    it("shows 'now' or equivalent when expired", () => {
+    it("shows 'now' or localized equivalent when expired", () => {
         const now = new Date();
         const expiresAt = new Date(now.getTime() - 1000).toISOString();
         render(<Countdown expiresAt={expiresAt} />);
