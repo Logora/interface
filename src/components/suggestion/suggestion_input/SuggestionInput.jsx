@@ -18,6 +18,8 @@ export const SuggestionInput = ({
 	maxLength = 140,
 	maxPerUser = 5,
 	disabled = false,
+	userGuideUrl,
+	hideUserGuideLink = false
 }) => {
 	const intl = useIntl();
 	const api = useDataProvider();
@@ -170,6 +172,21 @@ export const SuggestionInput = ({
 							defaultMessage: "remaining characters",
 						})}
 					</div>
+					{userGuideUrl && !hideUserGuideLink &&(
+						<div className={styles.guideMessage}>
+							<FormattedMessage
+								id="alert.guide_message"
+								defaultMessage={"Contributions must comply with our {userCharter}."}
+								values={{
+									userCharter: (
+										<a className={styles.guideMessage} href={userGuideUrl} target="_blank" >
+											<FormattedMessage id="alert.user_charter" defaultMessage="user charter" />
+										</a>
+									),
+								}}
+							/>
+						</div>
+					)}
 					<div className={styles.suggestionInputSubtitle}>
 						{intl.formatMessage(
 							{

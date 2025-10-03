@@ -35,3 +35,16 @@
     color: theme.$text-secondary;
     white-space: nowrap;
 }
+
+.guideMessage {
+    font-size: theme.$font-size-small;
+    color: theme.$text-secondary;
+    white-space: nowrap;
+    white-space: normal; 
+    word-break: break-word; 
+    a {
+        font-size: theme.$font-size-small;
+        color: theme.$announcement-text-primary !important;
+        text-decoration: underline !important;
+    }
+}

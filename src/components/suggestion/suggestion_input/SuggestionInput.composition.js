@@ -85,7 +85,7 @@ export const DisabledSuggestionInput = () => {
 export const SuggestionInputMaxLength = () => {
     return (
         <BrowserRouter>
-            <ConfigProvider >
+            <ConfigProvider>
                 <IconProvider library={regularIcons} >
                     <IntlProvider locale="en">
                         <DataProviderContext.Provider value={{ dataProvider: data }}>
@@ -95,6 +95,32 @@ export const SuggestionInputMaxLength = () => {
                                         <ListProvider>
                                             <InputProvider>
                                                 <SuggestionInput disabled={true} maxLength={30} />
+                                            </InputProvider>
+                                        </ListProvider>
+                                    </ModalProvider>
+                                </ToastProvider>
+                            </AuthContext.Provider>
+                        </DataProviderContext.Provider>
+                    </IntlProvider>
+                </IconProvider>
+            </ConfigProvider>
+        </BrowserRouter>
+    );
+};
+
+export const SuggestionInputWithUserGuideUrl = () => {
+    return (
+        <BrowserRouter>
+            <ConfigProvider >
+                <IconProvider library={regularIcons} >
+                    <IntlProvider locale="en">
+                        <DataProviderContext.Provider value={{ dataProvider: data }}>
+                            <AuthContext.Provider value={{ currentUser: currentUser, isLoggedIn: true }}>
+                                <ToastProvider>
+                                    <ModalProvider>
+                                        <ListProvider>
+                                            <InputProvider>
+                                                <SuggestionInput disabled={true} maxLength={30} userGuideUrl={"https://example.com/user-guide"} />
                                             </InputProvider>
                                         </ListProvider>
                                     </ModalProvider>
