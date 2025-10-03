@@ -705,7 +705,7 @@
     "suggestion/suggestion_input": {
         "name": "suggestion/suggestion_input",
         "scope": "logora.debate",
-        "version": "0.0.91",
+        "version": "0.0.92",
         "mainFile": "index.js",
         "rootDir": "src/components/suggestion/suggestion_input"
     },
