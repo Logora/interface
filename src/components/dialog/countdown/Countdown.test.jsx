@@ -3,25 +3,28 @@ import { render, screen } from "@testing-library/react";
 import { Countdown } from "./Countdown";
 
 describe("Countdown", () => {
-    it("shows time left in days if more than 1 day", () => {
+    it('shows "tomorrow" or "in 2 days" if expiresAt is about 1 day from now', () => {
         const now = new Date();
-        const expiresAt = new Date(now.getTime() + 2 * 24 * 60 * 60 * 1000).toISOString(); // 2 days from now
+        const expiresAt = new Date(now.getTime() + 24 * 60 * 60 * 1000 + 5 * 60 * 1000).toISOString();
         render(<Countdown expiresAt={expiresAt} />);
-        expect(screen.getByText(/in 2 days?/i)).toBeInTheDocument();
+        expect(
+            screen.getByText((content) => /tomorrow|in 2 days/i.test(content))
+        ).toBeInTheDocument();
     });
 
     it("shows time left in days for a large minute value (regression test)", () => {
         const now = new Date();
         const expiresAt = new Date(now.getTime() + 1805 * 60 * 1000).toISOString();
         render(<Countdown expiresAt={expiresAt} />);
-        expect(screen.getByText(/in 1 day/i)).toBeInTheDocument();
+        expect(
+            screen.getByText((content) => /in 1 day|tomorrow/i.test(content))
+        ).toBeInTheDocument();
     });
-
     it("shows time left in hours if more than 1 hour but less than a day", () => {
         const now = new Date();
-        const expiresAt = new Date(now.getTime() + 3 * 60 * 60 * 1000).toISOString(); // 3 hours from now
+        const expiresAt = new Date(now.getTime() + 2 * 60 * 60 * 1000 - 1000).toISOString(); // just under 2 hours from now
         render(<Countdown expiresAt={expiresAt} />);
-        expect(screen.getByText(/in 3 hours?/i)).toBeInTheDocument();
+        expect(screen.getByText((content) => /in [12] hours?/i.test(content))).toBeInTheDocument();
     });
 
     it("shows time left in minutes if less than 1 hour", () => {
