@@ -1,6 +1,7 @@
+
 # Countdown Component
 
-A simple React countdown component that displays the time left until a given expiration date.
+A simple React countdown component that displays the time left until a given expiration date, using localized relative time phrases (e.g., "in 5 minutes").
 
 ## Usage
 
@@ -8,12 +9,15 @@ A simple React countdown component that displays the time left until a given exp
 import { Countdown } from '@logora/debate.dialog.countdown';
 
 <Countdown expiresAt="2025-10-02T12:00:00Z" />
+<Countdown expiresAt="2025-10-02T12:00:00Z" locale="fr" />
 ```
 
 ## Props
 - `expiresAt` (string): ISO date string representing the expiration time.
+- `locale` (string, optional): BCP 47 language tag for localization (defaults to browser language).
 
 ## Behavior
-- Displays the time left in `H:MM:SS` format.
-- Updates every second.
-- Shows `0:00:00` when expired.
+- Displays the time left as a localized relative time phrase in minutes (e.g., "in 5 minutes").
+- Never shows seconds or hours, only minutes.
+- Updates every 10 seconds.
+- Shows "now" or equivalent when expired.

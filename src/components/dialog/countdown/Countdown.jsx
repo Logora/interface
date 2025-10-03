@@ -1,29 +1,26 @@
 import React, { useEffect, useState } from "react";
 
-const getTimeLeftString = (expiresAt) => {
+const getMinutesLeftString = (expiresAt, locale = navigator.language) => {
     const now = new Date();
     const expires = new Date(expiresAt);
-    const diff = expires - now;
-    if (diff <= 0) {
-        return "0:00:00";
-    } else {
-        const hours = Math.floor(diff / (1000 * 60 * 60));
-        const minutes = Math.floor((diff / (1000 * 60)) % 60);
-        const seconds = Math.floor((diff / 1000) % 60);
-        return `${hours}:${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+    const diffMs = expires - now;
+    if (diffMs <= 0) {
+        return new Intl.RelativeTimeFormat(locale, { numeric: "auto" }).format(0, "minute");
     }
+    const minutes = Math.ceil(diffMs / (1000 * 60));
+    return new Intl.RelativeTimeFormat(locale, { numeric: "auto" }).format(minutes, "minute");
 };
 
-export const Countdown = ({ expiresAt }) => {
-    const [timeLeft, setTimeLeft] = useState(() => getTimeLeftString(expiresAt));
+export const Countdown = ({ expiresAt, locale }) => {
+    const [timeLeft, setTimeLeft] = useState(() => getMinutesLeftString(expiresAt, locale));
 
     useEffect(() => {
-        setTimeLeft(getTimeLeftString(expiresAt));
+        setTimeLeft(getMinutesLeftString(expiresAt, locale));
         const interval = setInterval(() => {
-            setTimeLeft(getTimeLeftString(expiresAt));
-        }, 1000);
+            setTimeLeft(getMinutesLeftString(expiresAt, locale));
+        }, 1000 * 10);
         return () => clearInterval(interval);
-    }, [expiresAt]);
+    }, [expiresAt, locale]);
 
     return <span style={{ marginLeft: 8 }}>{timeLeft}</span>;
 };
