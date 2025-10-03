@@ -215,7 +215,7 @@
     "dialog/countdown": {
         "name": "dialog/countdown",
         "scope": "logora.debate",
-        "version": "0.0.3",
+        "version": "0.0.4",
         "mainFile": "index.js",
         "rootDir": "src/components/dialog/countdown"
     },
