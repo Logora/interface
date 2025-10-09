@@ -4,6 +4,7 @@
 .voteButtonsContainer {
     display: flex !important;
     align-items: center !important;
+    flex-wrap: wrap;
     gap: spacing.$spacer;
 }
 
