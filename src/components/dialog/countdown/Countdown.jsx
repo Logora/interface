@@ -32,5 +32,5 @@ export const Countdown = ({ expiresAt, locale }) => {
         return () => clearInterval(interval);
     }, [expiresAt, locale]);
 
-    return <span>{timeLeft}</span>;
+    return <span style={{paddingLeft: "5px"}}>{timeLeft}</span>;
 };
