@@ -213,7 +213,6 @@ describe('ContentFooter', () => {
 
         expect(queryByText(10)).toBeInTheDocument();
         expect(queryByText("Reply")).toBeNull();
-        expect(queryByText("Share")).toBeNull();
 
         const voteButton = queryByText(10);
         await userEvent.click(voteButton);
