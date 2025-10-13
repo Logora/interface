@@ -1,19 +1,37 @@
 import React, { useEffect, useState } from 'react';
 import { ResponsiveContext } from './ResponsiveContext';
 import PropTypes from 'prop-types';
+import { useDebouncedCallback } from 'use-debounce';
 
 export const ResponsiveProvider = ({ containerPath, containerWidth, children, isMobile }) => {
     const [elementWidth, setElementWidth] = useState(containerWidth);
 
-    useEffect(() => {
-        if(!elementWidth && typeof window !== "undefined") {
+    const updateElementWidth = useDebouncedCallback(() => {
+        if (typeof window !== "undefined" && containerPath) {
             const element = document.querySelector(containerPath);
             if (element) {
                 setElementWidth(element.getBoundingClientRect().width.toFixed(2));
             }
         }
-    }, [elementWidth]);
-    
+    }, 250);
+
+    useEffect(() => {
+        if (!elementWidth && typeof window !== "undefined" && containerPath) {
+            const element = document.querySelector(containerPath);
+            if (element) {
+                setElementWidth(element.getBoundingClientRect().width.toFixed(2));
+            }
+        }
+    }, [elementWidth, containerPath]);
+
+    useEffect(() => {
+        if (typeof window !== "undefined" && containerPath) {
+            window.addEventListener('resize', updateElementWidth);
+            return () => {
+                window.removeEventListener('resize', updateElementWidth);
+            };
+        }
+    }, [updateElementWidth, containerPath]);
 
     return (
         <ResponsiveContext.Provider value={{ elementWidth: elementWidth, isMobile: isMobile || elementWidth <= 576, isTablet: !isMobile && elementWidth > 576, isDesktop: !isMobile && elementWidth >= 769 }}>
