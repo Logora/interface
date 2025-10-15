@@ -198,6 +198,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupTyp
 						shareCode={`<iframe src="https://cdn.logora.com/embed.html?shortname=${config.shortname}&id=${argument.id}&resource=argument" frameborder="0" width="100%" height="275px" scrolling="no"></iframe>`}
 						showShareCode={config?.actions?.hideCodeShare !== true}
 						showShareText
+						showShareButton={config?.actions?.hideShareButton !== true}
 						enableReport={!(argument.score === 100 && argument.manual_score)}
 						enableEdition={enableEdition}
 						enableDeletion={enableDeletion}
