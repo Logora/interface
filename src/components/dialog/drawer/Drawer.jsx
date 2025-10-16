@@ -13,9 +13,12 @@ export const Drawer = ({ isOpen = false, onClose, title, size = '30vw', enableOv
 
     const closeDrawer = () => {
         setIsDrawerOpen(false);
-        if (onClose) {
-            onClose();
+        if (pathParameter && typeof window !== 'undefined') {
+            const url = new URL(window.location);
+            url.searchParams.delete(pathParameter);
+            window.history.pushState({}, '', url);
         }
+        onClose?.();
     }
 
     useEffect(() => {
