@@ -28,14 +28,14 @@ import EditorTheme from './EditorTheme';
 import cx from "classnames";
 import PropTypes from "prop-types";
 
-export const TextEditor = ({ placeholder, onSubmit, sources, hideSubmit = false, hideSourceAction = false, onActivation, disabled = false, handleChange, handleSourcesChange, shortBar = false, active = false, maxLength, disableRichText = false, editorRef, allowedDomains = [], ...rest }) => {
+export const TextEditor = ({ placeholder, onSubmit, sources, hideSubmit = false, hideSourceAction = false, onActivation, disabled = false, handleChange, handleSourcesChange, shortBar = false, active = false, maxLength, disableRichText = false, editorRef, uid, allowedDomains = [], ...rest }) => {
     const [isActive, setIsActive] = useState(false);
     const [editorText, setEditorText] = useState("");
     const [editorRichText, setEditorRichText] = useState("");
     const [editorSources, setEditorSources] = useState([]);
     const { showModal } = useModal();
     const intl = useIntl();
-    const uid = useId();
+    const randomUid = useId();
 
     useEffect(() => {
         if (sources && sources.length > 0) {
@@ -144,12 +144,12 @@ export const TextEditor = ({ placeholder, onSubmit, sources, hideSubmit = false,
                         <ListPlugin />
                         <HistoryPlugin />
                         <OnChangePlugin onChange={onChange} ignoreSelectionChange />
-                        <AutoSavePlugin onSetContent={activate} storageUid={uid} />
+                        <AutoSavePlugin onSetContent={activate} storageUid={uid || randomUid} />
                         <SetContentPlugin />
                         <SetRichContentPlugin />
                         <FocusPlugin />
                         {maxLength && <MaxLengthPlugin maxLength={maxLength} />}
-                        <ResetPlugin storageUid={uid} />
+                        <ResetPlugin storageUid={uid || randomUid} />
                         <EditorRefPlugin editorRef={editorRef} />
                     </div>
                 </div>
