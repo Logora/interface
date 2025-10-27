@@ -6,7 +6,6 @@
 
 .suggestionBannerContainer {
     display: flex !important;
-    flex-wrap: wrap;
     @include display.media-breakpoint-down(sm) {
         flex-wrap: wrap !important;
     }
