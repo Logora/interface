@@ -14,11 +14,10 @@
     position: absolute;
     top: 50%;
     left: spacing.$spacer-md;
-    z-index: 2;
+    z-index: 1;
     background-color: theme.$background-color-primary;
     transform: translateY(-50%);
     padding: 0 spacing.$spacer-xxs;
-    display: block;
   }
 }
 
@@ -34,8 +33,6 @@
   border-radius: theme.$button-border-radius;
   background-color: theme.$background-color-primary;
   color: theme.$text-primary;
-  position: relative;
-  z-index: 1;
 
   // when no content in the input and not focused, display the label as the placeholder
   &:focus ~ label,
