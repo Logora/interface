@@ -51,6 +51,7 @@
   }
 
   &::placeholder {
+    opacity: 0;
     color: theme.$text-secondary;
   }
 
