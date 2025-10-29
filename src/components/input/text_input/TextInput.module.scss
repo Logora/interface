@@ -39,7 +39,6 @@
   }
 
   // when no content in the input and not focused, display the label as the placeholder
-  &.filled,
   &:focus {
     &~label {
       top: -0.6em;
@@ -53,6 +52,14 @@
   // keep precedence! filled < hover < success < error < disabled
   &.filled {
     background-color: theme.$background-color-secondary;
+
+    &~label {
+      top: -0.6em;
+      transform: unset;
+      font-size: 0.8rem;
+      background-color: theme.$background-color-primary;
+      padding: 0 spacing.$spacer-xxs;
+    }
   }
 
   &:hover {
