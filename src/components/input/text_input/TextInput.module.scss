@@ -3,27 +3,27 @@
 
 .container {
   position: relative;
+}
 
-  // by default, the label shows at the top left corner of the input
-  label {
-    color: theme.$text-secondary;
-    pointer-events: none;
-    transition: left 300ms, top 300ms, font-size 300ms, padding-top 300ms, transform 300ms, color 300ms,
-      background-color 300ms ease-in-out;
-    font-size: 1em;
-    position: absolute;
-    top: 50%;
-    left: spacing.$spacer-md;
-    z-index: 1;
-    background-color: theme.$background-color-primary;
-    transform: translateY(-50%);
-    padding: 0 spacing.$spacer-xxs;
+.label {
+  color: theme.$text-secondary;
+  pointer-events: none;
+  transition: left 300ms, top 300ms, font-size 300ms, padding-top 300ms, transform 300ms, color 300ms,
+    background-color 300ms ease-in-out;
+  font-size: 1em;
+  position: absolute;
+  top: 50%;
+  left: spacing.$spacer-md;
+  z-index: 2;
+  background-color: theme.$background-color-primary;
+  transform: translateY(-50%);
+  padding: 0 spacing.$spacer-xxs;
+  display: block;
 
-    &.labelActive {
-      top: -0.6em;
-      transform: none;
-      font-size: 0.8rem;
-    }
+  &.labelActive {
+    top: -0.6em;
+    transform: none;
+    font-size: 0.8rem;
   }
 }
 
@@ -39,18 +39,9 @@
   border-radius: theme.$button-border-radius;
   background-color: theme.$background-color-primary;
   color: theme.$text-primary;
+  position: relative;
+  z-index: 1;
 
-  // when no content in the input and not focused, display the label as the placeholder
-  &:focus ~ label,
-  &:not(:placeholder-shown) ~ label {
-    top: -0.6em;
-    left: spacing.$spacer-md;
-    transform: none;
-    font-size: 0.8rem;
-    background-color: theme.$background-color-primary;
-  }
-
- 
   // keep precedence! filled < hover < success < error < disabled
   &.filled {
     background-color: theme.$background-color-secondary;
@@ -125,12 +116,14 @@
   font-size: inherit;
 
   .textInput {
-    padding-left: 2em !important;
+    padding-left: 2.5em !important;
+  }
 
-    &:placeholder-shown:not(:focus) {
-      &~label {
-        left: var(--spacer-md, calc(var(--space-unit, 1em) * 2));
-      }
+  .label {
+    left: 2.5em;
+
+    &.labelActive {
+      left: spacing.$spacer-md;
     }
   }
 
@@ -143,6 +136,7 @@
     top: calc(50% - 0.6rem);
     width: 16px;
     height: 16px;
+    z-index: 3;
   }
 }
 

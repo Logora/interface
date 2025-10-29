@@ -62,7 +62,8 @@ export const TextInput = forwardRef(function TextInputWithRef(
           onFocus={handleFocus}
           onBlur={handleBlur}
         />
-        {activeLabel && <label className={classNames(isLabelActive && styles.labelActive)}>{placeholder}</label>}
+        {activeLabel && <label className={classNames(styles.label, isLabelActive && styles.labelActive)}>{placeholder}</label>}
+
         {iconRight}
       </div>
       <Message message={message} className={messageClass} />
