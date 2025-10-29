@@ -8,17 +8,16 @@
   label {
     color: theme.$text-secondary;
     pointer-events: none;
-    transition: left 300ms, top 300ms, font-size 300ms, padding-top 300ms, transform 300ms, color 300ms,
-      background-color 300ms ease-in-out;
-    font-size: 0.8rem;
+    transition: all 300ms ease-in-out;
     position: absolute;
-    top: -0.6em;
+    top: 50%;
+    transform: translateY(-50%);
     left: spacing.$spacer-md;
     z-index: 1;
-    background-color: theme.$background-color-primary;
-    transform: unset;
-    padding: 0 spacing.$spacer-xxs;
-    opacity: 0;
+    font-size: 1em;
+    background-color: transparent;
+    padding: 0;
+    opacity: 1;
   }
 }
 
@@ -36,34 +35,24 @@
   color: theme.$text-primary;
 
   &::placeholder {
-    opacity: 1; 
-    color: theme.$text-secondary;
+    opacity: 0;
   }
 
   // when no content in the input and not focused, display the label as the placeholder
-  &:placeholder-shown:not(:focus) {
-    &::placeholder {
-      opacity: 0;
-    }
+  &.filled,
+  &:focus {
     &~label {
-      transition: top 300ms, font-size 300ms, padding-top 300ms, transform 300ms, color 300ms ease-in-out;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 1em;
-      background-color: unset;
-      opacity: 1;
+      top: -0.6em;
+      transform: unset;
+      font-size: 0.8rem;
+      background-color: theme.$background-color-primary;
+      padding: 0 spacing.$spacer-xxs;
     }
   }
 
   // keep precedence! filled < hover < success < error < disabled
   &.filled {
     background-color: theme.$background-color-secondary;
-
-    &~label {
-      opacity: 1;
-      top: -0.6em; 
-      font-size: 0.8rem;
-    }
   }
 
   &:hover {
@@ -74,15 +63,8 @@
     border: 1px solid theme.$text-secondary !important;
     background-color: theme.$background-color-primary;
 
-    &:placeholder-shown::placeholder {
-      opacity: 1; 
-    }
-
     &~label {
       color: theme.$text-secondary !important;
-      opacity: 1; 
-      top: -0.6em; 
-      font-size: 0.8rem; 
     }
   }
 
@@ -138,12 +120,10 @@
 
   .textInput {
     padding-left: 2em !important;
+  }
 
-    &:placeholder-shown:not(:focus) {
-      &~label {
-        left: var(--spacer-md, calc(var(--space-unit, 1em) * 2));
-      }
-    }
+  label {
+    left: calc(spacing.$spacer-md * 2 + 16px);
   }
 
   // left icon element
