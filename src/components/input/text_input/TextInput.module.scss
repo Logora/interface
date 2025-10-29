@@ -18,6 +18,7 @@
     background-color: theme.$background-color-primary;
     transform: unset;
     padding: 0 spacing.$spacer-xxs;
+    opacity: 0;
   }
 }
 
@@ -45,16 +46,34 @@
     }
   }
 
+  &:placeholder-shown:not(:focus) ~ label {
+    opacity: 0;
+  }
+
+  &:focus ~ label,
+  &:not(:placeholder-shown) ~ label {
+    opacity: 1;
+  }
+
   // keep precedence! filled < hover < success < error < disabled
   &.filled {
     background-color: theme.$background-color-secondary;
   }
 
   &::placeholder {
-    opacity: 0;
     color: theme.$text-secondary;
   }
 
+  &:focus::placeholder,
+  &:not(:placeholder-shown)::placeholder {
+    color: transparent;
+  }
+
+  &:focus::-webkit-input-placeholder,
+  &:not(:placeholder-shown)::-webkit-input-placeholder {
+    color: transparent;
+  }
+  
   &:hover {
     border: 1px solid theme.$text-secondary;
   }
