@@ -18,7 +18,6 @@
     background-color: theme.$background-color-primary;
     transform: unset;
     padding: 0 spacing.$spacer-xxs;
-    opacity: 0;
   }
 }
 
@@ -35,6 +34,11 @@
   background-color: theme.$background-color-primary;
   color: theme.$text-primary;
 
+  &::placeholder {
+    opacity: 0; 
+    color: theme.$text-secondary;
+  }
+
   // when no content in the input and not focused, display the label as the placeholder
   &:placeholder-shown:not(:focus) {
     &~label {
@@ -43,37 +47,21 @@
       transform: translateY(-50%);
       font-size: 1em;
       background-color: unset;
+      opacity: 1;
     }
-  }
-
-  &:placeholder-shown:not(:focus) ~ label {
-    opacity: 0;
-  }
-
-  &:focus ~ label,
-  &:not(:placeholder-shown) ~ label {
-    opacity: 1;
   }
 
   // keep precedence! filled < hover < success < error < disabled
   &.filled {
     background-color: theme.$background-color-secondary;
+
+    &~label {
+      opacity: 1;
+      top: -0.6em; 
+      font-size: 0.8rem;
+    }
   }
 
-  &::placeholder {
-    color: theme.$text-secondary;
-  }
-
-  &:focus::placeholder,
-  &:not(:placeholder-shown)::placeholder {
-    color: transparent;
-  }
-
-  &:focus::-webkit-input-placeholder,
-  &:not(:placeholder-shown)::-webkit-input-placeholder {
-    color: transparent;
-  }
-  
   &:hover {
     border: 1px solid theme.$text-secondary;
   }
@@ -82,8 +70,16 @@
     border: 1px solid theme.$text-secondary !important;
     background-color: theme.$background-color-primary;
 
+    &::placeholder {
+      opacity: 0; 
+      color: theme.$text-secondary;
+    }
+
     &~label {
       color: theme.$text-secondary !important;
+      opacity: 1; 
+      top: -0.6em; 
+      font-size: 0.8rem; 
     }
   }
 
