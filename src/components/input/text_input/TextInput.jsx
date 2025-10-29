@@ -34,7 +34,7 @@ export const TextInput = forwardRef(function TextInputWithRef(
           ref={ref}
           className={classNames(styles.textInput, filled && styles.filled, accent, inputClass)}
           {...rest}
-          placeholder={activeLabel ? placeholder : placeholder}
+          placeholder={activeLabel ? '' : placeholder}
           onChange={onChange || rest.onChange}
         />
         {activeLabel && <label>{placeholder}</label>}
