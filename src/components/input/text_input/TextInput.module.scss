@@ -18,6 +18,12 @@
     background-color: theme.$background-color-primary;
     transform: translateY(-50%);
     padding: 0 spacing.$spacer-xxs;
+
+    &.labelActive {
+      top: -0.6em;
+      transform: none;
+      font-size: 0.8rem;
+    }
   }
 }
 
