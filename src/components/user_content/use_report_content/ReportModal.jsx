@@ -82,6 +82,19 @@ export const ReportModal = (props) => {
                                             onChange={e => setReportDescription(e.target.value)}
                                             placeholder={intl.formatMessage({ id: "report.report_modal.description_input_placeholder", defaultMessage: "Tell us more" })}
                                         ></textarea>
+                                        <div className={styles.formGroup}>
+                                            <label className={styles.checkboxLabel}>
+                                                <input
+                                                    type="checkbox"
+                                                    checked={isChecked}
+                                                    onChange={(e) => setIsChecked(e.target.checked)}
+                                                />
+                                                {intl.formatMessage({
+                                                    id: "report.report_modal.declaration",
+                                                    defaultMessage: "By submitting this report, I declare that the information provided is, to my knowledge, accurate and complete."
+                                                })}
+                                            </label>
+                                        </div>
                                     </div>
                                     {props.allowAnonymousUser && !isLoggedIn && (
                                         <>
