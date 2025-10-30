@@ -76,6 +76,6 @@
 .select {
 	max-width: 300px;
 	@include display.media-breakpoint-down(xs) {
-		max-width: 200px;
+		max-width: 300px;
 	}
 }
