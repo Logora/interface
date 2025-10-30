@@ -1,19 +1,20 @@
 import React from "react";
 import { useVote } from "@logora/debate.vote.use_vote";
-import { FormattedMessage } from "react-intl";
+import { useIntl } from "react-intl";
 import { Icon } from "@logora/debate.icons.icon";
 import cx from "classnames";
 import styles from "./UpDownVoteBox.module.scss";
 import PropTypes from "prop-types";
 
 export const UpDownVoteBox = ({ voteableType, voteableId, totalUpvote = 0, totalDownvote = 0, disabled = false }) => {
-  const { totalUpvotes, totalDownvotes, activeVote, voteSide, handleVote } =
-    useVote(
-      voteableType,
-      voteableId,
-      totalUpvote,
-      totalDownvote
-    );
+    const { totalUpvotes, totalDownvotes, activeVote, voteSide, handleVote } =
+        useVote(
+            voteableType,
+            voteableId,
+            totalUpvote,
+            totalDownvote
+        );
+    const intl = useIntl();
 
     return (
         <div className={styles.container}>
@@ -25,13 +26,9 @@ export const UpDownVoteBox = ({ voteableType, voteableId, totalUpvote = 0, total
                 onClick={disabled ? null : () => handleVote(true)}
                 data-testid="upvote-button"
             >
-                <Icon name="upvote" width={27} height={25} />
+                <Icon name="upvote" width={27} height={25} aria-label={intl.formatMessage({id: "vote.up_down_vote_box.supporters", defaultMessage: "supporters"})} />
                 <div className={styles.voteText}>
-                    <FormattedMessage 
-                        id={"vote.up_down_vote_box.supporters"}
-                        values={{ count: totalUpvotes }}
-                        defaultMessage={"{count} supporters"}
-                    />
+                    {totalUpvotes}
                 </div>
             </div>
             <div
@@ -42,13 +39,9 @@ export const UpDownVoteBox = ({ voteableType, voteableId, totalUpvote = 0, total
                 onClick={disabled ? null : () => handleVote(false)}
                 data-testid="downvote-button"
             >
-                <Icon name="downvote" width={27} height={25} />
+                <Icon name="downvote" width={27} height={25} aria-label={intl.formatMessage({id: "vote.up_down_vote_box.opponents", defaultMessage: "opponents"})}/>
                 <div className={styles.voteText}>
-                    <FormattedMessage 
-                        id={"vote.up_down_vote_box.opponents"}
-                        values={{ count: totalDownvotes }}
-                        defaultMessage={"{count} opponents"}
-                    />
+                    {totalDownvotes}
                 </div>
             </div>
         </div>
