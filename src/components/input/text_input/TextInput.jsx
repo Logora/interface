@@ -1,4 +1,4 @@
-import React, { forwardRef, useState } from 'react';
+import React, { forwardRef } from 'react';
 import classNames from 'classnames';
 import { useForm } from '@logora/debate.forms.form';
 import { getAccent } from './color-accent';
@@ -25,29 +25,6 @@ export const TextInput = forwardRef(function TextInputWithRef(
 ) {
   const accent = getAccent({ error, success });
   const { onChange } = useForm();
-  const [hasValue, setHasValue] = useState(!!rest.value || !!rest.defaultValue);
-  const [isFocused, setIsFocused] = useState(false);
-
-  const handleChange = (e) => {
-    setHasValue(e.target.value.length > 0);
-    if (onChange) {
-      onChange(e);
-    } else if (rest.onChange) {
-      rest.onChange(e);
-    }
-  };
-
-  const handleFocus = (e) => {
-    setIsFocused(true);
-    if (rest.onFocus) rest.onFocus(e);
-  };
-
-  const handleBlur = (e) => {
-    setIsFocused(false);
-    if (rest.onBlur) rest.onBlur(e);
-  };
-
-  const isLabelActive = hasValue || isFocused;
 
   return (
     <>
@@ -57,13 +34,10 @@ export const TextInput = forwardRef(function TextInputWithRef(
           ref={ref}
           className={classNames(styles.textInput, filled && styles.filled, accent, inputClass)}
           {...rest}
-          placeholder={activeLabel ? '' : placeholder}
-          onChange={handleChange}
-          onFocus={handleFocus}
-          onBlur={handleBlur}
+          placeholder={activeLabel ? " " : placeholder}
+          onChange={onChange || rest.onChange}
         />
-        {activeLabel && <label className={classNames(styles.label, isLabelActive && styles.labelActive)}>{placeholder}</label>}
-
+        {activeLabel && <label>{placeholder}</label>}
         {iconRight}
       </div>
       <Message message={message} className={messageClass} />
