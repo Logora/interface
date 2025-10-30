@@ -200,8 +200,8 @@ describe('ContentFooter', () => {
             <ContentFooterUpDownVoteBox />
         );
 
-        expect(queryByText('10 supporters')).toBeInTheDocument();
-        expect(queryByText('5 opponents')).toBeInTheDocument();
+        expect(queryByText('10')).toBeInTheDocument();
+        expect(queryByText('5')).toBeInTheDocument();
         expect(queryByText("Reply")).toBeNull();
         expect(queryByText("Share")).toBeInTheDocument();
     });

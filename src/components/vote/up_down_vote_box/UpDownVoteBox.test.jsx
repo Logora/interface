@@ -65,8 +65,8 @@ describe('UpDownVoteBox', () => {
             </ConfigProvider>
         );
 
-        expect(queryByText("10 supporters")).toBeInTheDocument();
-        expect(queryByText("12 opponents")).toBeInTheDocument();
+        expect(queryByText("10")).toBeInTheDocument();
+        expect(queryByText("12")).toBeInTheDocument();
     });
 
     it('should add user upvote', async () => {
@@ -93,13 +93,13 @@ describe('UpDownVoteBox', () => {
             </ConfigProvider>
         );
 
-        expect(container.queryByText("10 supporters")).toBeInTheDocument();
-        expect(container.queryByText("14 opponents")).toBeInTheDocument();
+        expect(container.queryByText("10")).toBeInTheDocument();
+        expect(container.queryByText("14")).toBeInTheDocument();
         const voteBox = container.getByTestId("upvote-button");
         await userEvent.click(voteBox);
 
-        expect(container.queryByText("11 supporters")).toBeInTheDocument();
-        expect(container.queryByText("14 opponents")).toBeInTheDocument();
+        expect(container.queryByText("11")).toBeInTheDocument();
+        expect(container.queryByText("14")).toBeInTheDocument();
     });
 
     it('should add user upvote and delete it when clicking again', async () => {
@@ -126,17 +126,17 @@ describe('UpDownVoteBox', () => {
             </ConfigProvider>
         );
 
-        expect(container.getByText("5 supporters")).toBeInTheDocument();
-        expect(container.queryByText("32 opponents")).toBeInTheDocument();
+        expect(container.getByText("5")).toBeInTheDocument();
+        expect(container.queryByText("32")).toBeInTheDocument();
 
         const voteBox = container.getByTestId("upvote-button");
         await userEvent.click(voteBox);
-        expect(container.getByText("6 supporters")).toBeInTheDocument();
-        expect(container.queryByText("32 opponents")).toBeInTheDocument();
+        expect(container.getByText("6")).toBeInTheDocument();
+        expect(container.queryByText("32")).toBeInTheDocument();
 
         await userEvent.click(voteBox);
-        expect(container.getByText("5 supporters")).toBeInTheDocument();
-        expect(container.queryByText("32 opponents")).toBeInTheDocument();
+        expect(container.getByText("5")).toBeInTheDocument();
+        expect(container.queryByText("32")).toBeInTheDocument();
     });
 
     it('should do nothing if disabled', async () => {
@@ -164,10 +164,10 @@ describe('UpDownVoteBox', () => {
             </ConfigProvider>
         );
 
-        expect(container.getByText("50 supporters")).toBeInTheDocument();
+        expect(container.getByText("50")).toBeInTheDocument();
         const voteBox = container.getByTestId("upvote-button");
         await userEvent.click(voteBox);
 
-        expect(container.getByText("50 supporters")).toBeInTheDocument();
+        expect(container.getByText("50")).toBeInTheDocument();
     });
 });
