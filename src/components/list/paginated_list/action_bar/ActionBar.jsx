@@ -80,7 +80,7 @@ export const ActionBar = ({ title, sortOptions, defaultSelectOption, searchBar =
                                         <SearchInput
                                             onSearchSubmit={handleSearch}
                                             placeholder={intl.formatMessage({ id: "info.search_mobile", defaultMessage: "Search" })}
-                                            reducedByDefault={isMobile}
+                                            reducedByDefault={false}
                                         />
                                     </div>
                                 ) : null}
