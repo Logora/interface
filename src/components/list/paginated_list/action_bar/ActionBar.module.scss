@@ -49,7 +49,7 @@
     flex: 1;
     max-width: 35%;
     @include display.media-breakpoint-down(xs) {
-        max-width: 100%;
+        max-width: 80%;
     }
 }
 
@@ -76,6 +76,6 @@
 .select {
 	max-width: 300px;
 	@include display.media-breakpoint-down(xs) {
-		max-width: 150px;
+		max-width: 200px;
 	}
 }
