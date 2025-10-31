@@ -37,13 +37,13 @@ export const ReportModal = (props) => {
             isChecked: isChecked
         };
         setStep('LOADING');
-        console.log(validate(data, [{ classification: ["required", null] }, { isChecked: ["checkValue", true] }, { email: ["required", null] }]))
         if (validate(data, [{ classification: ["required", null] }, { isChecked: ["checkValue", true] }, { email: ["required", null] }])) {
             dataProvider.create("reports", data, {}, isLoggedIn).then(response => {
                 setStep('SUCCESS');
             }, error => {
                 setStep('SUCCESS');
             });
+        }
     }
 
     return (
