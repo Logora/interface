@@ -98,6 +98,7 @@ describe('useReportContent', () => {
         expect(screen.getByText("Send")).toBeTruthy();
         await userEvent.click(screen.getByRole('button', { name: /select a reason/i }));
         await userEvent.click(await screen.findByText(/incivility/i));
+        await userEvent.click(await screen.findByRole('checkbox'));
 
         const confirmButton = screen.getByRole('button', { name: /send/i });
         await userEvent.click(confirmButton);

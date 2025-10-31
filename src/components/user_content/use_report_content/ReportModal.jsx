@@ -6,7 +6,6 @@ import { useAuth } from "@logora/debate.auth.use_auth";
 import { Select } from '@logora/debate.input.select';
 import { Loader } from '@logora/debate.progress.loader';
 import { Button } from '@logora/debate.action.button';
-import { useFormValidation } from '@logora/debate.hooks.use_form_validation';
 import cx from 'classnames';
 import styles from './ReportModal.module.scss';
 
@@ -20,7 +19,6 @@ export const ReportModal = (props) => {
     const [isChecked, setIsChecked] = useState(false);
     const { hideModal } = useModal();
     const { isLoggedIn } = useAuth();
-    const { validate, errors } = useFormValidation();
     const intl = useIntl();
     const dataProvider = useDataProvider();
 
@@ -33,17 +31,14 @@ export const ReportModal = (props) => {
             description: reportDescription,
             first_name: firstName,
             last_name: lastName,
-            email: email,
-            isChecked: isChecked
+            email: email
         };
         setStep('LOADING');
-        if (validate(data, [{ classification: ["required", null] }, { isChecked: ["checkValue", true] }, { email: ["required", null] }])) {
-            dataProvider.create("reports", data, {}, isLoggedIn).then(response => {
-                setStep('SUCCESS');
-            }, error => {
-                setStep('SUCCESS');
-            });
-        }
+        dataProvider.create("reports", data, {}, isLoggedIn).then(response => {
+            setStep('SUCCESS');
+        }, error => {
+            setStep('SUCCESS');
+        });
     }
 
     return (
@@ -93,6 +88,7 @@ export const ReportModal = (props) => {
                                                     type="checkbox"
                                                     checked={isChecked}
                                                     onChange={(e) => setIsChecked(e.target.checked)}
+                                                    required
                                                 />
                                                 {intl.formatMessage({
                                                     id: "report.report_modal.declaration",
@@ -147,6 +143,7 @@ export const ReportModal = (props) => {
                                                         type="checkbox"
                                                         checked={isChecked}
                                                         onChange={(e) => setIsChecked(e.target.checked)}
+                                                        required
                                                     />
                                                     {intl.formatMessage({
                                                         id: "report.report_modal.declaration",
