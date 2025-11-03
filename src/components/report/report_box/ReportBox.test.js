@@ -15,6 +15,9 @@ import * as regularIcons from "@logora/debate.icons.regular_icons";
 import ReportBox from "./ReportBox";
 import { faker } from "@faker-js/faker";
 
+jest.mock('@lexical/react/LexicalErrorBoundary', () => ({
+  LexicalErrorBoundary: ({ children }) => children,
+}));
 
 const generateReport = (overrides) => ({
   id: faker.datatype.number(),

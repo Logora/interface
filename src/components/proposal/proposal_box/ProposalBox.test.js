@@ -16,6 +16,10 @@ import * as regularIcons from "@logora/debate.icons.regular_icons";
 import { ProposalBox } from "./ProposalBox";
 import { faker } from "@faker-js/faker";
 
+jest.mock('@lexical/react/LexicalErrorBoundary', () => ({
+    LexicalErrorBoundary: ({ children }) => children,
+  }));
+
 // Mock data
 const vote = {
     id: faker.datatype.number(),

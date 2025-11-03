@@ -1,4 +1,8 @@
 import React, { act } from 'react';
+jest.mock('@lexical/react/LexicalErrorBoundary', () => ({
+    // remplace le composant ESM par un wrapper neutre pour Jest (CJS)
+    LexicalErrorBoundary: ({ children }) => children,
+  }));
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { IntlProvider } from 'react-intl';

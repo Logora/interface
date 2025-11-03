@@ -118,13 +118,14 @@ export const TextEditor = ({ placeholder, onSubmit, sources, hideSubmit = false,
     }
 
     return (
-        <LexicalErrorBoundary>
+        <>
             <LexicalComposer initialConfig={editorConfig}>
                 <div className={styles.editorContainer} onClick={setFocus}> 
                     <div className={cx(styles.editorInner, { [styles.editorInnerInactive]: !isActive && !active })}>
                         <RichTextPlugin
                             contentEditable={<ContentEditable className={cx(styles.editorInput, { [styles.editorInputInactive]: !isActive })} {...rest}  />}
                             placeholder={placeholder && <Placeholder />}
+                            ErrorBoundary={LexicalErrorBoundary}
                         />
                         <ToolbarPlugin
                             hideSourceAction={hideSourceAction}
@@ -161,7 +162,7 @@ export const TextEditor = ({ placeholder, onSubmit, sources, hideSubmit = false,
                     </div>
                 </div>
             ) : null}
-        </LexicalErrorBoundary>
+        </>
     );
 }
 

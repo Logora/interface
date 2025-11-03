@@ -12,6 +12,10 @@ import { IconProvider } from '@logora/debate.icons.icon_provider';
 import * as regularIcons from '@logora/debate.icons.regular_icons';
 import { IntlProvider } from 'react-intl';
 
+jest.mock('@lexical/react/LexicalErrorBoundary', () => ({
+    LexicalErrorBoundary: ({ children }) => children,
+  }));
+
 const callback = jest.fn();
 
 describe('TextEditor', () => {

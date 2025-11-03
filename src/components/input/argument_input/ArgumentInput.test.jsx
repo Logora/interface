@@ -15,6 +15,10 @@ import { AuthContext } from '@logora/debate.auth.use_auth';
 import { ListProvider } from '@logora/debate.list.list_provider';
 import { InputProvider, useInput } from '@logora/debate.input.input_provider';
 
+jest.mock('@lexical/react/LexicalErrorBoundary', () => ({
+    LexicalErrorBoundary: ({ children }) => children,
+  }));
+  
 const httpClient = {
     get: () => null,
     post: (url, data, config) => {
