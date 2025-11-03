@@ -131,7 +131,7 @@ describe('TextEditor', () => {
         editor.setRootElement(rootElement);
 
         expect(container.innerHTML).toBe(
-            '<div style="user-select: text; white-space: pre-wrap; word-break: break-word;" data-lexical-editor="true"><p dir="ltr"><span data-lexical-text="true">Some text</span></p></div>',
+            '<div style="user-select: text; white-space: pre-wrap; word-break: break-word;" data-lexical-editor="true"><p dir="auto"><span data-lexical-text="true">Some text</span></p></div>',
         );
 
         container.removeChild(rootElement);
@@ -165,7 +165,7 @@ describe('TextEditor', () => {
         editor.setRootElement(rootElement);
 
         expect(container.innerHTML).toBe(
-            '<div style="user-select: text; white-space: pre-wrap; word-break: break-word;" data-lexical-editor="true"><p dir="ltr"><strong class="editor-text-bold" data-lexical-text="true">Bold</strong></p></div>',
+            '<div style="user-select: text; white-space: pre-wrap; word-break: break-word;" data-lexical-editor="true"><p dir="auto"><strong class="editor-text-bold" data-lexical-text="true">Bold</strong></p></div>',
         );
 
         container.removeChild(rootElement);
@@ -199,7 +199,7 @@ describe('TextEditor', () => {
         editor.setRootElement(rootElement);
 
         expect(container.innerHTML).toBe(
-            '<div style="user-select: text; white-space: pre-wrap; word-break: break-word;" data-lexical-editor="true"><p dir="ltr"><em class="editor-text-italic" data-lexical-text="true">Italic</em></p></div>',
+            '<div style="user-select: text; white-space: pre-wrap; word-break: break-word;" data-lexical-editor="true"><p dir="auto"><em class="editor-text-italic" data-lexical-text="true">Italic</em></p></div>',
         );
 
         container.removeChild(rootElement);
@@ -233,7 +233,7 @@ describe('TextEditor', () => {
         editor.setRootElement(rootElement);
 
         expect(container.innerHTML).toBe(
-            '<div style="user-select: text; white-space: pre-wrap; word-break: break-word;" data-lexical-editor="true"><p dir="ltr"><span class="editor-text-underline" data-lexical-text="true">Underline</span></p></div>',
+            '<div style="user-select: text; white-space: pre-wrap; word-break: break-word;" data-lexical-editor="true"><p dir="auto"><span class="editor-text-underline" data-lexical-text="true">Underline</span></p></div>',
         );
 
         container.removeChild(rootElement);
@@ -267,7 +267,7 @@ describe('TextEditor', () => {
         editor.setRootElement(rootElement);
 
         expect(container.innerHTML).toBe(
-            '<div style="user-select: text; white-space: pre-wrap; word-break: break-word;" data-lexical-editor="true"><p dir="ltr"><strong class="editor-text-bold editor-text-italic editor-text-underline" data-lexical-text="true">Some text</strong></p></div>',
+            '<div style="user-select: text; white-space: pre-wrap; word-break: break-word;" data-lexical-editor="true"><p dir="auto"><strong class="editor-text-bold editor-text-italic editor-text-underline" data-lexical-text="true">Some text</strong></p></div>',
         );
 
         container.removeChild(rootElement);
@@ -294,7 +294,7 @@ describe('TextEditor', () => {
         editor.setRootElement(rootElement);
 
         expect(container.innerHTML).toBe(
-            '<div style=\"user-select: text; white-space: pre-wrap; word-break: break-word;\" data-lexical-editor=\"true\"><blockquote dir=\"ltr\"><span data-lexical-text=\"true\">My quote</span></blockquote></div>',
+            '<div style=\"user-select: text; white-space: pre-wrap; word-break: break-word;\" data-lexical-editor=\"true\"><blockquote dir=\"auto\"><span data-lexical-text=\"true\">My quote</span></blockquote></div>',
         );
 
         container.removeChild(rootElement);
@@ -326,7 +326,7 @@ describe('TextEditor', () => {
         editor.setRootElement(rootElement);
 
         expect(container.innerHTML).toBe(
-            '<div style=\"user-select: text; white-space: pre-wrap; word-break: break-word;\" data-lexical-editor=\"true\"><ol><li value=\"1\" dir=\"ltr\"><span data-lexical-text=\"true\">First item</span></li><li value=\"2\" dir=\"ltr\"><span data-lexical-text=\"true\">Second item</span></li><li value=\"3\" dir=\"ltr\"><span data-lexical-text=\"true\">Third item</span></li><li value=\"4\" dir=\"ltr\"><span data-lexical-text=\"true\">Fourth item</span></li></ol></div>',
+            '<div style=\"user-select: text; white-space: pre-wrap; word-break: break-word;\" data-lexical-editor=\"true\"><ol dir=\"auto\"><li value=\"1\"><span data-lexical-text=\"true\">First item</span></li><li value=\"2\"><span data-lexical-text=\"true\">Second item</span></li><li value=\"3\"><span data-lexical-text=\"true\">Third item</span></li><li value=\"4\"><span data-lexical-text=\"true\">Fourth item</span></li></ol></div>',
         );
 
         container.removeChild(rootElement);
@@ -381,7 +381,7 @@ describe('TextEditor', () => {
 
 
     it('should set content in editor when setContent called from outside', async () => {
-        const targetContent = { "root": { "children": [{ "children": [{ "detail": 0, "format": 1, "mode": "normal", "style": "", "text": "Integer pretium varius odio ac eleifend.", "type": "text", "version": 1 }], "direction": "ltr", "format": "", "indent": 0, "type": "paragraph", "version": 1 }], "direction": "ltr", "format": "", "indent": 0, "type": "root", "version": 1 } };
+        const targetContent = { "root": { "children": [{ "children": [{ "detail": 0, "format": 1, "mode": "normal", "style": "", "text": "Integer pretium varius odio ac eleifend.", "type": "text", "version": 1 }], "direction": "auto", "format": "", "indent": 0, "type": "paragraph", "version": 1 }], "direction": "auto", "format": "", "indent": 0, "type": "root", "version": 1 } };
 
         const SetInputContentComponent = (props) => {
             const { setInputRichContent } = useInput();
@@ -428,7 +428,7 @@ describe('TextEditor', () => {
     });
 
     it('should display max length and update it', async () => {
-        const targetContent = { "root": { "children": [{ "children": [{ "detail": 0, "format": 1, "mode": "normal", "style": "", "text": "Integer pretium varius odio ac eleifend.", "type": "text", "version": 1 }], "direction": "ltr", "format": "", "indent": 0, "type": "paragraph", "version": 1 }], "direction": "ltr", "format": "", "indent": 0, "type": "root", "version": 1 } };
+        const targetContent = { "root": { "children": [{ "children": [{ "detail": 0, "format": 1, "mode": "normal", "style": "", "text": "Integer pretium varius odio ac eleifend.", "type": "text", "version": 1 }], "direction": "auto", "format": "", "indent": 0, "type": "paragraph", "version": 1 }], "direction": "auto", "format": "", "indent": 0, "type": "root", "version": 1 } };
 
         const SetInputContentComponent = (props) => {
             const { setInputRichContent } = useInput();
@@ -505,7 +505,7 @@ describe('TextEditor', () => {
 
 
 //     it('should reset content in editor when setReset called from outside', async () => {
-//         const targetContent = {"root":{"children":[{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"Integer pretium varius odio ac eleifend.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}};
+//         const targetContent = {"root":{"children":[{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"Integer pretium varius odio ac eleifend.","type":"text","version":1}],"direction":"auto","format":"","indent":0,"type":"paragraph","version":1}],"direction":"auto","format":"","indent":0,"type":"root","version":1}};
 
 //         const ResetContentComponent = (props) => {
 //             const { setInputRichContent, setReset } = useInput();
@@ -591,7 +591,7 @@ describe('AutoSavePlugin', () => {
     })
 
     it('should auto save content in local storage', async () => {
-        const targetContent = { "root": { "children": [{ "children": [{ "detail": 0, "format": 1, "mode": "normal", "style": "", "text": "Integer pretium varius odio ac eleifend.", "type": "text", "version": 1 }], "direction": "ltr", "format": "", "indent": 0, "type": "paragraph", "version": 1 }], "direction": "ltr", "format": "", "indent": 0, "type": "root", "version": 1 } };
+        const targetContent = { "root": { "children": [{ "children": [{ "detail": 0, "format": 1, "mode": "normal", "style": "", "text": "Integer pretium varius odio ac eleifend.", "type": "text", "version": 1 }], "direction": "auto", "format": "", "indent": 0, "type": "paragraph", "version": 1 }], "direction": "auto", "format": "", "indent": 0, "type": "root", "version": 1 } };
         const getItemMock = jest.spyOn(window.localStorage, 'getItem');
 
         const AutoSaveContentComponent = (props) => {
