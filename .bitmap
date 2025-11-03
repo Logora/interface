@@ -61,7 +61,7 @@
     "argument/argument": {
         "name": "argument/argument",
         "scope": "logora.debate",
-        "version": "0.0.485",
+        "version": "0.0.486",
         "mainFile": "index.js",
         "rootDir": "src/components/argument/argument"
     },
@@ -565,14 +565,14 @@
     "proposal/proposal_box": {
         "name": "proposal/proposal_box",
         "scope": "logora.debate",
-        "version": "0.0.95",
+        "version": "0.0.96",
         "mainFile": "index.js",
         "rootDir": "src/components/proposal/proposal_box"
     },
     "report/report_box": {
         "name": "report/report_box",
         "scope": "logora.debate",
-        "version": "0.0.157",
+        "version": "0.0.158",
         "mainFile": "index.js",
         "rootDir": "src/components/report/report_box"
     },
@@ -691,14 +691,14 @@
     "suggestion/suggestion_banner": {
         "name": "suggestion/suggestion_banner",
         "scope": "logora.debate",
-        "version": "0.0.232",
+        "version": "0.0.233",
         "mainFile": "index.js",
         "rootDir": "src/components/suggestion/suggestion_banner"
     },
     "suggestion/suggestion_box": {
         "name": "suggestion/suggestion_box",
         "scope": "logora.debate",
-        "version": "0.0.219",
+        "version": "0.0.220",
         "mainFile": "index.js",
         "rootDir": "src/components/suggestion/suggestion_box"
     },
@@ -831,7 +831,7 @@
     "user_content/content_footer": {
         "name": "user_content/content_footer",
         "scope": "logora.debate",
-        "version": "0.0.221",
+        "version": "0.0.222",
         "mainFile": "index.js",
         "rootDir": "src/components/user_content/content_footer"
     },
@@ -859,7 +859,7 @@
     "user_content/use_report_content": {
         "name": "user_content/use_report_content",
         "scope": "logora.debate",
-        "version": "0.0.176",
+        "version": "0.0.177",
         "mainFile": "index.js",
         "rootDir": "src/components/user_content/use_report_content"
     },
