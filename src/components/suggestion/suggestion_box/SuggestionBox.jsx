@@ -89,6 +89,7 @@ export const SuggestionBox = ({ suggestion, disabled = false, onVoteCallback = n
                         disabled={disabled || userIsBanned}
                         showShareButton={false}
                         enableEdition={false}
+                        enableDeletion={suggestion.is_published !== true}
                         showActions={suggestion.is_accepted !== true}
                         containerClassName={styles.footerContainer}
                         voteActionClassName={styles.footerActionContainer}
