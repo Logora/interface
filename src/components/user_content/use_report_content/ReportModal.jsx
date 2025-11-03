@@ -110,6 +110,7 @@ export const ReportModal = (props) => {
                                                         id="firstName"
                                                         value={firstName}
                                                         onChange={(e) => setFirstName(e.target.value)}
+                                                        required
                                                     />
                                                 </div>
                                                 <div className={styles.nameField}>
@@ -122,6 +123,7 @@ export const ReportModal = (props) => {
                                                         id="lastName"
                                                         value={lastName}
                                                         onChange={(e) => setLastName(e.target.value)}
+                                                        required
                                                     />
                                                 </div>
                                             </div>
@@ -135,6 +137,7 @@ export const ReportModal = (props) => {
                                                     id="email"
                                                     value={email}
                                                     onChange={(e) => setEmail(e.target.value)}
+                                                    required
                                                 />
                                             </div>
                                             <div className={styles.formGroup}>
