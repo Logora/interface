@@ -32,6 +32,8 @@
 
 .debateSuggestion {
   display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
   position: absolute;
   gap: spacing.$spacer-xxs;
   right: spacing.$spacer;
