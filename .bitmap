@@ -229,7 +229,7 @@
     "dialog/drawer": {
         "name": "dialog/drawer",
         "scope": "logora.debate",
-        "version": "0.0.79",
+        "version": "0.0.80",
         "mainFile": "index.js",
         "rootDir": "src/components/dialog/drawer"
     },
