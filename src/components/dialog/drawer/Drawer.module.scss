@@ -34,6 +34,9 @@
     cursor: pointer;
     margin-left: auto;
     color: theme.$text-secondary;
+    padding: 12px;
+    min-width: 44px;
+    min-height: 44px;
     svg {
         fill: theme.$text-secondary;
     }
