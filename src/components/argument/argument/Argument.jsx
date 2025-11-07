@@ -22,7 +22,7 @@ import styles from "./Argument.module.scss";
 const ArgumentInput = lazy(() => import('@logora/debate.input.argument_input'));
 import PropTypes from "prop-types";
 
-export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupType, groupName, positions = [], disableLinks = false, parentArgument, flashParent, expandable, disabled = false, hideFooter = false, hideReplies, vote, fixedContentHeight = false, enableEdition = true, enableDeletion = true, deleteListId, showModerationFeedback }) => {
+export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupType, groupName, positions = [], disableLinks = false, parentArgument, flashParent, expandable, disabled = false, hideFooter = false, hideReplies, vote, fixedContentHeight = false, enableEdition = true, enableDeletion = true, deleteListId, showModerationFeedback, lineCount = 5 }) => {
 	const intl = useIntl();
 	const { isLoggedIn, currentUser } = useAuth();
 	const userIsBanned = currentUser?.moderation_status === "banned";
@@ -169,7 +169,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupTyp
 											)}
 										</>
 									}
-									lineCount={config?.layout?.showAllArgumentInEmbed ? null : 5}
+									lineCount={config?.layout?.showAllArgumentInEmbed ? null : lineCount}
 									readMoreText={intl.formatMessage({ id: "action.read_more", defaultMessage: "Read more" })}
 									readLessText={intl.formatMessage({ id: "action.read_less", defaultMessage: "Read less" })}
 									expandable={expandable}
