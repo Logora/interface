@@ -62,7 +62,7 @@ export const ReportBox = ({ report }) => {
   };
 
   return (
-    <div id={`reports_${displayedReport.reportable_id}`} className={styles.reportBox}>
+    <div id={`reports_${displayedReport.id}`} className={styles.reportBox}>
       {displayedReport && (
         <div className={styles.reportItem}>
           <div className={styles.reportHeader}>
