@@ -42,3 +42,8 @@ svg.warningIcon {
   margin-top: spacing.$spacer-xs;
   font-size: theme.$font-size-small;
 }
+
+.reportHighlighted {
+  border: 1px solid theme.$call-primary !important;
+  box-shadow: theme.$box-shadow;
+}

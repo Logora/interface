@@ -1,17 +1,30 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Argument } from "@logora/debate.argument.argument";
 import { SuggestionBox } from "@logora/debate.suggestion.suggestion_box";
 import { ProposalBox } from "@logora/debate.proposal.proposal_box";
 import { useIntl } from "react-intl";
 import { Icon } from '@logora/debate.icons.icon';
+import cx from "classnames";
 import styles from './ReportBox.module.scss';
 
 
-export const ReportBox = ({ report }) => {
+export const ReportBox = ({ report, flash }) => {
   const intl = useIntl();
-  const displayedReport = report;
+  const [isFlashing, setIsFlashing] = useState(false);
 
-  const renderReportContent = (report) => {
+  useEffect(() => {
+    if (flash === report.id) {
+      const reportElement = document.getElementById(`reports_${report.id}`);
+      if (reportElement) {
+        reportElement.scrollIntoView({ behavior: "smooth"});
+      }
+      setIsFlashing(true);
+    } else {
+      setIsFlashing(false);
+    }
+  }, [flash, report.id]);
+
+  const renderReportContent = () => {
     const { reportable_type, reportable } = report;
     switch (reportable_type) {
       case "Message":
@@ -62,28 +75,28 @@ export const ReportBox = ({ report }) => {
   };
 
   return (
-    <div id={`reports_${displayedReport.id}`} className={styles.reportBox}>
-      {displayedReport && (
+    <div id={`reports_${report.id}`} className={cx(styles.reportBox, { [styles.reportHighlighted]: isFlashing })}>
+      {report && (
         <div className={styles.reportItem}>
           <div className={styles.reportHeader}>
-            {displayedReport.classification && (
+            {report.classification && (
               <div className={styles.reportReason}>
                 <Icon name="announcement" width={18} height={18} className={styles.warningIcon} />
                 {intl.formatMessage({
                   id: "report.content_header.moderation_reason",
                   defaultMessage: "Report reason:"
                 })}{" "}
-                {intl.messages[`user_content.content_header.moderation_reason.${displayedReport.classification.toLowerCase()}`]
+                {intl.messages[`user_content.content_header.moderation_reason.${report.classification.toLowerCase()}`]
                   ? intl.formatMessage({
-                    id: `user_content.content_header.moderation_reason.${displayedReport.classification.toLowerCase()}`,
-                    defaultMessage: displayedReport.classification
+                    id: `user_content.content_header.moderation_reason.${report.classification.toLowerCase()}`,
+                    defaultMessage: report.classification
                   })
-                  : displayedReport.classification}
+                  : report.classification}
               </div>
             )}
-            {renderStatusMessage(displayedReport.is_processed, displayedReport.reportable?.status)}
+            {renderStatusMessage(report.is_processed, report.reportable?.status)}
           </div>
-          {renderReportContent(displayedReport)}
+          {renderReportContent()}
         </div>
       )}
     </div>
