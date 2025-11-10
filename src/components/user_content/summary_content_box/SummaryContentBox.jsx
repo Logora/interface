@@ -9,7 +9,7 @@ import { useTranslatedContent } from '@logora/debate.translation.translated_cont
 import cx from 'classnames';
 import styles from './SummaryContentBox.module.scss';
 
-export const SummaryContentBox = ({ author, tag, date, title = '', content, link, contentCount = 0, tagClassName, headerOneLine = false, showFooter = false, language, translationEntries = [] }) => {
+export const SummaryContentBox = ({ author, tag, date, title = '', content, link, contentCount = 0, tagClassName, headerOneLine = false, showFooter = false, language, lineCount, translationEntries = [] }) => {
     const translatedTitle = useTranslatedContent(title, language, "title", translationEntries);
     const translatedContent = useTranslatedContent(content, language, "content", translationEntries);
     return (
@@ -30,7 +30,8 @@ export const SummaryContentBox = ({ author, tag, date, title = '', content, link
                     }
                     <ReadMore 
                         content={translatedContent.translatedContent}
-                        charCount={200}
+                        charCount={lineCount ? undefined : 200}
+                        lineCount={lineCount ?? undefined }
                         to={link} 
                         data-tid={"link_argument_read_more"}
                         target="_top"

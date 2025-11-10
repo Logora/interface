@@ -41,6 +41,7 @@ export const TopArguments = ({ argumentFor, argumentAgainst, debateUrl, argument
                         showFooter={!compact}
                         language={argument.language}
                         translationEntries={argument.translation_entries}
+                        lineCount={config?.actions?.argumentLineCount ?? undefined}
                     />
                 :
                     <UserContentSkeleton enableAnimation={false} border tag={positionIndex === 0 ? positionForName.translatedContent : positionAgainstName.translatedContent} tagClassName={styles[`positionBackground-${positionIndex}`]}>

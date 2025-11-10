@@ -6,13 +6,13 @@ import { useConfig } from '@logora/debate.data.config_provider';
 import { ReportModal } from './ReportModal';
 
 export const useReportContent = (reportableType, reportableId, modalTitle) => {
-	const { isLoggedIn } = useAuth();
+	const { isLoggedIn, currentUser } = useAuth();
 	const { showModal } = useModal();
 	const config = useConfig();
 	const requireAuthentication = useAuthRequired();
 
 	const reportContent = () => {
-		if (isLoggedIn || config.actions?.allowAnonymousReport === true ) {
+		if (isLoggedIn || config.actions?.allowAnonymousReport === true) {
 			showModal(
 				<Suspense fallback={null}>
 					<ReportModal
