@@ -86,6 +86,7 @@ export const ReportModal = (props) => {
                                             <label className={styles.checkboxLabel}>
                                                 <input
                                                     type="checkbox"
+                                                    className={styles.checkboxInput}
                                                     checked={isChecked}
                                                     onChange={(e) => setIsChecked(e.target.checked)}
                                                     required
@@ -144,6 +145,7 @@ export const ReportModal = (props) => {
                                                 <label className={styles.checkboxLabel}>
                                                     <input
                                                         type="checkbox"
+                                                        className={styles.checkboxInput}
                                                         checked={isChecked}
                                                         onChange={(e) => setIsChecked(e.target.checked)}
                                                         required
