@@ -16,7 +16,7 @@ export const ReportBox = ({ report, flash }) => {
     if (flash === report.id) {
       const reportElement = document.getElementById(`reports_${report.id}`);
       if (reportElement) {
-        reportElement.scrollIntoView({ behavior: "smooth"});
+        reportElement.scrollIntoView({ behavior: "smooth", block: 'center' });
       }
       setIsFlashing(true);
     } else {
