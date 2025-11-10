@@ -70,6 +70,7 @@
 
 .select {
 	max-width: 436px;
+
 	@include display.media-breakpoint-down(xs) {
 		max-width: 250px;
 	}
@@ -81,6 +82,7 @@
 	width: 100%;
 	flex-wrap: wrap;
 	box-sizing: border-box;
+
 	@include display.media-breakpoint-down(sm) {
 		flex-direction: column !important;
 		gap: 0;
@@ -93,6 +95,7 @@
 	min-width: 0;
 	margin-right: spacing.$spacer-sm;
 	max-width: 100%;
+
 	@include display.media-breakpoint-down(sm) {
 		width: 100%;
 	}
