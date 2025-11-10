@@ -44,10 +44,11 @@ svg.warningIcon {
 }
 
 .reportHighlighted {
-  border-color: theme.$call-primary !important;
+  border:1px solid theme.$call-primary !important;
   -webkit-transition: box-shadow 0.8s ease-in-out;
 	-moz-transition: box-shadow 0.8s ease-in-out;
 	-o-transition: box-shadow 0.8s ease-in-out;
 	transition: box-shadow 0.8s ease-in-out;
 	box-shadow: -4px 4px 15px 3px rgba(0, 0, 0, 0.15);
+  border-radius: theme.$box-border-radius;
 }
