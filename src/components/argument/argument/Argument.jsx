@@ -22,11 +22,12 @@ import styles from "./Argument.module.scss";
 const ArgumentInput = lazy(() => import('@logora/debate.input.argument_input'));
 import PropTypes from "prop-types";
 
-export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupType, groupName, positions = [], disableLinks = false, parentArgument, flashParent, expandable, disabled = false, hideFooter = false, hideReplies, vote, fixedContentHeight = false, enableEdition = true, enableDeletion = true, deleteListId, showModerationFeedback, lineCount = 5 }) => {
+export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupType, groupName, positions = [], disableLinks = false, parentArgument, flashParent, expandable, disabled = false, hideFooter = false, hideReplies, vote, fixedContentHeight = false, enableEdition = true, enableDeletion = true, deleteListId, showModerationFeedback, lineCount = 5, replyRedirectUrl }) => {
 	const intl = useIntl();
 	const { isLoggedIn, currentUser } = useAuth();
 	const userIsBanned = currentUser?.moderation_status === "banned";
 	const config = useConfig();
+
 
 	const [expandReplies, setExpandReplies] = useState(false);
 	const [flash, setFlash] = useState(false);
@@ -202,6 +203,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupTyp
 						enableReport={!(argument.score === 100 && argument.manual_score)}
 						enableEdition={enableEdition}
 						enableDeletion={enableDeletion}
+						replyRedirectUrl={replyRedirectUrl} 
 					>
 						<VoteButton
 							voteableType={"Message"}
@@ -331,4 +333,6 @@ Argument.propTypes = {
 	enableEdition: PropTypes.bool,
 	/** Id of the list to delete the item from */
 	deleteListId: PropTypes.string,
+    /** Clicking reply redirects to this URL instead of inline reply */
+	replyRedirectUrl: PropTypes.string,
 };
