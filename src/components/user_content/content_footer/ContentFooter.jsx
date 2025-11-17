@@ -38,8 +38,9 @@ export const ContentFooter = ({ resource,
     enableDeletion = true,
     enableReport = true,
     containerClassName,
-    voteActionClassName 
+    voteActionClassName,
 }) => {
+
     const intl = useIntl();
     const config = useConfig();
     const { currentUser } = useAuth();
@@ -50,7 +51,7 @@ export const ContentFooter = ({ resource,
     const { elementWidth } = useResponsive();
 
     const currentUserIsAuthor = () => {
-        if(!currentUser?.id) {
+        if (!currentUser?.id) {
             return false;
         }
         return resource.author?.id === currentUser?.id || resource.debate_suggestion?.author?.id === currentUser?.id;

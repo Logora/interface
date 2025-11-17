@@ -28,6 +28,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupTyp
 	const userIsBanned = currentUser?.moderation_status === "banned";
 	const config = useConfig();
 
+
 	const [expandReplies, setExpandReplies] = useState(false);
 	const [flash, setFlash] = useState(false);
 	const [showReplyInput, setShowReplyInput] = useState(false);
