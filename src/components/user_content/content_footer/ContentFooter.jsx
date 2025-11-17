@@ -39,7 +39,6 @@ export const ContentFooter = ({ resource,
     enableReport = true,
     containerClassName,
     voteActionClassName,
-    replyRedirectUrl
 }) => {
 
     const intl = useIntl();
@@ -86,15 +85,6 @@ export const ContentFooter = ({ resource,
         );
     }
 
-    const handleReplyClick = () => {
-
-        if (replyRedirectUrl) {
-            window.location.href = replyRedirectUrl;
-        } else if (handleReplyTo) {
-            handleReplyTo();
-        }
-    };
-
     return (
         <div className={cx(styles.container, containerClassName)}>
             <div className={cx(styles.voteAction, voteActionClassName)} data-tid={"action_vote_argument"}>
@@ -105,7 +95,7 @@ export const ContentFooter = ({ resource,
                     <div
                         className={styles.replyAction}
                         tabIndex='0'
-                        onClick={handleReplyClick}
+                        onClick={handleReplyTo}
                         data-testid="action-reply-button"
                     >
                         <Icon name="reply" data-tid={"action_reply_argument"} height={17} width={17} />
@@ -211,6 +201,4 @@ ContentFooter.propTypes = {
     containerClassName: PropTypes.string,
     /** Custom style for children container */
     voteActionClassName: PropTypes.string,
-    /** Clicking reply redirects to this URL instead of inline reply */
-    replyRedirectUrl: PropTypes.string,
 };
