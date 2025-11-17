@@ -70,7 +70,7 @@ export const ReadMore = ({
             {showToggle && (
                 <>
                     <div className={cx(styles.readMoreWrapper, readMoreClassName)}>
-                        {!isExpanded && !alwaysShowReadMore && (
+                        {!isExpanded || alwaysShowReadMore && (
                             <span className={styles.ellipsis}>...</span>
                         )}
                         {to ? (
