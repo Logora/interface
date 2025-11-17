@@ -9,6 +9,7 @@ import { useModal } from '@logora/debate.dialog.modal';
 import { Dropdown } from '@logora/debate.dialog.dropdown';
 import { Icon } from '@logora/debate.icons.icon';
 import { ShareButton } from '@logora/debate.share.share_button';
+import { Link } from '@logora/debate.action.link';
 import { useResponsive } from "@logora/debate.hooks.use_responsive";
 const ShareModal = lazy(() => import('@logora/debate.share.share_modal'));
 import cx from "classnames";
@@ -39,6 +40,7 @@ export const ContentFooter = ({ resource,
     enableReport = true,
     containerClassName,
     voteActionClassName,
+    replyRedirectUrl
 }) => {
 
     const intl = useIntl();
@@ -92,15 +94,28 @@ export const ContentFooter = ({ resource,
             </div>
             {!disabled && enableReply &&
                 <div data-tid={"action_reply_argument"} data-testid="reply-button">
-                    <div
-                        className={styles.replyAction}
-                        tabIndex='0'
-                        onClick={handleReplyTo}
-                        data-testid="action-reply-button"
-                    >
-                        <Icon name="reply" data-tid={"action_reply_argument"} height={17} width={17} />
-                        {!(elementWidth < 768) && <span className={styles.replyText}>{intl.formatMessage({ id: "user_content.content_footer.reply", defaultMessage: "Reply" })}</span>}
-                    </div>
+
+                   {replyRedirectUrl ? (
+                        <Link 
+                            to={replyRedirectUrl}
+                            className={styles.replyAction}
+                            tabIndex='0'
+                            data-testid="action-reply-button"
+                        >
+                            <Icon name="reply" data-tid={"action_reply_argument"} height={17} width={17} />
+                            {!(elementWidth < 768) && <span className={styles.replyText}>{intl.formatMessage({ id: "user_content.content_footer.reply", defaultMessage: "Reply" })}</span>}
+                        </Link>
+                    ) : (
+                        <div
+                            className={styles.replyAction}
+                            tabIndex='0'
+                            onClick={handleReplyTo}
+                            data-testid="action-reply-button"
+                        >
+                            <Icon name="reply" data-tid={"action_reply_argument"} height={17} width={17} />
+                            {!(elementWidth < 768) && <span className={styles.replyText}>{intl.formatMessage({ id: "user_content.content_footer.reply", defaultMessage: "Reply" })}</span>}
+                        </div>
+                    )}
                 </div>
             }
             {showShareButton &&
@@ -201,4 +216,6 @@ ContentFooter.propTypes = {
     containerClassName: PropTypes.string,
     /** Custom style for children container */
     voteActionClassName: PropTypes.string,
+    /** Clicking reply redirects to this URL instead of inline reply */
+    replyRedirectUrl: PropTypes.string, 
 };
