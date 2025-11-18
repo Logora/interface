@@ -13,7 +13,7 @@
 
 .expandRepliesContainer {
 	text-align: right;
-    padding: 0 !important;
+	padding: 0 !important;
 }
 
 .expandRepliesButton {
@@ -29,12 +29,22 @@
 	@include spacing.p(0, xs);
 	@include spacing.px(2.5, xs);
 
+	&:focus,
+	&:active,
+	&:focus-visible {
+		outline: none !important;
+		box-shadow: none !important;
+		border: 0 !important;
+	}
+
 	svg {
 		display: inline-block;
+
 		path {
 			stroke: theme.$text-primary;
 		}
 	}
+
 	&.repliesExpanded {
 		svg {
 			transform: rotate(180deg);
