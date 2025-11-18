@@ -218,7 +218,7 @@ export const ToolbarPlugin = (props) => {
 			<div className={styles.actionButton}>
 				{props.hideSubmit ? null : (
 					<Button
-						type="submit"
+						type="button"
 						data-testid="submit-button"
 						handleClick={props.onSubmit}
 						className={cx(styles.inputSubmitActionButton, styles.submitAction)}

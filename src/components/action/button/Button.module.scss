@@ -19,6 +19,10 @@ button.primaryButton, a.primaryButton {
   -webkit-appearance: initial !important;
   text-decoration: none !important;
   gap: spacing.$spacer-sm;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  -webkit-user-select: none;
   
   &.iconOnly {
     padding: 0.6em 0.8em;
