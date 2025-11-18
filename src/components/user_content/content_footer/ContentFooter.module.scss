@@ -51,11 +51,13 @@
     user-select: none;
     -webkit-user-select: none;
 
-    &:focus {
-        outline: none;        
-        box-shadow: none;  
+    &:focus,
+    &:active,
+    &:focus-visible {
+        outline: none;
+        box-shadow: none;
     }
-    
+
     .replyText {
         @include spacing.ml(2, xs);
     }
@@ -65,15 +67,16 @@
     display: block;
     width: 100%;
     clear: both;
-    text-align: inherit; 
+    text-align: inherit;
     white-space: nowrap;
-    background-color: transparent; 
+    background-color: transparent;
     border: 0;
     text-align: left;
     font-size: theme.$font-size-small;
     @include spacing.p(2, xs);
     @include spacing.px(3, xs);
-    &:hover{
+
+    &:hover {
         background-color: rgba(0, 0, 0, 0.03);
     }
 }
