@@ -54,8 +54,9 @@
     &:focus,
     &:active,
     &:focus-visible {
-        outline: none;
-        box-shadow: none;
+        outline: none !important;
+        box-shadow: none !important;
+        border: 0 !important;
     }
 
     .replyText {
