@@ -50,6 +50,12 @@
     -webkit-tap-highlight-color: transparent;
     user-select: none;
     -webkit-user-select: none;
+
+    &:focus {
+        outline: none;        
+        box-shadow: none;  
+    }
+    
     .replyText {
         @include spacing.ml(2, xs);
     }
