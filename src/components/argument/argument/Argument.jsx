@@ -131,7 +131,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupTyp
 					</div>
 					:
 					<>
-						<div className={cx(styles.argumentBody, { [styles.fixedHeight]: config?.layout?.showAllArgumentInEmbed !== true  && fixedContentHeight })}>
+						<div className={cx(styles.argumentBody, { [styles.fixedHeight]: config?.layout?.showAllArgumentInEmbed !== true ? fixedContentHeight : false })}>
 							{argument.is_reply && parentArgument &&
 								<div className={styles.replyTo} onClick={() => flashParent(parentArgument.id)}>
 									{intl.formatMessage({ id: "info.replying_to", defaultMessage: "Replying to" })}
