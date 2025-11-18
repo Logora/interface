@@ -170,10 +170,10 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupTyp
 											)}
 										</>
 									}
-									lineCount={config?.layout?.showAllArgumentInEmbed ? null : lineCount}
+									lineCount={config?.layout?.showAllArgumentInEmbed !== true ? lineCount : undefined}
 									readMoreText={intl.formatMessage({ id: "action.read_more", defaultMessage: "Read more" })}
 									readLessText={intl.formatMessage({ id: "action.read_less", defaultMessage: "Read less" })}
-									expandable={expandable}
+									expandable={config?.layout?.showAllArgumentInEmbed !== true ? expandable : false}
 									readMoreClassName={argument.is_reply ? styles.replyStyle : styles.argumentStyle}
 								/>
 							}
