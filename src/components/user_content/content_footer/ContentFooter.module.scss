@@ -42,6 +42,14 @@
     align-items: center !important;
     justify-content: center !important;
     cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    -webkit-user-select: none;
     .replyText {
         @include spacing.ml(2, xs);
     }
