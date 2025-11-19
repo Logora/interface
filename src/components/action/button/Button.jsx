@@ -6,7 +6,9 @@ import { Link } from '@logora/debate.action.link';
 
 export const Button = ({ className, type = "button", active, leftIcon, rightIcon, accent, border = true, handleClick, to, external, children, ...rest }) => {
   const onClick = (event) => {
+      console.log("Button CLICK received");
       event.stopPropagation();
+      console.log("stopPropagation executed");
       handleClick && handleClick(event);
   }
 
