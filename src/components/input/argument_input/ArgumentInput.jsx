@@ -23,7 +23,7 @@ import cx from 'classnames';
 import styles from './ArgumentInput.module.scss';
 import PropTypes from "prop-types";
 
-export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = false, positions = [], disabledPositions = [], groupId, groupName, groupType, hideSourceAction = false, isReply = false, onSubmit, parentId, placeholder, positionId, focusOnInit = false, activeOnInit = false, userGuideUrl, hideUserGuideLink = false }) => {
+export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = false, positions = [], disabledPositions = [], groupId, groupName, groupType, hideSourceAction = false, isReply = false, onSubmit, parentId, placeholder, positionId, focusOnInit = false, activeOnInit = false, userGuideUrl, hideUserGuideLink = false, hideCharCount = false }) => {
     const intl = useIntl();
     const api = useDataProvider();
     const list = useList();
@@ -350,6 +350,7 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
                                     hideSubmit={inputDisabledForVisitors}
                                     allowedDomains={config?.allowed_sources}
                                     active={activeOnInit}
+                                    hideCharCount={hideCharCount} 
                                 />
                                 {(errors?.content) && <div className={styles.argumentInputWarning}>{errors && Object.values(errors).map((e, index) => <div key={index}>{e}</div>)}</div>}
                                 {inputActivation && disabledPositions?.find(pos => pos.id === userPositionId) &&

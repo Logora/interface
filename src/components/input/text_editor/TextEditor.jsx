@@ -28,7 +28,7 @@ import EditorTheme from './EditorTheme';
 import cx from "classnames";
 import PropTypes from "prop-types";
 
-export const TextEditor = ({ placeholder, onSubmit, sources, hideSubmit = false, hideSourceAction = false, onActivation, disabled = false, handleChange, handleSourcesChange, shortBar = false, active = false, maxLength, disableRichText = false, editorRef, uid, allowedDomains = [], ...rest }) => {
+export const TextEditor = ({ placeholder, onSubmit, sources, hideSubmit = false, hideSourceAction = false, onActivation, disabled = false, handleChange, handleSourcesChange, shortBar = false, active = false, maxLength, disableRichText = false, editorRef, uid, allowedDomains = [], hideCharCount = false, ...rest }) => {
     const [isActive, setIsActive] = useState(false);
     const [editorText, setEditorText] = useState("");
     const [editorRichText, setEditorRichText] = useState("");
@@ -137,7 +137,7 @@ export const TextEditor = ({ placeholder, onSubmit, sources, hideSubmit = false,
                             isActive={isActive || active}
                             sourceTooltip={allowedDomains?.length > 0 && intl.formatMessage({ id: "input.allowed_domains_tooltip", defaultMessage: "With the new source function, you can add links to your article." })}
                         />
-                        {isActive && maxLength &&
+                        {isActive && maxLength && !hideCharCount &&
                             <div className={styles.charactersCount}>
                                 <CharacterLimitPlugin maxLength={maxLength} /> {intl.formatMessage({ id: "input.remaining_chars", defaultMessage: "remaining characters" })}
                             </div>
@@ -191,6 +191,8 @@ TextEditor.propTypes = {
     active: PropTypes.bool,
     /** Maximum number of characters */
     maxLength: PropTypes.number,
+     /** Show "X remaining characters" text */
+     showCharCount: PropTypes.bool,
     /** If true, hide rich text buttons */
     disableRichText: PropTypes.bool,
     /** Editor ref */
