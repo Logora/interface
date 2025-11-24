@@ -86,9 +86,9 @@ export const ReportBox = ({ report, flash }) => {
                   id: "report.content_header.moderation_reason",
                   defaultMessage: "Report reason:"
                 })}{" "}
-                {intl.messages[`user_content.content_header.moderation_reason.${report.classification.toLowerCase()}`]
+                {intl.messages[`report.content_header.moderation_reason.${report.classification.toLowerCase()}`]
                   ? intl.formatMessage({
-                    id: `user_content.content_header.moderation_reason.${report.classification.toLowerCase()}`,
+                    id: `report.content_header.moderation_reason.${report.classification.toLowerCase()}`,
                     defaultMessage: report.classification
                   })
                   : report.classification}
