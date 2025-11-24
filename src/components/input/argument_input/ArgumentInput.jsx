@@ -359,7 +359,7 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
                                         <div className={styles.argumentInputWarningText}>{displayArgumentLimitWarning()}</div>
                                     </div>
                                 }
-                                {userGuideUrl && !hideUserGuideLink &&(
+                                {inputActivation && userGuideUrl && !hideUserGuideLink &&(
                                     <div className={styles.guideMessage}>
                                         <FormattedMessage
                                             id="alert.guide_message"
