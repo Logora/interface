@@ -12,7 +12,7 @@
     align-items: flex-start;
     gap: spacing.$spacer;
     &.toolbarIsActive {
-        border-top: 1px solid lightgray;
+        border-top: 1px solid theme.$text-tertiary;
     }
 }
 
