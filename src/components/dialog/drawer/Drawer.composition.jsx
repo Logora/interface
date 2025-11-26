@@ -56,24 +56,23 @@ export const DefaultDrawer = () => {
 
     return (
         <BrowserRouter>
-            <IntlProvider locale="en">
                 <ConfigProvider routes={routes} config={config}>
                     <AuthContext.Provider value={{ currentUser: mockUser, isLoggedIn: true }}>
                         <ResponsiveProvider>
                             <IconProvider library={regularIcons}>
+                            <IntlProvider locale="en">
                                 <ModalProvider>
                                     <div onClick={toggleDrawer} data-testid="open-button">Click here to toggle drawer</div>
                                     <div onClick={closeDrawer} data-testid="close-button">Click here to close drawer</div>
-
                                     <Drawer isOpen={isOpen} onClose={() => setIsOpen(false)}>
                                         <div>Drawer content</div>
                                     </Drawer>
                                 </ModalProvider>
+                                </IntlProvider>
                             </IconProvider>
                         </ResponsiveProvider>
                     </AuthContext.Provider>
                 </ConfigProvider>
-            </IntlProvider>
         </BrowserRouter>
     )
 };
@@ -92,24 +91,23 @@ export const DrawerWithOverlay = () => {
 
     return (
         <BrowserRouter>
-            <IntlProvider locale="en">
                 <ConfigProvider routes={routes} config={config}>
                     <AuthContext.Provider value={{ currentUser: mockUser, isLoggedIn: true }}>
                         <ResponsiveProvider>
                             <IconProvider library={regularIcons}>
+                            <IntlProvider locale="en">
                                 <ModalProvider>
                                     <div onClick={toggleDrawer}>Click here to toggle drawer</div>
                                     <div onClick={closeDrawer} data-testid="close-button">Click here to close drawer</div>
-
                                     <Drawer isOpen={isOpen} onClose={() => setIsOpen(false)} enableOverlay>
                                         <div>Drawer content</div>
                                     </Drawer>
                                 </ModalProvider>
+                                </IntlProvider>
                             </IconProvider>
                         </ResponsiveProvider>
                     </AuthContext.Provider>
                 </ConfigProvider>
-            </IntlProvider>
         </BrowserRouter>
     )
 };
@@ -123,23 +121,22 @@ export const DrawerWithTitle = () => {
 
     return (
         <BrowserRouter>
-            <IntlProvider locale="en">
                 <ConfigProvider routes={routes} config={config}>
                     <AuthContext.Provider value={{ currentUser: mockUser, isLoggedIn: true }}>
                         <ResponsiveProvider>
                             <IconProvider library={regularIcons}>
+                            <IntlProvider locale="en">
                                 <ModalProvider>
                                     <div onClick={toggleDrawer}>Click here to toggle drawer</div>
-
                                     <Drawer isOpen={isOpen} title={"My drawer"} onClose={() => setIsOpen(false)}>
                                         <div>Drawer content</div>
                                     </Drawer>
                                 </ModalProvider>
+                                </IntlProvider>
                             </IconProvider>
                         </ResponsiveProvider>
                     </AuthContext.Provider>
                 </ConfigProvider>
-            </IntlProvider>
         </BrowserRouter>
     )
 };
@@ -153,24 +150,22 @@ export const SmallDrawer = () => {
 
     return (
         <BrowserRouter>
-            <IntlProvider locale="en">
                 <ConfigProvider routes={routes} config={config}>
                     <AuthContext.Provider value={{ currentUser: mockUser, isLoggedIn: true }}>
                         <ResponsiveProvider>
                             <IconProvider library={regularIcons}>
+                            <IntlProvider locale="en">
                                 <ModalProvider>
                                     <div onClick={toggleDrawer}>Click here to toggle drawer</div>
-
                                     <Drawer isOpen={isOpen} onClose={() => setIsOpen(false)} size={400}>
                                         <div>Drawer content</div>
                                     </Drawer>
                                 </ModalProvider>
+                                </IntlProvider>
                             </IconProvider>
                         </ResponsiveProvider>
-
                     </AuthContext.Provider>
                 </ConfigProvider>
-            </IntlProvider>
         </BrowserRouter>
     )
 };
@@ -186,14 +181,13 @@ export const DrawerWithScrollParagraphe = () => {
 
     return (
         <BrowserRouter>
-            <IntlProvider locale="en">
                 <ConfigProvider routes={routes} config={config}>
                     <AuthContext.Provider value={{ currentUser: mockUser, isLoggedIn: true }}>
                         <ResponsiveProvider>
                             <IconProvider library={regularIcons}>
+                            <IntlProvider locale="en">
                                 <ModalProvider>
                                     <div onClick={toggleDrawer}>Click here to toggle drawer</div>
-
                                     <Drawer isOpen={isOpen} title={"My drawer"} onClose={() => setIsOpen(false)}>
                                         <div>
                                             <p>
@@ -202,11 +196,11 @@ export const DrawerWithScrollParagraphe = () => {
                                         </div>
                                     </Drawer>
                                 </ModalProvider>
+                                </IntlProvider>
                             </IconProvider>
                         </ResponsiveProvider>
                     </AuthContext.Provider>
                 </ConfigProvider>
-            </IntlProvider>
         </BrowserRouter>
     )
 };
@@ -220,23 +214,22 @@ export const DrawerWithPathParameter = () => {
 
     return (
         <BrowserRouter>
-            <IntlProvider locale="en">
                 <ConfigProvider routes={routes} config={config}>
                     <AuthContext.Provider value={{ currentUser: mockUser, isLoggedIn: true }}>
                         <ResponsiveProvider>
                             <IconProvider library={regularIcons}>
+                            <IntlProvider locale="en">
                                 <ModalProvider>
                                     <div onClick={toggleDrawer}>Click here to toggle drawer</div>
-
                                     <Drawer isOpen={isOpen} pathParameter={"drawer_path"}>
                                         <div>Drawer content</div>
                                     </Drawer>
                                 </ModalProvider>
+                                </IntlProvider>
                             </IconProvider>
                         </ResponsiveProvider>
                     </AuthContext.Provider>
                 </ConfigProvider>
-            </IntlProvider>
         </BrowserRouter>
     )
 };
@@ -260,11 +253,12 @@ export const DrawerWithoutNavbarButton = () => {
 
     return (
         <BrowserRouter>
-            <IntlProvider locale="en">
+
                 <ConfigProvider routes={routes} config={configHideIcon}>
                     <AuthContext.Provider value={{ currentUser: mockUser, isLoggedIn: true }}>
                         <ResponsiveProvider>
                             <IconProvider library={regularIcons}>
+                            <IntlProvider locale="en">
                                 <ModalProvider>
                                     <div onClick={toggleDrawer} data-testid="open-button">Click here to toggle drawer</div>
                                     <div onClick={closeDrawer} data-testid="close-button">Click here to close drawer</div>
@@ -273,11 +267,11 @@ export const DrawerWithoutNavbarButton = () => {
                                         <div>Drawer content</div>
                                     </Drawer>
                                 </ModalProvider>
+                                </IntlProvider>
                             </IconProvider>
                         </ResponsiveProvider>
                     </AuthContext.Provider>
                 </ConfigProvider>
-            </IntlProvider>
         </BrowserRouter>
     )
 };
