@@ -92,9 +92,7 @@ describe("NavbarButton", () => {
 
         const btn = container.querySelector('[data-tid="action_view_mobile_navigation"]');
         expect(btn).not.toBeNull();
-
         await user.click(btn);
-
         expect(await screen.findByText("Navigation")).toBeInTheDocument();
     });
 });
