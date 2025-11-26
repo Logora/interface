@@ -47,7 +47,7 @@ const loggedInUser = {
 const Providers = ({ children }) => (
     <BrowserRouter>
     <IntlProvider locale="en">
-        <ConfigProvider config={{ config }} routes={routes}>
+        <ConfigProvider config={config} routes={routes}>
             <AuthContext.Provider value={{ currentUser: loggedInUser, isLoggedIn: true }}>
                 <ResponsiveProvider>
                         <IconProvider library={regularIcons}>

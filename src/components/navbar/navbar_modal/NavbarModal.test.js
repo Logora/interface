@@ -46,7 +46,7 @@ const loggedInUser = {
 const ProvidersLoggedOut = ({ children, customConfig = config }) => (
     <BrowserRouter>
         <IntlProvider locale="en">
-            <ConfigProvider config={{ customConfig }} routes={routes}>
+            <ConfigProvider config={customConfig} routes={routes}>
                 <AuthContext.Provider value={{ currentUser: null, isLoggedIn: false }}>
                     <ResponsiveProvider>
                         <IconProvider library={regularIcons}>
