@@ -1,8 +1,8 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { IntlProvider } from "react-intl";
 import { BrowserRouter } from "react-router-dom";
+import { IntlProvider } from "react-intl";
 import { ConfigProvider } from "@logora/debate.data.config_provider";
 import { AuthContext } from "@logora/debate.auth.use_auth";
 import { ModalProvider } from "@logora/debate.dialog.modal";
@@ -26,7 +26,7 @@ const routes = {
     userEditLocation: new Location("espace-debat/user/:userSlug/edit", { userSlug: "" }),
 };
 
-const config = {
+const baseConfig = {
     isDrawer: false,
     modules: {
         consultation: true,
@@ -44,37 +44,57 @@ const loggedInUser = {
     hash_id: faker.lorem.slug(),
 };
 
-const Providers = ({ children }) => (
+const Providers = ({ children, config = baseConfig, currentUser = null, isLoggedIn = false }) => (
     <BrowserRouter>
-        <ConfigProvider config={config} routes={routes}>
-            <AuthContext.Provider value={{ currentUser: loggedInUser, isLoggedIn: true }}>
-                <ResponsiveProvider>
-                    <ModalProvider>
-                        <IntlProvider locale="en">
-                            <IconProvider library={regularIcons}>
-                                {children}
-                            </IconProvider>
-                        </IntlProvider>
-                    </ModalProvider>
-                </ResponsiveProvider>
-            </AuthContext.Provider>
-        </ConfigProvider>
+        <IntlProvider locale="en">
+            <ConfigProvider routes={routes} config={config}>
+                <AuthContext.Provider value={{ currentUser, isLoggedIn }}>
+                    <ResponsiveProvider>
+                        <IconProvider library={regularIcons}>
+                            <ModalProvider>{children}</ModalProvider>
+                        </IconProvider>
+                    </ResponsiveProvider>
+                </AuthContext.Provider>
+            </ConfigProvider>
+        </IntlProvider>
     </BrowserRouter>
 );
 
-const renderNavbarButton = (props = {}) =>
-    render(
-        <Providers>
+const renderNavbarButton = (props = {}, options = {}) => {
+    const { config = baseConfig, isLoggedIn = false, currentUser = null } = options;
+
+    return render(
+        <Providers config={config} isLoggedIn={isLoggedIn} currentUser={currentUser}>
             <NavbarButton {...props} />
         </Providers>
     );
+};
 
 describe("NavbarButton", () => {
+
     it("displays the button in the drawer (inDrawer = true)", () => {
         const { container } = renderNavbarButton({ inDrawer: true });
+
         const btn = container.querySelector('[data-tid="action_view_mobile_navigation"]');
         expect(btn).not.toBeNull();
         expect(btn).toBeInTheDocument();
         expect(btn.className).toMatch(/mobileIconDrawer/);
+    });
+
+    it("opens the NavbarModal when clicking the button", async () => {
+        const user = userEvent.setup();
+        const drawerConfig = { ...baseConfig, isDrawer: true };
+
+        const { container } = renderNavbarButton(
+            { inDrawer: true },
+            { config: drawerConfig, isLoggedIn: true, currentUser: loggedInUser }
+        );
+
+        const btn = container.querySelector('[data-tid="action_view_mobile_navigation"]');
+        expect(btn).not.toBeNull();
+
+        await user.click(btn);
+
+        expect(await screen.findByText("Navigation")).toBeInTheDocument();
     });
 });
