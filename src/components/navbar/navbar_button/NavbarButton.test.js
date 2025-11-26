@@ -11,6 +11,7 @@ import { IconProvider } from "@logora/debate.icons.icon_provider";
 import * as regularIcons from "@logora/debate.icons.regular_icons";
 import { Location } from "@logora/debate.util.location";
 import { faker } from "@faker-js/faker";
+
 import { NavbarButton } from "./NavbarButton";
 
 const routes = {
@@ -18,9 +19,10 @@ const routes = {
     debateShowLocation: new Location("espace-debat/debat/:debateSlug", { debateSlug: "" }),
     rootLocation: new Location("/", {}),
     consultationIndexLocation: new Location("espace-debat/consultations", {}),
-    consultationShowLocation: new Location("espace-debat/consultations/:consultationSlug", {
-        consultationSlug: "",
-    }),
+    consultationShowLocation: new Location(
+        "espace-debat/consultations/:consultationSlug",
+        { consultationSlug: "" }
+    ),
     suggestionLocation: new Location("espace-debat/suggestions", {}),
     userShowLocation: new Location("espace-debat/user/:userSlug", { userSlug: "" }),
     userEditLocation: new Location("espace-debat/user/:userSlug/edit", { userSlug: "" }),
@@ -44,38 +46,57 @@ const loggedInUser = {
     hash_id: faker.lorem.slug(),
 };
 
-const Providers = ({ children, config = baseConfig, currentUser = null, isLoggedIn = false }) => (
+const Providers = ({ children }) => (
     <BrowserRouter>
-        <IntlProvider locale="en">
-            <ConfigProvider routes={routes} config={config}>
-                <AuthContext.Provider value={{ currentUser, isLoggedIn }}>
-                    <ResponsiveProvider>
-                        <IconProvider library={regularIcons}>
+        <ConfigProvider routes={routes} config={baseConfig}>
+            <AuthContext.Provider value={{ currentUser: null, isLoggedIn: false }}>
+                <ResponsiveProvider>
+                    <IconProvider library={regularIcons}>
+                        <IntlProvider locale="en">
                             <ModalProvider>{children}</ModalProvider>
-                        </IconProvider>
-                    </ResponsiveProvider>
-                </AuthContext.Provider>
-            </ConfigProvider>
-        </IntlProvider>
+                        </IntlProvider>
+                    </IconProvider>
+                </ResponsiveProvider>
+            </AuthContext.Provider>
+        </ConfigProvider>
+    </BrowserRouter>
+);
+
+const DrawerLoggedInProviders = ({ children }) => (
+    <BrowserRouter>
+        <ConfigProvider
+            routes={routes}
+            config={{ ...baseConfig, isDrawer: true }}
+        >
+            <AuthContext.Provider value={{ currentUser: loggedInUser, isLoggedIn: true }}>
+                <ResponsiveProvider>
+                    <IconProvider library={regularIcons}>
+                        <IntlProvider locale="en">
+                            <ModalProvider>{children}</ModalProvider>
+                        </IntlProvider>
+                    </IconProvider>
+                </ResponsiveProvider>
+            </AuthContext.Provider>
+        </ConfigProvider>
     </BrowserRouter>
 );
 
 const renderNavbarButton = (props = {}, options = {}) => {
-    const { config = baseConfig, isLoggedIn = false, currentUser = null } = options;
+    const Wrapper = options.wrapper || Providers;
 
     return render(
-        <Providers config={config} isLoggedIn={isLoggedIn} currentUser={currentUser}>
+        <Wrapper>
             <NavbarButton {...props} />
-        </Providers>
+        </Wrapper>
     );
 };
 
 describe("NavbarButton", () => {
-
     it("displays the button in the drawer (inDrawer = true)", () => {
         const { container } = renderNavbarButton({ inDrawer: true });
 
         const btn = container.querySelector('[data-tid="action_view_mobile_navigation"]');
+
         expect(btn).not.toBeNull();
         expect(btn).toBeInTheDocument();
         expect(btn.className).toMatch(/mobileIconDrawer/);
@@ -83,14 +104,14 @@ describe("NavbarButton", () => {
 
     it("opens the NavbarModal when clicking the button", async () => {
         const user = userEvent.setup();
-        const drawerConfig = { ...baseConfig, isDrawer: true };
 
         const { container } = renderNavbarButton(
             { inDrawer: true },
-            { config: drawerConfig, isLoggedIn: true, currentUser: loggedInUser }
+            { wrapper: DrawerLoggedInProviders }
         );
 
         const btn = container.querySelector('[data-tid="action_view_mobile_navigation"]');
+
         expect(btn).not.toBeNull();
 
         await user.click(btn);
