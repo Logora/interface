@@ -38,6 +38,7 @@ const config = {
   },
   actions: {
     hideLoginButton: false,
+    showInDrawer: true,
   },
 };
 
