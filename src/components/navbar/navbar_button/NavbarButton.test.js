@@ -81,4 +81,19 @@ describe("NavbarButton", () => {
         expect(btn).toBeInTheDocument();
         expect(btn.className).toMatch(/mobileIconDrawer/);
     });
+
+    it("opens the NavbarModal when clicking the button", async () => {
+        const user = userEvent.setup();
+        const drawerConfig = { ...baseConfig, isDrawer: true };
+
+        const { container } = renderNavbarButton(
+            { inDrawer: true },
+            { config: drawerConfig, isLoggedIn: true, currentUser: loggedInUser }
+        );
+
+        const btn = container.querySelector('[data-tid="action_view_mobile_navigation"]');
+        expect(btn).not.toBeNull();
+        await user.click(btn);
+        expect(await screen.findByText("Navigation")).toBeInTheDocument();
+    });
 });
