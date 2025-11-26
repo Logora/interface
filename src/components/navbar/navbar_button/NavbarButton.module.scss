@@ -37,11 +37,8 @@
       display: none;
     }
 
-    path,
-    rect,
-    line {
-      fill: theme.$text-primary !important;
-      stroke: theme.$text-primary !important;
+    path {
+      fill: #000 !important;
     }
   }
 }
