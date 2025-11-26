@@ -9,12 +9,7 @@ import { ResponsiveProvider } from "@logora/debate.hooks.use_responsive";
 import { IconProvider } from "@logora/debate.icons.icon_provider";
 import * as regularIcons from "@logora/debate.icons.regular_icons";
 import { Location } from "@logora/debate.util.location";
-
 import { NavbarButton } from "./NavbarButton";
-
-jest.mock("@logora/debate.hooks.use_auth_required", () => ({
-    useAuthRequired: () => () => {},
-}));
 
 const routes = {
     indexLocation: new Location("espace-debat", {}),
