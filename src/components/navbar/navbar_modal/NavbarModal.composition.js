@@ -49,19 +49,19 @@ const config = {
 
 const Providers = ({ children, config, currentUser = null, isLoggedIn = false }) => (
     <BrowserRouter>
-        <ConfigProvider routes={routes} config={config}>
-            <AuthContext.Provider value={{ currentUser, isLoggedIn }}>
-                <ResponsiveProvider>
-                    <ModalProvider>
+        <IntlProvider locale="en">
+            <ConfigProvider routes={routes} config={config}>
+                <AuthContext.Provider value={{ currentUser, isLoggedIn }}>
+                    <ResponsiveProvider>
                         <IconProvider library={regularIcons}>
-                            <IntlProvider locale="en">
+                            <ModalProvider>
                                 {children}
-                            </IntlProvider>
+                            </ModalProvider>
                         </IconProvider>
-                    </ModalProvider>
-                </ResponsiveProvider>
-            </AuthContext.Provider>
-        </ConfigProvider>
+                    </ResponsiveProvider>
+                </AuthContext.Provider>
+            </ConfigProvider>
+        </IntlProvider>
     </BrowserRouter>
 );
 

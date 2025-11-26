@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import { BrowserRouter } from "react-router-dom";
 import { IntlProvider } from "react-intl";
+import { BrowserRouter } from "react-router-dom";
 import { ConfigProvider } from "@logora/debate.data.config_provider";
 import { AuthContext } from "@logora/debate.auth.use_auth";
 import { ModalProvider } from "@logora/debate.dialog.modal";
@@ -25,13 +25,11 @@ const routes = {
     userEditLocation: new Location("espace-debat/user/:userSlug/edit", { userSlug: "" }),
 };
 
-const baseConfig = {
+const config = {
     isDrawer: false,
     modules: {
         consultation: true,
-        suggestions: {
-            active: true,
-        },
+        suggestions: { active: true },
     },
     actions: {
         hideLoginButton: false,
@@ -45,34 +43,59 @@ const loggedInUser = {
     hash_id: faker.lorem.slug(),
 };
 
-const Providers = ({ children, config = baseConfig, currentUser = null, isLoggedIn = false }) => (
+const ProvidersLoggedOut = ({ children, customConfig = config }) => (
     <BrowserRouter>
-        <ConfigProvider routes={routes} config={config}>
-            <AuthContext.Provider value={{ currentUser, isLoggedIn }}>
-                <ResponsiveProvider>
-                    <ModalProvider>
+        <IntlProvider locale="en">
+            <ConfigProvider config={customConfig} routes={routes}>
+                <AuthContext.Provider value={{ currentUser: null, isLoggedIn: false }}>
+                    <ResponsiveProvider>
                         <IconProvider library={regularIcons}>
-                            <IntlProvider locale="en">{children}</IntlProvider>
+                            <ModalProvider>
+                                {children}
+                            </ModalProvider>
                         </IconProvider>
-                    </ModalProvider>
-                </ResponsiveProvider>
-            </AuthContext.Provider>
-        </ConfigProvider>
+                    </ResponsiveProvider>
+                </AuthContext.Provider>
+            </ConfigProvider>
+        </IntlProvider>
     </BrowserRouter>
 );
 
-const renderNavbarModal = (options = {}) => {
-    const { config = baseConfig, isLoggedIn = false, currentUser = null } = options;
-    return render(
-        <Providers config={config} isLoggedIn={isLoggedIn} currentUser={currentUser}>
+const ProvidersLoggedIn = ({ children }) => (
+    <BrowserRouter>
+        <IntlProvider locale="en">
+            <ConfigProvider config={config} routes={routes}>
+                <AuthContext.Provider value={{ currentUser: loggedInUser, isLoggedIn: true }}>
+                    <ResponsiveProvider>
+                        <IconProvider library={regularIcons}>
+                            <ModalProvider>
+                                {children}
+                            </ModalProvider>
+                        </IconProvider>
+                    </ResponsiveProvider>
+                </AuthContext.Provider>
+            </ConfigProvider>
+        </IntlProvider>
+    </BrowserRouter>
+);
+
+const renderNavbarModalLoggedOut = (customConfig) =>
+    render(
+        <ProvidersLoggedOut customConfig={customConfig}>
             <NavbarModal />
-        </Providers>
+        </ProvidersLoggedOut>
     );
-};
+
+const renderNavbarModalLoggedIn = () =>
+    render(
+        <ProvidersLoggedIn>
+            <NavbarModal />
+        </ProvidersLoggedIn>
+    );
 
 describe("NavbarModal", () => {
     it("displays the menu with 'Debates', 'Consultations', 'Suggestions' and 'Sign in' when user is logged out", () => {
-        renderNavbarModal({ isLoggedIn: false });
+        renderNavbarModalLoggedOut();
         expect(screen.getByText("Navigation")).toBeInTheDocument();
         expect(screen.getByText("Debates")).toBeInTheDocument();
         expect(screen.getByText("Consultations")).toBeInTheDocument();
@@ -81,49 +104,49 @@ describe("NavbarModal", () => {
     });
 
     it("displays 'Profile' and not 'Sign in' when user is logged in", () => {
-        renderNavbarModal({ isLoggedIn: true, currentUser: loggedInUser });
+        renderNavbarModalLoggedIn();
         expect(screen.getByText("Profile")).toBeInTheDocument();
         expect(screen.queryByText("Sign in")).not.toBeInTheDocument();
     });
 
     it("does not display 'Consultations' when the consultation module is disabled", () => {
         const configWithoutConsultations = {
-            ...baseConfig,
+            ...config,
             modules: {
-                ...baseConfig.modules,
+                ...config.modules,
                 consultation: false,
             },
         };
 
-        renderNavbarModal({ config: configWithoutConsultations, isLoggedIn: false });
+        renderNavbarModalLoggedOut(configWithoutConsultations);
         expect(screen.queryByText("Consultations")).not.toBeInTheDocument();
         expect(screen.getByText("Debates")).toBeInTheDocument();
     });
 
     it("does not display 'Suggestions' when suggestions.active === false", () => {
         const configWithoutSuggestions = {
-            ...baseConfig,
+            ...config,
             modules: {
-                ...baseConfig.modules,
+                ...config.modules,
                 suggestions: { active: false },
             },
         };
 
-        renderNavbarModal({ config: configWithoutSuggestions, isLoggedIn: false });
+        renderNavbarModalLoggedOut(configWithoutSuggestions);
         expect(screen.queryByText("Suggestions")).not.toBeInTheDocument();
         expect(screen.getByText("Debates")).toBeInTheDocument();
     });
 
     it("does not display 'Sign in' when hideLoginButton === true", () => {
         const configWithoutLoginButton = {
-            ...baseConfig,
+            ...config,
             actions: {
-                ...baseConfig.actions,
+                ...config.actions,
                 hideLoginButton: true,
             },
         };
 
-        renderNavbarModal({ config: configWithoutLoginButton, isLoggedIn: false });
+        renderNavbarModalLoggedOut(configWithoutLoginButton);
         expect(screen.queryByText("Sign in")).not.toBeInTheDocument();
     });
 });
