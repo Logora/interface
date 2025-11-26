@@ -229,7 +229,7 @@
     "dialog/drawer": {
         "name": "dialog/drawer",
         "scope": "logora.debate",
-        "version": "0.0.84",
+        "version": "0.0.85",
         "mainFile": "index.js",
         "rootDir": "src/components/dialog/drawer"
     },
@@ -537,7 +537,7 @@
     "navbar/navbar_button": {
         "name": "navbar/navbar_button",
         "scope": "logora.debate",
-        "version": "0.0.2",
+        "version": "0.0.3",
         "mainFile": "index.js",
         "rootDir": "src/components/navbar/navbar_button"
     },
