@@ -1,0 +1,46 @@
+@use '~@logora/debate.styles.theme/_theme.scss' as theme;
+
+.mobileIcon {
+  position: fixed;
+  right: 10px;
+  bottom: 60px;
+  z-index: 500;
+
+  svg {
+
+    path,
+    circle {
+      fill: theme.$text-light;
+
+      &:first-child {
+        fill: theme.$call-primary;
+      }
+    }
+  }
+}
+
+.mobileIconDrawer {
+  position: relative;
+  width: auto;
+  height: auto;
+  background: transparent;
+  border-radius: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    position: static;
+
+    path,
+    circle {
+      fill: theme.$text-primary;
+    }
+
+    path:first-child,
+    circle:first-child {
+      fill: transparent;
+    }
+  }
+}

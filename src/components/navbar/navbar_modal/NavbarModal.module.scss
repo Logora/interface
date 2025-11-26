@@ -1,0 +1,132 @@
+@use '~@logora/debate.styles.theme/_theme.scss' as theme;
+@use '~@logora/debate.styles.spacing/_spacing.scss' as spacing;
+@use '~@logora/debate.styles.display/_display.scss' as display;
+
+.modalContainer {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    @include spacing.py(3, xs);
+
+    @include display.media-breakpoint-down(xs) {
+        @include spacing.mb(3, xs);
+        @include spacing.mt(1, xs);
+    }
+
+    svg {
+        cursor: pointer;
+        width: 25px;
+        height: 25px;
+    }
+}
+
+.modalTitle {
+    font-size: 25px;
+    @include spacing.mb(3, xs);
+    @include spacing.pb(1, xs);
+    border-bottom: 2px solid theme.$text-primary;
+}
+
+.navigationContainer {
+    border-right: theme.$box-border;
+}
+
+.modalItem {
+    display: flex !important;
+    align-items: flex-end !important;
+    min-height: 80px;
+    position: relative;
+    @include spacing.py(4, xs);
+
+    &.active::after {
+        content: "";
+        width: 41px;
+        height: 3px;
+        position: absolute;
+        right: -20px;
+        top: 43px;
+        z-index: 10;
+        background-color: theme.$call-primary;
+        transform: rotate(90deg);
+    }
+}
+
+.itemContainer {
+    display: flex !important;
+    align-items: flex-end !important;
+    width: 100%;
+    @include spacing.pl(2, xs);
+
+    color: theme.$text-primary;
+    text-decoration: none;
+
+    &:link,
+    &:visited {
+        color: theme.$text-primary;
+        text-decoration: none;
+    }
+
+    &:hover {
+        color: theme.$call-primary;
+        text-decoration: none;
+    }
+
+    &.activeItem {
+        @include spacing.py(2, xs);
+        @include spacing.pl(2, xs);
+        background: rgba(40, 53, 131, .05);
+        border-radius: theme.$box-border-radius 0 0 theme.$box-border-radius;
+    }
+
+    .newFeatureBadge {
+        position: relative;
+
+        &::after {
+            content: "";
+            position: absolute;
+            background-color: theme.$cancel-primary;
+            height: 8px;
+            width: 8px;
+            top: -5px;
+            right: 50px;
+            border-radius: 100%;
+        }
+    }
+}
+
+
+.profile {
+    display: flex !important;
+    align-items: center !important;
+}
+
+.userImage {
+    border-radius: 50%;
+    max-width: 24px !important;
+    max-height: 24px !important;
+}
+
+.text {
+    font-size: theme.$font-size-large;
+    line-height: theme.$line-height-loose;
+    @include spacing.ml(3, xs);
+    @include spacing.pr(5, xs);
+}
+
+.mobileExitButton {
+    position: fixed;
+    right: 10px;
+    bottom: 60px;
+    z-index: 100;
+
+    svg {
+        path,
+        circle {
+            fill: theme.$call-primary;
+
+            &:last-child {
+                fill: theme.$text-light !important;
+            }
+        }
+    }
+}

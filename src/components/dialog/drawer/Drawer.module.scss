@@ -7,11 +7,12 @@
     min-width: 450px;
     max-width: 100vw;
     @include spacing.px(2, xs);
-    @media (width <= 768px) {
+
+    @media (width <=768px) {
         width: 100% !important;
         min-width: unset;
         position: fixed;
-        z-index: 1000; 
+        z-index: 1000;
     }
 }
 
@@ -21,28 +22,30 @@
     color: theme.$text-primary;
     background-color: theme.$background-color-primary;
     min-height: 30px;
-    position: sticky; 
-    top: 0; 
+    position: sticky;
+    top: 0;
     z-index: 1001;
     @include spacing.py(3, xs);
 }
 
+
+
 .closeButton {
+    margin-left: auto;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
     cursor: pointer;
-    margin-left: auto;
     color: theme.$text-secondary;
     padding-left: 12px;
     padding-right: 12px;
     min-width: 44px;
+
     svg {
         fill: theme.$text-secondary;
     }
-    top: 0;
-    z-index: 1002; 
 }
+
 
 
 .body {
@@ -52,4 +55,8 @@
     width: 100% !important;
     margin: auto;
     @include spacing.py(2, xs);
+}
+
+.title {
+    margin: 0 8px;
 }

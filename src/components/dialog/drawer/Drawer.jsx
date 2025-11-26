@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from "react-router";
 import ReactDrawer from 'react-modern-drawer';
+import { useConfig } from '@logora/debate.data.config_provider';
 import { Icon } from '@logora/debate.icons.icon';
+import { NavbarButton } from '@logora/debate.navbar.navbar_button';
 import cx from 'classnames';
 import 'react-modern-drawer/dist/index.css';
 import styles from './Drawer.module.scss';
@@ -10,6 +12,7 @@ import PropTypes from 'prop-types';
 export const Drawer = ({ isOpen = false, onClose, title, size = '30vw', enableOverlay = false, pathParameter = null, children }) => {
     const [isdrawerOpen, setIsDrawerOpen] = useState(isOpen);
     const location = useLocation();
+    const config = useConfig();
 
     const closeDrawer = () => {
         setIsDrawerOpen(false);
@@ -54,15 +57,21 @@ export const Drawer = ({ isOpen = false, onClose, title, size = '30vw', enableOv
                 zIndex={1000000}
             >
                 <div className={styles.header}>
-                    {title &&
+                    <NavbarButton inDrawer showInDrawer={(config?.actions?.showInDrawer !== false)} />
+                    {title && (
                         <div className={styles.title}>
                             {title}
                         </div>
-                    }
-                    <div onClick={closeDrawer} className={cx(styles.closeButton)} data-testid="close-button">
+                    )}
+                    <div
+                        onClick={closeDrawer}
+                        className={cx(styles.closeButton)}
+                        data-testid="close-button"
+                    >
                         <Icon name="close" width={15} height={15} />
                     </div>
                 </div>
+
                 <div className={styles.body}>
                     {children}
                 </div>

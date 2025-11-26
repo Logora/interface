@@ -1,0 +1,24 @@
+---
+description: A navigation modal for the navbar.
+labels: ['modal', 'navbar', 'overlay']
+---
+
+import { NavbarModal } from './NavbarModal';
+
+A component that renders a navigation modal used in the navbar. It adapts to drawer or full-screen mode depending on the configuration and displays links based on enabled modules and authentication state.
+
+The modal can be closed programmatically via the ModalProvider and supports authentication via `useAuthRequired` when the login action is triggered.
+
+### Component usage
+
+To import the component:
+
+```js
+import { NavbarModal } from '@logora/debate.interface.navbar_modal';
+```
+
+To use the NavbarModal component:
+
+```jsx
+<NavbarModal />
+```

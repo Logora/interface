@@ -534,6 +534,34 @@
         "mainFile": "index.js",
         "rootDir": "src/components/modal/side_modal"
     },
+    "navbar/navbar_button": {
+        "name": "navbar/navbar_button",
+        "scope": "",
+        "version": "",
+        "defaultScope": "logora.debate",
+        "mainFile": "index.js",
+        "rootDir": "src/components/navbar/navbar_button",
+        "config": {
+            "teambit.react/react-env@1.0.133": {},
+            "teambit.envs/envs": {
+                "env": "teambit.react/react-env"
+            }
+        }
+    },
+    "navbar/navbar_modal": {
+        "name": "navbar/navbar_modal",
+        "scope": "",
+        "version": "",
+        "defaultScope": "logora.debate",
+        "mainFile": "index.js",
+        "rootDir": "src/components/navbar/navbar_modal",
+        "config": {
+            "teambit.react/react-env@1.0.133": {},
+            "teambit.envs/envs": {
+                "env": "teambit.react/react-env"
+            }
+        }
+    },
     "notification/notification_item": {
         "name": "notification/notification_item",
         "scope": "logora.debate",
