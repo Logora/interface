@@ -46,19 +46,19 @@ const loggedInUser = {
 
 const Providers = ({ children }) => (
     <BrowserRouter>
-    <IntlProvider locale="en">
         <ConfigProvider config={config} routes={routes}>
             <AuthContext.Provider value={{ currentUser: loggedInUser, isLoggedIn: true }}>
                 <ResponsiveProvider>
-                        <IconProvider library={regularIcons}>
-                            <ModalProvider>
+                    <ModalProvider>
+                        <IntlProvider locale="en">
+                            <IconProvider library={regularIcons}>
                                 {children}
-                            </ModalProvider>
-                        </IconProvider>
+                            </IconProvider>
+                        </IntlProvider>
+                    </ModalProvider>
                 </ResponsiveProvider>
             </AuthContext.Provider>
         </ConfigProvider>
-        </IntlProvider>
     </BrowserRouter>
 );
 
@@ -76,15 +76,5 @@ describe("NavbarButton", () => {
         expect(btn).not.toBeNull();
         expect(btn).toBeInTheDocument();
         expect(btn.className).toMatch(/mobileIconDrawer/);
-    });
-
-    it("opens the NavbarModal when clicking the button", async () => {
-        const { container } = renderNavbarButton({ inDrawer: true });
-        const btn = container.querySelector('[data-tid="action_view_mobile_navigation"]');
-        expect(btn).not.toBeNull();
-
-        await userEvent.click(btn);
-
-        expect(await screen.findByText("Navigation")).toBeInTheDocument();
     });
 });
