@@ -33,14 +33,12 @@
   svg {
     position: static;
 
-    path,
     circle {
-      fill: theme.$text-primary;
+      display: none;
     }
 
-    path:first-child,
-    circle:first-child {
-      fill: transparent;
+    path {
+      fill: theme.$text-primary !important;
     }
   }
 }
