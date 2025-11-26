@@ -229,7 +229,7 @@
     "dialog/drawer": {
         "name": "dialog/drawer",
         "scope": "logora.debate",
-        "version": "0.0.81",
+        "version": "0.0.82",
         "mainFile": "index.js",
         "rootDir": "src/components/dialog/drawer"
     },
@@ -536,31 +536,17 @@
     },
     "navbar/navbar_button": {
         "name": "navbar/navbar_button",
-        "scope": "",
-        "version": "",
-        "defaultScope": "logora.debate",
+        "scope": "logora.debate",
+        "version": "0.0.1",
         "mainFile": "index.js",
-        "rootDir": "src/components/navbar/navbar_button",
-        "config": {
-            "teambit.react/react-env@1.0.133": {},
-            "teambit.envs/envs": {
-                "env": "teambit.react/react-env"
-            }
-        }
+        "rootDir": "src/components/navbar/navbar_button"
     },
     "navbar/navbar_modal": {
         "name": "navbar/navbar_modal",
-        "scope": "",
-        "version": "",
-        "defaultScope": "logora.debate",
+        "scope": "logora.debate",
+        "version": "0.0.1",
         "mainFile": "index.js",
-        "rootDir": "src/components/navbar/navbar_modal",
-        "config": {
-            "teambit.react/react-env@1.0.133": {},
-            "teambit.envs/envs": {
-                "env": "teambit.react/react-env"
-            }
-        }
+        "rootDir": "src/components/navbar/navbar_modal"
     },
     "notification/notification_item": {
         "name": "notification/notification_item",
