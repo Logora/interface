@@ -229,7 +229,7 @@
     "dialog/drawer": {
         "name": "dialog/drawer",
         "scope": "logora.debate",
-        "version": "0.0.86",
+        "version": "0.0.87",
         "mainFile": "index.js",
         "rootDir": "src/components/dialog/drawer"
     },
@@ -537,14 +537,14 @@
     "navbar/navbar_button": {
         "name": "navbar/navbar_button",
         "scope": "logora.debate",
-        "version": "0.0.4",
+        "version": "0.0.5",
         "mainFile": "index.js",
         "rootDir": "src/components/navbar/navbar_button"
     },
     "navbar/navbar_modal": {
         "name": "navbar/navbar_modal",
         "scope": "logora.debate",
-        "version": "0.0.1",
+        "version": "0.0.2",
         "mainFile": "index.js",
         "rootDir": "src/components/navbar/navbar_modal"
     },
