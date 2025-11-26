@@ -11,7 +11,6 @@ import { Location } from "@logora/debate.util.location";
 import { faker } from "@faker-js/faker";
 import { NavbarModal } from "./NavbarModal";
 
-
 const routes = {
     indexLocation: new Location("espace-debat", {}),
     debateShowLocation: new Location("espace-debat/debat/:debateSlug", { debateSlug: "" }),
@@ -25,7 +24,6 @@ const routes = {
     userEditLocation: new Location("espace-debat/user/:userSlug/edit", { userSlug: "" }),
 };
 
-
 const loggedInUser = {
     id: faker.datatype.number(),
     full_name: faker.name.fullName(),
@@ -33,8 +31,7 @@ const loggedInUser = {
     hash_id: faker.lorem.slug(),
 };
 
-
-const config = {
+const baseConfig = {
     isDrawer: false,
     modules: {
         consultation: true,
@@ -47,28 +44,27 @@ const config = {
     },
 };
 
-const Providers = ({ children, config, currentUser = null, isLoggedIn = false }) => (
+const Providers = ({ children, currentUser = null, isLoggedIn = false }) => (
     <BrowserRouter>
-        <ConfigProvider routes={routes} config={config}>
+        <ConfigProvider routes={routes} config={baseConfig}>
             <AuthContext.Provider value={{ currentUser, isLoggedIn }}>
                 <ResponsiveProvider>
+                    <ModalProvider>
                         <IconProvider library={regularIcons}>
                             <IntlProvider locale="en">
-                            <ModalProvider>
                                 {children}
-                                </ModalProvider>
                             </IntlProvider>
                         </IconProvider>
+                    </ModalProvider>
                 </ResponsiveProvider>
             </AuthContext.Provider>
         </ConfigProvider>
     </BrowserRouter>
 );
 
-
 export const NavbarModalLoggedOut = () => (
     <div style={{ width: "400px", height: "600px" }}>
-        <Providers config={config} isLoggedIn={false}>
+        <Providers isLoggedIn={false}>
             <NavbarModal />
         </Providers>
     </div>
@@ -76,70 +72,7 @@ export const NavbarModalLoggedOut = () => (
 
 export const NavbarModalLoggedIn = () => (
     <div style={{ width: "400px", height: "600px" }}>
-        <Providers config={config} isLoggedIn={true} currentUser={loggedInUser}>
-            <NavbarModal />
-        </Providers>
-    </div>
-);
-
-const configWithoutConsultations = {
-    ...config,
-    modules: {
-        ...config.modules,
-        consultation: false,
-    },
-};
-
-export const NavbarModalWithoutConsultations = () => (
-    <div style={{ width: "400px", height: "600px" }}>
-        <Providers config={configWithoutConsultations} isLoggedIn={false}>
-            <NavbarModal />
-        </Providers>
-    </div>
-);
-
-const configWithoutSuggestions = {
-    ...config,
-    modules: {
-        ...config.modules,
-        suggestions: {
-            active: false,
-        },
-    },
-};
-
-export const NavbarModalWithoutSuggestions = () => (
-    <div style={{ width: "400px", height: "600px" }}>
-        <Providers config={configWithoutSuggestions} isLoggedIn={false}>
-            <NavbarModal />
-        </Providers>
-    </div>
-);
-
-const drawerConfig = {
-    ...config,
-    isDrawer: true,
-};
-
-export const NavbarModalDrawer = () => (
-    <div style={{ width: "400px", height: "600px" }}>
-        <Providers config={drawerConfig} isLoggedIn={true} currentUser={loggedInUser}>
-            <NavbarModal />
-        </Providers>
-    </div>
-);
-
-const configWithoutLoginButton = {
-    ...config,
-    actions: {
-        ...config.actions,
-        hideLoginButton: true,
-    },
-};
-
-export const NavbarModalWithoutLoginButton = () => (
-    <div style={{ width: "400px", height: "600px" }}>
-        <Providers config={configWithoutLoginButton} isLoggedIn={false}>
+        <Providers isLoggedIn={true} currentUser={loggedInUser}>
             <NavbarModal />
         </Providers>
     </div>
