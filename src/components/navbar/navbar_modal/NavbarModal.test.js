@@ -11,7 +11,7 @@ import * as regularIcons from "@logora/debate.icons.regular_icons";
 import { Location } from "@logora/debate.util.location";
 import { faker } from "@faker-js/faker";
 jest.mock("@logora/debate.hooks.use_auth_required", () => ({
-    useAuthRequired: () => () => {},
+    useAuthRequired: () => () => { },
 }));
 import { NavbarModal } from "./NavbarModal";
 
