@@ -25,7 +25,7 @@ const routes = {
     userEditLocation: new Location("espace-debat/user/:userSlug/edit", { userSlug: "" }),
 };
 
-const config = {
+const baseConfig = {
     isDrawer: false,
     modules: {
         consultation: true,
@@ -45,7 +45,7 @@ const loggedInUser = {
     hash_id: faker.lorem.slug(),
 };
 
-const Providers = ({ children, config = config, currentUser = null, isLoggedIn = false }) => (
+const Providers = ({ children, config = baseConfig, currentUser = null, isLoggedIn = false }) => (
     <BrowserRouter>
         <ConfigProvider routes={routes} config={config}>
             <AuthContext.Provider value={{ currentUser, isLoggedIn }}>
@@ -62,7 +62,7 @@ const Providers = ({ children, config = config, currentUser = null, isLoggedIn =
 );
 
 const renderNavbarModal = (options = {}) => {
-    const { config = config, isLoggedIn = false, currentUser = null } = options;
+    const { config = baseConfig, isLoggedIn = false, currentUser = null } = options;
     return render(
         <Providers config={config} isLoggedIn={isLoggedIn} currentUser={currentUser}>
             <NavbarModal />
@@ -88,9 +88,9 @@ describe("NavbarModal", () => {
 
     it("does not display 'Consultations' when the consultation module is disabled", () => {
         const configWithoutConsultations = {
-            ...config,
+            ...baseConfig,
             modules: {
-                ...config.modules,
+                ...baseConfig.modules,
                 consultation: false,
             },
         };
@@ -102,9 +102,9 @@ describe("NavbarModal", () => {
 
     it("does not display 'Suggestions' when suggestions.active === false", () => {
         const configWithoutSuggestions = {
-            ...config,
+            ...baseConfig,
             modules: {
-                ...config.modules,
+                ...baseConfig.modules,
                 suggestions: { active: false },
             },
         };
@@ -116,9 +116,9 @@ describe("NavbarModal", () => {
 
     it("does not display 'Sign in' when hideLoginButton === true", () => {
         const configWithoutLoginButton = {
-            ...config,
+            ...baseConfig,
             actions: {
-                ...config.actions,
+                ...baseConfig.actions,
                 hideLoginButton: true,
             },
         };

@@ -26,7 +26,7 @@ const routes = {
     userEditLocation: new Location("espace-debat/user/:userSlug/edit", { userSlug: "" }),
 };
 
-const config = {
+const baseConfig = {
     isDrawer: false,
     modules: {
         consultation: true,
@@ -44,7 +44,7 @@ const loggedInUser = {
     hash_id: faker.lorem.slug(),
 };
 
-const Providers = ({ children, config = config, currentUser = null, isLoggedIn = false }) => (
+const Providers = ({ children, config = baseConfig, currentUser = null, isLoggedIn = false }) => (
     <BrowserRouter>
         <IntlProvider locale="en">
             <ConfigProvider routes={routes} config={config}>
@@ -61,7 +61,7 @@ const Providers = ({ children, config = config, currentUser = null, isLoggedIn =
 );
 
 const renderNavbarButton = (props = {}, options = {}) => {
-    const { config = config, isLoggedIn = false, currentUser = null } = options;
+    const { config = baseConfig, isLoggedIn = false, currentUser = null } = options;
 
     return render(
         <Providers config={config} isLoggedIn={isLoggedIn} currentUser={currentUser}>
@@ -83,7 +83,7 @@ describe("NavbarButton", () => {
 
     it("opens the NavbarModal when clicking the button", async () => {
         const user = userEvent.setup();
-        const drawerConfig = { ...config, isDrawer: true };
+        const drawerConfig = { ...baseConfig, isDrawer: true };
 
         const { container } = renderNavbarButton(
             { inDrawer: true },
