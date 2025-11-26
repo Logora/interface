@@ -52,13 +52,13 @@ const Providers = ({ children, config, currentUser = null, isLoggedIn = false })
         <ConfigProvider routes={routes} config={config}>
             <AuthContext.Provider value={{ currentUser, isLoggedIn }}>
                 <ResponsiveProvider>
-                    <ModalProvider>
                         <IconProvider library={regularIcons}>
                             <IntlProvider locale="en">
+                            <ModalProvider>
                                 {children}
+                                </ModalProvider>
                             </IntlProvider>
                         </IconProvider>
-                    </ModalProvider>
                 </ResponsiveProvider>
             </AuthContext.Provider>
         </ConfigProvider>

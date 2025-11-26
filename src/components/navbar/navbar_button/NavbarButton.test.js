@@ -14,6 +14,10 @@ import { faker } from "@faker-js/faker";
 
 import { NavbarButton } from "./NavbarButton";
 
+jest.mock("@logora/debate.hooks.use_auth_required", () => ({
+    useAuthRequired: jest.fn(() => jest.fn())
+}));
+
 const routes = {
     indexLocation: new Location("espace-debat", {}),
     debateShowLocation: new Location("espace-debat/debat/:debateSlug", { debateSlug: "" }),
@@ -53,7 +57,9 @@ const Providers = ({ children }) => (
                 <ResponsiveProvider>
                     <IconProvider library={regularIcons}>
                         <IntlProvider locale="en">
-                            <ModalProvider>{children}</ModalProvider>
+                            <ModalProvider>
+                                {children}
+                            </ModalProvider>
                         </IntlProvider>
                     </IconProvider>
                 </ResponsiveProvider>
@@ -72,7 +78,9 @@ const DrawerLoggedInProviders = ({ children }) => (
                 <ResponsiveProvider>
                     <IconProvider library={regularIcons}>
                         <IntlProvider locale="en">
-                            <ModalProvider>{children}</ModalProvider>
+                            <ModalProvider>
+                                {children}
+                            </ModalProvider>
                         </IntlProvider>
                     </IconProvider>
                 </ResponsiveProvider>
@@ -81,22 +89,27 @@ const DrawerLoggedInProviders = ({ children }) => (
     </BrowserRouter>
 );
 
-const renderNavbarButton = (props = {}, options = {}) => {
-    const Wrapper = options.wrapper || Providers;
-
-    return render(
-        <Wrapper>
+const renderNavbarButton = (props = {}) => (
+    render(
+        <Providers>
             <NavbarButton {...props} />
-        </Wrapper>
-    );
-};
+        </Providers>
+    )
+);
+
+const renderNavbarButtonDrawerLoggedIn = (props = {}) => (
+    render(
+        <DrawerLoggedInProviders>
+            <NavbarButton {...props} />
+        </DrawerLoggedInProviders>
+    )
+);
 
 describe("NavbarButton", () => {
     it("displays the button in the drawer (inDrawer = true)", () => {
         const { container } = renderNavbarButton({ inDrawer: true });
 
         const btn = container.querySelector('[data-tid="action_view_mobile_navigation"]');
-
         expect(btn).not.toBeNull();
         expect(btn).toBeInTheDocument();
         expect(btn.className).toMatch(/mobileIconDrawer/);
@@ -105,13 +118,9 @@ describe("NavbarButton", () => {
     it("opens the NavbarModal when clicking the button", async () => {
         const user = userEvent.setup();
 
-        const { container } = renderNavbarButton(
-            { inDrawer: true },
-            { wrapper: DrawerLoggedInProviders }
-        );
+        const { container } = renderNavbarButtonDrawerLoggedIn({ inDrawer: true });
 
         const btn = container.querySelector('[data-tid="action_view_mobile_navigation"]');
-
         expect(btn).not.toBeNull();
 
         await user.click(btn);
