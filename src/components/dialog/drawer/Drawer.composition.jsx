@@ -238,7 +238,7 @@ export const DrawerWithoutNavbarButton = () => {
         const event = new CustomEvent("logora:drawer:close");
         window.dispatchEvent(event);
     }
-    const config = {
+    const configHideIcon = {
         actions: {
             showInDrawer: false
         }
@@ -247,7 +247,7 @@ export const DrawerWithoutNavbarButton = () => {
     return (
         <BrowserRouter>
             <IntlProvider locale="en">
-                <ConfigProvider routes={routes} config={config}>
+                <ConfigProvider routes={routes} config={configHideIcon}>
                     <AuthContext.Provider value={{ currentUser: mockUser, isLoggedIn: true }}>
                         <IconProvider library={regularIcons}>
                             <ModalProvider>
