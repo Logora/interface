@@ -18,7 +18,7 @@ export const Avatar = ({ avatarUrl, userName, isOnline = false, showTooltip = fa
 
     const commonProps = {
         loading: "lazy",
-        className: cx(styles.avatarImage, className),
+        className: styles.avatarImage,
         height: size,
         width: size,
         ...rest
@@ -32,7 +32,7 @@ export const Avatar = ({ avatarUrl, userName, isOnline = false, showTooltip = fa
     const displayImage = () => {
         if (avatarUrl && !fallback) {
             return (
-                <div className={styles.avatarWrapper} style={commonStyles}>
+                <div className={cx(styles.avatarWrapper, className)} style={commonStyles}>
                     {!isLoaded && (
                         <div
                             className={styles.avatarPlaceholder}
@@ -60,7 +60,7 @@ export const Avatar = ({ avatarUrl, userName, isOnline = false, showTooltip = fa
             );
         } else {
             return (
-                <div className={styles.avatarWrapper} style={commonStyles}>
+                <div className={cx(styles.avatarWrapper, className)} style={commonStyles}>
                     <DefaultAvatarIcon
                         {...commonProps}
                         style={commonStyles}
