@@ -23,6 +23,8 @@
 .avatarImage {
     object-fit: cover;
     max-width: none;
+    font-size: 0;     
+    color: transparent; 
 }
 
 .avatarWrapper {
