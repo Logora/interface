@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useIntl } from 'react-intl';
 import { Tooltip } from '@logora/debate.dialog.tooltip';
 import { DefaultAvatarIcon } from "./DefaultAvatar";
@@ -8,7 +8,13 @@ import PropTypes from 'prop-types';
 
 export const Avatar = ({ avatarUrl, userName, isOnline = false, showTooltip = false, size = 40, className, ...rest }) => {
     const [fallback, setFallback] = useState(false);
+    const [isLoaded, setIsLoaded] = useState(false);
     const intl = useIntl();
+
+    useEffect(() => {
+        setFallback(false); 
+        setIsLoaded(false); 
+    }, [avatarUrl]);
 
     const commonProps = {
         loading: "lazy",
@@ -25,12 +31,45 @@ export const Avatar = ({ avatarUrl, userName, isOnline = false, showTooltip = fa
 
     const displayImage = () => {
         if (avatarUrl && !fallback) {
-            return <img {...commonProps} style={commonStyles} src={avatarUrl} alt={intl.formatMessage({ id:"user.avatar.alt", defaultMessage: "{name}'s profile picture" }, { name: userName })} onError={() => { setFallback(true) }} />
+            return (
+                <div className={styles.avatarWrapper} style={commonStyles}>
+                    {!isLoaded && (
+                        <div
+                            className={styles.avatarPlaceholder}
+                            aria-hidden="true"
+                        />
+                    )}
+                    <img
+                        {...commonProps}
+                        style={commonStyles}
+                        src={avatarUrl}
+                        alt={intl.formatMessage(
+                            {
+                                id:"user.avatar.alt",
+                                defaultMessage: "{name}'s profile picture"
+                            },
+                            { name: userName }
+                        )}
+                        onLoad={() => setIsLoaded(true)}
+                        onError={() => {
+                            setFallback(true);
+                            setIsLoaded(false);
+                        }}
+                    />
+                </div>
+            );
         } else {
-            return <DefaultAvatarIcon {...commonProps} style={commonStyles} data-testid={"avatar-icon"} />
+            return (
+                <div className={styles.avatarWrapper} style={commonStyles}>
+                    <DefaultAvatarIcon
+                        {...commonProps}
+                        style={commonStyles}
+                        data-testid={"avatar-icon"}
+                    />
+                </div>
+            );
         }
-    }
-
+    };
     return (
         <div className={styles.avatarContainer}>
             { showTooltip || isOnline ?
