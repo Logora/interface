@@ -58,8 +58,8 @@ describe("NavbarButton", () => {
         expect(btn).not.toBeNull();
     });
 
-    it("returns null if inDrawer=true and showInDrawer=false", () => {
-        const { container } = renderNavbarButton({ inDrawer: true, showInDrawer: false });
+    it("returns null if inDrawer=true and showNavbarButtonInDrawer=false", () => {
+        const { container } = renderNavbarButton({ inDrawer: true, showNavbarButtonInDrawer: false });
 
         const btn = container.querySelector('[data-tid="action_view_mobile_navigation"]');
         expect(btn).toBeNull();

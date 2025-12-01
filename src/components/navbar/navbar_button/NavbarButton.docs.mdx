@@ -5,11 +5,11 @@ labels: ['navbar', 'button', 'modal']
 
 import { NavbarButton } from './NavbarButton';
 
-A button that opens the navigation modal (NavbarModal). It is intended for mobile usage or inside a drawer. When not rendered inside a drawer (`inDrawer = false`), it only appears on mobile screens (width <= 576px). Inside a drawer (`inDrawer = true`), visibility can be controlled with `showInDrawer`.
+A button that opens the navigation modal (NavbarModal). It is intended for mobile usage or inside a drawer. When not rendered inside a drawer (`inDrawer = false`), it only appears on mobile screens (width <= 576px). Inside a drawer (`inDrawer = true`), visibility can be controlled with `showNavbarButtonInDrawer`.
 
 ### Props
 - inDrawer (boolean) — renders the button styled for a drawer context.
-- showInDrawer (boolean) — if false while `inDrawer` is true, the button is hidden.
+- showNavbarButtonInDrawer (boolean) — if false while `inDrawer` is true, the button is hidden.
 
 ### Component usage
 
@@ -32,6 +32,6 @@ In drawer:
 
 Hidden in drawer:
 ```jsx
-<NavbarButton inDrawer showInDrawer={false} />
+<NavbarButton inDrawer showNavbarButtonInDrawer={false} />
 ```
 

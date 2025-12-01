@@ -57,7 +57,7 @@ export const Drawer = ({ isOpen = false, onClose, title, size = '30vw', enableOv
                 zIndex={1000000}
             >
                 <div className={styles.header}>
-                    <NavbarButton inDrawer showInDrawer={(config?.actions?.showInDrawer !== false)} />
+                    <NavbarButton inDrawer showNavbarButtonInDrawer={(config?.layout?.showNavbarButtonInDrawer !== false)} />
                     {title && (
                         <div className={styles.title}>
                             {title}

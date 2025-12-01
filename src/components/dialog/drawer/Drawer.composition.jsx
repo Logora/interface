@@ -26,7 +26,7 @@ const config = {
     },
     actions: {
         hideLoginButton: false,
-        showInDrawer: true,
+        showNavbarButtonInDrawer: true,
     },
 
 };
@@ -247,7 +247,7 @@ export const DrawerWithoutNavbarButton = () => {
     }
     const configHideIcon = {
         actions: {
-            showInDrawer: false
+            showNavbarButtonInDrawer: false
         }
     }
 

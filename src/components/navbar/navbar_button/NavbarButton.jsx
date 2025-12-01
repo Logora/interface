@@ -6,7 +6,7 @@ import { NavbarModal } from '@logora/debate.navbar.navbar_modal';
 
 import styles from './NavbarButton.module.scss';
 
-export const NavbarButton = ({ inDrawer = false, showInDrawer = true }) => {
+export const NavbarButton = ({ inDrawer = false, showNavbarButtonInDrawer = true }) => {
     const modal = useModal?.();
     const responsive = useResponsive?.() || {};
     const { isMobile, elementWidth } = responsive;
@@ -15,7 +15,7 @@ export const NavbarButton = ({ inDrawer = false, showInDrawer = true }) => {
         modal?.showModal?.(<NavbarModal />);
     };
 
-    if (inDrawer && !showInDrawer) {
+    if (inDrawer && !showNavbarButtonInDrawer) {
         return null;
     }
 
