@@ -83,12 +83,6 @@ describe("NavbarModal", () => {
         expect(screen.getByText("Sign in")).toBeInTheDocument();
     });
 
-    it("displays 'Profile' and not 'Sign in' when user is logged in", () => {
-        renderNavbarModal({ isLoggedIn: true, currentUser: loggedInUser });
-        expect(screen.getByText("Profile")).toBeInTheDocument();
-        expect(screen.queryByText("Sign in")).not.toBeInTheDocument();
-    });
-
     it("does not display 'Consultations' when the consultation module is disabled", () => {
         const configWithoutConsultations = {
             ...baseConfig,

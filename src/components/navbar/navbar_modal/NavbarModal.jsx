@@ -106,64 +106,29 @@ export const NavbarModal = () => {
 							</Link>
 						</div>
 					)}
-					{isLoggedIn ? (
+					{!isLoggedIn && config?.actions?.hideLoginButton !== true && (
 						<div
-							className={cx(styles.modalItem, {
-								[styles.active]:
-									isActive(routes.userShowLocation.path) ||
-									isActive(routes.userEditLocation.path),
-							})}
-							onClick={hideModal}
+							className={styles.modalItem}
+							data-tid={"action_login_link"}
+							onClick={showLoginModal}
 						>
-							<Link
-								className={cx(styles.itemContainer, {
-									[styles.activeItem]:
-										isActive(routes.userShowLocation.path) ||
-										isActive(routes.userEditLocation.path),
-								})}
-								to={routes.userShowLocation.toUrl({
-									userSlug: currentUser.hash_id,
-								})}
-								data-tid={"view_user_profile"}
-							>
-								<div data-tid={"view_user_profile"} className={styles.profile}>
-									<Avatar
-										avatarUrl={currentUser.image_url}
-										userName={currentUser.full_name}
-										size={24}
-										data-tid={"view_user_profile"}
-									/>
-									<span className={styles.text}>
-										<FormattedMessage id="info.profile" defaultMessage={"Profile"} />
-									</span>
-								</div>
-							</Link>
-						</div>
-					) : (
-						config?.actions?.hideLoginButton !== true && (
 							<div
-								className={styles.modalItem}
+								className={styles.itemContainer}
 								data-tid={"action_login_link"}
-								onClick={showLoginModal}
 							>
-								<div
-									className={styles.itemContainer}
-									data-tid={"action_login_link"}
-								>
-									<Icon name="login" height={24} width={24} />
-									<span className={styles.text}>
-										<FormattedMessage id="action.sign_in" defaultMessage={"Sign in"} />
-									</span>
-								</div>
+								<Icon name="login" height={24} width={24} />
+								<span className={styles.text}>
+									<FormattedMessage id="action.sign_in" defaultMessage={"Sign in"} />
+								</span>
 							</div>
-						)
+						</div>
 					)}
 				</div>
 			</div>
 			{!config.isDrawer && (
-			<div className={styles.mobileExitButton} onClick={hideModal}>
-				<Icon name="mobileClose" width={50} height={50} />
-			</div>
+				<div className={styles.mobileExitButton} onClick={hideModal}>
+					<Icon name="mobileClose" width={50} height={50} />
+				</div>
 			)}
 		</Modal>
 	);

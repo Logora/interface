@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation } from "react-router";
 import ReactDrawer from 'react-modern-drawer';
-import { useConfig } from '@logora/debate.data.config_provider';
 import { Icon } from '@logora/debate.icons.icon';
 import { NavbarButton } from '@logora/debate.navbar.navbar_button';
-import cx from 'classnames';
+import { useLocation } from "react-router";
+import { useAuth } from "@logora/debate.auth.use_auth";
+import { useConfig, useRoutes } from "@logora/debate.data.config_provider";
+import { useAuthRequired } from "@logora/debate.hooks.use_auth_required";
+import { Link } from "@logora/debate.action.link";
+import { Avatar } from "@logora/debate.user.avatar";
 import 'react-modern-drawer/dist/index.css';
 import styles from './Drawer.module.scss';
 import PropTypes from 'prop-types';
@@ -12,7 +15,10 @@ import PropTypes from 'prop-types';
 export const Drawer = ({ isOpen = false, onClose, title, size = '30vw', enableOverlay = false, pathParameter = null, children }) => {
     const [isdrawerOpen, setIsDrawerOpen] = useState(isOpen);
     const location = useLocation();
+    const routes = useRoutes();
     const config = useConfig();
+    const { isLoggedIn, currentUser } = useAuth();
+    const requireAuthentication = useAuthRequired();
 
     const closeDrawer = () => {
         setIsDrawerOpen(false);
@@ -57,19 +63,30 @@ export const Drawer = ({ isOpen = false, onClose, title, size = '30vw', enableOv
                 zIndex={1000000}
             >
                 <div className={styles.header}>
-                    <NavbarButton inDrawer showNavbarButtonInDrawer={(config?.layout?.showNavbarButtonInDrawer !== false)} />
-                    {title && (
-                        <div className={styles.title}>
-                            {title}
+                    <div className={styles.headerRowTop}>
+                        <div onClick={closeDrawer} className={styles.closeButton}>
+                            <Icon name="close" width={15} height={15} />
                         </div>
-                    )}
-                    <div
-                        onClick={closeDrawer}
-                        className={cx(styles.closeButton)}
-                        data-testid="close-button"
-                    >
-                        <Icon name="close" width={15} height={15} />
                     </div>
+
+                    <div className={styles.headerRowBottom}>
+                        <NavbarButton inDrawer showNavbarButtonInDrawer={(config?.layout?.showNavbarButtonInDrawer !== false)} />
+                        {isLoggedIn && config?.layout?.showProfileInDrawer !== false && (
+                            <div className={styles.drawerProfile}>
+                                <Link
+                                    to={routes.userShowLocation.toUrl({ userSlug: currentUser.hash_id })}
+                                >
+                                    <Avatar
+                                        avatarUrl={currentUser.image_url}
+                                        userName={currentUser.full_name}
+                                        size={30}
+                                    />
+                                </Link>
+                            </div>
+                        )}
+
+                    </div>
+                    {title && <div className={styles.title}>{title}</div>}
                 </div>
 
                 <div className={styles.body}>

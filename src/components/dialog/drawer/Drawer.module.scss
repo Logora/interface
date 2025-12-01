@@ -18,7 +18,7 @@
 
 .header {
     display: flex !important;
-    align-items: center !important;
+    flex-direction: column !important; 
     color: theme.$text-primary;
     background-color: theme.$background-color-primary;
     min-height: 30px;
@@ -27,7 +27,6 @@
     z-index: 1001;
     @include spacing.py(3, xs);
 }
-
 
 
 .closeButton {
@@ -59,3 +58,23 @@
 .title {
     margin: 0 8px;
 }
+
+.headerRowTop {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important; 
+}
+
+.headerRowBottom {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    @include spacing.mt(2, xs);
+}
+
+
+.drawerProfile {
+    display: flex !important;
+    align-items: center !important;
+}
+

@@ -26,8 +26,10 @@ const config = {
     },
     actions: {
         hideLoginButton: false,
-        showNavbarButtonInDrawer: true,
     },
+    layout: {
+        showNavbarButtonInDrawer: true
+    }
 
 };
 
@@ -246,8 +248,9 @@ export const DrawerWithoutNavbarButton = () => {
         window.dispatchEvent(event);
     }
     const configHideIcon = {
-        actions: {
-            showNavbarButtonInDrawer: false
+        layout: {
+            showNavbarButtonInDrawer: false,
+            showProfileInDrawer: false
         }
     }
 
