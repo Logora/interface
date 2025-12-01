@@ -18,7 +18,7 @@ export const ReportModal = (props) => {
     const [email, setEmail] = useState("");
     const [isChecked, setIsChecked] = useState(false);
     const { hideModal } = useModal();
-    const { isLoggedIn } = useAuth();
+    const { isLoggedIn, currentUser } = useAuth();
     const intl = useIntl();
     const dataProvider = useDataProvider();
 
@@ -98,7 +98,7 @@ export const ReportModal = (props) => {
                                             </label>
                                         </div>
                                     </div>
-                                    {props.allowAnonymousUser && !isLoggedIn && (
+                                    {props.allowAnonymousUser && (currentUser && Object.keys(currentUser).length > 0) && (
                                         <>
                                             <div className={cx(styles.formGroup, styles.nameGroup)}>
                                                 <div className={styles.nameField}>
