@@ -7,6 +7,8 @@ import { ResponsiveProvider } from "@logora/debate.hooks.use_responsive";
 import { IconProvider } from '@logora/debate.icons.icon_provider';
 import { ModalProvider } from "@logora/debate.dialog.modal";
 import { IntlProvider } from "react-intl";
+import { ListProvider } from '@logora/debate.list.list_provider';
+import { dataProvider, DataProviderContext } from '@logora/debate.data.data_provider';
 import * as regularIcons from '@logora/debate.icons.regular_icons';
 import { Location } from "@logora/debate.util.location";
 import { faker } from '@faker-js/faker';
@@ -33,6 +35,23 @@ const config = {
 
 };
 
+const createNotification = () => {
+    return {
+        id: faker.datatype.number(10000000),
+        created_at: faker.date.recent(),
+        notify_type: "new_comment",
+        is_opened: faker.datatype.boolean()
+    };
+};
+
+const notificationDefinitions = {
+    new_comment: {
+        getRedirectUrl: () => '/comments/1',
+        getImage: () => <img src={faker.image.abstract()} alt="notification-image" />,
+        getContent: (notification) => faker.commerce.productDescription()
+    },
+}
+
 const routes = {
     indexLocation: new Location("espace-debat", {}),
     debateShowLocation: new Location("espace-debat/debat/:debateSlug", { debateSlug: "" }),
@@ -43,6 +62,22 @@ const routes = {
     userShowLocation: new Location("espace-debat/user/:userSlug", { userSlug: "" }),
     userEditLocation: new Location("espace-debat/user/:userSlug/edit", { userSlug: "" }),
 };
+
+const httpClient = {
+    post: () => {
+        return new Promise(function (resolve) {
+            resolve({ data: { success: true, data: {} } });
+        });
+    },
+    get: () => {
+        return new Promise(function (resolve) {
+            resolve({ data: { success: true, data: Array.from({ length: 5 }, createNotification) } });
+        });
+    }
+};
+
+const data = dataProvider(httpClient, "https://mock.example.api");
+
 export const DefaultDrawer = () => {
     const [isOpen, setIsOpen] = useState(false);
 
@@ -58,23 +93,27 @@ export const DefaultDrawer = () => {
 
     return (
         <BrowserRouter>
-                <ConfigProvider routes={routes} config={config}>
-                    <AuthContext.Provider value={{ currentUser: mockUser, isLoggedIn: true }}>
-                        <ResponsiveProvider>
-                            <IconProvider library={regularIcons}>
-                            <IntlProvider locale="en">
-                                <ModalProvider>
-                                    <div onClick={toggleDrawer} data-testid="open-button">Click here to toggle drawer</div>
-                                    <div onClick={closeDrawer} data-testid="close-button">Click here to close drawer</div>
-                                    <Drawer isOpen={isOpen} onClose={() => setIsOpen(false)}>
-                                        <div>Drawer content</div>
-                                    </Drawer>
-                                </ModalProvider>
-                                </IntlProvider>
-                            </IconProvider>
-                        </ResponsiveProvider>
-                    </AuthContext.Provider>
-                </ConfigProvider>
+            <ConfigProvider routes={routes} config={config}>
+                <DataProviderContext.Provider value={{ dataProvider: data }}>
+                    <ListProvider>
+                        <AuthContext.Provider value={{ currentUser: mockUser, isLoggedIn: true }}>
+                            <ResponsiveProvider>
+                                <IconProvider library={regularIcons}>
+                                    <IntlProvider locale="en">
+                                        <ModalProvider>
+                                            <div onClick={toggleDrawer} data-testid="open-button">Click here to toggle drawer</div>
+                                            <div onClick={closeDrawer} data-testid="close-button">Click here to close drawer</div>
+                                            <Drawer isOpen={isOpen} onClose={() => setIsOpen(false)} notificationDefinitions={notificationDefinitions}>
+                                                <div>Drawer content</div>
+                                            </Drawer>
+                                        </ModalProvider>
+                                    </IntlProvider>
+                                </IconProvider>
+                            </ResponsiveProvider>
+                        </AuthContext.Provider>
+                    </ListProvider>
+                </DataProviderContext.Provider>
+            </ConfigProvider>
         </BrowserRouter>
     )
 };
@@ -93,23 +132,27 @@ export const DrawerWithOverlay = () => {
 
     return (
         <BrowserRouter>
-                <ConfigProvider routes={routes} config={config}>
-                    <AuthContext.Provider value={{ currentUser: mockUser, isLoggedIn: true }}>
-                        <ResponsiveProvider>
-                            <IconProvider library={regularIcons}>
-                            <IntlProvider locale="en">
-                                <ModalProvider>
-                                    <div onClick={toggleDrawer}>Click here to toggle drawer</div>
-                                    <div onClick={closeDrawer} data-testid="close-button">Click here to close drawer</div>
-                                    <Drawer isOpen={isOpen} onClose={() => setIsOpen(false)} enableOverlay>
-                                        <div>Drawer content</div>
-                                    </Drawer>
-                                </ModalProvider>
-                                </IntlProvider>
-                            </IconProvider>
-                        </ResponsiveProvider>
-                    </AuthContext.Provider>
-                </ConfigProvider>
+            <ConfigProvider routes={routes} config={config}>
+                <DataProviderContext.Provider value={{ dataProvider: data }}>
+                    <ListProvider>
+                        <AuthContext.Provider value={{ currentUser: mockUser, isLoggedIn: true }}>
+                            <ResponsiveProvider>
+                                <IconProvider library={regularIcons}>
+                                    <IntlProvider locale="en">
+                                        <ModalProvider>
+                                            <div onClick={toggleDrawer}>Click here to toggle drawer</div>
+                                            <div onClick={closeDrawer} data-testid="close-button">Click here to close drawer</div>
+                                            <Drawer isOpen={isOpen} onClose={() => setIsOpen(false)} enableOverlay>
+                                                <div>Drawer content</div>
+                                            </Drawer>
+                                        </ModalProvider>
+                                    </IntlProvider>
+                                </IconProvider>
+                            </ResponsiveProvider>
+                        </AuthContext.Provider>
+                    </ListProvider>
+                </DataProviderContext.Provider>
+            </ConfigProvider>
         </BrowserRouter>
     )
 };
@@ -123,22 +166,26 @@ export const DrawerWithTitle = () => {
 
     return (
         <BrowserRouter>
-                <ConfigProvider routes={routes} config={config}>
-                    <AuthContext.Provider value={{ currentUser: mockUser, isLoggedIn: true }}>
-                        <ResponsiveProvider>
-                            <IconProvider library={regularIcons}>
-                            <IntlProvider locale="en">
-                                <ModalProvider>
-                                    <div onClick={toggleDrawer}>Click here to toggle drawer</div>
-                                    <Drawer isOpen={isOpen} title={"My drawer"} onClose={() => setIsOpen(false)}>
-                                        <div>Drawer content</div>
-                                    </Drawer>
-                                </ModalProvider>
-                                </IntlProvider>
-                            </IconProvider>
-                        </ResponsiveProvider>
-                    </AuthContext.Provider>
-                </ConfigProvider>
+            <ConfigProvider routes={routes} config={config}>
+                <DataProviderContext.Provider value={{ dataProvider: data }}>
+                    <ListProvider>
+                        <AuthContext.Provider value={{ currentUser: mockUser, isLoggedIn: true }}>
+                            <ResponsiveProvider>
+                                <IconProvider library={regularIcons}>
+                                    <IntlProvider locale="en">
+                                        <ModalProvider>
+                                            <div onClick={toggleDrawer}>Click here to toggle drawer</div>
+                                            <Drawer isOpen={isOpen} title={"My drawer"} onClose={() => setIsOpen(false)}>
+                                                <div>Drawer content</div>
+                                            </Drawer>
+                                        </ModalProvider>
+                                    </IntlProvider>
+                                </IconProvider>
+                            </ResponsiveProvider>
+                        </AuthContext.Provider>
+                    </ListProvider>
+                </DataProviderContext.Provider>
+            </ConfigProvider>
         </BrowserRouter>
     )
 };
@@ -152,22 +199,26 @@ export const SmallDrawer = () => {
 
     return (
         <BrowserRouter>
-                <ConfigProvider routes={routes} config={config}>
-                    <AuthContext.Provider value={{ currentUser: mockUser, isLoggedIn: true }}>
-                        <ResponsiveProvider>
-                            <IconProvider library={regularIcons}>
-                            <IntlProvider locale="en">
-                                <ModalProvider>
-                                    <div onClick={toggleDrawer}>Click here to toggle drawer</div>
-                                    <Drawer isOpen={isOpen} onClose={() => setIsOpen(false)} size={400}>
-                                        <div>Drawer content</div>
-                                    </Drawer>
-                                </ModalProvider>
-                                </IntlProvider>
-                            </IconProvider>
-                        </ResponsiveProvider>
-                    </AuthContext.Provider>
-                </ConfigProvider>
+            <ConfigProvider routes={routes} config={config}>
+                <DataProviderContext.Provider value={{ dataProvider: data }}>
+                    <ListProvider>
+                        <AuthContext.Provider value={{ currentUser: mockUser, isLoggedIn: true }}>
+                            <ResponsiveProvider>
+                                <IconProvider library={regularIcons}>
+                                    <IntlProvider locale="en">
+                                        <ModalProvider>
+                                            <div onClick={toggleDrawer}>Click here to toggle drawer</div>
+                                            <Drawer isOpen={isOpen} onClose={() => setIsOpen(false)} size={400}>
+                                                <div>Drawer content</div>
+                                            </Drawer>
+                                        </ModalProvider>
+                                    </IntlProvider>
+                                </IconProvider>
+                            </ResponsiveProvider>
+                        </AuthContext.Provider>
+                    </ListProvider>
+                </DataProviderContext.Provider>
+            </ConfigProvider>
         </BrowserRouter>
     )
 };
@@ -183,26 +234,31 @@ export const DrawerWithScrollParagraphe = () => {
 
     return (
         <BrowserRouter>
-                <ConfigProvider routes={routes} config={config}>
-                    <AuthContext.Provider value={{ currentUser: mockUser, isLoggedIn: true }}>
-                        <ResponsiveProvider>
-                            <IconProvider library={regularIcons}>
-                            <IntlProvider locale="en">
-                                <ModalProvider>
-                                    <div onClick={toggleDrawer}>Click here to toggle drawer</div>
-                                    <Drawer isOpen={isOpen} title={"My drawer"} onClose={() => setIsOpen(false)}>
-                                        <div>
-                                            <p>
-                                                {generatedParagraph}
-                                            </p>
-                                        </div>
-                                    </Drawer>
-                                </ModalProvider>
-                                </IntlProvider>
-                            </IconProvider>
-                        </ResponsiveProvider>
-                    </AuthContext.Provider>
-                </ConfigProvider>
+            <ConfigProvider routes={routes} config={config}>
+
+                <DataProviderContext.Provider value={{ dataProvider: data }}>
+                    <ListProvider>
+                        <AuthContext.Provider value={{ currentUser: mockUser, isLoggedIn: true }}>
+                            <ResponsiveProvider>
+                                <IconProvider library={regularIcons}>
+                                    <IntlProvider locale="en">
+                                        <ModalProvider>
+                                            <div onClick={toggleDrawer}>Click here to toggle drawer</div>
+                                            <Drawer isOpen={isOpen} title={"My drawer"} onClose={() => setIsOpen(false)}>
+                                                <div>
+                                                    <p>
+                                                        {generatedParagraph}
+                                                    </p>
+                                                </div>
+                                            </Drawer>
+                                        </ModalProvider>
+                                    </IntlProvider>
+                                </IconProvider>
+                            </ResponsiveProvider>
+                        </AuthContext.Provider>
+                    </ListProvider>
+                </DataProviderContext.Provider>
+            </ConfigProvider>
         </BrowserRouter>
     )
 };
@@ -216,22 +272,26 @@ export const DrawerWithPathParameter = () => {
 
     return (
         <BrowserRouter>
-                <ConfigProvider routes={routes} config={config}>
-                    <AuthContext.Provider value={{ currentUser: mockUser, isLoggedIn: true }}>
-                        <ResponsiveProvider>
-                            <IconProvider library={regularIcons}>
-                            <IntlProvider locale="en">
-                                <ModalProvider>
-                                    <div onClick={toggleDrawer}>Click here to toggle drawer</div>
-                                    <Drawer isOpen={isOpen} pathParameter={"drawer_path"}>
-                                        <div>Drawer content</div>
-                                    </Drawer>
-                                </ModalProvider>
-                                </IntlProvider>
-                            </IconProvider>
-                        </ResponsiveProvider>
-                    </AuthContext.Provider>
-                </ConfigProvider>
+            <ConfigProvider routes={routes} config={config}>
+                <DataProviderContext.Provider value={{ dataProvider: data }}>
+                    <ListProvider>
+                        <AuthContext.Provider value={{ currentUser: mockUser, isLoggedIn: true }}>
+                            <ResponsiveProvider>
+                                <IconProvider library={regularIcons}>
+                                    <IntlProvider locale="en">
+                                        <ModalProvider>
+                                            <div onClick={toggleDrawer}>Click here to toggle drawer</div>
+                                            <Drawer isOpen={isOpen} pathParameter={"drawer_path"}>
+                                                <div>Drawer content</div>
+                                            </Drawer>
+                                        </ModalProvider>
+                                    </IntlProvider>
+                                </IconProvider>
+                            </ResponsiveProvider>
+                        </AuthContext.Provider>
+                    </ListProvider>
+                </DataProviderContext.Provider>
+            </ConfigProvider>
         </BrowserRouter>
     )
 };
@@ -250,31 +310,35 @@ export const DrawerWithoutNavbarButton = () => {
     const configHideIcon = {
         layout: {
             showNavbarButtonInDrawer: false,
-            showProfileInDrawer: false
+            showProfileNotificationInDrawer: false
         }
     }
 
     return (
         <BrowserRouter>
 
-                <ConfigProvider routes={routes} config={configHideIcon}>
-                    <AuthContext.Provider value={{ currentUser: mockUser, isLoggedIn: true }}>
-                        <ResponsiveProvider>
-                            <IconProvider library={regularIcons}>
-                            <IntlProvider locale="en">
-                                <ModalProvider>
-                                    <div onClick={toggleDrawer} data-testid="open-button">Click here to toggle drawer</div>
-                                    <div onClick={closeDrawer} data-testid="close-button">Click here to close drawer</div>
+            <ConfigProvider routes={routes} config={configHideIcon}>
+                <DataProviderContext.Provider value={{ dataProvider: data }}>
+                    <ListProvider>
+                        <AuthContext.Provider value={{ currentUser: mockUser, isLoggedIn: true }}>
+                            <ResponsiveProvider>
+                                <IconProvider library={regularIcons}>
+                                    <IntlProvider locale="en">
+                                        <ModalProvider>
+                                            <div onClick={toggleDrawer} data-testid="open-button">Click here to toggle drawer</div>
+                                            <div onClick={closeDrawer} data-testid="close-button">Click here to close drawer</div>
 
-                                    <Drawer isOpen={isOpen} onClose={() => setIsOpen(false)}>
-                                        <div>Drawer content</div>
-                                    </Drawer>
-                                </ModalProvider>
-                                </IntlProvider>
-                            </IconProvider>
-                        </ResponsiveProvider>
-                    </AuthContext.Provider>
-                </ConfigProvider>
+                                            <Drawer isOpen={isOpen} onClose={() => setIsOpen(false)}>
+                                                <div>Drawer content</div>
+                                            </Drawer>
+                                        </ModalProvider>
+                                    </IntlProvider>
+                                </IconProvider>
+                            </ResponsiveProvider>
+                        </AuthContext.Provider>
+                    </ListProvider>
+                </DataProviderContext.Provider>
+            </ConfigProvider>
         </BrowserRouter>
     )
 };
