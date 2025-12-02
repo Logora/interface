@@ -20,9 +20,32 @@
     width: 30%;
 }
 
+.avatarWrapper {
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: theme.$background-color-secondary;
+    transition: background-color 0.2s ease-in-out;
+    
+    &.loaded {
+        background-color: transparent;
+    }
+    
+    img {
+        opacity: 0;
+        transition: opacity 0.2s ease-in-out;
+    }
+    
+    &.loaded img {
+        opacity: 1;
+    }
+}
+
 .avatarImage {
     object-fit: cover;
     max-width: none;
     border-radius: 50%;
-    overflow: hidden;
+    color: transparent;
 }

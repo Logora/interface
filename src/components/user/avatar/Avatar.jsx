@@ -8,6 +8,7 @@ import PropTypes from 'prop-types';
 
 export const Avatar = ({ avatarUrl, userName, isOnline = false, showTooltip = false, size = 40, className, ...rest }) => {
     const [fallback, setFallback] = useState(false);
+    const [imageLoaded, setImageLoaded] = useState(false);
     const intl = useIntl();
 
     const commonProps = {
@@ -25,7 +26,18 @@ export const Avatar = ({ avatarUrl, userName, isOnline = false, showTooltip = fa
 
     const displayImage = () => {
         if (avatarUrl && !fallback) {
-            return <img {...commonProps} style={commonStyles} src={avatarUrl} alt={intl.formatMessage({ id:"user.avatar.alt", defaultMessage: "{name}'s profile picture" }, { name: userName })} onError={() => { setFallback(true) }} />
+            return (
+                <div className={cx(styles.avatarWrapper, { [styles.loaded]: imageLoaded })}>
+                    <img 
+                        {...commonProps} 
+                        style={commonStyles}
+                        src={avatarUrl} 
+                        alt={intl.formatMessage({ id:"user.avatar.alt", defaultMessage: "{name}'s profile picture" }, { name: userName })} 
+                        onError={() => { setFallback(true) }} 
+                        onLoad={() => { setImageLoaded(true) }}
+                    />
+                </div>
+            );
         } else {
             return <DefaultAvatarIcon {...commonProps} style={commonStyles} data-testid={"avatar-icon"} />
         }
