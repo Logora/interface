@@ -22,7 +22,7 @@ export const NavbarModal = () => {
 	const requireAuthentication = useAuthRequired();
 	const responsive = useResponsive?.() || {};
 	const { isMobile, elementWidth } = responsive;
-	const shouldShowProfileOnMobile = isMobile && elementWidth <= 576;
+	const shouldShowProfileOnMobile = isMobile && elementWidth <= 576 && !config.isDrawer;
 
 	const isActive = (activePath) => {
 		return !!matchPath(activePath, pathname);
