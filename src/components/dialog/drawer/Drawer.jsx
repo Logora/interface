@@ -99,7 +99,7 @@ export const Drawer = ({ isOpen = false, onClose, title, size = '30vw', enableOv
                                             pinText={unreadNotificationCount.toString()}
                                             textClassName={styles.hideText}
                                         >
-                                            <Icon name="alarm" height={27} width={27} />
+                                            <Icon name="alarm" height={24} width={24} />
                                         </IconTextLink>
                                     </div>
 

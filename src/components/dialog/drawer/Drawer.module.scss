@@ -90,6 +90,7 @@
     position: relative;
     display: flex;
     align-items: center;
+    padding-top: 9px;
 }
 
 .notificationIcon {
@@ -115,4 +116,16 @@
     border: theme.$box-border;
     border-radius: theme.$box-border-radius;
     z-index: 1100;
+    
+    @media (width <= 576px) {
+        position: fixed;
+        top: 60px;
+        left: 8px;
+        right: 8px;
+        width: auto;
+        min-width: unset;
+        max-height: calc(100vh - 80px);
+        margin-top: 0;
+        border-radius: theme.$box-border-radius;
+    }
 }

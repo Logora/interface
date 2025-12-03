@@ -6,6 +6,7 @@ import { Modal, useModal } from "@logora/debate.dialog.modal";
 import { useAuth } from "@logora/debate.auth.use_auth";
 import { useConfig, useRoutes } from "@logora/debate.data.config_provider";
 import { useAuthRequired } from "@logora/debate.hooks.use_auth_required";
+import { useResponsive } from "@logora/debate.hooks.use_responsive";
 import { Icon } from "@logora/debate.icons.icon";
 import { Link } from "@logora/debate.action.link";
 import { Avatar } from "@logora/debate.user.avatar";
@@ -19,6 +20,9 @@ export const NavbarModal = () => {
 	const { pathname } = useLocation();
 	const { isLoggedIn, currentUser } = useAuth();
 	const requireAuthentication = useAuthRequired();
+	const responsive = useResponsive?.() || {};
+	const { isMobile, elementWidth } = responsive;
+	const shouldShowProfileOnMobile = isMobile && elementWidth <= 576 && !config.isDrawer;
 
 	const isActive = (activePath) => {
 		return !!matchPath(activePath, pathname);
@@ -103,6 +107,40 @@ export const NavbarModal = () => {
 								<span className={styles.text}>
 									<FormattedMessage id="info.suggestion" defaultMessage={"Suggestions"} />
 								</span>
+							</Link>
+						</div>
+					)}
+					{isLoggedIn && shouldShowProfileOnMobile && (
+						<div
+							className={cx(styles.modalItem, {
+								[styles.active]:
+									isActive(routes.userShowLocation.path) ||
+									isActive(routes.userEditLocation.path),
+							})}
+							onClick={hideModal}
+						>
+							<Link
+								className={cx(styles.itemContainer, {
+									[styles.activeItem]:
+										isActive(routes.userShowLocation.path) ||
+										isActive(routes.userEditLocation.path),
+								})}
+								to={routes.userShowLocation.toUrl({
+									userSlug: currentUser.hash_id,
+								})}
+								data-tid={"view_user_profile"}
+							>
+								<div data-tid={"view_user_profile"} className={styles.profile}>
+									<Avatar
+										avatarUrl={currentUser.image_url}
+										userName={currentUser.full_name}
+										size={24}
+										data-tid={"view_user_profile"}
+									/>
+									<span className={styles.text}>
+										<FormattedMessage id="info.profile" defaultMessage={"Profile"} />
+									</span>
+								</div>
 							</Link>
 						</div>
 					)}
