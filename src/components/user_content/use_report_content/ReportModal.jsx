@@ -98,7 +98,7 @@ export const ReportModal = (props) => {
                                             </label>
                                         </div>
                                     </div>
-                                    {props.allowAnonymousUser && (currentUser && Object.keys(currentUser).length > 0) && (
+                                    {props.allowAnonymousUser && !(currentUser && Object.keys(currentUser).length > 0) && (
                                         <>
                                             <div className={cx(styles.formGroup, styles.nameGroup)}>
                                                 <div className={styles.nameField}>
