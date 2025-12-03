@@ -125,7 +125,8 @@
         width: auto;
         min-width: unset;
         max-height: calc(100vh - 80px);
-        margin-top: 0;
+        margin-top: 25px;
         border-radius: theme.$box-border-radius;
+        z-index: 900;
     }
 }
