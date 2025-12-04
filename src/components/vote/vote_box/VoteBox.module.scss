@@ -119,6 +119,13 @@ button.voteButton, a.voteButton  {
     }
 }
 
+.outlined {
+    padding: 4px 10px;
+    border: 1px solid theme.$text-secondary; 
+    border-radius: theme.$box-border-radius;
+    white-space: nowrap;
+}
+
 .voteButtonThesis {
     display: block;
     text-align: left;

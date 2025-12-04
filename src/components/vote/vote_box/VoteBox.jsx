@@ -140,7 +140,7 @@ export const VoteBox = ({ numberVotes, votePositions, voteableType, voteableId, 
             api.create("votes", data).then(response => {
                 if (response.data.success) {
                     setCurrentVote(response.data.data.resource);
-                    toast(intl.formatMessage({ id: "header.vote_confirm_modal", defaultMessage: "Your vote has been saved !"  }), { type: "success" });
+                    toast(intl.formatMessage({ id: "header.vote_confirm_modal", defaultMessage: "Your vote has been saved !" }), { type: "success" });
                 }
             });
         }
@@ -311,7 +311,12 @@ export const VoteBox = ({ numberVotes, votePositions, voteableType, voteableId, 
                                         {showTotal && (
                                             <span><FormattedMessage id="vote.vote_box.votes" values={{ votesCount: totalVotes }} defaultMessage="{votesCount} votes" /> – </span>
                                         )}
-                                        <span className={styles.boldShowResult}><FormattedMessage id="vote.vote_box.show_result" defaultMessage="Show result" /></span>
+                                        <span className={cx(styles.boldShowResult, styles.outlined)}>
+                                            <FormattedMessage
+                                                id="vote.vote_box.show_result"
+                                                defaultMessage="Show result"
+                                            />
+                                        </span>
                                     </div>
                                     :
                                     <Link to={getRedirectUrl(null)} rel="nofollow" data-tid="show_vote_result" target="_top" external data-testid={"show-result"}>
