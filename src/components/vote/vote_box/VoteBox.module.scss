@@ -109,19 +109,20 @@ button.voteButton, a.voteButton  {
     cursor: pointer;
     a {
         background: none !important;
-        color: theme.$text-secondary !important;
+        color: theme.$text-primary !important;
         &:hover {
             background: none !important;
         }
     }
     .boldShowResult {
         font-weight: theme.$font-weight-bold;
+        color: theme.$text-primary;
     }
 }
 
 .outlined {
-    padding: 4px 10px;
-    border: 1px solid theme.$text-secondary; 
+    padding: 7px 15px;
+    border: 1px solid theme.$text-primary; 
     border-radius: theme.$box-border-radius;
     white-space: nowrap;
 }
