@@ -82,12 +82,14 @@
     max-width: 100% !important;
     width: 100% !important;
     text-align: center;
+
     &.buttonAlignLeft {
         justify-content: flex-start !important;
     }
 }
 
-button.voteButton, a.voteButton  {
+button.voteButton,
+a.voteButton {
     -webkit-appearance: initial !important;
     width: 100%;
     @include display.hyphens(auto);
@@ -108,13 +110,16 @@ button.voteButton, a.voteButton  {
 
 .voteBoxShowResult {
     cursor: pointer;
+
     a {
         background: none !important;
         color: theme.$text-primary !important;
+
         &:hover {
             background: none !important;
         }
     }
+
     .boldShowResult {
         font-weight: theme.$font-weight-bold;
     }
@@ -135,7 +140,7 @@ button.voteButton, a.voteButton  {
 }
 
 @include display.media-breakpoint-down(sm) {
-    .voteButtonThesisSynthesisMobile {           
+    .voteButtonThesisSynthesisMobile {
         text-align: center !important;
     }
 }
@@ -144,6 +149,7 @@ button.voteButton, a.voteButton  {
     background-color: theme.$for-primary !important;
     border-color: theme.$for-primary !important;
     border: 1px solid theme.$for-primary !important;
+
     &:hover {
         background-color: theme.$for-primary !important;
         border-color: theme.$for-primary !important;
@@ -155,6 +161,7 @@ button.voteButton, a.voteButton  {
     background-color: theme.$against-primary !important;
     border-color: theme.$against-primary !important;
     border: 1px theme.$against-primary !important;
+
     &:hover {
         background-color: theme.$against-primary !important;
         border-color: theme.$against-primary !important;
@@ -167,6 +174,7 @@ button.voteButton, a.voteButton  {
     color: theme.$third-position-color-primary !important;
     border-color: theme.$third-position-color-primary !important;
     border: 1px solid theme.$third-position-color-primary !important;
+
     &:hover {
         background-color: theme.$text-light !important;
         color: theme.$third-position-color-primary !important;
@@ -185,7 +193,7 @@ button.voteButton, a.voteButton  {
     padding: 0;
     font-weight: theme.$font-weight-bold;
 }
-  
+
 .sideIcon {
     svg {
         margin-left: 5px;
@@ -204,11 +212,11 @@ button.voteButton, a.voteButton  {
     height: 25px;
 }
 
-.voteResults > div:first-child .progress .progressBar {
+.voteResults>div:first-child .progress .progressBar {
     background-color: theme.$for-primary !important;
 }
 
-.voteResults > div:nth-child(2) .progress .progressBar {
+.voteResults>div:nth-child(2) .progress .progressBar {
     background-color: theme.$against-primary !important;
 }
 
@@ -216,11 +224,10 @@ button.voteButton, a.voteButton  {
     background-color: theme.$third-position-color-primary !important;
 }
 
-
 .voteCommentCounts {
     display: flex;
     align-items: center;
-    gap: spacing.$spacer-xl;                
+    gap: spacing.$spacer-xl;
     width: 100%;
     @include spacing.mt(1, xs);
 }
@@ -228,8 +235,7 @@ button.voteButton, a.voteButton  {
 .debateNumberItem {
     display: flex;
     align-items: center;
-    gap: spacing.$spacer-sm;                    
+    gap: spacing.$spacer-sm;
     font-size: theme.$font-size-small;
     color: theme.$text-secondary;
 }
-
