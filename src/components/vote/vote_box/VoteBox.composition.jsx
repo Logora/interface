@@ -60,7 +60,8 @@ const debate = {
         total: 15,
         1: 10,
         2: 5,
-    }
+    },
+    messages_count: 23,
 };
 
 const debateThreeVotePositions = {
@@ -287,6 +288,40 @@ export const VoteBoxRedirect = () => {
                                                     votePositions={threeVotePositions}
                                                     displayColumn
                                                     redirectUrl={"myUrl"}
+                                                />
+                                            </VoteProvider>
+                                        </ModalProvider>
+                                    </ConfigProvider>
+                                </ToastProvider>
+                            </IconProvider>
+                        </AuthContext.Provider>
+                    </DataProviderContext.Provider>
+                </IntlProvider>
+            </BrowserRouter>
+        </div>
+    );
+};
+
+export const VoteBoxWithVotesAndComments = () => {
+    return (
+        <div style={{ width: "400px" }}>
+            <BrowserRouter>
+                <IntlProvider locale="en">
+                    <DataProviderContext.Provider value={{ dataProvider: data }}>
+                        <AuthContext.Provider value={{ currentUser: currentUser, isLoggedIn: true }}>
+                            <IconProvider library={regularIcons}>
+                                <ToastProvider>
+                                    <ConfigProvider config={{}} routes={{ ...routes }}>
+                                        <ModalProvider>
+                                            <VoteProvider>
+                                                <VoteBox
+                                                    voteableId={debate.id}
+                                                    numberVotes={debate.votes_count}
+                                                    voteableType={"Group"}
+                                                    votePositions={votePositions}
+                                                    showTotal={false}
+                                                    showVotesCommentsNumber={true}
+                                                    commentsCount={debate.messages_count}
                                                 />
                                             </VoteProvider>
                                         </ModalProvider>

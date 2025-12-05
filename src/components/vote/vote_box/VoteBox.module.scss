@@ -215,3 +215,21 @@ button.voteButton, a.voteButton  {
 .voteResults div:nth-child(3) .progress .progressBar {
     background-color: theme.$third-position-color-primary !important;
 }
+
+
+.voteCommentCounts {
+    display: flex;
+    align-items: center;
+    gap: spacing.$spacer-xl;                
+    width: 100%;
+    @include spacing.mt(1, xs);
+}
+
+.debateNumberItem {
+    display: flex;
+    align-items: center;
+    gap: spacing.$spacer-sm;                    
+    font-size: theme.$font-size-small;
+    color: theme.$text-secondary;
+}
+

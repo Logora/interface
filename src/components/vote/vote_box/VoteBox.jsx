@@ -11,12 +11,14 @@ import useSessionStorageState from '@rooks/use-sessionstorage-state';
 import { useTranslatedContent } from '@logora/debate.translation.translated_content';
 import { Link } from '@logora/debate.action.link';
 import { ProgressBar } from "@logora/debate.progress.progress_bar";
-import { Icon } from '@logora/debate.icons.icon';
+import { Icon } from "@logora/debate.icons.icon";
 import { Button } from '@logora/debate.action.button';
+import { Tooltip } from '@logora/debate.dialog.tooltip';
+import { useResponsive } from '@logora/debate.hooks.use_responsive';
 import cx from 'classnames';
 import styles from './VoteBox.module.scss';
 
-export const VoteBox = ({ numberVotes, votePositions, voteableType, voteableId, redirectUrl, displayColumn, textAlignLeft, showTotal = true, voteBoxClassName, buttonContainerClassName, buttonClassName, showResultClassName, onVote, disabled = false }) => {
+export const VoteBox = ({ numberVotes, votePositions, voteableType, voteableId, redirectUrl, displayColumn, textAlignLeft, showTotal = true, voteBoxClassName, buttonContainerClassName, buttonClassName, showResultClassName, onVote, disabled = false, showVotesCommentsNumber = false, commentsCount }) => {
     const [isLoadingVote, setIsLoadingVote] = useState(true);
     const [currentVote, setCurrentVote] = useState(undefined);
     const [showResults, setShowResults] = useState(false);
@@ -27,6 +29,8 @@ export const VoteBox = ({ numberVotes, votePositions, voteableType, voteableId, 
     const [savedVote, setSavedVote, removeSavedVote] = useSessionStorageState("storedUserVote", {});
     const [savedUserSide, setSavedUserSide, removeSavedUserSide] = useSessionStorageState("userSide", {});
     const { toast } = useToast() || {};
+    const { isMobile } = useResponsive();
+
 
     const initVotesCount = () => {
         const votesCountObj = {};
@@ -47,6 +51,7 @@ export const VoteBox = ({ numberVotes, votePositions, voteableType, voteableId, 
     const config = useConfig();
     const intl = useIntl();
     const { isLoggedIn, isLoggingIn } = useAuth();
+
 
     useEffect(() => {
         if (isLoggingIn === false) {
@@ -304,6 +309,37 @@ export const VoteBox = ({ numberVotes, votePositions, voteableType, voteableId, 
                         <div className={cx(styles.voteBoxActionsBody, { [styles.voteBoxActionsBodyColumn]: displayColumn, [buttonContainerClassName]: buttonContainerClassName })}>
                             {votePositions.map((value, index) => displayVotePosition(value, index))}
                         </div>
+                        {showVotesCommentsNumber && (
+                            <div className={styles.voteCommentCounts}>
+                                <Tooltip
+                                    position={isMobile ? "right" : "bottom"}
+                                    text={intl.formatMessage({ id: "info.votes_count", defaultMessage: "Votes" })}
+                                >
+                                    <div className={styles.debateNumberItem}>
+                                        <Icon name="votebox" width={16} height={16} />
+                                        <div className={styles.debateNumberContent}>{totalVotes}</div>
+                                        <div className={styles.debateNumberLabel}>
+                                            {intl.formatMessage({ id: "vote.vote_box.votes", defaultMessage: "votes" })}
+                                        </div>
+                                    </div>
+                                </Tooltip>
+
+                                <Tooltip
+                                    position={isMobile ? "right" : "bottom"}
+                                    text={intl.formatMessage({ id: "info.arguments_count", defaultMessage: "Comments" })}
+                                >
+                                    <div className={styles.debateNumberItem}>
+                                        <Icon name="chat" width={16} height={16} />
+                                        <div className={styles.debateNumberContent}>{commentsCount ?? 0}</div>
+                                        <div className={styles.debateNumberLabel}>
+                                            {intl.formatMessage({ id: "vote.vote_box.comments", defaultMessage: "comments" })}
+                                        </div>
+                                    </div>
+                                </Tooltip>
+
+                            </div>
+                        )}
+
                         <div className={cx(styles.voteBoxActions, styles.voteBoxShowResultContainer, { [showResultClassName]: showResultClassName })}>
                             <div className={styles.voteBoxShowResult}>
                                 {typeof window !== "undefined" && !redirectUrl ?
@@ -364,4 +400,8 @@ VoteBox.propTypes = {
     onVote: PropTypes.func,
     /** Disabled vote buttons and show result */
     disabled: PropTypes.bool,
+    /** Show the votes and comments counters */
+    showVotesCommentsNumber: PropTypes.bool,
+    /** Number of comments to display in the counters */
+    commentsCount: PropTypes.number,
 };
