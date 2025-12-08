@@ -123,9 +123,6 @@ describe('VoteBox Component', () => {
         expect(voteButtons[1].getAttribute('title')).toBe('Position 2');
         expect(voteButtons[2].getAttribute('title')).toBe('Position 3');
 
-        const voteCountText = getByText('10 votes –');
-        expect(voteCountText).toBeInTheDocument();
-
         expect(queryByRole('link')).toBeNull();
     });
 

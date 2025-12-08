@@ -112,10 +112,12 @@ a.voteButton {
     cursor: pointer;
 
     a {
+        color: inherit;             
+        text-decoration: none;        
         background: none !important;
-        color: theme.$text-primary !important;
 
         &:hover {
+            text-decoration: none;
             background: none !important;
         }
     }

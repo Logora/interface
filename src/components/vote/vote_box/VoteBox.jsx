@@ -344,9 +344,6 @@ export const VoteBox = ({ numberVotes, votePositions, voteableType, voteableId, 
                             <div className={styles.voteBoxShowResult}>
                                 {typeof window !== "undefined" && !redirectUrl ?
                                     <div onClick={() => handleShowResults()} data-tid="show_vote_result" data-testid={"show-result"}>
-                                        {showTotal && (
-                                            <span><FormattedMessage id="vote.vote_box.votes" values={{ votesCount: totalVotes }} defaultMessage="{votesCount} votes" /> – </span>
-                                        )}
                                         <span className={cx(styles.boldShowResult, styles.outlined)}>
                                             <FormattedMessage
                                                 id="vote.vote_box.show_result"
@@ -356,10 +353,7 @@ export const VoteBox = ({ numberVotes, votePositions, voteableType, voteableId, 
                                     </div>
                                     :
                                     <Link to={getRedirectUrl(null)} rel="nofollow" data-tid="show_vote_result" target="_top" external data-testid={"show-result"}>
-                                        {showTotal && (
-                                            <span><FormattedMessage id="vote.vote_box.votes" values={{ votesCount: totalVotes }} defaultMessage="{votesCount} votes" /> – </span>
-                                        )}
-                                        <span className={styles.boldShowResult}><FormattedMessage id="vote.vote_box.show_result" defaultMessage="Show result" /></span>
+                                        <span className={cx(styles.boldShowResult, styles.outlined)}><FormattedMessage id="vote.vote_box.show_result" defaultMessage="Show result" /></span>
                                     </Link>
                                 }
                             </div>
