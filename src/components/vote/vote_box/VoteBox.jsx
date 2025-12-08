@@ -316,7 +316,7 @@ export const VoteBox = ({ numberVotes, votePositions, voteableType, voteableId, 
                                     text={intl.formatMessage({ id: "info.votes_count", defaultMessage: "Votes" })}
                                 >
                                     <div className={styles.debateNumberItem}>
-                                        <Icon name="votebox" width={16} height={16} />
+                                        <Icon name="votebox" width={20} height={20} />
                                         <div className={styles.debateNumberContent}>{totalVotes}</div>
                                         <div className={styles.debateNumberLabel}>
                                             {intl.formatMessage(
@@ -335,7 +335,7 @@ export const VoteBox = ({ numberVotes, votePositions, voteableType, voteableId, 
                                     text={intl.formatMessage({ id: "info.arguments_count", defaultMessage: "Comments" })}
                                 >
                                     <div className={styles.debateNumberItem}>
-                                        <Icon name="chat" width={16} height={16} />
+                                        <Icon name="chat" width={20} height={20} />
                                         <div className={styles.debateNumberContent}>{commentsCount ?? 0}</div>
                                         <div className={styles.debateNumberLabel}>
                                             {intl.formatMessage(
