@@ -318,7 +318,7 @@ export const VoteBox = ({ numberVotes, votePositions, voteableType, voteableId, 
                                     <div className={styles.debateNumberItem}>
                                         <Icon name="votebox" width={20} height={20} />
                                         <div className={styles.debateNumberLabel}>
-                                            <FormattedMessage id="vote.vote_box.votes_short" values={{ votesCount: totalVotes }} defaultMessage="{votesCount} votes" />
+                                            <FormattedMessage id="vote.vote_box.votes" values={{ votesCount: totalVotes }} defaultMessage="{votesCount} votes" />
                                         </div>
 
                                     </div>
@@ -330,7 +330,7 @@ export const VoteBox = ({ numberVotes, votePositions, voteableType, voteableId, 
                                     <div className={styles.debateNumberItem}>
                                         <Icon name="chat" width={20} height={20} />
                                         <div className={styles.debateNumberLabel}>
-                                            <FormattedMessage id="vote.vote_box.comments_short" values={{ count: commentsCount ?? 0 }} defaultMessage="{count} comments" />
+                                            <FormattedMessage id="vote.vote_box.comments" values={{ count: commentsCount ?? 0 }} defaultMessage="{count} comments" />
                                         </div>
                                     </div>
                                 </Tooltip>
