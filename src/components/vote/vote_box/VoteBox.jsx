@@ -334,7 +334,6 @@ export const VoteBox = ({ numberVotes, votePositions, voteableType, voteableId, 
                                         </div>
                                     </div>
                                 </Tooltip>
-
                             </div>
                         )}
 
