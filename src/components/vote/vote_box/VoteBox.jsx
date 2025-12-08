@@ -329,7 +329,6 @@ export const VoteBox = ({ numberVotes, votePositions, voteableType, voteableId, 
                                         </div>
                                     </div>
                                 </Tooltip>
-
                                 <Tooltip
                                     position={isMobile ? "right" : "bottom"}
                                     text={intl.formatMessage({ id: "info.arguments_count", defaultMessage: "Comments" })}
