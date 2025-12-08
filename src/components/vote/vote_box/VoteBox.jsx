@@ -317,16 +317,10 @@ export const VoteBox = ({ numberVotes, votePositions, voteableType, voteableId, 
                                 >
                                     <div className={styles.debateNumberItem}>
                                         <Icon name="votebox" width={20} height={20} />
-                                        <div className={styles.debateNumberContent}>{totalVotes}</div>
                                         <div className={styles.debateNumberLabel}>
-                                            {intl.formatMessage(
-                                                {
-                                                    id: "vote.vote_box.votes_short",
-                                                    defaultMessage: "{votesCount, plural, one {vote} other {votes}}"
-                                                },
-                                                { votesCount: totalVotes }
-                                            )}
+                                            <FormattedMessage id="vote.vote_box.votes_short" values={{ votesCount: totalVotes }} defaultMessage="{votesCount} votes" />
                                         </div>
+
                                     </div>
                                 </Tooltip>
                                 <Tooltip
@@ -335,15 +329,8 @@ export const VoteBox = ({ numberVotes, votePositions, voteableType, voteableId, 
                                 >
                                     <div className={styles.debateNumberItem}>
                                         <Icon name="chat" width={20} height={20} />
-                                        <div className={styles.debateNumberContent}>{commentsCount ?? 0}</div>
                                         <div className={styles.debateNumberLabel}>
-                                            {intl.formatMessage(
-                                                {
-                                                    id: "vote.vote_box.comments_short",
-                                                    defaultMessage: "{count, plural, one {comment} other {comments}}"
-                                                },
-                                                { count: commentsCount ?? 0 }
-                                            )}
+                                            <FormattedMessage id="vote.vote_box.comments_short" values={{ count: commentsCount ?? 0 }} defaultMessage="{count} comments" />
                                         </div>
                                     </div>
                                 </Tooltip>
