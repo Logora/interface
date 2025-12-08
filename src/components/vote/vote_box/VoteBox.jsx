@@ -319,7 +319,13 @@ export const VoteBox = ({ numberVotes, votePositions, voteableType, voteableId, 
                                         <Icon name="votebox" width={16} height={16} />
                                         <div className={styles.debateNumberContent}>{totalVotes}</div>
                                         <div className={styles.debateNumberLabel}>
-                                            {intl.formatMessage({ id: "vote.vote_box.votes", defaultMessage: "votes" })}
+                                            {intl.formatMessage(
+                                                {
+                                                    id: "vote.vote_box.votes_short",
+                                                    defaultMessage: "{count, plural, one {vote} other {votes}}"
+                                                },
+                                                { count: totalVotes }
+                                            )}
                                         </div>
                                     </div>
                                 </Tooltip>
@@ -332,7 +338,13 @@ export const VoteBox = ({ numberVotes, votePositions, voteableType, voteableId, 
                                         <Icon name="chat" width={16} height={16} />
                                         <div className={styles.debateNumberContent}>{commentsCount ?? 0}</div>
                                         <div className={styles.debateNumberLabel}>
-                                            {intl.formatMessage({ id: "vote.vote_box.comments", defaultMessage: "comments" })}
+                                            {intl.formatMessage(
+                                                {
+                                                    id: "vote.vote_box.comments_short",
+                                                    defaultMessage: "{count, plural, one {comment} other {comments}}"
+                                                },
+                                                { count: commentsCount ?? 0 }
+                                            )}
                                         </div>
                                     </div>
                                 </Tooltip>
