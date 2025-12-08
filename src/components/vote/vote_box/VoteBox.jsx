@@ -322,9 +322,9 @@ export const VoteBox = ({ numberVotes, votePositions, voteableType, voteableId, 
                                             {intl.formatMessage(
                                                 {
                                                     id: "vote.vote_box.votes_short",
-                                                    defaultMessage: "{count, plural, one {vote} other {votes}}"
+                                                    defaultMessage: "{votesCount, plural, one {vote} other {votes}}"
                                                 },
-                                                { count: totalVotes }
+                                                { votesCount: totalVotes }
                                             )}
                                         </div>
                                     </div>
