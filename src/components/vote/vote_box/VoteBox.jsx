@@ -320,7 +320,6 @@ export const VoteBox = ({ numberVotes, votePositions, voteableType, voteableId, 
                                         <div className={styles.debateNumberLabel}>
                                             <FormattedMessage id="vote.vote_box.votes" values={{ votesCount: totalVotes }} defaultMessage="{votesCount} votes" />
                                         </div>
-
                                     </div>
                                 </Tooltip>
                                 <Tooltip
