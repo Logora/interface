@@ -338,3 +338,22 @@ export const RejectedArgument = () => {
     );
 };
 
+const argumentRejectedHidden = generateArgument({
+    id: 418,
+    is_deleted: false,
+  });
+
+  export const RejectedArgumentHiddenContent = () => (
+    <div style={{ width: "400px", height: "240px" }}>
+      <Providers>
+        <Argument
+          argument={argumentRejectedHidden}
+          positions={positions}
+          groupName={groupeName}
+          hideContent={true}
+          showModerationFeedback={true}
+        />
+      </Providers>
+    </div>
+  );
+  

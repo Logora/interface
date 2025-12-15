@@ -27,8 +27,22 @@ export const ReportBox = ({ report, flash }) => {
   const renderReportContent = () => {
     const { reportable_type, reportable } = report;
     switch (reportable_type) {
-      case "Message":
-        return <Argument argument={reportable} positions={reportable.group?.group_context?.positions?.slice(0, 2) || []} hideReplies={true} hideFooter={true} showModerationFeedback={false} />;
+      case "Message": {
+        const shouldHideContent =
+          report.is_processed === true && report.reportable?.status === "rejected";
+      
+        return (
+          <Argument
+            argument={reportable}
+            positions={reportable.group?.group_context?.positions?.slice(0, 2) || []}
+            hideReplies={true}
+            hideFooter={true}
+            showModerationFeedback={false}
+            hideContent={shouldHideContent}
+          />
+        );
+      }
+      
       case "Proposal":
         return <ProposalBox proposal={reportable} hideFooter={true} />;
       case "Group":
@@ -54,7 +68,7 @@ export const ReportBox = ({ report, flash }) => {
     } else {
       if (contentStatus === "rejected") {
         return (
-          <div className={styles.statusMessage}>
+          <div className={styles.statusMessage} data-testid="report-status-message">
             {intl.formatMessage({
               id: "report.content_header.status_rejected",
               defaultMessage: "Thank you for your report. After verification, the content has been removed."

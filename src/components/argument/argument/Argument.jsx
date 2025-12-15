@@ -22,11 +22,12 @@ import styles from "./Argument.module.scss";
 const ArgumentInput = lazy(() => import('@logora/debate.input.argument_input'));
 import PropTypes from "prop-types";
 
-export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupType, groupName, positions = [], disableLinks = false, parentArgument, flashParent, expandable, disabled = false, hideFooter = false, hideReplies, vote, fixedContentHeight = false, enableEdition = true, enableDeletion = true, deleteListId, showModerationFeedback, lineCount = 5, replyRedirectUrl }) => {
+export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupType, groupName, positions = [], disableLinks = false, parentArgument, flashParent, expandable, disabled = false, hideFooter = false, hideReplies, vote, fixedContentHeight = false, enableEdition = true, enableDeletion = true, deleteListId, showModerationFeedback, lineCount = 5, replyRedirectUrl, hideContent = false }) => {
 	const intl = useIntl();
 	const { isLoggedIn, currentUser } = useAuth();
 	const userIsBanned = currentUser?.moderation_status === "banned";
 	const config = useConfig();
+
 
 
 	const [expandReplies, setExpandReplies] = useState(false);
@@ -125,64 +126,81 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupTyp
 					moderationNotes={argument.moderation_entry?.moderator_notes}
 					moderationPolicyUrl={config.provider?.userGuideUrl}
 				/>
-				{argument.is_deleted ?
+				{argument.is_deleted ? (
 					<div className={styles.argumentDeletedBody}>
-						{intl.formatMessage({ id: "info.deleted_by_user", defaultMessage: "Content deleted by the user" })}
+						{intl.formatMessage({
+							id: "info.deleted_by_user",
+							defaultMessage: "Content deleted by the user",
+						})}
 					</div>
-					:
+				) : hideContent ? (
+					<div className={styles.argumentDeletedBody}>
+						{intl.formatMessage({
+							id: "argument.argument.content_deleted",
+							defaultMessage: "This content has been removed.",
+						})}
+					</div>
+				) : (
 					<>
-						<div className={cx(styles.argumentBody, { [styles.fixedHeight]: config?.layout?.showAllArgumentInEmbed !== true ? fixedContentHeight : false })}>
-							{argument.is_reply && parentArgument &&
+						<div className={cx(styles.argumentBody, {
+							[styles.fixedHeight]: config?.layout?.showAllArgumentInEmbed !== true ? fixedContentHeight : false
+						})}>
+							{argument.is_reply && parentArgument && (
 								<div className={styles.replyTo} onClick={() => flashParent(parentArgument.id)}>
 									{intl.formatMessage({ id: "info.replying_to", defaultMessage: "Replying to" })}
 									<span className={styles.replyingTo}>
-										{parentArgument.is_deleted ? intl.formatMessage({ id: "info.deleted", defaultMessage: "Deleted" }) : parentArgument.author.full_name}
+										{parentArgument.is_deleted
+											? intl.formatMessage({ id: "info.deleted", defaultMessage: "Deleted" })
+											: parentArgument.author.full_name}
 										<Icon name="chat" height={16} />
 									</span>
 								</div>
-							}
-							{argument.is_reply
-								&& config.translation.enable === true
-								&& argument.language !== intl.locale
-								&& !argument.translation_entries?.some(element => element.status === "accepted" && element.target_language === intl.locale) ?
-								<div>
-									<AnnouncementDialog
-										message={intl.formatMessage({ id: "translations.argument_not_translated", defaultMessage: "This argument has not yet been translated into your language." })}
-										fullWidth
-									/>
-								</div>
-								:
-								<ReadMore
-									content={
-										<>
-											{argument.is_edited && (
-												<div className={styles.edited}>
-													{intl.formatMessage({ id: "argument.argument.updated", defaultMessage: "Updated argument" })}
-												</div>
-											)}
-											{richContent && !content.isTranslated ? (
-												<div className={styles.argumentContent} dangerouslySetInnerHTML={{ __html: richContent }}></div>
-											) : (
-												<div className={styles.argumentContent}>{content.translatedContent}</div>
-											)}
-											{content.isTranslated && (
-												<TranslationButton language={argument.language} callback={() => content.toggleContent()} />
-											)}
-										</>
-									}
-									lineCount={config?.layout?.showAllArgumentInEmbed !== true ? lineCount : undefined}
-									readMoreText={intl.formatMessage({ id: "action.read_more", defaultMessage: "Read more" })}
-									readLessText={intl.formatMessage({ id: "action.read_less", defaultMessage: "Read less" })}
-									expandable={config?.layout?.showAllArgumentInEmbed !== true ? expandable : false}
-									readMoreClassName={argument.is_reply ? styles.replyStyle : styles.argumentStyle}
-								/>
-							}
+							)}
+
+							<ReadMore
+								content={
+									<>
+										{argument.is_edited && (
+											<div className={styles.edited}>
+												{intl.formatMessage({ id: "argument.argument.updated", defaultMessage: "Updated argument" })}
+											</div>
+										)}
+
+										{richContent && !content.isTranslated ? (
+											<div
+												className={styles.argumentContent}
+												dangerouslySetInnerHTML={{ __html: richContent }}
+											/>
+										) : (
+											<div className={styles.argumentContent}>
+												{content.translatedContent}
+											</div>
+										)}
+
+										{content.isTranslated && (
+											<TranslationButton
+												language={argument.language}
+												callback={() => content.toggleContent()}
+											/>
+										)}
+									</>
+								}
+								lineCount={config?.layout?.showAllArgumentInEmbed !== true ? lineCount : undefined}
+								readMoreText={intl.formatMessage({ id: "action.read_more", defaultMessage: "Read more" })}
+								readLessText={intl.formatMessage({ id: "action.read_less", defaultMessage: "Read less" })}
+								expandable={config?.layout?.showAllArgumentInEmbed !== true ? expandable : false}
+								readMoreClassName={argument.is_reply ? styles.replyStyle : styles.argumentStyle}
+							/>
 						</div>
+
 						{argument.sources?.length > 0 && (
-							<div className={styles.argumentSourcesList}>{argument.sources.map(displaySource)}</div>
+							<div className={styles.argumentSourcesList}>
+								{argument.sources.map(displaySource)}
+							</div>
 						)}
 					</>
-				}
+				)}
+
 				{!hideFooter && !argument.is_deleted &&
 					<ContentFooter
 						resource={argument}
@@ -193,7 +211,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupTyp
 						deleteListId={deleteListId}
 						enableReply={nestingLevel <= 2 || (currentUser.role === "editor" || currentUser.role === "moderator")}
 						handleReplyTo={toggleReplyInput}
-						replyRedirectUrl={replyRedirectUrl} 
+						replyRedirectUrl={replyRedirectUrl}
 						shareUrl={`https://app.logora.fr/share/a/${argument.id}`}
 						shareTitle={intl.formatMessage({ id: "share.argument.title", defaultMessage: "Share a debate" })}
 						shareText={intl.formatMessage({ id: "share.argument.text", defaultMessage: "This argument may interest you" })}
@@ -334,5 +352,7 @@ Argument.propTypes = {
 	/** Id of the list to delete the item from */
 	deleteListId: PropTypes.string,
 	/** Clicking reply redirects to this URL instead of inline reply */
-	replyRedirectUrl: PropTypes.string, 
+	replyRedirectUrl: PropTypes.string,
+	/** If true, hide content  */
+	hideContent: PropTypes.bool,
 };

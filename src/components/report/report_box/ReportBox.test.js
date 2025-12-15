@@ -213,12 +213,20 @@ describe("ReportBox", () => {
 
   it("should display status message for rejected status", () => {
     const rejectedReport = generateReport({
-      reportable: { ...reportArgument.reportable, status: "rejected" , moderation_entry: {
-        status: "rejected"
-      },}
+      is_processed: true,
+      reportable: {
+        ...reportArgument.reportable,
+        status: "rejected",
+      },
     });
+  
     renderReportBox({ report: rejectedReport });
-    expect(screen.getByText(/content has been removed/i)).toBeInTheDocument();
+  
+    expect(
+      screen.getByTestId("report-status-message")
+    ).toHaveTextContent(/content has been removed/i);
   });
+  
+  
 
 });
