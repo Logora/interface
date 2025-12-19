@@ -20,6 +20,9 @@
     height: 48px !important;
     border-radius: theme.$box-border-radius;
     object-fit: cover;
+    overflow: hidden;
+    color: transparent;
+    text-indent: 10000px; 
 }
 
 .infos {
