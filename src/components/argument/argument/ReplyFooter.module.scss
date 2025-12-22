@@ -25,7 +25,6 @@
 	gap: spacing.$spacer-sm;
 	background-color: theme.$background-color-primary;
 	font-size: theme.$font-size-normal;
-	font-weight: bold;
 
 	@include spacing.p(0, xs);
 	@include spacing.px(2.5, xs);
