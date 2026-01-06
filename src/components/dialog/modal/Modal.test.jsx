@@ -5,6 +5,7 @@ import { Modal } from './Modal';
 import { ModalProvider } from './ModalProvider';
 import { useModal } from './useModal';
 import { IconProvider } from '@logora/debate.icons.icon_provider';
+import { IntlProvider } from "react-intl";
 import * as regularIcons from '@logora/debate.icons.regular_icons';
 
 const TestModal = () => {
@@ -26,9 +27,11 @@ describe('Modal', () => {
 	it('should render modal with content and title', async () => {
 		const modal = render(
 			<IconProvider library={regularIcons}>
-				<ModalProvider>
-					<TestModal />
-				</ModalProvider>
+				<IntlProvider locale="en">
+					<ModalProvider>
+						<TestModal />
+					</ModalProvider>
+				</IntlProvider>
 			</IconProvider>
 		);
 
@@ -44,11 +47,13 @@ describe('Modal', () => {
 	it('should render close button if showCloseButotn is true', () => {
 		const modal = render(
 			<IconProvider library={regularIcons}>
-				<ModalProvider>
-					<Modal title="my title" showCloseButton>
-						<div data-testid="modal-content">modal content</div>
-					</Modal>
-				</ModalProvider>
+				<IntlProvider locale="en">
+					<ModalProvider>
+						<Modal title="my title" showCloseButton>
+							<div data-testid="modal-content">modal content</div>
+						</Modal>
+					</ModalProvider>
+				</IntlProvider>
 			</IconProvider>
 		);
 
@@ -61,9 +66,11 @@ describe('Modal', () => {
 	it('should close when clicking on close button', async () => {
 		const modal = render(
 			<IconProvider library={regularIcons}>
-				<ModalProvider>
-					<TestModal />
-				</ModalProvider>
+				<IntlProvider locale="en">
+					<ModalProvider>
+						<TestModal />
+					</ModalProvider>
+				</IntlProvider>
 			</IconProvider>
 		);
 
