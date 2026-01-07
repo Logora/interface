@@ -2,6 +2,14 @@
 @import '~@logora/debate.styles.spacing/_spacing.scss';
 
 .shareButtonContainer {
+  background: none;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  text-align: inherit;
+  cursor: pointer;
   display: flex !important;
   align-content: center !important;
   justify-content: center !important;

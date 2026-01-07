@@ -40,7 +40,7 @@ describe('ShareButton', () => {
             </IntlProvider>
         );
         expect(getByText("Share")).toBeTruthy();
-        expect(queryAllByRole("button")).toHaveLength(0);
+        expect(queryAllByRole("button")).toHaveLength(1);
     });
 
     it('should not show text if props false', () => {
@@ -58,7 +58,7 @@ describe('ShareButton', () => {
             </IntlProvider>
         );
         expect(queryByText("Share")).toBeNull();
-        expect(queryAllByRole("button")).toHaveLength(0);
+        expect(queryAllByRole("button")).toHaveLength(1);
     });
 
     it('should show share box when clicking on button', async () => {
@@ -81,7 +81,7 @@ describe('ShareButton', () => {
         userEvent.click(getByText("Share"));
 
         await waitFor(() => {
-            expect(queryAllByRole("button")).toHaveLength(4);
+            expect(queryAllByRole("button")).toHaveLength(5);
         });
     });
 
@@ -105,13 +105,13 @@ describe('ShareButton', () => {
         userEvent.click(getByText("Share"));
 
         await waitFor(() => {
-            expect(queryAllByRole("button")).toHaveLength(4);
+            expect(queryAllByRole("button")).toHaveLength(5);
         });
 
         userEvent.click(document.body);
 
         await waitFor(() => {
-            expect(queryAllByRole("button")).toHaveLength(0);
+            expect(queryAllByRole("button")).toHaveLength(1);
         });
     });
 });

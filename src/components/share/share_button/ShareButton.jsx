@@ -54,12 +54,13 @@ export const ShareButton = ({ showText, shareUrl, shareTitle, shareText = false,
 	useOnClickOutside(popoverContentRef, handleClickOutsidePopover);
 
 	return (
-		<div
+		<button
+			type="button"
 			title={intl.formatMessage({ id: "share.share_button.text", defaultMessage: "Share" })}
 			className={cx(styles.shareButtonContainer, className)}
-			tabIndex='0'
 			onClick={handleShare}
 			data-tid="action_share_button"
+			aria-label={intl.formatMessage({ id: "share.share_button.text", defaultMessage: "Share" })}
 		>
 			<div
 				className={cx(styles.popoverWrapper, { [styles.popoverActive]: popoverActive })}
@@ -70,7 +71,7 @@ export const ShareButton = ({ showText, shareUrl, shareTitle, shareText = false,
 					{popoverActive && <ShareBox shareUrl={shareUrlBuild} shareTitle={shareTitle} shareText={shareText} showShareCode={showShareCode} shareCode={shareCode} tooltipPosition={tooltipPosition} />}
 				</div>
 			</div>
-		</div>
+		</button>
 	);
 }
 
