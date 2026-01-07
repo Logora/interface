@@ -14,15 +14,16 @@ export const VoteButton = ({ voteableType, voteableId, totalUpvote = 0, totalDow
     );
 
     return (
-        <div
-            tabIndex="0"
+
+        <button
+            type="button"
             className={cx(
                 styles.voteButton,
                 { [styles.active]: activeVote, [activeClassName]: activeVote, [styles.disabled]: disabled },
             )}
             onClick={disabled ? null : () => handleVote(true)}
             data-testid="vote-button"
-            data-tid={"action_vote_argument"}
+            data-tid="action_vote_argument"
         >
             <Icon name="clap"
                 data-tid={"action_vote_argument"}
@@ -30,7 +31,7 @@ export const VoteButton = ({ voteableType, voteableId, totalUpvote = 0, totalDow
                 width={18}
             />
             <span className={styles.voteNumber}>{totalUpvotes}</span>
-        </div>
+        </button>
     );
 };
 
