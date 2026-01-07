@@ -23,7 +23,7 @@ export const Modal = ({ title, showCloseButton = false, fullScreen, children, di
 
   return (
     <div className={cx(styles.modalWrapper, { [styles.modalWrapperFullScreen]: fullScreen })}>
-      <div className={cx(styles.modalDialog, { [styles.modalDialogFullScreen]: fullScreen })} role="dialog" {...rest}>
+      <div className={cx(styles.modalDialog, { [styles.modalDialogFullScreen]: fullScreen })} role="dialog"  aria-modal="true" {...rest}>
         <div className={cx(styles.modalContainer)} ref={modalRef}>
           <div className={cx(styles.modalHeader, { [styles.modalHeaderWithTitle]: title })}>
             {title &&
