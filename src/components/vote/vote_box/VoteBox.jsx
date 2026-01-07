@@ -268,7 +268,7 @@ export const VoteBox = ({ numberVotes, votePositions, voteableType, voteableId, 
                                     return (
                                         <div key={index}>
                                             <div className={index > 0 ? cx(styles.voteProgressHeader, styles.voteProgressHeaderAgainst) : styles.voteProgressHeader}>
-                                                {currentPositionName} {(currentVote && currentVote.position_id === value.id) ? <span title={intl.formatMessage({ id: "vote.vote_box.vote_side" }) + currentPositionName} className={styles.sideIcon}><Icon name="checkbox" width={16} height={16} /></span> : null}
+                                                {currentPositionName} {(currentVote && currentVote.position_id === value.id) ? <span title={intl.formatMessage({ id: "vote.vote_box.vote_side" }) + currentPositionName} className={styles.sideIcon} aria-hidden="true"><Icon name="checkbox" width={16} height={16} /></span> : null}
                                             </div>
                                             <ProgressBar
                                                 progress={votesCount[value.id].percentage / 100}
