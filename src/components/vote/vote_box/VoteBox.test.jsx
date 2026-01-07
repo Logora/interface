@@ -227,7 +227,7 @@ describe('VoteBox Component', () => {
     });
 
     it('should redirect after vote', async () => {
-        const { getByTestId, getByTitle, queryByRole } = render(
+        const { getByTestId, getByTitle, queryAllByRole } = render(
             <VoteBoxWrapper>
                 <VoteBox 
                     voteableId={debate.id}
@@ -238,7 +238,8 @@ describe('VoteBox Component', () => {
             </VoteBoxWrapper>
         );
 
-        expect(queryByRole('button')).toBeNull();
+        expect(queryAllByRole('button')).toHaveLength(2);
+        
 
         const showResultLink = getByTestId("show-result");
         expect(showResultLink).toHaveAttribute("href", "myUrl?initVote=true");

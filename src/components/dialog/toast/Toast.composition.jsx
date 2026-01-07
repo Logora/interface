@@ -1,38 +1,47 @@
 import React from 'react';
+import { IntlProvider } from "react-intl";
 import { Toast } from './Toast';
 
 export const DefaultToast = () => {
     return (
-        <Toast 
-            text={"A message !"}
-        />
+        <IntlProvider locale="en">
+            <Toast
+                text={"A message !"}
+            />
+        </IntlProvider>
     );
 };
 
 export const ToastSuccess = () => {
     return (
-        <Toast 
-            text={"A message !"}
-            variant={"success"}
-        />
+        <IntlProvider locale="en">
+            <Toast
+                text={"A message !"}
+                variant={"success"}
+            />
+        </IntlProvider>
     );
 };
 
 export const ToastError = () => {
     return (
-        <Toast 
-            text={"A message !"}
-            variant={"error"}
-        />
+        <IntlProvider locale="en">
+            <Toast
+                text={"A message !"}
+                variant={"error"}
+            />
+        </IntlProvider>
     );
 };
 
 export const ToastWithPoints = () => {
     return (
-        <Toast 
-            text={"A message !"}
-            points={34}
-            variant={"info"}
-        />
+        <IntlProvider locale="en">
+            <Toast
+                text={"A message !"}
+                points={34}
+                variant={"info"}
+            />
+        </IntlProvider>
     );
 };
