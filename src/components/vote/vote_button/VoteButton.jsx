@@ -32,6 +32,7 @@ export const VoteButton = ({ voteableType, voteableId, totalUpvote = 0, totalDow
             })}
         >
             <Icon name="clap"
+                aria-hidden="true"
                 data-tid={"action_vote_argument"}
                 height={18}
                 width={18}
