@@ -241,3 +241,13 @@ a.voteButton {
     font-size: theme.$font-size-normal;
     color: theme.$text-primary;
 }
+
+.showResultButton {
+    background: none;
+    border: 0;
+    padding: 0;
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+  }
+  

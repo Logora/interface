@@ -296,9 +296,14 @@ export const VoteBox = ({ numberVotes, votePositions, voteableType, voteableId, 
                                             <FormattedMessage id="vote.vote_box.update" defaultMessage="Modify" />
                                         </button>
                                         :
-                                        <div className={styles.voteActionButton} onClick={() => setShowResults(false)}>
+                                        <button
+                                            type="button"
+                                            className={styles.voteActionButton}
+                                            onClick={() => setShowResults(false)}
+                                        >
                                             <FormattedMessage id="vote.vote_box.back" defaultMessage="Back to vote" />
-                                        </div>
+                                        </button>
+
                                     }
                                 </div>
                             }
@@ -339,14 +344,17 @@ export const VoteBox = ({ numberVotes, votePositions, voteableType, voteableId, 
                         <div className={cx(styles.voteBoxActions, styles.voteBoxShowResultContainer, { [showResultClassName]: showResultClassName })}>
                             <div className={styles.voteBoxShowResult}>
                                 {typeof window !== "undefined" && !redirectUrl ?
-                                    <div onClick={() => handleShowResults()} data-tid="show_vote_result" data-testid={"show-result"}>
+                                    <button
+                                        type="button"
+                                        onClick={handleShowResults}
+                                        data-tid="show_vote_result"
+                                        data-testid="show-result"
+                                        className={styles.showResultButton}
+                                    >
                                         <span className={cx(styles.boldShowResult, styles.outlined)}>
-                                            <FormattedMessage
-                                                id="vote.vote_box.show_result"
-                                                defaultMessage="Show result"
-                                            />
+                                            <FormattedMessage id="vote.vote_box.show_result" defaultMessage="Show result" />
                                         </span>
-                                    </div>
+                                    </button>
                                     :
                                     <Link to={getRedirectUrl(null)} rel="nofollow" data-tid="show_vote_result" target="_top" external data-testid={"show-result"}>
                                         <span className={cx(styles.boldShowResult, styles.outlined)}><FormattedMessage id="vote.vote_box.show_result" defaultMessage="Show result" /></span>
