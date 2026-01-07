@@ -55,9 +55,7 @@ export const ShareButton = ({ showText, shareUrl, shareTitle, shareText = false,
 
 	return (
 		<div
-		    role="button"
 			tabIndex='0'
-			aria-label={intl.formatMessage({ id: "share.share_button.text", defaultMessage: "Share" })}
 			title={intl.formatMessage({ id: "share.share_button.text", defaultMessage: "Share" })}
 			className={cx(styles.shareButtonContainer, className)}
 			onClick={handleShare}

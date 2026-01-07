@@ -1,5 +1,6 @@
 import React from "react";
 import { useVote } from "@logora/debate.vote.use_vote";
+import { useIntl } from 'react-intl';
 import { Icon } from "@logora/debate.icons.icon";
 import cx from "classnames";
 import styles from "./VoteButton.module.scss";
@@ -12,7 +13,8 @@ export const VoteButton = ({ voteableType, voteableId, totalUpvote = 0, totalDow
         totalUpvote,
         totalDownvote
     );
-
+    const intl = useIntl();
+    
     return (
 
         <button
@@ -24,6 +26,10 @@ export const VoteButton = ({ voteableType, voteableId, totalUpvote = 0, totalDow
             onClick={disabled ? null : () => handleVote(true)}
             data-testid="vote-button"
             data-tid="action_vote_argument"
+            aria-label={intl.formatMessage({
+                id: "vote.vote_button.aria_label",
+                defaultMessage: "Like argument"
+            })}
         >
             <Icon name="clap"
                 data-tid={"action_vote_argument"}
