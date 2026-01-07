@@ -27,7 +27,7 @@ export const Modal = ({ title, showCloseButton = false, fullScreen, children, di
         <div className={cx(styles.modalContainer)} ref={modalRef}>
           <div className={cx(styles.modalHeader, { [styles.modalHeaderWithTitle]: title })}>
             {title &&
-              <div d="modal-title">{title}</div>
+              <div id="modal-title">{title}</div>
             }
             {showCloseButton &&
               <button
