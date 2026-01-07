@@ -18,22 +18,30 @@ export const TogglePosition = ({ activeLabel, firstLabel, firstLabelClassName = 
 
     return (
         <div className={styles.container}>
-            <div data-testid={"firstLabel"} onClick={() => labelChoice(0)} className={cx(styles.label, {[styles.labelActive]: activatedLabel === 0, [firstLabelClassName]: activatedLabel === 0})}>
-                <TranslatedContent 
+            <button
+                type="button"
+                data-testid={"firstLabel"}
+                onClick={() => labelChoice(0)}
+                className={cx(styles.label, {
+                    [styles.labelActive]: activatedLabel === 0,
+                    [firstLabelClassName]: activatedLabel === 0
+                })}
+            >
+                <TranslatedContent
                     originalContent={firstLabel.name}
                     originalLanguage={firstLabel.language}
                     targetField={"name"}
                     translations={firstLabel.translation_entries}
                 />
-            </div>
-            <div data-testid={"secondLabel"} onClick={() => labelChoice(1)} className={cx(styles.label, {[styles.labelActive]: activatedLabel === 1, [secondLabelClassName]: activatedLabel === 1})}>
-                <TranslatedContent 
+            </button>
+            <button type="button" data-testid={"secondLabel"} onClick={() => labelChoice(1)} className={cx(styles.label, { [styles.labelActive]: activatedLabel === 1, [secondLabelClassName]: activatedLabel === 1 })}>
+                <TranslatedContent
                     originalContent={secondLabel.name}
                     originalLanguage={secondLabel.language}
                     targetField={"name"}
                     translations={secondLabel.translation_entries}
                 />
-            </div>
+            </button>
         </div>
     )
 }
