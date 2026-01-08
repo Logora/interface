@@ -18,6 +18,7 @@
 .image {
     width: 48px !important;
     height: 48px !important;
+    flex: 0 0 48px;
     border-radius: theme.$box-border-radius;
     object-fit: cover;
     overflow: hidden;
