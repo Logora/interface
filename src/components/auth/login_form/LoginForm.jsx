@@ -31,7 +31,7 @@ export const LoginForm = ({ onSubmit, forgotPasswordUrl, error = false }) => {
 			<div className={styles.formGroup}>
 				<TextInput
 					type={"email"}
-					name={"email"}
+					name={intl.formatMessage({ id: "auth.login_form.email_placeholder", defaultMessage: "Email" })}
 					required
 					placeholder={intl.formatMessage({ id: "auth.login_form.email_placeholder", defaultMessage: "Email" })}
 					onChange={(e) => setEmail(e.target.value)}
@@ -42,7 +42,7 @@ export const LoginForm = ({ onSubmit, forgotPasswordUrl, error = false }) => {
 			<div className={styles.formGroup}>
 				<TextInput
 					type={"password"}
-					name={"password"}
+					name={intl.formatMessage({ id: "auth.login_form.password_placeholder", defaultMessage: "Password" })}
 					required
 					placeholder={intl.formatMessage({ id: "auth.login_form.password_placeholder", defaultMessage: "Password" })}
 					onChange={(e) => setPassword(e.target.value)}

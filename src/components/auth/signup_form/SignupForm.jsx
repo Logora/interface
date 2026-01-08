@@ -42,7 +42,7 @@ export const SignupForm = ({ onSubmit, providerName, error = false }) => {
                 <div className={styles.formGroup}>
                     <TextInput 
                         type={"text"} 
-                        name={"first_name"} 
+                        name={intl.formatMessage({ id:"auth.signup_form.first_name_placeholder", defaultMessage: "First name" })}
                         aria-label={intl.formatMessage({ id: "auth.signup_form.first_name.aria_label", defaultMessage: "First name" })}
                         placeholder={intl.formatMessage({ id:"auth.signup_form.first_name_placeholder", defaultMessage: "First name" })} 
                         onChange={(e) => setFirstName(e.target.value)}
@@ -54,7 +54,7 @@ export const SignupForm = ({ onSubmit, providerName, error = false }) => {
                 <div className={styles.formGroup}>
                     <TextInput 
                         type={"text"} 
-                        name={"last_name"}
+                        name={intl.formatMessage({ id:"auth.signup_form.last_name_placeholder", defaultMessage: "Last name" })}
                         aria-label={intl.formatMessage({ id: "auth.signup_form.last_name.aria_label", defaultMessage: "Last name" })}
                         placeholder={intl.formatMessage({ id:"auth.signup_form.last_name_placeholder", defaultMessage: "Last name" })}
                         error={error}
@@ -65,7 +65,7 @@ export const SignupForm = ({ onSubmit, providerName, error = false }) => {
                 <div className={styles.formGroup}>
                     <TextInput 
                         type={"email"} 
-                        name={"email"} 
+                        name={intl.formatMessage({ id:"auth.signup_form.email_placeholder", defaultMessage: "Email" })} 
                         aria-label={intl.formatMessage({ id: "auth.signup_form.email.aria_label", defaultMessage: "Email" })}
                         placeholder={intl.formatMessage({ id:"auth.signup_form.email_placeholder", defaultMessage: "Email" }) } 
                         error={error}
@@ -77,7 +77,7 @@ export const SignupForm = ({ onSubmit, providerName, error = false }) => {
                 <div className={styles.formGroup}>
                     <TextInput 
                         type={"password"} 
-                        name={"password"} 
+                        name={intl.formatMessage({ id:"auth.signup_form.password_placeholder", defaultMessage: "Password" })} 
                         aria-label={intl.formatMessage({ id: "auth.signup_form.password.aria_label", defaultMessage: "Password" })}
                         placeholder={intl.formatMessage({ id:"auth.signup_form.password_placeholder", defaultMessage: "Password"}) }
                         error={error || passwordError} 
@@ -90,7 +90,7 @@ export const SignupForm = ({ onSubmit, providerName, error = false }) => {
                 <div className={styles.formGroup}>
                     <TextInput 
                         type={"password"} 
-                        name={"password_confirmation"} 
+                        name={intl.formatMessage({ id:"auth.signup_form.password_confirmation_placeholder", defaultMessage: "Confirm password" })}
                         aria-label={intl.formatMessage({ id: "auth.signup_form.password_confirmation.aria_label", defaultMessage: "Confirm password" })}
                         placeholder={intl.formatMessage({ id:"auth.signup_form.password_confirmation_placeholder", defaultMessage: "Confirm password" })}
                         error={error || passwordError} 
