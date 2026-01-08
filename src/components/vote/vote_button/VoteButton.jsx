@@ -26,6 +26,7 @@ export const VoteButton = ({ voteableType, voteableId, totalUpvote = 0, totalDow
             onClick={disabled ? null : () => handleVote(true)}
             data-testid="vote-button"
             data-tid="action_vote_argument"
+            aria-pressed={activeVote}
             aria-label={intl.formatMessage({
                 id: "vote.vote_button.aria_label",
                 defaultMessage: "Like argument"
