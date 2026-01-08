@@ -8,7 +8,7 @@ import PropTypes from "prop-types";
 export const Select = ({ options, defaultOption, onChange, resetSelect = false, disabled = false, className, horizontalPosition = "left" }) => {
 	const defaultOptionValue = defaultOption ? options.filter(elm => elm.name === defaultOption)[0] : options[0];
 	const [currentOption, setCurrentOption] = useState(defaultOptionValue);
-	
+
 	useEffect(() => {
 		if (resetSelect === true) {
 			setCurrentOption(defaultOptionValue);
@@ -16,9 +16,9 @@ export const Select = ({ options, defaultOption, onChange, resetSelect = false, 
 	}, [resetSelect]);
 
 	useEffect(() => {
-        if (defaultOption) {
-		    setCurrentOption(options.filter(elm => elm.name === defaultOption)[0]);
-        }
+		if (defaultOption) {
+			setCurrentOption(options.filter(elm => elm.name === defaultOption)[0]);
+		}
 	}, [defaultOption]);
 
 	const handleSelectOption = (option) => {
@@ -29,10 +29,13 @@ export const Select = ({ options, defaultOption, onChange, resetSelect = false, 
 	};
 
 	const displayOption = (option) => {
+		const isSelected = currentOption?.name === option.name;
 		return (
 			option.name !== "" &&
 			<div
-				className={cx(styles.selectOption, { [styles.selectOptionActive]: (currentOption.name == option.name) })}
+				role="option"
+				aria-selected={isSelected}
+				className={cx(styles.selectOption, { [styles.selectOptionActive]: isSelected })}
 				key={option.value}
 				value={option.value}
 				data-tid={option.dataTid}
@@ -42,7 +45,7 @@ export const Select = ({ options, defaultOption, onChange, resetSelect = false, 
 			</div>
 		);
 	};
-	
+
 	return (
 		<div className={styles.selectContainer}>
 			<Dropdown horizontalPosition={horizontalPosition}>
@@ -50,7 +53,11 @@ export const Select = ({ options, defaultOption, onChange, resetSelect = false, 
 					<span className={styles.currentOptionText}>{currentOption?.text}</span>{" "}
 					<Icon name="lightArrow" className={styles.arrowDown} height={10} width={10} />
 				</div>
-				{ !disabled && options.map(displayOption) }
+				{!disabled && (
+					<div role="listbox">
+						{options.map(displayOption)}
+					</div>
+				)}
 			</Dropdown>
 		</div>
 	);

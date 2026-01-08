@@ -4,12 +4,14 @@ import userEvent from '@testing-library/user-event';
 import { ConfirmModal } from './ConfirmModal';
 import { ModalProvider } from '@logora/debate.dialog.modal';
 import { IconProvider } from '@logora/debate.icons.icon_provider';
+import { IntlProvider } from "react-intl";
 import * as regularIcons from '@logora/debate.icons.regular_icons';
 
 describe('ConfirmModal', () => {
 	it('should render modal with content and title', () => {
 		const modal = render(
 			<IconProvider library={regularIcons}>
+				<IntlProvider locale="en">
 				<ModalProvider>
 					<ConfirmModal 
 						title="confirm modal title" 
@@ -18,6 +20,7 @@ describe('ConfirmModal', () => {
 						cancelLabel="no"
 					/>
 				</ModalProvider>
+				</IntlProvider>
 			</IconProvider>
 		);
 
@@ -31,6 +34,7 @@ describe('ConfirmModal', () => {
 	it('should close on click outside', async () => {
 		const modal = render(
 			<IconProvider library={regularIcons}>
+				<IntlProvider locale="en">
 				<ModalProvider>
 					<ConfirmModal 
 						title="confirm modal title" 
@@ -39,6 +43,7 @@ describe('ConfirmModal', () => {
 						cancelLabel="no"
 					/>
 				</ModalProvider>
+				</IntlProvider>
 			</IconProvider>
 		);
 
@@ -109,6 +114,7 @@ describe('ConfirmModal', () => {
 
 		const modal = render(
 			<IconProvider library={regularIcons}>
+				<IntlProvider locale="en">
 				<ModalProvider>
 					<ConfirmModal 
 						title="confirm modal title" 
@@ -118,6 +124,7 @@ describe('ConfirmModal', () => {
 						onConfirmCallback={confirmCallback}
 					/>
 				</ModalProvider>
+				</IntlProvider>
 			</IconProvider>
 		);
 
@@ -135,6 +142,7 @@ describe('ConfirmModal', () => {
 
 		const modal = render(
 			<IconProvider library={regularIcons}>
+				<IntlProvider locale="en">
 				<ModalProvider>
 					<ConfirmModal 
 						title="confirm modal title" 
@@ -144,6 +152,7 @@ describe('ConfirmModal', () => {
 						onCancelCallback={cancelCallback}
 					/>
 				</ModalProvider>
+				</IntlProvider>
 			</IconProvider>
 		);
 

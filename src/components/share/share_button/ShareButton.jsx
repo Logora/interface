@@ -55,9 +55,9 @@ export const ShareButton = ({ showText, shareUrl, shareTitle, shareText = false,
 
 	return (
 		<div
+			tabIndex='0'
 			title={intl.formatMessage({ id: "share.share_button.text", defaultMessage: "Share" })}
 			className={cx(styles.shareButtonContainer, className)}
-			tabIndex='0'
 			onClick={handleShare}
 			data-tid="action_share_button"
 		>

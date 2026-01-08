@@ -2,12 +2,14 @@ import React from 'react';
 import { ConfirmModal } from './ConfirmModal';
 import { ModalProvider } from '@logora/debate.dialog.modal';
 import { IconProvider } from '@logora/debate.icons.icon_provider';
+import { IntlProvider } from "react-intl";
 import * as regularIcons from '@logora/debate.icons.regular_icons';
 
 export const DefaultConfirmModal = () => {
     return (
         <div style={{width: "350px", height: "100px"}}>
             <IconProvider library={regularIcons}>
+                <IntlProvider locale="en">
                 <ModalProvider>
                     <ConfirmModal 
                         title="Modal Title"
@@ -16,6 +18,7 @@ export const DefaultConfirmModal = () => {
                         cancelLabel="No"
                     />
                 </ModalProvider>
+                </IntlProvider>
             </IconProvider>
         </div>
     );

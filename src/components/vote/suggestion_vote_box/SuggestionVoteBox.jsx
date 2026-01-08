@@ -47,10 +47,11 @@ export const SuggestionVoteBox = ({ voteableType, voteableId, totalUpvote = 0, t
   return (
     <div className={styles.voteButtonsContainer}>
       <Button
+        type="button"
         onClick={disabled ? null : () => handleVote(true)}
         data-testid="upvote-button"
         disabled={disabled}
-        rightIcon={<Icon name="check" width={20} height={20} data-testid="upvote-icon" />}
+        rightIcon={<Icon name="check" width={20} height={20} data-testid="upvote-icon" aria-hidden="true"/>}
         active={!(activeVote && voteSide)}
       >
         <span className={styles.text}>
@@ -58,9 +59,10 @@ export const SuggestionVoteBox = ({ voteableType, voteableId, totalUpvote = 0, t
         </span>
       </Button>
       <Button
+        type="button"
         onClick={disabled ? null : () => handleDownvote()}
         disabled={disabled}
-        rightIcon={<Icon name="close" width={10} height={10} />}
+        rightIcon={<Icon name="close" width={10} height={10} aria-hidden="true" />}
         active={!(activeVote && !voteSide)}
       >
         <span className={styles.text}>

@@ -10,12 +10,15 @@
     visibility: visible;
     transition: visibility 0s 2s;
     @include spacing.p(3, xs);
+
     &.info {
         background-color: theme.$call-primary;
     }
+
     &.success {
         background-color: theme.$success-primary;
     }
+
     &.error {
         background-color: theme.$cancel-primary;
     }
@@ -30,6 +33,10 @@
 }
 
 .closeButton {
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
     outline: none;
     background-color: none !important;
     border: none !important;
@@ -52,6 +59,7 @@
     width: fit-content;
     font-size: theme.$font-size-small;
     color: theme.$text-light;
+
     .textPoints {
         width: fit-content;
     }

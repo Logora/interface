@@ -4,6 +4,7 @@ import { Icon } from '@logora/debate.icons.icon';
 import { NavbarButton } from '@logora/debate.navbar.navbar_button';
 import { useLocation } from "react-router";
 import { useAuth } from "@logora/debate.auth.use_auth";
+import { useIntl } from 'react-intl';
 import { useConfig, useRoutes } from "@logora/debate.data.config_provider";
 import { useAuthRequired } from "@logora/debate.hooks.use_auth_required";
 import { Link } from "@logora/debate.action.link";
@@ -21,6 +22,7 @@ export const Drawer = ({ isOpen = false, onClose, title, size = '30vw', enableOv
     const location = useLocation();
     const routes = useRoutes();
     const config = useConfig();
+    const intl = useIntl();
     const { isLoggedIn, currentUser } = useAuth();
     const requireAuthentication = useAuthRequired();
     const [unreadNotificationCount, setUnreadNotificationCount] = useState(0);
@@ -73,9 +75,14 @@ export const Drawer = ({ isOpen = false, onClose, title, size = '30vw', enableOv
             >
                 <div className={styles.header}>
                     <div className={styles.headerRowTop}>
-                        <div onClick={closeDrawer} className={styles.closeButton}>
+                        <button
+                            type="button"
+                            onClick={closeDrawer}
+                            className={styles.closeButton}
+                            aria-label={intl.formatMessage({ id: "dialog.drawer.aria_label", defaultMessage: "Close drawer" })}
+                        >
                             <Icon name="close" width={15} height={15} />
-                        </div>
+                        </button>
                     </div>
 
                     <div className={styles.headerRowBottom}>
