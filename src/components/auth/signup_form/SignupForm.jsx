@@ -32,7 +32,7 @@ export const SignupForm = ({ onSubmit, providerName, error = false }) => {
         if (password === confirmPassword) { 
             return true 
         }
-        setPasswordError(intl.formatMessage({ id: "auth.signup_form.password_error", defaultMessage: "Password and confirmation are not matching." }))
+        setPasswordError(intl.formatMessage({ id: "auth_signup_form_password_error", defaultMessage: "Password and confirmation are not matching." }))
         return false
     }
 
@@ -42,9 +42,9 @@ export const SignupForm = ({ onSubmit, providerName, error = false }) => {
                 <div className={styles.formGroup}>
                     <TextInput 
                         type={"text"} 
-                        name={intl.formatMessage({ id:"auth.signup_form.first_name_placeholder", defaultMessage: "First name" })}
+                        name={"first_name"} 
                         aria-label={intl.formatMessage({ id: "auth.signup_form.first_name.aria_label", defaultMessage: "First name" })}
-                        placeholder={intl.formatMessage({ id:"auth.signup_form.first_name_placeholder", defaultMessage: "First name" })} 
+                        placeholder={intl.formatMessage({ id:"auth_signup_form_first_name_placeholder", defaultMessage: "First name" })} 
                         onChange={(e) => setFirstName(e.target.value)}
                         error={error}
                         required
@@ -54,9 +54,9 @@ export const SignupForm = ({ onSubmit, providerName, error = false }) => {
                 <div className={styles.formGroup}>
                     <TextInput 
                         type={"text"} 
-                        name={intl.formatMessage({ id:"auth.signup_form.last_name_placeholder", defaultMessage: "Last name" })}
+                        name={"last_name"}
                         aria-label={intl.formatMessage({ id: "auth.signup_form.last_name.aria_label", defaultMessage: "Last name" })}
-                        placeholder={intl.formatMessage({ id:"auth.signup_form.last_name_placeholder", defaultMessage: "Last name" })}
+                        placeholder={intl.formatMessage({ id:"auth_signup_form_last_name_placeholder", defaultMessage: "Last name" })}
                         error={error}
                         onChange={(e) => setLastName(e.target.value)}
                         data-testid={"last-name-input"}
@@ -65,9 +65,9 @@ export const SignupForm = ({ onSubmit, providerName, error = false }) => {
                 <div className={styles.formGroup}>
                     <TextInput 
                         type={"email"} 
-                        name={intl.formatMessage({ id:"auth.signup_form.email_placeholder", defaultMessage: "Email" })} 
+                        name={"email"} 
                         aria-label={intl.formatMessage({ id: "auth.signup_form.email.aria_label", defaultMessage: "Email" })}
-                        placeholder={intl.formatMessage({ id:"auth.signup_form.email_placeholder", defaultMessage: "Email" }) } 
+                        placeholder={intl.formatMessage({ id:"auth_signup_form_email_placeholder", defaultMessage: "Email" }) } 
                         error={error}
                         required
                         onChange={(e) => setEmail(e.target.value)} 
@@ -77,9 +77,9 @@ export const SignupForm = ({ onSubmit, providerName, error = false }) => {
                 <div className={styles.formGroup}>
                     <TextInput 
                         type={"password"} 
-                        name={intl.formatMessage({ id:"auth.signup_form.password_placeholder", defaultMessage: "Password" })} 
+                        name={"password"} 
                         aria-label={intl.formatMessage({ id: "auth.signup_form.password.aria_label", defaultMessage: "Password" })}
-                        placeholder={intl.formatMessage({ id:"auth.signup_form.password_placeholder", defaultMessage: "Password"}) }
+                        placeholder={intl.formatMessage({ id:"auth_signup_form_password_placeholder", defaultMessage: "Password"}) }
                         error={error || passwordError} 
                         message={passwordError && passwordError}
                         required
@@ -90,13 +90,13 @@ export const SignupForm = ({ onSubmit, providerName, error = false }) => {
                 <div className={styles.formGroup}>
                     <TextInput 
                         type={"password"} 
-                        name={intl.formatMessage({ id:"auth.signup_form.password_confirmation_placeholder", defaultMessage: "Confirm password" })}
+                        name={"password_confirmation"} 
                         aria-label={intl.formatMessage({ id: "auth.signup_form.password_confirmation.aria_label", defaultMessage: "Confirm password" })}
-                        placeholder={intl.formatMessage({ id:"auth.signup_form.password_confirmation_placeholder", defaultMessage: "Confirm password" })}
+                        placeholder={intl.formatMessage({ id:"auth_signup_form_password_confirmation_placeholder", defaultMessage: "Confirm password" })}
                         error={error || passwordError} 
                         required
                         message={error ? 
-                                        intl.formatMessage({ id:"auth.signup.form_error", defaultMessage: "An error occurred while signing up. Please check your input and try again." })
+                                        intl.formatMessage({ id:"auth_signup_form_error", defaultMessage: "An error occurred while signing up. Please check your input and try again." })
                                 : passwordError ?
                                         passwordError
                                 : null}
@@ -110,14 +110,14 @@ export const SignupForm = ({ onSubmit, providerName, error = false }) => {
                         name={"accepts_provider_email"} 
                         style={{ fontSize: 18 }}
                         checked={emailConsent} 
-                        label={intl.formatMessage({ id:"auth.signup_form.accepts_email_label", defaultMessage: "I agree to receive emails from the editor" }, { variable: providerName } )}
+                        label={intl.formatMessage({ id:"auth_signup_form_accepts_email_label", defaultMessage: "I agree to receive emails from the editor" }, { variable: providerName } )}
                         onInputChanged={(_e) => setEmailConsent(!emailConsent)} 
                         data-testid={"accepts-email-input"}
                     />
                 </div>
                 <div className={cx(styles.formGroup, styles.formSubmitGroup)}>
                     <Button className={styles.formSubmitButton} role="button" type="submit" handleClick={() => null}>
-                        { intl.formatMessage({ id:"auth.signup_form.sign_up", defaultMessage: "Sign up" }) }
+                        { intl.formatMessage({ id:"auth_signup_form_sign_up", defaultMessage: "Sign up" }) }
                     </Button>
                 </div>
             </form>

@@ -31,9 +31,9 @@ export const LoginForm = ({ onSubmit, forgotPasswordUrl, error = false }) => {
 			<div className={styles.formGroup}>
 				<TextInput
 					type={"email"}
-					name={intl.formatMessage({ id: "auth.login_form.email_placeholder", defaultMessage: "Email" })}
+					name={"email"}
 					required
-					placeholder={intl.formatMessage({ id: "auth.login_form.email_placeholder", defaultMessage: "Email" })}
+					placeholder={intl.formatMessage({ id: "auth_login_form_email_placeholder", defaultMessage: "Email" })}
 					onChange={(e) => setEmail(e.target.value)}
 					error={error}
 					data-testid={"email-input"}
@@ -42,23 +42,23 @@ export const LoginForm = ({ onSubmit, forgotPasswordUrl, error = false }) => {
 			<div className={styles.formGroup}>
 				<TextInput
 					type={"password"}
-					name={intl.formatMessage({ id: "auth.login_form.password_placeholder", defaultMessage: "Password" })}
+					name={"password"}
 					required
-					placeholder={intl.formatMessage({ id: "auth.login_form.password_placeholder", defaultMessage: "Password" })}
+					placeholder={intl.formatMessage({ id: "auth_login_form_password_placeholder", defaultMessage: "Password" })}
 					onChange={(e) => setPassword(e.target.value)}
 					error={error}
-					message={error && intl.formatMessage({ id: "auth.login_form.error", defaultMessage: "An error occurred while signing in, please try again" })}
+					message={error && intl.formatMessage({ id: "auth_login_form_error", defaultMessage: "An error occurred while signing in, please try again" })}
 					data-testid={"password-input"}
 				/>
 			</div>
 			{ forgotPasswordUrl &&
 				<a href={getUrlWithRedirect()} target='_blank' role="link" className={styles.forgotPassword}>
-					{ intl.formatMessage({ id: "auth.login_form.forgot_password", defaultMessage: "Forgot password ?" }) }
+					{ intl.formatMessage({ id: "auth_login_form_forgot_password", defaultMessage: "Forgot password ?" }) }
 				</a>
 			}
 			<div className={cx(styles.formSubmitGroup)}>
 				<Button className={styles.formSubmitButton} type='submit' role="button" handleClick={() => null}>
-					{ intl.formatMessage({ id: "auth.login_form.sign_in", defaultMessage: "Sign in" }) }
+					{ intl.formatMessage({ id: "auth_login_form_sign_in", defaultMessage: "Sign in" }) }
 				</Button>
 			</div>
 		</form>
