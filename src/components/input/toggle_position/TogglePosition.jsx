@@ -22,6 +22,7 @@ export const TogglePosition = ({ activeLabel, firstLabel, firstLabelClassName = 
                 type="button"
                 data-testid={"firstLabel"}
                 onClick={() => labelChoice(0)}
+                aria-pressed={activatedLabel === 0}
                 className={cx(styles.label, {
                     [styles.labelActive]: activatedLabel === 0,
                     [firstLabelClassName]: activatedLabel === 0
@@ -34,7 +35,7 @@ export const TogglePosition = ({ activeLabel, firstLabel, firstLabelClassName = 
                     translations={firstLabel.translation_entries}
                 />
             </button>
-            <button type="button" data-testid={"secondLabel"} onClick={() => labelChoice(1)} className={cx(styles.label, { [styles.labelActive]: activatedLabel === 1, [secondLabelClassName]: activatedLabel === 1 })}>
+            <button type="button" data-testid={"secondLabel"} onClick={() => labelChoice(1)} aria-pressed={activatedLabel === 1} className={cx(styles.label, { [styles.labelActive]: activatedLabel === 1, [secondLabelClassName]: activatedLabel === 1 })}>
                 <TranslatedContent
                     originalContent={secondLabel.name}
                     originalLanguage={secondLabel.language}
