@@ -217,7 +217,7 @@ describe("ArgumentInput", () => {
     });
 
     it("should display side modal if the disabledPositions is set", async () => {
-        const { queryByText, getByText, getByRole } = render(
+        const { queryByText, getByText, getByTestId } = render(
             <BrowserRouter>
                 <ConfigProvider>
                     <IconProvider library={regularIcons}>
@@ -258,7 +258,7 @@ describe("ArgumentInput", () => {
         expect(queryByText(debate.positions[0].name)).toBeInTheDocument();
         expect(queryByText(debate.positions[1].name)).toBeInTheDocument();
 
-        const onSubmit = getByRole('button', { type: 'submit' });
+        const onSubmit = getByTestId('submit-button');
         await act(async () => { await userEvent.click(onSubmit) });
         expect(queryByText("Choose your side")).toBeInTheDocument();
         expect(getByText(`You have already reached the argument limit (10) for position ${debate.positions[0].name}. You can support the other position.`)).toBeInTheDocument();
@@ -329,7 +329,7 @@ describe("ArgumentInput", () => {
         const input = getByTestId("argument-input");
         await userEvent.click(input);
 
-        const onSubmit = getByRole('button', { type: 'submit' });
+        const onSubmit = getByTestId('submit-button');
 
         // Empty content
         await act(async () => { await userEvent.click(onSubmit) });
@@ -415,7 +415,7 @@ describe("ArgumentInput", () => {
         await act(async () => { await userEvent.click(setContentButton) });
         expect(queryByText("I write an argument")).toBeInTheDocument();
 
-        const onSubmit = getByRole('button', { type: 'submit' });
+        const onSubmit = getByTestId('submit-button');
         await act(async () => { await userEvent.click(onSubmit) });
         expect(callback).toHaveBeenCalled();
     });

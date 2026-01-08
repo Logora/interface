@@ -30,6 +30,10 @@
 
 
 .closeButton {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
     margin-left: auto;
     display: flex !important;
     align-items: center !important;

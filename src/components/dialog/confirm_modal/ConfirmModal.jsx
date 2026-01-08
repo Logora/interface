@@ -25,8 +25,8 @@ export const ConfirmModal = ({ title, question, confirmLabel, cancelLabel, onCon
                     { question }
                 </div>
                 <div className={styles.modalActions}>
-                    <Button className={cx(styles.modalActionLeft, confirmButtonClass)} handleClick={() => onConfirm()}>{ confirmLabel }</Button>
-                    <Button className={cx(styles.modalActionRight, cancelButtonClass)} handleClick={() => onCancel()}>{ cancelLabel }</Button>
+                    <Button type="button" className={cx(styles.modalActionLeft, confirmButtonClass)} handleClick={() => onConfirm()}>{ confirmLabel }</Button>
+                    <Button type="button" className={cx(styles.modalActionRight, cancelButtonClass)} handleClick={() => onCancel()}>{ cancelLabel }</Button>
                 </div>
             </div>
         </Modal>

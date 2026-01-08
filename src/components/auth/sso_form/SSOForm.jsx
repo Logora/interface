@@ -116,6 +116,7 @@ export const SSOForm = ({
 				) : (
 					<Icon
 						name="next"
+						aria-hidden="true"
 						height={50}
 						width={50}
 						className={styles.loginIcon}

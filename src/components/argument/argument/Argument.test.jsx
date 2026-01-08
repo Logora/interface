@@ -135,18 +135,18 @@ const Providers = ({ children }) => (
                     <ResponsiveProvider>
                         <ModalProvider>
                             <ListProvider>
+                            <IntlProvider locale="en">
                                 <ToastProvider>
                                     <VoteProvider>
                                         <InputProvider>
                                             <IconProvider library={regularIcons}>
-                                                <IntlProvider locale="en">
                                                     <AddContentComponent />
                                                     {children}
-                                                </IntlProvider>
                                             </IconProvider>
                                         </InputProvider>
                                     </VoteProvider>
                                 </ToastProvider>
+                                </IntlProvider>
                             </ListProvider>
                         </ModalProvider>
                     </ResponsiveProvider>

@@ -278,11 +278,11 @@ export const PaginatedList = ({
     const displayResource = (resource, index) => {
         if (resource !== undefined) {
             return (
-                <div className={styles.paginatedListItem} data-testid={"list-item"} role="listitem" key={resource[uniqueIdKey || "id"]} onClick={onElementClick}>
+                <li className={styles.paginatedListItem} data-testid={"list-item"} key={resource[uniqueIdKey || "id"]} onClick={onElementClick}>
                     <StandardErrorBoundary hideMessage={true}>
                         {React.cloneElement(children, { ...{ index: index, [resourcePropName]: resource } })}
                     </StandardErrorBoundary>
-                </div>
+                </li>
             );
         }
         return null;
@@ -291,9 +291,9 @@ export const PaginatedList = ({
     const displayLoadingComponent = (index) => {
         if (loadingComponent) {
             return (
-                <div className={styles.paginatedListItem} key={index}>
+                <li className={styles.paginatedListItem} key={index}>
                     {loadingComponent}
-                </div>
+                </li>
             );
         }
         return null;
@@ -328,7 +328,7 @@ export const PaginatedList = ({
                     </div>
             ) :
                 <>
-                    <div className={cx(styles.paginatedList, { [styles.paginatedListIsTablet]: !isMobile && !isDesktop, [styles.centeredList]: display === "column", [styles.column]: display === "column", [styles.twoElementsPerLine]: elementsPerLine === 2, [styles.oneElementPerLine]: elementsPerLine === 1, [styles.indexLayoutList]: indexLayout, [styles.listIsDesktop]: isDesktop, [styles.listIsTablet]: isTablet && !isDesktop, [styles.listIsMobile]: isMobile })} role="list" style={{ gap: gap }}>
+                    <ul className={cx(styles.paginatedList, { [styles.paginatedListIsTablet]: !isMobile && !isDesktop, [styles.centeredList]: display === "column", [styles.column]: display === "column", [styles.twoElementsPerLine]: elementsPerLine === 2, [styles.oneElementPerLine]: elementsPerLine === 1, [styles.indexLayoutList]: indexLayout, [styles.listIsDesktop]: isDesktop, [styles.listIsTablet]: isTablet && !isDesktop, [styles.listIsMobile]: isMobile })} style={{ gap: gap }}>
                         {currentResources.map(displayResource)}
                         {/* Show loading components directly in list when loading more elements */}
                         {isLoading ?
@@ -336,7 +336,7 @@ export const PaginatedList = ({
                             :
                             null
                         }
-                    </div>
+                    </ul>
                     {/* Show pagination button when content is loaded */}
                     {(!isLoading && withPagination !== false) && (
                         <Pagination
