@@ -23,6 +23,7 @@ export const Dropdown = ({ onClick, horizontalPosition = "left", disabled = fals
         <div ref={dropdownRef} className={cx(styles.dropdownWrapper, { [className]: className })}>
             <button
                 type='button'
+                aria-expanded={active}
                 className={styles.dropdownHeader}
                 onClick={onToggleClick}
             >
