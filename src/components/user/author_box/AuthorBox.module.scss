@@ -93,11 +93,11 @@
 }
 
 .authorPoints {
-    color: theme.$text-secondary;
+    color: theme.$text-primary;
 }
 
 .authorEloquence {
-    color: theme.$text-secondary;
+    color: theme.$text-primary;
     @include display.text-truncate();
 }
 

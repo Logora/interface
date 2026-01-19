@@ -31,7 +31,7 @@
     flex-wrap: wrap;
     font-size: theme.$font-size-small;
     line-height: theme.$line-height-none;
-    color: theme.$text-secondary;
+    color: theme.$text-primary;
     @include spacing.mb(1, xs);
 }
 
