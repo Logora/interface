@@ -44,7 +44,7 @@
     word-break: break-word; 
     a {
         font-size: theme.$font-size-small;
-        color: theme.$announcement-text-primary !important;
         text-decoration: underline !important;
+        font-weight: bold !important;
     }
 }
