@@ -134,7 +134,7 @@ pre::-webkit-scrollbar-thumb {
 .charactersCount {
     align-self: center;
     font-size: $font-size-small;
-    color: $text-secondary;
+    color: $text-primary;
     white-space: nowrap;
     @include mt(2, xs);
 }
