@@ -6,13 +6,28 @@ import styles from './ReplyFooter.module.scss';
 import cx from 'classnames';
 
 export const ReplyFooter = ({ numberReplies, repliesAuthors = [], onToggleReplies, expandReplies }) => {
-    if(numberReplies <= 0) return null
+    if (numberReplies <= 0) return null
 
     return (
         <div className={styles.replyFooter} onClick={onToggleReplies}>
-            {repliesAuthors.map((author, index) =>
-                <Avatar key={index} avatarUrl={author.image_url} userName={author.full_name} size={32} showTooltip />
-            )}
+            {repliesAuthors.map((author, index) => (
+              <span
+              key={index}
+              className={
+                author.role === "editor"
+                  ? styles.replyAvatarRing
+                  : styles.replyAvatarNormal
+              }
+            >
+                    <Avatar
+                        avatarUrl={author.image_url}
+                        userName={author.full_name}
+                        size={32}
+                        showTooltip
+                    />
+                </span>
+            ))}
+
             <div
                 className={styles.expandRepliesContainer}
             >
