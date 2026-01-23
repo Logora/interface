@@ -9,6 +9,7 @@ import * as regularIcons from '@logora/debate.icons.regular_icons';
 Object.defineProperty(window, 'location', {
 	value: {
 	  origin: 'http://example.fr',
+	  href: 'http://example.fr/path-name',
 	}
 });
 
@@ -58,7 +59,7 @@ describe('FacebookLoginButton', () => {
 		expectedUrl.searchParams.append("client_id", clientId);
 		expectedUrl.searchParams.append("redirect_uri", redirectUri);
 		expectedUrl.searchParams.append("scope", scope);
-		expectedUrl.searchParams.append("state", encodeURIComponent(window.btoa('http://example.fr/path-name')));
+		expectedUrl.searchParams.append("state", window.btoa(window.location.href));
 
 		await userEvent.click(renderedButton);
 		expect(spyWindowOpen).toHaveBeenCalledTimes(1);
