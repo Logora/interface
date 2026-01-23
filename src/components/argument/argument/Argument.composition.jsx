@@ -356,4 +356,3 @@ const argumentRejectedHidden = generateArgument({
       </Providers>
     </div>
   );
-  

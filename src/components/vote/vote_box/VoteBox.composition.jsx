@@ -270,3 +270,43 @@ export const VoteBoxWithVotesAndComments = () => {
         </div>
     );
 };
+
+export const VoteBoxHideShowResultButton = () => {
+    return (
+      <div style={{ width: "400px" }}>
+        <BrowserRouter>
+          <IntlProvider locale="en">
+            <DataProviderContext.Provider value={{ dataProvider: data }}>
+              <AuthContext.Provider value={{ currentUser: currentUser, isLoggedIn: true }}>
+                <IconProvider library={regularIcons}>
+                  <ToastProvider>
+                    <ConfigProvider
+                      config={{
+                        actions: {
+                          hideSHowResultButton: true
+                        }
+                      }}
+                      routes={{ ...routes }}
+                    >
+                      <ModalProvider>
+                        <VoteProvider>
+                          <VoteBox
+                            voteableId={debate.id}
+                            numberVotes={debate.votes_count}
+                            voteableType={"Group"}
+                            votePositions={votePositions}
+                            displayColumn
+                          />
+                        </VoteProvider>
+                      </ModalProvider>
+                    </ConfigProvider>
+                  </ToastProvider>
+                </IconProvider>
+              </AuthContext.Provider>
+            </DataProviderContext.Provider>
+          </IntlProvider>
+        </BrowserRouter>
+      </div>
+    );
+  };
+  

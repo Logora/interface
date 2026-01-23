@@ -343,7 +343,8 @@ export const VoteBox = ({ numberVotes, votePositions, voteableType, voteableId, 
 
                         <div className={cx(styles.voteBoxActions, styles.voteBoxShowResultContainer, { [showResultClassName]: showResultClassName })}>
                             <div className={styles.voteBoxShowResult}>
-                                {typeof window !== "undefined" && !redirectUrl ?
+                                {typeof window !== "undefined" && !redirectUrl ?(
+                                    !config?.actions?.hideSHowResultButton && (
                                     <button
                                         type="button"
                                         onClick={handleShowResults}
@@ -355,11 +356,12 @@ export const VoteBox = ({ numberVotes, votePositions, voteableType, voteableId, 
                                             <FormattedMessage id="vote.vote_box.show_result" defaultMessage="Show result" />
                                         </span>
                                     </button>
-                                    :
+                                     )
+                                    ) :
                                     <Link to={getRedirectUrl(null)} rel="nofollow" data-tid="show_vote_result" target="_top" external data-testid={"show-result"}>
                                         <span className={cx(styles.boldShowResult, styles.outlined)}><FormattedMessage id="vote.vote_box.show_result" defaultMessage="Show result" /></span>
                                     </Link>
-                                }
+                                } 
                             </div>
                         </div>
                     </div>

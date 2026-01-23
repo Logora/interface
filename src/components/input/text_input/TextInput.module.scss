@@ -6,7 +6,7 @@
 
   // by default, the label shows at the top left corner of the input
   label {
-    color: theme.$text-secondary;
+    color: theme.$text-primary;
     pointer-events: none;
     transition: left 300ms, top 300ms, font-size 300ms, padding-top 300ms, transform 300ms, color 300ms,
       background-color 300ms ease-in-out;
