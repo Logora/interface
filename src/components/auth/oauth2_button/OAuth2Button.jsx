@@ -53,14 +53,7 @@ export const OAuth2Button = ({
     if (typeof window !== "undefined") {
       baseUrl.searchParams.append(
         "state",
-        state
-          ? window.btoa(state)
-          : window.btoa(
-              window.location.origin +
-                location.pathname +
-                location.hash +
-                location.search
-            )
+        state ? window.btoa(state) : window.btoa(window.location.href)
       );
     }
     return baseUrl.href;

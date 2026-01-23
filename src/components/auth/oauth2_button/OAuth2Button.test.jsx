@@ -4,12 +4,6 @@ import { render, screen } from "@testing-library/react";
 import { OAuth2Button } from "./OAuth2Button";
 import userEvent from "@testing-library/user-event";
 
-Object.defineProperty(window, "location", {
-  value: {
-    origin: "http://example.fr",
-  },
-});
-
 const spyWindowOpen = jest.spyOn(window, "open");
 spyWindowOpen.mockImplementation(jest.fn());
 
@@ -33,6 +27,13 @@ describe("OAuth2Button", () => {
   });
 
   it("should open popup with correct link on click", async () => {
+    Object.defineProperty(window, "location", {
+      value: {
+        href: "http://example.fr/path-name/",
+      },
+      writable: true,
+    });
+
     spyWindowOpen.mockClear();
 
     const authDialogUrl = "https://www.example.com/dialog/oauth";
@@ -75,6 +76,13 @@ describe("OAuth2Button", () => {
   });
 
   it("should open popup with correct link with response type on click", async () => {
+    Object.defineProperty(window, "location", {
+      value: {
+        href: "http://example.fr/path-name",
+      },
+      writable: true,
+    });
+
     spyWindowOpen.mockClear();
 
     const authDialogUrl = "https://www.example.com/dialog/oauth";
@@ -184,6 +192,13 @@ describe("OAuth2Button", () => {
 
   describe("when popup is false", () => {
     it("should render the button as a link with the correct href", () => {
+      Object.defineProperty(window, "location", {
+        value: {
+          href: "http://example.fr/path-name",
+        },
+        writable: true,
+      });
+
       const authDialogUrl = "https://www.example.com/dialog/oauth";
       const clientId = "client-id";
       const scope = "email,profile";
