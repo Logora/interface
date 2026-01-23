@@ -81,3 +81,8 @@
 .paginatedListItem {
 	min-width: 0;
 }
+
+.paginatedListItem::before {
+	content: none !important;
+	display: none !important;
+  }
