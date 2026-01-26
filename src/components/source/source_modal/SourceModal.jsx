@@ -88,15 +88,25 @@ export const SourceModal = ({ onAddSource, onHideModal, allowedSources = [] }) =
                         disabled={disabled}
                         type="url"
                     />
+                    <div className={styles.sourceInputHelp}>
+                        <FormattedMessage
+                            id="source.source_modal.input_help"
+                            defaultMessage="Press Enter to add the source"
+                        />
+                    </div>
                     {allowedSources.length > 0 && (
-                        <div className={styles.allowedSourcesInfo}>
-                            <FormattedMessage
-                                id="source.source_modal.info_label"
-                                defaultMessage="Choose from : {domains}"
-                                values={{ domains: allowedSources.join(', ') }}
-                            />
-                        </div>
+                        <>
+                            <div className={styles.separator} />
+                            <div className={styles.allowedSourcesInfo}>
+                                <FormattedMessage
+                                    id="source.source_modal.info_label"
+                                    defaultMessage="Choose from : {domains}"
+                                    values={{ domains: allowedSources.join(', ') }}
+                                />
+                            </div>
+                        </>
                     )}
+
                 </div>
                 <div className={styles.sourcePreviewBox}>
                     {showPreviewError && (

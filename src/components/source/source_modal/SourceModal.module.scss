@@ -25,8 +25,22 @@ button.sourcePreviewButton {
 .allowedSourcesInfo {
   font-size: theme.$font-size-small;
   color: theme.$text-secondary;
-  white-space: nowrap;
-  margin-top: 1rem; 
-  white-space: normal; 
-  word-break: break-word; 
+  white-space: normal;
+  word-break: break-word;
+  margin-top: 0.5em;
+}
+
+.sourceInputHelp {
+  font-size: theme.$font-size-extra-small;
+  color: theme.$text-secondary;
+  margin-top: 1.07em;
+  margin-bottom: 0.5em;
+}
+
+.separator {
+  width: 100%;
+  height: 1px;
+  background-color: theme.$text-secondary;
+  margin: 0.5rem 0;
+  opacity: 0.3;
 }
