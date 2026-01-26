@@ -291,20 +291,21 @@ export const VoteBox = ({ numberVotes, votePositions, voteableType, voteableId, 
                             )}
                             {!disabled &&
                                 <div>
-                                    {currentVote ?
+                                    {currentVote ? (
                                         <button data-tid={"action_edit_vote"} className={styles.voteActionButton} type="button" onClick={toggleResults}>
                                             <FormattedMessage id="vote.vote_box.update" defaultMessage="Modify" />
                                         </button>
-                                        :
-                                        <button
-                                            type="button"
-                                            className={styles.voteActionButton}
-                                            onClick={() => setShowResults(false)}
-                                        >
-                                            <FormattedMessage id="vote.vote_box.back" defaultMessage="Back to vote" />
-                                        </button>
-
-                                    }
+                                    ) : (
+                                        !config?.actions?.hideSHowResultButton && (
+                                            <button
+                                                type="button"
+                                                className={styles.voteActionButton}
+                                                onClick={() => setShowResults(false)}
+                                            >
+                                                <FormattedMessage id="vote.vote_box.back" defaultMessage="Back to vote" />
+                                            </button>
+                                        )
+                                    )}
                                 </div>
                             }
                         </div>
@@ -343,25 +344,25 @@ export const VoteBox = ({ numberVotes, votePositions, voteableType, voteableId, 
 
                         <div className={cx(styles.voteBoxActions, styles.voteBoxShowResultContainer, { [showResultClassName]: showResultClassName })}>
                             <div className={styles.voteBoxShowResult}>
-                                {typeof window !== "undefined" && !redirectUrl ?(
+                                {typeof window !== "undefined" && !redirectUrl ? (
                                     !config?.actions?.hideSHowResultButton && (
-                                    <button
-                                        type="button"
-                                        onClick={handleShowResults}
-                                        data-tid="show_vote_result"
-                                        data-testid="show-result"
-                                        className={styles.showResultButton}
-                                    >
-                                        <span className={cx(styles.boldShowResult, styles.outlined)}>
-                                            <FormattedMessage id="vote.vote_box.show_result" defaultMessage="Show result" />
-                                        </span>
-                                    </button>
-                                     )
-                                    ) :
+                                        <button
+                                            type="button"
+                                            onClick={handleShowResults}
+                                            data-tid="show_vote_result"
+                                            data-testid="show-result"
+                                            className={styles.showResultButton}
+                                        >
+                                            <span className={cx(styles.boldShowResult, styles.outlined)}>
+                                                <FormattedMessage id="vote.vote_box.show_result" defaultMessage="Show result" />
+                                            </span>
+                                        </button>
+                                    )
+                                ) :
                                     <Link to={getRedirectUrl(null)} rel="nofollow" data-tid="show_vote_result" target="_top" external data-testid={"show-result"}>
                                         <span className={cx(styles.boldShowResult, styles.outlined)}><FormattedMessage id="vote.vote_box.show_result" defaultMessage="Show result" /></span>
                                     </Link>
-                                } 
+                                }
                             </div>
                         </div>
                     </div>
