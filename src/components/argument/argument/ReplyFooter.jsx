@@ -10,9 +10,23 @@ export const ReplyFooter = ({ numberReplies, repliesAuthors = [], onToggleReplie
 
     return (
         <div className={styles.replyFooter} onClick={onToggleReplies}>
-            {repliesAuthors.map((author, index) =>
-                <Avatar key={index} avatarUrl={author.image_url} userName={author.full_name} size={32} showTooltip />
-            )}
+             {repliesAuthors.map((author, index) => (
+              <span
+              key={index}
+              className={
+                author.role === "editor"
+                  ? styles.replyAvatarRing
+                  : styles.replyAvatarNormal
+              }
+            >
+                    <Avatar
+                        avatarUrl={author.image_url}
+                        userName={author.full_name}
+                        size={32}
+                        showTooltip
+                    />
+                </span>
+            ))}
             <div
                 className={styles.expandRepliesContainer}
             >
