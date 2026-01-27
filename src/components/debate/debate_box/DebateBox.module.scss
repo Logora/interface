@@ -173,6 +173,7 @@
   @include spacing.ml(3, xs);
   display: block;
   @include display.line-clamp(1);
+  line-height: theme.$line-height-loose; 
 }
 
 .participantsCountBox {
