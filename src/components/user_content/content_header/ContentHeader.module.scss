@@ -52,7 +52,7 @@
 }
 
 .contentHeaderTag {
-	font-size: theme.$font-size-small;
+	font-size: 11px;
 	color: theme.$text-light;
 	@include display.line-clamp(2);
 	max-height: 3.4em;
