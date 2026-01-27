@@ -194,7 +194,7 @@
     "debate/debate_box": {
         "name": "debate/debate_box",
         "scope": "logora.debate",
-        "version": "0.0.149",
+        "version": "0.0.150",
         "mainFile": "index.js",
         "rootDir": "src/components/debate/debate_box"
     },
