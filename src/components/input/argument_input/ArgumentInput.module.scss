@@ -12,7 +12,7 @@
     @include spacing.p(4, sm);
     @include spacing.p(3, xs);
     background-color: theme.$background-color-primary;
-    box-shadow: theme.$box-shadow;
+    box-shadow: none;
     border: theme.$box-border;
     border-radius: theme.$box-border-radius;
     z-index: 1;

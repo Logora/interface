@@ -4,7 +4,7 @@
 
 .userBox {
 	border: theme.$box-border;
-	box-shadow: theme.$box-shadow;
+	box-shadow: none;
 	border-radius: theme.$box-border-radius;
 	display: flex !important;
 	flex-direction: row !important;

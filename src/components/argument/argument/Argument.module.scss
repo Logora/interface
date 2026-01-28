@@ -5,7 +5,7 @@
 
 .argument {
 	border-radius: theme.$box-border-radius;
-	box-shadow: theme.$box-shadow;
+	box-shadow: none;
 	transition: margin-top 2s;
 	border: theme.$box-border;
 	scroll-margin-top: 150px;
