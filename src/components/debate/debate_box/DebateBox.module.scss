@@ -6,7 +6,7 @@
   position: relative;
   font-size: theme.$font-size-normal;
   border: theme.$box-border;
-  box-shadow: theme.$box-shadow;
+  box-shadow: none;
   border-radius: theme.$box-border-radius;
   background-color: theme.$background-color-primary;
   @include spacing.m(0, xs);
