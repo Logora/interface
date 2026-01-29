@@ -3,7 +3,7 @@
 
 .sectionBoxContainer {
     background-color: theme.$background-color-primary;
-    box-shadow: theme.$box-shadow;
+    box-shadow: $box-shadow-main-container;
     border: theme.$box-border-main-container;
     border-radius: theme.$box-border-radius;
     color: theme.$text-primary;
