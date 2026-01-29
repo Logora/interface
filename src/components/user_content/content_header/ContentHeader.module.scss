@@ -38,8 +38,10 @@
 	align-items: flex-end !important;
 	justify-content: center !important;
 	padding: 0 !important;
-	width: max-content;
+	width: auto; 
 	margin-left: auto;
+	min-width: 0;     
+	width: auto; 
 }
 
 .contentHeaderTagBox {
@@ -49,15 +51,21 @@
 	justify-content: flex-end !important;
 	border-radius: theme.$box-border-radius;
 	background-color: theme.$call-primary;
+	max-width: 190px;
+	min-width: 0;
 }
 
 .contentHeaderTag {
 	font-size: theme.$font-size-small;
 	color: theme.$text-light;
-	@include display.line-clamp(2);
-	max-height: 3.4em;
 	@include spacing.px(2.5, xs);
 	@include spacing.py(2, xs);
+	flex: 1 1 auto;       
+	min-width: 0;  
+	display: block;  
+	overflow: hidden;
+    text-overflow: ellipsis;
+	white-space: nowrap; 
 }
 
 .selectedContent {
