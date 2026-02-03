@@ -28,7 +28,7 @@ import EditorTheme from './EditorTheme';
 import cx from "classnames";
 import PropTypes from "prop-types";
 
-export const TextEditor = ({ placeholder, onSubmit, sources, hideSubmit = false, hideSourceAction = false, onActivation, disabled = false, handleChange, handleSourcesChange, shortBar = false, active = false, maxLength, disableRichText = false, editorRef, uid, allowedDomains = [], hideCharCount = false, ...rest }) => {
+export const TextEditor = ({ placeholder, onSubmit, sources, hideSubmit = false, hideSourceAction = false, onActivation, disabled = false, handleChange, handleSourcesChange, shortBar = false, active = false, maxLength, disableRichText = false, editorRef, uid, allowedDomains = [], hideCharCount = false, disableAutoActivate = false, ...rest }) => {
     const [isActive, setIsActive] = useState(false);
     const [editorText, setEditorText] = useState("");
     const [editorRichText, setEditorRichText] = useState("");
@@ -96,8 +96,8 @@ export const TextEditor = ({ placeholder, onSubmit, sources, hideSubmit = false,
 
     const handleShowSourceModal = () => {
         showModal(
-            <SourceModal 
-                onAddSource={handleAddSource} 
+            <SourceModal
+                onAddSource={handleAddSource}
                 allowedSources={allowedDomains}
             />
         )
@@ -120,10 +120,10 @@ export const TextEditor = ({ placeholder, onSubmit, sources, hideSubmit = false,
     return (
         <>
             <LexicalComposer initialConfig={editorConfig}>
-                <div className={styles.editorContainer} onClick={setFocus}> 
+                <div className={styles.editorContainer} onClick={setFocus}>
                     <div className={cx(styles.editorInner, { [styles.editorInnerInactive]: !isActive && !active })}>
                         <RichTextPlugin
-                            contentEditable={<ContentEditable className={cx(styles.editorInput, { [styles.editorInputInactive]: !isActive })} {...rest}  />}
+                            contentEditable={<ContentEditable className={cx(styles.editorInput, { [styles.editorInputInactive]: !isActive })} {...rest} />}
                             placeholder={placeholder && <Placeholder />}
                             ErrorBoundary={LexicalErrorBoundary}
                         />
@@ -145,7 +145,10 @@ export const TextEditor = ({ placeholder, onSubmit, sources, hideSubmit = false,
                         <ListPlugin />
                         <HistoryPlugin />
                         <OnChangePlugin onChange={onChange} ignoreSelectionChange />
-                        <AutoSavePlugin onSetContent={() => {}} storageUid={uid || randomUid} />
+                        <AutoSavePlugin
+                            onSetContent={disableAutoActivate ? () => { } : activate}
+                            storageUid={uid || randomUid}
+                        />
                         <SetContentPlugin />
                         <SetRichContentPlugin />
                         <FocusPlugin />
@@ -191,8 +194,8 @@ TextEditor.propTypes = {
     active: PropTypes.bool,
     /** Maximum number of characters */
     maxLength: PropTypes.number,
-     /** Show "X remaining characters" text */
-     showCharCount: PropTypes.bool,
+    /** Show "X remaining characters" text */
+    hideCharCount: PropTypes.bool,
     /** If true, hide rich text buttons */
     disableRichText: PropTypes.bool,
     /** Editor ref */
