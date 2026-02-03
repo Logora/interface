@@ -145,7 +145,7 @@ export const TextEditor = ({ placeholder, onSubmit, sources, hideSubmit = false,
                         <ListPlugin />
                         <HistoryPlugin />
                         <OnChangePlugin onChange={onChange} ignoreSelectionChange />
-                        <AutoSavePlugin onSetContent={activate} storageUid={uid || randomUid} />
+                        <AutoSavePlugin onSetContent={() => {}} storageUid={uid || randomUid} />
                         <SetContentPlugin />
                         <SetRichContentPlugin />
                         <FocusPlugin />
