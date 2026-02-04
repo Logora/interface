@@ -27,7 +27,7 @@ export const ReadMore = ({
         }
         return content;
     }
-    
+
     const handleContentToggle = () => {
         setIsExpanded(isExpanded => !isExpanded);
     }
@@ -53,52 +53,55 @@ export const ReadMore = ({
 
     return (
         <div className={cx(styles.readMore, { [styles.pointer]: showToggle })}>
-            <div
-                ref={contentRef}
-                style={lineCount && !isExpanded ? lineClampingStyle : { 'width': '100%' }}
-                onClick={expandable ? handleContentToggle : undefined}
-            >
-                {(!expandable || lineCount) ? content : formatContent(content)}
-            </div>
-            {showToggle && (
-                <>
-                    <div className={cx(styles.readMoreWrapper, readMoreClassName)}>
-                        {!isExpanded && (
-                            <span className={styles.ellipsis}>...</span>
-                        )}
-                        {to ? (
-                            <Link
-                                to={to}
-                                className={cx(styles.readMoreElement, className)}
-                                {...rest}
-                            >
-                                {readMoreText}
-                            </Link>
-                        ) : (
-                            !isExpanded && (
-                                <span
+            <div className={styles.contentContainer}>
+                <div
+                    ref={contentRef}
+                    className={styles.contentWrapper}
+                    style={lineCount && !isExpanded ? lineClampingStyle : { 'width': '100%' }}
+                    onClick={expandable ? handleContentToggle : undefined}
+                >
+                    {(!expandable || lineCount) ? content : formatContent(content)}
+                </div>
+                {showToggle && (
+                    <>
+                        <div className={cx(styles.readMoreWrapper, readMoreClassName)}>
+                            {!isExpanded && (
+                                <span className={styles.ellipsis}>...</span>
+                            )}
+                            {to ? (
+                                <Link
+                                    to={to}
                                     className={cx(styles.readMoreElement, className)}
-                                    onClick={handleContentToggle}
                                     {...rest}
                                 >
                                     {readMoreText}
-                                </span>
-                            )
-                        )}
-                    </div>
-                    {isExpanded && (
-                        <div className={styles.readLessWrapper}>
-                            <span
-                                className={cx(styles.readLessElement, className)}
-                                onClick={handleContentToggle}
-                                {...rest}
-                            >
-                                {readLessText}
-                            </span>
+                                </Link>
+                            ) : (
+                                !isExpanded && (
+                                    <span
+                                        className={cx(styles.readMoreElement, className)}
+                                        onClick={handleContentToggle}
+                                        {...rest}
+                                    >
+                                        {readMoreText}
+                                    </span>
+                                )
+                            )}
                         </div>
-                    )}
-                </>
-            )}
+                        {isExpanded && (
+                            <div className={styles.readLessWrapper}>
+                                <span
+                                    className={cx(styles.readLessElement, className)}
+                                    onClick={handleContentToggle}
+                                    {...rest}
+                                >
+                                    {readLessText}
+                                </span>
+                            </div>
+                        )}
+                    </>
+                )}
+            </div>
         </div>
     );
 };
