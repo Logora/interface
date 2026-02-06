@@ -5,7 +5,6 @@ import { Button } from '@logora/debate.action.button';
 import { TextInput } from '@logora/debate.input.text_input';
 import styles from "./LoginForm.module.scss";
 import cx from "classnames";
-import PropTypes from "prop-types";
 
 export const LoginForm = ({ onSubmit, forgotPasswordUrl, error = false }) => {
 	const [email, setEmail] = useState("");
@@ -63,13 +62,4 @@ export const LoginForm = ({ onSubmit, forgotPasswordUrl, error = false }) => {
 			</div>
 		</form>
 	);
-}
-
-LoginForm.propTypes = {
-	/** Callback triggered when form is submitted */
-	onSubmit: PropTypes.func,
-	/** URL for the forgot password page */
-	forgotPasswordUrl: PropTypes.string,
-	/** If `true`, will show an error message */
-	error: PropTypes.bool
 }

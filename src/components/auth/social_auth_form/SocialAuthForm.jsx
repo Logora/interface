@@ -9,7 +9,6 @@ import { SignupForm } from "@logora/debate.auth.signup_form";
 import { Toggle } from "@logora/debate.input.toggle";
 import { Icon } from '@logora/debate.icons.icon';
 import styles from "./SocialAuthForm.module.scss";
-import PropTypes from "prop-types";
 
 export const SocialAuthForm = ({ lastStep, providerName, logoUrl, termsUrl, privacyUrl, forgotPasswordUrl, oAuthRedirectUri, facebookClientId, googleClientId, error = false, onSubmit }) => {
 	const [mainMenu, setMainMenu] = useState(!(lastStep === "LOGIN" || lastStep === "SIGNUP"));
@@ -168,29 +167,4 @@ export const SocialAuthForm = ({ lastStep, providerName, logoUrl, termsUrl, priv
 			}
 		</div>
 	);
-}
-
-SocialAuthForm.propTypes = {
-	/** Will show the corresponding view on mount. Can be `LOGIN`, `SIGNUP`, or `SOCIAL`. */
-	lastStep: PropTypes.string,
-	/** Name of the provider / website */
-	providerName: PropTypes.string,
-	/** URL of the logo displayed on top of the form. If not passed, no logo is found */
-	logoUrl: PropTypes.string,
-	/** URL to the terms page */
-	termsUrl: PropTypes.string,
-	/** URL to the privacy policy page */
-	privacyUrl: PropTypes.string,
-	/** URL of the forgot password page */
-	forgotPasswordUrl: PropTypes.string,
-	/** OAuth2 redirect URI */
-	oAuthRedirectUri: PropTypes.string,
-	/** Facebook OAuth2 client ID */
-	facebookClientId: PropTypes.string,
-	/** Google OAuth2 client ID */
-	googleClientId: PropTypes.string,
-	/** If `true`, will show an error message */
-	error: PropTypes.bool,
-	/** Callback function to get submitted data */
-	onSubmit: PropTypes.func
 }

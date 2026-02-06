@@ -2,7 +2,6 @@ import React from 'react';
 import { OAuth2Button } from '@logora/debate.auth.oauth2_button';
 import { GoogleIcon } from "./GoogleIcon";
 import styles from './GoogleLoginButton.module.scss';
-import PropTypes from "prop-types";
 
 export const GoogleLoginButton = ({ text, googleClientId, redirectUri, onCode, onClose, className }) => {
     return (
@@ -25,17 +24,4 @@ export const GoogleLoginButton = ({ text, googleClientId, redirectUri, onCode, o
             </div>
         </OAuth2Button>
     )
-}
-
-GoogleLoginButton.propTypes = {
-	/** Button text */
-	text: PropTypes.string,
-	/** Google client ID */
-	googleClientId: PropTypes.string,
-	/** OAuth2 redirect URI */
-	redirectUri: PropTypes.string,
-	/** Callback triggered if auth is sucessful */
-	onCode: PropTypes.func,
-	/** Callback triggered if popup is closed */
-	onClose: PropTypes.func
 }

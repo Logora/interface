@@ -8,7 +8,6 @@ import { Toggle } from "@logora/debate.input.toggle";
 import { Button } from "@logora/debate.action.button";
 import cx from "classnames";
 import styles from "./SSOForm.module.scss";
-import PropTypes from "prop-types";
 
 export const SSOForm = ({
 	authType,
@@ -241,39 +240,4 @@ export const SSOForm = ({
 			)}
 		</div>
 	);
-};
-
-SSOForm.propTypes = {
-	/** Authentication type */
-	authType: PropTypes.string,
-	/** Name of the provider / website */
-	providerName: PropTypes.string,
-	/** URL of the login page */
-	loginUrl: PropTypes.string,
-	/** URL to the signup page */
-	signupUrl: PropTypes.string,
-	/** URL of the logo displayed on top of the form. If not passed, an icon is shown */
-	logoUrl: PropTypes.string,
-	/** URL to the terms page */
-	termsUrl: PropTypes.string,
-	/** OAuth2 client ID */
-	clientId: PropTypes.string,
-	/** OAuth2 redirect URI */
-	oAuthRedirectUri: PropTypes.string,
-	/** OAuth2 scope */
-	scope: PropTypes.string,
-	/** Name of the parameter passed in the URL that will contain the current page URL to redirect after authentication */
-	redirectParameter: PropTypes.string,
-	/** Custom hash of parameters to add to the auth URL */
-	trackingParameters: PropTypes.object,
-	/** If `true`, will only show header and subtitle */
-	hideActions: PropTypes.bool,
-	/** If `true`, will hide the login link */
-	hideLoginButton: PropTypes.bool,
-	/** If `true`, will show a toggle for email consent */
-	showEmailConsent: PropTypes.bool,
-	/** If `true`, will show a toggle to accept terms */
-	showTerms: PropTypes.bool,
-	/** If `true`, will show an error */
-	error: PropTypes.bool,
 };

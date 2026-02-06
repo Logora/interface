@@ -8,7 +8,6 @@ import { SocialAuthForm } from '@logora/debate.auth.social_auth_form';
 import { SSOForm } from '@logora/debate.auth.sso_form';
 import { Loader } from '@logora/debate.progress.loader';
 import styles from "./AuthModal.module.scss";
-import PropTypes from "prop-types";
 
 export const AuthModal = ({ onHideModal = null }) => {
 	const config = useConfig();
@@ -98,8 +97,3 @@ export const AuthModal = ({ onHideModal = null }) => {
 		</Modal>
 	);
 }
-
-AuthModal.propTypes = {
-	/** Callback when modal is closed */
-	onHideModal: PropTypes.func
-};

@@ -7,7 +7,6 @@ import { Toggle } from "@logora/debate.input.toggle";
 import { EMAIL_CONSENT_STORAGE_KEY } from '@logora/debate.auth.use_auth';
 import cx from 'classnames';
 import styles from './SignupForm.module.scss';
-import PropTypes from "prop-types";
 
 export const SignupForm = ({ onSubmit, providerName, error = false }) => {
     const [email, setEmail] = useState("");
@@ -123,13 +122,4 @@ export const SignupForm = ({ onSubmit, providerName, error = false }) => {
             </form>
         </>
     );
-}
-
-SignupForm.propTypes = {
-	/** Callback triggered when form is submitted */
-	onSubmit: PropTypes.func,
-	/** Name of the editor */
-	providerName: PropTypes.string,
-	/** If `true`, will show an error message */
-	error: PropTypes.bool
 }

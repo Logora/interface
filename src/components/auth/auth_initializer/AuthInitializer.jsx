@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-import PropTypes from 'prop-types';
 import { httpClient } from '@logora/debate.data.axios_client';
 import { authTokenHandler, useAuthActions } from '@logora/debate.auth.use_auth';
 import { useAuthInterceptor } from '@logora/debate.auth.use_auth';
@@ -59,15 +58,4 @@ export const AuthInitializer = ({ authUrl, authType, provider, assertion }) => {
     }
 
     return null;
-}
-
-AuthInitializer.propTypes = {
-    /** Auth API URL */
-    authUrl: PropTypes.string.isRequired,
-    /** Authentication type, can be 'oauth2_server', 'social' or 'jwt' */
-    authType: PropTypes.string.isRequired,
-    /** User provider name */
-    provider: PropTypes.string,
-    /** Auth assertion, for example an OAuth2 authorization code, depending on the auth type */
-    assertion: PropTypes.string
 }

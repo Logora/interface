@@ -3,7 +3,6 @@ import { useLocation } from "react-router-dom";
 import OauthPopup from "react-oauth-popup";
 import styles from "./OAuth2Button.module.scss";
 import classnames from "classnames";
-import PropTypes from "prop-types";
 
 export const OAuth2Button = ({
   provider,
@@ -77,33 +76,4 @@ export const OAuth2Button = ({
       )}
     </div>
   );
-};
-
-OAuth2Button.propTypes = {
-  /** Provider name that will be passed with the onCode callback */
-  provider: PropTypes.string,
-  /** OAuth login dialog URL */
-  authDialogUrl: PropTypes.string,
-  /** OAuth2 client ID */
-  clientId: PropTypes.string,
-  /** OAuth2 redirect URI */
-  redirectUri: PropTypes.string,
-  /** OAuth2 scope */
-  scope: PropTypes.string,
-  /** OAuth2 response type */
-  responseType: PropTypes.string,
-  /** OAuth2 access type */
-  accessType: PropTypes.string,
-  /** Callback triggered if auth is sucessful */
-  onCode: PropTypes.func,
-  /** Callback triggered if popup is closed */
-  onClose: PropTypes.func,
-  /** Button content */
-  children: PropTypes.node,
-  /**  Class name to style the button container */
-  className: PropTypes.string,
-  /**  Open a popup on click. If false, the button will be a link */
-  popup: PropTypes.bool,
-  /**  State to be passed to the OAuth2 server */
-  state: PropTypes.string,
 };
