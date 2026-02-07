@@ -12,21 +12,21 @@
     "action/back_link": {
         "name": "action/back_link",
         "scope": "logora.debate",
-        "version": "0.0.118",
+        "version": "0.0.119",
         "mainFile": "index.js",
         "rootDir": "src/components/action/back_link"
     },
     "action/button": {
         "name": "action/button",
         "scope": "logora.debate",
-        "version": "0.0.126",
+        "version": "0.0.127",
         "mainFile": "index.js",
         "rootDir": "src/components/action/button"
     },
     "action/icon_text_link": {
         "name": "action/icon_text_link",
         "scope": "logora.debate",
-        "version": "0.0.75",
+        "version": "0.0.76",
         "mainFile": "index.js",
         "rootDir": "src/components/action/icon_text_link"
     },
@@ -40,7 +40,7 @@
     "ad/ad_unit": {
         "name": "ad/ad_unit",
         "scope": "logora.debate",
-        "version": "0.0.51",
+        "version": "0.0.52",
         "mainFile": "index.js",
         "rootDir": "src/components/ad/ad_unit"
     },
@@ -54,56 +54,56 @@
     "ad/with_ad": {
         "name": "ad/with_ad",
         "scope": "logora.debate",
-        "version": "0.0.48",
+        "version": "0.0.49",
         "mainFile": "index.js",
         "rootDir": "src/components/ad/with_ad"
     },
     "argument/argument": {
         "name": "argument/argument",
         "scope": "logora.debate",
-        "version": "0.0.552",
+        "version": "0.0.553",
         "mainFile": "index.js",
         "rootDir": "src/components/argument/argument"
     },
     "argument/top_arguments": {
         "name": "argument/top_arguments",
         "scope": "logora.debate",
-        "version": "0.0.211",
+        "version": "0.0.212",
         "mainFile": "index.js",
         "rootDir": "src/components/argument/top_arguments"
     },
     "auth/auth_initializer": {
         "name": "auth/auth_initializer",
         "scope": "logora.debate",
-        "version": "0.0.189",
+        "version": "0.0.190",
         "mainFile": "index.js",
         "rootDir": "src/components/auth/auth_initializer"
     },
     "auth/auth_modal": {
         "name": "auth/auth_modal",
         "scope": "logora.debate",
-        "version": "0.0.185",
+        "version": "0.0.186",
         "mainFile": "index.js",
         "rootDir": "src/components/auth/auth_modal"
     },
     "auth/facebook_login_button": {
         "name": "auth/facebook_login_button",
         "scope": "logora.debate",
-        "version": "0.0.112",
+        "version": "0.0.113",
         "mainFile": "index.js",
         "rootDir": "src/components/auth/facebook_login_button"
     },
     "auth/google_login_button": {
         "name": "auth/google_login_button",
         "scope": "logora.debate",
-        "version": "0.0.117",
+        "version": "0.0.118",
         "mainFile": "index.js",
         "rootDir": "src/components/auth/google_login_button"
     },
     "auth/login_form": {
         "name": "auth/login_form",
         "scope": "logora.debate",
-        "version": "0.0.142",
+        "version": "0.0.143",
         "mainFile": "index.js",
         "rootDir": "src/components/auth/login_form"
     },
@@ -124,21 +124,21 @@
     "auth/signup_form": {
         "name": "auth/signup_form",
         "scope": "logora.debate",
-        "version": "0.0.149",
+        "version": "0.0.150",
         "mainFile": "index.js",
         "rootDir": "src/components/auth/signup_form"
     },
     "auth/social_auth_form": {
         "name": "auth/social_auth_form",
         "scope": "logora.debate",
-        "version": "0.0.166",
+        "version": "0.0.167",
         "mainFile": "index.js",
         "rootDir": "src/components/auth/social_auth_form"
     },
     "auth/sso_form": {
         "name": "auth/sso_form",
         "scope": "logora.debate",
-        "version": "0.0.138",
+        "version": "0.0.139",
         "mainFile": "index.js",
         "rootDir": "src/components/auth/sso_form"
     },
@@ -152,21 +152,21 @@
     "chart/line_chart": {
         "name": "chart/line_chart",
         "scope": "logora.debate",
-        "version": "0.0.87",
+        "version": "0.0.88",
         "mainFile": "index.js",
         "rootDir": "src/components/chart/line_chart"
     },
     "chart/pie_chart": {
         "name": "chart/pie_chart",
         "scope": "logora.debate",
-        "version": "0.0.43",
+        "version": "0.0.44",
         "mainFile": "index.js",
         "rootDir": "src/components/chart/pie_chart"
     },
     "consultation/consultation_box": {
         "name": "consultation/consultation_box",
         "scope": "logora.debate",
-        "version": "0.0.115",
+        "version": "0.0.116",
         "mainFile": "index.js",
         "rootDir": "src/components/consultation/consultation_box"
     },
@@ -194,21 +194,21 @@
     "debate/debate_box": {
         "name": "debate/debate_box",
         "scope": "logora.debate",
-        "version": "0.0.153",
+        "version": "0.0.154",
         "mainFile": "index.js",
         "rootDir": "src/components/debate/debate_box"
     },
     "dialog/announcement_dialog": {
         "name": "dialog/announcement_dialog",
         "scope": "logora.debate",
-        "version": "0.0.108",
+        "version": "0.0.109",
         "mainFile": "index.js",
         "rootDir": "src/components/dialog/announcement_dialog"
     },
     "dialog/confirm_modal": {
         "name": "dialog/confirm_modal",
         "scope": "logora.debate",
-        "version": "0.0.111",
+        "version": "0.0.112",
         "mainFile": "index.js",
         "rootDir": "src/components/dialog/confirm_modal"
     },
@@ -222,42 +222,42 @@
     "dialog/dialog_box": {
         "name": "dialog/dialog_box",
         "scope": "logora.debate",
-        "version": "0.0.62",
+        "version": "0.0.63",
         "mainFile": "index.js",
         "rootDir": "src/components/dialog/dialog_box"
     },
     "dialog/drawer": {
         "name": "dialog/drawer",
         "scope": "logora.debate",
-        "version": "0.0.117",
+        "version": "0.0.118",
         "mainFile": "index.js",
         "rootDir": "src/components/dialog/drawer"
     },
     "dialog/dropdown": {
         "name": "dialog/dropdown",
         "scope": "logora.debate",
-        "version": "0.0.57",
+        "version": "0.0.58",
         "mainFile": "index.js",
         "rootDir": "src/components/dialog/dropdown"
     },
     "dialog/modal": {
         "name": "dialog/modal",
         "scope": "logora.debate",
-        "version": "0.0.104",
+        "version": "0.0.105",
         "mainFile": "index.js",
         "rootDir": "src/components/dialog/modal"
     },
     "dialog/toast": {
         "name": "dialog/toast",
         "scope": "logora.debate",
-        "version": "0.0.44",
+        "version": "0.0.45",
         "mainFile": "index.js",
         "rootDir": "src/components/dialog/toast"
     },
     "dialog/toast_provider": {
         "name": "dialog/toast_provider",
         "scope": "logora.debate",
-        "version": "0.0.48",
+        "version": "0.0.49",
         "mainFile": "index.js",
         "rootDir": "src/components/dialog/toast_provider"
     },
@@ -271,28 +271,28 @@
     "embed/embed_header": {
         "name": "embed/embed_header",
         "scope": "logora.debate",
-        "version": "0.0.85",
+        "version": "0.0.86",
         "mainFile": "index.js",
         "rootDir": "src/components/embed/embed_header"
     },
     "error/standard_error_boundary": {
         "name": "error/standard_error_boundary",
         "scope": "logora.debate",
-        "version": "0.0.40",
+        "version": "0.0.41",
         "mainFile": "index.js",
         "rootDir": "src/components/error/standard_error_boundary"
     },
     "follow/follow_button": {
         "name": "follow/follow_button",
         "scope": "logora.debate",
-        "version": "0.0.187",
+        "version": "0.0.188",
         "mainFile": "index.js",
         "rootDir": "src/components/follow/follow_button"
     },
     "follow/use_follow": {
         "name": "follow/use_follow",
         "scope": "logora.debate",
-        "version": "0.0.153",
+        "version": "0.0.154",
         "mainFile": "index.js",
         "rootDir": "src/components/follow/use_follow"
     },
@@ -313,21 +313,21 @@
     "gamification/badge_box": {
         "name": "gamification/badge_box",
         "scope": "logora.debate",
-        "version": "0.0.47",
+        "version": "0.0.48",
         "mainFile": "index.js",
         "rootDir": "src/components/gamification/badge_box"
     },
     "gamification/point_box": {
         "name": "gamification/point_box",
         "scope": "logora.debate",
-        "version": "0.0.80",
+        "version": "0.0.81",
         "mainFile": "index.js",
         "rootDir": "src/components/gamification/point_box"
     },
     "hooks/use_auth_required": {
         "name": "hooks/use_auth_required",
         "scope": "logora.debate",
-        "version": "0.0.159",
+        "version": "0.0.160",
         "mainFile": "index.js",
         "rootDir": "src/components/hooks/use_auth_required"
     },
@@ -418,14 +418,14 @@
     "information/information_box": {
         "name": "information/information_box",
         "scope": "logora.debate",
-        "version": "0.0.78",
+        "version": "0.0.79",
         "mainFile": "index.js",
         "rootDir": "src/components/information/information_box"
     },
     "input/argument_input": {
         "name": "input/argument_input",
         "scope": "logora.debate",
-        "version": "0.0.315",
+        "version": "0.0.316",
         "mainFile": "index.js",
         "rootDir": "src/components/input/argument_input"
     },
@@ -460,42 +460,42 @@
     "input/search_input": {
         "name": "input/search_input",
         "scope": "logora.debate",
-        "version": "0.0.135",
+        "version": "0.0.136",
         "mainFile": "index.js",
         "rootDir": "src/components/input/search_input"
     },
     "input/select": {
         "name": "input/select",
         "scope": "logora.debate",
-        "version": "0.0.131",
+        "version": "0.0.132",
         "mainFile": "index.js",
         "rootDir": "src/components/input/select"
     },
     "input/text_editor": {
         "name": "input/text_editor",
         "scope": "logora.debate",
-        "version": "0.0.187",
+        "version": "0.0.188",
         "mainFile": "index.js",
         "rootDir": "src/components/input/text_editor"
     },
     "input/text_input": {
         "name": "input/text_input",
         "scope": "logora.debate",
-        "version": "0.0.117",
+        "version": "0.0.118",
         "mainFile": "index.js",
         "rootDir": "src/components/input/text_input"
     },
     "input/toggle": {
         "name": "input/toggle",
         "scope": "logora.debate",
-        "version": "0.0.66",
+        "version": "0.0.67",
         "mainFile": "index.js",
         "rootDir": "src/components/input/toggle"
     },
     "input/toggle_position": {
         "name": "input/toggle_position",
         "scope": "logora.debate",
-        "version": "0.0.53",
+        "version": "0.0.54",
         "mainFile": "index.js",
         "rootDir": "src/components/input/toggle_position"
     },
@@ -516,105 +516,105 @@
     "list/paginated_list": {
         "name": "list/paginated_list",
         "scope": "logora.debate",
-        "version": "0.0.251",
+        "version": "0.0.252",
         "mainFile": "index.js",
         "rootDir": "src/components/list/paginated_list"
     },
     "list/pagination": {
         "name": "list/pagination",
         "scope": "logora.debate",
-        "version": "0.0.139",
+        "version": "0.0.140",
         "mainFile": "index.js",
         "rootDir": "src/components/list/pagination"
     },
     "modal/side_modal": {
         "name": "modal/side_modal",
         "scope": "logora.debate",
-        "version": "0.0.92",
+        "version": "0.0.93",
         "mainFile": "index.js",
         "rootDir": "src/components/modal/side_modal"
     },
     "navbar/navbar_button": {
         "name": "navbar/navbar_button",
         "scope": "logora.debate",
-        "version": "0.0.28",
+        "version": "0.0.29",
         "mainFile": "index.js",
         "rootDir": "src/components/navbar/navbar_button"
     },
     "navbar/navbar_modal": {
         "name": "navbar/navbar_modal",
         "scope": "logora.debate",
-        "version": "0.0.21",
+        "version": "0.0.22",
         "mainFile": "index.js",
         "rootDir": "src/components/navbar/navbar_modal"
     },
     "notification/notification_item": {
         "name": "notification/notification_item",
         "scope": "logora.debate",
-        "version": "0.0.51",
+        "version": "0.0.52",
         "mainFile": "index.js",
         "rootDir": "src/components/notification/notification_item"
     },
     "notification/notification_menu": {
         "name": "notification/notification_menu",
         "scope": "logora.debate",
-        "version": "0.0.154",
+        "version": "0.0.155",
         "mainFile": "index.js",
         "rootDir": "src/components/notification/notification_menu"
     },
     "progress/loader": {
         "name": "progress/loader",
         "scope": "logora.debate",
-        "version": "0.0.39",
+        "version": "0.0.40",
         "mainFile": "index.js",
         "rootDir": "src/components/progress/loader"
     },
     "progress/progress_bar": {
         "name": "progress/progress_bar",
         "scope": "logora.debate",
-        "version": "0.0.46",
+        "version": "0.0.47",
         "mainFile": "index.js",
         "rootDir": "src/components/progress/progress_bar"
     },
     "proposal/proposal_box": {
         "name": "proposal/proposal_box",
         "scope": "logora.debate",
-        "version": "0.0.145",
+        "version": "0.0.146",
         "mainFile": "index.js",
         "rootDir": "src/components/proposal/proposal_box"
     },
     "report/report_box": {
         "name": "report/report_box",
         "scope": "logora.debate",
-        "version": "0.0.231",
+        "version": "0.0.232",
         "mainFile": "index.js",
         "rootDir": "src/components/report/report_box"
     },
     "section/section_box": {
         "name": "section/section_box",
         "scope": "logora.debate",
-        "version": "0.0.96",
+        "version": "0.0.97",
         "mainFile": "index.js",
         "rootDir": "src/components/section/section_box"
     },
     "share/share_box": {
         "name": "share/share_box",
         "scope": "logora.debate",
-        "version": "0.0.120",
+        "version": "0.0.121",
         "mainFile": "index.js",
         "rootDir": "src/components/share/share_box"
     },
     "share/share_button": {
         "name": "share/share_button",
         "scope": "logora.debate",
-        "version": "0.0.136",
+        "version": "0.0.137",
         "mainFile": "index.js",
         "rootDir": "src/components/share/share_button"
     },
     "share/share_modal": {
         "name": "share/share_modal",
         "scope": "logora.debate",
-        "version": "0.0.123",
+        "version": "0.0.124",
         "mainFile": "index.js",
         "rootDir": "src/components/share/share_modal"
     },
@@ -628,70 +628,70 @@
     "skeleton/user_content_skeleton": {
         "name": "skeleton/user_content_skeleton",
         "scope": "logora.debate",
-        "version": "0.0.71",
+        "version": "0.0.72",
         "mainFile": "index.js",
         "rootDir": "src/components/skeleton/user_content_skeleton"
     },
     "source/context_source_box": {
         "name": "source/context_source_box",
         "scope": "logora.debate",
-        "version": "0.0.84",
+        "version": "0.0.85",
         "mainFile": "index.js",
         "rootDir": "src/components/source/context_source_box"
     },
     "source/context_source_list": {
         "name": "source/context_source_list",
         "scope": "logora.debate",
-        "version": "0.0.111",
+        "version": "0.0.112",
         "mainFile": "index.js",
         "rootDir": "src/components/source/context_source_list"
     },
     "source/source_box": {
         "name": "source/source_box",
         "scope": "logora.debate",
-        "version": "0.0.51",
+        "version": "0.0.52",
         "mainFile": "index.js",
         "rootDir": "src/components/source/source_box"
     },
     "source/source_list_item": {
         "name": "source/source_list_item",
         "scope": "logora.debate",
-        "version": "0.0.107",
+        "version": "0.0.108",
         "mainFile": "index.js",
         "rootDir": "src/components/source/source_list_item"
     },
     "source/source_modal": {
         "name": "source/source_modal",
         "scope": "logora.debate",
-        "version": "0.0.191",
+        "version": "0.0.192",
         "mainFile": "index.js",
         "rootDir": "src/components/source/source_modal"
     },
     "styles/display": {
         "name": "styles/display",
         "scope": "logora.debate",
-        "version": "0.0.30",
+        "version": "0.0.31",
         "mainFile": "index.scss",
         "rootDir": "src/components/styles/display"
     },
     "styles/flex": {
         "name": "styles/flex",
         "scope": "logora.debate",
-        "version": "0.0.31",
+        "version": "0.0.32",
         "mainFile": "index.scss",
         "rootDir": "src/components/styles/flex"
     },
     "styles/spacing": {
         "name": "styles/spacing",
         "scope": "logora.debate",
-        "version": "0.0.35",
+        "version": "0.0.36",
         "mainFile": "index.scss",
         "rootDir": "src/components/styles/spacing"
     },
     "styles/tabs": {
         "name": "styles/tabs",
         "scope": "logora.debate",
-        "version": "0.0.59",
+        "version": "0.0.60",
         "mainFile": "_tabs.scss",
         "rootDir": "src/components/styles/tabs"
     },
@@ -705,28 +705,28 @@
     "suggestion/suggestion_banner": {
         "name": "suggestion/suggestion_banner",
         "scope": "logora.debate",
-        "version": "0.0.272",
+        "version": "0.0.273",
         "mainFile": "index.js",
         "rootDir": "src/components/suggestion/suggestion_banner"
     },
     "suggestion/suggestion_box": {
         "name": "suggestion/suggestion_box",
         "scope": "logora.debate",
-        "version": "0.0.256",
+        "version": "0.0.257",
         "mainFile": "index.js",
         "rootDir": "src/components/suggestion/suggestion_box"
     },
     "suggestion/suggestion_input": {
         "name": "suggestion/suggestion_input",
         "scope": "logora.debate",
-        "version": "0.0.114",
+        "version": "0.0.115",
         "mainFile": "index.js",
         "rootDir": "src/components/suggestion/suggestion_input"
     },
     "summary/argument_summary_box": {
         "name": "summary/argument_summary_box",
         "scope": "logora.debate",
-        "version": "0.0.42",
+        "version": "0.0.43",
         "mainFile": "index.js",
         "rootDir": "src/components/summary/argument_summary_box"
     },
@@ -740,28 +740,28 @@
     "summary/summary": {
         "name": "summary/summary",
         "scope": "logora.debate",
-        "version": "0.0.43",
+        "version": "0.0.44",
         "mainFile": "index.js",
         "rootDir": "src/components/summary/summary"
     },
     "summary/summary_box": {
         "name": "summary/summary_box",
         "scope": "logora.debate",
-        "version": "0.0.26",
+        "version": "0.0.27",
         "mainFile": "index.js",
         "rootDir": "src/components/summary/summary_box"
     },
     "tag/tag": {
         "name": "tag/tag",
         "scope": "logora.debate",
-        "version": "0.0.105",
+        "version": "0.0.106",
         "mainFile": "index.js",
         "rootDir": "src/components/tag/tag"
     },
     "text/expandable_text": {
         "name": "text/expandable_text",
         "scope": "logora.debate",
-        "version": "0.0.69",
+        "version": "0.0.70",
         "mainFile": "index.js",
         "rootDir": "src/components/text/expandable_text"
     },
@@ -796,14 +796,14 @@
     "translation/translation_button": {
         "name": "translation/translation_button",
         "scope": "logora.debate",
-        "version": "0.0.55",
+        "version": "0.0.56",
         "mainFile": "index.js",
         "rootDir": "src/components/translation/translation_button"
     },
     "user/author_box": {
         "name": "user/author_box",
         "scope": "logora.debate",
-        "version": "0.0.167",
+        "version": "0.0.168",
         "mainFile": "index.js",
         "rootDir": "src/components/user/author_box"
     },
@@ -817,63 +817,63 @@
     "user/avatar_selector": {
         "name": "user/avatar_selector",
         "scope": "logora.debate",
-        "version": "0.0.128",
+        "version": "0.0.129",
         "mainFile": "index.js",
         "rootDir": "src/components/user/avatar_selector"
     },
     "user/update_user_info_modal": {
         "name": "user/update_user_info_modal",
         "scope": "logora.debate",
-        "version": "0.0.137",
+        "version": "0.0.138",
         "mainFile": "index.js",
         "rootDir": "src/components/user/update_user_info_modal"
     },
     "user/user_box": {
         "name": "user/user_box",
         "scope": "logora.debate",
-        "version": "0.0.100",
+        "version": "0.0.101",
         "mainFile": "index.js",
         "rootDir": "src/components/user/user_box"
     },
     "user/user_box_small": {
         "name": "user/user_box_small",
         "scope": "logora.debate",
-        "version": "0.0.75",
+        "version": "0.0.76",
         "mainFile": "index.js",
         "rootDir": "src/components/user/user_box_small"
     },
     "user_content/content_footer": {
         "name": "user_content/content_footer",
         "scope": "logora.debate",
-        "version": "0.0.243",
+        "version": "0.0.244",
         "mainFile": "index.js",
         "rootDir": "src/components/user_content/content_footer"
     },
     "user_content/content_header": {
         "name": "user_content/content_header",
         "scope": "logora.debate",
-        "version": "0.0.127",
+        "version": "0.0.128",
         "mainFile": "index.js",
         "rootDir": "src/components/user_content/content_header"
     },
     "user_content/summary_content_box": {
         "name": "user_content/summary_content_box",
         "scope": "logora.debate",
-        "version": "0.0.177",
+        "version": "0.0.178",
         "mainFile": "index.js",
         "rootDir": "src/components/user_content/summary_content_box"
     },
     "user_content/use_delete_content": {
         "name": "user_content/use_delete_content",
         "scope": "logora.debate",
-        "version": "0.0.166",
+        "version": "0.0.167",
         "mainFile": "index.js",
         "rootDir": "src/components/user_content/use_delete_content"
     },
     "user_content/use_report_content": {
         "name": "user_content/use_report_content",
         "scope": "logora.debate",
-        "version": "0.0.190",
+        "version": "0.0.191",
         "mainFile": "index.js",
         "rootDir": "src/components/user_content/use_report_content"
     },
@@ -901,35 +901,35 @@
     "vote/suggestion_vote_box": {
         "name": "vote/suggestion_vote_box",
         "scope": "logora.debate",
-        "version": "0.0.185",
+        "version": "0.0.186",
         "mainFile": "index.js",
         "rootDir": "src/components/vote/suggestion_vote_box"
     },
     "vote/up_down_vote_box": {
         "name": "vote/up_down_vote_box",
         "scope": "logora.debate",
-        "version": "0.0.174",
+        "version": "0.0.175",
         "mainFile": "index.js",
         "rootDir": "src/components/vote/up_down_vote_box"
     },
     "vote/use_vote": {
         "name": "vote/use_vote",
         "scope": "logora.debate",
-        "version": "0.0.165",
+        "version": "0.0.166",
         "mainFile": "index.js",
         "rootDir": "src/components/vote/use_vote"
     },
     "vote/vote_box": {
         "name": "vote/vote_box",
         "scope": "logora.debate",
-        "version": "0.0.213",
+        "version": "0.0.214",
         "mainFile": "index.js",
         "rootDir": "src/components/vote/vote_box"
     },
     "vote/vote_button": {
         "name": "vote/vote_button",
         "scope": "logora.debate",
-        "version": "0.0.180",
+        "version": "0.0.181",
         "mainFile": "index.js",
         "rootDir": "src/components/vote/vote_button"
     },
