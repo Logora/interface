@@ -1,37 +1,36 @@
-@import '~@logora/debate.styles.theme/_theme.scss';
-@import '~@logora/debate.styles.spacing/_spacing.scss';
-@import '~@logora/debate.styles.flex/_flex.scss';
-@import '~@logora/debate.styles.display/_display.scss';
+@use '@logora/debate.styles.theme/_theme.scss' as theme;
+@use '@logora/debate.styles.spacing/_spacing.scss' as spacing;
+@use '@logora/debate.styles.display/_display.scss' as display;
 
 .headerBox {
     display: flex !important;
     flex-direction: column !important;
-    @include p(0, xs);
+    @include spacing.p(0, xs);
 }
 
 .headerBoxLabel {
     display: flex !important;
     justify-content: flex-start !important;
     > .titleRedirectUrl {
-        background: $background-color-primary !important;
+        background: theme.$background-color-primary !important;
         &:hover {
-            background: $background-color-primary !important;
+            background: theme.$background-color-primary !important;
         }
     }
 }
 
 .headerLiveStat {
     margin-left: auto !important;
-    @include mr(2, xs);
+    @include spacing.mr(2, xs);
     display: flex !important;
     align-items: center !important;
     justify-content: flex-end !important;
-    color: $call-primary;
-    font-size: $font-size-small;
+    color: theme.$call-primary;
+    font-size: theme.$font-size-small;
     margin-left: 30px;
     span {
         margin-left: 10px;
-        @include mb(0, xs);
+        @include spacing.mb(0, xs);
     }
 }
 
@@ -54,7 +53,7 @@
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background-color: $call-primary;
+    background-color: theme.$call-primary;
     position: relative;
     &::before{
         content:"";
@@ -62,7 +61,7 @@
         width: 100%;
         height: 100%;
         border-radius: 50%;
-        background-color: $call-primary;
+        background-color: theme.$call-primary;
         opacity: 0.4;
         animation-name: livePin;
         animation-duration: 1.6s;
@@ -71,13 +70,13 @@
 }
 
 .headerLivePin {
-    @include display(block, sm);
-    @include display(none, xs);
+    @include display.display(block, sm);
+    @include display.display(none, xs);
 }
 
 .headerLivePinMobile {
-    @include display(none, sm);
-    @include display(block, xs);
+    @include display.display(none, sm);
+    @include display.display(block, xs);
 }
 
 @keyframes livePin { 
@@ -87,53 +86,53 @@
 }
 
 .headerLabelText {
-    background-color: $call-primary;
-    color: $text-light;
+    background-color: theme.$call-primary;
+    color: theme.$text-light;
     border-bottom: 1px solid;
-    border-color: $call-primary;
-    border-radius: $box-border-radius 0 $box-border-radius 0;
-    font-size: $font-size-normal;
+    border-color: theme.$call-primary;
+    border-radius: theme.$box-border-radius 0 theme.$box-border-radius 0;
+    font-size: theme.$font-size-normal;
     flex-wrap: nowrap;
     white-space: nowrap;
-    @include px(2, xs);
-    @include py(2, xs);
+    @include spacing.px(2, xs);
+    @include spacing.py(2, xs);
 }
 
 .debateName {
-    color: $text-primary;
-    font-weight: $font-weight-bold;
+    color: theme.$text-primary;
+    font-weight: theme.$font-weight-bold;
     text-align: center;
     width: 100%;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    @include pb(0, xs);
-    @include pt(3, xs);
-    @include px(3, xs);
-    @include px(0, sm);
+    @include spacing.pb(0, xs);
+    @include spacing.pt(3, xs);
+    @include spacing.px(3, xs);
+    @include spacing.px(0, sm);
     a.debateLink {
-        color: $text-primary !important;
+        color: theme.$text-primary !important;
     }
 }
 
 .debateLink {
-    font-size: $font-size-large;
-    line-height: $line-height-normal;
-    background: $background-color-primary !important;
+    font-size: theme.$font-size-large;
+    line-height: theme.$line-height-normal;
+    background: theme.$background-color-primary !important;
     text-decoration: none !important;
-    color: $text-primary;
-    font-weight: $font-weight-bold;
+    color: theme.$text-primary;
+    font-weight: theme.$font-weight-bold;
     &:hover {
-        background: $background-color-primary !important;
+        background: theme.$background-color-primary !important;
         text-decoration: underline !important;
     }
 }
 
 .left {
     justify-content: flex-start !important;
-    @include px(3, xs);
-    @include pt(3, xs);
-    @include pb(0, xs);
+    @include spacing.px(3, xs);
+    @include spacing.pt(3, xs);
+    @include spacing.pb(0, xs);
     text-align: left;
 }
 

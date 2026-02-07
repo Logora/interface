@@ -1,5 +1,5 @@
-@import '~@logora/debate.styles.theme/_theme.scss';
-@import '~@logora/debate.styles.spacing/_spacing.scss';
+@use '@logora/debate.styles.theme/_theme.scss' as theme;
+@use '@logora/debate.styles.spacing/_spacing.scss' as spacing;
 
 .shareButtonContainer {
   display: flex !important;
@@ -29,13 +29,13 @@
   position: absolute;
   left: 25%;
   top: 35px;
-  padding: $spacer;
-  border: 1px solid $text-secondary;
-  border-radius: $box-border-radius;
-  box-shadow: $box-shadow;
-  background: $background-color-primary;
-  color: $text-primary;
-  line-height: $spacer-lg;
+  padding: spacing.$spacer;
+  border: 1px solid theme.$text-secondary;
+  border-radius: theme.$box-border-radius;
+  box-shadow: theme.$box-shadow;
+  background: theme.$background-color-primary;
+  color: theme.$text-primary;
+  line-height: spacing.$spacer-lg;
   width: auto;
   &:before {
     position: absolute;
@@ -45,7 +45,7 @@
     top: -10px;
     border-style: solid;
     border-width: 0 10px 10px 10px;
-    border-color: transparent transparent $text-secondary transparent;
+    border-color: transparent transparent theme.$text-secondary transparent;
     transition-duration: 0.3s;
     transition-property: transform;
   }
@@ -57,12 +57,12 @@
     top: -9px;
     border-style: solid;
     border-width: 0 10px 10px 10px;
-    border-color: transparent transparent $background-color-primary transparent;
+    border-color: transparent transparent theme.$background-color-primary transparent;
     transition-duration: 0.3s;
     transition-property: transform;
   }
 }
 
 .shareButtonText {
-  @include pl(1, xs);
+  @include spacing.pl(1, xs);
 }

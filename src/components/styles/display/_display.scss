@@ -1,4 +1,5 @@
 @use "sass:map";
+@use "sass:list";
 
 $grid-breakpoints: (
     xs: 0,
@@ -15,8 +16,8 @@ $grid-breakpoints: (
 }
 
 @function breakpoint-next($name, $breakpoints: $grid-breakpoints, $breakpoint-names: map-keys($breakpoints)) {
-  $n: index($breakpoint-names, $name);
-  @return if($n != null and $n < length($breakpoint-names), nth($breakpoint-names, $n + 1), null);
+  $n: list.index($breakpoint-names, $name);
+  @return if($n != null and $n < list.length($breakpoint-names), list.nth($breakpoint-names, $n + 1), null);
 }
 
 @function breakpoint-min($name, $breakpoints: $grid-breakpoints) {

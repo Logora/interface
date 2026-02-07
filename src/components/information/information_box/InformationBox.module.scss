@@ -1,15 +1,15 @@
-@import '~@logora/debate.styles.theme/_theme.scss';
-@import '~@logora/debate.styles.spacing/_spacing.scss';
+@use '@logora/debate.styles.theme/_theme.scss' as theme;
+@use '@logora/debate.styles.spacing/_spacing.scss' as spacing;
 
 .container {
     display: flex !important;
     flex-direction: column !important;
-    @include p(3, xs);
+    @include spacing.p(3, xs);
     height: 100%;
-    row-gap: $box-spacing;
-    border-radius: $box-border-radius;
-    box-shadow: $box-shadow;
-    border: $box-border;
+    row-gap: theme.$box-spacing;
+    border-radius: theme.$box-border-radius;
+    box-shadow: theme.$box-shadow;
+    border: theme.$box-border;
 }
 
 .icon {
@@ -19,65 +19,65 @@
     min-width: 30px;
     max-height: 30px;
     border-radius: 50%;
-    background-color: $call-primary;
-    @include mr(2, xs);
+    background-color: theme.$call-primary;
+    @include spacing.mr(2, xs);
     svg {
         position: absolute;
         transform: translate(-50%, -50%);
         top: 50%;
         left: 50%;
-        fill: $text-light;
+        fill: theme.$text-light;
     }
 }
 
 .title {
     display: flex !important;
     align-items: center !important;
-    font-size: $font-size-large;
-    font-weight: $font-weight-bold;
-    color: $text-primary;
+    font-size: theme.$font-size-large;
+    font-weight: theme.$font-weight-bold;
+    color: theme.$text-primary;
 }
 
 .point {
-    font-weight: $font-weight-bold;
+    font-weight: theme.$font-weight-bold;
     svg {
         display: inline-block;
         vertical-align: middle;
-        @include mr(1, xs);
+        @include spacing.mr(1, xs);
     }
     .pointNumber {
-        @include mx(1, xs);
+        @include spacing.mx(1, xs);
     }
 }
 
 .text {
     height: 100%;
-    color: $text-primary;
+    color: theme.$text-primary;
 }
 
 .textSpacing {
-    @include mr(1, xs);
+    @include spacing.mr(1, xs);
 }
 
 .link {
     display: flex !important;
     align-items: center !important;
-    @include px(3, xs);
-    @include py(2, xs);
+    @include spacing.px(3, xs);
+    @include spacing.py(2, xs);
     width: fit-content;
     border: 1px solid;
-    border-color: $text-primary;
-    border-radius: $box-border-radius;
+    border-color: theme.$text-primary;
+    border-radius: theme.$box-border-radius;
     cursor: pointer;
     svg {
         display: inline-block;
         vertical-align: middle;
-        @include ml(2, xs);
+        @include spacing.ml(2, xs);
         transform: rotate(-90deg);
-        fill: $text-primary;
+        fill: theme.$text-primary;
     }
     a {
-        color: $text-primary !important;
+        color: theme.$text-primary !important;
         text-decoration: none;
     }
     &:hover {
@@ -86,7 +86,7 @@
 }
 
 .moduleNotActive {
-    font-size: $font-size-extra-small;
-    color: $text-secondary;
+    font-size: theme.$font-size-extra-small;
+    color: theme.$text-secondary;
     font-style: italic;
 }

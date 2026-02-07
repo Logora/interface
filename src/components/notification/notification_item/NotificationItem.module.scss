@@ -1,10 +1,10 @@
-@import '~@logora/debate.styles.theme/_theme.scss';
-@import '~@logora/debate.styles.spacing/_spacing.scss';
+@use '@logora/debate.styles.theme/_theme.scss' as theme;
+@use '@logora/debate.styles.spacing/_spacing.scss' as spacing;
 
 .notificationItem {
   cursor: pointer;
   list-style-type: none;
-  @include p(0, xs);
+  @include spacing.p(0, xs);
 }
 
 .notificationItem a {
@@ -14,26 +14,26 @@
 .notificationItemBody {
   display: flex !important;
   flex-direction: row !important;
-  border-bottom: 2px dotted $darken-text-tertiary;
-  background-color: $darken-text-tertiary;
-  @include p(3, xs);
+  border-bottom: 2px dotted theme.$darken-text-tertiary;
+  background-color: theme.$darken-text-tertiary;
+  @include spacing.p(3, xs);
 
   &:hover {
-    background-color: $darkest-text-tertiary;
+    background-color: theme.$darkest-text-tertiary;
   }
 }
 
 .notificationItemBody.read {
-  background-color: $background-color-primary;
+  background-color: theme.$background-color-primary;
 
   &:hover {
-    background-color: $text-tertiary;
+    background-color: theme.$text-tertiary;
   }
 }
 
 .notificationImageContainer {
   svg {
-    fill: $call-primary;
+    fill: theme.$call-primary;
   }
 
   img {
@@ -44,13 +44,13 @@
 }
 
 .notificationItemContent {
-  font-size: $font-size-small;
-  @include ml(3, xs);
+  font-size: theme.$font-size-small;
+  @include spacing.ml(3, xs);
 }
 
 .notificationItemDate {
-  font-weight: $font-weight-normal;
-  color: $text-secondary;
-  font-size: $font-size-extra-small;
-  @include mt(1, xs);
+  font-weight: theme.$font-weight-normal;
+  color: theme.$text-secondary;
+  font-size: theme.$font-size-extra-small;
+  @include spacing.mt(1, xs);
 }

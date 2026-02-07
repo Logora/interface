@@ -1,19 +1,19 @@
-@import '~@logora/debate.styles.theme/_theme.scss';
-@import '~@logora/debate.styles.spacing/_spacing.scss';
+@use '@logora/debate.styles.theme/_theme.scss' as theme;
+@use '@logora/debate.styles.spacing/_spacing.scss' as spacing;
 
 .ltr {
     text-align: left;
 }
 
 .editorContainer {
-    color: $text-primary;
-    line-height: $line-height-normal;
-    font-weight: $font-weight-normal;
+    color: theme.$text-primary;
+    line-height: theme.$line-height-normal;
+    font-weight: theme.$font-weight-normal;
     text-align: left;
 }
 
 .editorInner {
-    background: $background-color-primary;
+    background: theme.$background-color-primary;
     position: relative;
     &.editorInnerInactive {
         display: flex !important;
@@ -22,12 +22,12 @@
 }
 
 .editorPlaceholder {
-    color: $text-primary;
+    color: theme.$text-primary;
     overflow: hidden;
     position: absolute;
     text-overflow: ellipsis;
     top: 15px;
-    font-size: $font-size-normal;
+    font-size: theme.$font-size-normal;
     user-select: none;
     display: inline-block;
     pointer-events: none;
@@ -36,12 +36,12 @@
 .editorInput {
     min-height: 25px;
     resize: none;
-    font-size: $font-size-normal;
+    font-size: theme.$font-size-normal;
     position: relative;
     tab-size: 1;
     outline: 0;
-    @include py(3, xs);
-    caret-color: $text-primary;
+    @include spacing.py(3, xs);
+    caret-color: theme.$text-primary;
     &.editorInputInactive {
         min-width: 180px;
         width: 100%;
@@ -49,7 +49,7 @@
 }
 
 .editorTextBold {
-    font-weight: $font-weight-bold;
+    font-weight: theme.$font-weight-bold;
 }
 
 .editorTextItalic {
@@ -69,35 +69,35 @@
 }
 
 .editorParagraph {
-    @include m(0, xs);
-    @include mb(1, xs);
+    @include spacing.m(0, xs);
+    @include spacing.mb(1, xs);
     position: relative;
 }
 
 .editorParagraph:last-child {
-    @include mb(0, xs);
+    @include spacing.mb(0, xs);
 }
 
 .editorQuote {
-    @include m(0, xs);
-    @include pl(3, xs);
-    font-size: $font-size-normal;
-    color: $text-secondary;
+    @include spacing.m(0, xs);
+    @include spacing.pl(3, xs);
+    font-size: theme.$font-size-normal;
+    color: theme.$text-secondary;
     border-left-color: rgb(206, 208, 212);
     border-left-width: 4px;
     border-left-style: solid;
 }
 
 .editorListOl {
-    @include m(0, xs);
-    @include ml(2, xs);
-    @include p(1, xs);
+    @include spacing.m(0, xs);
+    @include spacing.ml(2, xs);
+    @include spacing.p(1, xs);
     list-style-type: decimal !important;
 }
 
 .editorListItem {
-    @include mx(3, xs);
-    @include my(2, xs);
+    @include spacing.mx(3, xs);
+    @include spacing.my(2, xs);
 }
 
 .editorNestedListItem {
@@ -110,16 +110,16 @@ pre::-webkit-scrollbar {
 }
 
 pre::-webkit-scrollbar-thumb {
-    background: $text-secondary;
+    background: theme.$text-secondary;
 }
 
 .sourcesBox {
     display: flex !important;
     justify-content: flex-start !important;
     align-items: center !important;
-    @include mt(2, xs);
-    @include px(0, xs);
-    @include py(2, xs);
+    @include spacing.mt(2, xs);
+    @include spacing.px(0, xs);
+    @include spacing.py(2, xs);
 }
 
 .sourceList {
@@ -127,14 +127,14 @@ pre::-webkit-scrollbar-thumb {
     flex-direction: column !important;
     justify-content: flex-start !important;
     align-items: flex-start !important;
-    @include px(0, xs);
-    @include py(0, xs);
+    @include spacing.px(0, xs);
+    @include spacing.py(0, xs);
 }
 
 .charactersCount {
     align-self: center;
-    font-size: $font-size-small;
-    color: $text-primary;
+    font-size: theme.$font-size-small;
+    color: theme.$text-primary;
     white-space: nowrap;
-    @include mt(2, xs);
+    @include spacing.mt(2, xs);
 }

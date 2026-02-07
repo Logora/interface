@@ -1,7 +1,6 @@
-@import '~@logora/debate.styles.theme/_theme.scss';
-@import '~@logora/debate.styles.spacing/_spacing.scss';
-@import '~@logora/debate.styles.flex/_flex.scss';
-@import '~@logora/debate.styles.display/_display.scss';
+@use '@logora/debate.styles.theme/_theme.scss' as theme;
+@use '@logora/debate.styles.spacing/_spacing.scss' as spacing;
+@use '@logora/debate.styles.flex/_flex.scss' as flex;
 
 .progressContainer {
     display: flex !important;
@@ -11,13 +10,13 @@
 
 .titleContainer {
     display: flex !important;
-    @include flex-direction(column, xs);
-    @include flex-direction(row, sm);
+    @include flex.flex-direction(column, xs);
+    @include flex.flex-direction(row, sm);
 }
 
 .title {
     width: 100%;
-    font-weight: $font-weight-bold;
+    font-weight: theme.$font-weight-bold;
 }
 
 .subtitleContainer {
@@ -26,15 +25,15 @@
 }
 
 .progressSubtitle {
-    @include mr(1, xs);
-    color: $text-secondary;
-    font-size: $font-size-small;
+    @include spacing.mr(1, xs);
+    color: theme.$text-secondary;
+    font-size: theme.$font-size-small;
 }
 
 .progressBarContainer { 
     position: relative;
-    background: $background-color-secondary;
-    border-radius: $box-border-radius !important;
+    background: theme.$background-color-secondary;
+    border-radius: theme.$box-border-radius !important;
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -50,7 +49,7 @@
     justify-content: center;
     text-align: left;
     white-space: nowrap;
-    color: $text-light;
+    color: theme.$text-light;
     -webkit-transition: width 1.2s ease !important;
     transition: width 1.2s ease !important;
 }
@@ -61,10 +60,10 @@
     justify-content: center;
     text-align: center;
     white-space: nowrap;
-    background-color: $call-primary;
-    border-radius: $box-border-radius !important;
+    background-color: theme.$call-primary;
+    border-radius: theme.$box-border-radius !important;
     height: 100%;
-    color: $text-light;
+    color: theme.$text-light;
     animation: progressBarAnimation 1.2s ease;
     animation-fill-mode:both; 
     -webkit-animation: progressBarAnimation 1.2s ease;
@@ -75,10 +74,10 @@
 
 .progressBarContent {
     text-align: left;
-    @include pl(2, xs);
-    color: $text-light;
-    font-size: $font-size-normal;
-    font-weight: $font-weight-normal;
+    @include spacing.pl(2, xs);
+    color: theme.$text-light;
+    font-size: theme.$font-size-normal;
+    font-weight: theme.$font-weight-normal;
     min-height: 0.5em;
 }
 
