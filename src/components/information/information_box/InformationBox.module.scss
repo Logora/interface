@@ -6,7 +6,7 @@
     flex-direction: column !important;
     @include spacing.p(3, xs);
     height: 100%;
-    row-gap: theme.$box-spacing;
+    row-gap: spacing.$box-spacing;
     border-radius: theme.$box-border-radius;
     box-shadow: theme.$box-shadow;
     border: theme.$box-border;

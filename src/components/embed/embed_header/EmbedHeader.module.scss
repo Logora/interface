@@ -144,5 +144,5 @@
 }
 
 .debateNameWithLogo {
-    @include px(0, xs);
+    @include spacing.px(0, xs);
 }
