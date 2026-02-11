@@ -67,7 +67,7 @@
 }
 
 .signupButton {
-  color: theme.$call-primary !important;
+  color: theme.$text-primary !important;
   text-decoration: underline;
   cursor: pointer;
   @include spacing.ml(2, xs);
