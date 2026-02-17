@@ -27,22 +27,14 @@ export const Modal = ({ title, showCloseButton = false, fullScreen, children, di
   const handleClickBackdrop = (e) => {
     if (disableClickOutside) return;
     
-    const dialog = dialogRef.current;
-    const rect = dialog.getBoundingClientRect();
-    const isInDialog = (
-      rect.top <= e.clientY &&
-      e.clientY <= rect.top + rect.height &&
-      rect.left <= e.clientX &&
-      e.clientX <= rect.left + rect.width
-    );
+    // Only handle clicks directly on the dialog element (backdrop)
+    // Don't handle clicks on child elements (they bubble up)
+    if (e.target !== dialogRef.current) return;
     
-    if (!isInDialog) {
-      hideModal();
-    }
+    hideModal();
   };
 
-  const handleClose = (e) => {
-    e.preventDefault();
+  const handleClose = () => {
     hideModal();
   };
 
