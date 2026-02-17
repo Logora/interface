@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { Modal } from './Modal';
 import { ModalProvider } from './ModalProvider';
@@ -101,11 +101,12 @@ describe('Modal', () => {
 
 		await userEvent.click(screen.getByTestId("show-modal-button"));
 
-		// Wait for focus to be set
-		await new Promise(resolve => setTimeout(resolve, 10));
-
 		const closeButton = screen.getByTestId("close-button");
-		expect(document.activeElement).toBe(closeButton);
+		
+		// Wait for focus to be set
+		await waitFor(() => {
+			expect(document.activeElement).toBe(closeButton);
+		});
 	});
 
 	it('should close modal when pressing Escape key', async () => {
@@ -181,15 +182,14 @@ describe('Modal', () => {
 
 		await userEvent.click(screen.getByTestId("show-modal-button"));
 
-		// Wait for focus to be set
-		await new Promise(resolve => setTimeout(resolve, 10));
-
 		const closeButton = screen.getByTestId("close-button");
 		const button1 = screen.getByTestId("button1");
 		const button2 = screen.getByTestId("button2");
 
-		// Initial focus should be on close button
-		expect(document.activeElement).toBe(closeButton);
+		// Wait for initial focus to be set on close button
+		await waitFor(() => {
+			expect(document.activeElement).toBe(closeButton);
+		});
 
 		// Tab to next element
 		await userEvent.tab();

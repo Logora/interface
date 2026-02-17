@@ -68,8 +68,8 @@ export const Modal = ({ title, showCloseButton = false, fullScreen, children, di
       }
     };
 
-    // Use setTimeout to ensure DOM is ready
-    setTimeout(setInitialFocus, 0);
+    // Use requestAnimationFrame to ensure DOM is ready
+    requestAnimationFrame(setInitialFocus);
 
     // Add keydown listener for ESC and Tab trap
     document.addEventListener('keydown', handleKeyDown);
