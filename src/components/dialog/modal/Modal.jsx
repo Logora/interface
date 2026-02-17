@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useCallback } from "react";
 import { useIntl } from 'react-intl';
 import PropTypes from "prop-types";
 import { useModal } from './useModal';
@@ -9,17 +9,76 @@ import { Icon } from "@logora/debate.icons.icon";
 
 export const Modal = ({ title, showCloseButton = false, fullScreen, children, disableClickOutside = false, ...rest }) => {
   const modalRef = useRef();
+  const closeButtonRef = useRef();
   const intl = useIntl();
   const { hideModal } = useModal();
 
   useOnClickOutside(modalRef, disableClickOutside ? null : hideModal);
 
+  // Get all focusable elements within the modal
+  const getFocusableElements = useCallback(() => {
+    if (!modalRef.current) return [];
+    const focusableSelectors = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
+    return Array.from(modalRef.current.querySelectorAll(focusableSelectors))
+      .filter(el => !el.hasAttribute('disabled') && el.tabIndex !== -1);
+  }, []);
+
+  // Handle Tab key for focus trap
+  const handleKeyDown = useCallback((e) => {
+    if (e.key === 'Escape') {
+      hideModal();
+      return;
+    }
+
+    if (e.key === 'Tab') {
+      const focusableElements = getFocusableElements();
+      if (focusableElements.length === 0) return;
+
+      const firstElement = focusableElements[0];
+      const lastElement = focusableElements[focusableElements.length - 1];
+
+      if (e.shiftKey) {
+        // Shift+Tab: if on first element, wrap to last
+        if (document.activeElement === firstElement) {
+          e.preventDefault();
+          lastElement.focus();
+        }
+      } else {
+        // Tab: if on last element, wrap to first
+        if (document.activeElement === lastElement) {
+          e.preventDefault();
+          firstElement.focus();
+        }
+      }
+    }
+  }, [hideModal, getFocusableElements]);
+
   useEffect(() => {
     document.body.style.overflowY = "hidden";
+    
+    // Set initial focus to close button or first focusable element
+    const setInitialFocus = () => {
+      if (closeButtonRef.current) {
+        closeButtonRef.current.focus();
+      } else {
+        const focusableElements = getFocusableElements();
+        if (focusableElements.length > 0) {
+          focusableElements[0].focus();
+        }
+      }
+    };
+
+    // Use setTimeout to ensure DOM is ready
+    setTimeout(setInitialFocus, 0);
+
+    // Add keydown listener for ESC and Tab trap
+    document.addEventListener('keydown', handleKeyDown);
+
     return () => {
       document.body.style.overflowY = null;
+      document.removeEventListener('keydown', handleKeyDown);
     }
-  }, [])
+  }, [handleKeyDown, getFocusableElements])
 
   return (
     <div className={cx(styles.modalWrapper, { [styles.modalWrapperFullScreen]: fullScreen })}>
@@ -31,6 +90,7 @@ export const Modal = ({ title, showCloseButton = false, fullScreen, children, di
             }
             {showCloseButton &&
               <button
+                ref={closeButtonRef}
                 type="button"
                 className={styles.modalExitButton}
                 onClick={hideModal}
