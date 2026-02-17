@@ -2,41 +2,28 @@
 @use '@logora/debate.styles.spacing' as spacing;
 @use '@logora/debate.styles.display' as display;
 
-.modalWrapper {
-  position: fixed;
-  display: block;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  outline: 0;
-  background: rgba(0, 0, 0, 0.6);
-  z-index: 1000002;
-  width: 100%;
-  height: 100%;
-  overflow-x: hidden;
-  overflow-y: auto;
-}
-
-.modalWrapperFullScreen {
-  background: theme.$background-color-primary;
-}
-
 .modalDialog {
-  min-height: calc(100% - (1.75rem * 2));
-  transform: translate(0,0);
+  border: none;
+  padding: 0;
   max-width: 500px;
-  position: relative;
   width: auto;
-  margin: 1.75em auto;
-  display: flex;
-  align-items: center;
+  margin: auto;
+  background: transparent;
+  
+  &::backdrop {
+    background: rgba(0, 0, 0, 0.6);
+  }
 }
 
 .modalDialogFullScreen {
-  min-height: 100%;
   max-width: none;
+  width: 100%;
+  height: 100%;
   margin: 0 !important;
+  
+  &::backdrop {
+    background: theme.$background-color-primary;
+  }
 }
 
 .modalContainer {

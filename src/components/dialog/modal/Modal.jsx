@@ -2,57 +2,80 @@ import React, { useRef, useEffect } from "react";
 import { useIntl } from 'react-intl';
 import PropTypes from "prop-types";
 import { useModal } from './useModal';
-import useOnClickOutside from 'use-onclickoutside';
 import cx from 'classnames';
 import styles from './Modal.module.scss';
 import { Icon } from "@logora/debate.icons.icon";
 
 export const Modal = ({ title, showCloseButton = false, fullScreen, children, disableClickOutside = false, ...rest }) => {
-  const modalRef = useRef();
+  const dialogRef = useRef();
   const intl = useIntl();
   const { hideModal } = useModal();
 
-  useOnClickOutside(modalRef, disableClickOutside ? null : hideModal);
-
   useEffect(() => {
-    document.body.style.overflowY = "hidden";
+    const dialog = dialogRef.current;
+    if (dialog && !dialog.open) {
+      dialog.showModal();
+    }
+
     return () => {
-      document.body.style.overflowY = null;
+      const dialogToClose = dialogRef.current;
+      if (dialogToClose && dialogToClose.open) {
+        dialogToClose.close();
+      }
     }
   }, [])
 
+  const handleClickBackdrop = (e) => {
+    if (disableClickOutside) return;
+    
+    // Only handle clicks directly on the dialog element (backdrop)
+    // Using currentTarget === target is more reliable than ref comparison
+    if (e.currentTarget !== e.target) return;
+    
+    hideModal();
+  };
+
+  const handleClose = () => {
+    hideModal();
+  };
+
   return (
-    <div className={cx(styles.modalWrapper, { [styles.modalWrapperFullScreen]: fullScreen })}>
-      <div className={cx(styles.modalDialog, { [styles.modalDialogFullScreen]: fullScreen })} role="dialog"  aria-modal="true"  aria-labelledby={title ? "modal-title" : undefined}{...rest}>
-        <div className={cx(styles.modalContainer)} ref={modalRef}>
-          <div className={cx(styles.modalHeader, { [styles.modalHeaderWithTitle]: title })}>
-            {title &&
-              <div id="modal-title">{title}</div>
-            }
-            {showCloseButton &&
-              <button
-                type="button"
-                className={styles.modalExitButton}
-                onClick={hideModal}
-                aria-label={intl.formatMessage({ id: "dialog.modal.aria_label", defaultMessage: "Close dialog" })}
-                data-testid="close-button"
-              >
-                <Icon
-                  name="close"
-                  height={18}
-                  width={18}
-                  aria-hidden="true"
-                  focusable="false"
-                />
-              </button>
-            }
-          </div>
-          <div className={styles.modalContent}>
-            {children}
-          </div>
+    <dialog 
+      ref={dialogRef}
+      className={cx(styles.modalDialog, { [styles.modalDialogFullScreen]: fullScreen })} 
+      aria-labelledby={title ? "modal-title" : undefined}
+      onClick={handleClickBackdrop}
+      onClose={handleClose}
+      {...rest}
+    >
+      <div className={cx(styles.modalContainer)}>
+        <div className={cx(styles.modalHeader, { [styles.modalHeaderWithTitle]: title })}>
+          {title &&
+            <div id="modal-title">{title}</div>
+          }
+          {showCloseButton &&
+            <button
+              type="button"
+              className={styles.modalExitButton}
+              onClick={hideModal}
+              aria-label={intl.formatMessage({ id: "dialog.modal.aria_label", defaultMessage: "Close dialog" })}
+              data-testid="close-button"
+            >
+              <Icon
+                name="close"
+                height={18}
+                width={18}
+                aria-hidden="true"
+                focusable="false"
+              />
+            </button>
+          }
+        </div>
+        <div className={styles.modalContent}>
+          {children}
         </div>
       </div>
-    </div>
+    </dialog>
   );
 };
 
