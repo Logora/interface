@@ -18,8 +18,9 @@ export const Modal = ({ title, showCloseButton = false, fullScreen, children, di
     }
 
     return () => {
-      if (dialog && dialog.open) {
-        dialog.close();
+      const dialogToClose = dialogRef.current;
+      if (dialogToClose && dialogToClose.open) {
+        dialogToClose.close();
       }
     }
   }, [])
