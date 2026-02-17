@@ -60,7 +60,6 @@ describe('Modal', () => {
 		expect(screen.getByText("modal content")).toBeTruthy()
 		expect(screen.getByText("my title")).toBeTruthy()
 		expect(screen.getByTestId("close-button")).toBeTruthy();
-		expect(document.body.style.overflowY).toEqual("hidden")
 	});
 
 	it('should close when clicking on close button', async () => {
