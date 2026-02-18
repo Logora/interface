@@ -84,10 +84,8 @@
   }
 }
 
-.modalExitButton:focus,
-.modalExitButton:focus-visible {
-  outline: none !important;
-  box-shadow: none !important;
+.modalExitButton:focus {
+  outline: none;
 }
 
 .modalHeaderWithTitle {
