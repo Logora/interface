@@ -10,20 +10,27 @@ export const Modal = ({ title, showCloseButton = false, fullScreen, children, di
   const dialogRef = useRef();
   const intl = useIntl();
   const { hideModal } = useModal();
-
+  
   useEffect(() => {
     const dialog = dialogRef.current;
-    if (dialog && !dialog.open) {
-      dialog.showModal();
-    }
-
+    if (!dialog) return;
+  
+    if (!dialog.open) dialog.showModal();
+  
+    const prevHtmlOverflow = document.documentElement.style.overflow;
+    const prevBodyOverflow = document.body.style.overflow;
+  
+    document.documentElement.style.overflow = "hidden";
+    document.body.style.overflow = "hidden";
+  
     return () => {
-      const dialogToClose = dialogRef.current;
-      if (dialogToClose && dialogToClose.open) {
-        dialogToClose.close();
-      }
-    }
-  }, [])
+      document.documentElement.style.overflow = prevHtmlOverflow;
+      document.body.style.overflow = prevBodyOverflow;
+  
+      if (dialog.open) dialog.close();
+    };
+  }, []);
+  
 
   const handleClickBackdrop = (e) => {
     if (disableClickOutside) return;
