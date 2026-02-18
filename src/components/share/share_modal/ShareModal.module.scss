@@ -18,13 +18,4 @@
         width: 25px;
         height: 25px;
     }
-
-    button:focus-visible {
-        outline: none; 
-      }
-      
-    button:focus-visible {
-        box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.4);
-        border-radius: 4px;
-      }
 }
