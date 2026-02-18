@@ -18,18 +18,24 @@ import { VoteButton } from '@logora/debate.vote.vote_button';
 
 beforeAll(() => {
     class ResizeObserver {
-        constructor(callback) {
-            this.callback = callback;
-        }
-        observe() {
-            this.callback([{ contentRect: { width: 1200, height: 800 } }]);
-        }
-        unobserve() {}
+      constructor(callback) {
+        this.callback = callback;
+      }
+      observe() {
+        this.callback([{ contentRect: { width: 1200, height: 800 } }]);
+      }
+      unobserve() {}
     }
-
     global.ResizeObserver = ResizeObserver;
-});
-
+  
+    HTMLDialogElement.prototype.showModal = function () {
+      this.setAttribute("open", "");
+    };
+    HTMLDialogElement.prototype.close = function () {
+      this.removeAttribute("open");
+    };
+  });
+  
 const vote = { 
     id: faker.datatype.number(),
     voteable_type: faker.lorem.word(),

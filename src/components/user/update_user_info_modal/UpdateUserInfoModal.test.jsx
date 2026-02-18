@@ -20,7 +20,7 @@ const httpClient = {
 const currentUser = {
     id: faker.datatype.number(),
     full_name: faker.name.fullName(),
-    image_url: faker.image.avatar(),
+    image_url: faker.internet.avatar(),
     points: faker.datatype.number()
 }
 
@@ -30,11 +30,20 @@ const currentUserWithInfos = {
     first_name: faker.name.firstName(),
     last_name: faker.name.lastName(),
     description: faker.name.jobTitle(),
-    image_url: faker.image.avatar(),
+    image_url: faker.internet.avatar(),
     points: faker.datatype.number()
 }
 
 const data = dataProvider(httpClient, "https://mock.example.api");
+
+beforeAll(() => {
+    HTMLDialogElement.prototype.showModal = function () {
+      this.setAttribute("open", "");
+    };
+    HTMLDialogElement.prototype.close = function () {
+      this.removeAttribute("open");
+    };
+  });
 
 describe("UpdateUserInfoModal", () => {
     it("should appear normally", async () => {

@@ -36,6 +36,15 @@ const ComponentWithDelete = () => {
 
 const data = dataProvider(httpClient, "https://mock.example.api");
 
+beforeAll(() => {
+    HTMLDialogElement.prototype.showModal = function () {
+      this.setAttribute("open", "");
+    };
+    HTMLDialogElement.prototype.close = function () {
+      this.removeAttribute("open");
+    };
+  });
+
 describe('useDeleteContent', () => {
     it('should show ConfirmModal when useDeleteContent is called', async () => {
         render(

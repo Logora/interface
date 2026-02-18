@@ -7,6 +7,15 @@ import { IconProvider } from '@logora/debate.icons.icon_provider';
 import { IntlProvider } from "react-intl";
 import * as regularIcons from '@logora/debate.icons.regular_icons';
 
+beforeAll(() => {
+    HTMLDialogElement.prototype.showModal = function () {
+      this.setAttribute("open", "");
+    };
+    HTMLDialogElement.prototype.close = function () {
+      this.removeAttribute("open");
+    };
+  });
+
 describe('ConfirmModal', () => {
 	it('should render modal with content and title', () => {
 		const modal = render(
@@ -28,7 +37,7 @@ describe('ConfirmModal', () => {
 		expect(screen.getByText("are you sure ?")).toBeTruthy()
 		expect(screen.getByText("yes")).toBeTruthy()
 		expect(screen.getByText("no")).toBeTruthy()
-		expect(document.body.style.overflowY).toEqual("hidden")
+		expect(screen.getByRole("dialog")).toHaveAttribute("open");
 	});
 
 	it('should close on click outside', async () => {
@@ -49,7 +58,7 @@ describe('ConfirmModal', () => {
 
 		expect(screen.getByRole("dialog")).toBeTruthy()
 		expect(screen.getByText("are you sure ?")).toBeTruthy()
-		expect(document.body.style.overflowY).toEqual("hidden")
+		expect(screen.getByRole("dialog")).toHaveAttribute("open");
 		await userEvent.click(document.body)
 
 		waitForElementToBeRemoved(screen.getByText("are you sure ?")).then(() =>
@@ -130,7 +139,7 @@ describe('ConfirmModal', () => {
 
 		expect(screen.getByRole("dialog")).toBeTruthy()
 		expect(screen.getByText("are you sure ?")).toBeTruthy()
-		expect(document.body.style.overflowY).toEqual("hidden")
+		expect(screen.getByRole("dialog")).toHaveAttribute("open");
 		const confirmButton = modal.getByText(/yes/i);
 		fireEvent.click(confirmButton)
 
@@ -158,7 +167,7 @@ describe('ConfirmModal', () => {
 
 		expect(screen.getByRole("dialog")).toBeTruthy()
 		expect(screen.getByText("are you sure ?")).toBeTruthy()
-		expect(document.body.style.overflowY).toEqual("hidden")
+		expect(screen.getByRole("dialog")).toHaveAttribute("open");
 		const confirmButton = modal.getByText(/no/i);
 		fireEvent.click(confirmButton)
 

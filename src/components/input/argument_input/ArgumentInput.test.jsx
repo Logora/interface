@@ -17,8 +17,8 @@ import { InputProvider, useInput } from '@logora/debate.input.input_provider';
 
 jest.mock('@lexical/react/LexicalErrorBoundary', () => ({
     LexicalErrorBoundary: ({ children }) => children,
-  }));
-  
+}));
+
 const httpClient = {
     get: () => null,
     post: (url, data, config) => {
@@ -82,6 +82,24 @@ describe("ArgumentInput", () => {
                 dispatchEvent: jest.fn(),
             })),
         });
+        const proto = globalThis.HTMLDialogElement?.prototype;
+        if (proto && !proto.showModal) {
+            Object.defineProperty(proto, "showModal", {
+                configurable: true,
+                value: function () {
+                    this.setAttribute("open", "");
+                },
+            });
+        }
+        if (proto && !proto.close) {
+            Object.defineProperty(proto, "close", {
+                configurable: true,
+                value: function () {
+                    this.removeAttribute("open");
+                    this.dispatchEvent(new Event("close"));
+                },
+            });
+        }
     });
 
     it("should render correctly", () => {

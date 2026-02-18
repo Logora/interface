@@ -33,28 +33,36 @@ const httpClient = {
 
 const data = dataProvider(httpClient, "https://mock.example.api");
 
+beforeAll(() => {
+    HTMLDialogElement.prototype.showModal = function () {
+      this.setAttribute("open", "");
+    };
+    HTMLDialogElement.prototype.close = function () {
+      this.removeAttribute("open");
+    };
+  });
+
 describe('SourceModal', () => {
-    it('should render modal with content and title', () => {
-        const modal = render(
-            <ModalProvider>
-                <IntlProvider locale="en">
-                    <IconProvider library={regularIcons}>
-                        <DataProviderContext.Provider value={{ dataProvider: data }}>
-                            <SourceModal
-                                onAddSource={addSourceCallback}
-                                onHideModal={hideModalCallback}
-                            />
-                        </DataProviderContext.Provider>
-                    </IconProvider>
-                </IntlProvider>
-            </ModalProvider>
+      it('should render modal with content and title', async () => {
+        render(
+          <ModalProvider>
+            <IntlProvider locale="en">
+              <IconProvider library={regularIcons}>
+                <DataProviderContext.Provider value={{ dataProvider: data }}>
+                  <SourceModal onAddSource={addSourceCallback} onHideModal={hideModalCallback} />
+                </DataProviderContext.Provider>
+              </IconProvider>
+            </IntlProvider>
+          </ModalProvider>
         );
-
-        expect(screen.getByText("Add a source")).toBeTruthy();
-        expect(screen.getByRole("textbox")).toBeTruthy();
-        expect(document.body.style.overflowY).toEqual("hidden");
-    });
-
+      
+        expect(screen.getByText("Add a source")).toBeInTheDocument();
+        expect(screen.getByRole("textbox", { name: /search bar/i })).toBeInTheDocument();
+      
+        const dialog = document.querySelector("dialog");
+        expect(dialog).toHaveAttribute("open");
+      });
+      
     it('should trigger addSourceCallback when adding source', async () => {
         const modal = render(
             <ModalProvider>

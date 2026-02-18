@@ -48,6 +48,35 @@ const loggedInUser = {
     hash_id: faker.lorem.slug(),
 };
 
+beforeAll(() => {
+    const patchDialog = (Proto) => {
+      if (!Proto) return;
+  
+      if (!Proto.showModal) {
+        Object.defineProperty(Proto, "showModal", {
+          configurable: true,
+          value: function () {
+            this.setAttribute("open", "");
+          },
+        });
+      }
+  
+      if (!Proto.close) {
+        Object.defineProperty(Proto, "close", {
+          configurable: true,
+          value: function () {
+            this.removeAttribute("open");
+            this.dispatchEvent(new Event("close"));
+          },
+        });
+      }
+    };
+  
+    patchDialog(global.HTMLDialogElement?.prototype);
+    patchDialog(global.HTMLElement?.prototype);
+  });
+  
+
 const Providers = ({ children, config = baseConfig, currentUser = null, isLoggedIn = false }) => (
     <BrowserRouter>
         <ConfigProvider routes={routes} config={config}>

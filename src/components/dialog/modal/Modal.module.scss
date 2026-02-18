@@ -5,15 +5,28 @@
 .modalDialog {
   border: none;
   padding: 0;
-  max-width: 500px;
-  width: auto;
-  margin: auto;
   background: transparent;
+
+  width: 100%;
+  max-width: 500px;
+
+  margin: auto;              
+  position: fixed;          
+  inset: 0;                  
   
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   &::backdrop {
     background: rgba(0, 0, 0, 0.6);
   }
 }
+
+.modalDialog:focus {
+  outline: none;
+}
+
 
 .modalDialogFullScreen {
   max-width: none;
@@ -64,11 +77,15 @@
     }
 
     &:not(:disabled):not(.disabled) {
-      &:hover, &:focus {
+      &:hover {
         opacity: .75;
       }
     }
   }
+}
+
+.modalExitButton:focus {
+  outline: none;
 }
 
 .modalHeaderWithTitle {

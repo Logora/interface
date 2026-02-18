@@ -8,82 +8,108 @@ import { IconProvider } from '@logora/debate.icons.icon_provider';
 import { IntlProvider } from "react-intl";
 import * as regularIcons from '@logora/debate.icons.regular_icons';
 
-const TestModal = () => {
-	const { showModal } = useModal();
+beforeAll(() => {
+  if (typeof HTMLDialogElement !== 'undefined') {
+    if (!HTMLDialogElement.prototype.showModal) {
+      HTMLDialogElement.prototype.showModal = function () {
+        this.setAttribute('open', '');
+      };
+    }
+    if (!HTMLDialogElement.prototype.close) {
+      HTMLDialogElement.prototype.close = function () {
+        this.removeAttribute('open');
+        this.dispatchEvent(new Event('close'));
+      };
+    }
+  }
+});
 
-	return (
-		<div>
-			<button data-testid={"show-modal-button"} onClick={() => showModal(
-				<Modal title="my title" showCloseButton>
-					<div data-testid="modal-content">modal content</div>
-				</Modal>
-			)}>show modal
-			</button>
-		</div>
-	)
-}
+const TestModal = () => {
+  const { showModal } = useModal();
+
+  return (
+    <div>
+      <button
+        data-testid="show-modal-button"
+        onClick={() =>
+          showModal(
+            <Modal title="my title" showCloseButton>
+              <div data-testid="modal-content">modal content</div>
+            </Modal>
+          )
+        }
+      >
+        show modal
+      </button>
+    </div>
+  );
+};
 
 describe('Modal', () => {
-	it('should render modal with content and title', async () => {
-		const modal = render(
-			<IconProvider library={regularIcons}>
-				<IntlProvider locale="en">
-					<ModalProvider>
-						<TestModal />
-					</ModalProvider>
-				</IntlProvider>
-			</IconProvider>
-		);
+  it('should render modal with content and title', async () => {
+    const user = userEvent.setup();
 
-		expect(screen.queryByText("modal content")).toBeNull();
+    render(
+      <IconProvider library={regularIcons}>
+        <IntlProvider locale="en">
+          <ModalProvider>
+            <TestModal />
+          </ModalProvider>
+        </IntlProvider>
+      </IconProvider>
+    );
 
-		await userEvent.click(screen.getByTestId("show-modal-button"));
+    expect(screen.queryByText("modal content")).toBeNull();
 
-		expect(screen.getByRole("dialog")).toBeTruthy();
-		expect(screen.getByText("modal content")).toBeTruthy();
-		expect(screen.getByText("my title")).toBeTruthy()
-	});
+    await user.click(screen.getByTestId("show-modal-button"));
 
-	it('should render close button if showCloseButotn is true', () => {
-		const modal = render(
-			<IconProvider library={regularIcons}>
-				<IntlProvider locale="en">
-					<ModalProvider>
-						<Modal title="my title" showCloseButton>
-							<div data-testid="modal-content">modal content</div>
-						</Modal>
-					</ModalProvider>
-				</IntlProvider>
-			</IconProvider>
-		);
+    expect(screen.getByRole("dialog")).toBeInTheDocument();
+    expect(screen.getByText("modal content")).toBeInTheDocument();
+    expect(screen.getByText("my title")).toBeInTheDocument();
+  });
 
-		expect(screen.getByText("modal content")).toBeTruthy()
-		expect(screen.getByText("my title")).toBeTruthy()
-		expect(screen.getByTestId("close-button")).toBeTruthy();
-	});
+  it('should render close button if showCloseButton is true', () => {
+    render(
+      <IconProvider library={regularIcons}>
+        <IntlProvider locale="en">
+          <ModalProvider>
+            <Modal title="my title" showCloseButton>
+              <div data-testid="modal-content">modal content</div>
+            </Modal>
+          </ModalProvider>
+        </IntlProvider>
+      </IconProvider>
+    );
 
-	it('should close when clicking on close button', async () => {
-		const modal = render(
-			<IconProvider library={regularIcons}>
-				<IntlProvider locale="en">
-					<ModalProvider>
-						<TestModal />
-					</ModalProvider>
-				</IntlProvider>
-			</IconProvider>
-		);
+    expect(screen.getByText("modal content")).toBeInTheDocument();
+    expect(screen.getByText("my title")).toBeInTheDocument();
+    expect(screen.getByTestId("close-button")).toBeInTheDocument();
+  });
 
-		expect(screen.queryByRole("dialog")).toBeNull();
+  it('should close when clicking on close button', async () => {
+    const user = userEvent.setup();
 
-		await userEvent.click(screen.getByTestId("show-modal-button"));
+    render(
+      <IconProvider library={regularIcons}>
+        <IntlProvider locale="en">
+          <ModalProvider>
+            <TestModal />
+          </ModalProvider>
+        </IntlProvider>
+      </IconProvider>
+    );
 
-		expect(screen.queryByRole("dialog")).toBeTruthy();
-		expect(screen.queryByText("modal content")).toBeTruthy();
-		expect(screen.getByTestId("close-button")).toBeTruthy();
+    expect(screen.queryByRole("dialog")).toBeNull();
 
-		await userEvent.click(screen.getByTestId("close-button"));
+    await user.click(screen.getByTestId("show-modal-button"));
 
-		expect(screen.queryByText("modal content")).toBeNull();
-		expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
-	});
+    expect(screen.getByRole("dialog")).toBeInTheDocument();
+    expect(screen.getByText("modal content")).toBeInTheDocument();
+    expect(screen.getByTestId("close-button")).toBeInTheDocument();
+
+    await user.click(screen.getByTestId("close-button"));
+
+    expect(screen.queryByText("modal content")).toBeNull();
+    expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+  });
 });

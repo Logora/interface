@@ -7,6 +7,15 @@ import { IntlProvider } from 'react-intl';
 import { IconProvider } from '@logora/debate.icons.icon_provider';
 import * as regularIcons from '@logora/debate.icons.regular_icons';
 
+beforeAll(() => {
+    HTMLDialogElement.prototype.showModal = function () {
+      this.setAttribute("open", "");
+    };
+    HTMLDialogElement.prototype.close = function () {
+      this.removeAttribute("open");
+    };
+  });
+
 describe('ShareModal', () => {
     it('should render modal with content and title', () => {
         const { getByText, queryAllByRole } = render(
@@ -26,8 +35,8 @@ describe('ShareModal', () => {
         );
 
         expect(getByText("Modal title")).toBeTruthy();
-        expect(document.body.style.overflowY).toEqual("hidden");
-
+        const dialog = screen.getByRole("dialog");
+        expect(dialog).toHaveAttribute("open");
         expect(queryAllByRole("button")).toHaveLength(4);
     });
 
@@ -52,7 +61,6 @@ describe('ShareModal', () => {
         expect(getByRole("dialog")).toBeTruthy();
         expect(getByText("Modal title")).toBeTruthy();
         expect(queryAllByRole("button")).toHaveLength(5);
-        expect(document.body.style.overflowY).toEqual("hidden");
         await userEvent.click(document.body);
 
         waitForElementToBeRemoved(screen.getByText("Modal title")).then(() =>

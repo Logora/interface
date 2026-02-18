@@ -1,26 +1,51 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import { DefaultReportModal } from './ReportModal.composition';
+import React from "react";
+import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import { DefaultReportModal } from "./ReportModal.composition";
 
-describe('ReportModal', () => {
-	it('should render modal with content and title', () => {
-		const modal = render(
-			<DefaultReportModal />
-		);
+beforeAll(() => {
+  const patchDialog = (Proto) => {
+    if (!Proto) return;
 
-		expect(screen.getByText("Report this argument")).toBeTruthy();
-		expect(screen.getByRole('textbox')).toBeTruthy();
-	});
+    if (!Proto.showModal) {
+      Object.defineProperty(Proto, "showModal", {
+        configurable: true,
+        value: function () {
+          this.setAttribute("open", "");
+        },
+      });
+    }
 
-	it('should render dropdown', async () => {
-		const modal = render(
-			<DefaultReportModal />
-		);
+    if (!Proto.close) {
+      Object.defineProperty(Proto, "close", {
+        configurable: true,
+        value: function () {
+          this.removeAttribute("open");
+          this.dispatchEvent(new Event("close"));
+        },
+      });
+    }
+  };
 
-		const dropdownButton = screen.getByRole('button', { name: /select a reason/i });
-		await userEvent.click(dropdownButton);
-		expect(await screen.findByText("Incomprehensibility")).toBeTruthy();
-	});
+  patchDialog(globalThis.HTMLDialogElement?.prototype);
+  patchDialog(globalThis.HTMLElement?.prototype);
+});
 
-})
+describe("ReportModal", () => {
+  it("should render modal with content and title", async () => {
+    render(<DefaultReportModal />);
+
+    expect(await screen.findByText("Report this argument")).toBeTruthy();
+    expect(await screen.findByRole("textbox")).toBeTruthy();
+  });
+
+  it("should render dropdown", async () => {
+    const user = userEvent.setup();
+    render(<DefaultReportModal />);
+
+    const dropdownButton = await screen.findByRole("button", { name: /select a reason/i });
+    await user.click(dropdownButton);
+
+    expect(await screen.findByText("Incomprehensibility")).toBeTruthy();
+  });
+});

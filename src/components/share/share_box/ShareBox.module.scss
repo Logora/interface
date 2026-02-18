@@ -28,3 +28,11 @@
 .twitterIcon path {
     fill: theme.$text-primary;
 }
+
+.linkCopyButton:focus,
+.linkCopyButton:focus-visible,
+.codeCopyButton:focus,
+.codeCopyButton:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+}

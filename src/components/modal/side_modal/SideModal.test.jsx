@@ -2,6 +2,15 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import { SideModalExample, SideModalWithNeutralPosition, SideModalWithDisabledPositions } from "./SideModal.composition";
 
+beforeAll(() => {
+    HTMLDialogElement.prototype.showModal = function () {
+      this.setAttribute("open", "");
+    };
+    HTMLDialogElement.prototype.close = function () {
+      this.removeAttribute("open");
+    };
+  });
+
 describe("SideModal", () => {
     it("should appear with all the right default values", async () => {
         render(<SideModalExample />);
