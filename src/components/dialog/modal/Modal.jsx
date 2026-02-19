@@ -16,6 +16,7 @@ export const Modal = ({ title, showCloseButton = false, fullScreen, children, di
     if (!dialog) return;
   
     if (!dialog.open) dialog.showModal();
+    dialog.focus();
   
     const prevHtmlOverflow = document.documentElement.style.overflow;
     const prevBodyOverflow = document.body.style.overflow;
