@@ -7,7 +7,7 @@
     border: theme.$box-border-main-container;
     border-radius: theme.$box-border-radius;
     color: theme.$text-primary;
-    @include spacing.p(3, xs);
+    @include spacing.p(4, sm);
 }
 
 .header {
