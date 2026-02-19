@@ -82,7 +82,7 @@
     align-items: center !important;
     font-weight: theme.$font-weight-normal;
     font-size: theme.$font-size-small;
-    color: theme.$text-primary;
+    color: theme.$text-secondary;
     gap: spacing.$spacer-xs;
 }
 
@@ -93,11 +93,11 @@
 }
 
 .authorPoints {
-    color: theme.$text-primary;
+    color: theme.$text-secondary;
 }
 
 .authorEloquence {
-    color: theme.$text-primary;
+    color: theme.$text-secondary;
     @include display.text-truncate();
 }
 
