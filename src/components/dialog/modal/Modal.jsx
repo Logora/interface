@@ -36,8 +36,6 @@ export const Modal = ({ title, showCloseButton = false, fullScreen, children, di
   const handleClickBackdrop = (e) => {
     if (disableClickOutside) return;
     
-    // Only handle clicks directly on the dialog element (backdrop)
-    // Using currentTarget === target is more reliable than ref comparison
     if (e.currentTarget !== e.target) return;
     
     hideModal();
