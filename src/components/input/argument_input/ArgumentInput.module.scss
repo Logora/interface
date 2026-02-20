@@ -21,10 +21,6 @@
     -o-transition: box-shadow 0.8s ease-in-out;
     transition: box-shadow 0.8s ease-in-out;
 
-    &:hover {
-        box-shadow: 0 0 5px theme.$darkest-text-tertiary;
-    }
-
     &.flash, &.flash:hover, &.flash:focus-within {
         box-shadow: 0 0 15px theme.$call-primary;
     }
