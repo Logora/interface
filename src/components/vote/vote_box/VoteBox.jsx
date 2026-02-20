@@ -84,14 +84,26 @@ export const VoteBox = ({ numberVotes, votePositions, voteableType, voteableId, 
 
     const getStoredVote = () => {
         if (savedVote && Object.keys(savedVote).length !== 0) {
-            return [true, savedVote.positionId]
-        } else {
-            const urlParams = new URLSearchParams(typeof window !== "undefined" ? window.location.search : location.search);
-            const initVote = Boolean(urlParams.get('initVote'));
-            const positionId = parseInt(urlParams.get('positionId')) || false;
-            return [initVote, positionId];
+          const isSameTarget =
+            savedVote.groupId === voteableId &&
+            savedVote.voteableType === voteableType;
+      
+          if (!isSameTarget) {
+            removeSavedVote();
+            return [false, false];
+          }
+      
+          return [true, savedVote.positionId];
         }
-    }
+      
+        const urlParams = new URLSearchParams(
+          typeof window !== "undefined" ? window.location.search : location.search
+        );
+        const initVote = Boolean(urlParams.get("initVote"));
+        const positionId = parseInt(urlParams.get('positionId')) || false;
+
+        return [initVote, positionId];
+      };
 
     const getVote = (debateId) => {
         setIsLoadingVote(true);
