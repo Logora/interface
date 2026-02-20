@@ -19,7 +19,7 @@
 
 .debateBoxImage {
   width: 100%;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: theme.$img-aspect-ratio;
   object-fit: cover;
   cursor: pointer;
   border-top-right-radius: theme.$box-border-radius;
