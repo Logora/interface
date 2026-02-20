@@ -43,7 +43,7 @@
 	font-size: theme.$font-size-normal;
 	font-weight: theme.$font-weight-normal;
 	line-height: theme.$line-height-loose;
-	color: theme.$text-secondary;
+	color: theme.$text-primary;
 	background-color: theme.$background-color-primary;
 	background-clip: padding-box;
 	border-radius: 0.25em;
@@ -61,7 +61,7 @@
 
 	&:focus {
 		border: 1px solid theme.$text-secondary;
-		color: theme.$text-secondary;
+		color: theme.$text-primary;
 		background-color: theme.$background-color-primary;
 		outline: 0;
 		box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
