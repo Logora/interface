@@ -30,13 +30,9 @@
 	@include spacing.p(0, xs);
 	@include spacing.px(2.5, xs);
 
-	&:focus,
-	&:active,
-	&:focus-visible {
-		outline: none !important;
-		box-shadow: none !important;
-		border: 0 !important;
-	}
+	.expandRepliesButton:focus {
+		outline: revert;
+	  }
 
 	svg {
 		display: inline-block;
