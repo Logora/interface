@@ -17,6 +17,7 @@ export const Button = ({ className, type = "button", active, leftIcon, rightIcon
       {to ?
         <Link 
           to={to} 
+          tabIndex={0}
           className={classnames(
             styles.primaryButton,
             className, 
@@ -38,6 +39,13 @@ export const Button = ({ className, type = "button", active, leftIcon, rightIcon
       :
         <button 
           type={type} 
+          tabIndex={0}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" || e.key === " ") {
+              e.preventDefault();
+              onClick(e);
+            }
+          }}
           className={classnames(
             styles.primaryButton,
             className, 
