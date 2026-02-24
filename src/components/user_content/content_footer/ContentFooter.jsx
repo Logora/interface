@@ -89,14 +89,21 @@ export const ContentFooter = ({ resource,
 
     return (
         <div className={cx(styles.container, containerClassName)}>
-            <div className={cx(styles.voteAction, voteActionClassName)} data-tid={"action_vote_argument"}>
+            <div role="button"
+                tabIndex={0}
+                onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                        e.preventDefault();
+                        onClick();
+                    }
+                }} className={cx(styles.voteAction, voteActionClassName)} data-tid={"action_vote_argument"}>
                 {children}
             </div>
             {!disabled && enableReply &&
                 <div data-tid={"action_reply_argument"} data-testid="reply-button">
 
-                   {replyRedirectUrl ? (
-                        <Link 
+                    {replyRedirectUrl ? (
+                        <Link
                             to={replyRedirectUrl}
                             className={styles.replyAction}
                             tabIndex='0'
@@ -217,5 +224,5 @@ ContentFooter.propTypes = {
     /** Custom style for children container */
     voteActionClassName: PropTypes.string,
     /** Clicking reply redirects to this URL instead of inline reply */
-    replyRedirectUrl: PropTypes.string, 
+    replyRedirectUrl: PropTypes.string,
 };

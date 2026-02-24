@@ -51,13 +51,10 @@
     user-select: none;
     -webkit-user-select: none;
 
-    &:focus,
-    &:active,
-    &:focus-visible {
-        outline: none !important;
-        box-shadow: none !important;
-        border: 0 !important;
-    }
+    .replyAction:focus-visible {
+        outline: 2px solid currentColor;
+        outline-offset: 2px;
+      }
 
     .replyText {
         @include spacing.ml(2, xs);
