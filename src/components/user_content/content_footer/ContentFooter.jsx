@@ -164,12 +164,12 @@ export const ContentFooter = ({ resource,
                                 </>
                             }
                             {enableReport &&
-                                <div data-tid={"action_report_argument"} className={styles.dropdownItem} onClick={reportContent} data-testid="report-content" onKeyDown={onKeyActivate(reportContent)}>
+                                <div data-tid={"action_report_argument"} className={styles.dropdownItem} tabIndex='0' onClick={reportContent} data-testid="report-content" onKeyDown={onKeyActivate(reportContent)}>
                                     {intl.formatMessage({ id: "user_content.content_footer.report", defaultMessage: "Report" })}
                                 </div>
                             }
                             {shareModal &&
-                                <div data-tid={"action_share_argument"} className={styles.dropdownItem} onClick={handleShowShareModal} onKeyDown={onKeyActivate(handleShowShareModal)}>
+                                <div data-tid={"action_share_argument"} className={styles.dropdownItem} tabIndex='0' onClick={handleShowShareModal} onKeyDown={onKeyActivate(handleShowShareModal)}>
                                     {intl.formatMessage({ id: "user_content.content_footer.share", defaultMessage: "Share" })}
                                 </div>
                             }
