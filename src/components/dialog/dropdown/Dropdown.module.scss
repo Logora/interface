@@ -10,8 +10,10 @@
 	border: none;
 	padding: 0 !important;
 	cursor: pointer;
-	outline: none !important;
 	background-color: theme.$background-color-primary;
+	&:focus-visible {
+		outline: revert;
+	  }
 }
 
 .dropdownList {
