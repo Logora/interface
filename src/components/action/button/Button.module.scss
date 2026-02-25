@@ -104,8 +104,11 @@ button.primaryButton, a.primaryButton {
   }
 
   &:focus {
-    outline: none;
-    box-shadow: 0 0 0 0.125em var(--bit-accent-bg, theme.$darken-text-tertiary);
+    box-shadow: none;
+  }
+  
+  &:focus-visible {
+    outline: revert;
   }
 
   &.withoutBorder {
