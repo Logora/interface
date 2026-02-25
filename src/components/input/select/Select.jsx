@@ -28,6 +28,27 @@ export const Select = ({ options, defaultOption, onChange, resetSelect = false, 
 		}
 	};
 
+	const handleKeyDown = (e) => {
+		const current = e.currentTarget;
+		switch (e.key) {
+			case 'Enter':
+			case ' ':
+				e.preventDefault();
+				current.click();
+				break;
+
+			case 'ArrowDown':
+				e.preventDefault();
+				current.nextElementSibling?.focus();
+				break;
+
+			case 'ArrowUp':
+				e.preventDefault();
+				current.previousElementSibling?.focus();
+				break;
+		}
+	};
+
 	const displayOption = (option) => {
 		const isSelected = currentOption?.name === option.name;
 		return (
@@ -35,17 +56,18 @@ export const Select = ({ options, defaultOption, onChange, resetSelect = false, 
 			<div
 				role="option"
 				aria-selected={isSelected}
+				tabIndex={0}
 				className={cx(styles.selectOption, { [styles.selectOptionActive]: isSelected })}
 				key={option.value}
 				value={option.value}
 				data-tid={option.dataTid}
 				onClick={() => handleSelectOption(option)}
+				onKeyDown={handleKeyDown}
 			>
 				{option.text}
 			</div>
 		);
 	};
-
 	return (
 		<div className={styles.selectContainer}>
 			<Dropdown horizontalPosition={horizontalPosition}>
@@ -62,7 +84,6 @@ export const Select = ({ options, defaultOption, onChange, resetSelect = false, 
 		</div>
 	);
 };
-
 Select.propTypes = {
 	/** An array of options to select */
 	options: PropTypes.array.isRequired,
@@ -70,12 +91,12 @@ Select.propTypes = {
 	defaultOption: PropTypes.any,
 	/** Callback function triggered when clicking on an option */
 	onChange: PropTypes.func,
-	/** If `true`, will reset to default option */
+	/** If true, will reset to default option */
 	resetSelect: PropTypes.bool,
 	/** Disable input */
 	disabled: PropTypes.bool,
 	/**  Class name to style the input */
 	className: PropTypes.string,
-	/** Dropdown horizontal alignment, can be `left`, `center` or `right` */
+	/** Dropdown horizontal alignment, can be left, center or right */
 	horizontalPosition: PropTypes.string
 };
