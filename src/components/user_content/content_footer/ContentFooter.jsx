@@ -87,6 +87,13 @@ export const ContentFooter = ({ resource,
         );
     }
 
+    const onKeyActivate = (action) => (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          action();
+        }
+      };
+
     return (
         <div className={cx(styles.container, containerClassName)}>
             <div role="button"
@@ -145,24 +152,24 @@ export const ContentFooter = ({ resource,
                             {currentUserIsAuthor() &&
                                 <>
                                     {!disabled && enableEdition && isEditable() &&
-                                        <div data-tid={"action_edit_argument"} className={styles.dropdownItem} tabIndex='0' onClick={handleEdit}>
+                                        <div data-tid={"action_edit_argument"} className={styles.dropdownItem} tabIndex='0' onClick={handleEdit} onKeyDown={onKeyActivate(handleEdit)}>
                                             {intl.formatMessage({ id: "user_content.content_footer.update", defaultMessage: "Update" })}
                                         </div>
                                     }
                                     {enableDeletion &&
-                                        <div data-tid={"action_delete_argument"} className={styles.dropdownItem} tabIndex='0' onClick={deleteContent}>
+                                        <div data-tid={"action_delete_argument"} className={styles.dropdownItem} tabIndex='0' onClick={deleteContent} onKeyDown={onKeyActivate(deleteContent)}>
                                             {intl.formatMessage({ id: "user_content.content_footer.delete", defaultMessage: "Delete" })}
                                         </div>
                                     }
                                 </>
                             }
                             {enableReport &&
-                                <div data-tid={"action_report_argument"} className={styles.dropdownItem} onClick={reportContent} data-testid="report-content">
+                                <div data-tid={"action_report_argument"} className={styles.dropdownItem} onClick={reportContent} data-testid="report-content" onKeyDown={onKeyActivate(reportContent)}>
                                     {intl.formatMessage({ id: "user_content.content_footer.report", defaultMessage: "Report" })}
                                 </div>
                             }
                             {shareModal &&
-                                <div data-tid={"action_share_argument"} className={styles.dropdownItem} onClick={handleShowShareModal}>
+                                <div data-tid={"action_share_argument"} className={styles.dropdownItem} onClick={handleShowShareModal} onKeyDown={onKeyActivate(handleShowShareModal)}>
                                     {intl.formatMessage({ id: "user_content.content_footer.share", defaultMessage: "Share" })}
                                 </div>
                             }
