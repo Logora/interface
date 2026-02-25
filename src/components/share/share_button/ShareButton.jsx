@@ -56,6 +56,12 @@ export const ShareButton = ({ showText, shareUrl, shareTitle, shareText = false,
 	return (
 		<div
 			tabIndex='0'
+			onKeyDown={(e) => {
+				if (e.key === "Enter" || e.key === " ") {
+				  e.preventDefault();
+				  handleShare();
+				}
+			  }}
 			title={intl.formatMessage({ id: "share.share_button.text", defaultMessage: "Share" })}
 			className={cx(styles.shareButtonContainer, className)}
 			onClick={handleShare}
