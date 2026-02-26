@@ -124,14 +124,14 @@ a.voteButton {
 
     .boldShowResult {
         font-weight: theme.$font-weight-bold;
-        color: theme.$text-secondary;
+        color: theme.$text-primary;
     }
 }
 
 .outlined {
     padding: 7px 15px;
     border-radius: theme.$box-border-radius;
-    background-color: theme.$background-color-secondary;
+    border: 1px solid theme.$text-primary !important;
     white-space: nowrap;
 
 }
