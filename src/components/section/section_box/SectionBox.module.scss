@@ -8,6 +8,10 @@
     border-radius: theme.$box-border-radius;
     color: theme.$text-primary;
     @include spacing.p(4, sm);
+
+    &.isMobile {
+        @include spacing.p(3, xs);
+    }
 }
 
 .header {
