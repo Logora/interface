@@ -96,8 +96,7 @@ export const ContentFooter = ({ resource,
 
     return (
         <div className={cx(styles.container, containerClassName)}>
-            <div role="button"
-                tabIndex={0}
+            <div
                 onKeyDown={(e) => {
                     if (e.key === "Enter" || e.key === " ") {
                         e.preventDefault();
