@@ -45,7 +45,7 @@ export const DebateBox = ({ debate }) => {
                             data-tid={"view_debate_image"} 
                             loading={"lazy"} 
                             className={styles.debateBoxImage} 
-                            src={debate.image_url} 
+                            src={debate.banner_image_url} 
                             height={200} 
                             alt={debate?.image_alt ? debate.image_alt : intl.formatMessage({ id:"debate.debate_box.alt_debate_image", defaultMessage: "Debate image" }) }
                             title={debate?.image_alt ? debate.image_alt : intl.formatMessage({ id:"debate.debate_box.alt_debate_image", defaultMessage: "Debate image" }) }
