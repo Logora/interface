@@ -60,6 +60,7 @@
   justify-content: space-between !important;
   width: 100%;
   font-weight: theme.$font-weight-bold;
+  color: theme.$text-primary;
   @include spacing.px(3, xs);
   @include spacing.pb(1, xs);
 
