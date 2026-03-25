@@ -44,6 +44,7 @@
     "chart.js": "^4.4.7",
     "chartjs-plugin-datalabels": "^2.2.0",
     "classnames": "^2.5.1",
+    "dompurify": "^3.3.3",
     "flat": "^5.0.2",
     "lexical": "^0.38.2",
     "path-to-regexp": "^6.3.0",
