@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { lexicalToHtml } from "@logora/debate.input.text_editor";
-import draftToHtml from "draftjs-to-html";
 
 export const useRichContent = (argument) => {
     const [richContent, setRichContent] = useState(null);
@@ -11,9 +10,6 @@ export const useRichContent = (argument) => {
 			if (rawContent.hasOwnProperty("root")) {
 				const html = lexicalToHtml(rawContent);
 				setRichContent(html);
-			} else {
-				const htmlContent = draftToHtml(rawContent);
-				setRichContent(htmlContent);
 			}
 		}
 	}, [argument.rich_content]);

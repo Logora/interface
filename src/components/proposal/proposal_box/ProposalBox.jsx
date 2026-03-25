@@ -10,7 +10,6 @@ import { TranslationButton } from "@logora/debate.translation.translation_button
 import { ContentFooter } from '@logora/debate.user_content.content_footer';
 import { useConfig } from '@logora/debate.data.config_provider';
 import { UpDownVoteBox } from "@logora/debate.vote.up_down_vote_box";
-import draftToHtml from "draftjs-to-html";
 import cx from "classnames";
 import styles from './ProposalBox.module.scss';
 
@@ -31,9 +30,6 @@ export const ProposalBox = ({ proposal, disabled = false, fixedContentHeight, co
             if (rawContent.hasOwnProperty("root")) {
                 const html = lexicalToHtml(rawContent);
                 setRichContent(html);
-            } else {
-                const htmlContent = draftToHtml(rawContent);
-                setRichContent(htmlContent);
             }
         }
     }, [proposal.rich_content]);
