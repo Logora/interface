@@ -71,15 +71,47 @@ const debate = {
 }
 
 describe('DebateBox', () => {
-	it ('renders DebateBox component', () => {  
+	it ('renders DebateBox component', () => {
 		const { getByText } = render(<DefaultDebateBox debate={debate} />);
 		expect(getByText(debate.name)).toBeInTheDocument();
 		expect(getByText(/75/)).toBeTruthy();
 		expect(getByText(/Non/)).toBeTruthy();
 	});
-	
-	it ('renders DebateBox with correct links', () => {  
+
+	it ('renders DebateBox with correct links', () => {
 		const { getByText } = render(<DefaultDebateBox  debate={debate} />);
 		expect(getByText(debate.name).closest('a')).toHaveAttribute('href', '/espace-debat/group/' + debate.slug)
+	});
+
+	it ('renders DebateBox with long position names without breaking layout', () => {
+		const debateWithLongNames = {
+			...debate,
+			group_context: {
+				...debate.group_context,
+				positions: [
+					{
+						id: 655,
+						name: "This is a very long answer option that should be truncated properly with ellipsis",
+						language: "en",
+						translation_entries: []
+					},
+					{
+						id: 656,
+						name: "Another extremely long position name that would normally break the layout of the debate card",
+						language: "fr",
+						translation_entries: []
+					},
+					{
+						id: 657,
+						name: "Short",
+						language: "es",
+						translation_entries: []
+					}
+				]
+			}
+		};
+		const { container } = render(<DefaultDebateBox debate={debateWithLongNames} />);
+		const numberText = container.querySelector('.debateBoxNumbersText');
+		expect(numberText).toBeInTheDocument();
 	});
 });

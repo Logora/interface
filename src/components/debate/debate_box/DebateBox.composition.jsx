@@ -119,3 +119,47 @@ export const BrandedDebateBox = (props) => {
 		</BrowserRouter>
 	)
 };
+
+const debateWithLongPositionNames = {
+	...debate,
+	name: "Should Germany strengthen its defense capabilities given current geopolitical tensions?",
+	group_context: {
+		...debate.group_context,
+		positions: [
+			{
+				id: 655,
+				name: "Yes, Germany should significantly increase defense spending and military capabilities",
+				language: "en",
+				translation_entries: []
+			},
+			{
+				id: 656,
+				name: "No, Germany should maintain current defense levels and focus on diplomacy",
+				language: "en",
+				translation_entries: []
+			},
+			{
+				id: 657,
+				name: "Undecided on this complex geopolitical matter",
+				language: "en",
+				translation_entries: []
+			}
+		]
+	}
+};
+
+export const DebateBoxWithLongAnswers = () => {
+	return (
+		<BrowserRouter>
+			<IntlProvider locale="en">
+				<IconProvider library={regularIcons}>
+					<ResponsiveProvider>
+						<ConfigProvider routes={{ ...routes }} config={{ modules: {} }}>
+							<DebateBox debate={debateWithLongPositionNames} />
+						</ConfigProvider>
+					</ResponsiveProvider>
+				</IconProvider>
+			</IntlProvider>
+		</BrowserRouter>
+	)
+};

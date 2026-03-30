@@ -167,13 +167,17 @@
   align-items: flex-end !important;
   justify-content: flex-end !important;
   @include spacing.p(0, xs);
+  min-width: 0;
+  flex: 1;
 }
 
 .debateBoxNumbersText {
   @include spacing.ml(3, xs);
   display: block;
   @include display.line-clamp(1);
-  line-height: theme.$line-height-loose; 
+  line-height: theme.$line-height-loose;
+  min-width: 0;
+  text-align: right;
 }
 
 .participantsCountBox {
