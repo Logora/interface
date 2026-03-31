@@ -150,6 +150,10 @@
 	justify-content: center;
 }
 
+.replyStyle {
+    background: theme.$text-tertiary;
+}
+
 .replyTo {
 	display: flex !important;
 	flex-direction: row !important;
