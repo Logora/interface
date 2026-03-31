@@ -183,6 +183,7 @@
 .debateBoxPercentage {
   flex-shrink: 0;
   white-space: nowrap;
+  @include spacing.mr(1, xs);
 }
 
 .debateBoxPositionName {

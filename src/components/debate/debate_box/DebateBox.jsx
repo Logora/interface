@@ -118,7 +118,6 @@ export const DebateBox = ({ debate }) => {
                                 {winningPosition && (
                                     <>
                                         <span className={styles.debateBoxPercentage}>{getPercentageValue(debate.votes_count[winningPosition.id] || 0, totalVotes)}{"\u00A0"}%</span>
-                                        {" "}
                                         <span className={styles.debateBoxPositionName}>{winningPositionName.translatedContent}</span>
                                     </>
                                 )}
