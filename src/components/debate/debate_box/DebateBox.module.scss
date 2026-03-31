@@ -173,12 +173,23 @@
 
 .debateBoxNumbersText {
   @include spacing.ml(3, xs);
-  display: block;
-  @include display.line-clamp(1);
-  overflow-wrap: anywhere;
+  display: flex !important;
+  align-items: baseline !important;
   line-height: theme.$line-height-loose;
   min-width: 0;
-  text-align: right;
+  justify-content: flex-end !important;
+}
+
+.debateBoxPercentage {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.debateBoxPositionName {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
 }
 
 .participantsCountBox {

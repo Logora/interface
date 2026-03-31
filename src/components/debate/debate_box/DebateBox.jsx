@@ -114,11 +114,12 @@ export const DebateBox = ({ debate }) => {
                         null
                         :
                         <div className={styles.debateBoxNumbers}>
-                            <div className={styles.debateBoxNumbersText}>
+                            <div className={styles.debateBoxNumbersText} title={winningPosition ? `${getPercentageValue(debate.votes_count[winningPosition.id] || 0, totalVotes)} % ${winningPositionName.translatedContent}` : undefined}>
                                 {winningPosition && (
                                     <>
-                                        {getPercentageValue(debate.votes_count[winningPosition.id] || 0, totalVotes)} %{" "}
-                                        {winningPositionName.translatedContent}
+                                        <span className={styles.debateBoxPercentage}>{getPercentageValue(debate.votes_count[winningPosition.id] || 0, totalVotes)}{"\u00A0"}%</span>
+                                        {" "}
+                                        <span className={styles.debateBoxPositionName}>{winningPositionName.translatedContent}</span>
                                     </>
                                 )}
                             </div>
