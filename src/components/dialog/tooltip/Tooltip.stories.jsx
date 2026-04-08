@@ -1,57 +1,76 @@
-export default {
-  title: 'Dialog/Tooltip'
-};
-
 import React from "react";
 import { Tooltip } from "./Tooltip";
 
-export const DefaultTooltip = () => {
-    return <Tooltip text="Tooltip text">
-        <h3>Default tooltip</h3>
-    </Tooltip>;
-};
-
-export const TooltipWithoutText = () => {
-    return (
-        <Tooltip variant={"info"}>
-            <h3>Default tooltip</h3>
+export default {
+    title: 'Dialog/Tooltip',
+    component: Tooltip,
+    args: {
+        text: 'Tooltip text',
+        onClickText: null,
+        position: 'bottom',
+        variant: 'info',
+        children: 'Default tooltip'
+    },
+    argTypes: {
+        text: {
+            control: 'text'
+        },
+        onClickText: {
+            control: 'text'
+        },
+        position: {
+            control: 'select',
+            options: ['top', 'right', 'bottom', 'left']
+        },
+        variant: {
+            control: 'select',
+            options: ['info', 'success', 'error']
+        },
+        children: {
+            control: 'text'
+        }
+    },
+    render: ({ children, ...args }) => (
+        <Tooltip {...args}>
+            <h3>{children}</h3>
         </Tooltip>
-    );
+    )
 };
 
-export const HoverAndClickTooltip = () => {
-    return <Tooltip text="Hover tooltip" onClickText="Clicked!">
-        <h4>Hover and click tooltip</h4>
-    </Tooltip>;
+export const DefaultTooltip = {};
+
+export const TooltipWithoutText = {
+    args: {
+        text: null
+    }
 };
 
-export const TopTooltip = () => {
-    return <Tooltip text="Top text" position="top">
-        <h3>Top tooltip</h3>
-    </Tooltip>;
+export const HoverAndClickTooltip = {
+    args: {
+        text: 'Hover tooltip',
+        onClickText: 'Clicked!',
+        children: 'Hover and click tooltip'
+    },
+    render: ({ children, ...args }) => (
+        <Tooltip {...args}>
+            <h4>{children}</h4>
+        </Tooltip>
+    )
 };
 
-export const LeftTooltip = () => {
-    return <Tooltip text="Left text" position="left">
-        <h3>Left tooltip</h3>
-    </Tooltip>;
+export const SuccessTooltip = {
+    args: {
+        text: 'Success Tooltip!',
+        variant: 'success',
+        children: 'Success tooltip'
+    }
 };
 
-export const RightTooltip = () => {
-    return <Tooltip text="Right text" position="right">
-        <h3>Right tooltip</h3>
-    </Tooltip>;
-};
-
-export const SuccessTooltip = () => {
-    return <Tooltip text="Success Tooltip!" variant={"success"}>
-        <h3>Success tooltip</h3>
-    </Tooltip>;
-};
-
-export const ErrorTooltip = () => {
-    return <Tooltip text="Error Tooltip!"  variant={"error"}>
-        <h3>Error tooltip</h3>
-    </Tooltip>;
+export const ErrorTooltip = {
+    args: {
+        text: 'Error Tooltip!',
+        variant: 'error',
+        children: 'Error tooltip'
+    }
 };
 

@@ -1,14 +1,8 @@
-export default {
-  title: 'Report/Report Box'
-};
-
-import ReportBox from "./ReportBox";
 import React from 'react';
 import { IntlProvider } from 'react-intl';
-import { ConfigProvider } from '@logora/debate/data/config_provider';
 import { BrowserRouter } from 'react-router-dom';
+import { ConfigProvider } from '@logora/debate/data/config_provider';
 import { dataProvider, DataProviderContext } from '@logora/debate/data/data_provider';
-
 import { AuthContext } from '@logora/debate/auth/use_auth';
 import { ModalProvider } from '@logora/debate/dialog/modal';
 import { ListProvider } from '@logora/debate/list/list_provider';
@@ -18,8 +12,8 @@ import { InputProvider } from '@logora/debate/input/input_provider';
 import { IconProvider } from '@logora/debate/icons/icon_provider';
 import { ResponsiveProvider } from '@logora/debate/hooks/use_responsive';
 import { faker } from '@faker-js/faker';
-
 import * as regularIcons from '@logora/debate/icons/regular_icons';
+import ReportBox from './ReportBox';
 
 const vote = {
   id: faker.number.int(),
@@ -27,65 +21,32 @@ const vote = {
   voteable_id: faker.number.int(),
   user_id: faker.number.int()
 };
+
 const currentUser = { id: vote.user_id };
 
 const httpClient = {
   get: () => Promise.resolve({ data: { success: true, data: [] } }),
-  post: (url, data, config) => {
-    return Promise.resolve({
-      data: {
-        success: true,
-        data: { resource: vote }
-      }
-    });
-  },
+  post: () => Promise.resolve({ data: { success: true, data: { resource: vote } } }),
   patch: () => null,
   delete: () => Promise.resolve({ data: { success: true, data: {} } })
 };
-const data = dataProvider(httpClient, "https://mock.example.api");
 
-const reportArgumentPending =
-{
-  id: 1,
-  classification: "INCOHERENT",
-  description: faker.lorem.sentence(),
-  is_processed: false,
-  reportable_type: "Message",
-  created_at: faker.date.recent().toISOString(),
-  reportable: {
-    id: 84,
-    content: faker.lorem.sentence(),
-    author: { full_name: faker.person.fullName() },
-    created_at: faker.date.recent().toISOString(),
-    upvotes: 10,
-    language: "en",
-    status: "pending",
-  },
-  author: {
-    full_name: faker.person.fullName(),
-  },
-  position: {
-    id: 1,
-    name: "Yes",
-    language: "en",
-    translation_entries: []
-  },
-};
+const data = dataProvider(httpClient, 'https://mock.example.api');
+
 const config = {
   modules: {
     suggestions: {
       vote_goal: 30
-    },
+    }
   }
 };
 
-const reportProposal =
-{
+const reportArgumentPending = {
   id: 1,
-  classification: "INCOHERENT",
+  classification: 'INCOHERENT',
   description: faker.lorem.sentence(),
-  is_processed: true,
-  reportable_type: "Proposal",
+  is_processed: false,
+  reportable_type: 'Message',
   created_at: faker.date.recent().toISOString(),
   reportable: {
     id: 84,
@@ -93,41 +54,65 @@ const reportProposal =
     author: { full_name: faker.person.fullName() },
     created_at: faker.date.recent().toISOString(),
     upvotes: 10,
-    language: "en",
-    status: "accepted",
+    language: 'en',
+    status: 'pending'
   },
   author: {
-    full_name: faker.person.fullName(),
+    full_name: faker.person.fullName()
   },
   position: {
     id: 1,
-    name: "Yes",
-    language: "en",
+    name: 'Yes',
+    language: 'en',
     translation_entries: []
-  },
+  }
 };
 
-const reportSuggestion =
-{
-  id: 1,
-  classification: "INCOHERENT",
-  description: faker.lorem.sentence(),
+const reportArgumentAccepted = {
+  ...reportArgumentPending,
   is_processed: true,
-  reportable_type: "Group",
-  created_at: faker.date.recent().toISOString(),
   reportable: {
-    id: 84,
-    content: faker.lorem.sentence(),
-    author: { full_name: faker.person.fullName() },
-    created_at: faker.date.recent().toISOString(),
-    upvotes: 10,
-    language: "en",
-    status: "accepted",
+    ...reportArgumentPending.reportable,
+    status: 'rejected',
+    moderation_entry: {
+      status: 'rejected'
+    }
+  }
+};
+
+const reportArgumentRejected = {
+  ...reportArgumentPending,
+  is_processed: true,
+  reportable: {
+    ...reportArgumentPending.reportable,
+    author: { full_name: 'Jean Dupont' },
+    status: 'accepted',
+    moderation_entry: {
+      status: 'accepted'
+    }
+  }
+};
+
+const reportProposal = {
+  ...reportArgumentPending,
+  is_processed: true,
+  reportable_type: 'Proposal',
+  reportable: {
+    ...reportArgumentPending.reportable,
+    status: 'accepted'
+  }
+};
+
+const reportSuggestion = {
+  ...reportArgumentPending,
+  is_processed: true,
+  reportable_type: 'Group',
+  reportable: {
+    ...reportArgumentPending.reportable,
+    status: 'accepted',
     name: faker.lorem.words(),
     slug: faker.lorem.slug(),
-    created_at: faker.date.recent().toISOString(),
     score: faker.number.int(),
-    language: faker.helpers.arrayElement(['en', 'fr', 'es']),
     is_active: true,
     messages_count: faker.number.int(),
     is_published: false,
@@ -147,83 +132,43 @@ const reportSuggestion =
       },
       language: faker.helpers.arrayElement(['en', 'fr', 'es']),
       translation_entries: [],
-      name: faker.lorem.words(),
-    },
-  },
-  author: {
-    full_name: faker.person.fullName(),
-  },
-  position: {
-    id: 1,
-    name: "Yes",
-    language: "en",
-    translation_entries: []
-  },
+      name: faker.lorem.words()
+    }
+  }
 };
 
-
-const reportArgumentAccepted =
-{
-  id: 1,
-  classification: "INCOHERENT",
+const reportWithPositions = {
+  id: 999,
+  classification: 'INCOHERENT',
   description: faker.lorem.sentence(),
   is_processed: true,
-  reportable_type: "Message",
-  created_at: faker.date.recent().toISOString(),
+  reportable_type: 'Message',
+  created_at: new Date().toISOString(),
   reportable: {
-    id: 84,
+    id: 123,
     content: faker.lorem.sentence(),
-    author: { full_name: faker.person.fullName() },
-    created_at: faker.date.recent().toISOString(),
-    upvotes: 10,
-    language: "en",
-    status: "rejected",
-    moderation_entry: {
-      status: "rejected"
+    author: { full_name: 'Jean Jean' },
+    created_at: new Date().toISOString(),
+    upvotes: 5,
+    language: 'fr',
+    status: 'accepted',
+    position: {
+      id: 919,
+      name: 'Oui',
+      language: 'fr',
+      translation_entries: []
     },
-  },
-  author: {
-    full_name: faker.person.fullName(),
-  },
-  position: {
-    id: 1,
-    name: "Yes",
-    language: "en",
-    translation_entries: []
-  },
+    group: {
+      group_context: {
+        positions: [
+          { id: 919, name: 'Oui', language: 'fr', translation_entries: [] },
+          { id: 920, name: 'Non', language: 'fr', translation_entries: [] }
+        ]
+      }
+    }
+  }
 };
 
-
-const reportArgumentRejected =
-{
-  id: 1,
-  classification: "INCOHERENT",
-  description: faker.lorem.sentence(),
-  is_processed: true,
-  reportable_type: "Message",
-  created_at: faker.date.recent().toISOString(),
-  reportable: {
-    id: 84,
-    content: faker.lorem.sentence(),
-    author: { full_name: "Jean Dupont" },
-    created_at: faker.date.recent().toISOString(),
-    upvotes: 10,
-    language: "en",
-    status: "accepted",
-    moderation_entry: {
-      status: "accepted"
-    },
-  },
-  author: {
-    full_name: faker.person.fullName(),
-  },
-  position: {
-    id: 1,
-    name: "Yes",
-    language: "en",
-    translation_entries: []
-  },
-};
 const Providers = ({ children }) => (
   <BrowserRouter>
     <ConfigProvider config={config}>
@@ -236,9 +181,7 @@ const Providers = ({ children }) => (
                   <VoteProvider>
                     <InputProvider>
                       <IconProvider library={regularIcons}>
-                        <IntlProvider locale="en">
-                          {children}
-                        </IntlProvider>
+                        <IntlProvider locale='en'>{children}</IntlProvider>
                       </IconProvider>
                     </InputProvider>
                   </VoteProvider>
@@ -252,97 +195,53 @@ const Providers = ({ children }) => (
   </BrowserRouter>
 );
 
-// Components exports
-export const ReportArgumentPending = () => (
-  <div style={{ width: "400px", height: "240px" }}>
-    <Providers>
-      <ReportBox
-        report={reportArgumentPending}
-      />
-    </Providers>
-  </div>
-);
-
-export const ReportArgumentRejected = () => (
-  <div style={{ width: "400px", height: "240px" }}>
-    <Providers>
-      <ReportBox
-        report={reportArgumentRejected}
-      />
-    </Providers>
-  </div>
-);
-
-export const ReportArgumentAccepted = () => (
-  <div style={{ width: "400px", height: "240px" }}>
-    <Providers>
-      <ReportBox
-        report={reportArgumentAccepted}
-      />
-    </Providers>
-  </div>
-);
-
-export const ReportProposal = () => (
-  <div style={{ width: "400px", height: "240px" }}>
-    <Providers>
-      <ReportBox
-        report={reportProposal}
-      />
-    </Providers>
-  </div>
-);
-
-export const ReportSuggestion = () => (
-
-  <div style={{ width: "400px", height: "240px" }}>
-    <Providers>
-      <ReportBox
-        report={reportSuggestion}
-      />
-    </Providers>
-  </div>
-);
-
-export const ReportWithPositions = () => {
-  const Report = {
-    id: 999,
-    classification: "INCOHERENT",
-    description:faker.lorem.sentence(),
-    is_processed: true,
-    reportable_type: "Message",
-    created_at: new Date().toISOString(),
-    reportable: {
-      id: 123,
-      content: faker.lorem.sentence(),
-      author: { full_name: "Jean Jean" },
-      created_at: new Date().toISOString(),
-      upvotes: 5,
-      language: "fr",
-      status: "accepted",
-      position: {
-        id: 919, 
-        name: "Oui",
-        language: "fr",
-        translation_entries: []
-      },
-      group: {
-        group_context: {
-          positions: [
-            { id: 919, name: "Oui", language: "fr", translation_entries: [] },
-            { id: 920, name: "Non", language: "fr", translation_entries: [] },
-          ]
-        }
-      }
-    },
-  };
-
-  return (
-    <div style={{ width: "400px", height: "240px" }}>
+export default {
+  title: 'Report/Report Box',
+  component: ReportBox,
+  argTypes: {
+    report: { control: 'object' }
+  },
+  render: (args) => (
+    <div style={{ width: '400px', height: '240px' }}>
       <Providers>
-        <ReportBox report={Report} />
+        <ReportBox {...args} />
       </Providers>
     </div>
-  );
+  )
 };
 
+export const ReportArgumentPending = {
+  args: {
+    report: reportArgumentPending
+  }
+};
+
+export const ReportArgumentRejected = {
+  args: {
+    report: reportArgumentRejected
+  }
+};
+
+export const ReportArgumentAccepted = {
+  args: {
+    report: reportArgumentAccepted
+  }
+};
+
+export const ReportProposal = {
+  args: {
+    report: reportProposal
+  }
+};
+
+export const ReportSuggestion = {
+  args: {
+    report: reportSuggestion
+  }
+};
+
+export const ReportWithPositions = {
+  args: {
+    report: reportWithPositions
+  }
+};

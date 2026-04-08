@@ -1,39 +1,39 @@
-export default {
-  title: 'Section/Section Box'
-};
-
 import React from 'react';
 import { SectionBox } from './SectionBox';
 import { IconProvider } from '@logora/debate/icons/icon_provider';
 import * as regularIcons from '@logora/debate/icons/regular_icons';
 
-
-export const DefaultSectionBox = () => {
-    return (
-
-        <IconProvider library={regularIcons}>
-            <SectionBox
-                title="Section Title"
-                subtitle="Ceci est une section"
-                isCollapsible={true}
-                isCollapsedByDefault={false}
-            >
-                <div>Voici le contenu de la section.</div>
-            </SectionBox>
-        </IconProvider>
-    );
+export default {
+  title: 'Section/Section Box',
+  component: SectionBox,
+  args: {
+    title: 'Section Title',
+    subtitle: 'Ceci est une section',
+    isCollapsible: true,
+    isCollapsedByDefault: false,
+    content: 'Voici le contenu de la section.'
+  },
+  argTypes: {
+    title: { control: 'text' },
+    subtitle: { control: 'text' },
+    isCollapsible: { control: 'boolean' },
+    isCollapsedByDefault: { control: 'boolean' },
+    content: { control: 'text' }
+  },
+  render: ({ content, ...args }) => (
+    <IconProvider library={regularIcons}>
+      <SectionBox {...args}>
+        <div>{content}</div>
+      </SectionBox>
+    </IconProvider>
+  )
 };
 
-export const NoCollapsibleSectionBox = () => {
-    return (
-        <SectionBox
-            title="Section Non Repliable"
-            subtitle="Ceci est une section"
-            isCollapsible={false}
-        >
-            <div>Voici le contenu de la section.</div>
-        </SectionBox>
-    );
+export const DefaultSectionBox = {};
+
+export const NoCollapsibleSectionBox = {
+  args: {
+    isCollapsible: false,
+    title: 'Section Non Repliable'
+  }
 };
-
-

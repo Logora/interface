@@ -1,40 +1,57 @@
-export default {
-  title: 'Action/Icon Text Link'
-};
-
 import React from 'react';
 import { MemoryRouter } from "react-router-dom";
 import { IconTextLink } from './IconTextLink';
 import HomeIcon from './HomeIcon.dev'
 
-export const DefaultIconTextLink = () => {
-    return (
+export default {
+    title: 'Action/Icon Text Link',
+    component: IconTextLink,
+    args: {
+        to: '/page',
+        icon: HomeIcon,
+        text: 'Home',
+        active: false,
+        pin: false,
+        pinText: '23'
+    },
+    argTypes: {
+        to: {
+            control: 'text'
+        },
+        text: {
+            control: 'text'
+        },
+        active: {
+            control: 'boolean'
+        },
+        pin: {
+            control: 'boolean'
+        },
+        pinText: {
+            control: 'text'
+        },
+        icon: {
+            control: false
+        }
+    },
+    render: (args) => (
         <MemoryRouter>
-            <IconTextLink to="/page" icon={HomeIcon} text="Home" />
+            <IconTextLink {...args} />
         </MemoryRouter>
-    );
+    )
 };
 
-export const ActiveIconTextLink = () => {
-    return (
-        <MemoryRouter>
-            <IconTextLink to="/page" icon={HomeIcon} text="Home" active />
-        </MemoryRouter>
-    );
+export const DefaultIconTextLink = {};
+
+export const ActiveIconTextLink = {
+    args: {
+        active: true
+    }
 };
 
-export const IconTextLinkWithTextPin = () => {
-    return (
-        <MemoryRouter>
-            <IconTextLink to="/page" icon={HomeIcon} text="Home" pin pinText={"23"} />
-        </MemoryRouter>
-    );
-};
-
-export const IconTextLinkWithPin = () => {
-    return (
-        <MemoryRouter>
-            <IconTextLink to="/page" icon={HomeIcon} text="Home" pin />
-        </MemoryRouter>
-    );
+export const IconTextLinkWithTextPin = {
+    args: {
+        pin: true,
+        pinText: '23'
+    }
 };

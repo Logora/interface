@@ -1,30 +1,40 @@
-export default {
-  title: 'Auth/Signup Form'
-};
-
 import React from 'react';
 import { IntlProvider } from 'react-intl';
 import { SignupForm } from './SignupForm';
 
-export const DefaultSignupForm = () => {
-    return (
+const noop = () => false;
+
+export default {
+    title: 'Auth/Signup Form',
+    component: SignupForm,
+    args: {
+        onSubmit: noop,
+        providerName: 'Debate Inc.',
+        error: false
+    },
+    argTypes: {
+        onSubmit: {
+            control: false
+        },
+        providerName: {
+            control: 'text'
+        },
+        error: {
+            control: 'boolean'
+        }
+    },
+    render: (args) => (
         <IntlProvider locale="en">
-            <SignupForm 
-                onSubmit={(first_name, last_name, email, password, password_confirmation, accepts_provider_email) => false }
-                providerName={"Debate Inc."}
-            />
+            <SignupForm {...args} />
         </IntlProvider>
-    );
+    )
 };
 
-export const SignupFormWithError = () => {
-    return (
-        <IntlProvider locale="en">
-            <SignupForm 
-                onSubmit={(first_name, last_name, email, password, password_confirmation, accepts_provider_email) => false }
-                providerName={"My company"}
-                error={true} 
-            />
-        </IntlProvider>
-    );
+export const DefaultSignupForm = {};
+
+export const SignupFormWithError = {
+    args: {
+        providerName: 'My company',
+        error: true
+    }
 };

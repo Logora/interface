@@ -5,6 +5,17 @@ on:
     branches: [master]
   pull_request:
     branches: [master]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: master-workflow
+  cancel-in-progress: false
 
 jobs:
   validate:
@@ -33,3 +44,81 @@ jobs:
 
       - name: Build Storybook
         run: pnpm build-storybook
+
+  release:
+    name: Publish package with Changesets
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    needs: validate
+    if: ${{ github.event_name != 'pull_request' && github.ref == 'refs/heads/master' }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+          registry-url: https://registry.npmjs.org
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Create release PR or publish
+        uses: changesets/action@v1
+        with:
+          version: pnpm dlx @changesets/cli version
+          publish: pnpm dlx @changesets/cli publish
+          commit: "chore: release package versions"
+          title: "chore: release package versions"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+  deploy-storybook:
+    name: Deploy Storybook to GitHub Pages
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    needs: validate
+    if: ${{ github.event_name != 'pull_request' && github.ref == 'refs/heads/master' }}
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build Storybook
+        run: pnpm build-storybook
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Storybook artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./storybook-static
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

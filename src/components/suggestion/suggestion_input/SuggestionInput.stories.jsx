@@ -1,7 +1,3 @@
-export default {
-  title: 'Suggestion/Suggestion Input'
-};
-
 import React from 'react';
 import { IntlProvider } from 'react-intl';
 import { BrowserRouter } from 'react-router-dom';
@@ -14,127 +10,78 @@ import { ListProvider } from '@logora/debate/list/list_provider';
 import { ToastProvider } from '@logora/debate/dialog/toast_provider';
 import * as regularIcons from '@logora/debate/icons/regular_icons';
 import { faker } from '@faker-js/faker';
-import { SuggestionInput } from './SuggestionInput';
 import { InputProvider } from '@logora/debate/input/input_provider';
+import { SuggestionInput } from './SuggestionInput';
 
 const currentUser = {
-    id: faker.number.int(),
-    full_name: faker.person.fullName(),
-    image_url: faker.image.avatarGitHub(),
-    points: faker.number.int()
+  id: faker.number.int(),
+  full_name: faker.person.fullName(),
+  image_url: faker.image.avatarGitHub(),
+  points: faker.number.int()
 };
 
 const httpClient = {
-    post: () => {
-        return new Promise((resolve) => {
-            resolve({ data: { success: true, data: {} } });
-        });
-    }
+  post: () => Promise.resolve({ data: { success: true, data: {} } })
 };
 
-const data = dataProvider(httpClient, "https://mock.example.api");
+const data = dataProvider(httpClient, 'https://mock.example.api');
 
-export const DefaultSuggestionInput = () => {
-    return (
-        <BrowserRouter>
-            <ConfigProvider >
-                <IconProvider library={regularIcons} >
-                    <IntlProvider locale="en">
-                        <DataProviderContext.Provider value={{ dataProvider: data }}>
-                            <AuthContext.Provider value={{ currentUser: currentUser, isLoggedIn: true }}>
-                                <ToastProvider>
-                                    <ModalProvider>
-                                        <ListProvider>
-                                            <InputProvider>
-                                                <SuggestionInput disabled={false} />
-                                            </InputProvider>
-                                        </ListProvider>
-                                    </ModalProvider>
-                                </ToastProvider>
-                            </AuthContext.Provider>
-                        </DataProviderContext.Provider>
-                    </IntlProvider>
-                </IconProvider>
-            </ConfigProvider>
-        </BrowserRouter>
-    );
+export default {
+  title: 'Suggestion/Suggestion Input',
+  component: SuggestionInput,
+  argTypes: {
+    disabled: { control: 'boolean' },
+    maxLength: { control: 'number' },
+    userGuideUrl: { control: 'text' }
+  },
+  render: (args) => (
+    <BrowserRouter>
+      <ConfigProvider>
+        <IconProvider library={regularIcons}>
+          <IntlProvider locale='en'>
+            <DataProviderContext.Provider value={{ dataProvider: data }}>
+              <AuthContext.Provider value={{ currentUser, isLoggedIn: true }}>
+                <ToastProvider>
+                  <ModalProvider>
+                    <ListProvider>
+                      <InputProvider>
+                        <SuggestionInput {...args} />
+                      </InputProvider>
+                    </ListProvider>
+                  </ModalProvider>
+                </ToastProvider>
+              </AuthContext.Provider>
+            </DataProviderContext.Provider>
+          </IntlProvider>
+        </IconProvider>
+      </ConfigProvider>
+    </BrowserRouter>
+  )
 };
 
-export const DisabledSuggestionInput = () => {
-    return (
-        <BrowserRouter>
-            <ConfigProvider >
-                <IconProvider library={regularIcons} >
-                    <IntlProvider locale="en">
-                        <DataProviderContext.Provider value={{ dataProvider: data }}>
-                            <AuthContext.Provider value={{ currentUser: currentUser, isLoggedIn: true }}>
-                                <ToastProvider>
-                                    <ModalProvider>
-                                        <ListProvider>
-                                            <InputProvider>
-                                                <SuggestionInput disabled={true} />
-                                            </InputProvider>
-                                        </ListProvider>
-                                    </ModalProvider>
-                                </ToastProvider>
-                            </AuthContext.Provider>
-                        </DataProviderContext.Provider>
-                    </IntlProvider>
-                </IconProvider>
-            </ConfigProvider>
-        </BrowserRouter>
-    );
+export const DefaultSuggestionInput = {
+  args: {
+    disabled: false
+  }
 };
 
-export const SuggestionInputMaxLength = () => {
-    return (
-        <BrowserRouter>
-            <ConfigProvider>
-                <IconProvider library={regularIcons} >
-                    <IntlProvider locale="en">
-                        <DataProviderContext.Provider value={{ dataProvider: data }}>
-                            <AuthContext.Provider value={{ currentUser: currentUser, isLoggedIn: true }}>
-                                <ToastProvider>
-                                    <ModalProvider>
-                                        <ListProvider>
-                                            <InputProvider>
-                                                <SuggestionInput disabled={true} maxLength={30} />
-                                            </InputProvider>
-                                        </ListProvider>
-                                    </ModalProvider>
-                                </ToastProvider>
-                            </AuthContext.Provider>
-                        </DataProviderContext.Provider>
-                    </IntlProvider>
-                </IconProvider>
-            </ConfigProvider>
-        </BrowserRouter>
-    );
+export const DisabledSuggestionInput = {
+  args: {
+    disabled: true
+  }
 };
 
-export const SuggestionInputWithUserGuideUrl = () => {
-    return (
-        <BrowserRouter>
-            <ConfigProvider >
-                <IconProvider library={regularIcons} >
-                    <IntlProvider locale="en">
-                        <DataProviderContext.Provider value={{ dataProvider: data }}>
-                            <AuthContext.Provider value={{ currentUser: currentUser, isLoggedIn: true }}>
-                                <ToastProvider>
-                                    <ModalProvider>
-                                        <ListProvider>
-                                            <InputProvider>
-                                                <SuggestionInput disabled={true} maxLength={30} userGuideUrl={"https://example.com/user-guide"} />
-                                            </InputProvider>
-                                        </ListProvider>
-                                    </ModalProvider>
-                                </ToastProvider>
-                            </AuthContext.Provider>
-                        </DataProviderContext.Provider>
-                    </IntlProvider>
-                </IconProvider>
-            </ConfigProvider>
-        </BrowserRouter>
-    );
+export const SuggestionInputMaxLength = {
+  args: {
+    disabled: true,
+    maxLength: 30
+  }
 };
 
+export const SuggestionInputWithUserGuideUrl = {
+  args: {
+    disabled: true,
+    maxLength: 30,
+    userGuideUrl: 'https://example.com/user-guide'
+  }
+};

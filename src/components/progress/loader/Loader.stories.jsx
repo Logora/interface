@@ -1,13 +1,11 @@
+import React from 'react';
+import { Loader } from './Loader';
+
 export default {
-  title: 'Progress/Loader'
+  title: 'Progress/Loader',
+  component: Loader,
+  args: {},
+  argTypes: {}
 };
 
-import React from "react";
-import { Loader } from "./Loader";
-
-export const DefaultLoader = () => {
-    return <Loader />;
-};
-
-
-
+export const DefaultLoader = {};

@@ -1,7 +1,3 @@
-export default {
-  title: 'Proposal/Proposal Box'
-};
-
 import React from 'react';
 import { IntlProvider } from 'react-intl';
 import { ConfigProvider } from '@logora/debate/data/config_provider';
@@ -20,165 +16,146 @@ import * as regularIcons from '@logora/debate/icons/regular_icons';
 import { faker } from '@faker-js/faker';
 import { ProposalBox } from './ProposalBox';
 
-// Mock data and constants
 const routes = {
-    userShowLocation: new Location('espace-debat/user/:userSlug', { userSlug: '' })
+  userShowLocation: new Location('espace-debat/user/:userSlug', { userSlug: '' })
 };
 
 const vote = {
-    id: faker.number.int(),
-    voteable_type: faker.lorem.word(),
-    voteable_id: faker.number.int(),
-    user_id: faker.number.int()
+  id: faker.number.int(),
+  voteable_type: faker.lorem.word(),
+  voteable_id: faker.number.int(),
+  user_id: faker.number.int()
 };
 
 const httpClient = {
-    get: () => Promise.resolve({ data: { success: true, data: [] } }),
-    post: (url, data, config) => {
-        return Promise.resolve({ 
-            data: { 
-                success: true, 
-                data: { resource: vote } 
-            } 
-        });
-    },
-    patch: () => null,
-    delete: () => Promise.resolve({ data: { success: true, data: {} }})
+  get: () => Promise.resolve({ data: { success: true, data: [] } }),
+  post: () => Promise.resolve({ data: { success: true, data: { resource: vote } } }),
+  patch: () => null,
+  delete: () => Promise.resolve({ data: { success: true, data: {} } })
 };
 
 const currentUser = { id: vote.user_id };
-const data = dataProvider(httpClient, "https://mock.example.api");
+const data = dataProvider(httpClient, 'https://mock.example.api');
 
-const generateProposal = (overrides) => ({
+const generateProposal = (overrides = {}) => ({
+  id: faker.number.int(),
+  title: faker.lorem.sentence(),
+  content: faker.lorem.paragraphs(2),
+  created_at: faker.date.recent(),
+  edited_at: null,
+  total_upvotes: faker.number.int(100),
+  total_downvotes: faker.number.int(50),
+  language: 'en',
+  translation_entries: [],
+  author: {
     id: faker.number.int(),
-    title: faker.lorem.sentence(),
-    content: faker.lorem.paragraphs(2),
-    created_at: faker.date.recent(),
-    edited_at: null,
-    total_upvotes: faker.number.int(100),
-    total_downvotes: faker.number.int(50),
-    language: "en",
-    translation_entries: [],
-    author: {
-        id: faker.number.int(),
-        image_url: faker.image.avatarGitHub(),
-        full_name: faker.person.fullName(),
-        hash_id: faker.lorem.slug(),
-        slug: faker.lorem.slug(),
-        points: faker.number.int(5000),
-        last_activity: new Date(),
-        description: faker.person.jobTitle()
-    },
-    ...overrides
+    image_url: faker.image.avatarGitHub(),
+    full_name: faker.person.fullName(),
+    hash_id: faker.lorem.slug(),
+    slug: faker.lorem.slug(),
+    points: faker.number.int(5000),
+    last_activity: new Date(),
+    description: faker.person.jobTitle()
+  },
+  ...overrides
 });
 
 const proposal = generateProposal();
-const longProposal = generateProposal({ 
-    content: faker.lorem.paragraphs(5),
-    title: faker.lorem.sentences(2)
+const longProposal = generateProposal({
+  content: faker.lorem.paragraphs(5),
+  title: faker.lorem.sentences(2)
 });
 const editedProposal = generateProposal({ edited_at: faker.date.recent() });
-
+const proposalWithTag = generateProposal({
+  tag: {
+    display_name: faker.lorem.word(),
+    color: faker.color.rgb()
+  }
+});
 const authoredProposal = generateProposal({
-    author: {
-        id: currentUser.id, 
-        image_url: faker.image.avatarGitHub(),
-        full_name: faker.person.fullName(),
-        hash_id: faker.lorem.slug(),
-        slug: faker.lorem.slug(),
-        points: faker.number.int(5000),
-        last_activity: new Date(),
-        description: faker.person.jobTitle()
-    }
+  author: {
+    id: currentUser.id,
+    image_url: faker.image.avatarGitHub(),
+    full_name: faker.person.fullName(),
+    hash_id: faker.lorem.slug(),
+    slug: faker.lorem.slug(),
+    points: faker.number.int(5000),
+    last_activity: new Date(),
+    description: faker.person.jobTitle()
+  }
 });
 
 const Providers = ({ children }) => (
-    <BrowserRouter>
-        <ConfigProvider routes={{ ...routes }} config={{ translation: { enable: true } }}>
-            <DataProviderContext.Provider value={{ dataProvider: data }}>
-                <AuthContext.Provider value={{ currentUser, isLoggedIn: true }}>
-                    <ResponsiveProvider>
-                        <ModalProvider>
-                            <ListProvider>
-                                <ToastProvider>
-                                    <VoteProvider>
-                                        <InputProvider>
-                                            <IconProvider library={regularIcons}>
-                                                <IntlProvider locale="en">
-                                                    {children}
-                                                </IntlProvider>
-                                            </IconProvider>
-                                        </InputProvider>
-                                    </VoteProvider>
-                                </ToastProvider>
-                            </ListProvider>
-                        </ModalProvider>
-                    </ResponsiveProvider>
-                </AuthContext.Provider>
-            </DataProviderContext.Provider>
-        </ConfigProvider>
-    </BrowserRouter>
+  <BrowserRouter>
+    <ConfigProvider routes={{ ...routes }} config={{ translation: { enable: true } }}>
+      <DataProviderContext.Provider value={{ dataProvider: data }}>
+        <AuthContext.Provider value={{ currentUser, isLoggedIn: true }}>
+          <ResponsiveProvider>
+            <ModalProvider>
+              <ListProvider>
+                <ToastProvider>
+                  <VoteProvider>
+                    <InputProvider>
+                      <IconProvider library={regularIcons}>
+                        <IntlProvider locale='en'>{children}</IntlProvider>
+                      </IconProvider>
+                    </InputProvider>
+                  </VoteProvider>
+                </ToastProvider>
+              </ListProvider>
+            </ModalProvider>
+          </ResponsiveProvider>
+        </AuthContext.Provider>
+      </DataProviderContext.Provider>
+    </ConfigProvider>
+  </BrowserRouter>
 );
 
-// Component exports
-export const DefaultProposal = () => (
-    <div style={{ width: "400px", height: "240px" }}>
-        <Providers>
-            <ProposalBox 
-                proposal={proposal}
-            />
-        </Providers>
+export default {
+  title: 'Proposal/Proposal Box',
+  component: ProposalBox,
+  argTypes: {
+    proposal: { control: 'object' },
+    containerWidth: { control: 'text' },
+    containerHeight: { control: 'text' }
+  },
+  args: {
+    proposal,
+    containerWidth: '400px',
+    containerHeight: '240px'
+  },
+  render: ({ containerWidth, containerHeight, ...args }) => (
+    <div style={{ width: containerWidth, height: containerHeight }}>
+      <Providers>
+        <ProposalBox {...args} />
+      </Providers>
     </div>
-);
-
-export const LongProposal = () => (
-    <div style={{ width: "400px"}}>
-        <Providers>
-            <ProposalBox 
-                proposal={longProposal}
-            />
-        </Providers>
-    </div>
-);
-
-export const EditedProposal = () => (
-    <div style={{ width: "400px", height: "240px" }}>
-        <Providers>
-            <ProposalBox 
-                proposal={editedProposal}
-            />
-        </Providers>
-    </div>
-);
-
-export const ProposalWithTag = () => {
-    const taggedProposal = generateProposal({
-        tag: {
-            display_name: faker.lorem.word(),
-            color: faker.color.rgb()
-        }
-    });
-    
-    return (
-        <div style={{ width: "400px", height: "240px" }}>
-            <Providers>
-                <ProposalBox 
-                    proposal={taggedProposal}
-                />
-            </Providers>
-        </div>
-    );
+  )
 };
 
-export const OwnProposal = () => (
-    <div style={{ width: "400px", height: "240px" }}>
-        <Providers>
-            <ProposalBox 
-                proposal={authoredProposal}
-            />
-        </Providers>
-    </div>
-);
+export const DefaultProposal = {};
 
+export const LongProposal = {
+  args: {
+    proposal: longProposal,
+    containerHeight: 'auto'
+  }
+};
 
+export const EditedProposal = {
+  args: {
+    proposal: editedProposal
+  }
+};
 
+export const ProposalWithTag = {
+  args: {
+    proposal: proposalWithTag
+  }
+};
+
+export const OwnProposal = {
+  args: {
+    proposal: authoredProposal
+  }
+};

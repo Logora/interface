@@ -1,36 +1,40 @@
-export default {
-  title: 'Source/Source List Item'
-};
-
 import React from 'react';
 import { SourceListItem } from './SourceListItem';
 import { IconProvider } from '@logora/debate/icons/icon_provider';
 import * as regularIcons from '@logora/debate/icons/regular_icons';
 
-export const DefaultSourceListItem = () => {
-    return (
-        <IconProvider library={regularIcons}>
-            <SourceListItem 
-                publisher={"source.com"} 
-                url={"https://source.com"} 
-                title={"Source list item component"} 
-                index={0}
-            />
-        </IconProvider>
-    )
+export default {
+  title: 'Source/Source List Item',
+  component: SourceListItem,
+  args: {
+    publisher: 'source.com',
+    url: 'https://source.com',
+    title: 'Source list item component',
+    index: 0,
+    containerWidth: 'auto'
+  },
+  argTypes: {
+    publisher: { control: 'text' },
+    url: { control: 'text' },
+    title: { control: 'text' },
+    index: { control: 'number' },
+    containerWidth: { control: 'text' }
+  },
+  render: ({ containerWidth, ...args }) => (
+    <div style={{ width: containerWidth }}>
+      <IconProvider library={regularIcons}>
+        <SourceListItem {...args} />
+      </IconProvider>
+    </div>
+  )
 };
 
-export const LineClampedSourceListItem = () => {
-    return (
-        <div style={{width: "250px"}}>
-            <IconProvider library={regularIcons}>
-                <SourceListItem 
-                    publisher={"source.com"} 
-                    url={"https://source.com"} 
-                    title={"Super long title article, Super long title article, Super long title article, Super long title article, Super long title article, Super long title article"} 
-                    index={0}
-                />
-            </IconProvider>
-        </div>
-    )
+export const DefaultSourceListItem = {};
+
+export const LineClampedSourceListItem = {
+  args: {
+    containerWidth: '250px',
+    title:
+      'Super long title article, Super long title article, Super long title article, Super long title article, Super long title article, Super long title article'
+  }
 };

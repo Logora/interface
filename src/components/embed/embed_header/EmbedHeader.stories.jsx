@@ -1,50 +1,54 @@
-export default {
-  title: 'Embed/Embed Header'
-};
-
 import React from "react";
 import { IntlProvider } from "react-intl";
 import { EmbedHeader } from "./EmbedHeader";
 import { faker } from '@faker-js/faker';
 
-export const DefaultEmbedHeader = () => {
-    return (
+export default {
+    title: 'Embed/Embed Header',
+    component: EmbedHeader,
+    args: {
+        title: 'How to prevent COVID-19 spread ?',
+        titleRedirectUrl: 'https://test.fr/',
+        onlineUsersCount: 273,
+        headerLabel: 'Medicine',
+        textLeft: false,
+        logoUrl: null,
+        logoAlt: 'Super logo'
+    },
+    argTypes: {
+        title: {
+            control: 'text'
+        },
+        titleRedirectUrl: {
+            control: 'text'
+        },
+        onlineUsersCount: {
+            control: 'number'
+        },
+        headerLabel: {
+            control: 'text'
+        },
+        textLeft: {
+            control: 'boolean'
+        },
+        logoUrl: {
+            control: 'text'
+        },
+        logoAlt: {
+            control: 'text'
+        }
+    },
+    render: (args) => (
         <IntlProvider locale="en">
-            <EmbedHeader
-                title={"How to prevent COVID-19 spread ?"} 
-                titleRedirectUrl={"https://test.fr/"} 
-                onlineUsersCount={273} 
-                headerLabel={"Medicine"}
-            />
+            <EmbedHeader {...args} />
         </IntlProvider>
     )
-}
+};
 
-export const TextLeftEmbedHeader = () => {
-    return (
-        <IntlProvider locale="en">
-            <EmbedHeader
-                title={"How to prevent COVID-19 spread ?"} 
-                titleRedirectUrl={"https://test.fr/"} 
-                onlineUsersCount={273} 
-                headerLabel={"Medicine"}
-                textLeft
-            />
-        </IntlProvider>
-    )
-}
+export const DefaultEmbedHeader = {};
 
-export const EmbedHeaderWithLogo = () => {
-    return (
-        <IntlProvider locale="en">
-            <EmbedHeader
-                title={"How to prevent COVID-19 spread ?"} 
-                titleRedirectUrl={"https://test.fr/"} 
-                onlineUsersCount={273} 
-                headerLabel={"Medicine"}
-                logoUrl={faker.image.url()}
-                logoAlt={"Super logo"}
-            />
-        </IntlProvider>
-    )
-}
+export const EmbedHeaderWithLogo = {
+    args: {
+        logoUrl: faker.image.url()
+    }
+};

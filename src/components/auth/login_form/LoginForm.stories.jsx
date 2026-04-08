@@ -1,38 +1,42 @@
-export default {
-  title: 'Auth/Login Form'
-};
-
 import React from 'react';
 import { MemoryRouter } from "react-router-dom";
 import { IntlProvider } from 'react-intl';
 import { LoginForm } from './LoginForm';
 
-export const DefaultLoginForm = () => {
-    return (
+const noop = () => false;
+
+export default {
+    title: 'Auth/Login Form',
+    component: LoginForm,
+    args: {
+        forgotPasswordUrl: 'http://example.com/forgot_password',
+        error: false,
+        onSubmit: noop
+    },
+    argTypes: {
+        forgotPasswordUrl: {
+            control: 'text'
+        },
+        error: {
+            control: 'boolean'
+        },
+        onSubmit: {
+            control: false
+        }
+    },
+    render: (args) => (
         <MemoryRouter>
             <IntlProvider locale="en">
-                <LoginForm onSubmit={(email, password) => false } forgotPasswordUrl={"http://example.com/forgot_password"} />
+                <LoginForm {...args} />
             </IntlProvider>
         </MemoryRouter>
-    );
+    )
 };
 
-export const LoginFormWithoutForgotPassword = () => {
-    return (
-        <MemoryRouter>
-            <IntlProvider locale="en">
-                <LoginForm onSubmit={(email, password) => false } error={false} />
-            </IntlProvider>
-        </MemoryRouter>
-    );
-};
+export const DefaultLoginForm = {};
 
-export const LoginFormWithError = () => {
-    return (
-        <MemoryRouter>
-            <IntlProvider locale="en">
-                <LoginForm onSubmit={(email, password) => false } error={true} forgotPasswordUrl={"http://example.com/forgot_password"} />
-            </IntlProvider>
-        </MemoryRouter>
-    );
+export const LoginFormWithError = {
+    args: {
+        error: true
+    }
 };
