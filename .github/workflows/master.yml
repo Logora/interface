@@ -48,6 +48,7 @@ jobs:
     timeout-minutes: 20
     needs: validate
     if: ${{ github.event_name != 'pull_request' && github.ref == 'refs/heads/master' && github.actor != 'github-actions[bot]' }}
+    environment: npm
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6
@@ -85,8 +86,6 @@ jobs:
       - name: Publish to npm (Trusted Publishing)
         run: |
           npm publish --access public --provenance
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Push release commit and tag
         run: |
