@@ -1,4 +1,4 @@
-import { HiddenCheckbox } from '@logora/debate.input.checkbox.hidden';
+import { HiddenCheckbox } from '@logora/debate/input/checkbox/hidden';
 import React, { useState } from 'react';
 import { CheckboxLabel } from './checkbox-label';
 

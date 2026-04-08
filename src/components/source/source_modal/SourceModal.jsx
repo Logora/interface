@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { Modal, useModal } from '@logora/debate.dialog.modal';
-import { useDataProvider } from '@logora/debate.data.data_provider';
+import { Modal, useModal } from '@logora/debate/dialog/modal';
+import { useDataProvider } from '@logora/debate/data/data_provider';
 import { FormattedMessage, useIntl } from 'react-intl';
-import { SourceBox } from '@logora/debate.source.source_box';
-import { Button } from '@logora/debate.action.button';
-import { Loader } from '@logora/debate.progress.loader';
-import { SearchInput } from '@logora/debate.input.search_input';
-import { AnnouncementDialog } from "@logora/debate.dialog.announcement_dialog";
+import { SourceBox } from '@logora/debate/source/source_box';
+import { Button } from '@logora/debate/action/button';
+import { Loader } from '@logora/debate/progress/loader';
+import { SearchInput } from '@logora/debate/input/search_input';
+import { AnnouncementDialog } from "@logora/debate/dialog/announcement_dialog";
 import styles from './SourceModal.module.scss';
 import PropTypes from "prop-types";
 

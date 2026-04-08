@@ -1,7 +1,7 @@
 import React from "react";
-import { useVote } from "@logora/debate.vote.use_vote";
+import { useVote } from "@logora/debate/vote/use_vote";
 import { useIntl } from 'react-intl';
-import { Icon } from "@logora/debate.icons.icon";
+import { Icon } from "@logora/debate/icons/icon";
 import cx from "classnames";
 import styles from "./VoteButton.module.scss";
 import PropTypes from "prop-types";

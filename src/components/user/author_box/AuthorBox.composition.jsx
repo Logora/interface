@@ -2,21 +2,21 @@ import React from 'react';
 import { IntlProvider } from 'react-intl';
 import { BrowserRouter } from 'react-router-dom';
 import { AuthorBox } from './AuthorBox';
-import { ConfigProvider } from '@logora/debate.data.config_provider';
-import { Location } from '@logora/debate.util.location';
-import { IconProvider } from '@logora/debate.icons.icon_provider';
-import * as regularIcons from '@logora/debate.icons.regular_icons';
+import { ConfigProvider } from '@logora/debate/data/config_provider';
+import { Location } from '@logora/debate/util/location';
+import { IconProvider } from '@logora/debate/icons/icon_provider';
+import * as regularIcons from '@logora/debate/icons/regular_icons';
 import { faker } from '@faker-js/faker';
 
 const author = {
-  image_url: faker.image.avatar(),
-  full_name: faker.name.fullName(),
+  image_url: faker.image.avatarGitHub(),
+  full_name: faker.person.fullName(),
   hash_id: faker.lorem.slug(),
   points: 52,
   eloquence_title: faker.science.chemicalElement().symbol,
   occupation: faker.vehicle.bicycle(),
   last_activity: faker.date.recent(),
-  description: faker.name.jobTitle(),
+  description: faker.person.jobTitle(),
 };
 
 

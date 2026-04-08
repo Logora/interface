@@ -1,8 +1,8 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { BackLink } from './BackLink';
-import { IconProvider } from '@logora/debate.icons.icon_provider';
-import * as regularIcons from '@logora/debate.icons.regular_icons';
+import { IconProvider } from '@logora/debate/icons/icon_provider';
+import * as regularIcons from '@logora/debate/icons/regular_icons';
 
 describe('BackLink', () => {
     it('should render with correct text', () => {
@@ -25,7 +25,7 @@ describe('BackLink', () => {
     });
 
     it('should call onClick handler', () => {
-        const onClick = jest.fn();
+        const onClick = vi.fn();
         render(
             <IconProvider library={regularIcons}>
                 <BackLink
@@ -99,6 +99,7 @@ describe('BackLink', () => {
 
         const link = screen.getByRole('link');
         expect(link).toHaveClass('custom-link');
-        expect(link).toHaveStyle({ color: 'red', fontWeight: 'bold' });
+        expect(link.style.color).toBe('red');
+        expect(['bold', '700']).toContain(link.style.fontWeight);
     });
 });

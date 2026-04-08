@@ -1,7 +1,7 @@
-@use '@logora/debate.styles.theme' as theme;
-@use '@logora/debate.styles.spacing' as spacing;
-@use '@logora/debate.styles.flex' as flex;
-@use '@logora/debate.styles.display' as display;
+@use 'styles/theme' as theme;
+@use 'styles/spacing' as spacing;
+@use 'styles/flex' as flex;
+@use 'styles/display' as display;
 
 
 .suggestionBannerContainer {

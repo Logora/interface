@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from "prop-types";
 import styles from './TopArguments.module.scss';
-import { useConfig } from '@logora/debate.data.config_provider';
-import { useResponsive } from "@logora/debate.hooks.use_responsive";
-import { useTranslatedContent } from '@logora/debate.translation.translated_content';
-import { SummaryContentBox } from '@logora/debate.user_content.summary_content_box';
-import { UserContentSkeleton } from '@logora/debate.skeleton.user_content_skeleton';
-import { Button } from '@logora/debate.action.button';
+import { useConfig } from '@logora/debate/data/config_provider';
+import { useResponsive } from "@logora/debate/hooks/use_responsive";
+import { useTranslatedContent } from '@logora/debate/translation/translated_content';
+import { SummaryContentBox } from '@logora/debate/user_content/summary_content_box';
+import { UserContentSkeleton } from '@logora/debate/skeleton/user_content_skeleton';
+import { Button } from '@logora/debate/action/button';
 import { FormattedMessage } from 'react-intl';
 
 export const TopArguments = ({ argumentFor, argumentAgainst, debateUrl, argumentCount, debate }) =>  {

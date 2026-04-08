@@ -7,7 +7,7 @@ const source = {
     title: faker.music.songName(),
     description: faker.lorem.sentence(),
     url: faker.internet.url(),
-    imageUrl: faker.image.nature(),
+    imageUrl: faker.image.url(),
     publisher: faker.vehicle.manufacturer()
 };
 

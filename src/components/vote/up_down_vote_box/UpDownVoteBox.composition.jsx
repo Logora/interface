@@ -1,20 +1,20 @@
 import React from 'react';
 import { IntlProvider } from 'react-intl';
 import { UpDownVoteBox } from './UpDownVoteBox';
-import { VoteProvider } from '@logora/debate.vote.vote_provider';
-import { dataProvider, DataProviderContext } from '@logora/debate.data.data_provider';
-import { AuthContext } from '@logora/debate.auth.use_auth';
-import { ConfigProvider } from '@logora/debate.data.config_provider';
-import { ModalProvider } from '@logora/debate.dialog.modal';
-import { IconProvider } from '@logora/debate.icons.icon_provider';
-import * as regularIcons from '@logora/debate.icons.regular_icons';
+import { VoteProvider } from '@logora/debate/vote/vote_provider';
+import { dataProvider, DataProviderContext } from '@logora/debate/data/data_provider';
+import { AuthContext } from '@logora/debate/auth/use_auth';
+import { ConfigProvider } from '@logora/debate/data/config_provider';
+import { ModalProvider } from '@logora/debate/dialog/modal';
+import { IconProvider } from '@logora/debate/icons/icon_provider';
+import * as regularIcons from '@logora/debate/icons/regular_icons';
 import { faker } from '@faker-js/faker';
 
 const vote = { 
-    id: faker.datatype.number(),
+    id: faker.number.int(),
     voteable_type: faker.lorem.word(),
-    voteable_id: faker.datatype.number(), 
-    user_id: faker.datatype.number()
+    voteable_id: faker.number.int(), 
+    user_id: faker.number.int()
 };
 
 const httpClient = {

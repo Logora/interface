@@ -2,10 +2,10 @@ import React from 'react';
 import { ReadMore } from './ReadMore';
 import { faker } from '@faker-js/faker';
 import { IntlProvider } from 'react-intl';
-import { IconProvider } from '@logora/debate.icons.icon_provider';
-import { Icon } from "@logora/debate.icons.icon";
+import { IconProvider } from '@logora/debate/icons/icon_provider';
+import { Icon } from "@logora/debate/icons/icon";
 import { FormattedMessage } from 'react-intl';
-import * as regularIcons from '@logora/debate.icons.regular_icons';
+import * as regularIcons from '@logora/debate/icons/regular_icons';
 
 let text = faker.lorem.paragraph(40);
 let url = faker.internet.url();

@@ -3,61 +3,61 @@ import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { IntlProvider } from "react-intl";
 import { MemoryRouter } from "react-router-dom";
-import { ConfigProvider } from "@logora/debate.data.config_provider";
-import { dataProvider, DataProviderContext } from "@logora/debate.data.data_provider";
-import { AuthContext } from "@logora/debate.auth.use_auth";
-import { ModalProvider } from "@logora/debate.dialog.modal";
-import { ListProvider } from "@logora/debate.list.list_provider";
-import { ToastProvider } from "@logora/debate.dialog.toast_provider";
-import { VoteProvider } from "@logora/debate.vote.vote_provider";
-import { IconProvider } from "@logora/debate.icons.icon_provider";
-import { ResponsiveProvider } from "@logora/debate.hooks.use_responsive";
-import * as regularIcons from "@logora/debate.icons.regular_icons";
+import { ConfigProvider } from "@logora/debate/data/config_provider";
+import { dataProvider, DataProviderContext } from "@logora/debate/data/data_provider";
+import { AuthContext } from "@logora/debate/auth/use_auth";
+import { ModalProvider } from "@logora/debate/dialog/modal";
+import { ListProvider } from "@logora/debate/list/list_provider";
+import { ToastProvider } from "@logora/debate/dialog/toast_provider";
+import { VoteProvider } from "@logora/debate/vote/vote_provider";
+import { IconProvider } from "@logora/debate/icons/icon_provider";
+import { ResponsiveProvider } from "@logora/debate/hooks/use_responsive";
+import * as regularIcons from "@logora/debate/icons/regular_icons";
 import { ProposalBox } from "./ProposalBox";
 import { faker } from "@faker-js/faker";
 
-jest.mock('@lexical/react/LexicalErrorBoundary', () => ({
+vi.mock('@lexical/react/LexicalErrorBoundary', () => ({
     LexicalErrorBoundary: ({ children }) => children,
   }));
 
 // Mock data
 const vote = {
-    id: faker.datatype.number(),
+    id: faker.number.int(),
     voteable_type: faker.lorem.word(),
-    voteable_id: faker.datatype.number(),
-    user_id: faker.datatype.number()
+    voteable_id: faker.number.int(),
+    user_id: faker.number.int()
 };
 
 const currentUser = {
     id: vote.user_id,
-    full_name: faker.name.fullName(),
-    image_url: faker.image.avatar(),
-    points: faker.datatype.number()
+    full_name: faker.person.fullName(),
+    image_url: faker.image.avatarGitHub(),
+    points: faker.number.int()
 };
 
 const generateProposal = (overrides) => ({
-    id: faker.datatype.number(),
+    id: faker.number.int(),
     title: faker.lorem.sentence(),
     content: faker.lorem.paragraph(),
     created_at: faker.date.recent().toISOString(),
     edited_at: null,
-    total_upvotes: faker.datatype.number(100),
-    total_downvotes: faker.datatype.number(50),
+    total_upvotes: faker.number.int(100),
+    total_downvotes: faker.number.int(50),
     language: "en",
     translation_entries: [],
     author: {
-        id: faker.datatype.number(),
-        image_url: faker.image.avatar(),
-        full_name: faker.name.fullName(),
+        id: faker.number.int(),
+        image_url: faker.image.avatarGitHub(),
+        full_name: faker.person.fullName(),
         hash_id: faker.lorem.slug(),
         slug: faker.lorem.slug(),
-        points: faker.datatype.number(5000),
+        points: faker.number.int(5000),
         last_activity: new Date(),
-        description: faker.name.jobTitle()
+        description: faker.person.jobTitle()
     },
     tag: {
         display_name: faker.lorem.word(),
-        color: faker.internet.color()
+        color: faker.color.rgb()
     },
     ...overrides
 });
@@ -66,8 +66,8 @@ const proposal = generateProposal();
 const editedProposal = generateProposal({ edited_at: faker.date.recent().toISOString(), is_edited: true });
 
 const httpClient = {
-    post: jest.fn(() => Promise.resolve({ data: { success: true, data: { resource: vote } } })),
-    delete: jest.fn(() => Promise.resolve({ data: { success: true, data: {} } }))
+    post: vi.fn(() => Promise.resolve({ data: { success: true, data: { resource: vote } } })),
+    delete: vi.fn(() => Promise.resolve({ data: { success: true, data: {} } }))
 };
 
 const data = dataProvider(httpClient, "https://mock.example.api");

@@ -3,7 +3,7 @@ import { AvatarSelector } from "./AvatarSelector";
 import { IntlProvider } from "react-intl";
 import { faker } from '@faker-js/faker';
 
-const avatarUrlList = [faker.image.avatar(), faker.image.avatar(), faker.image.avatar(), faker.image.avatar(), faker.image.avatar(), faker.image.avatar(), faker.image.avatar(), faker.image.avatar(), faker.image.avatar(), faker.image.avatar(), faker.image.avatar(), faker.image.avatar(), faker.image.avatar(), faker.image.avatar(), faker.image.avatar(), faker.image.avatar(), faker.image.avatar()];
+const avatarUrlList = [faker.image.avatarGitHub(), faker.image.avatarGitHub(), faker.image.avatarGitHub(), faker.image.avatarGitHub(), faker.image.avatarGitHub(), faker.image.avatarGitHub(), faker.image.avatarGitHub(), faker.image.avatarGitHub(), faker.image.avatarGitHub(), faker.image.avatarGitHub(), faker.image.avatarGitHub(), faker.image.avatarGitHub(), faker.image.avatarGitHub(), faker.image.avatarGitHub(), faker.image.avatarGitHub(), faker.image.avatarGitHub(), faker.image.avatarGitHub()];
 
 const handleChooseAvatar = (avatar) => {
     console.log(`Chosen avatar: ${avatar}`);

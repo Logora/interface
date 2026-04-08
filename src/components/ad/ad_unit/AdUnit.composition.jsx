@@ -1,5 +1,5 @@
 import React from 'react';
-import { useGoogleAdManager } from '@logora/debate.ad.use_google_ad_manager';
+import { useGoogleAdManager } from '@logora/debate/ad/use_google_ad_manager';
 import { AdUnit } from './AdUnit';
 
 export const DefaultAdUnit = () => {

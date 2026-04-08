@@ -1,6 +1,6 @@
 import { useAuth } from "./useAuth";
 import { authTokenHandler } from "./authTokenHandler";
-import { useDataProvider } from '@logora/debate.data.data_provider';
+import { useDataProvider } from '@logora/debate/data/data_provider';
 
 export const EMAIL_CONSENT_STORAGE_KEY = "logora:emailConsent";
 

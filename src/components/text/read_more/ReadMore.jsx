@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Link } from '@logora/debate.action.link';
+import { Link } from '@logora/debate/action/link';
 import styles from './ReadMore.module.scss';
 import cx from 'classnames';
 

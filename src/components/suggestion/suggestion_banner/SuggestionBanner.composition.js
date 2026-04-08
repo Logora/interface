@@ -2,18 +2,18 @@ import React from 'react';
 import { SuggestionBanner } from './SuggestionBanner';
 import { IntlProvider } from 'react-intl';
 import { MemoryRouter } from 'react-router-dom';
-import { IconProvider } from '@logora/debate.icons.icon_provider';
-import { ConfigProvider } from '@logora/debate.data.config_provider';
-import { ResponsiveProvider } from '@logora/debate.hooks.use_responsive';
-import { ModalProvider } from '@logora/debate.dialog.modal';
-import { Location } from '@logora/debate.util.location';
-import { dataProvider, DataProviderContext } from '@logora/debate.data.data_provider';
-import { AuthContext } from '@logora/debate.auth.use_auth';
-import { ListProvider } from '@logora/debate.list.list_provider';
-import { VoteProvider } from '@logora/debate.vote.vote_provider';
-import { ToastProvider } from '@logora/debate.dialog.toast_provider';
+import { IconProvider } from '@logora/debate/icons/icon_provider';
+import { ConfigProvider } from '@logora/debate/data/config_provider';
+import { ResponsiveProvider } from '@logora/debate/hooks/use_responsive';
+import { ModalProvider } from '@logora/debate/dialog/modal';
+import { Location } from '@logora/debate/util/location';
+import { dataProvider, DataProviderContext } from '@logora/debate/data/data_provider';
+import { AuthContext } from '@logora/debate/auth/use_auth';
+import { ListProvider } from '@logora/debate/list/list_provider';
+import { VoteProvider } from '@logora/debate/vote/vote_provider';
+import { ToastProvider } from '@logora/debate/dialog/toast_provider';
 import { faker } from '@faker-js/faker';
-import * as regularIcons from '@logora/debate.icons.regular_icons';
+import * as regularIcons from '@logora/debate/icons/regular_icons';
 
 const SuggestionBannerShowLocation = new Location('espace-debat/suggestions');
 
@@ -22,10 +22,10 @@ const routes = {
 };
 
 const vote = {
-    id: faker.datatype.number(),
+    id: faker.number.int(),
     voteable_type: faker.lorem.word(),
-    voteable_id: faker.datatype.number(),
-    user_id: faker.datatype.number()
+    voteable_id: faker.number.int(),
+    user_id: faker.number.int()
 };
 
 const createFakeSuggestion = (id, authorName, suggestionName) => ({
@@ -33,26 +33,26 @@ const createFakeSuggestion = (id, authorName, suggestionName) => ({
     name: suggestionName,
     slug: faker.lorem.slug(),
     created_at: faker.date.recent().toISOString(),
-    score: faker.datatype.number(),
-    language: faker.random.locale(),
+    score: faker.number.int(),
+    language: faker.helpers.arrayElement(['en', 'fr', 'es']),
     is_active: true,
-    messages_count: faker.datatype.number(),
+    messages_count: faker.number.int(),
     is_published: false,
     published_at: faker.date.recent().toISOString(),
     debate_suggestion: {
-        id: faker.datatype.number(),
+        id: faker.number.int(),
         created_at: faker.date.recent().toISOString(),
         expires_at: faker.date.future().toISOString(),
         total_upvotes: 20,
-        total_downvotes: faker.datatype.number({ min: 0, max: 100 }),
+        total_downvotes: faker.number.int({ min: 0, max: 100 }),
         is_accepted: false,
         is_expired: false,
         author: {
-            id: faker.datatype.number(),
+            id: faker.number.int(),
             full_name: authorName,
-            image_url: faker.image.avatar()
+            image_url: faker.image.avatarGitHub()
         },
-        language: faker.random.locale(),
+        language: faker.helpers.arrayElement(['en', 'fr', 'es']),
         translation_entries: [],
         name: faker.lorem.words(),
     },
@@ -80,10 +80,10 @@ const httpClient = {
 };
 
 const currentUser = {
-    id: faker.datatype.number(),
-    full_name: faker.name.fullName(),
-    image_url: faker.image.avatar(),
-    points: faker.datatype.number()
+    id: faker.number.int(),
+    full_name: faker.person.fullName(),
+    image_url: faker.image.avatarGitHub(),
+    points: faker.number.int()
 }
 
 const data = dataProvider(httpClient, "https://mock.example.api");

@@ -4,8 +4,8 @@ import { render, screen } from "@testing-library/react";
 import { OAuth2Button } from "./OAuth2Button";
 import userEvent from "@testing-library/user-event";
 
-const spyWindowOpen = jest.spyOn(window, "open");
-spyWindowOpen.mockImplementation(jest.fn());
+const spyWindowOpen = vi.spyOn(window, "open");
+spyWindowOpen.mockImplementation(vi.fn());
 
 describe("OAuth2Button", () => {
   it("should render button with the correct text", () => {

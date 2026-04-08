@@ -1,8 +1,8 @@
 import React from 'react';
 import { Tag } from './Tag';
-import { IconProvider } from '@logora/debate.icons.icon_provider';
-import * as regularIcons from '@logora/debate.icons.regular_icons';
-import { Icon } from "@logora/debate.icons.icon";
+import { IconProvider } from '@logora/debate/icons/icon_provider';
+import * as regularIcons from '@logora/debate/icons/regular_icons';
+import { Icon } from "@logora/debate/icons/icon";
 
 export const DefaultTag = () => {
     return (

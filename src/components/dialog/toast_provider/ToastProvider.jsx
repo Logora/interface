@@ -1,7 +1,7 @@
 import React from 'react';
 import toast, { Toaster, resolveValue, useToasterStore } from 'react-hot-toast';
 import { ToastContext } from './ToastContext';
-import { Toast } from '@logora/debate.dialog.toast';
+import { Toast } from '@logora/debate/dialog/toast';
 import styles from './ToastProvider.module.scss';
 
 export const ToastProvider = ({ children }) => {

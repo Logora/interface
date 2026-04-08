@@ -3,8 +3,8 @@ import { Avatar } from './Avatar';
 import { IntlProvider } from 'react-intl';
 import { faker } from '@faker-js/faker';
 
-const avatarUrl = faker.image.avatar();
-const userName = faker.name.fullName();
+const avatarUrl = faker.image.avatarGitHub();
+const userName = faker.person.fullName();
 
 export const DefaultAvatar = () => {
     return (

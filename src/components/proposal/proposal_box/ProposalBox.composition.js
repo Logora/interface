@@ -1,18 +1,18 @@
 import React from 'react';
 import { IntlProvider } from 'react-intl';
-import { ConfigProvider } from '@logora/debate.data.config_provider';
+import { ConfigProvider } from '@logora/debate/data/config_provider';
 import { BrowserRouter } from 'react-router-dom';
-import { Location } from '@logora/debate.util.location';
-import { dataProvider, DataProviderContext } from '@logora/debate.data.data_provider';
-import { AuthContext } from '@logora/debate.auth.use_auth';
-import { ModalProvider } from '@logora/debate.dialog.modal';
-import { ListProvider } from '@logora/debate.list.list_provider';
-import { ToastProvider } from '@logora/debate.dialog.toast_provider';
-import { VoteProvider } from '@logora/debate.vote.vote_provider';
-import { InputProvider } from '@logora/debate.input.input_provider';
-import { IconProvider } from '@logora/debate.icons.icon_provider';
-import { ResponsiveProvider } from '@logora/debate.hooks.use_responsive';
-import * as regularIcons from '@logora/debate.icons.regular_icons';
+import { Location } from '@logora/debate/util/location';
+import { dataProvider, DataProviderContext } from '@logora/debate/data/data_provider';
+import { AuthContext } from '@logora/debate/auth/use_auth';
+import { ModalProvider } from '@logora/debate/dialog/modal';
+import { ListProvider } from '@logora/debate/list/list_provider';
+import { ToastProvider } from '@logora/debate/dialog/toast_provider';
+import { VoteProvider } from '@logora/debate/vote/vote_provider';
+import { InputProvider } from '@logora/debate/input/input_provider';
+import { IconProvider } from '@logora/debate/icons/icon_provider';
+import { ResponsiveProvider } from '@logora/debate/hooks/use_responsive';
+import * as regularIcons from '@logora/debate/icons/regular_icons';
 import { faker } from '@faker-js/faker';
 import { ProposalBox } from './ProposalBox';
 
@@ -22,10 +22,10 @@ const routes = {
 };
 
 const vote = {
-    id: faker.datatype.number(),
+    id: faker.number.int(),
     voteable_type: faker.lorem.word(),
-    voteable_id: faker.datatype.number(),
-    user_id: faker.datatype.number()
+    voteable_id: faker.number.int(),
+    user_id: faker.number.int()
 };
 
 const httpClient = {
@@ -46,24 +46,24 @@ const currentUser = { id: vote.user_id };
 const data = dataProvider(httpClient, "https://mock.example.api");
 
 const generateProposal = (overrides) => ({
-    id: faker.datatype.number(),
+    id: faker.number.int(),
     title: faker.lorem.sentence(),
     content: faker.lorem.paragraphs(2),
     created_at: faker.date.recent(),
     edited_at: null,
-    total_upvotes: faker.datatype.number(100),
-    total_downvotes: faker.datatype.number(50),
+    total_upvotes: faker.number.int(100),
+    total_downvotes: faker.number.int(50),
     language: "en",
     translation_entries: [],
     author: {
-        id: faker.datatype.number(),
-        image_url: faker.image.avatar(),
-        full_name: faker.name.fullName(),
+        id: faker.number.int(),
+        image_url: faker.image.avatarGitHub(),
+        full_name: faker.person.fullName(),
         hash_id: faker.lorem.slug(),
         slug: faker.lorem.slug(),
-        points: faker.datatype.number(5000),
+        points: faker.number.int(5000),
         last_activity: new Date(),
-        description: faker.name.jobTitle()
+        description: faker.person.jobTitle()
     },
     ...overrides
 });
@@ -78,13 +78,13 @@ const editedProposal = generateProposal({ edited_at: faker.date.recent() });
 const authoredProposal = generateProposal({
     author: {
         id: currentUser.id, 
-        image_url: faker.image.avatar(),
-        full_name: faker.name.fullName(),
+        image_url: faker.image.avatarGitHub(),
+        full_name: faker.person.fullName(),
         hash_id: faker.lorem.slug(),
         slug: faker.lorem.slug(),
-        points: faker.datatype.number(5000),
+        points: faker.number.int(5000),
         last_activity: new Date(),
-        description: faker.name.jobTitle()
+        description: faker.person.jobTitle()
     }
 });
 
@@ -151,7 +151,7 @@ export const ProposalWithTag = () => {
     const taggedProposal = generateProposal({
         tag: {
             display_name: faker.lorem.word(),
-            color: faker.internet.color()
+            color: faker.color.rgb()
         }
     });
     

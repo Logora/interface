@@ -1,8 +1,8 @@
 import React from 'react';
 import { ShareBox } from './ShareBox';
 import { IntlProvider } from 'react-intl';
-import { IconProvider } from '@logora/debate.icons.icon_provider';
-import * as regularIcons from '@logora/debate.icons.regular_icons';
+import { IconProvider } from '@logora/debate/icons/icon_provider';
+import * as regularIcons from '@logora/debate/icons/regular_icons';
 
 export const DefaultShareBox = () => {
     return (

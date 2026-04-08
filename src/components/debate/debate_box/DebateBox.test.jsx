@@ -5,13 +5,13 @@ import { faker } from '@faker-js/faker';
 
 const createUser = () => {
 	return {
-		id: faker.datatype.number(10000000),
+		id: faker.number.int(10000000),
 		hash_id: faker.lorem.slug(),
-		first_name: faker.name.firstName(),
-		last_name: faker.name.lastName(),
+		first_name: faker.person.firstName(),
+		last_name: faker.person.lastName(),
 		slug: faker.lorem.slug(),
-		image_url: faker.image.avatar(),
-		full_name: faker.name.fullName(),
+		image_url: faker.image.avatarGitHub(),
+		full_name: faker.person.fullName(),
 		description: null,
 		last_activity: faker.date.recent(),
 		role: "contributor",
@@ -31,8 +31,8 @@ const debate = {
 	description: null,
 	created_at: faker.date.recent(),
 	score: 0,
-	image_url: faker.image.nature(),
-	banner_image_url: faker.image.avatar(),
+	image_url: faker.image.url(),
+	banner_image_url: faker.image.avatarGitHub(),
 	votes_count: {
 		655: "2",
 		656: "6",

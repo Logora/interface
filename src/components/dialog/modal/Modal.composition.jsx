@@ -1,9 +1,9 @@
 import React from 'react';
 import { Modal } from './Modal';
 import { ModalProvider } from './ModalProvider';
-import { IconProvider } from '@logora/debate.icons.icon_provider';
+import { IconProvider } from '@logora/debate/icons/icon_provider';
 import { IntlProvider } from "react-intl";
-import * as regularIcons from '@logora/debate.icons.regular_icons';
+import * as regularIcons from '@logora/debate/icons/regular_icons';
 
 export const DefaultModal = () => {
     return (

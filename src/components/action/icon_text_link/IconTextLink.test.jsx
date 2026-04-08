@@ -101,7 +101,8 @@ describe('IconTextLink', () => {
         );
         const iconTextContainer = getByTestId('iconTextContainer');
         expect(iconTextContainer).toBeInTheDocument();
-        expect(iconTextContainer).toHaveStyle({ color: 'red', fontWeight: 'bold' });
+        expect(iconTextContainer.style.color).toBe('red');
+        expect(['bold', '700']).toContain(iconTextContainer.style.fontWeight);
     });
 
     it('renders IconTextLink with pin and pin text', () => {

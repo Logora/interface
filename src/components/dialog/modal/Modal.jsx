@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { useModal } from './useModal';
 import cx from 'classnames';
 import styles from './Modal.module.scss';
-import { Icon } from "@logora/debate.icons.icon";
+import { Icon } from "@logora/debate/icons/icon";
 
 export const Modal = ({ title, showCloseButton = false, fullScreen, children, disableClickOutside = false, ...rest }) => {
   const dialogRef = useRef();

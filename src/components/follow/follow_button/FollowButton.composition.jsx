@@ -2,12 +2,12 @@ import React from 'react';
 import { IntlProvider } from 'react-intl';
 import { MemoryRouter } from "react-router-dom";
 import { FollowButton } from './FollowButton';
-import { dataProvider, DataProviderContext } from '@logora/debate.data.data_provider';
-import { AuthProvider } from '@logora/debate.auth.use_auth';
-import { ConfigContext } from '@logora/debate.data.config_provider';
-import { ModalProvider } from '@logora/debate.dialog.modal';
-import { IconProvider } from '@logora/debate.icons.icon_provider';
-import * as regularIcons from '@logora/debate.icons.regular_icons';
+import { dataProvider, DataProviderContext } from '@logora/debate/data/data_provider';
+import { AuthProvider } from '@logora/debate/auth/use_auth';
+import { ConfigContext } from '@logora/debate/data/config_provider';
+import { ModalProvider } from '@logora/debate/dialog/modal';
+import { IconProvider } from '@logora/debate/icons/icon_provider';
+import * as regularIcons from '@logora/debate/icons/regular_icons';
 
 export const DefaultFollowButton = () => {
     const httpClient = {};

@@ -1,10 +1,10 @@
 import React from "react";
-import { useRelativeTime } from "@logora/debate.hooks.use_relative_time";
-import { AuthorBox } from '@logora/debate.user.author_box';
-import { UserBoxSmall } from '@logora/debate.user.user_box_small';
-import { Icon } from '@logora/debate.icons.icon';
+import { useRelativeTime } from "@logora/debate/hooks/use_relative_time";
+import { AuthorBox } from '@logora/debate/user/author_box';
+import { UserBoxSmall } from '@logora/debate/user/user_box_small';
+import { Icon } from '@logora/debate/icons/icon';
 import { useIntl } from "react-intl";
-import { useConfig } from '@logora/debate.data.config_provider';
+import { useConfig } from '@logora/debate/data/config_provider';
 import cx from "classnames";
 import styles from "./ContentHeader.module.scss";
 import PropTypes from "prop-types";

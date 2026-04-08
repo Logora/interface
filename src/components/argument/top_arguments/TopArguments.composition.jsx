@@ -1,12 +1,12 @@
 import React from 'react';
 import { IntlProvider } from 'react-intl';
-import { ConfigProvider } from '@logora/debate.data.config_provider';
+import { ConfigProvider } from '@logora/debate/data/config_provider';
 import { MemoryRouter } from 'react-router-dom';
-import { Location } from '@logora/debate.util.location';
+import { Location } from '@logora/debate/util/location';
 import { TopArguments } from './TopArguments';
-import { IconProvider } from '@logora/debate.icons.icon_provider';
-import { ResponsiveProvider } from '@logora/debate.hooks.use_responsive';
-import * as regularIcons from '@logora/debate.icons.regular_icons';
+import { IconProvider } from '@logora/debate/icons/icon_provider';
+import { ResponsiveProvider } from '@logora/debate/hooks/use_responsive';
+import * as regularIcons from '@logora/debate/icons/regular_icons';
 import { faker } from '@faker-js/faker';
 
 const debateUrl = faker.internet.url();
@@ -41,13 +41,13 @@ const argumentFor = {
     created_at: faker.date.recent(),
     score: 50,
     author: {
-        image_url: faker.image.avatar(),
-        full_name: faker.name.fullName(),
+        image_url: faker.image.avatarGitHub(),
+        full_name: faker.person.fullName(),
         hash_id: faker.lorem.slug(),
         slug: faker.lorem.slug(),
         points: 1320,
         last_activity: new Date(),
-        description: faker.name.jobTitle()
+        description: faker.person.jobTitle()
     },
     position: {
         id: 397,
@@ -64,13 +64,13 @@ const argumentAgainst = {
     created_at: faker.date.recent(),
     score: 58,
     author: {
-        image_url: faker.image.avatar(),
-        full_name: faker.name.fullName(),
+        image_url: faker.image.avatarGitHub(),
+        full_name: faker.person.fullName(),
         hash_id: faker.lorem.slug(),
         slug: faker.lorem.slug(),
         points: 5672,
         last_activity: new Date(),
-        description: faker.name.jobTitle()
+        description: faker.person.jobTitle()
     },
     position: {
         id: 397,

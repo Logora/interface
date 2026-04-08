@@ -4,15 +4,15 @@ import { IntlProvider } from 'react-intl';
 import { UserBox  } from "./UserBox";
 import { render } from '@testing-library/react';
 import { faker } from '@faker-js/faker';
-import { Location } from '@logora/debate.util.location';
-import { ConfigProvider } from '@logora/debate.data.config_provider';
+import { Location } from '@logora/debate/util/location';
+import { ConfigProvider } from '@logora/debate/data/config_provider';
 
 const contributorUser = {
     id: 82,
     uid: "296deae0-15e3-46dd-bd85-498456809453",
     hash_id: "296deae0-15e3-46dd",
-    image_url: faker.image.avatar(),
-    full_name: faker.name.fullName(),
+    image_url: faker.image.avatarGitHub(),
+    full_name: faker.person.fullName(),
     slug: faker.lorem.slug(),
     score: 0,
     points: 1539,
@@ -29,8 +29,8 @@ const defaultUser = {
     id: 83,
     uid: "396deae0-15e3-46dd-bd85-498456809453",
     hash_id: "396deae0-15e3-46dd",
-    image_url: faker.image.avatar(),
-    full_name: faker.name.fullName(),
+    image_url: faker.image.avatarGitHub(),
+    full_name: faker.person.fullName(),
     slug: faker.lorem.slug(),
     score: 0,
     points: 100,

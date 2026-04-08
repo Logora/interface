@@ -10,7 +10,7 @@ const messages = {
 };
 
 const defaultUrls = {
-    avatarUrl: faker.image.avatar()
+    avatarUrl: faker.image.avatarGitHub()
 }
 
 describe('Avatar', () => {

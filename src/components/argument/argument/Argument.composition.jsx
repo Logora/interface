@@ -1,19 +1,19 @@
 import React from 'react';
 import { IntlProvider } from 'react-intl';
-import { ConfigProvider } from '@logora/debate.data.config_provider';
+import { ConfigProvider } from '@logora/debate/data/config_provider';
 import { BrowserRouter } from 'react-router-dom';
-import { Location } from '@logora/debate.util.location';
-import { dataProvider, DataProviderContext } from '@logora/debate.data.data_provider';
-import { AuthContext } from '@logora/debate.auth.use_auth';
-import { ModalProvider } from '@logora/debate.dialog.modal';
-import { ListProvider } from '@logora/debate.list.list_provider';
-import { ToastProvider } from '@logora/debate.dialog.toast_provider';
-import { VoteProvider } from '@logora/debate.vote.vote_provider';
-import { InputProvider } from '@logora/debate.input.input_provider';
+import { Location } from '@logora/debate/util/location';
+import { dataProvider, DataProviderContext } from '@logora/debate/data/data_provider';
+import { AuthContext } from '@logora/debate/auth/use_auth';
+import { ModalProvider } from '@logora/debate/dialog/modal';
+import { ListProvider } from '@logora/debate/list/list_provider';
+import { ToastProvider } from '@logora/debate/dialog/toast_provider';
+import { VoteProvider } from '@logora/debate/vote/vote_provider';
+import { InputProvider } from '@logora/debate/input/input_provider';
 import { Argument } from './Argument';
-import { IconProvider } from '@logora/debate.icons.icon_provider';
-import { ResponsiveProvider } from '@logora/debate.hooks.use_responsive';
-import * as regularIcons from '@logora/debate.icons.regular_icons';
+import { IconProvider } from '@logora/debate/icons/icon_provider';
+import { ResponsiveProvider } from '@logora/debate/hooks/use_responsive';
+import * as regularIcons from '@logora/debate/icons/regular_icons';
 import { faker } from '@faker-js/faker';
 
 // Mock data and constants
@@ -22,10 +22,10 @@ const routes = {
 };
 
 const vote = {
-    id: faker.datatype.number(),
+    id: faker.number.int(),
     voteable_type: faker.lorem.word(),
-    voteable_id: faker.datatype.number(),
-    user_id: faker.datatype.number()
+    voteable_id: faker.number.int(),
+    user_id: faker.number.int()
 };
 
 const httpClient = {
@@ -61,13 +61,13 @@ const generateArgument = (overrides) => ({
     is_deleted: false,
     score: 50,
     author: {
-        image_url: faker.image.avatar(),
-        full_name: faker.name.fullName(),
+        image_url: faker.image.avatarGitHub(),
+        full_name: faker.person.fullName(),
         hash_id: faker.lorem.slug(),
         slug: faker.lorem.slug(),
         points: 1320,
         last_activity: new Date(),
-        description: faker.name.jobTitle()
+        description: faker.person.jobTitle()
     },
     position: {
         id: 1,
@@ -87,8 +87,8 @@ const argumentWithReplies = generateArgument({
     content: faker.lorem.sentences(2),
     number_replies: 3,
     replies_authors: Array.from({ length: 3 }).map(() => ({
-        image_url: faker.image.avatar(),
-        full_name: faker.name.fullName(),
+        image_url: faker.image.avatarGitHub(),
+        full_name: faker.person.fullName(),
     }))
 });
 

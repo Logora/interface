@@ -1,27 +1,27 @@
 import ReportBox from "./ReportBox";
 import React from 'react';
 import { IntlProvider } from 'react-intl';
-import { ConfigProvider } from '@logora/debate.data.config_provider';
+import { ConfigProvider } from '@logora/debate/data/config_provider';
 import { BrowserRouter } from 'react-router-dom';
-import { dataProvider, DataProviderContext } from '@logora/debate.data.data_provider';
+import { dataProvider, DataProviderContext } from '@logora/debate/data/data_provider';
 
-import { AuthContext } from '@logora/debate.auth.use_auth';
-import { ModalProvider } from '@logora/debate.dialog.modal';
-import { ListProvider } from '@logora/debate.list.list_provider';
-import { ToastProvider } from '@logora/debate.dialog.toast_provider';
-import { VoteProvider } from '@logora/debate.vote.vote_provider';
-import { InputProvider } from '@logora/debate.input.input_provider';
-import { IconProvider } from '@logora/debate.icons.icon_provider';
-import { ResponsiveProvider } from '@logora/debate.hooks.use_responsive';
+import { AuthContext } from '@logora/debate/auth/use_auth';
+import { ModalProvider } from '@logora/debate/dialog/modal';
+import { ListProvider } from '@logora/debate/list/list_provider';
+import { ToastProvider } from '@logora/debate/dialog/toast_provider';
+import { VoteProvider } from '@logora/debate/vote/vote_provider';
+import { InputProvider } from '@logora/debate/input/input_provider';
+import { IconProvider } from '@logora/debate/icons/icon_provider';
+import { ResponsiveProvider } from '@logora/debate/hooks/use_responsive';
 import { faker } from '@faker-js/faker';
 
-import * as regularIcons from '@logora/debate.icons.regular_icons';
+import * as regularIcons from '@logora/debate/icons/regular_icons';
 
 const vote = {
-  id: faker.datatype.number(),
+  id: faker.number.int(),
   voteable_type: faker.lorem.word(),
-  voteable_id: faker.datatype.number(),
-  user_id: faker.datatype.number()
+  voteable_id: faker.number.int(),
+  user_id: faker.number.int()
 };
 const currentUser = { id: vote.user_id };
 
@@ -51,14 +51,14 @@ const reportArgumentPending =
   reportable: {
     id: 84,
     content: faker.lorem.sentence(),
-    author: { full_name: faker.name.fullName() },
+    author: { full_name: faker.person.fullName() },
     created_at: faker.date.recent().toISOString(),
     upvotes: 10,
     language: "en",
     status: "pending",
   },
   author: {
-    full_name: faker.name.fullName(),
+    full_name: faker.person.fullName(),
   },
   position: {
     id: 1,
@@ -86,14 +86,14 @@ const reportProposal =
   reportable: {
     id: 84,
     content: faker.lorem.sentence(),
-    author: { full_name: faker.name.fullName() },
+    author: { full_name: faker.person.fullName() },
     created_at: faker.date.recent().toISOString(),
     upvotes: 10,
     language: "en",
     status: "accepted",
   },
   author: {
-    full_name: faker.name.fullName(),
+    full_name: faker.person.fullName(),
   },
   position: {
     id: 1,
@@ -114,7 +114,7 @@ const reportSuggestion =
   reportable: {
     id: 84,
     content: faker.lorem.sentence(),
-    author: { full_name: faker.name.fullName() },
+    author: { full_name: faker.person.fullName() },
     created_at: faker.date.recent().toISOString(),
     upvotes: 10,
     language: "en",
@@ -122,32 +122,32 @@ const reportSuggestion =
     name: faker.lorem.words(),
     slug: faker.lorem.slug(),
     created_at: faker.date.recent().toISOString(),
-    score: faker.datatype.number(),
-    language: faker.random.locale(),
+    score: faker.number.int(),
+    language: faker.helpers.arrayElement(['en', 'fr', 'es']),
     is_active: true,
-    messages_count: faker.datatype.number(),
+    messages_count: faker.number.int(),
     is_published: false,
     published_at: faker.date.recent().toISOString(),
     debate_suggestion: {
-      id: faker.datatype.number(),
+      id: faker.number.int(),
       created_at: faker.date.recent().toISOString(),
       expires_at: faker.date.future().toISOString(),
       total_upvotes: 20,
-      total_downvotes: faker.datatype.number({ min: 0, max: 100 }),
+      total_downvotes: faker.number.int({ min: 0, max: 100 }),
       is_accepted: false,
       is_expired: false,
       author: {
-        id: faker.datatype.number(),
-        full_name: faker.name.fullName(),
-        image_url: faker.image.avatar()
+        id: faker.number.int(),
+        full_name: faker.person.fullName(),
+        image_url: faker.image.avatarGitHub()
       },
-      language: faker.random.locale(),
+      language: faker.helpers.arrayElement(['en', 'fr', 'es']),
       translation_entries: [],
       name: faker.lorem.words(),
     },
   },
   author: {
-    full_name: faker.name.fullName(),
+    full_name: faker.person.fullName(),
   },
   position: {
     id: 1,
@@ -169,7 +169,7 @@ const reportArgumentAccepted =
   reportable: {
     id: 84,
     content: faker.lorem.sentence(),
-    author: { full_name: faker.name.fullName() },
+    author: { full_name: faker.person.fullName() },
     created_at: faker.date.recent().toISOString(),
     upvotes: 10,
     language: "en",
@@ -179,7 +179,7 @@ const reportArgumentAccepted =
     },
   },
   author: {
-    full_name: faker.name.fullName(),
+    full_name: faker.person.fullName(),
   },
   position: {
     id: 1,
@@ -211,7 +211,7 @@ const reportArgumentRejected =
     },
   },
   author: {
-    full_name: faker.name.fullName(),
+    full_name: faker.person.fullName(),
   },
   position: {
     id: 1,

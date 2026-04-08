@@ -15,7 +15,7 @@ const consultation = {
     total_votes: 200,
     total_participants: 44,
     proposals_count: 53,
-    image_url: faker.image.nature(),
+    image_url: faker.image.url(),
     direct_url: faker.internet.url(),
     tags: [
         {

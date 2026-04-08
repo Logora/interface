@@ -1,8 +1,8 @@
 import React from 'react';
 import { AnnouncementDialog } from './AnnouncementDialog';
 import HomeIcon from './HomeIcon.dev';
-import { IconProvider } from '@logora/debate.icons.icon_provider';
-import * as regularIcons from '@logora/debate.icons.regular_icons';
+import { IconProvider } from '@logora/debate/icons/icon_provider';
+import * as regularIcons from '@logora/debate/icons/regular_icons';
 
 export const DefaultAnnouncementDialog = () => {
     return (

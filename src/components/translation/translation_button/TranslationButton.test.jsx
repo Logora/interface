@@ -1,11 +1,11 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import { TranslationButton } from './TranslationButton';
-import { AuthProvider } from '@logora/debate.auth.use_auth';
+import { AuthProvider } from '@logora/debate/auth/use_auth';
 import { IntlProvider } from 'react-intl';
 import userEvent from '@testing-library/user-event';
 
-const callback = jest.fn();
+const callback = vi.fn();
 
 it('should render with the correct text', () => {
 	const translationButton = render(

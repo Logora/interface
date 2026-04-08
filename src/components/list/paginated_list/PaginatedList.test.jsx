@@ -5,20 +5,20 @@ import { BrowserRouter } from "react-router-dom";
 import {
   dataProvider,
   DataProviderContext,
-} from "@logora/debate.data.data_provider";
-import { ResponsiveProvider } from "@logora/debate.hooks.use_responsive";
-import { ListProvider, useList } from "@logora/debate.list.list_provider";
+} from "@logora/debate/data/data_provider";
+import { ResponsiveProvider } from "@logora/debate/hooks/use_responsive";
+import { ListProvider, useList } from "@logora/debate/list/list_provider";
 import { PaginatedList } from "./PaginatedList";
-import StandardErrorBoundary from "@logora/debate.error.standard_error_boundary";
+import StandardErrorBoundary from "@logora/debate/error/standard_error_boundary";
 import userEvent from "@testing-library/user-event";
-import { IconProvider } from "@logora/debate.icons.icon_provider";
+import { IconProvider } from "@logora/debate/icons/icon_provider";
 
-import * as regularIcons from "@logora/debate.icons.regular_icons";
+import * as regularIcons from "@logora/debate/icons/regular_icons";
 import { faker } from "@faker-js/faker";
 
 const createElement = () => {
   return {
-    id: faker.random.numeric(6),
+    id: faker.string.numeric(6),
     name: faker.music.songName(),
   };
 };
@@ -74,7 +74,7 @@ describe("PaginatedList", () => {
   let mock;
 
   beforeEach(() => {
-    mock = jest.spyOn(httpClient, "get");
+    mock = vi.spyOn(httpClient, "get");
   });
 
   afterEach(() => {
@@ -690,7 +690,7 @@ describe("PaginatedList", () => {
   });
 
   it("should call onElementClick when clicking list item", async () => {
-    const callback = jest.fn();
+    const callback = vi.fn();
 
     await act(async () => {
       render(
@@ -761,7 +761,7 @@ describe("PaginatedList", () => {
       },
     });
 
-    const callback = jest.fn();
+    const callback = vi.fn();
 
     await act(async () => {
       render(
@@ -995,7 +995,7 @@ describe("PaginatedList", () => {
       },
     });
 
-    const callback = jest.fn();
+    const callback = vi.fn();
 
     await act(async () => {
       render(
@@ -1165,7 +1165,7 @@ describe("PaginatedList", () => {
   });
 
   it("should call onElementsLoad if passed as props", async () => {
-    const callback = jest.fn();
+    const callback = vi.fn();
 
     await act(async () => {
       render(
@@ -1230,7 +1230,7 @@ describe("PaginatedList", () => {
       return <button onClick={handleAdd}>Add elements</button>;
     };
 
-    const callback = jest.fn();
+    const callback = vi.fn();
 
     await act(async () => {
       render(
@@ -1276,7 +1276,7 @@ describe("PaginatedList", () => {
   });
 
   it("should use callback if passed on pagination click", async () => {
-    const callback = jest.fn();
+    const callback = vi.fn();
 
     await act(async () => {
       render(

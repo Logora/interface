@@ -1,23 +1,23 @@
 import React, { useState } from 'react';
 import { Drawer } from './Drawer';
 import { BrowserRouter } from "react-router-dom";
-import { ConfigProvider } from "@logora/debate.data.config_provider";
-import { AuthContext } from "@logora/debate.auth.use_auth";
-import { ResponsiveProvider } from "@logora/debate.hooks.use_responsive";
-import { IconProvider } from '@logora/debate.icons.icon_provider';
-import { ModalProvider } from "@logora/debate.dialog.modal";
+import { ConfigProvider } from "@logora/debate/data/config_provider";
+import { AuthContext } from "@logora/debate/auth/use_auth";
+import { ResponsiveProvider } from "@logora/debate/hooks/use_responsive";
+import { IconProvider } from '@logora/debate/icons/icon_provider';
+import { ModalProvider } from "@logora/debate/dialog/modal";
 import { IntlProvider } from "react-intl";
-import { ListProvider } from '@logora/debate.list.list_provider';
-import { dataProvider, DataProviderContext } from '@logora/debate.data.data_provider';
-import * as regularIcons from '@logora/debate.icons.regular_icons';
-import { Location } from "@logora/debate.util.location";
+import { ListProvider } from '@logora/debate/list/list_provider';
+import { dataProvider, DataProviderContext } from '@logora/debate/data/data_provider';
+import * as regularIcons from '@logora/debate/icons/regular_icons';
+import { Location } from "@logora/debate/util/location";
 import { faker } from '@faker-js/faker';
 
 
 const mockUser = {
-    id: faker.datatype.number(),
-    full_name: faker.name.fullName(),
-    image_url: faker.image.avatar(),
+    id: faker.number.int(),
+    full_name: faker.person.fullName(),
+    image_url: faker.image.avatarGitHub(),
     hash_id: faker.lorem.slug(),
 }
 const config = {
@@ -37,7 +37,7 @@ const config = {
 
 const createNotification = () => {
     return {
-        id: faker.datatype.number(10000000),
+        id: faker.number.int(10000000),
         created_at: faker.date.recent(),
         notify_type: "new_comment",
         is_opened: faker.datatype.boolean()

@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event';
 import { IntlProvider } from 'react-intl';
 import { KeywordBox } from './KeywordBox';
 
-const callback = jest.fn();
+const callback = vi.fn();
 
 describe('KeywordBox', () => {
     it ('renders KeywordBox component correctly', () => {

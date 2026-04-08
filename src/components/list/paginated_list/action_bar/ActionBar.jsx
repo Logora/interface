@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { Select } from '@logora/debate.input.select';
-import { SearchInput } from "@logora/debate.input.search_input";
-import { Tag } from '@logora/debate.tag.tag';
-import { Icon } from '@logora/debate.icons.icon';
+import { Select } from '@logora/debate/input/select';
+import { SearchInput } from "@logora/debate/input/search_input";
+import { Tag } from '@logora/debate/tag/tag';
+import { Icon } from '@logora/debate/icons/icon';
 import { useIntl } from "react-intl";
 import { useLocation } from 'react-router';
-import { useResponsive } from "@logora/debate.hooks.use_responsive";
+import { useResponsive } from "@logora/debate/hooks/use_responsive";
 import cx from "classnames";
 import styles from "./ActionBar.module.scss";
 import PropTypes from "prop-types";

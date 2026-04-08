@@ -3,7 +3,7 @@ import { render } from '@testing-library/react';
 import { useFontLoader } from './useFontLoader.js';
 
 const WebFontLoader = require('webfontloader');
-const spy = jest.spyOn(WebFontLoader, 'load');
+const spy = vi.spyOn(WebFontLoader, 'load');
 
 describe('useFontLoader', () => {
   it('should load font correctly', () => {

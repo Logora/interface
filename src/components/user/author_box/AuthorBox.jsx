@@ -1,10 +1,10 @@
 import React from 'react';
-import { useRoutes } from '@logora/debate.data.config_provider';
+import { useRoutes } from '@logora/debate/data/config_provider';
 import { useIntl, FormattedMessage } from 'react-intl';
-import { Avatar } from '@logora/debate.user.avatar';
-import { Link } from '@logora/debate.action.link';
-import { Icon } from '@logora/debate.icons.icon';
-import { getLocaleIcon } from '@logora/debate.util.lang_emojis';
+import { Avatar } from '@logora/debate/user/avatar';
+import { Link } from '@logora/debate/action/link';
+import { Icon } from '@logora/debate/icons/icon';
+import { getLocaleIcon } from '@logora/debate/util/lang_emojis';
 import styles from './AuthorBox.module.scss';
 import PropTypes from 'prop-types';
 import cx from 'classnames';

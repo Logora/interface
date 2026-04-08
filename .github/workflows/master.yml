@@ -1,39 +1,35 @@
-name: Bit build, test and export
+name: CI
 
 on:
   push:
-    branches:
-      - master
+    branches: [master]
+  pull_request:
+    branches: [master]
 
 jobs:
-  tag-and-export:
+  validate:
     runs-on: ubuntu-latest
     timeout-minutes: 20
-    env:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      GIT_USER_NAME: ${{ github.actor }}
-      GIT_USER_EMAIL: '${{ github.actor }}@users.noreply.github.com'
-      BIT_CONFIG_ACCESS_TOKEN: ${{ secrets.BIT_TOKEN }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Initialize Bit
-        uses: bit-tasks/init@v3
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
 
-      - name: Resolve component packages from bit.cloud registry
-        run: |
-          npm config set '@logora:registry' https://node.bit.cloud
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
 
-      - name: Bit Tag and Export
-        run: |
-          bit tag --build --skip-tasks teambit.defender/linter
-          bit export
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
 
-      - name: Commit changes made to .bitmap
-        run: |
-          git config --global user.name '${{ env.GIT_USER_NAME }}'
-          git config --global user.email '${{ env.GIT_USER_EMAIL }}'
-          git add .bitmap
-          git commit -m "update .bitmap with new component versions (automated) [skip ci]"
-          git push
+      - name: Run tests
+        run: pnpm test
+
+      - name: Build Storybook
+        run: pnpm build-storybook

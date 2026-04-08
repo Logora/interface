@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import { useIntl } from "react-intl";
-import { TextInput } from '@logora/debate.input.text_input';
-import { Icon } from '@logora/debate.icons.icon';
+import { TextInput } from '@logora/debate/input/text_input';
+import { Icon } from '@logora/debate/icons/icon';
 import useOnClickOutside from 'use-onclickoutside';
 import styles from "./SearchInput.module.scss";
 import PropTypes from "prop-types";

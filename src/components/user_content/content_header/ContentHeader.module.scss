@@ -1,6 +1,6 @@
-@use '@logora/debate.styles.theme' as theme;
-@use '@logora/debate.styles.display' as display;
-@use '@logora/debate.styles.spacing' as spacing;
+@use 'styles/theme' as theme;
+@use 'styles/display' as display;
+@use 'styles/spacing' as spacing;
 
 .contentHeaderContainer {
 	display: flex !important;

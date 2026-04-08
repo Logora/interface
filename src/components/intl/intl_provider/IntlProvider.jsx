@@ -31,7 +31,7 @@ export const IntlProvider = ({ language, locales, async = false, customMessages 
     if (locale) {
       if (async && (locale in locales)) {
         (locales[locale])().then((m) => {
-          setMessages(m);
+          setMessages(m?.default || m);
         }).catch(() => setMessages({}));
       }
 

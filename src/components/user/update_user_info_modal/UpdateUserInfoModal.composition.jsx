@@ -1,12 +1,12 @@
 import React from 'react';
 import { UpdateUserInfoModal } from './UpdateUserInfoModal';
 import { IntlProvider } from 'react-intl';
-import { dataProvider, DataProviderContext } from '@logora/debate.data.data_provider';
-import { AuthProvider, AuthContext } from '@logora/debate.auth.use_auth';
-import { ModalProvider } from "@logora/debate.dialog.modal";
-import { ConfigProvider } from '@logora/debate.data.config_provider';
-import { IconProvider } from '@logora/debate.icons.icon_provider';
-import * as regularIcons from '@logora/debate.icons.regular_icons';
+import { dataProvider, DataProviderContext } from '@logora/debate/data/data_provider';
+import { AuthProvider, AuthContext } from '@logora/debate/auth/use_auth';
+import { ModalProvider } from "@logora/debate/dialog/modal";
+import { ConfigProvider } from '@logora/debate/data/config_provider';
+import { IconProvider } from '@logora/debate/icons/icon_provider';
+import * as regularIcons from '@logora/debate/icons/regular_icons';
 import { faker } from '@faker-js/faker';
 
 const httpClient = {
@@ -31,13 +31,13 @@ const httpClient = {
 };
 
 const currentUser = {
-    id: faker.datatype.number(),
-    full_name: faker.name.fullName(),
-    first_name: faker.name.firstName(),
-    last_name: faker.name.lastName(),
-    description: faker.name.jobTitle(),
-    image_url: faker.image.avatar(),
-    points: faker.datatype.number()
+    id: faker.number.int(),
+    full_name: faker.person.fullName(),
+    first_name: faker.person.firstName(),
+    last_name: faker.person.lastName(),
+    description: faker.person.jobTitle(),
+    image_url: faker.image.avatarGitHub(),
+    points: faker.number.int()
 }
 
 const data = dataProvider(httpClient, "https://mock.example.api");

@@ -1,31 +1,31 @@
 import React from 'react';
 import { IntlProvider } from 'react-intl';
 import { BrowserRouter } from 'react-router-dom';
-import { ConfigProvider } from '@logora/debate.data.config_provider';
-import { Location } from '@logora/debate.util.location';
+import { ConfigProvider } from '@logora/debate/data/config_provider';
+import { Location } from '@logora/debate/util/location';
 import { ContentHeader } from './ContentHeader';
-import { IconProvider } from '@logora/debate.icons.icon_provider';
-import * as regularIcons from '@logora/debate.icons.regular_icons';
+import { IconProvider } from '@logora/debate/icons/icon_provider';
+import * as regularIcons from '@logora/debate/icons/regular_icons';
 import { faker } from '@faker-js/faker';
 
 const author = {
-    image_url: faker.image.avatar(),
-    full_name: faker.name.fullName(),
+    image_url: faker.image.avatarGitHub(),
+    full_name: faker.person.fullName(),
     slug: faker.lorem.slug(),
     points: 52,
     role: "contributor",
     last_activity: new Date(),
-    description: faker.name.jobTitle(),
+    description: faker.person.jobTitle(),
     hash_id: faker.lorem.slug(),
-    occupation: faker.name.jobTitle(),
+    occupation: faker.person.jobTitle(),
 }
 
 const moderationPolicyUrl = "https://example.com/debate-rules";
 
 const moderationEntry = {
-    id: faker.datatype.number({ min: 1000000, max: 9999999 }),
+    id: faker.number.int({ min: 1000000, max: 9999999 }),
     status: "rejected",
-    moderation_score: faker.datatype.float({ min: 0, max: 1, precision: 0.001 }),
+    moderation_score: faker.number.float({ min: 0, max: 1, precision: 0.001 }),
     moderation_reason: "INCOHERENT",
     moderator_notes: faker.datatype.boolean() ? faker.lorem.sentence() : null,
     is_moderated: true,

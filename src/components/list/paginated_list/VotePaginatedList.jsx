@@ -1,5 +1,5 @@
 import React from 'react';
-import { VoteProvider, VoteContext } from '@logora/debate.vote.vote_provider';
+import { VoteProvider, VoteContext } from '@logora/debate/vote/vote_provider';
 import { PaginatedList } from './PaginatedList';
 
 export const VotePaginatedList = (props) => {

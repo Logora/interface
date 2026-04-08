@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { useDataProvider } from '@logora/debate.data.data_provider';
+import { useDataProvider } from '@logora/debate/data/data_provider';
 import { useIntl } from "react-intl";
-import { PaginatedList } from "@logora/debate.list.paginated_list";
-import { NotificationItem } from '@logora/debate.notification.notification_item';
-import { UserContentSkeleton } from '@logora/debate.skeleton.user_content_skeleton';
+import { PaginatedList } from "@logora/debate/list/paginated_list";
+import { NotificationItem } from '@logora/debate/notification/notification_item';
+import { UserContentSkeleton } from '@logora/debate/skeleton/user_content_skeleton';
 import styles from "./NotificationMenu.module.scss";
 import PropTypes from "prop-types";
 

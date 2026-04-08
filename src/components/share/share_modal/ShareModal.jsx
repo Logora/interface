@@ -1,6 +1,6 @@
 import React from "react";
-import { Modal } from '@logora/debate.dialog.modal';
-import { ShareBox } from "@logora/debate.share.share_box";
+import { Modal } from '@logora/debate/dialog/modal';
+import { ShareBox } from "@logora/debate/share/share_box";
 import styles from "./ShareModal.module.scss";
 import PropTypes from "prop-types";
 

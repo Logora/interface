@@ -1,17 +1,17 @@
 import React from "react";
 import { ArgumentInput } from "./ArgumentInput";
 import { BrowserRouter } from "react-router-dom";
-import { ConfigProvider } from "@logora/debate.data.config_provider";
-import { IconProvider } from '@logora/debate.icons.icon_provider';
-import * as regularIcons from '@logora/debate.icons.regular_icons';
+import { ConfigProvider } from "@logora/debate/data/config_provider";
+import { IconProvider } from '@logora/debate/icons/icon_provider';
+import * as regularIcons from '@logora/debate/icons/regular_icons';
 import { IntlProvider } from "react-intl";
 import { faker } from '@faker-js/faker';
-import { ToastProvider } from '@logora/debate.dialog.toast_provider';
-import { ModalProvider } from '@logora/debate.dialog.modal';
-import { dataProvider, DataProviderContext } from '@logora/debate.data.data_provider';
-import { AuthContext } from '@logora/debate.auth.use_auth';
-import { ListProvider } from '@logora/debate.list.list_provider';
-import { InputProvider } from '@logora/debate.input.input_provider';
+import { ToastProvider } from '@logora/debate/dialog/toast_provider';
+import { ModalProvider } from '@logora/debate/dialog/modal';
+import { dataProvider, DataProviderContext } from '@logora/debate/data/data_provider';
+import { AuthContext } from '@logora/debate/auth/use_auth';
+import { ListProvider } from '@logora/debate/list/list_provider';
+import { InputProvider } from '@logora/debate/input/input_provider';
 
 const httpClient = {
     get: () => null,
@@ -31,15 +31,15 @@ const httpClient = {
 const data = dataProvider(httpClient, "https://mock.example.api");
 
 const debate = {
-    id: faker.datatype.number(),
+    id: faker.number.int(),
     name: faker.lorem.word(),
     positions: [
         {
-            id: faker.datatype.number(),
+            id: faker.number.int(),
             name: faker.lorem.word(),
         },
         {
-            id: faker.datatype.number(),
+            id: faker.number.int(),
             name: faker.lorem.word(),
         }
     ],
@@ -47,10 +47,10 @@ const debate = {
 }
 
 const currentUser = {
-    id: faker.datatype.number(),
-    full_name: faker.name.fullName(),
-    image_url: faker.image.avatar(),
-    points: faker.datatype.number()
+    id: faker.number.int(),
+    full_name: faker.person.fullName(),
+    image_url: faker.image.avatarGitHub(),
+    points: faker.number.int()
 }
 
 export const DefaultArgumentInput = () => {

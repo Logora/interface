@@ -1,22 +1,22 @@
 import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
 import { SourceModal } from './SourceModal';
-import { ModalProvider } from '@logora/debate.dialog.modal';
-import { dataProvider, DataProviderContext } from '@logora/debate.data.data_provider';
+import { ModalProvider } from '@logora/debate/dialog/modal';
+import { dataProvider, DataProviderContext } from '@logora/debate/data/data_provider';
 import { IntlProvider } from 'react-intl';
 import userEvent from '@testing-library/user-event';
-import { IconProvider } from '@logora/debate.icons.icon_provider';
-import * as regularIcons from '@logora/debate.icons.regular_icons';
+import { IconProvider } from '@logora/debate/icons/icon_provider';
+import * as regularIcons from '@logora/debate/icons/regular_icons';
 import { faker } from '@faker-js/faker';
 
-const addSourceCallback = jest.fn();
-const hideModalCallback = jest.fn();
+const addSourceCallback = vi.fn();
+const hideModalCallback = vi.fn();
 
 const source = {
     title: faker.music.songName(),
     description: faker.lorem.sentence(),
     source_url: faker.internet.url(),
-    origin_image_url: faker.image.nature(),
+    origin_image_url: faker.image.url(),
     publisher: faker.vehicle.manufacturer()
 };
 
@@ -95,7 +95,7 @@ describe('SourceModal', () => {
 
     it('should show error if input is not well formed', async () => {
         const allowedDomains = ["example.com"];
-        const addSourceCallback = jest.fn();
+        const addSourceCallback = vi.fn();
 
         render(
             <ModalProvider>
@@ -121,7 +121,7 @@ describe('SourceModal', () => {
 
     it('should display an error message when adding a source with a non-allowed domain', async () => {
         const allowedDomains = ["example.com"];
-        const addSourceCallback = jest.fn();
+        const addSourceCallback = vi.fn();
 
         render(
             <ModalProvider>
@@ -149,7 +149,7 @@ describe('SourceModal', () => {
 
     it('should add source if domain is in allowed domains', async () => {
         const allowedDomains = ["example.com"];
-        const addSourceCallback = jest.fn();
+        const addSourceCallback = vi.fn();
 
         render(
             <ModalProvider>

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from "prop-types";
 import { FormattedMessage } from 'react-intl';
-import { Link } from '@logora/debate.action.link';
+import { Link } from '@logora/debate/action/link';
 import cx from 'classnames';
 import styles from './EmbedHeader.module.scss';
 

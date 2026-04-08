@@ -22,9 +22,9 @@ const localStorageMock = (function() {
 })()
 
 const httpClient = {
-    get: jest.fn(),
-    post: jest.fn(),
-    patch: jest.fn()
+    get: vi.fn(),
+    post: vi.fn(),
+    patch: vi.fn()
 };
 
 beforeEach(() => {

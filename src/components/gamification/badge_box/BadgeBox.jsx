@@ -1,5 +1,5 @@
 import React from 'react';
-import { ProgressBar } from "@logora/debate.progress.progress_bar";
+import { ProgressBar } from "@logora/debate/progress/progress_bar";
 import styles from './BadgeBox.module.scss';
 import cx from 'classnames';
 import PropTypes from "prop-types";

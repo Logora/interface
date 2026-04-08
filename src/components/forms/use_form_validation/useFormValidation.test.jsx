@@ -2,11 +2,11 @@ import React from 'react';
 import { renderHook, act } from '@testing-library/react';
 import { useFormValidation } from './useFormValidation';
 
-jest.mock('react-intl', () => ({ useIntl: () => ({formatMessage: jest.fn(),}) }));
+vi.mock('react-intl', () => ({ useIntl: () => ({formatMessage: vi.fn(),}) }));
 
 describe('useFormValidation', () => {
     afterEach(() => {
-        jest.clearAllMocks();
+        vi.clearAllMocks();
     });
 
     it('Should validate correct form values and return empty errors object', () => {

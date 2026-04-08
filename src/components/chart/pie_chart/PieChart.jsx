@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import { useIntl } from "react-intl";
 import 'chart.js/auto';
 import { Pie } from 'react-chartjs-2';
-import { Loader } from '@logora/debate.progress.loader';
+import { Loader } from '@logora/debate/progress/loader';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import styles from "./PieChart.module.scss";
-import StandardErrorBoundary from "@logora/debate.error.standard_error_boundary";
+import StandardErrorBoundary from "@logora/debate/error/standard_error_boundary";
 import PropTypes from 'prop-types';
 
 const DEFAULT_COLORS = ['rgba(255, 99, 132, 0.8)', 'rgba(54, 162, 235, 0.8)', 'rgba(255, 206, 86, 0.8)', 'rgba(75, 192, 192, 0.8)', 'rgba(153, 102, 255, 0.8)', 'rgba(255, 159, 64, 0.8)', 'rgba(255, 143, 102, 0.8)', 'rgba(93, 82, 179, 0.8)']

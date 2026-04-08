@@ -2,7 +2,7 @@ import React from 'react';
 import classnames from 'classnames';
 import styles from './Button.module.scss'
 import PropTypes from "prop-types";
-import { Link } from '@logora/debate.action.link';
+import { Link } from '@logora/debate/action/link';
 
 export const Button = ({ className, type = "button", active, leftIcon, rightIcon, accent, border = true, handleClick, to, external, children, ...rest }) => {
   const onClick = (event) => {

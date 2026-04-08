@@ -2,10 +2,10 @@ import React from 'react';
 import { render, screen, waitForElementToBeRemoved } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { ShareModal } from './ShareModal';
-import { ModalProvider } from '@logora/debate.dialog.modal';
+import { ModalProvider } from '@logora/debate/dialog/modal';
 import { IntlProvider } from 'react-intl';
-import { IconProvider } from '@logora/debate.icons.icon_provider';
-import * as regularIcons from '@logora/debate.icons.regular_icons';
+import { IconProvider } from '@logora/debate/icons/icon_provider';
+import * as regularIcons from '@logora/debate/icons/regular_icons';
 
 beforeAll(() => {
     HTMLDialogElement.prototype.showModal = function () {

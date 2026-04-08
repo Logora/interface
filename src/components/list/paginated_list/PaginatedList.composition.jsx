@@ -5,11 +5,11 @@ import { BrowserRouter } from "react-router-dom";
 import {
   dataProvider,
   DataProviderContext,
-} from "@logora/debate.data.data_provider";
-import { ListProvider } from "@logora/debate.list.list_provider";
-import { IconProvider } from "@logora/debate.icons.icon_provider";
-import { ResponsiveProvider } from "@logora/debate.hooks.use_responsive";
-import * as regularIcons from "@logora/debate.icons.regular_icons";
+} from "@logora/debate/data/data_provider";
+import { ListProvider } from "@logora/debate/list/list_provider";
+import { IconProvider } from "@logora/debate/icons/icon_provider";
+import { ResponsiveProvider } from "@logora/debate/hooks/use_responsive";
+import * as regularIcons from "@logora/debate/icons/regular_icons";
 import { faker } from "@faker-js/faker";
 
 const ListItem = (props) => {
@@ -18,7 +18,7 @@ const ListItem = (props) => {
 
 const createElement = () => {
   return {
-    id: faker.random.numeric(6),
+    id: faker.string.numeric(6),
     name: faker.music.songName(),
   };
 };

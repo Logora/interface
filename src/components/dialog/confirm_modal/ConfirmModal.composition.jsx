@@ -1,9 +1,9 @@
 import React from 'react';
 import { ConfirmModal } from './ConfirmModal';
-import { ModalProvider } from '@logora/debate.dialog.modal';
-import { IconProvider } from '@logora/debate.icons.icon_provider';
+import { ModalProvider } from '@logora/debate/dialog/modal';
+import { IconProvider } from '@logora/debate/icons/icon_provider';
 import { IntlProvider } from "react-intl";
-import * as regularIcons from '@logora/debate.icons.regular_icons';
+import * as regularIcons from '@logora/debate/icons/regular_icons';
 
 export const DefaultConfirmModal = () => {
     return (

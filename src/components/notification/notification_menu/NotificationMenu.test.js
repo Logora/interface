@@ -5,16 +5,16 @@ import userEvent from '@testing-library/user-event';
 import { NotificationMenu } from './NotificationMenu';
 import { IntlProvider } from 'react-intl';
 import { MemoryRouter } from 'react-router-dom';
-import { ListProvider } from '@logora/debate.list.list_provider';
-import { IconProvider } from '@logora/debate.icons.icon_provider';
-import { ConfigProvider } from '@logora/debate.data.config_provider';
-import * as regularIcons from '@logora/debate.icons.regular_icons';
-import { dataProvider, DataProviderContext } from '@logora/debate.data.data_provider';
+import { ListProvider } from '@logora/debate/list/list_provider';
+import { IconProvider } from '@logora/debate/icons/icon_provider';
+import { ConfigProvider } from '@logora/debate/data/config_provider';
+import * as regularIcons from '@logora/debate/icons/regular_icons';
+import { dataProvider, DataProviderContext } from '@logora/debate/data/data_provider';
 import { faker } from '@faker-js/faker';
 
 const createNotification = () => {
   return {
-    id: faker.datatype.number(10000000),
+    id: faker.number.int(10000000),
     created_at: faker.date.recent(),
     notify_type: "new_comment",
     is_opened: faker.datatype.boolean()
@@ -40,7 +40,7 @@ describe('NotificationMenu', () => {
   let mock;
 
   beforeEach(() => {
-    mock = jest.spyOn(httpClient, 'post');
+    mock = vi.spyOn(httpClient, 'post');
   });
 
   afterEach(() => {
@@ -68,7 +68,7 @@ describe('NotificationMenu', () => {
     expect(screen.getByText('Alerts')).toBeTruthy();
     expect(screen.getByText('Mark all as read')).toBeTruthy();
 
-    const notifications = await screen.findAllByAltText('notification-image');
+    const notifications = await screen.findAllByTestId('list-item');
     expect(notifications.length).toEqual(5);
   });
 
@@ -100,7 +100,7 @@ describe('NotificationMenu', () => {
     expect(screen.getByText('Mark all as read')).toBeTruthy();
     expect(await screen.findByText('No items for now.')).toBeTruthy();
 
-    const notifications = screen.queryAllByAltText('notification-image');
+    const notifications = screen.queryAllByTestId('list-item');
     expect(notifications.length).toEqual(0);
   });
 

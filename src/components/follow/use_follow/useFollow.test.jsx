@@ -1,10 +1,10 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { useFollow } from './useFollow';
-import { dataProvider, DataProviderContext } from '@logora/debate.data.data_provider';
-import { AuthContext } from '@logora/debate.auth.use_auth';
-import { ConfigProvider } from '@logora/debate.data.config_provider';
-import { ModalProvider } from '@logora/debate.dialog.modal';
+import { dataProvider, DataProviderContext } from '@logora/debate/data/data_provider';
+import { AuthContext } from '@logora/debate/auth/use_auth';
+import { ConfigProvider } from '@logora/debate/data/config_provider';
+import { ModalProvider } from '@logora/debate/dialog/modal';
 import userEvent from '@testing-library/user-event';
 import { faker } from '@faker-js/faker';
 
@@ -24,12 +24,12 @@ const httpClient = {
 };
 
 const follow = { 
-    id: faker.datatype.number(),
+    id: faker.number.int(),
     type: faker.lorem.word(),
 };
 
 const currentUser = {
-    id: faker.datatype.number(),
+    id: faker.number.int(),
 }
 
 const data = dataProvider(httpClient, "https://mock.example.api");

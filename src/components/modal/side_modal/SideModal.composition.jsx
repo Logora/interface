@@ -1,9 +1,9 @@
 import React from "react";
 import { SideModal } from "./SideModal";
 import { IntlProvider } from "react-intl";
-import { ModalProvider } from "@logora/debate.dialog.modal";
-import { IconProvider } from '@logora/debate.icons.icon_provider';
-import * as regularIcons from '@logora/debate.icons.regular_icons';
+import { ModalProvider } from "@logora/debate/dialog/modal";
+import { IconProvider } from '@logora/debate/icons/icon_provider';
+import * as regularIcons from '@logora/debate/icons/regular_icons';
 
 const debateName = "Example Debate";
 const debatePositions = [

@@ -105,7 +105,7 @@ describe('Dropdown', () => {
 	});
 
 	it('should call onClick when clicking on button', async () => {
-		const callback = jest.fn();
+		const callback = vi.fn();
 
 		const dropdown = render(
 			<Dropdown onClick={callback}>

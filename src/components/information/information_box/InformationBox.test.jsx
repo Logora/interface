@@ -3,9 +3,9 @@ import { MemoryRouter } from "react-router-dom";
 import { IntlProvider } from 'react-intl';
 import { render, screen } from '@testing-library/react';
 import { InformationBox } from './InformationBox';
-import { Suggestion } from '@logora/debate.icons.regular_icons';
-import { IconProvider } from '@logora/debate.icons.icon_provider';
-import * as regularIcons from '@logora/debate.icons.regular_icons';
+import { Suggestion } from '@logora/debate/icons/regular_icons';
+import { IconProvider } from '@logora/debate/icons/icon_provider';
+import * as regularIcons from '@logora/debate/icons/regular_icons';
 
 it('should render with icon, title and description', () => {
 	const container = render(

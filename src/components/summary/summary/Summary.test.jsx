@@ -2,13 +2,13 @@ import React from 'react';
 import { render, screen, waitFor, fireEvent } from '@testing-library/react';
 import { Summary } from './Summary';
 import { IntlProvider } from 'react-intl';
-import { IconProvider } from '@logora/debate.icons.icon_provider';
-import { ResponsiveProvider } from '@logora/debate.hooks.use_responsive';
-import * as regularIcons from '@logora/debate.icons.regular_icons';
+import { IconProvider } from '@logora/debate/icons/icon_provider';
+import { ResponsiveProvider } from '@logora/debate/hooks/use_responsive';
+import * as regularIcons from '@logora/debate/icons/regular_icons';
 import styles from './Summary.module.scss';
 
 beforeEach(() => {
-    global.fetch = jest.fn(() =>
+    global.fetch = vi.fn(() =>
         Promise.resolve({
             ok: true,
             json: () => Promise.resolve({

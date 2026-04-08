@@ -4,10 +4,10 @@ import { render, fireEvent } from '@testing-library/react';
 import { NotificationItem } from './NotificationItem';
 import { IntlProvider } from 'react-intl';
 import { MemoryRouter } from 'react-router-dom';
-import { IconProvider } from '@logora/debate.icons.icon_provider';
-import { ConfigProvider } from '@logora/debate.data.config_provider';
-import * as regularIcons from '@logora/debate.icons.regular_icons';
-import { dataProvider, DataProviderContext } from '@logora/debate.data.data_provider';
+import { IconProvider } from '@logora/debate/icons/icon_provider';
+import { ConfigProvider } from '@logora/debate/data/config_provider';
+import * as regularIcons from '@logora/debate/icons/regular_icons';
+import { dataProvider, DataProviderContext } from '@logora/debate/data/data_provider';
 import { faker } from '@faker-js/faker';
 
 const mockNotification = {
@@ -39,7 +39,7 @@ describe('NotificationItem', () => {
   let mock;
 
   beforeEach(() => {
-      mock = jest.spyOn(httpClient, 'post');
+      mock = vi.spyOn(httpClient, 'post');
   });
 
   afterEach(() => {

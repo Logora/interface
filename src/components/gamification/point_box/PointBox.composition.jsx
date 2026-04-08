@@ -1,6 +1,6 @@
 import React from 'react';
 import { PointBox } from './PointBox';
-import { Chat } from '@logora/debate.icons.regular_icons';
+import { Chat } from '@logora/debate/icons/regular_icons';
 
 export const DefaultPointBox = () => {
     return(

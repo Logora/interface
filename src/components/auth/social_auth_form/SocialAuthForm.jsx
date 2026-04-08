@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import useSessionStorageState from '@rooks/use-sessionstorage-state';
-import { EMAIL_CONSENT_STORAGE_KEY } from '@logora/debate.auth.use_auth';
-import { FacebookLoginButton } from '@logora/debate.auth.facebook_login_button';
-import { GoogleLoginButton } from '@logora/debate.auth.google_login_button';
-import { LoginForm } from "@logora/debate.auth.login_form";
-import { SignupForm } from "@logora/debate.auth.signup_form";
-import { Toggle } from "@logora/debate.input.toggle";
-import { Icon } from '@logora/debate.icons.icon';
+import { EMAIL_CONSENT_STORAGE_KEY } from '@logora/debate/auth/use_auth';
+import { FacebookLoginButton } from '@logora/debate/auth/facebook_login_button';
+import { GoogleLoginButton } from '@logora/debate/auth/google_login_button';
+import { LoginForm } from "@logora/debate/auth/login_form";
+import { SignupForm } from "@logora/debate/auth/signup_form";
+import { Toggle } from "@logora/debate/input/toggle";
+import { Icon } from '@logora/debate/icons/icon';
 import styles from "./SocialAuthForm.module.scss";
 
 export const SocialAuthForm = ({ lastStep, providerName, logoUrl, termsUrl, privacyUrl, forgotPasswordUrl, oAuthRedirectUri, facebookClientId, googleClientId, error = false, onSubmit }) => {

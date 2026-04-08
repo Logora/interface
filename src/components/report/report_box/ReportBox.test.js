@@ -2,47 +2,47 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import { IntlProvider } from "react-intl";
 import { MemoryRouter } from "react-router-dom";
-import { ConfigProvider } from "@logora/debate.data.config_provider";
-import { dataProvider, DataProviderContext } from "@logora/debate.data.data_provider";
-import { AuthContext } from "@logora/debate.auth.use_auth";
-import { ModalProvider } from "@logora/debate.dialog.modal";
-import { ListProvider } from "@logora/debate.list.list_provider";
-import { ToastProvider } from "@logora/debate.dialog.toast_provider";
-import { VoteProvider } from "@logora/debate.vote.vote_provider";
-import { IconProvider } from "@logora/debate.icons.icon_provider";
-import { ResponsiveProvider } from "@logora/debate.hooks.use_responsive";
-import * as regularIcons from "@logora/debate.icons.regular_icons";
+import { ConfigProvider } from "@logora/debate/data/config_provider";
+import { dataProvider, DataProviderContext } from "@logora/debate/data/data_provider";
+import { AuthContext } from "@logora/debate/auth/use_auth";
+import { ModalProvider } from "@logora/debate/dialog/modal";
+import { ListProvider } from "@logora/debate/list/list_provider";
+import { ToastProvider } from "@logora/debate/dialog/toast_provider";
+import { VoteProvider } from "@logora/debate/vote/vote_provider";
+import { IconProvider } from "@logora/debate/icons/icon_provider";
+import { ResponsiveProvider } from "@logora/debate/hooks/use_responsive";
+import * as regularIcons from "@logora/debate/icons/regular_icons";
 import ReportBox from "./ReportBox";
 import { faker } from "@faker-js/faker";
 
-jest.mock('@lexical/react/LexicalErrorBoundary', () => ({
+vi.mock('@lexical/react/LexicalErrorBoundary', () => ({
   LexicalErrorBoundary: ({ children }) => children,
 }));
 
 const generateReport = (overrides) => ({
-  id: faker.datatype.number(),
+  id: faker.number.int(),
   classification: "Spam",
   description: faker.lorem.sentence(),
   is_processed: true,
   reportable_type: "Message",
   created_at: faker.date.recent().toISOString(),
   reportable: {
-    id: faker.datatype.number(),
+    id: faker.number.int(),
     content: faker.lorem.sentence(),
-    author: { full_name: faker.name.fullName() },
+    author: { full_name: faker.person.fullName() },
     created_at: faker.date.recent().toISOString(),
-    upvotes: faker.datatype.number(),
+    upvotes: faker.number.int(),
     language: "en",
     status: "pending",
   },
   author: {
-    full_name: faker.name.fullName(),
+    full_name: faker.person.fullName(),
   },
   moderation_entry: {
     status: "pending"
   },
   position: {
-    id: faker.datatype.number(),
+    id: faker.number.int(),
     name: "Yes",
     language: "en",
     translation_entries: []
@@ -51,18 +51,18 @@ const generateReport = (overrides) => ({
 });
 
 const generateReportPending = (overrides) => ({
-  id: faker.datatype.number(),
+  id: faker.number.int(),
   classification: "Spam",
   description: faker.lorem.sentence(),
   is_processed: false,
   reportable_type: "Message",
   created_at: faker.date.recent().toISOString(),
   reportable: {
-    id: faker.datatype.number(),
+    id: faker.number.int(),
     content: faker.lorem.sentence(),
-    author: { full_name: faker.name.fullName() },
+    author: { full_name: faker.person.fullName() },
     created_at: faker.date.recent().toISOString(),
-    upvotes: faker.datatype.number(),
+    upvotes: faker.number.int(),
     language: "en",
     status: "pending",
   },
@@ -70,10 +70,10 @@ const generateReportPending = (overrides) => ({
     status: "pending"
   },
   author: {
-    full_name: faker.name.fullName(),
+    full_name: faker.person.fullName(),
   },
   position: {
-    id: faker.datatype.number(),
+    id: faker.number.int(),
     name: "Yes",
     language: "en",
     translation_entries: []
@@ -90,7 +90,7 @@ const reportProposal = generateReport({
     title: faker.lorem.words(),
     tag: {
       display_name: faker.lorem.word(),
-      color: faker.internet.color()
+      color: faker.color.rgb()
     }
   }
 });
@@ -101,32 +101,32 @@ const reportSuggestion = generateReport({
     name: faker.lorem.words(),
     slug: faker.lorem.slug(),
     debate_suggestion: {
-      id: faker.datatype.number(),
+      id: faker.number.int(),
       name: faker.lorem.words(),
-      total_upvotes: faker.datatype.number(),
-      total_downvotes: faker.datatype.number(),
+      total_upvotes: faker.number.int(),
+      total_downvotes: faker.number.int(),
       author: {
-        id: faker.datatype.number(),
-        full_name: faker.name.fullName(),
-        image_url: faker.image.avatar()
+        id: faker.number.int(),
+        full_name: faker.person.fullName(),
+        image_url: faker.image.avatarGitHub()
       }
     }
   }
 });
 
 const httpClient = {
-  get: jest.fn(() => Promise.resolve({ data: { success: true, data: [] } })),
-  post: jest.fn(() => Promise.resolve({ data: { success: true, data: {} } })),
-  patch: jest.fn(),
-  delete: jest.fn(() => Promise.resolve({ data: { success: true, data: {} } }))
+  get: vi.fn(() => Promise.resolve({ data: { success: true, data: [] } })),
+  post: vi.fn(() => Promise.resolve({ data: { success: true, data: {} } })),
+  patch: vi.fn(),
+  delete: vi.fn(() => Promise.resolve({ data: { success: true, data: {} } }))
 };
 
 const data = dataProvider(httpClient, "https://mock.example.api");
 
 const currentUser = {
-  id: faker.datatype.number(),
-  full_name: faker.name.fullName(),
-  image_url: faker.image.avatar()
+  id: faker.number.int(),
+  full_name: faker.person.fullName(),
+  image_url: faker.image.avatarGitHub()
 };
 
 const config = {

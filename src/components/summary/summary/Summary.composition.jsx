@@ -2,10 +2,10 @@ import React from 'react';
 import { Summary } from './Summary';
 import { faker } from '@faker-js/faker';
 import { IntlProvider } from 'react-intl';
-import { IconProvider } from '@logora/debate.icons.icon_provider';
-import { ResponsiveProvider } from '@logora/debate.hooks.use_responsive';
+import { IconProvider } from '@logora/debate/icons/icon_provider';
+import { ResponsiveProvider } from '@logora/debate/hooks/use_responsive';
 import styles from './Summary.module.scss';
-import * as regularIcons from '@logora/debate.icons.regular_icons';
+import * as regularIcons from '@logora/debate/icons/regular_icons';
 
 global.fetch = async () => ({
     ok: true,

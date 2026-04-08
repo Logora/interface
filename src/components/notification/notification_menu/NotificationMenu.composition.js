@@ -2,16 +2,16 @@ import React from 'react';
 import { NotificationMenu } from './NotificationMenu';
 import { IntlProvider } from 'react-intl';
 import { MemoryRouter } from "react-router-dom";
-import { IconProvider } from '@logora/debate.icons.icon_provider';
-import { ConfigProvider } from '@logora/debate.data.config_provider';
-import { dataProvider, DataProviderContext } from '@logora/debate.data.data_provider';
-import { ListProvider } from '@logora/debate.list.list_provider';
-import * as regularIcons from '@logora/debate.icons.regular_icons';
+import { IconProvider } from '@logora/debate/icons/icon_provider';
+import { ConfigProvider } from '@logora/debate/data/config_provider';
+import { dataProvider, DataProviderContext } from '@logora/debate/data/data_provider';
+import { ListProvider } from '@logora/debate/list/list_provider';
+import * as regularIcons from '@logora/debate/icons/regular_icons';
 import { faker } from '@faker-js/faker';
 
 const createNotification = () => {
   return {
-      id: faker.datatype.number(10000000),
+      id: faker.number.int(10000000),
       created_at: faker.date.recent(),
       notify_type: "new_comment",
       is_opened: faker.datatype.boolean()

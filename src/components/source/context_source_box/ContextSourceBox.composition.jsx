@@ -4,7 +4,7 @@ import { ContextSourceBox } from './ContextSourceBox';
 import { faker } from '@faker-js/faker';
 
 const source = {
-    imageUrl: faker.image.nature(),
+    imageUrl: faker.image.url(),
     author: faker.vehicle.manufacturer(),
     date: faker.date.recent(),
     title: faker.music.songName()

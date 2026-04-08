@@ -3,20 +3,20 @@ import { render, screen, waitFor, act } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { DefaultTextEditor, TextEditorWithSource } from './TextEditor.composition';
 import { TextEditor } from './TextEditor';
-import { ModalProvider } from '@logora/debate.dialog.modal';
-import { InputProvider, useInput } from '@logora/debate.input.input_provider';
+import { ModalProvider } from '@logora/debate/dialog/modal';
+import { InputProvider, useInput } from '@logora/debate/input/input_provider';
 import { $getRoot, $createParagraphNode, $createTextNode, createEditor } from "lexical";
 import { QuoteNode, $createQuoteNode } from '@lexical/rich-text';
 import { ListItemNode, ListNode, $createListItemNode, $createListNode } from "@lexical/list";
-import { IconProvider } from '@logora/debate.icons.icon_provider';
-import * as regularIcons from '@logora/debate.icons.regular_icons';
+import { IconProvider } from '@logora/debate/icons/icon_provider';
+import * as regularIcons from '@logora/debate/icons/regular_icons';
 import { IntlProvider } from 'react-intl';
 
-jest.mock('@lexical/react/LexicalErrorBoundary', () => ({
+vi.mock('@lexical/react/LexicalErrorBoundary', () => ({
     LexicalErrorBoundary: ({ children }) => children,
   }));
 
-const callback = jest.fn();
+const callback = vi.fn();
 
 describe('TextEditor', () => {
     it('should render with placeholder', () => {
@@ -596,7 +596,7 @@ describe('AutoSavePlugin', () => {
 
     it('should auto save content in local storage', async () => {
         const targetContent = { "root": { "children": [{ "children": [{ "detail": 0, "format": 1, "mode": "normal", "style": "", "text": "Integer pretium varius odio ac eleifend.", "type": "text", "version": 1 }], "direction": "auto", "format": "", "indent": 0, "type": "paragraph", "version": 1 }], "direction": "auto", "format": "", "indent": 0, "type": "root", "version": 1 } };
-        const getItemMock = jest.spyOn(window.localStorage, 'getItem');
+        const getItemMock = vi.spyOn(window.localStorage, 'getItem');
 
         const AutoSaveContentComponent = (props) => {
             const { setInputRichContent } = useInput();

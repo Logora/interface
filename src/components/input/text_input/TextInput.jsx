@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react';
 import classNames from 'classnames';
-import { useForm } from '@logora/debate.forms.form';
+import { useForm } from '@logora/debate/forms/form';
 import { getAccent } from './color-accent';
 import { Message } from './message';
 import styles from './TextInput.module.scss';

@@ -2,10 +2,10 @@ import React from 'react';
 import { NotificationItem } from './NotificationItem';
 import { IntlProvider } from 'react-intl';
 import { MemoryRouter } from "react-router-dom";
-import { IconProvider } from '@logora/debate.icons.icon_provider';
-import { ConfigProvider } from '@logora/debate.data.config_provider';
-import { dataProvider, DataProviderContext } from '@logora/debate.data.data_provider';
-import * as regularIcons from '@logora/debate.icons.regular_icons';
+import { IconProvider } from '@logora/debate/icons/icon_provider';
+import { ConfigProvider } from '@logora/debate/data/config_provider';
+import { dataProvider, DataProviderContext } from '@logora/debate/data/data_provider';
+import * as regularIcons from '@logora/debate/icons/regular_icons';
 import { faker } from '@faker-js/faker';
 
 const notificationItem = {

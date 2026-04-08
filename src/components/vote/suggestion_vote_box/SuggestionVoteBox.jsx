@@ -1,11 +1,11 @@
 import React, { Suspense } from "react";
-import { useAuth } from "@logora/debate.auth.use_auth";
-import { useModal } from "@logora/debate.dialog.modal";
-import { useVote } from "@logora/debate.vote.use_vote";
+import { useAuth } from "@logora/debate/auth/use_auth";
+import { useModal } from "@logora/debate/dialog/modal";
+import { useVote } from "@logora/debate/vote/use_vote";
 import { useIntl } from "react-intl";
-import { Icon } from "@logora/debate.icons.icon";
-import { ConfirmModal } from "@logora/debate.dialog.confirm_modal";
-import { Button } from '@logora/debate.action.button';
+import { Icon } from "@logora/debate/icons/icon";
+import { ConfirmModal } from "@logora/debate/dialog/confirm_modal";
+import { Button } from '@logora/debate/action/button';
 import styles from "./SuggestionVoteBox.module.scss";
 import PropTypes from "prop-types";
 

@@ -4,22 +4,22 @@ import { faker } from '@faker-js/faker';
 import { IntlProvider } from 'react-intl';
 
 const badge = {
-    icon_url: faker.image.avatar(),
+    icon_url: faker.image.avatarGitHub(),
     level: 2,
-    name: faker.name.jobTitle(),
+    name: faker.person.jobTitle(),
     next_title_level: 3,
     steps: 20,
-    title: faker.name.jobTitle(),
+    title: faker.person.jobTitle(),
     progress: 6,
 }
 
 const badgeCompleted = {
-    icon_url: faker.image.avatar(),
+    icon_url: faker.image.avatarGitHub(),
     level: 3,
-    name: faker.name.jobTitle(),
+    name: faker.person.jobTitle(),
     next_title_level: 3,
     steps: 13,
-    title: faker.name.jobTitle(),
+    title: faker.person.jobTitle(),
     progress: 13,
 }
 

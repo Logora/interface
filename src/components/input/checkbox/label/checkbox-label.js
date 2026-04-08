@@ -1,6 +1,6 @@
 import React from 'react';
-import { HiddenCheckbox } from '@logora/debate.input.checkbox.hidden';
-import { CheckboxIndicator, classes } from '@logora/debate.input.checkbox.indicator';
+import { HiddenCheckbox } from '@logora/debate/input/checkbox/hidden';
+import { CheckboxIndicator, classes } from '@logora/debate/input/checkbox/indicator';
 
 export { HiddenCheckbox as Input };
 

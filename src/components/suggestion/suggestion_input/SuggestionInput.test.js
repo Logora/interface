@@ -2,23 +2,23 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import { IntlProvider } from 'react-intl';
 import { BrowserRouter } from 'react-router-dom';
-import { IconProvider } from '@logora/debate.icons.icon_provider';
-import { ConfigProvider } from '@logora/debate.data.config_provider';
-import { dataProvider, DataProviderContext } from '@logora/debate.data.data_provider';
-import { AuthContext } from '@logora/debate.auth.use_auth';
-import { ModalProvider } from '@logora/debate.dialog.modal';
-import { ListProvider } from '@logora/debate.list.list_provider';
-import { ToastProvider } from '@logora/debate.dialog.toast_provider';
+import { IconProvider } from '@logora/debate/icons/icon_provider';
+import { ConfigProvider } from '@logora/debate/data/config_provider';
+import { dataProvider, DataProviderContext } from '@logora/debate/data/data_provider';
+import { AuthContext } from '@logora/debate/auth/use_auth';
+import { ModalProvider } from '@logora/debate/dialog/modal';
+import { ListProvider } from '@logora/debate/list/list_provider';
+import { ToastProvider } from '@logora/debate/dialog/toast_provider';
 import { faker } from '@faker-js/faker';
-import { InputProvider } from '@logora/debate.input.input_provider';
+import { InputProvider } from '@logora/debate/input/input_provider';
 import { SuggestionInput } from './SuggestionInput';
-import * as regularIcons from '@logora/debate.icons.regular_icons';
+import * as regularIcons from '@logora/debate/icons/regular_icons';
 
 const currentUser = {
-    id: faker.datatype.number(),
-    full_name: faker.name.fullName(),
-    image_url: faker.image.avatar(),
-    points: faker.datatype.number()
+    id: faker.number.int(),
+    full_name: faker.person.fullName(),
+    image_url: faker.image.avatarGitHub(),
+    points: faker.number.int()
 };
 
 const httpClient = {

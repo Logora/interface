@@ -5,11 +5,11 @@ import { MemoryRouter } from "react-router-dom";
 
 const hash = "my-element";
 
-let scrollIntoViewMock = jest.fn();
+let scrollIntoViewMock = vi.fn();
 
 describe('HashScroll', () => {
   beforeEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
     window.HTMLElement.prototype.scrollIntoView = scrollIntoViewMock;
   });
 
@@ -44,7 +44,7 @@ describe('HashScroll', () => {
   });
   
   it("should call onScroll when passed", async () => {
-    const onScroll = jest.fn();
+    const onScroll = vi.fn();
     
     const dom = render(
       <MemoryRouter initialEntries={[`/#${hash}`]}>

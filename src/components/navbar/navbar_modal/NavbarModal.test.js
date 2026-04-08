@@ -2,15 +2,15 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 import { IntlProvider } from "react-intl";
-import { ConfigProvider } from "@logora/debate.data.config_provider";
-import { AuthContext } from "@logora/debate.auth.use_auth";
-import { ModalProvider } from "@logora/debate.dialog.modal";
-import { ResponsiveProvider } from "@logora/debate.hooks.use_responsive";
-import { IconProvider } from "@logora/debate.icons.icon_provider";
-import * as regularIcons from "@logora/debate.icons.regular_icons";
-import { Location } from "@logora/debate.util.location";
+import { ConfigProvider } from "@logora/debate/data/config_provider";
+import { AuthContext } from "@logora/debate/auth/use_auth";
+import { ModalProvider } from "@logora/debate/dialog/modal";
+import { ResponsiveProvider } from "@logora/debate/hooks/use_responsive";
+import { IconProvider } from "@logora/debate/icons/icon_provider";
+import * as regularIcons from "@logora/debate/icons/regular_icons";
+import { Location } from "@logora/debate/util/location";
 import { faker } from "@faker-js/faker";
-jest.mock("@logora/debate.hooks.use_auth_required", () => ({
+vi.mock("@logora/debate/hooks/use_auth_required", () => ({
     useAuthRequired: () => () => { },
 }));
 import { NavbarModal } from "./NavbarModal";
@@ -42,9 +42,9 @@ const baseConfig = {
 };
 
 const loggedInUser = {
-    id: faker.datatype.number(),
-    full_name: faker.name.fullName(),
-    image_url: faker.image.avatar(),
+    id: faker.number.int(),
+    full_name: faker.person.fullName(),
+    image_url: faker.image.avatarGitHub(),
     hash_id: faker.lorem.slug(),
 };
 

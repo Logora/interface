@@ -1,7 +1,7 @@
-@use "@logora/debate.styles.spacing/_spacing.scss" as spacing;
-@use "@logora/debate.styles.theme/_theme.scss" as theme;
-@use "@logora/debate.styles.flex/_flex.scss" as flex;
-@use "@logora/debate.styles.display/_display.scss" as display;
+@use "styles/spacing/_spacing/scss" as spacing;
+@use "styles/theme/_theme/scss" as theme;
+@use "styles/flex/_flex/scss" as flex;
+@use "styles/display/_display/scss" as display;
 
 .container {
   display: flex !important;

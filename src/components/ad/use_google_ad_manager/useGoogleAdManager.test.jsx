@@ -6,7 +6,7 @@ const gptSrc = "https://securepubads.g.doubleclick.net/tag/js/gpt.js";
 
 describe('useGoogleAdManager', () => {
     it('should load GPT script correctly', async () => {
-        jest.spyOn(document.body, 'appendChild');
+        vi.spyOn(document.body, 'appendChild');
 
         const ComponentWithGoogleAdManager = () => {
             useGoogleAdManager(true, false);
@@ -25,7 +25,7 @@ describe('useGoogleAdManager', () => {
     });
 
     it('should load GPT script correctly with didomi consent', () => {
-        jest.spyOn(document.body, 'appendChild');
+        vi.spyOn(document.body, 'appendChild');
 
         const ComponentWithGoogleAdManager = () => {
             useGoogleAdManager(true, true);

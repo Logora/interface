@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { lexicalToHtml } from "@logora/debate.input.text_editor";
+import { lexicalToHtml } from "@logora/debate/input/text_editor";
 
 export const useRichContent = (argument) => {
     const [richContent, setRichContent] = useState(null);

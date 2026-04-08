@@ -2,9 +2,9 @@ import React from 'react';
 import { InformationBox } from './InformationBox';
 import { IntlProvider } from 'react-intl';
 import { MemoryRouter } from "react-router-dom";
-import { Suggestion } from '@logora/debate.icons.regular_icons';
-import { IconProvider } from '@logora/debate.icons.icon_provider';
-import * as regularIcons from '@logora/debate.icons.regular_icons';
+import { Suggestion } from '@logora/debate/icons/regular_icons';
+import { IconProvider } from '@logora/debate/icons/icon_provider';
+import * as regularIcons from '@logora/debate/icons/regular_icons';
 
 export const DefaultInformationBox = () => {
     return (

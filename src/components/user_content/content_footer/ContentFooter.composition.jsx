@@ -1,26 +1,26 @@
 import React from 'react';
 import { ContentFooter } from './ContentFooter';
 import { IntlProvider } from 'react-intl';
-import { ConfigProvider } from '@logora/debate.data.config_provider';
-import { IconProvider } from '@logora/debate.icons.icon_provider';
-import * as regularIcons from '@logora/debate.icons.regular_icons';
-import { ModalProvider } from '@logora/debate.dialog.modal';
-import { AuthContext } from '@logora/debate.auth.use_auth';
-import { ListProvider } from '@logora/debate.list.list_provider';
-import { dataProvider, DataProviderContext } from '@logora/debate.data.data_provider';
-import { ToastProvider } from '@logora/debate.dialog.toast_provider';
-import { VoteProvider } from '@logora/debate.vote.vote_provider';
+import { ConfigProvider } from '@logora/debate/data/config_provider';
+import { IconProvider } from '@logora/debate/icons/icon_provider';
+import * as regularIcons from '@logora/debate/icons/regular_icons';
+import { ModalProvider } from '@logora/debate/dialog/modal';
+import { AuthContext } from '@logora/debate/auth/use_auth';
+import { ListProvider } from '@logora/debate/list/list_provider';
+import { dataProvider, DataProviderContext } from '@logora/debate/data/data_provider';
+import { ToastProvider } from '@logora/debate/dialog/toast_provider';
+import { VoteProvider } from '@logora/debate/vote/vote_provider';
 import { faker } from '@faker-js/faker';
-import { VoteButton } from '@logora/debate.vote.vote_button';
-import { UpDownVoteBox } from '@logora/debate.vote.up_down_vote_box';
-import { ProgressBar } from "@logora/debate.progress.progress_bar";
-import { ResponsiveProvider } from '@logora/debate.hooks.use_responsive';
+import { VoteButton } from '@logora/debate/vote/vote_button';
+import { UpDownVoteBox } from '@logora/debate/vote/up_down_vote_box';
+import { ProgressBar } from "@logora/debate/progress/progress_bar";
+import { ResponsiveProvider } from '@logora/debate/hooks/use_responsive';
 
 const vote = { 
-    id: faker.datatype.number(),
+    id: faker.number.int(),
     voteable_type: faker.lorem.word(),
-    voteable_id: faker.datatype.number(), 
-    user_id: faker.datatype.number()
+    voteable_id: faker.number.int(), 
+    user_id: faker.number.int()
 };
 
 const httpClient = {
@@ -41,9 +41,9 @@ const httpClient = {
 const data = dataProvider(httpClient, "https://mock.example.api");
 
 const resource = {
-    id: faker.datatype.number(),
+    id: faker.number.int(),
     author: {
-        id: faker.datatype.number(),
+        id: faker.number.int(),
     },
     created_at: faker.date.recent(),
     upvotes: 10,

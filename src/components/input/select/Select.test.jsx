@@ -2,8 +2,8 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { Select } from './Select';
-import { IconProvider } from '@logora/debate.icons.icon_provider';
-import * as regularIcons from '@logora/debate.icons.regular_icons';
+import { IconProvider } from '@logora/debate/icons/icon_provider';
+import * as regularIcons from '@logora/debate/icons/regular_icons';
 
 const options = [
     {
@@ -106,7 +106,7 @@ describe('Select', () => {
     });
 
     it('should call onChange when clicking on option', async () => {
-        const callback = jest.fn();
+        const callback = vi.fn();
 
         const dropdown = render(
             <IconProvider library={regularIcons}>

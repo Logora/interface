@@ -1,11 +1,11 @@
 import React from 'react';
-import { ModalProvider } from '@logora/debate.dialog.modal';
+import { ModalProvider } from '@logora/debate/dialog/modal';
 import { IntlProvider } from 'react-intl';
-import { AuthContext } from '@logora/debate.auth.use_auth';
-import { dataProvider, DataProviderContext } from '@logora/debate.data.data_provider';
+import { AuthContext } from '@logora/debate/auth/use_auth';
+import { dataProvider, DataProviderContext } from '@logora/debate/data/data_provider';
 import { ReportModal } from './ReportModal';
-import { IconProvider } from '@logora/debate.icons.icon_provider';
-import * as regularIcons from '@logora/debate.icons.regular_icons';
+import { IconProvider } from '@logora/debate/icons/icon_provider';
+import * as regularIcons from '@logora/debate/icons/regular_icons';
 
 const httpClient = {
     get: () => null,

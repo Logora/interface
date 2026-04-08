@@ -1,10 +1,10 @@
 import React from 'react';
 import { SourceModal } from './SourceModal';
-import { ModalProvider } from '@logora/debate.dialog.modal';
-import { dataProvider, DataProviderContext } from '@logora/debate.data.data_provider';
+import { ModalProvider } from '@logora/debate/dialog/modal';
+import { dataProvider, DataProviderContext } from '@logora/debate/data/data_provider';
 import { IntlProvider } from 'react-intl';
-import { IconProvider } from '@logora/debate.icons.icon_provider';
-import * as regularIcons from '@logora/debate.icons.regular_icons';
+import { IconProvider } from '@logora/debate/icons/icon_provider';
+import * as regularIcons from '@logora/debate/icons/regular_icons';
 import { faker } from '@faker-js/faker';
 
 const allowedDomains = Array.from({ length: 3}, () => faker.internet.domainName());
@@ -14,7 +14,7 @@ const source = {
     title: faker.music.songName(),
     description: faker.lorem.sentence(),
     source_url: faker.internet.url(),
-    origin_image_url: faker.image.nature(),
+    origin_image_url: faker.image.url(),
     publisher: faker.vehicle.manufacturer()
 };
 

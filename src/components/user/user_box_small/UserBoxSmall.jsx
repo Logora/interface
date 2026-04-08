@@ -1,8 +1,8 @@
 import React from "react";
 import { useIntl } from 'react-intl';
-import { useRoutes } from '@logora/debate.data.config_provider';
-import { Link } from '@logora/debate.action.link';
-import { Avatar } from '@logora/debate.user.avatar';
+import { useRoutes } from '@logora/debate/data/config_provider';
+import { Link } from '@logora/debate/action/link';
+import { Avatar } from '@logora/debate/user/avatar';
 import styles from "./UserBoxSmall.module.scss";
 import PropTypes from 'prop-types';
 import cx from 'classnames';

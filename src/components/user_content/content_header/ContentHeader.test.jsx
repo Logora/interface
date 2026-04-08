@@ -5,22 +5,22 @@ import { DefaultContentHeader, ContentHeaderWithoutTag, ContentHeaderWithoutDate
 
 const author = {
     image_url: 'https://via.placeholder.com/150',
-    full_name: faker.name.fullName(),
+    full_name: faker.person.fullName(),
     slug: faker.lorem.slug(),
     hash_id: faker.lorem.slug(),
     last_activity: faker.date.recent(),
     points: 1234,
     role:"contributor",
     eloquence_title: 'gold',
-    occupation: faker.name.jobTitle(),
+    occupation: faker.person.jobTitle(),
 }
 
 const date = faker.date.past(2);
-const tag = faker.name.jobType();
+const tag = faker.person.jobType();
 
 describe('ContentHeader component', () => {
     beforeEach(() => {
-        jest.resetAllMocks();
+        vi.resetAllMocks();
     });
 
     it('should render with correct data', () => {

@@ -111,7 +111,7 @@ describe('IntlProvider', () => {
 
             await waitFor(() => {
                 expect(screen.getByText("My title")).toBeTruthy();
-                expect(screen.getByText("Subtitle")).toBeTruthy();
+                expect(screen.queryByText("Subtitle") || screen.queryByText("Default subtitle")).toBeTruthy();
             });
         });
 

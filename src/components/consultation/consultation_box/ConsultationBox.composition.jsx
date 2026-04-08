@@ -1,12 +1,12 @@
 import React from 'react';
 import { IntlProvider } from 'react-intl';
-import { ConfigProvider } from '@logora/debate.data.config_provider';
-import { Location } from '@logora/debate.util.location';
+import { ConfigProvider } from '@logora/debate/data/config_provider';
+import { Location } from '@logora/debate/util/location';
 import { BrowserRouter } from 'react-router-dom';
 import { ConsultationBox } from "./ConsultationBox";
-import { IconProvider } from '@logora/debate.icons.icon_provider';
-import { ResponsiveProvider } from '@logora/debate.hooks.use_responsive';
-import * as regularIcons from '@logora/debate.icons.regular_icons';
+import { IconProvider } from '@logora/debate/icons/icon_provider';
+import { ResponsiveProvider } from '@logora/debate/hooks/use_responsive';
+import * as regularIcons from '@logora/debate/icons/regular_icons';
 import { faker } from '@faker-js/faker';
 
 const routes = {
@@ -25,7 +25,7 @@ const consultation = {
     total_votes: 200,
     total_participants: 44,
     proposals_count: 53,
-    image_url: faker.image.nature(),
+    image_url: faker.image.url(),
     direct_url: faker.internet.url(),
     tags: [
         {

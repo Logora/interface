@@ -3,62 +3,62 @@ import { render, waitFor, fireEvent } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { IntlProvider } from "react-intl";
 import { MemoryRouter } from "react-router-dom";
-import { ConfigProvider } from "@logora/debate.data.config_provider";
+import { ConfigProvider } from "@logora/debate/data/config_provider";
 import {
 	dataProvider,
 	DataProviderContext,
-} from "@logora/debate.data.data_provider";
-import { AuthContext } from "@logora/debate.auth.use_auth";
-import { ModalProvider } from "@logora/debate.dialog.modal";
-import { ListProvider } from "@logora/debate.list.list_provider";
-import { ToastProvider } from "@logora/debate.dialog.toast_provider";
-import { VoteProvider } from "@logora/debate.vote.vote_provider";
-import { IconProvider } from "@logora/debate.icons.icon_provider";
-import { ResponsiveProvider } from "@logora/debate.hooks.use_responsive";
-import * as regularIcons from "@logora/debate.icons.regular_icons";
+} from "@logora/debate/data/data_provider";
+import { AuthContext } from "@logora/debate/auth/use_auth";
+import { ModalProvider } from "@logora/debate/dialog/modal";
+import { ListProvider } from "@logora/debate/list/list_provider";
+import { ToastProvider } from "@logora/debate/dialog/toast_provider";
+import { VoteProvider } from "@logora/debate/vote/vote_provider";
+import { IconProvider } from "@logora/debate/icons/icon_provider";
+import { ResponsiveProvider } from "@logora/debate/hooks/use_responsive";
+import * as regularIcons from "@logora/debate/icons/regular_icons";
 import { SuggestionBox } from "./SuggestionBox";
 import { faker } from "@faker-js/faker";
 
 const vote = {
-	id: faker.datatype.number(),
+	id: faker.number.int(),
 	voteable_type: faker.lorem.word(),
-	voteable_id: faker.datatype.number(),
-	user_id: faker.datatype.number(),
+	voteable_id: faker.number.int(),
+	user_id: faker.number.int(),
 };
 
 const currentUser = {
-	id: faker.datatype.number(),
-	full_name: faker.name.fullName(),
-	image_url: faker.image.avatar(),
-	points: faker.datatype.number(),
+	id: faker.number.int(),
+	full_name: faker.person.fullName(),
+	image_url: faker.image.avatarGitHub(),
+	points: faker.number.int(),
 };
 
 const generateSuggestion = (groupOverrides, suggestionOverrides) => ({
-	id: faker.datatype.number(),
+	id: faker.number.int(),
 	name: faker.lorem.words(),
 	slug: faker.lorem.slug(),
 	created_at: faker.date.recent().toISOString(),
-	score: faker.datatype.number(),
-	language: faker.random.locale(),
+	score: faker.number.int(),
+	language: faker.helpers.arrayElement(['en', 'fr', 'es']),
 	is_active: true,
-	messages_count: faker.datatype.number(),
+	messages_count: faker.number.int(),
 	is_published: true,
 	published_at: faker.date.recent().toISOString(),
 	debate_suggestion: {
-		id: faker.datatype.number(),
+		id: faker.number.int(),
 		created_at: faker.date.recent().toISOString(),
 		expires_at: faker.date.future().toISOString(),
 		total_upvotes: 20,
-		total_downvotes: faker.datatype.number({ min: 0, max: 100 }),
+		total_downvotes: faker.number.int({ min: 0, max: 100 }),
 		is_accepted: false,
 		is_expired: false,
 		is_published: faker.datatype.boolean(),
 		author: {
-			id: faker.datatype.number(),
-			full_name: faker.name.fullName(),
-			image_url: faker.image.avatar(),
+			id: faker.number.int(),
+			full_name: faker.person.fullName(),
+			image_url: faker.image.avatarGitHub(),
 		},
-		language: faker.random.locale(),
+		language: faker.helpers.arrayElement(['en', 'fr', 'es']),
 		translation_entries: [],
 		name: faker.lorem.words(),
 		...suggestionOverrides,
@@ -76,7 +76,7 @@ const config = {
 };
 
 const httpClient = {
-	post: jest.fn(() =>
+	post: vi.fn(() =>
 		Promise.resolve({ data: { success: true, data: { resource: vote } } }),
 	),
 };

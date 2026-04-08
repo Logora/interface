@@ -1,5 +1,5 @@
 import React from 'react';
-import { AuthProvider } from '@logora/debate.auth.use_auth';
+import { AuthProvider } from '@logora/debate/auth/use_auth';
 import { IntlProvider } from 'react-intl';
 import { TranslationButton } from './TranslationButton';
 

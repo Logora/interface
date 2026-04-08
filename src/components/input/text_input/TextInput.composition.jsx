@@ -1,5 +1,5 @@
 import React from 'react';
-import { Announcement } from '@logora/debate.icons.regular_icons';
+import { Announcement } from '@logora/debate/icons/regular_icons';
 import { TextInput } from './TextInput';
 
 export const BasicTextInput = () => <TextInput placeholder="enter text..." data-testid="test-input" />;

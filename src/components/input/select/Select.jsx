@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Icon } from '@logora/debate.icons.icon';
-import { Dropdown } from '@logora/debate.dialog.dropdown';
+import { Icon } from '@logora/debate/icons/icon';
+import { Dropdown } from '@logora/debate/dialog/dropdown';
 import styles from "./Select.module.scss";
 import cx from "classnames";
 import PropTypes from "prop-types";

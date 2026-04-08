@@ -1,9 +1,9 @@
 import React from 'react';
 import { ShareModal } from './ShareModal';
-import { ModalProvider } from '@logora/debate.dialog.modal';
+import { ModalProvider } from '@logora/debate/dialog/modal';
 import { IntlProvider } from 'react-intl';
-import { IconProvider } from '@logora/debate.icons.icon_provider';
-import * as regularIcons from '@logora/debate.icons.regular_icons';
+import { IconProvider } from '@logora/debate/icons/icon_provider';
+import * as regularIcons from '@logora/debate/icons/regular_icons';
 
 export const DefaultShareModal = () => {
     return (

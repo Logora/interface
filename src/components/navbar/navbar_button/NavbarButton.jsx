@@ -1,8 +1,8 @@
-import { useModal } from '@logora/debate.dialog.modal';
-import { useResponsive } from "@logora/debate.hooks.use_responsive";
-import { Icon } from '@logora/debate.icons.icon';
+import { useModal } from '@logora/debate/dialog/modal';
+import { useResponsive } from "@logora/debate/hooks/use_responsive";
+import { Icon } from '@logora/debate/icons/icon';
 import cx from "classnames";
-import { NavbarModal } from '@logora/debate.navbar.navbar_modal';
+import { NavbarModal } from '@logora/debate/navbar/navbar_modal';
 
 import styles from './NavbarButton.module.scss';
 

@@ -1,22 +1,22 @@
 import React from 'react';
 import { IntlProvider } from 'react-intl';
 import { BrowserRouter } from 'react-router-dom';
-import { ConfigProvider } from '@logora/debate.data.config_provider';
-import { Location } from '@logora/debate.util.location';
+import { ConfigProvider } from '@logora/debate/data/config_provider';
+import { Location } from '@logora/debate/util/location';
 import { SummaryContentBox } from './SummaryContentBox';
-import { IconProvider } from '@logora/debate.icons.icon_provider';
-import * as regularIcons from '@logora/debate.icons.regular_icons';
+import { IconProvider } from '@logora/debate/icons/icon_provider';
+import * as regularIcons from '@logora/debate/icons/regular_icons';
 import { faker } from '@faker-js/faker';
 
 const author = {
-  image_url: faker.image.avatar(),
-  full_name: faker.name.fullName(),
+  image_url: faker.image.avatarGitHub(),
+  full_name: faker.person.fullName(),
   hash_id: faker.lorem.slug(),
   slug: faker.lorem.slug(),
   points: 52,
   role:"contributor",
   last_activity: new Date(),
-  description: faker.name.jobTitle()
+  description: faker.person.jobTitle()
 }
 
 const argument = {

@@ -9,7 +9,7 @@ const titleRedirectUrl = '/test-url';
 const headerLabel = 'Test Label';
 const onlineUsersCount = 5;
 const textLeft = true;
-const logo = faker.image.cats();
+const logo = faker.image.url();
 
 describe('EmbedHeader', () => {
     it('renders header label, title and link with correct href value', () => {

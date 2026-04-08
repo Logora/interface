@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Argument } from "@logora/debate.argument.argument";
-import { SuggestionBox } from "@logora/debate.suggestion.suggestion_box";
-import { ProposalBox } from "@logora/debate.proposal.proposal_box";
+import { Argument } from "@logora/debate/argument/argument";
+import { SuggestionBox } from "@logora/debate/suggestion/suggestion_box";
+import { ProposalBox } from "@logora/debate/proposal/proposal_box";
 import { useIntl } from "react-intl";
-import { Icon } from '@logora/debate.icons.icon';
+import { Icon } from '@logora/debate/icons/icon';
 import cx from "classnames";
 import styles from './ReportBox.module.scss';
 

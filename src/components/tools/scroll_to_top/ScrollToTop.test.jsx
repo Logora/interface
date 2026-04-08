@@ -6,16 +6,16 @@ import { InnerComponent } from './ScrollToTop.composition';
 
 describe('ScrollToTop', () => {  
     beforeEach(() => {
-        jest.clearAllMocks();
+        vi.clearAllMocks();
     });
 
     it('should scroll to the element with the specified ID on location change', async () => {
-        const scrollIntoViewMock = jest.fn();
-        const getElementByIdMock = jest.fn(() => ({
+        const scrollIntoViewMock = vi.fn();
+        const getElementByIdMock = vi.fn(() => ({
             scrollIntoView: scrollIntoViewMock
         }));
         window.document.getElementById = getElementByIdMock;
-        window.scrollTo = jest.fn();
+        window.scrollTo = vi.fn();
 
         render(
             <BrowserRouter>

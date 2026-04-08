@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { IconContext } from '@logora/debate.icons.icon_provider';
+import { IconContext } from '@logora/debate/icons/icon_provider';
 import PropTypes from "prop-types";
 
 export const Icon = ({ name, height = 20, width = 20, className, ...rest }) => {

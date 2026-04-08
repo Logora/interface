@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import { CheckboxLabel, Input } from '@logora/debate.input.checkbox.label';
+import { CheckboxLabel, Input } from '@logora/debate/input/checkbox/label';
 import styles from './Toggle.module.scss';
 
 export { Input };

@@ -1,12 +1,12 @@
 import React from 'react';
 import { IntlProvider } from 'react-intl';
 import { BrowserRouter } from 'react-router-dom';
-import { ConfigProvider } from '@logora/debate.data.config_provider';
-import { IconProvider } from '@logora/debate.icons.icon_provider';
-import { ResponsiveProvider } from '@logora/debate.hooks.use_responsive';
+import { ConfigProvider } from '@logora/debate/data/config_provider';
+import { IconProvider } from '@logora/debate/icons/icon_provider';
+import { ResponsiveProvider } from '@logora/debate/hooks/use_responsive';
 import { DebateBox } from './DebateBox';
-import { Location } from '@logora/debate.util.location';
-import * as regularIcons from '@logora/debate.icons.regular_icons';
+import { Location } from '@logora/debate/util/location';
+import * as regularIcons from '@logora/debate/icons/regular_icons';
 import { faker } from '@faker-js/faker';
 
 let UserShowLocation = new Location('espace-debat/user/:userSlug', { userSlug: "" })
@@ -19,13 +19,13 @@ const routes = {
 
 const createUser = () => {
 	return {
-		id: faker.datatype.number(10000000),
+		id: faker.number.int(10000000),
 		hash_id: faker.lorem.slug(),
-		first_name: faker.name.firstName(),
-		last_name: faker.name.lastName(),
+		first_name: faker.person.firstName(),
+		last_name: faker.person.lastName(),
 		slug: faker.lorem.slug(),
-		image_url: faker.image.avatar(),
-		full_name: faker.name.fullName(),
+		image_url: faker.image.avatarGitHub(),
+		full_name: faker.person.fullName(),
 		description: null,
 		last_activity: faker.date.recent(),
 		role: "contributor",
@@ -45,8 +45,8 @@ const debate = {
 	description: null,
 	created_at: faker.date.recent(),
 	score: 0,
-	image_url: faker.image.nature(),
-	banner_image_url: faker.image.nature(),
+	image_url: faker.image.url(),
+	banner_image_url: faker.image.url(),
 	votes_count: {
 		655: "2",
 		656: "6",
