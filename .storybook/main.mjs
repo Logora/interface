@@ -7,12 +7,8 @@ const __dirname = path.dirname(__filename);
 export default {
   stories: ['../src/components/**/*.stories.@(js|jsx|ts|tsx|mdx)'],
   addons: [
-    '@storybook/addon-a11y',
-    '@storybook/addon-docs'
+    '@storybook/addon-a11y'
   ],
-  docs: {
-    autodocs: true
-  },
   framework: {
     name: '@storybook/react-vite',
     options: {}

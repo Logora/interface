@@ -25,6 +25,12 @@ const config = {
 export default {
     title: 'Auth/Auth Modal',
     component: AuthModal,
+    tags: ['!autodocs'],
+    parameters: {
+        docs: {
+            disable: true
+        }
+    },
     args: {
         authType: 'social',
         hideBelowButton: false,

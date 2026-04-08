@@ -77,7 +77,6 @@
   "devDependencies": {
     "@faker-js/faker": "^10.4.0",
     "@storybook/addon-a11y": "^10.3.5",
-    "@storybook/addon-docs": "^10.3.5",
     "@storybook/react": "^10.3.5",
     "@storybook/react-vite": "^10.3.5",
     "@testing-library/dom": "^10.4.0",
