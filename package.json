@@ -3,19 +3,21 @@
   "version": "0.1.0",
   "license": "AGPL-3.0",
   "description": "Design system of @Logora made with React",
-  "main": "./src/index.js",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "files": [
+    "dist"
+  ],
   "sideEffects": [
     "**/*.css",
     "**/*.scss"
   ],
   "exports": {
-    ".": "./src/index.js",
-    "./*": "./src/components/*/index.js",
-    "./*/*": "./src/components/*/*/index.js",
-    "./styles/*": "./src/components/styles/*"
+    ".": "./dist/index.js"
   },
   "author": "Logora <contact@logora.fr>",
   "scripts": {
+    "build": "vite build --config vite.lib.config.mjs",
     "dev": "storybook dev -p 6006",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
