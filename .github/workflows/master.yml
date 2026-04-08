@@ -67,20 +67,8 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Compute next patch version
-        run: |
-          PACKAGE_NAME=$(node -p "require('./package.json').name")
-          LOCAL_VERSION=$(node -p "require('./package.json').version")
-          PUBLISHED_VERSION=$(npm view "$PACKAGE_NAME" version 2>/dev/null || true)
-
-          if [ -n "$PUBLISHED_VERSION" ]; then
-            NEXT_VERSION=$(node -e "const [major, minor, patch] = process.argv[1].split('.').map(Number); console.log([major, minor, patch + 1].join('.'));" "$PUBLISHED_VERSION")
-          else
-            NEXT_VERSION="$LOCAL_VERSION"
-          fi
-
-          echo "Publishing $PACKAGE_NAME@$NEXT_VERSION"
-          npm version "$NEXT_VERSION" --no-git-tag-version --allow-same-version
+      - name: Bump patch version
+        run: npm version patch --no-git-tag-version
 
       - name: Publish to npm
         run: pnpm publish --access public --no-git-checks
