@@ -44,7 +44,7 @@ const createNotification = () => ({
 const notificationDefinitions = {
   new_comment: {
     getRedirectUrl: () => '/comments/1',
-    getImage: () => <img src={faker.image.abstract()} alt='notification-image' />,
+    getImage: () => <img src={faker.image.url()} alt='notification-image' />,
     getContent: () => faker.commerce.productDescription()
   }
 };
@@ -77,7 +77,7 @@ const defaultArgs = {
   content: 'Drawer content'
 };
 
-export default {
+const meta = {
   title: 'Dialog/Drawer',
   component: Drawer,
   args: defaultArgs,
@@ -136,7 +136,11 @@ export default {
   }
 };
 
-export const DefaultDrawer = {};
+export default meta;
+
+const renderStory = (overrides = {}) => meta.render({ ...meta.args, ...overrides });
+
+export const DefaultDrawer = (props) => renderStory(props);
 
 export const DrawerWithoutNavbarButton = {
   render: (args) => {

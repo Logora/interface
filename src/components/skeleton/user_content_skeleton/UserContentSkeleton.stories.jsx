@@ -1,56 +1,44 @@
-export default {
-  title: 'Skeleton/User Content Skeleton'
-};
-
 import React from 'react';
 import { UserContentSkeleton } from './UserContentSkeleton';
 
-export const DefaultUserContentSkeleton = () => {
-    return (
-        <UserContentSkeleton />
-    );
+const meta = {
+  title: 'Skeleton/User Content Skeleton',
+  component: UserContentSkeleton,
+  args: {
+    border: false,
+    numberLines: undefined,
+    enableAnimation: true,
+    tag: undefined,
+    withChildren: false
+  },
+  argTypes: {
+    border: { control: 'boolean' },
+    numberLines: { control: 'number' },
+    enableAnimation: { control: 'boolean' },
+    tag: { control: 'text' },
+    withChildren: { control: 'boolean' }
+  },
+  render: ({ withChildren, ...args }) => (
+    <UserContentSkeleton {...args}>
+      {withChildren ? <div>Some content</div> : null}
+    </UserContentSkeleton>
+  )
 };
 
-export const UserContentSkeletonWithBorder = () => {
-    return (
-        <UserContentSkeleton border />
-    );
-};
+export default meta;
 
-export const UserContentSkeletonWithoutBody = () => {
-    return (
-        <UserContentSkeleton numberLines={0} />
-    );
-};
+export const DefaultUserContentSkeleton = {};
 
-export const UserContentSkeletonWithTwoLines = () => {
-    return (
-        <UserContentSkeleton numberLines={2} />
-    );
-};
+export const UserContentSkeletonWithBorder = { args: { border: true } };
 
-export const UserContentSkeletonWithoutAnimation = () => {
-    return (
-        <UserContentSkeleton enableAnimation={false} />
-    );
-};
+export const UserContentSkeletonWithoutBody = { args: { numberLines: 0 } };
 
-export const UserContentSkeletonWithTag = () => {
-    return (
-        <UserContentSkeleton tag={"Rock"} />
-    );
-};
+export const UserContentSkeletonWithTwoLines = { args: { numberLines: 2 } };
 
-export const UserContentSkeletonWithTagAndBorder = () => {
-    return (
-        <UserContentSkeleton border tag={"Rock"} />
-    );
-};
+export const UserContentSkeletonWithoutAnimation = { args: { enableAnimation: false } };
 
-export const UserContentSkeletonWithChildren = () => {
-    return (
-        <UserContentSkeleton>
-            <div>Some content</div>
-        </UserContentSkeleton>
-    );
-};
+export const UserContentSkeletonWithTag = { args: { tag: 'Rock' } };
+
+export const UserContentSkeletonWithTagAndBorder = { args: { border: true, tag: 'Rock' } };
+
+export const UserContentSkeletonWithChildren = { args: { withChildren: true } };

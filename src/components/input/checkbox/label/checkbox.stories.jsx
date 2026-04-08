@@ -1,26 +1,36 @@
 export default {
-  title: 'Input/Checkbox'
+	title: 'Input/Checkbox',
+	component: CheckboxLabel,
+	args: {
+		defaultChecked: false,
+		children: 'hello world'
+	},
+	argTypes: {
+		defaultChecked: {
+			control: 'boolean'
+		},
+		children: {
+			control: 'text'
+		}
+	},
+	render: (args) => (
+		<div>
+			<CheckboxLabel {...args}>{args.children}</CheckboxLabel>
+		</div>
+	)
 };
 
 import { HiddenCheckbox } from '@logora/debate/input/checkbox/hidden';
 import React, { useState } from 'react';
 import { CheckboxLabel } from './checkbox-label';
 
-export function UncontrolledVanilla() {
-	return (
-		<div>
-			<CheckboxLabel>hello world</CheckboxLabel>
-		</div>
-	);
-}
+export const UncontrolledVanilla = {};
 
-export function UncontrolledChecked() {
-	return (
-		<div>
-			<CheckboxLabel defaultChecked>hello world</CheckboxLabel>
-		</div>
-	);
-}
+export const UncontrolledChecked = {
+	args: {
+		defaultChecked: true
+	}
+};
 
 export function CustomInput() {
 	const [state, setState] = useState(false);

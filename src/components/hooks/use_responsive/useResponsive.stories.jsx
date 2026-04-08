@@ -1,10 +1,28 @@
-export default {
-  title: 'Hooks/Use Responsive'
-};
-
 import React from 'react';
 import { ResponsiveProvider } from './ResponsiveProvider';
 import { useResponsive } from './useResponsive';
+
+const meta = {
+    title: 'Hooks/Use Responsive',
+    component: () => null,
+    args: {
+        containerPath: 'rootContainer'
+    },
+    argTypes: {
+        containerPath: {
+            control: 'text'
+        }
+    },
+    render: ({ containerPath }) => (
+        <div id="rootContainer">
+            <ResponsiveProvider containerPath={containerPath}>
+                <ResponsiveComponent />
+            </ResponsiveProvider>
+        </div>
+    )
+};
+
+export default meta;
 
 const ResponsiveComponent = () => {
     const { isMobile, isTablet, isDesktop, elementWidth } = useResponsive();

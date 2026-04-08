@@ -1,5 +1,18 @@
 export default {
-  title: 'Input/Toggle'
+  title: 'Input/Toggle',
+  component: Toggle,
+  args: {
+    label: undefined,
+    message: undefined,
+    disabled: false,
+    checked: false
+  },
+  argTypes: {
+    label: { control: 'text' },
+    message: { control: 'text' },
+    disabled: { control: 'boolean' },
+    checked: { control: 'boolean' }
+  }
 };
 
 import React from 'react';

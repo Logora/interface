@@ -1,5 +1,8 @@
 export default {
-  title: 'Notification/Notification Menu'
+  title: 'Notification/Notification Menu',
+  component: NotificationMenu,
+  args: {},
+  argTypes: {}
 };
 
 import React from 'react';

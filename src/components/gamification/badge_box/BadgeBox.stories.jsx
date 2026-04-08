@@ -1,7 +1,3 @@
-export default {
-  title: 'Gamification/Badge Box'
-};
-
 import React from 'react';
 import { BadgeBox } from './BadgeBox';
 import { faker } from '@faker-js/faker';
@@ -27,53 +23,42 @@ const badgeCompleted = {
     progress: 13,
 }
 
-export const DefaultBadgeBox = () => {
-    return (
+export default {
+    title: 'Gamification/Badge Box',
+    component: BadgeBox,
+    args: {
+        eloquenceTitle: '',
+        ...badge
+    },
+    argTypes: {
+        eloquenceTitle: { control: 'text' },
+        icon_url: { control: 'text' },
+        level: { control: 'number' },
+        name: { control: 'text' },
+        next_title_level: { control: 'number' },
+        steps: { control: 'number' },
+        title: { control: 'text' },
+        progress: { control: 'number' }
+    },
+    render: (args) => (
         <IntlProvider locale="en">
-            <BadgeBox 
-                eloquenceTitle="" 
-                icon_url={badge.icon_url}
-                level={badge.level}
-                name={badge.name}
-                next_title_level={badge.next_title_level}
-                steps={badge.steps}
-                title={badge.title}
-                progress={badge.progress}
-            />
+            <BadgeBox {...args} />
         </IntlProvider>
     )
 };
 
-export const TitleShownBadgeBox = () => {
-    return (
-        <IntlProvider locale="en">
-            <BadgeBox 
-                eloquenceTitle={badgeCompleted.name}
-                icon_url={badgeCompleted.icon_url}
-                level={badgeCompleted.level}
-                name={badgeCompleted.name}
-                next_title_level={badgeCompleted.next_title_level}
-                steps={badgeCompleted.steps}
-                title={badgeCompleted.title}
-                progress={badgeCompleted.progress}
-            />
-        </IntlProvider>
-    )
+export const DefaultBadgeBox = {};
+
+export const TitleShownBadgeBox = {
+    args: {
+        ...badgeCompleted,
+        eloquenceTitle: badgeCompleted.name
+    }
 };
 
-export const TitleObtainedBadgeBox = () => {
-    return (
-        <IntlProvider locale="en">
-            <BadgeBox 
-                eloquenceTitle=""
-                icon_url={badgeCompleted.icon_url}
-                level={badgeCompleted.level}
-                name={badgeCompleted.name}
-                next_title_level={badgeCompleted.next_title_level}
-                steps={badgeCompleted.steps}
-                title={badgeCompleted.title}
-                progress={badgeCompleted.progress}
-            />
-        </IntlProvider>
-    )
+export const TitleObtainedBadgeBox = {
+    args: {
+        ...badgeCompleted,
+        eloquenceTitle: ''
+    }
 };

@@ -1,10 +1,16 @@
-export default {
-  title: 'List/List Provider'
-};
-
 import React, { useState, useEffect } from 'react';
 import { ListProvider } from './ListProvider';
 import { useList } from './useList';
+
+const meta = {
+    title: 'List/List Provider',
+    component: ListProvider,
+    args: {},
+    argTypes: {},
+    render: () => <DefaultListProvider />
+};
+
+export default meta;
 
 const List = () => {
     const [elements, setElements] = useState(["first element"]);

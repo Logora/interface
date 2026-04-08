@@ -1,5 +1,18 @@
 export default {
-  title: 'Share/Share Box'
+    title: 'Share/Share Box',
+    component: ShareBox,
+    args: {
+        shareUrl: 'https://example.fr/test/',
+        shareTitle: 'Share this !',
+        shareText: 'You should check this interesting link',
+        showShareCode: false
+    },
+    argTypes: {
+        shareUrl: { control: 'text' },
+        shareTitle: { control: 'text' },
+        shareText: { control: 'text' },
+        showShareCode: { control: 'boolean' }
+    }
 };
 
 import React from 'react';

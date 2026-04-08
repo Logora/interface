@@ -1,5 +1,14 @@
 export default {
-  title: 'Navbar/Navbar Button'
+  title: 'Navbar/Navbar Button',
+  component: NavbarButton,
+  args: {
+    inDrawer: true,
+    isLoggedIn: false
+  },
+  argTypes: {
+    inDrawer: { control: 'boolean' },
+    isLoggedIn: { control: 'boolean' }
+  }
 };
 
 import React from "react";

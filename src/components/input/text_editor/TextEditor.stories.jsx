@@ -1,5 +1,24 @@
 export default {
-  title: 'Input/Text Editor'
+    title: 'Input/Text Editor',
+    component: TextEditor,
+    args: {
+        placeholder: 'Add an argument',
+        shortBar: true,
+        active: false,
+        hideSourceAction: false,
+        hideSubmit: false,
+        disableRichText: false,
+        maxLength: undefined
+    },
+    argTypes: {
+        placeholder: { control: 'text' },
+        shortBar: { control: 'boolean' },
+        active: { control: 'boolean' },
+        hideSourceAction: { control: 'boolean' },
+        hideSubmit: { control: 'boolean' },
+        disableRichText: { control: 'boolean' },
+        maxLength: { control: 'number' }
+    }
 };
 
 import React from 'react';

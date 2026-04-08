@@ -1,7 +1,3 @@
-export default {
-  title: 'Icons/Bild Icons'
-};
-
 import React from 'react';
 import { Alarm } from "./Alarm"
 import { Announcement } from "./Announcement"
@@ -55,6 +51,16 @@ import { CheckCircle } from './CheckCircle';
 import { MinusCircle } from './MinusCircle';
 import { Flag } from './Flag'
 import { PauseCircle } from './PauseCircle';
+
+const meta = {
+    title: 'Icons/Bild Icons',
+    component: () => null,
+    args: {},
+    argTypes: {},
+    render: () => <BildIconsLibrary />
+};
+
+export default meta;
 
 export const BildIconsLibrary = () => {
     return (

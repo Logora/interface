@@ -1,7 +1,3 @@
-export default {
-  title: 'Auth/Social Auth Form'
-};
-
 import React from 'react';
 import { MemoryRouter } from "react-router-dom";
 import { IntlProvider } from 'react-intl';
@@ -9,91 +5,78 @@ import { SocialAuthForm } from './SocialAuthForm';
 import { IconProvider } from '@logora/debate/icons/icon_provider';
 import * as regularIcons from '@logora/debate/icons/regular_icons';
 
-export const DefaultSocialAuthForm = () => {
-    return (
+const noop = () => false;
+
+const meta = {
+    title: 'Auth/Social Auth Form',
+    component: SocialAuthForm,
+    args: {
+        onSubmit: noop,
+        lastStep: null,
+        facebookClientId: 'facebook-client-id',
+        googleClientId: 'google-client-id',
+        oAuthRedirectUri: 'https://redirect-uri.com',
+        logoUrl: 'https://picsum.photos/200',
+        providerName: 'My company',
+        termsUrl: 'https://example.com/terms',
+        privacyUrl: 'https://example.com/privacy',
+        forgotPasswordUrl: 'http://example.com/forgot_password'
+    },
+    argTypes: {
+        onSubmit: {
+            control: false
+        },
+        lastStep: {
+            control: 'select',
+            options: [null, 'LOGIN', 'SIGNUP']
+        },
+        facebookClientId: {
+            control: 'text'
+        },
+        googleClientId: {
+            control: 'text'
+        },
+        oAuthRedirectUri: {
+            control: 'text'
+        },
+        logoUrl: {
+            control: 'text'
+        },
+        providerName: {
+            control: 'text'
+        },
+        termsUrl: {
+            control: 'text'
+        },
+        privacyUrl: {
+            control: 'text'
+        },
+        forgotPasswordUrl: {
+            control: 'text'
+        }
+    },
+    render: (args) => (
         <MemoryRouter>
             <IconProvider library={regularIcons}>
                 <IntlProvider locale="en">
-                    <SocialAuthForm 
-                        onSubmit={(data, authType, lastStep, consent) => false } 
-                        facebookClientId={"facebook-client-id"}
-                        googleClientId={"google-client-id"}
-                        oAuthRedirectUri={"https://redirect-uri.com"} 
-                        logoUrl={"https://picsum.photos/200"}
-                        providerName={"My company"}
-                        termsUrl={"https://example.com/terms"}
-                        privacyUrl={"https://example.com/privacy"}
-                        forgotPasswordUrl={"http://example.com/forgot_password"} 
-                    />
+                    <SocialAuthForm {...args} />
                 </IntlProvider>
             </IconProvider>
         </MemoryRouter>
-    );
+    )
 };
 
-export const SocialAuthFormWithoutLogo = () => {
-    return (
-        <MemoryRouter>
-            <IconProvider library={regularIcons}>
-                <IntlProvider locale="en">
-                    <SocialAuthForm 
-                        onSubmit={(data, authType, lastStep, consent) => false } 
-                        facebookClientId={"facebook-client-id"}
-                        googleClientId={"google-client-id"}
-                        oAuthRedirectUri={"https://redirect-uri.com"} 
-                        providerName={"My company"}
-                        termsUrl={"https://example.com/terms"}
-                        privacyUrl={"https://example.com/privacy"}
-                        forgotPasswordUrl={"http://example.com/forgot_password"} 
-                    />
-                </IntlProvider>
-            </IconProvider>
-        </MemoryRouter>
-    );
-};
+export default meta;
 
-export const SocialAuthFormLoginForm = () => {
-    return (
-        <MemoryRouter>
-            <IconProvider library={regularIcons}>
-                <IntlProvider locale="en">
-                    <SocialAuthForm 
-                            onSubmit={(data, authType, lastStep, consent) => false } 
-                            lastStep={"LOGIN"}
-                            facebookClientId={"facebook-client-id"}
-                        googleClientId={"google-client-id"}
-                        oAuthRedirectUri={"https://redirect-uri.com"} 
-                        logoUrl={"https://picsum.photos/200"}
-                        providerName={"My company"}
-                        termsUrl={"https://example.com/terms"}
-                        privacyUrl={"https://example.com/privacy"}
-                        forgotPasswordUrl={"http://example.com/forgot_password"} 
-                    />
-                </IntlProvider>
-            </IconProvider>
-        </MemoryRouter>
-    );
-};
+const renderStory = (overrides = {}) => meta.render({ ...meta.args, ...overrides });
 
-export const SocialAuthFormSignupForm = () => {
-    return (
-        <MemoryRouter>
-            <IconProvider library={regularIcons}>
-                <IntlProvider locale="en">
-                    <SocialAuthForm 
-                        onSubmit={(data, authType, lastStep, consent) => false } 
-                        lastStep={"SIGNUP"}
-                        facebookClientId={"facebook-client-id"}
-                        googleClientId={"google-client-id"}
-                        oAuthRedirectUri={"https://redirect-uri.com"} 
-                        logoUrl={"https://picsum.photos/200"}
-                        providerName={"My company"}
-                        termsUrl={"https://example.com/terms"}
-                        privacyUrl={"https://example.com/privacy"}
-                        forgotPasswordUrl={"http://example.com/forgot_password"} 
-                    />
-                </IntlProvider>
-            </IconProvider>
-        </MemoryRouter>
-    );
-};
+export const DefaultSocialAuthForm = (props) => renderStory(props);
+
+export const SocialAuthFormWithoutLogo = (props) => renderStory({
+    logoUrl: null,
+    ...props
+});
+
+export const SocialAuthFormLoginForm = (props) => renderStory({ lastStep: 'LOGIN', ...props });
+
+export const SocialAuthFormSignupForm = (props) => renderStory({ lastStep: 'SIGNUP', ...props });

@@ -2,7 +2,7 @@ import React from 'react';
 import { IntlProvider } from 'react-intl';
 import { DialogBox } from './DialogBox';
 
-export default {
+const meta = {
     title: 'Dialog/Dialog Box',
     component: DialogBox,
     args: {
@@ -36,10 +36,10 @@ export default {
     )
 };
 
-export const DefaultDialogBox = {};
+export default meta;
 
-export const HiddenDialogBox = {
-    args: {
-        isHidden: true
-    }
-};
+const renderStory = (overrides = {}) => meta.render({ ...meta.args, ...overrides });
+
+export const DefaultDialogBox = (props) => renderStory(props);
+
+export const HiddenDialogBox = (props) => renderStory({ isHidden: true, ...props });

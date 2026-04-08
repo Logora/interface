@@ -1,5 +1,18 @@
 export default {
-  title: 'Share/Share Button'
+    title: 'Share/Share Button',
+    component: ShareButton,
+    args: {
+        shareUrl: 'https://example.fr/test/',
+        shareTitle: 'Share this !',
+        shareText: 'You should check this interesting link',
+        showText: false
+    },
+    argTypes: {
+        shareUrl: { control: 'text' },
+        shareTitle: { control: 'text' },
+        shareText: { control: 'text' },
+        showText: { control: 'boolean' }
+    }
 };
 
 import React from 'react';

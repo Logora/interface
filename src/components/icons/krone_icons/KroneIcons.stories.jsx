@@ -1,7 +1,3 @@
-export default {
-  title: 'Icons/Krone Icons'
-};
-
 import React from 'react';
 import { Alarm } from "./Alarm"
 import { Announcement } from "./Announcement"
@@ -55,6 +51,16 @@ import { Flag } from './Flag';
 import { CheckCircle } from './CheckCircle';
 import { MinusCircle } from './MinusCircle';
 import { PauseCircle } from './PauseCircle';
+
+const meta = {
+    title: 'Icons/Krone Icons',
+    component: () => null,
+    args: {},
+    argTypes: {},
+    render: () => <KroneIconsLibrary />
+};
+
+export default meta;
 
 export const KroneIconsLibrary = () => {
     return (

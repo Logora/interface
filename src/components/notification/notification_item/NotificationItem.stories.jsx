@@ -1,5 +1,12 @@
 export default {
-  title: 'Notification/Notification Item'
+  title: 'Notification/Notification Item',
+  component: NotificationItem,
+  args: {
+    isRead: false
+  },
+  argTypes: {
+    isRead: { control: 'boolean' }
+  }
 };
 
 import React from 'react';

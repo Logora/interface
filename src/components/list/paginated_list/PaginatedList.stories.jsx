@@ -1,7 +1,3 @@
-export default {
-  title: 'List/Paginated List'
-};
-
 import React from "react";
 import { PaginatedList } from "./PaginatedList";
 import { IntlProvider } from "react-intl";
@@ -43,6 +39,44 @@ const httpClient = {
 };
 
 const data = dataProvider(httpClient, "https://mock.example.api");
+
+const meta = {
+  title: 'List/Paginated List',
+  component: PaginatedList,
+  args: {
+    currentListId: 'itemList',
+    resource: '/items',
+    resourcePropName: 'item',
+    perPage: 3,
+    display: 'column'
+  },
+  argTypes: {
+    currentListId: { control: 'text' },
+    resource: { control: 'text' },
+    resourcePropName: { control: 'text' },
+    perPage: { control: 'number' },
+    display: { control: 'text' }
+  },
+  render: (args) => (
+    <BrowserRouter>
+      <IntlProvider locale="en">
+        <ListProvider>
+          <IconProvider library={regularIcons}>
+            <ResponsiveProvider>
+              <DataProviderContext.Provider value={{ dataProvider: data }}>
+                <PaginatedList {...args}>
+                  <ListItem />
+                </PaginatedList>
+              </DataProviderContext.Provider>
+            </ResponsiveProvider>
+          </IconProvider>
+        </ListProvider>
+      </IntlProvider>
+    </BrowserRouter>
+  )
+};
+
+export default meta;
 
 export const DefaultPaginatedList = () => {
   return (

@@ -1,7 +1,3 @@
-export default {
-  title: 'Text/Read More'
-};
-
 import React from 'react';
 import { ReadMore } from './ReadMore';
 import { faker } from '@faker-js/faker';
@@ -13,6 +9,30 @@ import * as regularIcons from '@logora/debate/icons/regular_icons';
 
 let text = faker.lorem.paragraph(40);
 let url = faker.internet.url();
+
+const meta = {
+    title: 'Text/Read More',
+    component: ReadMore,
+    args: {
+        content: text,
+        lineCount: 4,
+        readMoreText: 'Read more',
+        readLessText: 'Read less'
+    },
+    argTypes: {
+        content: { control: 'text' },
+        lineCount: { control: 'number' },
+        charCount: { control: 'number' },
+        readMoreText: { control: 'text' },
+        readLessText: { control: 'text' },
+        expandable: { control: 'boolean' },
+        to: { control: 'text' },
+        target: { control: 'text' },
+        external: { control: 'boolean' }
+    }
+};
+
+export default meta;
 
 export const LineCountReadMore = () => {
     return (

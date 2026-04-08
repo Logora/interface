@@ -2,7 +2,7 @@ import React from 'react';
 import { IntlProvider } from "react-intl";
 import { Toast } from './Toast';
 
-export default {
+const meta = {
     title: 'Dialog/Toast',
     component: Toast,
     args: {
@@ -29,22 +29,14 @@ export default {
     )
 };
 
-export const DefaultToast = {};
+export default meta;
 
-export const ToastSuccess = {
-    args: {
-        variant: 'success'
-    }
-};
+const renderStory = (overrides = {}) => meta.render({ ...meta.args, ...overrides });
 
-export const ToastError = {
-    args: {
-        variant: 'error'
-    }
-};
+export const DefaultToast = (props) => renderStory(props);
 
-export const ToastWithPoints = {
-    args: {
-        points: 34
-    }
-};
+export const ToastSuccess = (props) => renderStory({ variant: 'success', ...props });
+
+export const ToastError = (props) => renderStory({ variant: 'error', ...props });
+
+export const ToastWithPoints = (props) => renderStory({ points: 34, ...props });

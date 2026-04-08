@@ -1,7 +1,3 @@
-export default {
-  title: 'Icons/Spiegel Icons'
-};
-
 import React from 'react';
 import { Alarm } from "./Alarm"
 import { Announcement } from "./Announcement"
@@ -54,6 +50,16 @@ import { CheckCircle } from './CheckCircle';
 import { MinusCircle } from './MinusCircle';
 import { Flag } from './Flag';
 import  { PauseCircle } from './PauseCircle'
+
+const meta = {
+    title: 'Icons/Spiegel Icons',
+    component: () => null,
+    args: {},
+    argTypes: {},
+    render: () => <SpiegelIconsLibrary />
+};
+
+export default meta;
 
 export const SpiegelIconsLibrary = () => {
     return (

@@ -1,7 +1,3 @@
-export default {
-  title: 'Consultation/Consultation Box'
-};
-
 import React from 'react';
 import { IntlProvider } from 'react-intl';
 import { ConfigProvider } from '@logora/debate/data/config_provider';
@@ -43,66 +39,58 @@ const consultation = {
     translation_entries: []
 }
 
-export const DefaultConsultationBox = (props) => {
-    return(
+const meta = {
+    title: 'Consultation/Consultation Box',
+    component: ConsultationBox,
+    args: {
+        consultation
+    },
+    argTypes: {
+        consultation: {
+            control: 'object'
+        }
+    },
+    render: ({ consultation }) => (
         <BrowserRouter>
             <IntlProvider locale="en">
                 <IconProvider library={regularIcons}>
                     <ResponsiveProvider>
-                        <ConfigProvider routes={{...routes}} config={{theme:{}}}>
-                            <ConsultationBox consultation={props.consultation || consultation} />
+                        <ConfigProvider routes={{ ...routes }} config={{ theme: {} }}>
+                            <ConsultationBox consultation={consultation} />
                         </ConfigProvider>
                     </ResponsiveProvider>
                 </IconProvider>
             </IntlProvider>
         </BrowserRouter>
     )
-}
+};
 
-export const ConsultationEndedBox = () => {
-    return(
-        <BrowserRouter>
-            <IntlProvider locale="en">
-                <IconProvider library={regularIcons}>
-                    <ResponsiveProvider>
-                        <ConfigProvider routes={{...routes}} config={{theme:{}}}>
-                            <ConsultationBox consultation={Object.assign(consultation, { ends_at: "2022-11-30T00:00:00.000Z" })} />
-                        </ConfigProvider>
-                    </ResponsiveProvider>
-                </IconProvider>
-            </IntlProvider>
-        </BrowserRouter>
-    )
-}
+export default meta;
 
-export const ConsultationWithoutEndBox = () => {
-    return(
-        <BrowserRouter>
-            <IntlProvider locale="en">
-                <IconProvider library={regularIcons}>
-                    <ResponsiveProvider>
-                        <ConfigProvider routes={{...routes}} config={{theme:{}}}>
-                            <ConsultationBox consultation={Object.assign(consultation, { ends_at: null })} />
-                        </ConfigProvider>
-                    </ResponsiveProvider>
-                </IconProvider>
-            </IntlProvider>
-        </BrowserRouter>
-    )
-}
+const renderStory = (overrides = {}) => meta.render({ ...meta.args, ...overrides });
 
-export const ConsultationWithoutVoteGoalBox = () => {
-    return(
-        <BrowserRouter>
-            <IntlProvider locale="en">
-                <IconProvider library={regularIcons}>
-                    <ResponsiveProvider>
-                        <ConfigProvider routes={{...routes}} config={{theme:{}}}>
-                            <ConsultationBox consultation={Object.assign(consultation, { vote_goal: 0 })} />
-                        </ConfigProvider>
-                    </ResponsiveProvider>
-                </IconProvider>
-            </IntlProvider>
-        </BrowserRouter>
-    )
-}
+export const DefaultConsultationBox = (props) => renderStory(props);
+
+export const ConsultationEndedBox = (props) => renderStory({
+    consultation: {
+        ...consultation,
+        ends_at: '2022-11-30T00:00:00.000Z'
+    },
+    ...props
+});
+
+export const ConsultationWithoutEndBox = (props) => renderStory({
+    consultation: {
+        ...consultation,
+        ends_at: null
+    },
+    ...props
+});
+
+export const ConsultationWithoutVoteGoalBox = (props) => renderStory({
+    consultation: {
+        ...consultation,
+        vote_goal: 0
+    },
+    ...props
+});

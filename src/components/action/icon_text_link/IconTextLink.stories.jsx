@@ -42,16 +42,3 @@ export default {
 };
 
 export const DefaultIconTextLink = {};
-
-export const ActiveIconTextLink = {
-    args: {
-        active: true
-    }
-};
-
-export const IconTextLinkWithTextPin = {
-    args: {
-        pin: true,
-        pinText: '23'
-    }
-};

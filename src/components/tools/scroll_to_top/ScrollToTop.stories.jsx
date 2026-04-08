@@ -1,10 +1,26 @@
-export default {
-  title: 'Tools/Scroll To Top'
-};
-
 import React from 'react';
 import { BrowserRouter, useNavigate } from 'react-router-dom';
 import { ScrollToTop } from './ScrollToTop';
+
+const meta = {
+    title: 'Tools/Scroll To Top',
+    component: ScrollToTop,
+    args: {
+        elementId: 'test'
+    },
+    argTypes: {
+        elementId: {
+            control: 'text'
+        }
+    },
+    render: ({ elementId }) => (
+        <BrowserRouter>
+            <InnerComponent elementId={elementId} />
+        </BrowserRouter>
+    )
+};
+
+export default meta;
 
 export const InnerComponent = ({ elementId = "test" }) => {
     const navigate = useNavigate();
@@ -20,11 +36,5 @@ export const InnerComponent = ({ elementId = "test" }) => {
     )
 }
 
-export const DefaultScrollToTop = () => {
-    return (
-        <BrowserRouter>
-            <InnerComponent />
-        </BrowserRouter>
-    );
-};
+export const DefaultScrollToTop = {};
 

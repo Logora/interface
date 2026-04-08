@@ -1,7 +1,3 @@
-export default {
-  title: 'Argument/Top Arguments'
-};
-
 import React from 'react';
 import { IntlProvider } from 'react-intl';
 import { ConfigProvider } from '@logora/debate/data/config_provider';
@@ -82,86 +78,79 @@ const argumentAgainst = {
     }
 };
 
-export const DefaultTopArguments = () => {
-    return (
+const meta = {
+    title: 'Argument/Top Arguments',
+    component: TopArguments,
+    args: {
+        newDesign: false,
+        showArgumentFor: true,
+        showArgumentAgainst: true,
+        argumentCount: [5, 3],
+        debate,
+        debateUrl
+    },
+    argTypes: {
+        newDesign: {
+            control: 'boolean'
+        },
+        showArgumentFor: {
+            control: 'boolean'
+        },
+        showArgumentAgainst: {
+            control: 'boolean'
+        },
+        argumentCount: {
+            control: 'object'
+        },
+        debate: {
+            control: 'object'
+        },
+        debateUrl: {
+            control: 'text'
+        }
+    },
+    render: ({ newDesign, showArgumentFor, showArgumentAgainst, ...args }) => (
         <MemoryRouter>
-            <ConfigProvider routes={{ ...routes }} config={{synthesis: {newDesign: false}}}>
+            <ConfigProvider routes={{ ...routes }} config={{ synthesis: { newDesign } }}>
                 <ResponsiveProvider>
                     <IconProvider library={regularIcons}>
                         <IntlProvider locale="en">
                             <TopArguments
-                                argumentFor={argumentFor}
-                                argumentAgainst={argumentAgainst} 
-                                argumentCount={[5, 3]}
-                                debate={debate}
-                                debateUrl={debateUrl} 
+                                {...args}
+                                argumentFor={showArgumentFor ? argumentFor : undefined}
+                                argumentAgainst={showArgumentAgainst ? argumentAgainst : undefined}
                             />
                         </IntlProvider>
                     </IconProvider>
                 </ResponsiveProvider>
             </ConfigProvider>
         </MemoryRouter>
-    );
+    )
 };
 
-export const TopArgumentsNewDesign = () => {
-    return (
-        <MemoryRouter>
-            <ConfigProvider routes={{ ...routes }} config={{synthesis: {newDesign: true}}}>
-                <ResponsiveProvider>
-                    <IconProvider library={regularIcons}>
-                        <IntlProvider locale="en">
-                            <TopArguments
-                                argumentAgainst={argumentAgainst} 
-                                argumentCount={[0, 3]}
-                                debate={debate}
-                                debateUrl={debateUrl} 
-                            />
-                        </IntlProvider>
-                    </IconProvider>
-                </ResponsiveProvider>
-            </ConfigProvider>
-        </MemoryRouter>
-    );
-};
+export default meta;
 
-export const TopArgumentsWithEmptyArgument = () => {
-    return (
-        <MemoryRouter>
-            <ConfigProvider routes={{ ...routes }} config={{synthesis: {newDesign: false}}}>
-                <ResponsiveProvider>
-                    <IconProvider library={regularIcons}>
-                        <IntlProvider locale="en">
-                            <TopArguments
-                                argumentAgainst={argumentAgainst}
-                                argumentCount={[0, 3]}
-                                debate={debate}
-                                debateUrl={debateUrl} 
-                            />
-                        </IntlProvider>
-                    </IconProvider>
-                </ResponsiveProvider>
-            </ConfigProvider>
-        </MemoryRouter>
-    );
-};
+const renderStory = (overrides = {}) => meta.render({ ...meta.args, ...overrides });
 
-export const TopArgumentsNewDesignWithEmptyArgument = () => {
-    return (
-        <MemoryRouter>
-            <ConfigProvider routes={{ ...routes }} config={{synthesis: {newDesign: true}}}>
-                <ResponsiveProvider>
-                    <IconProvider library={regularIcons}>
-                        <IntlProvider locale="en">
-                            <TopArguments
-                                argumentCount={[0, 0]}
-                                debate={debate}
-                                debateUrl={debateUrl} 
-                            />
-                        </IntlProvider>
-                    </IconProvider>
-                </ResponsiveProvider>
-            </ConfigProvider>
-        </MemoryRouter>
-    );
-};
+export const DefaultTopArguments = (props) => renderStory(props);
+
+export const TopArgumentsWithEmptyArgument = (props) => renderStory({
+    showArgumentFor: false,
+    argumentCount: [0, 3],
+    ...props
+});
+
+export const TopArgumentsNewDesign = (props) => renderStory({
+    newDesign: true,
+    showArgumentFor: false,
+    argumentCount: [0, 3],
+    ...props
+});
+
+export const TopArgumentsNewDesignWithEmptyArgument = (props) => renderStory({
+    newDesign: true,
+    showArgumentFor: false,
+    showArgumentAgainst: false,
+    argumentCount: [0, 0],
+    ...props
+});

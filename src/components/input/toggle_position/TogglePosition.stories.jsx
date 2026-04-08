@@ -1,5 +1,26 @@
 export default {
-  title: 'Input/Toggle Position'
+    title: 'Input/Toggle Position',
+    component: TogglePosition,
+    args: {
+        activeLabel: undefined,
+        firstLabel: {
+            id: 902,
+            name: 'Yes',
+            language: null,
+            translation_entries: []
+        },
+        secondLabel: {
+            id: 903,
+            name: 'No',
+            language: null,
+            translation_entries: []
+        }
+    },
+    argTypes: {
+        activeLabel: { control: 'number' },
+        firstLabel: { control: 'object' },
+        secondLabel: { control: 'object' }
+    }
 };
 
 import React from 'react';

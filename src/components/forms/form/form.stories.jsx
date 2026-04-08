@@ -1,5 +1,16 @@
 export default {
-  title: 'Forms/Form'
+  title: 'Forms/Form',
+  component: Form,
+  args: {
+    useNativeOnSubmit: false
+  },
+  argTypes: {
+    useNativeOnSubmit: {
+      control: 'boolean'
+    }
+  },
+  render: ({ useNativeOnSubmit }) =>
+    useNativeOnSubmit ? <FormWithNativeOnSubmit /> : <FormExample />
 };
 
 import React, { useEffect, useState, useCallback } from 'react';
@@ -97,4 +108,12 @@ function EmailInput(props) {
     </>
   );
 }
+
+export const DefaultForm = {};
+
+export const FormNativeOnSubmit = {
+  args: {
+    useNativeOnSubmit: true
+  }
+};
 

@@ -1,7 +1,3 @@
-export default {
-  title: 'Chart/Pie Chart'
-};
-
 import React from 'react';
 import { IntlProvider } from 'react-intl';
 import { PieChart } from './PieChart';
@@ -11,10 +7,30 @@ const labels = [{ "id": 114, "name": "moto", "taggings_count": 0, "display_name"
 const totalItemsCount = 10;
 const pieTitle = "# of proposals"
 
-export const DefaultPieChart = () => {
-    return (
+const meta = {
+    title: 'Chart/Pie Chart',
+    component: PieChart,
+    args: {
+        data,
+        totalItemsCount,
+        labels,
+        pieTitle
+    },
+    argTypes: {
+        data: { control: 'object' },
+        totalItemsCount: { control: 'number' },
+        labels: { control: 'object' },
+        pieTitle: { control: 'text' }
+    },
+    render: (args) => (
         <IntlProvider locale="en">
-            <PieChart data={data} totalItemsCount={totalItemsCount} labels={labels} pieTitle={pieTitle} />
+            <PieChart {...args} />
         </IntlProvider>
     )
-}
+};
+
+export default meta;
+
+const renderStory = (overrides = {}) => meta.render({ ...meta.args, ...overrides });
+
+export const DefaultPieChart = (props) => renderStory(props);

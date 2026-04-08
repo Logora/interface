@@ -1,7 +1,3 @@
-export default {
-  title: 'Auth/Auth Modal'
-};
-
 import React from 'react';
 import { MemoryRouter } from "react-router-dom";
 import { IntlProvider } from 'react-intl';
@@ -26,87 +22,69 @@ const config = {
     }
 };
 
-export const DefaultAuthModal = () => {
-    const data = dataProvider(httpClient, "https://mock.example.api");
+export default {
+    title: 'Auth/Auth Modal',
+    component: AuthModal,
+    args: {
+        authType: 'social',
+        hideBelowButton: false,
+        onHideModal: null
+    },
+    argTypes: {
+        authType: {
+            control: 'select',
+            options: ['social', 'sso']
+        },
+        hideBelowButton: {
+            control: 'boolean'
+        },
+        onHideModal: {
+            control: false
+        }
+    },
+    render: ({ authType, hideBelowButton, ...args }) => {
+        const data = dataProvider(httpClient, 'https://mock.example.api');
+        const currentConfig = {
+            ...config,
+            auth: {
+                type: authType,
+                hideBelowButton
+            }
+        };
 
-    return (
-        <div style={{width: "400px", height: "300px"}}>
-            <MemoryRouter>
-                <ConfigProvider config={config}>
-                    <IconProvider library={regularIcons}>
-                        <IntlProvider locale="en">
-                            <DataProviderContext.Provider value={{ dataProvider: data }}>
-                                <AuthProvider>
-                                    <ModalProvider>
-                                        <AuthModal onHideModal={null} />
-                                    </ModalProvider>
-                                </AuthProvider>
-                            </DataProviderContext.Provider>
-                        </IntlProvider>
-                    </IconProvider>
-                </ConfigProvider>
-            </MemoryRouter>
-        </div>
-    );
+        return (
+            <div style={{ width: '400px', height: '300px' }}>
+                <MemoryRouter>
+                    <ConfigProvider config={currentConfig}>
+                        <IconProvider library={regularIcons}>
+                            <IntlProvider locale="en">
+                                <DataProviderContext.Provider value={{ dataProvider: data }}>
+                                    <AuthProvider>
+                                        <ModalProvider>
+                                            <AuthModal {...args} />
+                                        </ModalProvider>
+                                    </AuthProvider>
+                                </DataProviderContext.Provider>
+                            </IntlProvider>
+                        </IconProvider>
+                    </ConfigProvider>
+                </MemoryRouter>
+            </div>
+        );
+    }
 };
 
-export const AuthModalSSO = () => {
-    const data = dataProvider(httpClient, "https://mock.example.api");
-    const newConfig = {
-        shortname: "myapp",
-        auth: {
-            type: "sso"
-        }
-    };
+export const DefaultAuthModal = {};
 
-    return (
-        <div style={{width: "400px", height: "300px"}}>
-            <MemoryRouter>
-                <ConfigProvider config={newConfig}>
-                    <IconProvider library={regularIcons}>
-                        <IntlProvider locale="en">
-                            <DataProviderContext.Provider value={{ dataProvider: data }}>
-                                <AuthProvider>
-                                    <ModalProvider>
-                                        <AuthModal onHideModal={null} />
-                                    </ModalProvider>
-                                </AuthProvider>
-                            </DataProviderContext.Provider>
-                        </IntlProvider>
-                    </IconProvider>
-                </ConfigProvider>
-            </MemoryRouter>
-        </div>
-    );
+export const AuthModalSSO = {
+    args: {
+        authType: 'sso'
+    }
 };
 
-export const AuthModalSSOHideBelowButton = () => {
-    const data = dataProvider(httpClient, "https://mock.example.api");
-    const newConfig = {
-        shortname: "myapp",
-        auth: {
-            type: "sso",
-            hideBelowButton: true,
-        }
-    };
-
-    return (
-        <div style={{width: "400px", height: "300px"}}>
-            <MemoryRouter>
-                <ConfigProvider config={newConfig}>
-                    <IconProvider library={regularIcons}>
-                        <IntlProvider locale="en">
-                            <DataProviderContext.Provider value={{ dataProvider: data }}>
-                                <AuthProvider>
-                                    <ModalProvider>
-                                        <AuthModal onHideModal={null} />
-                                    </ModalProvider>
-                                </AuthProvider>
-                            </DataProviderContext.Provider>
-                        </IntlProvider>
-                    </IconProvider>
-                </ConfigProvider>
-            </MemoryRouter>
-        </div>
-    );
+export const AuthModalSSOHideBelowButton = {
+    args: {
+        authType: 'sso',
+        hideBelowButton: true
+    }
 };

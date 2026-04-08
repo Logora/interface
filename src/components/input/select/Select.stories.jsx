@@ -1,5 +1,18 @@
 export default {
-  title: 'Input/Select'
+    title: 'Input/Select',
+    component: Select,
+    args: {
+        options: undefined,
+        defaultOption: undefined,
+        horizontalPosition: 'left',
+        disabled: false
+    },
+    argTypes: {
+        options: { control: 'object' },
+        defaultOption: { control: 'text' },
+        horizontalPosition: { control: 'select', options: ['left', 'right'] },
+        disabled: { control: 'boolean' }
+    }
 };
 
 import React from 'react';

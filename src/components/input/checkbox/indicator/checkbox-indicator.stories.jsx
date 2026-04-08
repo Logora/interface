@@ -1,9 +1,29 @@
-export default {
-	title: 'Input/Checkbox/Indicator'
-};
-
 import React from 'react';
 import { CheckboxIndicator } from './checkbox-indicator';
+
+const meta = {
+	title: 'Input/Checkbox/Indicator',
+	component: CheckboxIndicator,
+	args: {
+		checked: true,
+		disabled: false
+	},
+	argTypes: {
+		checked: {
+			control: 'boolean'
+		},
+		disabled: {
+			control: 'boolean'
+		}
+	},
+	render: ({ checked, disabled }) => (
+		<div>
+			<input type="checkbox" defaultChecked={checked} disabled={disabled} /> → <CheckboxIndicator />
+		</div>
+	)
+};
+
+export default meta;
 
 export const Checked = () => {
 	return (

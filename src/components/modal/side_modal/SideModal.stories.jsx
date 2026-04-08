@@ -1,5 +1,16 @@
 export default {
-  title: 'Modal/Side Modal'
+  title: 'Modal/Side Modal',
+  component: SideModal,
+  args: {
+    modalTitle: 'Choose your side',
+    title: 'Example Debate',
+    isNeutral: false
+  },
+  argTypes: {
+    modalTitle: { control: 'text' },
+    title: { control: 'text' },
+    isNeutral: { control: 'boolean' }
+  }
 };
 
 import React from "react";

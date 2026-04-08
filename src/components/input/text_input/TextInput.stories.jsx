@@ -1,5 +1,26 @@
 export default {
-  title: 'Input/Text Input'
+  title: 'Input/Text Input',
+  component: TextInput,
+  args: {
+    placeholder: 'enter text...',
+    activeLabel: true,
+    value: undefined,
+    filled: false,
+    error: false,
+    success: false,
+    disabled: false,
+    message: undefined
+  },
+  argTypes: {
+    placeholder: { control: 'text' },
+    activeLabel: { control: 'boolean' },
+    value: { control: 'text' },
+    filled: { control: 'boolean' },
+    error: { control: 'boolean' },
+    success: { control: 'boolean' },
+    disabled: { control: 'boolean' },
+    message: { control: 'text' }
+  }
 };
 
 import React from 'react';

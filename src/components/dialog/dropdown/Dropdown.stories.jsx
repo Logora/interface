@@ -1,14 +1,22 @@
-export default {
-  title: 'Dialog/Dropdown'
-};
-
 import React from 'react';
 import { Dropdown } from './Dropdown';
 
-export const DefaultDropdown = () => {
-    return (
-        <Dropdown>
-            <div style={{ padding: "5px 15px", border: "1px solid black", borderRadius: "6px" }}>Left</div> 
+export default {
+    title: 'Dialog/Dropdown',
+    component: Dropdown,
+    args: {
+        disabled: false,
+        horizontalPosition: 'left',
+        triggerText: 'Left'
+    },
+    argTypes: {
+        disabled: { control: 'boolean' },
+        horizontalPosition: { control: 'select', options: ['left', 'center', 'right'] },
+        triggerText: { control: 'text' }
+    },
+    render: ({ triggerText, ...args }) => (
+        <Dropdown {...args}>
+            <div style={{ padding: '5px 15px', border: '1px solid black', borderRadius: '6px' }}>{triggerText}</div>
             <div>
                 <p>Child 1</p>
                 <p>Child 2</p>
@@ -17,38 +25,18 @@ export const DefaultDropdown = () => {
     )
 };
 
-export const DisabledDropdown = () => {
-    return (
-        <Dropdown disabled>
-            <div style={{ padding: "5px 15px", border: "1px solid black", borderRadius: "6px" }}>Disabled</div> 
-            <div>
-                <p>Child 1</p>
-                <p>Child 2</p>
-            </div>
-        </Dropdown>
-    )
-}
+export const DefaultDropdown = {};
 
-export const CenterDropdown = () => {
-    return (
-        <Dropdown horizontalPosition={'center'}>
-            <div style={{ padding: "5px 15px", border: "1px solid black", borderRadius: "6px" }}>Center</div> 
-            <div>
-                <p>Child 1</p>
-                <p>Child 2</p>
-            </div>
-        </Dropdown>
-    )
-}
+export const DisabledDropdown = {
+    args: {
+        disabled: true,
+        triggerText: 'Disabled'
+    }
+};
 
-export const RightDropdown = () => {
-    return (
-        <Dropdown horizontalPosition={'right'}>
-            <div style={{ padding: "5px 15px", border: "1px solid black", borderRadius: "6px" }}>Right</div> 
-            <div>
-                <p>Child 1</p>
-                <p>Child 2</p>
-            </div>
-        </Dropdown>
-    )
-}
+export const RightDropdown = {
+    args: {
+        horizontalPosition: 'right',
+        triggerText: 'Right'
+    }
+};
