@@ -2,7 +2,6 @@ import React from "react";
 import styles from "./IconTextLink.module.scss";
 import { Link } from "@logora/debate/action/link";
 import cx from "classnames";
-import PropTypes from "prop-types";
 
 export const IconTextLink = ({ className, textClassName,  to, icon: Icon, text, active = false, children, pin = false, pinText, ...rest }) =>  {
 	const displayIconText = () => {
@@ -33,25 +32,3 @@ export const IconTextLink = ({ className, textClassName,  to, icon: Icon, text, 
 	);
 }
 
-IconTextLink.propTypes = {
-    /** href, or object passed to the link */
-    to: PropTypes.any,
-    /** Icon to be displayed */
-    icon: PropTypes.any,
-    /** Text displayed under the icon */
-    text: PropTypes.string,
-    /** If `true`, link is displayed as active */
-    active: PropTypes.bool,
-    /**  Class name to style the link */
-    className: PropTypes.string,
-	/**  Class name to style the text */
-    textClassName: PropTypes.string,
-    /** If `true`, will display a red pin on the icon */
-    pin: PropTypes.bool,
-    /** Text displayed under the icon */
-    pinText: PropTypes.string,
-	/**  Content of the link if icon is empty*/
-	children: PropTypes.node,
-    /** Extra props passed to the link */
-    rest: PropTypes.object
-};

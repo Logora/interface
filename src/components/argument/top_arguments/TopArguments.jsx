@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from "prop-types";
 import styles from './TopArguments.module.scss';
 import { useConfig } from '@logora/debate/data/config_provider';
 import { useResponsive } from "@logora/debate/hooks/use_responsive";
@@ -76,15 +75,3 @@ export const TopArguments = ({ argumentFor, argumentAgainst, debateUrl, argument
     )
 };
 
-TopArguments.propTypes = {
-    /** Object representing the argument that supports the first thesis */
-    argumentFor: PropTypes.object,
-    /** Object representing the argument that supports the second thesis */
-    argumentAgainst: PropTypes.object,
-    /** URL of the debate */
-    debateUrl: PropTypes.string.isRequired,
-    /** Array containing the count of arguments for each position in the debate */
-    argumentCount: PropTypes.array.isRequired,
-    /** Object containing information about the debate */
-    debate: PropTypes.object.isRequired
-};

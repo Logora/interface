@@ -11,7 +11,6 @@ import { Icon } from '@logora/debate/icons/icon';
 import { TranslationButton } from '@logora/debate/translation/translation_button';
 import styles from './SuggestionBox.module.scss';
 import cx from 'classnames';
-import PropTypes from "prop-types";
 
 export const SuggestionBox = ({ suggestion, disabled = false, onVoteCallback = null, hideFooter = false }) => {
     const intl = useIntl();
@@ -104,9 +103,3 @@ export const SuggestionBox = ({ suggestion, disabled = false, onVoteCallback = n
     )
 }
 
-SuggestionBox.propTypes = {
-    /** Suggestion object */
-    suggestion: PropTypes.object,
-    /** Indicates if the suggestion is disabled */
-    disabled: PropTypes.bool,
-};

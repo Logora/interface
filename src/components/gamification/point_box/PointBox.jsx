@@ -1,6 +1,5 @@
 import React from 'react';
 import styles from './PointBox.module.scss';
-import PropTypes from 'prop-types';
 
 export const PointBox = ({ icon, text, timeAgo }) => {
     return (
@@ -18,11 +17,3 @@ export const PointBox = ({ icon, text, timeAgo }) => {
     )
 }
 
-PointBox.propTypes = {
-    /** Svg icon */
-    icon: PropTypes.node.isRequired,
-    /** Text displayed */
-    text: PropTypes.node.isRequired,
-    /** Time ago */
-    timeAgo: PropTypes.string
-};

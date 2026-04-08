@@ -4,7 +4,6 @@ import { useIntl } from 'react-intl';
 import { Icon } from "@logora/debate/icons/icon";
 import cx from "classnames";
 import styles from "./VoteButton.module.scss";
-import PropTypes from "prop-types";
 
 export const VoteButton = ({ voteableType, voteableId, totalUpvote = 0, totalDownvote = 0, activeClassName, disabled = false }) => {
     const { totalUpvotes, activeVote, handleVote } = useVote(
@@ -43,17 +42,3 @@ export const VoteButton = ({ voteableType, voteableId, totalUpvote = 0, totalDow
     );
 };
 
-VoteButton.propTypes = {
-    /** The type of the vote */
-    voteableType: PropTypes.string.isRequired,
-    /** The id of the element */
-    voteableId: PropTypes.number.isRequired,
-    /** Total upvotes  */
-    totalUpvote: PropTypes.number,
-    /** Total downvotes */
-    totalDownvote: PropTypes.number,
-    /** Button custom class name when active */
-    activeClassName: PropTypes.string,
-    /** Disable vote button */
-    disabled: PropTypes.bool
-};

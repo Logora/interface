@@ -3,7 +3,6 @@ import styles from './InformationBox.module.scss';
 import { Icon } from '@logora/debate/icons/icon';
 import { Link } from '@logora/debate/action/link';
 import { useIntl, FormattedMessage } from "react-intl";
-import PropTypes from "prop-types";
 
 export const InformationBox = ({ icon, title, points, description, textLink, link, isActive = false}) => {
     const intl = useIntl();
@@ -36,19 +35,3 @@ export const InformationBox = ({ icon, title, points, description, textLink, lin
   )
 };
 
-InformationBox.propTypes = {
-    /** Icon to display */
-    icon: PropTypes.any,
-    /** Box title */
-    title: PropTypes.string,
-    /** Points reward */
-    points: PropTypes.number,
-    /** Box description */
-    description: PropTypes.string,
-    /** Link's text */
-    textLink: PropTypes.string,
-    /** Router link */
-    link: PropTypes.string,
-    /** If true, enable link and redirectio */
-    isActive: PropTypes.bool,
-};

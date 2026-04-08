@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { TranslatedContent } from '@logora/debate/translation/translated_content';
-import PropTypes from "prop-types";
 import styles from './TogglePosition.module.scss';
 import cx from "classnames";
 
@@ -39,17 +38,3 @@ export const TogglePosition = ({ activeLabel, firstLabel, firstLabelClassName = 
     )
 }
 
-TogglePosition.propTypes = {
-    /** Index of the active label, 0 (first label) or 1 (second label) */
-    activeLabel: PropTypes.number,
-    /** First label object */
-    firstLabel: PropTypes.object,
-    /** CSS class name of the first label */
-    firstLabelClassName: PropTypes.string,
-    /** Second label object */
-    secondLabel: PropTypes.object,
-    /** CSS class name of the second label */
-    secondLabelClassName: PropTypes.string,
-    /** Callback for active position */
-    onChange: PropTypes.func.isRequired,
-};

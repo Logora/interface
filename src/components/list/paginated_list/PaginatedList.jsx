@@ -11,7 +11,6 @@ import StandardErrorBoundary from '@logora/debate/error/standard_error_boundary'
 import usePrevious from "@rooks/use-previous";
 import cx from "classnames";
 import styles from "./PaginatedList.module.scss";
-import PropTypes from "prop-types";
 
 export const PaginatedList = ({
     query,
@@ -356,42 +355,3 @@ export const PaginatedList = ({
     )
 };
 
-PaginatedList.propTypes = {
-    resource: PropTypes.string,
-    query: PropTypes.string,
-    sortOptions: PropTypes.any,
-    sort: PropTypes.string,
-    filters: PropTypes.object,
-    currentPage: PropTypes.number,
-    currentListId: PropTypes.string,
-    withToken: PropTypes.bool,
-    perPage: PropTypes.number,
-    perPageParam: PropTypes.string,
-    pageParam: PropTypes.string,
-    sortParam: PropTypes.string,
-    queryParam: PropTypes.string,
-    tagParam: PropTypes.string,
-    totalHeaderParam: PropTypes.string,
-    onUpdateTotal: PropTypes.func,
-    onElementsLoad: PropTypes.func,
-    onElementClick: PropTypes.func,
-    transformData: PropTypes.func,
-    uniqueIdKey: PropTypes.string,
-    resourcePropName: PropTypes.string,
-    loadingComponent: PropTypes.node,
-    searchBar: PropTypes.bool,
-    title: PropTypes.node,
-    tagList: PropTypes.array,
-    emptyListComponent: PropTypes.node,
-    emptyText: PropTypes.string,
-    display: PropTypes.string,
-    elementsPerLine: PropTypes.number,
-    indexLayout: PropTypes.bool,
-    gap: PropTypes.string,
-    withPagination: PropTypes.bool,
-    numberElements: PropTypes.number,
-    countless: PropTypes.bool,
-    withUrlParams: PropTypes.bool,
-    onLoad: PropTypes.func,
-    onLoadNewPage: PropTypes.func
-};

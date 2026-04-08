@@ -4,7 +4,6 @@ import { FormattedMessage } from "react-intl";
 import { Button } from '@logora/debate/action/button';
 import { Icon } from "@logora/debate/icons/icon";
 import { useTranslatedContent } from '@logora/debate/translation/translated_content';
-import PropTypes from "prop-types";
 import styles from "./SideModal.module.scss";
 
 export const SideModal = ({ modalTitle, onChooseSide, title, positions, disabledPositions, isNeutral = false }) => {
@@ -58,28 +57,4 @@ export const SideModal = ({ modalTitle, onChooseSide, title, positions, disabled
     );
 };
 
-SideModal.propTypes = {
-    /** Title of the modal */
-    modalTitle: PropTypes.string.isRequired,
-    /** Title displayed in the modal */
-    title: PropTypes.string.isRequired,
-    /** An array of objects containing the id and name of each position in the debate. */
-    positions: PropTypes.arrayOf(
-        PropTypes.shape({
-            id: PropTypes.number.isRequired,
-            name: PropTypes.string.isRequired,
-        })
-    ).isRequired,
-    /** An array of objects containing the id and name of each position that should be disabled. */
-    disabledPositions: PropTypes.arrayOf(
-        PropTypes.shape({
-            id: PropTypes.number.isRequired,
-            name: PropTypes.string.isRequired,
-        })
-    ),
-    /** Whether to show a neutral position option in the modal. */
-    isNeutral: PropTypes.bool,
-    /** A callback function that will be called with the selected position id when a user chooses a side. */
-    onChooseSide: PropTypes.func.isRequired,
-};
 

@@ -4,7 +4,6 @@ import { useRoutes } from '@logora/debate/data/config_provider';
 import { Link } from '@logora/debate/action/link';
 import { Avatar } from '@logora/debate/user/avatar';
 import styles from "./UserBoxSmall.module.scss";
-import PropTypes from 'prop-types';
 import cx from 'classnames';
 
 export const UserBoxSmall = ({ userName, avatarUrl, userSlug }) => {
@@ -26,11 +25,3 @@ export const UserBoxSmall = ({ userName, avatarUrl, userSlug }) => {
     )
 }
 
-UserBoxSmall.propTypes = {
-    /** User name */
-    userName: PropTypes.string,
-    /** User avatar URL */
-    avatarUrl: PropTypes.string,
-    /** User slug to be used in the link */
-    userSlug: PropTypes.string
-}

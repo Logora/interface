@@ -3,7 +3,6 @@ import { IntlContext } from "./IntlContext";
 import { IntlProvider as ReactIntlProvider } from 'react-intl';
 import { flatten } from 'flat';
 import useSessionStorageState from '@rooks/use-sessionstorage-state';
-import PropTypes from 'prop-types';
 
 export const IntlProvider = ({ language, locales, async = false, customMessages = {}, children, onError }) => {
   const [storedLocale, setStoredLocale] = useSessionStorageState("logora:locale", null);
@@ -76,17 +75,3 @@ export const IntlProvider = ({ language, locales, async = false, customMessages 
   )
 };
 
-IntlProvider.propTypes = {
-  /** Current language used */
-  language: PropTypes.string,
-  /** Object containing the locale strings. Can be imported lazily in async mode */
-  locales: PropTypes.any,
-  /** If true, will fetch the locales asynchronously with import */
-  async: PropTypes.bool,
-  /** Dictionary of messages that will override localized messages */
-  customMessages: PropTypes.object,
-  /** Component children */
-  children: PropTypes.node,
-  /** Optional onError callback passed to react-intl */
-  onError: PropTypes.func
-};

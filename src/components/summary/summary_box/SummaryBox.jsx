@@ -1,6 +1,5 @@
 import React from 'react';
 import styles from './SummaryBox.module.scss';
-import PropTypes from "prop-types";
 
 export const SummaryBox = ({ summaryItems = [], tagClassName, tag, emptySummaryText = "" }) => {
     return (
@@ -27,13 +26,3 @@ export const SummaryBox = ({ summaryItems = [], tagClassName, tag, emptySummaryT
     )
 };
 
-SummaryBox.propTypes = {
-    /** List of content items to display */
-    summaryItems: PropTypes.arrayOf(PropTypes.string),
-    /** Class name to style the tag */
-    tagClassName: PropTypes.string,
-    /**  Tag displaying in the left corner of the box */
-    tag: PropTypes.string,
-    /** Message to display when summaryItems is empty */
-    emptySummaryText: PropTypes.string,
-};

@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from "prop-types";
 import { ContentHeader } from '@logora/debate/user_content/content_header';
 import { Link } from '@logora/debate/action/link';
 import { Icon } from "@logora/debate/icons/icon";
@@ -65,25 +64,3 @@ export const SummaryContentBox = ({ author, tag, date, title = '', content, link
     );
 }
 
-SummaryContentBox.propTypes = {
-    /** Object containing the author name */
-    author: PropTypes.object.isRequired,
-    /** Tag displayed in the header */
-    tag: PropTypes.string,
-    /** Date displayed in the header */
-    date: PropTypes.instanceOf(Date),
-    /** Title of the argument */
-    title: PropTypes.string,
-    /** Content of the argument */
-    content: PropTypes.string.isRequired,
-    /** Call-to-action URL */
-    link: PropTypes.string.isRequired,
-    /** Number of arguments in the debate */
-    contentCount: PropTypes.number,
-    /** CSS class name of the argument's tag  */
-    tagClassName: PropTypes.string,
-    /** Show author, position and date in one line */
-    headerOneLine: PropTypes.bool,
-    /** Show footer link to read more arguments */
-    showFooter: PropTypes.bool,
-};

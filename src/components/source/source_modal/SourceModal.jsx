@@ -8,7 +8,6 @@ import { Loader } from '@logora/debate/progress/loader';
 import { SearchInput } from '@logora/debate/input/search_input';
 import { AnnouncementDialog } from "@logora/debate/dialog/announcement_dialog";
 import styles from './SourceModal.module.scss';
-import PropTypes from "prop-types";
 
 export const SourceModal = ({ onAddSource, onHideModal, allowedSources = [] }) => {
     const [disabled, setDisabled] = useState(false);
@@ -147,11 +146,3 @@ export const SourceModal = ({ onAddSource, onHideModal, allowedSources = [] }) =
     );
 }
 
-SourceModal.propTypes = {
-    /** Callback triggered when a source is added */
-    onAddSource: PropTypes.func.isRequired,
-    /** Callback triggered when modal is closed */
-    onHideModal: PropTypes.func,
-    /** List of authorized source domains */
-    allowedSources: PropTypes.arrayOf(PropTypes.string),
-}

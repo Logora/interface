@@ -1,7 +1,6 @@
 import React from 'react';
 import styles from './ArgumentSummaryBox.module.scss';
 import cx from 'classnames';
-import PropTypes from "prop-types";
 
 export const ArgumentSummaryBox = ({label, text, gauge, color, tag}) => {
     return (
@@ -26,15 +25,3 @@ export const ArgumentSummaryBox = ({label, text, gauge, color, tag}) => {
     )
 };
 
-ArgumentSummaryBox.propTypes = {
-    /** Label at the left of the gauge */
-    label: PropTypes.string,
-    /**  Text displaying in the box */
-    text: PropTypes.string,
-    /**  Number of bar in the gauge, 0 to 5 */
-    gauge: PropTypes.number,
-    /**  Color for gauge border and bar background */
-    color: PropTypes.string,
-    /**  Tag displaying in the right corner of the box */
-    tag: PropTypes.string
-};

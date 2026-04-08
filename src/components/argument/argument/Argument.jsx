@@ -20,7 +20,6 @@ import { useRichContent } from "./useRichContent";
 import cx from "classnames";
 import styles from "./Argument.module.scss";
 const ArgumentInput = lazy(() => import('@logora/debate/input/argument_input'));
-import PropTypes from "prop-types";
 
 export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupType, groupName, positions = [], disableLinks = false, parentArgument, flashParent, expandable, disabled = false, hideFooter = false, hideReplies, vote, fixedContentHeight = false, enableEdition = true, enableDeletion = true, deleteListId, showModerationFeedback, lineCount = 5, replyRedirectUrl, hideContent = false }) => {
 	const intl = useIntl();
@@ -316,43 +315,3 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupTyp
 
 export const ArgumentContainer = Argument;
 
-Argument.propTypes = {
-	/** Argument data */
-	argument: PropTypes.object.isRequired,
-	/** If reply, array with argument and all parents */
-	argumentReplies: PropTypes.array,
-	/** Nesting level of the argument */
-	nestingLevel: PropTypes.number,
-	/** Positions of the debate */
-	positions: PropTypes.array.isRequired,
-	/** If true, disables links */
-	disableLinks: PropTypes.bool,
-	/** Flash border of parent argument */
-	flashParent: PropTypes.func,
-	/** Parent argument */
-	parentArgument: PropTypes.object,
-	/** If true, content is expandable */
-	expandable: PropTypes.bool,
-	/** If true, disabled mode in argument */
-	disabled: PropTypes.bool,
-	/** If true, hides footer, including replies */
-	hideFooter: PropTypes.bool,
-	/** If true, hide replies */
-	hideReplies: PropTypes.bool,
-	/** Type of the group */
-	groupType: PropTypes.string,
-	/** Name of the group the argument is in */
-	groupName: PropTypes.string,
-	/** Vote data */
-	vote: PropTypes.object,
-	/** If true, fix argument height */
-	fixedContentHeight: PropTypes.bool,
-	/** If true, enable edition */
-	enableEdition: PropTypes.bool,
-	/** Id of the list to delete the item from */
-	deleteListId: PropTypes.string,
-	/** Clicking reply redirects to this URL instead of inline reply */
-	replyRedirectUrl: PropTypes.string,
-	/** If true, hide content  */
-	hideContent: PropTypes.bool,
-};

@@ -1,6 +1,5 @@
 import React from 'react';
 import styles from './SourceBox.module.scss';
-import PropTypes from "prop-types";
 
 export const SourceBox = ({ title, description, url, publisher, imageUrl }) => {
 	return (
@@ -28,16 +27,3 @@ export const SourceBox = ({ title, description, url, publisher, imageUrl }) => {
 		</div>
 	);
 }
-
-SourceBox.propTypes = {
-	/** Title of the source */
-	title: PropTypes.string.isRequired,
-	/** Description of the source */
-	description: PropTypes.string,
-	/** Publisher of the source */
-	publisher: PropTypes.string,
-	/**  URL of the source */
-	url: PropTypes.string,
-	/**  URL of the source image */
-	imageUrl: PropTypes.string
-  };

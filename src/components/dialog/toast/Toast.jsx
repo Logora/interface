@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';
 import cx from 'classnames';
 import styles from './Toast.module.scss';
@@ -32,13 +31,3 @@ export const Toast = ({ text, points, variant = "info", handleClose }) => {
     );
 }
 
-Toast.propTypes = {
-    /** Text of the toast */
-    text: PropTypes.string.isRequired,
-    /** Points earned displayed below the text */
-    points: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    /** Type of the toast, can be 'info', 'success' or 'error' */
-    variant: PropTypes.string,
-    /** Callback triggered on close */
-    handleClose: PropTypes.func
-};

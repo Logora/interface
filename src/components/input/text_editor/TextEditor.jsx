@@ -26,7 +26,6 @@ import { useIntl } from 'react-intl';
 import styles from './TextEditor.module.scss';
 import EditorTheme from './EditorTheme';
 import cx from "classnames";
-import PropTypes from "prop-types";
 
 export const TextEditor = ({ placeholder, onSubmit, sources, hideSubmit = false, hideSourceAction = false, onActivation, disabled = false, handleChange, handleSourcesChange, shortBar = false, active = false, maxLength, disableRichText = false, editorRef, uid, allowedDomains = [], hideCharCount = false, disableAutoActivate = false, ...rest }) => {
     const [isActive, setIsActive] = useState(false);
@@ -169,37 +168,3 @@ export const TextEditor = ({ placeholder, onSubmit, sources, hideSubmit = false,
     );
 }
 
-TextEditor.propTypes = {
-    /** Input placeholder */
-    placeholder: PropTypes.string,
-    /** Callback submit function */
-    onSubmit: PropTypes.func,
-    /** Array that contains sources  */
-    sources: PropTypes.array,
-    /** If true, hide submit button */
-    hideSubmit: PropTypes.bool,
-    /** If true, hide source button */
-    hideSourceAction: PropTypes.bool,
-    /** Callback for input activation */
-    onActivation: PropTypes.func,
-    /** If true, disabled input */
-    disabled: PropTypes.bool,
-    /** Update text */
-    handleChange: PropTypes.func,
-    /** Update sources */
-    handleSourcesChange: PropTypes.func,
-    /** If true, less space between icons */
-    shortBar: PropTypes.bool,
-    /** If true, show editor as active */
-    active: PropTypes.bool,
-    /** Maximum number of characters */
-    maxLength: PropTypes.number,
-    /** Show "X remaining characters" text */
-    hideCharCount: PropTypes.bool,
-    /** If true, hide rich text buttons */
-    disableRichText: PropTypes.bool,
-    /** Editor ref */
-    editorRef: PropTypes.any,
-    /** Allowed domain for sources */
-    allowedDomains: PropTypes.array
-};

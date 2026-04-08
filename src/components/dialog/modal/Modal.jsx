@@ -1,6 +1,5 @@
 import React, { useRef, useEffect } from "react";
 import { useIntl } from 'react-intl';
-import PropTypes from "prop-types";
 import { useModal } from './useModal';
 import cx from 'classnames';
 import styles from './Modal.module.scss';
@@ -85,17 +84,3 @@ export const Modal = ({ title, showCloseButton = false, fullScreen, children, di
   );
 };
 
-Modal.propTypes = {
-  /** Modal title */
-  title: PropTypes.string,
-  /** If true, a close button will be shown */
-  showCloseButton: PropTypes.bool,
-  /** If true, the modal will be full screen with a white background */
-  fullScreen: PropTypes.bool,
-  /** Modal content */
-  children: PropTypes.node,
-  /** Disable the click outside to close modal option */
-  disableClickOutside: PropTypes.bool,
-  /** Other props passed to the modal */
-  rest: PropTypes.object
-};

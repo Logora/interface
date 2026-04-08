@@ -5,7 +5,6 @@ import { useIntl } from "react-intl";
 import useOnClickOutside from 'use-onclickoutside';
 import styles from "./ShareButton.module.scss";
 import cx from "classnames";
-import PropTypes from "prop-types";
 
 export const ShareButton = ({ showText, shareUrl, shareTitle, shareText = false, shareCode, showShareCode = false, iconSize = 22, className, tooltipPosition = 'bottom' }) => {
 	const popoverContentRef = useRef();
@@ -80,23 +79,3 @@ export const ShareButton = ({ showText, shareUrl, shareTitle, shareText = false,
 	);
 }
 
-ShareButton.propTypes = {
-	/** If `true`, show "Share" text next to icon */
-	showText: PropTypes.bool,
-	/** Url to share */
-	shareUrl: PropTypes.string.isRequired,
-	/** Title of the content that will be shared */
-	shareTitle: PropTypes.string.isRequired,
-	/** Description of the shared content */
-	shareText: PropTypes.string,
-	/** Code to share */
-	shareCode: PropTypes.string,
-	/** If `true`, show copy code icon */
-	showShareCode: PropTypes.bool,
-	/** Size of icons */
-	iconSize: PropTypes.number,
-	/** Style to pass */
-	className: PropTypes.string,
-	/** Position of the tooltip */
-	tooltipPosition: PropTypes.string,
-};

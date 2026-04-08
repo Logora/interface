@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from '@logora/debate/action/link'
 import { Icon } from '@logora/debate/icons/icon';
 import styles from './SourceListItem.module.scss';
-import PropTypes from "prop-types";
 
 export const SourceListItem = ({ index = 0, url, title, publisher }) => {
     return (
@@ -16,13 +15,3 @@ export const SourceListItem = ({ index = 0, url, title, publisher }) => {
     );
 }
 
-SourceListItem.propTypes = {
-    /** Callback function for submit */
-    index: PropTypes.number,
-    /** URL of the source */
-    url: PropTypes.string,
-    /** Title of the source */
-    title: PropTypes.string,
-    /** Publisher of the source */
-    publisher: PropTypes.string,
-};

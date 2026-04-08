@@ -9,7 +9,6 @@ import { Loader } from '@logora/debate/progress/loader';
 import styles from "./LineChart.module.scss";
 import StandardErrorBoundary from "@logora/debate/error/standard_error_boundary";
 import cx from 'classnames';
-import PropTypes from 'prop-types';
 
 export const LineChart = ({ data, labels, onFilterChange, title, className, filterOptions }) => {
   const intl = useIntl();
@@ -91,17 +90,3 @@ export const LineChart = ({ data, labels, onFilterChange, title, className, filt
   )
 }
 
-LineChart.propTypes = {
-	/** Array containing label, contentColor and data */
-	data: PropTypes.array,
-	/** Array of objects containing the labels */
-	labels: PropTypes.array,
-	/** Callback function used to filter data */
-	onFilterChange: PropTypes.func,
-	/** Title for the chart */
-	title: PropTypes.string,
-	/** Extra classname for the chart container */
-	className: PropTypes.string,
-	/** Array of filters */
-	filterOptions: PropTypes.array
-};

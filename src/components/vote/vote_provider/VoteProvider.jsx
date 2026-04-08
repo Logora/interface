@@ -1,7 +1,6 @@
 import React, { createContext, useState, useEffect } from 'react'
 import { useDataProvider } from '@logora/debate/data/data_provider'
 import { useAuth } from '@logora/debate/auth/use_auth'
-import PropTypes from 'prop-types'
 
 export const VoteContext = createContext()
 
@@ -55,9 +54,3 @@ export const VoteProvider = ({ voteableType, children }) => {
   )
 }
 
-VoteProvider.propTypes = {
-  /** The type of voteable item */
-  voteableType: PropTypes.string,
-  /** The child components of VoteProvider */
-  children: PropTypes.node.isRequired
-}

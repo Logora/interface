@@ -15,7 +15,6 @@ import { Loader } from "@logora/debate/progress/loader";
 import NotificationMenu from "@logora/debate/notification/notification_menu";
 import 'react-modern-drawer/dist/index.css';
 import styles from './Drawer.module.scss';
-import PropTypes from 'prop-types';
 
 export const Drawer = ({ isOpen = false, onClose, title, size = '30vw', enableOverlay = false, pathParameter = null, children, notificationDefinitions = {} }) => {
     const [isdrawerOpen, setIsDrawerOpen] = useState(isOpen);
@@ -141,19 +140,3 @@ export const Drawer = ({ isOpen = false, onClose, title, size = '30vw', enableOv
     )
 }
 
-Drawer.propTypes = {
-    /** Controls the opening of the drawer */
-    isOpen: PropTypes.bool,
-    /** On close callback */
-    onClose: PropTypes.func,
-    /** Drawer title */
-    title: PropTypes.node,
-    /** Determines the size of drawer */
-    size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    /** Determines whether to show the overlay */
-    enableOverlay: PropTypes.bool,
-    /** Name of the query parameter that will store the current path */
-    pathParameter: PropTypes.string,
-    /** Drawer content */
-    children: PropTypes.node,
-};

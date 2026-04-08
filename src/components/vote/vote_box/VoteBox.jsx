@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import PropTypes from "prop-types";
 import { useLocation } from 'react-router';
 import { useConfig } from '@logora/debate/data/config_provider';
 import { useDataProvider } from '@logora/debate/data/data_provider';
@@ -384,37 +383,3 @@ export const VoteBox = ({ numberVotes, votePositions, voteableType, voteableId, 
     )
 }
 
-VoteBox.propTypes = {
-    /** Array containing the debate positions */
-    votePositions: PropTypes.array.isRequired,
-    /** Type of vote */
-    voteableType: PropTypes.string,
-    /** The id of the element */
-    voteableId: PropTypes.number.isRequired,
-    /** Object containing all the votes and the total */
-    numberVotes: PropTypes.object.isRequired,
-    /** The redirect url after voting */
-    redirectUrl: PropTypes.string,
-    /** Show total number of votes below positions */
-    showTotal: PropTypes.bool,
-    /** If true, activate the column layout */
-    displayColumn: PropTypes.bool,
-    /** If true, display buttons in full width*/
-    textAlignLeft: PropTypes.bool,
-    /** CSS class name of the vote box  */
-    voteBoxClassName: PropTypes.string,
-    /** CSS class name of the button container */
-    buttonContainerClassName: PropTypes.string,
-    /** CSS class name of the button */
-    buttonClassName: PropTypes.string,
-    /** CSS class name of the show result text */
-    showResultClassName: PropTypes.string,
-    /** Callback function */
-    onVote: PropTypes.func,
-    /** Disabled vote buttons and show result */
-    disabled: PropTypes.bool,
-    /** Show the votes and comments counters */
-    showVotesCommentsNumber: PropTypes.bool,
-    /** Number of comments to display in the counters */
-    commentsCount: PropTypes.number,
-};

@@ -4,7 +4,6 @@ import { Tooltip } from '@logora/debate/dialog/tooltip';
 import { DefaultAvatarIcon } from "./DefaultAvatar";
 import cx from 'classnames';
 import styles from './Avatar.module.scss';
-import PropTypes from 'prop-types';
 
 export const Avatar = ({ avatarUrl, userName, isOnline = false, showTooltip = false, size = 40, className, ...rest }) => {
     const [fallback, setFallback] = useState(false);
@@ -49,15 +48,3 @@ export const Avatar = ({ avatarUrl, userName, isOnline = false, showTooltip = fa
     )
 };
 
-Avatar.propTypes = {
-    /** User's image url */
-    avatarUrl: PropTypes.string,
-    /** User's full name */
-    userName: PropTypes.string,
-    /** Whether the user is online or not, displays online pin */
-    isOnline: PropTypes.bool,
-    /** Adjust the size of avatar */
-    size: PropTypes.number,
-    /** Additional classname passed to image */
-    className: PropTypes.string,
-}

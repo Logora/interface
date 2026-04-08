@@ -4,7 +4,6 @@ import { useFollow } from '@logora/debate/follow/use_follow';
 import { Tooltip } from '@logora/debate/dialog/tooltip';
 import { Button } from '@logora/debate/action/button';
 import styles from './FollowButton.module.scss';
-import PropTypes from "prop-types";
 import cx from 'classnames';
 
 export const FollowButton = ({ followableType, followableId, tooltipText, dataTid, noBorder }) => {
@@ -26,15 +25,3 @@ export const FollowButton = ({ followableType, followableId, tooltipText, dataTi
     )
 };
 
-FollowButton.propTypes = {
-    /** Type of the followable content */
-    followableType: PropTypes.string,
-    /**  Id of the followable content */
-    followableId: PropTypes.number,
-    /**  Text of the tooltip */
-    tooltipText: PropTypes.string,
-    /**  Data-tid for tracking */
-    dataTid: PropTypes.string,
-    /**  Deactivate button style */
-    noBorder: PropTypes.bool
-};

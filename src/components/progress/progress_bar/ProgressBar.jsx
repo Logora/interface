@@ -2,7 +2,6 @@ import React from 'react';
 import { useIntl } from "react-intl";
 import cx from 'classnames';
 import styles from './ProgressBar.module.scss';
-import PropTypes from "prop-types";
 
 export const ProgressBar = ({ goal, progress, title, showPercentageSubtitle = false, showProgressSubtitle = false, barFull = false, progressUnit, className, innerClassName, subtitleClassName, children }) => {
     const intl = useIntl();
@@ -49,27 +48,3 @@ export const ProgressBar = ({ goal, progress, title, showPercentageSubtitle = fa
     );
 }
 
-ProgressBar.propTypes = {
-    /** Current progress */
-    progress: PropTypes.number.isRequired,
-    /** Progress goal */
-    goal: PropTypes.number.isRequired,
-    /** Title displayed above the progress bar on the left */
-    title: PropTypes.string,
-    /** Progress unit that will be shown in progress subtitle */
-    progressUnit: PropTypes.string,
-    /** Class name passed to progress bar container */
-    showPercentageSubtitle: PropTypes.bool,
-    /** Display a text container with information about progress */
-    showProgressSubtitle: PropTypes.bool,
-    /** If true, will show full bar and only show progress in subtitle */
-    barFull: PropTypes.bool,
-    /** Class name passed to progress bar container */
-    className: PropTypes.string,
-    /** Class name passed to progress bar */
-    innerClassName: PropTypes.string,
-    /** Class name passed to the subtitle */
-    subtitleClassName: PropTypes.string,
-	/**  Content of the link if icon is empty*/
-	children: PropTypes.node
-};

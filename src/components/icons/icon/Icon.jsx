@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import { IconContext } from '@logora/debate/icons/icon_provider';
-import PropTypes from "prop-types";
 
 export const Icon = ({ name, height = 20, width = 20, className, ...rest }) => {
     const { iconLibrary } = useContext(IconContext);
@@ -18,15 +17,3 @@ export const Icon = ({ name, height = 20, width = 20, className, ...rest }) => {
     return IconComponent ? <IconComponent height={height} width={width} className={className} {...rest} /> : null;
 };
 
-Icon.propTypes = {
-    /** Icon name */
-    name: PropTypes.string.isRequired,
-    /** Icon height in pixels */
-    height: PropTypes.number,
-    /** Icon width in pixels */
-    width: PropTypes.number,
-    /** Icon class name */
-    className: PropTypes.string,
-    /** Extra props passed to the icon */
-    rest: PropTypes.object
-};

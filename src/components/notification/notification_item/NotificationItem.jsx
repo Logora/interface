@@ -5,7 +5,6 @@ import { useRoutes } from '@logora/debate/data/config_provider';
 import { useDataProvider } from '@logora/debate/data/data_provider';
 import { useIntl } from 'react-intl';
 import { useConfig } from '@logora/debate/data/config_provider';
-import PropTypes from "prop-types";
 import cx from 'classnames';
 import styles from './NotificationItem.module.scss';
 
@@ -61,11 +60,3 @@ export const NotificationItem = ({ notification, notificationDefinitions = {}, i
     );
 }
 
-NotificationItem.propTypes = {
-    /** Notification object */
-    notification: PropTypes.object.isRequired,
-    /** Definitions for the notification types */
-    notificationDefinitions: PropTypes.object.isRequired,
-    /** Indicates if the notification is read */
-    isRead: PropTypes.bool,
-};

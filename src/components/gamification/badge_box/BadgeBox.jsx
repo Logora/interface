@@ -2,7 +2,6 @@ import React from 'react';
 import { ProgressBar } from "@logora/debate/progress/progress_bar";
 import styles from './BadgeBox.module.scss';
 import cx from 'classnames';
-import PropTypes from "prop-types";
 import { useIntl, FormattedMessage } from "react-intl";
 
 export const BadgeBox = ({ icon_url, level, name, next_title_level, steps, title, progress, eloquenceTitle }) => {
@@ -54,21 +53,3 @@ export const BadgeBox = ({ icon_url, level, name, next_title_level, steps, title
     );
 }
 
-BadgeBox.propTypes = {
-    /** The url of the image to display */
-    icon_url: PropTypes.string,
-    /** Level of the badge */
-    level: PropTypes.number,
-    /** The name of the badge */
-    name: PropTypes.string,
-    /** The next badge level */
-    next_title_level: PropTypes.number,
-    /** The badge steps */
-    steps: PropTypes.number.isRequired,
-    /** The badge title */
-    title: PropTypes.string,
-    /** The badge progression */
-    progress: PropTypes.number.isRequired,
-    /** User title */
-    eloquenceTitle: PropTypes.string,
-};

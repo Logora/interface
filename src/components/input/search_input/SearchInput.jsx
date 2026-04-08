@@ -4,7 +4,6 @@ import { TextInput } from '@logora/debate/input/text_input';
 import { Icon } from '@logora/debate/icons/icon';
 import useOnClickOutside from 'use-onclickoutside';
 import styles from "./SearchInput.module.scss";
-import PropTypes from "prop-types";
 
 export const SearchInput = ({ onSearchSubmit, placeholder, disabled, reducedByDefault }) => {
 	const intl = useIntl();
@@ -59,13 +58,3 @@ export const SearchInput = ({ onSearchSubmit, placeholder, disabled, reducedByDe
 	)
 }
 
-SearchInput.propTypes = {
-	/** Callback function for submit */
-	onSearchSubmit: PropTypes.func.isRequired,
-	/** Text of the placeholder */
-	placeholder: PropTypes.string,
-	/** If true, the component is disabled  */
-	disabled: PropTypes.bool,
-	/**  If true, the component is reduced by default */
-	reducedByDefault: PropTypes.bool,
-};

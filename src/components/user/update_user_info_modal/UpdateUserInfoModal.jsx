@@ -14,7 +14,6 @@ import { Select } from '@logora/debate/input/select';
 import { Loader } from '@logora/debate/progress/loader';
 import { Toggle } from "@logora/debate/input/toggle";
 import styles from './UpdateUserInfoModal.module.scss';
-import PropTypes from "prop-types";
 
 export const UpdateUserInfoModal = ({ termsUrl, privacyUrl, showEmailConsent = false, showTerms = false }) => {
     const auth = useAuth();
@@ -242,13 +241,3 @@ export const UpdateUserInfoModal = ({ termsUrl, privacyUrl, showEmailConsent = f
     );
 }
 
-UpdateUserInfoModal.propTypes = {
-    /** URL to the terms page */
-	termsUrl: PropTypes.string,
-    /** URL to the privacy page */
-	privacyUrl: PropTypes.string,
-    /** If `true`, will show a toggle for email consent */
-	showEmailConsent: PropTypes.bool,
-	/** If `true`, will show a toggle to accept terms */
-	showTerms: PropTypes.bool,
-}

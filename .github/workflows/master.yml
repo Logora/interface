@@ -71,12 +71,11 @@ jobs:
         uses: changesets/action@v1
         with:
           version: pnpm dlx @changesets/cli version
-          publish: pnpm dlx @changesets/cli publish
+          publish: pnpm dlx @changesets/cli publish --access public
           commit: "chore: release package versions"
           title: "chore: release package versions"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
   deploy-storybook:
     name: Deploy Storybook to GitHub Pages

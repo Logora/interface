@@ -21,7 +21,6 @@ import TextEditor from "@logora/debate/input/text_editor";
 const SideModal = lazy(() => import('@logora/debate/modal/side_modal'));
 import cx from 'classnames';
 import styles from './ArgumentInput.module.scss';
-import PropTypes from "prop-types";
 
 export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = false, positions = [], disabledPositions = [], groupId, groupName, groupType, hideSourceAction = false, isReply = false, onSubmit, parentId, placeholder, positionId, focusOnInit = false, activeOnInit = false, userGuideUrl, hideUserGuideLink = false, hideCharCount = false, disableAutoActivate = false}) => {
     const intl = useIntl();
@@ -384,37 +383,3 @@ export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = fals
     );
 };
 
-ArgumentInput.propTypes = {
-    /** Id of the list */
-    argumentListId: PropTypes.string,
-    /** Size of the user avatar */
-    avatarSize: PropTypes.number,
-    /** If true, disables the input */
-    disabled: PropTypes.bool,
-    /** Positions in the debate */
-    positions: PropTypes.array,
-    /** If true, disables the position */
-    disabledPositions: PropTypes.array,
-    /** Id of the group */
-    groupId: PropTypes.number,
-    /** Name of the group */
-    groupName: PropTypes.string,
-    /** Type of the group */
-    groupType: PropTypes.string,
-    /** If true, hide source button */
-    hideSourceAction: PropTypes.bool,
-    /** If true, slightly modify the design and submit */
-    isReply: PropTypes.bool,
-    /** Callback function when submit */
-    onSubmit: PropTypes.func,
-    /** Id of the parent, if reply */
-    parentId: PropTypes.number,
-    /** Placeholder to display */
-    placeholder: PropTypes.string.isRequired,
-    /** Position of the argument */
-    positionId: PropTypes.number,
-    /** Focus input on initialization */
-    focusOnInit: PropTypes.bool,
-    /** URL leading to the user charter or moderation rules */
-    userGuideUrl: PropTypes.string,
-};

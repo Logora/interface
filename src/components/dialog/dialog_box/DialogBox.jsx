@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import cx from 'classnames';
 import styles from './DialogBox.module.scss';
 import { FormattedMessage } from 'react-intl';
-import PropTypes from 'prop-types';
 
 export const DialogBox = ({ position = "bottom", title, content, isHidden = false, children, className }) => {
     const storedChoice = JSON.parse(typeof window !== "undefined" && window.localStorage && window.localStorage.getItem(content)) || false;
@@ -39,15 +38,3 @@ export const DialogBox = ({ position = "bottom", title, content, isHidden = fals
     )
 }
 
-DialogBox.propTypes = {
-    /** DialogBox position, can be `top`, `bottom`, `left` or `right` */
-    position: PropTypes.string,
-    /** Title to display */
-    title: PropTypes.string,
-    /** Content to display */
-    content: PropTypes.string,
-    /** Controls the dialog display */
-    isHidden: PropTypes.bool,
-    /** Custom css to pass */
-    className: PropTypes.string,
-};

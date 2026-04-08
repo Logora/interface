@@ -4,7 +4,6 @@ import { Button } from '@logora/debate/action/button';
 import { Avatar } from '@logora/debate/user/avatar';
 import styles from './AvatarSelector.module.scss';
 import cx from 'classnames';
-import PropTypes from 'prop-types';
 
 export const AvatarSelector = ({ avatarUrlList, onChooseAvatar, userName, allowUserImage }) => {
     const intl = useIntl();
@@ -53,13 +52,3 @@ export const AvatarSelector = ({ avatarUrlList, onChooseAvatar, userName, allowU
     );
 }
 
-AvatarSelector.propTypes = {
-    /** An array containing URLs of available avatar images */
-    avatarUrlList: PropTypes.array,
-    /** A callback function to handle the selection of an avatar image */
-    onChooseAvatar: PropTypes.func,
-    /** User name */
-    userName: PropTypes.string.isRequired,
-    /** Allow a user to upload an image */
-    allowUserImage: PropTypes.bool
-};

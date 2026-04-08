@@ -1,5 +1,4 @@
 import { useIntl } from 'react-intl';
-import PropTypes from "prop-types";
 
 export const useRelativeTime = (time) => {
     if(!time) return null;
@@ -34,7 +33,3 @@ export const useRelativeTime = (time) => {
     }
 }
 
-useRelativeTime.PropTypes = {
-    /** A timestamp in milliseconds */
-    time: PropTypes.number.isRequired,
-}

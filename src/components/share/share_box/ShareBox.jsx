@@ -4,7 +4,6 @@ import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { Tooltip } from '@logora/debate/dialog/tooltip';
 import { Icon } from '@logora/debate/icons/icon';
 import { useIntl } from 'react-intl';
-import PropTypes from "prop-types";
 
 export const ShareBox = ({ tooltipPosition, shareUrl, shareTitle, shareText, shareCode, showShareCode = false }) => {
     const intl = useIntl();
@@ -55,17 +54,3 @@ export const ShareBox = ({ tooltipPosition, shareUrl, shareTitle, shareText, sha
     );
 };
 
-ShareBox.propTypes = {
-	/** Position of the tooltip */
-	tooltipPosition: PropTypes.string,
-	/** Url to share */
-	shareUrl: PropTypes.string.isRequired,
-	/** Title of the share */
-	shareTitle: PropTypes.string.isRequired,
-	/** Text of the share */
-    shareText: PropTypes.string,
-	/** Code to share */
-	shareCode: PropTypes.string,
-	/** If `true`, show copy code icon */
-	showShareCode: PropTypes.bool,
-};

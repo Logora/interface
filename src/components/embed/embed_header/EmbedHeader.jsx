@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from "prop-types";
 import { FormattedMessage } from 'react-intl';
 import { Link } from '@logora/debate/action/link';
 import cx from 'classnames';
@@ -41,21 +40,3 @@ export const EmbedHeader = ({ title, titleRedirectUrl, headerLabel, onlineUsersC
     );
 }
 
-EmbedHeader.propTypes = {
-    /** EmbedHeader title */
-    title: PropTypes.string,
-    /**  EmbedHeader url redirect */
-    titleRedirectUrl: PropTypes.string,
-    /** HeaderLabel text */
-    headerLabel: PropTypes.string,
-    /** Number of online users */
-    onlineUsersCount: PropTypes.number,
-    /** If true, title will be align with headerLabel text */
-    textLeft: PropTypes.bool,
-	/** Custom EmbedHeader styles */
-    className: PropTypes.object,
-	/** Link of the image to display */
-    logoUrl: PropTypes.string,
-	/** Alt of the logo */
-    logoAlt: PropTypes.string,
-};

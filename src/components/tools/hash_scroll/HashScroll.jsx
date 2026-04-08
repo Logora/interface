@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import PropTypes from 'prop-types';
 import { useLocation } from "react-router";
 
 export const HashScroll = ({ elementId, onScroll, children }) => {
@@ -26,11 +25,3 @@ export const HashScroll = ({ elementId, onScroll, children }) => {
 	return <>{ children }</>;
 }
 
-HashScroll.propTypes = {
-	/** ID of the element to scroll to */
-	elementId: PropTypes.string,
-	/** Callback when element is scrolled to */
-	onScroll: PropTypes.func,
-	/** Children to render */
-	children: PropTypes.node
-};

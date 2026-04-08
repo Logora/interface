@@ -4,7 +4,6 @@ import { useIntl } from "react-intl";
 import { Icon } from "@logora/debate/icons/icon";
 import cx from "classnames";
 import styles from "./UpDownVoteBox.module.scss";
-import PropTypes from "prop-types";
 
 export const UpDownVoteBox = ({ voteableType, voteableId, totalUpvote = 0, totalDownvote = 0, disabled = false }) => {
     const { totalUpvotes, totalDownvotes, activeVote, voteSide, handleVote } =
@@ -48,17 +47,3 @@ export const UpDownVoteBox = ({ voteableType, voteableId, totalUpvote = 0, total
     );
 };
 
-UpDownVoteBox.propTypes = {
-    /** The type of the vote */
-    voteableType: PropTypes.string.isRequired,
-    /** The id of the element */
-    voteableId: PropTypes.number.isRequired,
-    /** Total upvotes  */
-    totalUpvote: PropTypes.number,
-    /** Total downvotes */
-    totalDownvote: PropTypes.number,
-    /** Button custom class name when active */
-    activeClassName: PropTypes.string,
-    /** Disable vote button */
-    disabled: PropTypes.bool
-};

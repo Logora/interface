@@ -7,7 +7,6 @@ import { Icon } from "@logora/debate/icons/icon";
 import { ConfirmModal } from "@logora/debate/dialog/confirm_modal";
 import { Button } from '@logora/debate/action/button';
 import styles from "./SuggestionVoteBox.module.scss";
-import PropTypes from "prop-types";
 
 export const SuggestionVoteBox = ({ voteableType, voteableId, totalUpvote = 0, totalDownvote = 0, onVote, disabled = false }) => {
   const intl = useIntl();
@@ -73,15 +72,3 @@ export const SuggestionVoteBox = ({ voteableType, voteableId, totalUpvote = 0, t
   );
 };
 
-SuggestionVoteBox.propTypes = {
-  /** The type of the vote */
-  voteableType: PropTypes.string.isRequired,
-  /** The id of the element */
-  voteableId: PropTypes.number.isRequired,
-  /** Total upvotes  */
-  totalUpvote: PropTypes.number,
-  /** Total downvotes */
-  totalDownvote: PropTypes.number,
-  /** Disable vote button */
-  disabled: PropTypes.bool
-};

@@ -14,7 +14,6 @@ import { useResponsive } from "@logora/debate/hooks/use_responsive";
 const ShareModal = lazy(() => import('@logora/debate/share/share_modal'));
 import cx from "classnames";
 import styles from "./ContentFooter.module.scss";
-import PropTypes from "prop-types";
 
 export const ContentFooter = ({ resource,
     reportType,
@@ -180,55 +179,3 @@ export const ContentFooter = ({ resource,
     );
 };
 
-ContentFooter.propTypes = {
-    /** Resource object */
-    resource: PropTypes.object,
-    /** Report type */
-    reportType: PropTypes.string,
-    /** Delete type */
-    deleteType: PropTypes.string,
-    /** Delete list id */
-    deleteListId: PropTypes.string,
-    /** If true, will use PATCH method to delete content instead of DELETE */
-    softDelete: PropTypes.bool,
-    /** If true, disabled replies and dropdown actions */
-    disabled: PropTypes.bool,
-    /** Show reply button */
-    enableReply: PropTypes.bool,
-    /** Callback function */
-    handleReplyTo: PropTypes.func,
-    /** If true, show dropdown actions */
-    showActions: PropTypes.bool,
-    /** If true, show share button action */
-    showShareButton: PropTypes.bool,
-    /** If true, show share modal action in the dropdown */
-    shareModal: PropTypes.bool,
-    /** Url to share */
-    shareUrl: PropTypes.string,
-    /** Title of the content that will be shared */
-    shareTitle: PropTypes.string,
-    /** Description of the shared content */
-    shareText: PropTypes.string,
-    /** Title passed to the modal */
-    shareModalTitle: PropTypes.string,
-    /** If true, show copy code action */
-    showShareCode: PropTypes.bool,
-    /** Code to share */
-    shareCode: PropTypes.string,
-    /** If true, show "Share" text next to icon */
-    showShareText: PropTypes.bool,
-    /** Item to be displayed on the left */
-    children: PropTypes.node,
-    /** If true, content can be edited */
-    enableEdition: PropTypes.bool,
-    /** If true, content can be deleted */
-    enableDeletion: PropTypes.bool,
-    /** If true, content can be reported */
-    enableReport: PropTypes.bool,
-    /** Custom style for container */
-    containerClassName: PropTypes.string,
-    /** Custom style for children container */
-    voteActionClassName: PropTypes.string,
-    /** Clicking reply redirects to this URL instead of inline reply */
-    replyRedirectUrl: PropTypes.string,
-};

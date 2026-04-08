@@ -9,7 +9,6 @@ import { useResponsive } from '@logora/debate/hooks/use_responsive';
 import { useTranslatedContent } from '@logora/debate/translation/translated_content';
 import cx from 'classnames';
 import styles from './DebateBox.module.scss';
-import PropTypes from "prop-types";
 
 export const DebateBox = ({ debate }) => {    
     const config = useConfig();
@@ -130,7 +129,3 @@ export const DebateBox = ({ debate }) => {
     );
 }
 
-DebateBox.propTypes = {
-    /** Debate object containing all the debate information */
-    debate: PropTypes.object.isRequired,
-};

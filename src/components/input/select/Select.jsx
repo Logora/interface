@@ -3,7 +3,6 @@ import { Icon } from '@logora/debate/icons/icon';
 import { Dropdown } from '@logora/debate/dialog/dropdown';
 import styles from "./Select.module.scss";
 import cx from "classnames";
-import PropTypes from "prop-types";
 
 export const Select = ({ options, defaultOption, onChange, resetSelect = false, disabled = false, className, horizontalPosition = "left" }) => {
 	const defaultOptionValue = defaultOption ? options.filter(elm => elm.name === defaultOption)[0] : options[0];
@@ -83,20 +82,4 @@ export const Select = ({ options, defaultOption, onChange, resetSelect = false, 
 			</Dropdown>
 		</div>
 	);
-};
-Select.propTypes = {
-	/** An array of options to select */
-	options: PropTypes.array.isRequired,
-	/** Option to display as default */
-	defaultOption: PropTypes.any,
-	/** Callback function triggered when clicking on an option */
-	onChange: PropTypes.func,
-	/** If true, will reset to default option */
-	resetSelect: PropTypes.bool,
-	/** Disable input */
-	disabled: PropTypes.bool,
-	/**  Class name to style the input */
-	className: PropTypes.string,
-	/** Dropdown horizontal alignment, can be left, center or right */
-	horizontalPosition: PropTypes.string
 };

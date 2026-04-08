@@ -1,7 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
 import styles from './Tag.module.scss';
-import PropTypes from "prop-types";
 
 export const Tag = ({ text, active = false, leftIcon, rightIcon, className, ...rest }) => {
 	return (
@@ -21,15 +20,3 @@ export const Tag = ({ text, active = false, leftIcon, rightIcon, className, ...r
 	)
 }
 
-Tag.propTypes = {
-	/** Text to display */
-	text: PropTypes.string,
-	/** If true, apply active style */
-	active: PropTypes.bool,
-	/** Left icon */
-	leftIcon: PropTypes.node,
-	/** Right icon */
-	rightIcon: PropTypes.node,
-	/** Tag extra className */
-	className: PropTypes.string,
-};

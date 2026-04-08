@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
 import cx from 'classnames';
 import styles from './TranslationButton.module.scss';
-import PropTypes from "prop-types";
 
 export const TranslationButton = ({ className, language, callback, ...rest }) => {
     const [isOriginal, setIsOriginal] = useState(false);
@@ -36,11 +35,3 @@ export const TranslationButton = ({ className, language, callback, ...rest }) =>
     );
 };
 
-TranslationButton.propTypes = {
-    /** Origin language */
-    language: PropTypes.string.isRequired,
-    /** Function triggered on click */
-    callback: PropTypes.func.isRequired,
-    /** Extra classname */
-    className: PropTypes.string,
-};

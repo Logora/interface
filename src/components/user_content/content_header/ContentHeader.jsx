@@ -7,7 +7,6 @@ import { useIntl } from "react-intl";
 import { useConfig } from '@logora/debate/data/config_provider';
 import cx from "classnames";
 import styles from "./ContentHeader.module.scss";
-import PropTypes from "prop-types";
 
 export const ContentHeader = ({ author, tag, tagClassName, date, oneLine = false, disableLinks = false, selectedContent = false, isDeleted = false, moderationReason,
 	moderationNotes, moderationPolicyUrl, showModerationFeedback = false }) => {
@@ -105,27 +104,3 @@ export const ContentHeader = ({ author, tag, tagClassName, date, oneLine = false
 	);
 }
 
-ContentHeader.propTypes = {
-	/** An object containing the `full_name`, `image_url`, `slug` and `points` of the author */
-	author: PropTypes.object.isRequired,
-	/** The tag associated with the argument */
-	tag: PropTypes.string,
-	/** A custom class name for the tag container */
-	tagClassName: PropTypes.string,
-	/** The date the argument was posted */
-	date: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]),
-	/** If `true`, will render the author box in a single line  */
-	oneLine: PropTypes.bool,
-	/** If `true`, will disable the links to the author profile */
-	disableLinks: PropTypes.bool,
-	/** If `true`, will add selected argument div to header */
-	selectedContent: PropTypes.bool,
-	/** If `true`, will display the deleted content style */
-	isDeleted: PropTypes.bool,
-	/** Reason for moderation */
-	moderationReason: PropTypes.string,
-	/** Notes related to moderation */
-	moderationNotes: PropTypes.string,
-	/** Charte of moderation */
-	moderationPolicyUrl: PropTypes.string,
-};

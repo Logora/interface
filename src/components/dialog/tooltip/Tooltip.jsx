@@ -1,7 +1,6 @@
 import React, { useId, useState } from "react";
 import styles from "./Tooltip.module.scss";
 import cx from "classnames";
-import PropTypes from "prop-types";
 
 export const Tooltip = ({ position = "bottom", text, onClickText, children, className, variant = "info" }) => {
   const [clicked, setClicked] = useState(false);
@@ -37,17 +36,3 @@ export const Tooltip = ({ position = "bottom", text, onClickText, children, clas
 
 };
 
-Tooltip.propTypes = {
-  /** Tooltip text */
-  text: PropTypes.string,
-  /** Text displayed when tooltip is clicked */
-  onClickText: PropTypes.string,
-  /** Tooltip position, can be `top`, `bottom`, `left` or `right` */
-  position: PropTypes.string,
-  /** Component on which the tooltip is displayed */
-  children: PropTypes.node,
-  /** Class name to style the tooltip */
-  className: PropTypes.string,
-  /** Type of the tooltip, can be 'info', 'success' or 'error' */
-  variant: PropTypes.string,
-};

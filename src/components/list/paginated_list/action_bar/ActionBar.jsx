@@ -8,7 +8,6 @@ import { useLocation } from 'react-router';
 import { useResponsive } from "@logora/debate/hooks/use_responsive";
 import cx from "classnames";
 import styles from "./ActionBar.module.scss";
-import PropTypes from "prop-types";
 
 export const ActionBar = ({ title, sortOptions, defaultSelectOption, searchBar = false, tagList, activeTagId, withUrlParams = false, onSearch, onSortChange, onTagChange }) => {
     const intl = useIntl();
@@ -108,25 +107,3 @@ export const ActionBar = ({ title, sortOptions, defaultSelectOption, searchBar =
     )
 }
 
-ActionBar.propTypes = {
-    /** The title of the list */
-    title: PropTypes.node,
-    /** An array of sort options to be displayed in a dropdown */
-    sortOptions: PropTypes.any,
-    /** Current selected option in filters */
-    defaultSelectOption: PropTypes.string,
-    /** If true, activate the search bar */
-    searchBar: PropTypes.bool,
-    /** A list of tags to filter the list */
-    tagList: PropTypes.array,
-    /** Current active tag id */
-    activeTagId: PropTypes.number,
-    /** Activate url params */
-    withUrlParams: PropTypes.bool,
-    /** Search callback */
-    onSearch: PropTypes.func,
-    /** Sort change callback */
-    onSortChange: PropTypes.func,
-    /** Tag change callback */
-    onTagChange: PropTypes.func
-};

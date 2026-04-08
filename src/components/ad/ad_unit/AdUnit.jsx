@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import styles from "./AdUnit.module.scss";
-import PropTypes from "prop-types";
 
 export const AdUnit = ({
 	id,
@@ -61,15 +60,3 @@ export const AdUnit = ({
 	);
 };
 
-AdUnit.propTypes = {
-	/** A string to be used as container div id */
-	id: PropTypes.string.isRequired,
-	/** Ad slot path */
-	adPath: PropTypes.string.isRequired,
-	/** An optional object which includes ad targeting key-value pairs */
-	targeting: PropTypes.object,
-	/** Sizes of slot */
-	sizes: PropTypes.array,
-	/** Whether to add didomi attributes to manage user consent */
-	enableDidomi: PropTypes.bool,
-};

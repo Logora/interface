@@ -1,7 +1,6 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import styles from './KeywordBox.module.scss';
-import PropTypes from "prop-types";
 
 export const KeywordBox = (props) => {
     const { keyword, occurrences, color, handleClick, ...rest} = props;
@@ -31,13 +30,3 @@ export const KeywordBox = (props) => {
     )
 }
 
-KeywordBox.propTypes = {
-    /** Keyword to be displayed as a title */
-    keyword: PropTypes.string,
-    /**  Number of occurrences associated with the keyword */
-    occurrences: PropTypes.number,
-    /**  Color for background */
-    color: PropTypes.string,
-    /** Callback function for the button */
-    handleClick: PropTypes.func
-};

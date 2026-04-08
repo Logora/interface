@@ -10,7 +10,6 @@ import { useRoutes } from '@logora/debate/data/config_provider';
 import { TranslatedContent } from '@logora/debate/translation/translated_content';
 import styles from './ConsultationBox.module.scss';
 import cx from 'classnames';
-import PropTypes from "prop-types";
 
 export const ConsultationBox = ({ consultation }) => {
     const intl = useIntl();
@@ -95,7 +94,3 @@ export const ConsultationBox = ({ consultation }) => {
     );
 };
 
-ConsultationBox.propTypes = {
-    /** A consultation object gathering all the consultation infos */
-    consultation: PropTypes.object.isRequired,
-};

@@ -5,7 +5,6 @@ import { PaginatedList } from "@logora/debate/list/paginated_list";
 import { NotificationItem } from '@logora/debate/notification/notification_item';
 import { UserContentSkeleton } from '@logora/debate/skeleton/user_content_skeleton';
 import styles from "./NotificationMenu.module.scss";
-import PropTypes from "prop-types";
 
 export const NotificationMenu = ({ notificationDefinitions = {} }) => {
   const intl = useIntl();
@@ -55,7 +54,3 @@ export const NotificationMenu = ({ notificationDefinitions = {} }) => {
   );
 }
 
-NotificationMenu.propTypes = {
-  /** Definitions for the notification types */
-  notificationDefinitions: PropTypes.object.isRequired,
-};

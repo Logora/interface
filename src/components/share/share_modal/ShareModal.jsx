@@ -2,7 +2,6 @@ import React from "react";
 import { Modal } from '@logora/debate/dialog/modal';
 import { ShareBox } from "@logora/debate/share/share_box";
 import styles from "./ShareModal.module.scss";
-import PropTypes from "prop-types";
 
 export const ShareModal = ({ shareUrl, title, shareTitle, shareText, showShareCode = false, shareCode }) => {
     const buildShareLink = () => {
@@ -33,17 +32,3 @@ export const ShareModal = ({ shareUrl, title, shareTitle, shareText, showShareCo
     )
 }
 
-ShareModal.propTypes = {
-	/** Url to share */
-	shareUrl: PropTypes.string.isRequired,
-	/** Description of the shared content */
-	shareText: PropTypes.string,
-	/** Title of the content that will be shared */
-	shareTitle: PropTypes.string.isRequired,
-	/** Title passed to the modal */
-	title: PropTypes.string.isRequired,
-	/** Code to share */
-	shareCode: PropTypes.string,
-	/** If `true`, show copy code icon */
-	showShareCode: PropTypes.bool,
-};

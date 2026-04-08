@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { ResponsiveContext } from './ResponsiveContext';
-import PropTypes from 'prop-types';
 import { useDebouncedCallback } from 'use-debounce';
 
 export const ResponsiveProvider = ({ containerPath, containerWidth, children, isMobile }) => {
@@ -40,13 +39,3 @@ export const ResponsiveProvider = ({ containerPath, containerWidth, children, is
     )
 }
 
-ResponsiveProvider.propTypes = {
-    /** Container path from which the width will be calculated */
-    containerPath: PropTypes.string,
-    /** Width of container to use for responsive queries */
-    containerWidth: PropTypes.number,
-    /** Provider children */
-    children: PropTypes.node,
-    /** Overriding calculation and force mobile design */
-    isMobile: PropTypes.bool
-}

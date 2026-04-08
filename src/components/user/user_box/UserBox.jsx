@@ -5,7 +5,6 @@ import { Link } from '@logora/debate/action/link';
 import { useRoutes } from '@logora/debate/data/config_provider';
 import { Avatar } from '@logora/debate/user/avatar';
 import styles from './UserBox.module.scss';
-import PropTypes from 'prop-types';
 import cx from 'classnames';
 
 export const UserBox = ({ user }) => {
@@ -53,7 +52,3 @@ export const UserBox = ({ user }) => {
 	);
 }
 
-UserBox.propTypes = {
-	/** User object, must contains : image_url, last_activity, full_name, points, hash_id, messages_count, upvotes */
-	user: PropTypes.object,
-}

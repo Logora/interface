@@ -2,7 +2,6 @@ import React from 'react';
 import { useIntl } from "react-intl";
 import { FormattedDate } from 'react-intl';
 import styles from './ContextSourceBox.module.scss';
-import PropTypes from "prop-types";
 
 export const ContextSourceBox = ({ title, imageUrl, date, author }) => {
   const intl = useIntl();
@@ -26,13 +25,3 @@ export const ContextSourceBox = ({ title, imageUrl, date, author }) => {
   )
 }
 
-ContextSourceBox.propTypes = {
-  /** Title of the source */
-  title: PropTypes.string.isRequired,
-  /** Author of the source */
-  author: PropTypes.string,
-  /** Publication date of the source */
-  date: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date) ]),
-  /**  URL of the source image */
-  imageUrl: PropTypes.string
-};

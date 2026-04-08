@@ -6,7 +6,6 @@ import { Link } from '@logora/debate/action/link';
 import { Icon } from '@logora/debate/icons/icon';
 import { getLocaleIcon } from '@logora/debate/util/lang_emojis';
 import styles from './AuthorBox.module.scss';
-import PropTypes from 'prop-types';
 import cx from 'classnames';
 
 export const AuthorBox = ({
@@ -102,27 +101,3 @@ export const AuthorBox = ({
     )
 };
 
-AuthorBox.propTypes = {
-    /** User first name and last name combined */
-    fullName: PropTypes.string,
-    /** User avatar URL */
-    avatarUrl: PropTypes.string,
-    /** User slug used in the router link */
-    slug: PropTypes.string,
-    /** User last activity date time */
-    lastActivity: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]),
-    /** Whether an user has a special status or not */
-    showBadge: PropTypes.bool,
-    /** User eloquence points total */
-    points: PropTypes.number,
-    /** User eloquence title */
-    eloquenceTitle: PropTypes.string,
-    /** User occupation as in profession */
-    occupation: PropTypes.string,
-    /** Should a click on the user redirect on his/her profile */
-    disableLinks: PropTypes.bool,
-    /** Give information about the current status of the content displayed and whether to show the user as deleted or not */
-    isDeleted: PropTypes.bool,
-    /** User language */
-    language: PropTypes.string
-}

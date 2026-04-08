@@ -2,7 +2,6 @@ import React from 'react';
 import { Icon } from '@logora/debate/icons/icon';
 import cx from 'classnames';
 import styles from './AnnouncementDialog.module.scss';
-import PropTypes from "prop-types";
 
 export const AnnouncementDialog = ({ message, icon: CustomIcon, fullWidth = false, className, iconClassName, children }) => {
     return (
@@ -21,17 +20,3 @@ export const AnnouncementDialog = ({ message, icon: CustomIcon, fullWidth = fals
     )
 }
 
-AnnouncementDialog.propTypes = {
-    /** Icon to display */
-    icon: PropTypes.any,
-    /** Message to display */
-    message: PropTypes.string,
-    /** If `true`, dialog will take 100% width */
-    fullWidth: PropTypes.bool,
-    /** Class name passed to the dialog */
-    className: PropTypes.string,
-    /** Class name passed to the icon */
-    iconClassName: PropTypes.string,
-    /** Content to display if message is empty */
-    children: PropTypes.node,
-};

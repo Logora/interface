@@ -3,7 +3,6 @@ import { useAuth } from "@logora/debate/auth/use_auth";
 import { useDataProvider } from "@logora/debate/data/data_provider";
 import { useAuthRequired } from "@logora/debate/hooks/use_auth_required";
 import { VoteContext } from "@logora/debate/vote/vote_provider";
-import PropTypes from "prop-types";
 
 export const useVote = (
 	voteableType,
@@ -151,15 +150,3 @@ export const useVote = (
 	};
 };
 
-useVote.propTypes = {
-	/** Type of the voteable element (e.g., "article", "comment", etc.) */
-	voteableType: PropTypes.string.isRequired,
-	/** ID of the voteable element */
-	voteableId: PropTypes.string.isRequired,
-	/**  Initial number of upvotes */
-	upvotes: PropTypes.number.isRequired,
-	/**  Initial number of downvotes */
-	downvotes: PropTypes.number.isRequired,
-	/**  Callback called when a vote is made (optional) */
-	onVote: PropTypes.func,
-};
