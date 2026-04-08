@@ -1,5 +1,8 @@
 export default {
-  title: 'User/User Box'
+    title: 'User/User Box',
+    component: UserBox,
+    args: {},
+    argTypes: {}
 };
 
 import React from 'react';

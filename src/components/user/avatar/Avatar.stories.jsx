@@ -1,5 +1,8 @@
 export default {
-  title: 'User/Avatar'
+    title: 'User/Avatar',
+    component: Avatar,
+    args: {},
+    argTypes: {}
 };
 
 import React from 'react';

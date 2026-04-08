@@ -1,5 +1,8 @@
 export default {
-  title: 'User Content/Content Header'
+    title: 'User Content/Content Header',
+    component: ContentHeader,
+    args: {},
+    argTypes: {}
 };
 
 import React from 'react';

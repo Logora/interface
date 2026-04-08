@@ -1,5 +1,8 @@
 export default {
-  title: 'User/Avatar Selector'
+    title: 'User/Avatar Selector',
+    component: AvatarSelector,
+    args: {},
+    argTypes: {}
 };
 
 import React from "react";
