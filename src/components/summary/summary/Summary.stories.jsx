@@ -1,5 +1,8 @@
 export default {
-  title: 'Summary/Summary'
+    title: 'Summary/Summary',
+    component: Summary,
+    args: {},
+    argTypes: {}
 };
 
 import React from 'react';

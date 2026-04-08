@@ -1,5 +1,8 @@
 export default {
-  title: 'Summary/Summary Box'
+    title: 'Summary/Summary Box',
+    component: SummaryBox,
+    args: {},
+    argTypes: {}
 };
 
 import React from 'react';

@@ -42,9 +42,6 @@ jobs:
       - name: Run tests
         run: pnpm test
 
-      - name: Build Storybook
-        run: pnpm build-storybook
-
   release:
     name: Publish package with Changesets
     runs-on: ubuntu-latest

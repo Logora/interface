@@ -1,5 +1,8 @@
 export default {
-  title: 'Summary/Keyword Box'
+    title: 'Summary/Keyword Box',
+    component: KeywordBox,
+    args: {},
+    argTypes: {}
 };
 
 import React from 'react';

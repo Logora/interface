@@ -1,5 +1,8 @@
 export default {
-  title: 'Text/Expandable Text'
+    title: 'Text/Expandable Text',
+    component: ExpandableText,
+    args: {},
+    argTypes: {}
 };
 
 import React from 'react';

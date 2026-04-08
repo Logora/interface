@@ -1,5 +1,8 @@
 export default {
-  title: 'Source/Source Modal'
+    title: 'Source/Source Modal',
+    component: SourceModal,
+    args: {},
+    argTypes: {}
 };
 
 import React from 'react';

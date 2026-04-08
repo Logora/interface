@@ -1,5 +1,8 @@
 export default {
-  title: 'Source/Context Source List'
+    title: 'Source/Context Source List',
+    component: ContextSourceList,
+    args: {},
+    argTypes: {}
 };
 
 import React from 'react';
