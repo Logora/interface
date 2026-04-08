@@ -1,5 +1,8 @@
 export default {
-  title: 'User/Update User Info Modal'
+    title: 'User/Update User Info Modal',
+    component: UpdateUserInfoModal,
+    args: {},
+    argTypes: {}
 };
 
 import React from 'react';

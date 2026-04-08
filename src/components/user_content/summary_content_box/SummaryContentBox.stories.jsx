@@ -1,5 +1,8 @@
 export default {
-  title: 'User Content/Summary Content Box'
+  title: 'User Content/Summary Content Box',
+  component: SummaryContentBox,
+  args: {},
+  argTypes: {}
 };
 
 import React from 'react';

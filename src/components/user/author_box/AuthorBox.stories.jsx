@@ -1,5 +1,8 @@
 export default {
-  title: 'User/Author Box'
+  title: 'User/Author Box',
+  component: AuthorBox,
+  args: {},
+  argTypes: {}
 };
 
 import React from 'react';

@@ -1,7 +1,3 @@
-export default {
-  title: 'Argument/Argument'
-};
-
 import React from 'react';
 import { IntlProvider } from 'react-intl';
 import { ConfigProvider } from '@logora/debate/data/config_provider';
@@ -20,7 +16,6 @@ import { ResponsiveProvider } from '@logora/debate/hooks/use_responsive';
 import * as regularIcons from '@logora/debate/icons/regular_icons';
 import { faker } from '@faker-js/faker';
 
-// Mock data and constants
 const routes = {
     userShowLocation: new Location('espace-debat/user/:userSlug', { userSlug: '' })
 };
@@ -31,29 +26,6 @@ const vote = {
     voteable_id: faker.number.int(),
     user_id: faker.number.int()
 };
-
-const httpClient = {
-    get: () => Promise.resolve({ data: { success: true, data: [argumentReply] } }),
-    post: (url, data, config) => {
-        return new Promise((resolve, reject) => {
-            let response;
-            if (url.includes('vote')) {
-                response = { data: { success: true, data: { resource: vote } } };
-            } else if (url.includes('messages')) {
-                response = { data: { success: true, data: { resource: argumentReply } } };
-            } else {
-                reject(new Error("Unknown endpoint"));
-                return;
-            }
-            resolve(response);
-        });
-    },
-    patch: () => null,
-    delete: () => Promise.resolve({ data: { success: true, data: {} } })
-};
-
-const currentUser = { id: vote.user_id };
-const data = dataProvider(httpClient, "https://mock.example.api");
 
 const generateArgument = (overrides) => ({
     id: 414,
@@ -75,37 +47,55 @@ const generateArgument = (overrides) => ({
     },
     position: {
         id: 1,
-        name: "Yes",
-        language: "en",
+        name: 'Yes',
+        language: 'en',
         translation_entries: []
     },
     ...overrides
 });
 
-const argument = generateArgument();
-const longArgument = generateArgument({ content: faker.lorem.sentences(15) })
-const argumentReply = generateArgument({ id: 415, is_reply: true, reply_to_id: argument.id });
+const baseArgument = generateArgument();
+const longArgument = generateArgument({ content: faker.lorem.sentences(15) });
+const argumentReply = generateArgument({ id: 415, is_reply: true, reply_to_id: baseArgument.id });
 const argumentDeleted = generateArgument({ id: 416, is_deleted: true });
 const argumentWithReplies = generateArgument({
-    id: 414,
+    id: 417,
     content: faker.lorem.sentences(2),
     number_replies: 3,
     replies_authors: Array.from({ length: 3 }).map(() => ({
         image_url: faker.image.avatarGitHub(),
-        full_name: faker.person.fullName(),
+        full_name: faker.person.fullName()
     }))
 });
 
 const positions = [
-    { id: 1, name: "Yes", language: "en", translation_entries: [] },
-    { id: 2, name: "No", language: "en", translation_entries: [] }
+    { id: 1, name: 'Yes', language: 'en', translation_entries: [] },
+    { id: 2, name: 'No', language: 'en', translation_entries: [] }
 ];
 
-const groupeName = faker.lorem.sentence(5);
+const groupName = faker.lorem.sentence(5);
 
-const Providers = ({ children }) => (
+const httpClient = {
+    get: () => Promise.resolve({ data: { success: true, data: [argumentReply] } }),
+    post: (url) => {
+        if (url.includes('vote')) {
+            return Promise.resolve({ data: { success: true, data: { resource: vote } } });
+        }
+        if (url.includes('messages')) {
+            return Promise.resolve({ data: { success: true, data: { resource: argumentReply } } });
+        }
+        return Promise.reject(new Error('Unknown endpoint'));
+    },
+    patch: () => null,
+    delete: () => Promise.resolve({ data: { success: true, data: {} } })
+};
+
+const currentUser = { id: vote.user_id };
+const data = dataProvider(httpClient, 'https://mock.example.api');
+
+const BaseProviders = ({ children, config }) => (
     <BrowserRouter>
-        <ConfigProvider routes={{ ...routes }} config={{ translation: { enable: false } }}>
+        <ConfigProvider routes={{ ...routes }} config={config}>
             <DataProviderContext.Provider value={{ dataProvider: data }}>
                 <AuthContext.Provider value={{ currentUser, isLoggedIn: true }}>
                     <ResponsiveProvider>
@@ -115,9 +105,7 @@ const Providers = ({ children }) => (
                                     <VoteProvider>
                                         <InputProvider>
                                             <IconProvider library={regularIcons}>
-                                                <IntlProvider locale="en">
-                                                    {children}
-                                                </IntlProvider>
+                                                <IntlProvider locale="en">{children}</IntlProvider>
                                             </IconProvider>
                                         </InputProvider>
                                     </VoteProvider>
@@ -131,232 +119,114 @@ const Providers = ({ children }) => (
     </BrowserRouter>
 );
 
-// Component exports
-export const DefaultArgument = () => (
-    <div style={{ width: "400px", height: "240px" }}>
-        <Providers>
-            <Argument
-                argument={argument}
-                positions={positions}
-                groupName={groupeName}
-            />
-        </Providers>
-    </div>
-);
-
-export const ExpandableArgument = () => (
-    <div style={{ width: "400px", height: "240px" }}>
-        <Providers>
-            <Argument
-                argument={longArgument}
-                positions={positions}
-                expandable
-            />
-        </Providers>
-    </div>
-);
-
-export const ExpandedArgument = () => (
-    <div style={{ width: "400px", height: "240px" }}>
-        <Providers>
-            <Argument
-                argument={longArgument}
-                positions={positions}
-                expandable={false}
-            />
-        </Providers>
-    </div>
-);
-
-export const ArgumentDisabledLinks = () => (
-    <div style={{ width: "400px", height: "230px" }}>
-        <Providers>
-            <Argument
-                argument={argument}
-                positions={positions}
-                disableLinks={true}
-            />
-        </Providers>
-    </div>
-);
-
-export const ArgumentReply = () => (
-    <div style={{ width: "400px", height: "230px" }}>
-        <Providers>
-            <Argument
-                argument={argumentReply}
-                positions={positions}
-                parentArgument={argument}
-                nestingLevel={1}
-            />
-        </Providers>
-    </div>
-);
-
-export const DisabledArgument = () => (
-    <div style={{ width: "400px", height: "230px" }}>
-        <Providers>
-            <Argument
-                argument={argument}
-                positions={positions}
-                disabled
-            />
-        </Providers>
-    </div>
-);
-
-export const DeletedArgument = () => (
-    <div style={{ width: "400px" }}>
-        <Providers>
-            <Argument
-                argument={argumentDeleted}
-                positions={positions}
-            />
-        </Providers>
-    </div>
-);
-
-export const ArgumentWithoutFooter = () => (
-    <div style={{ width: "400px", height: "240px" }}>
-        <Providers>
-            <Argument
-                argument={argument}
-                hideFooter={true}
-            />
-        </Providers>
-    </div>
-);
-
-export const ArgumentWithoutDeletion = () => (
-    <div style={{ width: "400px", height: "240px" }}>
-        <Providers>
-            <Argument
-                argument={argument}
-                enableDeletion={false}
-            />
-        </Providers>
-    </div>
-);
-
-export const ArgumentWithoutEdition = () => (
-    <div style={{ width: "400px", height: "240px" }}>
-        <Providers>
-            <Argument
-                argument={argument}
-                enableEdition={false}
-            />
-        </Providers>
-    </div>
-);
-
-
-export const ArgumentWithReplies = () => (
-    <div style={{ width: "400px", height: "260px" }}>
-        <Providers>
-            <Argument
-                argument={argumentWithReplies}
-                positions={positions}
-            />
-        </Providers>
-    </div>
-);
-
-export const ArgumentWithArgumentReplies = () => (
-    <div style={{ width: "400px", height: "260px" }}>
-        <Providers>
-            <Argument
-                argument={argument}
-                positions={positions}
-                argumentReplies={[argumentReply]}
-            />
-        </Providers>
-    </div>
-);
-
-export const EmptyArgumentNoReplies = () => {
-    const emptyArgument = {
-        ...argument,
-        content: "",
-    };
-    return (
-        <div style={{ width: "400px", height: "240px" }}>
-            <Providers>
-                <Argument
-                    argument={emptyArgument}
-                    positions={positions}
-                    expandable
-                />
-            </Providers>
-        </div>
-    );
+const getScenarioData = (mode) => {
+    switch (mode) {
+        case 'reply':
+            return { argument: argumentReply, parentArgument: baseArgument, nestingLevel: 1 };
+        case 'deleted':
+            return { argument: argumentDeleted };
+        case 'withReplies':
+            return { argument: argumentWithReplies };
+        case 'withArgumentReplies':
+            return { argument: baseArgument, argumentReplies: [argumentReply] };
+        case 'emptyContent':
+            return { argument: { ...baseArgument, content: '' } };
+        case 'rejected':
+            return {
+                argument: {
+                    ...baseArgument,
+                    status: 'rejected',
+                    moderation_entry: {
+                        moderation_reason: faker.lorem.sentence(),
+                        moderator_notes: faker.lorem.paragraph()
+                    }
+                }
+            };
+        default:
+            return { argument: baseArgument };
+    }
 };
 
-export const RejectedArgument = () => {
-    const rejectedArgument = {
-        ...argument,
-        status: "rejected",
-        moderation_entry: {
-            moderation_reason: faker.lorem.sentence(),
-            moderator_notes: faker.lorem.paragraph()
+const meta = {
+    title: 'Argument/Argument',
+    component: Argument,
+    args: {
+        mode: 'default',
+        useLongContent: false,
+        expandable: true,
+        disableLinks: false,
+        disabled: false,
+        hideFooter: false,
+        enableDeletion: true,
+        enableEdition: true,
+        hideContent: false,
+        showModerationFeedback: false
+    },
+    argTypes: {
+        mode: {
+            control: 'select',
+            options: ['default', 'reply', 'deleted', 'withReplies', 'withArgumentReplies', 'emptyContent', 'rejected']
         },
-    };
-    const config = {
-        moderation: {
-            showFeedback: true,
-        },
-        provider: {
-            userGuideUrl: "https://www.example.com/moderation-policy"
-        }
-    };
-    return (
-        <div style={{ width: "400px", height: "240px" }}>
-            <BrowserRouter>
-                <ConfigProvider routes={{ ...routes }} config={config}>
-                    <DataProviderContext.Provider value={{ dataProvider: data }}>
-                        <AuthContext.Provider value={{ currentUser, isLoggedIn: true }}>
-                            <ResponsiveProvider>
-                                <ModalProvider>
-                                    <ListProvider>
-                                        <ToastProvider>
-                                            <VoteProvider>
-                                                <InputProvider>
-                                                    <IconProvider library={regularIcons}>
-                                                        <IntlProvider locale="en">
-                                                            <Argument
-                                                                argument={rejectedArgument}
-                                                                positions={positions}
-                                                            />
-                                                        </IntlProvider>
-                                                    </IconProvider>
-                                                </InputProvider>
-                                            </VoteProvider>
-                                        </ToastProvider>
-                                    </ListProvider>
-                                </ModalProvider>
-                            </ResponsiveProvider>
-                        </AuthContext.Provider>
-                    </DataProviderContext.Provider>
-                </ConfigProvider>
-            </BrowserRouter>
-        </div>
-    );
+        useLongContent: { control: 'boolean' },
+        expandable: { control: 'boolean' },
+        disableLinks: { control: 'boolean' },
+        disabled: { control: 'boolean' },
+        hideFooter: { control: 'boolean' },
+        enableDeletion: { control: 'boolean' },
+        enableEdition: { control: 'boolean' },
+        hideContent: { control: 'boolean' },
+        showModerationFeedback: { control: 'boolean' }
+    },
+    render: ({ mode, useLongContent, ...args }) => {
+        const scenario = getScenarioData(mode);
+        const argument = useLongContent && mode === 'default' ? longArgument : scenario.argument;
+
+        const config = mode === 'rejected'
+            ? {
+                moderation: { showFeedback: true },
+                provider: { userGuideUrl: 'https://www.example.com/moderation-policy' }
+            }
+            : { translation: { enable: false } };
+
+        return (
+            <div style={{ width: '400px', minHeight: '240px' }}>
+                <BaseProviders config={config}>
+                    <Argument
+                        argument={argument}
+                        positions={positions}
+                        groupName={groupName}
+                        {...scenario}
+                        {...args}
+                    />
+                </BaseProviders>
+            </div>
+        );
+    }
 };
 
-const argumentRejectedHidden = generateArgument({
-    id: 418,
-    is_deleted: false,
-  });
+export default meta;
 
-  export const RejectedArgumentHiddenContent = () => (
-    <div style={{ width: "400px", height: "240px" }}>
-      <Providers>
-        <Argument
-          argument={argumentRejectedHidden}
-          positions={positions}
-          groupName={groupeName}
-          hideContent={true}
-          showModerationFeedback={true}
-        />
-      </Providers>
-    </div>
-  );
+export const DefaultArgument = {};
+
+export const ArgumentReply = {
+    args: { mode: 'reply' }
+};
+
+export const DeletedArgument = {
+    args: { mode: 'deleted' }
+};
+
+export const ArgumentWithReplies = {
+    args: { mode: 'withReplies' }
+};
+
+export const ArgumentWithArgumentReplies = {
+    args: { mode: 'withArgumentReplies' }
+};
+
+export const RejectedArgument = {
+    args: {
+        mode: 'rejected',
+        showModerationFeedback: true
+    }
+};

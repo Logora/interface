@@ -1,5 +1,8 @@
 export default {
-  title: 'Vote/Vote Button'
+    title: 'Vote/Vote Button',
+    component: VoteButton,
+    args: {},
+    argTypes: {}
 };
 
 import React from 'react';

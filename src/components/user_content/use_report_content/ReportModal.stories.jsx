@@ -1,5 +1,8 @@
 export default {
-  title: 'User Content/Use Report Content'
+    title: 'User Content/Use Report Content',
+    component: ReportModal,
+    args: {},
+    argTypes: {}
 };
 
 import React from 'react';

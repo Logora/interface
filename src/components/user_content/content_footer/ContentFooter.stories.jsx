@@ -1,5 +1,8 @@
 export default {
-  title: 'User Content/Content Footer'
+    title: 'User Content/Content Footer',
+    component: ContentFooter,
+    args: {},
+    argTypes: {}
 };
 
 import React from 'react';

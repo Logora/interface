@@ -1,5 +1,8 @@
 export default {
-  title: 'Vote/Vote Provider'
+  title: 'Vote/Vote Provider',
+  component: VoteProvider,
+  args: {},
+  argTypes: {}
 };
 
 import React, { useEffect, useState } from "react";
