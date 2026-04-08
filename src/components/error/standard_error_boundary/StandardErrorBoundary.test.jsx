@@ -2,7 +2,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { StandardErrorBoundary } from './StandardErrorBoundary';
 
-beforeAll(() => jest.spyOn(console, 'error').mockImplementation(() => {}));
+beforeAll(() => vi.spyOn(console, 'error').mockImplementation(() => {}));
 
 function Bomb({ shouldThrow }) {
     if(shouldThrow) {

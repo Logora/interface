@@ -1,8 +1,8 @@
 import React from 'react';
 import styles from './ShareBox.module.scss';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
-import { Tooltip } from '@logora/debate.dialog.tooltip';
-import { Icon } from '@logora/debate.icons.icon';
+import { Tooltip } from '@logora/debate/dialog/tooltip';
+import { Icon } from '@logora/debate/icons/icon';
 import { useIntl } from 'react-intl';
 import PropTypes from "prop-types";
 

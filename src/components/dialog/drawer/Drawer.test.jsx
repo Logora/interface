@@ -1,5 +1,5 @@
 import React from 'react';
-import { DefaultDrawer } from './Drawer.composition';
+import { DefaultDrawer } from './Drawer.stories';
 import { render, screen } from '@testing-library/react';
 
 describe('Drawer', () => {

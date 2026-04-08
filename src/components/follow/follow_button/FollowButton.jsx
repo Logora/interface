@@ -1,8 +1,8 @@
 import React from 'react';
 import { useIntl } from 'react-intl';
-import { useFollow } from '@logora/debate.follow.use_follow';
-import { Tooltip } from '@logora/debate.dialog.tooltip';
-import { Button } from '@logora/debate.action.button';
+import { useFollow } from '@logora/debate/follow/use_follow';
+import { Tooltip } from '@logora/debate/dialog/tooltip';
+import { Button } from '@logora/debate/action/button';
 import styles from './FollowButton.module.scss';
 import PropTypes from "prop-types";
 import cx from 'classnames';

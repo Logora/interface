@@ -1,6 +1,6 @@
 import React, { createContext, useState, useEffect } from 'react'
-import { useDataProvider } from '@logora/debate.data.data_provider'
-import { useAuth } from '@logora/debate.auth.use_auth'
+import { useDataProvider } from '@logora/debate/data/data_provider'
+import { useAuth } from '@logora/debate/auth/use_auth'
 import PropTypes from 'prop-types'
 
 export const VoteContext = createContext()

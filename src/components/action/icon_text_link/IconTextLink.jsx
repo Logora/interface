@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./IconTextLink.module.scss";
-import { Link } from "@logora/debate.action.link";
+import { Link } from "@logora/debate/action/link";
 import cx from "classnames";
 import PropTypes from "prop-types";
 

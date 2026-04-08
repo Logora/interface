@@ -1,11 +1,11 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import { DefaultTogglePosition, FirstLabelTogglePosition } from './TogglePosition.composition';
+import { DefaultTogglePosition, FirstLabelTogglePosition } from './TogglePosition.stories';
 import { TogglePosition } from './TogglePosition';
 import { IntlProvider } from 'react-intl';
 import userEvent from '@testing-library/user-event';
 
-const callback = jest.fn();
+const callback = vi.fn();
 
 describe('Toggle', () => {
     it('should render the toggle with correct texts by default', () => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Icon } from '@logora/debate.icons.icon';
+import { Icon } from '@logora/debate/icons/icon';
 import cx from 'classnames';
 import styles from './AnnouncementDialog.module.scss';
 import PropTypes from "prop-types";

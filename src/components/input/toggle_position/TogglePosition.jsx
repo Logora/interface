@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { TranslatedContent } from '@logora/debate.translation.translated_content';
+import { TranslatedContent } from '@logora/debate/translation/translated_content';
 import PropTypes from "prop-types";
 import styles from './TogglePosition.module.scss';
 import cx from "classnames";

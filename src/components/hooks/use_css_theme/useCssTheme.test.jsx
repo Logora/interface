@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import { DefaultTheme, ThemeKebabCase } from './useCssTheme.composition';
+import { DefaultTheme, ThemeKebabCase } from './useCssTheme.stories';
 
 const theme = {
   colorPrimary: "blue",

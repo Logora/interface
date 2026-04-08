@@ -1,10 +1,10 @@
 import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { Pagination } from './Pagination';
-import { IconProvider } from '@logora/debate.icons.icon_provider';
-import * as regularIcons from '@logora/debate.icons.regular_icons';
+import { IconProvider } from '@logora/debate/icons/icon_provider';
+import * as regularIcons from '@logora/debate/icons/regular_icons';
 
-const callback = jest.fn();
+const callback = vi.fn();
 
 describe('Pagination', () => {
     it('should render with the correct text', () => {

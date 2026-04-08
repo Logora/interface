@@ -1,15 +1,15 @@
 import React, { useMemo, useState } from "react";
-import { useResponsive } from "@logora/debate.hooks.use_responsive";
-import { useRoutes } from '@logora/debate.data.config_provider';
+import { useResponsive } from "@logora/debate/hooks/use_responsive";
+import { useRoutes } from '@logora/debate/data/config_provider';
 import { useIntl } from 'react-intl';
-import { Button } from '@logora/debate.action.button';
-import { VotePaginatedList } from "@logora/debate.list.paginated_list";
-import { Icon } from "@logora/debate.icons.icon";
+import { Button } from '@logora/debate/action/button';
+import { VotePaginatedList } from "@logora/debate/list/paginated_list";
+import { Icon } from "@logora/debate/icons/icon";
 import { FormattedMessage } from "react-intl";
-import { UserContentSkeleton } from '@logora/debate.skeleton.user_content_skeleton';
-import { SuggestionBox } from '@logora/debate.suggestion.suggestion_box';
-import { useList } from "@logora/debate.list.list_provider";
-import { useToast } from '@logora/debate.dialog.toast_provider';
+import { UserContentSkeleton } from '@logora/debate/skeleton/user_content_skeleton';
+import { SuggestionBox } from '@logora/debate/suggestion/suggestion_box';
+import { useList } from "@logora/debate/list/list_provider";
+import { useToast } from '@logora/debate/dialog/toast_provider';
 import cx from 'classnames';
 import styles from "./SuggestionBanner.module.scss";
 

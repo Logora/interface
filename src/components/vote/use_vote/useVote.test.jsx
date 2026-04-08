@@ -1,11 +1,11 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { useVote } from "./useVote";
-import { VoteProvider } from "@logora/debate.vote.vote_provider";
-import { dataProvider, DataProviderContext } from '@logora/debate.data.data_provider';
-import { AuthContext } from '@logora/debate.auth.use_auth';
-import { ConfigProvider } from '@logora/debate.data.config_provider';
-import { ModalProvider } from '@logora/debate.dialog.modal';
+import { VoteProvider } from "@logora/debate/vote/vote_provider";
+import { dataProvider, DataProviderContext } from '@logora/debate/data/data_provider';
+import { AuthContext } from '@logora/debate/auth/use_auth';
+import { ConfigProvider } from '@logora/debate/data/config_provider';
+import { ModalProvider } from '@logora/debate/dialog/modal';
 import React from "react";
 import { faker } from '@faker-js/faker';
 
@@ -40,10 +40,10 @@ const errorHttpClient = {
 };
 
 const vote = { 
-  id: faker.datatype.number(),
+  id: faker.number.int(),
   voteable_type: faker.lorem.word(),
-  voteable_id: faker.datatype.number(), 
-  user_id: faker.datatype.number()
+  voteable_id: faker.number.int(), 
+  user_id: faker.number.int()
 };
 
 const currentUser = {
@@ -131,7 +131,7 @@ describe("useVote", () => {
       <VoteWrapper data={data}>
         <VoteButton
           voteableType={"message"} 
-          voteableId={faker.datatype.number()} 
+          voteableId={faker.number.int()} 
           totalUpvote={10} 
           totalDownvote={5} 
         />
@@ -174,7 +174,7 @@ describe("useVote", () => {
       <VoteWrapper data={data}>
         <VoteButton
           voteableType={"message"} 
-          voteableId={faker.datatype.number()} 
+          voteableId={faker.number.int()} 
           totalUpvote={10} 
           totalDownvote={5} 
         />
@@ -217,7 +217,7 @@ describe("useVote", () => {
       <VoteWrapper data={data}>
         <VoteButton
           voteableType={"message"} 
-          voteableId={faker.datatype.number()} 
+          voteableId={faker.number.int()} 
           totalUpvote={10} 
           totalDownvote={5} 
         />
@@ -267,7 +267,7 @@ describe("useVote", () => {
       <VoteWrapper data={errorData}>
         <VoteButton
           voteableType={"message"} 
-          voteableId={faker.datatype.number()} 
+          voteableId={faker.number.int()} 
           totalUpvote={0} 
           totalDownvote={0} 
         />

@@ -2,10 +2,10 @@ import React from 'react';
 import { fireEvent, render, screen, waitForElementToBeRemoved } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { ConfirmModal } from './ConfirmModal';
-import { ModalProvider } from '@logora/debate.dialog.modal';
-import { IconProvider } from '@logora/debate.icons.icon_provider';
+import { ModalProvider } from '@logora/debate/dialog/modal';
+import { IconProvider } from '@logora/debate/icons/icon_provider';
 import { IntlProvider } from "react-intl";
-import * as regularIcons from '@logora/debate.icons.regular_icons';
+import * as regularIcons from '@logora/debate/icons/regular_icons';
 
 beforeAll(() => {
     HTMLDialogElement.prototype.showModal = function () {
@@ -119,7 +119,7 @@ describe('ConfirmModal', () => {
 	*/
 
 	it('should trigger confirm callback when clicking confirm', async () => {
-		const confirmCallback = jest.fn();
+		const confirmCallback = vi.fn();
 
 		const modal = render(
 			<IconProvider library={regularIcons}>
@@ -147,7 +147,7 @@ describe('ConfirmModal', () => {
 	});
 
 	it('should trigger cancel callback when clicking cancel', async () => {
-		const cancelCallback = jest.fn();
+		const cancelCallback = vi.fn();
 
 		const modal = render(
 			<IconProvider library={regularIcons}>

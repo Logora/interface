@@ -1,12 +1,12 @@
 import React from 'react';
-import { useAuth } from "@logora/debate.auth.use_auth";
-import { useModal } from '@logora/debate.dialog.modal';
+import { useAuth } from "@logora/debate/auth/use_auth";
+import { useModal } from '@logora/debate/dialog/modal';
 import { useIntl } from 'react-intl';
-import { useList } from '@logora/debate.list.list_provider';
-import { useDataProvider } from '@logora/debate.data.data_provider';
-import { useToast } from '@logora/debate.dialog.toast_provider';
-import { ConfirmModal } from '@logora/debate.dialog.confirm_modal';
-import { useAuthRequired } from '@logora/debate.hooks.use_auth_required';
+import { useList } from '@logora/debate/list/list_provider';
+import { useDataProvider } from '@logora/debate/data/data_provider';
+import { useToast } from '@logora/debate/dialog/toast_provider';
+import { ConfirmModal } from '@logora/debate/dialog/confirm_modal';
+import { useAuthRequired } from '@logora/debate/hooks/use_auth_required';
 
 export const useDeleteContent = (content, contentType, listId, softDelete = false,  deleteTitle, deleteQuestion, deleteAlert) => {
     const { showModal } = useModal();

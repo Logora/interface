@@ -4,9 +4,9 @@ import userEvent from '@testing-library/user-event';
 import { MemoryRouter } from "react-router-dom";
 import { IntlProvider } from 'react-intl';
 import { SocialAuthForm } from './SocialAuthForm';
-import { DefaultSocialAuthForm, SocialAuthFormWithoutLogo } from './SocialAuthForm.composition';
-import { IconProvider } from '@logora/debate.icons.icon_provider';
-import * as regularIcons from '@logora/debate.icons.regular_icons';
+import { DefaultSocialAuthForm, SocialAuthFormWithoutLogo } from './SocialAuthForm.stories';
+import { IconProvider } from '@logora/debate/icons/icon_provider';
+import * as regularIcons from '@logora/debate/icons/regular_icons';
 
 describe('SocialAuthForm', () => {
     it('should render with correct default', () => {
@@ -92,7 +92,7 @@ describe('SocialAuthForm', () => {
     it('should trigger callback when logging in with correct data', async () => {
         const email = "test@test.com";
         const password = "password";
-        const onSubmitCallback = jest.fn();
+        const onSubmitCallback = vi.fn();
         const data = { email: email, password: password }
 
         render(
@@ -137,7 +137,7 @@ describe('SocialAuthForm', () => {
         const password = "my-password";
         const passwordConfirmation = password;
         const acceptsEmail = true;
-        const onSubmitCallback = jest.fn();
+        const onSubmitCallback = vi.fn();
         const data = {
             first_name: firstName,
             last_name: lastName,

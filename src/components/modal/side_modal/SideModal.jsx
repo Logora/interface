@@ -1,9 +1,9 @@
 import React from "react";
-import { Modal, useModal } from "@logora/debate.dialog.modal";
+import { Modal, useModal } from "@logora/debate/dialog/modal";
 import { FormattedMessage } from "react-intl";
-import { Button } from '@logora/debate.action.button';
-import { Icon } from "@logora/debate.icons.icon";
-import { useTranslatedContent } from '@logora/debate.translation.translated_content';
+import { Button } from '@logora/debate/action/button';
+import { Icon } from "@logora/debate/icons/icon";
+import { useTranslatedContent } from '@logora/debate/translation/translated_content';
 import PropTypes from "prop-types";
 import styles from "./SideModal.module.scss";
 

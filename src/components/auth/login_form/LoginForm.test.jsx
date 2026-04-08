@@ -35,7 +35,8 @@ describe('LoginForm', () => {
         expect(passwordInput.required).toBeTruthy();
 
         const forgotPasswordLink = screen.getByRole("link");
-        expect(forgotPasswordLink.href).toBe("http://example.com/forgot_password?redirect_url=http%253A%252F%252Flocalhost%252F")
+        expect(forgotPasswordLink.href).toContain("http://example.com/forgot_password?redirect_url=")
+        expect(forgotPasswordLink.href).toContain(encodeURIComponent(encodeURIComponent(window.location.origin + "/")));
         expect(forgotPasswordLink.target).toBe("_blank");
     });
 
@@ -63,7 +64,7 @@ describe('LoginForm', () => {
         const forgotPasswordUrl = "http://example.com/forgot_password";
         const email = "test@test.com";
         const password = "password";
-        const onSubmitCallback = jest.fn();
+        const onSubmitCallback = vi.fn();
 
         const loginForm = render(
             <IntlProvider locale="en">

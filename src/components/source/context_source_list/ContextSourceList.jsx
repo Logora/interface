@@ -1,9 +1,9 @@
 import React from 'react';
 import { useIntl } from "react-intl";
-import { useResponsive } from "@logora/debate.hooks.use_responsive";
-import { Link } from '@logora/debate.action.link';
-import { ContextSourceBox } from "@logora/debate.source.context_source_box";
-import { SectionBox } from "@logora/debate.section.section_box"
+import { useResponsive } from "@logora/debate/hooks/use_responsive";
+import { Link } from '@logora/debate/action/link';
+import { ContextSourceBox } from "@logora/debate/source/context_source_box";
+import { SectionBox } from "@logora/debate/section/section_box"
 import styles from './ContextSourceList.module.scss';
 import cx from "classnames";
 import PropTypes from "prop-types";

@@ -3,10 +3,10 @@ import { render, screen } from '@testing-library/react';
 import { IntlProvider } from 'react-intl';
 import userEvent from '@testing-library/user-event';
 import { SearchInput } from './SearchInput';
-import { IconProvider } from '@logora/debate.icons.icon_provider';
-import * as regularIcons from '@logora/debate.icons.regular_icons';
+import { IconProvider } from '@logora/debate/icons/icon_provider';
+import * as regularIcons from '@logora/debate/icons/regular_icons';
 
-const callback = jest.fn();
+const callback = vi.fn();
 
 describe('SearchInput', () => {
     it('should render an input search', () => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { OAuth2Button } from '@logora/debate.auth.oauth2_button';
+import { OAuth2Button } from '@logora/debate/auth/oauth2_button';
 import { FacebookIcon } from "./FacebookIcon";
 import styles from './FacebookLoginButton.module.scss';
 

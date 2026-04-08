@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
-import { httpClient } from '@logora/debate.data.axios_client';
-import { authTokenHandler, useAuthActions } from '@logora/debate.auth.use_auth';
-import { useAuthInterceptor } from '@logora/debate.auth.use_auth';
-import { useAuthRequired } from "@logora/debate.hooks.use_auth_required";
-import AuthProviderFactory from '@logora/debate.auth.providers';
+import { httpClient } from '@logora/debate/data/axios_client';
+import { authTokenHandler, useAuthActions } from '@logora/debate/auth/use_auth';
+import { useAuthInterceptor } from '@logora/debate/auth/use_auth';
+import { useAuthRequired } from "@logora/debate/hooks/use_auth_required";
+import AuthProviderFactory from '@logora/debate/auth/providers';
 
 export const AuthInitializer = ({ authUrl, authType, provider, assertion }) => {
     const tokenKey = "logora_user_token";

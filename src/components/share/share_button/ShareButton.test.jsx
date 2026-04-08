@@ -3,23 +3,23 @@ import { render, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { ShareButton } from './ShareButton';
 import { IntlProvider } from 'react-intl';
-import { ConfigProvider } from '@logora/debate.data.config_provider';
-import { IconProvider } from '@logora/debate.icons.icon_provider';
-import * as regularIcons from '@logora/debate.icons.regular_icons';
+import { ConfigProvider } from '@logora/debate/data/config_provider';
+import { IconProvider } from '@logora/debate/icons/icon_provider';
+import * as regularIcons from '@logora/debate/icons/regular_icons';
 
 describe('ShareButton', () => {
     beforeAll(() => {
         Object.defineProperty(window, 'matchMedia', {
             writable: true,
-            value: jest.fn().mockImplementation((query) => ({
+            value: vi.fn().mockImplementation((query) => ({
                 matches: false,
                 media: query,
                 onchange: null,
-                addListener: jest.fn(),
-                removeListener: jest.fn(),
-                addEventListener: jest.fn(),
-                removeEventListener: jest.fn(),
-                dispatchEvent: jest.fn(),
+                addListener: vi.fn(),
+                removeListener: vi.fn(),
+                addEventListener: vi.fn(),
+                removeEventListener: vi.fn(),
+                dispatchEvent: vi.fn(),
             })),
         });
     });

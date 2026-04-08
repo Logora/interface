@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react";
 import { useIntl } from "react-intl";
 import 'chart.js/auto';
 import { Line } from 'react-chartjs-2';
-import { Select } from '@logora/debate.input.select';
-import { Tag } from '@logora/debate.tag.tag';
-import { Icon } from '@logora/debate.icons.icon'
-import { Loader } from '@logora/debate.progress.loader';
+import { Select } from '@logora/debate/input/select';
+import { Tag } from '@logora/debate/tag/tag';
+import { Icon } from '@logora/debate/icons/icon'
+import { Loader } from '@logora/debate/progress/loader';
 import styles from "./LineChart.module.scss";
-import StandardErrorBoundary from "@logora/debate.error.standard_error_boundary";
+import StandardErrorBoundary from "@logora/debate/error/standard_error_boundary";
 import cx from 'classnames';
 import PropTypes from 'prop-types';
 

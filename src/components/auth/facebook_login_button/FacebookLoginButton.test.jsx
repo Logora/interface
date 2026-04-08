@@ -3,8 +3,8 @@ import { MemoryRouter } from 'react-router-dom';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { FacebookLoginButton } from './FacebookLoginButton';
-import { IconProvider } from '@logora/debate.icons.icon_provider';
-import * as regularIcons from '@logora/debate.icons.regular_icons';
+import { IconProvider } from '@logora/debate/icons/icon_provider';
+import * as regularIcons from '@logora/debate/icons/regular_icons';
 
 Object.defineProperty(window, 'location', {
 	value: {
@@ -13,8 +13,8 @@ Object.defineProperty(window, 'location', {
 	}
 });
 
-const spyWindowOpen = jest.spyOn(window, 'open');
-spyWindowOpen.mockImplementation(jest.fn());
+const spyWindowOpen = vi.spyOn(window, 'open');
+spyWindowOpen.mockImplementation(vi.fn());
 
 describe('FacebookLoginButton', () => {
 	it('should render button with the correct text', () => {

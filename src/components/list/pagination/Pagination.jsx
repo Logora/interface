@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Loader } from '@logora/debate.progress.loader';
-import { Button } from '@logora/debate.action.button';
+import { Loader } from '@logora/debate/progress/loader';
+import { Button } from '@logora/debate/action/button';
 import styles from './Pagination.module.scss';
 import PropTypes from "prop-types";
-import { Icon } from "@logora/debate.icons.icon";
+import { Icon } from "@logora/debate/icons/icon";
 
 export const Pagination = ({ currentPage, perPage, totalElements, buttonText, onLoad, isLoading, hideLoader, ...rest }) => {
     const [hasNextPage, setHasNextPage] = useState((currentPage * perPage) < totalElements)

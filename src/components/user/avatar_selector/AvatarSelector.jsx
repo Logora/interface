@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useIntl } from "react-intl";
-import { Button } from '@logora/debate.action.button';
-import { Avatar } from '@logora/debate.user.avatar';
+import { Button } from '@logora/debate/action/button';
+import { Avatar } from '@logora/debate/user/avatar';
 import styles from './AvatarSelector.module.scss';
 import cx from 'classnames';
 import PropTypes from 'prop-types';

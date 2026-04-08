@@ -1,6 +1,6 @@
 import React from 'react';
-import { Modal, useModal } from '@logora/debate.dialog.modal';
-import { Button } from '@logora/debate.action.button';
+import { Modal, useModal } from '@logora/debate/dialog/modal';
+import { Button } from '@logora/debate/action/button';
 import styles from './ConfirmModal.module.scss';
 import cx from 'classnames';
 import PropTypes from "prop-types";

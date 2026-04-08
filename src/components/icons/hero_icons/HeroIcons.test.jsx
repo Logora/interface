@@ -1,5 +1,5 @@
 import React from "react";
-import { HeroIconsLibrary } from "./HeroIcons.composition";
+import { HeroIconsLibrary } from "./HeroIcons.stories";
 import { render, screen } from '@testing-library/react';
 
 describe('Hero icons', () => {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import { ConfigProvider } from '@logora/debate.data.config_provider';
+import { ConfigProvider } from '@logora/debate/data/config_provider';
 import { AuthInitializer } from './AuthInitializer';
 
 const config = {

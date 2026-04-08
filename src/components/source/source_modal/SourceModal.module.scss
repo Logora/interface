@@ -1,5 +1,5 @@
-@use '@logora/debate.styles.theme' as theme;
-@use '@logora/debate.styles.spacing' as spacing;
+@use 'styles/theme' as theme;
+@use 'styles/spacing' as spacing;
 
 .sourceModalBody {
   max-height: calc(100vh - 80px);

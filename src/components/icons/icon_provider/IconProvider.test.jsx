@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, act, screen, waitFor } from '@testing-library/react';
 import { IconProvider } from './IconProvider';
-import * as regularIcons from '@logora/debate.icons.regular_icons';
+import * as regularIcons from '@logora/debate/icons/regular_icons';
 
 const ComponentWithIcons = () => {
 	return <div>Hello world !</div>

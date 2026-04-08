@@ -17,8 +17,8 @@ import {
 import { $createQuoteNode, $isHeadingNode } from "@lexical/rich-text";
 import styles from "./ToolbarPlugin.module.scss";
 import cx from "classnames";
-import { Icon } from "@logora/debate.icons.icon";
-import { Button } from "@logora/debate.action.button";
+import { Icon } from "@logora/debate/icons/icon";
+import { Button } from "@logora/debate/action/button";
 
 export const ToolbarPlugin = (props) => {
 	const intl = useIntl();

@@ -2,27 +2,27 @@ import React from 'react';
 import { render, screen, waitFor, act } from '@testing-library/react';
 import { IntlProvider } from 'react-intl';
 import { BrowserRouter } from 'react-router-dom';
-import { dataProvider, DataProviderContext } from '@logora/debate.data.data_provider';
-import { ResponsiveProvider } from '@logora/debate.hooks.use_responsive';
-import { ListProvider, useList } from '@logora/debate.list.list_provider';
+import { dataProvider, DataProviderContext } from '@logora/debate/data/data_provider';
+import { ResponsiveProvider } from '@logora/debate/hooks/use_responsive';
+import { ListProvider, useList } from '@logora/debate/list/list_provider';
 import { VotePaginatedList } from './VotePaginatedList';
-import StandardErrorBoundary from "@logora/debate.error.standard_error_boundary";
+import StandardErrorBoundary from "@logora/debate/error/standard_error_boundary";
 import userEvent from '@testing-library/user-event';
-import { IconProvider } from '@logora/debate.icons.icon_provider';
-import * as regularIcons from '@logora/debate.icons.regular_icons';
-import { AuthContext } from '@logora/debate.auth.use_auth';
+import { IconProvider } from '@logora/debate/icons/icon_provider';
+import * as regularIcons from '@logora/debate/icons/regular_icons';
+import { AuthContext } from '@logora/debate/auth/use_auth';
 import { faker } from '@faker-js/faker';
-import { ConfigProvider } from '@logora/debate.data.config_provider';
-import { ModalProvider } from '@logora/debate.dialog.modal';
+import { ConfigProvider } from '@logora/debate/data/config_provider';
+import { ModalProvider } from '@logora/debate/dialog/modal';
 
 const httpClient = {
-    get: jest.fn(),
-    post: jest.fn(),
-    patch: jest.fn()
+    get: vi.fn(),
+    post: vi.fn(),
+    patch: vi.fn()
 };
 
 const currentUser = {
-    id: faker.datatype.number(),
+    id: faker.number.int(),
 }
 
 const ListItem = (props) => {
@@ -142,12 +142,12 @@ describe('VotePaginatedList', () => {
     });
 
     it('should trow an error when data loading fails ', async () => {
-        httpClient.get = jest.fn(() =>  Promise.reject({
+        httpClient.get = vi.fn(() =>  Promise.reject({
             status: 500,
             "data": {}
         }))
 
-        jest.spyOn(console, 'error').mockImplementation(() => { });
+        vi.spyOn(console, 'error').mockImplementation(() => { });
 
         await act(async () => {
             render(
@@ -817,7 +817,7 @@ describe('VotePaginatedList', () => {
             }
         });
 
-        const callback = jest.fn();
+        const callback = vi.fn();
 
         await act(async () => {
             render(
@@ -894,7 +894,7 @@ describe('VotePaginatedList', () => {
             }
         });
 
-        const callback = jest.fn();
+        const callback = vi.fn();
 
         await act(async () => {
             render(
@@ -1175,7 +1175,7 @@ describe('VotePaginatedList', () => {
             }
         });
 
-        const callback = jest.fn();
+        const callback = vi.fn();
 
         await act(async () => {
             render(
@@ -1387,7 +1387,7 @@ describe('VotePaginatedList', () => {
             }
         });
 
-        const callback = jest.fn();
+        const callback = vi.fn();
 
         await act(async () => {
             render(
@@ -1463,7 +1463,7 @@ describe('VotePaginatedList', () => {
             )
         }
 
-        const callback = jest.fn();
+        const callback = vi.fn();
 
         await act(async () => {
             render(

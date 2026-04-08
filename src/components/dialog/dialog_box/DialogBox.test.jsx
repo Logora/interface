@@ -1,5 +1,5 @@
 import React from 'react';
-import { DefaultDialogBox, HiddenDialogBox } from './DialogBox.composition';
+import { DefaultDialogBox, HiddenDialogBox } from './DialogBox.stories';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 

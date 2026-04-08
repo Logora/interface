@@ -3,8 +3,8 @@ import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { ShareBox } from './ShareBox';
 import { IntlProvider } from 'react-intl';
-import { IconProvider } from '@logora/debate.icons.icon_provider';
-import * as regularIcons from '@logora/debate.icons.regular_icons';
+import { IconProvider } from '@logora/debate/icons/icon_provider';
+import * as regularIcons from '@logora/debate/icons/regular_icons';
 
 describe('ShareBox', () => {
     it('should render box with share option', () => {
@@ -23,11 +23,13 @@ describe('ShareBox', () => {
     });
 
     it('should copy to clipboard when sharing link', async () => {
+        const user = userEvent.setup();
         const shareUrl = "https://example.com/share-link";
 
-        Object.assign(window.navigator, {
-            clipboard: {
-            writeText: jest.fn(),
+        Object.defineProperty(window.navigator, 'clipboard', {
+            configurable: true,
+            value: {
+                writeText: vi.fn(),
             },
         });
 
@@ -45,14 +47,15 @@ describe('ShareBox', () => {
         const icons = (queryAllByRole("button"));
         const linkIcon = icons[0];
 
-        userEvent.hover(linkIcon);
+        await user.hover(linkIcon);
         expect(getByText(/Copy to clipboard/i)).toBeTruthy();
 
-        userEvent.click(linkIcon);
+        await user.click(linkIcon);
         // TODO : add copy to clipboard test
     });
 
-    it('should open Facebook share link on click', () => {
+    it('should open Facebook share link on click', async () => {
+        const user = userEvent.setup();
         const { queryAllByRole, getByText} = render(
             <IntlProvider locale="en">
                 <IconProvider library={regularIcons}>
@@ -67,11 +70,12 @@ describe('ShareBox', () => {
         const icons = (queryAllByRole("button"));
         const facebookIcon = icons[1];
 
-        userEvent.hover(facebookIcon);
+        await user.hover(facebookIcon);
         expect(getByText(/Share on Facebook/i)).toBeTruthy();
     });
 
-    it('should open twitter share link on click', () => {
+    it('should open twitter share link on click', async () => {
+        const user = userEvent.setup();
         const { queryAllByRole, getByText} = render(
             <IntlProvider locale="en">
                 <IconProvider library={regularIcons}>
@@ -86,11 +90,12 @@ describe('ShareBox', () => {
         const icons = (queryAllByRole("button"));
         const twitterIcon = icons[2];
 
-        userEvent.hover(twitterIcon);
+        await user.hover(twitterIcon);
         expect(getByText(/Share on Twitter/i)).toBeTruthy();
     });
 
-    it('should open email share on click', () => {
+    it('should open email share on click', async () => {
+        const user = userEvent.setup();
         const { queryAllByRole, getByText} = render(
             <IntlProvider locale="en">
                 <IconProvider library={regularIcons}>
@@ -105,11 +110,12 @@ describe('ShareBox', () => {
         const icons = (queryAllByRole("button"));
         const mailIcon = icons[3];
 
-        userEvent.hover(mailIcon);
+        await user.hover(mailIcon);
         expect(getByText(/Share by email/i)).toBeTruthy();
     });
 
-    it('should render box with code share option and copy to clipboard on click', () => {
+    it('should render box with code share option and copy to clipboard on click', async () => {
+        const user = userEvent.setup();
         const { queryAllByRole, getByText } = render(
             <IntlProvider locale="en">
                 <IconProvider library={regularIcons}>
@@ -127,10 +133,10 @@ describe('ShareBox', () => {
         const icons = (queryAllByRole("button"));
         const codeIcon = icons[4];
 
-        userEvent.hover(codeIcon);
+        await user.hover(codeIcon);
         expect(getByText(/Copy embed code/i)).toBeTruthy();
 
-        userEvent.click(codeIcon);
+        await user.click(codeIcon);
         // TODO : add copy to clipboard test
     });
 });

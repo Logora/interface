@@ -2,20 +2,20 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { BrowserRouter } from 'react-router-dom';
-import { InnerComponent } from './ScrollToTop.composition';
+import { InnerComponent } from './ScrollToTop.stories';
 
 describe('ScrollToTop', () => {  
     beforeEach(() => {
-        jest.clearAllMocks();
+        vi.clearAllMocks();
     });
 
     it('should scroll to the element with the specified ID on location change', async () => {
-        const scrollIntoViewMock = jest.fn();
-        const getElementByIdMock = jest.fn(() => ({
+        const scrollIntoViewMock = vi.fn();
+        const getElementByIdMock = vi.fn(() => ({
             scrollIntoView: scrollIntoViewMock
         }));
         window.document.getElementById = getElementByIdMock;
-        window.scrollTo = jest.fn();
+        window.scrollTo = vi.fn();
 
         render(
             <BrowserRouter>

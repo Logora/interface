@@ -1,5 +1,5 @@
-@use '@logora/debate.styles.theme/_theme.scss' as theme;
-@use '@logora/debate.styles.spacing/_spacing.scss' as spacing;
+@use 'styles/theme' as theme;
+@use 'styles/spacing' as spacing;
 
 .translationButton {
     font-size: theme.$font-size-extra-small;

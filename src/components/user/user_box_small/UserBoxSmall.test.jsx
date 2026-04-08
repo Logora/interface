@@ -1,15 +1,15 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import { ConfigProvider } from '@logora/debate.data.config_provider';
+import { ConfigProvider } from '@logora/debate/data/config_provider';
 import { IntlProvider } from 'react-intl';
 import { BrowserRouter } from 'react-router-dom';
 import { UserBoxSmall } from './UserBoxSmall';
-import { Location } from '@logora/debate.util.location';
+import { Location } from '@logora/debate/util/location';
 import { faker } from '@faker-js/faker';
 
 const user = {
-  image_url: faker.image.avatar(),
-  full_name: faker.name.fullName(),
+  image_url: faker.image.avatarGitHub(),
+  full_name: faker.person.fullName(),
   slug: faker.lorem.slug(),
 }
 

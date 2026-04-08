@@ -1,5 +1,5 @@
 import React from "react";
-import { RegularIconsLibrary } from "./RegularIcons.composition";
+import { RegularIconsLibrary } from "./RegularIcons.stories";
 import { render, screen } from '@testing-library/react';
 
 describe('regular icons', () => {

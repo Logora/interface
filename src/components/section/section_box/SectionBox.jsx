@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import styles from './SectionBox.module.scss';
-import { Icon } from '@logora/debate.icons.icon';
+import { Icon } from '@logora/debate/icons/icon';
 import cx from "classnames";
-import { useResponsive } from "@logora/debate.hooks.use_responsive";
+import { useResponsive } from "@logora/debate/hooks/use_responsive";
 
 export const SectionBox = ({ isCollapsible = false, isCollapsedByDefault = false, title, subtitle = "", className, titleClassName, children }) => {
   const [isCollapsed, setIsCollapsed] = useState(isCollapsedByDefault);

@@ -1,8 +1,8 @@
 import { useState, useEffect, useContext } from "react";
-import { useAuth } from "@logora/debate.auth.use_auth";
-import { useDataProvider } from "@logora/debate.data.data_provider";
-import { useAuthRequired } from "@logora/debate.hooks.use_auth_required";
-import { VoteContext } from "@logora/debate.vote.vote_provider";
+import { useAuth } from "@logora/debate/auth/use_auth";
+import { useDataProvider } from "@logora/debate/data/data_provider";
+import { useAuthRequired } from "@logora/debate/hooks/use_auth_required";
+import { VoteContext } from "@logora/debate/vote/vote_provider";
 import PropTypes from "prop-types";
 
 export const useVote = (

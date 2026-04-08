@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { SectionBox } from '@logora/debate.section.section_box';
-import { SummaryBox } from '@logora/debate.summary.summary_box';
-import { BoxSkeleton } from '@logora/debate.skeleton.box_skeleton';
+import { SectionBox } from '@logora/debate/section/section_box';
+import { SummaryBox } from '@logora/debate/summary/summary_box';
+import { BoxSkeleton } from '@logora/debate/skeleton/box_skeleton';
 import { useIntl } from "react-intl";
 
 import styles from './Summary.module.scss';

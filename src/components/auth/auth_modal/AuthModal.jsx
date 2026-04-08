@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { useConfig } from '@logora/debate.data.config_provider';
-import { Modal, useModal } from '@logora/debate.dialog.modal';
-import { useAuth, useAuthActions } from "@logora/debate.auth.use_auth";
-import { httpClient } from '@logora/debate.data.axios_client';
-import AuthProviderFactory from '@logora/debate.auth.providers';
-import { SocialAuthForm } from '@logora/debate.auth.social_auth_form';
-import { SSOForm } from '@logora/debate.auth.sso_form';
-import { Loader } from '@logora/debate.progress.loader';
+import { useConfig } from '@logora/debate/data/config_provider';
+import { Modal, useModal } from '@logora/debate/dialog/modal';
+import { useAuth, useAuthActions } from "@logora/debate/auth/use_auth";
+import { httpClient } from '@logora/debate/data/axios_client';
+import AuthProviderFactory from '@logora/debate/auth/providers';
+import { SocialAuthForm } from '@logora/debate/auth/social_auth_form';
+import { SSOForm } from '@logora/debate/auth/sso_form';
+import { Loader } from '@logora/debate/progress/loader';
 import styles from "./AuthModal.module.scss";
 
 export const AuthModal = ({ onHideModal = null }) => {

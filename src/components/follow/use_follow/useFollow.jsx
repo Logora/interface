@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import { useAuth } from "@logora/debate.auth.use_auth";
-import { useDataProvider } from '@logora/debate.data.data_provider';
-import { useAuthRequired } from '@logora/debate.hooks.use_auth_required';
+import { useAuth } from "@logora/debate/auth/use_auth";
+import { useDataProvider } from '@logora/debate/data/data_provider';
+import { useAuthRequired } from '@logora/debate/hooks/use_auth_required';
 
 export const useFollow = (resourceName, followableId) => {
     const api = useDataProvider();

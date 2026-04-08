@@ -69,7 +69,7 @@ describe('SignupForm', () => {
         const password = "my-password";
         const passwordConfirmation = password;
         const acceptsEmail = true;
-        const onSubmitCallback = jest.fn();
+        const onSubmitCallback = vi.fn();
 
         render(
             <IntlProvider locale="en">
@@ -109,7 +109,7 @@ describe('SignupForm', () => {
         const lastName = "My last name";
         const password = "my-password";
         const passwordConfirmation = "my-password-but-not-the-same";
-        const onSubmitCallback = jest.fn();
+        const onSubmitCallback = vi.fn();
 
         render(
             <IntlProvider locale="en">

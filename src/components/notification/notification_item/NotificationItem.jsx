@@ -1,10 +1,10 @@
 import React from 'react';
 import { useNavigate } from 'react-router';
-import { useRelativeTime } from '@logora/debate.hooks.use_relative_time';
-import { useRoutes } from '@logora/debate.data.config_provider';
-import { useDataProvider } from '@logora/debate.data.data_provider';
+import { useRelativeTime } from '@logora/debate/hooks/use_relative_time';
+import { useRoutes } from '@logora/debate/data/config_provider';
+import { useDataProvider } from '@logora/debate/data/data_provider';
 import { useIntl } from 'react-intl';
-import { useConfig } from '@logora/debate.data.config_provider';
+import { useConfig } from '@logora/debate/data/config_provider';
 import PropTypes from "prop-types";
 import cx from 'classnames';
 import styles from './NotificationItem.module.scss';

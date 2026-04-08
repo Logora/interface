@@ -4,15 +4,15 @@ import { BrowserRouter } from 'react-router-dom';
 import { render, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { VoteBox } from './VoteBox';
-import { ConfigProvider } from '@logora/debate.data.config_provider';
-import { Location } from '@logora/debate.util.location';
-import { ModalProvider } from '@logora/debate.dialog.modal';
-import { dataProvider, DataProviderContext } from '@logora/debate.data.data_provider';
-import { AuthContext } from '@logora/debate.auth.use_auth';
-import { VoteProvider } from '@logora/debate.vote.vote_provider';
-import { IconProvider } from '@logora/debate.icons.icon_provider';
-import { ToastProvider } from '@logora/debate.dialog.toast_provider';
-import * as regularIcons from '@logora/debate.icons.regular_icons';
+import { ConfigProvider } from '@logora/debate/data/config_provider';
+import { Location } from '@logora/debate/util/location';
+import { ModalProvider } from '@logora/debate/dialog/modal';
+import { dataProvider, DataProviderContext } from '@logora/debate/data/data_provider';
+import { AuthContext } from '@logora/debate/auth/use_auth';
+import { VoteProvider } from '@logora/debate/vote/vote_provider';
+import { IconProvider } from '@logora/debate/icons/icon_provider';
+import { ToastProvider } from '@logora/debate/dialog/toast_provider';
+import * as regularIcons from '@logora/debate/icons/regular_icons';
 import { faker } from '@faker-js/faker';
 
 const routes = {
@@ -20,10 +20,10 @@ const routes = {
 };
 
 const vote = { 
-    id: faker.datatype.number(),
+    id: faker.number.int(),
     voteable_type: faker.lorem.word(),
-    voteable_id: faker.datatype.number(), 
-    user_id: faker.datatype.number()
+    voteable_id: faker.number.int(), 
+    user_id: faker.number.int()
 };
 
 const httpClient = {
@@ -46,7 +46,7 @@ const currentUser = {
 }
 
 const debate = {
-    id: faker.datatype.number(),
+    id: faker.number.int(),
     votes_count: {
         total: 10,
         1: 5,
@@ -92,15 +92,15 @@ describe('VoteBox Component', () => {
     beforeAll(() => {
         Object.defineProperty(window, 'matchMedia', {
             writable: true,
-            value: jest.fn().mockImplementation((query) => ({
+            value: vi.fn().mockImplementation((query) => ({
                 matches: false,
                 media: query,
                 onchange: null,
-                addListener: jest.fn(),
-                removeListener: jest.fn(),
-                addEventListener: jest.fn(),
-                removeEventListener: jest.fn(),
-                dispatchEvent: jest.fn(),
+                addListener: vi.fn(),
+                removeListener: vi.fn(),
+                addEventListener: vi.fn(),
+                removeEventListener: vi.fn(),
+                dispatchEvent: vi.fn(),
             })),
         });
     });
@@ -127,7 +127,7 @@ describe('VoteBox Component', () => {
     });
 
     it('should call callback', async () => {
-        const onVote = jest.fn();
+        const onVote = vi.fn();
         const { getByTitle } = render(
             <VoteBoxWrapper>
                 <VoteBox 

@@ -1,11 +1,11 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
-import { ConfigContext } from '@logora/debate.data.config_provider';
+import { ConfigContext } from '@logora/debate/data/config_provider';
 import { useAuthRequired } from './useAuthRequired';
-import { useModal } from '@logora/debate.dialog.modal';
+import { useModal } from '@logora/debate/dialog/modal';
 
-jest.mock('@logora/debate.dialog.modal', () => ({
-    useModal: jest.fn(),
+vi.mock('@logora/debate/dialog/modal', () => ({
+    useModal: vi.fn(),
 }));
 
 const TestComponent = () => {
@@ -21,8 +21,8 @@ const TestComponent = () => {
 };
 
 describe('useAuthRequired', () => {
-    const showModal = jest.fn();
-    const hideModal = jest.fn();
+    const showModal = vi.fn();
+    const hideModal = vi.fn();
 
     beforeEach(() => {
         useModal.mockReturnValue({
@@ -32,7 +32,7 @@ describe('useAuthRequired', () => {
     });
 
     afterEach(() => {
-        jest.clearAllMocks();
+        vi.clearAllMocks();
     });
 
     it('should call requireAuthentication on button click', () => {
@@ -44,7 +44,7 @@ describe('useAuthRequired', () => {
 
         const redirectUrl = window.location.href;
 
-        window.dispatchEvent = jest.fn();
+        window.dispatchEvent = vi.fn();
 
         const { getByText } = render(
             <ConfigContext.Provider value={{ config }}>

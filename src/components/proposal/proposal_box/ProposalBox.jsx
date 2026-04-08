@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { useIntl } from "react-intl";
-import { useTranslatedContent } from '@logora/debate.translation.translated_content';
-import { useAuth } from "@logora/debate.auth.use_auth";
-import { ContentHeader } from '@logora/debate.user_content.content_header';
-import { ReadMore } from "@logora/debate.text.read_more";
-import { lexicalToHtml } from "@logora/debate.input.text_editor";
-import { HashScroll } from '@logora/debate.tools.hash_scroll';
-import { TranslationButton } from "@logora/debate.translation.translation_button";
-import { ContentFooter } from '@logora/debate.user_content.content_footer';
-import { useConfig } from '@logora/debate.data.config_provider';
-import { UpDownVoteBox } from "@logora/debate.vote.up_down_vote_box";
+import { useTranslatedContent } from '@logora/debate/translation/translated_content';
+import { useAuth } from "@logora/debate/auth/use_auth";
+import { ContentHeader } from '@logora/debate/user_content/content_header';
+import { ReadMore } from "@logora/debate/text/read_more";
+import { lexicalToHtml } from "@logora/debate/input/text_editor";
+import { HashScroll } from '@logora/debate/tools/hash_scroll';
+import { TranslationButton } from "@logora/debate/translation/translation_button";
+import { ContentFooter } from '@logora/debate/user_content/content_footer';
+import { useConfig } from '@logora/debate/data/config_provider';
+import { UpDownVoteBox } from "@logora/debate/vote/up_down_vote_box";
 import cx from "classnames";
 import styles from './ProposalBox.module.scss';
 

@@ -1,5 +1,5 @@
-@use '@logora/debate.styles.theme' as theme;
-@use '@logora/debate.styles.spacing' as spacing;
+@use 'styles/theme' as theme;
+@use 'styles/spacing' as spacing;
 
 .sectionBoxContainer {
     background-color: theme.$background-color-primary;

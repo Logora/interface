@@ -1,9 +1,9 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { AnnouncementDialog } from './AnnouncementDialog';
-import { Announcement } from '@logora/debate.icons.regular_icons';
-import { IconProvider } from '@logora/debate.icons.icon_provider';
-import * as regularIcons from '@logora/debate.icons.regular_icons';
+import { Announcement } from '@logora/debate/icons/regular_icons';
+import { IconProvider } from '@logora/debate/icons/icon_provider';
+import * as regularIcons from '@logora/debate/icons/regular_icons';
 
 describe('AnnouncementDialog', () => {
     it('should render with the correct text', () => {

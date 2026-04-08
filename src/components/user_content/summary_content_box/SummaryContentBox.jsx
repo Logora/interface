@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from "prop-types";
-import { ContentHeader } from '@logora/debate.user_content.content_header';
-import { Link } from '@logora/debate.action.link';
-import { Icon } from "@logora/debate.icons.icon";
-import { ReadMore } from '@logora/debate.text.read_more';
+import { ContentHeader } from '@logora/debate/user_content/content_header';
+import { Link } from '@logora/debate/action/link';
+import { Icon } from "@logora/debate/icons/icon";
+import { ReadMore } from '@logora/debate/text/read_more';
 import { FormattedMessage } from 'react-intl';
-import { useTranslatedContent } from '@logora/debate.translation.translated_content';
+import { useTranslatedContent } from '@logora/debate/translation/translated_content';
 import cx from 'classnames';
 import styles from './SummaryContentBox.module.scss';
 

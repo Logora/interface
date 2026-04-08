@@ -1,5 +1,5 @@
 import React from "react";
-import { KroneIconsLibrary } from "./KroneIcons.composition";
+import { KroneIconsLibrary } from "./KroneIcons.stories";
 import { render, screen } from '@testing-library/react';
 
 describe('Krone icons', () => {

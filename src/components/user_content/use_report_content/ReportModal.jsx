@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { Modal, useModal } from '@logora/debate.dialog.modal';
+import { Modal, useModal } from '@logora/debate/dialog/modal';
 import { useIntl } from 'react-intl';
-import { useDataProvider } from '@logora/debate.data.data_provider';
-import { useAuth } from "@logora/debate.auth.use_auth";
-import { Select } from '@logora/debate.input.select';
-import { Loader } from '@logora/debate.progress.loader';
-import { Button } from '@logora/debate.action.button';
+import { useDataProvider } from '@logora/debate/data/data_provider';
+import { useAuth } from "@logora/debate/auth/use_auth";
+import { Select } from '@logora/debate/input/select';
+import { Loader } from '@logora/debate/progress/loader';
+import { Button } from '@logora/debate/action/button';
 import cx from 'classnames';
 import styles from './ReportModal.module.scss';
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { OAuth2Button } from '@logora/debate.auth.oauth2_button';
+import { OAuth2Button } from '@logora/debate/auth/oauth2_button';
 import { GoogleIcon } from "./GoogleIcon";
 import styles from './GoogleLoginButton.module.scss';
 

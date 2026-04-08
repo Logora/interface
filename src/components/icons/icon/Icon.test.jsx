@@ -1,8 +1,8 @@
 import React from 'react';
 import { render, act, screen, waitFor } from '@testing-library/react';
-import { IconProvider } from '@logora/debate.icons.icon_provider';
+import { IconProvider } from '@logora/debate/icons/icon_provider';
 import { Icon } from './Icon';
-import * as regularIcons from '@logora/debate.icons.regular_icons';
+import * as regularIcons from '@logora/debate/icons/regular_icons';
 
 describe('Icon', () => {
 	it('should render icon', async () => {

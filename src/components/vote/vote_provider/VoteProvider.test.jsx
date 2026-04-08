@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { render, screen } from "@testing-library/react";
-import { AuthProvider } from "@logora/debate.auth.use_auth";
+import { AuthProvider } from "@logora/debate/auth/use_auth";
 import { VoteProvider } from "./VoteProvider";
 import {
   dataProvider,
   DataProviderContext,
-} from "@logora/debate.data.data_provider";
+} from "@logora/debate/data/data_provider";
 
 const DefaultComponent = ({ data, httpClient }) => {
   return (

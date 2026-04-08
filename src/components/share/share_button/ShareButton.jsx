@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
-import { Icon } from "@logora/debate.icons.icon";
-import { ShareBox } from "@logora/debate.share.share_box";
+import { Icon } from "@logora/debate/icons/icon";
+import { ShareBox } from "@logora/debate/share/share_box";
 import { useIntl } from "react-intl";
 import useOnClickOutside from 'use-onclickoutside';
 import styles from "./ShareButton.module.scss";

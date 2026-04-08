@@ -6,10 +6,10 @@ import { useDataProvider } from './useDataProvider';
 
 describe('useDataProvider hook', () => {
     const httpClient = {
-        get: jest.fn(() =>  Promise.resolve({ data: "my custom data" })),
-        post: jest.fn(() => Promise.resolve(null)),
-        patch: jest.fn(() => Promise.resolve(null)),
-        delete: jest.fn(() => Promise.resolve(null))
+        get: vi.fn(() =>  Promise.resolve({ data: "my custom data" })),
+        post: vi.fn(() => Promise.resolve(null)),
+        patch: vi.fn(() => Promise.resolve(null)),
+        delete: vi.fn(() => Promise.resolve(null))
     };
 
     const DataComponent = (props) => {

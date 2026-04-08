@@ -1,6 +1,6 @@
 import React from "react";
 import { render } from "@testing-library/react";
-import { DefaultPointBox,  PointBoxWithoutTimeAgo } from "./PointBox.composition";
+import { DefaultPointBox,  PointBoxWithoutTimeAgo } from "./PointBox.stories";
 
 describe("PointBox", () => {
     it("render correctly", () => {

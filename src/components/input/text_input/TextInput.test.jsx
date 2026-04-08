@@ -7,7 +7,7 @@ import {
   SuccessTextInput,
   DisabledTextInput,
   TextInputWithImage,
-} from './TextInput.composition';
+} from './TextInput.stories';
 
 describe('TextInput component', () => {
   it('should render input correctly', () => {

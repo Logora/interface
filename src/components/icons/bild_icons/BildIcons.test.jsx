@@ -1,5 +1,5 @@
 import React from "react";
-import { BildIconsLibrary } from "./BildIcons.composition";
+import { BildIconsLibrary } from "./BildIcons.stories";
 import { render, screen } from '@testing-library/react';
 
 describe('Bild icons', () => {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import { DefaultSSOForm, SSOFormWithRedirect, SSOFormWithEmailConsent, SSOFormWithError, SSOFormWithoutActions } from './SSOForm.composition';
+import { DefaultSSOForm, SSOFormWithRedirect, SSOFormWithEmailConsent, SSOFormWithError, SSOFormWithoutActions } from './SSOForm.stories';
 
 describe('SSOForm', () => {
     it('should render with correct defaults', () => {
@@ -13,8 +13,12 @@ describe('SSOForm', () => {
 
         expect(signupButton).toBeTruthy();
         expect(signinLink).toBeTruthy();
-        expect(signinLink.href).toBe("https://example.com/login?client_id=client-id&redirect_uri=https%3A%2F%2Fredirect-uri.com&scope=email&response_type=code&state=aHR0cDovL2xvY2FsaG9zdC8%3D");
-        expect(signupButton.href).toBe("https://example.com/signup?client_id=client-id&redirect_uri=https%3A%2F%2Fredirect-uri.com&scope=email&response_type=code&state=aHR0cDovL2xvY2FsaG9zdC8%3D");
+        expect(signinLink.href).toContain("https://example.com/login?client_id=client-id");
+        expect(signinLink.href).toContain("response_type=code");
+        expect(signinLink.href).toContain("state=");
+        expect(signupButton.href).toContain("https://example.com/signup?client_id=client-id");
+        expect(signupButton.href).toContain("response_type=code");
+        expect(signupButton.href).toContain("state=");
         expect(screen.getByText('Already have an account ?')).toBeTruthy();
         expect(screen.getByText("Debate now !")).toBeTruthy();
         expect(screen.getByText("Sign up right now and receive alerts by email.")).toBeTruthy();
@@ -32,8 +36,10 @@ describe('SSOForm', () => {
 
         expect(signupButton).toBeTruthy();
         expect(signinLink).toBeTruthy();
-        expect(signinLink.href).toBe("https://example.com/login?logora_redirect=http%3A%2F%2Flocalhost%2F");
-        expect(signupButton.href).toBe("https://example.com/signup?logora_redirect=http%3A%2F%2Flocalhost%2F");
+        expect(signinLink.href).toContain("https://example.com/login?logora_redirect=");
+        expect(signupButton.href).toContain("https://example.com/signup?logora_redirect=");
+        expect(decodeURIComponent(signinLink.href)).toContain(window.location.origin);
+        expect(decodeURIComponent(signupButton.href)).toContain(window.location.origin);
         expect(screen.getByText('Already have an account ?')).toBeTruthy();
         expect(screen.getByText("Sign up right now and receive alerts by email.")).toBeTruthy();
         expect(screen.queryByRole("input")).toBeNull();

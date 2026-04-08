@@ -1,6 +1,6 @@
-@use '@logora/debate.styles.theme' as theme;
-@use '@logora/debate.styles.spacing' as spacing;
-@use '@logora/debate.styles.display' as display;
+@use 'styles/theme' as theme;
+@use 'styles/spacing' as spacing;
+@use 'styles/display' as display;
 
 .toaster {
     font-family: theme.$font-family;

@@ -2,10 +2,10 @@ import { dataProvider, getAuthHeader } from './DataProvider';
 
 describe('data provider function', () => {
     const httpClient = {
-        get: jest.fn(() =>  Promise.resolve(null)),
-        post: jest.fn(() => Promise.resolve(null)),
-        patch: jest.fn(() => Promise.resolve(null)),
-        delete: jest.fn(() => Promise.resolve(null))
+        get: vi.fn(() =>  Promise.resolve(null)),
+        post: vi.fn(() => Promise.resolve(null)),
+        patch: vi.fn(() => Promise.resolve(null)),
+        delete: vi.fn(() => Promise.resolve(null))
     };
 
     const setLocalStorage = (id, data) => {
@@ -14,7 +14,7 @@ describe('data provider function', () => {
 
     beforeEach(() => {
         window.localStorage.clear();
-        jest.clearAllMocks();
+        vi.clearAllMocks();
     });
 
     it('should call getOne function with correct arguments', () => {

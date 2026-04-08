@@ -1,13 +1,13 @@
 import React from "react";
 import { render, screen, act, waitFor } from "@testing-library/react";
-import { DefaultAvatarSelector } from "./AvatarSelector.composition";
-import { AllowUserImageAvatarSelector } from "./AvatarSelector.composition";
+import { DefaultAvatarSelector } from "./AvatarSelector.stories";
+import { AllowUserImageAvatarSelector } from "./AvatarSelector.stories";
 import { AvatarSelector } from "./AvatarSelector";
 import { faker } from '@faker-js/faker';
 import { IntlProvider } from "react-intl";
 import userEvent from '@testing-library/user-event';
 
-const avatarUrlList = [faker.image.avatar(), faker.image.avatar(), faker.image.avatar(), faker.image.avatar()];
+const avatarUrlList = [faker.image.avatarGitHub(), faker.image.avatarGitHub(), faker.image.avatarGitHub(), faker.image.avatarGitHub()];
 const file = new File(['hello'], 'hello.png', {type: 'image/png'})
 
 describe("AvatarSelector", () => {
@@ -19,7 +19,7 @@ describe("AvatarSelector", () => {
     });
 
     it("should trigger callback with user validation", async () => {
-        const onChooseCallback = jest.fn();
+        const onChooseCallback = vi.fn();
 
         render(
             <IntlProvider locale="en">
@@ -62,7 +62,7 @@ describe("AvatarSelector", () => {
     });
 
     it("should handle image upload", async () => {
-        const onChooseCallback = jest.fn();
+        const onChooseCallback = vi.fn();
         render(
             <IntlProvider locale="en">
                 <AvatarSelector 

@@ -1,5 +1,5 @@
-@use '@logora/debate.styles.theme' as theme;
-@use '@logora/debate.styles.display' as display;
+@use 'styles/theme' as theme;
+@use 'styles/display' as display;
 
 .summaryContainer {
     display: flex !important;

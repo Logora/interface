@@ -1,26 +1,45 @@
 import React from 'react';
-import { render, fireEvent, waitFor } from '@testing-library/react';
-import { DefaultFollowButton } from './FollowButton.composition';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import { IntlProvider } from 'react-intl';
+import { FollowButton } from './FollowButton';
+import * as useFollowModule from '@logora/debate/follow/use_follow';
 
 describe('FollowButton', () => {
-    it('should render with the correct text when not following', () => {
-        const { queryByTestId } = render(
-            <DefaultFollowButton />
-        );
-
-        expect(queryByTestId('follow')).toHaveTextContent("Follow");
-        expect(queryByTestId('followed')).toBeNull();
+    afterEach(() => {
+        vi.restoreAllMocks();
     });
 
-    it('should show "Followed" text when clicked', () => {
-        jest.mock('@logora/debate.auth.use_auth');
+    it('should render with the correct text when not following', () => {
+        vi.spyOn(useFollowModule, 'useFollow').mockReturnValue({
+            followActive: false,
+            handleFollow: vi.fn(),
+        });
 
-        const { queryByTestId } = render(<DefaultFollowButton />);
-        fireEvent.click(queryByTestId('button'));
+        render(
+            <IntlProvider locale='en'>
+                <FollowButton followableType="content" followableId={12} tooltipText="Tooltip content" dataTid="data-tid" />
+            </IntlProvider>
+        );
 
-        waitFor(() => {
-            expect(queryByTestId('followed')).toHaveTextContent("Followed");
-            expect(queryByTestId('follow')).toBeNull();
-        })
+        expect(screen.getByTestId('follow')).toHaveTextContent("Follow");
+        expect(screen.queryByTestId('followed')).toBeNull();
+    });
+
+    it('should call follow handler when clicked', async () => {
+        const handleFollow = vi.fn();
+        vi.spyOn(useFollowModule, 'useFollow').mockReturnValue({
+            followActive: false,
+            handleFollow,
+        });
+
+        render(
+            <IntlProvider locale='en'>
+                <FollowButton followableType="content" followableId={12} tooltipText="Tooltip content" dataTid="data-tid" />
+            </IntlProvider>
+        );
+
+        await userEvent.click(screen.getByTestId('button'));
+        expect(handleFollow).toHaveBeenCalledTimes(1);
     });
 });

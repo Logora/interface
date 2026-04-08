@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import { DisabledToggle, DisabledAndCheckedToggle, ToggleWithLabel, ToggleWithErrorMessage } from './Toggle.composition';
+import { DisabledToggle, DisabledAndCheckedToggle, ToggleWithLabel, ToggleWithErrorMessage } from './Toggle.stories';
 
 describe('Toggle', () => {
   it('should render the toggle with disabled and unchecked options', () => {

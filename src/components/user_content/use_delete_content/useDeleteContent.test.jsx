@@ -3,25 +3,25 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { useDeleteContent } from './useDeleteContent';
 import { IntlProvider } from 'react-intl';
-import { ToastProvider } from '@logora/debate.dialog.toast_provider';
-import { AuthContext } from '@logora/debate.auth.use_auth';
-import { dataProvider, DataProviderContext } from '@logora/debate.data.data_provider';
-import { ModalProvider } from '@logora/debate.dialog.modal';
-import { ConfigProvider } from '@logora/debate.data.config_provider';
-import { ListProvider } from '@logora/debate.list.list_provider';
-import { IconProvider } from '@logora/debate.icons.icon_provider';
-import * as regularIcons from '@logora/debate.icons.regular_icons';
+import { ToastProvider } from '@logora/debate/dialog/toast_provider';
+import { AuthContext } from '@logora/debate/auth/use_auth';
+import { dataProvider, DataProviderContext } from '@logora/debate/data/data_provider';
+import { ModalProvider } from '@logora/debate/dialog/modal';
+import { ConfigProvider } from '@logora/debate/data/config_provider';
+import { ListProvider } from '@logora/debate/list/list_provider';
+import { IconProvider } from '@logora/debate/icons/icon_provider';
+import * as regularIcons from '@logora/debate/icons/regular_icons';
 import { faker } from '@faker-js/faker';
 
 const httpClient = {
-    get: jest.fn(() =>  Promise.resolve(null)),
-    post: jest.fn(() => Promise.resolve(null)),
-    patch: jest.fn(() => Promise.resolve(null)),
-    delete: jest.fn(() => Promise.resolve(null))
+    get: vi.fn(() =>  Promise.resolve(null)),
+    post: vi.fn(() => Promise.resolve(null)),
+    patch: vi.fn(() => Promise.resolve(null)),
+    delete: vi.fn(() => Promise.resolve(null))
 };
 
 const currentUser = {
-    id: faker.datatype.number(),
+    id: faker.number.int(),
 }
 
 const ComponentWithDelete = () => {

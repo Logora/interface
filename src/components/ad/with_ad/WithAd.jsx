@@ -1,5 +1,5 @@
 import React from "react";
-import { AdUnit } from "@logora/debate.ad.ad_unit";
+import { AdUnit } from "@logora/debate/ad/ad_unit";
 import PropTypes from "prop-types";
 
 export const WithAd = ({
