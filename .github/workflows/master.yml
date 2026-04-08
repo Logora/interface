@@ -78,10 +78,9 @@ jobs:
         run: |
           npm version patch -m "chore(release): %s"
 
-      - name: Publish to npm
-        run: pnpm publish --access public --no-git-checks
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Publish to npm (Trusted Publishing)
+        run: |
+          npm publish --access public --provenance
 
       - name: Push release commit and tag
         run: |
