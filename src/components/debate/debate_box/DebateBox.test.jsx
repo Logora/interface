@@ -1,5 +1,5 @@
 import React from "react";
-import { DefaultDebateBox } from './DebateBox.composition';
+import { DefaultDebateBox } from './DebateBox.stories';
 import { render } from '@testing-library/react';
 import { faker } from '@faker-js/faker';
 

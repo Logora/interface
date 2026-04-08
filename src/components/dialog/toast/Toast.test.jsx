@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import { ToastWithPoints, DefaultToast } from './Toast.composition';
+import { ToastWithPoints, DefaultToast } from './Toast.stories';
 
 describe('Toast', () => {
 	it('should render with the correct text', () => {

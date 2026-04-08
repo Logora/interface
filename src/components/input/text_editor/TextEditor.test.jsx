@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen, waitFor, act } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { DefaultTextEditor, TextEditorWithSource } from './TextEditor.composition';
+import { DefaultTextEditor, TextEditorWithSource } from './TextEditor.stories';
 import { TextEditor } from './TextEditor';
 import { ModalProvider } from '@logora/debate/dialog/modal';
 import { InputProvider, useInput } from '@logora/debate/input/input_provider';

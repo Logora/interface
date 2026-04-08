@@ -1,5 +1,5 @@
 import React from "react";
-import { DefaultLineChart } from "./LineChart.composition";
+import { DefaultLineChart } from "./LineChart.stories";
 import { render, screen } from '@testing-library/react';
 
 describe('LineChart', () => {

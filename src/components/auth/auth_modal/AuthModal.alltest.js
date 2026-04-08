@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import { DefaultAuthModal } from './AuthModal.composition';
-import { AuthModalSSO } from './AuthModal.composition';
+import { DefaultAuthModal } from './AuthModal.stories';
+import { AuthModalSSO } from './AuthModal.stories';
 
 describe('AuthModal', () => {
     it('should render modal with social auth form', () => {

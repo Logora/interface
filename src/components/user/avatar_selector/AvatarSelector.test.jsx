@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen, act, waitFor } from "@testing-library/react";
-import { DefaultAvatarSelector } from "./AvatarSelector.composition";
-import { AllowUserImageAvatarSelector } from "./AvatarSelector.composition";
+import { DefaultAvatarSelector } from "./AvatarSelector.stories";
+import { AllowUserImageAvatarSelector } from "./AvatarSelector.stories";
 import { AvatarSelector } from "./AvatarSelector";
 import { faker } from '@faker-js/faker';
 import { IntlProvider } from "react-intl";

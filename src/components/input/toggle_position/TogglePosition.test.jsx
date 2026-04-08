@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import { DefaultTogglePosition, FirstLabelTogglePosition } from './TogglePosition.composition';
+import { DefaultTogglePosition, FirstLabelTogglePosition } from './TogglePosition.stories';
 import { TogglePosition } from './TogglePosition';
 import { IntlProvider } from 'react-intl';
 import userEvent from '@testing-library/user-event';

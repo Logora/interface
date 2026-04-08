@@ -2,4 +2,20 @@ export default {
   title: 'Action/Link'
 };
 
-export * from './Link.composition.jsx';
+import React from 'react';
+import { MemoryRouter } from "react-router-dom";
+import { Link } from './Link';
+
+export const DefaultLinkButton = () => {
+    return (
+        <MemoryRouter>
+            <Link to="/page">Default</Link>
+        </MemoryRouter>
+    );
+};
+
+export const ExternalLinkButton = () => {
+    return (
+        <Link to="/page" external>External</Link>
+    );
+};

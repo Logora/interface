@@ -13,7 +13,7 @@ import { dataProvider, DataProviderContext } from '@logora/debate/data/data_prov
 import { ToastProvider } from '@logora/debate/dialog/toast_provider';
 import { VoteProvider } from '@logora/debate/vote/vote_provider';
 import { faker } from '@faker-js/faker';
-import { DefaultContentFooter, ContentFooterShareModal, ContentFooterUpDownVoteBox, ContentFooterDisabled, ContentFooterWithoutReply, ContentFooterProgressBar, ContentFooterWithoutEdition, ContentFooterWithoutDeletion } from './ContentFooter.composition';
+import { DefaultContentFooter, ContentFooterShareModal, ContentFooterUpDownVoteBox, ContentFooterDisabled, ContentFooterWithoutReply, ContentFooterProgressBar, ContentFooterWithoutEdition, ContentFooterWithoutDeletion } from './ContentFooter.stories';
 import { VoteButton } from '@logora/debate/vote/vote_button';
 
 beforeAll(() => {

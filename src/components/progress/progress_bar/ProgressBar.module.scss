@@ -1,6 +1,6 @@
-@use 'styles/theme/_theme/scss' as theme;
-@use 'styles/spacing/_spacing/scss' as spacing;
-@use 'styles/flex/_flex/scss' as flex;
+@use 'styles/theme' as theme;
+@use 'styles/spacing' as spacing;
+@use 'styles/flex' as flex;
 
 .progressContainer {
     display: flex !important;

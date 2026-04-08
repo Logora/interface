@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { DefaultReportModal } from "./ReportModal.composition";
+import { DefaultReportModal } from "./ReportModal.stories";
 
 beforeAll(() => {
   const patchDialog = (Proto) => {

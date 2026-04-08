@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import { SideModalExample, SideModalWithNeutralPosition, SideModalWithDisabledPositions } from "./SideModal.composition";
+import { SideModalExample, SideModalWithNeutralPosition, SideModalWithDisabledPositions } from "./SideModal.stories";
 
 beforeAll(() => {
     HTMLDialogElement.prototype.showModal = function () {

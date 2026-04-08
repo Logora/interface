@@ -1,5 +1,5 @@
 import React from "react";
-import { DefaultPieChart } from "./PieChart.composition";
+import { DefaultPieChart } from "./PieChart.stories";
 import { render, screen } from '@testing-library/react';
 
 describe('PieChart', () => {

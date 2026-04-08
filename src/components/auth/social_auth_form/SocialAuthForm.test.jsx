@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event';
 import { MemoryRouter } from "react-router-dom";
 import { IntlProvider } from 'react-intl';
 import { SocialAuthForm } from './SocialAuthForm';
-import { DefaultSocialAuthForm, SocialAuthFormWithoutLogo } from './SocialAuthForm.composition';
+import { DefaultSocialAuthForm, SocialAuthFormWithoutLogo } from './SocialAuthForm.stories';
 import { IconProvider } from '@logora/debate/icons/icon_provider';
 import * as regularIcons from '@logora/debate/icons/regular_icons';
 

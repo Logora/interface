@@ -1,6 +1,6 @@
-@use 'styles/theme/_theme/scss' as theme;
-@use 'styles/spacing/_spacing/scss' as spacing;
-@use 'styles/display/_display/scss' as display;
+@use 'styles/theme' as theme;
+@use 'styles/spacing' as spacing;
+@use 'styles/display' as display;
 
 .modalContainer {
     display: flex !important;

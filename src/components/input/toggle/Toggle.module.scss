@@ -1,5 +1,5 @@
-@use "styles/theme/_theme/scss" as theme;
-@use "styles/spacing/_spacing/scss" as spacing;
+@use "styles/theme" as theme;
+@use "styles/spacing" as spacing;
 
 .toggle {
   display: inline-block;

@@ -1,5 +1,5 @@
 import React from "react";
-import { DefaultConsultationBox, ConsultationEndedBox, ConsultationWithoutEndBox, ConsultationWithoutVoteGoalBox } from './ConsultationBox.composition';
+import { DefaultConsultationBox, ConsultationEndedBox, ConsultationWithoutEndBox, ConsultationWithoutVoteGoalBox } from './ConsultationBox.stories';
 import { render } from '@testing-library/react';
 import { faker } from '@faker-js/faker';
 

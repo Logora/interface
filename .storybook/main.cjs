@@ -10,12 +10,6 @@ module.exports = {
     options: {}
   },
   async viteFinal(config) {
-    config.oxc = {
-      ...(config.oxc || {}),
-      include: /\.[cm]?[jt]sx?$/,
-      exclude: []
-    };
-
     config.resolve = config.resolve || {};
     const existingAlias = Array.isArray(config.resolve.alias)
       ? config.resolve.alias

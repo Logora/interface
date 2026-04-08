@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import { DefaultSSOForm, SSOFormWithRedirect, SSOFormWithEmailConsent, SSOFormWithError, SSOFormWithoutActions } from './SSOForm.composition';
+import { DefaultSSOForm, SSOFormWithRedirect, SSOFormWithEmailConsent, SSOFormWithError, SSOFormWithoutActions } from './SSOForm.stories';
 
 describe('SSOForm', () => {
     it('should render with correct defaults', () => {

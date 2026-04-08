@@ -2,26 +2,11 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { defineConfig } from 'vitest/config';
 import react from '@vitejs/plugin-react';
-import { transformWithEsbuild } from 'vite';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
   plugins: [
-    {
-      name: 'vitest-jsx-in-js',
-      enforce: 'pre',
-      async transform(code, id) {
-        if (id.includes('/src/') && id.endsWith('.js')) {
-          return transformWithEsbuild(code, id, {
-            loader: 'jsx',
-            jsx: 'automatic'
-          });
-        }
-        return null;
-      }
-    },
-    
     react({ include: /\.[jt]sx?$/ })
   ],
   oxc: {

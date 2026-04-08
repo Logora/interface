@@ -1,5 +1,31 @@
 export default {
-  title: 'Input/Checkbox'
+	title: 'Input/Checkbox/Indicator'
 };
 
-export * from './checkbox-indicator.compositions.js';
+import React from 'react';
+import { CheckboxIndicator } from './checkbox-indicator';
+
+export const Checked = () => {
+	return (
+		<div>
+			<input type="checkbox" defaultChecked /> → <CheckboxIndicator />
+		</div>
+	);
+};
+
+export const Unchecked = () => {
+	return (
+		<div>
+			<input type="checkbox" /> → <CheckboxIndicator />
+		</div>
+	);
+};
+
+export const Disabled = () => {
+	return (
+		<div>
+			<input type="checkbox" defaultChecked disabled /> → <CheckboxIndicator />
+		</div>
+	);
+};
+

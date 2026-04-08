@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import { faker } from '@faker-js/faker';
-import { DefaultContentHeader, ContentHeaderWithoutTag, ContentHeaderWithoutDate, ContentHeaderWithOneLine, ContentHeaderWithoutLinks, ContentHeaderSelected } from './ContentHeader.composition';
+import { DefaultContentHeader, ContentHeaderWithoutTag, ContentHeaderWithoutDate, ContentHeaderWithOneLine, ContentHeaderWithoutLinks, ContentHeaderSelected } from './ContentHeader.stories';
 
 const author = {
     image_url: 'https://via.placeholder.com/150',

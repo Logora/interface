@@ -2,4 +2,12 @@ export default {
   title: 'Progress/Loader'
 };
 
-export * from './Loader.composition.jsx';
+import React from "react";
+import { Loader } from "./Loader";
+
+export const DefaultLoader = () => {
+    return <Loader />;
+};
+
+
+
