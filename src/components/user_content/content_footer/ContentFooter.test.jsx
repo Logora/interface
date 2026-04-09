@@ -80,9 +80,15 @@ const resource = {
 	created_at: faker.date.recent(),
 };
 
+const renderWithIconProvider = (ui) => {
+	return render(<IconProvider library={regularIcons}>{ui}</IconProvider>);
+};
+
 describe("ContentFooter", () => {
 	it("should render correctly", async () => {
-		const { queryByText, queryByTestId } = render(<DefaultContentFooter />);
+		const { queryByText, queryByTestId } = renderWithIconProvider(
+			<DefaultContentFooter />,
+		);
 
 		expect(queryByText(10)).toBeInTheDocument();
 		expect(queryByText("Reply")).toBeInTheDocument();
@@ -163,7 +169,7 @@ describe("ContentFooter", () => {
 	});
 
 	it("should render without edition", async () => {
-		const { queryByText, queryByTestId } = render(
+		const { queryByText, queryByTestId } = renderWithIconProvider(
 			<ContentFooterWithoutEdition />,
 		);
 
@@ -182,7 +188,7 @@ describe("ContentFooter", () => {
 	});
 
 	it("should render without edition", async () => {
-		const { queryByText, queryByTestId } = render(
+		const { queryByText, queryByTestId } = renderWithIconProvider(
 			<ContentFooterWithoutDeletion />,
 		);
 
@@ -201,7 +207,9 @@ describe("ContentFooter", () => {
 	});
 
 	it("should render with share modal", async () => {
-		const { queryByText, queryByTestId } = render(<ContentFooterShareModal />);
+		const { queryByText, queryByTestId } = renderWithIconProvider(
+			<ContentFooterShareModal />,
+		);
 
 		expect(queryByText(10)).toBeInTheDocument();
 		expect(queryByText("Reply")).toBeInTheDocument();
@@ -219,7 +227,9 @@ describe("ContentFooter", () => {
 	});
 
 	it("should render with up down vote box", async () => {
-		const { queryByText } = render(<ContentFooterUpDownVoteBox />);
+		const { queryByText } = renderWithIconProvider(
+			<ContentFooterUpDownVoteBox />,
+		);
 
 		expect(queryByText("10")).toBeInTheDocument();
 		expect(queryByText("5")).toBeInTheDocument();
@@ -228,7 +238,7 @@ describe("ContentFooter", () => {
 	});
 
 	it("should be disabled", async () => {
-		const { queryByText } = render(<ContentFooterDisabled />);
+		const { queryByText } = renderWithIconProvider(<ContentFooterDisabled />);
 
 		expect(queryByText(10)).toBeInTheDocument();
 		expect(queryByText("Reply")).toBeNull();
@@ -240,7 +250,7 @@ describe("ContentFooter", () => {
 	});
 
 	it("should render without reply", async () => {
-		const { queryByText } = render(<ContentFooterWithoutReply />);
+		const { queryByText } = renderWithIconProvider(<ContentFooterWithoutReply />);
 
 		expect(queryByText(10)).toBeInTheDocument();
 		expect(queryByText("Reply")).toBeNull();
@@ -248,7 +258,9 @@ describe("ContentFooter", () => {
 	});
 
 	it("should render with progress bar", async () => {
-		const { queryByText, queryByTestId } = render(<ContentFooterProgressBar />);
+		const { queryByText, queryByTestId } = renderWithIconProvider(
+			<ContentFooterProgressBar />,
+		);
 
 		expect(queryByText(10)).toBeNull();
 		expect(queryByText("Reply")).toBeNull();
