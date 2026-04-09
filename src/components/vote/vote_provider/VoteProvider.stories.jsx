@@ -79,20 +79,19 @@ const TestComponent = () => {
 		fetchData();
 	}, []);
 
-	if (!!votes) {
+	if (votes) {
 		return (
 			<>
 				{votes.map((vote) => (
 					<div
 						key={vote.voteable_id}
-						data-testid={"vote-context_" + vote.voteable_id}
+						data-testid={`vote-context_${vote.voteable_id}`}
 					>
 						{JSON.stringify(vote)}
 					</div>
 				))}
 			</>
 		);
-	} else {
-		return <div>loading ...</div>;
 	}
+	return <div>loading ...</div>;
 };
