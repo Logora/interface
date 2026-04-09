@@ -1,6 +1,6 @@
 {
   "name": "@logora/debate",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "license": "AGPL-3.0",
   "description": "Design system of @Logora made with React",
   "main": "./dist/index.js",
@@ -22,8 +22,8 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "format": "npx @biomejs/biome format --write ./src",
-		"lint": "npx @biomejs/biome lint ./src",
-		"check": "npx @biomejs/biome check ./src",
+    "lint": "npx @biomejs/biome lint ./src",
+    "check": "npx @biomejs/biome check ./src",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage"
