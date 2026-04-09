@@ -74,6 +74,7 @@ pnpm build-storybook
 ```bash
 pnpm run build
 npm version patch -m "chore(release): %s"
+npm login
 git push --follow-tags origin master
 npm publish --access public
 ```
