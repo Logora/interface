@@ -1,16 +1,16 @@
 import { useEffect } from "react";
+import WebFontLoader from "webfontloader";
 
 export const useFontLoader = (fontFamilies, enable = true) => {
 	useEffect(() => {
 		if (enable && fontFamilies?.length) {
-			const WebFontLoader = require("webfontloader");
 			WebFontLoader.load({
 				google: {
 					families: fontFamilies,
 				},
 			});
 		}
-	}, [enable]);
+	}, [enable, fontFamilies]);
 
 	return null;
 };

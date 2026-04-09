@@ -1,6 +1,7 @@
 {
   "name": "@logora/debate",
   "version": "0.2.1",
+  "type": "module",
   "license": "AGPL-3.0",
   "description": "Design system of @Logora made with React",
   "main": "./dist/index.js",
@@ -13,7 +14,11 @@
     "**/*.scss"
   ],
   "exports": {
-    ".": "./dist/index.js"
+    ".": {
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
   },
   "author": "Logora <contact@logora.fr>",
   "scripts": {

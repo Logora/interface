@@ -2,9 +2,31 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { createRequire } from 'node:module';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+const require = createRequire(import.meta.url);
+const pkg = require('./package.json');
+
+const externalPackages = new Set([
+  ...Object.keys(pkg.dependencies || {}),
+  ...Object.keys(pkg.peerDependencies || {})
+]);
+
+const isExternal = (id) => {
+  if (id.startsWith('node:')) {
+    return true;
+  }
+
+  for (const dep of externalPackages) {
+    if (id === dep || id.startsWith(`${dep}/`)) {
+      return true;
+    }
+  }
+
+  return false;
+};
 
 export default defineConfig({
   plugins: [react()],
@@ -28,13 +50,14 @@ export default defineConfig({
     ]
   },
   build: {
+    emptyOutDir: true,
     lib: {
       entry: path.resolve(__dirname, 'src/index.js'),
       name: 'LogoraDebate',
       formats: ['es']
     },
     rollupOptions: {
-      external: ['react', 'react-dom', 'react-router', 'react-router-dom'],
+      external: isExternal,
       output: {
         format: 'es',
         dir: 'dist',
