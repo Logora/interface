@@ -88,3 +88,14 @@ pnpm test:coverage
 ```bash
 pnpm build-storybook
 ```
+
+## Publishing a new version (npm)
+
+```bash
+pnpm run build
+npm version patch -m "chore(release): %s"
+git push --follow-tags origin master
+npm publish --access public
+```
+
+Use `minor` or `major` instead of `patch` when needed.

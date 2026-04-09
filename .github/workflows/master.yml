@@ -42,55 +42,6 @@ jobs:
       - name: Run tests
         run: pnpm test
 
-  release:
-    name: Publish package automatically
-    runs-on: ubuntu-latest
-    timeout-minutes: 20
-    needs: validate
-    if: ${{ github.event_name != 'pull_request' && github.ref == 'refs/heads/master' && github.actor != 'github-actions[bot]' }}
-    environment: npm
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v6
-        with:
-          fetch-depth: 0
-
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v5
-        with:
-          version: 10
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v6
-        with:
-          node-version: 22
-          cache: pnpm
-          registry-url: https://registry.npmjs.org
-
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
-
-      - name: Configure git author
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-      - name: Bump patch version with commit and tag
-        run: |
-          npm version patch -m "chore(release): %s"
-
-      - name: Build package
-        run: |
-          pnpm run build
-
-      - name: Publish to npm (Trusted Publishing)
-        run: |
-          npm publish --access public --provenance
-
-      - name: Push release commit and tag
-        run: |
-          git push --follow-tags origin HEAD:master
-
   deploy-storybook:
     name: Deploy Storybook to GitHub Pages
     runs-on: ubuntu-latest
