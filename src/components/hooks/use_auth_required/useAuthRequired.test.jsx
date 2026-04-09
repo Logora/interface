@@ -1,85 +1,89 @@
-import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
-import { ConfigContext } from '@logora/debate/data/config_provider';
-import { useAuthRequired } from './useAuthRequired';
-import { useModal } from '@logora/debate/dialog/modal';
+import { ConfigContext } from "@logora/debate/data/config_provider";
+import { useModal } from "@logora/debate/dialog/modal";
+import { fireEvent, render } from "@testing-library/react";
+import React from "react";
+import { useAuthRequired } from "./useAuthRequired";
 
-vi.mock('@logora/debate/dialog/modal', () => ({
-    useModal: vi.fn(),
+vi.mock("@logora/debate/dialog/modal", () => ({
+	useModal: vi.fn(),
 }));
 
 const TestComponent = () => {
-    const requireAuthentication = useAuthRequired();
+	const requireAuthentication = useAuthRequired();
 
-    return (
-        <div>
-            <button onClick={() => requireAuthentication({ foo: 'bar' })}>
-                Authenticate
-            </button>
-        </div>
-    );
+	return (
+		<div>
+			<button onClick={() => requireAuthentication({ foo: "bar" })}>
+				Authenticate
+			</button>
+		</div>
+	);
 };
 
-describe('useAuthRequired', () => {
-    const showModal = vi.fn();
-    const hideModal = vi.fn();
+describe("useAuthRequired", () => {
+	const showModal = vi.fn();
+	const hideModal = vi.fn();
 
-    beforeEach(() => {
-        useModal.mockReturnValue({
-            showModal,
-            hideModal,
-        });
-    });
+	beforeEach(() => {
+		useModal.mockReturnValue({
+			showModal,
+			hideModal,
+		});
+	});
 
-    afterEach(() => {
-        vi.clearAllMocks();
-    });
+	afterEach(() => {
+		vi.clearAllMocks();
+	});
 
-    it('should call requireAuthentication on button click', () => {
-        const config = {
-            auth: {
-                disableLoginModal: false,
-            },
-        };
+	it("should call requireAuthentication on button click", () => {
+		const config = {
+			auth: {
+				disableLoginModal: false,
+			},
+		};
 
-        const redirectUrl = window.location.href;
+		const redirectUrl = window.location.href;
 
-        window.dispatchEvent = vi.fn();
+		window.dispatchEvent = vi.fn();
 
-        const { getByText } = render(
-            <ConfigContext.Provider value={{ config }}>
-                <TestComponent />
-            </ConfigContext.Provider>
-        );
+		const { getByText } = render(
+			<ConfigContext.Provider value={{ config }}>
+				<TestComponent />
+			</ConfigContext.Provider>,
+		);
 
-        fireEvent.click(getByText('Authenticate'));
+		fireEvent.click(getByText("Authenticate"));
 
-        expect(window.dispatchEvent).toHaveBeenCalledWith(
-            new CustomEvent('logora:authentication:requested', { detail: { redirectUrl } })
-        );
-    });
+		expect(window.dispatchEvent).toHaveBeenCalledWith(
+			new CustomEvent("logora:authentication:requested", {
+				detail: { redirectUrl },
+			}),
+		);
+	});
 
-    it('should not show AuthModal if disableLoginModal is true', () => {
-        const config = {
-            auth: {
-                disableLoginModal: true,
-            },
-        };
+	it("should not show AuthModal if disableLoginModal is true", () => {
+		const config = {
+			auth: {
+				disableLoginModal: true,
+			},
+		};
 
-        const redirectUrl = window.location.href;
+		const redirectUrl = window.location.href;
 
-        const { getByText } = render(
-            <ConfigContext.Provider value={{ config }}>
-                <TestComponent />
-            </ConfigContext.Provider>
-        );
+		const { getByText } = render(
+			<ConfigContext.Provider value={{ config }}>
+				<TestComponent />
+			</ConfigContext.Provider>,
+		);
 
-        fireEvent.click(getByText('Authenticate'));
+		fireEvent.click(getByText("Authenticate"));
 
-        expect(window.dispatchEvent).toHaveBeenCalledWith(
-            new CustomEvent('logora:authentication:requested', { detail: { redirectUrl } })
-        );
-        
-        expect(showModal).not.toHaveBeenCalled();
-    });
+		expect(window.dispatchEvent).toHaveBeenCalledWith(
+			new CustomEvent("logora:authentication:requested", {
+				detail: { redirectUrl },
+			}),
+		);
+
+		expect(showModal).not.toHaveBeenCalled();
+	});
 });

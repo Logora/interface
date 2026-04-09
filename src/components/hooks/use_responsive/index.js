@@ -1,2 +1,2 @@
-export { ResponsiveProvider } from './ResponsiveProvider';
-export { useResponsive } from './useResponsive';
+export { ResponsiveProvider } from "./ResponsiveProvider";
+export { useResponsive } from "./useResponsive";

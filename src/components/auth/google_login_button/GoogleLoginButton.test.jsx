@@ -1,61 +1,62 @@
-import React from 'react';
-import { MemoryRouter } from 'react-router-dom';
-import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import { GoogleLoginButton } from './GoogleLoginButton';
-import { IconProvider } from '@logora/debate/icons/icon_provider';
-import * as regularIcons from '@logora/debate/icons/regular_icons';
+import { IconProvider } from "@logora/debate/icons/icon_provider";
+import * as regularIcons from "@logora/debate/icons/regular_icons";
+import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import React from "react";
+import { MemoryRouter } from "react-router-dom";
+import { GoogleLoginButton } from "./GoogleLoginButton";
 
-Object.defineProperty(window, 'location', {
+Object.defineProperty(window, "location", {
 	value: {
-	  origin: 'http://example.fr',
-	  href: 'http://example.fr/path-name',
-	}
+		origin: "http://example.fr",
+		href: "http://example.fr/path-name",
+	},
 });
 
-const spyWindowOpen = vi.spyOn(window, 'open');
+const spyWindowOpen = vi.spyOn(window, "open");
 spyWindowOpen.mockImplementation(vi.fn());
 
-describe('GoogleLoginButton', () => {
-	it('should render button with the correct text', () => {
+describe("GoogleLoginButton", () => {
+	it("should render button with the correct text", () => {
 		const googleLoginButton = render(
 			<MemoryRouter>
 				<IconProvider library={regularIcons}>
-					<GoogleLoginButton 
+					<GoogleLoginButton
 						text={"Sign in with Google"}
 						googleClientId={"client-id"}
 						redirectUri={"https://auth.redirect/uri"}
 					/>
 				</IconProvider>
-			</MemoryRouter>
+			</MemoryRouter>,
 		);
 		const renderedButton = googleLoginButton.getByText(/Sign in with Google/i);
 		expect(renderedButton).toBeTruthy();
 	});
 
-	it('should open popup with correct link on click', async () => {
+	it("should open popup with correct link on click", async () => {
 		spyWindowOpen.mockClear();
 
 		const authDialogUrl = "https://accounts.google.com/o/oauth2/v2/auth";
 		const clientId = "google-client-id";
-		const scope = "https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile";
+		const scope =
+			"https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile";
 		const redirectUri = "https://auth.redirect/uri";
 
 		const googleLoginButton = render(
 			<MemoryRouter initialEntries={["/path-name"]}>
 				<IconProvider library={regularIcons}>
-					<GoogleLoginButton 
+					<GoogleLoginButton
 						text={"Sign in with Google"}
 						googleClientId={clientId}
 						redirectUri={redirectUri}
 					/>
 				</IconProvider>
-			</MemoryRouter>
+			</MemoryRouter>,
 		);
 		const renderedButton = screen.getByText(/Sign in with Google/i);
 		expect(renderedButton).toBeTruthy();
 
-		let expectedUrl = new URL(authDialogUrl);
+		const expectedUrl = new URL(authDialogUrl);
 		expectedUrl.searchParams.append("client_id", clientId);
 		expectedUrl.searchParams.append("redirect_uri", redirectUri);
 		expectedUrl.searchParams.append("scope", scope);
@@ -64,6 +65,10 @@ describe('GoogleLoginButton', () => {
 
 		await userEvent.click(renderedButton);
 		expect(spyWindowOpen).toHaveBeenCalledTimes(1);
-		expect(spyWindowOpen).toHaveBeenLastCalledWith(expectedUrl.href, "", "width=500,height=500,left=262,top=107.2");
+		expect(spyWindowOpen).toHaveBeenLastCalledWith(
+			expectedUrl.href,
+			"",
+			"width=500,height=500,left=262,top=107.2",
+		);
 	});
 });

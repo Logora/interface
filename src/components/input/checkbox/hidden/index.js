@@ -1,1 +1,1 @@
-export { HiddenCheckbox } from './hidden-checkbox';
+export { HiddenCheckbox } from "./hidden-checkbox";

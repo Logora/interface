@@ -1,1 +1,1 @@
-export { HashScroll } from './HashScroll';
+export { HashScroll } from "./HashScroll";

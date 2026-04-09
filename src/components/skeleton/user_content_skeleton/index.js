@@ -1,1 +1,1 @@
-export { UserContentSkeleton } from './UserContentSkeleton';
+export { UserContentSkeleton } from "./UserContentSkeleton";

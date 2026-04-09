@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
 import { useAuth } from "@logora/debate/auth/use_auth";
-import { useModal } from "@logora/debate/dialog/modal";
 import { useConfig } from "@logora/debate/data/config_provider";
+import { useModal } from "@logora/debate/dialog/modal";
+import React, { useEffect } from "react";
 import { UpdateUserInfoModal } from "./UpdateUserInfoModal";
 
 export const useUpdateUserInfo = () => {

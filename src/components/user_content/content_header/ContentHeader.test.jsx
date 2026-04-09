@@ -1,98 +1,120 @@
-import React from 'react';
-import { render } from '@testing-library/react';
-import { faker } from '@faker-js/faker';
-import { DefaultContentHeader, ContentHeaderWithoutTag, ContentHeaderWithoutDate, ContentHeaderWithOneLine, ContentHeaderWithoutLinks, ContentHeaderSelected } from './ContentHeader.stories';
+import { faker } from "@faker-js/faker";
+import { render } from "@testing-library/react";
+import React from "react";
+import {
+	ContentHeaderSelected,
+	ContentHeaderWithOneLine,
+	ContentHeaderWithoutDate,
+	ContentHeaderWithoutLinks,
+	ContentHeaderWithoutTag,
+	DefaultContentHeader,
+} from "./ContentHeader.stories";
 
 const author = {
-    image_url: 'https://via.placeholder.com/150',
-    full_name: faker.person.fullName(),
-    slug: faker.lorem.slug(),
-    hash_id: faker.lorem.slug(),
-    last_activity: faker.date.recent(),
-    points: 1234,
-    role:"contributor",
-    eloquence_title: 'gold',
-    occupation: faker.person.jobTitle(),
-}
+	image_url: "https://via.placeholder.com/150",
+	full_name: faker.person.fullName(),
+	slug: faker.lorem.slug(),
+	hash_id: faker.lorem.slug(),
+	last_activity: faker.date.recent(),
+	points: 1234,
+	role: "contributor",
+	eloquence_title: "gold",
+	occupation: faker.person.jobTitle(),
+};
 
 const date = faker.date.past(2);
 const tag = faker.person.jobType();
 
-describe('ContentHeader component', () => {
-    beforeEach(() => {
-        vi.resetAllMocks();
-    });
+describe("ContentHeader component", () => {
+	beforeEach(() => {
+		vi.resetAllMocks();
+	});
 
-    it('should render with correct data', () => {
-        const { getByText, getByAltText, getAllByRole } = render(
-            <DefaultContentHeader author={author} tag={tag} date={date} />
-        );
+	it("should render with correct data", () => {
+		const { getByText, getByAltText, getAllByRole } = render(
+			<DefaultContentHeader author={author} tag={tag} date={date} />,
+		);
 
-        const avatarImg = getByAltText(author.full_name + "'s profile picture");
-        expect(avatarImg).toBeInTheDocument();
-        expect(avatarImg).toHaveAttribute('src', author.image_url);
-        expect(getByText(author.full_name)).toBeInTheDocument();
-        expect(getByText('1.2K points')).toBeInTheDocument();
-        expect(getByText('Eloquence title')).toBeInTheDocument();
-        expect(getByText(author.occupation)).toBeInTheDocument();
-        
-        const authorLinkElements = getAllByRole('link');
-        expect(authorLinkElements.length).toBe(2);
-        expect(authorLinkElements[0]).toHaveAttribute(
-            'href',
-            `/espace-debat/user/${author.hash_id}`
-        );
+		const avatarImg = getByAltText(author.full_name + "'s profile picture");
+		expect(avatarImg).toBeInTheDocument();
+		expect(avatarImg).toHaveAttribute("src", author.image_url);
+		expect(getByText(author.full_name)).toBeInTheDocument();
+		expect(getByText("1.2K points")).toBeInTheDocument();
+		expect(getByText("Eloquence title")).toBeInTheDocument();
+		expect(getByText(author.occupation)).toBeInTheDocument();
 
-        const tagElement = getByText(tag);
-        expect(tagElement).toBeInTheDocument();
+		const authorLinkElements = getAllByRole("link");
+		expect(authorLinkElements.length).toBe(2);
+		expect(authorLinkElements[0]).toHaveAttribute(
+			"href",
+			`/espace-debat/user/${author.hash_id}`,
+		);
 
-        const relativeTimeElement = getByText('1 month ago');
-        expect(relativeTimeElement).toBeInTheDocument();
-    });
+		const tagElement = getByText(tag);
+		expect(tagElement).toBeInTheDocument();
 
-    it('should not render tag if not present', () => {
-        const { getByText, queryByText } = render(
-            <ContentHeaderWithoutTag author={author} date={date} />
-        );
+		const relativeTimeElement = getByText("1 month ago");
+		expect(relativeTimeElement).toBeInTheDocument();
+	});
 
-        expect(getByText(author.full_name)).toBeInTheDocument();
-        expect(queryByText(tag)).not.toBeInTheDocument();
-    });
+	it("should not render tag if not present", () => {
+		const { getByText, queryByText } = render(
+			<ContentHeaderWithoutTag author={author} date={date} />,
+		);
 
-    it('should not render date if not present', () => {
-        const { getByText, queryByTestId } = render(
-            <ContentHeaderWithoutDate author={author} tag={tag} />
-        );
+		expect(getByText(author.full_name)).toBeInTheDocument();
+		expect(queryByText(tag)).not.toBeInTheDocument();
+	});
 
-        expect(getByText(author.full_name)).toBeInTheDocument();
-        expect(queryByTestId('content-header-date')).toBeNull();
-    });
-  
-    it('should render without links if disabledLinks is true', () => {
-        const { getByText, queryByRole } = render(
-            <ContentHeaderWithoutLinks author={author} tag={tag} date={date} disableLinks />
-        );
+	it("should not render date if not present", () => {
+		const { getByText, queryByTestId } = render(
+			<ContentHeaderWithoutDate author={author} tag={tag} />,
+		);
 
-        expect(getByText(author.full_name)).toBeInTheDocument();
-        expect(queryByRole('link')).not.toBeInTheDocument();
-    });
+		expect(getByText(author.full_name)).toBeInTheDocument();
+		expect(queryByTestId("content-header-date")).toBeNull();
+	});
 
-    it('should render with selected div if selectedContent is true', () => {
-        const { getByText } = render(
-            <ContentHeaderSelected author={author} tag={tag} date={date} selectedContent />
-        );
+	it("should render without links if disabledLinks is true", () => {
+		const { getByText, queryByRole } = render(
+			<ContentHeaderWithoutLinks
+				author={author}
+				tag={tag}
+				date={date}
+				disableLinks
+			/>,
+		);
 
-        expect(getByText('Selected by editor')).toBeInTheDocument();
-    });
+		expect(getByText(author.full_name)).toBeInTheDocument();
+		expect(queryByRole("link")).not.toBeInTheDocument();
+	});
 
-    it('should render on one line if oneLine is true', () => {
-        const { queryByText, getByText, queryByTestId } = render(
-            <ContentHeaderWithOneLine author={author} tag={tag} date={date} oneLine />
-        );
+	it("should render with selected div if selectedContent is true", () => {
+		const { getByText } = render(
+			<ContentHeaderSelected
+				author={author}
+				tag={tag}
+				date={date}
+				selectedContent
+			/>,
+		);
 
-        expect(getByText(author.full_name)).toBeInTheDocument();
-        expect(getByText(tag)).toBeInTheDocument();
-        expect(queryByTestId('content-header-date')).not.toBeInTheDocument();
-        expect(queryByText('1.2K points')).toBeNull();
-    });
+		expect(getByText("Selected by editor")).toBeInTheDocument();
+	});
+
+	it("should render on one line if oneLine is true", () => {
+		const { queryByText, getByText, queryByTestId } = render(
+			<ContentHeaderWithOneLine
+				author={author}
+				tag={tag}
+				date={date}
+				oneLine
+			/>,
+		);
+
+		expect(getByText(author.full_name)).toBeInTheDocument();
+		expect(getByText(tag)).toBeInTheDocument();
+		expect(queryByTestId("content-header-date")).not.toBeInTheDocument();
+		expect(queryByText("1.2K points")).toBeNull();
+	});
 });

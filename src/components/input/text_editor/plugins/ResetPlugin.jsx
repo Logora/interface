@@ -1,12 +1,8 @@
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
-import { useEffect } from "react";
 import { useInput } from "@logora/debate/input/input_provider";
-import {
-	$getRoot,
-	$createParagraphNode,
-	$addUpdateTag,
-} from "lexical";
 import useLocalstorageState from "@rooks/use-localstorage-state";
+import { $addUpdateTag, $createParagraphNode, $getRoot } from "lexical";
+import { useEffect } from "react";
 
 export const ResetPlugin = ({ storageUid }) => {
 	const [editor] = useLexicalComposerContext();

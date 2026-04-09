@@ -1,16 +1,16 @@
-import React, { useState, useRef, useEffect } from "react";
-import { useIntl, FormattedMessage } from "react-intl";
-import { useDataProvider } from "@logora/debate/data/data_provider";
-import { useAuth } from "@logora/debate/auth/use_auth";
-import { useInput } from "@logora/debate/input/input_provider";
-import { useList } from "@logora/debate/list/list_provider";
-import { useAuthRequired } from "@logora/debate/hooks/use_auth_required";
-import { useFormValidation } from "@logora/debate/forms/use_form_validation";
 import { Button } from "@logora/debate/action/button";
-import { TextInput } from "@logora/debate/input/text_input";
+import { useAuth } from "@logora/debate/auth/use_auth";
+import { useDataProvider } from "@logora/debate/data/data_provider";
 import { useToast } from "@logora/debate/dialog/toast_provider";
-import useSessionStorageState from '@rooks/use-sessionstorage-state';
+import { useFormValidation } from "@logora/debate/forms/use_form_validation";
+import { useAuthRequired } from "@logora/debate/hooks/use_auth_required";
+import { useInput } from "@logora/debate/input/input_provider";
+import { TextInput } from "@logora/debate/input/text_input";
+import { useList } from "@logora/debate/list/list_provider";
+import useSessionStorageState from "@rooks/use-sessionstorage-state";
 import cx from "classnames";
+import React, { useState, useRef, useEffect } from "react";
+import { FormattedMessage, useIntl } from "react-intl";
 import styles from "./SuggestionInput.module.scss";
 
 export const SuggestionInput = ({
@@ -19,7 +19,7 @@ export const SuggestionInput = ({
 	maxPerUser = 5,
 	disabled = false,
 	userGuideUrl,
-	hideUserGuideLink = false
+	hideUserGuideLink = false,
 }) => {
 	const intl = useIntl();
 	const api = useDataProvider();
@@ -32,7 +32,7 @@ export const SuggestionInput = ({
 	const [flash, setFlash] = useState(false);
 	const [suggestion, setSuggestion] = useState("");
 	const [savedSuggestion, setSavedSuggestion, removeSavedSuggestion] =
-	    useSessionStorageState("userSuggestion", {});
+		useSessionStorageState("userSuggestion", {});
 	const suggestionInputContainer = useRef(null);
 	const inputForm = useRef(null);
 	const requireAuthentication = useAuthRequired();
@@ -93,10 +93,14 @@ export const SuggestionInput = ({
 		if (isLoggedIn) {
 			const data = {
 				name: suggestion,
-				position_list: JSON.stringify(intl.formatMessage({
-					id: "suggestion.position_list",
-					defaultMessage: "Yes,No",
-				}).split(",")),
+				position_list: JSON.stringify(
+					intl
+						.formatMessage({
+							id: "suggestion.position_list",
+							defaultMessage: "Yes,No",
+						})
+						.split(","),
+				),
 				is_suggestion: true,
 				is_published: false,
 			};
@@ -147,7 +151,10 @@ export const SuggestionInput = ({
 					<TextInput
 						ref={inputForm}
 						type="text"
-						aria-label={intl.formatMessage({ id: "suggestion.suggestion_input.aria_label", defaultMessage: "Suggest a debate question" })}
+						aria-label={intl.formatMessage({
+							id: "suggestion.suggestion_input.aria_label",
+							defaultMessage: "Suggest a debate question",
+						})}
 						name="suggestionInput"
 						role="textbox"
 						placeholder={intl.formatMessage({
@@ -172,15 +179,25 @@ export const SuggestionInput = ({
 							defaultMessage: "remaining characters",
 						})}
 					</div>
-					{userGuideUrl && !hideUserGuideLink &&(
+					{userGuideUrl && !hideUserGuideLink && (
 						<div className={styles.guideMessage}>
 							<FormattedMessage
 								id="alert.guide_message"
-								defaultMessage={"Contributions must comply with our {userCharter}."}
+								defaultMessage={
+									"Contributions must comply with our {userCharter}."
+								}
 								values={{
 									userCharter: (
-										<a className={styles.guideMessage} href={userGuideUrl} target="_blank" >
-											<FormattedMessage id="alert.user_charter" defaultMessage="user charter" />
+										<a
+											className={styles.guideMessage}
+											href={userGuideUrl}
+											target="_blank"
+											rel="noreferrer"
+										>
+											<FormattedMessage
+												id="alert.user_charter"
+												defaultMessage="user charter"
+											/>
 										</a>
 									),
 								}}

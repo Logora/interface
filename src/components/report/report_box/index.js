@@ -1,1 +1,1 @@
-export { ReportBox } from "./ReportBox"
+export { ReportBox } from "./ReportBox";

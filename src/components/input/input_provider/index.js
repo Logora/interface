@@ -1,2 +1,2 @@
-export { InputProvider } from './InputProvider';
-export { useInput } from './useInput';
+export { InputProvider } from "./InputProvider";
+export { useInput } from "./useInput";

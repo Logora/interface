@@ -1,38 +1,44 @@
 export default {
-    title: 'User/User Box Small',
-    component: UserBoxSmall,
-    args: {},
-    argTypes: {}
+	title: "User/User Box Small",
+	component: UserBoxSmall,
+	args: {},
+	argTypes: {},
 };
 
-import React from 'react';
-import { UserBoxSmall } from './UserBoxSmall';
-import { IntlProvider } from 'react-intl';
-import { BrowserRouter } from 'react-router-dom';
-import { ConfigProvider } from '@logora/debate/data/config_provider';
-import { Location } from '@logora/debate/util/location';
-import { faker } from '@faker-js/faker';
+import { faker } from "@faker-js/faker";
+import { ConfigProvider } from "@logora/debate/data/config_provider";
+import { Location } from "@logora/debate/util/location";
+import React from "react";
+import { IntlProvider } from "react-intl";
+import { BrowserRouter } from "react-router-dom";
+import { UserBoxSmall } from "./UserBoxSmall";
 
 const user = {
-    image_url: faker.image.avatarGitHub(),
-    full_name: faker.person.fullName(),
-    slug: faker.lorem.slug(),
-}
+	image_url: faker.image.avatarGitHub(),
+	full_name: faker.person.fullName(),
+	slug: faker.lorem.slug(),
+};
 
-let UserShowLocation = new Location('espace-debat/user/:userSlug', { userSlug: "" })
+const UserShowLocation = new Location("espace-debat/user/:userSlug", {
+	userSlug: "",
+});
 
 const routes = {
-    userShowLocation: UserShowLocation,
-}
+	userShowLocation: UserShowLocation,
+};
 
 export const DefaultUserBoxSmall = () => {
-    return (
-        <BrowserRouter>
-            <ConfigProvider routes={{...routes}}>
-                <IntlProvider locale='en'>
-                    <UserBoxSmall userName={user.full_name} userSlug={user.slug} avatarUrl={user.image_url} />
-                </IntlProvider>
-            </ConfigProvider>
-        </BrowserRouter>
-    )
+	return (
+		<BrowserRouter>
+			<ConfigProvider routes={{ ...routes }}>
+				<IntlProvider locale="en">
+					<UserBoxSmall
+						userName={user.full_name}
+						userSlug={user.slug}
+						avatarUrl={user.image_url}
+					/>
+				</IntlProvider>
+			</ConfigProvider>
+		</BrowserRouter>
+	);
 };

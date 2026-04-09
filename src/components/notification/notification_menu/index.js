@@ -1,1 +1,1 @@
-export { NotificationMenu as default } from "./NotificationMenu"
+export { NotificationMenu as default } from "./NotificationMenu";

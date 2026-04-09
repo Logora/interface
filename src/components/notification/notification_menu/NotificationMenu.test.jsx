@@ -1,131 +1,150 @@
+import { faker } from "@faker-js/faker";
+import { ConfigProvider } from "@logora/debate/data/config_provider";
+import {
+	DataProviderContext,
+	dataProvider,
+} from "@logora/debate/data/data_provider";
+import { IconProvider } from "@logora/debate/icons/icon_provider";
+import * as regularIcons from "@logora/debate/icons/regular_icons";
+import { ListProvider } from "@logora/debate/list/list_provider";
+import { act, render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 // NotificationMenu.test.js
-import React from 'react';
-import { screen, render, act } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import { NotificationMenu } from './NotificationMenu';
-import { IntlProvider } from 'react-intl';
-import { MemoryRouter } from 'react-router-dom';
-import { ListProvider } from '@logora/debate/list/list_provider';
-import { IconProvider } from '@logora/debate/icons/icon_provider';
-import { ConfigProvider } from '@logora/debate/data/config_provider';
-import * as regularIcons from '@logora/debate/icons/regular_icons';
-import { dataProvider, DataProviderContext } from '@logora/debate/data/data_provider';
-import { faker } from '@faker-js/faker';
+import React from "react";
+import { IntlProvider } from "react-intl";
+import { MemoryRouter } from "react-router-dom";
+import { NotificationMenu } from "./NotificationMenu";
 
 const createNotification = () => {
-  return {
-    id: faker.number.int(10000000),
-    created_at: faker.date.recent(),
-    notify_type: "new_comment",
-    is_opened: faker.datatype.boolean()
-  };
+	return {
+		id: faker.number.int(10000000),
+		created_at: faker.date.recent(),
+		notify_type: "new_comment",
+		is_opened: faker.datatype.boolean(),
+	};
 };
 
 const notificationDefinitions = {
-  new_comment: {
-    getRedirectUrl: () => '/comments/1',
-    getImage: () => <img src={faker.image.abstract()} alt="notification-image" />,
-    getContent: () => faker.commerce.productDescription()
-  },
-}
+	new_comment: {
+		getRedirectUrl: () => "/comments/1",
+		getImage: () => (
+			<img src={faker.image.abstract()} alt="notification-image" />
+		),
+		getContent: () => faker.commerce.productDescription(),
+	},
+};
 
 const httpClient = {
-  post: () => Promise.resolve({ data: { success: true, data: {} } }),
-  get: () => Promise.resolve({ data: { success: true, data: Array.from({ length: 5 }, createNotification) } }),
+	post: () => Promise.resolve({ data: { success: true, data: {} } }),
+	get: () =>
+		Promise.resolve({
+			data: {
+				success: true,
+				data: Array.from({ length: 5 }, createNotification),
+			},
+		}),
 };
 
 const data = dataProvider(httpClient, "https://mock.example.api");
 
-describe('NotificationMenu', () => {
-  let mock;
+describe("NotificationMenu", () => {
+	let mock;
 
-  beforeEach(() => {
-    mock = vi.spyOn(httpClient, 'post');
-  });
+	beforeEach(() => {
+		mock = vi.spyOn(httpClient, "post");
+	});
 
-  afterEach(() => {
-    mock.mockRestore();
-    mock.mockClear();
-  });
+	afterEach(() => {
+		mock.mockRestore();
+		mock.mockClear();
+	});
 
-  it('renders notifications, title, and "Mark all as read" button', async () => {
-    const container = act(() => render(
-      <MemoryRouter>
-        <ConfigProvider config={{}}>
-          <DataProviderContext.Provider value={{ dataProvider: data }}>
-            <ListProvider>
-              <IntlProvider locale="en">
-                <IconProvider library={regularIcons}>
-                  <NotificationMenu notificationDefinitions={notificationDefinitions} />
-                </IconProvider>
-              </IntlProvider>
-            </ListProvider>
-          </DataProviderContext.Provider>
-        </ConfigProvider>
-      </MemoryRouter>
-    ));
+	it('renders notifications, title, and "Mark all as read" button', async () => {
+		const container = act(() =>
+			render(
+				<MemoryRouter>
+					<ConfigProvider config={{}}>
+						<DataProviderContext.Provider value={{ dataProvider: data }}>
+							<ListProvider>
+								<IntlProvider locale="en">
+									<IconProvider library={regularIcons}>
+										<NotificationMenu
+											notificationDefinitions={notificationDefinitions}
+										/>
+									</IconProvider>
+								</IntlProvider>
+							</ListProvider>
+						</DataProviderContext.Provider>
+					</ConfigProvider>
+				</MemoryRouter>,
+			),
+		);
 
-    expect(screen.getByText('Alerts')).toBeTruthy();
-    expect(screen.getByText('Mark all as read')).toBeTruthy();
+		expect(screen.getByText("Alerts")).toBeTruthy();
+		expect(screen.getByText("Mark all as read")).toBeTruthy();
 
-    const notifications = await screen.findAllByTestId('list-item');
-    expect(notifications.length).toEqual(5);
-  });
+		const notifications = await screen.findAllByTestId("list-item");
+		expect(notifications.length).toEqual(5);
+	});
 
-  it('renders title, button, and empty list message when no notifications', async () => {
-    const httpClientEmpty = {
-      post: () => Promise.resolve({ data: { success: true, data: {} } }),
-      get: () => Promise.resolve({ data: { success: true, data: [] } }),
-    };
-    
-    const dataEmpty = dataProvider(httpClientEmpty, "https://mock.example.api");
+	it("renders title, button, and empty list message when no notifications", async () => {
+		const httpClientEmpty = {
+			post: () => Promise.resolve({ data: { success: true, data: {} } }),
+			get: () => Promise.resolve({ data: { success: true, data: [] } }),
+		};
 
-    render(
-      <MemoryRouter>
-        <ConfigProvider config={{}}>
-          <DataProviderContext.Provider value={{ dataProvider: dataEmpty }}>
-            <ListProvider>
-              <IntlProvider locale="en">
-                <IconProvider library={regularIcons}>
-                  <NotificationMenu notificationDefinitions={notificationDefinitions} />
-                </IconProvider>
-              </IntlProvider>
-            </ListProvider>
-          </DataProviderContext.Provider>
-        </ConfigProvider>
-      </MemoryRouter>
-    );
+		const dataEmpty = dataProvider(httpClientEmpty, "https://mock.example.api");
 
-    expect(screen.getByText('Alerts')).toBeTruthy();
-    expect(screen.getByText('Mark all as read')).toBeTruthy();
-    expect(await screen.findByText('No items for now.')).toBeTruthy();
+		render(
+			<MemoryRouter>
+				<ConfigProvider config={{}}>
+					<DataProviderContext.Provider value={{ dataProvider: dataEmpty }}>
+						<ListProvider>
+							<IntlProvider locale="en">
+								<IconProvider library={regularIcons}>
+									<NotificationMenu
+										notificationDefinitions={notificationDefinitions}
+									/>
+								</IconProvider>
+							</IntlProvider>
+						</ListProvider>
+					</DataProviderContext.Provider>
+				</ConfigProvider>
+			</MemoryRouter>,
+		);
 
-    const notifications = screen.queryAllByTestId('list-item');
-    expect(notifications.length).toEqual(0);
-  });
+		expect(screen.getByText("Alerts")).toBeTruthy();
+		expect(screen.getByText("Mark all as read")).toBeTruthy();
+		expect(await screen.findByText("No items for now.")).toBeTruthy();
 
-  it('calls api when clicking on read all button', async () => {
-    render(
-      <MemoryRouter>
-        <ConfigProvider config={{}}>
-          <DataProviderContext.Provider value={{ dataProvider: data }}>
-            <ListProvider>
-              <IntlProvider locale="en">
-                <IconProvider library={regularIcons}>
-                  <NotificationMenu notificationDefinitions={notificationDefinitions} />
-                </IconProvider>
-              </IntlProvider>
-            </ListProvider>
-          </DataProviderContext.Provider>
-        </ConfigProvider>
-      </MemoryRouter>
-    );
+		const notifications = screen.queryAllByTestId("list-item");
+		expect(notifications.length).toEqual(0);
+	});
 
-    expect(screen.getByText('Alerts')).toBeTruthy();
-    const readAllButton = screen.getByText('Mark all as read')
+	it("calls api when clicking on read all button", async () => {
+		render(
+			<MemoryRouter>
+				<ConfigProvider config={{}}>
+					<DataProviderContext.Provider value={{ dataProvider: data }}>
+						<ListProvider>
+							<IntlProvider locale="en">
+								<IconProvider library={regularIcons}>
+									<NotificationMenu
+										notificationDefinitions={notificationDefinitions}
+									/>
+								</IconProvider>
+							</IntlProvider>
+						</ListProvider>
+					</DataProviderContext.Provider>
+				</ConfigProvider>
+			</MemoryRouter>,
+		);
 
-    await userEvent.click(readAllButton);
+		expect(screen.getByText("Alerts")).toBeTruthy();
+		const readAllButton = screen.getByText("Mark all as read");
 
-    expect(mock).toHaveBeenCalledTimes(1);
-  });
+		await userEvent.click(readAllButton);
+
+		expect(mock).toHaveBeenCalledTimes(1);
+	});
 });

@@ -1,2 +1,2 @@
-export { useReportContent } from './useReportContent';
-export { ReportModal as default } from './ReportModal';
+export { useReportContent } from "./useReportContent";
+export { ReportModal as default } from "./ReportModal";

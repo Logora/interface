@@ -1,1 +1,1 @@
-export { DebateBox } from './DebateBox';
+export { DebateBox } from "./DebateBox";

@@ -1,109 +1,141 @@
-import React, { useState } from "react";
-import { Select } from '@logora/debate/input/select';
-import { SearchInput } from "@logora/debate/input/search_input";
-import { Tag } from '@logora/debate/tag/tag';
-import { Icon } from '@logora/debate/icons/icon';
-import { useIntl } from "react-intl";
-import { useLocation } from 'react-router';
 import { useResponsive } from "@logora/debate/hooks/use_responsive";
+import { Icon } from "@logora/debate/icons/icon";
+import { SearchInput } from "@logora/debate/input/search_input";
+import { Select } from "@logora/debate/input/select";
+import { Tag } from "@logora/debate/tag/tag";
 import cx from "classnames";
+import React, { useState } from "react";
+import { useIntl } from "react-intl";
+import { useLocation } from "react-router";
 import styles from "./ActionBar.module.scss";
 
-export const ActionBar = ({ title, sortOptions, defaultSelectOption, searchBar = false, tagList, activeTagId, withUrlParams = false, onSearch, onSortChange, onTagChange }) => {
-    const intl = useIntl();
-    const location = useLocation();
-    const { isMobile } = useResponsive();
-    const [searchActive, setSearchActive] = useState(false);
-    const urlParams = new URLSearchParams(typeof window !== "undefined" ? window.location.search : location.search);
+export const ActionBar = ({
+	title,
+	sortOptions,
+	defaultSelectOption,
+	searchBar = false,
+	tagList,
+	activeTagId,
+	withUrlParams = false,
+	onSearch,
+	onSortChange,
+	onTagChange,
+}) => {
+	const intl = useIntl();
+	const location = useLocation();
+	const { isMobile } = useResponsive();
+	const [searchActive, setSearchActive] = useState(false);
+	const urlParams = new URLSearchParams(
+		typeof window !== "undefined" ? window.location.search : location.search,
+	);
 
-    const handleSortChange = (selectOption) => {
-        if (withUrlParams) {
-            for (const key of urlParams.keys()) {
-                sortOptions.map((o) => {
-                    if (o.name === key) {
-                        urlParams.delete(key);
-                    }
-                })
-            }
-            urlParams.delete("sort");
-            urlParams.set(selectOption.type === "filter" ? selectOption.name : "sort", selectOption.value);
-        }
-        onSortChange(selectOption)
-    };
+	const handleSortChange = (selectOption) => {
+		if (withUrlParams) {
+			for (const key of urlParams.keys()) {
+				sortOptions.map((o) => {
+					if (o.name === key) {
+						urlParams.delete(key);
+					}
+				});
+			}
+			urlParams.delete("sort");
+			urlParams.set(
+				selectOption.type === "filter" ? selectOption.name : "sort",
+				selectOption.value,
+			);
+		}
+		onSortChange(selectOption);
+	};
 
-    const handleActiveTag = (tag) => {
-        if (withUrlParams) {
-            if (tag.id === activeTagId) {
-                urlParams.delete("tagId");
-            } else {
-                urlParams.set("tagId", tag.id);
-            }
-        }
-        onTagChange(tag.id === activeTagId ? null : tag.id)
-    }
+	const handleActiveTag = (tag) => {
+		if (withUrlParams) {
+			if (tag.id === activeTagId) {
+				urlParams.delete("tagId");
+			} else {
+				urlParams.set("tagId", tag.id);
+			}
+		}
+		onTagChange(tag.id === activeTagId ? null : tag.id);
+	};
 
-    const handleSearch = (query) => {
-        if (withUrlParams) {
-            if (!query) {
-                urlParams.delete("search");
-            } else {
-                urlParams.set("search", query);
-            }
-        }
-        onSearch(query);
-        setSearchActive(query !== "");
-    }
+	const handleSearch = (query) => {
+		if (withUrlParams) {
+			if (!query) {
+				urlParams.delete("search");
+			} else {
+				urlParams.set("search", query);
+			}
+		}
+		onSearch(query);
+		setSearchActive(query !== "");
+	};
 
-    const displayTags = (tag) => {
-        const tagIsActive = activeTagId === tag.id;
-        
-        return (
-            <div className={styles.tagItem} key={tag.id} onClick={() => handleActiveTag(tag)}>
-                <Tag text={tag.display_name} active={tagIsActive} rightIcon={tagIsActive && <Icon name="close" height={10} width={10} />} />
-            </div>
-        );
-    }
+	const displayTags = (tag) => {
+		const tagIsActive = activeTagId === tag.id;
 
-    return (
-        <>
-            {(title || sortOptions || searchBar) && (
-                <>
-                    <div className={cx(styles.listHeader, { [styles.listHeaderOneItem]: (!searchBar || !sortOptions) })}>
-                        {title &&
-                            <div className={styles.listTitle}>{title}</div>
-                        }
-                        {(sortOptions || searchBar) &&
-                            <div className={cx(styles.rightBar, { [styles.rightBarOneItem]: (!searchBar || !sortOptions) })}>
-                                {searchBar ? (
-                                    <div className={styles.search}>
-                                        <SearchInput
-                                            onSearchSubmit={handleSearch}
-                                            placeholder={intl.formatMessage({ id: "info.search_mobile", defaultMessage: "Search" })}
-                                            reducedByDefault={false}
-                                        />
-                                    </div>
-                                ) : null}
-                                {sortOptions ? (
-                                    <Select
-                                        onChange={handleSortChange}
-                                        options={sortOptions}
-                                        defaultOption={defaultSelectOption}
-                                        horizontalPosition={"right"}
-                                        disabled={searchActive}
-                                        className={styles.select}
-                                    />
-                                ) : null}
-                            </div>
-                        }
-                    </div>
-                    {tagList && tagList.length > 0 &&
-                        <div className={styles.tagList}>
-                            {tagList.map(displayTags)}
-                        </div>
-                    }
-                </>
-            )}
-        </>
-    )
-}
+		return (
+			<div
+				className={styles.tagItem}
+				key={tag.id}
+				onClick={() => handleActiveTag(tag)}
+			>
+				<Tag
+					text={tag.display_name}
+					active={tagIsActive}
+					rightIcon={
+						tagIsActive && <Icon name="close" height={10} width={10} />
+					}
+				/>
+			</div>
+		);
+	};
 
+	return (
+		<>
+			{(title || sortOptions || searchBar) && (
+				<>
+					<div
+						className={cx(styles.listHeader, {
+							[styles.listHeaderOneItem]: !searchBar || !sortOptions,
+						})}
+					>
+						{title && <div className={styles.listTitle}>{title}</div>}
+						{(sortOptions || searchBar) && (
+							<div
+								className={cx(styles.rightBar, {
+									[styles.rightBarOneItem]: !searchBar || !sortOptions,
+								})}
+							>
+								{searchBar ? (
+									<div className={styles.search}>
+										<SearchInput
+											onSearchSubmit={handleSearch}
+											placeholder={intl.formatMessage({
+												id: "info.search_mobile",
+												defaultMessage: "Search",
+											})}
+											reducedByDefault={false}
+										/>
+									</div>
+								) : null}
+								{sortOptions ? (
+									<Select
+										onChange={handleSortChange}
+										options={sortOptions}
+										defaultOption={defaultSelectOption}
+										horizontalPosition={"right"}
+										disabled={searchActive}
+										className={styles.select}
+									/>
+								) : null}
+							</div>
+						)}
+					</div>
+					{tagList && tagList.length > 0 && (
+						<div className={styles.tagList}>{tagList.map(displayTags)}</div>
+					)}
+				</>
+			)}
+		</>
+	);
+};

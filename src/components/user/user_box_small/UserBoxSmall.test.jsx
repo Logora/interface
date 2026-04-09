@@ -1,49 +1,57 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import { ConfigProvider } from '@logora/debate/data/config_provider';
-import { IntlProvider } from 'react-intl';
-import { BrowserRouter } from 'react-router-dom';
-import { UserBoxSmall } from './UserBoxSmall';
-import { Location } from '@logora/debate/util/location';
-import { faker } from '@faker-js/faker';
+import { faker } from "@faker-js/faker";
+import { ConfigProvider } from "@logora/debate/data/config_provider";
+import { Location } from "@logora/debate/util/location";
+import { render, screen } from "@testing-library/react";
+import React from "react";
+import { IntlProvider } from "react-intl";
+import { BrowserRouter } from "react-router-dom";
+import { UserBoxSmall } from "./UserBoxSmall";
 
 const user = {
-  image_url: faker.image.avatarGitHub(),
-  full_name: faker.person.fullName(),
-  slug: faker.lorem.slug(),
-}
+	image_url: faker.image.avatarGitHub(),
+	full_name: faker.person.fullName(),
+	slug: faker.lorem.slug(),
+};
 
-let UserShowLocation = new Location('espace-debat/user/:userSlug', { userSlug: "" })
+const UserShowLocation = new Location("espace-debat/user/:userSlug", {
+	userSlug: "",
+});
 
 const routes = {
-  userShowLocation: UserShowLocation,
-}
+	userShowLocation: UserShowLocation,
+};
 
-describe('UserBoxSmall', () => {
-  it('renders author name, avatar and correct link', () => {
-    render(
-      <BrowserRouter>
-        <ConfigProvider routes={{ ...routes }}>
-          <IntlProvider locale='en'>
-            <UserBoxSmall userName={user.full_name} avatarUrl={user.image_url} userSlug={user.slug} />
-          </IntlProvider>
-        </ConfigProvider>
-      </BrowserRouter>
-    );
-    const userNameElement = screen.getByText(user.full_name);
-    expect(userNameElement).toBeInTheDocument();
+describe("UserBoxSmall", () => {
+	it("renders author name, avatar and correct link", () => {
+		render(
+			<BrowserRouter>
+				<ConfigProvider routes={{ ...routes }}>
+					<IntlProvider locale="en">
+						<UserBoxSmall
+							userName={user.full_name}
+							avatarUrl={user.image_url}
+							userSlug={user.slug}
+						/>
+					</IntlProvider>
+				</ConfigProvider>
+			</BrowserRouter>,
+		);
+		const userNameElement = screen.getByText(user.full_name);
+		expect(userNameElement).toBeInTheDocument();
 
-    const avatarImageElement = screen.getByAltText(user.full_name + "'s profile picture");
-    expect(avatarImageElement).toHaveAttribute('height', '25');
-    expect(avatarImageElement).toHaveAttribute('width', '25');
-    expect(avatarImageElement).toBeInTheDocument();
-    expect(avatarImageElement).toHaveAttribute('src', user.image_url);
+		const avatarImageElement = screen.getByAltText(
+			user.full_name + "'s profile picture",
+		);
+		expect(avatarImageElement).toHaveAttribute("height", "25");
+		expect(avatarImageElement).toHaveAttribute("width", "25");
+		expect(avatarImageElement).toBeInTheDocument();
+		expect(avatarImageElement).toHaveAttribute("src", user.image_url);
 
-    const userLink = screen.getAllByRole('link');
-    expect(userLink.length).toBe(2);
-    expect(userLink[0]).toHaveAttribute(
-      'href',
-      `/espace-debat/user/${user.slug}`
-    );
-  });
+		const userLink = screen.getAllByRole("link");
+		expect(userLink.length).toBe(2);
+		expect(userLink[0]).toHaveAttribute(
+			"href",
+			`/espace-debat/user/${user.slug}`,
+		);
+	});
 });

@@ -1,23 +1,23 @@
-import React from "react";
-import { render, waitFor, fireEvent } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
-import { IntlProvider } from "react-intl";
-import { MemoryRouter } from "react-router-dom";
+import { faker } from "@faker-js/faker";
+import { AuthContext } from "@logora/debate/auth/use_auth";
 import { ConfigProvider } from "@logora/debate/data/config_provider";
 import {
-	dataProvider,
 	DataProviderContext,
+	dataProvider,
 } from "@logora/debate/data/data_provider";
-import { AuthContext } from "@logora/debate/auth/use_auth";
 import { ModalProvider } from "@logora/debate/dialog/modal";
-import { ListProvider } from "@logora/debate/list/list_provider";
 import { ToastProvider } from "@logora/debate/dialog/toast_provider";
-import { VoteProvider } from "@logora/debate/vote/vote_provider";
-import { IconProvider } from "@logora/debate/icons/icon_provider";
 import { ResponsiveProvider } from "@logora/debate/hooks/use_responsive";
+import { IconProvider } from "@logora/debate/icons/icon_provider";
 import * as regularIcons from "@logora/debate/icons/regular_icons";
+import { ListProvider } from "@logora/debate/list/list_provider";
+import { VoteProvider } from "@logora/debate/vote/vote_provider";
+import { fireEvent, render, waitFor } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import React from "react";
+import { IntlProvider } from "react-intl";
+import { MemoryRouter } from "react-router-dom";
 import { SuggestionBox } from "./SuggestionBox";
-import { faker } from "@faker-js/faker";
 
 const vote = {
 	id: faker.number.int(),
@@ -39,7 +39,7 @@ const generateSuggestion = (groupOverrides, suggestionOverrides) => ({
 	slug: faker.lorem.slug(),
 	created_at: faker.date.recent().toISOString(),
 	score: faker.number.int(),
-	language: faker.helpers.arrayElement(['en', 'fr', 'es']),
+	language: faker.helpers.arrayElement(["en", "fr", "es"]),
 	is_active: true,
 	messages_count: faker.number.int(),
 	is_published: true,
@@ -58,7 +58,7 @@ const generateSuggestion = (groupOverrides, suggestionOverrides) => ({
 			full_name: faker.person.fullName(),
 			image_url: faker.image.avatarGitHub(),
 		},
-		language: faker.helpers.arrayElement(['en', 'fr', 'es']),
+		language: faker.helpers.arrayElement(["en", "fr", "es"]),
 		translation_entries: [],
 		name: faker.lorem.words(),
 		...suggestionOverrides,
@@ -127,7 +127,9 @@ describe("SuggestionBox", () => {
 		const { getByText } = renderSuggestionBox({ suggestion, disabled: false });
 
 		expect(getByText(suggestion.name)).toBeInTheDocument();
-		expect(getByText(suggestion.debate_suggestion.author.full_name)).toBeInTheDocument();
+		expect(
+			getByText(suggestion.debate_suggestion.author.full_name),
+		).toBeInTheDocument();
 		expect(
 			getByText(`${suggestion.debate_suggestion.total_upvotes} supports`),
 		).toBeInTheDocument();
@@ -137,7 +139,9 @@ describe("SuggestionBox", () => {
 		const { getByText } = renderSuggestionBox({ suggestion, disabled: true });
 
 		expect(getByText(suggestion.name)).toBeInTheDocument();
-		expect(getByText(suggestion.debate_suggestion.author.full_name)).toBeInTheDocument();
+		expect(
+			getByText(suggestion.debate_suggestion.author.full_name),
+		).toBeInTheDocument();
 		expect(
 			getByText(`${suggestion.debate_suggestion.total_upvotes} supports`),
 		).toBeInTheDocument();
@@ -157,7 +161,9 @@ describe("SuggestionBox", () => {
 			disabled: false,
 		});
 		expect(getByText(publishedSuggestion.name)).toBeInTheDocument();
-		expect(getByText(publishedSuggestion.debate_suggestion.author.full_name)).toBeInTheDocument();
+		expect(
+			getByText(publishedSuggestion.debate_suggestion.author.full_name),
+		).toBeInTheDocument();
 		expect(getByText(/Go to debate/)).toBeInTheDocument();
 	});
 

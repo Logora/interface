@@ -1,11 +1,21 @@
-import React, { useState, useEffect } from "react";
-import { Icon } from '@logora/debate/icons/icon';
-import { Dropdown } from '@logora/debate/dialog/dropdown';
-import styles from "./Select.module.scss";
+import { Dropdown } from "@logora/debate/dialog/dropdown";
+import { Icon } from "@logora/debate/icons/icon";
 import cx from "classnames";
+import React, { useState, useEffect } from "react";
+import styles from "./Select.module.scss";
 
-export const Select = ({ options, defaultOption, onChange, resetSelect = false, disabled = false, className, horizontalPosition = "left" }) => {
-	const defaultOptionValue = defaultOption ? options.filter(elm => elm.name === defaultOption)[0] : options[0];
+export const Select = ({
+	options,
+	defaultOption,
+	onChange,
+	resetSelect = false,
+	disabled = false,
+	className,
+	horizontalPosition = "left",
+}) => {
+	const defaultOptionValue = defaultOption
+		? options.filter((elm) => elm.name === defaultOption)[0]
+		: options[0];
 	const [currentOption, setCurrentOption] = useState(defaultOptionValue);
 
 	useEffect(() => {
@@ -16,7 +26,7 @@ export const Select = ({ options, defaultOption, onChange, resetSelect = false, 
 
 	useEffect(() => {
 		if (defaultOption) {
-			setCurrentOption(options.filter(elm => elm.name === defaultOption)[0]);
+			setCurrentOption(options.filter((elm) => elm.name === defaultOption)[0]);
 		}
 	}, [defaultOption]);
 
@@ -30,18 +40,18 @@ export const Select = ({ options, defaultOption, onChange, resetSelect = false, 
 	const handleKeyDown = (e) => {
 		const current = e.currentTarget;
 		switch (e.key) {
-			case 'Enter':
-			case ' ':
+			case "Enter":
+			case " ":
 				e.preventDefault();
 				current.click();
 				break;
 
-			case 'ArrowDown':
+			case "ArrowDown":
 				e.preventDefault();
 				current.nextElementSibling?.focus();
 				break;
 
-			case 'ArrowUp':
+			case "ArrowUp":
 				e.preventDefault();
 				current.previousElementSibling?.focus();
 				break;
@@ -51,34 +61,45 @@ export const Select = ({ options, defaultOption, onChange, resetSelect = false, 
 	const displayOption = (option) => {
 		const isSelected = currentOption?.name === option.name;
 		return (
-			option.name !== "" &&
-			<div
-				role="option"
-				aria-selected={isSelected}
-				tabIndex={0}
-				className={cx(styles.selectOption, { [styles.selectOptionActive]: isSelected })}
-				key={option.value}
-				value={option.value}
-				data-tid={option.dataTid}
-				onClick={() => handleSelectOption(option)}
-				onKeyDown={handleKeyDown}
-			>
-				{option.text}
-			</div>
+			option.name !== "" && (
+				<div
+					role="option"
+					aria-selected={isSelected}
+					tabIndex={0}
+					className={cx(styles.selectOption, {
+						[styles.selectOptionActive]: isSelected,
+					})}
+					key={option.value}
+					value={option.value}
+					data-tid={option.dataTid}
+					onClick={() => handleSelectOption(option)}
+					onKeyDown={handleKeyDown}
+				>
+					{option.text}
+				</div>
+			)
 		);
 	};
 	return (
 		<div className={styles.selectContainer}>
 			<Dropdown horizontalPosition={horizontalPosition}>
-				<div className={cx(styles.selectInput, { [className]: className, [styles.disabled]: disabled })}>
-					<span className={styles.currentOptionText}>{currentOption?.text}</span>{" "}
-					<Icon name="lightArrow" className={styles.arrowDown} height={10} width={10} />
+				<div
+					className={cx(styles.selectInput, {
+						[className]: className,
+						[styles.disabled]: disabled,
+					})}
+				>
+					<span className={styles.currentOptionText}>
+						{currentOption?.text}
+					</span>{" "}
+					<Icon
+						name="lightArrow"
+						className={styles.arrowDown}
+						height={10}
+						width={10}
+					/>
 				</div>
-				{!disabled && (
-					<div role="listbox">
-						{options.map(displayOption)}
-					</div>
-				)}
+				{!disabled && <div role="listbox">{options.map(displayOption)}</div>}
 			</Dropdown>
 		</div>
 	);

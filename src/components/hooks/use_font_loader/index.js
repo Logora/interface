@@ -1,1 +1,1 @@
-export { useFontLoader } from './useFontLoader';
+export { useFontLoader } from "./useFontLoader";

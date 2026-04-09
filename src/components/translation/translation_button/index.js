@@ -1,1 +1,1 @@
-export { TranslationButton } from './TranslationButton';
+export { TranslationButton } from "./TranslationButton";

@@ -1,1 +1,1 @@
-export { ContentFooter } from './ContentFooter';
+export { ContentFooter } from "./ContentFooter";

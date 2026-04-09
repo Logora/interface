@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
-import { HiddenCheckbox } from './hidden-checkbox';
+import React, { useState } from "react";
+import { HiddenCheckbox } from "./hidden-checkbox";
 
 const meta = {
-	title: 'Input/Checkbox/Hidden',
+	title: "Input/Checkbox/Hidden",
 	component: HiddenCheckbox,
 	args: {
-		defaultChecked: false
+		defaultChecked: false,
 	},
 	argTypes: {
 		defaultChecked: {
-			control: 'boolean'
-		}
+			control: "boolean",
+		},
 	},
 	render: ({ defaultChecked }) => {
 		const [active, setActive] = useState(defaultChecked);
@@ -25,11 +25,11 @@ const meta = {
 					onBlur={() => setFocused(false)}
 				/>
 				<div>
-					{active ? 'checked' : 'unchecked'} {focused ? '· focused' : ''}
+					{active ? "checked" : "unchecked"} {focused ? "· focused" : ""}
 				</div>
 			</div>
 		);
-	}
+	},
 };
 
 export default meta;
@@ -46,7 +46,7 @@ export const Preview = () => {
 				onBlur={() => setFocused(false)}
 			/>
 			<div>
-				{active ? 'checked' : 'unchecked'} {focused ? '· focused' : ''}
+				{active ? "checked" : "unchecked"} {focused ? "· focused" : ""}
 			</div>
 		</div>
 	);
@@ -65,9 +65,8 @@ export const Checked = () => {
 				onBlur={() => setFocused(false)}
 			/>
 			<div>
-				{active ? 'checked' : 'unchecked'} {focused ? '· focused' : ''}
+				{active ? "checked" : "unchecked"} {focused ? "· focused" : ""}
 			</div>
 		</div>
 	);
 };
-

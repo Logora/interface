@@ -1,1 +1,1 @@
-export { SSOForm } from './SSOForm';
+export { SSOForm } from "./SSOForm";

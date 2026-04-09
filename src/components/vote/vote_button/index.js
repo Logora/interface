@@ -1,1 +1,1 @@
-export { VoteButton } from './VoteButton';
+export { VoteButton } from "./VoteButton";

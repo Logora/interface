@@ -1,15 +1,31 @@
 import React, { useState, useEffect } from "react";
 import { useIntl } from "react-intl";
-import 'chart.js/auto';
-import { Pie } from 'react-chartjs-2';
-import { Loader } from '@logora/debate/progress/loader';
-import ChartDataLabels from 'chartjs-plugin-datalabels';
-import styles from "./PieChart.module.scss";
+import "chart.js/auto";
 import StandardErrorBoundary from "@logora/debate/error/standard_error_boundary";
+import { Loader } from "@logora/debate/progress/loader";
+import ChartDataLabels from "chartjs-plugin-datalabels";
+import { Pie } from "react-chartjs-2";
+import styles from "./PieChart.module.scss";
 
-const DEFAULT_COLORS = ['rgba(255, 99, 132, 0.8)', 'rgba(54, 162, 235, 0.8)', 'rgba(255, 206, 86, 0.8)', 'rgba(75, 192, 192, 0.8)', 'rgba(153, 102, 255, 0.8)', 'rgba(255, 159, 64, 0.8)', 'rgba(255, 143, 102, 0.8)', 'rgba(93, 82, 179, 0.8)']
+const DEFAULT_COLORS = [
+	"rgba(255, 99, 132, 0.8)",
+	"rgba(54, 162, 235, 0.8)",
+	"rgba(255, 206, 86, 0.8)",
+	"rgba(75, 192, 192, 0.8)",
+	"rgba(153, 102, 255, 0.8)",
+	"rgba(255, 159, 64, 0.8)",
+	"rgba(255, 143, 102, 0.8)",
+	"rgba(93, 82, 179, 0.8)",
+];
 
-export const PieChart = ({ data, labels, totalItemsCount, pieTitle, colors, minPercentageValue = 0.75 }) => {
+export const PieChart = ({
+	data,
+	labels,
+	totalItemsCount,
+	pieTitle,
+	colors,
+	minPercentageValue = 0.75,
+}) => {
 	const intl = useIntl();
 	const [pieChartData, setPieChartData] = useState(undefined);
 	const [maxValue, setMaxValue] = useState(0);
@@ -20,68 +36,86 @@ export const PieChart = ({ data, labels, totalItemsCount, pieTitle, colors, minP
 			formatPieChartData(data);
 			setMaxValue(data.length);
 		}
-	}, [data])
+	}, [data]);
 
 	const formatPieChartData = (data) => {
-		const negligibleDimensions = data.filter(item => Math.round((100*item.value)/totalItemsCount) <= (maxValue * minPercentageValue)) 
-		const otherDimensions = { dimension: "others", value: negligibleDimensions.reduce((a, b) => a + b.value, 0) }
-		let finalArr = data.filter(e => !negligibleDimensions.includes(e)).sort((a, b) => b.value - a.value);
-		if (negligibleDimensions.reduce((a, b) => a + b.value, 0) > 0) { finalArr.push(otherDimensions); }
-				
-		let finalData = {
-			labels: finalArr.map(elm => labels.filter(tag => tag.id == elm.dimension)[0] ? `${labels.filter(tag => tag.id == elm.dimension)[0].name} (${Math.round((100*elm.value)/totalItemsCount)} %)` : intl.formatMessage({ id: "consultation.synthesis.others", defaultMessage: "Others" })), // Find correct name associated with label
+		const negligibleDimensions = data.filter(
+			(item) =>
+				Math.round((100 * item.value) / totalItemsCount) <=
+				maxValue * minPercentageValue,
+		);
+		const otherDimensions = {
+			dimension: "others",
+			value: negligibleDimensions.reduce((a, b) => a + b.value, 0),
+		};
+		const finalArr = data
+			.filter((e) => !negligibleDimensions.includes(e))
+			.sort((a, b) => b.value - a.value);
+		if (negligibleDimensions.reduce((a, b) => a + b.value, 0) > 0) {
+			finalArr.push(otherDimensions);
+		}
+
+		const finalData = {
+			labels: finalArr.map((elm) =>
+				labels.filter((tag) => tag.id == elm.dimension)[0]
+					? `${labels.filter((tag) => tag.id == elm.dimension)[0].name} (${Math.round((100 * elm.value) / totalItemsCount)} %)`
+					: intl.formatMessage({
+							id: "consultation.synthesis.others",
+							defaultMessage: "Others",
+						}),
+			), // Find correct name associated with label
 			datasets: [
 				{
-					data: finalArr.map(elm => Math.round((100*elm.value)/totalItemsCount)),
+					data: finalArr.map((elm) =>
+						Math.round((100 * elm.value) / totalItemsCount),
+					),
 					backgroundColor: colors || DEFAULT_COLORS,
 					borderWidth: 2,
 				},
 			],
 		};
-		
+
 		setPieChartData(finalData);
 		setIsLoading(false);
-	}
+	};
 
 	const options = {
-		responsive: true, 
+		responsive: true,
 		maintainAspectRatio: false,
 		plugins: {
 			datalabels: {
 				display: true,
 				color: "white",
 				font: { size: "16" },
-				formatter: function (value) {
-					if(value >= maxValue)
-						return value + " %"
+				formatter: (value) => {
+					if (value >= maxValue) return value + " %";
 					else {
 						return " ";
 					}
-				}
+				},
 			},
 			title: {
 				display: true,
 				font: { size: "16" },
-				text: pieTitle
+				text: pieTitle,
 			},
 			tooltip: {
 				callbacks: {
-					label: function(value) { return ` ${value.label}`; }
-				}
-			}
-		}
-	}
+					label: (value) => ` ${value.label}`,
+				},
+			},
+		},
+	};
 
 	return (
 		<StandardErrorBoundary>
-			{ isLoading ?
-				<Loader/>
-			:
+			{isLoading ? (
+				<Loader />
+			) : (
 				<div className={styles.pieChart} data-testid="pieChartCanvas">
 					<Pie data={pieChartData} options={options} />
 				</div>
-			}
+			)}
 		</StandardErrorBoundary>
-	)
-}
-
+	);
+};

@@ -1,69 +1,74 @@
-import React from 'react';
-import { fireEvent, render, screen, waitForElementToBeRemoved } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import { ConfirmModal } from './ConfirmModal';
-import { ModalProvider } from '@logora/debate/dialog/modal';
-import { IconProvider } from '@logora/debate/icons/icon_provider';
+import { ModalProvider } from "@logora/debate/dialog/modal";
+import { IconProvider } from "@logora/debate/icons/icon_provider";
+import * as regularIcons from "@logora/debate/icons/regular_icons";
+import {
+	fireEvent,
+	render,
+	screen,
+	waitForElementToBeRemoved,
+} from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import React from "react";
 import { IntlProvider } from "react-intl";
-import * as regularIcons from '@logora/debate/icons/regular_icons';
+import { ConfirmModal } from "./ConfirmModal";
 
 beforeAll(() => {
-    HTMLDialogElement.prototype.showModal = function () {
-      this.setAttribute("open", "");
-    };
-    HTMLDialogElement.prototype.close = function () {
-      this.removeAttribute("open");
-    };
-  });
+	HTMLDialogElement.prototype.showModal = function () {
+		this.setAttribute("open", "");
+	};
+	HTMLDialogElement.prototype.close = function () {
+		this.removeAttribute("open");
+	};
+});
 
-describe('ConfirmModal', () => {
-	it('should render modal with content and title', () => {
+describe("ConfirmModal", () => {
+	it("should render modal with content and title", () => {
 		const modal = render(
 			<IconProvider library={regularIcons}>
 				<IntlProvider locale="en">
-				<ModalProvider>
-					<ConfirmModal 
-						title="confirm modal title" 
-						question="are you sure ?"
-						confirmLabel="yes"
-						cancelLabel="no"
-					/>
-				</ModalProvider>
+					<ModalProvider>
+						<ConfirmModal
+							title="confirm modal title"
+							question="are you sure ?"
+							confirmLabel="yes"
+							cancelLabel="no"
+						/>
+					</ModalProvider>
 				</IntlProvider>
-			</IconProvider>
+			</IconProvider>,
 		);
 
-		expect(screen.getByText("confirm modal title")).toBeTruthy()
-		expect(screen.getByText("are you sure ?")).toBeTruthy()
-		expect(screen.getByText("yes")).toBeTruthy()
-		expect(screen.getByText("no")).toBeTruthy()
+		expect(screen.getByText("confirm modal title")).toBeTruthy();
+		expect(screen.getByText("are you sure ?")).toBeTruthy();
+		expect(screen.getByText("yes")).toBeTruthy();
+		expect(screen.getByText("no")).toBeTruthy();
 		expect(screen.getByRole("dialog")).toHaveAttribute("open");
 	});
 
-	it('should close on click outside', async () => {
+	it("should close on click outside", async () => {
 		const modal = render(
 			<IconProvider library={regularIcons}>
 				<IntlProvider locale="en">
-				<ModalProvider>
-					<ConfirmModal 
-						title="confirm modal title" 
-						question="are you sure ?"
-						confirmLabel="yes"
-						cancelLabel="no"
-					/>
-				</ModalProvider>
+					<ModalProvider>
+						<ConfirmModal
+							title="confirm modal title"
+							question="are you sure ?"
+							confirmLabel="yes"
+							cancelLabel="no"
+						/>
+					</ModalProvider>
 				</IntlProvider>
-			</IconProvider>
+			</IconProvider>,
 		);
 
-		expect(screen.getByRole("dialog")).toBeTruthy()
-		expect(screen.getByText("are you sure ?")).toBeTruthy()
+		expect(screen.getByRole("dialog")).toBeTruthy();
+		expect(screen.getByText("are you sure ?")).toBeTruthy();
 		expect(screen.getByRole("dialog")).toHaveAttribute("open");
-		await userEvent.click(document.body)
+		await userEvent.click(document.body);
 
 		waitForElementToBeRemoved(screen.getByText("are you sure ?")).then(() =>
-			expect(screen.queryByRole("dialog")).toBeNull()
-		)
+			expect(screen.queryByRole("dialog")).toBeNull(),
+		);
 	});
 
 	/*
@@ -118,58 +123,58 @@ describe('ConfirmModal', () => {
 	});
 	*/
 
-	it('should trigger confirm callback when clicking confirm', async () => {
+	it("should trigger confirm callback when clicking confirm", async () => {
 		const confirmCallback = vi.fn();
 
 		const modal = render(
 			<IconProvider library={regularIcons}>
 				<IntlProvider locale="en">
-				<ModalProvider>
-					<ConfirmModal 
-						title="confirm modal title" 
-						question="are you sure ?"
-						confirmLabel="yes"
-						cancelLabel="no"
-						onConfirmCallback={confirmCallback}
-					/>
-				</ModalProvider>
+					<ModalProvider>
+						<ConfirmModal
+							title="confirm modal title"
+							question="are you sure ?"
+							confirmLabel="yes"
+							cancelLabel="no"
+							onConfirmCallback={confirmCallback}
+						/>
+					</ModalProvider>
 				</IntlProvider>
-			</IconProvider>
+			</IconProvider>,
 		);
 
-		expect(screen.getByRole("dialog")).toBeTruthy()
-		expect(screen.getByText("are you sure ?")).toBeTruthy()
+		expect(screen.getByRole("dialog")).toBeTruthy();
+		expect(screen.getByText("are you sure ?")).toBeTruthy();
 		expect(screen.getByRole("dialog")).toHaveAttribute("open");
 		const confirmButton = modal.getByText(/yes/i);
-		fireEvent.click(confirmButton)
+		fireEvent.click(confirmButton);
 
 		await expect(confirmCallback).toHaveBeenCalled();
 	});
 
-	it('should trigger cancel callback when clicking cancel', async () => {
+	it("should trigger cancel callback when clicking cancel", async () => {
 		const cancelCallback = vi.fn();
 
 		const modal = render(
 			<IconProvider library={regularIcons}>
 				<IntlProvider locale="en">
-				<ModalProvider>
-					<ConfirmModal 
-						title="confirm modal title" 
-						question="are you sure ?"
-						confirmLabel="yes"
-						cancelLabel="no"
-						onCancelCallback={cancelCallback}
-					/>
-				</ModalProvider>
+					<ModalProvider>
+						<ConfirmModal
+							title="confirm modal title"
+							question="are you sure ?"
+							confirmLabel="yes"
+							cancelLabel="no"
+							onCancelCallback={cancelCallback}
+						/>
+					</ModalProvider>
 				</IntlProvider>
-			</IconProvider>
+			</IconProvider>,
 		);
 
-		expect(screen.getByRole("dialog")).toBeTruthy()
-		expect(screen.getByText("are you sure ?")).toBeTruthy()
+		expect(screen.getByRole("dialog")).toBeTruthy();
+		expect(screen.getByText("are you sure ?")).toBeTruthy();
 		expect(screen.getByRole("dialog")).toHaveAttribute("open");
 		const confirmButton = modal.getByText(/no/i);
-		fireEvent.click(confirmButton)
+		fireEvent.click(confirmButton);
 
 		await expect(cancelCallback).toHaveBeenCalled();
 	});

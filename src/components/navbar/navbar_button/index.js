@@ -1,1 +1,1 @@
-export { NavbarButton } from "./NavbarButton"
+export { NavbarButton } from "./NavbarButton";

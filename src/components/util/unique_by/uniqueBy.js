@@ -1,9 +1,13 @@
 export const uniqueBy = (objArray, objKey) => {
-    let newElements = [];
-    objArray.filter((object) => {
-        let objectIndex = newElements.findIndex(element => (element[objKey] == object[objKey]));
-        if (objectIndex <= -1) { newElements.push(object); }
-        return null;
-    });
-    return newElements;
+	const newElements = [];
+	objArray.filter((object) => {
+		const objectIndex = newElements.findIndex(
+			(element) => element[objKey] == object[objKey],
+		);
+		if (objectIndex <= -1) {
+			newElements.push(object);
+		}
+		return null;
+	});
+	return newElements;
 };

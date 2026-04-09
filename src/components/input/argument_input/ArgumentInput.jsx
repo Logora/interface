@@ -1,385 +1,598 @@
-import React, { useState, useEffect, useRef, lazy, Suspense } from 'react';
-import { FormattedMessage } from "react-intl";
 import { useAuth } from "@logora/debate/auth/use_auth";
-import { useList } from '@logora/debate/list/list_provider';
-import { useModal } from '@logora/debate/dialog/modal';
-import { useDataProvider } from '@logora/debate/data/data_provider';
-import { useFormValidation } from '@logora/debate/forms/use_form_validation';
-import { useInput } from "@logora/debate/input/input_provider";
-import { useConfig } from '@logora/debate/data/config_provider';
+import { useConfig } from "@logora/debate/data/config_provider";
+import { useDataProvider } from "@logora/debate/data/data_provider";
+import { useModal } from "@logora/debate/dialog/modal";
+import { useToast } from "@logora/debate/dialog/toast_provider";
+import { useFormValidation } from "@logora/debate/forms/use_form_validation";
+import { useAuthRequired } from "@logora/debate/hooks/use_auth_required";
 import { useResponsive } from "@logora/debate/hooks/use_responsive";
-import { useIntl } from 'react-intl';
-import { useLocation } from "react-router";
-import { useAuthRequired } from '@logora/debate/hooks/use_auth_required';
-import useSessionStorageState from '@rooks/use-sessionstorage-state';
-import { useToast } from '@logora/debate/dialog/toast_provider';
-import { Avatar } from '@logora/debate/user/avatar';
-import { AuthorBox } from '@logora/debate/user/author_box';
-import { TogglePosition } from '@logora/debate/input/toggle_position';
-import { Icon } from '@logora/debate/icons/icon';
+import { Icon } from "@logora/debate/icons/icon";
+import { useInput } from "@logora/debate/input/input_provider";
 import TextEditor from "@logora/debate/input/text_editor";
-const SideModal = lazy(() => import('@logora/debate/modal/side_modal'));
-import cx from 'classnames';
-import styles from './ArgumentInput.module.scss';
+import { TogglePosition } from "@logora/debate/input/toggle_position";
+import { useList } from "@logora/debate/list/list_provider";
+import { AuthorBox } from "@logora/debate/user/author_box";
+import { Avatar } from "@logora/debate/user/avatar";
+import useSessionStorageState from "@rooks/use-sessionstorage-state";
+import React, { useState, useEffect, useRef, lazy, Suspense } from "react";
+import { FormattedMessage } from "react-intl";
+import { useIntl } from "react-intl";
+import { useLocation } from "react-router";
+const SideModal = lazy(() => import("@logora/debate/modal/side_modal"));
+import cx from "classnames";
+import styles from "./ArgumentInput.module.scss";
 
-export const ArgumentInput = ({ argumentListId, avatarSize = 48, disabled = false, positions = [], disabledPositions = [], groupId, groupName, groupType, hideSourceAction = false, isReply = false, onSubmit, parentId, placeholder, positionId, focusOnInit = false, activeOnInit = false, userGuideUrl, hideUserGuideLink = false, hideCharCount = false, disableAutoActivate = false}) => {
-    const intl = useIntl();
-    const api = useDataProvider();
-    const list = useList();
-    const config = useConfig();
-    const { focus, setFocus, setReset, inputContent, setInputContent, setInputRichContent } = useInput();
-    const { isLoggedIn, currentUser } = useAuth();
-    const { errors, validate } = useFormValidation();
-    const { isMobile } = useResponsive();
-    const location = useLocation();
-    // REFS
-    const inputForm = useRef(null);
-    // STATE
-    const [sources, setSources] = useState([]);
-    const [argumentContent, setArgumentContent] = useState("");
-    const [argumentRichContent, setArgumentRichContent] = useState(null);
-    const [userPositionId, setUserPositionId] = useState(null);
-    const [argumentId, setArgumentId] = useState(null);
-    const [flash, setFlash] = useState(false);
-    const [inputActivation, setInputActivation] = useState(false);
-    const [editElement, setEditElement] = useState({});
-    const [savedArgument, setSavedArgument] = useSessionStorageState("userSide", {});
-    const [inputDisabledForVisitors, setInputDisabledForVisitors] = useState(!isLoggedIn && config?.actions?.disableInputForVisitor);
-    const requireAuthentication = useAuthRequired();
-    const { showModal } = useModal();
-    const { toast } = useToast() || {};
-    const urlParams = new URLSearchParams(typeof window !== "undefined" ? window.location.search : location.search);
+export const ArgumentInput = ({
+	argumentListId,
+	avatarSize = 48,
+	disabled = false,
+	positions = [],
+	disabledPositions = [],
+	groupId,
+	groupName,
+	groupType,
+	hideSourceAction = false,
+	isReply = false,
+	onSubmit,
+	parentId,
+	placeholder,
+	positionId,
+	focusOnInit = false,
+	activeOnInit = false,
+	userGuideUrl,
+	hideUserGuideLink = false,
+	hideCharCount = false,
+	disableAutoActivate = false,
+}) => {
+	const intl = useIntl();
+	const api = useDataProvider();
+	const list = useList();
+	const config = useConfig();
+	const {
+		focus,
+		setFocus,
+		setReset,
+		inputContent,
+		setInputContent,
+		setInputRichContent,
+	} = useInput();
+	const { isLoggedIn, currentUser } = useAuth();
+	const { errors, validate } = useFormValidation();
+	const { isMobile } = useResponsive();
+	const location = useLocation();
+	// REFS
+	const inputForm = useRef(null);
+	// STATE
+	const [sources, setSources] = useState([]);
+	const [argumentContent, setArgumentContent] = useState("");
+	const [argumentRichContent, setArgumentRichContent] = useState(null);
+	const [userPositionId, setUserPositionId] = useState(null);
+	const [argumentId, setArgumentId] = useState(null);
+	const [flash, setFlash] = useState(false);
+	const [inputActivation, setInputActivation] = useState(false);
+	const [editElement, setEditElement] = useState({});
+	const [savedArgument, setSavedArgument] = useSessionStorageState(
+		"userSide",
+		{},
+	);
+	const [inputDisabledForVisitors, setInputDisabledForVisitors] = useState(
+		!isLoggedIn && config?.actions?.disableInputForVisitor,
+	);
+	const requireAuthentication = useAuthRequired();
+	const { showModal } = useModal();
+	const { toast } = useToast() || {};
+	const urlParams = new URLSearchParams(
+		typeof window !== "undefined" ? window.location.search : location.search,
+	);
 
-    useEffect(() => {
-        setInputDisabledForVisitors(!isLoggedIn && config?.actions?.disableInputForVisitor);
-    }, [isLoggedIn, config]);
-    // Checks if the user has the role of editor or moderator
-    const isEditorOrModerator = currentUser?.role === "editor" || currentUser?.role === "moderator"
-    const userIsBanned = currentUser?.moderation_status === "banned";
+	useEffect(() => {
+		setInputDisabledForVisitors(
+			!isLoggedIn && config?.actions?.disableInputForVisitor,
+		);
+	}, [isLoggedIn, config]);
+	// Checks if the user has the role of editor or moderator
+	const isEditorOrModerator =
+		currentUser?.role === "editor" || currentUser?.role === "moderator";
+	const userIsBanned = currentUser?.moderation_status === "banned";
 
-    useEffect(() => {
-        let positionIdParam = null;
-        if (typeof window !== 'undefined') {
-            positionIdParam = urlParams.get('positionId');
-        }
+	useEffect(() => {
+		let positionIdParam = null;
+		if (typeof window !== "undefined") {
+			positionIdParam = urlParams.get("positionId");
+		}
 
-        if (positionId && positionId != positions[2]?.id && positions?.find(pos => pos.id === positionId)) {
-            setUserPositionId(positionId);
-        } else if (positionIdParam && positionIdParam != positions[2]?.id) {
-            setUserPositionId(positionIdParam);
-        } else {
-            if (savedArgument && (savedArgument.groupId == groupId) && (savedArgument.positionId != positions[2]?.id)) {
-                setUserPositionId(savedArgument.positionId);
-            }
-        }
-    }, [positionId])
+		if (
+			positionId &&
+			positionId != positions[2]?.id &&
+			positions?.find((pos) => pos.id === positionId)
+		) {
+			setUserPositionId(positionId);
+		} else if (positionIdParam && positionIdParam != positions[2]?.id) {
+			setUserPositionId(positionIdParam);
+		} else {
+			if (
+				savedArgument &&
+				savedArgument.groupId == groupId &&
+				savedArgument.positionId != positions[2]?.id
+			) {
+				setUserPositionId(savedArgument.positionId);
+			}
+		}
+	}, [positionId]);
 
-    useEffect(() => {
-        if (activeOnInit) {
-            handleTextEditorActivation();
-            setFocus(true);
-        }
-    }, [activeOnInit])
+	useEffect(() => {
+		if (activeOnInit) {
+			handleTextEditorActivation();
+			setFocus(true);
+		}
+	}, [activeOnInit]);
 
-    useEffect(() => {
-        if (typeof window !== 'undefined') {
-            const initFocus = focusOnInit || urlParams.get('initArgument');
-            if (initFocus === true || initFocus === 'true') {
-                setFocus(true);
-                flashEditor();
-            }
-        }
-    }, [])
+	useEffect(() => {
+		if (typeof window !== "undefined") {
+			const initFocus = focusOnInit || urlParams.get("initArgument");
+			if (initFocus === true || initFocus === "true") {
+				setFocus(true);
+				flashEditor();
+			}
+		}
+	}, []);
 
-    useEffect(() => {
-        if (focus) {
-            scrollToEditor();
-            setFocus(false);
-        }
-    }, [focus])
+	useEffect(() => {
+		if (focus) {
+			scrollToEditor();
+			setFocus(false);
+		}
+	}, [focus]);
 
-    useEffect(() => {
-        if (inputContent?.id) {
-            setEditArgument(inputContent);
-            setFocus(true);
-        }
-    }, [inputContent])
+	useEffect(() => {
+		if (inputContent?.id) {
+			setEditArgument(inputContent);
+			setFocus(true);
+		}
+	}, [inputContent]);
 
-    const setEditArgument = (eElement) => {
-        setEditElement(eElement);
-        setInputActivation(true);
-        setSources(eElement.sources);
-        setArgumentContent(eElement.content);
-        setArgumentRichContent(eElement.rich_content);
-        setArgumentId(eElement.id);
-        scrollToEditor();
-        setUserPositionId(eElement.position?.id);
-        const rawContent = JSON.parse(eElement.rich_content);
-        if (rawContent.hasOwnProperty("root")) {
-            setInputRichContent(eElement.rich_content);
-        } else {
-            setInputContent(eElement.content);
-        }
-    }
+	const setEditArgument = (eElement) => {
+		setEditElement(eElement);
+		setInputActivation(true);
+		setSources(eElement.sources);
+		setArgumentContent(eElement.content);
+		setArgumentRichContent(eElement.rich_content);
+		setArgumentId(eElement.id);
+		scrollToEditor();
+		setUserPositionId(eElement.position?.id);
+		const rawContent = JSON.parse(eElement.rich_content);
+		if (rawContent.hasOwnProperty("root")) {
+			setInputRichContent(eElement.rich_content);
+		} else {
+			setInputContent(eElement.content);
+		}
+	};
 
-    const scrollToEditor = () => {
-        inputForm.current.scrollIntoView(false);
-    }
+	const scrollToEditor = () => {
+		inputForm.current.scrollIntoView(false);
+	};
 
-    const resetInputs = () => {
-        setArgumentContent("");
-        setArgumentRichContent(null);
-        setEditElement({});
-        setArgumentId(null);
-        setSources([]);
-        setReset(true);
-    }
+	const resetInputs = () => {
+		setArgumentContent("");
+		setArgumentRichContent(null);
+		setEditElement({});
+		setArgumentId(null);
+		setSources([]);
+		setReset(true);
+	};
 
-    const handleChooseSide = (positionId) => {
-        setUserPositionId(positionId);
-        submitArgument(positionId);
-    }
+	const handleChooseSide = (positionId) => {
+		setUserPositionId(positionId);
+		submitArgument(positionId);
+	};
 
-    const showSideModal = () => {
-        showModal(
-            <Suspense fallback={null}>
-                <SideModal
-                    modalTitle={intl.formatMessage({ id: "modal.side_modal.modal_title", defaultMessage: "Choose your side" })}
-                    onChooseSide={handleChooseSide}
-                    positions={positions}
-                    title={groupName}
-                    disabledPositions={!isReply && disabledPositions}
-                    isNeutral={savedArgument && (savedArgument.groupId == groupId) && (savedArgument.positionId === (positions[2]?.id))}
-                />
-            </Suspense>
-        );
-    }
+	const showSideModal = () => {
+		showModal(
+			<Suspense fallback={null}>
+				<SideModal
+					modalTitle={intl.formatMessage({
+						id: "modal.side_modal.modal_title",
+						defaultMessage: "Choose your side",
+					})}
+					onChooseSide={handleChooseSide}
+					positions={positions}
+					title={groupName}
+					disabledPositions={!isReply && disabledPositions}
+					isNeutral={
+						savedArgument &&
+						savedArgument.groupId == groupId &&
+						savedArgument.positionId === positions[2]?.id
+					}
+				/>
+			</Suspense>,
+		);
+	};
 
-    const handleFormSubmit = () => {
-        if (isLoggedIn) {
-            if (argumentId) {
-                updateArgument();
-            } else {
-                if ((!positions || positions?.length === 0) || (!disabledPositions?.find(pos => pos?.id === userPositionId) && userPositionId) || (isEditorOrModerator && isReply)) {
-                    submitArgument(isReply && isEditorOrModerator && positions[0]?.id);
-                } else {
-                    showSideModal();
-                }
-            }
-        } else {
-            requireAuthentication({ loginAction: "argument" });
-        }
-    }
+	const handleFormSubmit = () => {
+		if (isLoggedIn) {
+			if (argumentId) {
+				updateArgument();
+			} else {
+				if (
+					!positions ||
+					positions?.length === 0 ||
+					(!disabledPositions?.find((pos) => pos?.id === userPositionId) &&
+						userPositionId) ||
+					(isEditorOrModerator && isReply)
+				) {
+					submitArgument(isReply && isEditorOrModerator && positions[0]?.id);
+				} else {
+					showSideModal();
+				}
+			}
+		} else {
+			requireAuthentication({ loginAction: "argument" });
+		}
+	};
 
-    const handleChange = (content, richContent) => {
-        if (inputDisabledForVisitors) {
-            requireAuthentication({ loginAction: "argument" });
-        } else {
-            setArgumentContent(content);
-            setArgumentRichContent(richContent);
-            validate({ content: content }, [{ content: ["url", null] }])
-        }
-    }
+	const handleChange = (content, richContent) => {
+		if (inputDisabledForVisitors) {
+			requireAuthentication({ loginAction: "argument" });
+		} else {
+			setArgumentContent(content);
+			setArgumentRichContent(richContent);
+			validate({ content: content }, [{ content: ["url", null] }]);
+		}
+	};
 
-    const handleSourcesChange = (newSource) => {
-        setSources(newSource);
-    }
+	const handleSourcesChange = (newSource) => {
+		setSources(newSource);
+	};
 
-    const argumentValidationRules = [
-        { content: ["length", 3] },
-        { content: ["required", null] },
-        { content: ["url", null] },
-        ...((!positions || positions?.length === 0) ? [] : [{ position_id: ["required", null] }])
-    ]
+	const argumentValidationRules = [
+		{ content: ["length", 3] },
+		{ content: ["required", null] },
+		{ content: ["url", null] },
+		...(!positions || positions?.length === 0
+			? []
+			: [{ position_id: ["required", null] }]),
+	];
 
-    const submitArgument = (position) => {
-        const userPosition = position ? position : userPositionId;
-        const data = {
-            content: argumentContent,
-            rich_content: argumentRichContent,
-            group_id: groupId,
-            ...(groupType && { group_type: groupType }),
-            ...(userPosition && { position_id: userPosition }),
-            is_reply: Boolean(parentId),
-            message_id: parentId || null,
-            source_ids: sources?.map(source => source.id),
-        };
+	const submitArgument = (position) => {
+		const userPosition = position ? position : userPositionId;
+		const data = {
+			content: argumentContent,
+			rich_content: argumentRichContent,
+			group_id: groupId,
+			...(groupType && { group_type: groupType }),
+			...(userPosition && { position_id: userPosition }),
+			is_reply: Boolean(parentId),
+			message_id: parentId || null,
+			source_ids: sources?.map((source) => source.id),
+		};
 
-        if (validate(data, argumentValidationRules)) {
-            if (userPosition && positions && positions.map(position => position.id).includes(userPosition)) {
-                const argumentToSave = {
-                    groupId: groupId,
-                    positionId: userPosition
-                }
-                setSavedArgument(argumentToSave);
-            }
-            resetInputs();
-            api.create("messages", data).then(response => {
-                if (response.data.success) {
-                    if (parentId) {
-                        onSubmit(response.data.data.resource);
-                        toast(intl.formatMessage({ id: "alert.argument_create", defaultMessage: "Your contribution has been sent !" }), { type: "success", points: intl.formatMessage({ id: "alert.reply_gain", defaultMessage: " " }) });
-                    } else {
-                        const argument = response.data.data.resource;
-                        let listId = argumentListId;
-                        if (userPosition && !isMobile) {
-                            listId = `argumentList${argument.position.id}`;
-                        }
-                        onSubmit?.(argumentContent, positions.find(pos => pos.id === userPosition) || null);
-                        list.add(listId, [argument]);
-                        toast(intl.formatMessage({ id: "alert.argument_create", defaultMessage: "Your contribution has been sent !" }), { type: "success", points: intl.formatMessage({ id: "alert.argument_create_gain", defaultMessage: "Up to 10 eloquence points" }), category: "ARGUMENT", contentKey: currentUser.messages_count === 2 ? "alert.third_argument" : "alert.first_argument" });
-                    }
-                    if (typeof window !== 'undefined') {
-                        window.dispatchEvent(
-                            new CustomEvent("logora:user_content:created", {
-                                detail: {
-                                    content: response.data.data?.resource
-                                }
-                            })
-                        );
-                    }
-                }
-            });
-        }
-    }
+		if (validate(data, argumentValidationRules)) {
+			if (
+				userPosition &&
+				positions &&
+				positions.map((position) => position.id).includes(userPosition)
+			) {
+				const argumentToSave = {
+					groupId: groupId,
+					positionId: userPosition,
+				};
+				setSavedArgument(argumentToSave);
+			}
+			resetInputs();
+			api.create("messages", data).then((response) => {
+				if (response.data.success) {
+					if (parentId) {
+						onSubmit(response.data.data.resource);
+						toast(
+							intl.formatMessage({
+								id: "alert.argument_create",
+								defaultMessage: "Your contribution has been sent !",
+							}),
+							{
+								type: "success",
+								points: intl.formatMessage({
+									id: "alert.reply_gain",
+									defaultMessage: " ",
+								}),
+							},
+						);
+					} else {
+						const argument = response.data.data.resource;
+						let listId = argumentListId;
+						if (userPosition && !isMobile) {
+							listId = `argumentList${argument.position.id}`;
+						}
+						onSubmit?.(
+							argumentContent,
+							positions.find((pos) => pos.id === userPosition) || null,
+						);
+						list.add(listId, [argument]);
+						toast(
+							intl.formatMessage({
+								id: "alert.argument_create",
+								defaultMessage: "Your contribution has been sent !",
+							}),
+							{
+								type: "success",
+								points: intl.formatMessage({
+									id: "alert.argument_create_gain",
+									defaultMessage: "Up to 10 eloquence points",
+								}),
+								category: "ARGUMENT",
+								contentKey:
+									currentUser.messages_count === 2
+										? "alert.third_argument"
+										: "alert.first_argument",
+							},
+						);
+					}
+					if (typeof window !== "undefined") {
+						window.dispatchEvent(
+							new CustomEvent("logora:user_content:created", {
+								detail: {
+									content: response.data.data?.resource,
+								},
+							}),
+						);
+					}
+				}
+			});
+		}
+	};
 
-    const updateArgument = () => {
-        const data = {
-            content: argumentContent,
-            rich_content: argumentRichContent,
-            source_ids: sources?.map(source => source.id),
-            ...(userPositionId && { position_id: userPositionId }),
-        };
+	const updateArgument = () => {
+		const data = {
+			content: argumentContent,
+			rich_content: argumentRichContent,
+			source_ids: sources?.map((source) => source.id),
+			...(userPositionId && { position_id: userPositionId }),
+		};
 
-        if (validate(data, argumentValidationRules)) {
-            api.update("messages", argumentId, data).then(response => {
-                if (response.data.success) {
-                    const argument = response.data.data.resource;
-                    let listId = argumentListId;
-                    if (userPositionId && !isMobile) {
-                        listId = `argumentList${argument.position?.id}`;
-                    }
-                    if (editElement?.position?.id != argument.position?.id && !isMobile && !argument.is_reply) {
-                        const oldListId = `argumentList${editElement.position.id}`;
-                        const newListId = `argumentList${argument.position.id}`;
-                        list.remove(oldListId, [argument]);
-                        list.add(newListId, [argument]);
-                    } else {
-                        list.update(listId, [argument]);
-                    }
-                    toast(intl.formatMessage({ id: "alert.argument_modify" }), { type: "success" });
-                    resetInputs();
-                }
-            });
-        }
-    }
+		if (validate(data, argumentValidationRules)) {
+			api.update("messages", argumentId, data).then((response) => {
+				if (response.data.success) {
+					const argument = response.data.data.resource;
+					let listId = argumentListId;
+					if (userPositionId && !isMobile) {
+						listId = `argumentList${argument.position?.id}`;
+					}
+					if (
+						editElement?.position?.id != argument.position?.id &&
+						!isMobile &&
+						!argument.is_reply
+					) {
+						const oldListId = `argumentList${editElement.position.id}`;
+						const newListId = `argumentList${argument.position.id}`;
+						list.remove(oldListId, [argument]);
+						list.add(newListId, [argument]);
+					} else {
+						list.update(listId, [argument]);
+					}
+					toast(intl.formatMessage({ id: "alert.argument_modify" }), {
+						type: "success",
+					});
+					resetInputs();
+				}
+			});
+		}
+	};
 
-    const flashEditor = () => {
-        if (!flash) {
-            setFlash(true);
-            const timer = setTimeout(() => {
-                setFlash(false);
-            }, 2000);
-            return () => clearTimeout(timer);
-        }
-    }
+	const flashEditor = () => {
+		if (!flash) {
+			setFlash(true);
+			const timer = setTimeout(() => {
+				setFlash(false);
+			}, 2000);
+			return () => clearTimeout(timer);
+		}
+	};
 
-    const handleTextEditorActivation = () => {
-        if (inputDisabledForVisitors) {
-            requireAuthentication({ loginAction: "argument" });
-        } else {
-            setInputActivation(true);
-        }
-    }
+	const handleTextEditorActivation = () => {
+		if (inputDisabledForVisitors) {
+			requireAuthentication({ loginAction: "argument" });
+		} else {
+			setInputActivation(true);
+		}
+	};
 
-    const displayArgumentLimitWarning = () => {
-        let disabledPosition = disabledPositions.find(pos => pos.id === userPositionId);
-        if (disabledPosition) {
-            return intl.formatMessage({ id: "info.argument_side_limit", defaultMessage: "You have reached the argument limit (10) for position {position}." }, { position: disabledPosition.name })
-        }
-    }
+	const displayArgumentLimitWarning = () => {
+		const disabledPosition = disabledPositions.find(
+			(pos) => pos.id === userPositionId,
+		);
+		if (disabledPosition) {
+			return intl.formatMessage(
+				{
+					id: "info.argument_side_limit",
+					defaultMessage:
+						"You have reached the argument limit (10) for position {position}.",
+				},
+				{ position: disabledPosition.name },
+			);
+		}
+	};
 
-    return (
-        <div className={styles.inputContainer}>
-            {disabled && (<div className={styles.disabledInputMask}>{userIsBanned ? intl.formatMessage({ id: "input.argument_input.user_banned", defaultMessage: "You are banned from the debate space." }) : intl.formatMessage({ id: "info.debate_is_inactive", defaultMessage: "Debate is closed" })}</div>)}
-            <div className={cx(styles.argumentInput, { [styles.flash]: flash, [styles.replyInputContainer]: isReply })}>
-                <div data-tid={"action_add_argument"} ref={inputForm}>
-                    <div className={styles.argumentInputBox}>
-                        {positions.length > 0 && isLoggedIn && (!isReply || !isEditorOrModerator) &&
-                            <div className={styles.userPosition}>
-                                <div>{intl.formatMessage({ id: "input.position", defaultMessage: "Your position" })}</div>
-                                <TogglePosition
-                                    activeLabel={userPositionId === positions[0].id ? 0 : (userPositionId === positions[1].id ? 1 : null)}
-                                    firstLabel={positions[0]}
-                                    secondLabel={positions[1]}
-                                    onChange={(label) => setUserPositionId(positions[label].id)}
-                                />
-                            </div>
-                        }
-                        <div className={cx(styles.argumentTextInputBox, { [styles.argumentTextInputBoxisTablet]: !isMobile, [styles.replyEditorRow]: isReply })}>
-                            <div className={cx(styles.argumentAuthorContainer, { [styles.argumentAuthorContainerMobile]: isMobile, [styles.argumentAuthorContainerActivated]: (!isMobile && inputActivation) || isReply })}>
-                                {(!isMobile && inputActivation) || isReply ?
-                                    <Avatar avatarUrl={currentUser.image_url} userName={currentUser.full_name} size={avatarSize} />
-                                    :
-                                    <AuthorBox
-                                        fullName={currentUser?.full_name || intl.formatMessage({ id: "default_author.full_name" })}
-                                        avatarUrl={currentUser?.image_url}
-                                        points={currentUser?.points || 0}
-                                        slug={currentUser?.hash_id}
-                                    />
-                                }
-
-                            </div>
-                            <div onClick={handleTextEditorActivation} data-testid="argument-input" className={cx(styles.textEditorBox, { [styles.replyTextEditorBox]: isReply })}>
-                                <TextEditor
-                                    handleChange={(value, rawValue) => { handleChange(value, rawValue); }}
-                                    handleSourcesChange={(sources) => { handleSourcesChange(sources); }}
-                                    placeholder={placeholder}
-                                    aria-label={intl.formatMessage({id: "input.argument_input.aria_label", defaultMessage: "Message input field" })}
-                                    onSubmit={handleFormSubmit}
-                                    sources={sources}
-                                    hideSourceAction={hideSourceAction || inputDisabledForVisitors}
-                                    uid={`Argument${groupId}`}
-                                    onActivation={handleTextEditorActivation}
-                                    showStylesControls={inputActivation}
-                                    disabled={disabled || inputDisabledForVisitors || userIsBanned}
-                                    maxLength={inputDisabledForVisitors ? false : config?.actions?.argumentMaxLength}
-                                    disableRichText={config?.actions?.disableRichText || inputDisabledForVisitors}
-                                    shortBar={isReply}
-                                    hideSubmit={inputDisabledForVisitors}
-                                    allowedDomains={config?.allowed_sources}
-                                    active={activeOnInit}
-                                    hideCharCount={hideCharCount} 
-                                    disableAutoActivate={disableAutoActivate}
-                                />
-                                {(errors?.content) && <div className={styles.argumentInputWarning}>{errors && Object.values(errors).map((e, index) => <div key={index}>{e}</div>)}</div>}
-                                {inputActivation && disabledPositions?.find(pos => pos.id === userPositionId) &&
-                                    <div className={cx(styles.argumentInputWarning, styles.disabledPositionWarning)}>
-                                        <Icon name="announcement" className={styles.warningIcon} height={20} width={20} />
-                                        <div className={styles.argumentInputWarningText}>{displayArgumentLimitWarning()}</div>
-                                    </div>
-                                }
-                                {inputActivation && userGuideUrl && !hideUserGuideLink &&(
-                                    <div className={styles.guideMessage}>
-                                        <FormattedMessage
-                                            id="alert.guide_message"
-                                            defaultMessage={"Contributions must comply with our {userCharter}."}
-                                            values={{
-                                                userCharter: (
-                                                    <a className={styles.guideMessage} href={userGuideUrl} target="_blank" >
-                                                        <FormattedMessage id="alert.user_charter" defaultMessage="user charter" />
-                                                    </a>
-                                                ),
-                                            }}
-                                        />
-                                    </div>
-                                )}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    );
+	return (
+		<div className={styles.inputContainer}>
+			{disabled && (
+				<div className={styles.disabledInputMask}>
+					{userIsBanned
+						? intl.formatMessage({
+								id: "input.argument_input.user_banned",
+								defaultMessage: "You are banned from the debate space.",
+							})
+						: intl.formatMessage({
+								id: "info.debate_is_inactive",
+								defaultMessage: "Debate is closed",
+							})}
+				</div>
+			)}
+			<div
+				className={cx(styles.argumentInput, {
+					[styles.flash]: flash,
+					[styles.replyInputContainer]: isReply,
+				})}
+			>
+				<div data-tid={"action_add_argument"} ref={inputForm}>
+					<div className={styles.argumentInputBox}>
+						{positions.length > 0 &&
+							isLoggedIn &&
+							(!isReply || !isEditorOrModerator) && (
+								<div className={styles.userPosition}>
+									<div>
+										{intl.formatMessage({
+											id: "input.position",
+											defaultMessage: "Your position",
+										})}
+									</div>
+									<TogglePosition
+										activeLabel={
+											userPositionId === positions[0].id
+												? 0
+												: userPositionId === positions[1].id
+													? 1
+													: null
+										}
+										firstLabel={positions[0]}
+										secondLabel={positions[1]}
+										onChange={(label) => setUserPositionId(positions[label].id)}
+									/>
+								</div>
+							)}
+						<div
+							className={cx(styles.argumentTextInputBox, {
+								[styles.argumentTextInputBoxisTablet]: !isMobile,
+								[styles.replyEditorRow]: isReply,
+							})}
+						>
+							<div
+								className={cx(styles.argumentAuthorContainer, {
+									[styles.argumentAuthorContainerMobile]: isMobile,
+									[styles.argumentAuthorContainerActivated]:
+										(!isMobile && inputActivation) || isReply,
+								})}
+							>
+								{(!isMobile && inputActivation) || isReply ? (
+									<Avatar
+										avatarUrl={currentUser.image_url}
+										userName={currentUser.full_name}
+										size={avatarSize}
+									/>
+								) : (
+									<AuthorBox
+										fullName={
+											currentUser?.full_name ||
+											intl.formatMessage({ id: "default_author.full_name" })
+										}
+										avatarUrl={currentUser?.image_url}
+										points={currentUser?.points || 0}
+										slug={currentUser?.hash_id}
+									/>
+								)}
+							</div>
+							<div
+								onClick={handleTextEditorActivation}
+								data-testid="argument-input"
+								className={cx(styles.textEditorBox, {
+									[styles.replyTextEditorBox]: isReply,
+								})}
+							>
+								<TextEditor
+									handleChange={(value, rawValue) => {
+										handleChange(value, rawValue);
+									}}
+									handleSourcesChange={(sources) => {
+										handleSourcesChange(sources);
+									}}
+									placeholder={placeholder}
+									aria-label={intl.formatMessage({
+										id: "input.argument_input.aria_label",
+										defaultMessage: "Message input field",
+									})}
+									onSubmit={handleFormSubmit}
+									sources={sources}
+									hideSourceAction={
+										hideSourceAction || inputDisabledForVisitors
+									}
+									uid={`Argument${groupId}`}
+									onActivation={handleTextEditorActivation}
+									showStylesControls={inputActivation}
+									disabled={
+										disabled || inputDisabledForVisitors || userIsBanned
+									}
+									maxLength={
+										inputDisabledForVisitors
+											? false
+											: config?.actions?.argumentMaxLength
+									}
+									disableRichText={
+										config?.actions?.disableRichText || inputDisabledForVisitors
+									}
+									shortBar={isReply}
+									hideSubmit={inputDisabledForVisitors}
+									allowedDomains={config?.allowed_sources}
+									active={activeOnInit}
+									hideCharCount={hideCharCount}
+									disableAutoActivate={disableAutoActivate}
+								/>
+								{errors?.content && (
+									<div className={styles.argumentInputWarning}>
+										{errors &&
+											Object.values(errors).map((e, index) => (
+												<div key={index}>{e}</div>
+											))}
+									</div>
+								)}
+								{inputActivation &&
+									disabledPositions?.find(
+										(pos) => pos.id === userPositionId,
+									) && (
+										<div
+											className={cx(
+												styles.argumentInputWarning,
+												styles.disabledPositionWarning,
+											)}
+										>
+											<Icon
+												name="announcement"
+												className={styles.warningIcon}
+												height={20}
+												width={20}
+											/>
+											<div className={styles.argumentInputWarningText}>
+												{displayArgumentLimitWarning()}
+											</div>
+										</div>
+									)}
+								{inputActivation && userGuideUrl && !hideUserGuideLink && (
+									<div className={styles.guideMessage}>
+										<FormattedMessage
+											id="alert.guide_message"
+											defaultMessage={
+												"Contributions must comply with our {userCharter}."
+											}
+											values={{
+												userCharter: (
+													<a
+														className={styles.guideMessage}
+														href={userGuideUrl}
+														target="_blank"
+														rel="noreferrer"
+													>
+														<FormattedMessage
+															id="alert.user_charter"
+															defaultMessage="user charter"
+														/>
+													</a>
+												),
+											}}
+										/>
+									</div>
+								)}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	);
 };
-

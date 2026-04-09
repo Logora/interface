@@ -1,6 +1,6 @@
-import React from 'react';
-import classnames from 'classnames';
-import styles from './checkbox-indicator.module.scss';
+import classnames from "classnames";
+import React from "react";
+import styles from "./checkbox-indicator.module.scss";
 
 export const classes = {
 	checkedIndicator: styles.checkedIndicator,
@@ -13,5 +13,10 @@ export const classes = {
 export function CheckboxIndicator(props) {
 	const { className = classes.defaultCheckbox } = props;
 
-	return <span {...props} className={classnames(className, classes.checkedIndicator)} />;
+	return (
+		<span
+			{...props}
+			className={classnames(className, classes.checkedIndicator)}
+		/>
+	);
 }

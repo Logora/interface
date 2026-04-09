@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react';
 import { lexicalToHtml } from "@logora/debate/input/text_editor";
+import { useEffect, useState } from "react";
 
 export const useRichContent = (argument) => {
-    const [richContent, setRichContent] = useState(null);
+	const [richContent, setRichContent] = useState(null);
 
-    useEffect(() => {
+	useEffect(() => {
 		if (argument.rich_content && argument.is_deleted != true) {
 			const rawContent = JSON.parse(argument.rich_content);
 			if (rawContent.hasOwnProperty("root")) {
@@ -14,5 +14,5 @@ export const useRichContent = (argument) => {
 		}
 	}, [argument.rich_content]);
 
-    return richContent;
-}
+	return richContent;
+};

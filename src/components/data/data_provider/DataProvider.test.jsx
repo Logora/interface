@@ -1,419 +1,435 @@
-import { dataProvider, getAuthHeader } from './DataProvider';
+import { dataProvider, getAuthHeader } from "./DataProvider";
 
-describe('data provider function', () => {
-    const httpClient = {
-        get: vi.fn(() =>  Promise.resolve(null)),
-        post: vi.fn(() => Promise.resolve(null)),
-        patch: vi.fn(() => Promise.resolve(null)),
-        delete: vi.fn(() => Promise.resolve(null))
-    };
+describe("data provider function", () => {
+	const httpClient = {
+		get: vi.fn(() => Promise.resolve(null)),
+		post: vi.fn(() => Promise.resolve(null)),
+		patch: vi.fn(() => Promise.resolve(null)),
+		delete: vi.fn(() => Promise.resolve(null)),
+	};
 
-    const setLocalStorage = (id, data) => {
-        window.localStorage.setItem(id, JSON.stringify(data));
-    };
+	const setLocalStorage = (id, data) => {
+		window.localStorage.setItem(id, JSON.stringify(data));
+	};
 
-    beforeEach(() => {
-        window.localStorage.clear();
-        vi.clearAllMocks();
-    });
+	beforeEach(() => {
+		window.localStorage.clear();
+		vi.clearAllMocks();
+	});
 
-    it('should call getOne function with correct arguments', () => {
-        const apiUrl = "http://example.com"
-        const apiKey = "api-key";
-        const storageKey = "storage-key";
-        const resource = "user";
-        const resourceId = "my-id";
-        const params = {
-            custom_param: 'custom-param'
-        };
-        const api = dataProvider(httpClient, apiUrl, apiKey, storageKey);
+	it("should call getOne function with correct arguments", () => {
+		const apiUrl = "http://example.com";
+		const apiKey = "api-key";
+		const storageKey = "storage-key";
+		const resource = "user";
+		const resourceId = "my-id";
+		const params = {
+			custom_param: "custom-param",
+		};
+		const api = dataProvider(httpClient, apiUrl, apiKey, storageKey);
 
-        api.getOne(resource, resourceId, params);
+		api.getOne(resource, resourceId, params);
 
-        const expectedParams = {
-            custom_param: 'custom-param',
-            api_key: apiKey
-        }
+		const expectedParams = {
+			custom_param: "custom-param",
+			api_key: apiKey,
+		};
 
-        const queryString = new URLSearchParams(expectedParams).toString();
+		const queryString = new URLSearchParams(expectedParams).toString();
 		const url = `${apiUrl}/${resource}/${resourceId}?${queryString}`;
 
-        expect(httpClient.get).toHaveBeenCalledWith(url);
-        expect(httpClient.get).toHaveBeenCalledTimes(1);
-    });
+		expect(httpClient.get).toHaveBeenCalledWith(url);
+		expect(httpClient.get).toHaveBeenCalledTimes(1);
+	});
 
-    it('should call getOneWithToken function with correct arguments', () => {
-        const accessToken = "access-token";
-        const storageKey = "storage-key";
-        const mockJson = { access_token: accessToken };
-        setLocalStorage(storageKey, mockJson);
+	it("should call getOneWithToken function with correct arguments", () => {
+		const accessToken = "access-token";
+		const storageKey = "storage-key";
+		const mockJson = { access_token: accessToken };
+		setLocalStorage(storageKey, mockJson);
 
-        const apiUrl = "http://example.com/getWithToken"
-        const apiKey = "api-key";
-        const resource = "user";
-        const resourceId = "my-id";
-        const params = {
-            custom_param: 'custom-param'
-        };
-
-        const config = {
-			headers: { "authorization": "Bearer " + accessToken }
+		const apiUrl = "http://example.com/getWithToken";
+		const apiKey = "api-key";
+		const resource = "user";
+		const resourceId = "my-id";
+		const params = {
+			custom_param: "custom-param",
 		};
 
-        const api = dataProvider(httpClient, apiUrl, apiKey, storageKey);
+		const config = {
+			headers: { authorization: "Bearer " + accessToken },
+		};
 
-        api.getOneWithToken(resource, resourceId, params);
+		const api = dataProvider(httpClient, apiUrl, apiKey, storageKey);
 
-        const queryString = new URLSearchParams(params).toString();
+		api.getOneWithToken(resource, resourceId, params);
+
+		const queryString = new URLSearchParams(params).toString();
 		const url = `${apiUrl}/${resource}/${resourceId}?${queryString}`;
 
-        expect(httpClient.get).toHaveBeenCalledWith(url, config);
-        expect(httpClient.get).toHaveBeenCalledTimes(1);
-    });
+		expect(httpClient.get).toHaveBeenCalledWith(url, config);
+		expect(httpClient.get).toHaveBeenCalledTimes(1);
+	});
 
-    it('should call getList function with default params and api key', () => {
-        const apiUrl = "http://example.com/list"
-        const apiKey = "api-key";
-        const storageKey = "storage-key";
-        const resource = "user";
-        const api = dataProvider(httpClient, apiUrl, apiKey, storageKey);
+	it("should call getList function with default params and api key", () => {
+		const apiUrl = "http://example.com/list";
+		const apiKey = "api-key";
+		const storageKey = "storage-key";
+		const resource = "user";
+		const api = dataProvider(httpClient, apiUrl, apiKey, storageKey);
 
-        api.getList(resource, {page: 1,
-            per_page: 10,
-            sort: "-created_at",
-            api_key: apiKey
-        });
+		api.getList(resource, {
+			page: 1,
+			per_page: 10,
+			sort: "-created_at",
+			api_key: apiKey,
+		});
 
-        const expectedParams = {
-            page: 1,
-            per_page: 10,
-            sort: "-created_at",
-            api_key: apiKey
-        }
-
-        const queryString = new URLSearchParams(expectedParams).toString();
-		const url = `${apiUrl}/${resource}?${queryString}`;
-
-        expect(httpClient.get).toHaveBeenCalledWith(url);
-        expect(httpClient.get).toHaveBeenCalledTimes(1);
-    });
-
-    it('should call getList function with custom params and api key', () => {
-        const apiUrl = "http://example.com/list"
-        const apiKey = "api-key";
-        const storageKey = "storage-key";
-        const resource = "user";
-        const api = dataProvider(httpClient, apiUrl, apiKey, storageKey);
-
-        const page = 2;
-        const perPage = 20;
-        const sort = "-updated_at"
-        const query = "my-query";
-        const outset = 4;
-        const countless = true;
-
-        const params = {
-            page: page,
-            per_page: perPage,
-            sort: sort,
-            query: query,
-            countless: countless,
-            outset: outset,
-            myFilter: "ok"
-        }
-
-        api.getList(resource, params);
-
-        const expectedParams = {
-            page: page,
-            per_page: perPage,
-            sort: sort,
-            query: query,
-            countless: countless,
-            outset: outset,
-            myFilter: "ok",
-            api_key: apiKey
-        }
-
-        const queryString = new URLSearchParams(expectedParams).toString();
-		const url = `${apiUrl}/${resource}?${queryString}`;
-
-        expect(httpClient.get).toHaveBeenCalledWith(url);
-        expect(httpClient.get).toHaveBeenCalledTimes(1);
-    });
-
-    it('should call getListWithToken function with default params', () => {
-        const accessToken = "access-token";
-        const storageKey = "storage-key";
-        const mockJson = { access_token: accessToken };
-        setLocalStorage(storageKey, mockJson);
-    
-        const apiUrl = "http://example.com/listWithToken"
-        const apiKey = "api-key";
-        const resource = "user";
-        const api = dataProvider(httpClient, apiUrl, apiKey, storageKey);
-
-        const config = {
-			headers: { "authorization": "Bearer " + accessToken }
+		const expectedParams = {
+			page: 1,
+			per_page: 10,
+			sort: "-created_at",
+			api_key: apiKey,
 		};
 
-        api.getListWithToken(resource, { page: 1, per_page: 10, sort: "-created_at" });
-
-        const expectedParams = {
-            page: 1,
-            per_page: 10,
-            sort: "-created_at"
-        }
-
-        const queryString = new URLSearchParams(expectedParams).toString();
+		const queryString = new URLSearchParams(expectedParams).toString();
 		const url = `${apiUrl}/${resource}?${queryString}`;
 
-        expect(httpClient.get).toHaveBeenCalledWith(url, config);
-        expect(httpClient.get).toHaveBeenCalledTimes(1);
-    });
+		expect(httpClient.get).toHaveBeenCalledWith(url);
+		expect(httpClient.get).toHaveBeenCalledTimes(1);
+	});
 
-    it('should call getListWithToken function with custom params', () => {
-        const accessToken = "access-token";
-        const storageKey = "storage-key";
-        const mockJson = { access_token: accessToken };
-        setLocalStorage(storageKey, mockJson);
+	it("should call getList function with custom params and api key", () => {
+		const apiUrl = "http://example.com/list";
+		const apiKey = "api-key";
+		const storageKey = "storage-key";
+		const resource = "user";
+		const api = dataProvider(httpClient, apiUrl, apiKey, storageKey);
 
-        const apiUrl = "http://example.com/list"
-        const apiKey = "api-key";
-        const resource = "user";
-        const api = dataProvider(httpClient, apiUrl, apiKey, storageKey);
+		const page = 2;
+		const perPage = 20;
+		const sort = "-updated_at";
+		const query = "my-query";
+		const outset = 4;
+		const countless = true;
 
-        const page = 2;
-        const perPage = 20;
-        const sort = "-updated_at"
-        const query = "my-query";
-        const outset = 4;
-        const countless = true;
-
-        const params = {
-            page: page,
-            per_page: perPage,
-            sort: sort,
-            query: query,
-            countless: countless,
-            outset: outset,
-            myFilter: "ok"
-        }
-
-        const config = {
-			headers: { "authorization": "Bearer " + accessToken }
+		const params = {
+			page: page,
+			per_page: perPage,
+			sort: sort,
+			query: query,
+			countless: countless,
+			outset: outset,
+			myFilter: "ok",
 		};
 
-        api.getListWithToken(resource, params);
+		api.getList(resource, params);
 
-        const expectedParams = {
-            page: page,
-            per_page: perPage,
-            sort: sort,
-            query: query,
-            countless: countless,
-            outset: outset,
-            myFilter: "ok"
-        }
+		const expectedParams = {
+			page: page,
+			per_page: perPage,
+			sort: sort,
+			query: query,
+			countless: countless,
+			outset: outset,
+			myFilter: "ok",
+			api_key: apiKey,
+		};
 
-        const queryString = new URLSearchParams(expectedParams).toString();
+		const queryString = new URLSearchParams(expectedParams).toString();
 		const url = `${apiUrl}/${resource}?${queryString}`;
 
-        expect(httpClient.get).toHaveBeenCalledWith(url, config);
-        expect(httpClient.get).toHaveBeenCalledTimes(1);
-    });
+		expect(httpClient.get).toHaveBeenCalledWith(url);
+		expect(httpClient.get).toHaveBeenCalledTimes(1);
+	});
 
-    it('should call getSettings function with correct arguments', () => {
-        const apiUrl = "http://example.com"
-        const apiKey = "api-key";
-        const storageKey = "storage-key";
-        const shortname = "shortname";
-        const api = dataProvider(httpClient, apiUrl, apiKey, storageKey);
+	it("should call getListWithToken function with default params", () => {
+		const accessToken = "access-token";
+		const storageKey = "storage-key";
+		const mockJson = { access_token: accessToken };
+		setLocalStorage(storageKey, mockJson);
 
-        api.getSettings(shortname);
+		const apiUrl = "http://example.com/listWithToken";
+		const apiKey = "api-key";
+		const resource = "user";
+		const api = dataProvider(httpClient, apiUrl, apiKey, storageKey);
 
-        const expectedParams = {
-            shortname: shortname
-        }
-        const queryString = new URLSearchParams(expectedParams).toString();
+		const config = {
+			headers: { authorization: "Bearer " + accessToken },
+		};
+
+		api.getListWithToken(resource, {
+			page: 1,
+			per_page: 10,
+			sort: "-created_at",
+		});
+
+		const expectedParams = {
+			page: 1,
+			per_page: 10,
+			sort: "-created_at",
+		};
+
+		const queryString = new URLSearchParams(expectedParams).toString();
+		const url = `${apiUrl}/${resource}?${queryString}`;
+
+		expect(httpClient.get).toHaveBeenCalledWith(url, config);
+		expect(httpClient.get).toHaveBeenCalledTimes(1);
+	});
+
+	it("should call getListWithToken function with custom params", () => {
+		const accessToken = "access-token";
+		const storageKey = "storage-key";
+		const mockJson = { access_token: accessToken };
+		setLocalStorage(storageKey, mockJson);
+
+		const apiUrl = "http://example.com/list";
+		const apiKey = "api-key";
+		const resource = "user";
+		const api = dataProvider(httpClient, apiUrl, apiKey, storageKey);
+
+		const page = 2;
+		const perPage = 20;
+		const sort = "-updated_at";
+		const query = "my-query";
+		const outset = 4;
+		const countless = true;
+
+		const params = {
+			page: page,
+			per_page: perPage,
+			sort: sort,
+			query: query,
+			countless: countless,
+			outset: outset,
+			myFilter: "ok",
+		};
+
+		const config = {
+			headers: { authorization: "Bearer " + accessToken },
+		};
+
+		api.getListWithToken(resource, params);
+
+		const expectedParams = {
+			page: page,
+			per_page: perPage,
+			sort: sort,
+			query: query,
+			countless: countless,
+			outset: outset,
+			myFilter: "ok",
+		};
+
+		const queryString = new URLSearchParams(expectedParams).toString();
+		const url = `${apiUrl}/${resource}?${queryString}`;
+
+		expect(httpClient.get).toHaveBeenCalledWith(url, config);
+		expect(httpClient.get).toHaveBeenCalledTimes(1);
+	});
+
+	it("should call getSettings function with correct arguments", () => {
+		const apiUrl = "http://example.com";
+		const apiKey = "api-key";
+		const storageKey = "storage-key";
+		const shortname = "shortname";
+		const api = dataProvider(httpClient, apiUrl, apiKey, storageKey);
+
+		api.getSettings(shortname);
+
+		const expectedParams = {
+			shortname: shortname,
+		};
+		const queryString = new URLSearchParams(expectedParams).toString();
 		const url = `${apiUrl}/settings?${queryString}`;
 
-        expect(httpClient.post).toHaveBeenCalledWith(url);
-        expect(httpClient.post).toHaveBeenCalledTimes(1);
-    });
+		expect(httpClient.post).toHaveBeenCalledWith(url);
+		expect(httpClient.post).toHaveBeenCalledTimes(1);
+	});
 
-    it('should call create function with correct arguments', () => {
-        const accessToken = "access-token";
-        const storageKey = "storage-key";
-        const mockJson = { access_token: accessToken };
-        setLocalStorage(storageKey, mockJson);
+	it("should call create function with correct arguments", () => {
+		const accessToken = "access-token";
+		const storageKey = "storage-key";
+		const mockJson = { access_token: accessToken };
+		setLocalStorage(storageKey, mockJson);
 
-        const apiUrl = "http://example.com/create"
-        const apiKey = "api-key";
-        const resource = "user";
-        const data = {
-            custom_data: 'custom-data'
-        };
-        const config = {
-			headers: { "authorization": "Bearer " + accessToken }
+		const apiUrl = "http://example.com/create";
+		const apiKey = "api-key";
+		const resource = "user";
+		const data = {
+			custom_data: "custom-data",
 		};
-        const api = dataProvider(httpClient, apiUrl, apiKey, storageKey);
+		const config = {
+			headers: { authorization: "Bearer " + accessToken },
+		};
+		const api = dataProvider(httpClient, apiUrl, apiKey, storageKey);
 
-        api.create(resource, data);
+		api.create(resource, data);
 
 		const url = `${apiUrl}/${resource}`;
 
-        expect(httpClient.post).toHaveBeenCalledWith(`${url}?`, data, config);
-        expect(httpClient.post).toHaveBeenCalledTimes(1);
-    });
+		expect(httpClient.post).toHaveBeenCalledWith(`${url}?`, data, config);
+		expect(httpClient.post).toHaveBeenCalledTimes(1);
+	});
 
-    it('should call create function without token if withToken false', () => {
-        const storageKey = "storage-key";
-        const apiUrl = "http://example.com/create"
-        const apiKey = "api-key";
-        const resource = "user";
-        const data = {
-            custom_data: 'custom-data'
-        };
-        const api = dataProvider(httpClient, apiUrl, apiKey, storageKey);
+	it("should call create function without token if withToken false", () => {
+		const storageKey = "storage-key";
+		const apiUrl = "http://example.com/create";
+		const apiKey = "api-key";
+		const resource = "user";
+		const data = {
+			custom_data: "custom-data",
+		};
+		const api = dataProvider(httpClient, apiUrl, apiKey, storageKey);
 
-        api.create(resource, data, {}, false);
+		api.create(resource, data, {}, false);
 
 		const url = `${apiUrl}/${resource}`;
 
-        expect(httpClient.post).toHaveBeenCalledWith(`${url}?api_key=${apiKey}`, data, {});
-        expect(httpClient.post).toHaveBeenCalledTimes(1);
-    });
+		expect(httpClient.post).toHaveBeenCalledWith(
+			`${url}?api_key=${apiKey}`,
+			data,
+			{},
+		);
+		expect(httpClient.post).toHaveBeenCalledTimes(1);
+	});
 
-    it('should call update function with correct arguments', () => {
-        const accessToken = "access-token";
-        const storageKey = "storage-key";
-        const mockJson = { access_token: accessToken };
-        setLocalStorage(storageKey, mockJson);
-    
-        const apiUrl = "http://example.com/update"
-        const apiKey = "api-key";
-        const resource = "user";
-        const resourceId = "my-id";
-        const data = {
-            custom_data: 'custom-data'
-        };
-        const config = {
-			headers: { "authorization": "Bearer " + accessToken }
+	it("should call update function with correct arguments", () => {
+		const accessToken = "access-token";
+		const storageKey = "storage-key";
+		const mockJson = { access_token: accessToken };
+		setLocalStorage(storageKey, mockJson);
+
+		const apiUrl = "http://example.com/update";
+		const apiKey = "api-key";
+		const resource = "user";
+		const resourceId = "my-id";
+		const data = {
+			custom_data: "custom-data",
 		};
-        const api = dataProvider(httpClient, apiUrl, apiKey, storageKey);
-
-        api.update(resource, resourceId, data);
-
-		const url = `${apiUrl}/${resource}/${resourceId}`;
-
-        expect(httpClient.patch).toHaveBeenCalledWith(`${url}?`, data, config);
-        expect(httpClient.patch).toHaveBeenCalledTimes(1);
-    });
-
-    it('should call update function without token if withToken is false', () => {
-        const storageKey = "storage-key";
-        const apiUrl = "http://example.com/update"
-        const apiKey = "api-key";
-        const resource = "user";
-        const resourceId = "my-id";
-        const data = {
-            custom_data: 'custom-data'
-        };
-        const api = dataProvider(httpClient, apiUrl, apiKey, storageKey);
-
-        api.update(resource, resourceId, data, {}, false);
-
-		const url = `${apiUrl}/${resource}/${resourceId}`;
-
-        expect(httpClient.patch).toHaveBeenCalledWith(`${url}?api_key=${apiKey}`, data, {});
-        expect(httpClient.patch).toHaveBeenCalledTimes(1);
-    });
-
-    it('should call delete function with correct arguments', () => {
-        const accessToken = "access-token";
-        const storageKey = "storage-key";
-        const mockJson = { access_token: accessToken };
-        setLocalStorage(storageKey, mockJson);
-
-        const apiUrl = "http://example.com/delete"
-        const apiKey = "api-key";
-        const resource = "user";
-        const resourceId = "my-id";
-        const config = {
-			headers: { "authorization": "Bearer " + accessToken }
+		const config = {
+			headers: { authorization: "Bearer " + accessToken },
 		};
-        const api = dataProvider(httpClient, apiUrl, apiKey, storageKey);
+		const api = dataProvider(httpClient, apiUrl, apiKey, storageKey);
 
-        api.delete(resource, resourceId);
-
-		const url = `${apiUrl}/${resource}/${resourceId}`;
-
-        expect(httpClient.delete).toHaveBeenCalledWith(`${url}?`, config);
-        expect(httpClient.delete).toHaveBeenCalledTimes(1);
-    });
-
-    it('should call delete function without token if withToken is false', () => {
-        const storageKey = "storage-key";
-        const apiUrl = "http://example.com/delete"
-        const apiKey = "api-key";
-        const resource = "user";
-        const resourceId = "my-id";
-        const api = dataProvider(httpClient, apiUrl, apiKey, storageKey);
-
-        api.delete(resource, resourceId, {}, false);
+		api.update(resource, resourceId, data);
 
 		const url = `${apiUrl}/${resource}/${resourceId}`;
 
-        expect(httpClient.delete).toHaveBeenCalledWith(`${url}?api_key=${apiKey}`, {});
-        expect(httpClient.delete).toHaveBeenCalledTimes(1);
-    });
+		expect(httpClient.patch).toHaveBeenCalledWith(`${url}?`, data, config);
+		expect(httpClient.patch).toHaveBeenCalledTimes(1);
+	});
+
+	it("should call update function without token if withToken is false", () => {
+		const storageKey = "storage-key";
+		const apiUrl = "http://example.com/update";
+		const apiKey = "api-key";
+		const resource = "user";
+		const resourceId = "my-id";
+		const data = {
+			custom_data: "custom-data",
+		};
+		const api = dataProvider(httpClient, apiUrl, apiKey, storageKey);
+
+		api.update(resource, resourceId, data, {}, false);
+
+		const url = `${apiUrl}/${resource}/${resourceId}`;
+
+		expect(httpClient.patch).toHaveBeenCalledWith(
+			`${url}?api_key=${apiKey}`,
+			data,
+			{},
+		);
+		expect(httpClient.patch).toHaveBeenCalledTimes(1);
+	});
+
+	it("should call delete function with correct arguments", () => {
+		const accessToken = "access-token";
+		const storageKey = "storage-key";
+		const mockJson = { access_token: accessToken };
+		setLocalStorage(storageKey, mockJson);
+
+		const apiUrl = "http://example.com/delete";
+		const apiKey = "api-key";
+		const resource = "user";
+		const resourceId = "my-id";
+		const config = {
+			headers: { authorization: "Bearer " + accessToken },
+		};
+		const api = dataProvider(httpClient, apiUrl, apiKey, storageKey);
+
+		api.delete(resource, resourceId);
+
+		const url = `${apiUrl}/${resource}/${resourceId}`;
+
+		expect(httpClient.delete).toHaveBeenCalledWith(`${url}?`, config);
+		expect(httpClient.delete).toHaveBeenCalledTimes(1);
+	});
+
+	it("should call delete function without token if withToken is false", () => {
+		const storageKey = "storage-key";
+		const apiUrl = "http://example.com/delete";
+		const apiKey = "api-key";
+		const resource = "user";
+		const resourceId = "my-id";
+		const api = dataProvider(httpClient, apiUrl, apiKey, storageKey);
+
+		api.delete(resource, resourceId, {}, false);
+
+		const url = `${apiUrl}/${resource}/${resourceId}`;
+
+		expect(httpClient.delete).toHaveBeenCalledWith(
+			`${url}?api_key=${apiKey}`,
+			{},
+		);
+		expect(httpClient.delete).toHaveBeenCalledTimes(1);
+	});
 });
 
-describe('getAuthHeader function', () => {
-    beforeEach(() => {
-        window.localStorage.clear();
-    });
+describe("getAuthHeader function", () => {
+	beforeEach(() => {
+		window.localStorage.clear();
+	});
 
-    const setLocalStorage = (id, data) => {
-        window.localStorage.setItem(id, JSON.stringify(data));
-    };
+	const setLocalStorage = (id, data) => {
+		window.localStorage.setItem(id, JSON.stringify(data));
+	};
 
-    it('should return the token if stored', () => {
-        const accessToken = "access-token";
-        const storageKey = "storage-key";
-        const mockJson = { access_token: accessToken };
-        setLocalStorage(storageKey, mockJson);
-    
-        const authHeader = getAuthHeader(storageKey);
-        expect(authHeader["authorization"]).toEqual("Bearer " + accessToken);
-    });
+	it("should return the token if stored", () => {
+		const accessToken = "access-token";
+		const storageKey = "storage-key";
+		const mockJson = { access_token: accessToken };
+		setLocalStorage(storageKey, mockJson);
 
-    it('should return nothing if no access token', () => {
-        const storageKey = "my-storage-key";
-        const mockJson = {};
-        setLocalStorage(storageKey, mockJson);
-        
-        const authHeader = getAuthHeader(storageKey);
-        expect(authHeader).toEqual({});
-    });
+		const authHeader = getAuthHeader(storageKey);
+		expect(authHeader["authorization"]).toEqual("Bearer " + accessToken);
+	});
 
-    it('should return nothing if wrong storage key', () => {
-        const accessToken = "access-token";
-        const storageKey = "random-key";
-        const mockJson = { access_token: accessToken };
-        setLocalStorage(storageKey, mockJson);
-        
-        const authHeader = getAuthHeader("other storage key");
-        expect(authHeader).toEqual({});
-    });
+	it("should return nothing if no access token", () => {
+		const storageKey = "my-storage-key";
+		const mockJson = {};
+		setLocalStorage(storageKey, mockJson);
 
-    it('should return nothing if JSON parse error', () => {
-        const storageKey = "random-key";
-        const mockJson = "test";
-        setLocalStorage(storageKey, mockJson);
-        
-        const authHeader = getAuthHeader(storageKey);
-        expect(authHeader).toEqual({});
-    });
+		const authHeader = getAuthHeader(storageKey);
+		expect(authHeader).toEqual({});
+	});
+
+	it("should return nothing if wrong storage key", () => {
+		const accessToken = "access-token";
+		const storageKey = "random-key";
+		const mockJson = { access_token: accessToken };
+		setLocalStorage(storageKey, mockJson);
+
+		const authHeader = getAuthHeader("other storage key");
+		expect(authHeader).toEqual({});
+	});
+
+	it("should return nothing if JSON parse error", () => {
+		const storageKey = "random-key";
+		const mockJson = "test";
+		setLocalStorage(storageKey, mockJson);
+
+		const authHeader = getAuthHeader(storageKey);
+		expect(authHeader).toEqual({});
+	});
 });

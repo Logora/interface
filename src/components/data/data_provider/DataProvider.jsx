@@ -2,7 +2,7 @@ export function getAuthHeader(storageKey) {
 	try {
 		const token = JSON.parse(localStorage.getItem(storageKey));
 		if (token && token.access_token) {
-			return { authorization: 'Bearer ' + token.access_token };
+			return { authorization: "Bearer " + token.access_token };
 		} else {
 			return {};
 		}
@@ -15,14 +15,15 @@ export const dataProvider = (
 	httpClient,
 	apiUrl,
 	apiKey = "",
-	storageKey = ""
+	storageKey = "",
 ) => ({
 	getOne: (resource, id, params = {}) => {
 		params.api_key = apiKey;
 		const queryString = new URLSearchParams(params).toString();
 		const url = `${apiUrl}/${resource}/${id}?${queryString}`;
 		return new Promise((resolve, reject) => {
-			httpClient.get(url)
+			httpClient
+				.get(url)
 				.then((response) => {
 					resolve(response);
 				})
@@ -39,7 +40,8 @@ export const dataProvider = (
 			headers: getAuthHeader(storageKey),
 		};
 		return new Promise((resolve, reject) => {
-			httpClient.get(url, config)
+			httpClient
+				.get(url, config)
 				.then((response) => {
 					resolve(response);
 				})
@@ -54,7 +56,8 @@ export const dataProvider = (
 		const queryString = new URLSearchParams(params).toString();
 		const url = `${apiUrl}/${resource}?${queryString}`;
 		return new Promise((resolve, reject) => {
-			httpClient.get(url)
+			httpClient
+				.get(url)
 				.then((response) => {
 					resolve(response);
 				})
@@ -72,7 +75,8 @@ export const dataProvider = (
 		const queryString = new URLSearchParams(params).toString();
 		const url = `${apiUrl}/${resource}?${queryString}`;
 		return new Promise((resolve, reject) => {
-			httpClient.get(url, config)
+			httpClient
+				.get(url, config)
 				.then((response) => {
 					resolve(response);
 				})
@@ -83,7 +87,7 @@ export const dataProvider = (
 	},
 
 	update: (resource, id, data, params = {}, withToken = true) => {
-		let config = {};
+		const config = {};
 		if (withToken) {
 			config["headers"] = getAuthHeader(storageKey);
 		} else {
@@ -93,7 +97,8 @@ export const dataProvider = (
 		const queryString = new URLSearchParams(params).toString();
 		const url = `${apiUrl}/${resource}/${id}?${queryString}`;
 		return new Promise((resolve, reject) => {
-			httpClient.patch(url, data, config)
+			httpClient
+				.patch(url, data, config)
 				.then((response) => {
 					resolve(response);
 				})
@@ -104,7 +109,7 @@ export const dataProvider = (
 	},
 
 	create: (resource, data, params = {}, withToken = true) => {
-		let config = {};
+		const config = {};
 		if (withToken) {
 			config["headers"] = getAuthHeader(storageKey);
 		} else {
@@ -114,7 +119,8 @@ export const dataProvider = (
 		const queryString = new URLSearchParams(params).toString();
 		const url = `${apiUrl}/${resource}?${queryString}`;
 		return new Promise((resolve, reject) => {
-			httpClient.post(url, data, config)
+			httpClient
+				.post(url, data, config)
 				.then((response) => {
 					resolve(response);
 				})
@@ -125,7 +131,7 @@ export const dataProvider = (
 	},
 
 	delete: (resource, id, params = {}, withToken = true) => {
-		let config = {};
+		const config = {};
 		if (withToken) {
 			config["headers"] = getAuthHeader(storageKey);
 		} else {
@@ -135,7 +141,8 @@ export const dataProvider = (
 		const queryString = new URLSearchParams(params).toString();
 		const url = `${apiUrl}/${resource}/${id}?${queryString}`;
 		return new Promise((resolve, reject) => {
-			httpClient.delete(url, config)
+			httpClient
+				.delete(url, config)
 				.then((response) => {
 					resolve(response);
 				})
@@ -147,7 +154,7 @@ export const dataProvider = (
 
 	getSettings: (shortname) => {
 		const params = {
-			shortname: shortname
+			shortname: shortname,
 		};
 		const queryString = new URLSearchParams(params).toString();
 		const url = `${apiUrl}/settings?${queryString}`;

@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { ConfigContext } from "./ConfigProvider";
 
 export const useConfig = () => {
-    const { config } = useContext(ConfigContext);
+	const { config } = useContext(ConfigContext);
 
-    return config;
-}
+	return config;
+};

@@ -1,5 +1,5 @@
-import React from "react";
 import { AdUnit } from "@logora/debate/ad/ad_unit";
+import React from "react";
 
 export const WithAd = ({
 	id,
@@ -27,4 +27,3 @@ export const WithAd = ({
 		</>
 	);
 };
-

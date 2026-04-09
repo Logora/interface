@@ -1,1 +1,1 @@
-export { useGoogleAdManager } from './useGoogleAdManager';
+export { useGoogleAdManager } from "./useGoogleAdManager";

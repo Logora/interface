@@ -1,16 +1,16 @@
+import { Link } from "@logora/debate/action/link";
+import { useAuth } from "@logora/debate/auth/use_auth";
+import { useConfig, useRoutes } from "@logora/debate/data/config_provider";
+import { Modal, useModal } from "@logora/debate/dialog/modal";
+import { useAuthRequired } from "@logora/debate/hooks/use_auth_required";
+import { useResponsive } from "@logora/debate/hooks/use_responsive";
+import { Icon } from "@logora/debate/icons/icon";
+import { Avatar } from "@logora/debate/user/avatar";
+import cx from "classnames";
 import React from "react";
 import { FormattedMessage } from "react-intl";
 import { useLocation } from "react-router";
 import { matchPath } from "react-router-dom";
-import { Modal, useModal } from "@logora/debate/dialog/modal";
-import { useAuth } from "@logora/debate/auth/use_auth";
-import { useConfig, useRoutes } from "@logora/debate/data/config_provider";
-import { useAuthRequired } from "@logora/debate/hooks/use_auth_required";
-import { useResponsive } from "@logora/debate/hooks/use_responsive";
-import { Icon } from "@logora/debate/icons/icon";
-import { Link } from "@logora/debate/action/link";
-import { Avatar } from "@logora/debate/user/avatar";
-import cx from "classnames";
 import styles from "./NavbarModal.module.scss";
 
 export const NavbarModal = () => {
@@ -22,7 +22,8 @@ export const NavbarModal = () => {
 	const requireAuthentication = useAuthRequired();
 	const responsive = useResponsive?.() || {};
 	const { isMobile, elementWidth } = responsive;
-	const shouldShowProfileOnMobile = isMobile && elementWidth <= 576 && !config.isDrawer;
+	const shouldShowProfileOnMobile =
+		isMobile && elementWidth <= 576 && !config.isDrawer;
 
 	const isActive = (activePath) => {
 		return !!matchPath(activePath, pathname);
@@ -60,7 +61,10 @@ export const NavbarModal = () => {
 						>
 							<Icon name="chat" height={24} width={24} />
 							<span className={styles.text}>
-								<FormattedMessage id="info.all_debates_short" defaultMessage={"Debates"} />
+								<FormattedMessage
+									id="info.all_debates_short"
+									defaultMessage={"Debates"}
+								/>
 							</span>
 						</Link>
 					</div>
@@ -84,7 +88,10 @@ export const NavbarModal = () => {
 							>
 								<Icon name="community" height={24} width={24} />
 								<span className={cx(styles.text, styles.consultationText)}>
-									<FormattedMessage id="info.consultations" defaultMessage={"Consultations"} />
+									<FormattedMessage
+										id="info.consultations"
+										defaultMessage={"Consultations"}
+									/>
 								</span>
 							</Link>
 						</div>
@@ -105,7 +112,10 @@ export const NavbarModal = () => {
 							>
 								<Icon name="suggestion" height={24} width={24} />
 								<span className={styles.text}>
-									<FormattedMessage id="info.suggestion" defaultMessage={"Suggestions"} />
+									<FormattedMessage
+										id="info.suggestion"
+										defaultMessage={"Suggestions"}
+									/>
 								</span>
 							</Link>
 						</div>
@@ -138,7 +148,10 @@ export const NavbarModal = () => {
 										data-tid={"view_user_profile"}
 									/>
 									<span className={styles.text}>
-										<FormattedMessage id="info.profile" defaultMessage={"Profile"} />
+										<FormattedMessage
+											id="info.profile"
+											defaultMessage={"Profile"}
+										/>
 									</span>
 								</div>
 							</Link>
@@ -156,7 +169,10 @@ export const NavbarModal = () => {
 							>
 								<Icon name="login" height={24} width={24} />
 								<span className={styles.text}>
-									<FormattedMessage id="action.sign_in" defaultMessage={"Sign in"} />
+									<FormattedMessage
+										id="action.sign_in"
+										defaultMessage={"Sign in"}
+									/>
 								</span>
 							</div>
 						</div>
@@ -171,5 +187,3 @@ export const NavbarModal = () => {
 		</Modal>
 	);
 };
-
-

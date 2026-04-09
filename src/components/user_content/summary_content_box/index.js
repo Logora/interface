@@ -1,1 +1,1 @@
-export { SummaryContentBox } from './SummaryContentBox';
+export { SummaryContentBox } from "./SummaryContentBox";

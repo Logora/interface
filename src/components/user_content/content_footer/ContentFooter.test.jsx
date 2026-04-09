@@ -1,246 +1,260 @@
-import React from 'react';
-import { render, act } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import { ContentFooter } from './ContentFooter';
-import { IntlProvider } from 'react-intl';
-import { ConfigProvider } from '@logora/debate/data/config_provider';
-import { IconProvider } from '@logora/debate/icons/icon_provider';
-import * as regularIcons from '@logora/debate/icons/regular_icons';
-import { ModalProvider } from '@logora/debate/dialog/modal';
-import { AuthContext } from '@logora/debate/auth/use_auth';
-import { ListProvider } from '@logora/debate/list/list_provider';
-import { dataProvider, DataProviderContext } from '@logora/debate/data/data_provider';
-import { ToastProvider } from '@logora/debate/dialog/toast_provider';
-import { VoteProvider } from '@logora/debate/vote/vote_provider';
-import { faker } from '@faker-js/faker';
-import { DefaultContentFooter, ContentFooterShareModal, ContentFooterUpDownVoteBox, ContentFooterDisabled, ContentFooterWithoutReply, ContentFooterProgressBar, ContentFooterWithoutEdition, ContentFooterWithoutDeletion } from './ContentFooter.stories';
-import { VoteButton } from '@logora/debate/vote/vote_button';
+import { faker } from "@faker-js/faker";
+import { AuthContext } from "@logora/debate/auth/use_auth";
+import { ConfigProvider } from "@logora/debate/data/config_provider";
+import {
+	DataProviderContext,
+	dataProvider,
+} from "@logora/debate/data/data_provider";
+import { ModalProvider } from "@logora/debate/dialog/modal";
+import { ToastProvider } from "@logora/debate/dialog/toast_provider";
+import { IconProvider } from "@logora/debate/icons/icon_provider";
+import * as regularIcons from "@logora/debate/icons/regular_icons";
+import { ListProvider } from "@logora/debate/list/list_provider";
+import { VoteButton } from "@logora/debate/vote/vote_button";
+import { VoteProvider } from "@logora/debate/vote/vote_provider";
+import { act, render } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import React from "react";
+import { IntlProvider } from "react-intl";
+import { ContentFooter } from "./ContentFooter";
+import {
+	ContentFooterDisabled,
+	ContentFooterProgressBar,
+	ContentFooterShareModal,
+	ContentFooterUpDownVoteBox,
+	ContentFooterWithoutDeletion,
+	ContentFooterWithoutEdition,
+	ContentFooterWithoutReply,
+	DefaultContentFooter,
+} from "./ContentFooter.stories";
 
 beforeAll(() => {
-    class ResizeObserver {
-      constructor(callback) {
-        this.callback = callback;
-      }
-      observe() {
-        this.callback([{ contentRect: { width: 1200, height: 800 } }]);
-      }
-      unobserve() {}
-    }
-    global.ResizeObserver = ResizeObserver;
-  
-    HTMLDialogElement.prototype.showModal = function () {
-      this.setAttribute("open", "");
-    };
-    HTMLDialogElement.prototype.close = function () {
-      this.removeAttribute("open");
-    };
-  });
-  
-const vote = { 
-    id: faker.number.int(),
-    voteable_type: faker.lorem.word(),
-    voteable_id: faker.number.int(), 
-    user_id: faker.number.int()
+	class ResizeObserver {
+		constructor(callback) {
+			this.callback = callback;
+		}
+		observe() {
+			this.callback([{ contentRect: { width: 1200, height: 800 } }]);
+		}
+		unobserve() {}
+	}
+	global.ResizeObserver = ResizeObserver;
+
+	HTMLDialogElement.prototype.showModal = function () {
+		this.setAttribute("open", "");
+	};
+	HTMLDialogElement.prototype.close = function () {
+		this.removeAttribute("open");
+	};
+});
+
+const vote = {
+	id: faker.number.int(),
+	voteable_type: faker.lorem.word(),
+	voteable_id: faker.number.int(),
+	user_id: faker.number.int(),
 };
 
 const httpClient = {
-    get: () => null,
-    post: (url, data, config) => {
-        return new Promise(function(resolve, reject) {
-            resolve({ data: { success: true, data: { resource: vote } }});
-        });
-    },
-    patch: () => null,
-    delete: (url, data, config) => {
-        return new Promise(function(resolve, reject) {
-            resolve({ data: { success: true, data: {} }});
-        });
-    }
+	get: () => null,
+	post: (url, data, config) => {
+		return new Promise((resolve, reject) => {
+			resolve({ data: { success: true, data: { resource: vote } } });
+		});
+	},
+	patch: () => null,
+	delete: (url, data, config) => {
+		return new Promise((resolve, reject) => {
+			resolve({ data: { success: true, data: {} } });
+		});
+	},
 };
 
 const data = dataProvider(httpClient, "https://mock.example.api");
 
 const resource = {
-    id: faker.number.int(),
-    author: {
-        id: faker.number.int(),
-    },
-    created_at: faker.date.recent(),
-}
+	id: faker.number.int(),
+	author: {
+		id: faker.number.int(),
+	},
+	created_at: faker.date.recent(),
+};
 
-describe('ContentFooter', () => {
-    it('should render correctly', async () => {
-        const { queryByText, queryByTestId } = render(
-            <DefaultContentFooter />
-        );
+describe("ContentFooter", () => {
+	it("should render correctly", async () => {
+		const { queryByText, queryByTestId } = render(<DefaultContentFooter />);
 
-        expect(queryByText(10)).toBeInTheDocument();
-        expect(queryByText("Reply")).toBeInTheDocument();
-        expect(queryByText("Share")).toBeInTheDocument();
+		expect(queryByText(10)).toBeInTheDocument();
+		expect(queryByText("Reply")).toBeInTheDocument();
+		expect(queryByText("Share")).toBeInTheDocument();
 
-        const dropdown = queryByTestId("dropdown");
-        await act(async () => { await userEvent.click(dropdown) });
+		const dropdown = queryByTestId("dropdown");
+		await act(async () => {
+			await userEvent.click(dropdown);
+		});
 
-        expect(queryByText("Update")).toBeInTheDocument();
-        expect(queryByText("Delete")).toBeInTheDocument();
-        expect(queryByText("Report")).toBeInTheDocument();
+		expect(queryByText("Update")).toBeInTheDocument();
+		expect(queryByText("Delete")).toBeInTheDocument();
+		expect(queryByText("Report")).toBeInTheDocument();
 
-        const deleteModal = queryByText("Delete");
-        await act(async () => { await userEvent.click(deleteModal) });
+		const deleteModal = queryByText("Delete");
+		await act(async () => {
+			await userEvent.click(deleteModal);
+		});
 
-        expect(queryByText("Delete content")).toBeInTheDocument();
-    });
+		expect(queryByText("Delete content")).toBeInTheDocument();
+	});
 
-    it('should render correctly with a disconnected user', async () => {
-        const { queryByText, queryByTestId } = render(
-            <IntlProvider locale="en">
-                <ConfigProvider config={{ auth: { disableLoginModal: true } }}>
-                    <DataProviderContext.Provider value={{ dataProvider: data }}>
-                        <AuthContext.Provider value={{currentUser: { id: 1 }, isLoggedIn: false}}>
-                            <ListProvider>
-                                <IconProvider library={regularIcons}>
-                                    <ModalProvider>
-                                        <ToastProvider>
-                                            <VoteProvider>
-                                                <ContentFooter 
-                                                    resource={resource}
-                                                    showActions
-                                                    enableReply
-                                                    shareUrl={"https://test.com"}
-                                                    shareTitle={"Share title"}
-                                                    shareText={"Share text"}
-                                                    showShareText
-                                                    showShareCode
-                                                    shareCode={"</>"}
-                                                >
-                                                    <VoteButton
-                                                        voteableType={"Message"}
-                                                        voteableId={45}
-                                                        totalUpvote={10}
-                                                        totalDownvote={0}
-                                                        disabled={false}
-                                                    />
-                                                </ContentFooter>
-                                            </VoteProvider>
-                                        </ToastProvider>
-                                    </ModalProvider>
-                                </IconProvider>
-                            </ListProvider>
-                        </AuthContext.Provider>
-                    </DataProviderContext.Provider>
-                </ConfigProvider>
-            </IntlProvider>
-        );
+	it("should render correctly with a disconnected user", async () => {
+		const { queryByText, queryByTestId } = render(
+			<IntlProvider locale="en">
+				<ConfigProvider config={{ auth: { disableLoginModal: true } }}>
+					<DataProviderContext.Provider value={{ dataProvider: data }}>
+						<AuthContext.Provider
+							value={{ currentUser: { id: 1 }, isLoggedIn: false }}
+						>
+							<ListProvider>
+								<IconProvider library={regularIcons}>
+									<ModalProvider>
+										<ToastProvider>
+											<VoteProvider>
+												<ContentFooter
+													resource={resource}
+													showActions
+													enableReply
+													shareUrl={"https://test.com"}
+													shareTitle={"Share title"}
+													shareText={"Share text"}
+													showShareText
+													showShareCode
+													shareCode={"</>"}
+												>
+													<VoteButton
+														voteableType={"Message"}
+														voteableId={45}
+														totalUpvote={10}
+														totalDownvote={0}
+														disabled={false}
+													/>
+												</ContentFooter>
+											</VoteProvider>
+										</ToastProvider>
+									</ModalProvider>
+								</IconProvider>
+							</ListProvider>
+						</AuthContext.Provider>
+					</DataProviderContext.Provider>
+				</ConfigProvider>
+			</IntlProvider>,
+		);
 
-        expect(queryByText(10)).toBeInTheDocument();
-        expect(queryByText("Reply")).toBeInTheDocument();
-        expect(queryByText("Share")).toBeInTheDocument();
+		expect(queryByText(10)).toBeInTheDocument();
+		expect(queryByText("Reply")).toBeInTheDocument();
+		expect(queryByText("Share")).toBeInTheDocument();
 
-        const dropdown = queryByTestId("dropdown");
-        await act(async () => { await userEvent.click(dropdown) });
+		const dropdown = queryByTestId("dropdown");
+		await act(async () => {
+			await userEvent.click(dropdown);
+		});
 
-        expect(queryByText("Update")).toBeNull();
-        expect(queryByText("Delete")).toBeNull();
-        expect(queryByText("Report")).toBeInTheDocument();
-    });
+		expect(queryByText("Update")).toBeNull();
+		expect(queryByText("Delete")).toBeNull();
+		expect(queryByText("Report")).toBeInTheDocument();
+	});
 
-    it('should render without edition', async () => {
-        const { queryByText, queryByTestId } = render(
-            <ContentFooterWithoutEdition />
-        );
+	it("should render without edition", async () => {
+		const { queryByText, queryByTestId } = render(
+			<ContentFooterWithoutEdition />,
+		);
 
-        expect(queryByText(10)).toBeInTheDocument();
-        expect(queryByText("Reply")).toBeInTheDocument();
-        expect(queryByText("Share")).toBeInTheDocument();
+		expect(queryByText(10)).toBeInTheDocument();
+		expect(queryByText("Reply")).toBeInTheDocument();
+		expect(queryByText("Share")).toBeInTheDocument();
 
-        const dropdown = queryByTestId("dropdown");
-        await act(async () => { await userEvent.click(dropdown) });
+		const dropdown = queryByTestId("dropdown");
+		await act(async () => {
+			await userEvent.click(dropdown);
+		});
 
-        expect(queryByText("Update")).toBeNull();
-        expect(queryByText("Delete")).toBeInTheDocument();
-        expect(queryByText("Report")).toBeInTheDocument();
-    });
+		expect(queryByText("Update")).toBeNull();
+		expect(queryByText("Delete")).toBeInTheDocument();
+		expect(queryByText("Report")).toBeInTheDocument();
+	});
 
-    it('should render without edition', async () => {
-        const { queryByText, queryByTestId } = render(
-            <ContentFooterWithoutDeletion />
-        );
+	it("should render without edition", async () => {
+		const { queryByText, queryByTestId } = render(
+			<ContentFooterWithoutDeletion />,
+		);
 
-        expect(queryByText(10)).toBeInTheDocument();
-        expect(queryByText("Reply")).toBeInTheDocument();
-        expect(queryByText("Share")).toBeInTheDocument();
+		expect(queryByText(10)).toBeInTheDocument();
+		expect(queryByText("Reply")).toBeInTheDocument();
+		expect(queryByText("Share")).toBeInTheDocument();
 
-        const dropdown = queryByTestId("dropdown");
-        await act(async () => { await userEvent.click(dropdown) });
+		const dropdown = queryByTestId("dropdown");
+		await act(async () => {
+			await userEvent.click(dropdown);
+		});
 
-        expect(queryByText("Update")).toBeInTheDocument();
-        expect(queryByText("Delete")).toBeNull();
-        expect(queryByText("Report")).toBeInTheDocument();
-    });
+		expect(queryByText("Update")).toBeInTheDocument();
+		expect(queryByText("Delete")).toBeNull();
+		expect(queryByText("Report")).toBeInTheDocument();
+	});
 
-    it('should render with share modal', async () => {
-        const { queryByText, queryByTestId } = render(
-            <ContentFooterShareModal />
-        );
+	it("should render with share modal", async () => {
+		const { queryByText, queryByTestId } = render(<ContentFooterShareModal />);
 
-        expect(queryByText(10)).toBeInTheDocument();
-        expect(queryByText("Reply")).toBeInTheDocument();
-        expect(queryByText("Share")).toBeNull();
+		expect(queryByText(10)).toBeInTheDocument();
+		expect(queryByText("Reply")).toBeInTheDocument();
+		expect(queryByText("Share")).toBeNull();
 
-        const dropdown = queryByTestId("dropdown");
-        await act(async () => { await userEvent.click(dropdown) });
+		const dropdown = queryByTestId("dropdown");
+		await act(async () => {
+			await userEvent.click(dropdown);
+		});
 
-        expect(queryByText("Update")).toBeInTheDocument();
-        expect(queryByText("Delete")).toBeInTheDocument();
-        expect(queryByText("Report")).toBeInTheDocument();
-        expect(queryByText("Share")).toBeInTheDocument();
-    });
+		expect(queryByText("Update")).toBeInTheDocument();
+		expect(queryByText("Delete")).toBeInTheDocument();
+		expect(queryByText("Report")).toBeInTheDocument();
+		expect(queryByText("Share")).toBeInTheDocument();
+	});
 
-    it('should render with up down vote box', async () => {
-        const { queryByText } = render(
-            <ContentFooterUpDownVoteBox />
-        );
+	it("should render with up down vote box", async () => {
+		const { queryByText } = render(<ContentFooterUpDownVoteBox />);
 
-        expect(queryByText('10')).toBeInTheDocument();
-        expect(queryByText('5')).toBeInTheDocument();
-        expect(queryByText("Reply")).toBeNull();
-        expect(queryByText("Share")).toBeInTheDocument();
-    });
+		expect(queryByText("10")).toBeInTheDocument();
+		expect(queryByText("5")).toBeInTheDocument();
+		expect(queryByText("Reply")).toBeNull();
+		expect(queryByText("Share")).toBeInTheDocument();
+	});
 
-    it('should be disabled', async () => {
-        const { queryByText } = render(
-            <ContentFooterDisabled />
-        );
+	it("should be disabled", async () => {
+		const { queryByText } = render(<ContentFooterDisabled />);
 
-        expect(queryByText(10)).toBeInTheDocument();
-        expect(queryByText("Reply")).toBeNull();
+		expect(queryByText(10)).toBeInTheDocument();
+		expect(queryByText("Reply")).toBeNull();
 
-        const voteButton = queryByText(10);
-        await userEvent.click(voteButton);
+		const voteButton = queryByText(10);
+		await userEvent.click(voteButton);
 
-        expect(queryByText(10)).toBeInTheDocument();
-    });
+		expect(queryByText(10)).toBeInTheDocument();
+	});
 
-    it('should render without reply', async () => {
-        const { queryByText } = render(
-            <ContentFooterWithoutReply />
-        );
+	it("should render without reply", async () => {
+		const { queryByText } = render(<ContentFooterWithoutReply />);
 
-        expect(queryByText(10)).toBeInTheDocument();
-        expect(queryByText("Reply")).toBeNull();
-        expect(queryByText("Share")).toBeInTheDocument();
-    });
+		expect(queryByText(10)).toBeInTheDocument();
+		expect(queryByText("Reply")).toBeNull();
+		expect(queryByText("Share")).toBeInTheDocument();
+	});
 
-    it('should render with progress bar', async () => {
-        const { queryByText, queryByTestId } = render(
-            <ContentFooterProgressBar />
-        );
+	it("should render with progress bar", async () => {
+		const { queryByText, queryByTestId } = render(<ContentFooterProgressBar />);
 
-        expect(queryByText(10)).toBeNull();
-        expect(queryByText("Reply")).toBeNull();
-        expect(queryByTestId("reply-button")).toBeNull();
-        expect(queryByText("Share")).toBeNull();
-        expect(queryByText("Nice progress !")).toBeInTheDocument();
-        expect(queryByText("25/30 supports")).toBeInTheDocument();
-    });
+		expect(queryByText(10)).toBeNull();
+		expect(queryByText("Reply")).toBeNull();
+		expect(queryByTestId("reply-button")).toBeNull();
+		expect(queryByText("Share")).toBeNull();
+		expect(queryByText("Nice progress !")).toBeInTheDocument();
+		expect(queryByText("25/30 supports")).toBeInTheDocument();
+	});
 });

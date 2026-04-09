@@ -1,12 +1,10 @@
+import { render, screen } from "@testing-library/react";
 import React from "react";
 import { DefaultPieChart } from "./PieChart.stories";
-import { render, screen } from '@testing-library/react';
 
-describe('PieChart', () => {
-    it ('renders PieChart component', () => {  
-        const container = render(
-            <DefaultPieChart />
-        );
-        expect(screen.getByTestId("pieChartCanvas")).toBeTruthy();
-    })
-})
+describe("PieChart", () => {
+	it("renders PieChart component", () => {
+		const container = render(<DefaultPieChart />);
+		expect(screen.getByTestId("pieChartCanvas")).toBeTruthy();
+	});
+});

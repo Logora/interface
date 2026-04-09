@@ -1,26 +1,27 @@
-import React from 'react';
-import { CheckboxIndicator } from './checkbox-indicator';
+import React from "react";
+import { CheckboxIndicator } from "./checkbox-indicator";
 
 const meta = {
-	title: 'Input/Checkbox/Indicator',
+	title: "Input/Checkbox/Indicator",
 	component: CheckboxIndicator,
 	args: {
 		checked: true,
-		disabled: false
+		disabled: false,
 	},
 	argTypes: {
 		checked: {
-			control: 'boolean'
+			control: "boolean",
 		},
 		disabled: {
-			control: 'boolean'
-		}
+			control: "boolean",
+		},
 	},
 	render: ({ checked, disabled }) => (
 		<div>
-			<input type="checkbox" defaultChecked={checked} disabled={disabled} /> → <CheckboxIndicator />
+			<input type="checkbox" defaultChecked={checked} disabled={disabled} /> →{" "}
+			<CheckboxIndicator />
 		</div>
-	)
+	),
 };
 
 export default meta;
@@ -48,4 +49,3 @@ export const Disabled = () => {
 		</div>
 	);
 };
-

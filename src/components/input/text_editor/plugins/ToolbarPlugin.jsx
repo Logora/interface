@@ -1,24 +1,24 @@
-import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
-import React, { useCallback, useEffect, useRef, useState } from "react";
-import { useIntl } from 'react-intl';
 import {
-	SELECTION_CHANGE_COMMAND,
-	FORMAT_TEXT_COMMAND,
-	$getSelection,
-	$isRangeSelection,
-} from "lexical";
-import { $setBlocksType } from "@lexical/selection";
-import { $getNearestNodeOfType, mergeRegister } from "@lexical/utils";
-import {
-	INSERT_ORDERED_LIST_COMMAND,
 	$isListNode,
+	INSERT_ORDERED_LIST_COMMAND,
 	ListNode,
 } from "@lexical/list";
+import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 import { $createQuoteNode, $isHeadingNode } from "@lexical/rich-text";
-import styles from "./ToolbarPlugin.module.scss";
-import cx from "classnames";
-import { Icon } from "@logora/debate/icons/icon";
+import { $setBlocksType } from "@lexical/selection";
+import { $getNearestNodeOfType, mergeRegister } from "@lexical/utils";
 import { Button } from "@logora/debate/action/button";
+import { Icon } from "@logora/debate/icons/icon";
+import cx from "classnames";
+import {
+	$getSelection,
+	$isRangeSelection,
+	FORMAT_TEXT_COMMAND,
+	SELECTION_CHANGE_COMMAND,
+} from "lexical";
+import React, { useCallback, useEffect, useRef, useState } from "react";
+import { useIntl } from "react-intl";
+import styles from "./ToolbarPlugin.module.scss";
 
 export const ToolbarPlugin = (props) => {
 	const intl = useIntl();
@@ -128,7 +128,10 @@ export const ToolbarPlugin = (props) => {
 								type={"button"}
 								className={cx(styles.toolbarItem, { [styles.active]: isBold })}
 								data-testid="format-bold"
-								aria-label={intl.formatMessage({ id: "input.text_editor.plugins.toolbar_plugin.bold.aria_label", defaultMessage: "Make text bold" })}
+								aria-label={intl.formatMessage({
+									id: "input.text_editor.plugins.toolbar_plugin.bold.aria_label",
+									defaultMessage: "Make text bold",
+								})}
 							>
 								<Icon
 									name="bold"
@@ -145,7 +148,10 @@ export const ToolbarPlugin = (props) => {
 								className={cx(styles.toolbarItem, {
 									[styles.active]: isItalic,
 								})}
-								aria-label={intl.formatMessage({ id: "input.text_editor.plugins.toolbar_plugin.italic.aria_label", defaultMessage: "Make text italic" })}
+								aria-label={intl.formatMessage({
+									id: "input.text_editor.plugins.toolbar_plugin.italic.aria_label",
+									defaultMessage: "Make text italic",
+								})}
 							>
 								<Icon
 									name="italic"
@@ -162,7 +168,10 @@ export const ToolbarPlugin = (props) => {
 								className={cx(styles.toolbarItem, {
 									[styles.active]: isUnderline,
 								})}
-								aria-label={intl.formatMessage({ id: "input.text_editor.plugins.toolbar_plugin.underline.aria_label", defaultMessage: "Underline text" })}
+								aria-label={intl.formatMessage({
+									id: "input.text_editor.plugins.toolbar_plugin.underline.aria_label",
+									defaultMessage: "Underline text",
+								})}
 							>
 								<Icon
 									name="underline"
@@ -175,7 +184,10 @@ export const ToolbarPlugin = (props) => {
 								onClick={() => formatQuote()}
 								type={"button"}
 								className={styles.toolbarItem}
-								aria-label={intl.formatMessage({ id: "input.text_editor.plugins.toolbar_plugin.blockquote.aria_label", defaultMessage: "Add a blockquote" })}
+								aria-label={intl.formatMessage({
+									id: "input.text_editor.plugins.toolbar_plugin.blockquote.aria_label",
+									defaultMessage: "Add a blockquote",
+								})}
 							>
 								<Icon
 									name="blockquote"
@@ -188,7 +200,10 @@ export const ToolbarPlugin = (props) => {
 								onClick={() => formatNumberedList()}
 								type={"button"}
 								className={styles.toolbarItem}
-								aria-label={intl.formatMessage({ id: "input.text_editor.plugins.toolbar_plugin.numbered_list.aria_label", defaultMessage: "Insert a numbered list" })}
+								aria-label={intl.formatMessage({
+									id: "input.text_editor.plugins.toolbar_plugin.numbered_list.aria_label",
+									defaultMessage: "Insert a numbered list",
+								})}
 							>
 								<Icon
 									name="orderedList"
@@ -202,7 +217,10 @@ export const ToolbarPlugin = (props) => {
 									onClick={props.onAddSource}
 									type={"button"}
 									className={styles.toolbarItem}
-									aria-label={intl.formatMessage({ id: "input.text_editor.plugins.toolbar_plugin.add_link.aria_label", defaultMessage: "Add hyperlink" })}
+									aria-label={intl.formatMessage({
+										id: "input.text_editor.plugins.toolbar_plugin.add_link.aria_label",
+										defaultMessage: "Add hyperlink",
+									})}
 								>
 									<Icon
 										name="link"
@@ -222,7 +240,10 @@ export const ToolbarPlugin = (props) => {
 						data-testid="submit-button"
 						handleClick={props.onSubmit}
 						className={cx(styles.inputSubmitActionButton, styles.submitAction)}
-						aria-label={intl.formatMessage({ id: "input.text_editor.plugins.toolbar_plugin.submit_button.aria_label", defaultMessage: "Send message" })}
+						aria-label={intl.formatMessage({
+							id: "input.text_editor.plugins.toolbar_plugin.submit_button.aria_label",
+							defaultMessage: "Send message",
+						})}
 					>
 						<Icon name="send" width={20} height={20} />
 					</Button>

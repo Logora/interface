@@ -1,1 +1,1 @@
-export { TogglePosition } from './TogglePosition';
+export { TogglePosition } from "./TogglePosition";

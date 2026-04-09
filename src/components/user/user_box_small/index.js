@@ -1,1 +1,1 @@
-export { UserBoxSmall } from './UserBoxSmall';
+export { UserBoxSmall } from "./UserBoxSmall";

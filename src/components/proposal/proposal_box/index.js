@@ -1,1 +1,1 @@
-export { ProposalBox } from "./ProposalBox"
+export { ProposalBox } from "./ProposalBox";

@@ -1,27 +1,24 @@
-import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
-import { SectionBox } from './SectionBox';
-import { IconProvider } from '@logora/debate/icons/icon_provider';
-import * as regularIcons from '@logora/debate/icons/regular_icons';
+import { IconProvider } from "@logora/debate/icons/icon_provider";
+import * as regularIcons from "@logora/debate/icons/regular_icons";
+import { fireEvent, render } from "@testing-library/react";
+import React from "react";
+import { SectionBox } from "./SectionBox";
 
 const callback = vi.fn();
 
-it('should render with the correct text', () => {
+it("should render with the correct text", () => {
 	const section = render(
 		<IconProvider library={regularIcons}>
-			<SectionBox
-				title="Section Title"
-				subtitle="Sub Title"
-			>
+			<SectionBox title="Section Title" subtitle="Sub Title">
 				<p>Voici le contenu de la section.</p>
 			</SectionBox>
-		</IconProvider>
+		</IconProvider>,
 	);
 	const renderedSection = section.getByText(/section title/i);
 	expect(renderedSection).toBeTruthy();
 });
 
-it('should toggle content visibility when clicked', () => {
+it("should toggle content visibility when clicked", () => {
 	const { getByText, queryByText } = render(
 		<IconProvider library={regularIcons}>
 			<SectionBox
@@ -32,13 +29,9 @@ it('should toggle content visibility when clicked', () => {
 			>
 				<p>Voici le contenu de la section.</p>
 			</SectionBox>
-		</IconProvider>
+		</IconProvider>,
 	);
 
 	const expandedContent = getByText(/Voici le contenu de la section/i);
 	expect(expandedContent).toBeTruthy();
 });
-
-
-
-

@@ -1,97 +1,107 @@
+import { makeStorage } from "./AuthStorage";
 import { authTokenHandler } from "./authTokenHandler";
-import { makeStorage } from './AuthStorage';
 
-const localStorageMock = (function() {
-    let store = {}
-  
-    return {
-        name: "localStorage",
-        getItem: function(key) {
-            return store[key] || null
-        },
-        setItem: function(key, value) {
-            store[key] = value.toString()
-        },
-        removeItem: function(key) {
-            delete store[key]
-        },
-        clear: function() {
-            store = {}
-        }
-    }
-})()
+const localStorageMock = (() => {
+	let store = {};
+
+	return {
+		name: "localStorage",
+		getItem: (key) => store[key] || null,
+		setItem: (key, value) => {
+			store[key] = value.toString();
+		},
+		removeItem: (key) => {
+			delete store[key];
+		},
+		clear: () => {
+			store = {};
+		},
+	};
+})();
 
 const httpClient = {
-    get: vi.fn(),
-    post: vi.fn(),
-    patch: vi.fn()
+	get: vi.fn(),
+	post: vi.fn(),
+	patch: vi.fn(),
 };
 
 beforeEach(() => {
-    httpClient.get.mockClear();
-    httpClient.post.mockClear();
-    httpClient.patch.mockClear();
+	httpClient.get.mockClear();
+	httpClient.post.mockClear();
+	httpClient.patch.mockClear();
 });
 
-describe('authTokenHandler', () => {
-    describe('getToken', () => {
-        beforeEach(() => {
-            delete window.localStorage;
-        });
+describe("authTokenHandler", () => {
+	describe("getToken", () => {
+		beforeEach(() => {
+			delete window.localStorage;
+		});
 
-        it('should get null if no token set', () => {
-            Object.defineProperty(window, 'localStorage', {
-                configurable: true,
-                value: localStorageMock
-            })
+		it("should get null if no token set", () => {
+			Object.defineProperty(window, "localStorage", {
+				configurable: true,
+				value: localStorageMock,
+			});
 
-            const tokenKey = "token-key";
-            const { getToken } = authTokenHandler(httpClient, 'https://example.com/auth', tokenKey);
-    
-            expect(getToken()).toBeNull();
-        });
+			const tokenKey = "token-key";
+			const { getToken } = authTokenHandler(
+				httpClient,
+				"https://example.com/auth",
+				tokenKey,
+			);
 
-        it('should get correct token', () => {
-            Object.defineProperty(window, 'localStorage', {
-                configurable: true,
-                value: localStorageMock
-            })
+			expect(getToken()).toBeNull();
+		});
 
-            const tokenKey = "token-key";
-            const { setToken } = makeStorage(tokenKey);
-            const { getToken } = authTokenHandler(httpClient, 'https://example.com/auth', tokenKey);
-    
-            const token = { access_token: "a-super-token"};
-            setToken(token);
-            expect(getToken()).toStrictEqual(token);
-        });
-    });
+		it("should get correct token", () => {
+			Object.defineProperty(window, "localStorage", {
+				configurable: true,
+				value: localStorageMock,
+			});
 
-    describe('removeToken', () => {
-        beforeEach(() => {
-            delete window.localStorage;
-        });
+			const tokenKey = "token-key";
+			const { setToken } = makeStorage(tokenKey);
+			const { getToken } = authTokenHandler(
+				httpClient,
+				"https://example.com/auth",
+				tokenKey,
+			);
 
-        it('should remove token', () => {
-            Object.defineProperty(window, 'localStorage', {
-                configurable: true,
-                value: localStorageMock
-            })
+			const token = { access_token: "a-super-token" };
+			setToken(token);
+			expect(getToken()).toStrictEqual(token);
+		});
+	});
 
-            const tokenKey = "token-key";
-            const { setToken } = makeStorage(tokenKey);
-            const { getToken, removeToken } = authTokenHandler(httpClient, 'https://example.com/auth', tokenKey);
-    
-            const token = { access_token: "great-token"};
-            setToken(token);
-            expect(getToken()).toStrictEqual(token);
+	describe("removeToken", () => {
+		beforeEach(() => {
+			delete window.localStorage;
+		});
 
-            removeToken();
-            expect(getToken()).toBeNull();
-        });
-    });
+		it("should remove token", () => {
+			Object.defineProperty(window, "localStorage", {
+				configurable: true,
+				value: localStorageMock,
+			});
 
-    /*
+			const tokenKey = "token-key";
+			const { setToken } = makeStorage(tokenKey);
+			const { getToken, removeToken } = authTokenHandler(
+				httpClient,
+				"https://example.com/auth",
+				tokenKey,
+			);
+
+			const token = { access_token: "great-token" };
+			setToken(token);
+			expect(getToken()).toStrictEqual(token);
+
+			removeToken();
+			expect(getToken()).toBeNull();
+		});
+	});
+
+	/*
     describe('fetchToken', () => {
         beforeEach(() => {
             delete window.localStorage;
@@ -114,4 +124,4 @@ describe('authTokenHandler', () => {
         })
     });
     */
-})
+});

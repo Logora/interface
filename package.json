@@ -21,6 +21,9 @@
     "dev": "storybook dev -p 6006",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
+    "format": "npx @biomejs/biome format --write ./src",
+		"lint": "npx @biomejs/biome lint ./src",
+		"check": "npx @biomejs/biome check ./src",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage"
@@ -77,8 +80,10 @@
     "webfontloader": "^1.6.28"
   },
   "devDependencies": {
+    "@biomejs/biome": "^1.9.4",
     "@faker-js/faker": "^10.4.0",
     "@storybook/addon-a11y": "^10.3.5",
+    "@storybook/addon-docs": "^10.3.5",
     "@storybook/react": "^10.3.5",
     "@storybook/react-vite": "^10.3.5",
     "@testing-library/dom": "^10.4.0",

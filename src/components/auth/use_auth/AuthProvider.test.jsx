@@ -1,26 +1,22 @@
-import React from 'react';
-import { render } from '@testing-library/react';
-import { AuthProvider } from './AuthProvider';
-import { useAuth } from './useAuth';
+import { render } from "@testing-library/react";
+import React from "react";
+import { AuthProvider } from "./AuthProvider";
+import { useAuth } from "./useAuth";
 
 const ComponentWithAuth = () => {
 	const { isLoggingIn } = useAuth();
 
-	return (
-        <div>
-            { isLoggingIn ? "is logging in" : "is not logging in" }
-        </div>
-    )
-}
+	return <div>{isLoggingIn ? "is logging in" : "is not logging in"}</div>;
+};
 
-describe('AuthProvider', () => {
-	it('should render component with auth', () => {
+describe("AuthProvider", () => {
+	it("should render component with auth", () => {
 		const container = render(
 			<AuthProvider>
 				<ComponentWithAuth />
-			</AuthProvider>
+			</AuthProvider>,
 		);
 
-		expect(container.getByText(/is logging in/i)).toBeTruthy()
+		expect(container.getByText(/is logging in/i)).toBeTruthy();
 	});
 });

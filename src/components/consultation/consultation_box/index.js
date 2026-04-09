@@ -1,1 +1,1 @@
-export { ConsultationBox } from './ConsultationBox';
+export { ConsultationBox } from "./ConsultationBox";

@@ -1,1 +1,1 @@
-export { CheckboxLabel, Input } from './checkbox-label';
+export { CheckboxLabel, Input } from "./checkbox-label";

@@ -1,39 +1,43 @@
-import React from 'react';
-import { render } from '@testing-library/react';
-import { ConfigProvider } from './ConfigProvider';
-import { useConfig } from './useConfig';
-import { useRoutes } from './useRoutes';
+import { render } from "@testing-library/react";
+import React from "react";
+import { ConfigProvider } from "./ConfigProvider";
+import { useConfig } from "./useConfig";
+import { useRoutes } from "./useRoutes";
 
 const ComponentWithConfig = () => {
 	const config = useConfig();
 
-	return <div>{ config.message }</div>
-}
+	return <div>{config.message}</div>;
+};
 
 const ComponentWithRoutes = () => {
 	const routes = useRoutes();
 
-	return <div>hello world</div>
-}
+	return <div>hello world</div>;
+};
 
-describe('ConfigProvider', () => {
-	it('should render component with config', () => {
+describe("ConfigProvider", () => {
+	it("should render component with config", () => {
 		const container = render(
-			<ConfigProvider config={{ message: "hello world" }} routes={{}} reactRoot="root">
+			<ConfigProvider
+				config={{ message: "hello world" }}
+				routes={{}}
+				reactRoot="root"
+			>
 				<ComponentWithConfig />
-			</ConfigProvider>
+			</ConfigProvider>,
 		);
 
-		expect(container.getByText(/hello world/i)).toBeTruthy()
+		expect(container.getByText(/hello world/i)).toBeTruthy();
 	});
 
-	it('should render component with routes', () => {
+	it("should render component with routes", () => {
 		const container = render(
 			<ConfigProvider config={{}} routes={{}} reactRoot="root">
 				<ComponentWithRoutes />
-			</ConfigProvider>
+			</ConfigProvider>,
 		);
 
-		expect(container.getByText(/hello world/i)).toBeTruthy()
+		expect(container.getByText(/hello world/i)).toBeTruthy();
 	});
 });

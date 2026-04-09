@@ -1,10 +1,10 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import { Dropdown } from './Dropdown';
+import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import React from "react";
+import { Dropdown } from "./Dropdown";
 
-describe('Dropdown', () => {
-	it('should render a dropdown with first child has button', () => {
+describe("Dropdown", () => {
+	it("should render a dropdown with first child has button", () => {
 		const dropdown = render(
 			<Dropdown>
 				<div>Title</div>
@@ -12,13 +12,13 @@ describe('Dropdown', () => {
 					<p>Child 1</p>
 					<p>Child 2</p>
 				</>
-			</Dropdown>
+			</Dropdown>,
 		);
 		const renderedDropdown = dropdown.getByText(/Title/i);
 		expect(renderedDropdown).toBeTruthy();
 	});
 
-	it('should display children when clicking on title', async () => {
+	it("should display children when clicking on title", async () => {
 		const dropdown = render(
 			<Dropdown>
 				<div>Title</div>
@@ -26,19 +26,19 @@ describe('Dropdown', () => {
 					<p>Child 1</p>
 					<p>Child 2</p>
 				</>
-			</Dropdown>
+			</Dropdown>,
 		);
 		const dropdownTitle = dropdown.getByText(/Title/i);
 		expect(dropdown.queryByText(/Child 1/i)).toBeNull();
 		expect(dropdown.queryByText(/Child 2/i)).toBeNull();
 
 		await userEvent.click(dropdownTitle);
-		
+
 		expect(dropdown.getByText(/Child 1/i)).toBeTruthy();
 		expect(dropdown.getByText(/Child 2/i)).toBeTruthy();
 	});
 
-	it('should not display children on click if disabled', async () => {
+	it("should not display children on click if disabled", async () => {
 		const dropdown = render(
 			<Dropdown disabled>
 				<div>Title</div>
@@ -46,19 +46,19 @@ describe('Dropdown', () => {
 					<p>Child 1</p>
 					<p>Child 2</p>
 				</>
-			</Dropdown>
+			</Dropdown>,
 		);
 		const dropdownTitle = dropdown.getByText(/Title/i);
 		expect(dropdown.queryByText(/Child 1/i)).toBeNull();
 		expect(dropdown.queryByText(/Child 2/i)).toBeNull();
 
 		await userEvent.click(dropdownTitle);
-		
+
 		expect(dropdown.queryByText(/Child 1/i)).toBeNull();
 		expect(dropdown.queryByText(/Child 2/i)).toBeNull();
 	});
 
-	it('should close on click outside', async () => {
+	it("should close on click outside", async () => {
 		const dropdown = render(
 			<Dropdown>
 				<div>Title</div>
@@ -66,11 +66,11 @@ describe('Dropdown', () => {
 					<p>Child 1</p>
 					<p>Child 2</p>
 				</>
-			</Dropdown>
+			</Dropdown>,
 		);
 
 		await userEvent.click(dropdown.getByText(/Title/i));
-		
+
 		expect(dropdown.getByText(/Child 1/i)).toBeTruthy();
 		expect(dropdown.getByText(/Child 2/i)).toBeTruthy();
 
@@ -80,19 +80,15 @@ describe('Dropdown', () => {
 		expect(dropdown.queryByText(/Child 2/i)).toBeNull();
 	});
 
-	it('should close when an item from the list is clicked', async () => {
+	it("should close when an item from the list is clicked", async () => {
 		const ChildContainer = () => {
-			return (
-				<>
-					Child 1
-				</>
-			)
-		}
+			return <>Child 1</>;
+		};
 		const dropdown = render(
 			<Dropdown closeOnContentClick>
 				<div>Title</div>
 				<ChildContainer />
-			</Dropdown>
+			</Dropdown>,
 		);
 
 		await userEvent.click(screen.getByText(/Title/i));
@@ -104,7 +100,7 @@ describe('Dropdown', () => {
 		expect(screen.queryByText(/Child 1/i)).toBeNull();
 	});
 
-	it('should call onClick when clicking on button', async () => {
+	it("should call onClick when clicking on button", async () => {
 		const callback = vi.fn();
 
 		const dropdown = render(
@@ -114,7 +110,7 @@ describe('Dropdown', () => {
 					<p>Child 1</p>
 					<p>Child 2</p>
 				</>
-			</Dropdown>
+			</Dropdown>,
 		);
 
 		await userEvent.click(dropdown.getByText(/Title/i));

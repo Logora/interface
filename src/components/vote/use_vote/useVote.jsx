@@ -1,8 +1,8 @@
-import { useState, useEffect, useContext } from "react";
 import { useAuth } from "@logora/debate/auth/use_auth";
 import { useDataProvider } from "@logora/debate/data/data_provider";
 import { useAuthRequired } from "@logora/debate/hooks/use_auth_required";
 import { VoteContext } from "@logora/debate/vote/vote_provider";
+import { useContext, useEffect, useState } from "react";
 
 export const useVote = (
 	voteableType,
@@ -45,9 +45,9 @@ export const useVote = (
 		onVote?.(isUpvote, true, newTotalUpvotes, newTotalDownvotes);
 
 		if (isUpvote) {
-			setTotalUpvotes(prevState => prevState + 1);
+			setTotalUpvotes((prevState) => prevState + 1);
 		} else {
-			setTotalDownvotes(prevState => prevState + 1);
+			setTotalDownvotes((prevState) => prevState + 1);
 		}
 	};
 
@@ -59,9 +59,9 @@ export const useVote = (
 		onVote?.(isUpvote, false, newTotalUpvotes, newTotalDownvotes);
 
 		if (isUpvote) {
-			setTotalUpvotes(prevState => prevState - 1);
+			setTotalUpvotes((prevState) => prevState - 1);
 		} else {
-			setTotalDownvotes(prevState => prevState - 1);
+			setTotalDownvotes((prevState) => prevState - 1);
 		}
 	};
 
@@ -149,4 +149,3 @@ export const useVote = (
 		handleVote,
 	};
 };
-

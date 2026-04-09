@@ -1,1 +1,1 @@
-export { uniqueBy } from './uniqueBy';
+export { uniqueBy } from "./uniqueBy";

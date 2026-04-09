@@ -1,482 +1,592 @@
-import React from "react";
-import { render, screen, act } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import { ArgumentInput } from "./ArgumentInput";
-import { BrowserRouter } from "react-router-dom";
+import { faker } from "@faker-js/faker";
+import { AuthContext } from "@logora/debate/auth/use_auth";
 import { ConfigProvider } from "@logora/debate/data/config_provider";
-import { IconProvider } from '@logora/debate/icons/icon_provider';
-import * as regularIcons from '@logora/debate/icons/regular_icons';
+import {
+	DataProviderContext,
+	dataProvider,
+} from "@logora/debate/data/data_provider";
+import { ModalProvider } from "@logora/debate/dialog/modal";
+import { ToastProvider } from "@logora/debate/dialog/toast_provider";
+import { IconProvider } from "@logora/debate/icons/icon_provider";
+import * as regularIcons from "@logora/debate/icons/regular_icons";
+import { InputProvider, useInput } from "@logora/debate/input/input_provider";
+import { ListProvider } from "@logora/debate/list/list_provider";
+import { act, render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import React from "react";
 import { IntlProvider } from "react-intl";
-import { faker } from '@faker-js/faker';
-import { ToastProvider } from '@logora/debate/dialog/toast_provider';
-import { ModalProvider } from '@logora/debate/dialog/modal';
-import { dataProvider, DataProviderContext } from '@logora/debate/data/data_provider';
-import { AuthContext } from '@logora/debate/auth/use_auth';
-import { ListProvider } from '@logora/debate/list/list_provider';
-import { InputProvider, useInput } from '@logora/debate/input/input_provider';
+import { BrowserRouter } from "react-router-dom";
+import { ArgumentInput } from "./ArgumentInput";
 
-vi.mock('@lexical/react/LexicalErrorBoundary', () => ({
-    LexicalErrorBoundary: ({ children }) => children,
+vi.mock("@lexical/react/LexicalErrorBoundary", () => ({
+	LexicalErrorBoundary: ({ children }) => children,
 }));
 
 const httpClient = {
-    get: () => null,
-    post: (url, data, config) => {
-        return new Promise(function (resolve, reject) {
-            resolve({ data: { success: true, data: { resource: argument } } });
-        });
-    },
-    patch: () => null,
-    delete: (url, data, config) => {
-        return new Promise(function (resolve, reject) {
-            resolve({ data: { success: true, data: {} } });
-        });
-    }
+	get: () => null,
+	post: (url, data, config) => {
+		return new Promise((resolve, reject) => {
+			resolve({ data: { success: true, data: { resource: argument } } });
+		});
+	},
+	patch: () => null,
+	delete: (url, data, config) => {
+		return new Promise((resolve, reject) => {
+			resolve({ data: { success: true, data: {} } });
+		});
+	},
 };
 
 const data = dataProvider(httpClient, "https://mock.example.api");
 
 const debate = {
-    id: faker.number.int(),
-    name: faker.lorem.word(),
-    positions: [
-        {
-            id: faker.number.int(),
-            name: faker.lorem.word(),
-        },
-        {
-            id: faker.number.int(),
-            name: faker.lorem.word(),
-        }
-    ],
-
-}
+	id: faker.number.int(),
+	name: faker.lorem.word(),
+	positions: [
+		{
+			id: faker.number.int(),
+			name: faker.lorem.word(),
+		},
+		{
+			id: faker.number.int(),
+			name: faker.lorem.word(),
+		},
+	],
+};
 
 const argument = {
-    position: {
-        id: debate.positions[0].id
-    }
-}
+	position: {
+		id: debate.positions[0].id,
+	},
+};
 
 const currentUser = {
-    id: faker.number.int(),
-    full_name: faker.person.fullName(),
-    image_url: faker.image.avatarGitHub(),
-    points: faker.number.int()
-}
+	id: faker.number.int(),
+	full_name: faker.person.fullName(),
+	image_url: faker.image.avatarGitHub(),
+	points: faker.number.int(),
+};
 
 const callback = vi.fn();
 
 describe("ArgumentInput", () => {
-    beforeAll(() => {
-        Object.defineProperty(window, 'matchMedia', {
-            writable: true,
-            value: vi.fn().mockImplementation((query) => ({
-                matches: false,
-                media: query,
-                onchange: null,
-                addListener: vi.fn(),
-                removeListener: vi.fn(),
-                addEventListener: vi.fn(),
-                removeEventListener: vi.fn(),
-                dispatchEvent: vi.fn(),
-            })),
-        });
-        const proto = globalThis.HTMLDialogElement?.prototype;
-        if (proto && !proto.showModal) {
-            Object.defineProperty(proto, "showModal", {
-                configurable: true,
-                value: function () {
-                    this.setAttribute("open", "");
-                },
-            });
-        }
-        if (proto && !proto.close) {
-            Object.defineProperty(proto, "close", {
-                configurable: true,
-                value: function () {
-                    this.removeAttribute("open");
-                    this.dispatchEvent(new Event("close"));
-                },
-            });
-        }
-    });
+	beforeAll(() => {
+		Object.defineProperty(window, "matchMedia", {
+			writable: true,
+			value: vi.fn().mockImplementation((query) => ({
+				matches: false,
+				media: query,
+				onchange: null,
+				addListener: vi.fn(),
+				removeListener: vi.fn(),
+				addEventListener: vi.fn(),
+				removeEventListener: vi.fn(),
+				dispatchEvent: vi.fn(),
+			})),
+		});
+		const proto = globalThis.HTMLDialogElement?.prototype;
+		if (proto && !proto.showModal) {
+			Object.defineProperty(proto, "showModal", {
+				configurable: true,
+				value: function () {
+					this.setAttribute("open", "");
+				},
+			});
+		}
+		if (proto && !proto.close) {
+			Object.defineProperty(proto, "close", {
+				configurable: true,
+				value: function () {
+					this.removeAttribute("open");
+					this.dispatchEvent(new Event("close"));
+				},
+			});
+		}
+	});
 
-    it("should render correctly", () => {
-        const { queryByText } = render(
-            <BrowserRouter>
-                <ConfigProvider>
-                    <IconProvider library={regularIcons}>
-                        <IntlProvider locale="en">
-                            <DataProviderContext.Provider value={{ dataProvider: data }}>
-                                <AuthContext.Provider value={{ currentUser: currentUser, isLoggedIn: true }}>
-                                    <ToastProvider>
-                                        <ModalProvider>
-                                            <ListProvider>
+	it("should render correctly", () => {
+		const { queryByText } = render(
+			<BrowserRouter>
+				<ConfigProvider>
+					<IconProvider library={regularIcons}>
+						<IntlProvider locale="en">
+							<DataProviderContext.Provider value={{ dataProvider: data }}>
+								<AuthContext.Provider
+									value={{ currentUser: currentUser, isLoggedIn: true }}
+								>
+									<ToastProvider>
+										<ModalProvider>
+											<ListProvider>
+												<InputProvider>
+													<ArgumentInput
+														onSubmit={callback}
+														groupId={debate.id}
+														groupName={debate.name}
+														positions={debate.positions}
+														disabledPositions={[]}
+														listId={"argumentList"}
+														positionId={debate.positions[0].id}
+														hideSourceAction={false}
+														avatarSize={48}
+														placeholder={"Add an argument..."}
+													/>
+												</InputProvider>
+											</ListProvider>
+										</ModalProvider>
+									</ToastProvider>
+								</AuthContext.Provider>
+							</DataProviderContext.Provider>
+						</IntlProvider>
+					</IconProvider>
+				</ConfigProvider>
+			</BrowserRouter>,
+		);
 
-                                                <InputProvider>
-                                                    <ArgumentInput
-                                                        onSubmit={callback}
-                                                        groupId={debate.id}
-                                                        groupName={debate.name}
-                                                        positions={debate.positions}
-                                                        disabledPositions={[]}
-                                                        listId={"argumentList"}
-                                                        positionId={debate.positions[0].id}
-                                                        hideSourceAction={false}
-                                                        avatarSize={48}
-                                                        placeholder={"Add an argument..."}
-                                                    />
-                                                </InputProvider>
+		expect(queryByText(debate.positions[0].name)).toBeInTheDocument();
+		expect(queryByText(debate.positions[1].name)).toBeInTheDocument();
+		expect(queryByText(currentUser.full_name)).toBeInTheDocument();
+		expect(queryByText("Add an argument...")).toBeInTheDocument();
+		expect(queryByText("Your position")).toBeInTheDocument();
+	});
 
-                                            </ListProvider>
-                                        </ModalProvider>
-                                    </ToastProvider>
-                                </AuthContext.Provider>
-                            </DataProviderContext.Provider>
-                        </IntlProvider>
-                    </IconProvider>
-                </ConfigProvider>
-            </BrowserRouter>
-        );
+	it("should render correctly if is reply", () => {
+		const { queryByText } = render(
+			<BrowserRouter>
+				<ConfigProvider>
+					<IconProvider library={regularIcons}>
+						<IntlProvider locale="en">
+							<DataProviderContext.Provider value={{ dataProvider: data }}>
+								<AuthContext.Provider
+									value={{ currentUser: currentUser, isLoggedIn: true }}
+								>
+									<ToastProvider>
+										<ModalProvider>
+											<ListProvider>
+												<InputProvider>
+													<ArgumentInput
+														onSubmit={callback}
+														groupId={debate.id}
+														groupName={debate.name}
+														positions={debate.positions}
+														disabledPositions={[]}
+														listId={"argumentList"}
+														positionId={debate.positions[0].id}
+														hideSourceAction={false}
+														avatarSize={40}
+														isReply
+														placeholder={"Your reply..."}
+													/>
+												</InputProvider>
+											</ListProvider>
+										</ModalProvider>
+									</ToastProvider>
+								</AuthContext.Provider>
+							</DataProviderContext.Provider>
+						</IntlProvider>
+					</IconProvider>
+				</ConfigProvider>
+			</BrowserRouter>,
+		);
 
-        expect(queryByText(debate.positions[0].name)).toBeInTheDocument();
-        expect(queryByText(debate.positions[1].name)).toBeInTheDocument();
-        expect(queryByText(currentUser.full_name)).toBeInTheDocument();
-        expect(queryByText("Add an argument...")).toBeInTheDocument();
-        expect(queryByText("Your position")).toBeInTheDocument();
-    });
+		expect(queryByText("Your reply...")).toBeInTheDocument();
+		expect(queryByText(debate.positions[0].name)).toBeInTheDocument();
+		expect(queryByText(debate.positions[1].name)).toBeInTheDocument();
+		expect(queryByText(currentUser.full_name)).not.toBeInTheDocument();
+	});
 
-    it("should render correctly if is reply", () => {
-        const { queryByText } = render(
-            <BrowserRouter>
-                <ConfigProvider>
-                    <IconProvider library={regularIcons}>
-                        <IntlProvider locale="en">
-                            <DataProviderContext.Provider value={{ dataProvider: data }}>
-                                <AuthContext.Provider value={{ currentUser: currentUser, isLoggedIn: true }}>
-                                    <ToastProvider>
-                                        <ModalProvider>
-                                            <ListProvider>
+	it("should be disabled", () => {
+		const { queryByText } = render(
+			<BrowserRouter>
+				<ConfigProvider>
+					<IconProvider library={regularIcons}>
+						<IntlProvider locale="en">
+							<DataProviderContext.Provider value={{ dataProvider: data }}>
+								<AuthContext.Provider
+									value={{ currentUser: currentUser, isLoggedIn: true }}
+								>
+									<ToastProvider>
+										<ModalProvider>
+											<ListProvider>
+												<InputProvider>
+													<ArgumentInput
+														onSubmit={callback}
+														groupId={debate.id}
+														groupName={debate.name}
+														positions={debate.positions}
+														disabledPositions={[]}
+														disabled
+														listId={"argumentList"}
+														positionId={debate.positions[0].id}
+														hideSourceAction={false}
+														avatarSize={48}
+														placeholder={"Add an argument..."}
+													/>
+												</InputProvider>
+											</ListProvider>
+										</ModalProvider>
+									</ToastProvider>
+								</AuthContext.Provider>
+							</DataProviderContext.Provider>
+						</IntlProvider>
+					</IconProvider>
+				</ConfigProvider>
+			</BrowserRouter>,
+		);
 
-                                                <InputProvider>
-                                                    <ArgumentInput
-                                                        onSubmit={callback}
-                                                        groupId={debate.id}
-                                                        groupName={debate.name}
-                                                        positions={debate.positions}
-                                                        disabledPositions={[]}
-                                                        listId={"argumentList"}
-                                                        positionId={debate.positions[0].id}
-                                                        hideSourceAction={false}
-                                                        avatarSize={40}
-                                                        isReply
-                                                        placeholder={"Your reply..."}
-                                                    />
-                                                </InputProvider>
+		expect(queryByText("Debate is closed")).toBeInTheDocument();
+	});
 
-                                            </ListProvider>
-                                        </ModalProvider>
-                                    </ToastProvider>
-                                </AuthContext.Provider>
-                            </DataProviderContext.Provider>
-                        </IntlProvider>
-                    </IconProvider>
-                </ConfigProvider>
-            </BrowserRouter>
-        );
+	it("should display side modal if the disabledPositions is set", async () => {
+		const { queryByText, getByText, getByTestId } = render(
+			<BrowserRouter>
+				<ConfigProvider>
+					<IconProvider library={regularIcons}>
+						<IntlProvider locale="en">
+							<DataProviderContext.Provider value={{ dataProvider: data }}>
+								<AuthContext.Provider
+									value={{ currentUser: currentUser, isLoggedIn: true }}
+								>
+									<ToastProvider>
+										<ModalProvider>
+											<ListProvider>
+												<InputProvider>
+													<ArgumentInput
+														onSubmit={() => {}}
+														groupId={debate.id}
+														groupName={debate.name}
+														positions={debate.positions}
+														disabledPositions={[
+															{
+																id: debate.positions[0].id,
+																name: debate.positions[0].name,
+															},
+														]}
+														listId={"argumentList"}
+														positionId={debate.positions[0].id}
+														hideSourceAction
+														avatarSize={48}
+														placeholder={"Add an argument..."}
+													/>
+												</InputProvider>
+											</ListProvider>
+										</ModalProvider>
+									</ToastProvider>
+								</AuthContext.Provider>
+							</DataProviderContext.Provider>
+						</IntlProvider>
+					</IconProvider>
+				</ConfigProvider>
+			</BrowserRouter>,
+		);
 
-        expect(queryByText("Your reply...")).toBeInTheDocument();
-        expect(queryByText(debate.positions[0].name)).toBeInTheDocument();
-        expect(queryByText(debate.positions[1].name)).toBeInTheDocument();
-        expect(queryByText(currentUser.full_name)).not.toBeInTheDocument();
-    });
+		expect(queryByText("Add an argument...")).toBeInTheDocument();
+		expect(queryByText(debate.positions[0].name)).toBeInTheDocument();
+		expect(queryByText(debate.positions[1].name)).toBeInTheDocument();
 
-    it("should be disabled", () => {
-        const { queryByText } = render(
-            <BrowserRouter>
-                <ConfigProvider>
-                    <IconProvider library={regularIcons}>
-                        <IntlProvider locale="en">
-                            <DataProviderContext.Provider value={{ dataProvider: data }}>
-                                <AuthContext.Provider value={{ currentUser: currentUser, isLoggedIn: true }}>
-                                    <ToastProvider>
-                                        <ModalProvider>
-                                            <ListProvider>
+		const onSubmit = getByTestId("submit-button");
+		expect(onSubmit).toBeInTheDocument();
+		await act(async () => {
+			await userEvent.click(onSubmit);
+		});
+	});
 
-                                                <InputProvider>
-                                                    <ArgumentInput
-                                                        onSubmit={callback}
-                                                        groupId={debate.id}
-                                                        groupName={debate.name}
-                                                        positions={debate.positions}
-                                                        disabledPositions={[]}
-                                                        disabled
-                                                        listId={"argumentList"}
-                                                        positionId={debate.positions[0].id}
-                                                        hideSourceAction={false}
-                                                        avatarSize={48}
-                                                        placeholder={"Add an argument..."}
-                                                    />
-                                                </InputProvider>
+	it("should display error if the validation rules are not met", async () => {
+		const targetContent = {
+			root: {
+				children: [
+					{
+						children: [
+							{
+								detail: 0,
+								format: 1,
+								mode: "normal",
+								style: "",
+								text: "I write",
+								type: "text",
+								version: 1,
+							},
+						],
+						direction: "ltr",
+						format: "",
+						indent: 0,
+						type: "paragraph",
+						version: 1,
+					},
+				],
+				direction: "ltr",
+				format: "",
+				indent: 0,
+				type: "root",
+				version: 1,
+			},
+		};
+		const targetUrlContent = {
+			root: {
+				children: [
+					{
+						children: [
+							{
+								detail: 0,
+								format: 1,
+								mode: "normal",
+								style: "",
+								text: "I write https://mysite.com",
+								type: "text",
+								version: 1,
+							},
+						],
+						direction: "ltr",
+						format: "",
+						indent: 0,
+						type: "paragraph",
+						version: 1,
+					},
+				],
+				direction: "ltr",
+				format: "",
+				indent: 0,
+				type: "root",
+				version: 1,
+			},
+		};
 
-                                            </ListProvider>
-                                        </ModalProvider>
-                                    </ToastProvider>
-                                </AuthContext.Provider>
-                            </DataProviderContext.Provider>
-                        </IntlProvider>
-                    </IconProvider>
-                </ConfigProvider>
-            </BrowserRouter>
-        );
+		const AddContentComponent = () => {
+			const { setInputRichContent } = useInput();
 
-        expect(queryByText("Debate is closed")).toBeInTheDocument();
-    });
+			const setShortContent = (event) => {
+				setInputRichContent(targetContent);
+			};
 
-    it("should display side modal if the disabledPositions is set", async () => {
-        const { queryByText, getByText, getByTestId } = render(
-            <BrowserRouter>
-                <ConfigProvider>
-                    <IconProvider library={regularIcons}>
-                        <IntlProvider locale="en">
-                            <DataProviderContext.Provider value={{ dataProvider: data }}>
-                                <AuthContext.Provider value={{ currentUser: currentUser, isLoggedIn: true }}>
-                                    <ToastProvider>
-                                        <ModalProvider>
-                                            <ListProvider>
+			const setUrlContent = (event) => {
+				setInputRichContent(targetUrlContent);
+			};
 
-                                                <InputProvider>
-                                                    <ArgumentInput
-                                                        onSubmit={() => { }}
-                                                        groupId={debate.id}
-                                                        groupName={debate.name}
-                                                        positions={debate.positions}
-                                                        disabledPositions={[{ id: debate.positions[0].id, name: debate.positions[0].name }]}
-                                                        listId={"argumentList"}
-                                                        positionId={debate.positions[0].id}
-                                                        hideSourceAction
-                                                        avatarSize={48}
-                                                        placeholder={"Add an argument..."}
-                                                    />
-                                                </InputProvider>
+			return (
+				<>
+					<div onClick={setShortContent}>Click to set short content</div>
+					<div onClick={setUrlContent}>Click to set url content</div>
+				</>
+			);
+		};
 
-                                            </ListProvider>
-                                        </ModalProvider>
-                                    </ToastProvider>
-                                </AuthContext.Provider>
-                            </DataProviderContext.Provider>
-                        </IntlProvider>
-                    </IconProvider>
-                </ConfigProvider>
-            </BrowserRouter>
-        );
+		const { getByTestId, queryByText, getByRole } = render(
+			<BrowserRouter>
+				<ConfigProvider>
+					<IconProvider library={regularIcons}>
+						<IntlProvider locale="en">
+							<DataProviderContext.Provider value={{ dataProvider: data }}>
+								<AuthContext.Provider
+									value={{ currentUser: currentUser, isLoggedIn: true }}
+								>
+									<ToastProvider>
+										<ModalProvider>
+											<ListProvider>
+												<InputProvider>
+													<AddContentComponent />
+													<ArgumentInput
+														onSubmit={callback}
+														groupId={debate.id}
+														groupName={debate.name}
+														positions={debate.positions}
+														disabledPositions={[]}
+														disabled
+														listId={"argumentList"}
+														positionId={debate.positions[0].id}
+														hideSourceAction={false}
+														avatarSize={48}
+														placeholder={"Add an argument..."}
+													/>
+												</InputProvider>
+											</ListProvider>
+										</ModalProvider>
+									</ToastProvider>
+								</AuthContext.Provider>
+							</DataProviderContext.Provider>
+						</IntlProvider>
+					</IconProvider>
+				</ConfigProvider>
+			</BrowserRouter>,
+		);
 
-        expect(queryByText("Add an argument...")).toBeInTheDocument();
-        expect(queryByText(debate.positions[0].name)).toBeInTheDocument();
-        expect(queryByText(debate.positions[1].name)).toBeInTheDocument();
+		const input = getByTestId("argument-input");
+		await userEvent.click(input);
 
-        const onSubmit = getByTestId('submit-button');
-        expect(onSubmit).toBeInTheDocument();
-        await act(async () => { await userEvent.click(onSubmit) });
-    });
+		const onSubmit = getByTestId("submit-button");
 
-    it("should display error if the validation rules are not met", async () => {
-        const targetContent = { "root": { "children": [{ "children": [{ "detail": 0, "format": 1, "mode": "normal", "style": "", "text": "I write", "type": "text", "version": 1 }], "direction": "ltr", "format": "", "indent": 0, "type": "paragraph", "version": 1 }], "direction": "ltr", "format": "", "indent": 0, "type": "root", "version": 1 } };
-        const targetUrlContent = { "root": { "children": [{ "children": [{ "detail": 0, "format": 1, "mode": "normal", "style": "", "text": "I write https://mysite.com", "type": "text", "version": 1 }], "direction": "ltr", "format": "", "indent": 0, "type": "paragraph", "version": 1 }], "direction": "ltr", "format": "", "indent": 0, "type": "root", "version": 1 } };
+		// Empty content
+		await act(async () => {
+			await userEvent.click(onSubmit);
+		});
+		expect(queryByText("content can't be empty.")).toBeInTheDocument();
 
-        const AddContentComponent = () => {
-            const { setInputRichContent } = useInput();
+		// Short content
+		const setContentButton = screen.getByText("Click to set short content");
+		await act(async () => {
+			await userEvent.click(setContentButton);
+		});
+		expect(queryByText("I write")).toBeInTheDocument();
 
-            const setShortContent = (event) => {
-                setInputRichContent(targetContent);
-            }
+		await act(async () => {
+			await userEvent.click(onSubmit);
+		});
+		expect(
+			queryByText("content is too short. It must be at least 3 long."),
+		).toBeInTheDocument();
 
-            const setUrlContent = (event) => {
-                setInputRichContent(targetUrlContent);
-            }
+		// Url content
+		const setUrlContentButton = screen.getByText("Click to set url content");
+		await act(async () => {
+			await userEvent.click(setUrlContentButton);
+		});
+		expect(queryByText("I write https://mysite.com")).toBeInTheDocument();
+		expect(
+			queryByText("content must not contain any links"),
+		).toBeInTheDocument();
 
-            return (
-                <>
-                    <div onClick={setShortContent}>Click to set short content</div>
-                    <div onClick={setUrlContent}>Click to set url content</div>
-                </>
-            )
-        }
+		// await act(async () => { await userEvent.click(onSubmit) });
+	});
 
-        const { getByTestId, queryByText, getByRole } = render(
-            <BrowserRouter>
-                <ConfigProvider>
-                    <IconProvider library={regularIcons}>
-                        <IntlProvider locale="en">
-                            <DataProviderContext.Provider value={{ dataProvider: data }}>
-                                <AuthContext.Provider value={{ currentUser: currentUser, isLoggedIn: true }}>
-                                    <ToastProvider>
-                                        <ModalProvider>
-                                            <ListProvider>
+	it("should call submit callback", async () => {
+		const targetContent = {
+			root: {
+				children: [
+					{
+						children: [
+							{
+								detail: 0,
+								format: 1,
+								mode: "normal",
+								style: "",
+								text: "I write an argument",
+								type: "text",
+								version: 1,
+							},
+						],
+						direction: "ltr",
+						format: "",
+						indent: 0,
+						type: "paragraph",
+						version: 1,
+					},
+				],
+				direction: "ltr",
+				format: "",
+				indent: 0,
+				type: "root",
+				version: 1,
+			},
+		};
 
-                                                <InputProvider>
-                                                    <AddContentComponent />
-                                                    <ArgumentInput
-                                                        onSubmit={callback}
-                                                        groupId={debate.id}
-                                                        groupName={debate.name}
-                                                        positions={debate.positions}
-                                                        disabledPositions={[]}
-                                                        disabled
-                                                        listId={"argumentList"}
-                                                        positionId={debate.positions[0].id}
-                                                        hideSourceAction={false}
-                                                        avatarSize={48}
-                                                        placeholder={"Add an argument..."}
-                                                    />
-                                                </InputProvider>
+		const AddContentComponent = () => {
+			const { setInputRichContent } = useInput();
 
-                                            </ListProvider>
-                                        </ModalProvider>
-                                    </ToastProvider>
-                                </AuthContext.Provider>
-                            </DataProviderContext.Provider>
-                        </IntlProvider>
-                    </IconProvider>
-                </ConfigProvider>
-            </BrowserRouter>
-        );
+			const setContent = (event) => {
+				setInputRichContent(targetContent);
+			};
 
-        const input = getByTestId("argument-input");
-        await userEvent.click(input);
+			return (
+				<>
+					<div onClick={setContent}>Click to set content</div>
+				</>
+			);
+		};
 
-        const onSubmit = getByTestId('submit-button');
+		const { getByTestId, queryByText, getByRole } = render(
+			<BrowserRouter>
+				<ConfigProvider>
+					<IconProvider library={regularIcons}>
+						<IntlProvider locale="en">
+							<DataProviderContext.Provider value={{ dataProvider: data }}>
+								<AuthContext.Provider
+									value={{ currentUser: currentUser, isLoggedIn: true }}
+								>
+									<ToastProvider>
+										<ModalProvider>
+											<ListProvider>
+												<InputProvider>
+													<AddContentComponent />
+													<ArgumentInput
+														onSubmit={callback}
+														groupId={debate.id}
+														groupName={debate.name}
+														positions={debate.positions}
+														disabledPositions={[]}
+														disabled
+														listId={"argumentList"}
+														positionId={debate.positions[0].id}
+														hideSourceAction={false}
+														avatarSize={48}
+														placeholder={"Add an argument..."}
+													/>
+												</InputProvider>
+											</ListProvider>
+										</ModalProvider>
+									</ToastProvider>
+								</AuthContext.Provider>
+							</DataProviderContext.Provider>
+						</IntlProvider>
+					</IconProvider>
+				</ConfigProvider>
+			</BrowserRouter>,
+		);
 
-        // Empty content
-        await act(async () => { await userEvent.click(onSubmit) });
-        expect(queryByText("content can't be empty.")).toBeInTheDocument();
+		const input = getByTestId("argument-input");
+		await act(async () => {
+			await userEvent.click(input);
+		});
 
-        // Short content
-        const setContentButton = screen.getByText("Click to set short content");
-        await act(async () => { await userEvent.click(setContentButton) });
-        expect(queryByText("I write")).toBeInTheDocument();
+		const setContentButton = screen.getByText("Click to set content");
+		await act(async () => {
+			await userEvent.click(setContentButton);
+		});
+		expect(queryByText("I write an argument")).toBeInTheDocument();
 
-        await act(async () => { await userEvent.click(onSubmit) });
-        expect(queryByText("content is too short. It must be at least 3 long.")).toBeInTheDocument();
+		const onSubmit = getByTestId("submit-button");
+		await act(async () => {
+			await userEvent.click(onSubmit);
+		});
+		expect(callback).toHaveBeenCalled();
+	});
 
-        // Url content
-        const setUrlContentButton = screen.getByText("Click to set url content");
-        await act(async () => { await userEvent.click(setUrlContentButton) });
-        expect(queryByText("I write https://mysite.com")).toBeInTheDocument();
-        expect(queryByText("content must not contain any links")).toBeInTheDocument();
+	it("should render correctly when there is no position", () => {
+		const { queryByText } = render(
+			<BrowserRouter>
+				<ConfigProvider>
+					<IconProvider library={regularIcons}>
+						<IntlProvider locale="en">
+							<DataProviderContext.Provider value={{ dataProvider: data }}>
+								<AuthContext.Provider
+									value={{ currentUser: currentUser, isLoggedIn: true }}
+								>
+									<ToastProvider>
+										<ModalProvider>
+											<ListProvider>
+												<InputProvider>
+													<ArgumentInput
+														onSubmit={callback}
+														groupId={debate.id}
+														groupName={debate.name}
+														positions={[]}
+														disabledPositions={[]}
+														listId={"argumentList"}
+														positionId={null}
+														hideSourceAction={false}
+														avatarSize={48}
+														placeholder={"Add an argument..."}
+													/>
+												</InputProvider>
+											</ListProvider>
+										</ModalProvider>
+									</ToastProvider>
+								</AuthContext.Provider>
+							</DataProviderContext.Provider>
+						</IntlProvider>
+					</IconProvider>
+				</ConfigProvider>
+			</BrowserRouter>,
+		);
 
-        // await act(async () => { await userEvent.click(onSubmit) });
-    });
-
-    it("should call submit callback", async () => {
-        const targetContent = { "root": { "children": [{ "children": [{ "detail": 0, "format": 1, "mode": "normal", "style": "", "text": "I write an argument", "type": "text", "version": 1 }], "direction": "ltr", "format": "", "indent": 0, "type": "paragraph", "version": 1 }], "direction": "ltr", "format": "", "indent": 0, "type": "root", "version": 1 } };
-
-        const AddContentComponent = () => {
-            const { setInputRichContent } = useInput();
-
-            const setContent = (event) => {
-                setInputRichContent(targetContent);
-            }
-
-            return (
-                <>
-                    <div onClick={setContent}>Click to set content</div>
-                </>
-            )
-        }
-
-        const { getByTestId, queryByText, getByRole } = render(
-            <BrowserRouter>
-                <ConfigProvider>
-                    <IconProvider library={regularIcons}>
-                        <IntlProvider locale="en">
-                            <DataProviderContext.Provider value={{ dataProvider: data }}>
-                                <AuthContext.Provider value={{ currentUser: currentUser, isLoggedIn: true }}>
-                                    <ToastProvider>
-                                        <ModalProvider>
-                                            <ListProvider>
-
-                                                <InputProvider>
-                                                    <AddContentComponent />
-                                                    <ArgumentInput
-                                                        onSubmit={callback}
-                                                        groupId={debate.id}
-                                                        groupName={debate.name}
-                                                        positions={debate.positions}
-                                                        disabledPositions={[]}
-                                                        disabled
-                                                        listId={"argumentList"}
-                                                        positionId={debate.positions[0].id}
-                                                        hideSourceAction={false}
-                                                        avatarSize={48}
-                                                        placeholder={"Add an argument..."}
-                                                    />
-                                                </InputProvider>
-
-                                            </ListProvider>
-                                        </ModalProvider>
-                                    </ToastProvider>
-                                </AuthContext.Provider>
-                            </DataProviderContext.Provider>
-                        </IntlProvider>
-                    </IconProvider>
-                </ConfigProvider>
-            </BrowserRouter>
-        );
-
-        const input = getByTestId("argument-input");
-        await act(async () => { await userEvent.click(input) });
-
-        const setContentButton = screen.getByText("Click to set content");
-        await act(async () => { await userEvent.click(setContentButton) });
-        expect(queryByText("I write an argument")).toBeInTheDocument();
-
-        const onSubmit = getByTestId('submit-button');
-        await act(async () => { await userEvent.click(onSubmit) });
-        expect(callback).toHaveBeenCalled();
-    });
-
-    it("should render correctly when there is no position", () => {
-        const { queryByText } = render(
-            <BrowserRouter>
-                <ConfigProvider>
-                    <IconProvider library={regularIcons}>
-                        <IntlProvider locale="en">
-                            <DataProviderContext.Provider value={{ dataProvider: data }}>
-                                <AuthContext.Provider value={{ currentUser: currentUser, isLoggedIn: true }}>
-                                    <ToastProvider>
-                                        <ModalProvider>
-                                            <ListProvider>
-
-                                                <InputProvider>
-                                                    <ArgumentInput
-                                                        onSubmit={callback}
-                                                        groupId={debate.id}
-                                                        groupName={debate.name}
-                                                        positions={[]}
-                                                        disabledPositions={[]}
-                                                        listId={"argumentList"}
-                                                        positionId={null}
-                                                        hideSourceAction={false}
-                                                        avatarSize={48}
-                                                        placeholder={"Add an argument..."}
-                                                    />
-                                                </InputProvider>
-
-                                            </ListProvider>
-                                        </ModalProvider>
-                                    </ToastProvider>
-                                </AuthContext.Provider>
-                            </DataProviderContext.Provider>
-                        </IntlProvider>
-                    </IconProvider>
-                </ConfigProvider>
-            </BrowserRouter>
-        );
-
-        expect(queryByText("Add an argument...")).toBeInTheDocument();
-        expect(queryByText("Your position")).not.toBeInTheDocument();
-    });
+		expect(queryByText("Add an argument...")).toBeInTheDocument();
+		expect(queryByText("Your position")).not.toBeInTheDocument();
+	});
 });
-

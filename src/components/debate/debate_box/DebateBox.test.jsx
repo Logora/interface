@@ -1,7 +1,7 @@
+import { faker } from "@faker-js/faker";
+import { render } from "@testing-library/react";
 import React from "react";
-import { DefaultDebateBox } from './DebateBox.stories';
-import { render } from '@testing-library/react';
-import { faker } from '@faker-js/faker';
+import { DefaultDebateBox } from "./DebateBox.stories";
 
 const createUser = () => {
 	return {
@@ -18,11 +18,11 @@ const createUser = () => {
 		is_admin: false,
 		points: 41,
 		eloquence_title: null,
-		occupation: null
+		occupation: null,
 	};
 };
 
-const participants = Array.from([1, 2, 3], s => createUser());
+const participants = Array.from([1, 2, 3], (s) => createUser());
 
 const debate = {
 	id: 243,
@@ -36,7 +36,7 @@ const debate = {
 	votes_count: {
 		655: "2",
 		656: "6",
-		657: "0"
+		657: "0",
 	},
 	participants_count: 3,
 	group_context: {
@@ -48,42 +48,45 @@ const debate = {
 				id: 655,
 				name: "Oui",
 				language: "en",
-				translation_entries: []
+				translation_entries: [],
 			},
 			{
 				id: 656,
 				name: "Non",
 				language: "fr",
-    			translation_entries: []
+				translation_entries: [],
 			},
 			{
 				id: 657,
 				name: "Sans opinion",
 				language: "es",
-    			translation_entries: []
-			}
+				translation_entries: [],
+			},
 		],
-		author: createUser()
+		author: createUser(),
 	},
 	participants: participants,
 	language: "en",
-    translation_entries: []
-}
+	translation_entries: [],
+};
 
-describe('DebateBox', () => {
-	it ('renders DebateBox component', () => {
+describe("DebateBox", () => {
+	it("renders DebateBox component", () => {
 		const { getByText } = render(<DefaultDebateBox debate={debate} />);
 		expect(getByText(debate.name)).toBeInTheDocument();
 		expect(getByText(/75/)).toBeTruthy();
 		expect(getByText(/Non/)).toBeTruthy();
 	});
 
-	it ('renders DebateBox with correct links', () => {
-		const { getByText } = render(<DefaultDebateBox  debate={debate} />);
-		expect(getByText(debate.name).closest('a')).toHaveAttribute('href', '/espace-debat/group/' + debate.slug)
+	it("renders DebateBox with correct links", () => {
+		const { getByText } = render(<DefaultDebateBox debate={debate} />);
+		expect(getByText(debate.name).closest("a")).toHaveAttribute(
+			"href",
+			"/espace-debat/group/" + debate.slug,
+		);
 	});
 
-	it ('renders DebateBox with long position names without breaking layout', () => {
+	it("renders DebateBox with long position names without breaking layout", () => {
 		const debateWithLongNames = {
 			...debate,
 			group_context: {
@@ -93,25 +96,27 @@ describe('DebateBox', () => {
 						id: 655,
 						name: "This is a very long answer option that should be truncated properly with ellipsis",
 						language: "en",
-						translation_entries: []
+						translation_entries: [],
 					},
 					{
 						id: 656,
 						name: "Another extremely long position name that would normally break the layout of the debate card",
 						language: "fr",
-						translation_entries: []
+						translation_entries: [],
 					},
 					{
 						id: 657,
 						name: "Short",
 						language: "es",
-						translation_entries: []
-					}
-				]
-			}
+						translation_entries: [],
+					},
+				],
+			},
 		};
-		const { container } = render(<DefaultDebateBox debate={debateWithLongNames} />);
-		const numberText = container.querySelector('.debateBoxNumbersText');
+		const { container } = render(
+			<DefaultDebateBox debate={debateWithLongNames} />,
+		);
+		const numberText = container.querySelector(".debateBoxNumbersText");
 		expect(numberText).toBeInTheDocument();
 	});
 });

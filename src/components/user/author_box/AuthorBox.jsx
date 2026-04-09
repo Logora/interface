@@ -1,103 +1,145 @@
-import React from 'react';
-import { useRoutes } from '@logora/debate/data/config_provider';
-import { useIntl, FormattedMessage } from 'react-intl';
-import { Avatar } from '@logora/debate/user/avatar';
-import { Link } from '@logora/debate/action/link';
-import { Icon } from '@logora/debate/icons/icon';
-import { getLocaleIcon } from '@logora/debate/util/lang_emojis';
-import styles from './AuthorBox.module.scss';
-import cx from 'classnames';
+import { Link } from "@logora/debate/action/link";
+import { useRoutes } from "@logora/debate/data/config_provider";
+import { Icon } from "@logora/debate/icons/icon";
+import { Avatar } from "@logora/debate/user/avatar";
+import { getLocaleIcon } from "@logora/debate/util/lang_emojis";
+import cx from "classnames";
+import React from "react";
+import { FormattedMessage, useIntl } from "react-intl";
+import styles from "./AuthorBox.module.scss";
 
 export const AuthorBox = ({
-    fullName,
-    slug,
-    avatarUrl,
-    lastActivity,
-    showBadge = false,
-    points = 0,
-    eloquenceTitle,
-    occupation,
-    disableLinks = false,
-    isDeleted = false,
-    language = null,
-    languageDialect = null,
+	fullName,
+	slug,
+	avatarUrl,
+	lastActivity,
+	showBadge = false,
+	points = 0,
+	eloquenceTitle,
+	occupation,
+	disableLinks = false,
+	isDeleted = false,
+	language = null,
+	languageDialect = null,
 }) => {
-    const intl = useIntl();
-    const routes = useRoutes();
-    const isOnline = (new Date(lastActivity) > Date.now());
+	const intl = useIntl();
+	const routes = useRoutes();
+	const isOnline = new Date(lastActivity) > Date.now();
 
-    return (
-        <div className={cx(styles.authorBox, "author-box")}>
-            {!slug || disableLinks || isDeleted ?
-                <Avatar avatarUrl={isDeleted ? null : avatarUrl} userName={fullName} isOnline={isOnline} size={48} />
-                :
-                <Link to={routes.userShowLocation.toUrl({ userSlug: slug })} className={styles.authorLink}>
-                    <Avatar avatarUrl={avatarUrl} userName={fullName} isOnline={isOnline} size={48} />
-                </Link>
-            }
-            <div className={styles.authorNameBox}>
-                <div className={styles.authorName}>
-                    <div className={styles.authorNameLine}>
-                        {!slug || disableLinks || isDeleted ?
-                            <span className={cx(styles.authorLink, { [styles.deleted]: isDeleted, [styles.linkDisabled]: !slug || disableLinks })}>
-                                {isDeleted ? intl.formatMessage({ id: "user.author_box.deleted", defaultMessage: "Deleted" }) : fullName}
-                            </span>
-                            :
-                            <div className={styles.authorLink}>
-                                <Link to={routes.userShowLocation.toUrl({ userSlug: slug })}>
-                                    {fullName}
-                                </Link>
-                            </div>
-                        }
-                        {showBadge && !isDeleted &&
-                            <div className={styles.expertContainer}>
-                                <Icon name="expertBadge" width={14} height={14} />
-                                <span className={styles.expertBadge}>{intl.formatMessage({ id: "user.author_box.expert", defaultMessage: "Journalist" })}</span>
-                            </div>
-                        }
-                        {language && languageDialect &&
-                            <div className={styles.languageContainer}>
-                                {getLocaleIcon(language, languageDialect)}
-                            </div>
-                        }
-                    </div>
-                </div>
-                {!isDeleted &&
-                    <>
-                        <div className={styles.authorPointsBox}>
-                            {points != null &&
-                                <div className={styles.authorPoints} aria-label={intl.formatMessage({ id: "user.author_box.aria_label", defaultMessage: "User points" })}>
-                                    <span>
-                                        {intl.formatNumber(points, { notation: 'compact', maximumFractionDigits: 1, roundingMode: "floor" })}
-                                        {" "}
-                                        <FormattedMessage
-                                            id="user.author_box.points"
-                                            defaultMessage={"points"}
-                                            values={{ count: points }}
-                                        />
-                                    </span>
-                                </div>
-                            }
-                            {eloquenceTitle &&
-                                <>
-                                    <span className={styles.separator}></span>
-                                    <div className={styles.authorEloquence}>
-                                        <span>{intl.formatMessage({ id: "gamification.badge_box." + eloquenceTitle + ".reward", defaultMessage: "Eloquence title" })}</span>
-                                    </div>
-                                </>
-                            }
-                        </div>
-                        {occupation &&
-                            <div className={styles.occupationBox}>
-                                <span className={styles.authorPoints}>
-                                    {occupation}
-                                </span>
-                            </div>
-                        }
-                    </>
-                }
-            </div>
-        </div>
-    )
+	return (
+		<div className={cx(styles.authorBox, "author-box")}>
+			{!slug || disableLinks || isDeleted ? (
+				<Avatar
+					avatarUrl={isDeleted ? null : avatarUrl}
+					userName={fullName}
+					isOnline={isOnline}
+					size={48}
+				/>
+			) : (
+				<Link
+					to={routes.userShowLocation.toUrl({ userSlug: slug })}
+					className={styles.authorLink}
+				>
+					<Avatar
+						avatarUrl={avatarUrl}
+						userName={fullName}
+						isOnline={isOnline}
+						size={48}
+					/>
+				</Link>
+			)}
+			<div className={styles.authorNameBox}>
+				<div className={styles.authorName}>
+					<div className={styles.authorNameLine}>
+						{!slug || disableLinks || isDeleted ? (
+							<span
+								className={cx(styles.authorLink, {
+									[styles.deleted]: isDeleted,
+									[styles.linkDisabled]: !slug || disableLinks,
+								})}
+							>
+								{isDeleted
+									? intl.formatMessage({
+											id: "user.author_box.deleted",
+											defaultMessage: "Deleted",
+										})
+									: fullName}
+							</span>
+						) : (
+							<div className={styles.authorLink}>
+								<Link to={routes.userShowLocation.toUrl({ userSlug: slug })}>
+									{fullName}
+								</Link>
+							</div>
+						)}
+						{showBadge && !isDeleted && (
+							<div className={styles.expertContainer}>
+								<Icon name="expertBadge" width={14} height={14} />
+								<span className={styles.expertBadge}>
+									{intl.formatMessage({
+										id: "user.author_box.expert",
+										defaultMessage: "Journalist",
+									})}
+								</span>
+							</div>
+						)}
+						{language && languageDialect && (
+							<div className={styles.languageContainer}>
+								{getLocaleIcon(language, languageDialect)}
+							</div>
+						)}
+					</div>
+				</div>
+				{!isDeleted && (
+					<>
+						<div className={styles.authorPointsBox}>
+							{points != null && (
+								<div
+									className={styles.authorPoints}
+									aria-label={intl.formatMessage({
+										id: "user.author_box.aria_label",
+										defaultMessage: "User points",
+									})}
+								>
+									<span>
+										{intl.formatNumber(points, {
+											notation: "compact",
+											maximumFractionDigits: 1,
+											roundingMode: "floor",
+										})}{" "}
+										<FormattedMessage
+											id="user.author_box.points"
+											defaultMessage={"points"}
+											values={{ count: points }}
+										/>
+									</span>
+								</div>
+							)}
+							{eloquenceTitle && (
+								<>
+									<span className={styles.separator}></span>
+									<div className={styles.authorEloquence}>
+										<span>
+											{intl.formatMessage({
+												id:
+													"gamification.badge_box." +
+													eloquenceTitle +
+													".reward",
+												defaultMessage: "Eloquence title",
+											})}
+										</span>
+									</div>
+								</>
+							)}
+						</div>
+						{occupation && (
+							<div className={styles.occupationBox}>
+								<span className={styles.authorPoints}>{occupation}</span>
+							</div>
+						)}
+					</>
+				)}
+			</div>
+		</div>
+	);
 };
-

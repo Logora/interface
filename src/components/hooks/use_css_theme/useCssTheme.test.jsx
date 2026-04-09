@@ -1,31 +1,39 @@
-import React from 'react';
-import { render } from '@testing-library/react';
-import { DefaultTheme, ThemeKebabCase } from './useCssTheme.stories';
+import { render } from "@testing-library/react";
+import React from "react";
+import { DefaultTheme, ThemeKebabCase } from "./useCssTheme.stories";
 
 const theme = {
-  colorPrimary: "blue",
-  colorSecondary: "green",
+	colorPrimary: "blue",
+	colorSecondary: "green",
 };
 
 const themeKebabCase = {
-  "color-primary": "purple",
-  "color-secondary": "green",
+	"color-primary": "purple",
+	"color-secondary": "green",
 };
 
-describe('MyComponent', () => {
-  test('should apply theme styles to root element', () => {
-    render(<DefaultTheme />);
+describe("MyComponent", () => {
+	test("should apply theme styles to root element", () => {
+		render(<DefaultTheme />);
 
-    const root = document.getElementById('component');
-    expect(root.style.getPropertyValue('--color-primary')).toBe(theme.colorPrimary);
-    expect(root.style.getPropertyValue('--color-secondary')).toBe(theme.colorSecondary);
-  });
+		const root = document.getElementById("component");
+		expect(root.style.getPropertyValue("--color-primary")).toBe(
+			theme.colorPrimary,
+		);
+		expect(root.style.getPropertyValue("--color-secondary")).toBe(
+			theme.colorSecondary,
+		);
+	});
 
-  test('should apply if camelCase prop is false', () => {
-    render(<ThemeKebabCase />);
+	test("should apply if camelCase prop is false", () => {
+		render(<ThemeKebabCase />);
 
-    const root = document.getElementById('componentKebab');
-    expect(root.style.getPropertyValue('--color-primary')).toBe(themeKebabCase['color-primary']);
-    expect(root.style.getPropertyValue('--color-secondary')).toBe(themeKebabCase['color-secondary']);
-  });
+		const root = document.getElementById("componentKebab");
+		expect(root.style.getPropertyValue("--color-primary")).toBe(
+			themeKebabCase["color-primary"],
+		);
+		expect(root.style.getPropertyValue("--color-secondary")).toBe(
+			themeKebabCase["color-secondary"],
+		);
+	});
 });

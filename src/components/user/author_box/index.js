@@ -1,1 +1,1 @@
-export { AuthorBox } from './AuthorBox';
+export { AuthorBox } from "./AuthorBox";

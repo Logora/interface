@@ -1,64 +1,64 @@
-import React from 'react';
-import { render } from '@testing-library/react';
-import { useFontLoader } from './useFontLoader.js';
+import { render } from "@testing-library/react";
+import React from "react";
+import { useFontLoader } from "./useFontLoader.js";
 
-const WebFontLoader = require('webfontloader');
-const spy = vi.spyOn(WebFontLoader, 'load');
+const WebFontLoader = require("webfontloader");
+const spy = vi.spyOn(WebFontLoader, "load");
 
-describe('useFontLoader', () => {
-  it('should load font correctly', () => {
-    const ComponentWithFont = () => {
-      useFontLoader(["Droid Sans:300,400,700:latin"]);
+describe("useFontLoader", () => {
+	it("should load font correctly", () => {
+		const ComponentWithFont = () => {
+			useFontLoader(["Droid Sans:300,400,700:latin"]);
 
-      return <div>With font</div>;
-    }
+			return <div>With font</div>;
+		};
 
-    const container = render(<ComponentWithFont />);
-    expect(container.getByText('With font')).toBeTruthy();
-    expect(spy).toHaveBeenCalledTimes(1);
+		const container = render(<ComponentWithFont />);
+		expect(container.getByText("With font")).toBeTruthy();
+		expect(spy).toHaveBeenCalledTimes(1);
 
-    spy.mockClear();
-  });
+		spy.mockClear();
+	});
 
-  it('should not load font if not enabled', () => {
-    const ComponentWithFont = () => {
-      useFontLoader(["Droid Sans:300,400,700:latin"], false);
+	it("should not load font if not enabled", () => {
+		const ComponentWithFont = () => {
+			useFontLoader(["Droid Sans:300,400,700:latin"], false);
 
-      return <div>Font loader disabled</div>;
-    }
+			return <div>Font loader disabled</div>;
+		};
 
-    const container = render(<ComponentWithFont />);
-    expect(container.getByText('Font loader disabled')).toBeTruthy();
-    expect(spy).toHaveBeenCalledTimes(0);
+		const container = render(<ComponentWithFont />);
+		expect(container.getByText("Font loader disabled")).toBeTruthy();
+		expect(spy).toHaveBeenCalledTimes(0);
 
-    spy.mockClear();
-  });
+		spy.mockClear();
+	});
 
-  it('should not load font if fontFamilies is null', () => {
-    const ComponentWithFont = () => {
-      useFontLoader(null);
+	it("should not load font if fontFamilies is null", () => {
+		const ComponentWithFont = () => {
+			useFontLoader(null);
 
-      return <div>Without font</div>;
-    }
+			return <div>Without font</div>;
+		};
 
-    const container = render(<ComponentWithFont />);
-    expect(container.getByText('Without font')).toBeTruthy();
-    expect(spy).toHaveBeenCalledTimes(0);
-    
-    spy.mockClear();
-  });
+		const container = render(<ComponentWithFont />);
+		expect(container.getByText("Without font")).toBeTruthy();
+		expect(spy).toHaveBeenCalledTimes(0);
 
-  it('should not load font if no font families are passed', () => {
-    const ComponentWithFont = () => {
-      useFontLoader([]);
+		spy.mockClear();
+	});
 
-      return <div>Without font</div>;
-    }
+	it("should not load font if no font families are passed", () => {
+		const ComponentWithFont = () => {
+			useFontLoader([]);
 
-    const container = render(<ComponentWithFont />);
-    expect(container.getByText('Without font')).toBeTruthy();
-    expect(spy).toHaveBeenCalledTimes(0);
-    
-    spy.mockClear();
-  });
-})
+			return <div>Without font</div>;
+		};
+
+		const container = render(<ComponentWithFont />);
+		expect(container.getByText("Without font")).toBeTruthy();
+		expect(spy).toHaveBeenCalledTimes(0);
+
+		spy.mockClear();
+	});
+});

@@ -1,3 +1,3 @@
-export { IntlProvider } from './IntlProvider';
-export { IntlContext } from './IntlContext';
-export { useLocale } from './useLocale';
+export { IntlProvider } from "./IntlProvider";
+export { IntlContext } from "./IntlContext";
+export { useLocale } from "./useLocale";

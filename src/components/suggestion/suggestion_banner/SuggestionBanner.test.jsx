@@ -1,88 +1,93 @@
-import React from 'react';
-import { render, waitFor } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import { SuggestionBanner } from './SuggestionBanner';
-import { IntlProvider } from 'react-intl';
-import { MemoryRouter } from 'react-router-dom';
-import { IconProvider } from '@logora/debate/icons/icon_provider';
-import { ConfigProvider } from '@logora/debate/data/config_provider';
-import { ResponsiveProvider } from '@logora/debate/hooks/use_responsive';
-import { ModalProvider } from '@logora/debate/dialog/modal';
-import { Location } from '@logora/debate/util/location';
-import { dataProvider, DataProviderContext } from '@logora/debate/data/data_provider';
-import { AuthContext } from '@logora/debate/auth/use_auth';
-import { ListProvider } from '@logora/debate/list/list_provider';
-import { VoteProvider } from '@logora/debate/vote/vote_provider';
-import { ToastProvider } from '@logora/debate/dialog/toast_provider';
-import { faker } from '@faker-js/faker';
-import * as regularIcons from '@logora/debate/icons/regular_icons';
+import { faker } from "@faker-js/faker";
+import { AuthContext } from "@logora/debate/auth/use_auth";
+import { ConfigProvider } from "@logora/debate/data/config_provider";
+import {
+	DataProviderContext,
+	dataProvider,
+} from "@logora/debate/data/data_provider";
+import { ModalProvider } from "@logora/debate/dialog/modal";
+import { ToastProvider } from "@logora/debate/dialog/toast_provider";
+import { ResponsiveProvider } from "@logora/debate/hooks/use_responsive";
+import { IconProvider } from "@logora/debate/icons/icon_provider";
+import * as regularIcons from "@logora/debate/icons/regular_icons";
+import { ListProvider } from "@logora/debate/list/list_provider";
+import { Location } from "@logora/debate/util/location";
+import { VoteProvider } from "@logora/debate/vote/vote_provider";
+import { render, waitFor } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import React from "react";
+import { IntlProvider } from "react-intl";
+import { MemoryRouter } from "react-router-dom";
+import { SuggestionBanner } from "./SuggestionBanner";
 
-const SuggestionBannerShowLocation = new Location('espace-debat/suggestions');
+const SuggestionBannerShowLocation = new Location("espace-debat/suggestions");
 
 const routes = {
-    suggestionLocation: SuggestionBannerShowLocation
+	suggestionLocation: SuggestionBannerShowLocation,
 };
 
 const config = {
-    modules: {
-        suggestions: {
-            vote_goal: 30
-        }
-    }
+	modules: {
+		suggestions: {
+			vote_goal: 30,
+		},
+	},
 };
 
 const createFakeSuggestion = (id, authorName, suggestionName) => ({
-    id: id,
-    name: suggestionName,
-    slug: faker.lorem.slug(),
-    created_at: faker.date.recent().toISOString(),
-    score: faker.number.int(),
-    language: faker.helpers.arrayElement(['en', 'fr', 'es']),
-    is_active: true,
-    messages_count: faker.number.int(),
-    is_published: false,
-    published_at: faker.date.recent().toISOString(),
-    debate_suggestion: {
-        id: faker.number.int(),
-        created_at: faker.date.recent().toISOString(),
-        expires_at: faker.date.future().toISOString(),
-        total_upvotes: 20,
-        total_downvotes: faker.number.int({ min: 0, max: 100 }),
-        is_accepted: false,
-        is_expired: false,
-        author: {
-            id: faker.number.int(),
-            full_name: authorName,
-            image_url: faker.image.avatarGitHub()
-        },
-        language: faker.helpers.arrayElement(['en', 'fr', 'es']),
-        translation_entries: [],
-        name: faker.lorem.words(),
-    },
+	id: id,
+	name: suggestionName,
+	slug: faker.lorem.slug(),
+	created_at: faker.date.recent().toISOString(),
+	score: faker.number.int(),
+	language: faker.helpers.arrayElement(["en", "fr", "es"]),
+	is_active: true,
+	messages_count: faker.number.int(),
+	is_published: false,
+	published_at: faker.date.recent().toISOString(),
+	debate_suggestion: {
+		id: faker.number.int(),
+		created_at: faker.date.recent().toISOString(),
+		expires_at: faker.date.future().toISOString(),
+		total_upvotes: 20,
+		total_downvotes: faker.number.int({ min: 0, max: 100 }),
+		is_accepted: false,
+		is_expired: false,
+		author: {
+			id: faker.number.int(),
+			full_name: authorName,
+			image_url: faker.image.avatarGitHub(),
+		},
+		language: faker.helpers.arrayElement(["en", "fr", "es"]),
+		translation_entries: [],
+		name: faker.lorem.words(),
+	},
 });
 
 const vote = {
-    id: faker.number.int(),
-    voteable_type: faker.lorem.word(),
-    voteable_id: faker.number.int(),
-    user_id: faker.number.int()
+	id: faker.number.int(),
+	voteable_type: faker.lorem.word(),
+	voteable_id: faker.number.int(),
+	user_id: faker.number.int(),
 };
 
 const suggestions = [
-    createFakeSuggestion(1, "First Author", "First Suggestion"),
-    createFakeSuggestion(2, "Second Author", "Second Suggestion")
+	createFakeSuggestion(1, "First Author", "First Suggestion"),
+	createFakeSuggestion(2, "Second Author", "Second Suggestion"),
 ];
 
 const httpClient = {
-    get: () => Promise.resolve({
-        data: {
-            success: true,
-            data: [suggestions[0]]
-        }
-    }),
-    post: () => Promise.resolve({
-        data: { success: true, data: { resource: {} } }
-    })
+	get: () =>
+		Promise.resolve({
+			data: {
+				success: true,
+				data: [suggestions[0]],
+			},
+		}),
+	post: () =>
+		Promise.resolve({
+			data: { success: true, data: { resource: {} } },
+		}),
 };
 
 const currentUser = { id: vote.user_id };
@@ -90,82 +95,92 @@ const currentUser = { id: vote.user_id };
 const data = dataProvider(httpClient, "https://mock.example.api");
 
 const Providers = ({ children }) => (
-    <MemoryRouter>
-        <ConfigProvider config={config} routes={routes}>
-            <DataProviderContext.Provider value={{ dataProvider: data }}>
-                <AuthContext.Provider value={{ currentUser, isLoggedIn: true }}>
-                    <ResponsiveProvider>
-                        <ModalProvider>
-                            <ListProvider>
-                                <ToastProvider>
-                                    <VoteProvider>
-                                        <IntlProvider locale="en">
-                                            <IconProvider library={regularIcons}>
-                                                {children}
-                                            </IconProvider>
-                                        </IntlProvider>
-                                    </VoteProvider>
-                                </ToastProvider>
-                            </ListProvider>
-                        </ModalProvider>
-                    </ResponsiveProvider>
-                </AuthContext.Provider>
-            </DataProviderContext.Provider>
-        </ConfigProvider>
-    </MemoryRouter>
+	<MemoryRouter>
+		<ConfigProvider config={config} routes={routes}>
+			<DataProviderContext.Provider value={{ dataProvider: data }}>
+				<AuthContext.Provider value={{ currentUser, isLoggedIn: true }}>
+					<ResponsiveProvider>
+						<ModalProvider>
+							<ListProvider>
+								<ToastProvider>
+									<VoteProvider>
+										<IntlProvider locale="en">
+											<IconProvider library={regularIcons}>
+												{children}
+											</IconProvider>
+										</IntlProvider>
+									</VoteProvider>
+								</ToastProvider>
+							</ListProvider>
+						</ModalProvider>
+					</ResponsiveProvider>
+				</AuthContext.Provider>
+			</DataProviderContext.Provider>
+		</ConfigProvider>
+	</MemoryRouter>
 );
 
-const renderSuggestionBanner = () => render(
-    <Providers>
-        <SuggestionBanner />
-    </Providers>
-);
+const renderSuggestionBanner = () =>
+	render(
+		<Providers>
+			<SuggestionBanner />
+		</Providers>,
+	);
 
-describe('SuggestionBanner', () => {
-    it('renders the title and description correctly', () => {
-        const { getByText } = renderSuggestionBanner();
+describe("SuggestionBanner", () => {
+	it("renders the title and description correctly", () => {
+		const { getByText } = renderSuggestionBanner();
 
-        expect(getByText('Suggest a debate question')).toBeInTheDocument();
-        expect(getByText('Propose your own debate question and vote for your favourite. Questions that generate community interest are submitted to the editorial team.')).toBeInTheDocument();
-    });
+		expect(getByText("Suggest a debate question")).toBeInTheDocument();
+		expect(
+			getByText(
+				"Propose your own debate question and vote for your favourite. Questions that generate community interest are submitted to the editorial team.",
+			),
+		).toBeInTheDocument();
+	});
 
-    it('should render SuggestionBox correctly', async () => {
-        const { getByText } = renderSuggestionBanner();
+	it("should render SuggestionBox correctly", async () => {
+		const { getByText } = renderSuggestionBanner();
 
-        const button = getByText('Suggest');
-        expect(button).toBeInTheDocument();
-        const expectedHref = `/${routes.suggestionLocation.toUrl()}`;
-        expect(button.closest('a')).toHaveAttribute('href', expectedHref);
+		const button = getByText("Suggest");
+		expect(button).toBeInTheDocument();
+		const expectedHref = `/${routes.suggestionLocation.toUrl()}`;
+		expect(button.closest("a")).toHaveAttribute("href", expectedHref);
 
-        await waitFor(() => {
-            expect(getByText(suggestions[0].name)).toBeInTheDocument();
-            expect(getByText(suggestions[0].debate_suggestion.author.full_name)).toBeInTheDocument();
-            expect(getByText(`${suggestions[0].debate_suggestion.total_upvotes} supports`)).toBeInTheDocument();
-        });
-    });
+		await waitFor(() => {
+			expect(getByText(suggestions[0].name)).toBeInTheDocument();
+			expect(
+				getByText(suggestions[0].debate_suggestion.author.full_name),
+			).toBeInTheDocument();
+			expect(
+				getByText(`${suggestions[0].debate_suggestion.total_upvotes} supports`),
+			).toBeInTheDocument();
+		});
+	});
 
-    it('renders empty state when there are no suggestions', async () => {
-        const httpClient = {
-            get: () => Promise.resolve({ data: { success: true, data: [] } }),
-            post: () => Promise.resolve({ data: { success: true, data: { resource: {} } } })
-        };
+	it("renders empty state when there are no suggestions", async () => {
+		const httpClient = {
+			get: () => Promise.resolve({ data: { success: true, data: [] } }),
+			post: () =>
+				Promise.resolve({ data: { success: true, data: { resource: {} } } }),
+		};
 
-        const data = dataProvider(httpClient, "https://mock.example.api");
+		const data = dataProvider(httpClient, "https://mock.example.api");
 
-        const { getByText } = render(
-            <Providers>
-                <DataProviderContext.Provider value={{ dataProvider: data }}>
-                    <SuggestionBanner />
-                </DataProviderContext.Provider>
-            </Providers>
-        );
+		const { getByText } = render(
+			<Providers>
+				<DataProviderContext.Provider value={{ dataProvider: data }}>
+					<SuggestionBanner />
+				</DataProviderContext.Provider>
+			</Providers>,
+		);
 
-        await waitFor(() => {
-            expect(getByText('Add suggestion')).toBeInTheDocument();
-        });
-    });
+		await waitFor(() => {
+			expect(getByText("Add suggestion")).toBeInTheDocument();
+		});
+	});
 
-    /*
+	/*
     it('loads next suggestion after downvoting', async () => {
         const testSuggestions = [
             createFakeSuggestion(1, "First Author", "First Suggestion"),

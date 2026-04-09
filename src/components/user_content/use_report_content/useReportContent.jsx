@@ -1,9 +1,9 @@
-import React, { Suspense } from 'react';
 import { useAuth } from "@logora/debate/auth/use_auth";
-import { useModal } from '@logora/debate/dialog/modal';
-import { useAuthRequired } from '@logora/debate/hooks/use_auth_required';
-import { useConfig } from '@logora/debate/data/config_provider';
-import { ReportModal } from './ReportModal';
+import { useConfig } from "@logora/debate/data/config_provider";
+import { useModal } from "@logora/debate/dialog/modal";
+import { useAuthRequired } from "@logora/debate/hooks/use_auth_required";
+import React, { Suspense } from "react";
+import { ReportModal } from "./ReportModal";
 
 export const useReportContent = (reportableType, reportableId, modalTitle) => {
 	const { isLoggedIn, currentUser } = useAuth();
@@ -21,7 +21,7 @@ export const useReportContent = (reportableType, reportableId, modalTitle) => {
 						title={modalTitle}
 						allowAnonymousUser={config.actions?.allowAnonymousReport}
 					/>
-				</Suspense>
+				</Suspense>,
 			);
 		} else {
 			requireAuthentication();
@@ -29,4 +29,4 @@ export const useReportContent = (reportableType, reportableId, modalTitle) => {
 	};
 
 	return { reportContent };
-}
+};

@@ -1,1 +1,1 @@
-export { CheckboxIndicator, classes } from './checkbox-indicator';
+export { CheckboxIndicator, classes } from "./checkbox-indicator";

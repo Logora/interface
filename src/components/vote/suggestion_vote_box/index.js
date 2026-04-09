@@ -1,1 +1,1 @@
-export { SuggestionVoteBox } from './SuggestionVoteBox';
+export { SuggestionVoteBox } from "./SuggestionVoteBox";

@@ -1,78 +1,83 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import { useDeleteContent } from './useDeleteContent';
-import { IntlProvider } from 'react-intl';
-import { ToastProvider } from '@logora/debate/dialog/toast_provider';
-import { AuthContext } from '@logora/debate/auth/use_auth';
-import { dataProvider, DataProviderContext } from '@logora/debate/data/data_provider';
-import { ModalProvider } from '@logora/debate/dialog/modal';
-import { ConfigProvider } from '@logora/debate/data/config_provider';
-import { ListProvider } from '@logora/debate/list/list_provider';
-import { IconProvider } from '@logora/debate/icons/icon_provider';
-import * as regularIcons from '@logora/debate/icons/regular_icons';
-import { faker } from '@faker-js/faker';
+import { faker } from "@faker-js/faker";
+import { AuthContext } from "@logora/debate/auth/use_auth";
+import { ConfigProvider } from "@logora/debate/data/config_provider";
+import {
+	DataProviderContext,
+	dataProvider,
+} from "@logora/debate/data/data_provider";
+import { ModalProvider } from "@logora/debate/dialog/modal";
+import { ToastProvider } from "@logora/debate/dialog/toast_provider";
+import { IconProvider } from "@logora/debate/icons/icon_provider";
+import * as regularIcons from "@logora/debate/icons/regular_icons";
+import { ListProvider } from "@logora/debate/list/list_provider";
+import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import React from "react";
+import { IntlProvider } from "react-intl";
+import { useDeleteContent } from "./useDeleteContent";
 
 const httpClient = {
-    get: vi.fn(() =>  Promise.resolve(null)),
-    post: vi.fn(() => Promise.resolve(null)),
-    patch: vi.fn(() => Promise.resolve(null)),
-    delete: vi.fn(() => Promise.resolve(null))
+	get: vi.fn(() => Promise.resolve(null)),
+	post: vi.fn(() => Promise.resolve(null)),
+	patch: vi.fn(() => Promise.resolve(null)),
+	delete: vi.fn(() => Promise.resolve(null)),
 };
 
 const currentUser = {
-    id: faker.number.int(),
-}
+	id: faker.number.int(),
+};
 
 const ComponentWithDelete = () => {
-    const { deleteContent } = useDeleteContent();
+	const { deleteContent } = useDeleteContent();
 
-    return (
-        <button data-testid={"delete-button"} onClick={deleteContent}>
-            <span>Delete</span>
-        </button>
-    );
-}
+	return (
+		<button data-testid={"delete-button"} onClick={deleteContent}>
+			<span>Delete</span>
+		</button>
+	);
+};
 
 const data = dataProvider(httpClient, "https://mock.example.api");
 
 beforeAll(() => {
-    HTMLDialogElement.prototype.showModal = function () {
-      this.setAttribute("open", "");
-    };
-    HTMLDialogElement.prototype.close = function () {
-      this.removeAttribute("open");
-    };
-  });
+	HTMLDialogElement.prototype.showModal = function () {
+		this.setAttribute("open", "");
+	};
+	HTMLDialogElement.prototype.close = function () {
+		this.removeAttribute("open");
+	};
+});
 
-describe('useDeleteContent', () => {
-    it('should show ConfirmModal when useDeleteContent is called', async () => {
-        render(
-            <IntlProvider locale="en">
-                <ConfigProvider config={{}}>
-                    <DataProviderContext.Provider value={{ dataProvider: data }}>
-                        <AuthContext.Provider value={{ currentUser: currentUser, isLoggedIn: true }}>
-                            <ToastProvider>
-                                <IconProvider library={regularIcons}>
-                                    <ListProvider>
-                                        <ModalProvider>
-                                            <ComponentWithDelete />
-                                        </ModalProvider>
-                                    </ListProvider>
-                                </IconProvider>
-                            </ToastProvider>
-                        </AuthContext.Provider>
-                    </DataProviderContext.Provider>
-                </ConfigProvider>
-            </IntlProvider>
-        )
+describe("useDeleteContent", () => {
+	it("should show ConfirmModal when useDeleteContent is called", async () => {
+		render(
+			<IntlProvider locale="en">
+				<ConfigProvider config={{}}>
+					<DataProviderContext.Provider value={{ dataProvider: data }}>
+						<AuthContext.Provider
+							value={{ currentUser: currentUser, isLoggedIn: true }}
+						>
+							<ToastProvider>
+								<IconProvider library={regularIcons}>
+									<ListProvider>
+										<ModalProvider>
+											<ComponentWithDelete />
+										</ModalProvider>
+									</ListProvider>
+								</IconProvider>
+							</ToastProvider>
+						</AuthContext.Provider>
+					</DataProviderContext.Provider>
+				</ConfigProvider>
+			</IntlProvider>,
+		);
 
-        const deleteButton = screen.getByTestId("delete-button");
-        await userEvent.click(deleteButton)
+		const deleteButton = screen.getByTestId("delete-button");
+		await userEvent.click(deleteButton);
 
-        expect(screen.getByText("Delete content")).toBeTruthy();
-        expect(screen.getByText("Delete contribution")).toBeTruthy();
-        expect(screen.getByText("Yes")).toBeTruthy();
-        expect(screen.getByText("No")).toBeTruthy();
-    });
+		expect(screen.getByText("Delete content")).toBeTruthy();
+		expect(screen.getByText("Delete contribution")).toBeTruthy();
+		expect(screen.getByText("Yes")).toBeTruthy();
+		expect(screen.getByText("No")).toBeTruthy();
+	});
 });

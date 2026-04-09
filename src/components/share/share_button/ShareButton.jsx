@@ -1,36 +1,59 @@
-import React, { useState, useRef } from "react";
 import { Icon } from "@logora/debate/icons/icon";
 import { ShareBox } from "@logora/debate/share/share_box";
-import { useIntl } from "react-intl";
-import useOnClickOutside from 'use-onclickoutside';
-import styles from "./ShareButton.module.scss";
 import cx from "classnames";
+import React, { useState, useRef } from "react";
+import { useIntl } from "react-intl";
+import useOnClickOutside from "use-onclickoutside";
+import styles from "./ShareButton.module.scss";
 
-export const ShareButton = ({ showText, shareUrl, shareTitle, shareText = false, shareCode, showShareCode = false, iconSize = 22, className, tooltipPosition = 'bottom' }) => {
+export const ShareButton = ({
+	showText,
+	shareUrl,
+	shareTitle,
+	shareText = false,
+	shareCode,
+	showShareCode = false,
+	iconSize = 22,
+	className,
+	tooltipPosition = "bottom",
+}) => {
 	const popoverContentRef = useRef();
 	const intl = useIntl();
 	const [popoverActive, setPopoverActive] = useState(false);
 
 	const buildShareLink = () => {
 		let shareUrlBuild = shareUrl;
-		if (typeof window !== 'undefined') {
-			shareUrlBuild += "?redirect_url=" + window.location.protocol + "//" + window.location.hostname;
+		if (typeof window !== "undefined") {
+			shareUrlBuild +=
+				"?redirect_url=" +
+				window.location.protocol +
+				"//" +
+				window.location.hostname;
 		}
 		return shareUrlBuild;
-	}
+	};
 
 	const shareUrlBuild = buildShareLink();
 
 	const handleClickOutsidePopover = (event) => {
-		if (popoverContentRef && !popoverContentRef.current.contains(event.target)) {
+		if (
+			popoverContentRef &&
+			!popoverContentRef.current.contains(event.target)
+		) {
 			setPopoverActive(false);
 		}
 	};
 
 	const handleShare = () => {
-		if (typeof window !== 'undefined') {
-			let mql = window.matchMedia("(max-width: 600px)");
-			if ((typeof window !== 'undefined') && window.navigator.share && window.navigator.maxTouchPoints && window.navigator?.maxTouchPoints > 0 && mql.matches) {
+		if (typeof window !== "undefined") {
+			const mql = window.matchMedia("(max-width: 600px)");
+			if (
+				typeof window !== "undefined" &&
+				window.navigator.share &&
+				window.navigator.maxTouchPoints &&
+				window.navigator?.maxTouchPoints > 0 &&
+				mql.matches
+			) {
 				handleMobileShare();
 			} else {
 				setPopoverActive(true);
@@ -39,43 +62,70 @@ export const ShareButton = ({ showText, shareUrl, shareTitle, shareText = false,
 	};
 
 	const handleMobileShare = () => {
-		if (typeof window !== 'undefined') {
-			window.navigator.share({
-				text: shareText,
-				title: shareTitle,
-				url: shareUrlBuild
-			}).catch(error => {
-				// DO NOTHING
-			});
+		if (typeof window !== "undefined") {
+			window.navigator
+				.share({
+					text: shareText,
+					title: shareTitle,
+					url: shareUrlBuild,
+				})
+				.catch((error) => {
+					// DO NOTHING
+				});
 		}
-	}
+	};
 
 	useOnClickOutside(popoverContentRef, handleClickOutsidePopover);
 
 	return (
 		<div
-			tabIndex='0'
+			tabIndex="0"
 			onKeyDown={(e) => {
 				if (e.key === "Enter" || e.key === " ") {
-				  e.preventDefault();
-				  handleShare();
+					e.preventDefault();
+					handleShare();
 				}
-			  }}
-			title={intl.formatMessage({ id: "share.share_button.text", defaultMessage: "Share" })}
+			}}
+			title={intl.formatMessage({
+				id: "share.share_button.text",
+				defaultMessage: "Share",
+			})}
 			className={cx(styles.shareButtonContainer, className)}
 			onClick={handleShare}
 			data-tid="action_share_button"
 		>
 			<div
-				className={cx(styles.popoverWrapper, { [styles.popoverActive]: popoverActive })}
+				className={cx(styles.popoverWrapper, {
+					[styles.popoverActive]: popoverActive,
+				})}
 			>
 				<Icon name="share" height={iconSize} width={iconSize} />
-				{showText && <div className={styles.shareButtonText}>{intl.formatMessage({ id: "share.share_button.text", defaultMessage: "Share" })}</div>}
-				<div ref={popoverContentRef} className={cx(styles.popoverContent, { [styles.popoverContentWithCode]: showShareCode })}>
-					{popoverActive && <ShareBox shareUrl={shareUrlBuild} shareTitle={shareTitle} shareText={shareText} showShareCode={showShareCode} shareCode={shareCode} tooltipPosition={tooltipPosition} />}
+				{showText && (
+					<div className={styles.shareButtonText}>
+						{intl.formatMessage({
+							id: "share.share_button.text",
+							defaultMessage: "Share",
+						})}
+					</div>
+				)}
+				<div
+					ref={popoverContentRef}
+					className={cx(styles.popoverContent, {
+						[styles.popoverContentWithCode]: showShareCode,
+					})}
+				>
+					{popoverActive && (
+						<ShareBox
+							shareUrl={shareUrlBuild}
+							shareTitle={shareTitle}
+							shareText={shareText}
+							showShareCode={showShareCode}
+							shareCode={shareCode}
+							tooltipPosition={tooltipPosition}
+						/>
+					)}
 				</div>
 			</div>
 		</div>
 	);
-}
-
+};

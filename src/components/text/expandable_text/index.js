@@ -1,1 +1,1 @@
-export { ExpandableText } from './ExpandableText';
+export { ExpandableText } from "./ExpandableText";

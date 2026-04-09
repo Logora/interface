@@ -1,12 +1,12 @@
-import React from "react";
-import { useIntl, FormattedMessage } from "react-intl";
-import { useLocation } from "react-router";
-import useSessionStorageState from '@rooks/use-sessionstorage-state';
+import { Button } from "@logora/debate/action/button";
 import { EMAIL_CONSENT_STORAGE_KEY } from "@logora/debate/auth/use_auth";
 import { Icon } from "@logora/debate/icons/icon";
 import { Toggle } from "@logora/debate/input/toggle";
-import { Button } from "@logora/debate/action/button";
+import useSessionStorageState from "@rooks/use-sessionstorage-state";
 import cx from "classnames";
+import React from "react";
+import { FormattedMessage, useIntl } from "react-intl";
+import { useLocation } from "react-router";
 import styles from "./SSOForm.module.scss";
 
 export const SSOForm = ({
@@ -30,7 +30,7 @@ export const SSOForm = ({
 }) => {
 	const [emailConsent, setEmailConsent] = showEmailConsent
 		? useSessionStorageState(EMAIL_CONSENT_STORAGE_KEY, false)
-		: [false, () => { }];
+		: [false, () => {}];
 	const intl = useIntl();
 	const location = useLocation();
 
@@ -155,7 +155,6 @@ export const SSOForm = ({
 					</Button>
 					{hideBelowButton ? null : (
 						<>
-
 							{hideLoginButton === true ? null : (
 								<div className={styles.cgu}>
 									{intl.formatMessage({
@@ -186,7 +185,8 @@ export const SSOForm = ({
 										label={intl.formatMessage(
 											{
 												id: "auth.sso_form.consent_label",
-												defaultMessage: "I agree to receive emails from the editor",
+												defaultMessage:
+													"I agree to receive emails from the editor",
 											},
 											{ variable: providerName },
 										)}

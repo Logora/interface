@@ -1,1 +1,1 @@
-export { UpDownVoteBox } from './UpDownVoteBox';
+export { UpDownVoteBox } from "./UpDownVoteBox";

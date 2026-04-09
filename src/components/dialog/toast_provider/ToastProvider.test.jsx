@@ -1,64 +1,66 @@
-import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { fireEvent, render, screen } from "@testing-library/react";
+import React from "react";
 import { IntlProvider } from "react-intl";
-import { ToastProvider } from './ToastProvider';
-import { useToast } from './useToast';
+import { ToastProvider } from "./ToastProvider";
+import { useToast } from "./useToast";
 
-describe('ToastProvider', () => {
-    it('should render container without toast by default', () => {
-        render(
-            <IntlProvider locale="en">
-                <ToastProvider>
-                    <span>Hello world</span>
-                </ToastProvider>
-            </IntlProvider>
-        );
+describe("ToastProvider", () => {
+	it("should render container without toast by default", () => {
+		render(
+			<IntlProvider locale="en">
+				<ToastProvider>
+					<span>Hello world</span>
+				</ToastProvider>
+			</IntlProvider>,
+		);
 
-        expect(screen.getByText("Hello world")).toBeTruthy();
-    });
+		expect(screen.getByText("Hello world")).toBeTruthy();
+	});
 
-    it('should render toast when called', async () => {
-        let mock = () => { }
-        Object.defineProperty(window, 'matchMedia', {
-            writable: true,
-            value: (query) => {
-                return {
-                    matches: false,
-                    media: query,
-                    onchange: null,
-                    addEventListener: mock,
-                    removeEventListener: mock,
-                    dispatchEvent: mock,
-                }
-            }
-        });
+	it("should render toast when called", async () => {
+		const mock = () => {};
+		Object.defineProperty(window, "matchMedia", {
+			writable: true,
+			value: (query) => {
+				return {
+					matches: false,
+					media: query,
+					onchange: null,
+					addEventListener: mock,
+					removeEventListener: mock,
+					dispatchEvent: mock,
+				};
+			},
+		});
 
-        const ComponentWithToast = () => {
-            const { toast, toasts } = useToast();
+		const ComponentWithToast = () => {
+			const { toast, toasts } = useToast();
 
-            return (
-                <>
-                    <div data-testid="toast-button" onClick={() => toast("First toast")}>My toaster</div>
-                    <div data-testid="toast-counter">{toasts.length} toasts</div>
-                </>
-            )
-        }
+			return (
+				<>
+					<div data-testid="toast-button" onClick={() => toast("First toast")}>
+						My toaster
+					</div>
+					<div data-testid="toast-counter">{toasts.length} toasts</div>
+				</>
+			);
+		};
 
-        render(
-            <IntlProvider locale="en">
-                <ToastProvider>
-                    <ComponentWithToast />
-                </ToastProvider>
-            </IntlProvider>
-        );
+		render(
+			<IntlProvider locale="en">
+				<ToastProvider>
+					<ComponentWithToast />
+				</ToastProvider>
+			</IntlProvider>,
+		);
 
-        const toastButton = screen.getByTestId("toast-button");
-        expect(screen.queryByText("0 toasts")).toBeTruthy();
-        expect(screen.queryByText("My toaster")).toBeInTheDocument();
+		const toastButton = screen.getByTestId("toast-button");
+		expect(screen.queryByText("0 toasts")).toBeTruthy();
+		expect(screen.queryByText("My toaster")).toBeInTheDocument();
 
-        await fireEvent.click(toastButton);
+		await fireEvent.click(toastButton);
 
-        expect(screen.queryByText("First toast")).toBeTruthy();
-        expect(screen.getByText("1 toasts")).toBeTruthy();
-    });
+		expect(screen.queryByText("First toast")).toBeTruthy();
+		expect(screen.getByText("1 toasts")).toBeTruthy();
+	});
 });

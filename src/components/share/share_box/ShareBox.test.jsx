@@ -1,142 +1,142 @@
-import React from 'react';
-import { render } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import { ShareBox } from './ShareBox';
-import { IntlProvider } from 'react-intl';
-import { IconProvider } from '@logora/debate/icons/icon_provider';
-import * as regularIcons from '@logora/debate/icons/regular_icons';
+import { IconProvider } from "@logora/debate/icons/icon_provider";
+import * as regularIcons from "@logora/debate/icons/regular_icons";
+import { render } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import React from "react";
+import { IntlProvider } from "react-intl";
+import { ShareBox } from "./ShareBox";
 
-describe('ShareBox', () => {
-    it('should render box with share option', () => {
-        const { queryAllByRole } = render(
-            <IntlProvider locale="en">
-                <IconProvider library={regularIcons}>
-                    <ShareBox 
-                        shareUrl="https://example.com/share-link"
-                        shareTitle="Here is an interesting link"
-                        shareText="Hello, I stumbled upon this interesting article about asteroids. You should check it out !"
-                    />
-                </IconProvider>
-            </IntlProvider>
-        );
-        expect(queryAllByRole("button")).toHaveLength(4)
-    });
+describe("ShareBox", () => {
+	it("should render box with share option", () => {
+		const { queryAllByRole } = render(
+			<IntlProvider locale="en">
+				<IconProvider library={regularIcons}>
+					<ShareBox
+						shareUrl="https://example.com/share-link"
+						shareTitle="Here is an interesting link"
+						shareText="Hello, I stumbled upon this interesting article about asteroids. You should check it out !"
+					/>
+				</IconProvider>
+			</IntlProvider>,
+		);
+		expect(queryAllByRole("button")).toHaveLength(4);
+	});
 
-    it('should copy to clipboard when sharing link', async () => {
-        const user = userEvent.setup();
-        const shareUrl = "https://example.com/share-link";
+	it("should copy to clipboard when sharing link", async () => {
+		const user = userEvent.setup();
+		const shareUrl = "https://example.com/share-link";
 
-        Object.defineProperty(window.navigator, 'clipboard', {
-            configurable: true,
-            value: {
-                writeText: vi.fn(),
-            },
-        });
+		Object.defineProperty(window.navigator, "clipboard", {
+			configurable: true,
+			value: {
+				writeText: vi.fn(),
+			},
+		});
 
-        const { queryAllByRole, getByText } = render(
-            <IntlProvider locale="en">
-                <IconProvider library={regularIcons}>
-                    <ShareBox 
-                        shareUrl={shareUrl}
-                        shareTitle="Here is an interesting link"
-                        shareText="Hello, I stumbled upon this interesting article about asteroids. You should check it out !"
-                    />
-                </IconProvider>
-            </IntlProvider>
-        );
-        const icons = (queryAllByRole("button"));
-        const linkIcon = icons[0];
+		const { queryAllByRole, getByText } = render(
+			<IntlProvider locale="en">
+				<IconProvider library={regularIcons}>
+					<ShareBox
+						shareUrl={shareUrl}
+						shareTitle="Here is an interesting link"
+						shareText="Hello, I stumbled upon this interesting article about asteroids. You should check it out !"
+					/>
+				</IconProvider>
+			</IntlProvider>,
+		);
+		const icons = queryAllByRole("button");
+		const linkIcon = icons[0];
 
-        await user.hover(linkIcon);
-        expect(getByText(/Copy to clipboard/i)).toBeTruthy();
+		await user.hover(linkIcon);
+		expect(getByText(/Copy to clipboard/i)).toBeTruthy();
 
-        await user.click(linkIcon);
-        // TODO : add copy to clipboard test
-    });
+		await user.click(linkIcon);
+		// TODO : add copy to clipboard test
+	});
 
-    it('should open Facebook share link on click', async () => {
-        const user = userEvent.setup();
-        const { queryAllByRole, getByText} = render(
-            <IntlProvider locale="en">
-                <IconProvider library={regularIcons}>
-                    <ShareBox 
-                        shareUrl="https://example.com/share-link"
-                        shareTitle="Here is an interesting link"
-                        shareText="Hello, I stumbled upon this interesting article about asteroids. You should check it out !"
-                    />
-                </IconProvider>
-            </IntlProvider>
-        );
-        const icons = (queryAllByRole("button"));
-        const facebookIcon = icons[1];
+	it("should open Facebook share link on click", async () => {
+		const user = userEvent.setup();
+		const { queryAllByRole, getByText } = render(
+			<IntlProvider locale="en">
+				<IconProvider library={regularIcons}>
+					<ShareBox
+						shareUrl="https://example.com/share-link"
+						shareTitle="Here is an interesting link"
+						shareText="Hello, I stumbled upon this interesting article about asteroids. You should check it out !"
+					/>
+				</IconProvider>
+			</IntlProvider>,
+		);
+		const icons = queryAllByRole("button");
+		const facebookIcon = icons[1];
 
-        await user.hover(facebookIcon);
-        expect(getByText(/Share on Facebook/i)).toBeTruthy();
-    });
+		await user.hover(facebookIcon);
+		expect(getByText(/Share on Facebook/i)).toBeTruthy();
+	});
 
-    it('should open twitter share link on click', async () => {
-        const user = userEvent.setup();
-        const { queryAllByRole, getByText} = render(
-            <IntlProvider locale="en">
-                <IconProvider library={regularIcons}>
-                    <ShareBox 
-                        shareUrl="https://example.com/share-link"
-                        shareTitle="Here is an interesting link"
-                        shareText="Hello, I stumbled upon this interesting article about asteroids. You should check it out !"
-                    />
-                </IconProvider>
-            </IntlProvider>
-        );
-        const icons = (queryAllByRole("button"));
-        const twitterIcon = icons[2];
+	it("should open twitter share link on click", async () => {
+		const user = userEvent.setup();
+		const { queryAllByRole, getByText } = render(
+			<IntlProvider locale="en">
+				<IconProvider library={regularIcons}>
+					<ShareBox
+						shareUrl="https://example.com/share-link"
+						shareTitle="Here is an interesting link"
+						shareText="Hello, I stumbled upon this interesting article about asteroids. You should check it out !"
+					/>
+				</IconProvider>
+			</IntlProvider>,
+		);
+		const icons = queryAllByRole("button");
+		const twitterIcon = icons[2];
 
-        await user.hover(twitterIcon);
-        expect(getByText(/Share on Twitter/i)).toBeTruthy();
-    });
+		await user.hover(twitterIcon);
+		expect(getByText(/Share on Twitter/i)).toBeTruthy();
+	});
 
-    it('should open email share on click', async () => {
-        const user = userEvent.setup();
-        const { queryAllByRole, getByText} = render(
-            <IntlProvider locale="en">
-                <IconProvider library={regularIcons}>
-                    <ShareBox 
-                        shareUrl="https://example.com/share-link"
-                        shareTitle="Here is an interesting link"
-                        shareText="Hello, I stumbled upon this interesting article about asteroids. You should check it out !"
-                    />
-                </IconProvider>
-            </IntlProvider>
-        );
-        const icons = (queryAllByRole("button"));
-        const mailIcon = icons[3];
+	it("should open email share on click", async () => {
+		const user = userEvent.setup();
+		const { queryAllByRole, getByText } = render(
+			<IntlProvider locale="en">
+				<IconProvider library={regularIcons}>
+					<ShareBox
+						shareUrl="https://example.com/share-link"
+						shareTitle="Here is an interesting link"
+						shareText="Hello, I stumbled upon this interesting article about asteroids. You should check it out !"
+					/>
+				</IconProvider>
+			</IntlProvider>,
+		);
+		const icons = queryAllByRole("button");
+		const mailIcon = icons[3];
 
-        await user.hover(mailIcon);
-        expect(getByText(/Share by email/i)).toBeTruthy();
-    });
+		await user.hover(mailIcon);
+		expect(getByText(/Share by email/i)).toBeTruthy();
+	});
 
-    it('should render box with code share option and copy to clipboard on click', async () => {
-        const user = userEvent.setup();
-        const { queryAllByRole, getByText } = render(
-            <IntlProvider locale="en">
-                <IconProvider library={regularIcons}>
-                    <ShareBox 
-                        shareUrl="https://example.com/share-link"
-                        shareTitle="Here is an interesting link"
-                        shareText="Hello, I stumbled upon this interesting article about asteroids. You should check it out !"
-                        showShareCode
-                    />
-                </IconProvider>
-            </IntlProvider>
-        );
-        expect(queryAllByRole("button")).toHaveLength(5);
+	it("should render box with code share option and copy to clipboard on click", async () => {
+		const user = userEvent.setup();
+		const { queryAllByRole, getByText } = render(
+			<IntlProvider locale="en">
+				<IconProvider library={regularIcons}>
+					<ShareBox
+						shareUrl="https://example.com/share-link"
+						shareTitle="Here is an interesting link"
+						shareText="Hello, I stumbled upon this interesting article about asteroids. You should check it out !"
+						showShareCode
+					/>
+				</IconProvider>
+			</IntlProvider>,
+		);
+		expect(queryAllByRole("button")).toHaveLength(5);
 
-        const icons = (queryAllByRole("button"));
-        const codeIcon = icons[4];
+		const icons = queryAllByRole("button");
+		const codeIcon = icons[4];
 
-        await user.hover(codeIcon);
-        expect(getByText(/Copy embed code/i)).toBeTruthy();
+		await user.hover(codeIcon);
+		expect(getByText(/Copy embed code/i)).toBeTruthy();
 
-        await user.click(codeIcon);
-        // TODO : add copy to clipboard test
-    });
+		await user.click(codeIcon);
+		// TODO : add copy to clipboard test
+	});
 });

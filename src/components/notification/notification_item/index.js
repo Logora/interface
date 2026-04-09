@@ -1,1 +1,1 @@
-export { NotificationItem } from "./NotificationItem"
+export { NotificationItem } from "./NotificationItem";

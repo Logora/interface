@@ -1,47 +1,82 @@
-import React, { Suspense, lazy, useEffect, useState, useCallback } from "react";
+import { Button } from "@logora/debate/action/button";
 import { useAuth } from "@logora/debate/auth/use_auth";
-import { useConfig } from '@logora/debate/data/config_provider';
-import { useIntl } from "react-intl";
-import { useTranslatedContent } from '@logora/debate/translation/translated_content';
-import { ContentHeader } from '@logora/debate/user_content/content_header';
-import { ReadMore } from '@logora/debate/text/read_more';
-import { Icon } from '@logora/debate/icons/icon';
-import { TranslationButton } from '@logora/debate/translation/translation_button';
-import { UserContentSkeleton } from '@logora/debate/skeleton/user_content_skeleton';
+import { useConfig } from "@logora/debate/data/config_provider";
 import { AnnouncementDialog } from "@logora/debate/dialog/announcement_dialog";
+import { Icon } from "@logora/debate/icons/icon";
+import { VotePaginatedList } from "@logora/debate/list/paginated_list";
+import { UserContentSkeleton } from "@logora/debate/skeleton/user_content_skeleton";
 import { SourceListItem } from "@logora/debate/source/source_list_item";
-import { ContentFooter } from '@logora/debate/user_content/content_footer';
-import { VoteButton } from '@logora/debate/vote/vote_button';
-import { Button } from '@logora/debate/action/button';
-import { VotePaginatedList } from '@logora/debate/list/paginated_list';
-import { HashScroll } from '@logora/debate/tools/hash_scroll';
+import { ReadMore } from "@logora/debate/text/read_more";
+import { HashScroll } from "@logora/debate/tools/hash_scroll";
+import { useTranslatedContent } from "@logora/debate/translation/translated_content";
+import { TranslationButton } from "@logora/debate/translation/translation_button";
+import { ContentFooter } from "@logora/debate/user_content/content_footer";
+import { ContentHeader } from "@logora/debate/user_content/content_header";
+import { VoteButton } from "@logora/debate/vote/vote_button";
+import cx from "classnames";
+import React, { Suspense, lazy, useEffect, useState, useCallback } from "react";
+import { useIntl } from "react-intl";
+import styles from "./Argument.module.scss";
 import { ReplyFooter } from "./ReplyFooter";
 import { useRichContent } from "./useRichContent";
-import cx from "classnames";
-import styles from "./Argument.module.scss";
-const ArgumentInput = lazy(() => import('@logora/debate/input/argument_input'));
+const ArgumentInput = lazy(() => import("@logora/debate/input/argument_input"));
 
-export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupType, groupName, positions = [], disableLinks = false, parentArgument, flashParent, expandable, disabled = false, hideFooter = false, hideReplies, vote, fixedContentHeight = false, enableEdition = true, enableDeletion = true, deleteListId, showModerationFeedback, lineCount = 5, replyRedirectUrl, hideContent = false }) => {
+export const Argument = ({
+	argument,
+	argumentReplies,
+	nestingLevel = 0,
+	groupType,
+	groupName,
+	positions = [],
+	disableLinks = false,
+	parentArgument,
+	flashParent,
+	expandable,
+	disabled = false,
+	hideFooter = false,
+	hideReplies,
+	vote,
+	fixedContentHeight = false,
+	enableEdition = true,
+	enableDeletion = true,
+	deleteListId,
+	showModerationFeedback,
+	lineCount = 5,
+	replyRedirectUrl,
+	hideContent = false,
+}) => {
 	const intl = useIntl();
 	const { isLoggedIn, currentUser } = useAuth();
 	const userIsBanned = currentUser?.moderation_status === "banned";
 	const config = useConfig();
-
-
 
 	const [expandReplies, setExpandReplies] = useState(false);
 	const [flash, setFlash] = useState(false);
 	const [showReplyInput, setShowReplyInput] = useState(false);
 	const richContent = useRichContent(argument);
 	const [extraReplies, setExtraReplies] = useState();
-	const content = useTranslatedContent(argument.content, argument.language, "content", argument.translation_entries);
-	const position = useTranslatedContent(argument.position?.name, argument.position?.language, "name", argument.position?.translation_entries);
+	const content = useTranslatedContent(
+		argument.content,
+		argument.language,
+		"content",
+		argument.translation_entries,
+	);
+	const position = useTranslatedContent(
+		argument.position?.name,
+		argument.position?.language,
+		"name",
+		argument.position?.translation_entries,
+	);
 	const componentId = `argument_${argument.id}`;
-	const positionIndex = argument.position && positions?.map((e) => e.id).indexOf(argument.position.id) + 1;
+	const positionIndex =
+		argument.position &&
+		positions?.map((e) => e.id).indexOf(argument.position.id) + 1;
 
 	useEffect(() => {
-		if (argumentReplies !== undefined) { displayRepliesThread() }
-	}, [argumentReplies])
+		if (argumentReplies !== undefined) {
+			displayRepliesThread();
+		}
+	}, [argumentReplies]);
 
 	const scrollToArgument = (argumentId) => {
 		const currentArgumentId = componentId;
@@ -55,26 +90,38 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupTyp
 	};
 
 	const toggleReplyInput = () => {
-		setShowReplyInput(showReplyInput => !showReplyInput);
+		setShowReplyInput((showReplyInput) => !showReplyInput);
 	};
 
 	const toggleReplies = () => {
-		setExpandReplies(expandReplies => !expandReplies);
+		setExpandReplies((expandReplies) => !expandReplies);
 		setExtraReplies([]);
-	}
+	};
 
 	const transformReplies = (reply) => {
-		if (extraReplies?.find(r => r.id === reply.id)) { return; }
+		if (extraReplies?.find((r) => r.id === reply.id)) {
+			return;
+		}
 		return reply;
-	}
+	};
 
 	const displaySource = useCallback((source, index) => {
-		return <SourceListItem key={index} publisher={source.publisher} url={source.source_url} title={source.title} index={index} />;
-	}, [])
+		return (
+			<SourceListItem
+				key={index}
+				publisher={source.publisher}
+				url={source.source_url}
+				title={source.title}
+				index={index}
+			/>
+		);
+	}, []);
 
 	const displayRepliesThread = () => {
 		if (argumentReplies && Array.isArray(argumentReplies)) {
-			const filteredReplies = argumentReplies.filter((reply) => reply.reply_to_id === argument.id);
+			const filteredReplies = argumentReplies.filter(
+				(reply) => reply.reply_to_id === argument.id,
+			);
 			if (filteredReplies.length > 0) {
 				setExtraReplies(filteredReplies);
 				setExpandReplies(true);
@@ -95,8 +142,8 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupTyp
 				parentArgument={argument}
 				flashParent={(argumentId) => scrollToArgument(`argument_${argumentId}`)}
 			/>
-		)
-	}
+		);
+	};
 
 	return (
 		<HashScroll elementId={componentId} onScroll={() => setFlash(true)}>
@@ -108,19 +155,31 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupTyp
 						[styles.argumentReply]: argument.is_reply === true,
 					},
 					styles[`level-${nestingLevel}`],
-					styles[`position-${!(argument.author.role === "editor" || argument.author.role === "moderator") && positionIndex}`]
+					styles[
+						`position-${!(argument.author.role === "editor" || argument.author.role === "moderator") && positionIndex}`
+					],
 				)}
 				id={componentId}
 			>
 				<ContentHeader
 					selectedContent={argument.score === 99}
 					author={argument.author}
-					tag={(argument.author.role === "editor" || argument.author.role === "moderator") && argument.is_reply ? null : position.translatedContent}
+					tag={
+						(argument.author.role === "editor" ||
+							argument.author.role === "moderator") &&
+						argument.is_reply
+							? null
+							: position.translatedContent
+					}
 					date={argument.created_at}
 					tagClassName={styles[`headerPosition-${positionIndex}`]}
 					disableLinks={disableLinks}
 					isDeleted={argument.is_deleted}
-					showModerationFeedback={showModerationFeedback ?? (argument.status === "rejected" && config.moderation?.showFeedback === true)}
+					showModerationFeedback={
+						showModerationFeedback ??
+						(argument.status === "rejected" &&
+							config.moderation?.showFeedback === true)
+					}
 					moderationReason={argument.moderation_entry?.moderation_reason}
 					moderationNotes={argument.moderation_entry?.moderator_notes}
 					moderationPolicyUrl={config.provider?.userGuideUrl}
@@ -141,15 +200,29 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupTyp
 					</div>
 				) : (
 					<>
-						<div className={cx(styles.argumentBody, {
-							[styles.fixedHeight]: config?.layout?.showAllArgumentInEmbed !== true ? fixedContentHeight : false
-						})}>
+						<div
+							className={cx(styles.argumentBody, {
+								[styles.fixedHeight]:
+									config?.layout?.showAllArgumentInEmbed !== true
+										? fixedContentHeight
+										: false,
+							})}
+						>
 							{argument.is_reply && parentArgument && (
-								<div className={styles.replyTo} onClick={() => flashParent(parentArgument.id)}>
-									{intl.formatMessage({ id: "info.replying_to", defaultMessage: "Replying to" })}
+								<div
+									className={styles.replyTo}
+									onClick={() => flashParent(parentArgument.id)}
+								>
+									{intl.formatMessage({
+										id: "info.replying_to",
+										defaultMessage: "Replying to",
+									})}
 									<span className={styles.replyingTo}>
 										{parentArgument.is_deleted
-											? intl.formatMessage({ id: "info.deleted", defaultMessage: "Deleted" })
+											? intl.formatMessage({
+													id: "info.deleted",
+													defaultMessage: "Deleted",
+												})
 											: parentArgument.author.full_name}
 										<Icon name="chat" height={16} />
 									</span>
@@ -161,7 +234,10 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupTyp
 									<>
 										{argument.is_edited && (
 											<div className={styles.edited}>
-												{intl.formatMessage({ id: "argument.argument.updated", defaultMessage: "Updated argument" })}
+												{intl.formatMessage({
+													id: "argument.argument.updated",
+													defaultMessage: "Updated argument",
+												})}
 											</div>
 										)}
 
@@ -184,11 +260,27 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupTyp
 										)}
 									</>
 								}
-								lineCount={config?.layout?.showAllArgumentInEmbed !== true ? lineCount : undefined}
-								readMoreText={intl.formatMessage({ id: "action.read_more", defaultMessage: "Read more" })}
-								readLessText={intl.formatMessage({ id: "action.read_less", defaultMessage: "Read less" })}
-								expandable={config?.layout?.showAllArgumentInEmbed !== true ? expandable : false}
-								readMoreClassName={argument.is_reply ? styles.replyStyle : styles.argumentStyle}
+								lineCount={
+									config?.layout?.showAllArgumentInEmbed !== true
+										? lineCount
+										: undefined
+								}
+								readMoreText={intl.formatMessage({
+									id: "action.read_more",
+									defaultMessage: "Read more",
+								})}
+								readLessText={intl.formatMessage({
+									id: "action.read_less",
+									defaultMessage: "Read less",
+								})}
+								expandable={
+									config?.layout?.showAllArgumentInEmbed !== true
+										? expandable
+										: false
+								}
+								readMoreClassName={
+									argument.is_reply ? styles.replyStyle : styles.argumentStyle
+								}
 							/>
 						</div>
 
@@ -200,20 +292,36 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupTyp
 					</>
 				)}
 
-				{!hideFooter && !argument.is_deleted &&
+				{!hideFooter && !argument.is_deleted && (
 					<ContentFooter
 						resource={argument}
-						disabled={disabled || argument.status === "rejected" || (!isLoggedIn && config?.actions?.disableInputForVisitor === true) || userIsBanned}
+						disabled={
+							disabled ||
+							argument.status === "rejected" ||
+							(!isLoggedIn &&
+								config?.actions?.disableInputForVisitor === true) ||
+							userIsBanned
+						}
 						reportType={"Message"}
 						softDelete={config.actions?.softDelete}
 						deleteType={"messages"}
 						deleteListId={deleteListId}
-						enableReply={nestingLevel <= 2 || (currentUser.role === "editor" || currentUser.role === "moderator")}
+						enableReply={
+							nestingLevel <= 2 ||
+							currentUser.role === "editor" ||
+							currentUser.role === "moderator"
+						}
 						handleReplyTo={toggleReplyInput}
 						replyRedirectUrl={replyRedirectUrl}
 						shareUrl={`https://app.logora.fr/share/a/${argument.id}`}
-						shareTitle={intl.formatMessage({ id: "share.argument.title", defaultMessage: "Share a debate" })}
-						shareText={intl.formatMessage({ id: "share.argument.text", defaultMessage: "This argument may interest you" })}
+						shareTitle={intl.formatMessage({
+							id: "share.argument.title",
+							defaultMessage: "Share a debate",
+						})}
+						shareText={intl.formatMessage({
+							id: "share.argument.text",
+							defaultMessage: "This argument may interest you",
+						})}
 						shareCode={`<iframe src="https://cdn.logora.com/embed.html?shortname=${config.shortname}&id=${argument.id}&resource=argument" frameborder="0" width="100%" height="275px" scrolling="no"></iframe>`}
 						showShareCode={config?.actions?.hideCodeShare !== true}
 						showShareText
@@ -228,20 +336,24 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupTyp
 							totalUpvote={argument.upvotes}
 							totalDownvote={0}
 							activeClassName={styles[`voteButtonPosition-${positionIndex}`]}
-							disabled={argument.status === "rejected" || (currentUser?.id === argument?.author?.id) || userIsBanned}
+							disabled={
+								argument.status === "rejected" ||
+								currentUser?.id === argument?.author?.id ||
+								userIsBanned
+							}
 						/>
 					</ContentFooter>
-				}
-				{!hideFooter && !hideReplies &&
+				)}
+				{!hideFooter && !hideReplies && (
 					<ReplyFooter
 						numberReplies={argument.number_replies}
 						repliesAuthors={argument.replies_authors}
 						expandReplies={expandReplies}
 						onToggleReplies={toggleReplies}
 					/>
-				}
+				)}
 			</div>
-			{!hideReplies &&
+			{!hideReplies && (
 				<>
 					{showReplyInput && (
 						<Suspense fallback={null}>
@@ -262,18 +374,21 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupTyp
 								}}
 								isReply
 								avatarSize={40}
-								placeholder={intl.formatMessage({ id: "input.reply_input.your_answer", defaultMessage: "Your answer" })}
+								placeholder={intl.formatMessage({
+									id: "input.reply_input.your_answer",
+									defaultMessage: "Your answer",
+								})}
 								userGuideUrl={config?.provider?.userGuideUrl}
 								hideUserGuideLink={config?.provider?.hideUserGuideLink}
 							/>
 						</Suspense>
 					)}
-					{extraReplies?.length > 0 && expandReplies &&
+					{extraReplies?.length > 0 && expandReplies && (
 						<div className={styles.repliesList}>
-							{extraReplies.map(r => displayReply(r))}
+							{extraReplies.map((r) => displayReply(r))}
 						</div>
-					}
-					{expandReplies &&
+					)}
+					{expandReplies && (
 						<div className={styles.repliesList}>
 							<VotePaginatedList
 								voteableType={"Message"}
@@ -281,37 +396,45 @@ export const Argument = ({ argument, argumentReplies, nestingLevel = 0, groupTyp
 								loadingComponent={<UserContentSkeleton />}
 								resource={"messages"}
 								sort={"+created_at"}
-								filters={{ message_id: argument.id, is_reply: true, status: "accepted" }}
+								filters={{
+									message_id: argument.id,
+									is_reply: true,
+									status: "accepted",
+								}}
 								perPage={5}
 								display={"column"}
-								resourcePropName={'argument'}
+								resourcePropName={"argument"}
 								emptyListComponent={<></>}
 								transformData={(reply) => transformReplies(reply)}
 							>
 								{displayReply(argument)}
 							</VotePaginatedList>
 						</div>
-					}
-					{extraReplies?.length > 0 && !expandReplies &&
+					)}
+					{extraReplies?.length > 0 && !expandReplies && (
 						<div className={styles.repliesList}>
-							{argument.number_replies > 1 &&
+							{argument.number_replies > 1 && (
 								<div className={styles.readMoreLink}>
 									<Button
 										role="link"
-										rightIcon={<Icon name="lightArrow" height={10} width={10} />}
+										rightIcon={
+											<Icon name="lightArrow" height={10} width={10} />
+										}
 										handleClick={toggleReplies}
 									>
-										{intl.formatMessage({ id: "argument.argument.see_more", defaultMessage: "See more" })}
+										{intl.formatMessage({
+											id: "argument.argument.see_more",
+											defaultMessage: "See more",
+										})}
 									</Button>
 								</div>
-							}
+							)}
 						</div>
-					}
+					)}
 				</>
-			}
+			)}
 		</HashScroll>
 	);
 };
 
 export const ArgumentContainer = Argument;
-

@@ -1,1 +1,1 @@
-export { SuggestionInput } from "./SuggestionInput"
+export { SuggestionInput } from "./SuggestionInput";

@@ -1,1 +1,1 @@
-export { useDeleteContent } from './useDeleteContent';
+export { useDeleteContent } from "./useDeleteContent";
