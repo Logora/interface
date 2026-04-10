@@ -44,6 +44,7 @@
   border-radius: theme.$box-border-radius;
   max-width: 80%;
   font-size: theme.$font-size-small;
+  color: theme.$text-light;
   span {
     color: theme.$text-light;
     font-size: theme.$font-size-extra-small;
@@ -86,10 +87,11 @@
 }
 
 .subApplication {
-  > img {
+  >img {
     height: 20px;
     @include spacing.mr(2, xs);
   }
+
   @include spacing.mb(3, xs);
   color: theme.$text-secondary;
   font-size: theme.$font-size-extra-small;
@@ -106,9 +108,11 @@
   font-weight: theme.$font-weight-bold;
   min-height: 2.7em;
   line-height: theme.$line-height-normal;
+
   a {
     color: theme.$text-primary;
-    &:hover{
+
+    &:hover {
       color: theme.$text-primary;
       text-decoration: underline;
     }
@@ -120,7 +124,8 @@
   @include display.line-clamp(2);
   font-size: theme.$font-size-medium;
   line-height: theme.$line-height-normal;
-  &.debateTitleMobile{
+
+  &.debateTitleMobile {
     -webkit-line-clamp: 3;
   }
 }

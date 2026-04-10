@@ -350,6 +350,7 @@ export const Argument = ({
 						repliesAuthors={argument.replies_authors}
 						expandReplies={expandReplies}
 						onToggleReplies={toggleReplies}
+						isReply={argument.is_reply}
 					/>
 				)}
 			</div>

@@ -47,6 +47,9 @@
 			transform: rotate(180deg);
 		}
 	}
+	&.isReply {
+		background-color: theme.$text-tertiary;
+	}
 }
 
 .replyAvatarRing {

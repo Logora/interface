@@ -16,7 +16,12 @@
         &:hover {
             background: theme.$background-color-primary !important;
         }
+        
     }
+}
+
+.headerBoxLabel a {
+    text-decoration: none !important;
 }
 
 .headerLiveStat {

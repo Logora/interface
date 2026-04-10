@@ -10,6 +10,7 @@ export const ReplyFooter = ({
 	repliesAuthors = [],
 	onToggleReplies,
 	expandReplies,
+    isReply = false,
 }) => {
 	if (numberReplies <= 0) return null;
 
@@ -37,6 +38,7 @@ export const ReplyFooter = ({
 					tabIndex="0"
 					className={cx(styles.expandRepliesButton, {
 						[styles.repliesExpanded]: expandReplies,
+                        [styles.isReply]: isReply,
 					})}
 				>
 					<FormattedMessage
