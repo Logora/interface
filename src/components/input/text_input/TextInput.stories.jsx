@@ -66,68 +66,11 @@ export const DisabledTextInput = () => {
 	);
 };
 
-export const SmallTextInput = () => (
-	<TextInput
-		style={{ fontSize: 12 }}
-		placeholder="enter text..."
-		data-testid="test-input"
-	/>
-);
-
-export const BigTextInput = () => (
-	<TextInput
-		style={{ fontSize: 24 }}
-		placeholder="enter text..."
-		data-testid="test-input"
-	/>
-);
-
-export const SmallTextInputWithRightIcon = () => (
-	<TextInput
-		style={{ fontSize: 12 }}
-		placeholder="enter text..."
-		data-testid="test-input"
-		iconRight={
-			<Announcement
-				style={{ cursor: "pointer" }}
-				onClick={() => alert("on icon click")}
-			/>
-		}
-	/>
-);
-
-export const BigTextInputWithRightIcon = () => (
-	<TextInput
-		style={{ fontSize: 24 }}
-		placeholder="enter text..."
-		data-testid="test-input"
-		iconRight={
-			<Announcement
-				style={{ cursor: "pointer" }}
-				onClick={() => alert("on icon click")}
-			/>
-		}
-	/>
-);
-
 export const TextInputWithRightIcon = () => (
 	<TextInput
 		placeholder="search..."
 		iconRight={
 			<Announcement
-				style={{ cursor: "pointer" }}
-				onClick={() => alert("on icon click")}
-			/>
-		}
-	/>
-);
-
-export const TextInputWithImage = () => (
-	<TextInput
-		placeholder="search..."
-		iconRight={
-			<img
-				src="https://static.bit.dev/bit-icons/filter.svg"
 				style={{ cursor: "pointer" }}
 				onClick={() => alert("on icon click")}
 			/>
