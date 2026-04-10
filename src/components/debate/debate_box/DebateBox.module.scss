@@ -164,6 +164,10 @@
   z-index: 1;
 }
 
+.debateParticipantItem a {
+  text-decoration: none !important;
+}
+
 .debateBoxNumbers {
   font-size: theme.$font-size-normal;
   line-height: theme.$line-height-none;
