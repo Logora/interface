@@ -217,7 +217,7 @@ export const Argument = ({ argument, argumentReplies, nestingLevel, debatePositi
 						>
 							<button
 								tabIndex='0'
-								className={cx(styles.expandRepliesButton, { [styles.repliesExpanded]: expandReplies })}
+								className={cx(styles.expandRepliesButton, { [styles.repliesExpanded]: expandReplies, [styles.expandRepliesButtonReply]: argument.is_reply })}
 							>
 								<FormattedMessage
 									id={expandReplies ? "alt.hide_answers" : "alt.view_answers"}
