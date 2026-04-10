@@ -89,3 +89,16 @@ export const TextInputWithLeftIcon = () => (
 		}
 	/>
 );
+
+export const TextInputWithImage = () => (
+	<TextInput
+		placeholder="search..."
+		iconRight={
+			<img
+				src="https://via.placeholder.com/20"
+				alt="icon"
+				style={{ cursor: "pointer" }}
+			/>
+		}
+	/>
+);
