@@ -40,28 +40,29 @@ export const authTokenHandler = (httpClient, authUrl, tokenKey) => {
 		});
 	};
 
+	let refreshInFlight = null;
+
 	const refreshToken = () => {
+		if (refreshInFlight) return refreshInFlight;
 		const tokenObject = getToken();
 		const data = {
 			grant_type: "refresh_token",
 			refresh_token: tokenObject.refresh_token,
 		};
-		return new Promise((resolve, reject) => {
-			return httpClient
-				.post(authUrl, data)
-				.then((response) => {
-					if (response.data.access_token) {
-						const token = response.data;
-						setToken(token, tokenObject.session_id);
-						resolve(token.access_token);
-					} else {
-						reject(response);
-					}
-				})
-				.catch((error) => {
-					reject(error);
-				});
-		});
+		refreshInFlight = httpClient
+			.post(authUrl, data)
+			.then((response) => {
+				if (response.data.access_token) {
+					const token = response.data;
+					setToken(token, tokenObject.session_id);
+					return token.access_token;
+				}
+				return Promise.reject(response);
+			})
+			.finally(() => {
+				refreshInFlight = null;
+			});
+		return refreshInFlight;
 	};
 
 	return {
