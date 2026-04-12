@@ -6,10 +6,11 @@ import {
 	dataProvider,
 } from "@logora/debate/data/data_provider";
 import { ModalProvider } from "@logora/debate/dialog/modal";
+import { VoteContext } from "@logora/debate/vote/vote_provider";
 import { VoteProvider } from "@logora/debate/vote/vote_provider";
-import { render, screen } from "@testing-library/react";
+import { act, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import React from "react";
+import React, { useState } from "react";
 import { useVote } from "./useVote";
 
 const httpClient = {
@@ -85,11 +86,11 @@ describe("useVote", () => {
 					<button
 						onClick={() => handleVote(true)}
 						data-testid="upvote"
-					></button>
+					/>
 					<button
 						onClick={() => handleVote(false)}
 						data-testid="downvote"
-					></button>
+					/>
 					<span>Upvotes : {totalUpvotes}</span>
 					<span>Downvotes : {totalDownvotes}</span>
 					<span>VoteSide : {voteSide.toString()}</span>
@@ -129,11 +130,11 @@ describe("useVote", () => {
 					<button
 						onClick={() => handleVote(true)}
 						data-testid="upvote"
-					></button>
+					/>
 					<button
 						onClick={() => handleVote(false)}
 						data-testid="downvote"
-					></button>
+					/>
 					<span>Upvotes : {totalUpvotes}</span>
 					<span>Downvotes : {totalDownvotes}</span>
 					<span>VoteSide : {voteSide.toString()}</span>
@@ -178,11 +179,11 @@ describe("useVote", () => {
 					<button
 						onClick={() => handleVote(true)}
 						data-testid="upvote"
-					></button>
+					/>
 					<button
 						onClick={() => handleVote(false)}
 						data-testid="downvote"
-					></button>
+					/>
 					<span>Upvotes : {totalUpvotes}</span>
 					<span>Downvotes : {totalDownvotes}</span>
 					<span>VoteSide : {voteSide.toString()}</span>
@@ -227,11 +228,11 @@ describe("useVote", () => {
 					<button
 						onClick={() => handleVote(true)}
 						data-testid="upvote"
-					></button>
+					/>
 					<button
 						onClick={() => handleVote(false)}
 						data-testid="downvote"
-					></button>
+					/>
 					<span>Upvotes : {totalUpvotes}</span>
 					<span>Downvotes : {totalDownvotes}</span>
 					<span>VoteSide : {voteSide.toString()}</span>
@@ -283,11 +284,11 @@ describe("useVote", () => {
 					<button
 						onClick={() => handleVote(true)}
 						data-testid="upvote"
-					></button>
+					/>
 					<button
 						onClick={() => handleVote(false)}
 						data-testid="downvote"
-					></button>
+					/>
 					<span>Upvotes : {totalUpvotes}</span>
 					<span>Downvotes : {totalDownvotes}</span>
 					<span>VoteSide : {voteSide.toString()}</span>
@@ -323,5 +324,127 @@ describe("useVote", () => {
 		expect(screen.getByText("Downvotes : 0"));
 		expect(screen.getByText("VoteSide : true"));
 		expect(screen.getByText("ActiveVote : false"));
+	});
+
+	it("should not reset active vote when VoteContext loads with no existing vote after user has clicked (race condition)", async () => {
+		const voteableId = faker.number.int();
+		const voteableType = "message";
+
+		// Wrapper with controllable votes context
+		const ControllableVoteWrapper = ({ children }) => {
+			const [votes, setVotes] = useState({});
+			return (
+				<ConfigProvider config={{}}>
+					<DataProviderContext.Provider value={{ dataProvider: data }}>
+						<AuthContext.Provider value={{ currentUser, isLoggedIn: true }}>
+							<ModalProvider>
+								<VoteContext.Provider value={{ votes, addVoteableIds: vi.fn() }}>
+									{children}
+									<button
+										data-testid="load-empty-votes"
+										onClick={() => act(() => setVotes({ [voteableId]: null }))}
+									/>
+								</VoteContext.Provider>
+							</ModalProvider>
+						</AuthContext.Provider>
+					</DataProviderContext.Provider>
+				</ConfigProvider>
+			);
+		};
+
+		const VoteButton = () => {
+			const { totalUpvotes, activeVote, handleVote } = useVote(
+				voteableType,
+				voteableId,
+				10,
+				5,
+			);
+			return (
+				<>
+					<button onClick={() => handleVote(true)} data-testid="upvote" />
+					<span>ActiveVote : {activeVote.toString()}</span>
+					<span>Upvotes : {totalUpvotes}</span>
+				</>
+			);
+		};
+
+		const { getByTestId } = render(
+			<ControllableVoteWrapper>
+				<VoteButton />
+			</ControllableVoteWrapper>,
+		);
+
+		// User clicks vote before getVotes() has returned
+		await userEvent.click(getByTestId("upvote"));
+		expect(screen.getByText("ActiveVote : true"));
+		expect(screen.getByText("Upvotes : 11"));
+
+		// Simulate getVotes() returning with no existing vote (null)
+		await userEvent.click(getByTestId("load-empty-votes"));
+
+		// Vote state must NOT be reset — fix is in effect
+		expect(screen.getByText("ActiveVote : true"));
+		expect(screen.getByText("Upvotes : 11"));
+	});
+
+	it("should initialise vote state from VoteContext when it loads before user interaction", async () => {
+		const existingVoteId = faker.number.int();
+		const voteableId = faker.number.int();
+		const voteableType = "message";
+		const existingVote = { id: existingVoteId, is_upvote: true };
+
+		const ControllableVoteWrapper = ({ children }) => {
+			const [votes, setVotes] = useState({});
+			return (
+				<ConfigProvider config={{}}>
+					<DataProviderContext.Provider value={{ dataProvider: data }}>
+						<AuthContext.Provider value={{ currentUser, isLoggedIn: true }}>
+							<ModalProvider>
+								<VoteContext.Provider value={{ votes, addVoteableIds: vi.fn() }}>
+									{children}
+									<button
+										data-testid="load-existing-vote"
+										onClick={() =>
+											act(() => setVotes({ [voteableId]: existingVote }))
+										}
+									/>
+								</VoteContext.Provider>
+							</ModalProvider>
+						</AuthContext.Provider>
+					</DataProviderContext.Provider>
+				</ConfigProvider>
+			);
+		};
+
+		const VoteButton = () => {
+			const { totalUpvotes, activeVote, handleVote } = useVote(
+				voteableType,
+				voteableId,
+				10,
+				5,
+			);
+			return (
+				<>
+					<button onClick={() => handleVote(true)} data-testid="upvote" />
+					<span>ActiveVote : {activeVote.toString()}</span>
+					<span>Upvotes : {totalUpvotes}</span>
+				</>
+			);
+		};
+
+		const { getByTestId } = render(
+			<ControllableVoteWrapper>
+				<VoteButton />
+			</ControllableVoteWrapper>,
+		);
+
+		expect(screen.getByText("ActiveVote : false"));
+
+		// Context loads with existing vote before user interaction
+		await userEvent.click(getByTestId("load-existing-vote"));
+
+		// State should be initialised from context
+		expect(screen.getByText("ActiveVote : true"));
+		expect(screen.getByText("Upvotes : 10")); // no change to count, just status
 	});
 });

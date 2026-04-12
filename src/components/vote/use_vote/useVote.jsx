@@ -66,6 +66,7 @@ export const useVote = (
 	};
 
 	const voteAction = (isUpvote) => {
+		setHasVoted(true);
 		if (activeVote) {
 			if (voteSide === isUpvote) {
 				deactivateVote(isUpvote);
