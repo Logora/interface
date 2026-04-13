@@ -15,7 +15,9 @@ export const lexicalToHtml = (rawContent) => {
 	editor.setEditorState(editorState);
 
 	editor.update(() => {
-		const htmlContent = $generateHtmlFromNodes(editor, null);
+		let htmlContent = $generateHtmlFromNodes(editor, null);
+		// Replace literal &nbsp; text with actual non-breaking space HTML entity
+		htmlContent = htmlContent.replace(/&amp;nbsp;/g, '&nbsp;');
 		html = DOMPurify.sanitize(htmlContent);
 	});
 
