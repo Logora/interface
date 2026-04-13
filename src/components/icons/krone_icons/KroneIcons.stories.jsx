@@ -1,56 +1,5 @@
 import React from "react";
-import { Alarm } from "./Alarm";
-import { Announcement } from "./Announcement";
-import { Arrow } from "./Arrow";
-import { Blockquote } from "./Blockquote";
-import { Bold } from "./Bold";
-import { Camera } from "./Camera";
-import { Chat } from "./Chat";
-import { Check } from "./Check";
-import { CheckBox } from "./CheckBox";
-import { CheckCircle } from "./CheckCircle";
-import { Clap } from "./Clap";
-import { Clock } from "./Clock";
-import { Close } from "./Close";
-import { Code } from "./Code";
-import { Community } from "./Community";
-import { Crown } from "./Crown";
-import { Document } from "./Document";
-import { Downvote } from "./Downvote";
-import { Ellipsis } from "./Ellipsis";
-import { ExpertBadge } from "./ExpertBadge";
-import { Facebook } from "./Facebook";
-import { Flag } from "./Flag";
-import { Home } from "./Home";
-import { Italic } from "./Italic";
-import { LightArrow } from "./LightArrow";
-import { Link } from "./Link";
-import { Login } from "./Login";
-import { Logora } from "./Logora";
-import { Mail } from "./Mail";
-import { MinusCircle } from "./MinusCircle";
-import { MobileClose } from "./MobileClose";
-import { MobileMenu } from "./MobileMenu";
-import { Next } from "./Next";
-import { OpenBlank } from "./OpenBlank";
-import { OrderedList } from "./OrderedList";
-import { PauseCircle } from "./PauseCircle";
-import { Point } from "./Point";
-import { Question } from "./Question";
-import { Refresh } from "./Refresh";
-import { Reply } from "./Reply";
-import { Search } from "./Search";
-import { Send } from "./Send";
-import { Share } from "./Share";
-import { SmallArrow } from "./SmallArrow";
-import { Source } from "./Source";
-import { Suggestion } from "./Suggestion";
-import { Twitter } from "./Twitter";
-import { Underline } from "./Underline";
-import { Upvote } from "./Upvote";
-import { User } from "./User";
-import { Versus } from "./Versus";
-import { Votebox } from "./Votebox";
+import { Alarm, Announcement, Arrow, Blockquote, Bold, Camera, Chat, Check, CheckBox, CheckCircle, Clap, Clock, Close, Code, Community, Crown, Document, Downvote, Ellipsis, ExpertBadge, Facebook, Flag, Home, Italic, LightArrow, Link, Login, Logora, Mail, MinusCircle, MobileClose, MobileMenu, Next, OpenBlank, OrderedList, PauseCircle, Point, Question, Refresh, Reply, Search, Send, Share, SmallArrow, Source, Suggestion, Twitter, Underline, Upvote, User, Votebox } from "."; 
 
 const meta = {
 	title: "Icons/Krone Icons",
@@ -350,12 +299,7 @@ export const KroneIconsLibrary = () => {
 					data-testid={"vote-box-icon"}
 					style={{ margin: "15px", fill: "#000" }}
 				/>
-				<Versus
-					width={50}
-					height={50}
-					data-testid={"versus-icon"}
-					style={{ margin: "15px" }}
-				/>
+
 				<Flag
 					width={50}
 					height={50}

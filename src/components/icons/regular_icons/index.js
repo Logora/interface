@@ -45,7 +45,6 @@ export { Underline } from "./Underline";
 export { Upvote } from "./Upvote";
 export { User } from "./User";
 export { Votebox } from "./Votebox";
-export { Versus } from "./Versus";
 export { Flag } from "./Flag";
 export { CheckCircle } from "./CheckCircle";
 export { MinusCircle } from "./MinusCircle";

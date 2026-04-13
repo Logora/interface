@@ -1,3 +1,4 @@
+// Icônes spécifiques à Hero
 export { Alarm } from "./Alarm";
 export { Announcement } from "./Announcement";
 export { Arrow } from "./Arrow";
@@ -16,20 +17,17 @@ export { Crown } from "./Crown";
 export { Downvote } from "./Downvote";
 export { Ellipsis } from "./Ellipsis";
 export { ExpertBadge } from "./ExpertBadge";
-export { Facebook } from "./Facebook";
 export { Home } from "./Home";
 export { Italic } from "./Italic";
 export { LightArrow } from "./LightArrow";
 export { Link } from "./Link";
 export { Login } from "./Login";
-export { Logora } from "./Logora";
 export { Mail } from "./Mail";
 export { MobileClose } from "./MobileClose";
 export { MobileMenu } from "./MobileMenu";
 export { Next } from "./Next";
 export { OpenBlank } from "./OpenBlank";
 export { OrderedList } from "./OrderedList";
-export { Point } from "./Point";
 export { Question } from "./Question";
 export { Refresh } from "./Refresh";
 export { Reply } from "./Reply";
@@ -39,13 +37,11 @@ export { Share } from "./Share";
 export { SmallArrow } from "./SmallArrow";
 export { Source } from "./Source";
 export { Suggestion } from "./Suggestion";
-export { Twitter } from "./Twitter";
 export { Underline } from "./Underline";
 export { Upvote } from "./Upvote";
 export { User } from "./User";
 export { Votebox } from "./Votebox";
-export { Versus } from "./Versus";
-export { CheckCircle } from "./CheckCircle";
-export { MinusCircle } from "./MinusCircle";
-export { Flag } from "./Flag";
 export { PauseCircle } from "./PauseCircle";
+
+// Icônes communes avec regular
+export { CheckCircle, Facebook, Flag, Logora, MinusCircle, Point, Twitter } from "../regular_icons";

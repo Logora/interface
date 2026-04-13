@@ -1,4 +1,4 @@
-import React, { useState, useEffect, createContext } from "react";
+import React, { createContext } from "react";
 
 export const IconContext = createContext({ iconLibrary: {} });
 

@@ -49,7 +49,6 @@ import { Twitter } from "./Twitter";
 import { Underline } from "./Underline";
 import { Upvote } from "./Upvote";
 import { User } from "./User";
-import { Versus } from "./Versus";
 import { Votebox } from "./Votebox";
 
 const meta = {
@@ -349,12 +348,7 @@ export const RegularIconsLibrary = () => {
 				data-testid={"vote-box-icon"}
 				style={{ margin: "15px" }}
 			/>
-			<Versus
-				width={50}
-				height={50}
-				data-testid={"versus-icon"}
-				style={{ margin: "15px" }}
-			/>
+
 			<Flag
 				width={50}
 				height={50}
