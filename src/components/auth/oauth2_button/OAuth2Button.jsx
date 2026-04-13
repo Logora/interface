@@ -1,7 +1,8 @@
 import classnames from "classnames";
 import React from "react";
-import OauthPopup from "react-oauth-popup";
+import _OauthPopup from "react-oauth-popup";
 import { useLocation } from "react-router-dom";
+const OauthPopup = _OauthPopup?.default ?? _OauthPopup;
 import styles from "./OAuth2Button.module.scss";
 
 export const OAuth2Button = ({
