@@ -18,7 +18,7 @@ import React, { useState, useEffect, useRef, lazy, Suspense } from "react";
 import { FormattedMessage } from "react-intl";
 import { useIntl } from "react-intl";
 import { useLocation } from "react-router";
-const SideModal = lazy(() => import("@logora/debate/modal/side_modal"));
+const SideModal = lazy(() => import("@logora/debate/modal/side_modal").then(m => ({ default: m.SideModal })));
 import cx from "classnames";
 import styles from "./ArgumentInput.module.scss";
 

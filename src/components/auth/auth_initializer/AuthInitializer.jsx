@@ -1,4 +1,4 @@
-import AuthProviderFactory from "@logora/debate/auth/providers";
+import { AuthProviderFactory } from "@logora/debate/auth/providers";
 import { authTokenHandler, useAuthActions } from "@logora/debate/auth/use_auth";
 import { useAuthInterceptor } from "@logora/debate/auth/use_auth";
 import { httpClient } from "@logora/debate/data/axios_client";

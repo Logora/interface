@@ -6,7 +6,7 @@ import { Dropdown } from "@logora/debate/dialog/dropdown";
 import { useAuthRequired } from "@logora/debate/hooks/use_auth_required";
 import { Icon } from "@logora/debate/icons/icon";
 import { NavbarButton } from "@logora/debate/navbar/navbar_button";
-import NotificationMenu from "@logora/debate/notification/notification_menu";
+import { NotificationMenu } from "@logora/debate/notification/notification_menu";
 import { Loader } from "@logora/debate/progress/loader";
 import { Avatar } from "@logora/debate/user/avatar";
 import React, { useState, useEffect, Suspense } from "react";

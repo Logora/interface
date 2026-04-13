@@ -1,4 +1,4 @@
-import AuthProviderFactory from "@logora/debate/auth/providers";
+import { AuthProviderFactory } from "@logora/debate/auth/providers";
 import { SocialAuthForm } from "@logora/debate/auth/social_auth_form";
 import { SSOForm } from "@logora/debate/auth/sso_form";
 import { useAuth, useAuthActions } from "@logora/debate/auth/use_auth";

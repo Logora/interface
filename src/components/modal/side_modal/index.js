@@ -1,1 +1,1 @@
-export { SideModal as default } from "./SideModal";
+export { SideModal } from "./SideModal";

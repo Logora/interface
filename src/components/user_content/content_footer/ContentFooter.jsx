@@ -11,7 +11,7 @@ import { useDeleteContent } from "@logora/debate/user_content/use_delete_content
 import { useReportContent } from "@logora/debate/user_content/use_report_content";
 import React, { lazy, Suspense } from "react";
 import { useIntl } from "react-intl";
-const ShareModal = lazy(() => import("@logora/debate/share/share_modal"));
+const ShareModal = lazy(() => import("@logora/debate/share/share_modal").then(m => ({ default: m.ShareModal })));
 import cx from "classnames";
 import styles from "./ContentFooter.module.scss";
 

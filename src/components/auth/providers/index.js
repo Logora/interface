@@ -1,1 +1,1 @@
-export { AuthProviderFactory as default } from "./AuthProviderFactory";
+export { AuthProviderFactory } from "./AuthProviderFactory";

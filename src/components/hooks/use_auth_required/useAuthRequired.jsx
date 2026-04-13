@@ -1,7 +1,7 @@
 import { ConfigContext } from "@logora/debate/data/config_provider";
 import { useModal } from "@logora/debate/dialog/modal";
 import React, { useContext, lazy, Suspense } from "react";
-const AuthModal = lazy(() => import("@logora/debate/auth/auth_modal"));
+const AuthModal = lazy(() => import("@logora/debate/auth/auth_modal").then(m => ({ default: m.AuthModal })));
 
 export const useAuthRequired = () => {
 	const { config } = useContext(ConfigContext);
