@@ -6,7 +6,7 @@ import {
 	dataProvider,
 } from "@logora/debate/data/data_provider";
 import { ModalProvider } from "@logora/debate/dialog/modal";
-import StandardErrorBoundary from "@logora/debate/error/standard_error_boundary";
+import { StandardErrorBoundary } from "@logora/debate/error/standard_error_boundary";
 import { ResponsiveProvider } from "@logora/debate/hooks/use_responsive";
 import { IconProvider } from "@logora/debate/icons/icon_provider";
 import * as regularIcons from "@logora/debate/icons/regular_icons";
