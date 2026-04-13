@@ -19,7 +19,7 @@ import { useIntl } from "react-intl";
 import styles from "./Argument.module.scss";
 import { ReplyFooter } from "./ReplyFooter";
 import { useRichContent } from "./useRichContent";
-const ArgumentInput = lazy(() => import("@logora/debate/input/argument_input"));
+const ArgumentInput = lazy(() => import("@logora/debate/input/argument_input").then(m => ({ default: m.ArgumentInput })));
 
 export const Argument = ({
 	argument,

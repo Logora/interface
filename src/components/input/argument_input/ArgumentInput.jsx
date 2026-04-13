@@ -8,7 +8,7 @@ import { useAuthRequired } from "@logora/debate/hooks/use_auth_required";
 import { useResponsive } from "@logora/debate/hooks/use_responsive";
 import { Icon } from "@logora/debate/icons/icon";
 import { useInput } from "@logora/debate/input/input_provider";
-import TextEditor from "@logora/debate/input/text_editor";
+import { TextEditor } from "@logora/debate/input/text_editor";
 import { TogglePosition } from "@logora/debate/input/toggle_position";
 import { useList } from "@logora/debate/list/list_provider";
 import { AuthorBox } from "@logora/debate/user/author_box";

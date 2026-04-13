@@ -1,1 +1,1 @@
-export { StandardErrorBoundary as default } from "./StandardErrorBoundary";
+export { StandardErrorBoundary } from "./StandardErrorBoundary";

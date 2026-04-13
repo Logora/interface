@@ -1,6 +1,6 @@
-@use 'styles/theme' as theme;
-@use 'styles/spacing' as spacing;
-@use 'styles/display' as display;
+@use '../theme' as theme;
+@use '../spacing' as spacing;
+@use '../display' as display;
 
 :global(.MuiTab-root:focus) {
     outline: none !important;

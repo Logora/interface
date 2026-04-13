@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useIntl } from "react-intl";
 import "chart.js/auto";
-import StandardErrorBoundary from "@logora/debate/error/standard_error_boundary";
+import { StandardErrorBoundary } from "@logora/debate/error/standard_error_boundary";
 import { Loader } from "@logora/debate/progress/loader";
 import ChartDataLabels from "chartjs-plugin-datalabels";
 import { Pie } from "react-chartjs-2";

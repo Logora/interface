@@ -1,1 +1,1 @@
-export { ArgumentInput as default } from "./ArgumentInput";
+export { ArgumentInput } from "./ArgumentInput";

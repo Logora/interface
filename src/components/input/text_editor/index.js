@@ -1,2 +1,2 @@
-export { TextEditor as default } from "./TextEditor";
+export { TextEditor } from "./TextEditor";
 export { lexicalToHtml } from "./lexicalToHtml";

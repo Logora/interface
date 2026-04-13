@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useIntl } from "react-intl";
 import "chart.js/auto";
-import StandardErrorBoundary from "@logora/debate/error/standard_error_boundary";
+import { StandardErrorBoundary } from "@logora/debate/error/standard_error_boundary";
 import { Icon } from "@logora/debate/icons/icon";
 import { Select } from "@logora/debate/input/select";
 import { Loader } from "@logora/debate/progress/loader";

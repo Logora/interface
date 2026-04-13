@@ -1,5 +1,5 @@
 import { useData, useDataProvider } from "@logora/debate/data/data_provider";
-import StandardErrorBoundary from "@logora/debate/error/standard_error_boundary";
+import { StandardErrorBoundary } from "@logora/debate/error/standard_error_boundary";
 import { useResponsive } from "@logora/debate/hooks/use_responsive";
 import { useList } from "@logora/debate/list/list_provider";
 import { Pagination } from "@logora/debate/list/pagination";
