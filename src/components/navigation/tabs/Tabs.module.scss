@@ -5,7 +5,7 @@
 .navTabs {
     display: flex;
     flex-wrap: nowrap;
-    gap: spacing.$spacer-lg;
+    gap: spacing.$spacer-xs;
     white-space: nowrap;
     padding-left: 0;
     margin-bottom: 0;
@@ -28,12 +28,12 @@
 
 .navItem {
     cursor: pointer;
-    position: relative;
 }
 
 .navLink {
     display: block;
-    padding-bottom: spacing.$spacer-sm;
+    position: relative;
+    padding: spacing.$spacer-md spacing.$spacer-md;
     border: none !important;
     color: theme.$text-primary;
     outline: 0;
@@ -58,10 +58,10 @@
         position: absolute;
         width: 100%;
         left: 0;
-        bottom: -1px;
+        bottom: 0;
         z-index: 1;
         transition: transform 250ms ease 0s;
-        transform: scale(0);
+        transform: scaleX(0);
     }
 
     &.active {
@@ -70,13 +70,7 @@
         font-weight: theme.$font-weight-bold;
 
         &::after {
-            transform: scale(1);
+            transform: scaleX(1);
         }
-    }
-}
-
-.navItem:hover > .navLink::after {
-    @media (hover: hover) {
-        transform: scale(1);
     }
 }
