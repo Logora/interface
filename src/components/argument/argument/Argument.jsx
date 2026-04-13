@@ -20,6 +20,7 @@ import styles from "./Argument.module.scss";
 import { ReplyFooter } from "./ReplyFooter";
 import { useRichContent } from "./useRichContent";
 const ArgumentInput = lazy(() => import("@logora/debate/input/argument_input"));
+const normalizeNbsp = (value) => value?.replace(/&nbsp;/g, "\u00A0");
 
 export const Argument = ({
 	argument,
@@ -144,6 +145,7 @@ export const Argument = ({
 			/>
 		);
 	};
+	
 
 	return (
 		<HashScroll elementId={componentId} onScroll={() => setFlash(true)}>
@@ -248,7 +250,7 @@ export const Argument = ({
 											/>
 										) : (
 											<div className={styles.argumentContent}>
-												{content.translatedContent}
+												{normalizeNbsp(content.translatedContent)}										
 											</div>
 										)}
 
