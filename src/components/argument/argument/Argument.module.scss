@@ -198,18 +198,18 @@
 }
 
 .voteButtonPosition-1 {
-	color: theme.$for-primary !important;
-
-	& svg {
-		fill: theme.$for-primary !important;
-	}
-}
-
-.voteButtonPosition-2 {
 	color: theme.$against-primary !important;
 
 	& svg {
 		fill: theme.$against-primary !important;
+	}
+}
+
+.voteButtonPosition-2 {
+	color: theme.$for-primary !important;
+
+	& svg {
+		fill: theme.$for-primary !important;
 	}
 }
 
