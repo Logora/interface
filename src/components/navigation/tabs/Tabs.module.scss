@@ -1,0 +1,76 @@
+@use 'styles/theme' as theme;
+@use 'styles/spacing' as spacing;
+@use 'styles/display' as display;
+
+.navTabs {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: spacing.$spacer-lg;
+    white-space: nowrap;
+    padding-left: 0;
+    margin-bottom: 0;
+    border-bottom: none !important;
+    list-style: none;
+
+    @include display.media-breakpoint-down(xs) {
+        font-size: theme.$font-size-normal;
+        gap: spacing.$spacer;
+    }
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+.navItem {
+    cursor: pointer;
+    position: relative;
+}
+
+.navLink {
+    display: block;
+    padding-bottom: spacing.$spacer-sm;
+    border: none !important;
+    color: theme.$text-primary;
+    outline: 0;
+
+    &:hover,
+    &:focus {
+        text-decoration: none;
+        color: theme.$text-primary !important;
+        background: transparent;
+    }
+
+    &.disabled {
+        color: theme.$darkest-text-tertiary;
+        pointer-events: none;
+        cursor: default;
+    }
+
+    &::after {
+        content: "";
+        background-color: theme.$text-primary;
+        height: 2px;
+        position: absolute;
+        width: 100%;
+        left: 0;
+        bottom: -1px;
+        z-index: 1;
+        transition: transform 250ms ease 0s;
+        transform: scale(0);
+    }
+
+    &.active {
+        color: theme.$text-primary !important;
+        background: transparent;
+        font-weight: theme.$font-weight-bold;
+
+        &::after {
+            transform: scale(1);
+        }
+    }
+}
+
+.navItem:hover > .navLink::after {
+    transform: scale(1);
+}

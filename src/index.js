@@ -74,6 +74,7 @@ export * from "./components/list/pagination";
 export * from "./components/modal/side_modal";
 export * from "./components/navbar/navbar_button";
 export * from "./components/navbar/navbar_modal";
+export * from "./components/navigation/tabs";
 export * from "./components/notification/notification_item";
 export * from "./components/notification/notification_menu";
 export * from "./components/progress/loader";
