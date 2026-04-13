@@ -18,9 +18,9 @@
 
 .active {
     font-weight: theme.$font-weight-bold;
-    color: theme.$call-primary;
+    color: inherit;
     & svg {
-        fill: theme.$call-primary !important;
+        fill: currentColor !important;
         fill-rule: evenodd;
     }
 }
