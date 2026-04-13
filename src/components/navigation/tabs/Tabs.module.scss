@@ -17,6 +17,10 @@
         gap: spacing.$spacer;
     }
 
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+
     &::-webkit-scrollbar {
         display: none;
     }
@@ -72,5 +76,7 @@
 }
 
 .navItem:hover > .navLink::after {
-    transform: scale(1);
+    @media (hover: hover) {
+        transform: scale(1);
+    }
 }
