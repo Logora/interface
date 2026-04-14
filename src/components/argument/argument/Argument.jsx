@@ -163,7 +163,7 @@ export const Argument = ({
 				id={componentId}
 			>
 				<ContentHeader
-					selectedContent={argument.score === 99}
+					selectedContent={argument.is_selected}
 					author={argument.author}
 					tag={
 						(argument.author.role === "editor" ||
