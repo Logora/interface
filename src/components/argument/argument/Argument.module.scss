@@ -157,7 +157,7 @@
 .replyTo {
 	display: flex !important;
 	flex-direction: row !important;
-	align-items: flex-start !important;
+	align-items: center !important;
 	@include spacing.pb(2, xs);
 	font-size: theme.$font-size-extra-small;
 	color: theme.$text-secondary;
@@ -179,6 +179,7 @@
 
 .replyingTo {
 	display: flex !important;
+	align-items: center !important;
 }
 
 .headerPosition-0 {
