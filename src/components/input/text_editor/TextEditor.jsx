@@ -27,6 +27,8 @@ import { SetContentPlugin } from "./plugins/SetContentPlugin";
 import { SetRichContentPlugin } from "./plugins/SetRichContentPlugin";
 import { ToolbarPlugin } from "./plugins/ToolbarPlugin";
 
+const normalizeNbsp = (value) => value?.replace(/&nbsp;/g, "\u00A0");
+
 export const TextEditor = ({
 	placeholder,
 	onSubmit,
@@ -89,13 +91,18 @@ export const TextEditor = ({
 	const setFocus = () => {
 		activate();
 	};
-
+	
 	const onChange = (editorState) => {
 		editorState.read(() => {
-			const text = $getRoot().getTextContent();
-			const richText = JSON.stringify(editorState);
+			const rawText = $getRoot().getTextContent();
+			const text = normalizeNbsp(rawText);
+	
+			const rawRichText = JSON.stringify(editorState);
+			const richText = normalizeNbsp(rawRichText);
+	
 			setEditorText(text);
 			setEditorRichText(richText);
+	
 			if (handleChange) {
 				handleChange(text, richText);
 			}

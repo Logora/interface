@@ -20,6 +20,7 @@ import styles from "./Argument.module.scss";
 import { ReplyFooter } from "./ReplyFooter";
 import { useRichContent } from "./useRichContent";
 const ArgumentInput = lazy(() => import("@logora/debate/input/argument_input").then(m => ({ default: m.ArgumentInput })));
+const normalizeNbsp = (value) => value?.replace(/&nbsp;/g, "\u00A0");
 
 export const Argument = ({
 	argument,
@@ -248,7 +249,7 @@ export const Argument = ({
 											/>
 										) : (
 											<div className={styles.argumentContent}>
-												{content.translatedContent}
+												{normalizeNbsp(content.translatedContent)}	
 											</div>
 										)}
 
