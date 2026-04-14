@@ -230,7 +230,7 @@ a.voteButton {
 .voteCommentCounts {
     display: flex;
     align-items: center;
-    gap: spacing.$spacer-xl;
+    gap: spacing.$spacer;
     width: 100%;
     @include spacing.mt(1, xs);
 }
@@ -241,6 +241,11 @@ a.voteButton {
     gap: spacing.$spacer-sm;
     font-size: theme.$font-size-normal;
     color: theme.$text-primary;
+    white-space: nowrap;
+}
+
+.debateNumberLabel {
+    white-space: nowrap;
 }
 
 .showResultButton {
