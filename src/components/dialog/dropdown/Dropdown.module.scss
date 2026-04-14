@@ -18,6 +18,7 @@
 
 .dropdownList {
 	position: absolute;
+	top: calc(100% + 2px);
 	z-index: 3;
 	background: theme.$background-color-primary;
 	box-shadow: theme.$box-shadow;
