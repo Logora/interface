@@ -1,4 +1,4 @@
-import { Chat } from "@logora/debate/icons/regular_icons";
+import { Suggestion } from "@logora/debate/icons/regular_icons";
 import React from "react";
 import { PointBox } from "./PointBox";
 
@@ -20,7 +20,7 @@ const meta = {
 			{...args}
 			icon={
 				showIcon ? (
-					<Chat width={16} height={16} data-testid={"svg-icon"} />
+					<Suggestion width={16} height={16} data-testid={"svg-icon"} />
 				) : null
 			}
 		/>
