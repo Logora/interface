@@ -520,7 +520,7 @@ export const VoteBox = ({
 						>
 							<div className={styles.voteBoxShowResult}>
 								{hideShowResultButton ? (
-									!currentVote && !showResults && (
+									!showResults && (
 										<div className={styles.voteResultInfoText}>
 											{intl.formatMessage({
 												id: "vote.vote_box.result_after_vote",
