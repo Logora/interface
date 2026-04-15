@@ -34,17 +34,18 @@ export const VoteBox = ({
 	disabled = false,
 	showVotesCommentsNumber = false,
 	commentsCount,
+	hideShowResultButton = false,
 }) => {
 	const [isLoadingVote, setIsLoadingVote] = useState(true);
 	const [currentVote, setCurrentVote] = useState(undefined);
 	const [showResults, setShowResults] = useState(false);
 	const [totalVotes, setTotalVotes] = useState(
 		Number.parseFloat(numberVotes.total) ||
-			Object.values(numberVotes).reduce(
-				(sum, value) => sum + Number.parseFloat(value),
-				0,
-			) ||
+		Object.values(numberVotes).reduce(
+			(sum, value) => sum + Number.parseFloat(value),
 			0,
+		) ||
+		0,
 	);
 	const firstPosition = useTranslatedContent(
 		votePositions[0]?.name,
@@ -77,15 +78,15 @@ export const VoteBox = ({
 		const votesCountObj = {};
 		votePositions?.forEach(
 			(position) =>
-				(votesCountObj[position.id] = {
-					count: Number.parseFloat(numberVotes[position.id]) || 0,
-					percentage:
-						totalVotes === 0
-							? 0
-							: Math.round(
-									100 * ((numberVotes[position.id] || 0) / totalVotes),
-								),
-				}),
+			(votesCountObj[position.id] = {
+				count: Number.parseFloat(numberVotes[position.id]) || 0,
+				percentage:
+					totalVotes === 0
+						? 0
+						: Math.round(
+							100 * ((numberVotes[position.id] || 0) / totalVotes),
+						),
+			}),
 		);
 
 		return votesCountObj;
@@ -382,9 +383,9 @@ export const VoteBox = ({
 											className={
 												index > 0
 													? cx(
-															styles.voteProgressHeader,
-															styles.voteProgressHeaderAgainst,
-														)
+														styles.voteProgressHeader,
+														styles.voteProgressHeaderAgainst,
+													)
 													: styles.voteProgressHeader
 											}
 										>
@@ -440,7 +441,7 @@ export const VoteBox = ({
 											/>
 										</button>
 									) : (
-										!config?.actions?.hideSHowResultButton && (
+										!hideShowResultButton && (
 											<button
 												type="button"
 												className={styles.voteActionButton}
@@ -518,25 +519,30 @@ export const VoteBox = ({
 							)}
 						>
 							<div className={styles.voteBoxShowResult}>
-								{typeof window !== "undefined" && !redirectUrl ? (
-									!config?.actions?.hideSHowResultButton && (
-										<button
-											type="button"
-											onClick={handleShowResults}
-											data-tid="show_vote_result"
-											data-testid="show-result"
-											className={styles.showResultButton}
-										>
-											<span
-												className={cx(styles.boldShowResult, styles.outlined)}
-											>
-												<FormattedMessage
-													id="vote.vote_box.show_result"
-													defaultMessage="Show result"
-												/>
-											</span>
-										</button>
+								{hideShowResultButton ? (
+									!currentVote && !showResults && (
+										<div className={styles.voteResultInfoText}>
+											{intl.formatMessage({
+												id: "vote.vote_box.result_after_vote",
+												defaultMessage: "Le résultat s'affichera après le vote.",
+											})}
+										</div>
 									)
+								) : typeof window !== "undefined" && !redirectUrl ? (
+									<button
+										type="button"
+										onClick={handleShowResults}
+										data-tid="show_vote_result"
+										data-testid="show-result"
+										className={styles.showResultButton}
+									>
+										<span className={cx(styles.boldShowResult, styles.outlined)}>
+											<FormattedMessage
+												id="vote.vote_box.show_result"
+												defaultMessage="Show result"
+											/>
+										</span>
+									</button>
 								) : (
 									<Link
 										to={getRedirectUrl(null)}
@@ -546,9 +552,7 @@ export const VoteBox = ({
 										external
 										data-testid={"show-result"}
 									>
-										<span
-											className={cx(styles.boldShowResult, styles.outlined)}
-										>
+										<span className={cx(styles.boldShowResult, styles.outlined)}>
 											<FormattedMessage
 												id="vote.vote_box.show_result"
 												defaultMessage="Show result"

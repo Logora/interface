@@ -257,3 +257,10 @@ a.voteButton {
     cursor: pointer;
   }
   
+.voteResultInfoText {
+    font-size: theme.$font-size-small;
+    color: theme.$text-secondary;
+    text-align: left;
+    width: 100%;
+    align-self: flex-start; 
+}

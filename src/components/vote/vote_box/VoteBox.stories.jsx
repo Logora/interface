@@ -1,8 +1,14 @@
 export default {
 	title: "Vote/Vote Box",
 	component: VoteBox,
-	args: {},
-	argTypes: {},
+	args: {
+		hideShowResultButton: true,
+	},
+	argTypes: {
+		hideShowResultButton: {
+			control: "boolean",
+		},
+	},
 };
 
 import { faker } from "@faker-js/faker";
@@ -86,8 +92,7 @@ const debateThreeVotePositions = {
 
 const data = dataProvider(httpClient, "https://mock.example.api");
 
-export const DefaultVoteBox = () => {
-	return (
+export const DefaultVoteBox = (args) => {	return (
 		<div style={{ width: "400px" }}>
 			<BrowserRouter>
 				<IntlProvider locale="en">
@@ -105,6 +110,7 @@ export const DefaultVoteBox = () => {
 												voteableType={"Group"}
 												votePositions={votePositions}
 												displayColumn
+												{...args}
 											/>
 										</VoteProvider>
 									</ModalProvider>
@@ -136,39 +142,6 @@ export const VoteBoxRow = () => {
 												numberVotes={debate.votes_count}
 												voteableType={"Group"}
 												votePositions={votePositions}
-											/>
-										</VoteProvider>
-									</ModalProvider>
-								</ConfigProvider>
-							</ToastProvider>
-						</AuthContext.Provider>
-					</DataProviderContext.Provider>
-				</IntlProvider>
-			</BrowserRouter>
-		</div>
-	);
-};
-
-export const VoteBoxFullWidth = () => {
-	return (
-		<div style={{ width: "400px" }}>
-			<BrowserRouter>
-				<IntlProvider locale="en">
-					<DataProviderContext.Provider value={{ dataProvider: data }}>
-						<AuthContext.Provider
-							value={{ currentUser: currentUser, isLoggedIn: true }}
-						>
-							<ToastProvider>
-								<ConfigProvider config={{}} routes={{ ...routes }}>
-									<ModalProvider>
-										<VoteProvider>
-											<VoteBox
-												voteableId={debate.id}
-												numberVotes={debate.votes_count}
-												voteableType={"Group"}
-												votePositions={votePositions}
-												displayColumn
-												textAlignLeft
 											/>
 										</VoteProvider>
 									</ModalProvider>
@@ -247,8 +220,7 @@ export const VoteBoxDisabled = () => {
 	);
 };
 
-export const VoteBoxWithVotesAndComments = () => {
-	return (
+export const VoteBoxWithVotesAndComments = (args) => {	return (
 		<div style={{ width: "400px" }}>
 			<BrowserRouter>
 				<IntlProvider locale="en">
@@ -257,7 +229,10 @@ export const VoteBoxWithVotesAndComments = () => {
 							value={{ currentUser: currentUser, isLoggedIn: true }}
 						>
 							<ToastProvider>
-								<ConfigProvider config={{}} routes={{ ...routes }}>
+								<ConfigProvider
+									config={{}}
+									routes={{ ...routes }}
+								>
 									<ModalProvider>
 										<VoteProvider>
 											<VoteBox
@@ -268,45 +243,6 @@ export const VoteBoxWithVotesAndComments = () => {
 												showTotal={false}
 												showVotesCommentsNumber={true}
 												commentsCount={debate.messages_count}
-											/>
-										</VoteProvider>
-									</ModalProvider>
-								</ConfigProvider>
-							</ToastProvider>
-						</AuthContext.Provider>
-					</DataProviderContext.Provider>
-				</IntlProvider>
-			</BrowserRouter>
-		</div>
-	);
-};
-
-export const VoteBoxHideShowResultButton = () => {
-	return (
-		<div style={{ width: "400px" }}>
-			<BrowserRouter>
-				<IntlProvider locale="en">
-					<DataProviderContext.Provider value={{ dataProvider: data }}>
-						<AuthContext.Provider
-							value={{ currentUser: currentUser, isLoggedIn: true }}
-						>
-							<ToastProvider>
-								<ConfigProvider
-									config={{
-										actions: {
-											hideSHowResultButton: true,
-										},
-									}}
-									routes={{ ...routes }}
-								>
-									<ModalProvider>
-										<VoteProvider>
-											<VoteBox
-												voteableId={debate.id}
-												numberVotes={debate.votes_count}
-												voteableType={"Group"}
-												votePositions={votePositions}
-												displayColumn
 											/>
 										</VoteProvider>
 									</ModalProvider>
