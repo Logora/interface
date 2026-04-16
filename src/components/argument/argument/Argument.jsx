@@ -245,11 +245,11 @@ export const Argument = ({
 										{richContent && !content.isTranslated ? (
 											<div
 												className={styles.argumentContent}
-												dangerouslySetInnerHTML={{ __html: richContent }}
+												dangerouslySetInnerHTML={{ __html: normalizeNbsp(richContent) }}
 											/>
 										) : (
 											<div className={styles.argumentContent}>
-												{normalizeNbsp(content.translatedContent)}	
+												{normalizeNbsp(content.translatedContent)}
 											</div>
 										)}
 
