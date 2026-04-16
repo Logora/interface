@@ -43,11 +43,11 @@
 
 .voteResultsContainer {
     max-width: 100%;
-    @include spacing.mt(3, xs);
 }
 
 .footerContainer {
     align-items: flex-end;
+    @include spacing.mt(3, xs);
 }
 
 .footerActionContainer {
