@@ -19,5 +19,10 @@ export const lexicalToHtml = (rawContent) => {
 		html = DOMPurify.sanitize(htmlContent);
 	});
 
+	// Decode common HTML entities that might have been double-encoded
+	if (html) {
+		html = html.replace(/&amp;nbsp;/g, '&nbsp;');
+	}
+
 	return html;
 };
