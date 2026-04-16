@@ -14,11 +14,17 @@
     align-items: center !important;
     justify-content: flex-start !important;
     gap: spacing.$spacer-sm;
+
+    &:focus:not(:focus-visible) {
+        outline: none;
+        box-shadow: none;
+    }
 }
 
 .active {
     font-weight: theme.$font-weight-bold;
     color: inherit;
+
     & svg {
         fill: currentColor !important;
         fill-rule: evenodd;
@@ -28,6 +34,7 @@
 .disabled {
     cursor: not-allowed;
     opacity: 0.6;
+
     & svg {
         fill: theme.$text-secondary;
         fill-rule: evenodd;

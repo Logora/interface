@@ -108,14 +108,13 @@ export const TextEditor = ({
 		editorState.read(() => {
 			const rawText = $getRoot().getTextContent();
 			const text = normalizeNbsp(rawText);
-
-			const rawEditorState = editorState.toJSON();
-			normalizeLexicalNode(rawEditorState.root);
-			const richText = JSON.stringify(rawEditorState);
-
+	
+			const rawRichText = JSON.stringify(editorState);
+			const richText = normalizeNbsp(rawRichText);
+	
 			setEditorText(text);
 			setEditorRichText(richText);
-
+	
 			if (handleChange) {
 				handleChange(text, richText);
 			}
