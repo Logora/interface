@@ -29,6 +29,18 @@ import { ToolbarPlugin } from "./plugins/ToolbarPlugin";
 
 const normalizeNbsp = (value) => value?.replace(/&nbsp;/g, "\u00A0");
 
+const normalizeLexicalNode = (node) => {
+		if (!node || typeof node !== "object") return;
+
+		if (typeof node.text === "string") {
+			node.text = normalizeNbsp(node.text);
+		}
+
+		if (Array.isArray(node.children)) {
+			node.children.forEach(normalizeLexicalNode);
+		}
+	};
+
 export const TextEditor = ({
 	placeholder,
 	onSubmit,
@@ -91,18 +103,19 @@ export const TextEditor = ({
 	const setFocus = () => {
 		activate();
 	};
-	
+
 	const onChange = (editorState) => {
 		editorState.read(() => {
 			const rawText = $getRoot().getTextContent();
 			const text = normalizeNbsp(rawText);
-	
-			const rawRichText = JSON.stringify(editorState);
-			const richText = normalizeNbsp(rawRichText);
-	
+
+			const rawEditorState = editorState.toJSON();
+			normalizeLexicalNode(rawEditorState.root);
+			const richText = JSON.stringify(rawEditorState);
+
 			setEditorText(text);
 			setEditorRichText(richText);
-	
+
 			if (handleChange) {
 				handleChange(text, richText);
 			}
@@ -200,7 +213,7 @@ export const TextEditor = ({
 						<HistoryPlugin />
 						<OnChangePlugin onChange={onChange} ignoreSelectionChange />
 						<AutoSavePlugin
-							onSetContent={disableAutoActivate ? () => {} : activate}
+							onSetContent={disableAutoActivate ? () => { } : activate}
 							storageUid={uid || randomUid}
 						/>
 						<SetContentPlugin />
