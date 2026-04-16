@@ -13,6 +13,8 @@ import React, { useState, useEffect } from "react";
 import { useIntl } from "react-intl";
 import styles from "./ProposalBox.module.scss";
 
+const normalizeNbsp = (value) => value?.replace(/&nbsp;/g, "\u00A0");
+
 export const ProposalBox = ({
 	proposal,
 	disabled = false,
@@ -92,11 +94,11 @@ export const ProposalBox = ({
 										<div
 											className={styles.proposalContent}
 											// biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation>
-											dangerouslySetInnerHTML={{ __html: richContent }}
+											dangerouslySetInnerHTML={{ __html: normalizeNbsp(richContent) }}
 										/>
 									) : (
 										<div className={styles.proposalContent}>
-											{content.translatedContent}
+											{normalizeNbsp(content.translatedContent)}
 										</div>
 									)}
 									{(content.isTranslated || title.isTranslated) && (
