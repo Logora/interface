@@ -51,9 +51,10 @@
     user-select: none;
     -webkit-user-select: none;
 
-    .replyAction:focus-visible {
-		outline: revert;
-	  }
+     &:focus:not(:focus-visible) {
+        outline: none;
+        box-shadow: none;
+    }
 
     .replyText {
         @include spacing.ml(2, xs);
@@ -75,5 +76,10 @@
 
     &:hover {
         background-color: rgba(0, 0, 0, 0.03);
+    }
+    
+    &:focus:not(:focus-visible) {
+        outline: none;
+        box-shadow: none;
     }
 }
