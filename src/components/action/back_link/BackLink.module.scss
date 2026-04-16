@@ -22,7 +22,12 @@ a.backLink {
         }
     }
     &:focus {
+        outline: none;
         border: none;
+    }
+    &:focus-visible {
+        outline: 2px solid theme.$call-primary;
+        outline-offset: 2px;
     }
     &:active {
         border: none;

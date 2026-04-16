@@ -17,6 +17,13 @@
 	&:hover {
 		box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.05);
 	}
+	&:focus {
+		outline: none;
+	}
+	&:focus-visible {
+		outline: 2px solid theme.$call-primary;
+		outline-offset: 2px;
+	}
 }
 
 .icon {

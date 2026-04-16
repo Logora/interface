@@ -104,11 +104,13 @@ button.primaryButton, a.primaryButton {
   }
 
   &:focus {
+    outline: none;
     box-shadow: none;
   }
-  
+
   &:focus-visible {
-    outline: revert;
+    outline: 2px solid theme.$call-primary;
+    outline-offset: 2px;
   }
 
   &.withoutBorder {

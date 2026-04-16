@@ -8,6 +8,15 @@ button.followUserButton {
   gap: spacing.$spacer-sm;
   padding: spacing.$spacer-sm;
   font-weight: theme.$font-weight-bold;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:focus-visible {
+    outline: 2px solid theme.$call-primary;
+    outline-offset: 2px;
+  }
 }
 
 button.followUserButtonNoBorder {
