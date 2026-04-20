@@ -1,8 +1,22 @@
 export default {
 	title: "Vote/Vote Button",
 	component: VoteButton,
-	args: {},
-	argTypes: {},
+	args: {
+		voteableType: "Argument",
+		voteableId: 1,
+		totalUpvote: 10,
+		totalDownvote: 3,
+		activeClassName: "",
+		disabled: false,
+	},
+	argTypes: {
+		voteableType: { control: "text" },
+		voteableId: { control: "number" },
+		totalUpvote: { control: "number" },
+		totalDownvote: { control: "number" },
+		activeClassName: { control: "text" },
+		disabled: { control: "boolean" },
+	},
 };
 
 import { faker } from "@faker-js/faker";
@@ -46,7 +60,7 @@ const currentUser = {
 
 const data = dataProvider(httpClient, "https://mock.example.api");
 
-export const DefaultVoteButton = () => {
+export const DefaultVoteButton = (args) => {
 	return (
 		<ConfigProvider config={{}}>
 			<IntlProvider locale="en">
@@ -57,10 +71,7 @@ export const DefaultVoteButton = () => {
 						<ModalProvider>
 							<VoteProvider>
 								<VoteButton
-									voteableType={vote.voteable_type}
-									voteableId={vote.voteable_id}
-									totalUpvote={10}
-									totalDownvote={0}
+									{...args}
 								/>
 							</VoteProvider>
 						</ModalProvider>
