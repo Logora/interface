@@ -111,7 +111,33 @@ const currentUser = {
 	id: resource.author.id,
 };
 
-export const DefaultContentFooter = (args) => {
+export const DefaultContentFooter = (args = {}) => {
+	const defaultStoryArgs = {
+		reportType: "",
+		deleteType: "",
+		deleteListId: "",
+		softDelete: false,
+		disabled: false,
+		enableReply: true,
+		handleReplyTo: undefined,
+		showActions: true,
+		showShareButton: true,
+		shareModal: false,
+		shareUrl: "https://test.com",
+		shareTitle: "Share title",
+		shareText: "Share text",
+		shareModalTitle: "Share content",
+		showShareCode: true,
+		shareCode: "</>",
+		showShareText: true,
+		enableEdition: true,
+		enableDeletion: true,
+		enableReport: true,
+		containerClassName: "",
+		voteActionClassName: "",
+		replyRedirectUrl: "",
+	};
+
 	return (
 		<div style={{ width: "400px", height: "60px" }}>
 			<IntlProvider locale="en">
@@ -127,6 +153,7 @@ export const DefaultContentFooter = (args) => {
 											<VoteProvider>
 												<ContentFooter
 													resource={resource}
+													{...defaultStoryArgs}
 													{...args}
 												>
 													<VoteButton
