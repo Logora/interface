@@ -11,6 +11,7 @@ export const UpDownVoteBox = ({
 	totalUpvote = 0,
 	totalDownvote = 0,
 	disabled = false,
+	hideDownvotes = false,
 }) => {
 	const { totalUpvotes, totalDownvotes, activeVote, voteSide, handleVote } =
 		useVote(voteableType, voteableId, totalUpvote, totalDownvote);
@@ -54,7 +55,9 @@ export const UpDownVoteBox = ({
 						defaultMessage: "opponents",
 					})}
 				/>
-				<div className={styles.voteText}>{totalDownvotes}</div>
+				{!hideDownvotes && (
+					<div className={styles.voteText}>{totalDownvotes}</div>
+				)}
 			</div>
 		</div>
 	);

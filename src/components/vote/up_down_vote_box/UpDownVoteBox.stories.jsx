@@ -1,8 +1,34 @@
 export default {
 	title: "Vote/Up Down Vote Box",
 	component: UpDownVoteBox,
-	args: {},
-	argTypes: {},
+	args: {
+		voteableType: "argument",
+		voteableId: 1,
+		totalUpvote: 10,
+		totalDownvote: 5,
+		disabled: false,
+		hideDownvotes: false,
+	},
+	argTypes: {
+		voteableType: {
+			control: "text",
+		},
+		voteableId: {
+			control: "number",
+		},
+		totalUpvote: {
+			control: "number",
+		},
+		totalDownvote: {
+			control: "number",
+		},
+		disabled: {
+			control: "boolean",
+		},
+		hideDownvotes: {
+			control: "boolean",
+		},
+	},
 };
 
 import { faker } from "@faker-js/faker";
@@ -46,7 +72,7 @@ const currentUser = {
 
 const data = dataProvider(httpClient, "https://mock.example.api");
 
-export const DefaultVoteBox = () => {
+export const DefaultVoteBox = (args) => {
 	return (
 		<ConfigProvider config={{}}>
 			<IntlProvider locale="en">
@@ -57,10 +83,13 @@ export const DefaultVoteBox = () => {
 						<ModalProvider>
 							<VoteProvider>
 								<UpDownVoteBox
-									voteableType={vote.voteable_type}
-									voteableId={vote.voteable_id}
-									totalUpvote={10}
-									totalDownvote={0}
+									{...args}
+									voteableType={args.voteableType || vote.voteable_type}
+									voteableId={args.voteableId || vote.voteable_id}
+									totalUpvote={args.totalUpvote}
+									totalDownvote={args.totalDownvote}
+									disabled={args.disabled}
+									hideDownvotes={args.hideDownvotes}
 								/>
 							</VoteProvider>
 						</ModalProvider>
@@ -71,7 +100,7 @@ export const DefaultVoteBox = () => {
 	);
 };
 
-export const DisabledVoteBox = () => {
+export const DisabledVoteBox = (args) => {
 	return (
 		<ConfigProvider config={{}}>
 			<IntlProvider locale="en">
@@ -82,11 +111,13 @@ export const DisabledVoteBox = () => {
 						<ModalProvider>
 							<VoteProvider>
 								<UpDownVoteBox
-									voteableType={vote.voteable_type}
-									voteableId={vote.voteable_id}
-									totalUpvote={10}
-									totalDownvote={0}
+									{...args}
+									voteableType={args.voteableType || vote.voteable_type}
+									voteableId={args.voteableId || vote.voteable_id}
+									totalUpvote={args.totalUpvote}
+									totalDownvote={args.totalDownvote}
 									disabled={true}
+									hideDownvotes={args.hideDownvotes}
 								/>
 							</VoteProvider>
 						</ModalProvider>

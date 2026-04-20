@@ -146,6 +146,7 @@ export const ProposalBox = ({
 								currentUser?.id === proposal?.author?.id ||
 								userIsBanned
 							}
+							hideDownvotes={config?.actions?.hideDownvotes}
 						/>
 					</ContentFooter>
 				)}
