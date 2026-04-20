@@ -1,8 +1,32 @@
 export default {
 	title: "User Content/Content Header",
 	component: ContentHeader,
-	args: {},
-	argTypes: {},
+	args: {
+		tag: "Tag",
+		tagClassName: "",
+		date: new Date(),
+		oneLine: false,
+		disableLinks: false,
+		selectedContent: false,
+		isDeleted: false,
+		moderationReason: "",
+		moderationNotes: "",
+		moderationPolicyUrl: "",
+		showModerationFeedback: false,
+	},
+	argTypes: {
+		tag: { control: "text" },
+		tagClassName: { control: "text" },
+		date: { control: "date" },
+		oneLine: { control: "boolean" },
+		disableLinks: { control: "boolean" },
+		selectedContent: { control: "boolean" },
+		isDeleted: { control: "boolean" },
+		moderationReason: { control: "text" },
+		moderationNotes: { control: "text" },
+		moderationPolicyUrl: { control: "text" },
+		showModerationFeedback: { control: "boolean" },
+	},
 };
 
 import { faker } from "@faker-js/faker";
@@ -56,18 +80,14 @@ const config = {
 	},
 };
 
-export const DefaultContentHeader = (props) => {
+export const DefaultContentHeader = (args) => {
 	return (
 		<BrowserRouter>
 			<ConfigProvider routes={{ ...routes }}>
 				<IntlProvider locale="en">
 					<ContentHeader
-						author={props.author || author}
-						tag={props.tag || tag}
-						date={props.date || date}
-						positionIndex={1}
-						oneLine={false}
-						disableLinks={false}
+						author={author}
+						{...args}
 					/>
 				</IntlProvider>
 			</ConfigProvider>

@@ -1,8 +1,56 @@
 export default {
 	title: "User Content/Content Footer",
 	component: ContentFooter,
-	args: {},
-	argTypes: {},
+	args: {
+		reportType: "",
+		deleteType: "",
+		deleteListId: "",
+		softDelete: false,
+		disabled: false,
+		enableReply: true,
+		handleReplyTo: undefined,
+		showActions: true,
+		showShareButton: true,
+		shareModal: false,
+		shareUrl: "https://test.com",
+		shareTitle: "Share title",
+		shareText: "Share text",
+		shareModalTitle: "Share content",
+		showShareCode: true,
+		shareCode: "</>",
+		showShareText: true,
+		enableEdition: true,
+		enableDeletion: true,
+		enableReport: true,
+		containerClassName: "",
+		voteActionClassName: "",
+		replyRedirectUrl: "",
+	},
+	argTypes: {
+		reportType: { control: "text" },
+		deleteType: { control: "text" },
+		deleteListId: { control: "text" },
+		softDelete: { control: "boolean" },
+		disabled: { control: "boolean" },
+		enableReply: { control: "boolean" },
+		handleReplyTo: { action: "replied" },
+		showActions: { control: "boolean" },
+		showShareButton: { control: "boolean" },
+		shareModal: { control: "boolean" },
+		shareUrl: { control: "text" },
+		shareTitle: { control: "text" },
+		shareText: { control: "text" },
+		shareModalTitle: { control: "text" },
+		showShareCode: { control: "boolean" },
+		shareCode: { control: "text" },
+		showShareText: { control: "boolean" },
+		enableEdition: { control: "boolean" },
+		enableDeletion: { control: "boolean" },
+		enableReport: { control: "boolean" },
+		containerClassName: { control: "text" },
+		voteActionClassName: { control: "text" },
+		replyRedirectUrl: { control: "text" },
+	},
 };
 
 import { faker } from "@faker-js/faker";
@@ -63,7 +111,7 @@ const currentUser = {
 	id: resource.author.id,
 };
 
-export const DefaultContentFooter = () => {
+export const DefaultContentFooter = (args) => {
 	return (
 		<div style={{ width: "400px", height: "60px" }}>
 			<IntlProvider locale="en">
@@ -79,15 +127,7 @@ export const DefaultContentFooter = () => {
 											<VoteProvider>
 												<ContentFooter
 													resource={resource}
-													showActions
-													showShareButton
-													enableReply
-													shareUrl={"https://test.com"}
-													shareTitle={"Share title"}
-													shareText={"Share text"}
-													showShareText
-													showShareCode
-													shareCode={"</>"}
+													{...args}
 												>
 													<VoteButton
 														voteableType={"Message"}

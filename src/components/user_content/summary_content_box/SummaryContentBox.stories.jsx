@@ -1,8 +1,30 @@
 export default {
 	title: "User Content/Summary Content Box",
 	component: SummaryContentBox,
-	args: {},
-	argTypes: {},
+	args: {
+		tag: "Position",
+		date: new Date(),
+		title: "",
+		contentCount: 0,
+		tagClassName: "",
+		headerOneLine: false,
+		showFooter: false,
+		language: "",
+		lineCount: undefined,
+		translationEntries: [],
+	},
+	argTypes: {
+		tag: { control: "text" },
+		date: { control: "date" },
+		title: { control: "text" },
+		contentCount: { control: "number" },
+		tagClassName: { control: "text" },
+		headerOneLine: { control: "boolean" },
+		showFooter: { control: "boolean" },
+		language: { control: "text" },
+		lineCount: { control: "number" },
+		translationEntries: { control: "object" },
+	},
 };
 
 import { faker } from "@faker-js/faker";
@@ -42,17 +64,16 @@ const routes = {
 	}),
 };
 
-export const DefaultSummaryContentBox = () => {
+export const DefaultSummaryContentBox = (args) => {
 	return (
 		<BrowserRouter>
 			<ConfigProvider routes={{ ...routes }}>
 				<IntlProvider locale="en">
 					<SummaryContentBox
 						author={author}
-						tag={argument.position?.name}
-						date={argument.created_at}
 						content={argument.content}
 						link={debateUrl}
+						{...args}
 					/>
 				</IntlProvider>
 			</ConfigProvider>
