@@ -8,19 +8,17 @@ export const HashScroll = ({ elementId, onScroll, children }) => {
 		if (!elementId) return;
 
 		if (typeof window !== "undefined") {
-			const pageAnchor = location.hash.slice(1);
+			const source = location.pathname + location.hash.slice(1);
 			const anchorRegex = new RegExp(elementId);
-			if (pageAnchor.match(anchorRegex)) {
+			if (source.match(anchorRegex)) {
 				const element = document.getElementById(elementId);
 				if (element) {
-					if (onScroll) {
-						onScroll();
-					}
+					onScroll?.();
 					element.scrollIntoView({ behavior: "smooth" });
 				}
 			}
 		}
-	}, [location.hash]);
+	}, [location]);
 
 	return <>{children}</>;
 };

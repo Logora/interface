@@ -47,6 +47,24 @@ describe("HashScroll", () => {
 		expect(scrollIntoViewMock).not.toHaveBeenCalled();
 	});
 
+	it("should call scrollIntoView when element id is in pathname", async () => {
+		const dom = render(
+			<MemoryRouter initialEntries={[`/${hash}`]}>
+				<HashScroll elementId={hash}>
+					<div id={hash}>Hello World!</div>
+				</HashScroll>
+			</MemoryRouter>,
+		);
+
+		const el = dom.baseElement.firstChild?.firstChild;
+
+		expect(el).toHaveTextContent("Hello World!");
+		expect(el).toHaveAttribute("id", hash);
+
+		expect(scrollIntoViewMock).toHaveBeenCalled();
+		expect(scrollIntoViewMock).toHaveBeenCalledTimes(1);
+	});
+
 	it("should call onScroll when passed", async () => {
 		const onScroll = vi.fn();
 

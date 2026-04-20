@@ -1,7 +1,6 @@
 import { Button } from "@logora/debate/action/button";
 import { useAuth } from "@logora/debate/auth/use_auth";
 import { useConfig } from "@logora/debate/data/config_provider";
-import { AnnouncementDialog } from "@logora/debate/dialog/announcement_dialog";
 import { Icon } from "@logora/debate/icons/icon";
 import { VotePaginatedList } from "@logora/debate/list/paginated_list";
 import { UserContentSkeleton } from "@logora/debate/skeleton/user_content_skeleton";
