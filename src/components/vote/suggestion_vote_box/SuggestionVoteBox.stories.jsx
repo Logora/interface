@@ -1,8 +1,22 @@
 export default {
 	title: "Vote/Suggestion Vote Box",
 	component: SuggestionVoteBox,
-	args: {},
-	argTypes: {},
+	args: {
+		voteableType: "Argument",
+		voteableId: 1,
+		totalUpvote: 10,
+		totalDownvote: 3,
+		onVote: undefined,
+		disabled: false,
+	},
+	argTypes: {
+		voteableType: { control: "text" },
+		voteableId: { control: "number" },
+		totalUpvote: { control: "number" },
+		totalDownvote: { control: "number" },
+		onVote: { action: "voted" },
+		disabled: { control: "boolean" },
+	},
 };
 
 import { faker } from "@faker-js/faker";
@@ -46,7 +60,7 @@ const currentUser = {
 
 const data = dataProvider(httpClient, "https://mock.example.api");
 
-export const DefaultSuggestionVoteBox = () => {
+export const DefaultSuggestionVoteBox = (args) => {
 	return (
 		<ConfigProvider config={{}}>
 			<IntlProvider locale="en">
@@ -57,10 +71,7 @@ export const DefaultSuggestionVoteBox = () => {
 						<ModalProvider>
 							<VoteProvider>
 								<SuggestionVoteBox
-									voteableType={vote.voteable_type}
-									voteableId={vote.voteable_id}
-									totalUpvote={10}
-									totalDownvote={0}
+									{...args}
 								/>
 							</VoteProvider>
 						</ModalProvider>
