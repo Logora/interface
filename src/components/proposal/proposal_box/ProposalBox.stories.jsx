@@ -123,22 +123,43 @@ export default {
 		proposal: { control: "object" },
 		containerWidth: { control: "text" },
 		containerHeight: { control: "text" },
+		disabled: { control: "boolean" },
+		fixedContentHeight: { control: "boolean" },
+		contentMaxHeight: { control: "number" },
+		enableEdition: { control: "boolean" },
+		hideFooter: { control: "boolean" },
 	},
 	args: {
 		proposal,
 		containerWidth: "400px",
 		containerHeight: "240px",
+		disabled: false,
+		fixedContentHeight: false,
+		contentMaxHeight: 156,
+		enableEdition: true,
+		hideFooter: false,
 	},
 	render: ({ containerWidth, containerHeight, ...args }) => (
 		<div style={{ width: containerWidth, height: containerHeight }}>
 			<Providers>
-				<ProposalBox {...args} />
+				<ProposalBox
+					proposal={args.proposal}
+					disabled={args.disabled}
+					fixedContentHeight={args.fixedContentHeight}
+					contentMaxHeight={args.contentMaxHeight}
+					enableEdition={args.enableEdition}
+					hideFooter={args.hideFooter}
+				/>
 			</Providers>
 		</div>
 	),
 };
 
-export const DefaultProposal = {};
+export const DefaultProposal = {
+	args: {
+		proposal,
+	},
+};
 
 export const LongProposal = {
 	args: {
