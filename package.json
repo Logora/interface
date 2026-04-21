@@ -1,6 +1,6 @@
 {
   "name": "@logora/debate",
-  "version": "0.3.23",
+  "version": "0.3.24",
   "type": "module",
   "license": "AGPL-3.0",
   "description": "Design system of @Logora made with React",
