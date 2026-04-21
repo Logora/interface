@@ -1,49 +1,45 @@
-export default {
-	title: "Summary/Keyword Box",
-	component: KeywordBox,
-	args: {},
-	argTypes: {},
-};
-
 import React from "react";
 import { IntlProvider } from "react-intl";
 import { KeywordBox } from "./KeywordBox";
 
-export const DefaultKeywordBox = () => {
-	return (
-		<IntlProvider locale="en">
-			<KeywordBox
-				keyword={"Politics"}
-				occurrences={879}
-				color={"#FBC62F"}
-				handleClick={() => console.log("DO SOMETHING")}
-			/>
-		</IntlProvider>
-	);
+const defaultArgs = {
+	keyword: "Politics",
+	occurrences: 879,
+	color: "#FBC62F",
+	handleClick: () => console.log("DO SOMETHING"),
 };
 
-export const KeywordBoxRed = () => {
-	return (
+export default {
+	title: "Summary/Keyword Box",
+	component: KeywordBox,
+	args: defaultArgs,
+	argTypes: {
+		keyword: { control: "text" },
+		occurrences: { control: "number" },
+		color: { control: "color" },
+		handleClick: { control: false },
+	},
+	render: (args) => (
 		<IntlProvider locale="en">
-			<KeywordBox
-				keyword={"Sports"}
-				occurrences={475}
-				color={"red"}
-				handleClick={() => console.log("DO SOMETHING")}
-			/>
+			<KeywordBox {...args} />
 		</IntlProvider>
-	);
+	),
 };
 
-export const KeywordBoxPurple = () => {
-	return (
-		<IntlProvider locale="en">
-			<KeywordBox
-				keyword={"Medical"}
-				occurrences={321}
-				color={"purple"}
-				handleClick={() => console.log("DO SOMETHING")}
-			/>
-		</IntlProvider>
-	);
+export const DefaultKeywordBox = {};
+
+export const KeywordBoxRed = {
+	args: {
+		keyword: "Sports",
+		occurrences: 475,
+		color: "red",
+	},
+};
+
+export const KeywordBoxPurple = {
+	args: {
+		keyword: "Medical",
+		occurrences: 321,
+		color: "purple",
+	},
 };
