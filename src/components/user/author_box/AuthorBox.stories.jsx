@@ -1,8 +1,34 @@
 export default {
 	title: "User/Author Box",
 	component: AuthorBox,
-	args: {},
-	argTypes: {},
+	args: {
+		fullName: "John Doe",
+		slug: "john-doe",
+		avatarUrl: "https://avatars.githubusercontent.com/u/1?v=4",
+		lastActivity: new Date().toISOString(),
+		showBadge: false,
+		points: 52,
+		eloquenceTitle: "A",
+		occupation: "Writer",
+		disableLinks: false,
+		isDeleted: false,
+		language: null,
+		languageDialect: null,
+	},
+	argTypes: {
+		fullName: { control: "text" },
+		slug: { control: "text" },
+		avatarUrl: { control: "text" },
+		lastActivity: { control: "text" },
+		showBadge: { control: "boolean" },
+		points: { control: "number" },
+		eloquenceTitle: { control: "text" },
+		occupation: { control: "text" },
+		disableLinks: { control: "boolean" },
+		isDeleted: { control: "boolean" },
+		language: { control: "text" },
+		languageDialect: { control: "text" },
+	},
 };
 
 import { faker } from "@faker-js/faker";
@@ -30,37 +56,12 @@ const routes = {
 	}),
 };
 
-export const DefaultAuthorBox = () => {
+export const DefaultAuthorBox = (args) => {
 	return (
 		<BrowserRouter>
 			<ConfigProvider routes={{ ...routes }}>
 				<IntlProvider locale="en">
-					<AuthorBox
-						fullName={author.full_name}
-						avatarUrl={author.image_url}
-						slug={author.hash_id}
-						points={author.points}
-						showBadge={false}
-					/>
-				</IntlProvider>
-			</ConfigProvider>
-		</BrowserRouter>
-	);
-};
-
-export const AuthorBoxWithoutLinks = () => {
-	return (
-		<BrowserRouter>
-			<ConfigProvider routes={{ ...routes }}>
-				<IntlProvider locale="en">
-					<AuthorBox
-						fullName={author.full_name}
-						avatarUrl={author.image_url}
-						slug={author.hash_id}
-						points={author.points}
-						showBadge={false}
-						disableLinks
-					/>
+					<AuthorBox {...args} />
 				</IntlProvider>
 			</ConfigProvider>
 		</BrowserRouter>
@@ -96,42 +97,6 @@ export const AuthorBoxWithOccupation = () => {
 						slug={author.hash_id}
 						points={author.points}
 						occupation={author.occupation}
-					/>
-				</IntlProvider>
-			</ConfigProvider>
-		</BrowserRouter>
-	);
-};
-
-export const AuthorBoxExpert = () => {
-	return (
-		<BrowserRouter>
-			<ConfigProvider routes={{ ...routes }}>
-				<IntlProvider locale="en">
-					<AuthorBox
-						fullName={author.full_name}
-						avatarUrl={author.image_url}
-						slug={author.hash_id}
-						points={author.points}
-						showBadge={true}
-					/>
-				</IntlProvider>
-			</ConfigProvider>
-		</BrowserRouter>
-	);
-};
-
-export const AuthorBoxDeletedUser = () => {
-	return (
-		<BrowserRouter>
-			<ConfigProvider routes={{ ...routes }}>
-				<IntlProvider locale="en">
-					<AuthorBox
-						fullName={author.full_name}
-						avatarUrl={author.image_url}
-						slug={author.hash_id}
-						points={author.points}
-						isDeleted={true}
 					/>
 				</IntlProvider>
 			</ConfigProvider>

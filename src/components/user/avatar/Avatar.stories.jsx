@@ -1,8 +1,22 @@
 export default {
 	title: "User/Avatar",
 	component: Avatar,
-	args: {},
-	argTypes: {},
+	args: {
+		avatarUrl: "https://avatars.githubusercontent.com/u/1?v=4",
+		userName: "John Doe",
+		isOnline: false,
+		showTooltip: false,
+		size: 40,
+		className: "",
+	},
+	argTypes: {
+		avatarUrl: { control: "text" },
+		userName: { control: "text" },
+		isOnline: { control: "boolean" },
+		showTooltip: { control: "boolean" },
+		size: { control: "number" },
+		className: { control: "text" },
+	},
 };
 
 import { faker } from "@faker-js/faker";
@@ -13,10 +27,10 @@ import { Avatar } from "./Avatar";
 const avatarUrl = faker.image.avatarGitHub();
 const userName = faker.person.fullName();
 
-export const DefaultAvatar = () => {
+export const DefaultAvatar = (args) => {
 	return (
 		<IntlProvider locale="en">
-			<Avatar avatarUrl={avatarUrl} userName={userName} />
+			<Avatar {...args} />
 		</IntlProvider>
 	);
 };
@@ -25,46 +39,6 @@ export const AvatarWithDefaultImage = () => {
 	return (
 		<IntlProvider locale="en">
 			<Avatar userName={userName} />
-		</IntlProvider>
-	);
-};
-
-export const AvatarSmall = () => {
-	return (
-		<IntlProvider locale="en">
-			<Avatar avatarUrl={avatarUrl} userName={userName} size={20} />
-		</IntlProvider>
-	);
-};
-
-export const AvatarLarge = () => {
-	return (
-		<IntlProvider locale="en">
-			<Avatar avatarUrl={avatarUrl} userName={userName} size={60} />
-		</IntlProvider>
-	);
-};
-
-export const AvatarOnline = () => {
-	return (
-		<IntlProvider locale="en">
-			<Avatar avatarUrl={avatarUrl} userName={userName} isOnline />
-		</IntlProvider>
-	);
-};
-
-export const AvatarSmallOnline = () => {
-	return (
-		<IntlProvider locale="en">
-			<Avatar avatarUrl={avatarUrl} userName={userName} size={20} isOnline />
-		</IntlProvider>
-	);
-};
-
-export const AvatarLargeOnline = () => {
-	return (
-		<IntlProvider locale="en">
-			<Avatar avatarUrl={avatarUrl} userName={userName} size={60} isOnline />
 		</IntlProvider>
 	);
 };

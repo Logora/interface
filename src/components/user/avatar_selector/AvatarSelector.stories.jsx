@@ -1,8 +1,18 @@
 export default {
 	title: "User/Avatar Selector",
 	component: AvatarSelector,
-	args: {},
-	argTypes: {},
+	args: {
+		avatarUrlList: [],
+		onChooseAvatar: undefined,
+		userName: "User Name",
+		allowUserImage: false,
+	},
+	argTypes: {
+		avatarUrlList: { control: "object" },
+		onChooseAvatar: { action: "chooseAvatar" },
+		userName: { control: "text" },
+		allowUserImage: { control: "boolean" },
+	},
 };
 
 import { faker } from "@faker-js/faker";
@@ -34,31 +44,23 @@ const handleChooseAvatar = (avatar) => {
 	console.log(`Chosen avatar: ${avatar}`);
 };
 
-export const DefaultAvatarSelector = () => {
+export const DefaultAvatarSelector = (args) => {
 	return (
 		<div style={{ width: "500px", height: "300px" }}>
 			<IntlProvider locale="en">
 				<AvatarSelector
-					onChooseAvatar={handleChooseAvatar}
-					avatarUrlList={avatarUrlList}
-					userName={"User Name"}
+					onChooseAvatar={args.onChooseAvatar || handleChooseAvatar}
+					avatarUrlList={
+						args.avatarUrlList?.length > 0 ? args.avatarUrlList : avatarUrlList
+					}
+					userName={args.userName}
+					allowUserImage={args.allowUserImage}
 				/>
 			</IntlProvider>
 		</div>
 	);
 };
 
-export const AllowUserImageAvatarSelector = () => {
-	return (
-		<div style={{ width: "500px", height: "300px" }}>
-			<IntlProvider locale="en">
-				<AvatarSelector
-					onChooseAvatar={handleChooseAvatar}
-					avatarUrlList={avatarUrlList}
-					userName={"User Name"}
-					allowUserImage
-				/>
-			</IntlProvider>
-		</div>
-	);
+export const AllowUserImageAvatarSelector = (args) => {
+	return <DefaultAvatarSelector {...args} allowUserImage={true} />;
 };
