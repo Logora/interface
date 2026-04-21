@@ -1,8 +1,27 @@
 export default {
 	title: "User/User Box",
 	component: UserBox,
-	args: {},
-	argTypes: {},
+	args: {
+		user: {
+			id: 83,
+			uid: "396deae0-15e3-46dd-bd85-498456809453",
+			hash_id: "396deae0-15e3-46dd",
+			image_url: "https://avatars.githubusercontent.com/u/1?v=4",
+			full_name: "John Doe",
+			slug: "john-doe",
+			score: 0,
+			points: 100,
+			description: null,
+			last_activity: new Date().toISOString(),
+			groups_count: 2,
+			upvotes: 5,
+			messages_count: 8,
+			eloquence_title: null,
+		},
+	},
+	argTypes: {
+		user: { control: "object" },
+	},
 };
 
 import { faker } from "@faker-js/faker";
@@ -56,12 +75,12 @@ const routes = {
 	userShowLocation: UserShowLocation,
 };
 
-export const DefaultUserBox = () => {
+export const DefaultUserBox = (args) => {
 	return (
 		<BrowserRouter>
 			<IntlProvider locale="en">
 				<ConfigProvider routes={{ ...routes }}>
-					<UserBox user={defaultUser} />
+					<UserBox {...args} />
 				</ConfigProvider>
 			</IntlProvider>
 		</BrowserRouter>

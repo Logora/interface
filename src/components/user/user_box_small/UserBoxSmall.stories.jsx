@@ -1,8 +1,16 @@
 export default {
 	title: "User/User Box Small",
 	component: UserBoxSmall,
-	args: {},
-	argTypes: {},
+	args: {
+		userName: "John Doe",
+		avatarUrl: "https://avatars.githubusercontent.com/u/1?v=4",
+		userSlug: "john-doe",
+	},
+	argTypes: {
+		userName: { control: "text" },
+		avatarUrl: { control: "text" },
+		userSlug: { control: "text" },
+	},
 };
 
 import { faker } from "@faker-js/faker";
@@ -27,16 +35,12 @@ const routes = {
 	userShowLocation: UserShowLocation,
 };
 
-export const DefaultUserBoxSmall = () => {
+export const DefaultUserBoxSmall = (args) => {
 	return (
 		<BrowserRouter>
 			<ConfigProvider routes={{ ...routes }}>
 				<IntlProvider locale="en">
-					<UserBoxSmall
-						userName={user.full_name}
-						userSlug={user.slug}
-						avatarUrl={user.image_url}
-					/>
+					<UserBoxSmall {...args} />
 				</IntlProvider>
 			</ConfigProvider>
 		</BrowserRouter>
