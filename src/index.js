@@ -58,6 +58,7 @@ export * as bildIcons from "./components/icons/bild_icons";
 export * as spiegelIcons from "./components/icons/spiegel_icons";
 export * as heroIcons from "./components/icons/hero_icons";
 export * as kroneIcons from "./components/icons/krone_icons";
+export * as sternIcons from "./components/icons/stern_icons";
 export * from "./components/information/information_box";
 export * from "./components/input/argument_input";
 export * from "./components/input/input_provider";
