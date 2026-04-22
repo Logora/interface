@@ -78,6 +78,32 @@ const renderStory = (overrides = {}) =>
 
 export const DefaultConsultationBox = (props) => renderStory(props);
 
+export const ConsultationEndedBox = (props) =>
+	renderStory({
+		consultation: {
+			...consultation,
+			ends_at: "2022-11-30T00:00:00.000Z",
+		},
+		...props,
+	});
+
+export const ConsultationWithoutEndBox = (props) =>
+	renderStory({
+		consultation: {
+			...consultation,
+			ends_at: null,
+		},
+		...props,
+	});
+
+export const ConsultationWithoutVoteGoalBox = (props) =>
+	renderStory({
+		consultation: {
+			...consultation,
+			vote_goal: 0,
+		},
+		...props,
+	});
 
 export const ConsultationInProgressBox = (props) =>
 	renderStory({
@@ -91,5 +117,15 @@ export const ConsultationInProgressBox = (props) =>
 export const ConsultationWithoutProgressBlock = (props) =>
 	renderStory({
 		...props,
+		showVoteProgress: false,
+	});
+
+export const ConsultationHideProgressBox = (props) =>
+	renderStory({
+		...props,
+		consultation: {
+			...consultation,
+			vote_goal: 1000,
+		},
 		showVoteProgress: false,
 	});
