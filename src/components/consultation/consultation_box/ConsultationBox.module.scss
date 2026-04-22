@@ -55,6 +55,8 @@
         @include spacing.ml(1, xs);
         transform: rotate(180deg);
         fill: theme.$text-secondary;
+        top: 1px;
+        position: relative;
     }
 }
 .consultationInformations {
