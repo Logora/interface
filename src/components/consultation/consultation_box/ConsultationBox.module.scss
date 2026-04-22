@@ -15,23 +15,38 @@
         color: theme.$text-primary !important;
     }
 }
+.consultationImageBox {
+    position: relative;
+}
 .consultationImage {
     border-top-right-radius: theme.$box-border-radius;
     border-top-left-radius: theme.$box-border-radius;
     width: 100%;
     aspect-ratio: 16 / 9;
     object-fit: cover;
+    display: block;
 }
 .consultationTime {
+    display: flex !important;
+    align-items: center !important;
+    position: absolute;
+    left: spacing.$spacer;
+    bottom: spacing.$spacer;
+    @include spacing.px(2.5, xs);
     @include spacing.py(2, xs);
-    width: 100%;
-    background-color: theme.$info-primary;
+    background-color: theme.$call-primary;
+    border-radius: theme.$box-border-radius;
     font-size: theme.$font-size-normal;
-    font-weight: theme.$font-weight-bold;
     color: theme.$text-light;
-    text-align: center;
+    max-width: 93%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    span {
+        color: theme.$text-light;
+    }
     &.ended {
-        background-color: theme.$text-secondary;
+        background-color: theme.$call-primary;
     }
 }
 .consultationTitle {
@@ -65,7 +80,6 @@
     align-items: center !important;
     @include spacing.px(3, xs);
     @include spacing.py(2, xs);
-    border-top: 1px solid theme.$text-tertiary;
     min-height: 50px;
     .consultationLeft {
         display: flex !important;

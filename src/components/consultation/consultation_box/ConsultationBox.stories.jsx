@@ -45,18 +45,25 @@ const meta = {
 	component: ConsultationBox,
 	args: {
 		consultation,
+		showVoteProgress: true,
 	},
 	argTypes: {
 		consultation: {
 			control: "object",
 		},
+		showVoteProgress: {
+			control: "boolean",
+		},
 	},
-	render: ({ consultation }) => (
+	render: ({ consultation, showVoteProgress }) => (
 		<BrowserRouter>
 			<IntlProvider locale="en">
 				<ResponsiveProvider>
 					<ConfigProvider routes={{ ...routes }} config={{ theme: {} }}>
-						<ConsultationBox consultation={consultation} />
+						<ConsultationBox
+							consultation={consultation}
+							showVoteProgress={showVoteProgress}
+						/>
 					</ConfigProvider>
 				</ResponsiveProvider>
 			</IntlProvider>
@@ -71,29 +78,18 @@ const renderStory = (overrides = {}) =>
 
 export const DefaultConsultationBox = (props) => renderStory(props);
 
-export const ConsultationEndedBox = (props) =>
+
+export const ConsultationInProgressBox = (props) =>
 	renderStory({
 		consultation: {
 			...consultation,
-			ends_at: "2022-11-30T00:00:00.000Z",
+			ends_at: faker.date.future(),
 		},
 		...props,
 	});
 
-export const ConsultationWithoutEndBox = (props) =>
+export const ConsultationWithoutProgressBlock = (props) =>
 	renderStory({
-		consultation: {
-			...consultation,
-			ends_at: null,
-		},
 		...props,
-	});
-
-export const ConsultationWithoutVoteGoalBox = (props) =>
-	renderStory({
-		consultation: {
-			...consultation,
-			vote_goal: 0,
-		},
-		...props,
+		showVoteProgress: false,
 	});

@@ -11,7 +11,7 @@ import { useIntl } from "react-intl";
 import { FormattedMessage } from "react-intl";
 import styles from "./ConsultationBox.module.scss";
 
-export const ConsultationBox = ({ consultation }) => {
+export const ConsultationBox = ({ consultation, showVoteProgress = true }) => {
 	const intl = useIntl();
 	const date = useMemo(() => new Date());
 	const endDate = new Date(consultation.ends_at);
@@ -32,13 +32,6 @@ export const ConsultationBox = ({ consultation }) => {
 		} else {
 			return (
 				<>
-					<span>
-						<FormattedMessage
-							id="consultation.consultation_box.in_progress"
-							defaultMessage={"Consultation in progress"}
-						/>{" "}
-						-{" "}
-					</span>
 					<span>{remainingTime}</span>
 				</>
 			);
@@ -48,30 +41,32 @@ export const ConsultationBox = ({ consultation }) => {
 	return (
 		<>
 			<div className={styles.container}>
-				<Link
-					to={routes.consultationShowLocation.toUrl({
-						consultationSlug: consultation.slug,
-					})}
-				>
-					<img
-						loading={"lazy"}
-						className={styles.consultationImage}
-						src={consultation.image_url}
-						alt={intl.formatMessage({
-							id: "consultation.consultation_box.alt",
-							defaultMessage: "Presentation image for the consultation",
-						})}
-					/>
-				</Link>
-				{consultation.ends_at && (
-					<div
-						className={cx(styles.consultationTime, {
-							[styles.ended]: endDate < date,
+				<div className={styles.consultationImageBox}>
+					<Link
+						to={routes.consultationShowLocation.toUrl({
+							consultationSlug: consultation.slug,
 						})}
 					>
-						{displayRemainingTime()}
-					</div>
-				)}
+						<img
+							loading={"lazy"}
+							className={styles.consultationImage}
+							src={consultation.image_url}
+							alt={intl.formatMessage({
+								id: "consultation.consultation_box.alt",
+								defaultMessage: "Presentation image for the consultation",
+							})}
+						/>
+					</Link>
+					{consultation.ends_at && (
+						<div
+							className={cx(styles.consultationTime, {
+								[styles.ended]: endDate < date,
+							})}
+						>
+							{displayRemainingTime()}
+						</div>
+					)}
+				</div>
 				<Link
 					to={routes.consultationShowLocation.toUrl({
 						consultationSlug: consultation.slug,
@@ -91,29 +86,6 @@ export const ConsultationBox = ({ consultation }) => {
 						consultationSlug: consultation.slug,
 					})}
 				>
-					<div className={styles.consultationButtonContainer}>
-						{consultation.ends_at && endDate < date ? (
-							<span>
-								<FormattedMessage
-									id="consultation.consultation_box.action_show_result"
-									defaultMessage={"Show result"}
-								/>
-							</span>
-						) : (
-							<span>
-								<FormattedMessage
-									id="consultation.consultation_box.action_consultation_participate"
-									defaultMessage={"Participate"}
-								/>
-							</span>
-						)}
-						<Icon
-							name="arrow"
-							width={18}
-							height={18}
-							className={styles.arrowIcon}
-						/>
-					</div>
 				</Link>
 				<div className={styles.consultationInformations}>
 					<div className={styles.consultationLeft}>
@@ -124,40 +96,32 @@ export const ConsultationBox = ({ consultation }) => {
 							)}
 						>
 							<span className={styles.consultationTextInformation}>
+								{consultation.total_votes}
+							</span>
+							<Icon name="votebox" width={15} height={20} />
+						</div>
+						<div className={styles.consultationGroupInformation}>
+							<span className={styles.consultationTextInformation}>
 								{consultation.proposals_count}
 							</span>
 							<Icon name="chat" width={15} height={20} />
 						</div>
-						<div className={styles.consultationGroupInformation}>
-							<span className={styles.consultationTextInformation}>
-								{consultation.total_participants}
-							</span>
-							<Icon name="user" width={15} height={20} />
-						</div>
 					</div>
-					{consultation.vote_goal > 0 && (
+					{showVoteProgress && consultation.vote_goal > 0 && endDate > date && (
 						<div
 							className={cx(
 								styles.consultationGroupInformation,
 								styles.progressBarContainer,
 							)}
 						>
-							{endDate < date ? (
-								<FormattedMessage
-									id="consultation.consultation_box.stats_votes"
-									values={{ votesCount: consultation.total_votes }}
-									defaultMessage={"{votesCount} votes"}
-								/>
-							) : (
-								<ProgressBar
-									className={styles.progress}
-									innerClassName={styles.bar}
-									progress={consultation.total_votes}
-									goal={consultation.vote_goal}
-									showProgressSubtitle={true}
-									progressUnit={"votes"}
-								/>
-							)}
+							<ProgressBar
+								className={styles.progress}
+								innerClassName={styles.bar}
+								progress={consultation.total_votes}
+								goal={consultation.vote_goal}
+								showProgressSubtitle={true}
+								progressUnit={"votes"}
+							/>
 						</div>
 					)}
 				</div>
