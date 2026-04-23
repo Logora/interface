@@ -10,14 +10,17 @@
     color: theme.$text-primary;
     border-radius: theme.$box-border-radius;
     background: theme.$background-color-primary;
+
     a {
         text-decoration: none !important;
         color: theme.$text-primary !important;
     }
 }
+
 .consultationImageBox {
     position: relative;
 }
+
 .consultationImage {
     border-top-right-radius: theme.$box-border-radius;
     border-top-left-radius: theme.$box-border-radius;
@@ -26,6 +29,7 @@
     object-fit: cover;
     display: block;
 }
+
 .consultationTime {
     display: flex !important;
     align-items: center !important;
@@ -42,13 +46,16 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+
     span {
         color: theme.$text-light;
     }
+
     &.ended {
         background-color: theme.$call-primary;
     }
 }
+
 .consultationTitle {
     @include spacing.pt(4, xs);
     @include spacing.pb(2, xs);
@@ -56,16 +63,28 @@
     font-size: theme.$font-size-normal;
     font-weight: theme.$font-weight-bold;
 }
+
+.iconVote {
+    padding-top: 3px !important;
+}
+
+.iconChat {
+    padding-top: 5px !important;
+
+}
+
 .consultationButtonContainer {
     display: flex !important;
     @include spacing.px(3, xs);
     @include spacing.pb(4, xs);
     color: theme.$text-secondary;
     font-size: theme.$font-size-small;
+
     &:hover {
         text-decoration: underline;
         text-decoration-color: theme.$text-secondary;
     }
+
     .arrowIcon {
         @include spacing.ml(1, xs);
         transform: rotate(180deg);
@@ -74,6 +93,7 @@
         position: relative;
     }
 }
+
 .consultationInformations {
     display: flex !important;
     justify-content: space-between !important;
@@ -81,21 +101,27 @@
     @include spacing.px(3, xs);
     @include spacing.py(2, xs);
     min-height: 50px;
+
     .consultationLeft {
         display: flex !important;
     }
+
     .consultationGroupInformation {
         display: flex !important;
+        align-items: center !important;
+
         &.consultationGroupRight {
             @include spacing.pr(3, xs);
         }
     }
+
     .progressBarContainer {
         width: 60%;
         display: flex !important;
         flex-direction: column !important;
         align-items: flex-end !important;
         font-size: theme.$font-size-extra-small;
+
         .progress {
             @include spacing.mt(1, xs);
             height: 15px;
@@ -103,18 +129,24 @@
             border-radius: theme.$box-border-radius;
             background-color: theme.$background-color-secondary !important;
         }
+
         .bar {
             background-color: theme.$call-primary;
         }
+
         .totalVotes {
             @include spacing.mr(1, xs);
         }
+
         .totalVotesPercentage {
             @include spacing.ml(1, xs);
         }
     }
-    
+
     .consultationTextInformation {
         @include spacing.pr(1, xs);
+        padding-top: 10px !important;
     }
+
+
 }
