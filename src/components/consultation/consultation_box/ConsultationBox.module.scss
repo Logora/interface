@@ -86,7 +86,6 @@
     }
     .consultationGroupInformation {
         display: flex !important;
-        align-items: center !important;
         &.consultationGroupRight {
             @include spacing.pr(3, xs);
         }
