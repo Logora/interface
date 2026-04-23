@@ -98,13 +98,13 @@ export const ConsultationBox = ({ consultation, showVoteProgress = true }) => {
 							<span className={styles.consultationTextInformation} >
 								{consultation.total_votes}
 							</span>
-							<Icon name="votebox" width={15} height={20} className= {styles.iconVote}  />
+							<Icon name="votebox" width={15} height={20} className={styles.iconVote} />
 						</div>
 						<div className={styles.consultationGroupInformation}>
 							<span className={styles.consultationTextInformation}>
 								{consultation.proposals_count}
 							</span>
-							<Icon name="chat" width={16} height={16} className= {styles.iconChat} />
+							<Icon name="chat" width={15} height={20} className={styles.iconChat} />
 						</div>
 					</div>
 					{showVoteProgress && consultation.vote_goal > 0 && endDate > date && (
