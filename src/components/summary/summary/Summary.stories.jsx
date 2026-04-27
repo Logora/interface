@@ -29,10 +29,10 @@ global.fetch = async () => ({
 });
 
 const summaryWithTags = {
-	id: faker.datatype.uuid(),
+	id: faker.string.uuid(),
 	group_context: {
 		tags: Array.from({ length: 3 }, (_, index) => ({
-			id: faker.datatype.uuid(),
+			id: faker.string.uuid(),
 			name: faker.lorem.word(),
 		})),
 	},
@@ -61,7 +61,7 @@ export const SummaryWithTags = () => {
 };
 
 const summaryWithoutTags = {
-	id: faker.datatype.uuid(),
+	id: faker.string.uuid(),
 	group_context: {
 		tags: [],
 	},
