@@ -138,3 +138,11 @@ pre::-webkit-scrollbar-thumb {
     white-space: nowrap;
     @include spacing.mt(2, xs);
 }
+
+.editorInput ol li::marker {
+    content: normal !important;
+}
+
+.editorInput ul li::marker {
+    content: normal !important;
+}
