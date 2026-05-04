@@ -1,32 +1,27 @@
 import { ResponsiveProvider } from "@logora/debate/hooks/use_responsive";
 import { IconProvider } from "@logora/debate/icons/icon_provider";
 import * as regularIcons from "@logora/debate/icons/regular_icons";
-import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import React from "react";
 import { IntlProvider } from "react-intl";
 import { Summary } from "./Summary";
 import styles from "./Summary.module.scss";
 
-beforeEach(() => {
-	global.fetch = vi.fn(() =>
-		Promise.resolve({
-			ok: true,
-			json: () =>
-				Promise.resolve({
-					data: {
-						content: {
-							arguments: [
-								{ argument: "Mocked argument 1", id: 0, weight: 5 },
-								{ argument: "Mocked argument 2", id: 1, weight: 3 },
-							],
-						},
-					},
-				}),
-		}),
+const renderSummary = (props) => {
+	return render(
+		<ResponsiveProvider>
+			<IconProvider library={regularIcons}>
+				<IntlProvider locale="en">
+					<Summary
+						title="Summary"
+						subtitle="This is a summary"
+						{...props}
+					/>
+				</IntlProvider>
+			</IconProvider>
+		</ResponsiveProvider>,
 	);
-});
-
-const apiUrl = "https://example.com";
+};
 
 describe("Summary Component", () => {
 	const mockTags = [
@@ -34,87 +29,55 @@ describe("Summary Component", () => {
 		{ id: "tag2", name: "Tag 2" },
 	];
 
-	const mockSummaryId = "summary123";
+	it("renders with tags", () => {
+		const summary = JSON.stringify({
+			tag1: "Mocked argument 1\nMocked argument 2",
+			tag2: "Mocked argument 3\nMocked argument 4",
+		});
 
-	it("renders without crashing with tags", async () => {
-		render(
-			<ResponsiveProvider>
-				<IconProvider library={regularIcons}>
-					<IntlProvider locale="en">
-						<Summary
-							apiUrl={apiUrl}
-							summaryId={mockSummaryId}
-							tags={mockTags}
-							tagClassNames={styles.tag}
-							title="Summary"
-							subtitle="This is a summary"
-						/>
-					</IntlProvider>
-				</IconProvider>
-			</ResponsiveProvider>,
-		);
+		renderSummary({
+			summary,
+			tags: mockTags,
+			tagClassNames: styles.tag,
+		});
 
 		expect(screen.getByText("Summary")).toBeInTheDocument();
 
 		fireEvent.click(screen.getByText("Summary"));
 
-		await waitFor(() => {
-			const summaries = screen.getAllByText((content) =>
-				content.includes("Mocked argument"),
-			);
-			expect(summaries.length).toBeGreaterThan(0);
-		});
+		expect(screen.getByText("Tag 1")).toBeInTheDocument();
+		expect(screen.getByText("Tag 2")).toBeInTheDocument();
+		expect(screen.getByText("Mocked argument 1")).toBeInTheDocument();
+		expect(screen.getByText("Mocked argument 3")).toBeInTheDocument();
 	});
 
-	it("renders without crashing without tags", async () => {
-		render(
-			<ResponsiveProvider>
-				<IconProvider library={regularIcons}>
-					<IntlProvider locale="en">
-						<Summary
-							apiUrl={apiUrl}
-							summaryId={mockSummaryId}
-							tags={[]}
-							title="Summary"
-							subtitle="This is a summary"
-						/>
-					</IntlProvider>
-				</IconProvider>
-			</ResponsiveProvider>,
-		);
+	it("renders without tags", () => {
+		const summary = JSON.stringify({
+			global: "Mocked argument 1\nMocked argument 2",
+		});
+
+		renderSummary({
+			summary,
+			tags: [],
+		});
 
 		expect(screen.getByText("Summary")).toBeInTheDocument();
 
 		fireEvent.click(screen.getByText("Summary"));
 
-		await waitFor(() => {
-			const summaryItems = screen.getAllByText((content) =>
-				content.includes("Mocked argument"),
-			);
-			expect(summaryItems.length).toBeGreaterThan(0);
-		});
+		expect(screen.getByText("Mocked argument 1")).toBeInTheDocument();
+		expect(screen.getByText("Mocked argument 2")).toBeInTheDocument();
 	});
 
-	it("fetches data correctly", async () => {
-		render(
-			<ResponsiveProvider>
-				<IconProvider library={regularIcons}>
-					<IntlProvider locale="en">
-						<Summary
-							apiUrl={apiUrl}
-							summaryId={mockSummaryId}
-							tags={mockTags}
-							tagClassNames={styles.tag}
-							title="Summary"
-							subtitle="This is a summary"
-						/>
-					</IntlProvider>
-				</IconProvider>
-			</ResponsiveProvider>,
-		);
+	it("renders plain string summary", () => {
+		renderSummary({
+			summary: "Mocked argument 1\nMocked argument 2",
+			tags: [],
+		});
 
 		fireEvent.click(screen.getByText("Summary"));
 
-		await waitFor(() => expect(global.fetch).toHaveBeenCalled());
+		expect(screen.getByText("Mocked argument 1")).toBeInTheDocument();
+		expect(screen.getByText("Mocked argument 2")).toBeInTheDocument();
 	});
 });
