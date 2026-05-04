@@ -24,7 +24,7 @@ export const SectionBox = ({
 
 	return (
 		<div
-			className={cx(styles.sectionBoxContainer, {
+			className={cx(styles.sectionBoxContainer, className, {
 				[styles.isMobile]: isMobile,
 			})}
 		>
@@ -35,7 +35,7 @@ export const SectionBox = ({
 				<div className={styles.titleContainer}>
 					<div className={cx(titleClassName, styles.title)}>{title}</div>
 					{subtitle && (
-						<div className={cx(className, styles.subtitle)}>{subtitle}</div>
+						<div className={cx(styles.subtitle)}>{subtitle}</div>
 					)}
 				</div>
 				{isCollapsible && (
@@ -51,7 +51,7 @@ export const SectionBox = ({
 			</div>
 
 			{(!isCollapsed || !isCollapsible) && (
-				<div className={cx(styles.body, className)}>{children}</div>
+				<div className={cx(styles.body)}>{children}</div>
 			)}
 		</div>
 	);

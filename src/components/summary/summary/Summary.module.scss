@@ -1,15 +1,23 @@
 @use 'styles/theme' as theme;
 @use 'styles/display' as display;
 
+.sectionBox {
+	padding: 1em;
+}
+
+.content {
+	padding-top: 1em;
+}
+
 .summaryContainer {
-    display: flex !important;
+    display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    align-items: stretch !important;
+    align-items: stretch ;
     gap: 1em;
 
     @include display.media-breakpoint-down(sm) {
-        flex-direction: column !important;
+        flex-direction: column;
     }
 
     >div {

@@ -26,6 +26,8 @@
 }
 
 .iconLightArrow {
+    flex-shrink: 0;
+    margin-left: 0.75em;
     transition: transform 0.3s;
 }
 
