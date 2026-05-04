@@ -1,6 +1,11 @@
 @use 'styles/theme' as theme;
 @use 'styles/spacing' as spacing;
 
+
+.sectionBox {
+	padding: 1em;
+}
+
 .title {
     font-size: theme.$font-size-large;
     line-height: theme.$line-height-tight;
