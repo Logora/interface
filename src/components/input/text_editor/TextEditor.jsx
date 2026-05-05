@@ -71,13 +71,13 @@ export const TextEditor = ({
 	const randomUid = useId();
 
 	useEffect(() => {
-		if (sources && sources.length > 0) {
+		if (sources) {
 			setEditorSources(sources);
 		}
 	}, [sources]);
 
 	useEffect(() => {
-		if (handleSourcesChange && editorSources.length > 0) {
+		if (handleSourcesChange) {
 			handleSourcesChange(editorSources);
 		}
 	}, [editorSources]);

@@ -27,7 +27,11 @@ export const SourceListItem = ({ index = 0, url, title, publisher, onRemove }) =
 				<button
 					type="button"
 					className={styles.removeSourceButton}
-					onClick={onRemove}
+					onClick={(event) => {
+						event.preventDefault();
+						event.stopPropagation();
+						onRemove();
+					}}
 					aria-label="Remove source"
 				>
 					<Icon name="close" width={10} height={10} />
