@@ -30,16 +30,16 @@ import { ToolbarPlugin } from "./plugins/ToolbarPlugin";
 const normalizeNbsp = (value) => value?.replace(/&nbsp;/g, "\u00A0");
 
 const normalizeLexicalNode = (node) => {
-		if (!node || typeof node !== "object") return;
+	if (!node || typeof node !== "object") return;
 
-		if (typeof node.text === "string") {
-			node.text = normalizeNbsp(node.text);
-		}
+	if (typeof node.text === "string") {
+		node.text = normalizeNbsp(node.text);
+	}
 
-		if (Array.isArray(node.children)) {
-			node.children.forEach(normalizeLexicalNode);
-		}
-	};
+	if (Array.isArray(node.children)) {
+		node.children.forEach(normalizeLexicalNode);
+	}
+};
 
 export const TextEditor = ({
 	placeholder,
@@ -108,13 +108,13 @@ export const TextEditor = ({
 		editorState.read(() => {
 			const rawText = $getRoot().getTextContent();
 			const text = normalizeNbsp(rawText);
-	
+
 			const rawRichText = JSON.stringify(editorState);
 			const richText = normalizeNbsp(rawRichText);
-	
+
 			setEditorText(text);
 			setEditorRichText(richText);
-	
+
 			if (handleChange) {
 				handleChange(text, richText);
 			}
@@ -145,6 +145,14 @@ export const TextEditor = ({
 		setEditorSources([...editorSources, newSource]);
 	};
 
+	const handleRemoveSource = (sourceToRemove) => {
+		setEditorSources((currentSources) =>
+			currentSources.filter(
+				(source) => source.source_url !== sourceToRemove.source_url
+			)
+		);
+	};
+
 	const displaySource = (source, index) => {
 		return (
 			<SourceListItem
@@ -153,6 +161,7 @@ export const TextEditor = ({
 				url={source.source_url}
 				title={source.title}
 				index={index}
+				onRemove={() => handleRemoveSource(source)}
 			/>
 		);
 	};
@@ -224,9 +233,9 @@ export const TextEditor = ({
 					</div>
 				</div>
 			</LexicalComposer>
-			{sources && sources.length !== 0 ? (
+			{editorSources && editorSources.length !== 0 ? (
 				<div className={styles.sourcesBox}>
-					<div className={styles.sourceList}>{sources.map(displaySource)}</div>
+					<div className={styles.sourceList}>{editorSources.map(displaySource)}</div>
 				</div>
 			) : null}
 		</>
