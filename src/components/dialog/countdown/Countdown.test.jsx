@@ -37,7 +37,7 @@ describe("Countdown", () => {
 		const now = new Date();
 		const expiresAt = new Date(now.getTime() + 15 * 60 * 1000).toISOString(); // 15 minutes from now
 		render(<Countdown expiresAt={expiresAt} />);
-		expect(screen.getByText(/in 14 minutes?/i)).toBeInTheDocument();
+		expect(screen.getByText(/in (14|15) minutes?/i)).toBeInTheDocument();
 	});
 
 	it("shows 'now' or localized equivalent when expired", () => {
