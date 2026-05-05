@@ -76,12 +76,6 @@ export const TextEditor = ({
 		}
 	}, [sources]);
 
-	useEffect(() => {
-		if (handleSourcesChange) {
-			handleSourcesChange(editorSources);
-		}
-	}, [editorSources]);
-
 	const activate = () => {
 		if (!isActive) {
 			setIsActive(true);
@@ -125,11 +119,15 @@ export const TextEditor = ({
 		const textContent = editorText;
 		const richContent = editorRichText;
 		const sources = editorSources;
+
 		if (onSubmit) {
 			event.preventDefault();
 			onSubmit(textContent, richContent, sources);
 		}
+
 		setEditorSources([]);
+
+		handleSourcesChange?.([]); 
 	};
 
 	const handleShowSourceModal = () => {
@@ -142,15 +140,23 @@ export const TextEditor = ({
 	};
 
 	const handleAddSource = (newSource) => {
-		setEditorSources([...editorSources, newSource]);
+		setEditorSources((currentSources) => {
+			const updatedSources = [...currentSources, newSource];
+			handleSourcesChange?.(updatedSources);
+			return updatedSources;
+		});
 	};
 
 	const handleRemoveSource = (sourceToRemove) => {
-		setEditorSources((currentSources) =>
-			currentSources.filter(
+		setEditorSources((currentSources) => {
+			const updatedSources = currentSources.filter(
 				(source) => source.source_url !== sourceToRemove.source_url
-			)
-		);
+			);
+
+			handleSourcesChange?.(updatedSources);
+
+			return updatedSources;
+		});
 	};
 
 	const displaySource = (source, index) => {
