@@ -156,7 +156,7 @@ export const Argument = ({
 					},
 					styles[`level-${nestingLevel}`],
 					styles[
-						`position-${!(argument.author.role === "editor" || argument.author.role === "moderator") && positionIndex}`
+					`position-${!(argument.author.role === "editor" || argument.author.role === "moderator") && positionIndex}`
 					],
 				)}
 				id={componentId}
@@ -167,7 +167,7 @@ export const Argument = ({
 					tag={
 						(argument.author.role === "editor" ||
 							argument.author.role === "moderator") &&
-						argument.is_reply
+							argument.is_reply
 							? null
 							: position.translatedContent
 					}
@@ -220,9 +220,9 @@ export const Argument = ({
 									<span className={styles.replyingTo}>
 										{parentArgument.is_deleted
 											? intl.formatMessage({
-													id: "info.deleted",
-													defaultMessage: "Deleted",
-												})
+												id: "info.deleted",
+												defaultMessage: "Deleted",
+											})
 											: parentArgument.author.full_name}
 										<Icon name="chat" height={16} />
 									</span>
@@ -248,7 +248,7 @@ export const Argument = ({
 											/>
 										) : (
 											<div className={styles.argumentContent}>
-												{normalizeNbsp(content.translatedContent)}	
+												{normalizeNbsp(content.translatedContent)}
 											</div>
 										)}
 
