@@ -232,3 +232,16 @@
 		background-color: theme.$background-color-primary;
 	}
 }
+
+.argumentContent ol {
+	list-style-type: decimal !important;
+}
+
+.argumentContent ul {
+	list-style-type: disc !important;
+}
+
+.argumentContent ol li::marker,
+.argumentContent ul li::marker {
+	content: normal !important;
+}
