@@ -235,16 +235,12 @@
 
 .argumentContent ol {
 	list-style-type: decimal !important;
-	@include spacing.m(0, xs);
 	@include spacing.ml(2, xs);
-	@include spacing.p(1, xs);
 }
 
 .argumentContent ul {
 	list-style-type: disc !important;
-	@include spacing.m(0, xs);
 	@include spacing.ml(2, xs);
-	@include spacing.p(1, xs);
 }
 
 .argumentContent ol li::marker,
