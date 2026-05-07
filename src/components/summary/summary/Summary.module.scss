@@ -2,11 +2,11 @@
 @use 'styles/display' as display;
 
 .sectionBox {
-	padding: 1em;
+    padding: 1em;
 }
 
 .content {
-	padding-top: 1em;
+    padding-top: 1em;
 }
 
 .summaryContainer {
@@ -16,7 +16,7 @@
     align-items: stretch;
     gap: 1em;
 
-    > div {
+    >div {
         flex: 1 1 calc(50% - 0.5em);
         max-width: calc(50% - 0.5em);
         display: flex;
@@ -26,13 +26,14 @@
     @include display.media-breakpoint-down(sm) {
         flex-direction: column;
 
-        > div {
+        >div {
             flex: 1 1 100%;
             max-width: 100%;
             width: 100%;
         }
     }
 }
+
 .description {
     color: theme.$text-secondary;
     font-size: theme.$font-size-small;
