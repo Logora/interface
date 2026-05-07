@@ -10,9 +10,11 @@
     border-radius: theme.$box-border-radius;
     box-shadow: theme.$box-shadow;
     border: theme.$box-border;
-    flex: 1
+    flex: 1;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
 }
-
 .stats {
     display: flex !important;
     justify-content: flex-start !important;
@@ -44,7 +46,8 @@
     padding: spacing.$spacer-xs;
     align-items: flex-start;
     font-size: theme.$font-size-small;
-    color: theme.$text-primary
+    color: theme.$text-primary;
+    overflow-wrap: anywhere;
 }
 
 .emptySummaryText {

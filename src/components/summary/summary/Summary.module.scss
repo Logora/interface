@@ -13,26 +13,26 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    align-items: stretch ;
+    align-items: stretch;
     gap: 1em;
 
-    @include display.media-breakpoint-down(sm) {
-        flex-direction: column;
-
-        >div {
-            flex-basis: 100%;
-            max-width: 100%;
-        }
-    }
-
-    >div {
+    > div {
         flex: 1 1 calc(50% - 0.5em);
         max-width: calc(50% - 0.5em);
         display: flex;
         flex-direction: column;
     }
-}
 
+    @include display.media-breakpoint-down(sm) {
+        flex-direction: column;
+
+        > div {
+            flex: 1 1 100%;
+            max-width: 100%;
+            width: 100%;
+        }
+    }
+}
 .description {
     color: theme.$text-secondary;
     font-size: theme.$font-size-small;
