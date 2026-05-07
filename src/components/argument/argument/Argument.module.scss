@@ -236,11 +236,13 @@
 .argumentContent ol {
 	list-style-type: decimal !important;
 	@include spacing.ml(2, xs);
+	@include spacing.pl(5, xs);
 }
 
 .argumentContent ul {
 	list-style-type: disc !important;
 	@include spacing.ml(2, xs);
+	@include spacing.pl(5, xs);
 }
 
 .argumentContent ol li::marker,
