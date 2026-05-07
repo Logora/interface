@@ -18,6 +18,11 @@
 
     @include display.media-breakpoint-down(sm) {
         flex-direction: column;
+
+        >div {
+            flex-basis: 100%;
+            max-width: 100%;
+        }
     }
 
     >div {
