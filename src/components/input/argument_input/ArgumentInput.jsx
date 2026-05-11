@@ -354,9 +354,10 @@ export const ArgumentInput = ({
 					const argument = response.data.data.resource;
 					let listId = argumentListId;
 					console.log("[updateArgument] API response:", argument);
+					console.log("[updateArgument] editElement complet:", editElement);
 					console.log("[updateArgument] is_reply:", argument.is_reply, "| message_id:", argument.message_id, "| editElement.message_id:", editElement?.message_id, "| parentId prop:", parentId);
 					if (argument.is_reply) {
-						listId = `argument_${argument.message_id || editElement?.message_id}_reply_list`;
+						listId = `argument_${argument.reply_to_id || editElement?.reply_to_id}_reply_list`;
 					} else if (userPositionId && !isMobile) {
 						listId = `argumentList${argument.position?.id}`;
 					}
