@@ -353,15 +353,11 @@ export const ArgumentInput = ({
 				if (response.data.success) {
 					const argument = response.data.data.resource;
 					let listId = argumentListId;
-					console.log("[updateArgument] API response:", argument);
-					console.log("[updateArgument] editElement complet:", editElement);
-					console.log("[updateArgument] is_reply:", argument.is_reply, "| message_id:", argument.message_id, "| editElement.message_id:", editElement?.message_id, "| parentId prop:", parentId);
 					if (argument.is_reply) {
 						listId = `argument_${argument.reply_to_id || editElement?.reply_to_id}_reply_list`;
 					} else if (userPositionId && !isMobile) {
 						listId = `argumentList${argument.position?.id}`;
 					}
-					console.log("[updateArgument] listId used for update:", listId);
 					if (
 						editElement?.position?.id != argument.position?.id &&
 						!isMobile &&
@@ -369,11 +365,9 @@ export const ArgumentInput = ({
 					) {
 						const oldListId = `argumentList${editElement.position.id}`;
 						const newListId = `argumentList${argument.position.id}`;
-						console.log("[updateArgument] position changed, moving from", oldListId, "to", newListId);
 						list.remove(oldListId, [argument]);
 						list.add(newListId, [argument]);
 					} else {
-						console.log("[updateArgument] calling list.update with listId:", listId);
 						list.update(listId, [argument]);
 					}
 					toast(intl.formatMessage({ id: "alert.argument_modify" }), {
