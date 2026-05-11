@@ -25,6 +25,7 @@ export const Argument = ({
 	argument,
 	argumentReplies,
 	nestingLevel = 0,
+	maxNestingLevel = 2,
 	groupType,
 	groupName,
 	positions = [],
@@ -134,6 +135,7 @@ export const Argument = ({
 			<ArgumentContainer
 				{...(reply ? { argument: reply } : {})}
 				nestingLevel={nestingLevel + 1}
+				maxNestingLevel={maxNestingLevel}
 				disabled={disabled}
 				groupName={groupName}
 				groupType={groupType}
@@ -307,7 +309,7 @@ export const Argument = ({
 						deleteType={"messages"}
 						deleteListId={deleteListId}
 						enableReply={
-							nestingLevel <= 2 ||
+							nestingLevel <= maxNestingLevel ||
 							currentUser.role === "editor" ||
 							currentUser.role === "moderator"
 						}
