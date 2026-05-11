@@ -289,14 +289,16 @@ export const PaginatedList = ({
 	};
 
 	const handleEditElements = (elements) => {
-		let newElements = currentResources;
-		elements.forEach(
-			(element) =>
-				(newElements = newElements.map((a) =>
-					a.id === element.id ? element : a,
-				)),
-		);
-		setCurrentResources(uniqueBy(newElements, uniqueIdKey || "id"));
+		setCurrentResources((prevResources) => {
+			let newElements = prevResources;
+			elements.forEach(
+				(element) =>
+					(newElements = newElements.map((a) =>
+						a.id === element.id ? element : a,
+					)),
+			);
+			return uniqueBy(newElements, uniqueIdKey || "id");
+		});
 	};
 
 	const handleRemoveElements = (elements) => {
