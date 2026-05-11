@@ -358,6 +358,7 @@ export const ArgumentInput = ({
 					} else if (userPositionId && !isMobile) {
 						listId = `argumentList${argument.position?.id}`;
 					}
+					console.log("[updateArgument] listId:", listId);
 					if (
 						editElement?.position?.id != argument.position?.id &&
 						!isMobile &&

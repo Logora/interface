@@ -180,6 +180,7 @@ export const PaginatedList = ({
 
 	useEffect(() => {
 		if (list.updateElements && currentListId in list.updateElements) {
+			console.log("[PaginatedList] update received for listId:", currentListId, list.updateElements[currentListId]);
 			if (list.updateElements[currentListId].length > 0) {
 				handleEditElements(list.updateElements[currentListId]);
 				const updateElements = list.updateElements;
