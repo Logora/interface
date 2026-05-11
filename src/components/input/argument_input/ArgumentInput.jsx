@@ -353,7 +353,9 @@ export const ArgumentInput = ({
 				if (response.data.success) {
 					const argument = response.data.data.resource;
 					let listId = argumentListId;
-					if (userPositionId && !isMobile) {
+					if (argument.is_reply) {
+						listId = `argument_${argument.message_id}_reply_list`;
+					} else if (userPositionId && !isMobile) {
 						listId = `argumentList${argument.position?.id}`;
 					}
 					if (
