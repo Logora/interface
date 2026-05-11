@@ -367,8 +367,9 @@ export const Argument = ({
 								parentId={argument.id}
 								positionId={vote?.position_id}
 								disabled={disabled}
-								hideSourceAction={config?.actions?.disableUserSources || false}
-								onSubmit={(reply) => {
+							hideSourceAction={config?.actions?.disableUserSources || false}
+							argumentListId={`argument_${argument.id}_reply_list`}
+							onSubmit={(reply) => {
 									toggleReplyInput();
 									setExtraReplies([reply]);
 									setExpandReplies(true);
