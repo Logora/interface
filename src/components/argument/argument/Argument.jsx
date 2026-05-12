@@ -330,8 +330,8 @@ export const Argument = ({
 						showShareButton={config?.actions?.hideShareButton !== true}
 						enableReport={!(argument.score === 100 && argument.manual_score)}
 						enableEdition={enableEdition}
-						enableDeletion={enableDeletion}
-					>
+					enableDeletion={enableDeletion}
+				>
 						<VoteButton
 							voteableType={"Message"}
 							voteableId={argument.id}

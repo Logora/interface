@@ -352,13 +352,16 @@ export const ArgumentInput = ({
 			api.update("messages", argumentId, data).then((response) => {
 				if (response.data.success) {
 					const argument = response.data.data.resource;
+					console.log("[updateArgument] réponse API:", argument);
+					console.log("[updateArgument] editElement:", editElement);
+					console.log("[updateArgument] argumentListId prop:", argumentListId);
 					let listId = argumentListId;
 					if (argument.is_reply) {
 						listId = `argument_${argument.reply_to_id || editElement?.reply_to_id}_reply_list`;
 					} else if (userPositionId && !isMobile) {
 						listId = `argumentList${argument.position?.id}`;
 					}
-					console.log("[updateArgument] listId:", listId);
+					console.log("[updateArgument] listId final:", listId);
 					if (
 						editElement?.position?.id != argument.position?.id &&
 						!isMobile &&
