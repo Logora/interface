@@ -179,6 +179,7 @@ export const ArgumentInput = ({
 		setArgumentId(null);
 		setSources([]);
 		setReset(true);
+		setInputContent(null);
 	};
 
 	const handleChooseSide = (positionId) => {
