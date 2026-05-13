@@ -376,11 +376,6 @@ export const Argument = ({
 								setExtraReplies([reply]);
 								setExpandReplies(true);
 							}}
-						onUpdate={(updatedReply) => {
-								setExtraReplies((prev) =>
-									prev.map((r) => r.id === updatedReply.id ? updatedReply : r)
-								);
-							}}
 						isReply
 								avatarSize={40}
 								placeholder={intl.formatMessage({
