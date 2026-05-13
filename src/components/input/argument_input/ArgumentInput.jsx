@@ -34,6 +34,7 @@ export const ArgumentInput = ({
 	hideSourceAction = false,
 	isReply = false,
 	onSubmit,
+	onUpdate,
 	parentId,
 	placeholder,
 	positionId,
@@ -374,6 +375,7 @@ export const ArgumentInput = ({
 						list.add(newListId, [argument]);
 					} else {
 						list.update(listId, [argument]);
+						if (onUpdate) onUpdate(argument);
 					}
 					toast(intl.formatMessage({ id: "alert.argument_modify" }), {
 						type: "success",

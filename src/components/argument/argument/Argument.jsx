@@ -2,7 +2,6 @@ import { Button } from "@logora/debate/action/button";
 import { useAuth } from "@logora/debate/auth/use_auth";
 import { useConfig } from "@logora/debate/data/config_provider";
 import { Icon } from "@logora/debate/icons/icon";
-import { useList } from "@logora/debate/list/list_provider";
 import { VotePaginatedList } from "@logora/debate/list/paginated_list";
 import { UserContentSkeleton } from "@logora/debate/skeleton/user_content_skeleton";
 import { SourceListItem } from "@logora/debate/source/source_list_item";
@@ -57,22 +56,6 @@ export const Argument = ({
 	const [showReplyInput, setShowReplyInput] = useState(false);
 	const richContent = useRichContent(argument);
 	const [extraReplies, setExtraReplies] = useState();
-	const list = useList();
-	const replyListId = `argument_${argument.id}_reply_list`;
-
-	useEffect(() => {
-		if (list.updateElements && replyListId in list.updateElements) {
-			const updatedReplies = list.updateElements[replyListId];
-			if (updatedReplies?.length > 0 && extraReplies?.length > 0) {
-				setExtraReplies((prev) =>
-					prev.map((r) => {
-						const updated = updatedReplies.find((u) => u.id === r.id);
-						return updated ? updated : r;
-					})
-				);
-			}
-		}
-	}, [list.updateElements]);
 	const content = useTranslatedContent(
 		argument.content,
 		argument.language,
@@ -387,13 +370,18 @@ export const Argument = ({
 								positionId={vote?.position_id}
 								disabled={disabled}
 							hideSourceAction={config?.actions?.disableUserSources || false}
-							argumentListId={`argument_${argument.id}_reply_list`}
-							onSubmit={(reply) => {
-									toggleReplyInput();
-									setExtraReplies([reply]);
-									setExpandReplies(true);
-								}}
-								isReply
+						argumentListId={`argument_${argument.id}_reply_list`}
+						onSubmit={(reply) => {
+								toggleReplyInput();
+								setExtraReplies([reply]);
+								setExpandReplies(true);
+							}}
+						onUpdate={(updatedReply) => {
+								setExtraReplies((prev) =>
+									prev.map((r) => r.id === updatedReply.id ? updatedReply : r)
+								);
+							}}
+						isReply
 								avatarSize={40}
 								placeholder={intl.formatMessage({
 									id: "input.reply_input.your_answer",
