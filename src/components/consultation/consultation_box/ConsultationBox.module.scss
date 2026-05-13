@@ -25,7 +25,7 @@
     border-top-right-radius: theme.$box-border-radius;
     border-top-left-radius: theme.$box-border-radius;
     width: 100%;
-    aspect-ratio: 16 / 9;
+    aspect-ratio: theme.$img-aspect-ratio;;
     object-fit: cover;
     display: block;
 }
