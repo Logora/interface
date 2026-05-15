@@ -79,6 +79,22 @@ export const Argument = ({
 		}
 	}, [argumentReplies]);
 
+	useEffect(() => {
+		if (typeof window === "undefined") return;
+		const handleReplyUpdated = (event) => {
+			const updatedReply = event.detail?.reply;
+			if (!updatedReply || updatedReply.reply_to_id !== argument.id) return;
+			setExtraReplies((prev) => {
+				if (!prev || prev.length === 0) return prev;
+				return prev.map((r) => (r.id === updatedReply.id ? updatedReply : r));
+			});
+		};
+		window.addEventListener("logora:reply:updated", handleReplyUpdated);
+		return () => {
+			window.removeEventListener("logora:reply:updated", handleReplyUpdated);
+		};
+	}, [argument.id]);
+
 	const scrollToArgument = (argumentId) => {
 		const currentArgumentId = componentId;
 		if (currentArgumentId === argumentId) {
