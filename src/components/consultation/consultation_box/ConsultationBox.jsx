@@ -1,6 +1,5 @@
 import { Link } from "@logora/debate/action/link";
 import { useRoutes } from "@logora/debate/data/config_provider";
-import { useRelativeTime } from "@logora/debate/hooks/use_relative_time";
 import { useResponsive } from "@logora/debate/hooks/use_responsive";
 import { Icon } from "@logora/debate/icons/icon";
 import { ProgressBar } from "@logora/debate/progress/progress_bar";
@@ -15,28 +14,8 @@ export const ConsultationBox = ({ consultation, showVoteProgress = true }) => {
 	const intl = useIntl();
 	const date = useMemo(() => new Date());
 	const endDate = new Date(consultation.ends_at);
-	const remainingTime = useRelativeTime(endDate.getTime());
 	const routes = useRoutes();
 	const { isMobile } = useResponsive();
-
-	const displayRemainingTime = () => {
-		if (endDate < date) {
-			return (
-				<span>
-					<FormattedMessage
-						id="consultation.consultation_box.consultation_ended"
-						defaultMessage={"Consultation ended"}
-					/>
-				</span>
-			);
-		} else {
-			return (
-				<>
-					<span>{remainingTime}</span>
-				</>
-			);
-		}
-	};
 
 	return (
 		<>
@@ -57,15 +36,16 @@ export const ConsultationBox = ({ consultation, showVoteProgress = true }) => {
 							})}
 						/>
 					</Link>
-					{consultation.ends_at && (
-						<div
-							className={cx(styles.consultationTime, {
-								[styles.ended]: endDate < date,
-							})}
-						>
-							{displayRemainingTime()}
-						</div>
-					)}
+				{consultation.ends_at && endDate < date && (
+					<div className={cx(styles.consultationTime, styles.ended)}>
+						<span>
+							<FormattedMessage
+								id="consultation.consultation_box.consultation_ended"
+								defaultMessage={"Consultation ended"}
+							/>
+						</span>
+					</div>
+				)}
 				</div>
 				<Link
 					to={routes.consultationShowLocation.toUrl({
