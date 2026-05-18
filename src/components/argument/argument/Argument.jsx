@@ -2,6 +2,7 @@ import { Button } from "@logora/debate/action/button";
 import { useAuth } from "@logora/debate/auth/use_auth";
 import { useConfig } from "@logora/debate/data/config_provider";
 import { Icon } from "@logora/debate/icons/icon";
+import { useList } from "@logora/debate/list/list_provider";
 import { VotePaginatedList } from "@logora/debate/list/paginated_list";
 import { UserContentSkeleton } from "@logora/debate/skeleton/user_content_skeleton";
 import { SourceListItem } from "@logora/debate/source/source_list_item";
@@ -50,6 +51,7 @@ export const Argument = ({
 	const { isLoggedIn, currentUser } = useAuth();
 	const userIsBanned = currentUser?.moderation_status === "banned";
 	const config = useConfig();
+	const list = useList();
 
 	const [expandReplies, setExpandReplies] = useState(false);
 	const [flash, setFlash] = useState(false);
@@ -385,14 +387,14 @@ export const Argument = ({
 								parentId={argument.id}
 								positionId={vote?.position_id}
 								disabled={disabled}
-							hideSourceAction={config?.actions?.disableUserSources || false}
-						argumentListId={`argument_${argument.id}_reply_list`}
-						onSubmit={(reply) => {
-								toggleReplyInput();
-								setExtraReplies([reply]);
-								setExpandReplies(true);
-							}}
-						isReply
+								hideSourceAction={config?.actions?.disableUserSources || false}
+								onSubmit={(reply) => {
+									const replyListId = `argument_${argument.id}_reply_list`;
+									list.add(replyListId, [reply]);
+									toggleReplyInput();
+									setExpandReplies(true);
+								}}
+								isReply
 								avatarSize={40}
 								placeholder={intl.formatMessage({
 									id: "input.reply_input.your_answer",
@@ -431,7 +433,7 @@ export const Argument = ({
 							</VotePaginatedList>
 						</div>
 					)}
-					{extraReplies?.length > 0 && !expandReplies && (
+				{extraReplies?.length > 0 && !expandReplies && (
 						<div className={styles.repliesList}>
 							{argument.number_replies > 1 && (
 								<div className={styles.readMoreLink}>
