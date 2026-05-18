@@ -60,6 +60,7 @@ export const TextEditor = ({
 	allowedDomains = [],
 	hideCharCount = false,
 	disableAutoActivate = false,
+	initialContent,
 	...rest
 }) => {
 	const [isActive, setIsActive] = useState(false);
@@ -92,6 +93,7 @@ export const TextEditor = ({
 			console.error("TextEditor error:", error);
 		},
 		nodes: [ListNode, ListItemNode, QuoteNode, OverflowNode],
+		...(initialContent ? { editorState: initialContent } : {}),
 	};
 
 	const setFocus = () => {
