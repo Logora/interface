@@ -370,13 +370,6 @@ export const ArgumentInput = ({
 						list.add(newListId, [argument]);
 					} else {
 						list.update(listId, [argument]);
-						if (argument.is_reply && typeof window !== "undefined") {
-							window.dispatchEvent(
-								new CustomEvent("logora:reply:updated", {
-									detail: { reply: argument },
-								}),
-							);
-						}
 					}
 					toast(intl.formatMessage({ id: "alert.argument_modify" }), {
 						type: "success",
