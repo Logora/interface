@@ -3,22 +3,28 @@ import { useInput } from "@logora/debate/input/input_provider";
 import { $createParagraphNode, $createTextNode, $getRoot } from "lexical";
 import { useEffect } from "react";
 
-export const SetContentPlugin = () => {
+export const SetContentPlugin = ({ content }) => {
 	const [editor] = useLexicalComposerContext();
 	const { inputContent, setInputContent } = useInput();
 
+	const contentToLoad = content || inputContent;
+
 	useEffect(() => {
-		if (inputContent) {
+		if (typeof contentToLoad === "string" && contentToLoad) {
 			editor.update(() => {
 				const root = $getRoot();
 				root.clear();
+
 				const p = $createParagraphNode();
-				p.append($createTextNode(inputContent));
+				p.append($createTextNode(contentToLoad));
 				root.append(p);
-				setInputContent(null);
+
+				if (!content && inputContent) {
+					setInputContent(null);
+				}
 			});
 		}
-	}, [inputContent]);
+	}, [contentToLoad]);
 
 	return null;
 };

@@ -43,6 +43,8 @@ const normalizeLexicalNode = (node) => {
 
 export const TextEditor = ({
 	placeholder,
+	initialContent,
+    initialRichContent,
 	onSubmit,
 	sources,
 	hideSubmit = false,
@@ -230,8 +232,8 @@ export const TextEditor = ({
 							onSetContent={disableAutoActivate ? () => { } : activate}
 							storageUid={uid || randomUid}
 						/>
-						<SetContentPlugin />
-						<SetRichContentPlugin />
+						<SetContentPlugin content={initialContent}/>
+						<SetRichContentPlugin richContent={initialRichContent}/>
 						<FocusPlugin />
 						{maxLength && <MaxLengthPlugin maxLength={maxLength} />}
 						<ResetPlugin storageUid={uid || randomUid} />
