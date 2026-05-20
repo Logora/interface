@@ -4,6 +4,7 @@ import { useResponsive } from "@logora/debate/hooks/use_responsive";
 import { Icon } from "@logora/debate/icons/icon";
 import { ProgressBar } from "@logora/debate/progress/progress_bar";
 import { TranslatedContent } from "@logora/debate/translation/translated_content";
+import { Tooltip } from "@logora/debate/dialog/tooltip";
 import cx from "classnames";
 import React, { useMemo } from "react";
 import { useIntl } from "react-intl";
@@ -69,6 +70,13 @@ export const ConsultationBox = ({ consultation, showVoteProgress = true }) => {
 				</Link>
 				<div className={styles.consultationInformations}>
 					<div className={styles.consultationLeft}>
+					<Tooltip
+						text={intl.formatMessage({
+							id: "info.votes_count",
+							defaultMessage: "Number of votes",
+						})}
+						position="top"
+					>
 						<div
 							className={cx(
 								styles.consultationGroupInformation,
@@ -80,12 +88,21 @@ export const ConsultationBox = ({ consultation, showVoteProgress = true }) => {
 							</span>
 							<Icon name="votebox" width={15} height={20} className={styles.iconVote} />
 						</div>
+					</Tooltip>
+					<Tooltip
+						text={intl.formatMessage({
+							id: "info.proposals_count",
+							defaultMessage: "Number of proposals",
+						})}
+						position="top"
+					>
 						<div className={styles.consultationGroupInformation}>
 							<span className={styles.consultationTextInformation}>
 								{consultation.proposals_count}
 							</span>
 							<Icon name="chat" width={15} height={20} className={styles.iconChat} />
 						</div>
+					</Tooltip>
 					</div>
 					{showVoteProgress && consultation.vote_goal > 0 && endDate > date && (
 						<div
