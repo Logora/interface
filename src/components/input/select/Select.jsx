@@ -82,7 +82,7 @@ export const Select = ({
 	};
 	return (
 		<div className={styles.selectContainer}>
-			<Dropdown horizontalPosition={horizontalPosition}>
+			<Dropdown horizontalPosition={horizontalPosition} closeOnContentClick>
 				<div
 					className={cx(styles.selectInput, {
 						[className]: className,
