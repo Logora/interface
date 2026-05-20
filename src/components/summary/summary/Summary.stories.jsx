@@ -1,10 +1,3 @@
-export default {
-	title: "Summary/Summary",
-	component: Summary,
-	args: {},
-	argTypes: {},
-};
-
 import { faker } from "@faker-js/faker";
 import { ResponsiveProvider } from "@logora/debate/hooks/use_responsive";
 import React from "react";
@@ -12,77 +5,48 @@ import { IntlProvider } from "react-intl";
 import { Summary } from "./Summary";
 import styles from "./Summary.module.scss";
 
-global.fetch = async () => ({
-	ok: true,
-	json: () =>
-		Promise.resolve({
-			data: {
-				content: {
-					arguments: [
-						{ argument: faker.lorem.sentences(3), id: 0, weight: 5 },
-						{ argument: faker.lorem.sentences(2), id: 1, weight: 3 },
-						{ argument: faker.lorem.sentences(4), id: 1, weight: 3 },
-					],
-				},
-			},
-		}),
-});
+const tags = Array.from({ length: 3 }, () => ({
+	id: faker.string.uuid(),
+	name: faker.lorem.word(),
+}));
 
 const summaryWithTags = {
-	id: faker.datatype.uuid(),
-	group_context: {
-		tags: Array.from({ length: 3 }, (_, index) => ({
-			id: faker.datatype.uuid(),
-			name: faker.lorem.word(),
-		})),
+	[tags[0].id]: faker.lorem.sentences(3),
+	[tags[1].id]: faker.lorem.sentences(2),
+	[tags[2].id]: faker.lorem.sentences(4),
+};
+
+export default {
+	title: "Summary/Summary",
+	component: Summary,
+	args: {
+		title: "Summary",
+		subtitle: "this is a summary",
 	},
 };
 
-const apiUrl = "https://example.com";
+const Template = (args) => (
+	<ResponsiveProvider>
+		<IntlProvider locale="en">
+			<Summary {...args} />
+		</IntlProvider>
+	</ResponsiveProvider>
+);
 
-export const SummaryWithTags = () => {
-	const contentId = summaryWithTags.id;
-	const tags = summaryWithTags.group_context.tags;
-
-	return (
-		<ResponsiveProvider>
-			<IntlProvider locale="en">
-				<Summary
-					apiUrl={apiUrl}
-					summaryId={contentId}
-					tags={tags}
-					tagClassNames={styles.tag}
-					title={"Summary"}
-					subtitle={"this is a summary"}
-				/>
-			</IntlProvider>
-		</ResponsiveProvider>
-	);
+export const SummaryWithTags = {
+	render: Template,
+	args: {
+		summary: summaryWithTags,
+		tags: tags,
+		tagClassNames: tags.map(() => styles.tag),
+	},
 };
 
-const summaryWithoutTags = {
-	id: faker.datatype.uuid(),
-	group_context: {
+export const SummaryWithoutTags = {
+	render: Template,
+	args: {
+		summary: { global: faker.lorem.sentences(3) },
 		tags: [],
+		tagClassNames: [],
 	},
-};
-
-export const SummaryWithoutTags = () => {
-	const contentId = summaryWithoutTags.id;
-	const tags = summaryWithoutTags.group_context.tags;
-
-	return (
-		<ResponsiveProvider>
-			<IntlProvider locale="en">
-				<Summary
-					apiUrl={apiUrl}
-					summaryId={contentId}
-					tags={tags}
-					tagClassNames={styles.tag}
-					title={"Summary"}
-					subtitle={"this is a summary"}
-				/>
-			</IntlProvider>
-		</ResponsiveProvider>
-	);
 };

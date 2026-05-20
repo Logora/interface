@@ -1,117 +1,87 @@
 import { SectionBox } from "@logora/debate/section/section_box";
-import { BoxSkeleton } from "@logora/debate/skeleton/box_skeleton";
 import { SummaryBox } from "@logora/debate/summary/summary_box";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useIntl } from "react-intl";
 
 import styles from "./Summary.module.scss";
 
 export const Summary = ({
-	apiUrl,
-	summaryId,
-	tags = [],
-	tagClassNames = [],
-	title,
-	subtitle,
+  summary,
+  tags = [],
+  tagClassNames = [],
+  title,
+  subtitle,
 }) => {
-	const [summaries, setSummaries] = useState({});
-	const intl = useIntl();
+  const intl = useIntl();
 
-	const fetchSummary = async (summaryId, tagId = "") => {
-		try {
-			const url = `${apiUrl}/${summaryId}${tagId ? `-${tagId}` : ""}`;
-			const response = await fetch(url);
+  const parseSummary = () => {
+    if (!summary) return {};
 
-			if (!response.ok) {
-				throw new Error(`HTTP error! Status: ${response.status}`);
-			}
+    if (typeof summary === "object") return summary;
 
-			const json = await response.json();
-			return json.data?.content?.arguments || [];
-		} catch (error) {
-			console.error(error);
-		}
-	};
+    try {
+      return JSON.parse(summary);
+    } catch {
+      return { global: summary };
+    }
+  };
 
-	useEffect(() => {
-		const fetchSummaries = async () => {
-			try {
-				const summariesData = {};
+  const formatSummaryItems = (content) => {
+    if (!content) return [];
 
-				if (tags.length === 0) {
-					summariesData["no-position"] = await fetchSummary(summaryId);
-				} else {
-					const results = await Promise.all(
-						tags.map((tag) => fetchSummary(summaryId, tag.id)),
-					);
+    return content
+      .split("\n")
+      .map((item) => item.trim())
+      .filter(Boolean);
+  };
 
-					tags.forEach((tag, index) => {
-						summariesData[tag.id] = results[index];
-					});
-				}
+  const summaries = parseSummary();
 
-				setSummaries(summariesData);
-			} catch (error) {
-				console.error(error);
-			}
-		};
+  return (
+    <SectionBox
+      className={styles.sectionBox}
+      isCollapsible
+      isCollapsedByDefault={true}
+      title={title}
+      subtitle={subtitle}
+    >
+      <div className={styles.content}>
+        <div className={styles.description}>
+          {intl.formatMessage({
+            id: "summary.description.argument_summary",
+            defaultMessage:
+              "Our algorithm produces comprehensive, well-structured summaries of the most recurrent arguments. Each published argument influences the content of this summary. The better structured the argument, the more weight it carries.",
+          })}
+        </div>
 
-		fetchSummaries();
-	}, [summaryId, tags]);
-
-	return (
-		<SectionBox
-			isCollapsible
-			isCollapsedByDefault={true}
-			title={title}
-			subtitle={subtitle}
-		>
-			<div className={styles.description}>
-				{intl.formatMessage({
-					id: "summary.description.argument_summary",
-					defaultMessage:
-						"Our algorithm produces comprehensive, well-structured summaries of the most recurrent arguments. Each published argument influences the content of this summary. The better structured the argument, the more weight it carries.",
-				})}
-			</div>
-			<div className={styles.summaryContainer}>
-				{Object.keys(summaries).length === 0 ? (
-					tags.length === 0 ? (
-						<BoxSkeleton onlyEdgeBox boxHeight={120} />
-					) : (
-						tags.map((tag) => (
-							<BoxSkeleton key={tag.id} onlyEdgeBox boxHeight={120} />
-						))
-					)
-				) : tags.length === 0 ? (
-					<div>
-						<SummaryBox
-							summaryItems={(summaries["no-position"] || []).map(
-								(item) => item.argument,
-							)}
-							emptySummaryText={intl.formatMessage({
-								id: "info.emptysummary",
-								defaultMessage: "No resume found.",
-							})}
-						/>
-					</div>
-				) : (
-					tags.map((tag, index) => (
-						<div key={tag.id}>
-							<SummaryBox
-								summaryItems={(summaries[tag.id] || []).map(
-									(item) => item.argument,
-								)}
-								tag={tag.name}
-								tagClassName={tagClassNames[index]}
-								emptySummaryText={intl.formatMessage({
-									id: "info.emptysummary",
-									defaultMessage: "No resume found.",
-								})}
-							/>
-						</div>
-					))
-				)}
-			</div>
-		</SectionBox>
-	);
+        <div className={styles.summaryContainer}>
+          {tags.length > 0 ? (
+            tags.map((tag, index) => (
+              <div key={tag.id}>
+                <SummaryBox
+                  summaryItems={formatSummaryItems(summaries[tag.id])}
+                  tag={tag.name}
+                  tagClassName={tagClassNames[index]}
+                  emptySummaryText={intl.formatMessage({
+                    id: "info.emptysummary",
+                    defaultMessage: "No resume found.",
+                  })}
+                />
+              </div>
+            ))
+          ) : (
+            <SummaryBox
+              summaryItems={formatSummaryItems(
+                summaries.global || summaries.untagged || Object.values(summaries)[0],
+              )}
+              emptySummaryText={intl.formatMessage({
+                id: "info.emptysummary",
+                defaultMessage: "No resume found.",
+              })}
+            />
+          )}
+        </div>
+      </div>
+    </SectionBox>
+  );
 };

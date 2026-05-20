@@ -1,33 +1,48 @@
 @use 'styles/theme' as theme;
 @use 'styles/display' as display;
 
+.sourceListItemContainer {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    max-width: 100%;
+}
+
 a.sourceListItem {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     font-size: theme.$font-size-extra-small;
     margin-top: 5px;
-    padding: 5px;
+    padding: 5px 26px 5px 5px; 
     border: 1px solid theme.$background-color-secondary;
     border-radius: theme.$box-border-radius;
     max-width: 100%;
+
     svg {
         margin-right: 5px;
         flex-shrink: 0 !important;
         width: 16px !important;
         height: 16px !important;
     }
+
     color: theme.$text-primary !important;
     text-decoration: none !important;
     outline: none !important;
 }
 
-.sourceListItemLink {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    @include display.line-clamp(2);
-
-    span {
-        margin-right: 5px;
-    }
+.removeSourceButton {
+    position: absolute;
+    top: calc(50% + 2px);
+    right: 6px;
+    transform: translateY(-50%);
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: theme.$text-primary;
+    z-index: 2;
 }

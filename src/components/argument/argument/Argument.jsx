@@ -2,6 +2,7 @@ import { Button } from "@logora/debate/action/button";
 import { useAuth } from "@logora/debate/auth/use_auth";
 import { useConfig } from "@logora/debate/data/config_provider";
 import { Icon } from "@logora/debate/icons/icon";
+import { useList } from "@logora/debate/list/list_provider";
 import { VotePaginatedList } from "@logora/debate/list/paginated_list";
 import { UserContentSkeleton } from "@logora/debate/skeleton/user_content_skeleton";
 import { SourceListItem } from "@logora/debate/source/source_list_item";
@@ -25,6 +26,7 @@ export const Argument = ({
 	argument,
 	argumentReplies,
 	nestingLevel = 0,
+	maxNestingLevel = 2,
 	groupType,
 	groupName,
 	positions = [],
@@ -49,6 +51,7 @@ export const Argument = ({
 	const { isLoggedIn, currentUser } = useAuth();
 	const userIsBanned = currentUser?.moderation_status === "banned";
 	const config = useConfig();
+	const list = useList();
 
 	const [expandReplies, setExpandReplies] = useState(false);
 	const [flash, setFlash] = useState(false);
@@ -134,6 +137,7 @@ export const Argument = ({
 			<ArgumentContainer
 				{...(reply ? { argument: reply } : {})}
 				nestingLevel={nestingLevel + 1}
+				maxNestingLevel={maxNestingLevel}
 				disabled={disabled}
 				groupName={groupName}
 				groupType={groupType}
@@ -156,7 +160,7 @@ export const Argument = ({
 					},
 					styles[`level-${nestingLevel}`],
 					styles[
-						`position-${!(argument.author.role === "editor" || argument.author.role === "moderator") && positionIndex}`
+					`position-${!(argument.author.role === "editor" || argument.author.role === "moderator") && positionIndex}`
 					],
 				)}
 				id={componentId}
@@ -167,7 +171,7 @@ export const Argument = ({
 					tag={
 						(argument.author.role === "editor" ||
 							argument.author.role === "moderator") &&
-						argument.is_reply
+							argument.is_reply
 							? null
 							: position.translatedContent
 					}
@@ -220,9 +224,9 @@ export const Argument = ({
 									<span className={styles.replyingTo}>
 										{parentArgument.is_deleted
 											? intl.formatMessage({
-													id: "info.deleted",
-													defaultMessage: "Deleted",
-												})
+												id: "info.deleted",
+												defaultMessage: "Deleted",
+											})
 											: parentArgument.author.full_name}
 										<Icon name="chat" height={16} />
 									</span>
@@ -248,7 +252,7 @@ export const Argument = ({
 											/>
 										) : (
 											<div className={styles.argumentContent}>
-												{normalizeNbsp(content.translatedContent)}	
+												{normalizeNbsp(content.translatedContent)}
 											</div>
 										)}
 
@@ -307,7 +311,7 @@ export const Argument = ({
 						deleteType={"messages"}
 						deleteListId={deleteListId}
 						enableReply={
-							nestingLevel <= 2 ||
+							nestingLevel <= maxNestingLevel ||
 							currentUser.role === "editor" ||
 							currentUser.role === "moderator"
 						}
@@ -328,8 +332,8 @@ export const Argument = ({
 						showShareButton={config?.actions?.hideShareButton !== true}
 						enableReport={!(argument.score === 100 && argument.manual_score)}
 						enableEdition={enableEdition}
-						enableDeletion={enableDeletion}
-					>
+					enableDeletion={enableDeletion}
+				>
 						<VoteButton
 							voteableType={"Message"}
 							voteableId={argument.id}
@@ -369,8 +373,9 @@ export const Argument = ({
 								disabled={disabled}
 								hideSourceAction={config?.actions?.disableUserSources || false}
 								onSubmit={(reply) => {
+									const replyListId = `argument_${argument.id}_reply_list`;
+									list.add(replyListId, [reply]);
 									toggleReplyInput();
-									setExtraReplies([reply]);
 									setExpandReplies(true);
 								}}
 								isReply
@@ -412,7 +417,7 @@ export const Argument = ({
 							</VotePaginatedList>
 						</div>
 					)}
-					{extraReplies?.length > 0 && !expandReplies && (
+				{extraReplies?.length > 0 && !expandReplies && (
 						<div className={styles.repliesList}>
 							{argument.number_replies > 1 && (
 								<div className={styles.readMoreLink}>

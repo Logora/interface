@@ -25,9 +25,11 @@ export { Suggestion } from "./Suggestion";
 export { Underline } from "./Underline";
 export { Votebox } from "./Votebox";
 export { CheckCircle } from "./CheckCircle";
+export { Downvote } from "./Downvote";
 export { MinusCircle } from "./MinusCircle";
+export { Upvote } from "./Upvote";
 export { Flag } from "./Flag";
 export { PauseCircle } from "./PauseCircle";
 
 // Icônes communes avec regular
-export { Alarm, Announcement, Arrow, Camera, Check, Code, Community, Downvote, Home, Logora, MobileMenu, Next, OpenBlank, Point, Refresh, Search, Send, Source, Twitter, Upvote, User } from "../regular_icons";
+export { Alarm, Announcement, Arrow, Camera, Check, Code, Community, Home, Logora, MobileMenu, Next, OpenBlank, Point, Refresh, Search, Send, Source, Twitter, User } from "../regular_icons";

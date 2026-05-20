@@ -249,7 +249,7 @@ a.voteButton {
 .debateNumberItem {
     display: flex;
     align-items: center;
-    gap: spacing.$spacer-sm;
+    gap: spacing.$spacer-xxs;
     font-size: theme.$font-size-normal;
     color: theme.$text-primary;
     white-space: nowrap;

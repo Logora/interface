@@ -30,19 +30,21 @@ import { ToolbarPlugin } from "./plugins/ToolbarPlugin";
 const normalizeNbsp = (value) => value?.replace(/&nbsp;/g, "\u00A0");
 
 const normalizeLexicalNode = (node) => {
-		if (!node || typeof node !== "object") return;
+	if (!node || typeof node !== "object") return;
 
-		if (typeof node.text === "string") {
-			node.text = normalizeNbsp(node.text);
-		}
+	if (typeof node.text === "string") {
+		node.text = normalizeNbsp(node.text);
+	}
 
-		if (Array.isArray(node.children)) {
-			node.children.forEach(normalizeLexicalNode);
-		}
-	};
+	if (Array.isArray(node.children)) {
+		node.children.forEach(normalizeLexicalNode);
+	}
+};
 
 export const TextEditor = ({
 	placeholder,
+	initialContent,
+    initialRichContent,
 	onSubmit,
 	sources,
 	hideSubmit = false,
@@ -71,16 +73,10 @@ export const TextEditor = ({
 	const randomUid = useId();
 
 	useEffect(() => {
-		if (sources && sources.length > 0) {
+		if (sources) {
 			setEditorSources(sources);
 		}
 	}, [sources]);
-
-	useEffect(() => {
-		if (handleSourcesChange && editorSources.length > 0) {
-			handleSourcesChange(editorSources);
-		}
-	}, [editorSources]);
 
 	const activate = () => {
 		if (!isActive) {
@@ -108,13 +104,13 @@ export const TextEditor = ({
 		editorState.read(() => {
 			const rawText = $getRoot().getTextContent();
 			const text = normalizeNbsp(rawText);
-	
+
 			const rawRichText = JSON.stringify(editorState);
 			const richText = normalizeNbsp(rawRichText);
-	
+
 			setEditorText(text);
 			setEditorRichText(richText);
-	
+
 			if (handleChange) {
 				handleChange(text, richText);
 			}
@@ -125,11 +121,15 @@ export const TextEditor = ({
 		const textContent = editorText;
 		const richContent = editorRichText;
 		const sources = editorSources;
+
 		if (onSubmit) {
 			event.preventDefault();
 			onSubmit(textContent, richContent, sources);
 		}
+
 		setEditorSources([]);
+
+		handleSourcesChange?.([]); 
 	};
 
 	const handleShowSourceModal = () => {
@@ -142,7 +142,23 @@ export const TextEditor = ({
 	};
 
 	const handleAddSource = (newSource) => {
-		setEditorSources([...editorSources, newSource]);
+		setEditorSources((currentSources) => {
+			const updatedSources = [...currentSources, newSource];
+			handleSourcesChange?.(updatedSources);
+			return updatedSources;
+		});
+	};
+
+	const handleRemoveSource = (sourceToRemove) => {
+		setEditorSources((currentSources) => {
+			const updatedSources = currentSources.filter(
+				(source) => source.source_url !== sourceToRemove.source_url
+			);
+
+			handleSourcesChange?.(updatedSources);
+
+			return updatedSources;
+		});
 	};
 
 	const displaySource = (source, index) => {
@@ -153,6 +169,7 @@ export const TextEditor = ({
 				url={source.source_url}
 				title={source.title}
 				index={index}
+				onRemove={() => handleRemoveSource(source)}
 			/>
 		);
 	};
@@ -215,8 +232,8 @@ export const TextEditor = ({
 							onSetContent={disableAutoActivate ? () => { } : activate}
 							storageUid={uid || randomUid}
 						/>
-						<SetContentPlugin />
-						<SetRichContentPlugin />
+						<SetContentPlugin content={initialContent}/>
+						<SetRichContentPlugin richContent={initialRichContent}/>
 						<FocusPlugin />
 						{maxLength && <MaxLengthPlugin maxLength={maxLength} />}
 						<ResetPlugin storageUid={uid || randomUid} />
@@ -224,9 +241,9 @@ export const TextEditor = ({
 					</div>
 				</div>
 			</LexicalComposer>
-			{sources && sources.length !== 0 ? (
+			{editorSources && editorSources.length !== 0 ? (
 				<div className={styles.sourcesBox}>
-					<div className={styles.sourceList}>{sources.map(displaySource)}</div>
+					<div className={styles.sourceList}>{editorSources.map(displaySource)}</div>
 				</div>
 			) : null}
 		</>

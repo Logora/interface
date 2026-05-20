@@ -31,6 +31,7 @@ export const ContextSourceList = ({ sources = [] }) => {
 	};
 	return (
 		<SectionBox
+			className={styles.sectionBox}
 			isCollapsible
 			isCollapsedByDefault={false}
 			title={intl.formatMessage({

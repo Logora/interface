@@ -179,6 +179,7 @@ export const ArgumentInput = ({
 		setArgumentId(null);
 		setSources([]);
 		setReset(true);
+		setInputContent(null);
 	};
 
 	const handleChooseSide = (positionId) => {
@@ -353,13 +354,15 @@ export const ArgumentInput = ({
 				if (response.data.success) {
 					const argument = response.data.data.resource;
 					let listId = argumentListId;
-					if (userPositionId && !isMobile) {
+					if (editElement?.is_reply && editElement?.message_id) {
+						listId = `argument_${editElement.message_id}_reply_list`;
+					} else if (userPositionId && !isMobile) {
 						listId = `argumentList${argument.position?.id}`;
 					}
 					if (
+						!editElement?.is_reply &&
 						editElement?.position?.id != argument.position?.id &&
-						!isMobile &&
-						!argument.is_reply
+						!isMobile
 					) {
 						const oldListId = `argumentList${editElement.position.id}`;
 						const newListId = `argumentList${argument.position.id}`;

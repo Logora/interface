@@ -4,9 +4,7 @@ import { useAuth } from "@logora/debate/auth/use_auth";
 import { useConfig } from "@logora/debate/data/config_provider";
 import { useDataProvider } from "@logora/debate/data/data_provider";
 import { useToast } from "@logora/debate/dialog/toast_provider";
-import { Tooltip } from "@logora/debate/dialog/tooltip";
 import { useAuthRequired } from "@logora/debate/hooks/use_auth_required";
-import { useResponsive } from "@logora/debate/hooks/use_responsive";
 import { Icon } from "@logora/debate/icons/icon";
 import { ProgressBar } from "@logora/debate/progress/progress_bar";
 import { useTranslatedContent } from "@logora/debate/translation/translated_content";
@@ -72,7 +70,6 @@ export const VoteBox = ({
 	const [savedUserSide, setSavedUserSide, removeSavedUserSide] =
 		useSessionStorageState("userSide", {});
 	const { toast } = useToast() || {};
-	const { isMobile } = useResponsive();
 
 	const initVotesCount = () => {
 		const votesCountObj = {};
@@ -472,42 +469,26 @@ export const VoteBox = ({
 						</div>
 						{showVotesCommentsNumber && (
 							<div className={styles.voteCommentCounts}>
-								<Tooltip
-									position={isMobile ? "right" : "bottom"}
-									text={intl.formatMessage({
-										id: "info.votes_count",
-										defaultMessage: "Votes",
-									})}
-								>
-									<div className={styles.debateNumberItem}>
-										<Icon name="votebox" width={20} height={20} />
-										<div className={styles.debateNumberLabel}>
-											<FormattedMessage
-												id="vote.vote_box.votes"
-												values={{ votesCount: totalVotes }}
-												defaultMessage="{votesCount} votes"
-											/>
-										</div>
+								<div className={styles.debateNumberItem}>
+									<Icon name="votebox" width={20} height={20} />
+									<div className={styles.debateNumberLabel}>
+										<FormattedMessage
+											id="vote.vote_box.votes"
+											values={{ votesCount: totalVotes }}
+											defaultMessage="{votesCount} votes"
+										/>
 									</div>
-								</Tooltip>
-								<Tooltip
-									position={isMobile ? "right" : "bottom"}
-									text={intl.formatMessage({
-										id: "info.arguments_count",
-										defaultMessage: "Comments",
-									})}
-								>
-									<div className={styles.debateNumberItem}>
-										<Icon name="chat" width={20} height={20} />
-										<div className={styles.debateNumberLabel}>
-											<FormattedMessage
-												id="vote.vote_box.comments"
-												values={{ count: commentsCount ?? 0 }}
-												defaultMessage="{count} comments"
-											/>
-										</div>
+								</div>
+								<div className={styles.debateNumberItem}>
+									<Icon name="chat" width={20} height={20} />
+									<div className={styles.debateNumberLabel}>
+										<FormattedMessage
+											id="vote.vote_box.comments"
+											values={{ count: commentsCount ?? 0 }}
+											defaultMessage="{count} comments"
+										/>
 									</div>
-								</Tooltip>
+								</div>
 							</div>
 						)}
 

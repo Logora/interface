@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from "react";
 import { useAuth } from "@logora/debate/auth/use_auth";
 import { useConfig } from "@logora/debate/data/config_provider";
 import { lexicalToHtml } from "@logora/debate/input/text_editor";
@@ -9,7 +10,6 @@ import { ContentFooter } from "@logora/debate/user_content/content_footer";
 import { ContentHeader } from "@logora/debate/user_content/content_header";
 import { UpDownVoteBox } from "@logora/debate/vote/up_down_vote_box";
 import cx from "classnames";
-import React, { useState, useEffect } from "react";
 import { useIntl } from "react-intl";
 import styles from "./ProposalBox.module.scss";
 
@@ -17,7 +17,6 @@ export const ProposalBox = ({
 	proposal,
 	disabled = false,
 	fixedContentHeight,
-	contentMaxHeight = 156,
 	enableEdition = true,
 	hideFooter = false,
 }) => {
@@ -126,7 +125,6 @@ export const ProposalBox = ({
 						reportType={"Proposal"}
 						deleteType={"proposals"}
 						deleteListId={"proposalsList"}
-						shareModal
 						shareModalTitle={intl.formatMessage({ id: "share.proposal" })}
 						shareUrl={`https://app.logora.fr/share/p/${proposal.id}`}
 						shareTitle={intl.formatMessage({ id: "share.proposal.title" })}

@@ -180,6 +180,7 @@ export const PaginatedList = ({
 
 	useEffect(() => {
 		if (list.updateElements && currentListId in list.updateElements) {
+			console.log("[PaginatedList] update received for listId:", currentListId, list.updateElements[currentListId]);
 			if (list.updateElements[currentListId].length > 0) {
 				handleEditElements(list.updateElements[currentListId]);
 				const updateElements = list.updateElements;
@@ -289,14 +290,16 @@ export const PaginatedList = ({
 	};
 
 	const handleEditElements = (elements) => {
-		let newElements = currentResources;
-		elements.forEach(
-			(element) =>
-				(newElements = newElements.map((a) =>
-					a.id === element.id ? element : a,
-				)),
-		);
-		setCurrentResources(uniqueBy(newElements, uniqueIdKey || "id"));
+		setCurrentResources((prevResources) => {
+			let newElements = prevResources;
+			elements.forEach(
+				(element) =>
+					(newElements = newElements.map((a) =>
+						a.id === element.id ? element : a,
+					)),
+			);
+			return uniqueBy(newElements, uniqueIdKey || "id");
+		});
 	};
 
 	const handleRemoveElements = (elements) => {
@@ -319,7 +322,7 @@ export const PaginatedList = ({
 				<li
 					className={styles.paginatedListItem}
 					data-testid={"list-item"}
-					key={resource[uniqueIdKey || "id"]}
+					key={`${resource[uniqueIdKey || "id"]}_${resource.updated_at || resource.content}`}
 					onClick={onElementClick}
 				>
 					<StandardErrorBoundary hideMessage={true}>
