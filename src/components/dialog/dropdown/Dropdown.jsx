@@ -1,6 +1,5 @@
 import cx from "classnames";
-import React, { useState, useRef } from "react";
-import useOnClickOutside from "use-onclickoutside";
+import React, { useState, useRef, useEffect } from "react";
 import styles from "./Dropdown.module.scss";
 
 export const Dropdown = ({
@@ -14,7 +13,6 @@ export const Dropdown = ({
 }) => {
 	const [active, setActive] = useState(false);
 	const dropdownRef = useRef(null);
-	const mouseDownInsideRef = useRef(false);
 
 	const onToggleClick = () => {
 		if (!disabled) {
@@ -25,16 +23,20 @@ export const Dropdown = ({
 		}
 	};
 
-	useOnClickOutside(dropdownRef, () => {
-		if (!mouseDownInsideRef.current) setActive(false);
-		mouseDownInsideRef.current = false;
-	});
+	useEffect(() => {
+		const handleMouseDown = (event) => {
+			if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+				setActive(false);
+			}
+		};
+		document.addEventListener("mousedown", handleMouseDown);
+		return () => document.removeEventListener("mousedown", handleMouseDown);
+	}, []);
 
 	return (
 		<div
 			ref={dropdownRef}
 			className={cx(styles.dropdownWrapper, { [className]: className })}
-			onMouseDown={() => { mouseDownInsideRef.current = true; }}
 		>
 			<button
 				type="button"
