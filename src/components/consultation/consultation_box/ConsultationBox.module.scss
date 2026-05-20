@@ -10,6 +10,7 @@
     color: theme.$text-primary;
     border-radius: theme.$box-border-radius;
     background: theme.$background-color-primary;
+    height: 100%;
 
     a {
         text-decoration: none !important;
@@ -62,6 +63,8 @@
     @include spacing.px(3, xs);
     font-size: theme.$font-size-normal;
     font-weight: theme.$font-weight-bold;
+    min-height: 2.7em;
+    flex: 1;
 }
 
 .iconVote {
