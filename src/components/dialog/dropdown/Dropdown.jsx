@@ -7,6 +7,7 @@ export const Dropdown = ({
 	onClick,
 	horizontalPosition = "left",
 	disabled = false,
+	closeOnContentClick = false,
 	className,
 	dropdownClassName,
 	children,
@@ -47,7 +48,7 @@ export const Dropdown = ({
 									[styles[horizontalPosition]]: horizontalPosition,
 								})
 					}
-					onClick={(e) => { if (e.target === e.currentTarget) setActive(false); }}
+					onClick={(e) => { if (closeOnContentClick || e.target === e.currentTarget) setActive(false); }}
 				>
 					{children[1]}
 				</div>
