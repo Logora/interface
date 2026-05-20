@@ -14,6 +14,7 @@ export const Dropdown = ({
 }) => {
 	const [active, setActive] = useState(false);
 	const dropdownRef = useRef(null);
+	const mouseDownInsideRef = useRef(false);
 
 	const onToggleClick = () => {
 		if (!disabled) {
@@ -24,12 +25,16 @@ export const Dropdown = ({
 		}
 	};
 
-	useOnClickOutside(dropdownRef, () => setActive(false));
+	useOnClickOutside(dropdownRef, () => {
+		if (!mouseDownInsideRef.current) setActive(false);
+		mouseDownInsideRef.current = false;
+	});
 
 	return (
 		<div
 			ref={dropdownRef}
 			className={cx(styles.dropdownWrapper, { [className]: className })}
+			onMouseDown={() => { mouseDownInsideRef.current = true; }}
 		>
 			<button
 				type="button"
