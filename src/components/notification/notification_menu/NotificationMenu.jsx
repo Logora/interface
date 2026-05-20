@@ -1,6 +1,7 @@
 import { useDataProvider } from "@logora/debate/data/data_provider";
 import { PaginatedList } from "@logora/debate/list/paginated_list";
 import { NotificationItem } from "@logora/debate/notification/notification_item";
+import { StandardErrorBoundary } from "@logora/debate/error/standard_error_boundary";
 import { UserContentSkeleton } from "@logora/debate/skeleton/user_content_skeleton";
 import React, { useState } from "react";
 import { useIntl } from "react-intl";
@@ -39,6 +40,7 @@ export const NotificationMenu = ({ notificationDefinitions = {} }) => {
 				</div>
 			</div>
 			<div className={styles.notificationList}>
+			<StandardErrorBoundary hideMessage>
 				<PaginatedList
 					currentListId={"notificationList"}
 					loadingComponent={<UserContentSkeleton numberLines={0} />}
@@ -55,7 +57,8 @@ export const NotificationMenu = ({ notificationDefinitions = {} }) => {
 						isRead={readAll}
 					/>
 				</PaginatedList>
-			</div>
+			</StandardErrorBoundary>
+		</div>
 		</>
 	);
 };
