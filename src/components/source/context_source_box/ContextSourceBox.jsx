@@ -30,8 +30,7 @@ export const ContextSourceBox = ({ title, imageUrl, date, author }) => {
 			<img
 				src={imageUrl}
 				alt={intl.formatMessage({
-					id: "source.context_source_box.alt",
-					defaultMessage: "Debate source image",
+					id: "source.context_source_box.alt"
 				})}
 				className={styles.image}
 			/>
