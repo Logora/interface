@@ -60,6 +60,19 @@
     }
 }
 
+.proposalSourcesList {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    font-size: theme.$font-size-extra-small;
+    font-weight: theme.$font-weight-normal;
+
+    a {
+        text-decoration: none;
+    }
+}
+
 .fixedHeight {
     height: 200px;
     overflow: hidden;

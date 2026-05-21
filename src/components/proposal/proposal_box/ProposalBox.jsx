@@ -9,6 +9,7 @@ import { TranslationButton } from "@logora/debate/translation/translation_button
 import { ContentFooter } from "@logora/debate/user_content/content_footer";
 import { ContentHeader } from "@logora/debate/user_content/content_header";
 import { UpDownVoteBox } from "@logora/debate/vote/up_down_vote_box";
+import { SourceListItem } from "@logora/debate/source/source_list_item";
 import cx from "classnames";
 import { useIntl } from "react-intl";
 import styles from "./ProposalBox.module.scss";
@@ -118,6 +119,19 @@ export const ProposalBox = ({
 						/>
 					</div>
 				</div>
+				{proposal.sources?.length > 0 && (
+					<div className={styles.proposalSourcesList}>
+						{proposal.sources.map((source, index) => (
+							<SourceListItem
+								key={source.id}
+								publisher={source.publisher}
+								url={source.source_url}
+								title={source.title}
+								index={index}
+							/>
+						))}
+					</div>
+				)}
 				{!hideFooter && (
 					<ContentFooter
 						resource={proposal}

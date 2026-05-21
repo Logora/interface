@@ -180,8 +180,32 @@ export const ProposalWithTag = {
 	},
 };
 
+const proposalWithSources = generateProposal({
+	sources: [
+		{
+			id: faker.number.int(),
+			title: faker.lorem.sentence(),
+			publisher: faker.company.name(),
+			source_url: faker.internet.url(),
+		},
+		{
+			id: faker.number.int(),
+			title: faker.lorem.sentence(),
+			publisher: faker.company.name(),
+			source_url: faker.internet.url(),
+		},
+	],
+});
+
 export const OwnProposal = {
 	args: {
 		proposal: authoredProposal,
+	},
+};
+
+export const ProposalWithSources = {
+	args: {
+		proposal: proposalWithSources,
+		containerHeight: "auto",
 	},
 };
