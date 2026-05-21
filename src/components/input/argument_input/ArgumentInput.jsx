@@ -60,9 +60,7 @@ export const ArgumentInput = ({
 	const { errors, validate } = useFormValidation();
 	const { isMobile } = useResponsive();
 	const location = useLocation();
-	// REFS
 	const inputForm = useRef(null);
-	// STATE
 	const [sources, setSources] = useState([]);
 	const [argumentContent, setArgumentContent] = useState("");
 	const [argumentRichContent, setArgumentRichContent] = useState(null);
@@ -71,6 +69,7 @@ export const ArgumentInput = ({
 	const [flash, setFlash] = useState(false);
 	const [inputActivation, setInputActivation] = useState(false);
 	const [editElement, setEditElement] = useState({});
+	const [autoFocus, setAutoFocus] = useState(false);
 	const [savedArgument, setSavedArgument] = useSessionStorageState(
 		"userSide",
 		{},
@@ -122,8 +121,8 @@ export const ArgumentInput = ({
 
 	useEffect(() => {
 		if (activeOnInit) {
-			handleTextEditorActivation();
-			setFocus(true);
+			setAutoFocus(true);
+			scrollToEditor();
 		}
 	}, [activeOnInit]);
 
@@ -131,7 +130,8 @@ export const ArgumentInput = ({
 		if (typeof window !== "undefined") {
 			const initFocus = focusOnInit || urlParams.get("initArgument");
 			if (initFocus === true || initFocus === "true") {
-				setFocus(true);
+				setAutoFocus(true);
+				scrollToEditor();
 				flashEditor();
 			}
 		}
@@ -534,6 +534,7 @@ export const ArgumentInput = ({
 									hideSubmit={inputDisabledForVisitors}
 									allowedDomains={config?.allowed_sources}
 									active={activeOnInit}
+									autoFocus={autoFocus}
 									hideCharCount={hideCharCount}
 									disableAutoActivate={disableAutoActivate}
 								/>

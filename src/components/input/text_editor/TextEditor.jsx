@@ -15,7 +15,7 @@ import { SourceListItem } from "@logora/debate/source/source_list_item";
 import { SourceModal } from "@logora/debate/source/source_modal";
 import cx from "classnames";
 import { $getRoot } from "lexical";
-import React, { useState, useEffect, useId } from "react";
+import React, { useState, useEffect, useId, useRef } from "react";
 import { useIntl } from "react-intl";
 import EditorTheme from "./EditorTheme";
 import styles from "./TextEditor.module.scss";
@@ -62,15 +62,24 @@ export const TextEditor = ({
 	allowedDomains = [],
 	hideCharCount = false,
 	disableAutoActivate = false,
+	autoFocus = false,
 	...rest
 }) => {
-	const [isActive, setIsActive] = useState(false);
+	const [isActive, setIsActive] = useState(autoFocus || active);
 	const [editorText, setEditorText] = useState("");
 	const [editorRichText, setEditorRichText] = useState("");
 	const [editorSources, setEditorSources] = useState([]);
 	const { showModal } = useModal();
 	const intl = useIntl();
 	const randomUid = useId();
+	const hasAutoActivated = useRef(false);
+
+	useEffect(() => {
+		if (autoFocus && !hasAutoActivated.current && onActivation) {
+			hasAutoActivated.current = true;
+			onActivation();
+		}
+	}, [autoFocus, onActivation]);
 
 	useEffect(() => {
 		if (sources) {
@@ -234,7 +243,7 @@ export const TextEditor = ({
 						/>
 						<SetContentPlugin content={initialContent}/>
 						<SetRichContentPlugin richContent={initialRichContent}/>
-						<FocusPlugin />
+						<FocusPlugin autoFocus={autoFocus} />
 						{maxLength && <MaxLengthPlugin maxLength={maxLength} />}
 						<ResetPlugin storageUid={uid || randomUid} />
 						<EditorRefPlugin editorRef={editorRef} />

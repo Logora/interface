@@ -32,6 +32,7 @@ export const ContextSourceBox = ({ title, imageUrl, date, author }) => {
 				alt={intl.formatMessage({
 					id: "source.context_source_box.alt"
 				})}
+				data-testid="context-source-image"
 				className={styles.image}
 			/>
 		</div>

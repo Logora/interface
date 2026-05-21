@@ -179,6 +179,13 @@ export const FocusOnInitArgumentInput = {
 	},
 };
 
+export const ActiveOnInitArgumentInput = {
+	args: {
+		activeOnInit: true,
+		hideSourceAction: true,
+	},
+};
+
 export const ArgumentInputWithoutPositions = {
 	args: {
 		positions: [],

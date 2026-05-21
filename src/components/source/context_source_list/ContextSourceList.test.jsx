@@ -26,7 +26,7 @@ describe("ContextSourceList", () => {
 			<IntlProvider locale="en">
 				<ResponsiveProvider>
 					<IconProvider library={regularIcons}>
-						<ContextSourceList sources={sources} />
+						<ContextSourceList sources={sources} title="Debate context" />
 					</IconProvider>
 				</ResponsiveProvider>
 			</IntlProvider>,

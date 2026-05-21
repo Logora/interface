@@ -361,6 +361,33 @@ describe("TextEditor", () => {
 		container = null;
 	});
 
+	it("should focus editor when autoFocus prop is true", async () => {
+		render(
+			<IntlProvider locale="en">
+				<InputProvider>
+					<ModalProvider>
+						<IconProvider library={regularIcons}>
+							<TextEditor
+								handleChange={() => null}
+								onSubmit={() => null}
+								onActivation={() => null}
+								shortBar={true}
+								uid={"34"}
+								placeholder={"Add something"}
+								autoFocus
+							/>
+						</IconProvider>
+					</ModalProvider>
+				</InputProvider>
+			</IntlProvider>,
+		);
+
+		const editor = screen.getByRole("textbox");
+		await waitFor(() => {
+			expect(document.activeElement).toBe(editor);
+		});
+	});
+
 	it("should focus editor when setFocus called from outside", async () => {
 		const FocusInputComponent = (props) => {
 			const { setFocus } = useInput();

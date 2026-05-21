@@ -25,7 +25,7 @@ describe("ContextSourceBox", () => {
 		);
 		expect(box.getByText(source.title)).toBeTruthy();
 		expect(box.getByText(source.author)).toBeTruthy();
-		expect(box.getByAltText("Debate source image")).toHaveAttribute(
+		expect(box.getByTestId("context-source-image")).toHaveAttribute(
 			"src",
 			source.imageUrl,
 		);
@@ -44,7 +44,7 @@ describe("ContextSourceBox", () => {
 		expect(box.getByText(source.title)).toBeTruthy();
 		expect(box.queryByText(source.author)).toBeNull();
 		expect(box.queryByText("•")).toBeNull();
-		expect(box.getByAltText("Debate source image")).toHaveAttribute(
+		expect(box.getByTestId("context-source-image")).toHaveAttribute(
 			"src",
 			source.imageUrl,
 		);

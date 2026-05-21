@@ -332,8 +332,8 @@ export const Argument = ({
 						showShareButton={config?.actions?.hideShareButton !== true}
 						enableReport={!(argument.score === 100 && argument.manual_score)}
 						enableEdition={enableEdition}
-					enableDeletion={enableDeletion}
-				>
+						enableDeletion={enableDeletion}
+					>
 						<VoteButton
 							voteableType={"Message"}
 							voteableId={argument.id}
@@ -379,6 +379,7 @@ export const Argument = ({
 									setExpandReplies(true);
 								}}
 								isReply
+								activeOnInit
 								avatarSize={40}
 								placeholder={intl.formatMessage({
 									id: "input.reply_input.your_answer",
