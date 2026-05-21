@@ -4,11 +4,9 @@ import { SectionBox } from "@logora/debate/section/section_box";
 import { ContextSourceBox } from "@logora/debate/source/context_source_box";
 import cx from "classnames";
 import React from "react";
-import { useIntl } from "react-intl";
 import styles from "./ContextSourceList.module.scss";
 
-export const ContextSourceList = ({ sources = [] }) => {
-	const intl = useIntl();
+export const ContextSourceList = ({ sources = [], title = "" }) => {
 	const { isMobile, isTablet, isDesktop } = useResponsive();
 
 	const displaySource = (source) => {
@@ -34,10 +32,7 @@ export const ContextSourceList = ({ sources = [] }) => {
 			className={styles.sectionBox}
 			isCollapsible
 			isCollapsedByDefault={false}
-			title={intl.formatMessage({
-				id: "source.context_source_list.title",
-				defaultMessage: "Debate context",
-			})}
+			title={title}
 		>
 			<div
 				className={cx(styles.content, {
