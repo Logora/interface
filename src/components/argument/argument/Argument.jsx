@@ -379,7 +379,7 @@ export const Argument = ({
 									setExpandReplies(true);
 								}}
 								isReply
-								activeOnInit
+								autoFocus
 								avatarSize={40}
 								placeholder={intl.formatMessage({
 									id: "input.reply_input.your_answer",

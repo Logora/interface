@@ -70,6 +70,7 @@ const defaultArgs = {
 	isReply: false,
 	focusOnInit: false,
 	activeOnInit: false,
+	autoFocus: false,
 	userGuideUrl: "",
 	hideUserGuideLink: false,
 	hideCharCount: false,
@@ -106,6 +107,7 @@ export default {
 		hideSourceAction: { control: "boolean" },
 		focusOnInit: { control: "boolean" },
 		activeOnInit: { control: "boolean" },
+		autoFocus: { control: "boolean" },
 		hideUserGuideLink: { control: "boolean" },
 		hideCharCount: { control: "boolean" },
 		disableAutoActivate: { control: "boolean" },
@@ -182,6 +184,13 @@ export const FocusOnInitArgumentInput = {
 export const ActiveOnInitArgumentInput = {
 	args: {
 		activeOnInit: true,
+		hideSourceAction: true,
+	},
+};
+
+export const AutoFocusArgumentInput = {
+	args: {
+		autoFocus: true,
 		hideSourceAction: true,
 	},
 };

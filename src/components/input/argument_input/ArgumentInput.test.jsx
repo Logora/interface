@@ -548,6 +548,52 @@ describe("ArgumentInput", () => {
 		expect(callback).toHaveBeenCalled();
 	});
 
+	it("should focus editor when autoFocus is true", async () => {
+		const { getByRole } = render(
+			<BrowserRouter>
+				<ConfigProvider>
+					<IconProvider library={regularIcons}>
+						<IntlProvider locale="en">
+							<DataProviderContext.Provider value={{ dataProvider: data }}>
+								<AuthContext.Provider
+									value={{ currentUser: currentUser, isLoggedIn: true }}
+								>
+									<ToastProvider>
+										<ModalProvider>
+											<ListProvider>
+												<InputProvider>
+													<ArgumentInput
+														onSubmit={callback}
+														groupId={debate.id}
+														groupName={debate.name}
+														positions={debate.positions}
+														disabledPositions={[]}
+														listId={"argumentList"}
+														positionId={debate.positions[0].id}
+														hideSourceAction={true}
+														avatarSize={48}
+														placeholder={"Add an argument..."}
+														autoFocus
+													/>
+												</InputProvider>
+											</ListProvider>
+										</ModalProvider>
+									</ToastProvider>
+								</AuthContext.Provider>
+							</DataProviderContext.Provider>
+						</IntlProvider>
+					</IconProvider>
+				</ConfigProvider>
+			</BrowserRouter>,
+		);
+
+		const editor = getByRole("textbox");
+		await act(async () => {
+			await new Promise((r) => setTimeout(r, 0));
+		});
+		expect(document.activeElement).toBe(editor);
+	});
+
 	it("should focus editor when activeOnInit is true", async () => {
 		Element.prototype.scrollIntoView = vi.fn();
 		const { getByRole } = render(

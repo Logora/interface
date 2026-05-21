@@ -43,6 +43,7 @@ export const ArgumentInput = ({
 	hideUserGuideLink = false,
 	hideCharCount = false,
 	disableAutoActivate = false,
+	autoFocus = false,
 }) => {
 	const intl = useIntl();
 	const api = useDataProvider();
@@ -69,7 +70,7 @@ export const ArgumentInput = ({
 	const [flash, setFlash] = useState(false);
 	const [inputActivation, setInputActivation] = useState(false);
 	const [editElement, setEditElement] = useState({});
-	const [autoFocus, setAutoFocus] = useState(false);
+	const [shouldAutoFocus, setShouldAutoFocus] = useState(false);
 	const [savedArgument, setSavedArgument] = useSessionStorageState(
 		"userSide",
 		{},
@@ -120,8 +121,15 @@ export const ArgumentInput = ({
 	}, [positionId]);
 
 	useEffect(() => {
+		if (autoFocus) {
+			setShouldAutoFocus(true);
+		}
+	}, [autoFocus]);
+
+	useEffect(() => {
 		if (activeOnInit) {
-			setAutoFocus(true);
+			handleTextEditorActivation();
+			setShouldAutoFocus(true);
 			scrollToEditor();
 		}
 	}, [activeOnInit]);
@@ -130,7 +138,7 @@ export const ArgumentInput = ({
 		if (typeof window !== "undefined") {
 			const initFocus = focusOnInit || urlParams.get("initArgument");
 			if (initFocus === true || initFocus === "true") {
-				setAutoFocus(true);
+				setShouldAutoFocus(true);
 				scrollToEditor();
 				flashEditor();
 			}
@@ -534,7 +542,7 @@ export const ArgumentInput = ({
 									hideSubmit={inputDisabledForVisitors}
 									allowedDomains={config?.allowed_sources}
 									active={activeOnInit}
-									autoFocus={autoFocus}
+									autoFocus={shouldAutoFocus}
 									hideCharCount={hideCharCount}
 									disableAutoActivate={disableAutoActivate}
 								/>
