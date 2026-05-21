@@ -103,12 +103,14 @@ export const SourceModal = ({
 						disabled={disabled}
 						type="url"
 					/>
+				{!source && !showPreviewError && !showUnauthorizedError && (
 					<div className={styles.sourceInputHelp}>
 						<FormattedMessage
 							id="source.source_modal.input_help"
 							defaultMessage="Press Enter to add the source"
 						/>
 					</div>
+				)}
 					{allowedSources.length > 0 && (
 						<>
 							<div className={styles.separator} />

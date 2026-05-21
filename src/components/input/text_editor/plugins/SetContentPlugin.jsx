@@ -7,7 +7,7 @@ export const SetContentPlugin = ({ content }) => {
 	const [editor] = useLexicalComposerContext();
 	const { inputContent, setInputContent } = useInput();
 
-	const contentToLoad = content || inputContent;
+	const contentToLoad = content || (typeof inputContent === "string" ? inputContent : undefined);
 
 	useEffect(() => {
 		if (typeof contentToLoad === "string" && contentToLoad) {
