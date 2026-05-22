@@ -28,6 +28,12 @@
 	font-family: theme.$title-font-family;
 }
 
+.listSubtitle {
+    color: theme.$text-secondary;
+    font-weight: theme.$font-weight-normal;
+    font-size: theme.$font-size-normal;
+}
+
 .rightBar {
     display: flex;
     gap: spacing.$spacer;
