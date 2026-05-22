@@ -1,6 +1,7 @@
 import {
 	$isListNode,
 	INSERT_ORDERED_LIST_COMMAND,
+	REMOVE_LIST_COMMAND,
 	ListNode,
 } from "@lexical/list";
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
@@ -11,6 +12,7 @@ import { Button } from "@logora/debate/action/button";
 import { Icon } from "@logora/debate/icons/icon";
 import cx from "classnames";
 import {
+	$createParagraphNode,
 	$getSelection,
 	$isRangeSelection,
 	FORMAT_TEXT_COMMAND,
@@ -91,10 +93,10 @@ export const ToolbarPlugin = (props) => {
 	};
 
 	const formatNumberedList = () => {
-		if (blockType !== "number") {
+		if (blockType !== "ol") {
 			editor.dispatchCommand(INSERT_ORDERED_LIST_COMMAND);
 		} else {
-			formatParagraph(editor);
+			editor.dispatchCommand(REMOVE_LIST_COMMAND);
 		}
 	};
 
@@ -103,6 +105,11 @@ export const ToolbarPlugin = (props) => {
 			editor.update(() => {
 				const selection = $getSelection();
 				$setBlocksType(selection, () => $createQuoteNode());
+			});
+		} else {
+			editor.update(() => {
+				const selection = $getSelection();
+				$setBlocksType(selection, () => $createParagraphNode());
 			});
 		}
 	};
@@ -183,7 +190,7 @@ export const ToolbarPlugin = (props) => {
 							<button
 								onClick={() => formatQuote()}
 								type={"button"}
-								className={styles.toolbarItem}
+								className={cx(styles.toolbarItem, { [styles.active]: blockType === "quote" })}
 								aria-label={intl.formatMessage({
 									id: "input.text_editor.plugins.toolbar_plugin.blockquote.aria_label",
 									defaultMessage: "Add a blockquote",
@@ -199,7 +206,7 @@ export const ToolbarPlugin = (props) => {
 							<button
 								onClick={() => formatNumberedList()}
 								type={"button"}
-								className={styles.toolbarItem}
+								className={cx(styles.toolbarItem, { [styles.active]: blockType === "ol" })}
 								aria-label={intl.formatMessage({
 									id: "input.text_editor.plugins.toolbar_plugin.numbered_list.aria_label",
 									defaultMessage: "Insert a numbered list",
