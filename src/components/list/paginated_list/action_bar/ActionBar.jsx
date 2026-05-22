@@ -11,6 +11,8 @@ import styles from "./ActionBar.module.scss";
 
 export const ActionBar = ({
 	title,
+	subtitle,
+	showSubtitle = false,
 	sortOptions,
 	defaultSelectOption,
 	searchBar = false,
@@ -99,7 +101,10 @@ export const ActionBar = ({
 							[styles.listHeaderOneItem]: !searchBar || !sortOptions,
 						})}
 					>
-						{title && <div className={styles.listTitle}>{title}</div>}
+						<div>
+							{title && <div className={styles.listTitle}>{title}</div>}
+							{showSubtitle && subtitle && <div className={styles.listSubtitle}>{subtitle}</div>}
+						</div>
 						{(sortOptions || searchBar) && (
 							<div
 								className={cx(styles.rightBar, {

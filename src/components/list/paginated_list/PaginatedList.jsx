@@ -38,6 +38,8 @@ export const PaginatedList = ({
 	loadingComponent,
 	searchBar = false,
 	title,
+	subtitle,
+	showSubtitle = false,
 	emptyListComponent,
 	emptyText,
 	display,
@@ -360,6 +362,8 @@ export const PaginatedList = ({
 		<div className={styles.listContainer}>
 			<ActionBar
 				title={title}
+				subtitle={subtitle}
+				showSubtitle={showSubtitle}
 				sortOptions={sortOptions}
 				defaultSelectOption={defaultSelectOption}
 				searchBar={searchBar}
