@@ -458,10 +458,11 @@ export const VoteBox = ({
 				) : (
 					<div className={styles.voteBoxActions}>
 						<div
-							className={cx(styles.voteBoxActionsBody, {
-								[styles.voteBoxActionsBodyColumn]: displayColumn,
-								[buttonContainerClassName]: buttonContainerClassName,
-							})}
+						className={cx(styles.voteBoxActionsBody, {
+							[styles.voteBoxActionsBodyColumn]: displayColumn,
+							[styles.voteBoxActionsBodyOutlined]: config.actions?.outlinedVoteButtons,
+							[buttonContainerClassName]: buttonContainerClassName,
+						})}
 						>
 							{votePositions.map((value, index) =>
 								displayVotePosition(value, index),

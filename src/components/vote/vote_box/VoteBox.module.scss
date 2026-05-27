@@ -154,20 +154,59 @@ a.voteButton {
 }
 
 .voteBoxActionsBody .voteAction:first-child .voteButton {
-    background-color: theme.$text-light !important;
-    color: theme.$for-primary  !important;
+    background-color: theme.$for-primary !important;
     border-color: theme.$for-primary !important;
     border: 1px solid theme.$for-primary !important;
 
     &:hover {
-        background-color: theme.$text-light !important;
-        color: theme.$for-primary  !important;
+        background-color: theme.$for-primary !important;
         border-color: theme.$for-primary !important;
         border: 1px solid theme.$for-primary !important;
     }
 }
 
 .voteBoxActionsBody .voteAction:nth-child(2) .voteButton {
+    background-color: theme.$against-primary !important;
+    border-color: theme.$against-primary !important;
+    border: 1px solid theme.$against-primary !important;
+
+    &:hover {
+        background-color: theme.$against-primary !important;
+        border-color: theme.$against-primary !important;
+        border: 1px solid theme.$against-primary !important;
+    }
+}
+
+.voteBoxActionsBody .voteAction:nth-child(3) .voteButton {
+    background-color: theme.$text-light !important;
+    color: theme.$third-position-color-primary !important;
+    border-color: theme.$third-position-color-primary !important;
+    border: 1px solid theme.$third-position-color-primary !important;
+
+    &:hover {
+        background-color: theme.$text-light !important;
+        color: theme.$third-position-color-primary !important;
+        border-color: theme.$third-position-color-primary !important;
+        border: 1px solid theme.$third-position-color-primary !important;
+    }
+}
+
+// Style alternatif avec boutons outlined (prop outlinedVoteButtons=true)
+.voteBoxActionsBodyOutlined .voteAction:first-child .voteButton {
+    background-color: theme.$text-light !important;
+    color: theme.$for-primary !important;
+    border-color: theme.$for-primary !important;
+    border: 1px solid theme.$for-primary !important;
+
+    &:hover {
+        background-color: theme.$text-light !important;
+        color: theme.$for-primary !important;
+        border-color: theme.$for-primary !important;
+        border: 1px solid theme.$for-primary !important;
+    }
+}
+
+.voteBoxActionsBodyOutlined .voteAction:nth-child(2) .voteButton {
     background-color: theme.$text-light !important;
     color: theme.$against-primary !important;
     border-color: theme.$against-primary !important;
@@ -181,7 +220,7 @@ a.voteButton {
     }
 }
 
-.voteBoxActionsBody .voteAction:nth-child(3) .voteButton {
+.voteBoxActionsBodyOutlined .voteAction:nth-child(3) .voteButton {
     background-color: theme.$text-light !important;
     color: theme.$third-position-color-primary !important;
     border-color: theme.$third-position-color-primary !important;
