@@ -154,26 +154,30 @@ a.voteButton {
 }
 
 .voteBoxActionsBody .voteAction:first-child .voteButton {
-    background-color: theme.$for-primary !important;
+    background-color: theme.$text-light !important;
+    color: theme.$for-primary  !important;
     border-color: theme.$for-primary !important;
     border: 1px solid theme.$for-primary !important;
 
     &:hover {
-        background-color: theme.$for-primary !important;
+        background-color: theme.$text-light !important;
+        color: theme.$for-primary  !important;
         border-color: theme.$for-primary !important;
         border: 1px solid theme.$for-primary !important;
     }
 }
 
 .voteBoxActionsBody .voteAction:nth-child(2) .voteButton {
-    background-color: theme.$against-primary !important;
+    background-color: theme.$text-light !important;
+    color: theme.$against-primary !important;
     border-color: theme.$against-primary !important;
-    border: 1px theme.$against-primary !important;
+    border: 1px solid theme.$against-primary !important;
 
     &:hover {
-        background-color: theme.$against-primary !important;
+        background-color: theme.$text-light !important;
+        color: theme.$against-primary !important;
         border-color: theme.$against-primary !important;
-        border: 1px theme.$against-primary !important;
+        border: 1px solid theme.$against-primary !important;
     }
 }
 
