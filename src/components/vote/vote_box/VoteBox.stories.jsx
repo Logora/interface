@@ -261,7 +261,7 @@ export const VoteBoxOutlinedButtons = () => {
 						>
 							<ToastProvider>
 								<ConfigProvider
-									config={{ actions: { outlinedVoteButtons: true } }}
+									config={{ layout: { outlinedVoteButtons: true } }}
 									routes={{ ...routes }}
 								>
 									<ModalProvider>

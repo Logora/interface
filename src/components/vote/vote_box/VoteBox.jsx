@@ -460,7 +460,7 @@ export const VoteBox = ({
 						<div
 						className={cx(styles.voteBoxActionsBody, {
 							[styles.voteBoxActionsBodyColumn]: displayColumn,
-							[styles.voteBoxActionsBodyOutlined]: config.actions?.outlinedVoteButtons,
+							[styles.voteBoxActionsBodyOutlined]: config.layout?.outlinedVoteButtons,
 							[buttonContainerClassName]: buttonContainerClassName,
 						})}
 						>
