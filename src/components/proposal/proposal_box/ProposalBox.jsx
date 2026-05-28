@@ -18,6 +18,7 @@ export const ProposalBox = ({
 	proposal,
 	disabled = false,
 	fixedContentHeight,
+	fitContent = false,
 	enableEdition = true,
 	hideFooter = false,
 }) => {
@@ -71,6 +72,7 @@ export const ProposalBox = ({
 				<div
 					className={cx(styles.proposalBoxContent, {
 						[styles.fixedHeight]: fixedContentHeight,
+						[styles.withMinHeight]: !fitContent && !fixedContentHeight,
 					})}
 				>
 					<div>

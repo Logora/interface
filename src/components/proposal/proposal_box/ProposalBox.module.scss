@@ -39,8 +39,10 @@
     line-height: theme.$line-height-loose;
     font-size: theme.$font-size-small;
 
-    @include display.media-breakpoint-up(md) {
-        min-height: 185px;
+    &.withMinHeight {
+        @include display.media-breakpoint-up(md) {
+            min-height: 185px;
+        }
     }
 
     .proposalTitle {

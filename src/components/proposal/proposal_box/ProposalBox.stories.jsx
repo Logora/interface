@@ -125,6 +125,7 @@ export default {
 		containerHeight: { control: "text" },
 		disabled: { control: "boolean" },
 		fixedContentHeight: { control: "boolean" },
+		fitContent: { control: "boolean" },
 		contentMaxHeight: { control: "number" },
 		enableEdition: { control: "boolean" },
 		hideFooter: { control: "boolean" },
@@ -135,6 +136,7 @@ export default {
 		containerHeight: "240px",
 		disabled: false,
 		fixedContentHeight: false,
+		fitContent: false,
 		contentMaxHeight: 156,
 		enableEdition: true,
 		hideFooter: false,
@@ -146,6 +148,7 @@ export default {
 					proposal={args.proposal}
 					disabled={args.disabled}
 					fixedContentHeight={args.fixedContentHeight}
+					fitContent={args.fitContent}
 					contentMaxHeight={args.contentMaxHeight}
 					enableEdition={args.enableEdition}
 					hideFooter={args.hideFooter}
