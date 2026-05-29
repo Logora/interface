@@ -101,10 +101,7 @@ export const ActionBar = ({
 							[styles.listHeaderOneItem]: !searchBar || !sortOptions,
 						})}
 					>
-						<div>
-							{title && <div className={styles.listTitle}>{title}</div>}
-							{showSubtitle && subtitle && <div className={styles.listSubtitle}>{subtitle}</div>}
-						</div>
+						{title && <div className={styles.listTitle}>{title}</div>}
 						{(sortOptions || searchBar) && (
 							<div
 								className={cx(styles.rightBar, {
@@ -136,6 +133,9 @@ export const ActionBar = ({
 							</div>
 						)}
 					</div>
+					{showSubtitle && subtitle && (
+						<div className={styles.listSubtitle}>{subtitle}</div>
+					)}
 					{tagList && tagList.length > 0 && (
 						<div className={styles.tagList}>{tagList.map(displayTags)}</div>
 					)}
