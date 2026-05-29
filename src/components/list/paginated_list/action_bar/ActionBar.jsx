@@ -12,7 +12,7 @@ import styles from "./ActionBar.module.scss";
 export const ActionBar = ({
 	title,
 	subtitle,
-	showSubtitle = false,
+	showDebateConsultationSubtitle = false,
 	sortOptions,
 	defaultSelectOption,
 	searchBar = false,
@@ -133,7 +133,7 @@ export const ActionBar = ({
 							</div>
 						)}
 					</div>
-					{showSubtitle && subtitle && (
+					{showDebateConsultationSubtitle && subtitle && (
 						<div className={styles.listSubtitle}>{subtitle}</div>
 					)}
 					{tagList && tagList.length > 0 && (

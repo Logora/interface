@@ -25,13 +25,13 @@ const meta = {
 	args: {
 		title: "Consultations",
 		subtitle: "Participate in our consultations",
-		showSubtitle: true,
+		showDebateConsultationSubtitle: true,
 		searchBar: false,
 	},
 	argTypes: {
 		title: { control: "text" },
 		subtitle: { control: "text" },
-		showSubtitle: { control: "boolean" },
+		showDebateConsultationSubtitle: { control: "boolean" },
 		searchBar: { control: "boolean" },
 	},
 	render: (args) => (
@@ -54,7 +54,7 @@ export const WithSubtitle = () => (
 				<ActionBar
 					title="Consultations"
 					subtitle="Participate in our consultations"
-					showSubtitle={true}
+					showDebateConsultationSubtitle={true}
 					onSearch={() => {}}
 					onSortChange={() => {}}
 					onTagChange={() => {}}
@@ -71,7 +71,7 @@ export const WithoutSubtitle = () => (
 				<ActionBar
 					title="Consultations"
 					subtitle="Participate in our consultations"
-					showSubtitle={false}
+					showDebateConsultationSubtitle={false}
 					onSearch={() => {}}
 					onSortChange={() => {}}
 					onTagChange={() => {}}
@@ -88,7 +88,7 @@ export const WithSubtitleAndSortOptions = () => (
 				<ActionBar
 					title="Consultations"
 					subtitle="Participate in our consultations"
-					showSubtitle={true}
+					showDebateConsultationSubtitle={true}
 					sortOptions={sortOptions}
 					onSearch={() => {}}
 					onSortChange={() => {}}
@@ -106,7 +106,7 @@ export const WithSubtitleAndSearchBar = () => (
 				<ActionBar
 					title="Consultations"
 					subtitle="Participate in our consultations"
-					showSubtitle={true}
+					showDebateConsultationSubtitle={true}
 					searchBar={true}
 					sortOptions={sortOptions}
 					onSearch={() => {}}

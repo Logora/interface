@@ -39,7 +39,7 @@ export const PaginatedList = ({
 	searchBar = false,
 	title,
 	subtitle,
-	showSubtitle = false,
+	showDebateConsultationSubtitle = false,
 	emptyListComponent,
 	emptyText,
 	display,
@@ -363,7 +363,7 @@ export const PaginatedList = ({
 			<ActionBar
 				title={title}
 				subtitle={subtitle}
-				showSubtitle={showSubtitle}
+				showDebateConsultationSubtitle={showDebateConsultationSubtitle}
 				sortOptions={sortOptions}
 				defaultSelectOption={defaultSelectOption}
 				searchBar={searchBar}
