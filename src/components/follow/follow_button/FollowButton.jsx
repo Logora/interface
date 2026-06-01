@@ -1,6 +1,7 @@
 import { Button } from "@logora/debate/action/button";
 import { Tooltip } from "@logora/debate/dialog/tooltip";
 import { useFollow } from "@logora/debate/follow/use_follow";
+import { Icon } from "@logora/debate/icons/icon";
 import cx from "classnames";
 import React from "react";
 import { useIntl } from "react-intl";
@@ -32,7 +33,9 @@ export const FollowButton = ({
 				border={false}
 			>
 				{!followActive && noBorder && (
-					<span className={styles.followIcon}>+</span>
+					<span className={styles.followIcon}>
+						<Icon name="follow" width={16} height={16} />
+					</span>
 				)}
 				{followActive ? (
 					<span data-testid={"followed"}>
@@ -50,7 +53,9 @@ export const FollowButton = ({
 					</span>
 				)}
 				{!followActive && !noBorder && (
-					<span className={styles.followIcon}>+</span>
+					<span className={styles.followIcon}>
+						<Icon name="follow" width={16} height={16} />
+					</span>
 				)}
 			</Button>
 		</Tooltip>
