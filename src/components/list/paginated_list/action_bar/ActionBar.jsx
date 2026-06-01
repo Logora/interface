@@ -31,13 +31,20 @@ export const ActionBar = ({
 	const urlParams = new URLSearchParams(
 		typeof window !== "undefined" ? window.location.search : location.search,
 	);
-	const pinnedTagIds = [...new Set(pinnedTagList)];
-	const orderedTagList = tagList
+	const tags = Array.isArray(tagList) ? tagList : tagList?.data || [];
+	const pinnedTagIds = [
+		...new Set(
+			(Array.isArray(pinnedTagList) ? pinnedTagList : [pinnedTagList])
+				.filter(Boolean)
+				.map(String),
+		),
+	];
+	const orderedTagList = tags.length > 0
 		? [
 				...pinnedTagIds
-					.map((tagId) => tagList.find((tag) => tag.id === tagId))
+					.map((tagId) => tags.find((tag) => String(tag.id) === tagId))
 					.filter(Boolean),
-				...tagList.filter((tag) => !pinnedTagIds.includes(tag.id)),
+				...tags.filter((tag) => !pinnedTagIds.includes(String(tag.id))),
 			]
 		: [];
 

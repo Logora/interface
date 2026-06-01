@@ -56,6 +56,22 @@ describe("ActionBar", () => {
 		]);
 	});
 
+	it("accepts a single pinned tag id", () => {
+		const { getAllByTestId } = renderActionBar({
+			tagList: {
+				success: true,
+				data: [
+					{ id: 135, display_name: "test" },
+					{ id: 138, display_name: "politique" },
+				],
+			},
+			pinnedTagList: 138,
+		});
+		const renderedTags = getAllByTestId("tag").map((tag) => tag.textContent);
+
+		expect(renderedTags).toEqual(["politique", "test"]);
+	});
+
 	it("calls onTagChange when clicking a pinned tag", () => {
 		const onTagChange = vi.fn();
 		const { getByText } = renderActionBar({
