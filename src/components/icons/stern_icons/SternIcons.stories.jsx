@@ -1,5 +1,5 @@
 import React from "react";
-import { Arrow, Blockquote, Bold, Camera, Check, CheckCircle, Clock, Close, Code, Community, Crown, Document, Downvote, ExpertBadge, Facebook, Flag, Italic, LightArrow, Link, Login, Logora, Mail, MinusCircle, MobileClose, MobileMenu, Next, OpenBlank, OrderedList, PauseCircle, Point, Refresh, Search, SmallArrow, Source, Twitter, Underline } from "."; 
+import { Arrow, Blockquote, Bold, Camera, Check, CheckCircle, Clock, Close, Code, Community, Crown, Document, Downvote, ExpertBadge, Facebook, Flag, Follow, Italic, LightArrow, Link, Login, Logora, Mail, MinusCircle, MobileClose, MobileMenu, Next, OpenBlank, OrderedList, PauseCircle, Point, Refresh, Search, SmallArrow, Source, Twitter, Underline } from "."; 
 
 const meta = {
 	title: "Icons/Stern Icons",
@@ -111,6 +111,12 @@ export const SternIconsLibrary = () => {
 					width={50}
 					height={50}
 					data-testid={"flag-icon"}
+					style={{ margin: "15px" }}
+				/>
+				<Follow
+					width={50}
+					height={50}
+					data-testid={"follow-icon"}
 					style={{ margin: "15px" }}
 				/>
 				<Italic

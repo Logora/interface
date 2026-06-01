@@ -21,6 +21,7 @@ import { Ellipsis } from "./Ellipsis";
 import { ExpertBadge } from "./ExpertBadge";
 import { Facebook } from "./Facebook";
 import { Flag } from "./Flag";
+import { Follow } from "./Follow";
 import { Home } from "./Home";
 import { Italic } from "./Italic";
 import { LightArrow } from "./LightArrow";
@@ -353,6 +354,12 @@ export const RegularIconsLibrary = () => {
 				width={50}
 				height={50}
 				data-testid={"flag-icon"}
+				style={{ margin: "15px" }}
+			/>
+			<Follow
+				width={50}
+				height={50}
+				data-testid={"follow-icon"}
 				style={{ margin: "15px" }}
 			/>
 			<CheckCircle

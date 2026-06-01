@@ -46,6 +46,7 @@ export { Upvote } from "./Upvote";
 export { User } from "./User";
 export { Votebox } from "./Votebox";
 export { Flag } from "./Flag";
+export { Follow } from "./Follow";
 export { CheckCircle } from "./CheckCircle";
 export { MinusCircle } from "./MinusCircle";
 export { PauseCircle } from "./PauseCircle";

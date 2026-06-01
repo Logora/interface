@@ -44,4 +44,4 @@ export { Votebox } from "./Votebox";
 export { PauseCircle } from "./PauseCircle";
 
 // Icônes communes avec regular
-export { CheckCircle, Facebook, Flag, Logora, MinusCircle, Point, Twitter } from "../regular_icons";
+export { CheckCircle, Facebook, Flag, Follow, Logora, MinusCircle, Point, Twitter } from "../regular_icons";

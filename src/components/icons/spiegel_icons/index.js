@@ -32,4 +32,4 @@ export { Flag } from "./Flag";
 export { PauseCircle } from "./PauseCircle";
 
 // Icônes communes avec regular
-export { Alarm, Announcement, Arrow, Camera, Check, Code, Community, Home, Logora, MobileMenu, Next, OpenBlank, Point, Refresh, Search, Send, Source, Twitter, User } from "../regular_icons";
+export { Alarm, Announcement, Arrow, Camera, Check, Code, Community, Follow, Home, Logora, MobileMenu, Next, OpenBlank, Point, Refresh, Search, Send, Source, Twitter, User } from "../regular_icons";

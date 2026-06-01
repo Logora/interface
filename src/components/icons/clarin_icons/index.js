@@ -4,6 +4,7 @@ export { Announcement } from "./Announcement";
 export { Chat } from "./Chat";
 export { CheckCircle } from "./CheckCircle";
 export { Clock } from "./Clock";
+export { Follow } from "./Follow";
 export { MobileClose } from "./MobileClose";
 export { Question } from "./Question";
 export { Search } from "./Search";

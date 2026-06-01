@@ -11,4 +11,4 @@ export { MobileClose } from "./MobileClose";
 export { PauseCircle } from "./PauseCircle";
 
 // Icônes communes avec regular
-export { Alarm, Announcement, Arrow, Blockquote, Bold, Camera, Checkbox, CheckCircle, Clock, Close, Code, Community, Document, Downvote, Facebook, Flag, Home, Italic, Link, Logora, Mail, MinusCircle, MobileMenu, Next, OpenBlank, OrderedList, Point, Question, Refresh, Reply, Search, Send, Share, SmallArrow, Source, Suggestion, Twitter, Underline, Upvote, User, Votebox } from "../regular_icons";
+export { Alarm, Announcement, Arrow, Blockquote, Bold, Camera, Checkbox, CheckCircle, Clock, Close, Code, Community, Document, Downvote, Facebook, Flag, Follow, Home, Italic, Link, Logora, Mail, MinusCircle, MobileMenu, Next, OpenBlank, OrderedList, Point, Question, Refresh, Reply, Search, Send, Share, SmallArrow, Source, Suggestion, Twitter, Underline, Upvote, User, Votebox } from "../regular_icons";

@@ -1,5 +1,5 @@
 import React from "react";
-import { Alarm, Announcement, Arrow, Blockquote, Bold, Camera, Chat, Check, CheckCircle, Checkbox, Clap, Clock, Close, Code, Community, Crown, Document, Downvote, Ellipsis, ExpertBadge, Facebook, Flag, Home, Italic, LightArrow, Link, Login, Logora, Mail, MinusCircle, MobileClose, MobileMenu, Next, OpenBlank, OrderedList, PauseCircle, Point, Question, Refresh, Reply, Search, Send, Share, SmallArrow, Source, Suggestion, Twitter, Underline, Upvote, User, Votebox } from "."; 
+import { Alarm, Announcement, Arrow, Blockquote, Bold, Camera, Chat, Check, CheckCircle, Checkbox, Clap, Clock, Close, Code, Community, Crown, Document, Downvote, Ellipsis, ExpertBadge, Facebook, Flag, Follow, Home, Italic, LightArrow, Link, Login, Logora, Mail, MinusCircle, MobileClose, MobileMenu, Next, OpenBlank, OrderedList, PauseCircle, Point, Question, Refresh, Reply, Search, Send, Share, SmallArrow, Source, Suggestion, Twitter, Underline, Upvote, User, Votebox } from "."; 
 
 const meta = {
 	title: "Icons/Bild Icons",
@@ -315,6 +315,12 @@ export const BildIconsLibrary = () => {
 				width={50}
 				height={50}
 				data-testid={"flag-icon"}
+				style={{ margin: "15px" }}
+			/>
+			<Follow
+				width={50}
+				height={50}
+				data-testid={"follow-icon"}
 				style={{ margin: "15px" }}
 			/>
 			<PauseCircle
