@@ -15,3 +15,12 @@ button.followUserButtonNoBorder {
   color: theme.$text-primary !important;
   padding: 0 !important;
 }
+
+.followIcon {
+  display: inline-flex;
+  align-items: center;
+
+  & svg {
+    fill: theme.$text-primary;
+  }
+}
