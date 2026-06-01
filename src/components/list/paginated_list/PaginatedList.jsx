@@ -18,6 +18,7 @@ export const PaginatedList = ({
 	sort,
 	filters,
 	tagList,
+	pinnedTagList,
 	currentPage,
 	resource,
 	currentListId,
@@ -368,6 +369,7 @@ export const PaginatedList = ({
 				defaultSelectOption={defaultSelectOption}
 				searchBar={searchBar}
 				tagList={tagList}
+				pinnedTagList={pinnedTagList}
 				activeTagId={activeTagId}
 				onSearch={(query) => setCurrentQuery(query)}
 				onSortChange={handleSortChange}

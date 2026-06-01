@@ -17,6 +17,7 @@ export const ActionBar = ({
 	defaultSelectOption,
 	searchBar = false,
 	tagList,
+	pinnedTagList = [],
 	activeTagId,
 	withUrlParams = false,
 	onSearch,
@@ -30,6 +31,15 @@ export const ActionBar = ({
 	const urlParams = new URLSearchParams(
 		typeof window !== "undefined" ? window.location.search : location.search,
 	);
+	const pinnedTagIds = [...new Set(pinnedTagList)];
+	const orderedTagList = tagList
+		? [
+				...pinnedTagIds
+					.map((tagId) => tagList.find((tag) => tag.id === tagId))
+					.filter(Boolean),
+				...tagList.filter((tag) => !pinnedTagIds.includes(tag.id)),
+			]
+		: [];
 
 	const handleSortChange = (selectOption) => {
 		if (withUrlParams) {
@@ -136,8 +146,8 @@ export const ActionBar = ({
 					{showDebateConsultationSubtitle && subtitle && (
 						<div className={styles.listSubtitle}>{subtitle}</div>
 					)}
-					{tagList && tagList.length > 0 && (
-						<div className={styles.tagList}>{tagList.map(displayTags)}</div>
+					{orderedTagList.length > 0 && (
+						<div className={styles.tagList}>{orderedTagList.map(displayTags)}</div>
 					)}
 				</>
 			)}

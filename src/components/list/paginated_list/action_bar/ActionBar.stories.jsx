@@ -19,6 +19,13 @@ const sortOptions = [
 	},
 ];
 
+const tagList = [
+	{ id: 1, display_name: "Politics" },
+	{ id: 2, display_name: "Economy" },
+	{ id: 3, display_name: "Environment" },
+	{ id: 4, display_name: "Education" },
+];
+
 const meta = {
 	title: "List/ActionBar",
 	component: ActionBar,
@@ -27,18 +34,27 @@ const meta = {
 		subtitle: "Participate in our consultations",
 		showDebateConsultationSubtitle: true,
 		searchBar: false,
+		tagList: [],
+		pinnedTagList: [],
 	},
 	argTypes: {
 		title: { control: "text" },
 		subtitle: { control: "text" },
 		showDebateConsultationSubtitle: { control: "boolean" },
 		searchBar: { control: "boolean" },
+		tagList: { control: "object" },
+		pinnedTagList: { control: "object" },
 	},
 	render: (args) => (
 		<BrowserRouter>
 			<IntlProvider locale="en">
 				<ResponsiveProvider>
-					<ActionBar {...args} onSearch={() => {}} onSortChange={() => {}} onTagChange={() => {}} />
+					<ActionBar
+						{...args}
+						onSearch={() => {}}
+						onSortChange={() => {}}
+						onTagChange={() => {}}
+					/>
 				</ResponsiveProvider>
 			</IntlProvider>
 		</BrowserRouter>
@@ -117,3 +133,10 @@ export const WithSubtitleAndSearchBar = () => (
 		</IntlProvider>
 	</BrowserRouter>
 );
+
+export const WithPinnedTags = {
+	args: {
+		tagList: tagList,
+		pinnedTagList: [3, 1],
+	},
+};
