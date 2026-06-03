@@ -1,3 +1,4 @@
+import { utf8ToBase64url } from "@logora/debate/auth/use_auth";
 import { AuthProvider } from "./AuthProvider";
 
 export class FormAuth extends AuthProvider {
@@ -21,7 +22,7 @@ export class FormAuth extends AuthProvider {
 
 	getAssertion() {
 		const objJsonStr = JSON.stringify(this.userData);
-		return btoa(objJsonStr);
+		return utf8ToBase64url(objJsonStr);
 	}
 
 	getAuthorizationParams() {
