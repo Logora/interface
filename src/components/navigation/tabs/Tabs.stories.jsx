@@ -6,10 +6,10 @@ import { TabPanel } from "./TabPanel";
 export default {
 	title: "Navigation/Tabs",
 	component: Tabs,
-	render: ({ tabs, label }) => {
+	render: ({ tabs, label, style }) => {
 		const [activeTab, setActiveTab] = useState(0);
 		return (
-			<>
+			<div style={style}>
 				<Tabs value={activeTab} onChange={(e, newValue) => setActiveTab(newValue)} label={label}>
 					{tabs.map((tab) => (
 						<Tab key={tab} label={tab} />
@@ -22,7 +22,7 @@ export default {
 						</div>
 					</TabPanel>
 				))}
-			</>
+			</div>
 		);
 	},
 };
@@ -38,5 +38,13 @@ export const TwoTabs = {
 	args: {
 		tabs: ["En cours", "Sélectionnés"],
 		label: "Filtrer les suggestions",
+	},
+};
+
+export const NarrowWithScroll = {
+	args: {
+		tabs: ["En cours", "Sélectionnés", "Populaires", "Récents", "Débattus", "Archives"],
+		label: "Navigation avec scroll",
+		style: { maxWidth: "400px" },
 	},
 };
