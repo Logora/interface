@@ -23,7 +23,7 @@ describe("AuthProviderFactory", () => {
 			const passwordAuth = AuthProviderFactory.create(
 				"social",
 				"provider",
-				"assertion",
+				{ email: "test@example.com", password: "secret" },
 				"password",
 			);
 
@@ -32,11 +32,24 @@ describe("AuthProviderFactory", () => {
 			expect(authParams.grant_type).toBe("password");
 		});
 
+		it("should return PasswordAuth with null params when missing credentials", () => {
+			const passwordAuth = AuthProviderFactory.create(
+				"social",
+				"provider",
+				"assertion",
+				"password",
+			);
+
+			expect(passwordAuth instanceof PasswordAuth).toBeTruthy();
+			const authParams = passwordAuth.getAuthorizationParams();
+			expect(authParams).toBeNull();
+		});
+
 		it("should return FormAuth with correct params", () => {
 			const formAuth = AuthProviderFactory.create(
 				"social",
 				"provider",
-				"assertion",
+				{ data: "mydata" },
 				"form",
 			);
 

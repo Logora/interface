@@ -21,6 +21,9 @@ export class FormAuth extends AuthProvider {
 	}
 
 	getAssertion() {
+		if (!this.userData || typeof this.userData !== "object") {
+			return null;
+		}
 		const objJsonStr = JSON.stringify(this.userData);
 		return utf8ToBase64url(objJsonStr);
 	}

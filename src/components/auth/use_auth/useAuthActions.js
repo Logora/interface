@@ -15,6 +15,11 @@ export const useAuthActions = (httpClient, authUrl, tokenKey) => {
 	const api = useDataProvider();
 
 	const loginUser = (authParams) => {
+		if (!authParams) {
+			setAuthError(true);
+			setIsLoggingIn(false);
+			return;
+		}
 		fetchToken(authParams)
 			.then((response) => {
 				fetchUser();

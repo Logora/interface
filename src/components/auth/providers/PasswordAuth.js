@@ -20,6 +20,9 @@ export class PasswordAuth extends AuthProvider {
 	}
 
 	getAuthorizationParams() {
+		if (!this.userData?.email || !this.userData?.password) {
+			return null;
+		}
 		return {
 			grant_type: "password",
 			username: this.userData.email,

@@ -39,5 +39,17 @@ describe("PasswordAuth", () => {
 			expect(authorizationParams.password).toBe(userData.password);
 			expect(authorizationParams.session_id).toBe(null);
 		});
+
+		it("should return null if email missing", () => {
+			const passwordAuth = new PasswordAuth("provider", { password: "secret" });
+
+			expect(passwordAuth.getAuthorizationParams()).toBeNull();
+		});
+
+		it("should return null if password missing", () => {
+			const passwordAuth = new PasswordAuth("provider", { email: "test@example.com" });
+
+			expect(passwordAuth.getAuthorizationParams()).toBeNull();
+		});
 	});
 });
