@@ -243,7 +243,7 @@ export const TextEditor = ({
 						/>
 						<SetContentPlugin content={initialContent}/>
 						<SetRichContentPlugin richContent={initialRichContent}/>
-						<FocusPlugin autoFocus={autoFocus} />
+						<FocusPlugin autoFocus={autoFocus} isActive={isActive} />
 						{maxLength && <MaxLengthPlugin maxLength={maxLength} />}
 						<ResetPlugin storageUid={uid || randomUid} />
 						<EditorRefPlugin editorRef={editorRef} />
