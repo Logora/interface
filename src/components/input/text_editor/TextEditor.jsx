@@ -21,6 +21,7 @@ import EditorTheme from "./EditorTheme";
 import styles from "./TextEditor.module.scss";
 import { AutoSavePlugin } from "./plugins/AutoSavePlugin";
 import { FocusPlugin } from "./plugins/FocusPlugin";
+import { IOSInsertParagraphFallbackPlugin } from "./plugins/IOSInsertParagraphFallbackPlugin";
 import { MaxLengthPlugin } from "./plugins/MaxLengthPlugin";
 import { ResetPlugin } from "./plugins/ResetPlugin";
 import { SetContentPlugin } from "./plugins/SetContentPlugin";
@@ -244,6 +245,7 @@ export const TextEditor = ({
 						<SetContentPlugin content={initialContent}/>
 						<SetRichContentPlugin richContent={initialRichContent}/>
 						<FocusPlugin autoFocus={autoFocus} />
+						<IOSInsertParagraphFallbackPlugin />
 						{maxLength && <MaxLengthPlugin maxLength={maxLength} />}
 						<ResetPlugin storageUid={uid || randomUid} />
 						<EditorRefPlugin editorRef={editorRef} />
