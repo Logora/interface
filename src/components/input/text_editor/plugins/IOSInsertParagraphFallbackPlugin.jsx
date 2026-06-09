@@ -1,96 +1,67 @@
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
-import {
-	COMMAND_PRIORITY_LOW,
-	$getRoot,
-	INSERT_PARAGRAPH_COMMAND,
-	IS_IOS,
-	KEY_ENTER_COMMAND,
-} from "lexical";
+import { INSERT_PARAGRAPH_COMMAND, IS_IOS } from "lexical";
 import { useEffect, useRef } from "react";
 
-const isParagraphInput = (event) =>
-	event.inputType === "insertParagraph" || event.inputType === "insertLineBreak";
+const IOS_ENTER_FALLBACK_DELAY_MS = 100;
 
-const getTextStructureSnapshot = (editorState) => {
-	let snapshot = "";
+const isPlainEnter = (event) =>
+	event.key === "Enter" &&
+	!event.shiftKey &&
+	!event.altKey &&
+	!event.ctrlKey &&
+	!event.metaKey &&
+	!event.isComposing;
 
-	editorState.read(() => {
-		const root = $getRoot();
-
-		snapshot = `${root.getChildrenSize()}:${root.getTextContent()}`;
-	});
-
-	return snapshot;
-};
+const getEditorStateSnapshot = (editorState) =>
+	JSON.stringify(editorState.toJSON());
 
 export const IOSInsertParagraphFallbackPlugin = () => {
 	const [editor] = useLexicalComposerContext();
-	const lastParagraphInputTimeStamp = useRef(null);
+	const pendingFallbacks = useRef([]);
 
 	useEffect(() => {
 		if (!IS_IOS) {
 			return;
 		}
 
-		const handleBeforeInput = (event) => {
-			if (isParagraphInput(event)) {
-				lastParagraphInputTimeStamp.current = event.timeStamp;
+		const handleKeyDown = (event) => {
+			if (!isPlainEnter(event) || event.defaultPrevented) {
+				return;
 			}
+
+			const snapshotBeforeEnter = getEditorStateSnapshot(editor.getEditorState());
+			const pendingFallback = {
+				timeoutId: null,
+			};
+
+			pendingFallback.timeoutId = setTimeout(() => {
+				pendingFallbacks.current = pendingFallbacks.current.filter(
+					(currentFallback) => currentFallback !== pendingFallback,
+				);
+
+				const snapshotAfterEnter = getEditorStateSnapshot(editor.getEditorState());
+
+				if (snapshotAfterEnter === snapshotBeforeEnter) {
+					editor.dispatchCommand(INSERT_PARAGRAPH_COMMAND, undefined);
+				}
+			}, IOS_ENTER_FALLBACK_DELAY_MS);
+
+			pendingFallbacks.current.push(pendingFallback);
 		};
 
 		const unregisterRootListener = editor.registerRootListener(
 			(rootElement, previousRootElement) => {
-				previousRootElement?.removeEventListener(
-					"beforeinput",
-					handleBeforeInput,
-					true,
-				);
+				previousRootElement?.removeEventListener("keydown", handleKeyDown);
 
-				rootElement?.addEventListener("beforeinput", handleBeforeInput, true);
+				rootElement?.addEventListener("keydown", handleKeyDown);
 			},
-		);
-
-		const unregisterCommand = editor.registerCommand(
-			KEY_ENTER_COMMAND,
-			(event) => {
-				if (
-					!event ||
-					event.shiftKey ||
-					event.altKey ||
-					event.ctrlKey ||
-					event.metaKey
-				) {
-					return false;
-				}
-
-				const snapshotBeforeEnter = getTextStructureSnapshot(
-					editor.getEditorState(),
-				);
-				const enterTimeStamp = event.timeStamp;
-
-				requestAnimationFrame(() => {
-					const hasNativeParagraphInput =
-						lastParagraphInputTimeStamp.current !== null &&
-						lastParagraphInputTimeStamp.current >= enterTimeStamp;
-					const snapshotAfterEnter = getTextStructureSnapshot(
-						editor.getEditorState(),
-					);
-
-					if (
-						!hasNativeParagraphInput &&
-						snapshotAfterEnter === snapshotBeforeEnter
-					) {
-						editor.dispatchCommand(INSERT_PARAGRAPH_COMMAND, undefined);
-					}
-				});
-
-				return false;
-			},
-			COMMAND_PRIORITY_LOW,
 		);
 
 		return () => {
-			unregisterCommand();
+			pendingFallbacks.current.forEach((pendingFallback) => {
+				clearTimeout(pendingFallback.timeoutId);
+			});
+			pendingFallbacks.current = [];
 			unregisterRootListener();
 		};
 	}, [editor]);
