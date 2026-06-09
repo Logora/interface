@@ -81,6 +81,22 @@ export const Argument = ({
 		}
 	}, [argumentReplies]);
 
+	useEffect(() => {
+		const replyListId = `argument_${argument.id}_reply_list`;
+		const updates = list.updateElements?.[replyListId];
+
+		if (!updates?.length) return;
+
+		setExtraReplies((prevReplies) => {
+			if (!prevReplies?.length) return prevReplies;
+
+			return prevReplies.map((reply) => {
+				const updatedReply = updates.find((update) => update.id === reply.id);
+				return updatedReply ? { ...reply, ...updatedReply } : reply;
+			});
+		});
+	}, [list.updateElements, argument.id]);
+
 	const scrollToArgument = (argumentId) => {
 		const currentArgumentId = componentId;
 		if (currentArgumentId === argumentId) {
