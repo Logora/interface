@@ -183,26 +183,29 @@ export const PaginatedList = ({
 
 	useEffect(() => {
 		if (list.updateElements && currentListId in list.updateElements) {
-			console.log("[PaginatedList] update received for listId:", currentListId, list.updateElements[currentListId]);
 			if (list.updateElements[currentListId].length > 0) {
-				handleEditElements(list.updateElements[currentListId]);
-				const updateElements = list.updateElements;
-				delete updateElements[currentListId];
-				list.setUpdateElements(updateElements);
+				if (currentResources.length > 0) {
+					handleEditElements(list.updateElements[currentListId]);
+					const updateElements = { ...list.updateElements };
+					delete updateElements[currentListId];
+					list.setUpdateElements(updateElements);
+				}
 			}
 		}
-	}, [list.updateElements]);
+	}, [list.updateElements, currentResources]);
 
 	useEffect(() => {
 		if (list.removeElements && currentListId in list.removeElements) {
 			if (list.removeElements[currentListId].length > 0) {
-				handleRemoveElements(list.removeElements[currentListId]);
-				const removeElements = list.removeElements;
-				delete removeElements[currentListId];
-				list.setRemoveElements(removeElements);
+				if (currentResources.length > 0) {
+					handleRemoveElements(list.removeElements[currentListId]);
+					const removeElements = { ...list.removeElements };
+					delete removeElements[currentListId];
+					list.setRemoveElements(removeElements);
+				}
 			}
 		}
-	}, [list.removeElements]);
+	}, [list.removeElements, currentResources]);
 
 	const handleSortChange = (selectOption) => {
 		if (selectOption.type === "filter") {
