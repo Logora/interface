@@ -1332,4 +1332,73 @@ describe("PaginatedList", () => {
 		await userEvent.click(paginationButton);
 		expect(callback).toHaveBeenCalled();
 	});
+
+	it("should apply pending list.update when PaginatedList mounts after update dispatch", async () => {
+		const initialElements = [
+			{ id: 1, name: "First item" },
+			{ id: 2, name: "Second item" },
+			{ id: 3, name: "Third item" },
+		];
+
+		mock.mockResolvedValue({
+			status: 200,
+			data: { success: true, data: initialElements },
+		});
+
+		let externalList = null;
+		const DeferredMount = () => {
+			const list = useList();
+			const [showList, setShowList] = React.useState(false);
+			externalList = list;
+			return (
+				<>
+					<button onClick={() => setShowList(true)}>Show list</button>
+					{showList && (
+						<PaginatedList
+							currentListId={"itemList"}
+							resource={"items"}
+							sort={"-created_at"}
+							resourcePropName={"item"}
+							perPage={10}
+							withPagination={false}
+							countless={true}
+							display="column"
+						>
+							<ListItem />
+						</PaginatedList>
+					)}
+				</>
+			);
+		};
+
+		await act(async () => {
+			render(
+				<BrowserRouter>
+					<IntlProvider locale="en">
+						<ResponsiveProvider>
+							<DataProviderContext.Provider value={{ dataProvider: data }}>
+								<IconProvider library={regularIcons}>
+									<ListProvider>
+										<DeferredMount />
+									</ListProvider>
+								</IconProvider>
+							</DataProviderContext.Provider>
+						</ResponsiveProvider>
+					</IntlProvider>
+				</BrowserRouter>,
+			);
+		});
+
+		await act(async () => {
+			externalList.update("itemList", [
+				{ id: 2, name: "Updated second item" },
+			]);
+		});
+
+		await act(async () => {
+			await userEvent.click(screen.getByText("Show list"));
+		});
+
+		expect(screen.getByText("Updated second item")).toBeTruthy();
+	});
 });
