@@ -104,12 +104,25 @@ export const ToolbarPlugin = (props) => {
 		if (blockType !== "quote") {
 			editor.update(() => {
 				const selection = $getSelection();
-				$setBlocksType(selection, () => $createQuoteNode());
+				if (!$isRangeSelection(selection)) {
+					return;
+				}
+				if (selection.isCollapsed()) {
+					const anchorNode = selection.anchor.getNode();
+					const topLevelElement = anchorNode.getTopLevelElementOrThrow();
+					const quoteNode = $createQuoteNode();
+					topLevelElement.insertAfter(quoteNode);
+					quoteNode.selectEnd();
+				} else {
+					$setBlocksType(selection, () => $createQuoteNode());
+				}
 			});
 		} else {
 			editor.update(() => {
 				const selection = $getSelection();
-				$setBlocksType(selection, () => $createParagraphNode());
+				if ($isRangeSelection(selection)) {
+					$setBlocksType(selection, () => $createParagraphNode());
+				}
 			});
 		}
 	};
