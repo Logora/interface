@@ -31,11 +31,12 @@ export const ConsultationBox = ({ consultation, showVoteProgress = true }) => {
 							loading={"lazy"}
 							className={styles.consultationImage}
 							src={consultation.image_url}
+							height={200}
 							alt={intl.formatMessage({
 								id: "consultation.consultation_box.alt",
 								defaultMessage: "Presentation image for the consultation",
 							})}
-						/>
+							/>
 					</Link>
 				{consultation.ends_at && endDate < date && (
 					<div className={cx(styles.consultationTime, styles.ended)}>
