@@ -7,6 +7,8 @@
     flex-direction: column !important;
     justify-content: space-between !important;
     position: relative;
+    height: 100%;
+    overflow: hidden;
     box-shadow: theme.$box-shadow;
     border: theme.$box-border;
     color: theme.$text-primary;
