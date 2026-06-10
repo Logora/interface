@@ -87,6 +87,19 @@ export const ToolbarPlugin = (props) => {
 		event.preventDefault();
 	};
 
+	const refreshToolbar = () => {
+		Promise.resolve().then(() => {
+			editor.getEditorState().read(() => {
+				updateToolbar();
+			});
+		});
+	};
+
+	const formatText = (format) => {
+		editor.dispatchCommand(FORMAT_TEXT_COMMAND, format);
+		refreshToolbar();
+	};
+
 	const formatParagraph = () => {
 		editor.update(() => {
 			const selection = $getSelection();
@@ -102,6 +115,7 @@ export const ToolbarPlugin = (props) => {
 		} else {
 			editor.dispatchCommand(REMOVE_LIST_COMMAND);
 		}
+		refreshToolbar();
 	};
 
 	const formatQuote = () => {
@@ -129,6 +143,7 @@ export const ToolbarPlugin = (props) => {
 				}
 			});
 		}
+		refreshToolbar();
 	};
 
 	return !isDisabled ? (
@@ -148,7 +163,7 @@ export const ToolbarPlugin = (props) => {
 							<button
 								onMouseDown={preventSelectionLoss}
 								onClick={() => {
-									editor.dispatchCommand(FORMAT_TEXT_COMMAND, "bold");
+									formatText("bold");
 								}}
 								type={"button"}
 								className={cx(styles.toolbarItem, { [styles.active]: isBold })}
@@ -168,7 +183,7 @@ export const ToolbarPlugin = (props) => {
 							<button
 								onMouseDown={preventSelectionLoss}
 								onClick={() => {
-									editor.dispatchCommand(FORMAT_TEXT_COMMAND, "italic");
+									formatText("italic");
 								}}
 								type={"button"}
 								className={cx(styles.toolbarItem, {
@@ -189,7 +204,7 @@ export const ToolbarPlugin = (props) => {
 							<button
 								onMouseDown={preventSelectionLoss}
 								onClick={() => {
-									editor.dispatchCommand(FORMAT_TEXT_COMMAND, "underline");
+									formatText("underline");
 								}}
 								type={"button"}
 								className={cx(styles.toolbarItem, {
