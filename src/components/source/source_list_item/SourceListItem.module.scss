@@ -3,15 +3,18 @@
 
 .sourceListItemContainer {
     position: relative;
-    display: inline-flex;
+    display: flex;
     align-items: center;
     max-width: 100%;
+    width: 100%;
 }
 
 a.sourceListItem {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
+    width: 100%;
+    box-sizing: border-box;
     font-size: theme.$font-size-extra-small;
     margin-top: 5px;
     padding: 5px 26px 5px 5px; 
@@ -29,6 +32,21 @@ a.sourceListItem {
     color: theme.$text-primary !important;
     text-decoration: none !important;
     outline: none !important;
+}
+
+.sourceListItemLink {
+    display: flex;
+    align-items: center;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    span {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
 }
 
 .removeSourceButton {

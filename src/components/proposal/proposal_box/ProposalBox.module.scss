@@ -34,6 +34,8 @@
 
 .proposalBoxContent {
     flex: 1;
+    min-height: 0;
+    overflow: hidden;
     font-size: theme.$font-size-small;
     text-align: left;
     white-space: pre-line;
@@ -68,6 +70,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
+    width: 100%;
     font-size: theme.$font-size-extra-small;
     font-weight: theme.$font-weight-normal;
 
