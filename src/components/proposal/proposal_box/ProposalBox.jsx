@@ -120,20 +120,20 @@ export const ProposalBox = ({
 							})}
 						/>
 					</div>
+					{proposal.sources?.length > 0 && (
+						<div className={styles.proposalSourcesList}>
+							{proposal.sources.map((source, index) => (
+								<SourceListItem
+									key={source.id}
+									publisher={source.publisher}
+									url={source.source_url}
+									title={source.title}
+									index={index}
+								/>
+							))}
+						</div>
+					)}
 				</div>
-				{proposal.sources?.length > 0 && (
-					<div className={styles.proposalSourcesList}>
-						{proposal.sources.map((source, index) => (
-							<SourceListItem
-								key={source.id}
-								publisher={source.publisher}
-								url={source.source_url}
-								title={source.title}
-								index={index}
-							/>
-						))}
-					</div>
-				)}
 				{!hideFooter && (
 					<ContentFooter
 						resource={proposal}
