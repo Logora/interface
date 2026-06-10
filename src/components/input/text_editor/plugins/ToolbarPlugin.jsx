@@ -83,6 +83,10 @@ export const ToolbarPlugin = (props) => {
 		);
 	}, [editor, updateToolbar]);
 
+	const preventSelectionLoss = (event) => {
+		event.preventDefault();
+	};
+
 	const formatParagraph = () => {
 		editor.update(() => {
 			const selection = $getSelection();
@@ -142,6 +146,7 @@ export const ToolbarPlugin = (props) => {
 							})}
 						>
 							<button
+								onMouseDown={preventSelectionLoss}
 								onClick={() => {
 									editor.dispatchCommand(FORMAT_TEXT_COMMAND, "bold");
 								}}
@@ -161,6 +166,7 @@ export const ToolbarPlugin = (props) => {
 								/>
 							</button>
 							<button
+								onMouseDown={preventSelectionLoss}
 								onClick={() => {
 									editor.dispatchCommand(FORMAT_TEXT_COMMAND, "italic");
 								}}
@@ -181,6 +187,7 @@ export const ToolbarPlugin = (props) => {
 								/>
 							</button>
 							<button
+								onMouseDown={preventSelectionLoss}
 								onClick={() => {
 									editor.dispatchCommand(FORMAT_TEXT_COMMAND, "underline");
 								}}
@@ -201,6 +208,7 @@ export const ToolbarPlugin = (props) => {
 								/>
 							</button>
 							<button
+								onMouseDown={preventSelectionLoss}
 								onClick={() => formatQuote()}
 								type={"button"}
 								className={cx(styles.toolbarItem, { [styles.active]: blockType === "quote" })}
@@ -217,6 +225,7 @@ export const ToolbarPlugin = (props) => {
 								/>
 							</button>
 							<button
+								onMouseDown={preventSelectionLoss}
 								onClick={() => formatNumberedList()}
 								type={"button"}
 								className={cx(styles.toolbarItem, { [styles.active]: blockType === "ol" })}
