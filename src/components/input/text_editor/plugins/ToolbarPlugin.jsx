@@ -15,6 +15,7 @@ import {
 	$createParagraphNode,
 	$getSelection,
 	$isRangeSelection,
+	FORMAT_TEXT_COMMAND,
 	SELECTION_CHANGE_COMMAND,
 } from "lexical";
 import React, { useCallback, useEffect, useRef, useState } from "react";
@@ -36,16 +37,20 @@ export const ToolbarPlugin = (props) => {
 
 	const updateToolbar = useCallback(() => {
 		const selection = $getSelection();
+
 		if ($isRangeSelection(selection)) {
 			const anchorNode = selection.anchor.getNode();
 			const element =
 				anchorNode.getKey() === "root"
 					? anchorNode
 					: anchorNode.getTopLevelElementOrThrow();
+
 			const elementKey = element.getKey();
 			const elementDOM = editor.getElementByKey(elementKey);
+
 			if (elementDOM !== null) {
 				setSelectedElementKey(elementKey);
+
 				if ($isListNode(element)) {
 					const parentList = $getNearestNodeOfType(anchorNode, ListNode);
 					const type = parentList ? parentList.getTag() : element.getTag();
@@ -54,10 +59,11 @@ export const ToolbarPlugin = (props) => {
 					const type = $isHeadingNode(element)
 						? element.getTag()
 						: element.getType();
+
 					setBlockType(type);
 				}
 			}
-			// Update text format
+
 			setIsBold(selection.hasFormat("bold"));
 			setIsItalic(selection.hasFormat("italic"));
 			setIsUnderline(selection.hasFormat("underline"));
@@ -73,7 +79,7 @@ export const ToolbarPlugin = (props) => {
 			}),
 			editor.registerCommand(
 				SELECTION_CHANGE_COMMAND,
-				(_payload, newEditor) => {
+				() => {
 					updateToolbar();
 					return false;
 				},
@@ -87,28 +93,22 @@ export const ToolbarPlugin = (props) => {
 	};
 
 	const refreshToolbar = () => {
-		queueMicrotask(() => {
-			requestAnimationFrame(() => {
-				editor.getEditorState().read(() => {
-					updateToolbar();
-				});
+		setTimeout(() => {
+			editor.getEditorState().read(() => {
+				updateToolbar();
 			});
-		});
+		}, 0);
 	};
 
 	const formatText = (format) => {
-		editor.update(() => {
-			const selection = $getSelection();
-			if ($isRangeSelection(selection)) {
-				selection.formatText(format);
-				updateToolbar();
-			}
-		});
+		editor.dispatchCommand(FORMAT_TEXT_COMMAND, format);
+		refreshToolbar();
 	};
 
 	const formatParagraph = () => {
 		editor.update(() => {
 			const selection = $getSelection();
+
 			if ($isRangeSelection(selection)) {
 				$setBlocksType(selection, () => $createParagraphNode());
 			}
@@ -121,6 +121,7 @@ export const ToolbarPlugin = (props) => {
 		} else {
 			editor.dispatchCommand(REMOVE_LIST_COMMAND);
 		}
+
 		refreshToolbar();
 	};
 
@@ -128,13 +129,16 @@ export const ToolbarPlugin = (props) => {
 		if (blockType !== "quote") {
 			editor.update(() => {
 				const selection = $getSelection();
+
 				if (!$isRangeSelection(selection)) {
 					return;
 				}
+
 				if (selection.isCollapsed()) {
 					const anchorNode = selection.anchor.getNode();
 					const topLevelElement = anchorNode.getTopLevelElementOrThrow();
 					const quoteNode = $createQuoteNode();
+
 					topLevelElement.insertAfter(quoteNode);
 					quoteNode.selectEnd();
 				} else {
@@ -144,11 +148,13 @@ export const ToolbarPlugin = (props) => {
 		} else {
 			editor.update(() => {
 				const selection = $getSelection();
+
 				if ($isRangeSelection(selection)) {
 					$setBlocksType(selection, () => $createParagraphNode());
 				}
 			});
 		}
+
 		refreshToolbar();
 	};
 
@@ -166,13 +172,11 @@ export const ToolbarPlugin = (props) => {
 								[styles.shortBar]: props.shortBar,
 							})}
 						>
-				<button
-					onPointerDown={preventSelectionLoss}
-					onMouseDown={preventSelectionLoss}
-					onClick={() => {
-						formatText("bold");
-					}}
-								type={"button"}
+							<button
+								onTouchStart={preventSelectionLoss}
+								onMouseDown={preventSelectionLoss}
+								onClick={() => formatText("bold")}
+								type="button"
 								className={cx(styles.toolbarItem, { [styles.active]: isBold })}
 								data-testid="format-bold"
 								aria-label={intl.formatMessage({
@@ -187,13 +191,12 @@ export const ToolbarPlugin = (props) => {
 									className={cx(styles.format, styles.bold)}
 								/>
 							</button>
+
 							<button
-								onPointerDown={preventSelectionLoss}
+								onTouchStart={preventSelectionLoss}
 								onMouseDown={preventSelectionLoss}
-								onClick={() => {
-									formatText("italic");
-								}}
-								type={"button"}
+								onClick={() => formatText("italic")}
+								type="button"
 								className={cx(styles.toolbarItem, {
 									[styles.active]: isItalic,
 								})}
@@ -209,13 +212,12 @@ export const ToolbarPlugin = (props) => {
 									className={cx(styles.format, styles.italic)}
 								/>
 							</button>
+
 							<button
-								onPointerDown={preventSelectionLoss}
+								onTouchStart={preventSelectionLoss}
 								onMouseDown={preventSelectionLoss}
-								onClick={() => {
-									formatText("underline");
-								}}
-								type={"button"}
+								onClick={() => formatText("underline")}
+								type="button"
 								className={cx(styles.toolbarItem, {
 									[styles.active]: isUnderline,
 								})}
@@ -231,12 +233,15 @@ export const ToolbarPlugin = (props) => {
 									className={cx(styles.format, styles.underline)}
 								/>
 							</button>
+
 							<button
-								onPointerDown={preventSelectionLoss}
+								onTouchStart={preventSelectionLoss}
 								onMouseDown={preventSelectionLoss}
 								onClick={() => formatQuote()}
-								type={"button"}
-								className={cx(styles.toolbarItem, { [styles.active]: blockType === "quote" })}
+								type="button"
+								className={cx(styles.toolbarItem, {
+									[styles.active]: blockType === "quote",
+								})}
 								aria-label={intl.formatMessage({
 									id: "input.text_editor.plugins.toolbar_plugin.blockquote.aria_label",
 									defaultMessage: "Add a blockquote",
@@ -249,12 +254,15 @@ export const ToolbarPlugin = (props) => {
 									className={cx(styles.format, styles.quote)}
 								/>
 							</button>
+
 							<button
-								onPointerDown={preventSelectionLoss}
+								onTouchStart={preventSelectionLoss}
 								onMouseDown={preventSelectionLoss}
 								onClick={() => formatNumberedList()}
-								type={"button"}
-								className={cx(styles.toolbarItem, { [styles.active]: blockType === "ol" })}
+								type="button"
+								className={cx(styles.toolbarItem, {
+									[styles.active]: blockType === "ol",
+								})}
 								aria-label={intl.formatMessage({
 									id: "input.text_editor.plugins.toolbar_plugin.numbered_list.aria_label",
 									defaultMessage: "Insert a numbered list",
@@ -267,10 +275,13 @@ export const ToolbarPlugin = (props) => {
 									className={cx(styles.format, styles.numberedList)}
 								/>
 							</button>
+
 							{!props.hideSourceAction && (
 								<button
+									onTouchStart={preventSelectionLoss}
+									onMouseDown={preventSelectionLoss}
 									onClick={props.onAddSource}
-									type={"button"}
+									type="button"
 									className={styles.toolbarItem}
 									aria-label={intl.formatMessage({
 										id: "input.text_editor.plugins.toolbar_plugin.add_link.aria_label",
@@ -288,6 +299,7 @@ export const ToolbarPlugin = (props) => {
 						</div>
 					)
 				: null}
+
 			<div className={styles.actionButton}>
 				{props.hideSubmit ? null : (
 					<Button

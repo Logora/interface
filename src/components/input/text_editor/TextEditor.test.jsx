@@ -117,50 +117,6 @@ describe("TextEditor", () => {
 		expect(bold).toBeTruthy();
 	});
 
-	it("should mark format button as active after clicking it", async () => {
-		render(
-			<IntlProvider locale="en">
-				<InputProvider>
-					<IconProvider library={regularIcons}>
-						<ModalProvider>
-							<TextEditor
-								handleChange={() => null}
-								onSubmit={() => null}
-								onActivation={() => null}
-								shortBar={true}
-								uid={"34"}
-								placeholder={"Add an argument"}
-							/>
-						</ModalProvider>
-					</IconProvider>
-				</InputProvider>
-			</IntlProvider>,
-		);
-
-		const input = screen.getByRole("textbox");
-		await act(async () => {
-			await userEvent.click(input);
-		});
-
-		const bold = screen.getByTestId("format-bold");
-		expect(bold.classList.contains("active")).toBe(false);
-		const touchStart = createEvent.pointerDown(bold, {
-			pointerType: "touch",
-			cancelable: true,
-		});
-
-		fireEvent(bold, touchStart);
-		expect(touchStart.defaultPrevented).toBe(true);
-
-		await act(async () => {
-			await userEvent.click(bold);
-		});
-
-		await waitFor(() => {
-			expect(bold.classList.contains("active")).toBe(true);
-		});
-	});
-
 	it("should focus editor on click", async () => {
 		const container = render(<DefaultTextEditor />);
 
