@@ -50,7 +50,7 @@
     padding: 0;
     transition: opacity 200ms ease;
     outline: none;
-    background-color: theme.$background-color-secondary !important;
+    background-color: #ffffff !important;
     line-height: 0;
 
     svg {
@@ -66,7 +66,7 @@
 .arrowLeft {
     left: 0;
     padding-left: spacing.$spacer-xs;
-    background: linear-gradient(to right, theme.$background-color-container 40%, transparent);
+    background: linear-gradient(to right, #ffffff 40%, transparent) !important;
 
     svg {
         transform: rotate(90deg);
@@ -76,7 +76,7 @@
 .arrowRight {
     right: 0;
     padding-right: spacing.$spacer-xs;
-    background: linear-gradient(to left, theme.$background-color-container 40%, transparent);
+    background: linear-gradient(to left, #ffffff 40%, transparent) !important;
 
     svg {
         transform: rotate(-90deg);
