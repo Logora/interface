@@ -4,7 +4,7 @@ import { SearchInput } from "@logora/debate/input/search_input";
 import { Select } from "@logora/debate/input/select";
 import { Tag } from "@logora/debate/tag/tag";
 import cx from "classnames";
-import React, { useState } from "react";
+import React, { useState, useRef, useCallback, useEffect } from "react";
 import { useIntl } from "react-intl";
 import { useLocation } from "react-router";
 import styles from "./ActionBar.module.scss";
@@ -28,6 +28,37 @@ export const ActionBar = ({
 	const location = useLocation();
 	const { isMobile } = useResponsive();
 	const [searchActive, setSearchActive] = useState(false);
+	const tagContainerRef = useRef(null);
+	const [tagCanScrollLeft, setTagCanScrollLeft] = useState(false);
+	const [tagCanScrollRight, setTagCanScrollRight] = useState(false);
+
+	const checkTagScroll = useCallback(() => {
+		const el = tagContainerRef.current;
+		if (!el) return;
+		setTagCanScrollLeft(el.scrollLeft > 1);
+		setTagCanScrollRight(el.scrollLeft + el.clientWidth < el.scrollWidth - 1);
+	}, []);
+
+	useEffect(() => {
+		checkTagScroll();
+		const el = tagContainerRef.current;
+		if (!el) return;
+		const observer = new ResizeObserver(checkTagScroll);
+		observer.observe(el);
+		return () => observer.disconnect();
+	}, [orderedTagList, checkTagScroll]);
+
+	const scrollTags = (direction, e) => {
+		e.stopPropagation();
+		const el = tagContainerRef.current;
+		if (!el) return;
+		const scrollAmount = 200;
+		el.scrollBy({
+			left: direction === "left" ? -scrollAmount : scrollAmount,
+			behavior: "smooth",
+		});
+		setTimeout(checkTagScroll, 300);
+	};
 	const urlParams = new URLSearchParams(
 		typeof window !== "undefined" ? window.location.search : location.search,
 	);
@@ -154,7 +185,33 @@ export const ActionBar = ({
 						<div className={styles.listSubtitle}>{subtitle}</div>
 					)}
 					{orderedTagList.length > 0 && (
-						<div className={styles.tagList}>{orderedTagList.map(displayTags)}</div>
+						<div className={styles.tagSection}>
+							<button
+								type="button"
+								className={`${styles.arrow} ${styles.arrowLeft} ${!tagCanScrollLeft ? styles.arrowHidden : ""}`}
+								onClick={(e) => scrollTags("left", e)}
+								aria-label="Tag précédent"
+								tabIndex={tagCanScrollLeft ? 0 : -1}
+							>
+								<Icon name="lightArrow" height={24} width={24} />
+							</button>
+							<div
+								ref={tagContainerRef}
+								className={styles.tagList}
+								onScroll={checkTagScroll}
+							>
+								{orderedTagList.map(displayTags)}
+							</div>
+							<button
+								type="button"
+								className={`${styles.arrow} ${styles.arrowRight} ${!tagCanScrollRight ? styles.arrowHidden : ""}`}
+								onClick={(e) => scrollTags("right", e)}
+								aria-label="Tag suivant"
+								tabIndex={tagCanScrollRight ? 0 : -1}
+							>
+								<Icon name="lightArrow" height={24} width={24} />
+							</button>
+						</div>
 					)}
 				</>
 			)}

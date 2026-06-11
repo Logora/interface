@@ -60,17 +60,82 @@
     }
 }
 
+.tagSection {
+	position: relative;
+	display: flex;
+	align-items: stretch;
+	width: 100%;
+	max-width: 100%;
+}
+
 .tagList {
 	display: flex;
 	flex-direction: row;
 	justify-content: flex-start;
+	flex: 1;
 	overflow-x: auto;
     overflow-y: hidden;
     gap: spacing.$spacer-md;
     padding-bottom: spacing.$spacer-md;
+	scrollbar-width: none;
 	@include display.media-breakpoint-down(xs) {
 		gap: spacing.$spacer-sm;
     }
+
+	&::-webkit-scrollbar {
+		display: none;
+	}
+}
+
+.arrow {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: opacity 200ms ease;
+    outline: none;
+    background: none;
+    line-height: 0;
+
+    svg {
+        display: block;
+    }
+
+    &:focus-visible {
+        outline: 2px solid theme.$call-primary;
+        outline-offset: -2px;
+    }
+}
+
+.arrowLeft {
+    left: 0;
+    padding-left: spacing.$spacer-xs;
+    background: linear-gradient(to right, theme.$background-color-container 40%, transparent);
+
+    svg {
+        transform: rotate(90deg);
+    }
+}
+
+.arrowRight {
+    right: 0;
+    padding-right: spacing.$spacer-xs;
+    background: linear-gradient(to left, theme.$background-color-container 40%, transparent);
+
+    svg {
+        transform: rotate(-90deg);
+    }
+}
+
+.arrowHidden {
+    opacity: 0;
+    pointer-events: none;
 }
 
 .tagItem {
