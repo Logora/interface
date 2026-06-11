@@ -50,7 +50,7 @@
     padding: 0;
     transition: opacity 200ms ease;
     outline: none;
-    background: none;
+    background-color: theme.$background-color-secondary !important;
     line-height: 0;
 
     svg {
