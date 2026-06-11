@@ -88,9 +88,11 @@ export const ToolbarPlugin = (props) => {
 	};
 
 	const refreshToolbar = () => {
-		Promise.resolve().then(() => {
-			editor.getEditorState().read(() => {
-				updateToolbar();
+		queueMicrotask(() => {
+			requestAnimationFrame(() => {
+				editor.getEditorState().read(() => {
+					updateToolbar();
+				});
 			});
 		});
 	};
@@ -160,11 +162,11 @@ export const ToolbarPlugin = (props) => {
 								[styles.shortBar]: props.shortBar,
 							})}
 						>
-							<button
-								onMouseDown={preventSelectionLoss}
-								onClick={() => {
-									formatText("bold");
-								}}
+				<button
+					onMouseDown={preventSelectionLoss}
+					onClick={() => {
+						formatText("bold");
+					}}
 								type={"button"}
 								className={cx(styles.toolbarItem, { [styles.active]: isBold })}
 								data-testid="format-bold"
