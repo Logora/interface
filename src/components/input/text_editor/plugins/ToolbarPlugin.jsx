@@ -15,7 +15,6 @@ import {
 	$createParagraphNode,
 	$getSelection,
 	$isRangeSelection,
-	FORMAT_TEXT_COMMAND,
 	SELECTION_CHANGE_COMMAND,
 } from "lexical";
 import React, { useCallback, useEffect, useRef, useState } from "react";
@@ -98,8 +97,13 @@ export const ToolbarPlugin = (props) => {
 	};
 
 	const formatText = (format) => {
-		editor.dispatchCommand(FORMAT_TEXT_COMMAND, format);
-		refreshToolbar();
+		editor.update(() => {
+			const selection = $getSelection();
+			if ($isRangeSelection(selection)) {
+				selection.formatText(format);
+				updateToolbar();
+			}
+		});
 	};
 
 	const formatParagraph = () => {
@@ -163,6 +167,7 @@ export const ToolbarPlugin = (props) => {
 							})}
 						>
 				<button
+					onPointerDown={preventSelectionLoss}
 					onMouseDown={preventSelectionLoss}
 					onClick={() => {
 						formatText("bold");
@@ -183,6 +188,7 @@ export const ToolbarPlugin = (props) => {
 								/>
 							</button>
 							<button
+								onPointerDown={preventSelectionLoss}
 								onMouseDown={preventSelectionLoss}
 								onClick={() => {
 									formatText("italic");
@@ -204,6 +210,7 @@ export const ToolbarPlugin = (props) => {
 								/>
 							</button>
 							<button
+								onPointerDown={preventSelectionLoss}
 								onMouseDown={preventSelectionLoss}
 								onClick={() => {
 									formatText("underline");
@@ -225,6 +232,7 @@ export const ToolbarPlugin = (props) => {
 								/>
 							</button>
 							<button
+								onPointerDown={preventSelectionLoss}
 								onMouseDown={preventSelectionLoss}
 								onClick={() => formatQuote()}
 								type={"button"}
@@ -242,6 +250,7 @@ export const ToolbarPlugin = (props) => {
 								/>
 							</button>
 							<button
+								onPointerDown={preventSelectionLoss}
 								onMouseDown={preventSelectionLoss}
 								onClick={() => formatNumberedList()}
 								type={"button"}

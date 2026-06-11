@@ -9,7 +9,14 @@ import { ModalProvider } from "@logora/debate/dialog/modal";
 import { IconProvider } from "@logora/debate/icons/icon_provider";
 import * as regularIcons from "@logora/debate/icons/regular_icons";
 import { InputProvider, useInput } from "@logora/debate/input/input_provider";
-import { act, render, screen, waitFor } from "@testing-library/react";
+import {
+	act,
+	createEvent,
+	fireEvent,
+	render,
+	screen,
+	waitFor,
+} from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import {
 	$createParagraphNode,
@@ -108,6 +115,50 @@ describe("TextEditor", () => {
 		bold = screen.queryByTestId("format-bold");
 		expect(callback).toHaveBeenCalled();
 		expect(bold).toBeTruthy();
+	});
+
+	it("should mark format button as active after clicking it", async () => {
+		render(
+			<IntlProvider locale="en">
+				<InputProvider>
+					<IconProvider library={regularIcons}>
+						<ModalProvider>
+							<TextEditor
+								handleChange={() => null}
+								onSubmit={() => null}
+								onActivation={() => null}
+								shortBar={true}
+								uid={"34"}
+								placeholder={"Add an argument"}
+							/>
+						</ModalProvider>
+					</IconProvider>
+				</InputProvider>
+			</IntlProvider>,
+		);
+
+		const input = screen.getByRole("textbox");
+		await act(async () => {
+			await userEvent.click(input);
+		});
+
+		const bold = screen.getByTestId("format-bold");
+		expect(bold.classList.contains("active")).toBe(false);
+		const touchStart = createEvent.pointerDown(bold, {
+			pointerType: "touch",
+			cancelable: true,
+		});
+
+		fireEvent(bold, touchStart);
+		expect(touchStart.defaultPrevented).toBe(true);
+
+		await act(async () => {
+			await userEvent.click(bold);
+		});
+
+		await waitFor(() => {
+			expect(bold.classList.contains("active")).toBe(true);
+		});
 	});
 
 	it("should focus editor on click", async () => {
