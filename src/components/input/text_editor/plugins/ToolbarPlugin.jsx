@@ -101,22 +101,20 @@ export const ToolbarPlugin = (props) => {
 	};
 
 	const formatText = (format) => {
-	editor.getEditorState().read(() => {
-		const selection = $getSelection();
-
-		if (!$isRangeSelection(selection)) {
-			return;
-		}
-
-		const nextValue = !selection.hasFormat(format);
-
 		editor.dispatchCommand(FORMAT_TEXT_COMMAND, format);
 
-		if (format === "bold") setIsBold(nextValue);
-		if (format === "italic") setIsItalic(nextValue);
-		if (format === "underline") setIsUnderline(nextValue);
-	});
-};
+		if (format === "bold") {
+			setIsBold((currentValue) => !currentValue);
+		}
+
+		if (format === "italic") {
+			setIsItalic((currentValue) => !currentValue);
+		}
+
+		if (format === "underline") {
+			setIsUnderline((currentValue) => !currentValue);
+		}
+	};
 
 	const formatParagraph = () => {
 		editor.update(() => {
@@ -180,137 +178,137 @@ export const ToolbarPlugin = (props) => {
 		>
 			{props.isActive
 				? !props.disableRichText && (
-						<div
-							className={cx(styles.iconToolbar, {
-								[styles.shortBar]: props.shortBar,
+					<div
+						className={cx(styles.iconToolbar, {
+							[styles.shortBar]: props.shortBar,
+						})}
+					>
+						<button
+							onTouchStart={preventSelectionLoss}
+							onMouseDown={preventSelectionLoss}
+							onClick={() => formatText("bold")}
+							type="button"
+							className={cx(styles.toolbarItem, { [styles.active]: isBold })}
+							data-testid="format-bold"
+							aria-label={intl.formatMessage({
+								id: "input.text_editor.plugins.toolbar_plugin.bold.aria_label",
+								defaultMessage: "Make text bold",
 							})}
 						>
+							<Icon
+								name="bold"
+								width={24}
+								height={24}
+								className={cx(styles.format, styles.bold)}
+							/>
+						</button>
+
+						<button
+							onTouchStart={preventSelectionLoss}
+							onMouseDown={preventSelectionLoss}
+							onClick={() => formatText("italic")}
+							type="button"
+							className={cx(styles.toolbarItem, {
+								[styles.active]: isItalic,
+							})}
+							aria-label={intl.formatMessage({
+								id: "input.text_editor.plugins.toolbar_plugin.italic.aria_label",
+								defaultMessage: "Make text italic",
+							})}
+						>
+							<Icon
+								name="italic"
+								width={24}
+								height={24}
+								className={cx(styles.format, styles.italic)}
+							/>
+						</button>
+
+						<button
+							onTouchStart={preventSelectionLoss}
+							onMouseDown={preventSelectionLoss}
+							onClick={() => formatText("underline")}
+							type="button"
+							className={cx(styles.toolbarItem, {
+								[styles.active]: isUnderline,
+							})}
+							aria-label={intl.formatMessage({
+								id: "input.text_editor.plugins.toolbar_plugin.underline.aria_label",
+								defaultMessage: "Underline text",
+							})}
+						>
+							<Icon
+								name="underline"
+								width={24}
+								height={24}
+								className={cx(styles.format, styles.underline)}
+							/>
+						</button>
+
+						<button
+							onTouchStart={preventSelectionLoss}
+							onMouseDown={preventSelectionLoss}
+							onClick={() => formatQuote()}
+							type="button"
+							className={cx(styles.toolbarItem, {
+								[styles.active]: blockType === "quote",
+							})}
+							aria-label={intl.formatMessage({
+								id: "input.text_editor.plugins.toolbar_plugin.blockquote.aria_label",
+								defaultMessage: "Add a blockquote",
+							})}
+						>
+							<Icon
+								name="blockquote"
+								width={24}
+								height={24}
+								className={cx(styles.format, styles.quote)}
+							/>
+						</button>
+
+						<button
+							onTouchStart={preventSelectionLoss}
+							onMouseDown={preventSelectionLoss}
+							onClick={() => formatNumberedList()}
+							type="button"
+							className={cx(styles.toolbarItem, {
+								[styles.active]: blockType === "ol",
+							})}
+							aria-label={intl.formatMessage({
+								id: "input.text_editor.plugins.toolbar_plugin.numbered_list.aria_label",
+								defaultMessage: "Insert a numbered list",
+							})}
+						>
+							<Icon
+								name="orderedList"
+								width={24}
+								height={24}
+								className={cx(styles.format, styles.numberedList)}
+							/>
+						</button>
+
+						{!props.hideSourceAction && (
 							<button
 								onTouchStart={preventSelectionLoss}
 								onMouseDown={preventSelectionLoss}
-								onClick={() => formatText("bold")}
+								onClick={props.onAddSource}
 								type="button"
-								className={cx(styles.toolbarItem, { [styles.active]: isBold })}
-								data-testid="format-bold"
+								className={styles.toolbarItem}
 								aria-label={intl.formatMessage({
-									id: "input.text_editor.plugins.toolbar_plugin.bold.aria_label",
-									defaultMessage: "Make text bold",
+									id: "input.text_editor.plugins.toolbar_plugin.add_link.aria_label",
+									defaultMessage: "Add hyperlink",
 								})}
 							>
 								<Icon
-									name="bold"
-									width={24}
-									height={24}
-									className={cx(styles.format, styles.bold)}
+									name="link"
+									width={20}
+									height={20}
+									className={cx(styles.format, styles.link)}
 								/>
 							</button>
-
-							<button
-								onTouchStart={preventSelectionLoss}
-								onMouseDown={preventSelectionLoss}
-								onClick={() => formatText("italic")}
-								type="button"
-								className={cx(styles.toolbarItem, {
-									[styles.active]: isItalic,
-								})}
-								aria-label={intl.formatMessage({
-									id: "input.text_editor.plugins.toolbar_plugin.italic.aria_label",
-									defaultMessage: "Make text italic",
-								})}
-							>
-								<Icon
-									name="italic"
-									width={24}
-									height={24}
-									className={cx(styles.format, styles.italic)}
-								/>
-							</button>
-
-							<button
-								onTouchStart={preventSelectionLoss}
-								onMouseDown={preventSelectionLoss}
-								onClick={() => formatText("underline")}
-								type="button"
-								className={cx(styles.toolbarItem, {
-									[styles.active]: isUnderline,
-								})}
-								aria-label={intl.formatMessage({
-									id: "input.text_editor.plugins.toolbar_plugin.underline.aria_label",
-									defaultMessage: "Underline text",
-								})}
-							>
-								<Icon
-									name="underline"
-									width={24}
-									height={24}
-									className={cx(styles.format, styles.underline)}
-								/>
-							</button>
-
-							<button
-								onTouchStart={preventSelectionLoss}
-								onMouseDown={preventSelectionLoss}
-								onClick={() => formatQuote()}
-								type="button"
-								className={cx(styles.toolbarItem, {
-									[styles.active]: blockType === "quote",
-								})}
-								aria-label={intl.formatMessage({
-									id: "input.text_editor.plugins.toolbar_plugin.blockquote.aria_label",
-									defaultMessage: "Add a blockquote",
-								})}
-							>
-								<Icon
-									name="blockquote"
-									width={24}
-									height={24}
-									className={cx(styles.format, styles.quote)}
-								/>
-							</button>
-
-							<button
-								onTouchStart={preventSelectionLoss}
-								onMouseDown={preventSelectionLoss}
-								onClick={() => formatNumberedList()}
-								type="button"
-								className={cx(styles.toolbarItem, {
-									[styles.active]: blockType === "ol",
-								})}
-								aria-label={intl.formatMessage({
-									id: "input.text_editor.plugins.toolbar_plugin.numbered_list.aria_label",
-									defaultMessage: "Insert a numbered list",
-								})}
-							>
-								<Icon
-									name="orderedList"
-									width={24}
-									height={24}
-									className={cx(styles.format, styles.numberedList)}
-								/>
-							</button>
-
-							{!props.hideSourceAction && (
-								<button
-									onTouchStart={preventSelectionLoss}
-									onMouseDown={preventSelectionLoss}
-									onClick={props.onAddSource}
-									type="button"
-									className={styles.toolbarItem}
-									aria-label={intl.formatMessage({
-										id: "input.text_editor.plugins.toolbar_plugin.add_link.aria_label",
-										defaultMessage: "Add hyperlink",
-									})}
-								>
-									<Icon
-										name="link"
-										width={20}
-										height={20}
-										className={cx(styles.format, styles.link)}
-									/>
-								</button>
-							)}
-						</div>
-					)
+						)}
+					</div>
+				)
 				: null}
 
 			<div className={styles.actionButton}>
