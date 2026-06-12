@@ -531,7 +531,11 @@ export const ArgumentInput = ({
 									hideSourceAction={
 										hideSourceAction || inputDisabledForVisitors
 									}
-									uid={`Argument${groupId}`}
+									uid={
+										parentId
+											? `Reply${groupId}_${parentId}`
+											: `Argument${groupId}`
+									}
 									onActivation={handleTextEditorActivation}
 									showStylesControls={inputActivation}
 									disabled={
