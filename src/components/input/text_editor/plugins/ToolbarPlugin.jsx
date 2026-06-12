@@ -101,9 +101,22 @@ export const ToolbarPlugin = (props) => {
 	};
 
 	const formatText = (format) => {
+	editor.getEditorState().read(() => {
+		const selection = $getSelection();
+
+		if (!$isRangeSelection(selection)) {
+			return;
+		}
+
+		const nextValue = !selection.hasFormat(format);
+
 		editor.dispatchCommand(FORMAT_TEXT_COMMAND, format);
-		refreshToolbar();
-	};
+
+		if (format === "bold") setIsBold(nextValue);
+		if (format === "italic") setIsItalic(nextValue);
+		if (format === "underline") setIsUnderline(nextValue);
+	});
+};
 
 	const formatParagraph = () => {
 		editor.update(() => {
