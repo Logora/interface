@@ -20,6 +20,8 @@ export const UpdateUserInfoModal = ({
 	privacyUrl,
 	showEmailConsent = false,
 	showTerms = false,
+	pendingAuth = false,
+	onConsentConfirmed = null,
 }) => {
 	const auth = useAuth();
 	const api = useDataProvider();
@@ -63,7 +65,7 @@ export const UpdateUserInfoModal = ({
 		{ first_name: ["minChar", 2] },
 		{ last_name: ["required", null] },
 		{ last_name: ["minChar", 2] },
-		{ language: ["required", null] },
+		...(pendingAuth ? [] : [{ language: ["required", null] }]),
 		...(showTerms ? [{ accepts_terms: ["enforceValue", true] }] : []),
 	];
 
@@ -98,19 +100,30 @@ export const UpdateUserInfoModal = ({
 
 		if (validate(data, validationRules)) {
 			setIsUpdating(true);
-			const formData = new FormData();
-			Object.entries(data).forEach(([key, value]) => {
-				formData.append(key, value);
-			});
 
-			api.update("users", auth.currentUser.slug, formData).then((response) => {
-				if (response.data.success) {
-					auth.setCurrentUser(response.data.data.resource);
-					hideModal();
-				} else {
-					hideModal();
-				}
-			});
+			if (pendingAuth && onConsentConfirmed) {
+				const profileData = {
+					first_name: firstName,
+					last_name: lastName,
+					accepts_terms: acceptsTerms,
+					accepts_provider_email: showEmailConsent ? acceptsProviderEmail : false,
+				};
+				onConsentConfirmed(profileData);
+			} else {
+				const formData = new FormData();
+				Object.entries(data).forEach(([key, value]) => {
+					formData.append(key, value);
+				});
+
+				api.update("users", auth.currentUser.slug, formData).then((response) => {
+					if (response.data.success) {
+						auth.setCurrentUser(response.data.data.resource);
+						hideModal();
+					} else {
+						hideModal();
+					}
+				});
+			}
 		}
 	};
 
@@ -130,10 +143,17 @@ export const UpdateUserInfoModal = ({
 	return (
 		<Modal
 			data-vid={"update_user_info_modal"}
-			title={intl.formatMessage({
-				id: "modal.update_user_info_modal.modal_title",
-				defaultMessage: "Update your profile",
-			})}
+			title={
+				pendingAuth
+					? intl.formatMessage({
+							id: "modal.update_user_info_modal.complete_registration",
+							defaultMessage: "Complete your registration",
+						})
+					: intl.formatMessage({
+							id: "modal.update_user_info_modal.modal_title",
+							defaultMessage: "Update your profile",
+						})
+			}
 			style={{
 				width: isMobile ? "unset" : "max-content",
 				minWidth: isMobile ? "unset" : "500px",
@@ -144,139 +164,159 @@ export const UpdateUserInfoModal = ({
 		>
 			{isUpdating ? (
 				<Loader />
-			) : !showAvatars ? (
+			) : showAvatars && !pendingAuth ? (
 				<>
-					<div className={styles.container}>
-						<div className={styles.userImageContainer}>
-							{previewPictureBase64 ? (
-								<img
-									className={styles.userPictureUpload}
-									src={previewPictureBase64}
-									alt={intl.formatMessage({
-										id: "alt.my_profile_picture",
-										defaultMessage: "Ma photo de profil",
-									})}
-								/>
-							) : (
-								<div className={styles.userPictureUpload}>
-									<Icon
-										name="camera"
-										height={20}
-										width={20}
+					<AvatarSelector
+						onChooseAvatar={handleChooseAvatar}
+						avatarUrlList={avatarUrlList}
+						userName={auth.currentUser.full_name}
+						allowUserImage={config.avatars?.allowUserImage}
+					/>
+					<div
+						className={styles.backButton}
+						onClick={() => setShowAvatars(false)}
+					>
+						{intl.formatMessage({
+							id: "user.user_edit.back",
+							defaultMessage: "Back",
+						})}
+					</div>
+				</>
+			) : (
+				<>
+					{!pendingAuth && (
+						<div className={styles.container}>
+							<div className={styles.userImageContainer}>
+								{previewPictureBase64 ? (
+									<img
+										className={styles.userPictureUpload}
+										src={previewPictureBase64}
 										alt={intl.formatMessage({
-											id: "user.user_edit.profile_picture",
-											defaultMessage: "Profile picture",
+											id: "alt.my_profile_picture",
+											defaultMessage: "Ma photo de profil",
 										})}
 									/>
-								</div>
-							)}
-							<Button
-								data-testid="avatar-button"
-								data-tid={"action_save_profile"}
-								onClick={() => setShowAvatars(true)}
-								style={{ whiteSpace: "nowrap" }}
-							>
-								{intl.formatMessage({
-									id: "user.user_edit.avatar",
-									defaultMessage: "Select an avatar",
-								})}
-							</Button>
-						</div>
-						<div className={styles.inputsContainer}>
-							<div className={styles.nameContainer}>
-								<div className={styles.updateProfileInput}>
-									<TextInput
-										type={"text"}
-										name={"first_name"}
-										aria-label={intl.formatMessage({
-											id: "auth.signup_form.first_name.aria_label",
-											defaultMessage: "First name",
-										})}
-										placeholder={intl.formatMessage({
-											id: "auth_signup_form_first_name_placeholder",
-											defaultMessage: "First name",
-										})}
-										onChange={(e) =>
-											config.actions?.disableOnboardingNameUpdate === true
-												? null
-												: setFirstName(e.target.value)
-										}
-										value={firstName}
-										error={errors["first_name"] ? true : false}
-										message={errors["first_name"]}
-										data-testid="first-name"
-										disabled={
-											config.actions?.disableOnboardingNameUpdate === true
-										}
-									/>
-								</div>
-								<div className={styles.updateProfileInput}>
-									<TextInput
-										type={"text"}
-										name={"last_name"}
-										aria-label={intl.formatMessage({
-											id: "auth.signup_form.last_name.aria_label",
-											defaultMessage: "Last name",
-										})}
-										placeholder={intl.formatMessage({
-											id: "auth_signup_form_last_name_placeholder",
-											defaultMessage: "Last name",
-										})}
-										onChange={(e) =>
-											config.actions?.disableOnboardingNameUpdate === true
-												? null
-												: setLastName(e.target.value)
-										}
-										value={lastName}
-										error={errors["last_name"] ? true : false}
-										message={errors["last_name"]}
-										data-testid="last-name"
-										disabled={
-											config.actions?.disableOnboardingNameUpdate === true
-										}
-									/>
-								</div>
-							</div>
-							{config.actions?.disableNameUpdate == true &&
-								config.actions?.disableOnboardingNameUpdate != true && (
-									<div className={styles.hint}>
-										{intl.formatMessage({
-											id: "user.user_edit.user_name_hint",
-											defaultMessage: "last name",
-										})}
+								) : (
+									<div className={styles.userPictureUpload}>
+										<Icon
+											name="camera"
+											height={20}
+											width={20}
+											alt={intl.formatMessage({
+												id: "user.user_edit.profile_picture",
+												defaultMessage: "Profile picture",
+											})}
+										/>
 									</div>
 								)}
-							{config.translation?.translationMethods &&
-								Object.keys(config.translation.translationMethods).length >
-									0 && (
-									<Select
-										selectClassName={styles.langSelect}
-										options={Object.keys(
-											config.translation.translationMethods,
-										).map((l) => ({
-											name: l,
-											value: l,
-											text: `${l.toUpperCase()}`,
-										}))}
-										defaultOption={lang}
-										onChange={(option) => setLang(option.value)}
-									/>
-								)}
-							<div className={styles.userDescription}>
-								<textarea
-									className={styles.textArea}
-									placeholder={intl.formatMessage({
-										id: "user.user_edit.user_description",
-										defaultMessage: "Describe yourself in a few words",
+								<Button
+									data-testid="avatar-button"
+									data-tid={"action_save_profile"}
+									onClick={() => setShowAvatars(true)}
+									style={{ whiteSpace: "nowrap" }}
+								>
+									{intl.formatMessage({
+										id: "user.user_edit.avatar",
+										defaultMessage: "Select an avatar",
 									})}
-									value={description}
-									onChange={(e) => setDescription(e.target.value)}
-									maxLength={500}
-									data-testid="description"
-								/>
+								</Button>
+							</div>
+							<div className={styles.inputsContainer}>
+								<div className={styles.nameContainer}>
+									<div className={styles.updateProfileInput}>
+										<TextInput
+											type={"text"}
+											name={"first_name"}
+											aria-label={intl.formatMessage({
+												id: "auth.signup_form.first_name.aria_label",
+												defaultMessage: "First name",
+											})}
+											placeholder={intl.formatMessage({
+												id: "auth_signup_form_first_name_placeholder",
+												defaultMessage: "First name",
+											})}
+											onChange={(e) =>
+												config.actions?.disableOnboardingNameUpdate === true
+													? null
+													: setFirstName(e.target.value)
+											}
+											value={firstName}
+											error={errors["first_name"] ? true : false}
+											message={errors["first_name"]}
+											data-testid="first-name"
+											disabled={
+												config.actions?.disableOnboardingNameUpdate === true
+											}
+										/>
+									</div>
+									<div className={styles.updateProfileInput}>
+										<TextInput
+											type={"text"}
+											name={"last_name"}
+											aria-label={intl.formatMessage({
+												id: "auth.signup_form.last_name.aria_label",
+												defaultMessage: "Last name",
+											})}
+											placeholder={intl.formatMessage({
+												id: "auth_signup_form_last_name_placeholder",
+												defaultMessage: "Last name",
+											})}
+											onChange={(e) =>
+												config.actions?.disableOnboardingNameUpdate === true
+													? null
+													: setLastName(e.target.value)
+											}
+											value={lastName}
+											error={errors["last_name"] ? true : false}
+											message={errors["last_name"]}
+											data-testid="last-name"
+											disabled={
+												config.actions?.disableOnboardingNameUpdate === true
+											}
+										/>
+									</div>
+								</div>
+								{config.actions?.disableNameUpdate == true &&
+									config.actions?.disableOnboardingNameUpdate != true && (
+										<div className={styles.hint}>
+											{intl.formatMessage({
+												id: "user.user_edit.user_name_hint",
+												defaultMessage: "last name",
+											})}
+										</div>
+									)}
+								{config.translation?.translationMethods &&
+									Object.keys(config.translation.translationMethods).length >
+										0 && (
+										<Select
+											selectClassName={styles.langSelect}
+											options={Object.keys(
+												config.translation.translationMethods,
+											).map((l) => ({
+												name: l,
+												value: l,
+												text: `${l.toUpperCase()}`,
+											}))}
+											defaultOption={lang}
+											onChange={(option) => setLang(option.value)}
+										/>
+									)}
+								<div className={styles.userDescription}>
+									<textarea
+										className={styles.textArea}
+										placeholder={intl.formatMessage({
+											id: "user.user_edit.user_description",
+											defaultMessage: "Describe yourself in a few words",
+										})}
+										value={description}
+										onChange={(e) => setDescription(e.target.value)}
+										maxLength={500}
+										data-testid="description"
+									/>
+								</div>
 							</div>
 						</div>
-					</div>
+					)}
 					{showTerms && (
 						<div className={styles.toggle}>
 							<Toggle
@@ -350,24 +390,6 @@ export const UpdateUserInfoModal = ({
 								defaultMessage: "Save",
 							})}
 						</Button>
-					</div>
-				</>
-			) : (
-				<>
-					<AvatarSelector
-						onChooseAvatar={handleChooseAvatar}
-						avatarUrlList={avatarUrlList}
-						userName={auth.currentUser.full_name}
-						allowUserImage={config.avatars?.allowUserImage}
-					/>
-					<div
-						className={styles.backButton}
-						onClick={() => setShowAvatars(false)}
-					>
-						{intl.formatMessage({
-							id: "user.user_edit.back",
-							defaultMessage: "Back",
-						})}
 					</div>
 				</>
 			)}
