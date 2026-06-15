@@ -110,3 +110,31 @@ export const UpdateUserInfoModalWithInfos = () => {
 		</div>
 	);
 };
+
+export const PendingAuthUpdateUserInfoModal = () => {
+	return (
+		<div style={{ width: "850px", height: "300px" }}>
+			<ModalProvider>
+				<ConfigProvider
+					config={{ translation: { translationMethods: [{ fr: "en" }] } }}
+				>
+					<IntlProvider locale="en">
+						<DataProviderContext.Provider value={{ dataProvider: data }}>
+							<AuthContext.Provider
+								value={{ currentUser: {}, isLoggedIn: false }}
+							>
+								<UpdateUserInfoModal
+									pendingAuth={true}
+									showTerms={true}
+									showEmailConsent={true}
+									termsUrl="https://example.com/cgu"
+									privacyUrl="https://example.com/privacy"
+								/>
+							</AuthContext.Provider>
+						</DataProviderContext.Provider>
+					</IntlProvider>
+				</ConfigProvider>
+			</ModalProvider>
+		</div>
+	);
+};

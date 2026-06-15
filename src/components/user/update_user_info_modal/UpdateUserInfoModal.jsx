@@ -20,6 +20,8 @@ export const UpdateUserInfoModal = ({
 	privacyUrl,
 	showEmailConsent = false,
 	showTerms = false,
+	pendingAuth = false,
+	onConsentConfirmed = null,
 }) => {
 	const auth = useAuth();
 	const api = useDataProvider();
@@ -63,7 +65,7 @@ export const UpdateUserInfoModal = ({
 		{ first_name: ["minChar", 2] },
 		{ last_name: ["required", null] },
 		{ last_name: ["minChar", 2] },
-		{ language: ["required", null] },
+		...(pendingAuth ? [] : [{ language: ["required", null] }]),
 		...(showTerms ? [{ accepts_terms: ["enforceValue", true] }] : []),
 	];
 
@@ -98,19 +100,31 @@ export const UpdateUserInfoModal = ({
 
 		if (validate(data, validationRules)) {
 			setIsUpdating(true);
-			const formData = new FormData();
-			Object.entries(data).forEach(([key, value]) => {
-				formData.append(key, value);
-			});
 
-			api.update("users", auth.currentUser.slug, formData).then((response) => {
-				if (response.data.success) {
-					auth.setCurrentUser(response.data.data.resource);
-					hideModal();
-				} else {
-					hideModal();
-				}
-			});
+			if (pendingAuth && onConsentConfirmed) {
+				const profileData = {
+					first_name: firstName,
+					last_name: lastName,
+					accepts_terms: acceptsTerms,
+					accepts_provider_email: showEmailConsent ? acceptsProviderEmail : false,
+					is_onboarded: true,
+				};
+				onConsentConfirmed(profileData);
+			} else {
+				const formData = new FormData();
+				Object.entries(data).forEach(([key, value]) => {
+					formData.append(key, value);
+				});
+
+				api.update("users", auth.currentUser.slug, formData).then((response) => {
+					if (response.data.success) {
+						auth.setCurrentUser(response.data.data.resource);
+						hideModal();
+					} else {
+						hideModal();
+					}
+				});
+			}
 		}
 	};
 
@@ -130,10 +144,17 @@ export const UpdateUserInfoModal = ({
 	return (
 		<Modal
 			data-vid={"update_user_info_modal"}
-			title={intl.formatMessage({
-				id: "modal.update_user_info_modal.modal_title",
-				defaultMessage: "Update your profile",
-			})}
+			title={
+				pendingAuth
+					? intl.formatMessage({
+							id: "modal.update_user_info_modal.complete_registration",
+							defaultMessage: "Complete your registration",
+						})
+					: intl.formatMessage({
+							id: "modal.update_user_info_modal.modal_title",
+							defaultMessage: "Update your profile",
+						})
+			}
 			style={{
 				width: isMobile ? "unset" : "max-content",
 				minWidth: isMobile ? "unset" : "500px",
@@ -144,7 +165,25 @@ export const UpdateUserInfoModal = ({
 		>
 			{isUpdating ? (
 				<Loader />
-			) : !showAvatars ? (
+			) : showAvatars && !pendingAuth ? (
+				<>
+					<AvatarSelector
+						onChooseAvatar={handleChooseAvatar}
+						avatarUrlList={avatarUrlList}
+						userName={auth.currentUser.full_name}
+						allowUserImage={config.avatars?.allowUserImage}
+					/>
+					<div
+						className={styles.backButton}
+						onClick={() => setShowAvatars(false)}
+					>
+						{intl.formatMessage({
+							id: "user.user_edit.back",
+							defaultMessage: "Back",
+						})}
+					</div>
+				</>
+			) : (
 				<>
 					<div className={styles.container}>
 						<div className={styles.userImageContainer}>
@@ -170,17 +209,19 @@ export const UpdateUserInfoModal = ({
 									/>
 								</div>
 							)}
-							<Button
-								data-testid="avatar-button"
-								data-tid={"action_save_profile"}
-								onClick={() => setShowAvatars(true)}
-								style={{ whiteSpace: "nowrap" }}
-							>
-								{intl.formatMessage({
-									id: "user.user_edit.avatar",
-									defaultMessage: "Select an avatar",
-								})}
-							</Button>
+							{!pendingAuth && (
+								<Button
+									data-testid="avatar-button"
+									data-tid={"action_save_profile"}
+									onClick={() => setShowAvatars(true)}
+									style={{ whiteSpace: "nowrap" }}
+								>
+									{intl.formatMessage({
+										id: "user.user_edit.avatar",
+										defaultMessage: "Select an avatar",
+									})}
+								</Button>
+							)}
 						</div>
 						<div className={styles.inputsContainer}>
 							<div className={styles.nameContainer}>
@@ -246,7 +287,7 @@ export const UpdateUserInfoModal = ({
 										})}
 									</div>
 								)}
-							{config.translation?.translationMethods &&
+							{!pendingAuth && config.translation?.translationMethods &&
 								Object.keys(config.translation.translationMethods).length >
 									0 && (
 									<Select
@@ -262,19 +303,21 @@ export const UpdateUserInfoModal = ({
 										onChange={(option) => setLang(option.value)}
 									/>
 								)}
-							<div className={styles.userDescription}>
-								<textarea
-									className={styles.textArea}
-									placeholder={intl.formatMessage({
-										id: "user.user_edit.user_description",
-										defaultMessage: "Describe yourself in a few words",
-									})}
-									value={description}
-									onChange={(e) => setDescription(e.target.value)}
-									maxLength={500}
-									data-testid="description"
-								/>
-							</div>
+							{!pendingAuth && (
+								<div className={styles.userDescription}>
+									<textarea
+										className={styles.textArea}
+										placeholder={intl.formatMessage({
+											id: "user.user_edit.user_description",
+											defaultMessage: "Describe yourself in a few words",
+										})}
+										value={description}
+										onChange={(e) => setDescription(e.target.value)}
+										maxLength={500}
+										data-testid="description"
+									/>
+								</div>
+							)}
 						</div>
 					</div>
 					{showTerms && (
@@ -350,24 +393,6 @@ export const UpdateUserInfoModal = ({
 								defaultMessage: "Save",
 							})}
 						</Button>
-					</div>
-				</>
-			) : (
-				<>
-					<AvatarSelector
-						onChooseAvatar={handleChooseAvatar}
-						avatarUrlList={avatarUrlList}
-						userName={auth.currentUser.full_name}
-						allowUserImage={config.avatars?.allowUserImage}
-					/>
-					<div
-						className={styles.backButton}
-						onClick={() => setShowAvatars(false)}
-					>
-						{intl.formatMessage({
-							id: "user.user_edit.back",
-							defaultMessage: "Back",
-						})}
 					</div>
 				</>
 			)}

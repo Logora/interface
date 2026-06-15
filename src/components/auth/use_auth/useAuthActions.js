@@ -34,6 +34,7 @@ export const useAuthActions = (httpClient, authUrl, tokenKey) => {
 		setIsLoggingIn(false);
 		setCurrentUser({});
 		removeToken();
+		sessionStorage.removeItem(EMAIL_CONSENT_STORAGE_KEY);
 		dispatchLogoutEvent();
 	};
 
