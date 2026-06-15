@@ -2,12 +2,17 @@ import { AuthProviderFactory } from "@logora/debate/auth/providers";
 import { authTokenHandler, useAuthActions } from "@logora/debate/auth/use_auth";
 import { useAuthInterceptor } from "@logora/debate/auth/use_auth";
 import { httpClient } from "@logora/debate/data/axios_client";
+import { useConfig } from "@logora/debate/data/config_provider";
+import { UpdateUserInfoModal } from "@logora/debate/user/update_user_info_modal";
 import { useAuthRequired } from "@logora/debate/hooks/use_auth_required";
-import { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 export const AuthInitializer = ({ authUrl, authType, provider, assertion }) => {
 	const tokenKey = "logora_user_token";
+	const config = useConfig();
 	useAuthInterceptor(httpClient, authUrl, tokenKey);
+
+	const [pendingAuth, setPendingAuth] = useState(null);
 
 	const { getToken, removeToken } = authTokenHandler(
 		httpClient,
@@ -60,16 +65,44 @@ export const AuthInitializer = ({ authUrl, authType, provider, assertion }) => {
 		if (authProvider.shouldInitAuth()) {
 			const authParams = authProvider.getAuthorizationParams();
 			if (authParams) {
-				loginUser(authParams);
+				if (config.auth?.hideCgu !== true) {
+					setPendingAuth(authParams);
+				} else {
+					loginUser(authParams);
+				}
 			}
 		} else {
 			logoutUser();
 		}
 	};
 
+	const handleConsentConfirmed = (consentedAuthParams) => {
+		loginUser(consentedAuthParams);
+		setPendingAuth(null);
+	};
+
 	const getAuthProvider = () => {
 		return AuthProviderFactory.create(authType, provider, assertion);
 	};
 
-	return null;
+	return (
+		<>
+			{pendingAuth && (
+				<UpdateUserInfoModal
+					pendingAuth={pendingAuth}
+					onConsentConfirmed={handleConsentConfirmed}
+					showTerms={true}
+					showEmailConsent={config.auth?.showEmailConsent}
+					termsUrl={
+						config.provider?.cguUrl ||
+						"https://www.logora.com/blog-posts/cgu"
+					}
+					privacyUrl={
+						config.provider?.privacyUrl ||
+						"https://www.logora.com/blog-posts/privacy-policy"
+					}
+				/>
+			)}
+		</>
+	);
 };
