@@ -38,11 +38,10 @@
     flex: 1;
     min-height: 0;
     overflow: hidden;
-    font-size: theme.$font-size-small;
+    font-size: theme.$font-size-normal;
     text-align: left;
     white-space: pre-line;
     line-height: theme.$line-height-loose;
-    font-size: theme.$font-size-small;
 
     &.withMinHeight {
         @include display.media-breakpoint-up(md) {
