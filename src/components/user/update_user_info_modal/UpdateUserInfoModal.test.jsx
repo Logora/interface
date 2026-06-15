@@ -259,4 +259,146 @@ describe("UpdateUserInfoModal", () => {
 		const description = getByTestId("description");
 		expect(description.value).toBe(currentUserWithInfos.description);
 	});
+
+	describe("pendingAuth mode", () => {
+		it("should render consent modal with name inputs and toggles", async () => {
+			const { queryByText, queryByTestId } = render(
+				<ModalProvider>
+					<ConfigProvider
+						config={{
+							translation: { translationMethods: [{ fr: "en" }] },
+							actions: { disableNameUpdate: true },
+						}}
+					>
+						<IntlProvider locale="en">
+							<IconProvider library={regularIcons}>
+								<DataProviderContext.Provider value={{ dataProvider: data }}>
+									<AuthContext.Provider
+										value={{ currentUser: {}, isLoggedIn: false }}
+									>
+										<UpdateUserInfoModal
+											pendingAuth={true}
+											showTerms={true}
+											showEmailConsent={true}
+											termsUrl="https://example.com/cgu"
+											privacyUrl="https://example.com/privacy"
+										/>
+									</AuthContext.Provider>
+								</DataProviderContext.Provider>
+							</IconProvider>
+						</IntlProvider>
+					</ConfigProvider>
+				</ModalProvider>,
+			);
+
+			expect(queryByText("Complete your registration")).toBeInTheDocument();
+			expect(queryByText("First name")).toBeInTheDocument();
+			expect(queryByText("Last name")).toBeInTheDocument();
+			expect(queryByText("Save")).toBeInTheDocument();
+			expect(queryByText(/I declare I have read the /i)).toBeInTheDocument();
+			expect(
+				queryByText("I agree to receive emails from the editor"),
+			).toBeInTheDocument();
+expect(queryByText("Select an avatar")).not.toBeInTheDocument();
+			expect(queryByTestId("description")).not.toBeInTheDocument();
+		});
+
+		it("should call onConsentConfirmed with profile data when submitted with valid inputs", async () => {
+			const onConsentConfirmed = vi.fn();
+			const { getByTestId, getByText } = render(
+				<ModalProvider>
+					<ConfigProvider
+						config={{
+							translation: { translationMethods: [{ fr: "en" }] },
+							actions: { disableNameUpdate: true },
+						}}
+					>
+						<IntlProvider locale="en">
+							<IconProvider library={regularIcons}>
+								<DataProviderContext.Provider value={{ dataProvider: data }}>
+									<AuthContext.Provider
+										value={{ currentUser: {}, isLoggedIn: false }}
+									>
+										<UpdateUserInfoModal
+											pendingAuth={true}
+											onConsentConfirmed={onConsentConfirmed}
+											showTerms={true}
+											showEmailConsent={true}
+										/>
+									</AuthContext.Provider>
+								</DataProviderContext.Provider>
+							</IconProvider>
+						</IntlProvider>
+					</ConfigProvider>
+				</ModalProvider>,
+			);
+
+			const firstName = getByTestId("first-name");
+			await userEvent.click(firstName);
+			await userEvent.keyboard("John");
+
+			const lastName = getByTestId("last-name");
+			await userEvent.click(lastName);
+			await userEvent.keyboard("Doe");
+
+			const termsToggle = getByTestId("accepts-terms-input");
+			await userEvent.click(termsToggle);
+
+			const saveButton = getByText("Save");
+			await userEvent.click(saveButton);
+
+			expect(onConsentConfirmed).toHaveBeenCalledWith({
+				first_name: "John",
+				last_name: "Doe",
+				accepts_terms: true,
+				accepts_provider_email: false,
+				is_onboarded: true,
+			});
+		});
+
+		it("should reject submission when terms not accepted", async () => {
+			const onConsentConfirmed = vi.fn();
+			const { getByTestId, queryByText } = render(
+				<ModalProvider>
+					<ConfigProvider
+						config={{
+							translation: { translationMethods: [{ fr: "en" }] },
+							actions: { disableNameUpdate: true },
+						}}
+					>
+						<IntlProvider locale="en">
+							<IconProvider library={regularIcons}>
+								<DataProviderContext.Provider value={{ dataProvider: data }}>
+									<AuthContext.Provider
+										value={{ currentUser: {}, isLoggedIn: false }}
+									>
+										<UpdateUserInfoModal
+											pendingAuth={true}
+											onConsentConfirmed={onConsentConfirmed}
+											showTerms={true}
+											showEmailConsent={true}
+										/>
+									</AuthContext.Provider>
+								</DataProviderContext.Provider>
+							</IconProvider>
+						</IntlProvider>
+					</ConfigProvider>
+				</ModalProvider>,
+			);
+
+			const firstName = getByTestId("first-name");
+			await userEvent.click(firstName);
+			await userEvent.keyboard("John");
+
+			const lastName = getByTestId("last-name");
+			await userEvent.click(lastName);
+			await userEvent.keyboard("Doe");
+
+			const saveButton = queryByText("Save");
+			await userEvent.click(saveButton);
+
+			expect(queryByText("accepts_terms must be true.")).toBeInTheDocument();
+			expect(onConsentConfirmed).not.toHaveBeenCalled();
+		});
+	});
 });

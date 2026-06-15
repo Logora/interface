@@ -107,6 +107,7 @@ export const UpdateUserInfoModal = ({
 					last_name: lastName,
 					accepts_terms: acceptsTerms,
 					accepts_provider_email: showEmailConsent ? acceptsProviderEmail : false,
+					is_onboarded: true,
 				};
 				onConsentConfirmed(profileData);
 			} else {
@@ -184,31 +185,31 @@ export const UpdateUserInfoModal = ({
 				</>
 			) : (
 				<>
-					{!pendingAuth && (
-						<div className={styles.container}>
-							<div className={styles.userImageContainer}>
-								{previewPictureBase64 ? (
-									<img
-										className={styles.userPictureUpload}
-										src={previewPictureBase64}
+					<div className={styles.container}>
+						<div className={styles.userImageContainer}>
+							{previewPictureBase64 ? (
+								<img
+									className={styles.userPictureUpload}
+									src={previewPictureBase64}
+									alt={intl.formatMessage({
+										id: "alt.my_profile_picture",
+										defaultMessage: "Ma photo de profil",
+									})}
+								/>
+							) : (
+								<div className={styles.userPictureUpload}>
+									<Icon
+										name="camera"
+										height={20}
+										width={20}
 										alt={intl.formatMessage({
-											id: "alt.my_profile_picture",
-											defaultMessage: "Ma photo de profil",
+											id: "user.user_edit.profile_picture",
+											defaultMessage: "Profile picture",
 										})}
 									/>
-								) : (
-									<div className={styles.userPictureUpload}>
-										<Icon
-											name="camera"
-											height={20}
-											width={20}
-											alt={intl.formatMessage({
-												id: "user.user_edit.profile_picture",
-												defaultMessage: "Profile picture",
-											})}
-										/>
-									</div>
-								)}
+								</div>
+							)}
+							{!pendingAuth && (
 								<Button
 									data-testid="avatar-button"
 									data-tid={"action_save_profile"}
@@ -220,87 +221,89 @@ export const UpdateUserInfoModal = ({
 										defaultMessage: "Select an avatar",
 									})}
 								</Button>
-							</div>
-							<div className={styles.inputsContainer}>
-								<div className={styles.nameContainer}>
-									<div className={styles.updateProfileInput}>
-										<TextInput
-											type={"text"}
-											name={"first_name"}
-											aria-label={intl.formatMessage({
-												id: "auth.signup_form.first_name.aria_label",
-												defaultMessage: "First name",
-											})}
-											placeholder={intl.formatMessage({
-												id: "auth_signup_form_first_name_placeholder",
-												defaultMessage: "First name",
-											})}
-											onChange={(e) =>
-												config.actions?.disableOnboardingNameUpdate === true
-													? null
-													: setFirstName(e.target.value)
-											}
-											value={firstName}
-											error={errors["first_name"] ? true : false}
-											message={errors["first_name"]}
-											data-testid="first-name"
-											disabled={
-												config.actions?.disableOnboardingNameUpdate === true
-											}
-										/>
-									</div>
-									<div className={styles.updateProfileInput}>
-										<TextInput
-											type={"text"}
-											name={"last_name"}
-											aria-label={intl.formatMessage({
-												id: "auth.signup_form.last_name.aria_label",
-												defaultMessage: "Last name",
-											})}
-											placeholder={intl.formatMessage({
-												id: "auth_signup_form_last_name_placeholder",
-												defaultMessage: "Last name",
-											})}
-											onChange={(e) =>
-												config.actions?.disableOnboardingNameUpdate === true
-													? null
-													: setLastName(e.target.value)
-											}
-											value={lastName}
-											error={errors["last_name"] ? true : false}
-											message={errors["last_name"]}
-											data-testid="last-name"
-											disabled={
-												config.actions?.disableOnboardingNameUpdate === true
-											}
-										/>
-									</div>
+							)}
+						</div>
+						<div className={styles.inputsContainer}>
+							<div className={styles.nameContainer}>
+								<div className={styles.updateProfileInput}>
+									<TextInput
+										type={"text"}
+										name={"first_name"}
+										aria-label={intl.formatMessage({
+											id: "auth.signup_form.first_name.aria_label",
+											defaultMessage: "First name",
+										})}
+										placeholder={intl.formatMessage({
+											id: "auth_signup_form_first_name_placeholder",
+											defaultMessage: "First name",
+										})}
+										onChange={(e) =>
+											config.actions?.disableOnboardingNameUpdate === true
+												? null
+												: setFirstName(e.target.value)
+										}
+										value={firstName}
+										error={errors["first_name"] ? true : false}
+										message={errors["first_name"]}
+										data-testid="first-name"
+										disabled={
+											config.actions?.disableOnboardingNameUpdate === true
+										}
+									/>
 								</div>
-								{config.actions?.disableNameUpdate == true &&
-									config.actions?.disableOnboardingNameUpdate != true && (
-										<div className={styles.hint}>
-											{intl.formatMessage({
-												id: "user.user_edit.user_name_hint",
-												defaultMessage: "last name",
-											})}
-										</div>
-									)}
-								{config.translation?.translationMethods &&
-									Object.keys(config.translation.translationMethods).length >
-										0 && (
-										<Select
-											selectClassName={styles.langSelect}
-											options={Object.keys(
-												config.translation.translationMethods,
-											).map((l) => ({
-												name: l,
-												value: l,
-												text: `${l.toUpperCase()}`,
-											}))}
-											defaultOption={lang}
-											onChange={(option) => setLang(option.value)}
-										/>
-									)}
+								<div className={styles.updateProfileInput}>
+									<TextInput
+										type={"text"}
+										name={"last_name"}
+										aria-label={intl.formatMessage({
+											id: "auth.signup_form.last_name.aria_label",
+											defaultMessage: "Last name",
+										})}
+										placeholder={intl.formatMessage({
+											id: "auth_signup_form_last_name_placeholder",
+											defaultMessage: "Last name",
+										})}
+										onChange={(e) =>
+											config.actions?.disableOnboardingNameUpdate === true
+												? null
+												: setLastName(e.target.value)
+										}
+										value={lastName}
+										error={errors["last_name"] ? true : false}
+										message={errors["last_name"]}
+										data-testid="last-name"
+										disabled={
+											config.actions?.disableOnboardingNameUpdate === true
+										}
+									/>
+								</div>
+							</div>
+							{config.actions?.disableNameUpdate == true &&
+								config.actions?.disableOnboardingNameUpdate != true && (
+									<div className={styles.hint}>
+										{intl.formatMessage({
+											id: "user.user_edit.user_name_hint",
+											defaultMessage: "last name",
+										})}
+									</div>
+								)}
+							{!pendingAuth && config.translation?.translationMethods &&
+								Object.keys(config.translation.translationMethods).length >
+									0 && (
+									<Select
+										selectClassName={styles.langSelect}
+										options={Object.keys(
+											config.translation.translationMethods,
+										).map((l) => ({
+											name: l,
+											value: l,
+											text: `${l.toUpperCase()}`,
+										}))}
+										defaultOption={lang}
+										onChange={(option) => setLang(option.value)}
+									/>
+								)}
+							{!pendingAuth && (
 								<div className={styles.userDescription}>
 									<textarea
 										className={styles.textArea}
@@ -314,9 +317,9 @@ export const UpdateUserInfoModal = ({
 										data-testid="description"
 									/>
 								</div>
-							</div>
+							)}
 						</div>
-					)}
+					</div>
 					{showTerms && (
 						<div className={styles.toggle}>
 							<Toggle
