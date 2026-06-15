@@ -183,11 +183,23 @@ export const PaginatedList = ({
 
 	useEffect(() => {
 		if (list.updateElements && currentListId in list.updateElements) {
-			if (list.updateElements[currentListId].length > 0) {
-				if (currentResources.length > 0) {
-					handleEditElements(list.updateElements[currentListId]);
+			const elementsToUpdate = list.updateElements[currentListId];
+			if (elementsToUpdate.length > 0) {
+				const presentElements = elementsToUpdate.filter((element) =>
+					currentResources.some((resource) => resource.id === element.id),
+				);
+				if (presentElements.length > 0) {
+					handleEditElements(presentElements);
+					const remaining = elementsToUpdate.filter(
+						(element) =>
+							!currentResources.some((resource) => resource.id === element.id),
+					);
 					const updateElements = { ...list.updateElements };
-					delete updateElements[currentListId];
+					if (remaining.length > 0) {
+						updateElements[currentListId] = remaining;
+					} else {
+						delete updateElements[currentListId];
+					}
 					list.setUpdateElements(updateElements);
 				}
 			}
@@ -215,7 +227,6 @@ export const PaginatedList = ({
 				[selectOption.name]: selectOption.value,
 			});
 		} else {
-			// If filters is present, we want it to be persistent with the sort option
 			setCurrentSort(selectOption.value);
 			setCurrentFilters(filters ? { ...filters } : {});
 		}
