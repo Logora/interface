@@ -191,6 +191,7 @@ export const ContentFooter = ({
 					<Dropdown
 						className={styles.moreActionDropdown}
 						horizontalPosition={"right"}
+						verticalPosition={"top"}
 					>
 						<Icon
 							name="ellipsis"

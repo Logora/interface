@@ -5,6 +5,7 @@ import styles from "./Dropdown.module.scss";
 export const Dropdown = ({
 	onClick,
 	horizontalPosition = "left",
+	verticalPosition = "bottom",
 	disabled = false,
 	closeOnContentClick = false,
 	className,
@@ -53,6 +54,7 @@ export const Dropdown = ({
 							? dropdownClassName
 							: cx(styles.dropdownList, {
 									[styles[horizontalPosition]]: horizontalPosition,
+									[styles[verticalPosition]]: verticalPosition,
 								})
 					}
 					onClick={(e) => { if (closeOnContentClick || e.target === e.currentTarget) setActive(false); }}

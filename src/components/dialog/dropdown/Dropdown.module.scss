@@ -20,7 +20,6 @@
 
 .dropdownList {
 	position: absolute;
-	top: calc(100% + 2px);
 	z-index: 3;
 	background: theme.$background-color-primary;
 	box-shadow: theme.$box-shadow;
@@ -28,6 +27,14 @@
 	border-radius: theme.$box-border-radius;
 	overscroll-behavior-y: contain;
 	width: max-content;
+}
+
+.bottom {
+	top: calc(100% + 2px);
+}
+
+.top {
+	bottom: calc(100% + 2px);
 }
 
 .left {
