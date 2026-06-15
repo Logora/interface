@@ -16,6 +16,7 @@ export const ShareButton = ({
 	iconSize = 22,
 	className,
 	tooltipPosition = "bottom",
+	popoverPosition = "bottom",
 }) => {
 	const popoverContentRef = useRef();
 	const intl = useIntl();
@@ -112,6 +113,7 @@ export const ShareButton = ({
 					ref={popoverContentRef}
 					className={cx(styles.popoverContent, {
 						[styles.popoverContentWithCode]: showShareCode,
+						[styles.popoverTop]: popoverPosition === "top",
 					})}
 				>
 					{popoverActive && (

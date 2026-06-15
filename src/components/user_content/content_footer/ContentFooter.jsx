@@ -178,6 +178,7 @@ export const ContentFooter = ({
 					shareCode={shareCode}
 					showText={!(elementWidth < 768) && showShareText}
 					iconSize={17}
+					popoverPosition={"top"}
 				/>
 			)}
 			{showActions && (

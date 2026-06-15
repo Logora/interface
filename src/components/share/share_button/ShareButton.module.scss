@@ -66,3 +66,22 @@
 .shareButtonText {
   @include spacing.pl(1, xs);
 }
+
+.popoverContent.popoverTop {
+  top: auto;
+  bottom: 35px;
+
+  &:before {
+    top: auto;
+    bottom: -10px;
+    border-width: 10px 10px 0 10px;
+    border-color: theme.$text-secondary transparent transparent transparent;
+  }
+
+  &:after {
+    top: auto;
+    bottom: -9px;
+    border-width: 10px 10px 0 10px;
+    border-color: theme.$background-color-primary transparent transparent transparent;
+  }
+}
