@@ -347,13 +347,14 @@ expect(queryByText("Select an avatar")).not.toBeInTheDocument();
 			const saveButton = getByText("Save");
 			await userEvent.click(saveButton);
 
-			expect(onConsentConfirmed).toHaveBeenCalledWith({
-				first_name: "John",
-				last_name: "Doe",
-				accepts_terms: true,
-				accepts_provider_email: false,
-				is_onboarded: true,
-			});
+			expect(onConsentConfirmed).toHaveBeenCalledTimes(1);
+			const formData = onConsentConfirmed.mock.calls[0][0];
+			expect(formData).toBeInstanceOf(FormData);
+			expect(formData.get("first_name")).toBe("John");
+			expect(formData.get("last_name")).toBe("Doe");
+			expect(formData.get("accepts_terms")).toBe("true");
+			expect(formData.get("accepts_provider_email")).toBe("false");
+			expect(formData.get("is_onboarded")).toBe("true");
 		});
 
 		it("should reject submission when terms not accepted", async () => {
