@@ -12,7 +12,7 @@ import { render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import React from "react";
 import { IntlProvider } from "react-intl";
-import { UpdateUserInfoModal } from "./UpdateUserInfoModal";
+import { OnboardingModal } from "./OnboardingModal";
 
 const httpClient = {
 	get: vi.fn(),
@@ -48,7 +48,7 @@ beforeAll(() => {
 	};
 });
 
-describe("UpdateUserInfoModal", () => {
+describe("OnboardingModal", () => {
 	it("should appear normally", async () => {
 		const { queryByText } = render(
 			<ModalProvider>
@@ -64,7 +64,7 @@ describe("UpdateUserInfoModal", () => {
 								<AuthContext.Provider
 									value={{ currentUser: currentUser, isLoggedIn: true }}
 								>
-									<UpdateUserInfoModal />
+									<OnboardingModal />
 								</AuthContext.Provider>
 							</DataProviderContext.Provider>
 						</IconProvider>
@@ -103,7 +103,7 @@ describe("UpdateUserInfoModal", () => {
 								<AuthContext.Provider
 									value={{ currentUser: currentUser, isLoggedIn: true }}
 								>
-									<UpdateUserInfoModal showEmailConsent showTerms />
+									<OnboardingModal showEmailConsent showTerms />
 								</AuthContext.Provider>
 							</DataProviderContext.Provider>
 						</IconProvider>
@@ -141,7 +141,7 @@ describe("UpdateUserInfoModal", () => {
 								<AuthContext.Provider
 									value={{ currentUser: currentUser, isLoggedIn: true }}
 								>
-									<UpdateUserInfoModal />
+									<OnboardingModal />
 								</AuthContext.Provider>
 							</DataProviderContext.Provider>
 						</IconProvider>
@@ -171,7 +171,7 @@ describe("UpdateUserInfoModal", () => {
 								<AuthContext.Provider
 									value={{ currentUser: currentUser, isLoggedIn: true }}
 								>
-									<UpdateUserInfoModal showEmailConsent showTerms />
+									<OnboardingModal showEmailConsent showTerms />
 								</AuthContext.Provider>
 							</DataProviderContext.Provider>
 						</IconProvider>
@@ -201,7 +201,7 @@ describe("UpdateUserInfoModal", () => {
 								<AuthContext.Provider
 									value={{ currentUser: currentUser, isLoggedIn: true }}
 								>
-									<UpdateUserInfoModal showEmailConsent showTerms />
+									<OnboardingModal showEmailConsent showTerms />
 								</AuthContext.Provider>
 							</DataProviderContext.Provider>
 						</IconProvider>
@@ -241,7 +241,7 @@ describe("UpdateUserInfoModal", () => {
 										isLoggedIn: true,
 									}}
 								>
-									<UpdateUserInfoModal />
+									<OnboardingModal />
 								</AuthContext.Provider>
 							</DataProviderContext.Provider>
 						</IconProvider>
@@ -276,7 +276,7 @@ describe("UpdateUserInfoModal", () => {
 									<AuthContext.Provider
 										value={{ currentUser: {}, isLoggedIn: false }}
 									>
-										<UpdateUserInfoModal
+										<OnboardingModal
 											pendingAuth={true}
 											showTerms={true}
 											showEmailConsent={true}
@@ -319,7 +319,7 @@ expect(queryByText("Select an avatar")).not.toBeInTheDocument();
 									<AuthContext.Provider
 										value={{ currentUser: {}, isLoggedIn: false }}
 									>
-										<UpdateUserInfoModal
+										<OnboardingModal
 											pendingAuth={true}
 											onConsentConfirmed={onConsentConfirmed}
 											showTerms={true}
@@ -372,7 +372,7 @@ expect(queryByText("Select an avatar")).not.toBeInTheDocument();
 									<AuthContext.Provider
 										value={{ currentUser: {}, isLoggedIn: false }}
 									>
-										<UpdateUserInfoModal
+										<OnboardingModal
 											pendingAuth={true}
 											onConsentConfirmed={onConsentConfirmed}
 											showTerms={true}

@@ -13,9 +13,9 @@ import { Loader } from "@logora/debate/progress/loader";
 import { AvatarSelector } from "@logora/debate/user/avatar_selector";
 import React, { useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
-import styles from "./UpdateUserInfoModal.module.scss";
+import styles from "./OnboardingModal.module.scss";
 
-export const UpdateUserInfoModal = ({
+export const OnboardingModal = ({
 	termsUrl,
 	privacyUrl,
 	showEmailConsent = false,
@@ -100,22 +100,14 @@ export const UpdateUserInfoModal = ({
 
 		if (validate(data, validationRules)) {
 			setIsUpdating(true);
+			const formData = new FormData();
+			Object.entries(data).forEach(([key, value]) => {
+				formData.append(key, value);
+			});
 
 			if (pendingAuth && onConsentConfirmed) {
-				const profileData = {
-					first_name: firstName,
-					last_name: lastName,
-					accepts_terms: acceptsTerms,
-					accepts_provider_email: showEmailConsent ? acceptsProviderEmail : false,
-					is_onboarded: true,
-				};
-				onConsentConfirmed(profileData);
+				onConsentConfirmed(formData);
 			} else {
-				const formData = new FormData();
-				Object.entries(data).forEach(([key, value]) => {
-					formData.append(key, value);
-				});
-
 				api.update("users", auth.currentUser.slug, formData).then((response) => {
 					if (response.data.success) {
 						auth.setCurrentUser(response.data.data.resource);

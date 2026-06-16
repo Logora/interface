@@ -3,16 +3,18 @@ import { authTokenHandler, useAuth, useAuthActions } from "@logora/debate/auth/u
 import { useAuthInterceptor } from "@logora/debate/auth/use_auth";
 import { httpClient } from "@logora/debate/data/axios_client";
 import { useConfig } from "@logora/debate/data/config_provider";
-import { UpdateUserInfoModal } from "@logora/debate/user/update_user_info_modal";
+import { useDataProvider } from "@logora/debate/data/data_provider";
+import { OnboardingModal } from "@logora/debate/user/onboarding_modal";
 import { useAuthRequired } from "@logora/debate/hooks/use_auth_required";
 import React, { useState, useEffect } from "react";
 
 export const AuthInitializer = ({ authUrl, authType, provider, assertion }) => {
 	const tokenKey = "logora_user_token";
 	const config = useConfig();
+	const api = useDataProvider();
 	useAuthInterceptor(httpClient, authUrl, tokenKey);
 
-	const [showConsentModal, setShowConsentModal] = useState(false);
+	const [showOnboardingModal, setShowOnboardingModal] = useState(false);
 
 	const { getToken, removeToken } = authTokenHandler(
 		httpClient,
@@ -25,26 +27,17 @@ export const AuthInitializer = ({ authUrl, authType, provider, assertion }) => {
 		tokenKey,
 	);
 	const requireAuthentication = useAuthRequired();
-	const { setIsLoggingIn } = useAuth();
+	const { setIsLoggingIn, currentUser } = useAuth();
 
 	useEffect(() => {
 		checkAuth();
 	}, []);
 
-	const handleAuthRequired = (event) => {
-		const isJWT = authType !== "social" && authType !== "oauth2_server";
-		if (isJWT && config.auth?.showOnboarding === true) {
-			setShowConsentModal(true);
-		} else {
-			requireAuthentication(event);
-		}
-	};
-
 	useEffect(() => {
 		if (typeof window !== "undefined") {
-			window.addEventListener("logora:authentication:require", handleAuthRequired);
+			window.addEventListener("logora:authentication:require", requireAuthentication);
 			return () => {
-				window.removeEventListener("logora:authentication:require", handleAuthRequired);
+				window.removeEventListener("logora:authentication:require", requireAuthentication);
 			};
 		}
 	}, []);
@@ -71,7 +64,7 @@ export const AuthInitializer = ({ authUrl, authType, provider, assertion }) => {
 			if (authParams) {
 				const isJWT = authType !== "social" && authType !== "oauth2_server";
 				if (isJWT && config.auth?.showOnboarding === true) {
-					setIsLoggingIn(false);
+					setShowOnboardingModal(true);
 					return;
 				}
 				loginUser(authParams);
@@ -81,11 +74,13 @@ export const AuthInitializer = ({ authUrl, authType, provider, assertion }) => {
 		}
 	};
 
-	const handleConsentConfirmed = (profileData) => {
+	const handleConsentConfirmed = async (formData) => {
 		const authProvider = getAuthProvider();
 		const authParams = authProvider.getAuthorizationParams();
-		loginUser({ ...authParams, ...profileData });
-		setShowConsentModal(false);
+		await loginUser(authParams);
+		await api.update("users", currentUser.slug, formData);
+
+		setShowOnboardingModal(false);
 	};
 
 	const getAuthProvider = () => {
@@ -94,8 +89,8 @@ export const AuthInitializer = ({ authUrl, authType, provider, assertion }) => {
 
 	return (
 		<>
-			{showConsentModal && (
-				<UpdateUserInfoModal
+			{showOnboardingModal && (
+				<OnboardingModal
 					pendingAuth={true}
 					onConsentConfirmed={handleConsentConfirmed}
 					showTerms={config.auth?.hideCgu !== true}

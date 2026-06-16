@@ -1,6 +1,6 @@
 export default {
-	title: "User/Update User Info Modal",
-	component: UpdateUserInfoModal,
+	title: "User/Onboarding Modal",
+	component: OnboardingModal,
 	args: {},
 	argTypes: {},
 };
@@ -15,7 +15,7 @@ import {
 import { ModalProvider } from "@logora/debate/dialog/modal";
 import React from "react";
 import { IntlProvider } from "react-intl";
-import { UpdateUserInfoModal } from "./UpdateUserInfoModal";
+import { OnboardingModal } from "./OnboardingModal";
 
 const httpClient = {
 	get: () => null,
@@ -49,7 +49,7 @@ const currentUser = {
 
 const data = dataProvider(httpClient, "https://mock.example.api");
 
-export const DefaultUpdateUserInfoModal = () => {
+export const DefaultOnboardingModal = () => {
 	return (
 		<div style={{ width: "850px", height: "300px" }}>
 			<ModalProvider>
@@ -59,7 +59,7 @@ export const DefaultUpdateUserInfoModal = () => {
 					<IntlProvider locale="en">
 						<DataProviderContext.Provider value={{ dataProvider: data }}>
 							<AuthProvider>
-								<UpdateUserInfoModal />
+								<OnboardingModal />
 							</AuthProvider>
 						</DataProviderContext.Provider>
 					</IntlProvider>
@@ -69,7 +69,7 @@ export const DefaultUpdateUserInfoModal = () => {
 	);
 };
 
-export const UpdateUserInfoModalWithTermsAndConsent = () => {
+export const OnboardingModalWithTermsAndConsent = () => {
 	return (
 		<div style={{ width: "850px", height: "300px" }}>
 			<ModalProvider>
@@ -79,7 +79,7 @@ export const UpdateUserInfoModalWithTermsAndConsent = () => {
 					<IntlProvider locale="en">
 						<DataProviderContext.Provider value={{ dataProvider: data }}>
 							<AuthProvider>
-								<UpdateUserInfoModal showEmailConsent={true} showTerms={true} />
+								<OnboardingModal showEmailConsent={true} showTerms={true} />
 							</AuthProvider>
 						</DataProviderContext.Provider>
 					</IntlProvider>
@@ -89,7 +89,7 @@ export const UpdateUserInfoModalWithTermsAndConsent = () => {
 	);
 };
 
-export const UpdateUserInfoModalWithInfos = () => {
+export const OnboardingModalWithInfos = () => {
 	return (
 		<div style={{ width: "850px", height: "300px" }}>
 			<ModalProvider>
@@ -101,7 +101,7 @@ export const UpdateUserInfoModalWithInfos = () => {
 							<AuthContext.Provider
 								value={{ currentUser: currentUser, isLoggedIn: true }}
 							>
-								<UpdateUserInfoModal />
+								<OnboardingModal />
 							</AuthContext.Provider>
 						</DataProviderContext.Provider>
 					</IntlProvider>
@@ -111,7 +111,7 @@ export const UpdateUserInfoModalWithInfos = () => {
 	);
 };
 
-export const PendingAuthUpdateUserInfoModal = () => {
+export const PendingAuthOnboardingModal = () => {
 	return (
 		<div style={{ width: "850px", height: "300px" }}>
 			<ModalProvider>
@@ -123,7 +123,7 @@ export const PendingAuthUpdateUserInfoModal = () => {
 							<AuthContext.Provider
 								value={{ currentUser: {}, isLoggedIn: false }}
 							>
-								<UpdateUserInfoModal
+								<OnboardingModal
 									pendingAuth={true}
 									showTerms={true}
 									showEmailConsent={true}

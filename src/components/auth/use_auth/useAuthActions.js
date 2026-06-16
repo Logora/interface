@@ -20,13 +20,13 @@ export const useAuthActions = (httpClient, authUrl, tokenKey) => {
 			setIsLoggingIn(false);
 			return;
 		}
-		fetchToken(authParams)
-			.then((response) => {
-				fetchUser();
-			})
-			.catch((error) => {
-				setAuthError(error);
-			});
+    return fetchToken(authParams)
+        .then((response) => {
+            return fetchUser();
+        })
+        .catch((error) => {
+            setAuthError(error);
+        });
 	};
 
 	const logoutUser = () => {
@@ -39,7 +39,7 @@ export const useAuthActions = (httpClient, authUrl, tokenKey) => {
 	};
 
 	const fetchUser = () => {
-		api
+		return api
 			.getOneWithToken("me", "")
 			.then((response) => {
 				if (response.data.success) {

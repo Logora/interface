@@ -111,7 +111,7 @@ export * from "./components/translation/translation_button";
 export * from "./components/user/author_box";
 export * from "./components/user/avatar";
 export * from "./components/user/avatar_selector";
-export * from "./components/user/update_user_info_modal";
+export * from "./components/user/onboarding_modal";
 export * from "./components/user/user_box";
 export * from "./components/user/user_box_small";
 export * from "./components/user_content/content_footer";
