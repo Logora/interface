@@ -63,7 +63,7 @@ export const AuthInitializer = ({ authUrl, authType, provider, assertion }) => {
 			const authParams = authProvider.getAuthorizationParams();
 			if (authParams) {
 				const isJWT = authType !== "social" && authType !== "oauth2_server";
-				if (isJWT && config.auth?.showOnboarding === true) {
+				if (isJWT && config.auth?.showOnboardingBeforeLogin === true) {
 					setShowOnboardingModal(true);
 					return;
 				}
