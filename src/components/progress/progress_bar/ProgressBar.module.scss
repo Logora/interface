@@ -33,7 +33,7 @@
 .progressBarContainer { 
     position: relative;
     background: theme.$background-color-secondary;
-    border-radius: theme.$box-border-radius !important;
+    border-radius: theme.$button-border-radius !important;
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -61,7 +61,7 @@
     text-align: center;
     white-space: nowrap;
     background-color: theme.$call-primary;
-    border-radius: theme.$box-border-radius !important;
+    border-radius: theme.$button-border-radius !important;
     height: 100%;
     color: theme.$text-light;
     animation: progressBarAnimation 1.2s ease;
