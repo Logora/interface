@@ -37,9 +37,7 @@
     min-height: 25px;
     resize: none;
     font-size: theme.$font-size-normal;
-    position: relative !important;
-    top: auto !important;
-    left: auto !important;
+    position: relative;
     tab-size: 1;
     outline: 0;
     @include spacing.py(3, xs);
@@ -49,6 +47,7 @@
         width: 100%;
     }
 }
+
 
 .editorTextBold {
     font-weight: theme.$font-weight-bold;
