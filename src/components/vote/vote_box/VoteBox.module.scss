@@ -260,13 +260,14 @@ a.voteButton {
 
 .progress {
     border-radius: theme.$button-border-radius;
-    height: 25px;
     color: theme.$text-secondary;
+    box-sizing: border-box;
+    padding: spacing.$spacer-sm 0;
+    border: 1px solid transparent;
 }
 
 .progressBar {
     border-radius: theme.$button-border-radius;
-    height: 25px;
 }
 
 .voteResults>div:first-child .progress .progressBar {
