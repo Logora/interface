@@ -262,8 +262,7 @@ a.voteButton {
     border-radius: theme.$button-border-radius;
     color: theme.$text-secondary;
     box-sizing: border-box;
-    padding: spacing.$spacer-sm 0;
-    border: 1px solid transparent;
+    height: calc(#{spacing.$spacer-sm} * 2 + 1.2em + 2px);
 }
 
 .progressBar {
