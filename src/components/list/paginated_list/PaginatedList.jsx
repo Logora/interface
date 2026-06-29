@@ -339,7 +339,7 @@ export const PaginatedList = ({
 				<li
 					className={styles.paginatedListItem}
 					data-testid={"list-item"}
-					key={`${resource[uniqueIdKey || "id"]}_${resource.updated_at || ""}_${resource.rich_content || resource.content || ""}`}
+					key={`${resource[uniqueIdKey || "id"]}_${resource.updated_at || resource.content}`}
 					onClick={onElementClick}
 				>
 					<StandardErrorBoundary hideMessage={true}>
