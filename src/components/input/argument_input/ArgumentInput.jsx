@@ -364,7 +364,10 @@ export const ArgumentInput = ({
 					const argument = response.data.data.resource;
 					let listId = argumentListId;
 					if (editElement?.is_reply || isReply) {
-						const replyListId = editElement?.message_id || parentId;
+						const replyListId =
+							editElement?.message_id ||
+							editElement?.reply_to_id ||
+							parentId;
 						if (replyListId) {
 							listId = `argument_${replyListId}_reply_list`;
 						}
