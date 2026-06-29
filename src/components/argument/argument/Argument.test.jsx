@@ -16,7 +16,7 @@ import { ResponsiveProvider } from "@logora/debate/hooks/use_responsive";
 import { IconProvider } from "@logora/debate/icons/icon_provider";
 import * as regularIcons from "@logora/debate/icons/regular_icons";
 import { InputProvider, useInput } from "@logora/debate/input/input_provider";
-import { ListProvider } from "@logora/debate/list/list_provider";
+import { ListProvider, useList } from "@logora/debate/list/list_provider";
 import { Location } from "@logora/debate/util/location";
 import { VoteProvider } from "@logora/debate/vote/vote_provider";
 import { render } from "@testing-library/react";
@@ -375,5 +375,51 @@ describe("Argument", () => {
 		});
 		expect(replyButton).toBeInTheDocument();
 		expect(queryByText("Reply") || queryByText("Your answer")).toBeTruthy();
+	});
+
+	it("should update a pre-loaded reply when list.update is dispatched", async () => {
+		const originalContent = "Original reply content";
+		const updatedContent = "Edited reply content";
+		const preloadedReply = createArgument({
+			id: 999,
+			is_reply: true,
+			content: originalContent,
+			reply_to_id: argument.id,
+			message_id: argument.id,
+			position: { id: 2, name: "No", language: "en" },
+		});
+
+		let listApi;
+		const ListGrabber = () => {
+			listApi = useList();
+			return null;
+		};
+
+		const { getByText, queryByText } = render(
+			<Providers>
+				<ListGrabber />
+				<Argument
+					argument={argument}
+					positions={positions}
+					groupName={groupName}
+					argumentReplies={[preloadedReply]}
+					nestingLevel={0}
+				/>
+			</Providers>,
+		);
+
+		// The pre-loaded reply is visible with its original content
+		expect(getByText(originalContent)).toBeInTheDocument();
+
+		// Simulate an edition: ArgumentInput dispatches list.update on the reply list
+		await act(async () => {
+			listApi.update(`argument_${argument.id}_reply_list`, [
+				{ ...preloadedReply, content: updatedContent, is_edited: true },
+			]);
+		});
+
+		// The updated content is now visible without a page refresh
+		expect(getByText(updatedContent)).toBeInTheDocument();
+		expect(queryByText(originalContent)).not.toBeInTheDocument();
 	});
 });

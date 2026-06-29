@@ -81,6 +81,29 @@ export const Argument = ({
 		}
 	}, [argumentReplies]);
 
+	
+	useEffect(() => {
+		const replyListId = `argument_${argument.id}_reply_list`;
+		const updatedReplies = list.updateElements?.[replyListId];
+		if (updatedReplies?.length > 0) {
+			setExtraReplies((prev) => {
+				if (!prev || prev.length === 0) {
+					return prev;
+				}
+				let hasChanged = false;
+				const next = prev.map((reply) => {
+					const updated = updatedReplies.find((r) => r.id === reply.id);
+					if (updated) {
+						hasChanged = true;
+						return { ...reply, ...updated };
+					}
+					return reply;
+				});
+				return hasChanged ? next : prev;
+			});
+		}
+	}, [list.updateElements, argument.id]);
+
 	const scrollToArgument = (argumentId) => {
 		const currentArgumentId = componentId;
 		if (currentArgumentId === argumentId) {

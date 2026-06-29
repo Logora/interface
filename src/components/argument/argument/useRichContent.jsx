@@ -10,9 +10,13 @@ export const useRichContent = (argument) => {
 			if (rawContent.hasOwnProperty("root")) {
 				const html = lexicalToHtml(rawContent);
 				setRichContent(html);
+			} else {
+				setRichContent(null);
 			}
+		} else {
+			setRichContent(null);
 		}
-	}, [argument.rich_content]);
+	}, [argument.rich_content, argument.is_deleted]);
 
 	return richContent;
 };
