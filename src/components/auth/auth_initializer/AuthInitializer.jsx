@@ -36,8 +36,10 @@ export const AuthInitializer = ({ authUrl, authType, provider, assertion }) => {
 	useEffect(() => {
 		if (typeof window !== "undefined") {
 			window.addEventListener("logora:authentication:require", requireAuthentication);
+			window.addEventListener("logora:authentication:refresh", checkAuth);
 			return () => {
 				window.removeEventListener("logora:authentication:require", requireAuthentication);
+				window.removeEventListener("logora:authentication:refresh", checkAuth);
 			};
 		}
 	}, []);
