@@ -30,6 +30,14 @@
     @include spacing.p(0, xs);
     cursor: pointer;
     vertical-align: middle;
+    touch-action: manipulation;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include display.media-breakpoint-down(xs) {
+        min-width: 44px;
+        min-height: 44px;
+    }
     &.disabled {
         cursor: not-allowed;
     }
