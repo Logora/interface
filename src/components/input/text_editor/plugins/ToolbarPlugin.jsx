@@ -184,7 +184,6 @@ export const ToolbarPlugin = (props) => {
 						})}
 					>
 						<button
-							onTouchStart={preventSelectionLoss}
 							onMouseDown={preventSelectionLoss}
 							onClick={() => formatText("bold")}
 							type="button"
@@ -204,7 +203,6 @@ export const ToolbarPlugin = (props) => {
 						</button>
 
 						<button
-							onTouchStart={preventSelectionLoss}
 							onMouseDown={preventSelectionLoss}
 							onClick={() => formatText("italic")}
 							type="button"
@@ -225,7 +223,6 @@ export const ToolbarPlugin = (props) => {
 						</button>
 
 						<button
-							onTouchStart={preventSelectionLoss}
 							onMouseDown={preventSelectionLoss}
 							onClick={() => formatText("underline")}
 							type="button"
@@ -246,7 +243,6 @@ export const ToolbarPlugin = (props) => {
 						</button>
 
 						<button
-							onTouchStart={preventSelectionLoss}
 							onMouseDown={preventSelectionLoss}
 							onClick={() => formatQuote()}
 							type="button"
@@ -267,7 +263,6 @@ export const ToolbarPlugin = (props) => {
 						</button>
 
 						<button
-							onTouchStart={preventSelectionLoss}
 							onMouseDown={preventSelectionLoss}
 							onClick={() => formatNumberedList()}
 							type="button"
@@ -289,7 +284,6 @@ export const ToolbarPlugin = (props) => {
 
 						{!props.hideSourceAction && (
 							<button
-								onTouchStart={preventSelectionLoss}
 								onMouseDown={preventSelectionLoss}
 								onClick={props.onAddSource}
 								type="button"
