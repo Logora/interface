@@ -88,6 +88,12 @@ export const ToolbarPlugin = (props) => {
 		);
 	}, [editor, updateToolbar]);
 
+	const preventSelectionLoss = (event) => {
+		if (event.pointerType !== 'touch' && event.pointerType !== 'pen') {
+			event.preventDefault();
+		}
+	};
+
 	const refreshToolbar = () => {
 		setTimeout(() => {
 			editor.getEditorState().read(() => {
@@ -98,7 +104,6 @@ export const ToolbarPlugin = (props) => {
 
 	const formatText = (format) => {
 		editor.dispatchCommand(FORMAT_TEXT_COMMAND, format);
-		editor.focus();
 	};
 
 	const formatParagraph = () => {
@@ -118,7 +123,6 @@ export const ToolbarPlugin = (props) => {
 			editor.dispatchCommand(REMOVE_LIST_COMMAND);
 		}
 
-		editor.focus();
 		refreshToolbar();
 	};
 
@@ -152,7 +156,6 @@ export const ToolbarPlugin = (props) => {
 			});
 		}
 
-		editor.focus();
 		refreshToolbar();
 	};
 
@@ -171,6 +174,7 @@ export const ToolbarPlugin = (props) => {
 						})}
 					>
 						<button
+							onPointerDown={preventSelectionLoss}
 							onClick={() => formatText("bold")}
 							type="button"
 							className={cx(styles.toolbarItem, { [styles.active]: isBold })}
@@ -189,6 +193,7 @@ export const ToolbarPlugin = (props) => {
 						</button>
 
 						<button
+							onPointerDown={preventSelectionLoss}
 							onClick={() => formatText("italic")}
 							type="button"
 							className={cx(styles.toolbarItem, {
@@ -208,6 +213,7 @@ export const ToolbarPlugin = (props) => {
 						</button>
 
 						<button
+							onPointerDown={preventSelectionLoss}
 							onClick={() => formatText("underline")}
 							type="button"
 							className={cx(styles.toolbarItem, {
@@ -227,6 +233,7 @@ export const ToolbarPlugin = (props) => {
 						</button>
 
 						<button
+							onPointerDown={preventSelectionLoss}
 							onClick={() => formatQuote()}
 							type="button"
 							className={cx(styles.toolbarItem, {
@@ -246,6 +253,7 @@ export const ToolbarPlugin = (props) => {
 						</button>
 
 						<button
+							onPointerDown={preventSelectionLoss}
 							onClick={() => formatNumberedList()}
 							type="button"
 							className={cx(styles.toolbarItem, {
@@ -266,6 +274,7 @@ export const ToolbarPlugin = (props) => {
 
 						{!props.hideSourceAction && (
 							<button
+								onPointerDown={preventSelectionLoss}
 								onClick={props.onAddSource}
 								type="button"
 								className={styles.toolbarItem}
