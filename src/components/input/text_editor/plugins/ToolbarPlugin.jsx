@@ -1,7 +1,8 @@
 import {
 	$isListNode,
+	$isListItemNode,
+	$createListNode,
 	INSERT_ORDERED_LIST_COMMAND,
-	REMOVE_LIST_COMMAND,
 	ListNode,
 } from "@lexical/list";
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
@@ -116,11 +117,74 @@ export const ToolbarPlugin = (props) => {
 		});
 	};
 
+	const removeSelectedListItems = () => {
+		editor.update(() => {
+			const selection = $getSelection();
+
+			if (!$isRangeSelection(selection)) {
+				return;
+			}
+
+			const selectedNodes = selection.getNodes();
+			const listItems = new Set();
+
+			for (const node of selectedNodes) {
+				let current = node;
+
+				while (current !== null && !$isListItemNode(current)) {
+					current = current.getParent();
+				}
+
+				if ($isListItemNode(current)) {
+					listItems.add(current);
+				}
+			}
+
+			const orderedListItems = Array.from(listItems).reverse();
+
+			for (const listItem of orderedListItems) {
+				const list = listItem.getParent();
+
+				if (!$isListNode(list)) {
+					continue;
+				}
+
+				const paragraph = $createParagraphNode();
+				const children = listItem.getChildren();
+
+				for (const child of children) {
+					paragraph.append(child);
+				}
+
+				const nextSiblings = listItem.getNextSiblings();
+
+				list.insertAfter(paragraph);
+
+				if (nextSiblings.length > 0) {
+					const startValue = nextSiblings[0].getValue();
+					const newList = $createListNode(list.getListType(), startValue);
+
+					for (const sibling of nextSiblings) {
+						newList.append(sibling);
+					}
+
+					paragraph.insertAfter(newList);
+				}
+
+				listItem.remove();
+
+				if (list.getChildrenSize() === 0) {
+					list.remove();
+				}
+			}
+		});
+	};
+
 	const formatNumberedList = () => {
 		if (blockType !== "ol") {
 			editor.dispatchCommand(INSERT_ORDERED_LIST_COMMAND);
 		} else {
-			editor.dispatchCommand(REMOVE_LIST_COMMAND);
+			removeSelectedListItems();
 		}
 
 		refreshToolbar();
