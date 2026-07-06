@@ -102,7 +102,12 @@ export const ToolbarPlugin = (props) => {
 	};
 
 	const formatText = (format) => {
-		editor.dispatchCommand(FORMAT_TEXT_COMMAND, format);
+		editor.update(() => {
+			const selection = $getSelection();
+			if ($isRangeSelection(selection)) {
+				selection.formatText(format);
+			}
+		});
 
 		if (format === "bold") {
 			setIsBold((currentValue) => !currentValue);
@@ -115,8 +120,6 @@ export const ToolbarPlugin = (props) => {
 		if (format === "underline") {
 			setIsUnderline((currentValue) => !currentValue);
 		}
-
-		refreshToolbar();
 	};
 
 	const formatParagraph = () => {
@@ -137,6 +140,20 @@ export const ToolbarPlugin = (props) => {
 				return;
 			}
 
+	
+			let anchorListItem = selection.anchor.getNode();
+
+			while (
+				anchorListItem !== null &&
+				!$isListItemNode(anchorListItem)
+			) {
+				anchorListItem = anchorListItem.getParent();
+			}
+
+			const anchorListItemKey = $isListItemNode(anchorListItem)
+				? anchorListItem.getKey()
+				: null;
+
 			const selectedNodes = selection.getNodes();
 			const listItems = new Set();
 
@@ -153,6 +170,9 @@ export const ToolbarPlugin = (props) => {
 			}
 
 			const orderedListItems = Array.from(listItems).reverse();
+
+		
+			let paragraphToSelect = null;
 
 			for (const listItem of orderedListItems) {
 				const list = listItem.getParent();
@@ -183,11 +203,19 @@ export const ToolbarPlugin = (props) => {
 					paragraph.insertAfter(newList);
 				}
 
+				if (listItem.getKey() === anchorListItemKey) {
+					paragraphToSelect = paragraph;
+				}
+
 				listItem.remove();
 
 				if (list.getChildrenSize() === 0) {
 					list.remove();
 				}
+			}
+
+			if (paragraphToSelect !== null) {
+				paragraphToSelect.selectEnd();
 			}
 		});
 	};
