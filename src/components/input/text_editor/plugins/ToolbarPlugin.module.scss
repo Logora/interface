@@ -11,6 +11,7 @@
     vertical-align: middle;
     align-items: flex-start;
     gap: spacing.$spacer;
+
     &.toolbarIsActive {
         border-top: 1px solid theme.$text-tertiary;
     }
@@ -19,6 +20,7 @@
 .iconToolbar {
     display: flex !important;
     gap: spacing.$spacer-lg;
+
     &.shortBar {
         gap: spacing.$spacer-md;
     }
@@ -34,17 +36,21 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
     @include display.media-breakpoint-down(xs) {
         min-width: 44px;
         min-height: 44px;
     }
+
     &.disabled {
         cursor: not-allowed;
     }
+
     &.active {
         background-color: rgba(186, 186, 186, 0.4);
         border-radius: 50%;
     }
+
     .format {
         background-size: contain;
         display: inline-block;
@@ -66,13 +72,16 @@
     justify-content: center !important;
     align-items: center !important;
     background-color: theme.$call-primary !important;
+
     &.submitAction svg {
         fill: theme.$text-light !important;
     }
+
     .inputSourceText {
         display: none !important;
         @include spacing.ml(2, xs);
         font-size: theme.$font-size-small;
+
         @include display.media-breakpoint-up(sm) {
             display: block !important;
         }
