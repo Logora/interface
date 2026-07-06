@@ -89,22 +89,10 @@ export const ToolbarPlugin = (props) => {
 		);
 	}, [editor, updateToolbar]);
 
-	useEffect(() => {
-		const toolbar = toolbarRef.current;
-		if (!toolbar) return;
-
-		const handler = (event) => {
-			if (event.target.tagName === "BUTTON" || event.target.closest("button")) {
-				event.preventDefault();
-			}
-		};
-
-		toolbar.addEventListener("touchstart", handler, { passive: false });
-		return () => toolbar.removeEventListener("touchstart", handler);
-	}, []);
-
 	const preventSelectionLoss = (event) => {
-		event.preventDefault();
+		if (event.pointerType !== 'touch' && event.pointerType !== 'pen') {
+			event.preventDefault();
+		}
 	};
 
 	const refreshToolbar = () => {
@@ -117,18 +105,6 @@ export const ToolbarPlugin = (props) => {
 
 	const formatText = (format) => {
 		editor.dispatchCommand(FORMAT_TEXT_COMMAND, format);
-
-		if (format === "bold") {
-			setIsBold((currentValue) => !currentValue);
-		}
-
-		if (format === "italic") {
-			setIsItalic((currentValue) => !currentValue);
-		}
-
-		if (format === "underline") {
-			setIsUnderline((currentValue) => !currentValue);
-		}
 	};
 
 	const formatParagraph = () => {
@@ -149,20 +125,6 @@ export const ToolbarPlugin = (props) => {
 				return;
 			}
 
-	
-			let anchorListItem = selection.anchor.getNode();
-
-			while (
-				anchorListItem !== null &&
-				!$isListItemNode(anchorListItem)
-			) {
-				anchorListItem = anchorListItem.getParent();
-			}
-
-			const anchorListItemKey = $isListItemNode(anchorListItem)
-				? anchorListItem.getKey()
-				: null;
-
 			const selectedNodes = selection.getNodes();
 			const listItems = new Set();
 
@@ -179,9 +141,6 @@ export const ToolbarPlugin = (props) => {
 			}
 
 			const orderedListItems = Array.from(listItems).reverse();
-
-		
-			let paragraphToSelect = null;
 
 			for (const listItem of orderedListItems) {
 				const list = listItem.getParent();
@@ -212,19 +171,11 @@ export const ToolbarPlugin = (props) => {
 					paragraph.insertAfter(newList);
 				}
 
-				if (listItem.getKey() === anchorListItemKey) {
-					paragraphToSelect = paragraph;
-				}
-
 				listItem.remove();
 
 				if (list.getChildrenSize() === 0) {
 					list.remove();
 				}
-			}
-
-			if (paragraphToSelect !== null) {
-				paragraphToSelect.selectEnd();
 			}
 		});
 	};
@@ -287,7 +238,7 @@ export const ToolbarPlugin = (props) => {
 						})}
 					>
 						<button
-							onMouseDown={preventSelectionLoss}
+							onPointerDown={preventSelectionLoss}
 							onClick={() => formatText("bold")}
 							type="button"
 							className={cx(styles.toolbarItem, { [styles.active]: isBold })}
@@ -306,7 +257,7 @@ export const ToolbarPlugin = (props) => {
 						</button>
 
 						<button
-							onMouseDown={preventSelectionLoss}
+							onPointerDown={preventSelectionLoss}
 							onClick={() => formatText("italic")}
 							type="button"
 							className={cx(styles.toolbarItem, {
@@ -326,7 +277,7 @@ export const ToolbarPlugin = (props) => {
 						</button>
 
 						<button
-							onMouseDown={preventSelectionLoss}
+							onPointerDown={preventSelectionLoss}
 							onClick={() => formatText("underline")}
 							type="button"
 							className={cx(styles.toolbarItem, {
@@ -346,7 +297,7 @@ export const ToolbarPlugin = (props) => {
 						</button>
 
 						<button
-							onMouseDown={preventSelectionLoss}
+							onPointerDown={preventSelectionLoss}
 							onClick={() => formatQuote()}
 							type="button"
 							className={cx(styles.toolbarItem, {
@@ -366,7 +317,7 @@ export const ToolbarPlugin = (props) => {
 						</button>
 
 						<button
-							onMouseDown={preventSelectionLoss}
+							onPointerDown={preventSelectionLoss}
 							onClick={() => formatNumberedList()}
 							type="button"
 							className={cx(styles.toolbarItem, {
@@ -387,7 +338,7 @@ export const ToolbarPlugin = (props) => {
 
 						{!props.hideSourceAction && (
 							<button
-								onMouseDown={preventSelectionLoss}
+								onPointerDown={preventSelectionLoss}
 								onClick={props.onAddSource}
 								type="button"
 								className={styles.toolbarItem}
