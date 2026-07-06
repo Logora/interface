@@ -105,6 +105,7 @@ export const ToolbarPlugin = (props) => {
 
 	const formatText = (format) => {
 		editor.dispatchCommand(FORMAT_TEXT_COMMAND, format);
+		editor.focus();
 	};
 
 	const formatParagraph = () => {

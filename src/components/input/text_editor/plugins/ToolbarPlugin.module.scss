@@ -34,7 +34,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    @include display.media-breakpoint-down(xs) {
+    @media (max-width: 576px) {
         min-width: 44px;
         min-height: 44px;
     }
