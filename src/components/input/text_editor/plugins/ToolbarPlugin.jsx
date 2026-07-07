@@ -33,6 +33,8 @@ export const ToolbarPlugin = (props) => {
 	const [isBold, setIsBold] = useState(false);
 	const [isItalic, setIsItalic] = useState(false);
 	const [isUnderline, setIsUnderline] = useState(false);
+	const handledPointerDownActionRef = useRef(false);
+	const handledPointerDownTimeoutRef = useRef(null);
 	const isDisabled =
 		props.hideSubmit && props.hideSourceAction && props.disableRichText;
 
@@ -89,10 +91,48 @@ export const ToolbarPlugin = (props) => {
 		);
 	}, [editor, updateToolbar]);
 
-	const preventSelectionLoss = (event) => {
-		if (event.pointerType !== 'touch' && event.pointerType !== 'pen') {
-			event.preventDefault();
+	useEffect(() => {
+		return () => {
+			if (handledPointerDownTimeoutRef.current) {
+				clearTimeout(handledPointerDownTimeoutRef.current);
+			}
+		};
+	}, []);
+
+	const clearHandledPointerDownAction = () => {
+		handledPointerDownActionRef.current = false;
+
+		if (handledPointerDownTimeoutRef.current) {
+			clearTimeout(handledPointerDownTimeoutRef.current);
+			handledPointerDownTimeoutRef.current = null;
 		}
+	};
+
+	const handleToolbarPointerDown = (event, action) => {
+		event.preventDefault();
+
+		if (event.pointerType === "touch" || event.pointerType === "pen") {
+			handledPointerDownActionRef.current = true;
+			action?.();
+
+			if (handledPointerDownTimeoutRef.current) {
+				clearTimeout(handledPointerDownTimeoutRef.current);
+			}
+
+			handledPointerDownTimeoutRef.current = setTimeout(() => {
+				handledPointerDownActionRef.current = false;
+				handledPointerDownTimeoutRef.current = null;
+			}, 500);
+		}
+	};
+
+	const handleToolbarClick = (action) => {
+		if (handledPointerDownActionRef.current) {
+			clearHandledPointerDownAction();
+			return;
+		}
+
+		action?.();
 	};
 
 	const refreshToolbar = () => {
@@ -105,6 +145,7 @@ export const ToolbarPlugin = (props) => {
 
 	const formatText = (format) => {
 		editor.dispatchCommand(FORMAT_TEXT_COMMAND, format);
+		refreshToolbar();
 	};
 
 	const formatParagraph = () => {
@@ -238,8 +279,10 @@ export const ToolbarPlugin = (props) => {
 						})}
 					>
 						<button
-							onPointerDown={preventSelectionLoss}
-							onClick={() => formatText("bold")}
+							onPointerDown={(event) =>
+								handleToolbarPointerDown(event, () => formatText("bold"))
+							}
+							onClick={() => handleToolbarClick(() => formatText("bold"))}
 							type="button"
 							className={cx(styles.toolbarItem, { [styles.active]: isBold })}
 							data-testid="format-bold"
@@ -257,8 +300,10 @@ export const ToolbarPlugin = (props) => {
 						</button>
 
 						<button
-							onPointerDown={preventSelectionLoss}
-							onClick={() => formatText("italic")}
+							onPointerDown={(event) =>
+								handleToolbarPointerDown(event, () => formatText("italic"))
+							}
+							onClick={() => handleToolbarClick(() => formatText("italic"))}
 							type="button"
 							className={cx(styles.toolbarItem, {
 								[styles.active]: isItalic,
@@ -277,8 +322,10 @@ export const ToolbarPlugin = (props) => {
 						</button>
 
 						<button
-							onPointerDown={preventSelectionLoss}
-							onClick={() => formatText("underline")}
+							onPointerDown={(event) =>
+								handleToolbarPointerDown(event, () => formatText("underline"))
+							}
+							onClick={() => handleToolbarClick(() => formatText("underline"))}
 							type="button"
 							className={cx(styles.toolbarItem, {
 								[styles.active]: isUnderline,
@@ -297,8 +344,10 @@ export const ToolbarPlugin = (props) => {
 						</button>
 
 						<button
-							onPointerDown={preventSelectionLoss}
-							onClick={() => formatQuote()}
+							onPointerDown={(event) =>
+								handleToolbarPointerDown(event, formatQuote)
+							}
+							onClick={() => handleToolbarClick(formatQuote)}
 							type="button"
 							className={cx(styles.toolbarItem, {
 								[styles.active]: blockType === "quote",
@@ -317,8 +366,10 @@ export const ToolbarPlugin = (props) => {
 						</button>
 
 						<button
-							onPointerDown={preventSelectionLoss}
-							onClick={() => formatNumberedList()}
+							onPointerDown={(event) =>
+								handleToolbarPointerDown(event, formatNumberedList)
+							}
+							onClick={() => handleToolbarClick(formatNumberedList)}
 							type="button"
 							className={cx(styles.toolbarItem, {
 								[styles.active]: blockType === "ol",
@@ -338,8 +389,10 @@ export const ToolbarPlugin = (props) => {
 
 						{!props.hideSourceAction && (
 							<button
-								onPointerDown={preventSelectionLoss}
-								onClick={props.onAddSource}
+								onPointerDown={(event) =>
+									handleToolbarPointerDown(event, props.onAddSource)
+								}
+								onClick={() => handleToolbarClick(props.onAddSource)}
 								type="button"
 								className={styles.toolbarItem}
 								aria-label={intl.formatMessage({
