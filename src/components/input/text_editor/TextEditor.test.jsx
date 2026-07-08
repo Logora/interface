@@ -131,51 +131,6 @@ describe("TextEditor", () => {
 		expect(document.activeElement.tagName).toBe("DIV");
 	});
 
-	it("should keep touch toolbar format selected after synthetic click", async () => {
-		render(
-			<IntlProvider locale="en">
-				<InputProvider>
-					<IconProvider library={regularIcons}>
-						<ModalProvider>
-							<TextEditor
-								handleChange={() => null}
-								onSubmit={() => null}
-								onActivation={() => null}
-								shortBar={true}
-								uid={"34"}
-								placeholder={"Add an argument"}
-							/>
-						</ModalProvider>
-					</IconProvider>
-				</InputProvider>
-			</IntlProvider>,
-		);
-
-		const input = screen.getByRole("textbox");
-
-		await act(async () => {
-			await userEvent.click(input);
-		});
-
-		const bold = screen.getByTestId("format-bold");
-
-		await act(async () => {
-			fireEvent.pointerDown(bold, { pointerType: "touch" });
-		});
-
-		await waitFor(() => {
-			expect(bold.className).toContain("active");
-		});
-
-		await act(async () => {
-			fireEvent.click(bold);
-		});
-
-		await waitFor(() => {
-			expect(bold.className).toContain("active");
-		});
-	});
-
 	it("should render with source", () => {
 		const editor = render(<TextEditorWithSource />);
 		expect(screen.getByText(/test.com – Source Test/)).toBeTruthy();
