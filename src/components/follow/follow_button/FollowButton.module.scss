@@ -8,10 +8,12 @@ button.followUserButton {
   gap: spacing.$spacer-sm;
   padding: spacing.$spacer-sm;
   font-weight: theme.$font-weight-bold;
+  font-variation-settings: theme.$font-variation-bold;
 }
 
 button.followUserButtonNoBorder {
   font-weight: theme.$font-weight-normal;
+  font-variation-settings: theme.$font-variation-normal;
   color: theme.$text-primary !important;
   padding: 0 !important;
 }

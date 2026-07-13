@@ -36,6 +36,7 @@
 .mainText {
   font-size: theme.$font-size-normal;
   font-weight: theme.$font-weight-normal;
+  font-variation-settings: theme.$font-variation-normal;
   color: theme.$text-primary;
   text-align: center;
   @include spacing.mx(2, xs);
@@ -48,6 +49,7 @@
 
 .title {
   font-weight: theme.$font-weight-bold;
+  font-variation-settings: theme.$font-variation-bold;
   @include spacing.mb(2, xs);
 }
 
@@ -59,6 +61,7 @@
   color: theme.$text-secondary;
   font-size: theme.$font-size-small;
   font-weight: theme.$font-weight-normal;
+  font-variation-settings: theme.$font-variation-normal;
   width: 100%;
   text-align: center;
   @include spacing.mx(5, sm);
@@ -80,6 +83,7 @@
   color: theme.$text-secondary;
   border: none;
   font-weight: theme.$font-weight-normal;
+  font-variation-settings: theme.$font-variation-normal;
   @include spacing.mb(2, xs);
   @include spacing.mt(2, xs);
   @include spacing.p(0, xs);

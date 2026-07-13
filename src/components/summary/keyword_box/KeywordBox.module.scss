@@ -9,6 +9,7 @@
 
 .keywordTitle { 
     font-weight: theme.$font-weight-bold;
+    font-variation-settings: theme.$font-variation-bold;
     font-size: theme.$font-size-large;
     margin-bottom: 0.5em;
 }
@@ -18,6 +19,7 @@
     margin-bottom: 1.5em;
     span {
         font-weight: theme.$font-weight-bold;
+        font-variation-settings: theme.$font-variation-bold;
     }
     .number {
         margin-right: .3em;
@@ -33,6 +35,7 @@
     padding: 0.5em 0.7em;
     font-size: theme.$font-size-normal;
     font-weight: theme.$font-weight-normal;
+    font-variation-settings: theme.$font-variation-normal;
     cursor: pointer;
     &:hover {
         opacity: 0.9;

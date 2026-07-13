@@ -5,6 +5,7 @@
 .container {
     font-size: theme.$font-size-normal;
     font-weight: theme.$font-weight-normal;
+    font-variation-settings: theme.$font-variation-normal;
     display: flex;
     align-items: center;
     justify-content: space-between;

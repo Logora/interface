@@ -17,6 +17,7 @@
 
 .notificationMenuHeaderText {
     font-weight: theme.$font-weight-bold;
+    font-variation-settings: theme.$font-variation-bold;
     font-size: theme.$font-size-normal;
     font-family: theme.$font-family;
 }

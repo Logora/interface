@@ -34,6 +34,7 @@
 
 .timeAgo {
     font-weight: theme.$font-weight-normal;
+    font-variation-settings: theme.$font-variation-normal;
     color: theme.$text-secondary;
     font-size: theme.$font-size-extra-small;
 }

@@ -50,6 +50,7 @@ a.iconTextLink {
 	z-index: 2;
 	font-size: theme.$font-size-extra-small;
 	font-weight: theme.$font-weight-bold;
+	font-variation-settings: theme.$font-variation-bold;
 	color: theme.$text-light;
 	background-color: theme.$cancel-primary;
 	padding: 0 6px;

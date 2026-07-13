@@ -27,6 +27,7 @@
 
 .sourceBoxTitle {
     font-weight: theme.$font-weight-bold;
+    font-variation-settings: theme.$font-variation-bold;
     font-size: theme.$font-size-large;
     @include display.text-truncate();
     @include spacing.my(1, xs);

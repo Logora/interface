@@ -18,6 +18,7 @@
     font-size: theme.$font-size-medium;
     line-height: theme.$line-height-normal;
     font-weight: theme.$font-weight-bold;
+    font-variation-settings: theme.$font-variation-bold;
     position: relative;
     width: max-content;
 }

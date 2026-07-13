@@ -15,6 +15,7 @@
     cursor: pointer;
     border-radius: theme.$box-border-radius;
     font-weight: theme.$font-weight-bold;
+    font-variation-settings: theme.$font-variation-bold;
     transition: all .3s ease-in;
     border: 1px solid theme.$darkest-text-tertiary;
     @include spacing.py(1.5, xs);

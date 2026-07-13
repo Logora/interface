@@ -129,6 +129,7 @@ a.voteButton {
 
     .boldShowResult {
         font-weight: theme.$font-weight-bold;
+        font-variation-settings: theme.$font-variation-bold;
         color: theme.$text-primary;
     }
 }
@@ -243,6 +244,7 @@ a.voteButton {
     font-size: inherit;
     padding: 0;
     font-weight: theme.$font-weight-bold;
+    font-variation-settings: theme.$font-variation-bold;
 
     &:focus:not(:focus-visible) {
         outline: none;

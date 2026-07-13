@@ -17,6 +17,7 @@
 .title {
     width: 100%;
     font-weight: theme.$font-weight-bold;
+    font-variation-settings: theme.$font-variation-bold;
 }
 
 .subtitleContainer {
@@ -78,6 +79,7 @@
     color: theme.$text-light;
     font-size: theme.$font-size-normal;
     font-weight: theme.$font-weight-normal;
+    font-variation-settings: theme.$font-variation-normal;
     min-height: 0.5em;
 }
 

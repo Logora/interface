@@ -106,6 +106,7 @@
 .debateName {
     color: theme.$text-primary;
     font-weight: theme.$font-weight-bold;
+    font-variation-settings: theme.$font-variation-bold;
     text-align: center;
     width: 100%;
     display: flex !important;
@@ -127,6 +128,7 @@
     text-decoration: none !important;
     color: theme.$text-primary;
     font-weight: theme.$font-weight-bold;
+    font-variation-settings: theme.$font-variation-bold;
     &:hover {
         background: theme.$background-color-primary !important;
         text-decoration: underline !important;

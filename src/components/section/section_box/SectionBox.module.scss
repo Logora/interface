@@ -45,6 +45,7 @@
     font-size: theme.$font-size-large;
     line-height: theme.$line-height-tight;
     font-weight: theme.$font-weight-bold;
+    font-variation-settings: theme.$font-variation-bold;
     font-family: theme.$title-font-family;
     color: theme.$text-primary;
 }

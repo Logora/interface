@@ -5,6 +5,7 @@ a.backLink {
     display: flex !important;
     align-items: center !important;
     font-weight: theme.$font-weight-normal;
+    font-variation-settings: theme.$font-variation-normal;
     font-size: theme.$font-size-small;
     color: theme.$text-secondary;
     text-decoration: none !important;

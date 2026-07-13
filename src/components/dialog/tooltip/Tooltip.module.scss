@@ -19,6 +19,7 @@
     opacity: 0;
     transition: opacity 0.3s;
     font-weight: theme.$font-weight-normal !important;
+    font-variation-settings: theme.$font-variation-normal !important;
     font-size: theme.$font-size-small !important;
     
     &.info {

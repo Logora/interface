@@ -25,12 +25,14 @@
     font-size: theme.$font-size-extra-large;
     line-height: theme.$line-height-tight;
     font-weight: theme.$font-weight-bold;
+    font-variation-settings: theme.$font-variation-bold;
 	font-family: theme.$title-font-family;
 }
 
 .listSubtitle {
     color: theme.$text-primary;
     font-weight: theme.$font-weight-normal;
+    font-variation-settings: theme.$font-variation-normal;
     font-size: theme.$font-size-normal;
     margin-top: spacing.$spacer-sm;
 }

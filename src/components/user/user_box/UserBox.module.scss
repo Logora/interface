@@ -53,6 +53,7 @@
 .userBoxName {
 	text-align: left;
 	font-weight: theme.$font-weight-bold;
+	font-variation-settings: theme.$font-variation-bold;
 	@include display.text-truncate();
 	color: theme.$text-primary !important;
 	cursor: pointer;
@@ -79,6 +80,7 @@
 	flex-wrap: wrap !important;
 	gap: spacing.$spacer-md;
 	font-weight: theme.$font-weight-normal;
+	font-variation-settings: theme.$font-variation-normal;
 	font-size: theme.$font-size-small;
 	.userCount {
 		@include spacing.mr(1, xs);

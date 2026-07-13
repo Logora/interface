@@ -15,6 +15,7 @@ button.primaryButton, a.primaryButton {
   color: theme.$text-light !important;
   font-size: theme.$font-size-normal;
   font-weight: theme.$font-weight-bold;
+  font-variation-settings: theme.$font-variation-bold;
   cursor: pointer;
   -webkit-appearance: initial !important;
   text-decoration: none !important;

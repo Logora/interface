@@ -61,6 +61,7 @@
 
 .tagBox {
 	font-weight: theme.$font-weight-bold;
+	font-variation-settings: theme.$font-variation-bold;
 	display: flex !important;
 	align-items: center !important;
 	justify-content: flex-end !important;

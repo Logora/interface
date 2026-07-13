@@ -27,6 +27,7 @@
 
 .authorName {
     font-weight: theme.$font-weight-bold;
+    font-variation-settings: theme.$font-variation-bold;
     font-size: theme.$font-size-normal;
     cursor: pointer;
     color: theme.$text-primary;
@@ -71,6 +72,7 @@
     }
     .expertBadge {
         font-weight: theme.$font-weight-normal;
+        font-variation-settings: theme.$font-variation-normal;
         font-size: theme.$font-size-extra-small;
         overflow: hidden;
     }
@@ -81,6 +83,7 @@
     flex-direction: row !important;
     align-items: center !important;
     font-weight: theme.$font-weight-normal;
+    font-variation-settings: theme.$font-variation-normal;
     font-size: theme.$font-size-small;
     color: theme.$text-secondary;
     gap: spacing.$spacer-xs;

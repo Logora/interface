@@ -35,11 +35,13 @@
     align-items: center !important;
     font-size: theme.$font-size-large;
     font-weight: theme.$font-weight-bold;
+    font-variation-settings: theme.$font-variation-bold;
     color: theme.$text-primary;
 }
 
 .point {
     font-weight: theme.$font-weight-bold;
+    font-variation-settings: theme.$font-variation-bold;
     svg {
         display: inline-block;
         vertical-align: middle;

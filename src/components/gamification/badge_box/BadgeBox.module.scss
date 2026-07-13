@@ -55,6 +55,7 @@
 .badgeName {
     @include spacing.py(2, xs);
     font-weight: theme.$font-weight-bold;
+    font-variation-settings: theme.$font-variation-bold;
 }
 
 .badgeDescription {
@@ -68,6 +69,7 @@
     font-size: theme.$font-size-small;
     color: theme.$text-secondary;
     font-weight: theme.$font-weight-bold;
+    font-variation-settings: theme.$font-variation-bold;
 }
 
 .badgeProgress {
@@ -88,6 +90,7 @@
     color: theme.$text-secondary;
     .rewardName {
         font-weight: theme.$font-weight-bold;
+        font-variation-settings: theme.$font-variation-bold;
     }
     &.rewardObtained {
         background: theme.$success-primary;

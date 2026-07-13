@@ -23,6 +23,7 @@
 .title {
 	font-size: theme.$font-size-small;
 	font-weight: theme.$font-weight-bold;
+	font-variation-settings: theme.$font-variation-bold;
 	&::first-letter {
 		text-transform: uppercase;
 	}
@@ -37,6 +38,7 @@
 	border-radius: 0 0 theme.$box-border-radius theme.$box-border-radius;
 	padding: 0.75em !important;
 	font-weight: theme.$font-weight-bold;
+	font-variation-settings: theme.$font-variation-bold;
 	font-size: theme.$font-size-small !important;
 	text-decoration: none !important;
 	white-space: nowrap;

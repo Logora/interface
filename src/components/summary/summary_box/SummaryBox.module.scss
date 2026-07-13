@@ -34,6 +34,7 @@
     border-radius: theme.$box-border-radius;
     font-size: theme.$font-size-extra-small;
     font-weight: theme.$font-weight-bold;
+    font-variation-settings: theme.$font-variation-bold;
     overflow: hidden;
     word-wrap: break-word;
     @include display.line-clamp(2);

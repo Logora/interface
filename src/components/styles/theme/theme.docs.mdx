@@ -51,6 +51,13 @@ This SASS file contains all the variables used for defining colors, fonts, borde
 - **$font-size-extra-small**: Extra small font size (`14px`).
 - **$font-weight-normal**: Normal font weight (`400`).
 - **$font-weight-bold**: Bold font weight (`700`).
+- **$font-variation-light**: `font-variation-settings` value for light text, applied alongside `font-weight` (defaults to `normal`, i.e. no effect). Override for variable fonts, e.g. `"wght" 300, "opsz" 66`.
+- **$font-variation-normal**: `font-variation-settings` value for normal text (defaults to `normal`, i.e. no effect). Override for variable fonts, e.g. `"wght" 400, "opsz" 66`.
+- **$font-variation-medium**: `font-variation-settings` value for medium text (defaults to `normal`, i.e. no effect). Override for variable fonts, e.g. `"wght" 500, "opsz" 66`.
+- **$font-variation-bold**: `font-variation-settings` value for bold text (defaults to `normal`, i.e. no effect). Override for variable fonts, e.g. `"wght" 700, "opsz" 66`.
+- **$font-variation-extra-bold**: `font-variation-settings` value for extra-bold text (defaults to `normal`, i.e. no effect). Override for variable fonts, e.g. `"wght" 800, "opsz" 66`.
+
+> **Variable fonts (e.g. Clarín's `ClarinvarVF`)**: These variables let a client apply `font-variation-settings` in addition to the standard `font-weight`. By default they are `normal` and have no effect, so `font-weight` behaves as usual. When a client overrides them (via the corresponding CSS custom properties `--font-variation-*`), the `font-variation-settings` takes precedence over `font-weight` for fonts that support it.
 
 ### Borders
 

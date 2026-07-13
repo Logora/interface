@@ -166,6 +166,7 @@
 .toggle .cgu {
   color: theme.$text-primary;
   font-weight: theme.$font-weight-bold;
+  font-variation-settings: theme.$font-variation-bold;
   text-decoration: underline !important;
 }
 

@@ -11,6 +11,7 @@
 .text {
     font-size: theme.$font-size-extra-small;
     font-weight: theme.$font-weight-bold;
+    font-variation-settings: theme.$font-variation-bold;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;

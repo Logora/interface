@@ -130,6 +130,7 @@
         color: theme.$text-primary !important;
         background: transparent;
         font-weight: theme.$font-weight-bold;
+        font-variation-settings: theme.$font-variation-bold;
 
         &::after {
             transform: scaleX(1);

@@ -9,6 +9,7 @@
     color: theme.$text-primary;
     line-height: theme.$line-height-normal;
     font-weight: theme.$font-weight-normal;
+    font-variation-settings: theme.$font-variation-normal;
     text-align: left;
 }
 
@@ -51,6 +52,7 @@
 
 .editorTextBold {
     font-weight: theme.$font-weight-bold;
+    font-variation-settings: theme.$font-variation-bold;
 }
 
 .editorTextItalic {
