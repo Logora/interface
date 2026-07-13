@@ -14,11 +14,11 @@ export const useFormValidation = () => {
 	};
 
 	const checkMinLength = (value, minLength) => {
-		return value.split(" ").length < minLength;
+		return value.split(/\s+/).filter(Boolean).length < minLength;
 	};
 
 	const checkMaxLength = (value, maxLength) => {
-		return value.split(" ").length > maxLength;
+		return value.split(/\s+/).filter(Boolean).length > maxLength;
 	};
 
 	const checkMinChar = (value, minChar) => {
