@@ -302,6 +302,7 @@ export const Argument = ({
 						disabled={
 							disabled ||
 							argument.status === "rejected" ||
+							argument.status === "pending" ||
 							(!isLoggedIn &&
 								config?.actions?.disableInputForVisitor === true) ||
 							userIsBanned
