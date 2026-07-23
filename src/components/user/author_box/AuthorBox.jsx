@@ -1,5 +1,5 @@
 import { Link } from "@logora/debate/action/link";
-import { useRoutes } from "@logora/debate/data/config_provider";
+import { useConfig, useRoutes } from "@logora/debate/data/config_provider";
 import { Icon } from "@logora/debate/icons/icon";
 import { Avatar } from "@logora/debate/user/avatar";
 import { getLocaleIcon } from "@logora/debate/util/lang_emojis";
@@ -24,11 +24,13 @@ export const AuthorBox = ({
 }) => {
 	const intl = useIntl();
 	const routes = useRoutes();
+	const config = useConfig();
+	const disableAvatarLink = config?.actions?.disableProfileLinks === true;
 	const isOnline = new Date(lastActivity) > Date.now();
 
 	return (
 		<div className={cx(styles.authorBox, "author-box")}>
-			{!slug || disableLinks || isDeleted ? (
+			{!slug || disableLinks || disableAvatarLink || isDeleted ? (
 				<Avatar
 					avatarUrl={isDeleted ? null : avatarUrl}
 					userName={fullName}

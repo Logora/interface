@@ -1,5 +1,5 @@
 import { Link } from "@logora/debate/action/link";
-import { useRoutes } from "@logora/debate/data/config_provider";
+import { useConfig, useRoutes } from "@logora/debate/data/config_provider";
 import { Avatar } from "@logora/debate/user/avatar";
 import cx from "classnames";
 import React from "react";
@@ -10,17 +10,13 @@ import styles from "./UserBox.module.scss";
 export const UserBox = ({ user }) => {
 	const intl = useIntl();
 	const routes = useRoutes();
+	const config = useConfig();
+	const disableAvatarLink = config?.actions?.disableProfileLinks === true;
 
 	return (
 		<div className={cx(styles.userBox, "author-box")}>
 			<div className={styles.userBoxHeader}>
-				<Link
-					to={routes.userShowLocation.toUrl({ userSlug: user.hash_id })}
-					aria-label={intl.formatMessage({
-						id: "user.user_box.author_link.aria_label",
-						defaultMessage: "View profile",
-					})}
-				>
+				{disableAvatarLink ? (
 					<Avatar
 						data-tid={"action_view_user_image"}
 						userName={user.full_name}
@@ -28,7 +24,23 @@ export const UserBox = ({ user }) => {
 						isOnline={new Date(user.last_activity) > Date.now()}
 						size={60}
 					/>
-				</Link>
+				) : (
+					<Link
+						to={routes.userShowLocation.toUrl({ userSlug: user.hash_id })}
+						aria-label={intl.formatMessage({
+							id: "user.user_box.author_link.aria_label",
+							defaultMessage: "View profile",
+						})}
+					>
+						<Avatar
+							data-tid={"action_view_user_image"}
+							userName={user.full_name}
+							avatarUrl={user.image_url}
+							isOnline={new Date(user.last_activity) > Date.now()}
+							size={60}
+						/>
+					</Link>
+				)}
 			</div>
 			<div className={styles.userBoxDescription}>
 				<Link to={routes.userShowLocation.toUrl({ userSlug: user.hash_id })}>
