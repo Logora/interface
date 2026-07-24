@@ -207,7 +207,7 @@ export const ContentFooter = ({
 						<div>
 							{currentUserIsAuthor() && (
 								<>
-									{!disabled && enableEdition && isEditable() && (
+									{enableEdition && isEditable() && (
 										<div
 											data-tid={"action_edit_argument"}
 											className={styles.dropdownItem}
