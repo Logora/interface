@@ -11,7 +11,7 @@ export const UserBox = ({ user }) => {
 	const intl = useIntl();
 	const routes = useRoutes();
 	const config = useConfig();
-	const disableAvatarLink = config?.actions?.disableProfileLinks === true;
+	const disableAvatarLink = config?.layout?.disableProfileLinks === true;
 
 	return (
 		<div className={cx(styles.userBox, "author-box")}>

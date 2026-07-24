@@ -40,34 +40,36 @@ export const NavbarModal = () => {
 					<FormattedMessage id="info.menu" defaultMessage={"Navigation"} />
 				</div>
 				<div className={styles.navigationContainer}>
-					<div
-						className={cx(styles.modalItem, {
-							[styles.active]:
-								isActive(routes.indexLocation.path) ||
-								isActive(routes.debateShowLocation.path) ||
-								isActive(routes.rootLocation.path || "/"),
-						})}
-						onClick={hideModal}
-					>
-						<Link
-							className={cx(styles.itemContainer, {
-								[styles.activeItem]:
+					{config?.layout?.hideDebatesLink !== true && (
+						<div
+							className={cx(styles.modalItem, {
+								[styles.active]:
 									isActive(routes.indexLocation.path) ||
 									isActive(routes.debateShowLocation.path) ||
 									isActive(routes.rootLocation.path || "/"),
 							})}
-							to={routes.indexLocation.toUrl()}
-							data-tid={"view_index"}
+							onClick={hideModal}
 						>
-							<Icon name="chat" height={24} width={24} />
-							<span className={styles.text}>
-								<FormattedMessage
-									id="info.all_debates_short"
-									defaultMessage={"Debates"}
-								/>
-							</span>
-						</Link>
-					</div>
+							<Link
+								className={cx(styles.itemContainer, {
+									[styles.activeItem]:
+										isActive(routes.indexLocation.path) ||
+										isActive(routes.debateShowLocation.path) ||
+										isActive(routes.rootLocation.path || "/"),
+								})}
+								to={routes.indexLocation.toUrl()}
+								data-tid={"view_index"}
+							>
+								<Icon name="chat" height={24} width={24} />
+								<span className={styles.text}>
+									<FormattedMessage
+										id="info.all_debates_short"
+										defaultMessage={"Debates"}
+									/>
+								</span>
+							</Link>
+						</div>
+					)}
 					{config.modules.consultation && (
 						<div
 							className={cx(styles.modalItem, {
