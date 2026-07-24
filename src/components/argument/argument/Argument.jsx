@@ -307,6 +307,12 @@ export const Argument = ({
 								config?.actions?.disableInputForVisitor === true) ||
 							userIsBanned
 						}
+						disableEdition={
+							argument.status === "rejected" ||
+							(!isLoggedIn &&
+								config?.actions?.disableInputForVisitor === true) ||
+							userIsBanned
+						}
 						reportType={"Message"}
 						softDelete={config.actions?.softDelete}
 						deleteType={"messages"}

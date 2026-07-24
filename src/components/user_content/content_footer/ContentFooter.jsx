@@ -22,6 +22,7 @@ export const ContentFooter = ({
 	deleteListId,
 	softDelete = false,
 	disabled = false,
+	disableEdition = false,
 	children,
 	enableReply,
 	handleReplyTo,
@@ -207,7 +208,7 @@ export const ContentFooter = ({
 						<div>
 							{currentUserIsAuthor() && (
 								<>
-									{enableEdition && isEditable() && (
+									{!disableEdition && enableEdition && isEditable() && (
 										<div
 											data-tid={"action_edit_argument"}
 											className={styles.dropdownItem}
