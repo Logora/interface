@@ -109,6 +109,7 @@ export const AuthModal = ({ onHideModal = null }) => {
 								showEmailConsent={config.auth.showEmailConsent}
 								showTerms={config.auth.hideCgu !== true}
 								hideBelowButton={config.auth.hideBelowButton}
+								hideTerms={config.auth.hideTerms}
 							/>
 						)}
 					</>
