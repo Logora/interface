@@ -106,7 +106,7 @@ export const OnboardingModal = ({
 			});
 
 			if (pendingAuth && onConsentConfirmed) {
-				onConsentConfirmed(formData);
+				onConsentConfirmed(formData, data);
 			} else {
 				api.update("users", auth.currentUser.slug, formData).then((response) => {
 					if (response.data.success) {

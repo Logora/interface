@@ -1,17 +1,15 @@
 import { AuthProviderFactory } from "@logora/debate/auth/providers";
-import { authTokenHandler, useAuth, useAuthActions } from "@logora/debate/auth/use_auth";
+import { authTokenHandler, useAuthActions } from "@logora/debate/auth/use_auth";
 import { useAuthInterceptor } from "@logora/debate/auth/use_auth";
 import { httpClient } from "@logora/debate/data/axios_client";
 import { useConfig } from "@logora/debate/data/config_provider";
-import { useDataProvider } from "@logora/debate/data/data_provider";
-import { OnboardingModal } from "@logora/debate/user/onboarding_modal";
+import { OnboardingModal, saveOnboardingBeforeLogin } from "@logora/debate/user/onboarding_modal";
 import { useAuthRequired } from "@logora/debate/hooks/use_auth_required";
 import React, { useState, useEffect } from "react";
 
 export const AuthInitializer = ({ authUrl, authType, provider, assertion }) => {
 	const tokenKey = "logora_user_token";
 	const config = useConfig();
-	const api = useDataProvider();
 	useAuthInterceptor(httpClient, authUrl, tokenKey);
 
 	const [showOnboardingModal, setShowOnboardingModal] = useState(false);
@@ -27,7 +25,6 @@ export const AuthInitializer = ({ authUrl, authType, provider, assertion }) => {
 		tokenKey,
 	);
 	const requireAuthentication = useAuthRequired();
-	const { setIsLoggingIn, currentUser } = useAuth();
 
 	useEffect(() => {
 		checkAuth();
@@ -76,13 +73,12 @@ export const AuthInitializer = ({ authUrl, authType, provider, assertion }) => {
 		}
 	};
 
-	const handleConsentConfirmed = async (formData) => {
+	const handleConsentConfirmed = (_formData, data) => {
 		const authProvider = getAuthProvider();
 		const authParams = authProvider.getAuthorizationParams();
-		await loginUser(authParams);
-		await api.update("users", currentUser.slug, formData);
-
+		saveOnboardingBeforeLogin(config.shortname, data);
 		setShowOnboardingModal(false);
+		loginUser(authParams);
 	};
 
 	const getAuthProvider = () => {
