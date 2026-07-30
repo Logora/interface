@@ -1,2 +1,2 @@
 export { UpdateUserInfoModal } from "./UpdateUserInfoModal";
-export { useUpdateUserInfo } from "./useUpdateUserInfo";
+export { getOnboardingBeforeLoginStorageKey, ONBOARDING_BEFORE_LOGIN_STORAGE_KEY, useUpdateUserInfo } from "./useUpdateUserInfo";
