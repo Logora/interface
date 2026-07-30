@@ -34,7 +34,8 @@
     "check": "npx @biomejs/biome check ./src",
     "test": "vitest run",
     "test:watch": "vitest",
-    "test:coverage": "vitest run --coverage"
+    "test:coverage": "vitest run --coverage",
+    "prepack": "pnpm build"
   },
   "repository": {
     "type": "git",
