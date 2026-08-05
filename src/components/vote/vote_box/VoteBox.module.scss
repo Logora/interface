@@ -283,6 +283,19 @@ a.voteButton {
     background-color: theme.$third-position-color-primary !important;
 }
 
+
+.voteResults>div:first-child .progress {
+    border-color: theme.$for-primary !important;
+}
+
+.voteResults>div:nth-child(2) .progress {
+    border-color: theme.$against-primary !important;
+}
+
+.voteResults>div:nth-child(3) .progress {
+    border-color: theme.$third-position-color-primary !important;
+}
+
 .voteCommentCounts {
     display: flex;
     align-items: center;
