@@ -285,15 +285,15 @@ a.voteButton {
 
 
 .voteResults>div:first-child .progress {
-    border-color: theme.$for-primary !important;
+    border: 1px solid theme.$for-primary !important;
 }
 
 .voteResults>div:nth-child(2) .progress {
-    border-color: theme.$against-primary !important;
+    border: 1px solid theme.$against-primary !important;
 }
 
 .voteResults>div:nth-child(3) .progress {
-    border-color: theme.$third-position-color-primary !important;
+    border: 1px solid theme.$third-position-color-primary !important;
 }
 
 .voteCommentCounts {
