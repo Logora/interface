@@ -364,7 +364,12 @@ export const VoteBox = ({
 			<>
 				{showResults || disabled ? (
 					<div className={styles.voteResultsBox} data-testid={"voteResultsBox"}>
-						<div className={styles.voteResults}>
+						<div
+							className={cx(styles.voteResults, {
+								[styles.voteResultsOutlined]:
+									config.layout?.outlinedVoteButtons,
+							})}
+						>
 							{votePositions.map((value, index) => {
 								let currentPositionName;
 								if (index === 0) {
