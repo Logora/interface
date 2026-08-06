@@ -364,12 +364,7 @@ export const VoteBox = ({
 			<>
 				{showResults || disabled ? (
 					<div className={styles.voteResultsBox} data-testid={"voteResultsBox"}>
-						<div
-							className={cx(styles.voteResults, {
-								[styles.voteResultsOutlined]:
-									config.layout?.outlinedVoteResults,
-							})}
-						>
+						<div className={styles.voteResults}>
 							{votePositions.map((value, index) => {
 								let currentPositionName;
 								if (index === 0) {
@@ -463,11 +458,11 @@ export const VoteBox = ({
 				) : (
 					<div className={styles.voteBoxActions}>
 						<div
-						className={cx(styles.voteBoxActionsBody, {
-							[styles.voteBoxActionsBodyColumn]: displayColumn,
-							[styles.voteBoxActionsBodyOutlined]: config.layout?.outlinedVoteButtons,
-							[buttonContainerClassName]: buttonContainerClassName,
-						})}
+							className={cx(styles.voteBoxActionsBody, {
+								[styles.voteBoxActionsBodyColumn]: displayColumn,
+								[styles.voteBoxActionsBodyOutlined]: config.layout?.outlinedVoteButtons,
+								[buttonContainerClassName]: buttonContainerClassName,
+							})}
 						>
 							{votePositions.map((value, index) =>
 								displayVotePosition(value, index),
