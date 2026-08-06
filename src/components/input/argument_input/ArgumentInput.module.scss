@@ -21,7 +21,9 @@
     -o-transition: box-shadow 0.8s ease-in-out;
     transition: box-shadow 0.8s ease-in-out;
 
-    &.flash, &.flash:hover, &.flash:focus-within {
+    &.flash,
+    &.flash:hover,
+    &.flash:focus-within {
         box-shadow: 0 0 15px theme.$call-primary;
     }
 }
@@ -47,9 +49,11 @@
     flex-direction: column !important;
     align-items: flex-start !important;
     gap: spacing.$spacer-lg;
+
     &.argumentTextInputBoxisTablet {
         flex-direction: row !important;
     }
+
     @include display.media-breakpoint-down(xs) {
         gap: spacing.$spacer-xs;
     }
@@ -60,6 +64,7 @@
     overflow: hidden;
     min-width: 175px;
     max-width: 230px;
+
     &.argumentAuthorContainerActivated {
         min-width: initial;
         max-width: initial;
@@ -82,18 +87,22 @@
     font-size: theme.$font-size-extra-small;
     color: theme.$cancel-primary;
     @include spacing.mt(3, xs);
+
     svg.warningIcon {
         fill: transparent !important;
         min-width: 20px;
         min-height: 20px;
+
         circle {
             stroke: theme.$cancel-primary;
             stroke-width: 1.5px;
         }
+
         path {
             fill: theme.$cancel-primary;
         }
     }
+
     &.disabledPositionWarning {
         display: flex !important;
         align-items: center !important;
@@ -123,7 +132,7 @@
     border-radius: theme.$box-border-radius;
     box-shadow: theme.$box-shadow;
     border: theme.$box-border;
-    
+
     @include spacing.mt(2, xs);
     @include spacing.p(3, xs);
 
@@ -155,9 +164,10 @@
     font-size: theme.$font-size-small;
     color: theme.$text-secondary;
     white-space: nowrap;
-    margin-top: 1rem; 
-    white-space: normal; 
-    word-break: break-word; 
+    margin-top: 1rem;
+    white-space: normal;
+    word-break: break-word;
+
     a {
         display: inline !important;
         font-size: theme.$font-size-small;
