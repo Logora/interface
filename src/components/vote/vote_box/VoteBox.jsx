@@ -367,7 +367,7 @@ export const VoteBox = ({
 						<div
 							className={cx(styles.voteResults, {
 								[styles.voteResultsOutlined]:
-									config.layout?.outlinedVoteButtons,
+									config.layout?.outlinedVoteResults,
 							})}
 						>
 							{votePositions.map((value, index) => {
