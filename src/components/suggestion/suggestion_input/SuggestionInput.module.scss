@@ -44,6 +44,7 @@
     white-space: normal; 
     word-break: break-word; 
     a {
+        display: inline !important;
         font-size: theme.$font-size-small;
         text-decoration: underline !important;
         font-weight: bold !important;
