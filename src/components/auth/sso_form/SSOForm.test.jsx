@@ -1,9 +1,11 @@
 import { render, screen } from "@testing-library/react";
 import React from "react";
+import { utf8ToBase64url } from "@logora/debate/auth/use_auth";
 import {
 	DefaultSSOForm,
 	SSOFormWithEmailConsent,
 	SSOFormWithError,
+	SSOFormWithMetadata,
 	SSOFormWithRedirect,
 	SSOFormWithoutActions,
 } from "./SSOForm.stories";
@@ -101,5 +103,29 @@ describe("SSOForm", () => {
 
 		expect(screen.queryByTestId("signup-button")).toBeNull();
 		expect(screen.queryByTestId("signin-link")).toBeNull();
+	});
+
+	it("should encode metadata as base64url with a single URL encoding", () => {
+		const component = render(<SSOFormWithMetadata />);
+
+		const signinLink = screen.getByTestId("signin-link");
+		const params = new URLSearchParams(
+			new URL(signinLink.href).search,
+		);
+		const metadata = params.get("metadata");
+
+		const expected = utf8ToBase64url(
+			JSON.stringify({
+				clientId: "CMS",
+				marque: "OF",
+				IdOpe: null,
+				source2: "/espace-debat/debats",
+			}),
+		);
+		expect(metadata).toBe(expected);
+		expect(metadata).not.toContain("=");
+		expect(metadata).not.toContain("+");
+		expect(metadata).not.toContain("/");
+		expect(signinLink.href).not.toContain("%25");
 	});
 });
