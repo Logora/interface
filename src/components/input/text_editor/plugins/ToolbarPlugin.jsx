@@ -101,9 +101,8 @@ export const ToolbarPlugin = (props) => {
 	}, []);
 
 	const handleToolbarPointerDown = (event, action) => {
-		event.preventDefault();
-
 		if (event.pointerType === "touch" || event.pointerType === "pen") {
+			event.preventDefault();
 			handledOnPointerDownRef.current = true;
 			action();
 
@@ -393,7 +392,6 @@ export const ToolbarPlugin = (props) => {
 
 						{!props.hideSourceAction && (
 							<button
-								onPointerDown={(event) => event.preventDefault()}
 								onClick={props.onAddSource}
 								type="button"
 								className={styles.toolbarItem}
