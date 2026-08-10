@@ -36,6 +36,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    outline: none;
 
     @include display.media-breakpoint-down(xs) {
         min-width: 44px;
@@ -46,6 +47,7 @@
         cursor: not-allowed;
     }
 
+    &:active,
     &.active {
         background-color: rgba(186, 186, 186, 0.4);
         border-radius: 50%;
