@@ -1,5 +1,8 @@
 import { Button } from "@logora/debate/action/button";
-import { EMAIL_CONSENT_STORAGE_KEY } from "@logora/debate/auth/use_auth";
+import {
+	EMAIL_CONSENT_STORAGE_KEY,
+	utf8ToBase64url,
+} from "@logora/debate/auth/use_auth";
 import { Icon } from "@logora/debate/icons/icon";
 import { Toggle } from "@logora/debate/input/toggle";
 import useSessionStorageState from "@rooks/use-sessionstorage-state";
@@ -65,9 +68,9 @@ export const SSOForm = ({
 					);
 				}
 				if (key === "metadata" && parsedValue) {
-					parsedValue = window.btoa(parsedValue);
+					parsedValue = utf8ToBase64url(parsedValue);
 				}
-				params.append(key, encodeURIComponent(parsedValue));
+				params.append(key, parsedValue);
 			}
 			parsedUrl.search = params.toString();
 			return parsedUrl.toString();

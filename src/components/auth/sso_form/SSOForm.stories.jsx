@@ -69,6 +69,21 @@ export const SSOFormWithRedirect = (props) =>
 		...props,
 	});
 
+export const SSOFormWithMetadata = (props) =>
+	renderStory({
+		authType: "other",
+		redirectParameter: "logora_redirect",
+		trackingParameters: {
+			metadata: JSON.stringify({
+				clientId: "CMS",
+				marque: "OF",
+				IdOpe: null,
+				source2: "/espace-debat/debats",
+			}),
+		},
+		...props,
+	});
+
 export const SSOFormWithLogoUrl = (props) =>
 	renderStory({
 		showEmailConsent: true,
