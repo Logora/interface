@@ -113,6 +113,8 @@ export const ToolbarPlugin = (props) => {
 				handledOnPointerDownRef.current = false;
 				handledOnPointerDownTimeoutRef.current = null;
 			}, 500);
+		} else {
+			event.preventDefault();
 		}
 	};
 
