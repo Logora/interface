@@ -140,6 +140,15 @@ export const ToolbarPlugin = (props) => {
 
 	const formatText = (format) => {
 		editor.dispatchCommand(FORMAT_TEXT_COMMAND, format);
+
+		if (format === "bold") {
+			setIsBold((prev) => !prev);
+		} else if (format === "italic") {
+			setIsItalic((prev) => !prev);
+		} else if (format === "underline") {
+			setIsUnderline((prev) => !prev);
+		}
+
 		refreshToolbar();
 	};
 
