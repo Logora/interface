@@ -90,9 +90,50 @@ export const ToolbarPlugin = (props) => {
 	}, [editor, updateToolbar]);
 
 	const preventSelectionLoss = (event) => {
-		if (event.pointerType !== 'touch' && event.pointerType !== 'pen') {
+		if (event.pointerType !== "touch" && event.pointerType !== "pen") {
 			event.preventDefault();
 		}
+	};
+
+	const handledOnPointerDownRef = useRef(false);
+	const handledOnPointerDownTimeoutRef = useRef(null);
+
+	useEffect(() => {
+		return () => {
+			if (handledOnPointerDownTimeoutRef.current) {
+				clearTimeout(handledOnPointerDownTimeoutRef.current);
+			}
+		};
+	}, []);
+
+	const handleToolbarPointerDown = (event, action) => {
+		preventSelectionLoss(event);
+
+		if (event.pointerType === "touch" || event.pointerType === "pen") {
+			handledOnPointerDownRef.current = true;
+			action();
+
+			if (handledOnPointerDownTimeoutRef.current) {
+				clearTimeout(handledOnPointerDownTimeoutRef.current);
+			}
+			handledOnPointerDownTimeoutRef.current = setTimeout(() => {
+				handledOnPointerDownRef.current = false;
+				handledOnPointerDownTimeoutRef.current = null;
+			}, 500);
+		}
+	};
+
+	const handleToolbarClick = (action) => {
+		if (handledOnPointerDownRef.current) {
+			handledOnPointerDownRef.current = false;
+			if (handledOnPointerDownTimeoutRef.current) {
+				clearTimeout(handledOnPointerDownTimeoutRef.current);
+				handledOnPointerDownTimeoutRef.current = null;
+			}
+			return;
+		}
+
+		action();
 	};
 
 	const refreshToolbar = () => {
@@ -105,6 +146,7 @@ export const ToolbarPlugin = (props) => {
 
 	const formatText = (format) => {
 		editor.dispatchCommand(FORMAT_TEXT_COMMAND, format);
+		refreshToolbar();
 	};
 
 	const formatParagraph = () => {
@@ -238,8 +280,10 @@ export const ToolbarPlugin = (props) => {
 						})}
 					>
 						<button
-							onPointerDown={preventSelectionLoss}
-							onClick={() => formatText("bold")}
+							onPointerDown={(event) =>
+								handleToolbarPointerDown(event, () => formatText("bold"))
+							}
+							onClick={() => handleToolbarClick(() => formatText("bold"))}
 							type="button"
 							className={cx(styles.toolbarItem, { [styles.active]: isBold })}
 							data-testid="format-bold"
@@ -257,8 +301,10 @@ export const ToolbarPlugin = (props) => {
 						</button>
 
 						<button
-							onPointerDown={preventSelectionLoss}
-							onClick={() => formatText("italic")}
+							onPointerDown={(event) =>
+								handleToolbarPointerDown(event, () => formatText("italic"))
+							}
+							onClick={() => handleToolbarClick(() => formatText("italic"))}
 							type="button"
 							className={cx(styles.toolbarItem, {
 								[styles.active]: isItalic,
@@ -277,8 +323,10 @@ export const ToolbarPlugin = (props) => {
 						</button>
 
 						<button
-							onPointerDown={preventSelectionLoss}
-							onClick={() => formatText("underline")}
+							onPointerDown={(event) =>
+								handleToolbarPointerDown(event, () => formatText("underline"))
+							}
+							onClick={() => handleToolbarClick(() => formatText("underline"))}
 							type="button"
 							className={cx(styles.toolbarItem, {
 								[styles.active]: isUnderline,
@@ -297,8 +345,10 @@ export const ToolbarPlugin = (props) => {
 						</button>
 
 						<button
-							onPointerDown={preventSelectionLoss}
-							onClick={() => formatQuote()}
+							onPointerDown={(event) =>
+								handleToolbarPointerDown(event, () => formatQuote())
+							}
+							onClick={() => handleToolbarClick(() => formatQuote())}
 							type="button"
 							className={cx(styles.toolbarItem, {
 								[styles.active]: blockType === "quote",
@@ -317,8 +367,10 @@ export const ToolbarPlugin = (props) => {
 						</button>
 
 						<button
-							onPointerDown={preventSelectionLoss}
-							onClick={() => formatNumberedList()}
+							onPointerDown={(event) =>
+								handleToolbarPointerDown(event, () => formatNumberedList())
+							}
+							onClick={() => handleToolbarClick(() => formatNumberedList())}
 							type="button"
 							className={cx(styles.toolbarItem, {
 								[styles.active]: blockType === "ol",
