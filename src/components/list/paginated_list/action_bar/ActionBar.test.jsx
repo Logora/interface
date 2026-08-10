@@ -83,4 +83,11 @@ describe("ActionBar", () => {
 
 		expect(onTagChange).toHaveBeenCalledWith(3);
 	});
+
+	it("renders navigation arrows for the tag list", () => {
+		const { getByLabelText } = renderActionBar();
+
+		expect(getByLabelText("Tag précédent")).toBeInTheDocument();
+		expect(getByLabelText("Tag suivant")).toBeInTheDocument();
+	});
 });
