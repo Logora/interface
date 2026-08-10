@@ -89,12 +89,6 @@ export const ToolbarPlugin = (props) => {
 		);
 	}, [editor, updateToolbar]);
 
-	const preventSelectionLoss = (event) => {
-		if (event.pointerType !== "touch" && event.pointerType !== "pen") {
-			event.preventDefault();
-		}
-	};
-
 	const handledOnPointerDownRef = useRef(false);
 	const handledOnPointerDownTimeoutRef = useRef(null);
 
@@ -107,7 +101,7 @@ export const ToolbarPlugin = (props) => {
 	}, []);
 
 	const handleToolbarPointerDown = (event, action) => {
-		preventSelectionLoss(event);
+		event.preventDefault();
 
 		if (event.pointerType === "touch" || event.pointerType === "pen") {
 			handledOnPointerDownRef.current = true;
@@ -390,7 +384,7 @@ export const ToolbarPlugin = (props) => {
 
 						{!props.hideSourceAction && (
 							<button
-								onPointerDown={preventSelectionLoss}
+								onPointerDown={(event) => event.preventDefault()}
 								onClick={props.onAddSource}
 								type="button"
 								className={styles.toolbarItem}
