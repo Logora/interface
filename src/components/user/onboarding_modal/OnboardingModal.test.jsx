@@ -299,7 +299,7 @@ describe("OnboardingModal", () => {
 			expect(
 				queryByText("I agree to receive emails from the editor"),
 			).toBeInTheDocument();
-expect(queryByText("Select an avatar")).not.toBeInTheDocument();
+			expect(queryByText("Select an avatar")).toBeInTheDocument();
 			expect(queryByTestId("description")).not.toBeInTheDocument();
 		});
 
@@ -400,6 +400,82 @@ expect(queryByText("Select an avatar")).not.toBeInTheDocument();
 
 			expect(queryByText("accepts_terms must be true.")).toBeInTheDocument();
 			expect(onConsentConfirmed).not.toHaveBeenCalled();
+		});
+
+		it("should prefill name and image from provided initial values and submit origin_image_url", async () => {
+			const onConsentConfirmed = vi.fn();
+			const { getByTestId, getByText } = render(
+				<ModalProvider>
+					<ConfigProvider
+						config={{
+							translation: { translationMethods: [{ fr: "en" }] },
+							actions: { disableNameUpdate: true },
+						}}
+					>
+						<IntlProvider locale="en">
+							<IconProvider library={regularIcons}>
+								<DataProviderContext.Provider value={{ dataProvider: data }}>
+									<AuthContext.Provider value={{ currentUser: {}, isLoggedIn: false }}>
+										<OnboardingModal
+											pendingAuth={true}
+											onConsentConfirmed={onConsentConfirmed}
+											showTerms={true}
+											showEmailConsent={true}
+											initialFirstName="Jane"
+											initialLastName="Doe"
+											initialImageUrl="https://example.com/avatar.jpg"
+										/>
+									</AuthContext.Provider>
+								</DataProviderContext.Provider>
+							</IconProvider>
+						</IntlProvider>
+					</ConfigProvider>
+				</ModalProvider>,
+			);
+
+			const firstName = getByTestId("first-name");
+			expect(firstName.value).toBe("Jane");
+			const lastName = getByTestId("last-name");
+			expect(lastName.value).toBe("Doe");
+
+			const termsToggle = getByTestId("accepts-terms-input");
+			await userEvent.click(termsToggle);
+
+			const saveButton = getByText("Save");
+			await userEvent.click(saveButton);
+
+			expect(onConsentConfirmed).toHaveBeenCalledTimes(1);
+			const formData = onConsentConfirmed.mock.calls[0][0];
+			expect(formData.get("origin_image_url")).toBe("https://example.com/avatar.jpg");
+		});
+
+		it("should allow opening the avatar selector in pendingAuth mode", async () => {
+			const { getByTestId, queryByText } = render(
+				<ModalProvider>
+					<ConfigProvider
+						config={{
+							translation: { translationMethods: [{ fr: "en" }] },
+							actions: { disableNameUpdate: true },
+							avatars: { maxFileName: 3, baseUrl: "https://example.com/avatars", fileExtension: "png" },
+						}}
+					>
+						<IntlProvider locale="en">
+							<IconProvider library={regularIcons}>
+								<DataProviderContext.Provider value={{ dataProvider: data }}>
+									<AuthContext.Provider value={{ currentUser: {}, isLoggedIn: false }}>
+										<OnboardingModal pendingAuth={true} showTerms={true} showEmailConsent={true} />
+									</AuthContext.Provider>
+								</DataProviderContext.Provider>
+							</IconProvider>
+						</IntlProvider>
+					</ConfigProvider>
+				</ModalProvider>,
+			);
+
+			const avatarButton = getByTestId("avatar-button");
+			await userEvent.click(avatarButton);
+
+			expect(queryByText("Back")).toBeInTheDocument();
 		});
 	});
 });

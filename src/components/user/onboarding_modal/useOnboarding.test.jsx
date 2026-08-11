@@ -95,6 +95,34 @@ describe('useOnboarding', () => {
         expect(window.sessionStorage.getItem(getOnboardingBeforeLoginStorageKey('test-app'))).toBeNull();
     });
 
+    it('forwards the chosen avatar (origin_image_url and uploaded image) to the account after login', async () => {
+        const updatedUser = { ...currentUser, is_onboarded: true };
+        update.mockResolvedValue({
+            data: {
+                success: true,
+                data: { resource: updatedUser },
+            },
+        });
+        window.sessionStorage.setItem(
+            getOnboardingBeforeLoginStorageKey('test-app'),
+            JSON.stringify({
+                accepts_terms: true,
+                origin_image_url: 'https://example.com/avatar.jpg',
+                image: 'data:image/png;base64,AAAA',
+            }),
+        );
+
+        render(<TestComponent />);
+
+        await waitFor(() => expect(update).toHaveBeenCalledTimes(1));
+
+        const formData = update.mock.calls[0][2];
+        expect(formData.get('origin_image_url')).toBe('https://example.com/avatar.jpg');
+        expect(formData.get('image')).toBeInstanceOf(Blob);
+        await waitFor(() => expect(setCurrentUser).toHaveBeenCalledWith(updatedUser));
+        expect(window.sessionStorage.getItem(getOnboardingBeforeLoginStorageKey('test-app'))).toBeNull();
+    });
+
     it('shows the onboarding modal when no pre-login onboarding completion exists', async () => {
         render(<TestComponent />);
 
