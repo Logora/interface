@@ -78,7 +78,6 @@
 	overflow-x: auto;
     overflow-y: hidden;
     gap: spacing.$spacer-md;
-    padding-bottom: spacing.$spacer-md;
 	scrollbar-width: none;
 	@include display.media-breakpoint-down(xs) {
 		gap: spacing.$spacer-sm;
