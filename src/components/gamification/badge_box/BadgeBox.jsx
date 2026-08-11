@@ -1,6 +1,7 @@
+import { useConfig } from "@logora/debate/data/config_provider";
 import { ProgressBar } from "@logora/debate/progress/progress_bar";
 import cx from "classnames";
-import React from "react";
+import React, { useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import styles from "./BadgeBox.module.scss";
 
@@ -15,6 +16,16 @@ export const BadgeBox = ({
 	eloquenceTitle,
 }) => {
 	const intl = useIntl();
+	const config = useConfig();
+	const [badgeImageMissing, setBadgeImageMissing] = useState(false);
+
+	const customBaseUrl = config?.badges?.baseUrl;
+	const customImageUrl =
+		customBaseUrl &&
+		`${customBaseUrl.replace(/\/+$/, "")}/${name}.${
+			config?.badges?.fileExtension || "png"
+		}`;
+	const badgeIconUrl = !badgeImageMissing && customImageUrl ? customImageUrl : icon_url;
 
 	return (
 		<div className={styles.badgeBox}>
@@ -28,12 +39,13 @@ export const BadgeBox = ({
 			<div className={styles.badgeImageBox}>
 				<img
 					className={styles.badgeImage}
-					src={icon_url}
+					src={badgeIconUrl}
 					loading={"lazy"}
 					width={80}
 					height={80}
 					title={title}
 					alt={`Badge ${title}`}
+					onError={() => setBadgeImageMissing(true)}
 				/>
 			</div>
 			<div className={styles.badgeName}>
