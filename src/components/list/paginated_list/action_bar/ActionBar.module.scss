@@ -118,7 +118,7 @@
 .arrowLeft {
     left: 0;
     padding-left: spacing.$spacer-xs;
-    background: linear-gradient(to right, theme.$background-color-container 40%, transparent);
+    background: linear-gradient(to left, #ffffff 40%, transparent) !important;
 
     svg {
         transform: rotate(90deg);
@@ -128,7 +128,7 @@
 .arrowRight {
     right: 0;
     padding-right: spacing.$spacer-xs;
-    background: linear-gradient(to left, theme.$background-color-container 40%, transparent);
+    background: linear-gradient(to left, #ffffff 40%, transparent) !important;
 
     svg {
         transform: rotate(-90deg);
