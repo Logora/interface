@@ -27,6 +27,9 @@
 }
 
 .toolbarItem {
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    appearance: none !important;
     border: 0;
     background: none;
     @include spacing.p(0, xs);
