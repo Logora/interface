@@ -52,7 +52,7 @@
 
     &:active,
     &.active {
-        background-color: rgba(186, 186, 186, 0.4);
+        background-color: rgba(186, 186, 186, 0.4) !important;
         border-radius: 50%;
     }
 
