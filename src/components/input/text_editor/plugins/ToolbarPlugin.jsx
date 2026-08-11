@@ -150,6 +150,14 @@ export const ToolbarPlugin = (props) => {
 			setIsUnderline((prev) => !prev);
 		}
 
+		editor.focus(() => {
+			const rootElement = editor.getRootElement();
+
+			if (rootElement) {
+				rootElement.focus();
+			}
+		});
+
 		refreshToolbar();
 	};
 
