@@ -19,10 +19,15 @@
 
 .iconToolbar {
     display: flex !important;
+    flex-wrap: wrap;
     gap: spacing.$spacer-lg;
 
     &.shortBar {
         gap: spacing.$spacer-md;
+    }
+
+    @include display.media-breakpoint-down(xs) {
+        gap: spacing.$spacer-sm;
     }
 }
 
