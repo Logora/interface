@@ -7,10 +7,55 @@ import { OnboardingModal, saveOnboardingBeforeLogin } from "@logora/debate/user/
 import { useAuthRequired } from "@logora/debate/hooks/use_auth_required";
 import React, { useState, useEffect } from "react";
 
+const base64UrlDecode = (str) => {
+	const base64 = str.replace(/-/g, "+").replace(/_/g, "/");
+	const padded = base64.padEnd(base64.length + ((4 - (base64.length % 4)) % 4), "=");
+	return atob(padded);
+};
+
+export const decodeJwtPayload = (token) => {
+	if (!token || typeof token !== "string") {
+		return null;
+	}
+	const parts = token.split(".");
+	if (parts.length < 2) {
+		return null;
+	}
+	try {
+		return JSON.parse(base64UrlDecode(parts[1]));
+	} catch (_error) {
+		return null;
+	}
+};
+
+const getDataFromPayload = (payload, mapping) => {
+	if (!payload || typeof payload !== "object") {
+		return {};
+	}
+	const mappingConfig = mapping || {};
+	const get = (attr) => {
+		const path = mappingConfig[attr];
+		if (typeof path === "string" && path.length > 0) {
+			return path.split(".").reduce((acc, key) => (acc == null ? acc : acc[key]), payload);
+		}
+		return payload[attr];
+	};
+	return {
+		first_name: get("first_name"),
+		last_name: get("last_name"),
+		image_url: get("image_url"),
+	};
+};
+
 export const AuthInitializer = ({ authUrl, authType, provider, assertion }) => {
 	const tokenKey = "logora_user_token";
 	const config = useConfig();
 	useAuthInterceptor(httpClient, authUrl, tokenKey);
+
+	const initialUserProfile = getDataFromPayload(
+		decodeJwtPayload(assertion),
+		config.auth?.userProfileMapping,
+	);
 
 	const [showOnboardingModal, setShowOnboardingModal] = useState(false);
 
@@ -93,6 +138,9 @@ export const AuthInitializer = ({ authUrl, authType, provider, assertion }) => {
 					onConsentConfirmed={handleConsentConfirmed}
 					showTerms={config.auth?.hideCgu !== true}
 					showEmailConsent={config.auth?.showEmailConsent}
+					initialFirstName={initialUserProfile.first_name}
+					initialLastName={initialUserProfile.last_name}
+					initialImageUrl={initialUserProfile.image_url}
 					termsUrl={
 						config.provider?.cguUrl ||
 						"https://www.logora.com/blog-posts/cgu"

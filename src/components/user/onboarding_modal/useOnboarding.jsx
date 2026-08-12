@@ -11,6 +11,17 @@ export const getOnboardingBeforeLoginStorageKey = (shortname) => (
 	shortname ? `${ONBOARDING_BEFORE_LOGIN_STORAGE_KEY}:${shortname}` : ONBOARDING_BEFORE_LOGIN_STORAGE_KEY
 );
 
+const dataUrlToBlob = (dataUrl) => {
+	const [header, base64] = dataUrl.split(",");
+	const mime = header.match(/^data:([^;]+)/)?.[1] || "application/octet-stream";
+	const binary = atob(base64);
+	const array = new Uint8Array(binary.length);
+	for (let i = 0; i < binary.length; i++) {
+		array[i] = binary.charCodeAt(i);
+	}
+	return new Blob([array], { type: mime });
+};
+
 export const saveOnboardingBeforeLogin = (shortname, data) => {
 	if (typeof window === "undefined" || !window.sessionStorage) {
 		return;
@@ -128,9 +139,21 @@ export const useOnboarding = () => {
 			data.last_name = beforeLoginOnboarding.last_name;
 		}
 
+		if (beforeLoginOnboarding.origin_image_url) {
+			data.origin_image_url = beforeLoginOnboarding.origin_image_url;
+		}
+
+		if (beforeLoginOnboarding.image && typeof beforeLoginOnboarding.image === "string") {
+			data.image = dataUrlToBlob(beforeLoginOnboarding.image);
+		}
+
 		const formData = new FormData();
 		Object.entries(data).forEach(([key, value]) => {
-			formData.append(key, value);
+			if (key === "image" && value instanceof Blob) {
+				formData.append(key, value, "avatar.png");
+			} else {
+				formData.append(key, value);
+			}
 		});
 
 		setIsApplyingBeforeLoginOnboarding(true);

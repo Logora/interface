@@ -22,6 +22,9 @@ export const OnboardingModal = ({
 	showTerms = false,
 	pendingAuth = false,
 	onConsentConfirmed = null,
+	initialFirstName = "",
+	initialLastName = "",
+	initialImageUrl = null,
 }) => {
 	const auth = useAuth();
 	const api = useDataProvider();
@@ -33,17 +36,27 @@ export const OnboardingModal = ({
 			`${config.avatars?.baseUrl}/${j + 1}.${config.avatars?.fileExtension}`,
 	);
 
-	const [firstName, setFirstName] = useState(auth.currentUser.first_name || "");
+	// In pendingAuth mode (onboarding before account creation) the user is not
+	// logged in yet, so auth.currentUser is empty. Accept externally-provided
+	// values (e.g. decoded from the remote_auth token) as defaults.
+	const [firstName, setFirstName] = useState(
+		initialFirstName || auth.currentUser.first_name || "",
+	);
 	const [description, setDescription] = useState(
 		auth.currentUser.description || "",
 	);
-	const [lastName, setLastName] = useState(auth.currentUser.last_name || "");
+	const [lastName, setLastName] = useState(
+		initialLastName || auth.currentUser.last_name || "",
+	);
 	const [lang, setLang] = useState(auth.currentUser.language);
 	const [showAvatars, setShowAvatars] = useState(false);
 	const [previewPictureBase64, setPreviewPictureBase64] = useState(
-		auth.currentUser.image_url,
+		initialImageUrl || auth.currentUser.image_url,
 	);
-	const [previewPicture, setPreviewPicture] = useState(null);
+	const [previewPicture, setPreviewPicture] = useState(initialImageUrl || null);
+	const displayName =
+		[firstName, lastName].filter(Boolean).join(" ") ||
+		auth.currentUser?.full_name;
 	const [avatarUpload, setAvatarUpload] = useState(false);
 	const [isUpdating, setIsUpdating] = useState(false);
 	const { isMobile } = useResponsive();
@@ -82,7 +95,7 @@ export const OnboardingModal = ({
 			data["language"] = lang;
 		}
 		if (previewPicture && avatarUpload) {
-			data["image"] = previewPicture;
+			data["image"] = pendingAuth ? previewPictureBase64 : previewPicture;
 		}
 		if (previewPicture && !avatarUpload) {
 			data["origin_image_url"] = previewPicture;
@@ -157,12 +170,12 @@ export const OnboardingModal = ({
 		>
 			{isUpdating ? (
 				<Loader />
-			) : showAvatars && !pendingAuth ? (
+			) : showAvatars ? (
 				<>
 					<AvatarSelector
 						onChooseAvatar={handleChooseAvatar}
 						avatarUrlList={avatarUrlList}
-						userName={auth.currentUser.full_name}
+						userName={displayName}
 						allowUserImage={config.avatars?.allowUserImage}
 					/>
 					<div
@@ -201,19 +214,17 @@ export const OnboardingModal = ({
 									/>
 								</div>
 							)}
-							{!pendingAuth && (
-								<Button
-									data-testid="avatar-button"
-									data-tid={"action_save_profile"}
-									onClick={() => setShowAvatars(true)}
-									style={{ whiteSpace: "nowrap" }}
-								>
-									{intl.formatMessage({
-										id: "user.user_edit.avatar",
-										defaultMessage: "Select an avatar",
-									})}
-								</Button>
-							)}
+							<Button
+								data-testid="avatar-button"
+								data-tid={"action_save_profile"}
+								onClick={() => setShowAvatars(true)}
+								style={{ whiteSpace: "nowrap" }}
+							>
+								{intl.formatMessage({
+									id: "user.user_edit.avatar",
+									defaultMessage: "Select an avatar",
+								})}
+							</Button>
 						</div>
 						<div className={styles.inputsContainer}>
 							<div className={styles.nameContainer}>
