@@ -21,6 +21,10 @@ export const ResetPlugin = ({ storageUid }) => {
 				root.clear();
 				root.append(paragraph);
 
+				const selection = paragraph.selectStart();
+				selection.format = 0;
+				selection.style = "";
+
 				removeContent();
 				setReset(false);
 			});

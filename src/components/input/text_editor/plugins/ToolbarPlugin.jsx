@@ -68,6 +68,12 @@ export const ToolbarPlugin = (props) => {
 			setIsBold(selection.hasFormat("bold"));
 			setIsItalic(selection.hasFormat("italic"));
 			setIsUnderline(selection.hasFormat("underline"));
+		} else {
+			setSelectedElementKey(null);
+			setBlockType("paragraph");
+			setIsBold(false);
+			setIsItalic(false);
+			setIsUnderline(false);
 		}
 	}, [editor]);
 
