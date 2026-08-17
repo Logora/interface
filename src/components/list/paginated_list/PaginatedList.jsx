@@ -62,6 +62,7 @@ export const PaginatedList = ({
 	const [isLoading, setIsLoading] = useState(false);
 	const [loadError, setLoadError] = useState(false);
 	const [currentResources, setCurrentResources] = useData(currentListId, []);
+	const [pinnedElements, setPinnedElements] = useState([]);
 	const [totalElements, setTotalElements] = useState(
 		currentResources?.length || 0,
 	);
@@ -161,6 +162,7 @@ export const PaginatedList = ({
 		resource,
 		activeTagId,
 		perPage,
+		pinnedElements,
 	]);
 
 	useEffect(() => {
@@ -169,6 +171,18 @@ export const PaginatedList = ({
 			loadResources(page);
 		}
 	}, [page]);
+
+	// Keep pinned elements (e.g. editorial/selected comments) in sync from the
+	// shared ListContext, so they always stay at the top of the list whatever
+	// the active sort/filter.
+	useEffect(() => {
+		if (list.addPinnedElements && currentListId in list.addPinnedElements) {
+			const pinned = list.addPinnedElements[currentListId];
+			setPinnedElements(
+				Array.isArray(pinned) ? pinned : pinned != null ? [pinned] : [],
+			);
+		}
+	}, [list.addPinnedElements, currentListId]);
 
 	useEffect(() => {
 		if (list.addElements && currentListId in list.addElements) {
@@ -282,6 +296,8 @@ export const PaginatedList = ({
 					) {
 						newElements = [...list.addElements[currentListId], newElements];
 					}
+					newElements = placePinnedFirst(newElements);
+					newElements = uniqueBy(newElements, uniqueIdKey || "id");
 					addElements(newElements);
 					setIsLoading(false);
 				})
@@ -297,9 +313,19 @@ export const PaginatedList = ({
 		}
 	};
 
+	const placePinnedFirst = (resources) => {
+		if (pinnedElements.length === 0) {
+			return resources;
+		}
+		const key = uniqueIdKey || "id";
+		const pinnedIds = pinnedElements.map((element) => element[key]);
+		const nonPinned = resources.filter((element) => !pinnedIds.includes(element[key]));
+		return [...pinnedElements, ...nonPinned];
+	};
+
 	const handleAddElements = (elements) => {
 		setCurrentResources((prevElements) =>
-			uniqueBy([...elements, ...prevElements], uniqueIdKey || "id"),
+			uniqueBy(placePinnedFirst([...elements, ...prevElements]), uniqueIdKey || "id"),
 		);
 		if (onElementsLoad) {
 			onElementsLoad(elements);

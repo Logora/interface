@@ -6,7 +6,7 @@ import { StandardErrorBoundary } from "@logora/debate/error/standard_error_bound
 import { ResponsiveProvider } from "@logora/debate/hooks/use_responsive";
 import { IconProvider } from "@logora/debate/icons/icon_provider";
 import { ListProvider, useList } from "@logora/debate/list/list_provider";
-import { act, render, screen } from "@testing-library/react";
+import { act, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import React from "react";
 import { IntlProvider } from "react-intl";
@@ -1401,4 +1401,67 @@ describe("PaginatedList", () => {
 
 		expect(screen.getByText("Updated second item")).toBeTruthy();
 	});
+        it("should keep pinned elements at the top regardless of sort", async () => {
+                let pinnedList;
+                const pinnedItems = [
+                        { id: 901, name: "Pinned editor comment A" },
+                        { id: 902, name: "Pinned editor comment B" },
+                ];
+
+                const PinComponent = () => {
+                        const list = useList();
+                        pinnedList = list;
+                        return null;
+                };
+
+                await act(async () => {
+                        render(
+                                <BrowserRouter>
+                                        <IntlProvider locale="en">
+                                                <ResponsiveProvider>
+                                                        <DataProviderContext.Provider value={{ dataProvider: data }}>
+                                                                <IconProvider library={regularIcons}>
+                                                                        <ListProvider>
+                                                                                <PinComponent />
+                                                                                <PaginatedList
+                                                                                        currentListId={"itemList"}
+                                                                                        resource={"items"}
+                                                                                        sort={"-created_at"}
+                                                                                        resourcePropName={"item"}
+                                                                                        perPage={10}
+                                                                                        withPagination={false}
+                                                                                        countless={true}
+                                                                                        display="column"
+                                                                                        sortOptions={[
+                                                                                                { type: "sort", value: "-created_at", name: "recent" },
+                                                                                                { type: "sort", value: "-score", name: "relevance" },
+                                                                                        ]}
+                                                                                >
+                                                                                        <ListItem />
+                                                                                </PaginatedList>
+                                                                        </ListProvider>
+                                                                </IconProvider>
+                                                        </DataProviderContext.Provider>
+                                                        </ResponsiveProvider>
+                                                </IntlProvider>
+                                        </BrowserRouter>,
+                        );
+                });
+
+                expect(screen.getAllByTestId("list-item")).toHaveLength(3);
+
+                await act(async () => {
+                        pinnedList.addPinned("itemList", pinnedItems);
+                });
+
+                await waitFor(() => {
+                        const names = screen
+                                .getAllByTestId("list-item")
+                                .map((node) => node.textContent);
+                        expect(names[0]).toBe("Pinned editor comment A");
+                        expect(names[1]).toBe("Pinned editor comment B");
+                        expect(names).toHaveLength(5);
+                });
+        });
+
 });
