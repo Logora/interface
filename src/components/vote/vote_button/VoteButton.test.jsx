@@ -8,10 +8,10 @@ import {
 import { ModalProvider } from "@logora/debate/dialog/modal";
 import { IconProvider } from "@logora/debate/icons/icon_provider";
 import * as regularIcons from "@logora/debate/icons/regular_icons";
-import { VoteProvider } from "@logora/debate/vote/vote_provider";
+import { VoteContext, VoteProvider } from "@logora/debate/vote/vote_provider";
 import { render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import React from "react";
+import React, { useState } from "react";
 import { IntlProvider } from "react-intl";
 import { VoteButton } from "./VoteButton";
 
@@ -174,5 +174,66 @@ describe("VoteButton", () => {
 		await userEvent.click(voteButton);
 
 		expect(container.getByText(50)).toBeInTheDocument();
+	});
+
+	it("should be disabled while the vote state is still loading", async () => {
+		const voteableId = faker.number.int();
+		const voteableType = "message";
+		const postMock = vi.fn(() =>
+			Promise.resolve({
+				data: { success: true, data: { resource: vote } },
+			}),
+		);
+		const loadingData = dataProvider(
+			{ ...httpClient, post: postMock },
+			"https://mock.example.api",
+		);
+
+		const ControllableProvider = ({ children }) => {
+			const [votes, setVotes] = useState({});
+			const [votesLoading, setVotesLoading] = useState(true);
+			return (
+				<VoteContext.Provider
+					value={{
+						votes,
+						voteableIds: [voteableId],
+						votesLoading,
+						addVoteableIds: vi.fn(),
+					}}
+				>
+					{children}
+				</VoteContext.Provider>
+			);
+		};
+
+		const container = render(
+			<ConfigProvider config={{}}>
+				<IntlProvider locale="en">
+					<DataProviderContext.Provider value={{ dataProvider: loadingData }}>
+						<IconProvider library={regularIcons}>
+							<AuthContext.Provider
+								value={{ currentUser: currentUser, isLoggedIn: true }}
+							>
+								<ModalProvider>
+									<ControllableProvider>
+										<VoteButton
+											voteableType={voteableType}
+											voteableId={voteableId}
+											totalUpvote={10}
+											totalDownvote={0}
+										/>
+									</ControllableProvider>
+								</ModalProvider>
+							</AuthContext.Provider>
+						</IconProvider>
+					</DataProviderContext.Provider>
+				</IntlProvider>
+			</ConfigProvider>,
+		);
+
+		const voteButton = container.getByTestId("vote-button");
+		await userEvent.click(voteButton);
+
+		expect(postMock).not.toHaveBeenCalled();
 	});
 });

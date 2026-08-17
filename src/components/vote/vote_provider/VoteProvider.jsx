@@ -9,8 +9,10 @@ export const VoteProvider = ({ voteableType, children }) => {
 	const { isLoggedIn, currentUser } = useAuth();
 	const [votes, setVotes] = useState({});
 	const [voteableIds, setVoteableIds] = useState([]);
+	const [votesLoading, setVotesLoading] = useState(false);
 
 	const getVotes = () => {
+		setVotesLoading(true);
 		api
 			.getList("votes", {
 				page: 1,
@@ -33,7 +35,8 @@ export const VoteProvider = ({ voteableType, children }) => {
 					});
 					setVotes((prevState) => ({ ...prevState, ...votes }));
 				}
-			});
+			})
+			.finally(() => setVotesLoading(false));
 	};
 
 	useEffect(() => {
@@ -47,7 +50,7 @@ export const VoteProvider = ({ voteableType, children }) => {
 	};
 
 	return (
-		<VoteContext.Provider value={{ votes, addVoteableIds }}>
+		<VoteContext.Provider value={{ votes, voteableIds, votesLoading, addVoteableIds }}>
 			{children}
 		</VoteContext.Provider>
 	);

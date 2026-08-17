@@ -18,7 +18,7 @@ export const SuggestionVoteBox = ({
 }) => {
 	const intl = useIntl();
 	const { isLoggedIn } = useAuth();
-	const { activeVote, voteSide, handleVote } = useVote(
+	const { activeVote, voteSide, handleVote, isVoteReady } = useVote(
 		voteableType,
 		voteableId,
 		totalUpvote,
@@ -26,6 +26,8 @@ export const SuggestionVoteBox = ({
 		onVote,
 	);
 	const { showModal } = useModal();
+
+	const buttonDisabled = disabled || !isVoteReady;
 
 	const handleDownvote = () => {
 		if (isLoggedIn) {
@@ -64,9 +66,9 @@ export const SuggestionVoteBox = ({
 		<div className={styles.voteButtonsContainer}>
 			<Button
 				type="button"
-				onClick={disabled ? null : () => handleVote(true)}
+				onClick={buttonDisabled ? null : () => handleVote(true)}
 				data-testid="upvote-button"
-				disabled={disabled}
+				disabled={buttonDisabled}
 				rightIcon={
 					<Icon
 						name="check"
@@ -87,8 +89,8 @@ export const SuggestionVoteBox = ({
 			</Button>
 			<Button
 				type="button"
-				onClick={disabled ? null : () => handleDownvote()}
-				disabled={disabled}
+				onClick={buttonDisabled ? null : () => handleDownvote()}
+				disabled={buttonDisabled}
 				rightIcon={
 					<Icon name="close" width={10} height={10} aria-hidden="true" />
 				}

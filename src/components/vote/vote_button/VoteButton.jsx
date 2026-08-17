@@ -13,7 +13,7 @@ export const VoteButton = ({
 	activeClassName,
 	disabled = false,
 }) => {
-	const { totalUpvotes, activeVote, handleVote } = useVote(
+	const { totalUpvotes, activeVote, handleVote, isVoteReady } = useVote(
 		voteableType,
 		voteableId,
 		totalUpvote,
@@ -21,15 +21,17 @@ export const VoteButton = ({
 	);
 	const intl = useIntl();
 
+	const buttonDisabled = disabled || !isVoteReady;
+
 	return (
 		<button
 			type="button"
 			className={cx(styles.voteButton, {
 				[styles.active]: activeVote,
 				[activeClassName]: activeVote,
-				[styles.disabled]: disabled,
+				[styles.disabled]: buttonDisabled,
 			})}
-			onClick={disabled ? null : () => handleVote(true)}
+			onClick={buttonDisabled ? null : () => handleVote(true)}
 			data-testid="vote-button"
 			data-tid="action_vote_argument"
 			aria-pressed={activeVote}

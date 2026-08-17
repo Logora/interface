@@ -2,7 +2,7 @@ import { useAuth } from "@logora/debate/auth/use_auth";
 import { useDataProvider } from "@logora/debate/data/data_provider";
 import { useAuthRequired } from "@logora/debate/hooks/use_auth_required";
 import { VoteContext } from "@logora/debate/vote/vote_provider";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 
 export const useVote = (
 	voteableType,
@@ -11,7 +11,7 @@ export const useVote = (
 	downvotes,
 	onVote = null,
 ) => {
-	const { votes } = useContext(VoteContext);
+	const { votes, voteableIds, votesLoading } = useContext(VoteContext);
 	const { isLoggedIn } = useAuth();
 	const api = useDataProvider();
 
@@ -22,7 +22,13 @@ export const useVote = (
 	const [totalDownvotes, setTotalDownvotes] = useState(downvotes);
 	const [voteDisabled, setVoteDisabled] = useState(false);
 	const [hasVoted, setHasVoted] = useState(false);
+	const voteRequestInProgress = useRef(false);
 	const requireAuthentication = useAuthRequired();
+
+	// The voteable is managed by a VoteProvider: we must not create a vote
+	// before its existing vote has been loaded, otherwise we could duplicate it.
+	const isVoteableInProvider = Array.isArray(voteableIds) && voteableIds.includes(voteableId);
+	const isVoteReady = !isVoteableInProvider || !votesLoading;
 
 	useEffect(() => {
 		if (!hasVoted && isLoggedIn) {
@@ -66,7 +72,12 @@ export const useVote = (
 	};
 
 	const voteAction = (isUpvote) => {
+		const releaseVoteLock = () => {
+			voteRequestInProgress.current = false;
+			setVoteDisabled(false);
+		};
 		setHasVoted(true);
+		voteRequestInProgress.current = true;
 		if (activeVote) {
 			if (voteSide === isUpvote) {
 				deactivateVote(isUpvote);
@@ -78,11 +89,11 @@ export const useVote = (
 						} else {
 							activateVote(isUpvote);
 						}
-						setVoteDisabled(false);
+						releaseVoteLock();
 					},
 					(error) => {
 						activateVote(isUpvote);
-						setVoteDisabled(false);
+						releaseVoteLock();
 					},
 				);
 			} else {
@@ -98,12 +109,12 @@ export const useVote = (
 							deactivateVote(isUpvote);
 							activateVote(!isUpvote);
 						}
-						setVoteDisabled(false);
+						releaseVoteLock();
 					},
 					(error) => {
 						deactivateVote(isUpvote);
 						activateVote(!isUpvote);
-						setVoteDisabled(false);
+						releaseVoteLock();
 					},
 				);
 			}
@@ -122,19 +133,22 @@ export const useVote = (
 					} else {
 						deactivateVote(isUpvote);
 					}
-					setVoteDisabled(false);
+					releaseVoteLock();
 				},
 				(error) => {
 					deactivateVote(isUpvote);
-					setVoteDisabled(false);
+					releaseVoteLock();
 				},
 			);
 		}
 	};
 
 	const handleVote = (isUpvote) => {
-		if (!voteDisabled) {
+		if (!voteDisabled && !voteRequestInProgress.current) {
 			if (isLoggedIn) {
+				if (!isVoteReady) {
+					return;
+				}
 				voteAction(isUpvote);
 			} else {
 				requireAuthentication({ loginAction: "vote" });
@@ -148,5 +162,6 @@ export const useVote = (
 		activeVote,
 		voteSide,
 		handleVote,
+		isVoteReady,
 	};
 };

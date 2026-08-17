@@ -447,4 +447,127 @@ describe("useVote", () => {
 		expect(screen.getByText("ActiveVote : true"));
 		expect(screen.getByText("Upvotes : 10")); // no change to count, just status
 	});
+
+	it("should not create a vote while the existing votes are still loading", async () => {
+		const voteableId = faker.number.int();
+		const voteableType = "message";
+
+		const postMock = vi.fn(() =>
+			Promise.resolve({
+				data: { success: true, data: { resource: { id: 1 } } },
+			}),
+		);
+		const loadingData = dataProvider(
+			{ ...httpClient, post: postMock },
+			"https://mock.example.api",
+		);
+
+		const ControllableVoteWrapper = ({ children }) => {
+			const [votes, setVotes] = useState({});
+			const [votesLoading, setVotesLoading] = useState(true);
+			return (
+				<ConfigProvider config={{}}>
+					<DataProviderContext.Provider value={{ dataProvider: loadingData }}>
+						<AuthContext.Provider value={{ currentUser, isLoggedIn: true }}>
+							<ModalProvider>
+								<VoteContext.Provider
+									value={{
+										votes,
+										voteableIds: [voteableId],
+										votesLoading,
+										addVoteableIds: vi.fn(),
+									}}
+								>
+									{children}
+									<button
+										data-testid="finish-loading"
+										onClick={() => act(() => setVotesLoading(false))}
+									/>
+								</VoteContext.Provider>
+							</ModalProvider>
+						</AuthContext.Provider>
+					</DataProviderContext.Provider>
+				</ConfigProvider>
+			);
+		};
+
+		const VoteButton = () => {
+			const { totalUpvotes, handleVote } = useVote(
+				voteableType,
+				voteableId,
+				10,
+				5,
+			);
+			return (
+				<>
+					<button onClick={() => handleVote(true)} data-testid="upvote" />
+					<span>Upvotes : {totalUpvotes}</span>
+				</>
+			);
+		};
+
+		const { getByTestId } = render(
+			<ControllableVoteWrapper>
+				<VoteButton />
+			</ControllableVoteWrapper>,
+		);
+
+		// Votes are still loading: a click must not create a vote
+		await userEvent.click(getByTestId("upvote"));
+		expect(postMock).not.toHaveBeenCalled();
+
+		// Once the votes are loaded, the vote is allowed
+		await userEvent.click(getByTestId("finish-loading"));
+		await userEvent.click(getByTestId("upvote"));
+		expect(postMock).toHaveBeenCalledTimes(1);
+	});
+
+	it("should not create multiple votes on rapid clicks", async () => {
+		const voteableId = faker.number.int();
+		const voteableType = "message";
+
+		let resolveCreate;
+		const postMock = vi.fn(
+			() =>
+				new Promise((resolve) => {
+					resolveCreate = resolve;
+				}),
+		);
+		const rapidData = dataProvider(
+			{ ...httpClient, post: postMock },
+			"https://mock.example.api",
+		);
+
+		const VoteButton = () => {
+			const { totalUpvotes, handleVote } = useVote(
+				voteableType,
+				voteableId,
+				10,
+				5,
+			);
+			return (
+				<>
+					<button onClick={() => handleVote(true)} data-testid="upvote" />
+					<span>Upvotes : {totalUpvotes}</span>
+				</>
+			);
+		};
+
+		const { getByTestId } = render(
+			<VoteWrapper data={rapidData}>
+				<VoteButton />
+			</VoteWrapper>,
+		);
+
+		await userEvent.click(getByTestId("upvote"));
+		await userEvent.click(getByTestId("upvote"));
+
+		expect(postMock).toHaveBeenCalledTimes(1);
+
+		await act(async () => {
+			resolveCreate({
+				data: { success: true, data: { resource: { id: 1 } } },
+			});
+		});
+	});
 });
