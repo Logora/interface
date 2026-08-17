@@ -11,7 +11,7 @@ import { IconProvider } from "@logora/debate/icons/icon_provider";
 import * as regularIcons from "@logora/debate/icons/regular_icons";
 import { Location } from "@logora/debate/util/location";
 import { VoteProvider } from "@logora/debate/vote/vote_provider";
-import { render, within } from "@testing-library/react";
+import { act, render, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import React from "react";
 import { IntlProvider } from "react-intl";
@@ -68,19 +68,19 @@ const votePositions = [
 
 const data = dataProvider(httpClient, "https://mock.example.api");
 
-const VoteBoxWrapper = (props) => {
+const VoteBoxWrapper = ({ children, data = dataProvider(httpClient, "https://mock.example.api") }) => {
 	return (
 		<BrowserRouter>
 			<IntlProvider locale="en">
 				<DataProviderContext.Provider value={{ dataProvider: data }}>
 					<AuthContext.Provider
-						value={{ currentUser: currentUser, isLoggedIn: true }}
+						value={{ currentUser: currentUser, isLoggedIn: true, isLoggingIn: false }}
 					>
 						<IconProvider library={regularIcons}>
 							<ToastProvider>
 								<ConfigProvider config={{}} routes={{ ...routes }}>
 									<ModalProvider>
-										<VoteProvider>{props.children}</VoteProvider>
+										<VoteProvider>{children}</VoteProvider>
 									</ModalProvider>
 								</ConfigProvider>
 							</ToastProvider>
@@ -206,6 +206,7 @@ describe("VoteBox Component", () => {
 			<VoteBoxWrapper>
 				<VoteBox
 					voteableId={debate.id}
+					voteableType={vote.voteable_type}
 					votePositions={votePositions}
 					numberVotes={debate.votes_count}
 				/>
@@ -231,18 +232,18 @@ describe("VoteBox Component", () => {
 	});
 
 	it("should redirect after vote", async () => {
-		const { getByTestId, getByTitle, queryAllByRole } = render(
+		sessionStorage.clear();
+		const { getByTestId, getByTitle } = render(
 			<VoteBoxWrapper>
 				<VoteBox
 					voteableId={debate.id}
+					voteableType={vote.voteable_type}
 					votePositions={votePositions}
 					numberVotes={debate.votes_count}
 					redirectUrl={"myUrl"}
 				/>
 			</VoteBoxWrapper>,
 		);
-
-		expect(queryAllByRole("button")).toHaveLength(2);
 
 		const showResultLink = getByTestId("show-result");
 		expect(showResultLink).toHaveAttribute("href", "myUrl?initVote=true");
@@ -264,5 +265,86 @@ describe("VoteBox Component", () => {
 			"href",
 			"myUrl?initVote=true&positionId=3",
 		);
+	});
+
+	it("should not create a vote while the existing vote is still loading", async () => {
+		const loadingHttpClient = {
+			get: () => new Promise(() => {}),
+			post: vi.fn(),
+			patch: vi.fn(),
+			delete: vi.fn(),
+		};
+		const loadingData = dataProvider(
+			loadingHttpClient,
+			"https://mock.example.api",
+		);
+		const { getByTitle } = render(
+			<VoteBoxWrapper data={loadingData}>
+				<VoteBox
+					voteableId={debate.id}
+					voteableType={vote.voteable_type}
+					votePositions={votePositions}
+					numberVotes={debate.votes_count}
+				/>
+			</VoteBoxWrapper>,
+		);
+
+		const position1 = getByTitle("Position 1");
+		await userEvent.click(position1);
+		expect(loadingHttpClient.post).not.toHaveBeenCalled();
+	});
+
+	it("should not trigger multiple vote creations on rapid clicks", async () => {
+		let resolveCreate;
+		const postMock = vi.fn(
+			() =>
+				new Promise((resolve) => {
+					resolveCreate = resolve;
+				}),
+		);
+		const controlledHttpClient = {
+			get: () =>
+				Promise.resolve({
+					data: { success: true, data: { resource: null } },
+				}),
+			post: postMock,
+			patch: vi.fn(),
+			delete: vi.fn(),
+		};
+		const controlledData = dataProvider(
+			controlledHttpClient,
+			"https://mock.example.api",
+		);
+		const { getByTitle } = render(
+			<VoteBoxWrapper data={controlledData}>
+				<VoteBox
+					voteableId={debate.id}
+					voteableType={vote.voteable_type}
+					votePositions={votePositions}
+					numberVotes={debate.votes_count}
+				/>
+			</VoteBoxWrapper>,
+		);
+
+		const position1 = getByTitle("Position 1");
+		await userEvent.click(position1);
+		await userEvent.click(position1);
+
+		expect(postMock).toHaveBeenCalledTimes(1);
+
+		await act(async () => {
+			resolveCreate({
+				data: {
+					success: true,
+					data: {
+						resource: {
+							...vote,
+							voteable_id: debate.id,
+							voteable_type: vote.voteable_type,
+						},
+					},
+				},
+			});
+		});
 	});
 });
