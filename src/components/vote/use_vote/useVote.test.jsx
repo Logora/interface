@@ -447,4 +447,54 @@ describe("useVote", () => {
 		expect(screen.getByText("ActiveVote : true"));
 		expect(screen.getByText("Upvotes : 10")); // no change to count, just status
 	});
+
+	it("should not create multiple votes on rapid clicks", async () => {
+		const voteableId = faker.number.int();
+		const voteableType = "message";
+
+		let resolveCreate;
+		const postMock = vi.fn(
+			() =>
+				new Promise((resolve) => {
+					resolveCreate = resolve;
+				}),
+		);
+		const rapidData = dataProvider(
+			{ ...httpClient, post: postMock },
+			"https://mock.example.api",
+		);
+
+		const VoteButton = () => {
+			const { totalUpvotes, handleVote } = useVote(
+				voteableType,
+				voteableId,
+				10,
+				5,
+			);
+			return (
+				<>
+					<button onClick={() => handleVote(true)} data-testid="upvote" />
+					<span>Upvotes : {totalUpvotes}</span>
+				</>
+			);
+		};
+
+		const { getByTestId } = render(
+			<VoteWrapper data={rapidData}>
+				<VoteButton />
+			</VoteWrapper>,
+		);
+
+		// Two rapid clicks on the same button must only send one request
+		await userEvent.click(getByTestId("upvote"));
+		await userEvent.click(getByTestId("upvote"));
+
+		expect(postMock).toHaveBeenCalledTimes(1);
+
+		await act(async () => {
+			resolveCreate({
+				data: { success: true, data: { resource: { id: 1 } } },
+			});
+		});
+	});
 });

@@ -2,7 +2,7 @@ import { useAuth } from "@logora/debate/auth/use_auth";
 import { useDataProvider } from "@logora/debate/data/data_provider";
 import { useAuthRequired } from "@logora/debate/hooks/use_auth_required";
 import { VoteContext } from "@logora/debate/vote/vote_provider";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 
 export const useVote = (
 	voteableType,
@@ -22,6 +22,9 @@ export const useVote = (
 	const [totalDownvotes, setTotalDownvotes] = useState(downvotes);
 	const [voteDisabled, setVoteDisabled] = useState(false);
 	const [hasVoted, setHasVoted] = useState(false);
+	// Synchronous lock against the `setState` delay: a second click during an
+	// in-flight vote request is ignored instead of issuing a duplicate request.
+	const voteRequestInProgress = useRef(false);
 	const requireAuthentication = useAuthRequired();
 
 	useEffect(() => {
@@ -66,6 +69,11 @@ export const useVote = (
 	};
 
 	const voteAction = (isUpvote) => {
+		const releaseVoteLock = () => {
+			voteRequestInProgress.current = false;
+			setVoteDisabled(false);
+		};
+		voteRequestInProgress.current = true;
 		setHasVoted(true);
 		if (activeVote) {
 			if (voteSide === isUpvote) {
@@ -78,11 +86,11 @@ export const useVote = (
 						} else {
 							activateVote(isUpvote);
 						}
-						setVoteDisabled(false);
+						releaseVoteLock();
 					},
 					(error) => {
 						activateVote(isUpvote);
-						setVoteDisabled(false);
+						releaseVoteLock();
 					},
 				);
 			} else {
@@ -98,12 +106,12 @@ export const useVote = (
 							deactivateVote(isUpvote);
 							activateVote(!isUpvote);
 						}
-						setVoteDisabled(false);
+						releaseVoteLock();
 					},
 					(error) => {
 						deactivateVote(isUpvote);
 						activateVote(!isUpvote);
-						setVoteDisabled(false);
+						releaseVoteLock();
 					},
 				);
 			}
@@ -122,18 +130,18 @@ export const useVote = (
 					} else {
 						deactivateVote(isUpvote);
 					}
-					setVoteDisabled(false);
+					releaseVoteLock();
 				},
 				(error) => {
 					deactivateVote(isUpvote);
-					setVoteDisabled(false);
+					releaseVoteLock();
 				},
 			);
 		}
 	};
 
 	const handleVote = (isUpvote) => {
-		if (!voteDisabled) {
+		if (!voteDisabled && !voteRequestInProgress.current) {
 			if (isLoggedIn) {
 				voteAction(isUpvote);
 			} else {

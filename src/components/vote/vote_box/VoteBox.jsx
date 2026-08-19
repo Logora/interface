@@ -10,7 +10,7 @@ import { ProgressBar } from "@logora/debate/progress/progress_bar";
 import { useTranslatedContent } from "@logora/debate/translation/translated_content";
 import useSessionStorageState from "@rooks/use-sessionstorage-state";
 import cx from "classnames";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { useLocation } from "react-router";
 import styles from "./VoteBox.module.scss";
@@ -36,6 +36,10 @@ export const VoteBox = ({
 }) => {
 	const [isLoadingVote, setIsLoadingVote] = useState(true);
 	const [currentVote, setCurrentVote] = useState(undefined);
+	const [voteDisabled, setVoteDisabled] = useState(false);
+	// Synchronous lock against the `setState` delay: a second click during an
+	// in-flight vote request is ignored instead of issuing a duplicate request.
+	const voteInProgress = useRef(false);
 	const [showResults, setShowResults] = useState(false);
 	const [totalVotes, setTotalVotes] = useState(
 		Number.parseFloat(numberVotes.total) ||
@@ -176,6 +180,10 @@ export const VoteBox = ({
 	};
 
 	const voteAction = (positionId) => {
+		const releaseLock = () => {
+			voteInProgress.current = false;
+			setVoteDisabled(false);
+		};
 		const data = {
 			voteable_id: voteableId,
 			voteable_type: voteableType || "Group",
@@ -191,7 +199,30 @@ export const VoteBox = ({
 			updateVote(positionId, currentVote.position_id);
 			showResults === false && toggleResults();
 			if (positionId !== currentVote.position_id) {
-				api.update("votes", currentVote.id, data).then((response) => {
+				voteInProgress.current = true;
+				setVoteDisabled(true);
+				api.update("votes", currentVote.id, data)
+					.then((response) => {
+						if (response.data.success) {
+							setCurrentVote(response.data.data.resource);
+							toast(
+								intl.formatMessage({
+									id: "header.vote_confirm_modal",
+									defaultMessage: "Your vote has been saved !",
+								}),
+								{ type: "success" },
+							);
+						}
+					})
+					.finally(releaseLock);
+			}
+		} else {
+			addVote(positionId);
+			toggleResults();
+			voteInProgress.current = true;
+			setVoteDisabled(true);
+			api.create("votes", data)
+				.then((response) => {
 					if (response.data.success) {
 						setCurrentVote(response.data.data.resource);
 						toast(
@@ -202,23 +233,8 @@ export const VoteBox = ({
 							{ type: "success" },
 						);
 					}
-				});
-			}
-		} else {
-			addVote(positionId);
-			toggleResults();
-			api.create("votes", data).then((response) => {
-				if (response.data.success) {
-					setCurrentVote(response.data.data.resource);
-					toast(
-						intl.formatMessage({
-							id: "header.vote_confirm_modal",
-							defaultMessage: "Your vote has been saved !",
-						}),
-						{ type: "success" },
-					);
-				}
-			});
+				})
+				.finally(releaseLock);
 		}
 	};
 
@@ -277,6 +293,9 @@ export const VoteBox = ({
 
 	const handleVote = (positionId) => {
 		if (isLoggedIn) {
+			if (voteDisabled || voteInProgress.current) {
+				return;
+			}
 			if (Object.keys(votesCount).includes(positionId.toString())) {
 				voteAction(positionId);
 				removeSavedVote();
