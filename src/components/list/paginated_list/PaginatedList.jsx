@@ -6,7 +6,7 @@ import { Pagination } from "@logora/debate/list/pagination";
 import { uniqueBy } from "@logora/debate/util/unique_by";
 import usePrevious from "@rooks/use-previous";
 import cx from "classnames";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useIntl } from "react-intl";
 import { useLocation } from "react-router";
 import styles from "./PaginatedList.module.scss";
@@ -69,6 +69,7 @@ export const PaginatedList = ({
 	const [currentQuery, setCurrentQuery] = useState(query || null);
 	const [activeTagId, setActiveTagId] = useState(null);
 	const [defaultSelectOption, setDefaultSelectOption] = useState(null);
+	const pinnedElementsRef = useRef([]);
 	const urlParams = new URLSearchParams(
 		typeof window !== "undefined" ? window.location.search : location.search,
 	);
@@ -180,6 +181,17 @@ export const PaginatedList = ({
 			}
 		}
 	}, [list.addElements]);
+
+	useEffect(() => {
+		if (list.addPinnedElements && currentListId in list.addPinnedElements) {
+			if (list.addPinnedElements[currentListId].length > 0) {
+				handleAddPinnedElements(list.addPinnedElements[currentListId]);
+				const addPinnedElements = list.addPinnedElements;
+				delete addPinnedElements[currentListId];
+				list.setAddPinnedElements(addPinnedElements);
+			}
+		}
+	}, [list.addPinnedElements]);
 
 	useEffect(() => {
 		if (list.updateElements && currentListId in list.updateElements) {
@@ -306,6 +318,16 @@ export const PaginatedList = ({
 		}
 	};
 
+	const handleAddPinnedElements = (elements) => {
+		pinnedElementsRef.current = elements;
+		setCurrentResources((prevElements) =>
+			uniqueBy([...elements, ...prevElements], uniqueIdKey || "id"),
+		);
+		if (onElementsLoad) {
+			onElementsLoad(elements);
+		}
+	};
+
 	const handleEditElements = (elements) => {
 		setCurrentResources((prevResources) => {
 			let newElements = prevResources;
@@ -328,9 +350,13 @@ export const PaginatedList = ({
 	};
 
 	const addElements = (newElements) => {
-		setCurrentResources((prevElements) =>
-			uniqueBy([...prevElements, ...newElements], uniqueIdKey || "id"),
-		);
+		setCurrentResources((prevElements) => {
+			let elements = [...prevElements, ...newElements];
+			if (pinnedElementsRef.current.length > 0) {
+				elements = [...pinnedElementsRef.current, ...elements];
+			}
+			return uniqueBy(elements, uniqueIdKey || "id");
+		});
 	};
 
 	const displayResource = (resource, index) => {
