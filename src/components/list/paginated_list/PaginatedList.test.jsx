@@ -1275,6 +1275,160 @@ describe("PaginatedList", () => {
 		expect(screen.getAllByTestId("list-item")).toHaveLength(7);
 	});
 
+	it("should add pinned elements at the top of the list through addPinned hook", async () => {
+		const apiElements = [
+			{ id: 1, name: "Api item 1" },
+			{ id: 2, name: "Api item 2" },
+			{ id: 3, name: "Api item 3" },
+		];
+
+		mock.mockResolvedValue({
+			status: 200,
+			data: { success: true, data: apiElements },
+		});
+
+		const pinnedElement = [{ id: 99, name: "Pinned item" }];
+
+		const PinElementsComponent = () => {
+			const list = useList();
+			return (
+				<button onClick={() => list.addPinned("itemList", pinnedElement)}>
+					Add pinned
+				</button>
+			);
+		};
+
+		await act(async () => {
+			render(
+				<BrowserRouter>
+					<IntlProvider locale="en">
+						<ResponsiveProvider>
+							<DataProviderContext.Provider value={{ dataProvider: data }}>
+								<IconProvider library={regularIcons}>
+									<ListProvider>
+										<PinElementsComponent />
+										<PaginatedList
+											currentListId={"itemList"}
+											resource={"items"}
+											sort={"-created_at"}
+											resourcePropName={"item"}
+											perPage={10}
+											withPagination={false}
+											countless={true}
+											display="column"
+										>
+											<ListItem />
+										</PaginatedList>
+									</ListProvider>
+								</IconProvider>
+							</DataProviderContext.Provider>
+						</ResponsiveProvider>
+					</IntlProvider>
+				</BrowserRouter>,
+			);
+		});
+
+		expect(mock).toHaveBeenCalled();
+		expect(screen.getAllByTestId("list-item")).toHaveLength(3);
+		expect(screen.getAllByTestId("list-item")[0].textContent).toEqual("Api item 1");
+
+		await act(async () => {
+			await userEvent.click(screen.getByText("Add pinned"));
+		});
+
+		const items = screen.getAllByTestId("list-item");
+		expect(items).toHaveLength(4);
+		expect(items[0].textContent).toEqual("Pinned item");
+	});
+
+	it("should keep pinned elements at the top after changing sort", async () => {
+		const apiElements = [
+			{ id: 1, name: "First" },
+			{ id: 2, name: "Second" },
+			{ id: 3, name: "Third" },
+		];
+
+		mock.mockResolvedValue({
+			status: 200,
+			data: { success: true, data: apiElements },
+		});
+
+		const pinnedElements = [
+			{ id: 99, name: "Pinned item" },
+		];
+
+		const PinAndSortComponent = () => {
+			const list = useList();
+			return (
+				<button onClick={() => list.addPinned("itemList", pinnedElements)}>
+					Add pinned
+				</button>
+			);
+		};
+
+		await act(async () => {
+			render(
+				<BrowserRouter>
+					<IntlProvider locale="en">
+						<ResponsiveProvider>
+							<DataProviderContext.Provider value={{ dataProvider: data }}>
+								<IconProvider library={regularIcons}>
+									<ListProvider>
+										<PinAndSortComponent />
+										<PaginatedList
+											currentListId={"itemList"}
+											resource={"items"}
+											resourcePropName={"item"}
+											perPage={10}
+											withPagination={false}
+											countless={true}
+											display="column"
+											sortOptions={[
+												{
+													name: "recent",
+													value: "-created_at",
+													type: "sort",
+													text: "recent",
+												},
+												{
+													name: "old",
+													type: "sort",
+													value: "+created_at",
+													text: "oldest",
+												},
+											]}
+										>
+											<ListItem />
+										</PaginatedList>
+									</ListProvider>
+								</IconProvider>
+							</DataProviderContext.Provider>
+						</ResponsiveProvider>
+					</IntlProvider>
+				</BrowserRouter>,
+			);
+		});
+
+		expect(screen.getAllByTestId("list-item")).toHaveLength(3);
+
+		await act(async () => {
+			await userEvent.click(screen.getByText("Add pinned"));
+		});
+
+		let items = screen.getAllByTestId("list-item");
+		expect(items).toHaveLength(4);
+		expect(items[0].textContent).toEqual("Pinned item");
+
+		const dropdownFirstOption = screen.getByText(/recent/i);
+		await userEvent.click(dropdownFirstOption);
+		const oldestSortButton = screen.getByText(/oldest/i);
+		await userEvent.click(oldestSortButton);
+
+		items = screen.getAllByTestId("list-item");
+		expect(items[0].textContent).toEqual("Pinned item");
+		expect(items).toHaveLength(4);
+	});
+
 	it("should use callback if passed on pagination click", async () => {
 		const callback = vi.fn();
 
