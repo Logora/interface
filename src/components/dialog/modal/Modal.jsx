@@ -21,14 +21,14 @@ export const Modal = ({
 		const dialog = dialogRef.current;
 		if (!dialog) return;
 
-		if (!dialog.open) dialog.showModal();
-		dialog.focus();
-
 		const prevHtmlOverflow = document.documentElement.style.overflow;
 		const prevBodyOverflow = document.body.style.overflow;
 
 		document.documentElement.style.overflow = "hidden";
 		document.body.style.overflow = "hidden";
+
+		if (!dialog.open) dialog.showModal();
+		dialog.focus();
 
 		return () => {
 			document.documentElement.style.overflow = prevHtmlOverflow;
