@@ -101,29 +101,113 @@ describe("authTokenHandler", () => {
 		});
 	});
 
-	/*
-    describe('fetchToken', () => {
-        beforeEach(() => {
-            delete window.localStorage;
-        });
-
-        it('should fetch token and store it', () => {
-            httpClient.post.mockResolvedValue({ status: 200, data: {
-                    success: true,
-                    data: { access_token: "random-token", expires_at: 123456789 }
-                }
-            });
-
-            const authParams = { session_id: "session_id" }
+	describe("fetchToken", () => {
+            const AUTH_URL = "https://example.com/auth";
             const tokenKey = "token-key";
-            const { fetchToken, getToken } = authTokenHandler(httpClient, 'https://example.com/auth', tokenKey);
+            const authParams = { session_id: "session-123" };
 
-            fetchToken(authParams).then(response => {
-                console.log(response);
+            beforeEach(() => {
+                    delete window.localStorage;
+                    Object.defineProperty(window, "localStorage", {
+                            configurable: true,
+                            value: localStorageMock,
+                    });
+                    localStorageMock.clear();
+                    httpClient.post.mockReset();
             });
-        })
+
+            it("should fetch the token and store it", async () => {
+                    httpClient.post.mockResolvedValue({
+                            data: {
+                                    access_token: "access",
+                                    refresh_token: "refresh",
+                                    created_at: Math.floor(Date.now() / 1000),
+                                    expires_in: 7200,
+                            },
+                    });
+
+                    const { fetchToken, getToken } = authTokenHandler(
+                            httpClient,
+                            AUTH_URL,
+                            tokenKey,
+                    );
+
+                    const response = await fetchToken(authParams);
+
+                    expect(httpClient.post).toHaveBeenCalledTimes(1);
+                    expect(httpClient.post).toHaveBeenCalledWith(AUTH_URL, authParams);
+                    expect(response.data.access_token).toBe("access");
+                    expect(getToken().access_token).toBe("access");
+            });
+
+            it("should deduplicate concurrent fetchToken calls — only one HTTP request is made", async () => {
+                    let resolvePost;
+                    const postPromise = new Promise((resolve) => {
+                            resolvePost = resolve;
+                    });
+                    httpClient.post.mockReturnValueOnce(postPromise);
+
+                    const { fetchToken } = authTokenHandler(httpClient, AUTH_URL, tokenKey);
+
+                    const p1 = fetchToken(authParams);
+                    const p2 = fetchToken(authParams);
+                    const p3 = fetchToken(authParams);
+
+                    resolvePost({
+                            data: {
+                                    access_token: "access",
+                                    refresh_token: "refresh",
+                                    created_at: Math.floor(Date.now() / 1000),
+                                    expires_in: 7200,
+                            },
+                    });
+
+                    const results = await Promise.all([p1, p2, p3]);
+
+                    expect(httpClient.post).toHaveBeenCalledTimes(1);
+                    results.forEach((r) => {
+                            expect(r.data.access_token).toBe("access");
+                    });
+            });
+
+            it("should allow a new fetchToken after the previous one completes", async () => {
+                    httpClient.post.mockResolvedValue({
+                            data: {
+                                    access_token: "access",
+                                    refresh_token: "refresh",
+                                    created_at: Math.floor(Date.now() / 1000),
+                                    expires_in: 7200,
+                            },
+                    });
+
+                    const { fetchToken } = authTokenHandler(httpClient, AUTH_URL, tokenKey);
+
+                    await fetchToken(authParams);
+                    await fetchToken(authParams);
+
+                    expect(httpClient.post).toHaveBeenCalledTimes(2);
+            });
+
+            it("should clear the in-flight lock after a failed fetchToken", async () => {
+                    httpClient.post
+                            .mockRejectedValueOnce(new Error("network error"))
+                            .mockResolvedValue({
+                                    data: {
+                                            access_token: "recovered-access",
+                                            refresh_token: "refresh",
+                                            created_at: Math.floor(Date.now() / 1000),
+                                            expires_in: 7200,
+                                    },
+                            });
+
+                    const { fetchToken } = authTokenHandler(httpClient, AUTH_URL, tokenKey);
+
+                    await expect(fetchToken(authParams)).rejects.toThrow("network error");
+
+                    await fetchToken(authParams);
+                    expect(httpClient.post).toHaveBeenCalledTimes(2);
+            });
     });
-    */
 
 	describe("refreshToken", () => {
 		const AUTH_URL = "https://example.com/auth";

@@ -20,9 +20,12 @@ export const authTokenHandler = (httpClient, authUrl, tokenKey) => {
 		storage.setToken(tokenObject);
 	};
 
+	let fetchInFlight = null;
+
 	const fetchToken = (authParams) => {
+		if (fetchInFlight) return fetchInFlight;
 		const sessionId = authParams.session_id;
-		return new Promise((resolve, reject) => {
+		const request = new Promise((resolve, reject) => {
 			return httpClient
 				.post(authUrl, authParams)
 				.then((response) => {
@@ -37,7 +40,11 @@ export const authTokenHandler = (httpClient, authUrl, tokenKey) => {
 				.catch((error) => {
 					reject(error);
 				});
+		}).finally(() => {
+			fetchInFlight = null;
 		});
+		fetchInFlight = request;
+		return request;
 	};
 
 	let refreshInFlight = null;
