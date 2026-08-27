@@ -20,9 +20,16 @@ export const authTokenHandler = (httpClient, authUrl, tokenKey) => {
 		storage.setToken(tokenObject);
 	};
 
+	let fetchInFlight = null;
+
 	const fetchToken = (authParams) => {
+		// A login/signup already in flight would (re)create the same user on
+		// the backend for a given (application_id, uid). Concurrent submissions
+		// (double submit, two OAuth callbacks, ...) must be deduplicated so that
+		// only a single /oauth/token request reaches the server.
+		if (fetchInFlight) return fetchInFlight;
 		const sessionId = authParams.session_id;
-		return new Promise((resolve, reject) => {
+		const request = new Promise((resolve, reject) => {
 			return httpClient
 				.post(authUrl, authParams)
 				.then((response) => {
@@ -37,7 +44,11 @@ export const authTokenHandler = (httpClient, authUrl, tokenKey) => {
 				.catch((error) => {
 					reject(error);
 				});
+		}).finally(() => {
+			fetchInFlight = null;
 		});
+		fetchInFlight = request;
+		return request;
 	};
 
 	let refreshInFlight = null;
