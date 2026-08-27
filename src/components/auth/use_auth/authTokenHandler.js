@@ -23,10 +23,6 @@ export const authTokenHandler = (httpClient, authUrl, tokenKey) => {
 	let fetchInFlight = null;
 
 	const fetchToken = (authParams) => {
-		// A login/signup already in flight would (re)create the same user on
-		// the backend for a given (application_id, uid). Concurrent submissions
-		// (double submit, two OAuth callbacks, ...) must be deduplicated so that
-		// only a single /oauth/token request reaches the server.
 		if (fetchInFlight) return fetchInFlight;
 		const sessionId = authParams.session_id;
 		const request = new Promise((resolve, reject) => {

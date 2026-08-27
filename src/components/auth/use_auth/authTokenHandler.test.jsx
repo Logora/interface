@@ -149,7 +149,6 @@ describe("authTokenHandler", () => {
 
                     const { fetchToken } = authTokenHandler(httpClient, AUTH_URL, tokenKey);
 
-                    // Simulate a double submission / concurrent OAuth callbacks.
                     const p1 = fetchToken(authParams);
                     const p2 = fetchToken(authParams);
                     const p3 = fetchToken(authParams);
@@ -205,7 +204,6 @@ describe("authTokenHandler", () => {
 
                     await expect(fetchToken(authParams)).rejects.toThrow("network error");
 
-                    // After failure the lock should be cleared — next call must reach the server.
                     await fetchToken(authParams);
                     expect(httpClient.post).toHaveBeenCalledTimes(2);
             });
