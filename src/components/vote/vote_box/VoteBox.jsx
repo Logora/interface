@@ -276,6 +276,11 @@ export const VoteBox = ({
 	};
 
 	const handleVote = (positionId) => {
+		if (isLoadingVote) {
+			// We don't know the user's current vote yet, so we must not create a
+			// duplicate one. This matches the vote_box disabled state below.
+			return;
+		}
 		if (isLoggedIn) {
 			if (Object.keys(votesCount).includes(positionId.toString())) {
 				voteAction(positionId);
@@ -329,7 +334,7 @@ export const VoteBox = ({
 						[buttonClassName]: buttonClassName,
 					})}
 					onClick={isButton ? () => handleVote(position.id) : null}
-					disabled={disabled}
+					disabled={disabled || isLoadingVote}
 					data-testid={"voteButton"}
 					to={isButton ? null : getRedirectUrl(position.id)}
 					target={isButton ? null : "_top"}

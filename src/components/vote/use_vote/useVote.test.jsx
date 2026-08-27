@@ -447,4 +447,117 @@ describe("useVote", () => {
 		expect(screen.getByText("ActiveVote : true"));
 		expect(screen.getByText("Upvotes : 10")); // no change to count, just status
 	});
+
+	it("should not create a vote while the user's existing vote is still loading", async () => {
+		const voteableId = faker.number.int();
+		const voteableType = "message";
+
+		const postMock = vi.fn(() =>
+			Promise.resolve({
+				data: { success: true, data: { resource: { id: 1 } } },
+			}),
+		);
+		const loadingData = dataProvider(
+			{ ...httpClient, post: postMock },
+			"https://mock.example.api",
+		);
+
+		// VoteProvider still fetching the user's votes: votesLoading is true
+		const LoadingContext = ({ children }) => {
+			const [votes, setVotes] = useState({});
+			return (
+				<VoteContext.Provider
+					value={{
+						votes,
+						voteableIds: [voteableId],
+						votesLoading: true,
+						addVoteableIds: vi.fn(),
+					}}
+				>
+					{children}
+				</VoteContext.Provider>
+			);
+		};
+
+		const VoteButton = () => {
+			const { totalUpvotes, handleVote } = useVote(
+				voteableType,
+				voteableId,
+				10,
+				5,
+			);
+			return (
+				<>
+					<button onClick={() => handleVote(true)} data-testid="upvote" />
+					<span>Upvotes : {totalUpvotes}</span>
+				</>
+			);
+		};
+
+		const { getByTestId } = render(
+			<ConfigProvider config={{}}>
+				<DataProviderContext.Provider value={{ dataProvider: loadingData }}>
+					<AuthContext.Provider value={{ currentUser, isLoggedIn: true }}>
+						<ModalProvider>
+							<LoadingContext>
+								<VoteButton />
+							</LoadingContext>
+						</ModalProvider>
+					</AuthContext.Provider>
+				</DataProviderContext.Provider>
+			</ConfigProvider>,
+		);
+
+		// The user's existing vote is still loading: a click must not send a request
+		await userEvent.click(getByTestId("upvote"));
+		expect(postMock).not.toHaveBeenCalled();
+	});
+	it("should not create multiple votes on rapid clicks", async () => {
+		const voteableId = faker.number.int();
+		const voteableType = "message";
+
+		let resolveCreate;
+		const postMock = vi.fn(
+			() =>
+				new Promise((resolve) => {
+					resolveCreate = resolve;
+				}),
+		);
+		const rapidData = dataProvider(
+			{ ...httpClient, post: postMock },
+			"https://mock.example.api",
+		);
+
+		const VoteButton = () => {
+			const { totalUpvotes, handleVote } = useVote(
+				voteableType,
+				voteableId,
+				10,
+				5,
+			);
+			return (
+				<>
+					<button onClick={() => handleVote(true)} data-testid="upvote" />
+					<span>Upvotes : {totalUpvotes}</span>
+				</>
+			);
+		};
+
+		const { getByTestId } = render(
+			<VoteWrapper data={rapidData}>
+				<VoteButton />
+			</VoteWrapper>,
+		);
+
+		await userEvent.click(getByTestId("upvote"));
+		await userEvent.click(getByTestId("upvote"));
+
+		expect(postMock).toHaveBeenCalledTimes(1);
+
+		await act(async () => {
+			resolveCreate({
+				data: { success: true, data: { resource: { id: 1 } } },
+			});
+		});
+	});
 });
