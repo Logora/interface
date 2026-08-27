@@ -68,11 +68,11 @@ const votePositions = [
 
 const data = dataProvider(httpClient, "https://mock.example.api");
 
-const VoteBoxWrapper = (props) => {
+const VoteBoxWrapper = ({ children, data: providerData = data }) => {
 	return (
 		<BrowserRouter>
 			<IntlProvider locale="en">
-				<DataProviderContext.Provider value={{ dataProvider: data }}>
+				<DataProviderContext.Provider value={{ dataProvider: providerData }}>
 					<AuthContext.Provider
 						value={{ currentUser: currentUser, isLoggedIn: true, isLoggingIn: false }}
 					>
@@ -80,7 +80,7 @@ const VoteBoxWrapper = (props) => {
 							<ToastProvider>
 								<ConfigProvider config={{}} routes={{ ...routes }}>
 									<ModalProvider>
-										<VoteProvider>{props.children}</VoteProvider>
+										<VoteProvider>{children}</VoteProvider>
 									</ModalProvider>
 								</ConfigProvider>
 							</ToastProvider>
@@ -295,11 +295,52 @@ describe("VoteBox Component", () => {
 		);
 
 		// The user's vote never finishes loading: buttons are disabled and a
-		// click must not send any request (no duplicate vote).
+		// click must not send any request (no double vote).
 		const position1 = getByTitle("Position 1");
 		expect(position1).toBeDisabled();
 
 		await userEvent.click(position1);
 		expect(loadingHttpClient.post).not.toHaveBeenCalled();
+	});
+
+	it("should still apply a vote triggered from URL parameters once the user's vote is loaded", async () => {
+		window.history.replaceState({}, "", "/?initVote=true&positionId=1");
+		sessionStorage.clear();
+
+		const postMock = vi.fn(() =>
+			Promise.resolve({
+				data: {
+					success: true,
+					data: {
+						resource: {
+							...vote,
+							position_id: 1,
+							voteable_id: debate.id,
+							voteable_type: vote.voteable_type,
+						},
+					},
+				},
+			}),
+		);
+		const urlVoteHttpClient = {
+			get: () => Promise.resolve({ data: { success: true, data: { resource: null } } }),
+			post: postMock,
+			patch: vi.fn(),
+			delete: vi.fn(),
+		};
+		const { findByText } = render(
+			<VoteBoxWrapper data={dataProvider(urlVoteHttpClient, "https://mock.example.api")}>
+				<VoteBox
+					voteableId={debate.id}
+					voteableType={vote.voteable_type}
+					votePositions={votePositions}
+					numberVotes={debate.votes_count}
+				/>
+			</VoteBoxWrapper>,
+		);
+
+		// Once the user's vote state is loaded, the vote requested via the URL is applied.
+		await waitFor(() => expect(postMock).toHaveBeenCalledTimes(1));
+		expect(await findByText("Modify")).toBeInTheDocument();
 	});
 });

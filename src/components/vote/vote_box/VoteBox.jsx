@@ -334,7 +334,7 @@ export const VoteBox = ({
 						[buttonClassName]: buttonClassName,
 					})}
 					onClick={isButton ? () => handleVote(position.id) : null}
-					disabled={disabled || isLoadingVote}
+					disabled={disabled || (isButton && isLoadingVote)}
 					data-testid={"voteButton"}
 					to={isButton ? null : getRedirectUrl(position.id)}
 					target={isButton ? null : "_top"}
