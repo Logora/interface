@@ -13,18 +13,20 @@ export const UpDownVoteBox = ({
 	disabled = false,
 	hideDownvotes = false,
 }) => {
-	const { totalUpvotes, totalDownvotes, activeVote, voteSide, handleVote } =
+	const { totalUpvotes, totalDownvotes, activeVote, voteSide, handleVote, voteLoading } =
 		useVote(voteableType, voteableId, totalUpvote, totalDownvote);
 	const intl = useIntl();
+
+	const buttonsDisabled = disabled || voteLoading;
 
 	return (
 		<div className={styles.container}>
 			<div
 				className={cx(styles.upvoteContainer, {
-					[styles.disabled]: disabled,
+					[styles.disabled]: buttonsDisabled,
 					[styles.active]: activeVote && voteSide,
 				})}
-				onClick={disabled ? null : () => handleVote(true)}
+				onClick={buttonsDisabled ? null : () => handleVote(true)}
 				data-testid="upvote-button"
 			>
 				<Icon
@@ -40,10 +42,10 @@ export const UpDownVoteBox = ({
 			</div>
 			<div
 				className={cx(styles.downvoteContainer, {
-					[styles.disabled]: disabled,
+					[styles.disabled]: buttonsDisabled,
 					[styles.active]: activeVote && !voteSide,
 				})}
-				onClick={disabled ? null : () => handleVote(false)}
+				onClick={buttonsDisabled ? null : () => handleVote(false)}
 				data-testid="downvote-button"
 			>
 				<Icon

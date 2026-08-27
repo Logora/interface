@@ -11,7 +11,7 @@ import { IconProvider } from "@logora/debate/icons/icon_provider";
 import * as regularIcons from "@logora/debate/icons/regular_icons";
 import { Location } from "@logora/debate/util/location";
 import { VoteProvider } from "@logora/debate/vote/vote_provider";
-import { render, within } from "@testing-library/react";
+import { render, screen, waitFor, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import React from "react";
 import { IntlProvider } from "react-intl";
@@ -32,7 +32,7 @@ const vote = {
 };
 
 const httpClient = {
-	get: () => null,
+	get: () => Promise.resolve({ data: { success: true, data: { resource: null } } }),
 	post: (url, data, config) => {
 		return new Promise((resolve, reject) => {
 			resolve({ data: { success: true, data: { resource: vote } } });
@@ -68,19 +68,19 @@ const votePositions = [
 
 const data = dataProvider(httpClient, "https://mock.example.api");
 
-const VoteBoxWrapper = (props) => {
+const VoteBoxWrapper = ({ children, data: providerData = data }) => {
 	return (
 		<BrowserRouter>
 			<IntlProvider locale="en">
-				<DataProviderContext.Provider value={{ dataProvider: data }}>
+				<DataProviderContext.Provider value={{ dataProvider: providerData }}>
 					<AuthContext.Provider
-						value={{ currentUser: currentUser, isLoggedIn: true }}
+						value={{ currentUser: currentUser, isLoggedIn: true, isLoggingIn: false }}
 					>
 						<IconProvider library={regularIcons}>
 							<ToastProvider>
 								<ConfigProvider config={{}} routes={{ ...routes }}>
 									<ModalProvider>
-										<VoteProvider>{props.children}</VoteProvider>
+										<VoteProvider>{children}</VoteProvider>
 									</ModalProvider>
 								</ConfigProvider>
 							</ToastProvider>
@@ -206,6 +206,7 @@ describe("VoteBox Component", () => {
 			<VoteBoxWrapper>
 				<VoteBox
 					voteableId={debate.id}
+					voteableType={vote.voteable_type}
 					votePositions={votePositions}
 					numberVotes={debate.votes_count}
 				/>
@@ -215,6 +216,9 @@ describe("VoteBox Component", () => {
 		const position1 = getByTitle("Position 1");
 		expect(queryByText("Modify")).toBeNull();
 		expect(queryByText("Show result")).toBeInTheDocument();
+
+		// Vote buttons are disabled while the user's vote state is loading
+		await waitFor(() => expect(position1).not.toBeDisabled());
 
 		await userEvent.click(position1);
 		expect(queryByText("11 votes")).toBeInTheDocument();
@@ -231,10 +235,11 @@ describe("VoteBox Component", () => {
 	});
 
 	it("should redirect after vote", async () => {
-		const { getByTestId, getByTitle, queryAllByRole } = render(
+		const { getByTestId, getByTitle } = render(
 			<VoteBoxWrapper>
 				<VoteBox
 					voteableId={debate.id}
+					voteableType={vote.voteable_type}
 					votePositions={votePositions}
 					numberVotes={debate.votes_count}
 					redirectUrl={"myUrl"}
@@ -242,7 +247,8 @@ describe("VoteBox Component", () => {
 			</VoteBoxWrapper>,
 		);
 
-		expect(queryAllByRole("button")).toHaveLength(2);
+		// In redirect mode, vote actions are rendered as links (one per position + show result)
+		expect(screen.getAllByRole("link")).toHaveLength(4);
 
 		const showResultLink = getByTestId("show-result");
 		expect(showResultLink).toHaveAttribute("href", "myUrl?initVote=true");
@@ -264,5 +270,77 @@ describe("VoteBox Component", () => {
 			"href",
 			"myUrl?initVote=true&positionId=3",
 		);
+	});
+
+	it("should not create a vote while the user's vote is still loading", async () => {
+		const loadingHttpClient = {
+			get: () => new Promise(() => {}),
+			post: vi.fn(() =>
+				Promise.resolve({
+					data: { success: true, data: { resource: vote } },
+				}),
+			),
+			patch: vi.fn(),
+			delete: vi.fn(),
+		};
+		const { getByTitle } = render(
+			<VoteBoxWrapper data={dataProvider(loadingHttpClient, "https://mock.example.api")}>
+				<VoteBox
+					voteableId={debate.id}
+					voteableType={vote.voteable_type}
+					votePositions={votePositions}
+					numberVotes={debate.votes_count}
+				/>
+			</VoteBoxWrapper>,
+		);
+
+		// The user's vote never finishes loading: buttons are disabled and a
+		// click must not send any request (no double vote).
+		const position1 = getByTitle("Position 1");
+		expect(position1).toBeDisabled();
+
+		await userEvent.click(position1);
+		expect(loadingHttpClient.post).not.toHaveBeenCalled();
+	});
+
+	it("should still apply a vote triggered from URL parameters once the user's vote is loaded", async () => {
+		window.history.replaceState({}, "", "/?initVote=true&positionId=1");
+		sessionStorage.clear();
+
+		const postMock = vi.fn(() =>
+			Promise.resolve({
+				data: {
+					success: true,
+					data: {
+						resource: {
+							...vote,
+							position_id: 1,
+							voteable_id: debate.id,
+							voteable_type: vote.voteable_type,
+						},
+					},
+				},
+			}),
+		);
+		const urlVoteHttpClient = {
+			get: () => Promise.resolve({ data: { success: true, data: { resource: null } } }),
+			post: postMock,
+			patch: vi.fn(),
+			delete: vi.fn(),
+		};
+		const { findByText } = render(
+			<VoteBoxWrapper data={dataProvider(urlVoteHttpClient, "https://mock.example.api")}>
+				<VoteBox
+					voteableId={debate.id}
+					voteableType={vote.voteable_type}
+					votePositions={votePositions}
+					numberVotes={debate.votes_count}
+				/>
+			</VoteBoxWrapper>,
+		);
+
+		// Once the user's vote state is loaded, the vote requested via the URL is applied.
+		await waitFor(() => expect(postMock).toHaveBeenCalledTimes(1));
+		expect(await findByText("Modify")).toBeInTheDocument();
 	});
 });

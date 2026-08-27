@@ -8,7 +8,7 @@ import {
 import { ModalProvider } from "@logora/debate/dialog/modal";
 import { IconProvider } from "@logora/debate/icons/icon_provider";
 import * as regularIcons from "@logora/debate/icons/regular_icons";
-import { VoteProvider } from "@logora/debate/vote/vote_provider";
+import { VoteContext, VoteProvider } from "@logora/debate/vote/vote_provider";
 import { render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import React from "react";
@@ -174,5 +174,61 @@ describe("VoteButton", () => {
 		await userEvent.click(voteButton);
 
 		expect(container.getByText(50)).toBeInTheDocument();
+	});
+
+	it("should be disabled while the user's vote state is loading", async () => {
+		const voteableId = faker.number.int();
+		const voteableType = "message";
+		const postMock = vi.fn();
+
+		const LoadingContext = ({ children }) => {
+			const [votes, setVotes] = React.useState({});
+			return (
+				<VoteContext.Provider
+					value={{
+						votes,
+						voteableIds: [voteableId],
+						votesLoading: true,
+						addVoteableIds: vi.fn(),
+					}}
+				>
+					{children}
+				</VoteContext.Provider>
+			);
+		};
+
+		const container = render(
+			<ConfigProvider config={{}}>
+				<IntlProvider locale="en">
+					<DataProviderContext.Provider
+						value={{ dataProvider: dataProvider({ ...httpClient, post: postMock }, "https://mock.example.api") }}
+					>
+						<IconProvider library={regularIcons}>
+							<AuthContext.Provider
+								value={{ currentUser: currentUser, isLoggedIn: true }}
+							>
+								<ModalProvider>
+									<LoadingContext>
+										<VoteButton
+											voteableType={voteableType}
+											voteableId={voteableId}
+											totalUpvote={10}
+											totalDownvote={0}
+										/>
+									</LoadingContext>
+								</ModalProvider>
+							</AuthContext.Provider>
+						</IconProvider>
+					</DataProviderContext.Provider>
+				</IntlProvider>
+			</ConfigProvider>,
+		);
+
+		const voteButton = container.getByTestId("vote-button");
+		expect(voteButton).toBeDisabled();
+
+		// A click while loading must not send any request
+		await userEvent.click(voteButton);
+		expect(container.queryByText(11)).not.toBeInTheDocument();
 	});
 });

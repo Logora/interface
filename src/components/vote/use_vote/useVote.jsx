@@ -11,9 +11,15 @@ export const useVote = (
 	downvotes,
 	onVote = null,
 ) => {
-	const { votes } = useContext(VoteContext);
+	const { votes, voteableIds, votesLoading } = useContext(VoteContext);
 	const { isLoggedIn } = useAuth();
 	const api = useDataProvider();
+
+	// The user's existing vote for this voteable is still being fetched by the
+	// VoteProvider. A click must not send a create/update/delete while we don't
+	// know what the user has already voted (that is what causes duplicate votes).
+	const providerTracksVoteable = Array.isArray(voteableIds) && voteableIds.includes(voteableId);
+	const voteLoading = providerTracksVoteable && votesLoading;
 
 	const [activeVote, setActiveVote] = useState(false);
 	const [voteSide, setVoteSide] = useState(true);
@@ -133,7 +139,7 @@ export const useVote = (
 	};
 
 	const handleVote = (isUpvote) => {
-		if (!voteDisabled) {
+		if (!voteDisabled && !voteLoading) {
 			if (isLoggedIn) {
 				voteAction(isUpvote);
 			} else {
@@ -148,5 +154,6 @@ export const useVote = (
 		activeVote,
 		voteSide,
 		handleVote,
+		voteLoading,
 	};
 };
