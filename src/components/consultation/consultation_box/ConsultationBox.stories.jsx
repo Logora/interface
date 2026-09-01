@@ -14,6 +14,18 @@ const routes = {
 	),
 };
 
+const createUser = (overrides = {}) => ({
+	id: faker.number.int(10000000),
+	hash_id: faker.lorem.slug(),
+	first_name: faker.person.firstName(),
+	last_name: faker.person.lastName(),
+	slug: faker.lorem.slug(),
+	image_url: faker.image.avatarGitHub(),
+	full_name: faker.person.fullName(),
+	is_admin: false,
+	...overrides,
+});
+
 const consultation = {
 	id: 19,
 	slug: faker.lorem.slug(),
@@ -128,4 +140,13 @@ export const ConsultationHideProgressBox = (props) =>
 			vote_goal: 1000,
 		},
 		showVoteProgress: false,
+	});
+
+export const ConsultationSuggestedBox = (props) =>
+	renderStory({
+		...props,
+		consultation: {
+			...consultation,
+			author: createUser(),
+		},
 	});

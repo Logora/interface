@@ -48,6 +48,21 @@ export const ConsultationBox = ({ consultation, showVoteProgress = true }) => {
 						</span>
 					</div>
 				)}
+				{consultation.author &&
+					consultation.author.is_admin === false && (
+						<div className={styles.consultationSuggestion}>
+							<Icon name="suggestion" width={15} height={15} />
+							<span className={styles.authorSuggestion}>
+								<FormattedMessage
+									id="consultation.consultation_box.suggestion_author_short"
+									defaultMessage={"Suggested by"}
+								/>
+								<span className={styles.authorName}>
+									{consultation.author.full_name}
+								</span>
+							</span>
+						</div>
+					)}
 				</div>
 				<Link
 					to={routes.consultationShowLocation.toUrl({

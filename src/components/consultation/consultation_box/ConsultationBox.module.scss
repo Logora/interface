@@ -58,6 +58,43 @@
     }
 }
 
+.consultationSuggestion {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    position: absolute;
+    gap: spacing.$spacer-xxs;
+    right: spacing.$spacer;
+    top: spacing.$spacer;
+    @include spacing.px(2.5, xs);
+    @include spacing.py(2, xs);
+    background-color: theme.$call-primary;
+    border-radius: theme.$box-border-radius;
+    max-width: 80%;
+    font-size: theme.$font-size-normal;
+    color: theme.$text-light;
+
+    span {
+        color: theme.$text-light;
+        font-size: theme.$font-size-normal;
+    }
+
+    .authorSuggestion {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        max-width: 93%;
+    }
+
+    .authorName {
+        @include spacing.ml(1, xs);
+    }
+
+    svg {
+        fill: theme.$text-light;
+    }
+}
+
 .consultationTitle {
     @include spacing.pt(4, xs);
     @include spacing.pb(2, xs);

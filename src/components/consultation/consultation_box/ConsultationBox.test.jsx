@@ -3,6 +3,7 @@ import { render } from "@testing-library/react";
 import React from "react";
 import {
 	ConsultationEndedBox,
+	ConsultationSuggestedBox,
 	ConsultationWithoutEndBox,
 	ConsultationWithoutVoteGoalBox,
 	DefaultConsultationBox,
@@ -66,5 +67,10 @@ describe("ConsultationBox", () => {
 	it("renders without goal box", () => {
 		const { queryByText } = render(<ConsultationWithoutVoteGoalBox />);
 		expect(queryByText("200 votes")).toBeNull();
+	});
+
+	it("renders the suggestion author when consultation has a non-admin author", () => {
+		const { getByText } = render(<ConsultationSuggestedBox />);
+		expect(getByText("Suggested by")).toBeInTheDocument();
 	});
 });
