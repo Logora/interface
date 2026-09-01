@@ -71,12 +71,12 @@
     background-color: theme.$call-primary;
     border-radius: theme.$box-border-radius;
     max-width: 80%;
-    font-size: theme.$font-size-normal;
+    font-size: theme.$font-size-small;
     color: theme.$text-light;
 
     span {
         color: theme.$text-light;
-        font-size: theme.$font-size-normal;
+        font-size: theme.$font-size-extra-small;
     }
 
     .authorSuggestion {
