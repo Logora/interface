@@ -38,7 +38,7 @@ export const ContentHeader = ({
 							className={styles.warningIcon}
 						/>
 						{intl.formatMessage({
-							id: "user_content.content_header.moderation_reason",
+							id: "user_content.content_header.moderation_reason_label",
 							defaultMessage: "Content rejected by moderation.",
 						})}{" "}
 						{moderationReason &&

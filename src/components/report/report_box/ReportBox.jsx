@@ -118,7 +118,7 @@ export const ReportBox = ({ report, flash }) => {
 									className={styles.warningIcon}
 								/>
 								{intl.formatMessage({
-									id: "report.content_header.moderation_reason",
+									id: "report.content_header.moderation_reason_label",
 									defaultMessage: "Report reason:",
 								})}{" "}
 								{intl.messages[
