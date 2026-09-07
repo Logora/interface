@@ -21,6 +21,8 @@ export const Modal = ({
 		const dialog = dialogRef.current;
 		if (!dialog) return;
 
+		const scrollY = window.scrollY;
+
 		const prevHtmlOverflow = document.documentElement.style.overflow;
 		const prevBodyOverflow = document.body.style.overflow;
 
@@ -30,11 +32,15 @@ export const Modal = ({
 		if (!dialog.open) dialog.showModal();
 		dialog.focus();
 
+		window.scrollTo(0, scrollY);
+
 		return () => {
 			document.documentElement.style.overflow = prevHtmlOverflow;
 			document.body.style.overflow = prevBodyOverflow;
 
 			if (dialog.open) dialog.close();
+
+			window.scrollTo(0, scrollY);
 		};
 	}, []);
 
