@@ -1,0 +1,78 @@
+@use 'styles/theme' as theme;
+@use 'styles/spacing' as spacing;
+
+.userPageSkeleton {
+    display: flex;
+    flex-direction: column;
+    gap: spacing.$spacer;
+    width: 100%;
+}
+
+.userHeader {
+    display: flex;
+    flex-direction: row;
+    gap: spacing.$spacer;
+    align-items: center;
+}
+
+.userAvatar {
+    width: 80px;
+    height: 80px;
+    flex-shrink: 0;
+}
+
+.userHeaderLines {
+    display: flex;
+    flex-direction: column;
+    gap: spacing.$spacer-sm;
+    flex: 1;
+    min-width: 120px;
+}
+
+.userName {
+    width: 220px;
+    height: theme.$font-size-large;
+}
+
+.userDescription {
+    width: 320px;
+    height: theme.$font-size-normal;
+}
+
+.tabsRow {
+    display: flex;
+    flex-direction: row;
+    gap: spacing.$spacer-sm;
+}
+
+.tab {
+    width: 110px;
+    height: 32px;
+    border-radius: theme.$box-border-radius;
+}
+
+.contentList {
+    display: flex;
+    flex-direction: column;
+    gap: spacing.$spacer;
+}
+
+.contentItem {
+    display: flex;
+    flex-direction: column;
+    gap: spacing.$spacer-sm;
+    border-radius: theme.$box-border-radius;
+    box-shadow: theme.$box-shadow;
+    border: theme.$box-border;
+    padding: spacing.$spacer;
+}
+
+.contentLine {
+    width: 100%;
+    height: theme.$font-size-normal;
+}
+
+.contentLineShort {
+    width: 50%;
+    height: theme.$font-size-normal;
+}

@@ -1,0 +1,1 @@
+export { ConsultationSkeleton } from "./ConsultationSkeleton";

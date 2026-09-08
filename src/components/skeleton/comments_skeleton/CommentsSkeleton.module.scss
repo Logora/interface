@@ -1,0 +1,84 @@
+@use 'styles/theme' as theme;
+@use 'styles/spacing' as spacing;
+
+.commentsSkeleton {
+    display: flex;
+    flex-direction: column;
+    gap: spacing.$spacer;
+    width: 100%;
+}
+
+.commentsHeader {
+    display: flex;
+    flex-direction: column;
+    gap: spacing.$spacer-sm;
+}
+
+.commentsTitle {
+    width: 60%;
+    height: theme.$font-size-large;
+}
+
+.commentsDescription {
+    width: 85%;
+    height: theme.$font-size-normal;
+}
+
+.commentList {
+    display: flex;
+    flex-direction: column;
+    gap: spacing.$spacer;
+}
+
+.commentItem {
+    display: flex;
+    flex-direction: column;
+    gap: spacing.$spacer-sm;
+}
+
+.commentHeader {
+    display: flex;
+    flex-direction: row;
+    gap: spacing.$spacer-sm;
+    align-items: center;
+}
+
+.commentAvatar {
+    width: 60px;
+    height: 60px;
+    flex-shrink: 0;
+}
+
+.commentAuthorLines {
+    display: flex;
+    flex-direction: column;
+    gap: spacing.$spacer-xxs;
+    flex: 1;
+    min-width: 80px;
+}
+
+.commentAuthorLine {
+    width: 160px;
+    height: theme.$font-size-small;
+}
+
+.commentAuthorSubline {
+    width: 100px;
+    height: theme.$font-size-extra-small;
+}
+
+.commentBody {
+    display: flex;
+    flex-direction: column;
+    gap: spacing.$spacer-sm;
+}
+
+.commentLine {
+    width: 100%;
+    height: theme.$font-size-normal;
+}
+
+.commentLineShort {
+    width: 65%;
+    height: theme.$font-size-normal;
+}

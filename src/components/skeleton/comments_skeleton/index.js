@@ -1,0 +1,1 @@
+export { CommentsSkeleton } from "./CommentsSkeleton";
