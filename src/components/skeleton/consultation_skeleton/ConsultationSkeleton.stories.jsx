@@ -12,6 +12,11 @@ const meta = {
 		enableAnimation: { control: "boolean" },
 		numberOfProposals: { control: "number" },
 	},
+	render: (args) => (
+		<div style={{ width: "900px" }}>
+			<ConsultationSkeleton {...args} />
+		</div>
+	),
 };
 
 export default meta;

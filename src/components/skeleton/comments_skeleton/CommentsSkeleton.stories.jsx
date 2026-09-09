@@ -12,6 +12,11 @@ const meta = {
 		enableAnimation: { control: "boolean" },
 		numberOfComments: { control: "number" },
 	},
+	render: (args) => (
+		<div style={{ width: "900px" }}>
+			<CommentsSkeleton {...args} />
+		</div>
+	),
 };
 
 export default meta;
