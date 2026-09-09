@@ -12,6 +12,11 @@ const meta = {
 		enableAnimation: { control: "boolean" },
 		numberOfContentItems: { control: "number" },
 	},
+	render: (args) => (
+		<div style={{ width: "900px" }}>
+			<UserPageSkeleton {...args} />
+		</div>
+	),
 };
 
 export default meta;

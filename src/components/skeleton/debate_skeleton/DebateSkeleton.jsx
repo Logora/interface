@@ -6,8 +6,8 @@ import styles from "./DebateSkeleton.module.scss";
 export const DebateSkeleton = ({ enableAnimation = true, className }) => {
 	return (
 		<SkeletonTheme
-			baseColor="var(--background-color-secondary)"
-			highlightColor="var(--darkest-text-tertiary)"
+			baseColor="var(--background-color-secondary, #E8E8E8)"
+			highlightColor="var(--darkest-text-tertiary, #c7c7c7)"
 		>
 			<div data-testid={"debate-skeleton"} className={className}>
 				<div className={styles.debateSkeleton}>

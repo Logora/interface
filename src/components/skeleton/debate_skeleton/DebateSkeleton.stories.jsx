@@ -10,6 +10,11 @@ const meta = {
 	argTypes: {
 		enableAnimation: { control: "boolean" },
 	},
+	render: (args) => (
+		<div style={{ width: "900px" }}>
+			<DebateSkeleton {...args} />
+		</div>
+	),
 };
 
 export default meta;
