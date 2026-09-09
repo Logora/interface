@@ -1,0 +1,78 @@
+@use 'styles/theme' as theme;
+@use 'styles/spacing' as spacing;
+
+.suggestionSkeleton {
+    display: flex;
+    flex-direction: column;
+    gap: spacing.$spacer;
+    width: 100%;
+}
+
+.suggestionHeader {
+    display: flex;
+    flex-direction: column;
+    gap: spacing.$spacer-sm;
+}
+
+.suggestionTitle {
+    width: 50%;
+    height: theme.$font-size-extra-large;
+}
+
+.suggestionDescription {
+    width: 85%;
+    height: theme.$font-size-normal;
+}
+
+.inputBox {
+    width: 100%;
+}
+
+.input {
+    width: 100%;
+    height: 80px;
+    border-radius: theme.$box-border-radius;
+}
+
+.tabsRow {
+    display: flex;
+    flex-direction: row;
+    gap: spacing.$spacer-sm;
+}
+
+.tab {
+    width: 120px;
+    height: 32px;
+    border-radius: theme.$box-border-radius;
+}
+
+.suggestionList {
+    display: flex;
+    flex-direction: column;
+    gap: spacing.$spacer;
+}
+
+.suggestionItem {
+    display: flex;
+    flex-direction: column;
+    gap: spacing.$spacer-sm;
+    border-radius: theme.$box-border-radius;
+    box-shadow: theme.$box-shadow;
+    border: theme.$box-border;
+    padding: spacing.$spacer;
+}
+
+.suggestionAuthor {
+    width: 180px;
+    height: 40px;
+}
+
+.suggestionLine {
+    width: 100%;
+    height: theme.$font-size-normal;
+}
+
+.suggestionLineShort {
+    width: 55%;
+    height: theme.$font-size-normal;
+}

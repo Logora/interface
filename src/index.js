@@ -91,6 +91,7 @@ export * from "./components/skeleton/box_skeleton";
 export * from "./components/skeleton/comments_skeleton";
 export * from "./components/skeleton/consultation_skeleton";
 export * from "./components/skeleton/debate_skeleton";
+export * from "./components/skeleton/suggestion_skeleton";
 export * from "./components/skeleton/user_content_skeleton";
 export * from "./components/skeleton/user_page_skeleton";
 export * from "./components/source/context_source_box";
