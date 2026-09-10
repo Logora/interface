@@ -1,1 +1,0 @@
-export { ConsultationSkeleton } from "./ConsultationSkeleton";
