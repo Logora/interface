@@ -18,7 +18,11 @@ import React, { useState, useEffect, useRef, lazy, Suspense } from "react";
 import { FormattedMessage } from "react-intl";
 import { useIntl } from "react-intl";
 import { useLocation } from "react-router";
-const SideModal = lazy(() => import("@logora/debate/modal/side_modal").then(m => ({ default: m.SideModal })));
+const SideModal = lazy(() =>
+	import("@logora/debate/modal/side_modal").then((m) => ({
+		default: m.SideModal,
+	})),
+);
 import cx from "classnames";
 import styles from "./ArgumentInput.module.scss";
 
@@ -27,7 +31,6 @@ export const ArgumentInput = ({
 	avatarSize = 48,
 	disabled = false,
 	positions = [],
-	disabledPositions = [],
 	groupId,
 	groupName,
 	groupType,
@@ -207,7 +210,6 @@ export const ArgumentInput = ({
 					onChooseSide={handleChooseSide}
 					positions={positions}
 					title={groupName}
-					disabledPositions={!isReply && disabledPositions}
 					isNeutral={
 						savedArgument &&
 						savedArgument.groupId == groupId &&
@@ -226,8 +228,7 @@ export const ArgumentInput = ({
 				if (
 					!positions ||
 					positions?.length === 0 ||
-					(!disabledPositions?.find((pos) => pos?.id === userPositionId) &&
-						userPositionId) ||
+					userPositionId ||
 					(isEditorOrModerator && isReply)
 				) {
 					submitArgument(isReply && isEditorOrModerator && positions[0]?.id);
@@ -289,64 +290,81 @@ export const ArgumentInput = ({
 				setSavedArgument(argumentToSave);
 			}
 			resetInputs();
-			api.create("messages", data).then((response) => {
-				if (response.data.success) {
-					if (parentId) {
-						onSubmit(response.data.data.resource);
-						toast(
-							intl.formatMessage({
-								id: "alert.argument_create",
-								defaultMessage: "Your contribution has been sent !",
-							}),
-							{
-								type: "success",
-								points: intl.formatMessage({
-									id: "alert.reply_gain",
-									defaultMessage: " ",
+			api
+				.create("messages", data)
+				.then((response) => {
+					if (response.data.success) {
+						if (parentId) {
+							onSubmit(response.data.data.resource);
+							toast(
+								intl.formatMessage({
+									id: "alert.argument_create",
+									defaultMessage: "Your contribution has been sent !",
 								}),
-							},
+								{
+									type: "success",
+									points: intl.formatMessage({
+										id: "alert.reply_gain",
+										defaultMessage: " ",
+									}),
+								},
+							);
+						} else {
+							const argument = response.data.data.resource;
+							let listId = argumentListId;
+							if (userPosition && !isMobile) {
+								listId = `argumentList${argument.position.id}`;
+							}
+							onSubmit?.(
+								argumentContent,
+								positions.find((pos) => pos.id === userPosition) || null,
+							);
+							list.add(listId, [argument]);
+							toast(
+								intl.formatMessage({
+									id: "alert.argument_create",
+									defaultMessage: "Your contribution has been sent !",
+								}),
+								{
+									type: "success",
+									points: intl.formatMessage({
+										id: "alert.argument_create_gain",
+										defaultMessage: "Up to 10 eloquence points",
+									}),
+									category: "ARGUMENT",
+									contentKey:
+										currentUser.messages_count === 2
+											? "alert.third_argument"
+											: "alert.first_argument",
+								},
+							);
+						}
+						if (typeof window !== "undefined") {
+							window.dispatchEvent(
+								new CustomEvent("logora:user_content:created", {
+									detail: {
+										content: response.data.data?.resource,
+									},
+								}),
+							);
+						}
+					}
+				})
+				.catch((error) => {
+					if (error?.response?.status === 429) {
+						toast(
+							error?.response?.data?.error?.detail ||
+								intl.formatMessage({
+									id: "alert.argument_limit",
+									defaultMessage:
+										"You have reached your daily contribution limit for this debate.",
+								}),
+							{ type: "error" },
 						);
 					} else {
-						const argument = response.data.data.resource;
-						let listId = argumentListId;
-						if (userPosition && !isMobile) {
-							listId = `argumentList${argument.position.id}`;
-						}
-						onSubmit?.(
-							argumentContent,
-							positions.find((pos) => pos.id === userPosition) || null,
-						);
-						list.add(listId, [argument]);
-						toast(
-							intl.formatMessage({
-								id: "alert.argument_create",
-								defaultMessage: "Your contribution has been sent !",
-							}),
-							{
-								type: "success",
-								points: intl.formatMessage({
-									id: "alert.argument_create_gain",
-									defaultMessage: "Up to 10 eloquence points",
-								}),
-								category: "ARGUMENT",
-								contentKey:
-									currentUser.messages_count === 2
-										? "alert.third_argument"
-										: "alert.first_argument",
-							},
-						);
+						console.error(error);
 					}
-					if (typeof window !== "undefined") {
-						window.dispatchEvent(
-							new CustomEvent("logora:user_content:created", {
-								detail: {
-									content: response.data.data?.resource,
-								},
-							}),
-						);
-					}
-				}
-			});
+				});
 		}
 	};
 
@@ -365,9 +383,7 @@ export const ArgumentInput = ({
 					let listId = argumentListId;
 					if (editElement?.is_reply || isReply) {
 						const replyListId =
-							editElement?.message_id ||
-							editElement?.reply_to_id ||
-							parentId;
+							editElement?.message_id || editElement?.reply_to_id || parentId;
 						if (replyListId) {
 							listId = `argument_${replyListId}_reply_list`;
 						}
@@ -413,22 +429,6 @@ export const ArgumentInput = ({
 			requireAuthentication({ loginAction: "argument" });
 		} else {
 			setInputActivation(true);
-		}
-	};
-
-	const displayArgumentLimitWarning = () => {
-		const disabledPosition = disabledPositions.find(
-			(pos) => pos.id === userPositionId,
-		);
-		if (disabledPosition) {
-			return intl.formatMessage(
-				{
-					id: "info.argument_side_limit",
-					defaultMessage:
-						"You have reached the argument limit (10) for position {position}.",
-				},
-				{ position: disabledPosition.name },
-			);
 		}
 	};
 
@@ -568,27 +568,6 @@ export const ArgumentInput = ({
 											))}
 									</div>
 								)}
-								{inputActivation &&
-									disabledPositions?.find(
-										(pos) => pos.id === userPositionId,
-									) && (
-										<div
-											className={cx(
-												styles.argumentInputWarning,
-												styles.disabledPositionWarning,
-											)}
-										>
-											<Icon
-												name="announcement"
-												className={styles.warningIcon}
-												height={20}
-												width={20}
-											/>
-											<div className={styles.argumentInputWarningText}>
-												{displayArgumentLimitWarning()}
-											</div>
-										</div>
-									)}
 								{inputActivation && userGuideUrl && !hideUserGuideLink && (
 									<div className={styles.guideMessage}>
 										<FormattedMessage

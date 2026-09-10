@@ -59,7 +59,6 @@ const defaultArgs = {
 	groupName: debate.name,
 	groupType: "Group",
 	positions: debate.positions,
-	disabledPositions: [],
 	argumentListId: "argumentList",
 	positionId: debate.positions[0].id,
 	parentId: undefined,
@@ -116,7 +115,6 @@ export default {
 		userGuideUrl: { control: "text" },
 		groupType: { control: "text" },
 		positions: { control: "object" },
-		disabledPositions: { control: "object" },
 		onSubmit: { control: false },
 		parentId: { control: false },
 		argumentListId: { control: false },
@@ -147,15 +145,6 @@ export const ArgumentInputWithoutSourceAction = {
 export const ArgumentInputDisabled = {
 	args: {
 		disabled: true,
-		hideSourceAction: true,
-	},
-};
-
-export const ArgumentPositionDisabled = {
-	args: {
-		disabledPositions: [
-			{ id: debate.positions[0].id, name: debate.positions[0].name },
-		],
 		hideSourceAction: true,
 	},
 };
