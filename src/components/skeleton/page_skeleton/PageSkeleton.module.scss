@@ -1,37 +1,56 @@
 @use 'styles/theme' as theme;
 @use 'styles/spacing' as spacing;
 
-.suggestionSkeleton {
+.pageSkeleton {
     display: flex;
     flex-direction: column;
     gap: spacing.$spacer;
     width: 100%;
 }
 
-.suggestionHeader {
+.header {
+    display: flex;
+    flex-direction: row;
+    gap: spacing.$spacer;
+    align-items: center;
+    @media (max-width: 640px) {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+.headerLines {
     display: flex;
     flex-direction: column;
     gap: spacing.$spacer-sm;
+    flex: 1;
+    min-width: 120px;
 }
 
-.suggestionTitle {
-    width: 50%;
+.lineMain {
+    width: 70%;
     height: theme.$font-size-extra-large;
 }
 
-.suggestionDescription {
-    width: 85%;
+.lineSecondary {
+    width: 45%;
     height: theme.$font-size-normal;
 }
 
-.inputBox {
-    width: 100%;
+.photoCircle {
+    width: 80px;
+    height: 80px;
+    flex-shrink: 0;
 }
 
-.input {
-    width: 100%;
-    height: 80px;
+.photoBox {
+    width: 210px;
+    height: 140px;
+    flex-shrink: 0;
     border-radius: theme.$box-border-radius;
+    @media (max-width: 640px) {
+        width: 100%;
+    }
 }
 
 .tabsRow {
@@ -41,18 +60,21 @@
 }
 
 .tab {
-    width: 120px;
+    width: 110px;
     height: 32px;
     border-radius: theme.$box-border-radius;
+    @media (max-width: 640px) {
+        width: 90px;
+    }
 }
 
-.suggestionList {
+.contentList {
     display: flex;
     flex-direction: column;
     gap: spacing.$spacer;
 }
 
-.suggestionItem {
+.contentItem {
     display: flex;
     flex-direction: column;
     gap: spacing.$spacer-sm;
@@ -62,17 +84,12 @@
     padding: spacing.$spacer;
 }
 
-.suggestionAuthor {
-    width: 180px;
-    height: 40px;
-}
-
-.suggestionLine {
+.contentLine {
     width: 100%;
     height: theme.$font-size-normal;
 }
 
-.suggestionLineShort {
+.contentLineShort {
     width: 55%;
     height: theme.$font-size-normal;
 }
