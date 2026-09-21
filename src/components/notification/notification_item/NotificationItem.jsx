@@ -63,7 +63,7 @@ export const NotificationItem = ({
 					data-tid={"action_view_notification"}
 					className={styles.notificationImageContainer}
 				>
-					{notificationSettings.getImage(notification)}
+					{notificationSettings.getImage(notification, config)}
 				</div>
 				<div
 					data-tid={"action_view_notification"}
