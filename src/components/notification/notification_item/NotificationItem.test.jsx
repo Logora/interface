@@ -76,6 +76,45 @@ describe("NotificationItem", () => {
 		expect(getByAltText("Notification")).toBeInTheDocument();
 	});
 
+	it("passes config to getImage so badge notifications can use custom images", () => {
+		const config = {
+			badges: {
+				baseUrl: "https://cdn.example.com/badges",
+				fileExtension: "png",
+			},
+		};
+		const getImage = vi.fn(() => (
+			<img src="https://cdn.example.com/badges/get_vote.png" alt="Notification" />
+		));
+		const definitions = {
+			new_comment: {
+				getRedirectUrl: () => `/comments/${mockNotification.id}`,
+				getImage,
+				getContent: () => "New comment received !",
+			},
+		};
+
+		render(
+			<MemoryRouter>
+				<ConfigProvider config={config}>
+					<DataProviderContext.Provider value={{ dataProvider: data }}>
+						<IntlProvider locale="en">
+							<IconProvider library={regularIcons}>
+								<NotificationItem
+									notification={mockNotification}
+									notificationDefinitions={definitions}
+									isRead={false}
+								/>
+							</IconProvider>
+						</IntlProvider>
+					</DataProviderContext.Provider>
+				</ConfigProvider>
+			</MemoryRouter>,
+		);
+
+		expect(getImage).toHaveBeenCalledWith(mockNotification, config);
+	});
+
 	it("calls api when clicking on notification", () => {
 		const { getByText } = render(
 			<MemoryRouter>
