@@ -466,6 +466,7 @@ export const VoteBox = ({
 							className={cx(styles.voteBoxActionsBody, {
 								[styles.voteBoxActionsBodyColumn]: displayColumn,
 								[styles.voteBoxActionsBodyOutlined]: config.layout?.outlinedVoteButtons,
+								[styles.voteBoxActionsBodyFilledNeutral]: config.layout?.filledNeutralVoteButton,
 								[buttonContainerClassName]: buttonContainerClassName,
 							})}
 						>

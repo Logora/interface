@@ -235,6 +235,18 @@ a.voteButton {
     }
 }
 
+.voteBoxActionsBodyFilledNeutral .voteAction:nth-child(3) .voteButton {
+    background-color: theme.$third-position-color-primary !important;
+    border-color: theme.$third-position-color-primary !important;
+    border: 1px solid theme.$third-position-color-primary !important;
+
+    &:hover {
+        background-color: theme.$third-position-color-primary !important;
+        border-color: theme.$third-position-color-primary !important;
+        border: 1px solid theme.$third-position-color-primary !important;
+    }
+}
+
 .voteActionButton {
     cursor: pointer;
     -webkit-appearance: initial !important;
