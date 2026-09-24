@@ -68,7 +68,7 @@ const votePositions = [
 
 const data = dataProvider(httpClient, "https://mock.example.api");
 
-const VoteBoxWrapper = ({ children, data: providerData = data }) => {
+const VoteBoxWrapper = ({ children, data: providerData = data, config = {} }) => {
 	return (
 		<BrowserRouter>
 			<IntlProvider locale="en">
@@ -78,7 +78,7 @@ const VoteBoxWrapper = ({ children, data: providerData = data }) => {
 					>
 						<IconProvider library={regularIcons}>
 							<ToastProvider>
-								<ConfigProvider config={{}} routes={{ ...routes }}>
+								<ConfigProvider config={config} routes={{ ...routes }}>
 									<ModalProvider>
 										<VoteProvider>{children}</VoteProvider>
 									</ModalProvider>
@@ -128,6 +128,40 @@ describe("VoteBox Component", () => {
 		expect(voteButtons[2].getAttribute("title")).toBe("Position 3");
 
 		expect(queryByRole("link")).toBeNull();
+	});
+
+	it("should apply the filled-neutral class when the setting is enabled", () => {
+		const { container } = render(
+			<VoteBoxWrapper config={{ layout: { filledNeutralVoteButton: true } }}>
+				<VoteBox
+					voteableId={debate.id}
+					voteableType={vote.voteable_type}
+					votePositions={votePositions}
+					numberVotes={debate.votes_count}
+				/>
+			</VoteBoxWrapper>,
+		);
+
+		expect(
+			container.querySelector(".voteBoxActionsBodyFilledNeutral"),
+		).toBeInTheDocument();
+	});
+
+	it("should not apply the filled-neutral class by default", () => {
+		const { container } = render(
+			<VoteBoxWrapper>
+				<VoteBox
+					voteableId={debate.id}
+					voteableType={vote.voteable_type}
+					votePositions={votePositions}
+					numberVotes={debate.votes_count}
+				/>
+			</VoteBoxWrapper>,
+		);
+
+		expect(
+			container.querySelector(".voteBoxActionsBodyFilledNeutral"),
+		).toBeNull();
 	});
 
 	it("should call callback", async () => {

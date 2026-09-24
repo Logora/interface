@@ -285,6 +285,41 @@ export const VoteBoxOutlinedButtons = () => {
 	);
 };
 
+export const VoteBoxFilledNeutralThesis = () => {
+	return (
+		<div style={{ width: "400px" }}>
+			<BrowserRouter>
+				<IntlProvider locale="en">
+					<DataProviderContext.Provider value={{ dataProvider: data }}>
+						<AuthContext.Provider
+							value={{ currentUser: currentUser, isLoggedIn: true }}
+						>
+							<ToastProvider>
+								<ConfigProvider
+									config={{ layout: { filledNeutralVoteButton: true } }}
+									routes={{ ...routes }}
+								>
+									<ModalProvider>
+										<VoteProvider>
+											<VoteBox
+												voteableId={debateThreeVotePositions.id}
+												numberVotes={debateThreeVotePositions.votes_count}
+												voteableType={"Group"}
+												votePositions={threeVotePositions}
+												displayColumn
+											/>
+										</VoteProvider>
+									</ModalProvider>
+								</ConfigProvider>
+							</ToastProvider>
+						</AuthContext.Provider>
+					</DataProviderContext.Provider>
+				</IntlProvider>
+			</BrowserRouter>
+		</div>
+	);
+};
+
 export const VoteBoxWithVotesAndComments = (args) => {	return (
 		<div style={{ width: "400px" }}>
 			<BrowserRouter>
