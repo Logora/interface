@@ -67,11 +67,11 @@ export const SuggestionInput = ({
 	}, [focus]);
 
 	const scrollToEditor = () => {
-		inputForm.current.scrollIntoView({ behavior: "smooth" });
+		inputForm.current.scrollIntoView({ behavior: "smooth", block: "center" });
 	};
 
 	const focusEditor = () => {
-		inputForm.current.focus();
+		inputForm.current.focus({ preventScroll: true });
 	};
 
 	const flashing = () => {
