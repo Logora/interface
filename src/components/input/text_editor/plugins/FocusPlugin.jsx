@@ -11,7 +11,7 @@ export const FocusPlugin = ({ autoFocus = false }) => {
 		if (focus) {
 			editor.focus(() => {
 				const rootElement = editor.getRootElement();
-				rootElement.focus();
+				rootElement.focus({ preventScroll: true });
 			});
 		}
 	}, [focus, editor]);
@@ -21,7 +21,7 @@ export const FocusPlugin = ({ autoFocus = false }) => {
 			hasAutoFocused.current = true;
 			editor.focus(() => {
 				const rootElement = editor.getRootElement();
-				rootElement.focus();
+				rootElement.focus({ preventScroll: true });
 			});
 		}
 	}, [autoFocus, editor]);

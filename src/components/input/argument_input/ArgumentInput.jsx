@@ -178,7 +178,7 @@ export const ArgumentInput = ({
 	};
 
 	const scrollToEditor = () => {
-		inputForm.current.scrollIntoView(false);
+		inputForm.current.scrollIntoView({ behavior: "smooth", block: "center" });
 	};
 
 	const resetInputs = () => {
