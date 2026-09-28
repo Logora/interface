@@ -3,11 +3,13 @@ import { useInput } from "@logora/debate/input/input_provider";
 import { $createParagraphNode, $createTextNode, $getRoot } from "lexical";
 import { useEffect } from "react";
 
-export const SetContentPlugin = ({ content }) => {
+export const SetContentPlugin = ({ content, isReply = false }) => {
 	const [editor] = useLexicalComposerContext();
 	const { inputContent, setInputContent } = useInput();
 
-	const contentToLoad = content || (typeof inputContent === "string" ? inputContent : undefined);
+	const contentToLoad =
+		content ||
+		(!isReply && typeof inputContent === "string" ? inputContent : undefined);
 
 	useEffect(() => {
 		if (typeof contentToLoad === "string" && contentToLoad) {

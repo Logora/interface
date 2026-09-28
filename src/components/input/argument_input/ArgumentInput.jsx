@@ -553,6 +553,7 @@ export const ArgumentInput = ({
 										config?.actions?.disableRichText || inputDisabledForVisitors
 									}
 									shortBar={isReply}
+									isReply={isReply}
 									hideSubmit={inputDisabledForVisitors}
 									allowedDomains={config?.allowed_sources}
 									active={activeOnInit}
