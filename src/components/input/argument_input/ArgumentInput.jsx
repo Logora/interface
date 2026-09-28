@@ -154,7 +154,7 @@ export const ArgumentInput = ({
 	}, [focus]);
 
 	useEffect(() => {
-		if (inputContent?.id) {
+		if (inputContent?.id && !isReply) {
 			setEditArgument(inputContent);
 			setFocus(true);
 		}
