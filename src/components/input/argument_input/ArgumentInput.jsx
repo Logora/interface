@@ -53,7 +53,6 @@ export const ArgumentInput = ({
 	const {
 		focus,
 		setFocus,
-		setReset,
 		inputContent,
 		setInputContent,
 		setInputRichContent,
@@ -72,6 +71,7 @@ export const ArgumentInput = ({
 	const [inputActivation, setInputActivation] = useState(false);
 	const [editElement, setEditElement] = useState({});
 	const [shouldAutoFocus, setShouldAutoFocus] = useState(false);
+	const [resetSignal, setResetSignal] = useState(0);
 	const [savedArgument, setSavedArgument] = useSessionStorageState(
 		"userSide",
 		{},
@@ -147,7 +147,7 @@ export const ArgumentInput = ({
 	}, []);
 
 	useEffect(() => {
-		if (focus) {
+		if (focus && !isReply) {
 			scrollToEditor();
 			setFocus(false);
 		}
@@ -187,7 +187,7 @@ export const ArgumentInput = ({
 		setEditElement({});
 		setArgumentId(null);
 		setSources([]);
-		setReset(true);
+		setResetSignal((previous) => previous + 1);
 		setInputContent(null);
 	};
 
@@ -554,6 +554,7 @@ export const ArgumentInput = ({
 									}
 									shortBar={isReply}
 									isReply={isReply}
+									resetSignal={resetSignal}
 									hideSubmit={inputDisabledForVisitors}
 									allowedDomains={config?.allowed_sources}
 									active={activeOnInit}

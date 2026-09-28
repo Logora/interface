@@ -2,18 +2,23 @@ import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext
 import { useInput } from "@logora/debate/input/input_provider";
 import useLocalstorageState from "@rooks/use-localstorage-state";
 import { $addUpdateTag, $createParagraphNode, $getRoot } from "lexical";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
-export const ResetPlugin = ({ storageUid }) => {
+export const ResetPlugin = ({ storageUid, resetSignal, isReply = false }) => {
 	const [editor] = useLexicalComposerContext();
 	const { reset, setReset } = useInput();
 	const [content, setContent, removeContent] = useLocalstorageState(
 		`TextEditor:content_${storageUid}`,
 		{},
 	);
+	const previousResetSignal = useRef(resetSignal);
 
 	useEffect(() => {
-		if (reset) {
+		const hasLocalResetSignal =
+			resetSignal !== undefined && resetSignal !== previousResetSignal.current;
+		previousResetSignal.current = resetSignal;
+
+		if (hasLocalResetSignal || (reset && !isReply)) {
 			editor.update(() => {
 				$addUpdateTag("skip-dom-selection");
 				const root = $getRoot();
@@ -26,10 +31,12 @@ export const ResetPlugin = ({ storageUid }) => {
 				selection.style = "";
 
 				removeContent();
-				setReset(false);
+				if (reset) {
+					setReset(false);
+				}
 			});
 		}
-	}, [reset]);
+	}, [resetSignal, reset]);
 
 	return null;
 };

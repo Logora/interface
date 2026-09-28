@@ -2,13 +2,13 @@ import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext
 import { useInput } from "@logora/debate/input/input_provider";
 import { useEffect, useRef } from "react";
 
-export const FocusPlugin = ({ autoFocus = false }) => {
+export const FocusPlugin = ({ autoFocus = false, isReply = false }) => {
 	const [editor] = useLexicalComposerContext();
 	const { focus } = useInput();
 	const hasAutoFocused = useRef(false);
 
 	useEffect(() => {
-		if (focus) {
+		if (focus && !isReply) {
 			editor.focus(() => {
 				const rootElement = editor.getRootElement();
 				rootElement.focus({ preventScroll: true });

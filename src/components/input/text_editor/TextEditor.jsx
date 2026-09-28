@@ -65,6 +65,7 @@ export const TextEditor = ({
 	disableAutoActivate = false,
 	autoFocus = false,
 	isReply = false,
+	resetSignal,
 	...rest
 }) => {
 	const [isActive, setIsActive] = useState(autoFocus || active);
@@ -245,10 +246,10 @@ export const TextEditor = ({
 						/>
 						<SetContentPlugin content={initialContent} isReply={isReply}/>
 						<SetRichContentPlugin richContent={initialRichContent} isReply={isReply}/>
-						<FocusPlugin autoFocus={autoFocus} />
+						<FocusPlugin autoFocus={autoFocus} isReply={isReply} />
 						<IOSInsertParagraphFallbackPlugin />
 						{maxLength && <MaxLengthPlugin maxLength={maxLength} />}
-						<ResetPlugin storageUid={uid || randomUid} />
+						<ResetPlugin storageUid={uid || randomUid} resetSignal={resetSignal} isReply={isReply} />
 						<EditorRefPlugin editorRef={editorRef} />
 					</div>
 				</div>
