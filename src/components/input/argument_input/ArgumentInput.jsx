@@ -13,7 +13,7 @@ import { TogglePosition } from "@logora/debate/input/toggle_position";
 import { useList } from "@logora/debate/list/list_provider";
 import { AuthorBox } from "@logora/debate/user/author_box";
 import { Avatar } from "@logora/debate/user/avatar";
-import useSessionStorageState from "@rooks/use-sessionstorage-state";
+import { useSessionStorageState } from "@logora/debate/hooks/use_session_storage_state";
 import React, { useState, useEffect, useRef, lazy, Suspense } from "react";
 import { FormattedMessage } from "react-intl";
 import { useIntl } from "react-intl";

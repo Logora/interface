@@ -1,34 +1,30 @@
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 import { OnChangePlugin } from "@lexical/react/LexicalOnChangePlugin";
-import useLocalstorageState from "@rooks/use-localstorage-state";
 import React, { useEffect } from "react";
 import { useDebouncedCallback } from "use-debounce";
 
 export const AutoSavePlugin = ({ storageUid, onSetContent }) => {
 	const [editor] = useLexicalComposerContext();
-	const [content, setContent, removeContent] = useLocalstorageState(
-		`TextEditor:content_${storageUid}`,
-		{},
-	);
+	const storageKey = `TextEditor:content_${storageUid}`;
 
 	useEffect(() => {
-		if (content) {
-			if (Object.keys(content).length !== 0) {
-				const editorState = editor.parseEditorState(content.editorState);
-				editor.setEditorState(editorState);
+		try {
+			const content = JSON.parse(localStorage.getItem(storageKey));
+			if (content?.editorState) {
+				editor.setEditorState(editor.parseEditorState(content.editorState));
 				onSetContent?.();
 			}
-		}
+		} catch (e) {}
 	}, []);
 
 	const onChange = useDebouncedCallback(
-		(editorState, editor) => {
-			editorState.read(() => {
-				const sessionUserContent = {
-					editorState: JSON.stringify(editor.getEditorState()),
-				};
-				setContent(sessionUserContent);
-			});
+		(editorState) => {
+			try {
+				localStorage.setItem(
+					storageKey,
+					JSON.stringify({ editorState: JSON.stringify(editorState) }),
+				);
+			} catch (e) {}
 		},
 		1000,
 		false,

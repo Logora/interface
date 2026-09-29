@@ -2,7 +2,7 @@ import { Button } from "@logora/debate/action/button";
 import { EMAIL_CONSENT_STORAGE_KEY } from "@logora/debate/auth/use_auth";
 import { TextInput } from "@logora/debate/input/text_input";
 import { Toggle } from "@logora/debate/input/toggle";
-import useSessionStorageState from "@rooks/use-sessionstorage-state";
+import { useSessionStorageState } from "@logora/debate/hooks/use_session_storage_state";
 import cx from "classnames";
 import React, { useState } from "react";
 import { useIntl } from "react-intl";

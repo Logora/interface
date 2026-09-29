@@ -1,4 +1,4 @@
-import useSessionStorageState from "@rooks/use-sessionstorage-state";
+import { useSessionStorageState } from "@logora/debate/hooks/use_session_storage_state";
 import { flatten } from "flat";
 import React, { useEffect, useState } from "react";
 import { IntlProvider as ReactIntlProvider } from "react-intl";

@@ -1,16 +1,11 @@
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 import { useInput } from "@logora/debate/input/input_provider";
-import useLocalstorageState from "@rooks/use-localstorage-state";
 import { $addUpdateTag, $createParagraphNode, $getRoot } from "lexical";
 import { useEffect, useRef } from "react";
 
 export const ResetPlugin = ({ storageUid, resetSignal, isReply = false }) => {
 	const [editor] = useLexicalComposerContext();
 	const { reset, setReset } = useInput();
-	const [content, setContent, removeContent] = useLocalstorageState(
-		`TextEditor:content_${storageUid}`,
-		{},
-	);
 	const previousResetSignal = useRef(resetSignal);
 
 	useEffect(() => {
@@ -30,7 +25,9 @@ export const ResetPlugin = ({ storageUid, resetSignal, isReply = false }) => {
 				selection.format = 0;
 				selection.style = "";
 
-				removeContent();
+				try {
+					localStorage.removeItem(`TextEditor:content_${storageUid}`);
+				} catch (e) {}
 				if (reset) {
 					setReset(false);
 				}

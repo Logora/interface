@@ -51,6 +51,7 @@ export * from "./components/hooks/use_font_loader";
 export * from "./components/hooks/use_matomo";
 export * from "./components/hooks/use_relative_time";
 export * from "./components/hooks/use_responsive";
+export * from "./components/hooks/use_session_storage_state";
 export * from "./components/icons/icon";
 export * from "./components/icons/icon_provider";
 export * as regularIcons from "./components/icons/regular_icons";
