@@ -8,7 +8,7 @@ import { useAuthRequired } from "@logora/debate/hooks/use_auth_required";
 import { Icon } from "@logora/debate/icons/icon";
 import { ProgressBar } from "@logora/debate/progress/progress_bar";
 import { useTranslatedContent } from "@logora/debate/translation/translated_content";
-import useSessionStorageState from "@rooks/use-sessionstorage-state";
+import { useSessionStorageState } from "@logora/debate/hooks/use_session_storage_state";
 import cx from "classnames";
 import React, { useState, useEffect } from "react";
 import { FormattedMessage, useIntl } from "react-intl";

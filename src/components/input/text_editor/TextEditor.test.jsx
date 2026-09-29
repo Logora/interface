@@ -792,5 +792,91 @@ describe("AutoSavePlugin", () => {
 		await waitFor(() => {
 			expect(getItemMock).toHaveBeenCalled();
 		});
+
+		const saved = JSON.parse(window.localStorage.getItem("TextEditor:content_34"));
+		expect(saved.editorState).toContain("Integer pretium varius odio ac eleifend.");
+
+		container.unmount();
+		render(
+			<IntlProvider locale="en">
+				<InputProvider>
+					<ModalProvider>
+						<IconProvider library={regularIcons}>
+							<TextEditor
+								handleChange={() => null}
+								onSubmit={() => null}
+								onActivation={() => null}
+								uid={"34"}
+								placeholder={"Add something"}
+							/>
+						</IconProvider>
+					</ModalProvider>
+				</InputProvider>
+			</IntlProvider>,
+		);
+		await waitFor(() => {
+			expect(screen.getByText("Integer pretium varius odio ac eleifend.")).toBeTruthy();
+		});
+	});
+
+	it("should not crash when local storage quota is exceeded", async () => {
+		const setItemMock = vi
+			.spyOn(window.localStorage, "setItem")
+			.mockImplementation(() => {
+				throw new DOMException("quota", "QuotaExceededError");
+			});
+
+		const SetContent = () => {
+			const { setInputRichContent } = useInput();
+			return (
+				<div
+					onClick={() =>
+						setInputRichContent({
+							root: {
+								children: [
+									{
+										children: [{ detail: 0, format: 0, mode: "normal", style: "", text: "Hello", type: "text", version: 1 }],
+										direction: "auto", format: "", indent: 0, type: "paragraph", version: 1,
+									},
+								],
+								direction: "auto", format: "", indent: 0, type: "root", version: 1,
+							},
+						})
+					}
+				>
+					Set content
+				</div>
+			);
+		};
+
+		render(
+			<IntlProvider locale="en">
+				<InputProvider>
+					<ModalProvider>
+						<IconProvider library={regularIcons}>
+							<SetContent />
+							<TextEditor
+								handleChange={() => null}
+								onSubmit={() => null}
+								onActivation={() => null}
+								uid={"quota"}
+								placeholder={"Add something"}
+							/>
+						</IconProvider>
+					</ModalProvider>
+				</InputProvider>
+			</IntlProvider>,
+		);
+
+		await userEvent.click(screen.getByText("Set content"));
+		await waitFor(() => expect(screen.getByText("Hello")).toBeTruthy());
+
+		await act(async () => {
+			await new Promise((r) => setTimeout(r, 1500));
+		});
+
+		expect(setItemMock).toHaveBeenCalled();
+		expect(screen.getByText("Hello")).toBeTruthy();
+		setItemMock.mockRestore();
 	});
 });

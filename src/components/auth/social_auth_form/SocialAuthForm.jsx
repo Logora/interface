@@ -5,7 +5,7 @@ import { SignupForm } from "@logora/debate/auth/signup_form";
 import { EMAIL_CONSENT_STORAGE_KEY } from "@logora/debate/auth/use_auth";
 import { Icon } from "@logora/debate/icons/icon";
 import { Toggle } from "@logora/debate/input/toggle";
-import useSessionStorageState from "@rooks/use-sessionstorage-state";
+import { useSessionStorageState } from "@logora/debate/hooks/use_session_storage_state";
 import React, { useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import styles from "./SocialAuthForm.module.scss";

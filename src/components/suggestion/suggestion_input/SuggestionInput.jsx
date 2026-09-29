@@ -7,7 +7,7 @@ import { useAuthRequired } from "@logora/debate/hooks/use_auth_required";
 import { useInput } from "@logora/debate/input/input_provider";
 import { TextInput } from "@logora/debate/input/text_input";
 import { useList } from "@logora/debate/list/list_provider";
-import useSessionStorageState from "@rooks/use-sessionstorage-state";
+import { useSessionStorageState } from "@logora/debate/hooks/use_session_storage_state";
 import cx from "classnames";
 import React, { useState, useRef, useEffect } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
