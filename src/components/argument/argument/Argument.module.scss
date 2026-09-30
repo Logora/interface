@@ -199,7 +199,7 @@
 	background-color: theme.$third-position-color-primary !important;
 }
 
-.voteButtonPosition-1 {
+.voteButtonPosition-1.voteButtonPosition-1 {
 	color: theme.$for-primary !important;
 
 	& svg {
@@ -207,7 +207,7 @@
 	}
 }
 
-.voteButtonPosition-2 {
+.voteButtonPosition-2.voteButtonPosition-2 {
 	color: theme.$against-primary !important;
 
 	& svg {
@@ -215,7 +215,7 @@
 	}
 }
 
-.voteButtonPosition-3 {
+.voteButtonPosition-3.voteButtonPosition-3 {
 	color: theme.$third-position-color-primary !important;
 
 	& svg {
