@@ -24,10 +24,10 @@
 .active {
     font-weight: theme.$font-weight-bold;
     font-variation-settings: theme.$font-variation-bold;
-    color: inherit;
+    color: theme.$call-primary;
 
     & svg {
-        fill: currentColor !important;
+        fill: theme.$call-primary;
         fill-rule: evenodd;
     }
 }
