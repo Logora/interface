@@ -59,6 +59,9 @@ export const PaginatedList = ({
 	const api = useDataProvider();
 	const location = useLocation();
 	const { isMobile, isTablet, isDesktop } = useResponsive();
+	const urlParams = new URLSearchParams(
+		typeof window !== "undefined" ? window.location.search : location.search,
+	);
 	const [isLoading, setIsLoading] = useState(false);
 	const [loadError, setLoadError] = useState(false);
 	const [currentResources, setCurrentResources] = useData(currentListId, []);
@@ -67,11 +70,10 @@ export const PaginatedList = ({
 	);
 	const [page, setPage] = useState(currentPage || 1);
 	const [currentQuery, setCurrentQuery] = useState(query || null);
-	const [activeTagId, setActiveTagId] = useState(null);
-	const [defaultSelectOption, setDefaultSelectOption] = useState(null);
-	const urlParams = new URLSearchParams(
-		typeof window !== "undefined" ? window.location.search : location.search,
+	const [activeTagId, setActiveTagId] = useState(
+		urlParams.get("tagId") ? Number.parseInt(urlParams.get("tagId"), 10) : null,
 	);
+	const [defaultSelectOption, setDefaultSelectOption] = useState(null);
 
 	const getInitSort = () => {
 		return (
