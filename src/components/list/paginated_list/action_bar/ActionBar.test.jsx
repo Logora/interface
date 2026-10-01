@@ -1,7 +1,7 @@
 import { render, fireEvent } from "@testing-library/react";
 import React from "react";
 import { IntlProvider } from "react-intl";
-import { MemoryRouter } from "react-router-dom";
+import { MemoryRouter, useLocation } from "react-router-dom";
 import { ResponsiveProvider } from "@logora/debate/hooks/use_responsive";
 import { ActionBar } from "./ActionBar";
 
@@ -12,9 +12,14 @@ const tagList = [
 	{ id: 4, display_name: "Education" },
 ];
 
-const renderActionBar = (props) => {
+const LocationDisplay = () => {
+	const location = useLocation();
+	return <div data-testid="location-display">{location.search}</div>;
+};
+
+const renderActionBar = (props, { initialEntries } = {}) => {
 	return render(
-		<MemoryRouter>
+		<MemoryRouter initialEntries={initialEntries}>
 			<IntlProvider locale="en">
 				<ResponsiveProvider>
 					<ActionBar
@@ -25,6 +30,7 @@ const renderActionBar = (props) => {
 						onTagChange={() => {}}
 						{...props}
 					/>
+					<LocationDisplay />
 				</ResponsiveProvider>
 			</IntlProvider>
 		</MemoryRouter>,
@@ -89,5 +95,49 @@ describe("ActionBar", () => {
 
 		expect(getByLabelText("Tag précédent")).toBeInTheDocument();
 		expect(getByLabelText("Tag suivant")).toBeInTheDocument();
+	});
+
+	it("updates the URL with the clicked tag id when withUrlParams is true", () => {
+		const { getByText, getByTestId } = renderActionBar(
+			{ withUrlParams: true },
+			{ initialEntries: ["/debats"] },
+		);
+
+		fireEvent.click(getByText("Environment"));
+
+		expect(getByTestId("location-display").textContent).toBe("?tagId=3");
+	});
+
+	it("removes tagId from the URL when clicking the already active tag", () => {
+		const { getByText, getByTestId } = renderActionBar(
+			{ withUrlParams: true, activeTagId: 3 },
+			{ initialEntries: ["/debats?tagId=3"] },
+		);
+
+		fireEvent.click(getByText("Environment"));
+
+		expect(getByTestId("location-display").textContent).toBe("");
+	});
+
+	it("replaces the tagId in the URL when switching from one tag to another", () => {
+		const { getByText, getByTestId } = renderActionBar(
+			{ withUrlParams: true, activeTagId: 1 },
+			{ initialEntries: ["/debats?tagId=1"] },
+		);
+
+		fireEvent.click(getByText("Environment"));
+
+		expect(getByTestId("location-display").textContent).toBe("?tagId=3");
+	});
+
+	it("does not touch the URL when withUrlParams is false (default)", () => {
+		const { getByText, getByTestId } = renderActionBar(
+			{},
+			{ initialEntries: ["/debats"] },
+		);
+
+		fireEvent.click(getByText("Environment"));
+
+		expect(getByTestId("location-display").textContent).toBe("");
 	});
 });

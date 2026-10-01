@@ -6,7 +6,7 @@ import { Tag } from "@logora/debate/tag/tag";
 import cx from "classnames";
 import React, { useState, useRef, useCallback, useEffect } from "react";
 import { useIntl } from "react-intl";
-import { useLocation } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import styles from "./ActionBar.module.scss";
 
 export const ActionBar = ({
@@ -26,6 +26,7 @@ export const ActionBar = ({
 }) => {
 	const intl = useIntl();
 	const location = useLocation();
+	const navigate = useNavigate();
 	const { isMobile } = useResponsive();
 	const [searchActive, setSearchActive] = useState(false);
 	const tagContainerRef = useRef(null);
@@ -78,6 +79,17 @@ export const ActionBar = ({
 		setTimeout(checkTagScroll, 300);
 	};
 
+	const applyUrlParams = () => {
+		const queryString = urlParams.toString();
+		navigate(
+			{
+				pathname: location.pathname,
+				search: queryString ? `?${queryString}` : "",
+			},
+			{ replace: true },
+		);
+	};
+
 	const handleSortChange = (selectOption) => {
 		if (withUrlParams) {
 			for (const key of urlParams.keys()) {
@@ -92,6 +104,7 @@ export const ActionBar = ({
 				selectOption.type === "filter" ? selectOption.name : "sort",
 				selectOption.value,
 			);
+			applyUrlParams();
 		}
 		onSortChange(selectOption);
 	};
@@ -103,6 +116,7 @@ export const ActionBar = ({
 			} else {
 				urlParams.set("tagId", tag.id);
 			}
+			applyUrlParams();
 		}
 		onTagChange(tag.id === activeTagId ? null : tag.id);
 	};
@@ -114,6 +128,7 @@ export const ActionBar = ({
 			} else {
 				urlParams.set("search", query);
 			}
+			applyUrlParams();
 		}
 		onSearch(query);
 		setSearchActive(query !== "");
