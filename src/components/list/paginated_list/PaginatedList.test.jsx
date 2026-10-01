@@ -1333,6 +1333,22 @@ describe("PaginatedList", () => {
 		expect(callback).toHaveBeenCalled();
 	});
 
+	it("should call api with tag_id filter from the tagId URL param on mount, with a single call", async () => {
+		window.history.pushState({}, "", "/?tagId=42");
+
+		await act(async () => {
+			render(<DefaultList />);
+		});
+
+		expect(mock).toHaveBeenCalledTimes(1);
+		expect(mock).toHaveBeenNthCalledWith(
+			1,
+			"https://mock.example.api/items?page=1&porut=10&sort=-created_at&countless=true&tag_id=42&api_key=",
+		);
+
+		window.history.pushState({}, "", "/");
+	});
+
 	it("should apply pending list.update when PaginatedList mounts after update dispatch", async () => {
 		const initialElements = [
 			{ id: 1, name: "First item" },
