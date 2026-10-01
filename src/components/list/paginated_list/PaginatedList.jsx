@@ -59,9 +59,7 @@ export const PaginatedList = ({
 	const api = useDataProvider();
 	const location = useLocation();
 	const { isMobile, isTablet, isDesktop } = useResponsive();
-	const urlParams = new URLSearchParams(
-		typeof window !== "undefined" ? window.location.search : location.search,
-	);
+	const urlParams = new URLSearchParams(location.search);
 	const [isLoading, setIsLoading] = useState(false);
 	const [loadError, setLoadError] = useState(false);
 	const [currentResources, setCurrentResources] = useData(currentListId, []);

@@ -32,9 +32,7 @@ export const ActionBar = ({
 	const [tagCanScrollLeft, setTagCanScrollLeft] = useState(false);
 	const [tagCanScrollRight, setTagCanScrollRight] = useState(false);
 
-	const urlParams = new URLSearchParams(
-		typeof window !== "undefined" ? window.location.search : location.search,
-	);
+	const urlParams = new URLSearchParams(location.search);
 	const tags = Array.isArray(tagList) ? tagList : tagList?.data || [];
 	const pinnedTagIds = [
 		...new Set(

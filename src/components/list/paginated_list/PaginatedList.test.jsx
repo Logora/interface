@@ -10,7 +10,7 @@ import { act, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import React from "react";
 import { IntlProvider } from "react-intl";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, HashRouter } from "react-router-dom";
 import { PaginatedList } from "./PaginatedList";
 
 import { faker } from "@faker-js/faker";
@@ -1344,6 +1344,47 @@ describe("PaginatedList", () => {
 		expect(mock).toHaveBeenNthCalledWith(
 			1,
 			"https://mock.example.api/items?page=1&porut=10&sort=-created_at&countless=true&tag_id=42&api_key=",
+		);
+
+		window.history.pushState({}, "", "/");
+	});
+
+	it("should call api with tag_id filter from the tagId param when using a HashRouter (tenants with router: hash)", async () => {
+		window.history.pushState({}, "", "/#/?tagId=42");
+
+		await act(async () => {
+			render(
+				<HashRouter>
+					<IntlProvider locale="en">
+						<ListProvider>
+							<IconProvider library={regularIcons}>
+								<ResponsiveProvider>
+									<DataProviderContext.Provider value={{ dataProvider: data }}>
+										<PaginatedList
+											currentListId={"itemList"}
+											resource={"items"}
+											sort={"-created_at"}
+											resourcePropName={"item"}
+											perPage={10}
+											withPagination={false}
+											countless={true}
+											display="column"
+										>
+											<ListItem />
+										</PaginatedList>
+									</DataProviderContext.Provider>
+								</ResponsiveProvider>
+							</IconProvider>
+						</ListProvider>
+					</IntlProvider>
+				</HashRouter>,
+			);
+		});
+
+		expect(mock).toHaveBeenCalledTimes(1);
+		expect(mock).toHaveBeenNthCalledWith(
+			1,
+			"https://mock.example.api/items?page=1&per_page=10&sort=-created_at&countless=true&tag_id=42&api_key=",
 		);
 
 		window.history.pushState({}, "", "/");
