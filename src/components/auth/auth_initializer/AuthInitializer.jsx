@@ -10,7 +10,7 @@ import React, { useState, useEffect } from "react";
 const base64UrlDecode = (str) => {
 	const base64 = str.replace(/-/g, "+").replace(/_/g, "/");
 	const padded = base64.padEnd(base64.length + ((4 - (base64.length % 4)) % 4), "=");
-	return atob(padded);
+	return new TextDecoder().decode(Uint8Array.from(atob(padded), (c) => c.charCodeAt(0)));
 };
 
 export const decodeJwtPayload = (token) => {
@@ -136,6 +136,8 @@ export const AuthInitializer = ({ authUrl, authType, provider, assertion }) => {
 				<OnboardingModal
 					pendingAuth={true}
 					onConsentConfirmed={handleConsentConfirmed}
+					showCloseButton={config.auth?.allowCloseOnboardingBeforeLogin === true}
+					onClose={() => setShowOnboardingModal(false)}
 					showTerms={config.auth?.hideCgu !== true}
 					showEmailConsent={config.auth?.showEmailConsent}
 					initialFirstName={initialUserProfile.first_name}

@@ -32,3 +32,6 @@ const Component = () => {
 ```js
 window.dispatchEvent(new Event("logora:authentication:require"));
 ```
+### Onboarding before login
+
+With `jwt` authentication and `auth.showOnboardingBeforeLogin: true`, an onboarding modal is shown before the user is logged in. It cannot be closed by default. Set `auth.allowCloseOnboardingBeforeLogin: true` to show a close button: closing the modal leaves the user logged out.

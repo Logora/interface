@@ -11,6 +11,7 @@ export const Modal = ({
 	fullScreen,
 	children,
 	disableClickOutside = false,
+	onClose = null,
 	...rest
 }) => {
 	const dialogRef = useRef();
@@ -49,11 +50,11 @@ export const Modal = ({
 
 		if (e.currentTarget !== e.target) return;
 
-		hideModal();
+		handleClose();
 	};
 
 	const handleClose = () => {
-		hideModal();
+		onClose ? onClose() : hideModal();
 	};
 
 	return (
@@ -78,7 +79,7 @@ export const Modal = ({
 						<button
 							type="button"
 							className={styles.modalExitButton}
-							onClick={hideModal}
+							onClick={handleClose}
 							aria-label={intl.formatMessage({
 								id: "dialog.modal.aria_label",
 								defaultMessage: "Close dialog",

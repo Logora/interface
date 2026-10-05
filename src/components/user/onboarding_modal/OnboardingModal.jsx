@@ -25,6 +25,8 @@ export const OnboardingModal = ({
 	initialFirstName = "",
 	initialLastName = "",
 	initialImageUrl = null,
+	showCloseButton = false,
+	onClose = null,
 }) => {
 	const auth = useAuth();
 	const api = useDataProvider();
@@ -165,7 +167,8 @@ export const OnboardingModal = ({
 				minWidth: isMobile ? "unset" : "500px",
 				maxWidth: "800px",
 			}}
-			showCloseButton={false}
+			showCloseButton={showCloseButton}
+			onClose={onClose}
 			disableClickOutside={true}
 		>
 			{isUpdating ? (
