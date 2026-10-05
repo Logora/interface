@@ -1,5 +1,5 @@
 import { AuthProviderFactory } from "@logora/debate/auth/providers";
-import { authTokenHandler, useAuthActions } from "@logora/debate/auth/use_auth";
+import { authTokenHandler, useAuth, useAuthActions } from "@logora/debate/auth/use_auth";
 import { useAuthInterceptor } from "@logora/debate/auth/use_auth";
 import { httpClient } from "@logora/debate/data/axios_client";
 import { useConfig } from "@logora/debate/data/config_provider";
@@ -59,7 +59,8 @@ export const AuthInitializer = ({ authUrl, authType, provider, assertion }) => {
 
 	const [showOnboardingModal, setShowOnboardingModal] = useState(false);
 
-	const { getToken, removeToken } = authTokenHandler(
+	const { setAuthError } = useAuth();
+	const { getToken, removeToken, fetchToken } = authTokenHandler(
 		httpClient,
 		authUrl,
 		tokenKey,
@@ -108,7 +109,16 @@ export const AuthInitializer = ({ authUrl, authType, provider, assertion }) => {
 			if (authParams) {
 				const isJWT = authType !== "social" && authType !== "oauth2_server";
 				if (isJWT && config.auth?.showOnboardingBeforeLogin === true) {
-					setShowOnboardingModal(true);
+					// Log in existing users only; the account is created after consent in handleConsentConfirmed
+					fetchToken({ ...authParams, create_user: false })
+						.then(() => fetchUser())
+						.catch((error) => {
+							if (error?.response?.data?.error_description === "user_not_found") {
+								setShowOnboardingModal(true);
+							} else {
+								setAuthError(error);
+							}
+						});
 					return;
 				}
 				loginUser(authParams);
