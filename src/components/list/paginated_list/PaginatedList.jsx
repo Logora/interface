@@ -66,6 +66,7 @@ export const PaginatedList = ({
 	const [totalElements, setTotalElements] = useState(
 		currentResources?.length || 0,
 	);
+	const [hasMore, setHasMore] = useState(true);
 	const [page, setPage] = useState(currentPage || 1);
 	const [currentQuery, setCurrentQuery] = useState(query || null);
 	const [activeTagId, setActiveTagId] = useState(
@@ -241,10 +242,12 @@ export const PaginatedList = ({
 
 	const loadResources = (pageNumber) => {
 		const loadFunction = withToken ? api.getListWithToken : api.getList;
-		if (
-			(pageNumber - 1) * perPage <= (numberElements || totalElements) ||
-			pageNumber === 1
-		) {
+		const canLoadMore =
+			countless === true
+				? hasMore || pageNumber === 1
+				: (pageNumber - 1) * perPage <= (numberElements || totalElements) ||
+					pageNumber === 1;
+		if (canLoadMore) {
 			const params = {
 				[pageParam]: pageNumber,
 				[perPageParam]: perPage,
@@ -269,6 +272,9 @@ export const PaginatedList = ({
 					}
 
 					let newElements = response?.data?.data;
+					if (countless === true && Array.isArray(newElements)) {
+						setHasMore(newElements.length >= perPage);
+					}
 					if (onElementsLoad) {
 						onElementsLoad(newElements);
 					}
@@ -438,6 +444,7 @@ export const PaginatedList = ({
 							currentPage={page}
 							perPage={perPage}
 							totalElements={numberElements || totalElements}
+							hasMore={countless === true ? hasMore : undefined}
 							onLoad={handleLoadNewPage}
 							isLoading={isLoading}
 							hideLoader={true}
