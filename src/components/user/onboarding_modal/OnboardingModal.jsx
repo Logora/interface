@@ -22,6 +22,7 @@ export const OnboardingModal = ({
 	showTerms = false,
 	pendingAuth = false,
 	onConsentConfirmed = null,
+	onCancel = null,
 	initialFirstName = "",
 	initialLastName = "",
 	initialImageUrl = null,
@@ -165,7 +166,8 @@ export const OnboardingModal = ({
 				minWidth: isMobile ? "unset" : "500px",
 				maxWidth: "800px",
 			}}
-			showCloseButton={false}
+			showCloseButton={!!onCancel}
+			onClose={onCancel || undefined}
 			disableClickOutside={true}
 		>
 			{isUpdating ? (

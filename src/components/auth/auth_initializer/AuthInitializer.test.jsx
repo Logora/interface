@@ -21,6 +21,23 @@ describe("decodeJwtPayload", () => {
                 });
         });
 
+        it("decodes UTF-8 characters in the payload", () => {
+                const utf8Base64Url = (value) =>
+                        btoa(String.fromCharCode(...new TextEncoder().encode(JSON.stringify(value))))
+                                .replace(/\+/g, "-")
+                                .replace(/\//g, "_")
+                                .replace(/=+$/, "");
+                const token = `${base64Url({ alg: "HS256" })}.${utf8Base64Url({
+                        first_name: "Éloïse",
+                        last_name: "Çelik-Müller 😀",
+                })}.signature`;
+
+                expect(decodeJwtPayload(token)).toEqual({
+                        first_name: "Éloïse",
+                        last_name: "Çelik-Müller 😀",
+                });
+        });
+
         it("returns null for an invalid token", () => {
                 expect(decodeJwtPayload("not-a-jwt")).toBeNull();
                 expect(decodeJwtPayload("header.%%invalid%%payload")).toBeNull();
