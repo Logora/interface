@@ -198,7 +198,8 @@ export const DebateBox = ({ debate }) => {
 							</>
 						)}
 					</div>
-					{config.modules.votes === false ? null : (
+					{config.modules.votes === false ||
+					debate.allow_votes === false ? null : (
 						<div className={styles.debateBoxNumbers}>
 							<div
 								className={styles.debateBoxNumbersText}
