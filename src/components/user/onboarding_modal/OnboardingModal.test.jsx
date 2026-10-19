@@ -449,8 +449,8 @@ describe("OnboardingModal", () => {
 			expect(formData.get("origin_image_url")).toBe("https://example.com/avatar.jpg");
 		});
 
-		it("should show a close button and call onCancel when provided", async () => {
-			const onCancel = vi.fn();
+		it("should show a close button and call onClose when showCloseButton is true", async () => {
+			const onClose = vi.fn();
 			const { getByTestId } = render(
 				<ModalProvider>
 					<ConfigProvider config={{}}>
@@ -461,7 +461,8 @@ describe("OnboardingModal", () => {
 										<OnboardingModal
 											pendingAuth={true}
 											onConsentConfirmed={vi.fn()}
-											onCancel={onCancel}
+											showCloseButton={true}
+											onClose={onClose}
 										/>
 									</AuthContext.Provider>
 								</DataProviderContext.Provider>
@@ -472,10 +473,10 @@ describe("OnboardingModal", () => {
 			);
 
 			await userEvent.click(getByTestId("close-button"));
-			expect(onCancel).toHaveBeenCalledTimes(1);
+			expect(onClose).toHaveBeenCalledTimes(1);
 		});
 
-		it("should not show a close button without onCancel", async () => {
+		it("should not show a close button by default", async () => {
 			const { queryByTestId } = render(
 				<ModalProvider>
 					<ConfigProvider config={{}}>

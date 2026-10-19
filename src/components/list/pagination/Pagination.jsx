@@ -12,17 +12,20 @@ export const Pagination = ({
 	onLoad,
 	isLoading,
 	hideLoader,
+	hasMore,
 	...rest
 }) => {
 	const [hasNextPage, setHasNextPage] = useState(
-		currentPage * perPage < totalElements,
+		hasMore ?? currentPage * perPage < totalElements,
 	);
 
 	useEffect(() => {
-		if (totalElements > 0) {
+		if (hasMore !== undefined) {
+			setHasNextPage(hasMore);
+		} else if (totalElements > 0) {
 			setHasNextPage(currentPage * perPage < totalElements);
 		}
-	}, [totalElements, currentPage]);
+	}, [totalElements, currentPage, hasMore]);
 
 	return (
 		<>

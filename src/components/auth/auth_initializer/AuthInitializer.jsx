@@ -1,11 +1,17 @@
 import { AuthProviderFactory } from "@logora/debate/auth/providers";
-import { authTokenHandler, base64urlToUtf8, useAuthActions } from "@logora/debate/auth/use_auth";
+import { authTokenHandler, useAuth, useAuthActions } from "@logora/debate/auth/use_auth";
 import { useAuthInterceptor } from "@logora/debate/auth/use_auth";
 import { httpClient } from "@logora/debate/data/axios_client";
 import { useConfig } from "@logora/debate/data/config_provider";
 import { OnboardingModal, saveOnboardingBeforeLogin } from "@logora/debate/user/onboarding_modal";
 import { useAuthRequired } from "@logora/debate/hooks/use_auth_required";
 import React, { useState, useEffect } from "react";
+
+const base64UrlDecode = (str) => {
+	const base64 = str.replace(/-/g, "+").replace(/_/g, "/");
+	const padded = base64.padEnd(base64.length + ((4 - (base64.length % 4)) % 4), "=");
+	return new TextDecoder().decode(Uint8Array.from(atob(padded), (c) => c.charCodeAt(0)));
+};
 
 export const decodeJwtPayload = (token) => {
 	if (!token || typeof token !== "string") {
@@ -16,7 +22,7 @@ export const decodeJwtPayload = (token) => {
 		return null;
 	}
 	try {
-		return JSON.parse(base64urlToUtf8(parts[1]));
+		return JSON.parse(base64UrlDecode(parts[1]));
 	} catch (_error) {
 		return null;
 	}
@@ -53,7 +59,8 @@ export const AuthInitializer = ({ authUrl, authType, provider, assertion }) => {
 
 	const [showOnboardingModal, setShowOnboardingModal] = useState(false);
 
-	const { getToken, removeToken } = authTokenHandler(
+	const { setAuthError } = useAuth();
+	const { getToken, removeToken, fetchToken } = authTokenHandler(
 		httpClient,
 		authUrl,
 		tokenKey,
@@ -102,7 +109,16 @@ export const AuthInitializer = ({ authUrl, authType, provider, assertion }) => {
 			if (authParams) {
 				const isJWT = authType !== "social" && authType !== "oauth2_server";
 				if (isJWT && config.auth?.showOnboardingBeforeLogin === true) {
-					setShowOnboardingModal(true);
+					// Log in existing users only; the account is created after consent in handleConsentConfirmed
+					fetchToken({ ...authParams, create_user: false })
+						.then(() => fetchUser())
+						.catch((error) => {
+							if (error?.response?.data?.error_description === "user_not_found") {
+								setShowOnboardingModal(true);
+							} else {
+								setAuthError(error);
+							}
+						});
 					return;
 				}
 				loginUser(authParams);
@@ -120,10 +136,6 @@ export const AuthInitializer = ({ authUrl, authType, provider, assertion }) => {
 		loginUser(authParams);
 	};
 
-	const handleCancel = () => {
-		setShowOnboardingModal(false);
-	};
-
 	const getAuthProvider = () => {
 		return AuthProviderFactory.create(authType, provider, assertion);
 	};
@@ -134,7 +146,8 @@ export const AuthInitializer = ({ authUrl, authType, provider, assertion }) => {
 				<OnboardingModal
 					pendingAuth={true}
 					onConsentConfirmed={handleConsentConfirmed}
-					onCancel={handleCancel}
+					showCloseButton={config.auth?.allowCloseOnboardingBeforeLogin === true}
+					onClose={() => setShowOnboardingModal(false)}
 					showTerms={config.auth?.hideCgu !== true}
 					showEmailConsent={config.auth?.showEmailConsent}
 					initialFirstName={initialUserProfile.first_name}

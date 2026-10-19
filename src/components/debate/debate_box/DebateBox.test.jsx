@@ -119,4 +119,25 @@ describe("DebateBox", () => {
 		const numberText = container.querySelector(".debateBoxNumbersText");
 		expect(numberText).toBeInTheDocument();
 	});
+
+	it("hides the vote percentage when votes are not allowed on the debate", () => {
+		const noVoteDebate = {
+			...debate,
+			allow_votes: false,
+			votes_count: { 655: "0", 656: "0", 657: "0", total: "0" },
+		};
+		const { getByText, queryByText, container } = render(
+			<DefaultDebateBox debate={noVoteDebate} />,
+		);
+		expect(getByText(debate.name)).toBeInTheDocument();
+		expect(queryByText(/%/)).toBeNull();
+		expect(container.querySelector(".debateBoxNumbers")).toBeNull();
+	});
+
+	it("shows the vote percentage when votes are allowed on the debate", () => {
+		const { getByText } = render(
+			<DefaultDebateBox debate={{ ...debate, allow_votes: true }} />,
+		);
+		expect(getByText(/75/)).toBeTruthy();
+	});
 });

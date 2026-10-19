@@ -864,6 +864,93 @@ describe("PaginatedList", () => {
 			"https://mock.example.api/items?page=1&per_page=1&sort=-created_at&countless=true&api_key=",
 		);
 	});
+	it("should paginate with countless without total header", async () => {
+		mock.mockResolvedValueOnce({
+			status: 200,
+			data: { success: true, data: [createElement(), createElement()] },
+		});
+		mock.mockResolvedValueOnce({
+			status: 200,
+			data: { success: true, data: [createElement()] },
+		});
+		await act(async () => {
+			render(
+				<BrowserRouter>
+					<IntlProvider locale="en">
+						<ListProvider>
+							<IconProvider library={regularIcons}>
+								<ResponsiveProvider>
+									<DataProviderContext.Provider value={{ dataProvider: data }}>
+										<PaginatedList
+											currentListId={"itemList"}
+											resource={"items"}
+											resourcePropName={"item"}
+											perPage={2}
+											sort={"-created_at"}
+											countless={true}
+											display="column"
+										>
+											<ListItem />
+										</PaginatedList>
+									</DataProviderContext.Provider>
+								</ResponsiveProvider>
+							</IconProvider>
+						</ListProvider>
+					</IntlProvider>
+				</BrowserRouter>,
+			);
+		});
+
+		expect(mock).toHaveBeenLastCalledWith(
+			"https://mock.example.api/items?page=1&per_page=2&sort=-created_at&countless=true&api_key=",
+		);
+		expect(mock).toHaveBeenCalledTimes(1);
+		expect(screen.getAllByTestId("list-item")).toHaveLength(2);
+
+		const paginationButton = screen.getByText(/See more/i);
+		await userEvent.click(paginationButton);
+
+		expect(mock).toHaveBeenLastCalledWith(
+			"https://mock.example.api/items?page=2&per_page=2&sort=-created_at&countless=true&api_key=",
+		);
+		expect(mock).toHaveBeenCalledTimes(2);
+		expect(screen.getAllByTestId("list-item")).toHaveLength(3);
+		expect(screen.queryByText(/See more/i)).toBeNull();
+	});
+
+	it("should hide pagination when countless first batch is shorter than per page", async () => {
+		await act(async () => {
+			render(
+				<BrowserRouter>
+					<IntlProvider locale="en">
+						<ListProvider>
+							<IconProvider library={regularIcons}>
+								<ResponsiveProvider>
+									<DataProviderContext.Provider value={{ dataProvider: data }}>
+										<PaginatedList
+											currentListId={"itemList"}
+											resource={"items"}
+											resourcePropName={"item"}
+											perPage={10}
+											sort={"-created_at"}
+											countless={true}
+											display="column"
+										>
+											<ListItem />
+										</PaginatedList>
+									</DataProviderContext.Provider>
+								</ResponsiveProvider>
+							</IconProvider>
+						</ListProvider>
+					</IntlProvider>
+				</BrowserRouter>,
+			);
+		});
+
+		expect(mock).toHaveBeenCalledTimes(1);
+		expect(screen.getAllByTestId("list-item")).toHaveLength(3);
+		expect(screen.queryByText(/See more/i)).toBeNull();
+	});
 
 	it("should render unique elements", async () => {
 		mock.mockResolvedValue({

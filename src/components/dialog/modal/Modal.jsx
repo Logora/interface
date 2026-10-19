@@ -11,7 +11,7 @@ export const Modal = ({
 	fullScreen,
 	children,
 	disableClickOutside = false,
-	onClose,
+	onClose = null,
 	...rest
 }) => {
 	const dialogRef = useRef();
@@ -50,15 +50,11 @@ export const Modal = ({
 
 		if (e.currentTarget !== e.target) return;
 
-		hideModal();
+		handleClose();
 	};
 
 	const handleClose = () => {
-		if (onClose) {
-			onClose();
-		} else {
-			hideModal();
-		}
+		onClose ? onClose() : hideModal();
 	};
 
 	return (
