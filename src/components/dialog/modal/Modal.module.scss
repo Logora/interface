@@ -51,6 +51,7 @@
 
   @include display.media-breakpoint-down(xs) {
     margin: 0.75em;
+    width: calc(100% - 1.5em);
   }
 }
 
