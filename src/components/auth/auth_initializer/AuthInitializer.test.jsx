@@ -59,12 +59,12 @@ describe("AuthInitializer with showOnboardingBeforeLogin", () => {
 	const assertion = `${base64Url({ alg: "HS256" })}.${base64Url({ first_name: "Jane", last_name: "Doe" })}.sig`;
 	const config = { shortname: "myapp", auth: { type: "jwt", showOnboardingBeforeLogin: true } };
 
-	const renderInitializer = (dataProvider) =>
+	const renderInitializer = (dataProvider, token = assertion) =>
 		render(
 			<ConfigProvider config={config}>
 				<DataProviderContext.Provider value={{ dataProvider }}>
 					<AuthProvider>
-						<AuthInitializer authUrl="https://auth.com/" authType="jwt" provider="myapp" assertion={assertion} />
+						<AuthInitializer authUrl="https://auth.com/" authType="jwt" provider="myapp" assertion={token} />
 					</AuthProvider>
 				</DataProviderContext.Provider>
 			</ConfigProvider>,
@@ -111,5 +111,60 @@ describe("AuthInitializer with showOnboardingBeforeLogin", () => {
 
 		await waitFor(() => expect(httpClient.post).toHaveBeenCalled());
 		expect(screen.queryByTestId("onboarding-modal")).toBeNull();
+	});
+
+	describe("returning visits after signing up", () => {
+		const tokenWithSignature = (signature) =>
+			`${base64Url({ alg: "HS256" })}.${base64Url({ first_name: "Jane", last_name: "Doe" })}.${signature}`;
+		const tokenResponse = { data: { access_token: "t", created_at: 0, expires_in: 3600 } };
+
+		const signUp = async (token) => {
+			httpClient.post
+				.mockRejectedValueOnce({ response: { data: { error: "invalid_grant", error_description: "user_not_found" } } })
+				.mockResolvedValueOnce(tokenResponse);
+			const dataProvider = me();
+			const view = renderInitializer(dataProvider, token);
+			await screen.findByTestId("onboarding-modal");
+			await act(async () => screen.getByTestId("onboarding-modal").click());
+			await waitFor(() => expect(dataProvider.getOneWithToken).toHaveBeenCalled());
+			view.unmount();
+			vi.clearAllMocks();
+		};
+
+		it("does not show the modal again when the JWT is identical", async () => {
+			const token = tokenWithSignature("sig-1");
+			await signUp(token);
+
+			const dataProvider = me();
+			renderInitializer(dataProvider, token);
+
+			await waitFor(() => expect(dataProvider.getOneWithToken).toHaveBeenCalled());
+			expect(httpClient.post).not.toHaveBeenCalled();
+			expect(screen.queryByTestId("onboarding-modal")).toBeNull();
+		});
+
+		it("does not show the modal again when the identity provider reissues the JWT with another signature", async () => {
+			await signUp(tokenWithSignature("sig-1"));
+
+			httpClient.post.mockResolvedValue(tokenResponse);
+			const dataProvider = me();
+			renderInitializer(dataProvider, tokenWithSignature("sig-2"));
+
+			await waitFor(() => expect(dataProvider.getOneWithToken).toHaveBeenCalled());
+			expect(httpClient.post).toHaveBeenCalledWith(
+				"https://auth.com/",
+				expect.objectContaining({ create_user: false, session_id: "sig-2" }),
+			);
+			expect(screen.queryByTestId("onboarding-modal")).toBeNull();
+		});
+
+		it("shows the modal again if the API does not recognise the existing account", async () => {
+			await signUp(tokenWithSignature("sig-1"));
+
+			httpClient.post.mockRejectedValue({ response: { data: { error: "invalid_grant", error_description: "user_not_found" } } });
+			renderInitializer(me(), tokenWithSignature("sig-2"));
+
+			expect(await screen.findByTestId("onboarding-modal")).toBeTruthy();
+		});
 	});
 });
