@@ -175,15 +175,15 @@ const AddContentComponent = () => {
 	);
 };
 
-const Providers = ({ children }) => (
+const Providers = ({ children, config, containerWidth }) => (
 	<BrowserRouter>
 		<ConfigProvider
 			routes={{ ...routes }}
-			config={{ translation: { enable: false } }}
+			config={{ translation: { enable: false }, ...config }}
 		>
 			<DataProviderContext.Provider value={{ dataProvider: data }}>
 				<AuthContext.Provider value={{ currentUser, isLoggedIn: true }}>
-					<ResponsiveProvider>
+					<ResponsiveProvider containerWidth={containerWidth}>
 						<ModalProvider>
 							<ListProvider>
 								<IntlProvider locale="en">
@@ -207,9 +207,9 @@ const Providers = ({ children }) => (
 	</BrowserRouter>
 );
 
-const renderArgument = (props) =>
+const renderArgument = (props, providerProps = {}) =>
 	render(
-		<Providers>
+		<Providers {...providerProps}>
 			<Argument {...props} />
 		</Providers>,
 	);
@@ -242,6 +242,29 @@ describe("Argument", () => {
 		expect(getByText(argument.position.name)).toBeInTheDocument();
 		expect(getByText("Reply")).toBeInTheDocument();
 		expect(getByText("Share")).toBeInTheDocument();
+	});
+
+	it("should show action labels and a custom icon size from the configuration", () => {
+		const { getByText } = renderArgument(
+			{ argument, positions, nestingLevel: 0 },
+			{
+				config: { actions: { showActionLabels: true, actionIconSize: 24 } },
+				containerWidth: 400,
+			},
+		);
+
+		expect(getByText("Reply")).toBeInTheDocument();
+		expect(getByText("Share")).toBeInTheDocument();
+	});
+
+	it("should hide action labels on a narrow container without configuration", () => {
+		const { queryByText } = renderArgument(
+			{ argument, positions, nestingLevel: 0 },
+			{ containerWidth: 400 },
+		);
+
+		expect(queryByText("Reply")).toBeNull();
+		expect(queryByText("Share")).toBeNull();
 	});
 
 	it("should render argument with replies", () => {
