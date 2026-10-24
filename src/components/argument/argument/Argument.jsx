@@ -8,6 +8,7 @@ import { UserContentSkeleton } from "@logora/debate/skeleton/user_content_skelet
 import { SourceListItem } from "@logora/debate/source/source_list_item";
 import { ReadMore } from "@logora/debate/text/read_more";
 import { HashScroll } from "@logora/debate/tools/hash_scroll";
+import { buildShareUrl } from "@logora/debate/tools/share_url";
 import { useTranslatedContent } from "@logora/debate/translation/translated_content";
 import { TranslationButton } from "@logora/debate/translation/translation_button";
 import { ContentFooter } from "@logora/debate/user_content/content_footer";
@@ -324,7 +325,7 @@ export const Argument = ({
 						}
 						handleReplyTo={toggleReplyInput}
 						replyRedirectUrl={replyRedirectUrl}
-						shareUrl={`https://app.logora.fr/share/a/${argument.id}`}
+						shareUrl={buildShareUrl(config, "a", argument.id)}
 						shareTitle={intl.formatMessage({
 							id: "share.argument.title",
 							defaultMessage: "Share a debate",

@@ -108,6 +108,7 @@ export * from "./components/text/expandable_text";
 export * from "./components/text/read_more";
 export * from "./components/tools/hash_scroll";
 export * from "./components/tools/scroll_to_top";
+export * from "./components/tools/share_url";
 export * from "./components/translation/translated_content";
 export * from "./components/translation/translation_button";
 export * from "./components/user/author_box";

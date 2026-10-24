@@ -4,6 +4,7 @@ import { useConfig } from "@logora/debate/data/config_provider";
 import { lexicalToHtml } from "@logora/debate/input/text_editor";
 import { ReadMore } from "@logora/debate/text/read_more";
 import { HashScroll } from "@logora/debate/tools/hash_scroll";
+import { buildShareUrl } from "@logora/debate/tools/share_url";
 import { useTranslatedContent } from "@logora/debate/translation/translated_content";
 import { TranslationButton } from "@logora/debate/translation/translation_button";
 import { ContentFooter } from "@logora/debate/user_content/content_footer";
@@ -142,7 +143,7 @@ export const ProposalBox = ({
 						deleteType={"proposals"}
 						deleteListId={"proposalsList"}
 						shareModalTitle={intl.formatMessage({ id: "share.proposal" })}
-						shareUrl={`https://app.logora.fr/share/p/${proposal.id}`}
+						shareUrl={buildShareUrl(config, "p", proposal.id)}
 						shareTitle={intl.formatMessage({ id: "share.proposal.title" })}
 						shareText={intl.formatMessage({ id: "share.proposal.text" })}
 						shareCode={`<iframe src="https://cdn.logora.com/embed.html?shortname=${config.shortname}&id=${proposal.id}&resource=proposal" frameborder="0" width="100%" height="335px" scrolling="no"></iframe>`}
