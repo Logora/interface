@@ -19,7 +19,6 @@ import { IntlProvider } from "react-intl";
 import { ContentFooter } from "./ContentFooter";
 import {
 	ContentFooterDisabled,
-	ContentFooterNarrowWithActionLabels,
 	ContentFooterProgressBar,
 	ContentFooterShareModal,
 	ContentFooterUpDownVoteBox,
@@ -256,34 +255,6 @@ describe("ContentFooter", () => {
 		expect(queryByText(10)).toBeInTheDocument();
 		expect(queryByText("Reply")).toBeNull();
 		expect(queryByText("Share")).toBeInTheDocument();
-	});
-
-	it("should show action labels and a custom icon size when forced", async () => {
-		const { getByText, container } = render(
-			<IconProvider library={regularIcons}>
-				<ContentFooterNarrowWithActionLabels />
-			</IconProvider>,
-		);
-
-		expect(getByText("Reply")).toBeInTheDocument();
-		expect(getByText("Share")).toBeInTheDocument();
-
-		const replyIcon = container.querySelector(
-			'svg[data-tid="action_reply_argument"]',
-		);
-		expect(replyIcon).toHaveAttribute("width", "24");
-		expect(replyIcon).toHaveAttribute("height", "24");
-	});
-
-	it("should hide action labels on a narrow container by default", async () => {
-		const { queryByText } = render(
-			<IconProvider library={regularIcons}>
-				{DefaultContentFooter({ containerWidth: 400 })}
-			</IconProvider>,
-		);
-
-		expect(queryByText("Reply")).toBeNull();
-		expect(queryByText("Share")).toBeNull();
 	});
 
 	it("should render with progress bar", async () => {

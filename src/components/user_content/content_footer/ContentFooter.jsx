@@ -36,8 +36,6 @@ export const ContentFooter = ({
 	showShareCode,
 	shareCode,
 	showShareText,
-	showActionLabels = false,
-	actionIconSize = 17,
 	enableEdition = true,
 	enableDeletion = true,
 	enableReport = true,
@@ -58,7 +56,6 @@ export const ContentFooter = ({
 		softDelete,
 	);
 	const { elementWidth } = useResponsive();
-	const displayActionLabels = showActionLabels || !(elementWidth < 768);
 
 	const currentUserIsAuthor = () => {
 		if (!currentUser?.id) {
@@ -136,10 +133,10 @@ export const ContentFooter = ({
 							<Icon
 								name="reply"
 								data-tid={"action_reply_argument"}
-								height={actionIconSize}
-								width={actionIconSize}
+								height={17}
+								width={17}
 							/>
-							{displayActionLabels && (
+							{!(elementWidth < 768) && (
 								<span className={styles.replyText}>
 									{intl.formatMessage({
 										id: "user_content.content_footer.reply",
@@ -158,10 +155,10 @@ export const ContentFooter = ({
 							<Icon
 								name="reply"
 								data-tid={"action_reply_argument"}
-								height={actionIconSize}
-								width={actionIconSize}
+								height={17}
+								width={17}
 							/>
-							{displayActionLabels && (
+							{!(elementWidth < 768) && (
 								<span className={styles.replyText}>
 									{intl.formatMessage({
 										id: "user_content.content_footer.reply",
@@ -180,8 +177,8 @@ export const ContentFooter = ({
 					shareText={shareText}
 					showShareCode={showShareCode}
 					shareCode={shareCode}
-					showText={displayActionLabels && showShareText}
-					iconSize={actionIconSize}
+					showText={!(elementWidth < 768) && showShareText}
+					iconSize={17}
 					popoverPosition={"top"}
 				/>
 			)}

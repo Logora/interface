@@ -337,8 +337,6 @@ export const Argument = ({
 						showShareCode={config?.actions?.hideCodeShare !== true}
 						showShareText
 						showShareButton={config?.actions?.hideShareButton !== true}
-						showActionLabels={config?.actions?.showActionLabels === true}
-						actionIconSize={config?.actions?.actionIconSize}
 						enableReport={!(argument.score === 100 && argument.manual_score)}
 						enableEdition={enableEdition}
 						enableDeletion={enableDeletion}

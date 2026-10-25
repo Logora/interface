@@ -112,7 +112,6 @@ const currentUser = {
 };
 
 export const DefaultContentFooter = (args = {}) => {
-	const { containerWidth, ...contentFooterArgs } = args;
 	const defaultStoryArgs = {
 		reportType: "",
 		deleteType: "",
@@ -148,14 +147,14 @@ export const DefaultContentFooter = (args = {}) => {
 							value={{ currentUser: currentUser, isLoggedIn: true }}
 						>
 							<ListProvider>
-								<ResponsiveProvider containerWidth={containerWidth} iMobile>
+								<ResponsiveProvider elementWidth={1000} iMobile>
 									<ModalProvider>
 										<ToastProvider>
 											<VoteProvider>
 												<ContentFooter
 													resource={resource}
 													{...defaultStoryArgs}
-													{...contentFooterArgs}
+													{...args}
 												>
 													<VoteButton
 														voteableType={"Message"}
@@ -177,13 +176,6 @@ export const DefaultContentFooter = (args = {}) => {
 		</div>
 	);
 };
-
-export const ContentFooterNarrowWithActionLabels = () =>
-	DefaultContentFooter({
-		containerWidth: 400,
-		showActionLabels: true,
-		actionIconSize: 24,
-	});
 
 export const ContentFooterShareModal = () => {
 	return (
