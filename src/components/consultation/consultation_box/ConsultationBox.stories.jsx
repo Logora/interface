@@ -99,7 +99,7 @@ export const ConsultationEndedBox = (props) =>
 		...props,
 	});
 
-export const ConsultationSuspendedBox = (props) =>
+export const ConsultationInactiveBox = (props) =>
 	renderStory({
 		consultation: {
 			...consultation,

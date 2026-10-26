@@ -16,8 +16,9 @@ export const ConsultationBox = ({ consultation, showVoteProgress = true }) => {
 	const date = useMemo(() => new Date());
 	const endDate = new Date(consultation.ends_at);
 	const isEnded =
-		(consultation.ends_at && endDate < date) || consultation.is_expired === true;
-	const isSuspended = !isEnded && consultation.is_active === false;
+		(consultation.ends_at && endDate < date) ||
+		consultation.is_expired === true ||
+		consultation.is_active === false;
 	const routes = useRoutes();
 	const { isMobile } = useResponsive();
 
@@ -47,16 +48,6 @@ export const ConsultationBox = ({ consultation, showVoteProgress = true }) => {
 							<FormattedMessage
 								id="consultation.consultation_box.consultation_ended"
 								defaultMessage={"Consultation ended"}
-							/>
-						</span>
-					</div>
-				)}
-				{isSuspended && (
-					<div className={cx(styles.consultationTime, styles.ended)}>
-						<span>
-							<FormattedMessage
-								id="consultation.consultation_box.consultation_suspended"
-								defaultMessage={"Consultation suspended"}
 							/>
 						</span>
 					</div>
@@ -136,7 +127,6 @@ export const ConsultationBox = ({ consultation, showVoteProgress = true }) => {
 					{showVoteProgress &&
 						consultation.vote_goal > 0 &&
 						!isEnded &&
-						!isSuspended &&
 						endDate > date && (
 						<div
 							className={cx(

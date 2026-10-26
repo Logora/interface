@@ -5,7 +5,7 @@ import {
 	ConsultationEndedBox,
 	ConsultationExpiredByFlagBox,
 	ConsultationSuggestedBox,
-	ConsultationSuspendedBox,
+	ConsultationInactiveBox,
 	ConsultationWithoutEndBox,
 	ConsultationWithoutVoteGoalBox,
 	DefaultConsultationBox,
@@ -60,16 +60,14 @@ describe("ConsultationBox", () => {
 		expect(getByText("Consultation ended")).toBeInTheDocument();
 	});
 
-	it("renders a suspended box when the consultation is not active", () => {
-		const { getByText, queryByText } = render(<ConsultationSuspendedBox />);
-		expect(getByText("Consultation suspended")).toBeInTheDocument();
-		expect(queryByText("Consultation ended")).toBeNull();
+	it("renders an ended box when the consultation is suspended (not active)", () => {
+		const { getByText } = render(<ConsultationInactiveBox />);
+		expect(getByText("Consultation ended")).toBeInTheDocument();
 	});
 
-	it("renders an ended box (not suspended) when the consultation is expired and inactive", () => {
-		const { getByText, queryByText } = render(<ConsultationExpiredByFlagBox />);
+	it("renders an ended box when the consultation is flagged as expired", () => {
+		const { getByText } = render(<ConsultationExpiredByFlagBox />);
 		expect(getByText("Consultation ended")).toBeInTheDocument();
-		expect(queryByText("Consultation suspended")).toBeNull();
 	});
 
 	it("renders without ended box", () => {
