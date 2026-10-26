@@ -3,7 +3,9 @@ import { render } from "@testing-library/react";
 import React from "react";
 import {
 	ConsultationEndedBox,
+	ConsultationExpiredByFlagBox,
 	ConsultationSuggestedBox,
+	ConsultationSuspendedBox,
 	ConsultationWithoutEndBox,
 	ConsultationWithoutVoteGoalBox,
 	DefaultConsultationBox,
@@ -56,6 +58,18 @@ describe("ConsultationBox", () => {
 	it("renders an ended box", () => {
 		const { getByText } = render(<ConsultationEndedBox />);
 		expect(getByText("Consultation ended")).toBeInTheDocument();
+	});
+
+	it("renders a suspended box when the consultation is not active", () => {
+		const { getByText, queryByText } = render(<ConsultationSuspendedBox />);
+		expect(getByText("Consultation suspended")).toBeInTheDocument();
+		expect(queryByText("Consultation ended")).toBeNull();
+	});
+
+	it("renders an ended box (not suspended) when the consultation is expired and inactive", () => {
+		const { getByText, queryByText } = render(<ConsultationExpiredByFlagBox />);
+		expect(getByText("Consultation ended")).toBeInTheDocument();
+		expect(queryByText("Consultation suspended")).toBeNull();
 	});
 
 	it("renders without ended box", () => {
