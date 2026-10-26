@@ -99,6 +99,27 @@ export const ConsultationEndedBox = (props) =>
 		...props,
 	});
 
+export const ConsultationSuspendedBox = (props) =>
+	renderStory({
+		consultation: {
+			...consultation,
+			ends_at: faker.date.future(),
+			is_active: false,
+		},
+		...props,
+	});
+
+export const ConsultationExpiredByFlagBox = (props) =>
+	renderStory({
+		consultation: {
+			...consultation,
+			ends_at: faker.date.future(),
+			is_expired: true,
+			is_active: false,
+		},
+		...props,
+	});
+
 export const ConsultationWithoutEndBox = (props) =>
 	renderStory({
 		consultation: {
