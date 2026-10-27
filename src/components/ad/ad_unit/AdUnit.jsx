@@ -7,7 +7,7 @@ export const AdUnit = ({
 	sizes = [],
 	targeting,
 	enableDidomi = false,
-	refreshRate = 8000,
+	refreshRate = 30000,
 }) => {
 	if (!id || !adPath) {
 		return null;

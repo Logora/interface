@@ -183,6 +183,28 @@ describe("AdUnit", () => {
 		expect(pubads.refresh).toHaveBeenCalledWith([definedSlots[0]]);
 	});
 
+	it("should default to a 30 seconds refresh rate", () => {
+		vi.useFakeTimers();
+		const { pubads, definedSlots, impressionListeners } = setupGoogleTag();
+
+		render(<AdUnit id={"slot-id"} adPath={"/path"} sizes={[[300, 250]]} />);
+		flushCommandQueue();
+
+		act(() => {
+			for (const listener of impressionListeners) {
+				listener({ slot: definedSlots[0] });
+			}
+		});
+		vi.advanceTimersByTime(29999);
+		flushCommandQueue();
+		expect(pubads.refresh).not.toHaveBeenCalled();
+
+		vi.advanceTimersByTime(1);
+		flushCommandQueue();
+		expect(pubads.refresh).toHaveBeenCalledTimes(1);
+		expect(pubads.refresh).toHaveBeenCalledWith([definedSlots[0]]);
+	});
+
 	it("should not refresh its slot after unmount", () => {
 		vi.useFakeTimers();
 		const { pubads, definedSlots, impressionListeners } = setupGoogleTag();
