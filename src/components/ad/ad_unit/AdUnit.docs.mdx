@@ -5,8 +5,10 @@ labels: ['ad', 'google-ad-manager']
 
 The AdUnit component displays an ad slot from Google Ad Manager.
 
-It also handles the ads refresh rate callback and configuration to respect the user's cookie consent.
+It also handles the ads refresh of its own slot and the configuration to respect the user's cookie consent.
 Consent is managed with didomi and is optional.
+
+The slot is declared with the `origine=logora` targeting and refreshed only when it becomes viewable itself: the other slots of the page (including the publisher's own ad slots) are never refreshed nor reconfigured by the component.
 
 ### Component usage
 
@@ -21,3 +23,8 @@ Consent is managed with didomi and is optional.
     sizes={[300, 250]}
 />
 ```
+
+### Properties
+| **Name** | **Type** | **Required** | **Default** | **Description** |
+| ----------- | ----------- | :-----------: | ----------- | ----------- |
+| <font color='#4646c6'>refreshRate</font> | <font color="#397300">integer</font> | &cross; | 8000 | <font color="grey">*Delay in milliseconds before refreshing the slot once it is viewable, 0 to disable the refresh*</font> |

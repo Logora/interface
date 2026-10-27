@@ -1,10 +1,6 @@
 import { useEffect } from "react";
 
-export const useGoogleAdManager = (
-	enable = true,
-	enableDidomi = false,
-	refreshRate = 8000,
-) => {
+export const useGoogleAdManager = (enable = true, enableDidomi = false) => {
 	useEffect(() => {
 		if (enable === true && typeof window !== "undefined") {
 			if (!window.googletag?.apiReady) {
@@ -22,17 +18,7 @@ export const useGoogleAdManager = (
 			const googletag = window.googletag || (window.googletag = { cmd: [] });
 
 			googletag.cmd.push(() => {
-				googletag.pubads().enableSingleRequest();
-				googletag.pubads().disableInitialLoad();
 				googletag.enableServices();
-
-				googletag.pubads().addEventListener("impressionViewable", (event) => {
-					setTimeout(() => {
-						googletag.cmd.push(() => {
-							googletag.pubads().refresh([event.slot]);
-						});
-					}, refreshRate);
-				});
 			});
 		}
 	}, []);

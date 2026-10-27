@@ -7,6 +7,7 @@ export const AdUnit = ({
 	sizes = [],
 	targeting,
 	enableDidomi = false,
+	refreshRate = 8000,
 }) => {
 	if (!id || !adPath) {
 		return null;
@@ -14,11 +15,31 @@ export const AdUnit = ({
 	const divId = `div-gpt-ad-${id}`;
 
 	useEffect(() => {
-		if (typeof window !== "undefined" && divId && adPath) {
-			const googletag = window.googletag || (window.googletag = { cmd: [] });
-			let slot;
+		if (typeof window === "undefined" || !divId || !adPath) {
+			return;
+		}
+		const googletag = window.googletag || (window.googletag = { cmd: [] });
+		let slot;
+		let refreshTimer;
 
-			googletag.cmd.push(() => {
+		const handleImpressionViewable = (event) => {
+			if (event.slot !== slot) {
+				return;
+			}
+			clearTimeout(refreshTimer);
+			refreshTimer = setTimeout(() => {
+				googletag.cmd.push(() => {
+					googletag.pubads().refresh([slot]);
+				});
+			}, refreshRate);
+		};
+
+		googletag.cmd.push(() => {
+			slot = googletag
+				.pubads()
+				.getSlots()
+				.find((definedSlot) => definedSlot.getSlotElementId() === divId);
+			if (!slot) {
 				slot = googletag
 					.defineSlot(adPath, sizes, divId)
 					.setTargeting("origine", ["logora"])
@@ -26,18 +47,27 @@ export const AdUnit = ({
 				for (const [key, value] of Object.entries(targeting || {})) {
 					slot.setTargeting(key, value);
 				}
-
 				googletag.display(divId);
-				googletag.pubads().refresh([slot]);
-			});
+			}
+			if (refreshRate > 0) {
+				googletag
+					.pubads()
+					.addEventListener("impressionViewable", handleImpressionViewable);
+			}
+		});
 
-			return () => {
-				const googletag = window.googletag || { cmd: [] };
-				googletag.cmd.push(() => {
-					googletag.destroySlots([slot]);
-				});
-			};
-		}
+		return () => {
+			clearTimeout(refreshTimer);
+			const googletagLib = window.googletag || { cmd: [] };
+			googletagLib.cmd.push(() => {
+				googletagLib
+					.pubads()
+					.removeEventListener("impressionViewable", handleImpressionViewable);
+				if (slot) {
+					googletagLib.destroySlots([slot]);
+				}
+			});
+		};
 	}, []);
 
 	if (enableDidomi === true) {
