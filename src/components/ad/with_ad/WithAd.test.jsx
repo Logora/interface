@@ -105,7 +105,7 @@ describe("WithAd", () => {
 				setTargeting: vi.fn(function () {
 					return this;
 				}),
-				setCollapseEmptyDiv: vi.fn(),
+				setConfig: vi.fn(),
 				addService: vi.fn(function () {
 					return this;
 				}),
@@ -145,7 +145,7 @@ describe("WithAd", () => {
 				setTargeting: vi.fn(function () {
 					return this;
 				}),
-				setCollapseEmptyDiv: vi.fn(),
+				setConfig: vi.fn(),
 				addService: vi.fn(function () {
 					return this;
 				}),

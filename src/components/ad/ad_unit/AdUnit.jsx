@@ -16,7 +16,7 @@ export const AdUnit = ({
 	const slotRef = useRef(null);
 	const timerRef = useRef(null);
 	const pendingRef = useRef(false);
-	const runRef = useRef(0);
+	const prevRef = useRef(null);
 
 	useEffect(() => {
 		if (typeof window === "undefined" || !id || !adPath) {
@@ -44,7 +44,7 @@ export const AdUnit = ({
 			for (const [key, value] of Object.entries(targeting || {})) {
 				slot.setTargeting(key, value);
 			}
-			slot.setCollapseEmptyDiv(true);
+			slot.setConfig({ collapseDiv: "ON_NO_FILL" });
 			slot.addService(pubads);
 			slotRef.current = slot;
 			googletag.display(divId);
@@ -64,11 +64,16 @@ export const AdUnit = ({
 				window.googletag.destroySlots([slot]);
 			});
 		};
-	}, []);
+	}, [id, adPath]);
 
 	useEffect(() => {
-		runRef.current += 1;
-		const isRerun = runRef.current > 1;
+		const prev = prevRef.current;
+		const divStable = prev !== null && prev.divId === divId;
+		const rearmWanted =
+			divStable &&
+			refresh === true &&
+			(prev.refresh !== true || prev.refreshInterval !== refreshInterval);
+		prevRef.current = { refresh, refreshInterval, divId };
 		if (typeof window === "undefined" || refresh !== true || !id || !adPath) {
 			return;
 		}
@@ -129,11 +134,7 @@ export const AdUnit = ({
 				scheduleRefresh();
 			};
 			googletag.pubads().addEventListener("impressionViewable", handler);
-			if (
-				isRerun &&
-				document.visibilityState === "visible" &&
-				!cancelled
-			) {
+			if (rearmWanted && document.visibilityState === "visible") {
 				scheduleRefresh();
 			}
 		});

@@ -11,7 +11,7 @@ const createSlot = (elementId) => {
 			targeting[key] = value;
 			return slot;
 		}),
-		setCollapseEmptyDiv: vi.fn(),
+		setConfig: vi.fn(),
 		addService: vi.fn(() => slot),
 	};
 	return slot;
@@ -319,6 +319,73 @@ describe("AdUnit", () => {
 		vi.advanceTimersByTime(30000);
 		expect(state.pubads.refresh).toHaveBeenCalledTimes(1);
 		expect(state.pubads.refresh).toHaveBeenCalledWith([ownSlot]);
+	});
+
+	it("should not arm any cycle on mount without a viewable impression, even in StrictMode", () => {
+		vi.useFakeTimers();
+		setupGpt();
+
+		render(
+			<React.StrictMode>
+				<AdUnit
+					id={"slot-id"}
+					adPath={"/path"}
+					sizes={[[300, 250]]}
+					refresh={true}
+				/>
+			</React.StrictMode>,
+		);
+
+		vi.advanceTimersByTime(90000);
+		expect(window.googletag.pubads().refresh).not.toHaveBeenCalled();
+	});
+
+	it("should redefine the slot when the id changes", () => {
+		const state = setupGpt();
+
+		const { rerender } = render(
+			<AdUnit id={"slot-a"} adPath={"/path"} sizes={[[300, 250]]} />,
+		);
+		const firstSlot = state.slots[0];
+		rerender(
+			<AdUnit id={"slot-b"} adPath={"/path"} sizes={[[300, 250]]} />,
+		);
+
+		expect(window.googletag.destroySlots).toHaveBeenCalledWith([firstSlot]);
+		expect(window.googletag.defineSlot).toHaveBeenCalledTimes(2);
+		expect(window.googletag.display).toHaveBeenCalledWith("div-gpt-ad-slot-b");
+		expect(state.slots).toHaveLength(1);
+	});
+
+	it("should restart the cycle with the new interval when refreshInterval changes", () => {
+		vi.useFakeTimers();
+		const state = setupGpt();
+
+		const { rerender } = render(
+			<AdUnit
+				id={"slot-id"}
+				adPath={"/path"}
+				sizes={[[300, 250]]}
+				refresh={true}
+				refreshInterval={30000}
+			/>,
+		);
+		fireImpressionViewable(state, state.slots[0]);
+		vi.advanceTimersByTime(10000);
+		rerender(
+			<AdUnit
+				id={"slot-id"}
+				adPath={"/path"}
+				sizes={[[300, 250]]}
+				refresh={true}
+				refreshInterval={60000}
+			/>,
+		);
+
+		vi.advanceTimersByTime(30000);
+		expect(state.pubads.refresh).not.toHaveBeenCalled();
+		vi.advanceTimersByTime(30000);
+		expect(state.pubads.refresh).toHaveBeenCalledTimes(1);
 	});
 
 	it("should cancel the refresh timer and destroy its slot on unmount", () => {
