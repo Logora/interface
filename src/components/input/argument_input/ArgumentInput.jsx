@@ -72,6 +72,7 @@ export const ArgumentInput = ({
 	const [editElement, setEditElement] = useState({});
 	const [shouldAutoFocus, setShouldAutoFocus] = useState(false);
 	const [resetSignal, setResetSignal] = useState(0);
+	const isSubmitting = useRef(false);
 	const [savedArgument, setSavedArgument] = useSessionStorageState(
 		"userSide",
 		{},
@@ -191,6 +192,21 @@ export const ArgumentInput = ({
 		setInputContent(null);
 	};
 
+	const notifySubmissionError = (id, defaultMessage) => {
+		toast?.(intl.formatMessage({ id, defaultMessage }), { type: "error" });
+	};
+
+	const sendRequest = async (request) => {
+		isSubmitting.current = true;
+		try {
+			return await request();
+		} catch {
+			return null;
+		} finally {
+			isSubmitting.current = false;
+		}
+	};
+
 	const handleChooseSide = (positionId) => {
 		setUserPositionId(positionId);
 		submitArgument(positionId);
@@ -264,6 +280,10 @@ export const ArgumentInput = ({
 	];
 
 	const submitArgument = (position) => {
+		if (isSubmitting.current) {
+			return;
+		}
+
 		const userPosition = position ? position : userPositionId;
 		const data = {
 			content: argumentContent,
@@ -288,9 +308,9 @@ export const ArgumentInput = ({
 				};
 				setSavedArgument(argumentToSave);
 			}
-			resetInputs();
-			api.create("messages", data).then((response) => {
-				if (response.data.success) {
+			sendRequest(() => api.create("messages", data)).then((response) => {
+				if (response?.data?.success) {
+					resetInputs();
 					if (parentId) {
 						onSubmit(response.data.data.resource);
 						toast(
@@ -345,12 +365,21 @@ export const ArgumentInput = ({
 							}),
 						);
 					}
+				} else {
+					notifySubmissionError(
+						"alert.argument_create_error",
+						"Your contribution could not be sent. Please try again.",
+					);
 				}
 			});
 		}
 	};
 
 	const updateArgument = () => {
+		if (isSubmitting.current) {
+			return;
+		}
+
 		const data = {
 			content: argumentContent,
 			rich_content: argumentRichContent,
@@ -359,42 +388,47 @@ export const ArgumentInput = ({
 		};
 
 		if (validate(data, argumentValidationRules)) {
-			api.update("messages", argumentId, data).then((response) => {
-				if (response.data.success) {
-					const argument = response.data.data.resource;
-					let listId = argumentListId;
-					if (editElement?.is_reply || isReply) {
-						const replyListId =
-							editElement?.message_id ||
-							editElement?.reply_to_id ||
-							parentId;
-						if (replyListId) {
-							listId = `argument_${replyListId}_reply_list`;
+			sendRequest(() => api.update("messages", argumentId, data)).then(
+				(response) => {
+					if (response?.data?.success) {
+						const argument = response.data.data.resource;
+						let listId = argumentListId;
+						if (editElement?.is_reply || isReply) {
+							const replyListId =
+								editElement?.message_id || editElement?.reply_to_id || parentId;
+							if (replyListId) {
+								listId = `argument_${replyListId}_reply_list`;
+							}
+						} else if (userPositionId && !isMobile) {
+							listId = `argumentList${argument.position?.id}`;
 						}
-					} else if (userPositionId && !isMobile) {
-						listId = `argumentList${argument.position?.id}`;
-					}
-					if (
-						!editElement?.is_reply &&
-						editElement?.position?.id != argument.position?.id &&
-						!isMobile
-					) {
-						const oldListId = `argumentList${editElement.position.id}`;
-						const newListId = `argumentList${argument.position.id}`;
-						list.remove(oldListId, [argument]);
-						list.add(newListId, [argument]);
+						if (
+							!editElement?.is_reply &&
+							editElement?.position?.id != argument.position?.id &&
+							!isMobile
+						) {
+							const oldListId = `argumentList${editElement.position.id}`;
+							const newListId = `argumentList${argument.position.id}`;
+							list.remove(oldListId, [argument]);
+							list.add(newListId, [argument]);
+						} else {
+							list.update(listId, [argument]);
+						}
+						if (onUpdate) {
+							onUpdate(argument);
+						}
+						toast(intl.formatMessage({ id: "alert.argument_modify" }), {
+							type: "success",
+						});
+						resetInputs();
 					} else {
-						list.update(listId, [argument]);
+						notifySubmissionError(
+							"alert.argument_modify_error",
+							"Your contribution could not be saved. Please try again.",
+						);
 					}
-					if (onUpdate) {
-						onUpdate(argument);
-					}
-					toast(intl.formatMessage({ id: "alert.argument_modify" }), {
-						type: "success",
-					});
-					resetInputs();
-				}
-			});
+				},
+			);
 		}
 	};
 

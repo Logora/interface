@@ -682,4 +682,209 @@ describe("ArgumentInput", () => {
 		expect(queryByText("Add an argument...")).toBeInTheDocument();
 		expect(queryByText("Your position")).not.toBeInTheDocument();
 	});
+	const writtenContent = {
+		root: {
+			children: [
+				{
+					children: [
+						{
+							detail: 0,
+							format: 1,
+							mode: "normal",
+							style: "",
+							text: "I write an argument",
+							type: "text",
+							version: 1,
+						},
+					],
+					direction: "ltr",
+					format: "",
+					indent: 0,
+					type: "paragraph",
+					version: 1,
+				},
+			],
+			direction: "ltr",
+			format: "",
+			indent: 0,
+			type: "root",
+			version: 1,
+		},
+	};
+
+	const InputWithProviders = ({ provider, children, onSubmit = callback }) => (
+		<BrowserRouter>
+			<ConfigProvider>
+				<IconProvider library={regularIcons}>
+					<IntlProvider locale="en">
+						<DataProviderContext.Provider value={{ dataProvider: provider }}>
+							<AuthContext.Provider
+								value={{ currentUser: currentUser, isLoggedIn: true }}
+							>
+								<ToastProvider>
+									<ModalProvider>
+										<ListProvider>
+											<InputProvider>
+												{children}
+												<ArgumentInput
+													onSubmit={onSubmit}
+													groupId={debate.id}
+													groupName={debate.name}
+													positions={debate.positions}
+													disabledPositions={[]}
+													listId={"argumentList"}
+													positionId={debate.positions[0].id}
+													hideSourceAction
+													avatarSize={48}
+													placeholder={"Add an argument..."}
+												/>
+											</InputProvider>
+										</ListProvider>
+									</ModalProvider>
+								</ToastProvider>
+							</AuthContext.Provider>
+						</DataProviderContext.Provider>
+					</IntlProvider>
+				</IconProvider>
+			</ConfigProvider>
+		</BrowserRouter>
+	);
+
+	const SetWrittenContent = () => {
+		const { setInputRichContent } = useInput();
+
+		return (
+			<div onClick={() => setInputRichContent(writtenContent)}>
+				Click to set content
+			</div>
+		);
+	};
+
+	const SetEditedContent = () => {
+		const { setInputContent } = useInput();
+
+		return (
+			<div
+				onClick={() =>
+					setInputContent({
+						id: faker.number.int(),
+						content: "I write an argument",
+						rich_content: JSON.stringify(writtenContent),
+						sources: [],
+						position: { id: debate.positions[0].id },
+					})
+				}
+			>
+				Click to edit content
+			</div>
+		);
+	};
+
+	it("should keep the content and notify the user when the submission fails", async () => {
+		const submissionCallback = vi.fn();
+		const post = vi.fn(() => Promise.reject(new Error("Network Error")));
+		const failingProvider = dataProvider(
+			{ ...httpClient, post },
+			"https://mock.example.api",
+		);
+
+		render(
+			<InputWithProviders
+				provider={failingProvider}
+				onSubmit={submissionCallback}
+			>
+				<SetWrittenContent />
+			</InputWithProviders>,
+		);
+
+		await act(async () => {
+			await userEvent.click(screen.getByTestId("argument-input"));
+		});
+		await act(async () => {
+			await userEvent.click(screen.getByText("Click to set content"));
+		});
+		expect(screen.queryByText("I write an argument")).toBeInTheDocument();
+
+		await act(async () => {
+			await userEvent.click(screen.getByTestId("submit-button"));
+		});
+
+		expect(post).toHaveBeenCalledTimes(1);
+		expect(submissionCallback).not.toHaveBeenCalled();
+		expect(screen.queryByText("I write an argument")).toBeInTheDocument();
+		expect(
+			screen.getByText(
+				"Your contribution could not be sent. Please try again.",
+			),
+		).toBeInTheDocument();
+	});
+
+	it("should keep the content and notify the user when the update fails", async () => {
+		Element.prototype.scrollIntoView = vi.fn();
+		Range.prototype.getBoundingClientRect = vi.fn(() => ({
+			top: 0,
+			left: 0,
+			bottom: 0,
+			right: 0,
+			width: 0,
+			height: 0,
+		}));
+		const patch = vi.fn(() => Promise.reject(new Error("Network Error")));
+		const failingProvider = dataProvider(
+			{ ...httpClient, patch },
+			"https://mock.example.api",
+		);
+
+		render(
+			<InputWithProviders provider={failingProvider}>
+				<SetEditedContent />
+			</InputWithProviders>,
+		);
+
+		await act(async () => {
+			await userEvent.click(screen.getByText("Click to edit content"));
+		});
+
+		await act(async () => {
+			await userEvent.click(screen.getByTestId("submit-button"));
+		});
+
+		expect(patch).toHaveBeenCalledTimes(1);
+		expect(screen.queryByText("I write an argument")).toBeInTheDocument();
+		expect(
+			screen.getByText(
+				"Your contribution could not be saved. Please try again.",
+			),
+		).toBeInTheDocument();
+	});
+
+	it("should send a single request when submitted twice during a pending request", async () => {
+		const post = vi.fn(() => new Promise(() => {}));
+		const pendingProvider = dataProvider(
+			{ ...httpClient, post },
+			"https://mock.example.api",
+		);
+
+		render(
+			<InputWithProviders provider={pendingProvider}>
+				<SetWrittenContent />
+			</InputWithProviders>,
+		);
+
+		await act(async () => {
+			await userEvent.click(screen.getByTestId("argument-input"));
+		});
+		await act(async () => {
+			await userEvent.click(screen.getByText("Click to set content"));
+		});
+
+		await act(async () => {
+			await userEvent.click(screen.getByTestId("submit-button"));
+		});
+		await act(async () => {
+			await userEvent.click(screen.getByTestId("submit-button"));
+		});
+
+		expect(post).toHaveBeenCalledTimes(1);
+	});
 });
