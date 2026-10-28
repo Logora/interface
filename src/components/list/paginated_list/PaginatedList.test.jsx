@@ -170,6 +170,55 @@ describe("PaginatedList", () => {
 		expect(screen.getByText("Error when loading content.")).toBeTruthy();
 	});
 
+	it("should contain a loading error inside the list without an outer boundary", async () => {
+		mock.mockImplementation(() =>
+			Promise.reject({
+				status: 500,
+				data: {},
+			}),
+		);
+
+		let renderError = null;
+		await act(async () => {
+			try {
+				render(
+					<BrowserRouter>
+						<IntlProvider locale="en">
+							<ListProvider>
+								<IconProvider library={regularIcons}>
+									<ResponsiveProvider>
+										<DataProviderContext.Provider
+											value={{ dataProvider: data }}
+										>
+											<PaginatedList
+												currentListId={"itemList"}
+												resource={"items"}
+												sort={"-created_at"}
+												resourcePropName={"item"}
+												perPage={1}
+												withPagination
+												display="column"
+												numberElements={3}
+												loadingComponent={<p>Loading...</p>}
+											>
+												<ListItem />
+											</PaginatedList>
+										</DataProviderContext.Provider>
+									</ResponsiveProvider>
+								</IconProvider>
+							</ListProvider>
+						</IntlProvider>
+					</BrowserRouter>,
+				);
+			} catch (error) {
+				renderError = error;
+			}
+		});
+
+		expect(renderError).toBeNull();
+		expect(screen.getByText("Error when loading content.")).toBeTruthy();
+	});
+
 	it("should render a fallback message when no data is retrieved", async () => {
 		mock.mockResolvedValue({
 			status: 200,
