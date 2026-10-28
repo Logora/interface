@@ -95,4 +95,86 @@ describe("WithAd", () => {
 			"Hello world",
 		);
 	});
+
+	it("should not register any refresh listener by default", () => {
+		const addEventListener = vi.fn();
+		window.googletag = {
+			cmd: { push: (fn) => fn() },
+			defineSlot: vi.fn(() => ({
+				getSlotElementId: () => "div-gpt-ad-ad-id-0",
+				setTargeting: vi.fn(function () {
+					return this;
+				}),
+				setCollapseEmptyDiv: vi.fn(),
+				addService: vi.fn(function () {
+					return this;
+				}),
+			})),
+			display: vi.fn(),
+			destroySlots: vi.fn(),
+			pubads: () => ({
+				getSlots: () => [],
+				addEventListener,
+				refresh: vi.fn(),
+			}),
+		};
+
+		render(
+			<WithAd
+				id={"ad-id"}
+				adPath={"/6355419/Travel"}
+				sizes={[[300, 250]]}
+				index={0}
+				frequency={2}
+			>
+				<div>Hello world</div>
+			</WithAd>,
+		);
+
+		expect(addEventListener).not.toHaveBeenCalled();
+		delete window.googletag;
+	});
+
+	it("should forward the refresh opt-in to the ad unit", () => {
+		const addEventListener = vi.fn();
+		window.googletag = {
+			cmd: { push: (fn) => fn() },
+			defineSlot: vi.fn(() => ({
+				getSlotElementId: () => "div-gpt-ad-ad-id-0",
+				setTargeting: vi.fn(function () {
+					return this;
+				}),
+				setCollapseEmptyDiv: vi.fn(),
+				addService: vi.fn(function () {
+					return this;
+				}),
+			})),
+			display: vi.fn(),
+			destroySlots: vi.fn(),
+			pubads: () => ({
+				getSlots: () => [],
+				addEventListener,
+				refresh: vi.fn(),
+			}),
+		};
+
+		render(
+			<WithAd
+				id={"ad-id"}
+				adPath={"/6355419/Travel"}
+				sizes={[[300, 250]]}
+				index={0}
+				frequency={2}
+				refresh={true}
+			>
+				<div>Hello world</div>
+			</WithAd>,
+		);
+
+		expect(addEventListener).toHaveBeenCalledWith(
+			"impressionViewable",
+			expect.any(Function),
+		);
+		delete window.googletag;
+	});
 });
