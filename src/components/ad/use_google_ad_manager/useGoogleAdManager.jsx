@@ -1,13 +1,13 @@
 import { useEffect } from "react";
 
-const GPT_SRC = "https://securepubads.g.doubleclick.net/tag/gpt.js";
+export const GPT_SRC = "https://securepubads.g.doubleclick.net/tag/js/gpt.js";
 
 const loadGptScript = (enableDidomi = false) => {
 	if (typeof window === "undefined" || typeof document === "undefined") {
-		return;
+		return false;
 	}
 	if (document.querySelector(`script[src="${GPT_SRC}"]`)) {
-		return;
+		return false;
 	}
 	const libScript = document.createElement("script");
 	libScript.src = GPT_SRC;
@@ -18,18 +18,16 @@ const loadGptScript = (enableDidomi = false) => {
 		libScript.setAttribute("data-purposes", "cookies");
 	}
 	document.body.appendChild(libScript);
+	return true;
 };
 
 let gptServicesEnabled = false;
 
 const ensureGptServices = () => {
-	if (typeof window === "undefined") {
+	if (typeof window === "undefined" || gptServicesEnabled) {
 		return;
 	}
 	const googletag = window.googletag || (window.googletag = { cmd: [] });
-	if (gptServicesEnabled) {
-		return;
-	}
 	gptServicesEnabled = true;
 	googletag.cmd.push(() => {
 		googletag.enableServices();
@@ -41,7 +39,9 @@ export const useGoogleAdManager = (enable = true, enableDidomi = false) => {
 		if (enable !== true || typeof window === "undefined") {
 			return;
 		}
-		loadGptScript(enableDidomi);
+		if (!loadGptScript(enableDidomi)) {
+			return;
+		}
 		ensureGptServices();
 	}, []);
 

@@ -5,11 +5,18 @@ labels: ['google-ad-manager', 'gpt', 'didomi']
 
 A hook that inserts the script from Google Ad Manager (GPT).
 
-The hook only loads `gpt.js` once per page and enables GPT services. It never
-calls page-wide `pubads` settings (`enableSingleRequest`, `disableInitialLoad`,
-`collapseEmptyDivs`) and never refreshes ad slots, so it cannot interfere with
-ad slots owned by the publisher. Slot lifecycle (`defineSlot`, `display`,
-`refresh`, `destroySlots`) belongs to `AdUnit`.
+The hook only loads `gpt.js` once per page. It never calls page-wide `pubads`
+settings (`enableSingleRequest`, `disableInitialLoad`, `collapseEmptyDivs`) and
+never refreshes ad slots, so it cannot interfere with ad slots owned by the
+publisher. Slot lifecycle (`defineSlot`, `display`, `refresh`, `destroySlots`)
+belongs to `AdUnit`.
+
+When the page already loads `gpt.js`, the hook neither injects the script nor
+calls `enableServices()`: the publisher snippet keeps full control of the page
+configuration. When the hook does load `gpt.js` itself, it calls
+`enableServices()` once — GPT ignores page-level `pubads` settings applied after
+that call, so a page that configures GPT itself must ship its own GPT snippet
+instead of relying on the hook.
 
 The hook can also add consent attributes from [didomi](https://www.didomi.io/fr/) to manage user consent.
 

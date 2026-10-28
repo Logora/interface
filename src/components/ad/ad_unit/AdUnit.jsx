@@ -12,27 +12,16 @@ export const AdUnit = ({
 	refresh = false,
 	refreshInterval = MIN_REFRESH_INTERVAL,
 }) => {
-	if (!id || !adPath) {
-		return null;
-	}
 	const divId = `div-gpt-ad-${id}`;
 	const slotRef = useRef(null);
 	const timerRef = useRef(null);
 
 	useEffect(() => {
-		if (typeof window === "undefined" || !divId || !adPath) {
+		if (typeof window === "undefined" || !id || !adPath) {
 			return;
 		}
 		const googletag = window.googletag || (window.googletag = { cmd: [] });
 		let cancelled = false;
-		let viewableHandler = null;
-
-		const clearRefreshTimer = () => {
-			if (timerRef.current) {
-				clearTimeout(timerRef.current);
-				timerRef.current = null;
-			}
-		};
 
 		googletag.cmd.push(() => {
 			if (cancelled) {
@@ -57,50 +46,78 @@ export const AdUnit = ({
 			slot.addService(pubads);
 			slotRef.current = slot;
 			googletag.display(divId);
-
-			if (refresh === true) {
-				const interval = Math.max(refreshInterval, MIN_REFRESH_INTERVAL);
-				viewableHandler = (event) => {
-					if (event.slot !== slotRef.current || timerRef.current) {
-						return;
-					}
-					timerRef.current = setTimeout(() => {
-						timerRef.current = null;
-						if (cancelled || document.visibilityState !== "visible") {
-							return;
-						}
-						googletag.cmd.push(() => {
-							if (cancelled || !slotRef.current) {
-								return;
-							}
-							pubads.refresh([slotRef.current]);
-						});
-					}, interval);
-				};
-				pubads.addEventListener("impressionViewable", viewableHandler);
-			}
 		});
 
 		return () => {
 			cancelled = true;
-			clearRefreshTimer();
 			const slot = slotRef.current;
-			const handler = viewableHandler;
 			slotRef.current = null;
-			viewableHandler = null;
 			if (typeof window === "undefined" || !window.googletag || !slot) {
 				return;
 			}
-			const gtag = window.googletag;
-			gtag.cmd.push(() => {
-				if (handler) {
-					gtag.pubads().removeEventListener("impressionViewable", handler);
-				}
-				gtag.destroySlots([slot]);
+			window.googletag.cmd.push(() => {
+				window.googletag.destroySlots([slot]);
 			});
 		};
 	}, []);
 
+	useEffect(() => {
+		if (typeof window === "undefined" || refresh !== true || !id || !adPath) {
+			return;
+		}
+		const googletag = window.googletag || (window.googletag = { cmd: [] });
+		const interval = Math.max(refreshInterval, MIN_REFRESH_INTERVAL);
+		let cancelled = false;
+		let handler = null;
+
+		googletag.cmd.push(() => {
+			if (cancelled || !slotRef.current) {
+				return;
+			}
+			const pubads = googletag.pubads();
+			handler = (event) => {
+				if (event.slot !== slotRef.current || timerRef.current) {
+					return;
+				}
+				timerRef.current = setTimeout(() => {
+					timerRef.current = null;
+					const slot = slotRef.current;
+					if (cancelled || !slot || document.visibilityState !== "visible") {
+						return;
+					}
+					googletag.cmd.push(() => {
+						if (cancelled) {
+							return;
+						}
+						pubads.refresh([slot]);
+					});
+				}, interval);
+			};
+			pubads.addEventListener("impressionViewable", handler);
+		});
+
+		return () => {
+			cancelled = true;
+			if (timerRef.current) {
+				clearTimeout(timerRef.current);
+				timerRef.current = null;
+			}
+			const registered = handler;
+			handler = null;
+			if (typeof window === "undefined" || !window.googletag || !registered) {
+				return;
+			}
+			window.googletag.cmd.push(() => {
+				window.googletag
+					.pubads()
+					.removeEventListener("impressionViewable", registered);
+			});
+		};
+	}, [refresh, refreshInterval, divId]);
+
+	if (!id || !adPath) {
+		return null;
+	}
 	if (enableDidomi === true) {
 		return (
 			<script

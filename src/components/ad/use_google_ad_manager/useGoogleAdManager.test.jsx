@@ -1,7 +1,7 @@
 import { render } from "@testing-library/react";
 import React from "react";
 
-const gptSrc = "https://securepubads.g.doubleclick.net/tag/gpt.js";
+const gptSrc = "https://securepubads.g.doubleclick.net/tag/js/gpt.js";
 
 const loadHook = async () => {
 	const { useGoogleAdManager } = await import("./useGoogleAdManager");
@@ -23,14 +23,18 @@ describe("useGoogleAdManager", () => {
 		delete window.googletag;
 	});
 
+	it("should expose the canonical GPT URL", async () => {
+		const { GPT_SRC } = await import("./useGoogleAdManager");
+
+		expect(GPT_SRC).toBe(gptSrc);
+	});
+
 	it("should load GPT script correctly", async () => {
 		const useGoogleAdManager = await loadHook();
 		const container = await mountHook(useGoogleAdManager, true, false);
 
 		expect(container.getByText("With GoogleAdManager")).toBeTruthy();
-		expect(
-			document.body.querySelector(`script[src="${gptSrc}"]`),
-		).toBeTruthy();
+		expect(document.body.querySelector(`script[src="${gptSrc}"]`)).toBeTruthy();
 	});
 
 	it("should load GPT script correctly with didomi consent", async () => {
@@ -88,12 +92,31 @@ describe("useGoogleAdManager", () => {
 		expect(pubads.addEventListener).not.toHaveBeenCalled();
 	});
 
+	it("should leave GPT configuration to a page that already loads gpt.js", async () => {
+		const existing = document.createElement("script");
+		existing.src = gptSrc;
+		document.body.appendChild(existing);
+		const pubads = { enableSingleRequest: vi.fn() };
+		const enableServices = vi.fn();
+		window.googletag = {
+			cmd: { push: (fn) => fn() },
+			apiReady: true,
+			pubads: () => pubads,
+			enableServices,
+		};
+
+		const useGoogleAdManager = await loadHook();
+		await mountHook(useGoogleAdManager, true, false);
+
+		expect(document.body.querySelectorAll(`script[src="${gptSrc}"]`).length).toBe(1);
+		expect(enableServices).not.toHaveBeenCalled();
+		expect(pubads.enableSingleRequest).not.toHaveBeenCalled();
+	});
+
 	it("should not load anything when disabled", async () => {
 		const useGoogleAdManager = await loadHook();
 		await mountHook(useGoogleAdManager, false, false);
 
-		expect(
-			document.body.querySelector(`script[src="${gptSrc}"]`),
-		).toBeNull();
+		expect(document.body.querySelector(`script[src="${gptSrc}"]`)).toBeNull();
 	});
 });

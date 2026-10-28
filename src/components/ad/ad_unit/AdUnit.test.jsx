@@ -189,7 +189,67 @@ describe("AdUnit", () => {
 		expect(state.pubads.refresh).toHaveBeenCalledTimes(1);
 	});
 
+	it("should not refresh when the tab is hidden at timer expiry", () => {
+		vi.useFakeTimers();
+		const state = setupGpt();
+
+		render(
+			<AdUnit
+				id={"slot-id"}
+				adPath={"/path"}
+				sizes={[[300, 250]]}
+				refresh={true}
+			/>,
+		);
+		const ownSlot = state.slots[0];
+		fireImpressionViewable(state, ownSlot);
+
+		Object.defineProperty(document, "visibilityState", {
+			configurable: true,
+			value: "hidden",
+		});
+		vi.advanceTimersByTime(30000);
+		expect(state.pubads.refresh).not.toHaveBeenCalled();
+
+		vi.advanceTimersByTime(60000);
+		expect(state.pubads.refresh).not.toHaveBeenCalled();
+
+		Object.defineProperty(document, "visibilityState", {
+			configurable: true,
+			value: "visible",
+		});
+		fireImpressionViewable(state, ownSlot);
+		vi.advanceTimersByTime(30000);
+		expect(state.pubads.refresh).toHaveBeenCalledTimes(1);
+		expect(state.pubads.refresh).toHaveBeenCalledWith([ownSlot]);
+	});
+
+	it("should take a refresh prop enabled after mount into account", () => {
+		vi.useFakeTimers();
+		const state = setupGpt();
+
+		const { rerender } = render(
+			<AdUnit id={"slot-id"} adPath={"/path"} sizes={[[300, 250]]} />,
+		);
+		expect(state.pubads.addEventListener).not.toHaveBeenCalled();
+
+		rerender(
+			<AdUnit
+				id={"slot-id"}
+				adPath={"/path"}
+				sizes={[[300, 250]]}
+				refresh={true}
+			/>,
+		);
+		expect(window.googletag.defineSlot).toHaveBeenCalledTimes(1);
+
+		fireImpressionViewable(state, state.slots[0]);
+		vi.advanceTimersByTime(30000);
+		expect(state.pubads.refresh).toHaveBeenCalledTimes(1);
+	});
+
 	it("should cancel the refresh timer and destroy its slot on unmount", () => {
+
 		vi.useFakeTimers();
 		const state = setupGpt();
 
