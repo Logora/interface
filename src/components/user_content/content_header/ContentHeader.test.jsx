@@ -89,6 +89,20 @@ describe("ContentHeader component", () => {
 		expect(queryByRole("link")).not.toBeInTheDocument();
 	});
 
+	it("should not render a countdown for a date in the future", () => {
+		const { getByTestId } = render(
+			<DefaultContentHeader
+				author={author}
+				tag={tag}
+				date={new Date(Date.now() + 30 * 60 * 1000)}
+			/>,
+		);
+
+		const relativeTimeElement = getByTestId("content-header-date");
+		expect(relativeTimeElement).not.toHaveTextContent("left");
+		expect(relativeTimeElement).toHaveTextContent("ago");
+	});
+
 	it("should render with selected div if selectedContent is true", () => {
 		const { getByText } = render(
 			<ContentHeaderSelected
