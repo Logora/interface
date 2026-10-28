@@ -23,7 +23,7 @@ export * from "./components/auth/use_auth";
 export * from "./components/chart/line_chart";
 export * from "./components/chart/pie_chart";
 export * from "./components/consultation/consultation_box";
-export * from "./components/data/axios_client";
+export * from "./components/data/http_client";
 export * from "./components/data/config_provider";
 export * from "./components/data/data_provider";
 export * from "./components/debate/debate_box";

@@ -24,8 +24,9 @@ const localStorageMock = (() => {
 })();
 
 const makeHttpClient = () => {
-	const interceptors = { request: { use: vi.fn() } };
+	const interceptors = { request: { use: vi.fn(), eject: vi.fn() } };
 	const post = vi.fn();
+	interceptors.request.use.mockReturnValue("interceptor-id");
 	return { interceptors, post };
 };
 
@@ -53,6 +54,51 @@ describe("useAuthInterceptor", () => {
 		const httpClient = makeHttpClient();
 		renderHook(() => useAuthInterceptor(httpClient, AUTH_URL, TOKEN_KEY));
 		expect(httpClient.interceptors.request.use).toHaveBeenCalledTimes(1);
+	});
+
+	it("ejects the request interceptor on unmount", () => {
+		const httpClient = makeHttpClient();
+		const { unmount } = renderHook(() =>
+			useAuthInterceptor(httpClient, AUTH_URL, TOKEN_KEY),
+		);
+
+		unmount();
+
+		expect(httpClient.interceptors.request.eject).toHaveBeenCalledWith(
+			"interceptor-id",
+		);
+	});
+
+	it("refreshes once for concurrent requests", async () => {
+		const httpClient = makeHttpClient();
+		const { setToken } = makeStorage(TOKEN_KEY);
+		setToken({
+			access_token: "old-access",
+			refresh_token: "old-refresh",
+			expires_at: Math.floor(Date.now() / 1000) - 60,
+			session_id: "s1",
+		});
+
+		httpClient.post.mockResolvedValueOnce({
+			data: {
+				access_token: "new-access",
+				refresh_token: "new-refresh",
+				created_at: Math.floor(Date.now() / 1000),
+				expires_in: 7200,
+			},
+		});
+
+		renderHook(() => useAuthInterceptor(httpClient, AUTH_URL, TOKEN_KEY));
+		const interceptor = getRequestInterceptor(httpClient);
+
+		const [first, second] = await Promise.all([
+			interceptor(makeConfig()),
+			interceptor(makeConfig()),
+		]);
+
+		expect(httpClient.post).toHaveBeenCalledTimes(1);
+		expect(first.headers.authorization).toBe("Bearer new-access");
+		expect(second.headers.authorization).toBe("Bearer new-access");
 	});
 
 	it("passes through requests with a valid (non-expired) token unchanged", async () => {

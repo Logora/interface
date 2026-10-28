@@ -1,7 +1,7 @@
 import { AuthProviderFactory } from "@logora/debate/auth/providers";
 import { authTokenHandler, useAuth, useAuthActions } from "@logora/debate/auth/use_auth";
 import { useAuthInterceptor } from "@logora/debate/auth/use_auth";
-import { httpClient } from "@logora/debate/data/axios_client";
+import { httpClient } from "@logora/debate/data/http_client";
 import { useConfig } from "@logora/debate/data/config_provider";
 import { OnboardingModal, saveOnboardingBeforeLogin } from "@logora/debate/user/onboarding_modal";
 import { useAuthRequired } from "@logora/debate/hooks/use_auth_required";

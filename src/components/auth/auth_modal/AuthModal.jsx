@@ -2,7 +2,7 @@ import { AuthProviderFactory } from "@logora/debate/auth/providers";
 import { SocialAuthForm } from "@logora/debate/auth/social_auth_form";
 import { SSOForm } from "@logora/debate/auth/sso_form";
 import { useAuth, useAuthActions } from "@logora/debate/auth/use_auth";
-import { httpClient } from "@logora/debate/data/axios_client";
+import { httpClient } from "@logora/debate/data/http_client";
 import { useConfig } from "@logora/debate/data/config_provider";
 import { Modal, useModal } from "@logora/debate/dialog/modal";
 import { Loader } from "@logora/debate/progress/loader";

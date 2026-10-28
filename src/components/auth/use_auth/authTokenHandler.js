@@ -72,10 +72,33 @@ export const authTokenHandler = (httpClient, authUrl, tokenKey) => {
 		return refreshInFlight;
 	};
 
+	const isTokenExpired = (tokenObject) => {
+		try {
+			return tokenObject.expires_at < Date.now() / 1000;
+		} catch (_error) {
+			return false;
+		}
+	};
+
+	const ensureValidToken = (config) => {
+		if (!config?.headers?.authorization) {
+			return config;
+		}
+		const tokenObject = getToken();
+		if (!tokenObject || !isTokenExpired(tokenObject) || config.url === authUrl) {
+			return config;
+		}
+		return refreshToken().then((accessToken) => {
+			config.headers.authorization = `Bearer ${accessToken}`;
+			return config;
+		});
+	};
+
 	return {
 		getToken,
 		removeToken,
 		fetchToken,
 		refreshToken,
+		ensureValidToken,
 	};
 };
