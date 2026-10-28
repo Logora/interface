@@ -22,6 +22,8 @@ const SideModal = lazy(() => import("@logora/debate/modal/side_modal").then(m =>
 import cx from "classnames";
 import styles from "./ArgumentInput.module.scss";
 
+const SUBMISSION_TIMEOUT_MS = 20000;
+
 export const ArgumentInput = ({
 	argumentListId,
 	avatarSize = 48,
@@ -72,7 +74,8 @@ export const ArgumentInput = ({
 	const [editElement, setEditElement] = useState({});
 	const [shouldAutoFocus, setShouldAutoFocus] = useState(false);
 	const [resetSignal, setResetSignal] = useState(0);
-	const isSubmitting = useRef(false);
+	const submittingRef = useRef(false);
+	const [submitting, setSubmitting] = useState(false);
 	const [savedArgument, setSavedArgument] = useSessionStorageState(
 		"userSide",
 		{},
@@ -196,14 +199,31 @@ export const ArgumentInput = ({
 		toast?.(intl.formatMessage({ id, defaultMessage }), { type: "error" });
 	};
 
+	const notifyCreateError = () =>
+		notifySubmissionError("alert.argument_create_error", "Your contribution could not be sent. Please try again.");
+
+	const notifyModifyError = () =>
+		notifySubmissionError("alert.argument_modify_error", "Your contribution could not be saved. Please try again.");
+
 	const sendRequest = async (request) => {
-		isSubmitting.current = true;
+		submittingRef.current = true;
+		setSubmitting(true);
+		let timer;
 		try {
-			return await request();
-		} catch {
+			const timeout = new Promise((_, reject) => {
+				timer = setTimeout(
+					() => reject(new Error("Submission timed out")),
+					SUBMISSION_TIMEOUT_MS,
+				);
+			});
+			return await Promise.race([request(), timeout]);
+		} catch (error) {
+			console.error("[ArgumentInput] submission failed", error);
 			return null;
 		} finally {
-			isSubmitting.current = false;
+			clearTimeout(timer);
+			submittingRef.current = false;
+			setSubmitting(false);
 		}
 	};
 
@@ -280,7 +300,7 @@ export const ArgumentInput = ({
 	];
 
 	const submitArgument = (position) => {
-		if (isSubmitting.current) {
+		if (submittingRef.current) {
 			return;
 		}
 
@@ -310,7 +330,6 @@ export const ArgumentInput = ({
 			}
 			sendRequest(() => api.create("messages", data)).then((response) => {
 				if (response?.data?.success) {
-					resetInputs();
 					if (parentId) {
 						onSubmit(response.data.data.resource);
 						toast(
@@ -365,18 +384,16 @@ export const ArgumentInput = ({
 							}),
 						);
 					}
+					resetInputs();
 				} else {
-					notifySubmissionError(
-						"alert.argument_create_error",
-						"Your contribution could not be sent. Please try again.",
-					);
+					notifyCreateError();
 				}
-			});
+			}).catch(notifyCreateError);
 		}
 	};
 
 	const updateArgument = () => {
-		if (isSubmitting.current) {
+		if (submittingRef.current) {
 			return;
 		}
 
@@ -422,13 +439,10 @@ export const ArgumentInput = ({
 						});
 						resetInputs();
 					} else {
-						notifySubmissionError(
-							"alert.argument_modify_error",
-							"Your contribution could not be saved. Please try again.",
-						);
+						notifyModifyError();
 					}
 				},
-			);
+			).catch(notifyModifyError);
 		}
 	};
 
@@ -595,6 +609,7 @@ export const ArgumentInput = ({
 									autoFocus={shouldAutoFocus}
 									hideCharCount={hideCharCount}
 									disableAutoActivate={disableAutoActivate}
+									submitting={submitting}
 								/>
 								{errors?.content && (
 									<div className={styles.argumentInputWarning}>

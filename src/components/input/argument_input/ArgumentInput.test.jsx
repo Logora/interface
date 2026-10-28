@@ -887,4 +887,221 @@ describe("ArgumentInput", () => {
 
 		expect(post).toHaveBeenCalledTimes(1);
 	});
+
+	it("should clear the editor once the submission is confirmed", async () => {
+		const submissionCallback = vi.fn();
+
+		render(
+			<InputWithProviders provider={data} onSubmit={submissionCallback}>
+				<SetWrittenContent />
+			</InputWithProviders>,
+		);
+
+		await act(async () => {
+			await userEvent.click(screen.getByTestId("argument-input"));
+		});
+		await act(async () => {
+			await userEvent.click(screen.getByText("Click to set content"));
+		});
+		expect(screen.queryByText("I write an argument")).toBeInTheDocument();
+
+		await act(async () => {
+			await userEvent.click(screen.getByTestId("submit-button"));
+		});
+
+		expect(submissionCallback).toHaveBeenCalledTimes(1);
+		expect(screen.queryByText("I write an argument")).not.toBeInTheDocument();
+	});
+
+	it("should keep the content when the API reports a failed creation", async () => {
+		const submissionCallback = vi.fn();
+		const post = vi.fn(() => Promise.resolve({ data: { success: false } }));
+		const rejectingProvider = dataProvider(
+			{ ...httpClient, post },
+			"https://mock.example.api",
+		);
+
+		render(
+			<InputWithProviders
+				provider={rejectingProvider}
+				onSubmit={submissionCallback}
+			>
+				<SetWrittenContent />
+			</InputWithProviders>,
+		);
+
+		await act(async () => {
+			await userEvent.click(screen.getByTestId("argument-input"));
+		});
+		await act(async () => {
+			await userEvent.click(screen.getByText("Click to set content"));
+		});
+
+		await act(async () => {
+			await userEvent.click(screen.getByTestId("submit-button"));
+		});
+
+		expect(post).toHaveBeenCalledTimes(1);
+		expect(submissionCallback).not.toHaveBeenCalled();
+		expect(screen.queryByText("I write an argument")).toBeInTheDocument();
+		expect(
+			screen.getAllByText(
+				"Your contribution could not be sent. Please try again.",
+			).length,
+		).toBeGreaterThan(0);
+	});
+
+	it("should keep the content when the API reports a failed update", async () => {
+		Element.prototype.scrollIntoView = vi.fn();
+		Range.prototype.getBoundingClientRect = vi.fn(() => ({
+			top: 0,
+			left: 0,
+			bottom: 0,
+			right: 0,
+			width: 0,
+			height: 0,
+		}));
+		const patch = vi.fn(() => Promise.resolve({ data: { success: false } }));
+		const rejectingProvider = dataProvider(
+			{ ...httpClient, patch },
+			"https://mock.example.api",
+		);
+
+		render(
+			<InputWithProviders provider={rejectingProvider}>
+				<SetEditedContent />
+			</InputWithProviders>,
+		);
+
+		await act(async () => {
+			await userEvent.click(screen.getByText("Click to edit content"));
+		});
+
+		await act(async () => {
+			await userEvent.click(screen.getByTestId("submit-button"));
+		});
+
+		expect(patch).toHaveBeenCalledTimes(1);
+		expect(screen.queryByText("I write an argument")).toBeInTheDocument();
+		expect(
+			screen.getAllByText(
+				"Your contribution could not be saved. Please try again.",
+			).length,
+		).toBeGreaterThan(0);
+	});
+
+	it("should clear the editor once the update is confirmed", async () => {
+		Element.prototype.scrollIntoView = vi.fn();
+		Range.prototype.getBoundingClientRect = vi.fn(() => ({
+			top: 0,
+			left: 0,
+			bottom: 0,
+			right: 0,
+			width: 0,
+			height: 0,
+		}));
+		const patch = vi.fn(() =>
+			Promise.resolve({
+				data: {
+					success: true,
+					data: {
+						resource: {
+							id: faker.number.int(),
+							content: "I write an argument",
+							rich_content: JSON.stringify(writtenContent),
+							sources: [],
+							position: { id: debate.positions[0].id },
+						},
+					},
+				},
+			}),
+		);
+		const updatingProvider = dataProvider(
+			{ ...httpClient, patch },
+			"https://mock.example.api",
+		);
+
+		render(
+			<InputWithProviders provider={updatingProvider}>
+				<SetEditedContent />
+			</InputWithProviders>,
+		);
+
+		await act(async () => {
+			await userEvent.click(screen.getByText("Click to edit content"));
+		});
+
+		await act(async () => {
+			await userEvent.click(screen.getByTestId("submit-button"));
+		});
+
+		expect(patch).toHaveBeenCalledTimes(1);
+		expect(screen.queryByText("I write an argument")).not.toBeInTheDocument();
+	});
+
+	it("should disable the submit button while the submission is pending", async () => {
+		const post = vi.fn(() => new Promise(() => {}));
+		const pendingProvider = dataProvider(
+			{ ...httpClient, post },
+			"https://mock.example.api",
+		);
+
+		render(
+			<InputWithProviders provider={pendingProvider}>
+				<SetWrittenContent />
+			</InputWithProviders>,
+		);
+
+		await act(async () => {
+			await userEvent.click(screen.getByTestId("argument-input"));
+		});
+		await act(async () => {
+			await userEvent.click(screen.getByText("Click to set content"));
+		});
+
+		expect(screen.getByTestId("submit-button")).not.toBeDisabled();
+
+		await act(async () => {
+			await userEvent.click(screen.getByTestId("submit-button"));
+		});
+
+		expect(screen.getByTestId("submit-button")).toBeDisabled();
+	});
+
+	it("should release the editor when the submission never completes", async () => {
+		vi.useFakeTimers();
+		try {
+			const post = vi.fn(() => new Promise(() => {}));
+			const pendingProvider = dataProvider(
+				{ ...httpClient, post },
+				"https://mock.example.api",
+			);
+			const user = userEvent.setup({ advanceTimers: vi.advanceTimersByTime });
+
+			render(
+				<InputWithProviders provider={pendingProvider}>
+					<SetWrittenContent />
+				</InputWithProviders>,
+			);
+
+			await user.click(screen.getByTestId("argument-input"));
+			await user.click(screen.getByText("Click to set content"));
+			await user.click(screen.getByTestId("submit-button"));
+			expect(screen.getByTestId("submit-button")).toBeDisabled();
+
+			await act(async () => {
+				await vi.advanceTimersByTimeAsync(20000);
+			});
+
+			expect(screen.getByTestId("submit-button")).not.toBeDisabled();
+			expect(
+				screen.getAllByText(
+					"Your contribution could not be sent. Please try again.",
+				).length,
+			).toBeGreaterThan(0);
+			expect(screen.queryByText("I write an argument")).toBeInTheDocument();
+		} finally {
+			vi.useRealTimers();
+		}
+	});
 });
