@@ -15,6 +15,7 @@ export const AdUnit = ({
 	const divId = `div-gpt-ad-${id}`;
 	const slotRef = useRef(null);
 	const timerRef = useRef(null);
+	const pendingRef = useRef(false);
 
 	useEffect(() => {
 		if (typeof window === "undefined" || !id || !adPath) {
@@ -46,6 +47,9 @@ export const AdUnit = ({
 			slot.addService(pubads);
 			slotRef.current = slot;
 			googletag.display(divId);
+			if (pubads.isInitialLoadDisabled()) {
+				pubads.refresh([slot]);
+			}
 		});
 
 		return () => {
@@ -70,31 +74,60 @@ export const AdUnit = ({
 		let cancelled = false;
 		let handler = null;
 
+		const fireRefresh = () => {
+			const slot = slotRef.current;
+			if (cancelled || !slot) {
+				return;
+			}
+			googletag.cmd.push(() => {
+				if (cancelled) {
+					return;
+				}
+				googletag.pubads().refresh([slot]);
+			});
+		};
+
+		const scheduleRefresh = () => {
+			if (cancelled || timerRef.current) {
+				return;
+			}
+			timerRef.current = setTimeout(() => {
+				timerRef.current = null;
+				if (cancelled || !slotRef.current) {
+					return;
+				}
+				if (document.visibilityState !== "visible") {
+					pendingRef.current = true;
+					return;
+				}
+				fireRefresh();
+			}, interval);
+		};
+
+		const handleVisibilityChange = () => {
+			if (
+				document.visibilityState === "visible" &&
+				pendingRef.current &&
+				!cancelled
+			) {
+				pendingRef.current = false;
+				scheduleRefresh();
+			}
+		};
+
 		googletag.cmd.push(() => {
 			if (cancelled || !slotRef.current) {
 				return;
 			}
-			const pubads = googletag.pubads();
 			handler = (event) => {
 				if (event.slot !== slotRef.current || timerRef.current) {
 					return;
 				}
-				timerRef.current = setTimeout(() => {
-					timerRef.current = null;
-					const slot = slotRef.current;
-					if (cancelled || !slot || document.visibilityState !== "visible") {
-						return;
-					}
-					googletag.cmd.push(() => {
-						if (cancelled) {
-							return;
-						}
-						pubads.refresh([slot]);
-					});
-				}, interval);
+				scheduleRefresh();
 			};
-			pubads.addEventListener("impressionViewable", handler);
+			googletag.pubads().addEventListener("impressionViewable", handler);
 		});
+		document.addEventListener("visibilitychange", handleVisibilityChange);
 
 		return () => {
 			cancelled = true;
@@ -102,8 +135,10 @@ export const AdUnit = ({
 				clearTimeout(timerRef.current);
 				timerRef.current = null;
 			}
+			pendingRef.current = false;
 			const registered = handler;
 			handler = null;
+			document.removeEventListener("visibilitychange", handleVisibilityChange);
 			if (typeof window === "undefined" || !window.googletag || !registered) {
 				return;
 			}

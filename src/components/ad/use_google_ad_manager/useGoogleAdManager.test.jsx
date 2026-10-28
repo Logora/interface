@@ -137,6 +137,23 @@ describe("useGoogleAdManager", () => {
 		expect(enableServices).not.toHaveBeenCalled();
 	});
 
+	it("should enable services exactly once when it injects gpt.js itself", async () => {
+		const enableServices = vi.fn();
+		window.googletag = {
+			cmd: { push: (fn) => fn() },
+			enableServices,
+		};
+
+		const useGoogleAdManager = await loadHook();
+		await mountHook(useGoogleAdManager, true, false);
+		await mountHook(useGoogleAdManager, true, false);
+
+		expect(
+			document.body.querySelectorAll('script[src*="gpt.js"]').length,
+		).toBe(1);
+		expect(enableServices).toHaveBeenCalledTimes(1);
+	});
+
 	it("should not load anything when disabled", async () => {
 		const useGoogleAdManager = await loadHook();
 		await mountHook(useGoogleAdManager, false, false);

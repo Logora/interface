@@ -116,6 +116,7 @@ describe("WithAd", () => {
 				getSlots: () => [],
 				addEventListener,
 				refresh: vi.fn(),
+				isInitialLoadDisabled: () => false,
 			}),
 		};
 
@@ -155,6 +156,7 @@ describe("WithAd", () => {
 				getSlots: () => [],
 				addEventListener,
 				refresh: vi.fn(),
+				isInitialLoadDisabled: () => false,
 			}),
 		};
 

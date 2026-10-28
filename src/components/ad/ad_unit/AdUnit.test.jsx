@@ -22,6 +22,7 @@ const setupGpt = (initialSlots = []) => {
 	const pubads = {
 		getSlots: () => state.slots,
 		refresh: vi.fn(),
+		isInitialLoadDisabled: () => false,
 		addEventListener: vi.fn((type, handler) => {
 			state.listeners[type] = [...(state.listeners[type] || []), handler];
 		}),
@@ -246,6 +247,57 @@ describe("AdUnit", () => {
 		fireImpressionViewable(state, state.slots[0]);
 		vi.advanceTimersByTime(30000);
 		expect(state.pubads.refresh).toHaveBeenCalledTimes(1);
+	});
+
+	it("should refresh once immediately when the page disabled initial load", () => {
+		const state = setupGpt();
+		state.pubads.isInitialLoadDisabled = () => true;
+
+		render(
+			<AdUnit
+				id={"slot-id"}
+				adPath={"/path"}
+				sizes={[[300, 250]]}
+			/>,
+		);
+
+		expect(window.googletag.display).toHaveBeenCalledTimes(1);
+		expect(state.pubads.refresh).toHaveBeenCalledTimes(1);
+		expect(state.pubads.refresh).toHaveBeenCalledWith([state.slots[0]]);
+		expect(state.pubads.addEventListener).not.toHaveBeenCalled();
+	});
+
+	it("should resume the deferred refresh when the tab becomes visible again", () => {
+		vi.useFakeTimers();
+		const state = setupGpt();
+
+		render(
+			<AdUnit
+				id={"slot-id"}
+				adPath={"/path"}
+				sizes={[[300, 250]]}
+				refresh={true}
+			/>,
+		);
+		const ownSlot = state.slots[0];
+		fireImpressionViewable(state, ownSlot);
+
+		Object.defineProperty(document, "visibilityState", {
+			configurable: true,
+			value: "hidden",
+		});
+		vi.advanceTimersByTime(30000);
+		expect(state.pubads.refresh).not.toHaveBeenCalled();
+
+		Object.defineProperty(document, "visibilityState", {
+			configurable: true,
+			value: "visible",
+		});
+		document.dispatchEvent(new Event("visibilitychange"));
+		expect(state.pubads.refresh).not.toHaveBeenCalled();
+		vi.advanceTimersByTime(30000);
+		expect(state.pubads.refresh).toHaveBeenCalledTimes(1);
+		expect(state.pubads.refresh).toHaveBeenCalledWith([ownSlot]);
 	});
 
 	it("should cancel the refresh timer and destroy its slot on unmount", () => {
