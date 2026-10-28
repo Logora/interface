@@ -10,7 +10,9 @@ destroys it on unmount and never touches slots owned by the publisher. Refresh
 is opt-in (`refresh`) and only ever targets its own slot, at most every 30
 seconds and only after a viewable impression while the tab is visible. When the
 delay expires while the tab is hidden, the refresh is deferred and the timer
-restarts when the tab becomes visible again.
+restarts when the tab becomes visible again. When the page disabled initial
+load, the slot is refreshed once right after display so it is never left
+empty — even with `refresh` set to `false`.
 
 It also handles the per-slot refresh and the configuration to respect the user's cookie consent.
 Consent is managed with didomi and is optional.

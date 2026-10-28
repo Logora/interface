@@ -16,6 +16,7 @@ export const AdUnit = ({
 	const slotRef = useRef(null);
 	const timerRef = useRef(null);
 	const pendingRef = useRef(false);
+	const runRef = useRef(0);
 
 	useEffect(() => {
 		if (typeof window === "undefined" || !id || !adPath) {
@@ -66,6 +67,8 @@ export const AdUnit = ({
 	}, []);
 
 	useEffect(() => {
+		runRef.current += 1;
+		const isRerun = runRef.current > 1;
 		if (typeof window === "undefined" || refresh !== true || !id || !adPath) {
 			return;
 		}
@@ -126,6 +129,13 @@ export const AdUnit = ({
 				scheduleRefresh();
 			};
 			googletag.pubads().addEventListener("impressionViewable", handler);
+			if (
+				isRerun &&
+				document.visibilityState === "visible" &&
+				!cancelled
+			) {
+				scheduleRefresh();
+			}
 		});
 		document.addEventListener("visibilitychange", handleVisibilityChange);
 

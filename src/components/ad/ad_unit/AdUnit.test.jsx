@@ -225,6 +225,27 @@ describe("AdUnit", () => {
 		expect(state.pubads.refresh).toHaveBeenCalledWith([ownSlot]);
 	});
 
+	it("should arm a refresh cycle when refresh is enabled on a displayed slot", () => {
+		vi.useFakeTimers();
+		const state = setupGpt();
+
+		const { rerender } = render(
+			<AdUnit id={"slot-id"} adPath={"/path"} sizes={[[300, 250]]} />,
+		);
+		rerender(
+			<AdUnit
+				id={"slot-id"}
+				adPath={"/path"}
+				sizes={[[300, 250]]}
+				refresh={true}
+			/>,
+		);
+
+		vi.advanceTimersByTime(30000);
+		expect(state.pubads.refresh).toHaveBeenCalledTimes(1);
+		expect(state.pubads.refresh).toHaveBeenCalledWith([state.slots[0]]);
+	});
+
 	it("should take a refresh prop enabled after mount into account", () => {
 		vi.useFakeTimers();
 		const state = setupGpt();

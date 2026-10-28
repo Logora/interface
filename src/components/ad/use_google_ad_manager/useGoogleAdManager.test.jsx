@@ -137,6 +137,25 @@ describe("useGoogleAdManager", () => {
 		expect(enableServices).not.toHaveBeenCalled();
 	});
 
+it("should not mistake another vendor script for GPT", async () => {
+		const existing = document.createElement("script");
+		existing.src = "https://cdn.publisher.example/vendor/my-gpt.js";
+		document.body.appendChild(existing);
+		const enableServices = vi.fn();
+		window.googletag = {
+			cmd: { push: (fn) => fn() },
+			enableServices,
+		};
+
+		const useGoogleAdManager = await loadHook();
+		await mountHook(useGoogleAdManager, true, false);
+
+		expect(
+			document.body.querySelector(`script[src="${gptSrc}"]`),
+		).toBeTruthy();
+		expect(enableServices).toHaveBeenCalledTimes(1);
+	});
+
 	it("should enable services exactly once when it injects gpt.js itself", async () => {
 		const enableServices = vi.fn();
 		window.googletag = {

@@ -11,7 +11,7 @@ const isGptPresent = () => {
 	}
 	const scripts = document.querySelectorAll("script[src]");
 	for (const script of scripts) {
-		if (script.src.indexOf("gpt.js") !== -1) {
+		if (/\/gpt\.js(\?|$)/.test(script.src)) {
 			return true;
 		}
 	}
