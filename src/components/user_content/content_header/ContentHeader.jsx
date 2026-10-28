@@ -22,7 +22,9 @@ export const ContentHeader = ({
 	moderationPolicyUrl,
 	showModerationFeedback = false,
 }) => {
-	const relativeTime = useRelativeTime(new Date(date).getTime());
+	const relativeTime = useRelativeTime(
+		Math.min(new Date(date).getTime(), Date.now()),
+	);
 	const intl = useIntl();
 	const config = useConfig();
 
