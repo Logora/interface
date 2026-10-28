@@ -11,9 +11,10 @@ never refreshes ad slots, so it cannot interfere with ad slots owned by the
 publisher. Slot lifecycle (`defineSlot`, `display`, `refresh`, `destroySlots`)
 belongs to `AdUnit`.
 
-When the page already loads `gpt.js`, the hook neither injects the script nor
-calls `enableServices()`: the publisher snippet keeps full control of the page
-configuration. When the hook does load `gpt.js` itself, it calls
+When the page already loads `gpt.js` — canonical URL or any publisher
+variant, detected via `googletag.apiReady` or the script tag — the hook neither
+injects the script nor calls `enableServices()`: the publisher snippet keeps
+full control of the page configuration. When the hook does load `gpt.js` itself, it calls
 `enableServices()` once — GPT ignores page-level `pubads` settings applied after
 that call, so a page that configures GPT itself must ship its own GPT snippet
 instead of relying on the hook.

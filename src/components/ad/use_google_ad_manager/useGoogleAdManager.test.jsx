@@ -63,7 +63,7 @@ describe("useGoogleAdManager", () => {
 		).toBe(1);
 	});
 
-	it("should reuse a publisher-provided googletag without page-wide pubads settings", async () => {
+	it("should leave a bootstrapped publisher GPT untouched", async () => {
 		const pubads = {
 			enableSingleRequest: vi.fn(),
 			disableInitialLoad: vi.fn(),
@@ -85,7 +85,10 @@ describe("useGoogleAdManager", () => {
 		const useGoogleAdManager = await loadHook();
 		await mountHook(useGoogleAdManager, true, false);
 
-		expect(window.googletag.enableServices).toHaveBeenCalledTimes(1);
+		expect(
+			document.body.querySelector('script[src*="gpt.js"]'),
+		).toBeNull();
+		expect(window.googletag.enableServices).not.toHaveBeenCalled();
 		expect(pubads.enableSingleRequest).not.toHaveBeenCalled();
 		expect(pubads.disableInitialLoad).not.toHaveBeenCalled();
 		expect(pubads.collapseEmptyDivs).not.toHaveBeenCalled();
@@ -111,6 +114,27 @@ describe("useGoogleAdManager", () => {
 		expect(document.body.querySelectorAll(`script[src="${gptSrc}"]`).length).toBe(1);
 		expect(enableServices).not.toHaveBeenCalled();
 		expect(pubads.enableSingleRequest).not.toHaveBeenCalled();
+	});
+
+	it("should detect a publisher GPT script loaded from a non-canonical URL", async () => {
+		const existing = document.createElement("script");
+		existing.src =
+			"https://securepubads.g.doubleclick.net/tag/js/gpt.js?publisher=1";
+		document.body.appendChild(existing);
+		const enableServices = vi.fn();
+		window.googletag = {
+			cmd: { push: (fn) => fn() },
+			pubads: () => ({}),
+			enableServices,
+		};
+
+		const useGoogleAdManager = await loadHook();
+		await mountHook(useGoogleAdManager, true, false);
+
+		expect(
+			document.body.querySelectorAll('script[src*="gpt.js"]').length,
+		).toBe(1);
+		expect(enableServices).not.toHaveBeenCalled();
 	});
 
 	it("should not load anything when disabled", async () => {

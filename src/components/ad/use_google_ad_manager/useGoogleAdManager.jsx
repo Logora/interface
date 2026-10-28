@@ -2,11 +2,24 @@ import { useEffect } from "react";
 
 export const GPT_SRC = "https://securepubads.g.doubleclick.net/tag/js/gpt.js";
 
-const loadGptScript = (enableDidomi = false) => {
+const isGptPresent = () => {
 	if (typeof window === "undefined" || typeof document === "undefined") {
-		return false;
+		return true;
 	}
-	if (document.querySelector(`script[src="${GPT_SRC}"]`)) {
+	if (window.googletag && window.googletag.apiReady) {
+		return true;
+	}
+	const scripts = document.querySelectorAll("script[src]");
+	for (const script of scripts) {
+		if (script.src.indexOf("gpt.js") !== -1) {
+			return true;
+		}
+	}
+	return false;
+};
+
+const loadGptScript = (enableDidomi = false) => {
+	if (isGptPresent()) {
 		return false;
 	}
 	const libScript = document.createElement("script");
