@@ -16,7 +16,10 @@ import userEvent from "@testing-library/user-event";
 import React from "react";
 import { IntlProvider } from "react-intl";
 import { BrowserRouter } from "react-router-dom";
-import { clearPendingReply, readPendingReply } from "@logora/debate/util/pending_reply";
+import {
+	clearPendingReply,
+	readPendingReply,
+} from "@logora/debate/util/pending_reply";
 import { ArgumentInput } from "./ArgumentInput";
 
 vi.mock("@lexical/react/LexicalErrorBoundary", () => ({
