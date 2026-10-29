@@ -23,6 +23,7 @@ import { render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { IntlProvider } from "react-intl";
 import { BrowserRouter } from "react-router-dom";
+import { clearPendingReply, readPendingReply, storePendingReply } from "@logora/debate/util/pending_reply";
 import { Argument } from "./Argument";
 
 const routes = {
@@ -358,6 +359,25 @@ describe("Argument", () => {
 		expect(queryByText("Your answer") || queryByText("Reply")).toBeTruthy();
 	});
 
+	it("should reopen the pending reply after login", async () => {
+		Element.prototype.scrollIntoView = vi.fn();
+		storePendingReply({
+			groupId: argument.group_id,
+			parentId: argument.id,
+			ancestorIds: [argument.id],
+		});
+		const { findByTestId } = renderArgument({
+			argument,
+			positions,
+			groupName,
+			nestingLevel: 0,
+		});
+	
+		expect(await findByTestId("argument-input")).toBeInTheDocument();
+		expect(readPendingReply()).toBeNull();
+		clearPendingReply();
+	});
+	
 	it("should allow the user to add a reply to an argument", async () => {
 		const { getByText, queryByText } = renderArgument({
 			argument,
