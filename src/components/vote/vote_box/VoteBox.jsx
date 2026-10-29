@@ -29,6 +29,7 @@ export const VoteBox = ({
 	buttonClassName,
 	showResultClassName,
 	onVote,
+	onVoteCountsChange,
 	disabled = false,
 	showVotesCommentsNumber = false,
 	commentsCount,
@@ -126,6 +127,10 @@ export const VoteBox = ({
 		}
 	}, [currentVote]);
 
+	useEffect(() => {
+		onVoteCountsChange?.({ total: totalVotes, counts: votesCount });
+	}, [totalVotes, votesCount]);
+
 	const getStoredVote = () => {
 		if (savedVote && Object.keys(savedVote).length !== 0) {
 			const isSameTarget =
@@ -175,6 +180,12 @@ export const VoteBox = ({
 		return totalVotes === 0 ? 0 : Math.round(100 * (voteCount / totalVotes));
 	};
 
+	const restoreVotes = ({ counts, total, vote }) => {
+		setVotesCount(counts);
+		setTotalVotes(total);
+		setCurrentVote(vote);
+	};
+
 	const voteAction = (positionId) => {
 		const data = {
 			voteable_id: voteableId,
@@ -187,38 +198,36 @@ export const VoteBox = ({
 			positionId: positionId,
 		};
 		setSavedUserSide(userSideToSave);
+		const previousVotes = {
+			counts: votesCount,
+			total: totalVotes,
+			vote: currentVote,
+		};
+		const confirmVote = (response) => {
+			if (response.data.success) {
+				setCurrentVote(response.data.data.resource);
+				toast(
+					intl.formatMessage({
+						id: "header.vote_confirm_modal",
+						defaultMessage: "Your vote has been saved !",
+					}),
+					{ type: "success" },
+				);
+			} else {
+				restoreVotes(previousVotes);
+			}
+		};
+		const rejectVote = () => restoreVotes(previousVotes);
 		if (currentVote) {
 			updateVote(positionId, currentVote.position_id);
 			showResults === false && toggleResults();
 			if (positionId !== currentVote.position_id) {
-				api.update("votes", currentVote.id, data).then((response) => {
-					if (response.data.success) {
-						setCurrentVote(response.data.data.resource);
-						toast(
-							intl.formatMessage({
-								id: "header.vote_confirm_modal",
-								defaultMessage: "Your vote has been saved !",
-							}),
-							{ type: "success" },
-						);
-					}
-				});
+				api.update("votes", currentVote.id, data).then(confirmVote, rejectVote);
 			}
 		} else {
 			addVote(positionId);
 			toggleResults();
-			api.create("votes", data).then((response) => {
-				if (response.data.success) {
-					setCurrentVote(response.data.data.resource);
-					toast(
-						intl.formatMessage({
-							id: "header.vote_confirm_modal",
-							defaultMessage: "Your vote has been saved !",
-						}),
-						{ type: "success" },
-					);
-				}
-			});
+			api.create("votes", data).then(confirmVote, rejectVote);
 		}
 	};
 
