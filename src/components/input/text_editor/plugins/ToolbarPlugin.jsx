@@ -434,6 +434,8 @@ export const ToolbarPlugin = (props) => {
 						type="button"
 						data-testid="submit-button"
 						handleClick={props.onSubmit}
+						disabled={props.submitting}
+						aria-busy={props.submitting ? "true" : "false"}
 						className={cx(styles.inputSubmitActionButton, styles.submitAction)}
 						aria-label={intl.formatMessage({
 							id: "input.text_editor.plugins.toolbar_plugin.submit_button.aria_label",

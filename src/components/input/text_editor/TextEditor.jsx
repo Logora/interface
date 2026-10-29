@@ -66,6 +66,7 @@ export const TextEditor = ({
 	autoFocus = false,
 	isReply = false,
 	resetSignal,
+	submitting = false,
 	...rest
 }) => {
 	const [isActive, setIsActive] = useState(autoFocus || active);
@@ -213,6 +214,7 @@ export const TextEditor = ({
 						/>
 						<ToolbarPlugin
 							hideSourceAction={hideSourceAction}
+							submitting={submitting}
 							hideSubmit={hideSubmit}
 							disableRichText={disableRichText}
 							shortBar={shortBar}
