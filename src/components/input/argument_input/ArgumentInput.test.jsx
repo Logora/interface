@@ -705,7 +705,10 @@ describe("ArgumentInput", () => {
 		});
 
 		const editor = getByRole("textbox");
-		expect(Element.prototype.scrollIntoView).toHaveBeenCalled();
+		expect(Element.prototype.scrollIntoView).toHaveBeenCalledWith({
+			behavior: "smooth",
+			block: "center",
+		});
 		expect(document.activeElement).toBe(editor);
 	});
 

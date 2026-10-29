@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef } from "react";
 
 export const SCROLL_TO_EDITOR_MESSAGE = "logora:scroll-to-editor";
 
-const VIEWPORT_SETTLE_DELAY = 1000;
+export const VIEWPORT_SETTLE_DELAY = 1000;
 
 const relayScrollToHostPage = (target) => {
 	if (typeof window === "undefined" || !window.parent) {
@@ -20,22 +20,39 @@ const relayScrollToHostPage = (target) => {
 export const useScrollToEditor = (targetRef) => {
 	const frameRef = useRef(null);
 	const viewportTimerRef = useRef(null);
+	const viewportHandlerRef = useRef(null);
 
-	const reScrollWhenViewportSettles = useCallback((target) => {
-		const viewport =
-			typeof window === "undefined" ? null : window.visualViewport;
-		if (!viewport) {
-			return;
-		}
-		const handleViewportResize = () => {
-			target.scrollIntoView({ behavior: "smooth", block: "center" });
-		};
-		viewport.addEventListener("resize", handleViewportResize);
+	const detachViewportListener = useCallback(() => {
 		clearTimeout(viewportTimerRef.current);
-		viewportTimerRef.current = setTimeout(() => {
-			viewport.removeEventListener("resize", handleViewportResize);
-		}, VIEWPORT_SETTLE_DELAY);
+		if (viewportHandlerRef.current && typeof window !== "undefined") {
+			window.visualViewport?.removeEventListener(
+				"resize",
+				viewportHandlerRef.current,
+			);
+		}
+		viewportHandlerRef.current = null;
 	}, []);
+
+	const reScrollWhenViewportSettles = useCallback(
+		(target) => {
+			const viewport =
+				typeof window === "undefined" ? null : window.visualViewport;
+			if (!viewport) {
+				return;
+			}
+			detachViewportListener();
+			const handleViewportResize = () => {
+				target.scrollIntoView({ behavior: "smooth", block: "center" });
+			};
+			viewportHandlerRef.current = handleViewportResize;
+			viewport.addEventListener("resize", handleViewportResize);
+			viewportTimerRef.current = setTimeout(
+				detachViewportListener,
+				VIEWPORT_SETTLE_DELAY,
+			);
+		},
+		[detachViewportListener],
+	);
 
 	const scrollToEditor = useCallback(() => {
 		if (
@@ -61,9 +78,9 @@ export const useScrollToEditor = (targetRef) => {
 	useEffect(
 		() => () => {
 			window.cancelAnimationFrame(frameRef.current);
-			clearTimeout(viewportTimerRef.current);
+			detachViewportListener();
 		},
-		[],
+		[detachViewportListener],
 	);
 
 	return scrollToEditor;

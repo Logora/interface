@@ -3,7 +3,7 @@ import { useInput } from "@logora/debate/input/input_provider";
 import { $createRangeSelection, $getRoot, $setSelection } from "lexical";
 import { useCallback, useEffect, useRef } from "react";
 
-const placeCaretAtEnd = (editor) => {
+export const placeCaretAtEnd = (editor) => {
 	editor.update(() => {
 		const lastDescendant = $getRoot().getLastDescendant();
 		if (!lastDescendant) {
