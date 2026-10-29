@@ -5,6 +5,23 @@ labels: ['google-ad-manager', 'gpt', 'didomi']
 
 A hook that inserts the script from Google Ad Manager (GPT).
 
+The hook only loads `gpt.js` once per page. It never calls page-wide `pubads`
+settings (`enableSingleRequest`, `disableInitialLoad`, `collapseEmptyDivs`) and
+never refreshes ad slots, so it cannot interfere with ad slots owned by the
+publisher. Slot lifecycle (`defineSlot`, `display`, `refresh`, `destroySlots`)
+belongs to `AdUnit`.
+
+When the page already loads `gpt.js` — canonical URL or any publisher
+variant, detected via `googletag.apiReady` or the script tag — the hook neither
+injects the script nor calls `enableServices()`: the publisher snippet keeps
+full control of the page configuration. When the hook does load `gpt.js` itself, it calls
+`enableServices()` once — GPT ignores page-level `pubads` settings applied after
+that call, so a page that configures GPT itself must ship its own GPT snippet
+instead of relying on the hook. The same applies when the page template loads
+`gpt.js` without ever enabling GPT services: the hook never calls
+`enableServices()` on a page it did not bootstrap, so such a page must enable
+GPT services itself or Logora slots stay empty — cover it in the manual recipe.
+
 The hook can also add consent attributes from [didomi](https://www.didomi.io/fr/) to manage user consent.
 
 ### Component usage
@@ -24,4 +41,3 @@ function MyComponentWithGPT() {
 | ----------- | ----------- | :-----------: | ----------- | ----------- |
 | <font color='#4646c6'>enable</font> | <font color="#397300">boolean</font> | &cross; | true | <font color="grey">*Whether to insert the script*</font> |
 | <font color='#4646c6'>enableDidomi</font> | <font color="#397300">boolean</font> | &cross; | false | <font color="grey">*Whether to add didomi attributes to manage user consent*</font> |
-| <font color='#4646c6'>refreshRate</font> | <font color="#397300">integer</font> | &cross; | 8000 | <font color="grey">*Ad refresh rate in milliseconds*</font> |
