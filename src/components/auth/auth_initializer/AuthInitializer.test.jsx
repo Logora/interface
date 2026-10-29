@@ -1,12 +1,12 @@
 import { AuthProvider } from "@logora/debate/auth/use_auth";
-import { httpClient } from "@logora/debate/data/axios_client";
+import { httpClient } from "@logora/debate/data/http_client";
 import { ConfigProvider } from "@logora/debate/data/config_provider";
 import { DataProviderContext } from "@logora/debate/data/data_provider";
 import { act, render, screen, waitFor } from "@testing-library/react";
 import React from "react";
 import { AuthInitializer, decodeJwtPayload } from "./AuthInitializer";
 
-vi.mock("@logora/debate/data/axios_client", () => ({
+vi.mock("@logora/debate/data/http_client", () => ({
 	httpClient: { post: vi.fn(), interceptors: { request: { use: vi.fn(), eject: vi.fn() }, response: { use: vi.fn(), eject: vi.fn() } } },
 }));
 vi.mock("@logora/debate/hooks/use_auth_required", () => ({ useAuthRequired: () => vi.fn() }));

@@ -1,0 +1,6 @@
+---
+description: A fetch based http client.
+labels: ['http', 'http-client', 'fetch']
+---
+
+`httpClient` mirrors the axios client it replaces. Defaults: `Accept: application/json, text/plain, */*`, `Content-Type: application/json` unless the body is a `FormData` or a string, a 10 000 ms timeout through `AbortController`, and `params` serialized as `tags[]=a&tags[]=b`. `headers` can be given as a plain object, a `Headers` instance or an array of `[name, value]` pairs.
