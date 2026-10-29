@@ -69,6 +69,21 @@ const currentUser = {
 
 const callback = vi.fn();
 
+const ArgumentInputWrapper = () => (
+	<ArgumentInput
+		onSubmit={callback}
+		groupId={debate.id}
+		groupName={debate.name}
+		positions={debate.positions}
+		disabledPositions={[]}
+		listId={"argumentList"}
+		positionId={debate.positions[0].id}
+		hideSourceAction={false}
+		avatarSize={48}
+		placeholder={"Add an argument..."}
+	/>
+);
+
 describe("ArgumentInput", () => {
 	beforeAll(() => {
 		Object.defineProperty(window, "matchMedia", {
@@ -638,6 +653,59 @@ describe("ArgumentInput", () => {
 		await act(async () => {
 			await new Promise((r) => setTimeout(r, 0));
 		});
+		expect(document.activeElement).toBe(editor);
+	});
+
+	it("should scroll to and focus the editor when an argument is edited", async () => {
+		Element.prototype.scrollIntoView = vi.fn();
+		const editedArgument = {
+			id: faker.number.int(),
+			content: faker.lorem.sentence(),
+			rich_content: "{}",
+			sources: [],
+			position: { id: debate.positions[0].id },
+		};
+
+		const EditableArgumentInput = () => {
+			const { setInputContent } = useInput();
+			React.useEffect(() => {
+				setInputContent(editedArgument);
+			}, []);
+			return <ArgumentInputWrapper />;
+		};
+
+		const { getByRole } = render(
+			<BrowserRouter>
+				<ConfigProvider>
+					<IconProvider library={regularIcons}>
+						<IntlProvider locale="en">
+							<DataProviderContext.Provider value={{ dataProvider: data }}>
+								<AuthContext.Provider
+									value={{ currentUser: currentUser, isLoggedIn: true }}
+								>
+									<ToastProvider>
+										<ModalProvider>
+											<ListProvider>
+												<InputProvider>
+													<EditableArgumentInput />
+												</InputProvider>
+											</ListProvider>
+										</ModalProvider>
+									</ToastProvider>
+								</AuthContext.Provider>
+							</DataProviderContext.Provider>
+						</IntlProvider>
+					</IconProvider>
+				</ConfigProvider>
+			</BrowserRouter>,
+		);
+
+		await act(async () => {
+			await new Promise((resolve) => setTimeout(resolve, 100));
+		});
+
+		const editor = getByRole("textbox");
+		expect(Element.prototype.scrollIntoView).toHaveBeenCalled();
 		expect(document.activeElement).toBe(editor);
 	});
 
