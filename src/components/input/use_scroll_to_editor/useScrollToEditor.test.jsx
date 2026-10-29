@@ -168,6 +168,28 @@ describe("useScrollToEditor", () => {
 		);
 	});
 
+	it("should relay the viewport re-scroll to the host page when embedded", async () => {
+		const postMessage = vi.fn();
+		const viewport = mountVisualViewport();
+		Object.defineProperty(window, "top", { configurable: true, value: {} });
+		Object.defineProperty(window, "parent", {
+			configurable: true,
+			value: { postMessage },
+		});
+		const { result } = renderScrollHook();
+
+		await scrollAndFlushFrames(result);
+		postMessage.mockClear();
+		act(() => {
+			viewport.dispatchEvent(new Event("resize"));
+		});
+
+		expect(postMessage).toHaveBeenCalledWith(
+			{ type: SCROLL_TO_EDITOR_MESSAGE, top: expect.any(Number) },
+			"*",
+		);
+	});
+
 	it("should not relay the scroll when the page is top-level", async () => {
 		const postMessage = vi.fn();
 		Object.defineProperty(window, "top", { configurable: true, value: window });

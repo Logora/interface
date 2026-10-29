@@ -43,6 +43,7 @@ export const useScrollToEditor = (targetRef) => {
 			detachViewportListener();
 			const handleViewportResize = () => {
 				target.scrollIntoView({ behavior: "smooth", block: "center" });
+				relayScrollToHostPage(target);
 			};
 			viewportHandlerRef.current = handleViewportResize;
 			viewport.addEventListener("resize", handleViewportResize);

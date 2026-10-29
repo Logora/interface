@@ -1,6 +1,6 @@
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 import { useInput } from "@logora/debate/input/input_provider";
-import { $createRangeSelection, $getRoot, $setSelection } from "lexical";
+import { $getRoot, $isTextNode } from "lexical";
 import { useCallback, useEffect, useRef } from "react";
 
 export const placeCaretAtEnd = (editor) => {
@@ -9,11 +9,10 @@ export const placeCaretAtEnd = (editor) => {
 		if (!lastDescendant) {
 			return;
 		}
-		const offset = lastDescendant.getTextContentSize();
-		const selection = $createRangeSelection();
-		selection.anchor.set(lastDescendant.getKey(), offset, "text");
-		selection.focus.set(lastDescendant.getKey(), offset, "text");
-		$setSelection(selection);
+		const offset = $isTextNode(lastDescendant)
+			? lastDescendant.getTextContentSize()
+			: lastDescendant.getChildrenSize();
+		lastDescendant.select(offset, offset);
 	});
 };
 
