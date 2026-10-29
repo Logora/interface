@@ -42,7 +42,9 @@ export const EmbedHeader = ({
 						</Link>
 					)}
 					{headerExtra && (
-						<div className={styles.headerLabelText}>{headerExtra}</div>
+						<div className={cx(styles.headerLabelText, styles.headerExtra)}>
+							{headerExtra}
+						</div>
 					)}
 					{headerLabel && onlineUsersCount ? (
 						<div className={styles.headerLiveStat}>
