@@ -70,7 +70,6 @@ export const ProposalBox = ({
 					tag={proposal.tag?.display_name}
 					date={proposal.created_at}
 					oneLine={false}
-					isDeleted={proposal.is_deleted}
 					showModerationFeedback={
 						showModerationFeedback ??
 						(proposal.status === "rejected" &&
