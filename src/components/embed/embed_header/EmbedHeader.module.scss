@@ -11,6 +11,9 @@
 .headerBoxLabel {
     display: flex !important;
     justify-content: flex-start !important;
+    align-items: center !important;
+    flex-wrap: wrap !important;
+    gap: spacing.$spacer-sm;
     > .titleRedirectUrl {
         background: theme.$background-color-primary !important;
         &:hover {

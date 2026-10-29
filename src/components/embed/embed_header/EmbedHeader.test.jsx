@@ -30,6 +30,34 @@ describe("EmbedHeader", () => {
 		);
 	});
 
+	it("renders header extra next to header label", () => {
+		const { getByText } = render(
+			<IntlProvider locale="en">
+				<EmbedHeader
+					title={title}
+					titleRedirectUrl={titleRedirectUrl}
+					headerLabel={headerLabel}
+					headerExtra={<span>Test Extra</span>}
+				/>
+			</IntlProvider>,
+		);
+		expect(getByText(headerLabel)).toBeInTheDocument();
+		expect(getByText("Test Extra")).toBeInTheDocument();
+	});
+
+	it("renders header extra without header label", () => {
+		const { getByText } = render(
+			<IntlProvider locale="en">
+				<EmbedHeader
+					title={title}
+					titleRedirectUrl={titleRedirectUrl}
+					headerExtra={<span>Test Extra</span>}
+				/>
+			</IntlProvider>,
+		);
+		expect(getByText("Test Extra")).toBeInTheDocument();
+	});
+
 	it("renders online users count if provided", () => {
 		const { getByTestId } = render(
 			<IntlProvider locale="en">
