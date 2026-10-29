@@ -1,5 +1,6 @@
 const HTTP_TIMEOUT = 10000;
 const JSON_CONTENT_TYPE = "application/json";
+const DEFAULT_ACCEPT = "application/json, text/plain, */*";
 
 const requestInterceptors = [];
 
@@ -37,6 +38,19 @@ const appendParams = (url, params) => {
 	}
 
 	return url.includes("?") ? `${url}&${query}` : `${url}?${query}`;
+};
+
+const toPlainHeaders = (headers) => {
+	if (!headers) {
+		return {};
+	}
+	if (Array.isArray(headers)) {
+		return Object.fromEntries(headers);
+	}
+	if (typeof headers.entries === "function") {
+		return Object.fromEntries(headers.entries());
+	}
+	return { ...headers };
 };
 
 const hasHeader = (headers, name) => {
@@ -104,13 +118,19 @@ const runRequestInterceptors = async (config) => {
 const request = async (method, url, data, config) => {
 	const { params, headers = {}, timeout = HTTP_TIMEOUT } = config ?? {};
 
+	const initialHeaders = toPlainHeaders(headers);
+	if (!hasHeader(initialHeaders, "accept")) {
+		initialHeaders.Accept = DEFAULT_ACCEPT;
+	}
+
 	const requestConfig = await runRequestInterceptors({
 		url: appendParams(url, params),
 		method,
-		headers: { ...headers },
+		headers: initialHeaders,
 		data,
 		timeout,
 	});
+	const requestHeaders = toPlainHeaders(requestConfig.headers);
 
 	const controller = new AbortController();
 	let timedOut = false;
@@ -124,8 +144,8 @@ const request = async (method, url, data, config) => {
 	try {
 		const response = await fetch(requestConfig.url, {
 			method: requestConfig.method,
-			headers: requestConfig.headers,
-			body: buildBody(requestConfig.data, requestConfig.headers),
+			headers: requestHeaders,
+			body: buildBody(requestConfig.data, requestHeaders),
 			signal: controller.signal,
 		});
 

@@ -2,6 +2,7 @@ import { dataProvider } from "@logora/debate/data/data_provider";
 import { httpClient } from "./httpClient";
 
 const API_URL = "https://api.test/v1";
+const DEFAULT_ACCEPT = "application/json, text/plain, */*";
 
 const makeResponse = ({ status = 200, body = "", headers = {} } = {}) => ({
 	ok: status >= 200 && status < 300,
@@ -61,6 +62,7 @@ describe("httpClient", () => {
 				headers: {
 					authorization: "Bearer token",
 					"Content-Type": "application/json",
+					Accept: DEFAULT_ACCEPT,
 				},
 			}),
 		);
@@ -78,7 +80,10 @@ describe("httpClient", () => {
 		const [, init] = fetchMock.mock.calls[0];
 		expect(init.method).toBe("PATCH");
 		expect(init.body).toBe(formData);
-		expect(init.headers).toEqual({ authorization: "Bearer token" });
+		expect(init.headers).toEqual({
+			authorization: "Bearer token",
+			Accept: DEFAULT_ACCEPT,
+		});
 	});
 
 	it("serializes params into the query string", async () => {
@@ -156,6 +161,7 @@ describe("httpClient", () => {
 
 		expect(fetchMock.mock.calls[0][1].headers).toEqual({
 			authorization: "Bearer refreshed",
+			Accept: DEFAULT_ACCEPT,
 		});
 	});
 
@@ -169,7 +175,57 @@ describe("httpClient", () => {
 		eject();
 		await httpClient.get(`${API_URL}/users`);
 
-		expect(fetchMock.mock.calls[0][1].headers).toEqual({});
+		expect(fetchMock.mock.calls[0][1].headers).not.toHaveProperty(
+			"x-intercepted",
+		);
+	});
+
+	it("sends the axios Accept default on every request", async () => {
+		const fetchMock = stubFetch(makeResponse({ body: "{}" }));
+
+		await httpClient.get(`${API_URL}/users`);
+
+		expect(fetchMock.mock.calls[0][1].headers).toEqual({
+			Accept: DEFAULT_ACCEPT,
+		});
+	});
+
+	it("keeps a caller provided Accept header", async () => {
+		const fetchMock = stubFetch(makeResponse({ body: "{}" }));
+
+		await httpClient.get(`${API_URL}/users`, {
+			headers: { accept: "text/plain" },
+		});
+
+		expect(fetchMock.mock.calls[0][1].headers).toEqual({
+			accept: "text/plain",
+		});
+	});
+
+	it("preserves headers given as a Headers instance", async () => {
+		const fetchMock = stubFetch(makeResponse({ body: "{}" }));
+
+		await httpClient.get(`${API_URL}/users`, {
+			headers: new Headers({ authorization: "Bearer token" }),
+		});
+
+		expect(fetchMock.mock.calls[0][1].headers).toEqual({
+			authorization: "Bearer token",
+			Accept: DEFAULT_ACCEPT,
+		});
+	});
+
+	it("preserves headers given as an array of entries", async () => {
+		const fetchMock = stubFetch(makeResponse({ body: "{}" }));
+
+		await httpClient.get(`${API_URL}/users`, {
+			headers: [["authorization", "Bearer token"]],
+		});
+
+		expect(fetchMock.mock.calls[0][1].headers).toEqual({
+			authorization: "Bearer token",
+			Accept: DEFAULT_ACCEPT,
+		});
 	});
 
 	it("keeps the DataProvider envelope contract", async () => {
