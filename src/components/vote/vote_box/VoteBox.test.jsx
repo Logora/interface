@@ -11,7 +11,7 @@ import { IconProvider } from "@logora/debate/icons/icon_provider";
 import * as regularIcons from "@logora/debate/icons/regular_icons";
 import { Location } from "@logora/debate/util/location";
 import { VoteProvider } from "@logora/debate/vote/vote_provider";
-import { render, screen, waitFor, within } from "@testing-library/react";
+import { act, render, screen, waitFor, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import React from "react";
 import { IntlProvider } from "react-intl";
@@ -377,4 +377,149 @@ describe("VoteBox Component", () => {
 		await waitFor(() => expect(postMock).toHaveBeenCalledTimes(1));
 		expect(await findByText("Modify")).toBeInTheDocument();
 	});
+
+	it("should report updated counts to the parent", async () => {
+		const onVoteCountsChange = vi.fn();
+		const { getByTitle } = render(
+			<VoteBoxWrapper>
+				<VoteBox
+					voteableId={debate.id}
+					voteableType={vote.voteable_type}
+					votePositions={votePositions}
+					numberVotes={debate.votes_count}
+					onVoteCountsChange={onVoteCountsChange}
+				/>
+			</VoteBoxWrapper>,
+		);
+
+		const position1 = getByTitle("Position 1");
+		await waitFor(() => expect(position1).not.toBeDisabled());
+		await userEvent.click(position1);
+
+		await waitFor(() =>
+			expect(onVoteCountsChange).toHaveBeenLastCalledWith({
+				total: 11,
+				counts: {
+					1: { count: 6, percentage: 55 },
+					2: { count: 5, percentage: 45 },
+					3: { count: 0, percentage: 0 },
+				},
+			}),
+		);
+	});
+
+	it("should keep the total unchanged when the position changes", async () => {
+		const existingVote = {
+			...vote,
+			position_id: 1,
+			voteable_id: debate.id,
+			voteable_type: vote.voteable_type,
+		};
+		const updateMock = vi.fn(() =>
+			Promise.resolve({
+				data: {
+					success: true,
+					data: { resource: { ...existingVote, position_id: 2 } },
+				},
+			}),
+		);
+		const updateHttpClient = {
+			get: () =>
+				Promise.resolve({ data: { success: true, data: { resource: existingVote } } }),
+			post: vi.fn(),
+			patch: updateMock,
+			delete: vi.fn(),
+		};
+		const onVoteCountsChange = vi.fn();
+		const { findByTitle, findByText } = render(
+			<VoteBoxWrapper
+				data={dataProvider(updateHttpClient, "https://mock.example.api")}
+			>
+				<VoteBox
+					voteableId={debate.id}
+					voteableType={vote.voteable_type}
+					votePositions={votePositions}
+					numberVotes={debate.votes_count}
+					onVoteCountsChange={onVoteCountsChange}
+				/>
+			</VoteBoxWrapper>,
+		);
+
+		await userEvent.click(await findByText("Modify"));
+		const position2 = await findByTitle("Position 2");
+		await waitFor(() => expect(position2).not.toBeDisabled());
+		await userEvent.click(position2);
+
+		await waitFor(() => expect(updateMock).toHaveBeenCalledTimes(1));
+		expect(onVoteCountsChange).toHaveBeenLastCalledWith({
+			total: 10,
+			counts: {
+				1: { count: 4, percentage: 40 },
+				2: { count: 6, percentage: 60 },
+				3: { count: 0, percentage: 0 },
+			},
+		});
+	});
+
+	it("should revert the counts when the vote request fails", async () => {
+		let rejectVote;
+		const failingHttpClient = {
+			get: () =>
+				Promise.resolve({ data: { success: true, data: { resource: null } } }),
+			post: vi.fn(
+				() =>
+					new Promise((resolve, reject) => {
+						rejectVote = reject;
+					}),
+			),
+			patch: vi.fn(),
+			delete: vi.fn(),
+		};
+		const onVoteCountsChange = vi.fn();
+		const { findByTitle, findByText, queryByText } = render(
+			<VoteBoxWrapper
+				data={dataProvider(failingHttpClient, "https://mock.example.api")}
+			>
+				<VoteBox
+					voteableId={debate.id}
+					voteableType={vote.voteable_type}
+					votePositions={votePositions}
+					numberVotes={debate.votes_count}
+					onVoteCountsChange={onVoteCountsChange}
+				/>
+			</VoteBoxWrapper>,
+		);
+
+		const position1 = await findByTitle("Position 1");
+		await waitFor(() => expect(position1).not.toBeDisabled());
+		await userEvent.click(position1);
+
+		await waitFor(() => expect(failingHttpClient.post).toHaveBeenCalledTimes(1));
+		await waitFor(() =>
+			expect(onVoteCountsChange).toHaveBeenLastCalledWith({
+				total: 11,
+				counts: {
+					1: { count: 6, percentage: 55 },
+					2: { count: 5, percentage: 45 },
+					3: { count: 0, percentage: 0 },
+				},
+			}),
+		);
+
+		await act(async () => rejectVote(new Error("vote failed")));
+
+		await waitFor(() =>
+			expect(onVoteCountsChange).toHaveBeenLastCalledWith({
+				total: 10,
+				counts: {
+					1: { count: 5, percentage: 50 },
+					2: { count: 5, percentage: 50 },
+					3: { count: 0, percentage: 0 },
+				},
+			}),
+		);
+		expect(await findByText("10 votes")).toBeInTheDocument();
+		expect(queryByText("Modify")).toBeNull();
+	});
 });
+
