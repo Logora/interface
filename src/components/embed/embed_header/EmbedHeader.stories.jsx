@@ -14,6 +14,7 @@ export default {
 		textLeft: false,
 		logoUrl: null,
 		logoAlt: "Super logo",
+		headerExtra: null,
 	},
 	argTypes: {
 		title: {
@@ -50,5 +51,11 @@ export const DefaultEmbedHeader = {};
 export const EmbedHeaderWithLogo = {
 	args: {
 		logoUrl: faker.image.url(),
+	},
+};
+
+export const EmbedHeaderWithExtra = {
+	args: {
+		headerExtra: <span>Ended</span>,
 	},
 };
