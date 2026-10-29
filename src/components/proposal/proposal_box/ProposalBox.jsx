@@ -22,6 +22,7 @@ export const ProposalBox = ({
 	fitContent = false,
 	enableEdition = true,
 	hideFooter = false,
+	showModerationFeedback,
 }) => {
 	const [richContent, setRichContent] = useState(null);
 	const [flash, setFlash] = useState(false);
@@ -69,6 +70,14 @@ export const ProposalBox = ({
 					tag={proposal.tag?.display_name}
 					date={proposal.created_at}
 					oneLine={false}
+					showModerationFeedback={
+						showModerationFeedback ??
+						(proposal.status === "rejected" &&
+							config.moderation?.showFeedback === true)
+					}
+					moderationReason={proposal.moderation_entry?.moderation_reason}
+					moderationNotes={proposal.moderation_entry?.moderator_notes}
+					moderationPolicyUrl={config.provider?.userGuideUrl}
 				/>
 				<div
 					className={cx(styles.proposalBoxContent, {

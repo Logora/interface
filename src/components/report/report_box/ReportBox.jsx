@@ -46,7 +46,13 @@ export const ReportBox = ({ report, flash }) => {
 			}
 
 			case "Proposal":
-				return <ProposalBox proposal={reportable} hideFooter={true} />;
+				return (
+					<ProposalBox
+						proposal={reportable}
+						hideFooter={true}
+						showModerationFeedback={false}
+					/>
+				);
 			case "Group":
 				return <SuggestionBox suggestion={reportable} hideFooter={true} />;
 			default:
