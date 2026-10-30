@@ -8,7 +8,6 @@ export const EmbedHeader = ({
 	title,
 	titleRedirectUrl,
 	headerLabel,
-	headerExtra,
 	onlineUsersCount,
 	textLeft,
 	className,
@@ -17,34 +16,29 @@ export const EmbedHeader = ({
 }) => {
 	return (
 		<div className={cx(styles.headerBox, className)}>
-			{(headerLabel || headerExtra) && (
+			{headerLabel && (
 				<div className={styles.headerBoxLabel}>
-					{headerLabel && (
-						<Link
-							to={titleRedirectUrl}
-							target="_top"
-							external
-							data-tid="link_debate_index_embed"
-							rel="nofollow"
-						>
-							{logoUrl ? (
-								<img
-									loading={"lazy"}
-									className={styles.headerLogo}
-									src={logoUrl}
-									width={100}
-									height={40}
-									alt={logoAlt}
-								/>
-							) : (
-								<div className={styles.headerLabelText}>{headerLabel}</div>
-							)}
-						</Link>
-					)}
-					{headerExtra && (
-						<div className={styles.headerLabelText}>{headerExtra}</div>
-					)}
-					{headerLabel && onlineUsersCount ? (
+					<Link
+						to={titleRedirectUrl}
+						target="_top"
+						external
+						data-tid="link_debate_index_embed"
+						rel="nofollow"
+					>
+						{logoUrl ? (
+							<img
+								loading={"lazy"}
+								className={styles.headerLogo}
+								src={logoUrl}
+								width={100}
+								height={40}
+								alt={logoAlt}
+							/>
+						) : (
+							<div className={styles.headerLabelText}>{headerLabel}</div>
+						)}
+					</Link>
+					{onlineUsersCount ? (
 						<div className={styles.headerLiveStat}>
 							<div className={styles.headerLiveNow}></div>
 							<span
