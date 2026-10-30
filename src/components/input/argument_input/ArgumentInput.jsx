@@ -14,6 +14,7 @@ import { useList } from "@logora/debate/list/list_provider";
 import { AuthorBox } from "@logora/debate/user/author_box";
 import { Avatar } from "@logora/debate/user/avatar";
 import { useSessionStorageState } from "@logora/debate/hooks/use_session_storage_state";
+import { storePendingReply } from "@logora/debate/util/pending_reply";
 import React, { useState, useEffect, useRef, lazy, Suspense } from "react";
 import { FormattedMessage } from "react-intl";
 import { useIntl } from "react-intl";
@@ -36,6 +37,7 @@ export const ArgumentInput = ({
 	onSubmit,
 	onUpdate,
 	parentId,
+	ancestorIds = [],
 	placeholder,
 	positionId,
 	focusOnInit = false,
@@ -236,6 +238,9 @@ export const ArgumentInput = ({
 				}
 			}
 		} else {
+			if (parentId) {
+				storePendingReply({ groupId, parentId, ancestorIds });
+			}
 			requireAuthentication({ loginAction: "argument" });
 		}
 	};

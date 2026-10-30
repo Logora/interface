@@ -11,6 +11,10 @@ import { HashScroll } from "@logora/debate/tools/hash_scroll";
 import { buildShareUrl } from "@logora/debate/tools/share_url";
 import { useTranslatedContent } from "@logora/debate/translation/translated_content";
 import { TranslationButton } from "@logora/debate/translation/translation_button";
+import {
+	clearPendingReply,
+	readPendingReply,
+} from "@logora/debate/util/pending_reply";
 import { ContentFooter } from "@logora/debate/user_content/content_footer";
 import { ContentHeader } from "@logora/debate/user_content/content_header";
 import { VoteButton } from "@logora/debate/vote/vote_button";
@@ -47,6 +51,7 @@ export const Argument = ({
 	lineCount = 5,
 	replyRedirectUrl,
 	hideContent = false,
+	ancestorIds = [],
 }) => {
 	const intl = useIntl();
 	const { isLoggedIn, currentUser } = useAuth();
@@ -57,6 +62,7 @@ export const Argument = ({
 	const [expandReplies, setExpandReplies] = useState(false);
 	const [flash, setFlash] = useState(false);
 	const [showReplyInput, setShowReplyInput] = useState(false);
+	const [reopenPendingReply, setReopenPendingReply] = useState(false);
 	const richContent = useRichContent(argument);
 	const [extraReplies, setExtraReplies] = useState();
 	const content = useTranslatedContent(
@@ -81,6 +87,27 @@ export const Argument = ({
 			displayRepliesThread();
 		}
 	}, [argumentReplies]);
+
+	useEffect(() => {
+		if (!isLoggedIn) {
+			return;
+		}
+		const pending = readPendingReply();
+		if (!pending || String(pending.groupId) !== String(argument.group_id)) {
+			return;
+		}
+		const chain = (pending.ancestorIds || []).map(String);
+		if (chain.includes(String(argument.id))) {
+			setExpandReplies(true);
+		}
+		if (String(pending.parentId) !== String(argument.id)) {
+			return;
+		}
+		setExpandReplies(true);
+		setShowReplyInput(true);
+		setReopenPendingReply(true);
+		clearPendingReply();
+	}, [isLoggedIn]);
 
 	const scrollToArgument = (argumentId) => {
 		const currentArgumentId = componentId;
@@ -146,6 +173,7 @@ export const Argument = ({
 				argumentReplies={argumentReplies}
 				parentArgument={argument}
 				flashParent={(argumentId) => scrollToArgument(`argument_${argumentId}`)}
+				ancestorIds={[...ancestorIds, argument.id]}
 			/>
 		);
 	};
@@ -377,6 +405,7 @@ export const Argument = ({
 								groupName={groupName}
 								positions={positions}
 								parentId={argument.id}
+								ancestorIds={[...ancestorIds, argument.id]}
 								positionId={vote?.position_id}
 								disabled={disabled}
 								hideSourceAction={config?.actions?.disableUserSources || false}
@@ -397,6 +426,7 @@ export const Argument = ({
 								}}
 								isReply
 								autoFocus
+								focusOnInit={reopenPendingReply}
 								avatarSize={40}
 								placeholder={intl.formatMessage({
 									id: "input.reply_input.your_answer",

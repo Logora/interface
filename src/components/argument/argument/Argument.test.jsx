@@ -23,6 +23,11 @@ import { render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { IntlProvider } from "react-intl";
 import { BrowserRouter } from "react-router-dom";
+import {
+	clearPendingReply,
+	readPendingReply,
+	storePendingReply,
+} from "@logora/debate/util/pending_reply";
 import { Argument } from "./Argument";
 
 const routes = {
@@ -175,14 +180,14 @@ const AddContentComponent = () => {
 	);
 };
 
-const Providers = ({ children }) => (
+const Providers = ({ children, isLoggedIn = true }) => (
 	<BrowserRouter>
 		<ConfigProvider
 			routes={{ ...routes }}
 			config={{ translation: { enable: false } }}
 		>
 			<DataProviderContext.Provider value={{ dataProvider: data }}>
-				<AuthContext.Provider value={{ currentUser, isLoggedIn: true }}>
+				<AuthContext.Provider value={{ currentUser, isLoggedIn }}>
 					<ResponsiveProvider>
 						<ModalProvider>
 							<ListProvider>
@@ -207,9 +212,9 @@ const Providers = ({ children }) => (
 	</BrowserRouter>
 );
 
-const renderArgument = (props) =>
+const renderArgument = (props, { isLoggedIn = true } = {}) =>
 	render(
-		<Providers>
+		<Providers isLoggedIn={isLoggedIn}>
 			<Argument {...props} />
 		</Providers>,
 	);
@@ -358,6 +363,98 @@ describe("Argument", () => {
 		expect(queryByText("Your answer") || queryByText("Reply")).toBeTruthy();
 	});
 
+	describe("pending reply", () => {
+		let scrollIntoView;
+
+		beforeEach(() => {
+			clearPendingReply();
+			Element.prototype.scrollIntoView = vi.fn();
+			scrollIntoView = Element.prototype.scrollIntoView;
+		});
+
+		afterEach(() => {
+			clearPendingReply();
+			delete Element.prototype.scrollIntoView;
+		});
+
+		it("should reopen the pending reply after login", async () => {
+			storePendingReply({
+				groupId: argument.group_id,
+				parentId: argument.id,
+			});
+			const { findByTestId } = renderArgument({
+				argument,
+				positions,
+				groupName,
+				nestingLevel: 0,
+			});
+
+			expect(await findByTestId("argument-input")).toBeInTheDocument();
+			expect(scrollIntoView).toHaveBeenCalledWith({
+				behavior: "smooth",
+				block: "center",
+			});
+			expect(readPendingReply()).toBeNull();
+		});
+
+		it("should expand the parent argument and reopen the nested pending reply", async () => {
+			storePendingReply({
+				groupId: argument.group_id,
+				parentId: argumentReply.id,
+				ancestorIds: [argument.id],
+			});
+			const { container, findByTestId } = renderArgument({
+				argument,
+				positions,
+				groupName,
+				nestingLevel: 0,
+			});
+
+			expect(await findByTestId("argument-input")).toBeInTheDocument();
+			expect(
+				container.querySelector(`#argument_${argumentReply.id}`),
+			).toBeInTheDocument();
+			expect(scrollIntoView).toHaveBeenCalledWith({
+				behavior: "smooth",
+				block: "center",
+			});
+			expect(readPendingReply()).toBeNull();
+		});
+
+		it("should store the ancestor chain when a nested reply requires authentication", async () => {
+			const { findByTestId, getAllByTestId, getByText } = renderArgument(
+				{
+					argument,
+					positions,
+					groupName,
+					nestingLevel: 0,
+				},
+				{ isLoggedIn: false },
+			);
+
+			await act(async () => {
+				await userEvent.click(getByText("View answers"));
+			});
+			await act(async () => {
+				await userEvent.click(getByText("Click to set content"));
+			});
+			const replyButtons = getAllByTestId("action-reply-button");
+			await act(async () => {
+				await userEvent.click(replyButtons[replyButtons.length - 1]);
+			});
+			await act(async () => {
+				await userEvent.click(await findByTestId("argument-input"));
+				await userEvent.click(await findByTestId("submit-button"));
+			});
+
+			expect(readPendingReply()).toMatchObject({
+				groupId: argument.group_id,
+				parentId: argumentReply.id,
+				ancestorIds: [argument.id, argumentReply.id],
+			});
+		});
+	});
+	
 	it("should allow the user to add a reply to an argument", async () => {
 		const { getByText, queryByText } = renderArgument({
 			argument,
