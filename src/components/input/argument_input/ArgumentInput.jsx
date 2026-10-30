@@ -72,6 +72,7 @@ export const ArgumentInput = ({
 	const [editElement, setEditElement] = useState({});
 	const [shouldAutoFocus, setShouldAutoFocus] = useState(false);
 	const [resetSignal, setResetSignal] = useState(0);
+	const [scrollRequest, setScrollRequest] = useState(0);
 	const [savedArgument, setSavedArgument] = useSessionStorageState(
 		"userSide",
 		{},
@@ -178,8 +179,13 @@ export const ArgumentInput = ({
 	};
 
 	const scrollToEditor = () => {
-		inputForm.current.scrollIntoView({ behavior: "smooth", block: "center" });
+		setScrollRequest((count) => count + 1);
 	};
+
+	useEffect(() => {
+		if (scrollRequest === 0) return;
+		inputForm.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+	}, [scrollRequest]);
 
 	const resetInputs = () => {
 		setArgumentContent("");

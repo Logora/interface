@@ -641,6 +641,73 @@ describe("ArgumentInput", () => {
 		expect(document.activeElement).toBe(editor);
 	});
 
+	it("should scroll to and focus the editor when an argument is edited", async () => {
+		Element.prototype.scrollIntoView = vi.fn();
+		const editedArgument = {
+			id: faker.number.int(),
+			content: faker.lorem.sentence(),
+			rich_content: "{}",
+			sources: [],
+			position: { id: debate.positions[0].id },
+		};
+
+		const EditableArgumentInput = () => {
+			const { setInputContent } = useInput();
+			React.useEffect(() => {
+				setInputContent(editedArgument);
+			}, []);
+			return (
+				<ArgumentInput
+					onSubmit={callback}
+					groupId={debate.id}
+					groupName={debate.name}
+					positions={debate.positions}
+					disabledPositions={[]}
+					listId={"argumentList"}
+					positionId={debate.positions[0].id}
+					hideSourceAction={true}
+					avatarSize={48}
+					placeholder={"Add an argument..."}
+				/>
+			);
+		};
+
+		const { getByRole } = render(
+			<BrowserRouter>
+				<ConfigProvider>
+					<IconProvider library={regularIcons}>
+						<IntlProvider locale="en">
+							<DataProviderContext.Provider value={{ dataProvider: data }}>
+								<AuthContext.Provider
+									value={{ currentUser: currentUser, isLoggedIn: true }}
+								>
+									<ToastProvider>
+										<ModalProvider>
+											<ListProvider>
+												<InputProvider>
+													<EditableArgumentInput />
+												</InputProvider>
+											</ListProvider>
+										</ModalProvider>
+									</ToastProvider>
+								</AuthContext.Provider>
+							</DataProviderContext.Provider>
+						</IntlProvider>
+					</IconProvider>
+				</ConfigProvider>
+			</BrowserRouter>,
+		);
+
+		const editor = getByRole("textbox");
+		await vi.waitFor(() => {
+			expect(Element.prototype.scrollIntoView).toHaveBeenCalledWith({
+				behavior: "smooth",
+				block: "center",
+			});
+		});
+		expect(document.activeElement).toBe(editor);
+	});
+
 	it("should render correctly when there is no position", () => {
 		const { queryByText } = render(
 			<BrowserRouter>
