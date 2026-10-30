@@ -13,6 +13,10 @@
     justify-content: flex-start !important;
     align-items: center !important;
     flex-wrap: wrap !important;
+    gap: spacing.$spacer-sm;
+    > a:empty {
+        display: none !important;
+    }
     > .titleRedirectUrl {
         background: theme.$background-color-primary !important;
         &:hover {
@@ -103,10 +107,6 @@
     white-space: nowrap;
     @include spacing.px(2, xs);
     @include spacing.py(2, xs);
-}
-
-.headerExtra {
-    @include spacing.ml(2, xs);
 }
 
 .debateName {
