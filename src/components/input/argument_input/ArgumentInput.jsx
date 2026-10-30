@@ -10,6 +10,7 @@ import { Icon } from "@logora/debate/icons/icon";
 import { useInput } from "@logora/debate/input/input_provider";
 import { TextEditor } from "@logora/debate/input/text_editor";
 import { TogglePosition } from "@logora/debate/input/toggle_position";
+import { useScrollToEditor } from "@logora/debate/input/use_scroll_to_editor";
 import { useList } from "@logora/debate/list/list_provider";
 import { AuthorBox } from "@logora/debate/user/author_box";
 import { Avatar } from "@logora/debate/user/avatar";
@@ -62,6 +63,7 @@ export const ArgumentInput = ({
 	const { isMobile } = useResponsive();
 	const location = useLocation();
 	const inputForm = useRef(null);
+	const scrollToEditor = useScrollToEditor(inputForm);
 	const [sources, setSources] = useState([]);
 	const [argumentContent, setArgumentContent] = useState("");
 	const [argumentRichContent, setArgumentRichContent] = useState(null);
@@ -175,10 +177,6 @@ export const ArgumentInput = ({
 		} else {
 			setInputContent(eElement.content);
 		}
-	};
-
-	const scrollToEditor = () => {
-		inputForm.current.scrollIntoView({ behavior: "smooth", block: "center" });
 	};
 
 	const resetInputs = () => {

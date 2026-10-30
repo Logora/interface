@@ -70,6 +70,7 @@ export * from "./components/input/text_editor";
 export * from "./components/input/text_input";
 export * from "./components/input/toggle";
 export * from "./components/input/toggle_position";
+export * from "./components/input/use_scroll_to_editor";
 export * from "./components/intl/intl_provider";
 export * from "./components/list/list_provider";
 export * from "./components/list/paginated_list";
