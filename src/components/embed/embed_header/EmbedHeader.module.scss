@@ -14,6 +14,9 @@
     align-items: center !important;
     flex-wrap: wrap !important;
     gap: spacing.$spacer-sm;
+    > a:empty {
+        display: none !important;
+    }
     > .titleRedirectUrl {
         background: theme.$background-color-primary !important;
         &:hover {
