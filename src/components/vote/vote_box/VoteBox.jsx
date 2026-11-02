@@ -255,35 +255,38 @@ export const VoteBox = ({
 	};
 
 	const updateVote = (newPosition, previousPosition) => {
-		if (previousPosition !== newPosition) {
-			const newVotesCount = {
-				...votesCount,
-				[previousPosition]: {
-					count: votesCount[previousPosition].count - 1,
-					percentage: getPercentageValue(
-						votesCount[previousPosition].count - 1,
-						totalVotes,
-					),
-				},
-				[newPosition]: {
-					count: votesCount[newPosition].count + 1,
-					percentage: getPercentageValue(
-						votesCount[newPosition].count + 1,
-						totalVotes,
-					),
-				},
-			};
-			setVotesCount(newVotesCount);
+		if (previousPosition === newPosition) {
+			return;
 		}
+		const newVotesCount = { ...votesCount };
+		// The current vote can point to a position that is no longer listed:
+		// there is no counter to decrement in that case.
+		if (votesCount[previousPosition]) {
+			const previousCount = Math.max(votesCount[previousPosition].count - 1, 0);
+			newVotesCount[previousPosition] = {
+				count: previousCount,
+				percentage: getPercentageValue(previousCount, totalVotes),
+			};
+		}
+		if (votesCount[newPosition]) {
+			const newCount = votesCount[newPosition].count + 1;
+			newVotesCount[newPosition] = {
+				count: newCount,
+				percentage: getPercentageValue(newCount, totalVotes),
+			};
+		}
+		setVotesCount(newVotesCount);
 	};
 
 	const removeVote = (positionId) => {
-		const newCount = Math.max(votesCount[positionId].count - 1, 0);
 		const newTotal = Math.max(totalVotes - 1, 0);
 		const newVotesCount = {};
 		votePositions.forEach((element) => {
+			const currentCount = votesCount[element.id]?.count ?? 0;
+			// The cancelled vote can point to a position that is no longer listed:
+			// only the total decreases in that case.
 			const elementCount =
-				element.id === positionId ? newCount : votesCount[element.id].count;
+				element.id === positionId ? Math.max(currentCount - 1, 0) : currentCount;
 			newVotesCount[element.id] = {
 				count: elementCount,
 				percentage: getPercentageValue(elementCount, newTotal),

@@ -544,9 +544,9 @@ describe("VoteBox Component", () => {
 				</VoteBoxWrapper>,
 			);
 
-		const votedHttpClient = (deleteMock) => ({
+		const votedHttpClient = (deleteMock, voteResource = existingVote) => ({
 			get: () =>
-				Promise.resolve({ data: { success: true, data: { resource: existingVote } } }),
+				Promise.resolve({ data: { success: true, data: { resource: voteResource } } }),
 			post: vi.fn(),
 			patch: vi.fn(),
 			delete: deleteMock,
@@ -636,5 +636,73 @@ describe("VoteBox Component", () => {
 			expect(queryByText("Cancel")).toBeInTheDocument();
 			expect(queryByTitle("Position 1")).toBeNull();
 			expect(await findByText("10 votes")).toBeInTheDocument();
+		});
+
+		it("should cancel a vote whose position is not listed anymore", async () => {
+			// A vote stored for later would replay and update the vote instead of cancelling it
+			window.sessionStorage.clear();
+			const deleteMock = vi.fn(() => Promise.resolve({ data: { success: true, data: {} } }));
+			const onVoteCountsChange = vi.fn();
+			const { findByText, findByTitle, queryByText } = renderVotedVoteBox(
+				votedHttpClient(deleteMock, { ...existingVote, position_id: 42 }),
+				onVoteCountsChange,
+			);
+
+			await userEvent.click(await findByText("Cancel"));
+
+			await waitFor(() => expect(deleteMock).toHaveBeenCalledTimes(1));
+
+			// Only the total decreases: the cancelled position has no counter to decrement
+			expect(await findByTitle("Position 1")).toBeInTheDocument();
+			expect(queryByText("Cancel")).toBeNull();
+			await waitFor(() =>
+				expect(onVoteCountsChange).toHaveBeenLastCalledWith({
+					total: 9,
+					counts: {
+						1: { count: 5, percentage: 56 },
+						2: { count: 5, percentage: 56 },
+						3: { count: 0, percentage: 0 },
+					},
+				}),
+			);
+		});
+
+		it("should change the position of a vote whose position is not listed anymore", async () => {
+			window.sessionStorage.clear();
+			const updateMock = vi.fn(() =>
+				Promise.resolve({ data: { success: true, data: { resource: { ...existingVote, position_id: 1 } } } }),
+			);
+			const onVoteCountsChange = vi.fn();
+			const { findByText, findByTitle, queryByText } = renderVotedVoteBox(
+				{
+					get: () =>
+						Promise.resolve({
+							data: { success: true, data: { resource: { ...existingVote, position_id: 42 } } },
+						}),
+					post: vi.fn(),
+					patch: updateMock,
+					delete: vi.fn(),
+				},
+				onVoteCountsChange,
+			);
+
+			await userEvent.click(await findByText("Modify"));
+			const position1 = await findByTitle("Position 1");
+			await waitFor(() => expect(position1).not.toBeDisabled());
+			await userEvent.click(position1);
+
+			await waitFor(() => expect(updateMock).toHaveBeenCalledTimes(1));
+			// Only the new position is incremented: the previous one has no counter
+			await waitFor(() =>
+				expect(onVoteCountsChange).toHaveBeenLastCalledWith({
+					total: 10,
+					counts: {
+						1: { count: 6, percentage: 60 },
+						2: { count: 5, percentage: 50 },
+						3: { count: 0, percentage: 0 },
+					},
+				}),
+			);
+			expect(queryByText("Modify")).toBeInTheDocument();
 		});
 });
