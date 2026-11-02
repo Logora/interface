@@ -122,6 +122,28 @@ const debateThreeVotePositions = {
 
 const data = dataProvider(httpClient, "https://mock.example.api");
 
+// The results state (with the "Modify" and "Cancel" buttons) is displayed as soon
+// as the user already has a vote on the voteable.
+const existingVote = {
+	...vote,
+	voteable_type: "Group",
+	voteable_id: debate.id,
+	position_id: 1,
+};
+
+const httpClientWithExistingVote = {
+	...httpClient,
+	get: () =>
+		Promise.resolve({
+			data: { success: true, data: { resource: existingVote } },
+		}),
+};
+
+const dataWithExistingVote = dataProvider(
+	httpClientWithExistingVote,
+	"https://mock.example.api",
+);
+
 export const DefaultVoteBox = (args) => {	return (
 		<div style={{ width: "400px" }}>
 			<BrowserRouter>
@@ -343,6 +365,45 @@ export const VoteBoxWithVotesAndComments = (args) => {	return (
 												showTotal={false}
 												showVotesCommentsNumber={true}
 												commentsCount={debate.messages_count}
+											/>
+										</VoteProvider>
+									</ModalProvider>
+								</ConfigProvider>
+							</ToastProvider>
+						</AuthContext.Provider>
+					</DataProviderContext.Provider>
+				</IntlProvider>
+			</BrowserRouter>
+		</div>
+	);
+};
+
+export const VoteBoxWithExistingVote = () => {
+	return (
+		<div style={{ width: "400px" }}>
+			<BrowserRouter>
+				<IntlProvider locale="en">
+					<DataProviderContext.Provider
+						value={{ dataProvider: dataWithExistingVote }}
+					>
+						<AuthContext.Provider
+							// VoteBox only fetches the existing vote once the login state is settled
+							value={{
+								currentUser: currentUser,
+								isLoggedIn: true,
+								isLoggingIn: false,
+							}}
+						>
+							<ToastProvider>
+								<ConfigProvider config={{}} routes={{ ...routes }}>
+									<ModalProvider>
+										<VoteProvider>
+											<VoteBox
+												voteableId={debate.id}
+												numberVotes={debate.votes_count}
+												voteableType={"Group"}
+												votePositions={votePositions}
+												displayColumn
 											/>
 										</VoteProvider>
 									</ModalProvider>
