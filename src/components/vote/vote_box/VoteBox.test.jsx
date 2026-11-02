@@ -521,5 +521,120 @@ describe("VoteBox Component", () => {
 		expect(await findByText("10 votes")).toBeInTheDocument();
 		expect(queryByText("Modify")).toBeNull();
 	});
-});
 
+		const existingVote = {
+			...vote,
+			position_id: 1,
+			voteable_id: debate.id,
+			voteable_type: vote.voteable_type,
+		};
+
+		const renderVotedVoteBox = (httpClientMock, onVoteCountsChange) =>
+			render(
+				<VoteBoxWrapper
+					data={dataProvider(httpClientMock, "https://mock.example.api")}
+				>
+					<VoteBox
+						voteableId={debate.id}
+						voteableType={vote.voteable_type}
+						votePositions={votePositions}
+						numberVotes={debate.votes_count}
+						onVoteCountsChange={onVoteCountsChange}
+					/>
+				</VoteBoxWrapper>,
+			);
+
+		const votedHttpClient = (deleteMock) => ({
+			get: () =>
+				Promise.resolve({ data: { success: true, data: { resource: existingVote } } }),
+			post: vi.fn(),
+			patch: vi.fn(),
+			delete: deleteMock,
+		});
+
+		it("should delete the vote when the user cancels it", async () => {
+			const deleteMock = vi.fn(() => Promise.resolve({ data: { success: true, data: {} } }));
+			const onVoteCountsChange = vi.fn();
+			const { findByText, findByTitle, queryByText } = renderVotedVoteBox(
+				votedHttpClient(deleteMock),
+				onVoteCountsChange,
+			);
+
+			await userEvent.click(await findByText("Cancel"));
+
+			await waitFor(() => expect(deleteMock).toHaveBeenCalledTimes(1));
+			expect(deleteMock.mock.calls[0][0]).toContain(`/votes/${existingVote.id}`);
+
+			// The "not voted" state is only displayed once the deletion is confirmed
+			const position1 = await findByTitle("Position 1");
+			await waitFor(() => expect(position1).not.toBeDisabled());
+			expect(queryByText("Cancel")).toBeNull();
+			expect(queryByText("Modify")).toBeNull();
+			await waitFor(() =>
+				expect(onVoteCountsChange).toHaveBeenLastCalledWith({
+					total: 9,
+					counts: {
+						1: { count: 4, percentage: 44 },
+						2: { count: 5, percentage: 56 },
+						3: { count: 0, percentage: 0 },
+					},
+				}),
+			);
+		});
+
+		it("should not display the not-voted state while the cancellation is pending", async () => {
+			let resolveDelete;
+			const deleteMock = vi.fn(
+				() =>
+					new Promise((resolve) => {
+						resolveDelete = resolve;
+					}),
+			);
+			const onVoteCountsChange = vi.fn();
+			const { findByText, findByTitle, queryByText, queryByTitle } = renderVotedVoteBox(
+				votedHttpClient(deleteMock),
+				onVoteCountsChange,
+			);
+
+			await userEvent.click(await findByText("Cancel"));
+			await waitFor(() => expect(deleteMock).toHaveBeenCalledTimes(1));
+
+			// The vote is still stored server-side, so the vote buttons stay hidden
+			expect(queryByTitle("Position 1")).toBeNull();
+			expect(queryByText("Modify")).toBeInTheDocument();
+			expect(queryByText("Cancel")).toBeDisabled();
+
+			await act(async () => resolveDelete({ data: { success: true, data: {} } }));
+
+			expect(await findByTitle("Position 1")).toBeInTheDocument();
+			expect(queryByText("Cancel")).toBeNull();
+		});
+
+		it("should restore the vote when the cancellation fails", async () => {
+			const deleteMock = vi.fn(() => Promise.reject(new Error("delete failed")));
+			const onVoteCountsChange = vi.fn();
+			const { findByText, queryByText, queryByTitle } = renderVotedVoteBox(
+				votedHttpClient(deleteMock),
+				onVoteCountsChange,
+			);
+
+			await userEvent.click(await findByText("Cancel"));
+			await waitFor(() => expect(deleteMock).toHaveBeenCalledTimes(1));
+
+			await waitFor(() =>
+				expect(onVoteCountsChange).toHaveBeenLastCalledWith({
+					total: 10,
+					counts: {
+						1: { count: 5, percentage: 50 },
+						2: { count: 5, percentage: 50 },
+						3: { count: 0, percentage: 0 },
+					},
+				}),
+			);
+			// The vote is still stored, so the results and the actions stay displayed
+			expect(queryByText("Modify")).toBeInTheDocument();
+			expect(queryByText("Cancel")).toBeInTheDocument();
+			expect(queryByTitle("Position 1")).toBeNull();
+			expect(await findByText("10 votes")).toBeInTheDocument();
+		});
+});

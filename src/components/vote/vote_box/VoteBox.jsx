@@ -38,6 +38,7 @@ export const VoteBox = ({
 	const [isLoadingVote, setIsLoadingVote] = useState(true);
 	const [currentVote, setCurrentVote] = useState(undefined);
 	const [showResults, setShowResults] = useState(false);
+	const [isCancellingVote, setIsCancellingVote] = useState(false);
 	const [totalVotes, setTotalVotes] = useState(
 		Number.parseFloat(numberVotes.total) ||
 		Object.values(numberVotes).reduce(
@@ -276,6 +277,64 @@ export const VoteBox = ({
 		}
 	};
 
+	const removeVote = (positionId) => {
+		const newCount = Math.max(votesCount[positionId].count - 1, 0);
+		const newTotal = Math.max(totalVotes - 1, 0);
+		const newVotesCount = {};
+		votePositions.forEach((element) => {
+			const elementCount =
+				element.id === positionId ? newCount : votesCount[element.id].count;
+			newVotesCount[element.id] = {
+				count: elementCount,
+				percentage: getPercentageValue(elementCount, newTotal),
+			};
+		});
+		setVotesCount(newVotesCount);
+		setTotalVotes(newTotal);
+	};
+
+	const cancelVote = () => {
+		if (!currentVote || isCancellingVote) {
+			return;
+		}
+		const previousVotes = {
+			counts: votesCount,
+			total: totalVotes,
+			vote: currentVote,
+		};
+		const failCancel = () => {
+			restoreVotes(previousVotes);
+			toast?.(
+				intl.formatMessage({
+					id: "vote.vote_box.cancel_failed",
+					defaultMessage: "Your vote could not be cancelled.",
+				}),
+				{ type: "error" },
+			);
+		};
+		removeVote(currentVote.position_id);
+		setIsCancellingVote(true);
+		api.delete("votes", currentVote.id).then(
+			(response) => {
+				setIsCancellingVote(false);
+				if (response.data?.success) {
+					// The vote is only cleared once the server confirmed the deletion:
+					// showing the "not voted" state any earlier is what made the vote
+					// come back on the next page load.
+					setCurrentVote(undefined);
+					setShowResults(false);
+					removeSavedUserSide();
+					removeSavedVote();
+				} else {
+					failCancel();
+				}
+			},
+			() => {
+				setIsCancellingVote(false);
+				failCancel();
+			},
+		);
+	};
 	const getRedirectUrl = (positionId) => {
 		const searchParams = new URLSearchParams({
 			initVote: "true",
@@ -438,19 +497,34 @@ export const VoteBox = ({
 								</div>
 							)}
 							{!disabled && (
-								<div>
+								<div className={styles.voteFooterActions}>
 									{currentVote ? (
-										<button
-											data-tid={"action_edit_vote"}
-											className={styles.voteActionButton}
-											type="button"
-											onClick={toggleResults}
-										>
-											<FormattedMessage
-												id="vote.vote_box.update"
-												defaultMessage="Modify"
-											/>
-										</button>
+										<>
+											<button
+												data-tid={"action_edit_vote"}
+												className={styles.voteActionButton}
+												type="button"
+												onClick={toggleResults}
+												disabled={isCancellingVote}
+											>
+												<FormattedMessage
+													id="vote.vote_box.update"
+													defaultMessage="Modify"
+												/>
+											</button>
+											<button
+												data-tid={"action_cancel_vote"}
+												className={styles.voteActionButton}
+												type="button"
+												onClick={cancelVote}
+												disabled={isCancellingVote}
+											>
+												<FormattedMessage
+													id="vote.vote_box.cancel"
+													defaultMessage="Cancel"
+												/>
+											</button>
+										</>
 									) : (
 										!hideShowResultButton && (
 											<button
