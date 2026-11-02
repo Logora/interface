@@ -89,12 +89,20 @@ const authoredProposal = generateProposal({
 	},
 });
 
-const Providers = ({ children }) => (
+const rejectedProposal = generateProposal({
+	status: "rejected",
+	moderation_entry: {
+		moderation_reason: "off_topic",
+		moderator_notes: faker.lorem.paragraph(),
+	},
+});
+
+const Providers = ({
+	children,
+	config = { translation: { enable: true } },
+}) => (
 	<BrowserRouter>
-		<ConfigProvider
-			routes={{ ...routes }}
-			config={{ translation: { enable: true } }}
-		>
+		<ConfigProvider routes={{ ...routes }} config={config}>
 			<DataProviderContext.Provider value={{ dataProvider: data }}>
 				<AuthContext.Provider value={{ currentUser, isLoggedIn: true }}>
 					<ResponsiveProvider>
@@ -129,6 +137,7 @@ export default {
 		contentMaxHeight: { control: "number" },
 		enableEdition: { control: "boolean" },
 		hideFooter: { control: "boolean" },
+		showModerationFeedback: { control: "boolean" },
 	},
 	args: {
 		proposal,
@@ -141,9 +150,9 @@ export default {
 		enableEdition: true,
 		hideFooter: false,
 	},
-	render: ({ containerWidth, containerHeight, ...args }) => (
+	render: ({ containerWidth, containerHeight, config, ...args }) => (
 		<div style={{ width: containerWidth, height: containerHeight }}>
-			<Providers>
+			<Providers config={config}>
 				<ProposalBox
 					proposal={args.proposal}
 					disabled={args.disabled}
@@ -152,6 +161,7 @@ export default {
 					contentMaxHeight={args.contentMaxHeight}
 					enableEdition={args.enableEdition}
 					hideFooter={args.hideFooter}
+					showModerationFeedback={args.showModerationFeedback}
 				/>
 			</Providers>
 		</div>
@@ -210,5 +220,19 @@ export const ProposalWithSources = {
 	args: {
 		proposal: proposalWithSources,
 		containerHeight: "auto",
+	},
+};
+
+export const RejectedProposal = {
+	args: {
+		proposal: rejectedProposal,
+		containerHeight: "auto",
+		showModerationFeedback: true,
+		config: {
+			moderation: { showFeedback: true },
+			provider: {
+				userGuideUrl: "https://www.example.com/moderation-policy",
+			},
+		},
 	},
 };
