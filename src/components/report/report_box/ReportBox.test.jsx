@@ -202,6 +202,23 @@ describe("ReportBox", () => {
 		).toBeInTheDocument();
 	});
 
+	it("should not display moderation feedback for a rejected proposal", () => {
+		const rejectedProposalReport = generateReport({
+			reportable_type: "Proposal",
+			reportable: {
+				...reportProposal.reportable,
+				status: "rejected",
+				moderation_entry: { moderation_reason: "off_topic" },
+			},
+		});
+		renderReportBox({ report: rejectedProposalReport });
+
+		expect(
+			screen.queryByText(/Content rejected by moderation/),
+		).not.toBeInTheDocument();
+		expect(screen.getByTestId("report-status-message")).toBeInTheDocument();
+	});
+
 	it("should render SuggestionBox component for Group type with correct props", () => {
 		renderReportBox({ report: reportSuggestion });
 		expect(
