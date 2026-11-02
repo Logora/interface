@@ -106,21 +106,45 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
           cache: pnpm
 
-      - name: Configure Git User
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Bump patch version
-        run: npm version patch --no-git-tag-version
-
-      - name: Commit and push version bump
+      # The "master" ruleset requires every change to land through a pull request
+      # ("GH013: Changes must be made through a pull request"), so this job can no
+      # longer commit the version bump and push it back to master. The version to
+      # publish is therefore derived from the registry and only written to the
+      # package.json of the runner.
+      - name: Compute the version to publish
+        id: version
         run: |
-          git commit -am "chore: bump patch version [skip ci]"
-          git push
+          LATEST=$(npm view @logora/debate version 2>/dev/null || echo "0.0.0")
+          node - "$LATEST" <<'JS' >> "$GITHUB_OUTPUT"
+          const fs = require("node:fs");
 
+          const latest = process.argv[2];
+          const current = JSON.parse(fs.readFileSync("package.json", "utf8")).version;
+          const parse = (version) => version.split(".").map((part) => Number.parseInt(part, 10));
+          const isGreater = (left, right) => {
+            const [a, b] = [parse(left), parse(right)];
+            for (let i = 0; i < 3; i += 1) {
+              if (a[i] !== b[i]) return a[i] > b[i];
+            }
+            return false;
+          };
+
+          if (isGreater(current, latest)) {
+            // A minor/major version bumped by hand in a pull request wins.
+            console.log(`version=${current}`);
+          } else {
+            const [major, minor, patch] = parse(latest);
+            console.log(`version=${major}.${minor}.${patch + 1}`);
+          }
+          JS
+
+      - name: Set the version in package.json
+        run: npm pkg set "version=${{ steps.version.outputs.version }}"
+
+      # --no-git-checks: the version is set in the working tree but not committed,
+      # since pushing a bump commit to master is not allowed anymore.
       - name: Publish to npm
-        run: pnpm publish --provenance --access public
+        run: pnpm publish --provenance --access public --no-git-checks
