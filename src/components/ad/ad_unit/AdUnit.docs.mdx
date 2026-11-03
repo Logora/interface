@@ -5,7 +5,16 @@ labels: ['ad', 'google-ad-manager']
 
 The AdUnit component displays an ad slot from Google Ad Manager.
 
-It also handles the ads refresh rate callback and configuration to respect the user's cookie consent.
+The component owns its slot end to end: it defines the slot, displays it once,
+destroys it on unmount and never touches slots owned by the publisher. Refresh
+is opt-in (`refresh`) and only ever targets its own slot, at most every 30
+seconds and only after a viewable impression while the tab is visible. When the
+delay expires while the tab is hidden, the refresh is deferred and the timer
+restarts when the tab becomes visible again. When the page disabled initial
+load, the slot is refreshed once right after display so it is never left
+empty — even with `refresh` set to `false`.
+
+It also handles the per-slot refresh and the configuration to respect the user's cookie consent.
 Consent is managed with didomi and is optional.
 
 ### Component usage
@@ -16,8 +25,19 @@ Consent is managed with didomi and is optional.
 
 ```js
 <AdUnit
-    id='div-id' 
+    id='div-id'
     adPath='/path'
     sizes={[300, 250]}
 />
 ```
+
+### Properties
+| **Name** | **Type** | **Required** | **Default** | **Description** |
+| ----------- | ----------- | :-----------: | ----------- | ----------- |
+| <font color='#4646c6'>id</font> | <font color="#397300">string</font> | &check; | - | <font color="grey">*Slot id, rendered as `div-gpt-ad-{id}`*</font> |
+| <font color='#4646c6'>adPath</font> | <font color="#397300">string</font> | &check; | - | <font color="grey">*Ad unit path*</font> |
+| <font color='#4646c6'>sizes</font> | <font color="#397300">array</font> | &cross; | [] | <font color="grey">*Slot sizes*</font> |
+| <font color='#4646c6'>targeting</font> | <font color="#397300">object</font> | &cross; | - | <font color="grey">*Custom targeting, merged with `origine=logora`*</font> |
+| <font color='#4646c6'>enableDidomi</font> | <font color="#397300">boolean</font> | &cross; | false | <font color="grey">*Whether to wrap the slot for didomi consent*</font> |
+| <font color='#4646c6'>refresh</font> | <font color="#397300">boolean</font> | &cross; | false | <font color="grey">*Whether to refresh this slot after viewable impressions*</font> |
+| <font color='#4646c6'>refreshInterval</font> | <font color="#397300">integer</font> | &cross; | 30000 | <font color="grey">*Delay in ms before refreshing, clamped to a 30000 ms minimum*</font> |

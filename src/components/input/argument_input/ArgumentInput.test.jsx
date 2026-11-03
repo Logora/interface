@@ -13,7 +13,6 @@ import { InputProvider, useInput } from "@logora/debate/input/input_provider";
 import { ListProvider } from "@logora/debate/list/list_provider";
 import { act, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import React from "react";
 import { IntlProvider } from "react-intl";
 import { BrowserRouter } from "react-router-dom";
 import {

@@ -51,6 +51,12 @@
     @include spacing.p(0, xs);
 }
 
+.voteFooterActions {
+    display: flex !important;
+    align-items: center !important;
+    gap: spacing.$spacer;
+}
+
 .voteBoxActions {
     display: flex !important;
     flex-direction: column !important;
@@ -263,6 +269,11 @@ a.voteButton {
     &:focus:not(:focus-visible) {
         outline: none;
         box-shadow: none;
+    }
+
+    &:disabled {
+        cursor: default;
+        opacity: .5;
     }
 
 }

@@ -9,6 +9,8 @@ export const WithAd = ({
 	index,
 	frequency = 3,
 	enableDidomi = false,
+	refresh = false,
+	refreshInterval,
 	children,
 	...rest
 }) => {
@@ -22,6 +24,8 @@ export const WithAd = ({
 					targeting={targeting}
 					sizes={sizes}
 					enableDidomi={enableDidomi}
+					refresh={refresh}
+					refreshInterval={refreshInterval}
 				/>
 			)}
 		</>

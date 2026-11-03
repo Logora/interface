@@ -1,0 +1,1 @@
+export { useScrollToEditor } from "./useScrollToEditor";

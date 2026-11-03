@@ -86,12 +86,11 @@ const routes = {
 	},
 };
 
-const Providers = ({ children }) => (
+const baseConfig = { translation: { enable: false } };
+
+const Providers = ({ children, config = baseConfig }) => (
 	<MemoryRouter>
-		<ConfigProvider
-			config={{ translation: { enable: false } }}
-			routes={{ ...routes }}
-		>
+		<ConfigProvider config={config} routes={{ ...routes }}>
 			<DataProviderContext.Provider value={{ dataProvider: data }}>
 				<AuthContext.Provider value={{ currentUser, isLoggedIn: true }}>
 					<ResponsiveProvider>
@@ -113,9 +112,9 @@ const Providers = ({ children }) => (
 	</MemoryRouter>
 );
 
-const renderProposal = (props) =>
+const renderProposal = (props, config) =>
 	render(
-		<Providers>
+		<Providers config={config}>
 			<ProposalBox {...props} />
 		</Providers>,
 	);
@@ -132,6 +131,33 @@ describe("ProposalBox", () => {
 	it("should show edited status when proposal was edited", () => {
 		const { getByText } = renderProposal({ proposal: editedProposal });
 		expect(getByText("Updated proposal")).toBeInTheDocument();
+	});
+
+	it("should show moderation feedback when a rejected proposal is displayed and feedback is enabled", () => {
+		const rejectedProposal = generateProposal({
+			status: "rejected",
+			moderation_entry: { moderation_reason: "off_topic" },
+		});
+		renderProposal(
+			{ proposal: rejectedProposal },
+			{ ...baseConfig, moderation: { showFeedback: true } },
+		);
+
+		expect(
+			screen.getByText(/Content rejected by moderation/),
+		).toBeInTheDocument();
+	});
+
+	it("should not show moderation feedback when config disables it", () => {
+		const rejectedProposal = generateProposal({
+			status: "rejected",
+			moderation_entry: { moderation_reason: "off_topic" },
+		});
+		renderProposal({ proposal: rejectedProposal });
+
+		expect(
+			screen.queryByText(/Content rejected by moderation/),
+		).not.toBeInTheDocument();
 	});
 
 	it("should disable voting when current user is author", () => {
