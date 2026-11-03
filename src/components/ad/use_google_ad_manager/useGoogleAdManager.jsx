@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useLayoutEffect } from "react";
 
 export const GPT_SRC = "https://securepubads.g.doubleclick.net/tag/js/gpt.js";
 
@@ -47,8 +47,11 @@ const ensureGptServices = () => {
 	});
 };
 
+const useIsomorphicLayoutEffect =
+	typeof window !== "undefined" ? useLayoutEffect : useEffect;
+
 export const useGoogleAdManager = (enable = true, enableDidomi = false) => {
-	useEffect(() => {
+	useIsomorphicLayoutEffect(() => {
 		if (enable !== true || typeof window === "undefined") {
 			return;
 		}

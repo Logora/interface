@@ -173,6 +173,38 @@ it("should not mistake another vendor script for GPT", async () => {
 		expect(enableServices).toHaveBeenCalledTimes(1);
 	});
 
+	it("should enable services before a child AdUnit displays its slot", async () => {
+		const useGoogleAdManager = await loadHook();
+		const { AdUnit } = await import("../ad_unit/AdUnit");
+		const App = () => {
+			useGoogleAdManager(true, false);
+			return <AdUnit id="logora" adPath="/path" sizes={[[300, 250]]} />;
+		};
+		render(<App />);
+
+		const calls = [];
+		const slot = {
+			setTargeting: () => slot,
+			setConfig: () => slot,
+			addService: () => slot,
+		};
+		const pubads = {
+			getSlots: () => [],
+			isInitialLoadDisabled: () => false,
+		};
+		Object.assign(window.googletag, {
+			pubads: () => pubads,
+			defineSlot: () => slot,
+			enableServices: () => calls.push("enableServices"),
+			display: () => calls.push("display"),
+		});
+		for (const fn of window.googletag.cmd) {
+			fn();
+		}
+
+		expect(calls).toEqual(["enableServices", "display"]);
+	});
+
 	it("should not load anything when disabled", async () => {
 		const useGoogleAdManager = await loadHook();
 		await mountHook(useGoogleAdManager, false, false);
