@@ -19,7 +19,7 @@ import { InputProvider, useInput } from "@logora/debate/input/input_provider";
 import { ListProvider } from "@logora/debate/list/list_provider";
 import { Location } from "@logora/debate/util/location";
 import { VoteProvider } from "@logora/debate/vote/vote_provider";
-import { render } from "@testing-library/react";
+import { render, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { IntlProvider } from "react-intl";
 import { BrowserRouter } from "react-router-dom";
@@ -418,10 +418,12 @@ describe("Argument", () => {
 			});
 
 			expect(await findByTestId("argument-input")).toBeInTheDocument();
-			expect(scrollIntoView).toHaveBeenCalledWith({
-				behavior: "smooth",
-				block: "center",
-			});
+			await waitFor(() =>
+				expect(scrollIntoView).toHaveBeenCalledWith({
+					behavior: "smooth",
+					block: "center",
+				}),
+			);
 			expect(readPendingReply()).toBeNull();
 		});
 
@@ -442,10 +444,12 @@ describe("Argument", () => {
 			expect(
 				container.querySelector(`#argument_${argumentReply.id}`),
 			).toBeInTheDocument();
-			expect(scrollIntoView).toHaveBeenCalledWith({
-				behavior: "smooth",
-				block: "center",
-			});
+			await waitFor(() =>
+				expect(scrollIntoView).toHaveBeenCalledWith({
+					behavior: "smooth",
+					block: "center",
+				}),
+			);
 			expect(readPendingReply()).toBeNull();
 		});
 
@@ -470,10 +474,12 @@ describe("Argument", () => {
 			expect(httpClient.get).toHaveBeenCalledWith(
 				expect.stringContaining(`/messages/${argumentReply.id}`),
 			);
-			expect(scrollIntoView).toHaveBeenCalledWith({
-				behavior: "smooth",
-				block: "center",
-			});
+			await waitFor(() =>
+				expect(scrollIntoView).toHaveBeenCalledWith({
+					behavior: "smooth",
+					block: "center",
+				}),
+			);
 			expect(readPendingReply()).toBeNull();
 		});
 
