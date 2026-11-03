@@ -1,6 +1,7 @@
 import { Button } from "@logora/debate/action/button";
 import { useAuth } from "@logora/debate/auth/use_auth";
 import { useConfig } from "@logora/debate/data/config_provider";
+import { useDataProvider } from "@logora/debate/data/data_provider";
 import { Icon } from "@logora/debate/icons/icon";
 import { useList } from "@logora/debate/list/list_provider";
 import { VotePaginatedList } from "@logora/debate/list/paginated_list";
@@ -58,6 +59,7 @@ export const Argument = ({
 	const userIsBanned = currentUser?.moderation_status === "banned";
 	const config = useConfig();
 	const list = useList();
+	const api = useDataProvider();
 
 	const [expandReplies, setExpandReplies] = useState(false);
 	const [flash, setFlash] = useState(false);
@@ -88,6 +90,26 @@ export const Argument = ({
 		}
 	}, [argumentReplies]);
 
+	const loadPendingReply = (replyId) => {
+		if (!replyId) {
+			return;
+		}
+		api.getOne("messages", replyId)
+			.then((response) => {
+				const reply = response?.data?.data?.resource;
+				if (!reply) {
+					return;
+				}
+				setExtraReplies((prev) =>
+					prev?.some((r) => String(r.id) === String(reply.id))
+						? prev
+						: [...(prev || []), reply],
+				);
+				setExpandReplies(true);
+			})
+			.catch(() => {});
+	};
+
 	useEffect(() => {
 		if (!isLoggedIn) {
 			return;
@@ -97,8 +119,10 @@ export const Argument = ({
 			return;
 		}
 		const chain = (pending.ancestorIds || []).map(String);
-		if (chain.includes(String(argument.id))) {
+		const position = chain.indexOf(String(argument.id));
+		if (position >= 0) {
 			setExpandReplies(true);
+			loadPendingReply(chain[position + 1]);
 		}
 		if (String(pending.parentId) !== String(argument.id)) {
 			return;
