@@ -12,7 +12,7 @@ import { useLocation } from "react-router";
 import styles from "./PaginatedList.module.scss";
 import { ActionBar } from "./action_bar/ActionBar";
 
-export const PaginatedList = ({
+const PaginatedListInner = ({
 	query,
 	sortOptions,
 	sort,
@@ -454,5 +454,13 @@ export const PaginatedList = ({
 				</>
 			)}
 		</div>
+	);
+};
+
+export const PaginatedList = (props) => {
+	return (
+		<StandardErrorBoundary>
+			<PaginatedListInner {...props} />
+		</StandardErrorBoundary>
 	);
 };
