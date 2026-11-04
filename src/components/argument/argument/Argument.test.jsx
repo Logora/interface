@@ -19,10 +19,15 @@ import { InputProvider, useInput } from "@logora/debate/input/input_provider";
 import { ListProvider } from "@logora/debate/list/list_provider";
 import { Location } from "@logora/debate/util/location";
 import { VoteProvider } from "@logora/debate/vote/vote_provider";
-import { render } from "@testing-library/react";
+import { render, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { IntlProvider } from "react-intl";
 import { BrowserRouter } from "react-router-dom";
+import {
+	clearPendingReply,
+	readPendingReply,
+	storePendingReply,
+} from "@logora/debate/util/pending_reply";
 import { Argument } from "./Argument";
 
 const routes = {
@@ -38,9 +43,22 @@ const vote = {
 	user_id: faker.number.int(),
 };
 
+const replyByIdResponse = (reply) => ({
+	data: { success: true, data: { resource: reply } },
+});
+
+const getReplies = (url) => {
+	const match = url.match(/\/messages\/(\d+)/);
+	if (match) {
+		return Promise.resolve(replyByIdResponse(repliesById[match[1]]));
+	}
+	const messageId = new URL(url).searchParams.get("message_id");
+	const replies = String(messageId) === String(argument.id) ? listReplies : [];
+	return Promise.resolve({ data: { success: true, data: replies } });
+};
+
 const httpClient = {
-	get: () =>
-		Promise.resolve({ data: { success: true, data: [argumentReply] } }),
+	get: vi.fn(getReplies),
 	post: (url, data, config) => {
 		return new Promise((resolve, reject) => {
 			let response;
@@ -125,6 +143,24 @@ const argumentDeleted = createArgument({
 	content: faker.lorem.sentences(1),
 	upvotes: 12,
 });
+
+const nestedReply = createArgument({
+	id: 417,
+	is_reply: true,
+	reply_to_id: argumentReply.id,
+	position: { id: 2, name: "No", language: "en" },
+});
+
+let listReplies = [argumentReply];
+const repliesById = { [argumentReply.id]: argumentReply };
+const otherReplies = [
+	createArgument({ id: 421, is_reply: true, reply_to_id: argument.id }),
+	createArgument({ id: 422, is_reply: true, reply_to_id: argument.id }),
+	createArgument({ id: 423, is_reply: true, reply_to_id: argument.id }),
+	createArgument({ id: 424, is_reply: true, reply_to_id: argument.id }),
+	createArgument({ id: 425, is_reply: true, reply_to_id: argument.id }),
+];
+
 const positions = [
 	{ id: 1, name: "Yes", language: "en", translation_entries: [] },
 	{ id: 2, name: "No", language: "en", translation_entries: [] },
@@ -175,14 +211,14 @@ const AddContentComponent = () => {
 	);
 };
 
-const Providers = ({ children }) => (
+const Providers = ({ children, isLoggedIn = true }) => (
 	<BrowserRouter>
 		<ConfigProvider
 			routes={{ ...routes }}
 			config={{ translation: { enable: false } }}
 		>
 			<DataProviderContext.Provider value={{ dataProvider: data }}>
-				<AuthContext.Provider value={{ currentUser, isLoggedIn: true }}>
+				<AuthContext.Provider value={{ currentUser, isLoggedIn }}>
 					<ResponsiveProvider>
 						<ModalProvider>
 							<ListProvider>
@@ -207,9 +243,9 @@ const Providers = ({ children }) => (
 	</BrowserRouter>
 );
 
-const renderArgument = (props) =>
+const renderArgument = (props, { isLoggedIn = true } = {}) =>
 	render(
-		<Providers>
+		<Providers isLoggedIn={isLoggedIn}>
 			<Argument {...props} />
 		</Providers>,
 	);
@@ -358,6 +394,204 @@ describe("Argument", () => {
 		expect(queryByText("Your answer") || queryByText("Reply")).toBeTruthy();
 	});
 
+	describe("pending reply", () => {
+		let scrollIntoView;
+
+		beforeEach(() => {
+			clearPendingReply();
+			listReplies = [argumentReply];
+			repliesById[nestedReply.id] = nestedReply;
+			httpClient.get.mockReset();
+			httpClient.get.mockImplementation(getReplies);
+			Element.prototype.scrollIntoView = vi.fn();
+			scrollIntoView = Element.prototype.scrollIntoView;
+		});
+
+		afterEach(() => {
+			clearPendingReply();
+			httpClient.get.mockImplementation(getReplies);
+			delete Element.prototype.scrollIntoView;
+		});
+
+		it("should reopen the pending reply after login", async () => {
+			storePendingReply({
+				groupId: argument.group_id,
+				parentId: argument.id,
+			});
+			const { findByTestId } = renderArgument({
+				argument,
+				positions,
+				groupName,
+				nestingLevel: 0,
+			});
+
+			expect(await findByTestId("argument-input")).toBeInTheDocument();
+			await waitFor(() =>
+				expect(scrollIntoView).toHaveBeenCalledWith({
+					behavior: "smooth",
+					block: "center",
+				}),
+			);
+			expect(readPendingReply()).toBeNull();
+		});
+
+		it("should expand the parent argument and reopen the nested pending reply", async () => {
+			storePendingReply({
+				groupId: argument.group_id,
+				parentId: argumentReply.id,
+				ancestorIds: [argument.id],
+			});
+			const { container, findByTestId } = renderArgument({
+				argument,
+				positions,
+				groupName,
+				nestingLevel: 0,
+			});
+
+			expect(await findByTestId("argument-input")).toBeInTheDocument();
+			expect(
+				container.querySelector(`#argument_${argumentReply.id}`),
+			).toBeInTheDocument();
+			await waitFor(() =>
+				expect(scrollIntoView).toHaveBeenCalledWith({
+					behavior: "smooth",
+					block: "center",
+				}),
+			);
+			expect(readPendingReply()).toBeNull();
+		});
+
+		it("should not fetch a pending reply already displayed in the first page", async () => {
+			let resolveReply;
+			httpClient.get.mockImplementation((url) => {
+				if (url.match(/\/messages\/\d+/)) {
+					return new Promise((resolve) => {
+						resolveReply = () => resolve(replyByIdResponse(argumentReply));
+					});
+				}
+				return getReplies(url);
+			});
+			storePendingReply({
+				groupId: argument.group_id,
+				parentId: argumentReply.id,
+				ancestorIds: [argument.id, argumentReply.id],
+			});
+			const { container, findByTestId } = renderArgument({
+				argument,
+				positions,
+				groupName,
+				nestingLevel: 0,
+			});
+
+			expect(await findByTestId("argument-input")).toBeInTheDocument();
+			expect(
+				container.querySelectorAll(`#argument_${argumentReply.id}`),
+			).toHaveLength(1);
+
+			if (resolveReply) {
+				await act(async () => resolveReply());
+			}
+
+			expect(httpClient.get).not.toHaveBeenCalledWith(
+				expect.stringContaining(`/messages/${argumentReply.id}`),
+			);
+			expect(
+				container.querySelectorAll(`#argument_${argumentReply.id}`),
+			).toHaveLength(1);
+			expect(readPendingReply()).toBeNull();
+		});
+
+		it("should fetch and reopen a pending reply outside the first page", async () => {
+			listReplies = otherReplies;
+			storePendingReply({
+				groupId: argument.group_id,
+				parentId: argumentReply.id,
+				ancestorIds: [argument.id, argumentReply.id],
+			});
+			const { container, findByTestId } = renderArgument({
+				argument,
+				positions,
+				groupName,
+				nestingLevel: 0,
+			});
+
+			expect(await findByTestId("argument-input")).toBeInTheDocument();
+			expect(
+				container.querySelector(`#argument_${argumentReply.id}`),
+			).toBeInTheDocument();
+			expect(httpClient.get).toHaveBeenCalledWith(
+				expect.stringContaining(`/messages/${argumentReply.id}`),
+			);
+			await waitFor(() =>
+				expect(scrollIntoView).toHaveBeenCalledWith({
+					behavior: "smooth",
+					block: "center",
+				}),
+			);
+			expect(readPendingReply()).toBeNull();
+		});
+
+		it("should fetch the whole ancestor chain of a pending reply outside the first page", async () => {
+			listReplies = otherReplies;
+			storePendingReply({
+				groupId: argument.group_id,
+				parentId: nestedReply.id,
+				ancestorIds: [argument.id, argumentReply.id, nestedReply.id],
+			});
+			const { container, findByTestId } = renderArgument({
+				argument,
+				positions,
+				groupName,
+				nestingLevel: 0,
+			});
+
+			expect(await findByTestId("argument-input")).toBeInTheDocument();
+			expect(
+				container.querySelector(`#argument_${nestedReply.id}`),
+			).toBeInTheDocument();
+			expect(httpClient.get).toHaveBeenCalledWith(
+				expect.stringContaining(`/messages/${argumentReply.id}`),
+			);
+			expect(httpClient.get).toHaveBeenCalledWith(
+				expect.stringContaining(`/messages/${nestedReply.id}`),
+			);
+			expect(readPendingReply()).toBeNull();
+		});
+
+		it("should store the ancestor chain when a nested reply requires authentication", async () => {
+			const { findByTestId, getAllByTestId, getByText } = renderArgument(
+				{
+					argument,
+					positions,
+					groupName,
+					nestingLevel: 0,
+				},
+				{ isLoggedIn: false },
+			);
+
+			await act(async () => {
+				await userEvent.click(getByText("View answers"));
+			});
+			await act(async () => {
+				await userEvent.click(getByText("Click to set content"));
+			});
+			const replyButtons = getAllByTestId("action-reply-button");
+			await act(async () => {
+				await userEvent.click(replyButtons[replyButtons.length - 1]);
+			});
+			await act(async () => {
+				await userEvent.click(await findByTestId("argument-input"));
+				await userEvent.click(await findByTestId("submit-button"));
+			});
+
+			expect(readPendingReply()).toMatchObject({
+				groupId: argument.group_id,
+				parentId: argumentReply.id,
+				ancestorIds: [argument.id, argumentReply.id],
+			});
+		});
+	});
+	
 	it("should allow the user to add a reply to an argument", async () => {
 		const { getByText, queryByText } = renderArgument({
 			argument,

@@ -15,6 +15,10 @@ import { act, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { IntlProvider } from "react-intl";
 import { BrowserRouter } from "react-router-dom";
+import {
+	clearPendingReply,
+	readPendingReply,
+} from "@logora/debate/util/pending_reply";
 import { ArgumentInput } from "./ArgumentInput";
 
 vi.mock("@lexical/react/LexicalErrorBoundary", () => ({
@@ -54,6 +58,7 @@ const debate = {
 };
 
 const argument = {
+	id: faker.number.int(),
 	position: {
 		id: debate.positions[0].id,
 	},
@@ -640,6 +645,56 @@ describe("ArgumentInput", () => {
 		expect(document.activeElement).toBe(editor);
 	});
 
+	it("should store the pending reply before requiring authentication", async () => {
+		clearPendingReply();
+		const { getByTestId } = render(
+			<BrowserRouter>
+				<ConfigProvider>
+					<IconProvider library={regularIcons}>
+						<IntlProvider locale="en">
+							<DataProviderContext.Provider value={{ dataProvider: data }}>
+								<AuthContext.Provider value={{ currentUser: {}, isLoggedIn: false }}>
+									<ToastProvider>
+										<ModalProvider>
+											<ListProvider>
+												<InputProvider>
+													<ArgumentInput
+														onSubmit={callback}
+														groupId={debate.id}
+														groupName={debate.name}
+														positions={debate.positions}
+														disabledPositions={[]}
+														listId={"argumentList"}
+														parentId={argument.id}
+														ancestorIds={[argument.id]}
+														positionId={debate.positions[0].id}
+														hideSourceAction={false}
+														avatarSize={40}
+														placeholder={"Add an argument..."}
+													/>
+												</InputProvider>
+											</ListProvider>
+										</ModalProvider>
+									</ToastProvider>
+								</AuthContext.Provider>
+							</DataProviderContext.Provider>
+						</IntlProvider>
+					</IconProvider>
+				</ConfigProvider>
+			</BrowserRouter>,
+		);
+		await userEvent.click(getByTestId("argument-input"));
+		await act(async () => {
+			await userEvent.click(getByTestId("submit-button"));
+		});
+		expect(readPendingReply()).toMatchObject({
+			groupId: debate.id,
+			parentId: argument.id,
+			ancestorIds: [argument.id],
+		});
+		clearPendingReply();
+	});
+	
 	it("should render correctly when there is no position", () => {
 		const { queryByText } = render(
 			<BrowserRouter>
