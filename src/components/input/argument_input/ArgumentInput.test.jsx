@@ -1109,11 +1109,19 @@ describe("ArgumentInput", () => {
 		expect(screen.getByTestId("submit-button")).toBeDisabled();
 	});
 
-	it("should release the editor when the submission never completes", async () => {
+	it("should release the editor when the request times out", async () => {
 		vi.useFakeTimers();
 		const errorSpy = vi.spyOn(console, "error").mockImplementation(() => {});
 		try {
-			const post = vi.fn(() => new Promise(() => {}));
+			const post = vi.fn(
+				(url, data, config) =>
+					new Promise((_, reject) => {
+						setTimeout(
+							() => reject(new Error(`timeout of ${config.timeout}ms exceeded`)),
+							config.timeout,
+						);
+					}),
+			);
 			const pendingProvider = dataProvider(
 				{ ...httpClient, post },
 				"https://mock.example.api",
@@ -1142,9 +1150,7 @@ describe("ArgumentInput", () => {
 				).length,
 			).toBeGreaterThan(0);
 			expect(screen.queryByText("I write an argument")).toBeInTheDocument();
-			const config = post.mock.calls[0][2];
-			expect(config.timeout).toBe(20000);
-			expect(config.signal.aborted).toBe(true);
+			expect(post.mock.calls[0][2].timeout).toBe(20000);
 		} finally {
 			vi.useRealTimers();
 			errorSpy.mockRestore();

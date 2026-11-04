@@ -195,51 +195,36 @@ export const ArgumentInput = ({
 		setInputContent(null);
 	};
 
-	const notifySubmissionError = (id, defaultMessage, error) => {
+	const submissionErrors = {
+		create: {
+			id: "alert.argument_create_error",
+			defaultMessage: "Your contribution could not be sent. Please try again.",
+		},
+		update: {
+			id: "alert.argument_modify_error",
+			defaultMessage: "Your contribution could not be saved. Please try again.",
+		},
+		rateLimited: {
+			id: "alert.argument_rate_limited",
+			defaultMessage: "Too many comments. Please try again in a few moments.",
+		},
+	};
+
+	const notifySubmissionError = (kind, error) => {
 		if (error) {
 			console.error("[ArgumentInput] submission failed", error);
 		}
+		const { id, defaultMessage } =
+			submissionErrors[error?.response?.status === 429 ? "rateLimited" : kind];
 		toast?.(intl.formatMessage({ id, defaultMessage }), { type: "error" });
 	};
-
-	const notifyCreateError = (error) => {
-		if (error?.response?.status === 429) {
-			notifySubmissionError(
-				"alert.argument_rate_limited",
-				"Too many comments. Please try again in a few moments.",
-				error,
-			);
-			return;
-		}
-		notifySubmissionError(
-			"alert.argument_create_error",
-			"Your contribution could not be sent. Please try again.",
-			error,
-		);
-	};
-
-	const notifyModifyError = (error) =>
-		notifySubmissionError(
-			"alert.argument_modify_error",
-			"Your contribution could not be saved. Please try again.",
-			error,
-		);
 
 	const sendRequest = async (request) => {
 		submittingRef.current = true;
 		setSubmitting(true);
-		const controller = new AbortController();
-		let timer;
 		try {
-			const timeout = new Promise((_, reject) => {
-				timer = setTimeout(() => {
-					controller.abort();
-					reject(new Error("Submission timed out"));
-				}, SUBMISSION_TIMEOUT_MS);
-			});
-			return await Promise.race([request(controller.signal), timeout]);
+			return await request();
 		} finally {
-			clearTimeout(timer);
 			submittingRef.current = false;
 			setSubmitting(false);
 		}
@@ -346,9 +331,8 @@ export const ArgumentInput = ({
 				};
 				setSavedArgument(argumentToSave);
 			}
-			sendRequest((signal) =>
+			sendRequest(() =>
 				api.create("messages", data, {}, true, {
-					signal,
 					timeout: SUBMISSION_TIMEOUT_MS,
 				}),
 			).then((response) => {
@@ -409,9 +393,9 @@ export const ArgumentInput = ({
 					}
 					resetInputs();
 				} else {
-					notifyCreateError();
+					notifySubmissionError("create");
 				}
-			}).catch(notifyCreateError);
+			}, (error) => notifySubmissionError("create", error));
 		}
 	};
 
@@ -428,9 +412,8 @@ export const ArgumentInput = ({
 		};
 
 		if (validate(data, argumentValidationRules)) {
-			sendRequest((signal) =>
+			sendRequest(() =>
 				api.update("messages", argumentId, data, {}, true, {
-					signal,
 					timeout: SUBMISSION_TIMEOUT_MS,
 				}),
 			).then(
@@ -467,10 +450,11 @@ export const ArgumentInput = ({
 						});
 						resetInputs();
 					} else {
-						notifyModifyError();
+						notifySubmissionError("update");
 					}
 				},
-			).catch(notifyModifyError);
+				(error) => notifySubmissionError("update", error),
+			);
 		}
 	};
 
