@@ -43,16 +43,22 @@ const vote = {
 	user_id: faker.number.int(),
 };
 
+const replyByIdResponse = (reply) => ({
+	data: { success: true, data: { resource: reply } },
+});
+
+const getReplies = (url) => {
+	const match = url.match(/\/messages\/(\d+)/);
+	if (match) {
+		return Promise.resolve(replyByIdResponse(repliesById[match[1]]));
+	}
+	const messageId = new URL(url).searchParams.get("message_id");
+	const replies = String(messageId) === String(argument.id) ? listReplies : [];
+	return Promise.resolve({ data: { success: true, data: replies } });
+};
+
 const httpClient = {
-	get: vi.fn((url) => {
-		const match = url.match(/\/messages\/(\d+)/);
-		if (match) {
-			return Promise.resolve({
-				data: { success: true, data: { resource: repliesById[match[1]] } },
-			});
-		}
-		return Promise.resolve({ data: { success: true, data: listReplies } });
-	}),
+	get: vi.fn(getReplies),
 	post: (url, data, config) => {
 		return new Promise((resolve, reject) => {
 			let response;
@@ -395,13 +401,15 @@ describe("Argument", () => {
 			clearPendingReply();
 			listReplies = [argumentReply];
 			repliesById[nestedReply.id] = nestedReply;
-			httpClient.get.mockClear();
+			httpClient.get.mockReset();
+			httpClient.get.mockImplementation(getReplies);
 			Element.prototype.scrollIntoView = vi.fn();
 			scrollIntoView = Element.prototype.scrollIntoView;
 		});
 
 		afterEach(() => {
 			clearPendingReply();
+			httpClient.get.mockImplementation(getReplies);
 			delete Element.prototype.scrollIntoView;
 		});
 
@@ -450,6 +458,46 @@ describe("Argument", () => {
 					block: "center",
 				}),
 			);
+			expect(readPendingReply()).toBeNull();
+		});
+
+		it("should not fetch a pending reply already displayed in the first page", async () => {
+			let resolveReply;
+			httpClient.get.mockImplementation((url) => {
+				if (url.match(/\/messages\/\d+/)) {
+					return new Promise((resolve) => {
+						resolveReply = () => resolve(replyByIdResponse(argumentReply));
+					});
+				}
+				return getReplies(url);
+			});
+			storePendingReply({
+				groupId: argument.group_id,
+				parentId: argumentReply.id,
+				ancestorIds: [argument.id, argumentReply.id],
+			});
+			const { container, findByTestId } = renderArgument({
+				argument,
+				positions,
+				groupName,
+				nestingLevel: 0,
+			});
+
+			expect(await findByTestId("argument-input")).toBeInTheDocument();
+			expect(
+				container.querySelectorAll(`#argument_${argumentReply.id}`),
+			).toHaveLength(1);
+
+			if (resolveReply) {
+				await act(async () => resolveReply());
+			}
+
+			expect(httpClient.get).not.toHaveBeenCalledWith(
+				expect.stringContaining(`/messages/${argumentReply.id}`),
+			);
+			expect(
+				container.querySelectorAll(`#argument_${argumentReply.id}`),
+			).toHaveLength(1);
 			expect(readPendingReply()).toBeNull();
 		});
 

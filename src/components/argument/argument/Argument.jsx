@@ -20,7 +20,14 @@ import { ContentFooter } from "@logora/debate/user_content/content_footer";
 import { ContentHeader } from "@logora/debate/user_content/content_header";
 import { VoteButton } from "@logora/debate/vote/vote_button";
 import cx from "classnames";
-import React, { Suspense, lazy, useEffect, useState, useCallback } from "react";
+import React, {
+	Suspense,
+	lazy,
+	useCallback,
+	useEffect,
+	useRef,
+	useState,
+} from "react";
 import { useIntl } from "react-intl";
 import styles from "./Argument.module.scss";
 import { ReplyFooter } from "./ReplyFooter";
@@ -67,6 +74,8 @@ export const Argument = ({
 	const [reopenPendingReply, setReopenPendingReply] = useState(false);
 	const richContent = useRichContent(argument);
 	const [extraReplies, setExtraReplies] = useState();
+	const pendingReplyIdRef = useRef(null);
+	const pendingRepliesLoadedRef = useRef(false);
 	const content = useTranslatedContent(
 		argument.content,
 		argument.language,
@@ -110,6 +119,19 @@ export const Argument = ({
 			.catch(() => {});
 	};
 
+	const handleRepliesLoad = (replies) => {
+		const pendingReplyId = pendingReplyIdRef.current;
+		if (!pendingReplyId || pendingRepliesLoadedRef.current) {
+			return;
+		}
+		pendingRepliesLoadedRef.current = true;
+		if (
+			!replies?.some((reply) => String(reply.id) === String(pendingReplyId))
+		) {
+			loadPendingReply(pendingReplyId);
+		}
+	};
+
 	useEffect(() => {
 		if (!isLoggedIn) {
 			return;
@@ -122,7 +144,7 @@ export const Argument = ({
 		const position = chain.indexOf(String(argument.id));
 		if (position >= 0) {
 			setExpandReplies(true);
-			loadPendingReply(chain[position + 1]);
+			pendingReplyIdRef.current = chain[position + 1] || null;
 		}
 		if (String(pending.parentId) !== String(argument.id)) {
 			return;
@@ -483,6 +505,7 @@ export const Argument = ({
 								display={"column"}
 								resourcePropName={"argument"}
 								emptyListComponent={<></>}
+								onElementsLoad={handleRepliesLoad}
 								transformData={(reply) => transformReplies(reply)}
 							>
 								{displayReply(argument)}
