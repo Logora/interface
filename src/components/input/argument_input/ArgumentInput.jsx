@@ -206,7 +206,7 @@ export const ArgumentInput = ({
 		},
 		rateLimited: {
 			id: "alert.argument_rate_limited",
-			defaultMessage: "Too many comments. Please try again in a few moments.",
+			defaultMessage: "Your contribution could not be sent. Please try again in a few moments.",
 		},
 	};
 

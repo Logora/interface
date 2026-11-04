@@ -853,7 +853,7 @@ describe("ArgumentInput", () => {
 			expect(submissionCallback).not.toHaveBeenCalled();
 			expect(screen.queryByText("I write an argument")).toBeInTheDocument();
 			expect(
-				screen.getByText("Too many comments. Please try again in a few moments."),
+				screen.getByText("Your contribution could not be sent. Please try again in a few moments."),
 			).toBeInTheDocument();
 		} finally {
 			errorSpy.mockRestore();
