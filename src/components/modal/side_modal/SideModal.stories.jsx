@@ -26,8 +26,6 @@ const debatePositions = [
 ];
 
 export const SideModalExample = () => {
-	const disabledPositions = [];
-
 	const handleChooseSide = (positionId) => {
 		console.log(`Selected position: ${positionId}`);
 	};
@@ -40,7 +38,6 @@ export const SideModalExample = () => {
 						modalTitle={"Choose your side"}
 						title={debateName}
 						positions={debatePositions}
-						disabledPositions={disabledPositions}
 						onChooseSide={handleChooseSide}
 						isNeutral={false}
 					/>
@@ -51,8 +48,6 @@ export const SideModalExample = () => {
 };
 
 export const SideModalWithNeutralPosition = () => {
-	const disabledPositions = [];
-
 	const handleChooseSide = (positionId) => {
 		console.log(`Selected position: ${positionId}`);
 	};
@@ -65,34 +60,8 @@ export const SideModalWithNeutralPosition = () => {
 						modalTitle={"Choose your side"}
 						title={debateName}
 						positions={debatePositions}
-						disabledPositions={disabledPositions}
 						onChooseSide={handleChooseSide}
 						isNeutral={true}
-					/>
-				</IntlProvider>
-			</ModalProvider>
-		</div>
-	);
-};
-
-export const SideModalWithDisabledPositions = () => {
-	const disabledPositions = [{ id: 2, name: "Position B" }];
-
-	const handleChooseSide = (positionId) => {
-		console.log(`Selected position: ${positionId}`);
-	};
-
-	return (
-		<div style={{ width: "400px", height: "100px" }}>
-			<ModalProvider>
-				<IntlProvider locale="en">
-					<SideModal
-						modalTitle={"Choose your side"}
-						title={debateName}
-						positions={debatePositions}
-						disabledPositions={disabledPositions}
-						onChooseSide={handleChooseSide}
-						isNeutral={false}
 					/>
 				</IntlProvider>
 			</ModalProvider>

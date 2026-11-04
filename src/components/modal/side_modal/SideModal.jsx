@@ -11,7 +11,6 @@ export const SideModal = ({
 	onChooseSide,
 	title,
 	positions,
-	disabledPositions,
 	isNeutral = false,
 }) => {
 	const { hideModal } = useModal();
@@ -24,17 +23,6 @@ export const SideModal = ({
 	return (
 		<Modal data-vid={"side_modal"} title={modalTitle}>
 			<div className={styles.modalContent}>{title}</div>
-			{disabledPositions?.length > 0 && (
-				<div className={styles.argumentInputWarning}>
-					<FormattedMessage
-						id={"modal.side_modal.side_limit_short"}
-						values={{ position: disabledPositions[0].name }}
-						defaultMessage={
-							"You have already reached the argument limit (10) for position {position}. You can support the other position."
-						}
-					/>
-				</div>
-			)}
 			<div className={styles.modalActions}>
 				{positions.slice(0, 2).map((position) => {
 					return (
@@ -43,11 +31,6 @@ export const SideModal = ({
 							key={position.id}
 							className={styles.modalAction}
 							onClick={() => handleChoosePosition(position.id)}
-							disabled={
-								disabledPositions &&
-								disabledPositions.filter((pos) => pos.id === position.id)
-									.length > 0
-							}
 						>
 							{
 								useTranslatedContent(

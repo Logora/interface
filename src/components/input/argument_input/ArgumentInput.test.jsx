@@ -127,7 +127,6 @@ describe("ArgumentInput", () => {
 														groupId={debate.id}
 														groupName={debate.name}
 														positions={debate.positions}
-														disabledPositions={[]}
 														listId={"argumentList"}
 														positionId={debate.positions[0].id}
 														hideSourceAction={false}
@@ -172,7 +171,6 @@ describe("ArgumentInput", () => {
 														groupId={debate.id}
 														groupName={debate.name}
 														positions={debate.positions}
-														disabledPositions={[]}
 														listId={"argumentList"}
 														positionId={debate.positions[0].id}
 														hideSourceAction={false}
@@ -217,7 +215,6 @@ describe("ArgumentInput", () => {
 														groupId={debate.id}
 														groupName={debate.name}
 														positions={debate.positions}
-														disabledPositions={[]}
 														disabled
 														listId={"argumentList"}
 														positionId={debate.positions[0].id}
@@ -238,60 +235,6 @@ describe("ArgumentInput", () => {
 		);
 
 		expect(queryByText("Debate is closed")).toBeInTheDocument();
-	});
-
-	it("should display side modal if the disabledPositions is set", async () => {
-		const { queryByText, getByText, getByTestId } = render(
-			<BrowserRouter>
-				<ConfigProvider>
-					<IconProvider library={regularIcons}>
-						<IntlProvider locale="en">
-							<DataProviderContext.Provider value={{ dataProvider: data }}>
-								<AuthContext.Provider
-									value={{ currentUser: currentUser, isLoggedIn: true }}
-								>
-									<ToastProvider>
-										<ModalProvider>
-											<ListProvider>
-												<InputProvider>
-													<ArgumentInput
-														onSubmit={() => {}}
-														groupId={debate.id}
-														groupName={debate.name}
-														positions={debate.positions}
-														disabledPositions={[
-															{
-																id: debate.positions[0].id,
-																name: debate.positions[0].name,
-															},
-														]}
-														listId={"argumentList"}
-														positionId={debate.positions[0].id}
-														hideSourceAction
-														avatarSize={48}
-														placeholder={"Add an argument..."}
-													/>
-												</InputProvider>
-											</ListProvider>
-										</ModalProvider>
-									</ToastProvider>
-								</AuthContext.Provider>
-							</DataProviderContext.Provider>
-						</IntlProvider>
-					</IconProvider>
-				</ConfigProvider>
-			</BrowserRouter>,
-		);
-
-		expect(queryByText("Add an argument...")).toBeInTheDocument();
-		expect(queryByText(debate.positions[0].name)).toBeInTheDocument();
-		expect(queryByText(debate.positions[1].name)).toBeInTheDocument();
-
-		const onSubmit = getByTestId("submit-button");
-		expect(onSubmit).toBeInTheDocument();
-		await act(async () => {
-			await userEvent.click(onSubmit);
-		});
 	});
 
 	it("should display error if the validation rules are not met", async () => {
@@ -392,7 +335,6 @@ describe("ArgumentInput", () => {
 														groupId={debate.id}
 														groupName={debate.name}
 														positions={debate.positions}
-														disabledPositions={[]}
 														disabled
 														listId={"argumentList"}
 														positionId={debate.positions[0].id}
@@ -514,7 +456,6 @@ describe("ArgumentInput", () => {
 														groupId={debate.id}
 														groupName={debate.name}
 														positions={debate.positions}
-														disabledPositions={[]}
 														disabled
 														listId={"argumentList"}
 														positionId={debate.positions[0].id}
@@ -552,6 +493,131 @@ describe("ArgumentInput", () => {
 		expect(callback).toHaveBeenCalled();
 	});
 
+	it("should display an error toast when the API returns 429 (daily limit reached)", async () => {
+		const targetContent = {
+			root: {
+				children: [
+					{
+						children: [
+							{
+								detail: 0,
+								format: 1,
+								mode: "normal",
+								style: "",
+								text: "I write an argument",
+								type: "text",
+								version: 1,
+							},
+						],
+						direction: "ltr",
+						format: "",
+						indent: 0,
+						type: "paragraph",
+						version: 1,
+					},
+				],
+				direction: "ltr",
+				format: "",
+				indent: 0,
+				type: "root",
+				version: 1,
+			},
+		};
+
+		const rejectingHttpClient = {
+			get: () => null,
+			post: () => {
+				return new Promise((_, reject) => {
+					reject({
+						response: {
+							status: 429,
+							data: { success: false, error: {} },
+						},
+					});
+				});
+			},
+			patch: () => null,
+			delete: () => new Promise((resolve) => resolve({ data: {} })),
+		};
+		const rejectingData = dataProvider(
+			rejectingHttpClient,
+			"https://mock.example.api",
+		);
+
+		const AddContentComponent = () => {
+			const { setInputRichContent } = useInput();
+
+			const setContent = (event) => {
+				setInputRichContent(targetContent);
+			};
+
+			return (
+				<>
+					<div onClick={setContent}>Click to set content</div>
+				</>
+			);
+		};
+
+		const { getByTestId, queryByText } = render(
+			<BrowserRouter>
+				<ConfigProvider>
+					<IconProvider library={regularIcons}>
+						<IntlProvider locale="en">
+							<DataProviderContext.Provider
+								value={{ dataProvider: rejectingData }}
+							>
+								<AuthContext.Provider
+									value={{ currentUser: currentUser, isLoggedIn: true }}
+								>
+									<ToastProvider>
+										<ModalProvider>
+											<ListProvider>
+												<InputProvider>
+													<AddContentComponent />
+													<ArgumentInput
+														onSubmit={callback}
+														groupId={debate.id}
+														groupName={debate.name}
+														positions={debate.positions}
+														listId={"argumentList"}
+														positionId={debate.positions[0].id}
+														hideSourceAction={false}
+														avatarSize={48}
+														placeholder={"Add an argument..."}
+													/>
+												</InputProvider>
+											</ListProvider>
+										</ModalProvider>
+									</ToastProvider>
+								</AuthContext.Provider>
+							</DataProviderContext.Provider>
+						</IntlProvider>
+					</IconProvider>
+				</ConfigProvider>
+			</BrowserRouter>,
+		);
+
+		const input = getByTestId("argument-input");
+		await act(async () => {
+			await userEvent.click(input);
+		});
+
+		const setContentButton = screen.getByText("Click to set content");
+		await act(async () => {
+			await userEvent.click(setContentButton);
+		});
+
+		const onSubmit = getByTestId("submit-button");
+		await act(async () => {
+			await userEvent.click(onSubmit);
+		});
+
+		expect(
+			queryByText(
+				"You have reached your daily contribution limit for this debate.",
+			),
+		).toBeInTheDocument();
+	});
 	it("should focus editor when autoFocus is true", async () => {
 		const { getByRole } = render(
 			<BrowserRouter>
@@ -571,7 +637,6 @@ describe("ArgumentInput", () => {
 														groupId={debate.id}
 														groupName={debate.name}
 														positions={debate.positions}
-														disabledPositions={[]}
 														listId={"argumentList"}
 														positionId={debate.positions[0].id}
 														hideSourceAction={true}
@@ -618,7 +683,6 @@ describe("ArgumentInput", () => {
 														groupId={debate.id}
 														groupName={debate.name}
 														positions={debate.positions}
-														disabledPositions={[]}
 														listId={"argumentList"}
 														positionId={debate.positions[0].id}
 														hideSourceAction={true}
@@ -714,7 +778,6 @@ describe("ArgumentInput", () => {
 														groupId={debate.id}
 														groupName={debate.name}
 														positions={[]}
-														disabledPositions={[]}
 														listId={"argumentList"}
 														positionId={null}
 														hideSourceAction={false}
