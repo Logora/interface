@@ -195,31 +195,49 @@ export const ArgumentInput = ({
 		setInputContent(null);
 	};
 
-	const notifySubmissionError = (id, defaultMessage) => {
+	const notifySubmissionError = (id, defaultMessage, error) => {
+		if (error) {
+			console.error("[ArgumentInput] submission failed", error);
+		}
 		toast?.(intl.formatMessage({ id, defaultMessage }), { type: "error" });
 	};
 
-	const notifyCreateError = () =>
-		notifySubmissionError("alert.argument_create_error", "Your contribution could not be sent. Please try again.");
+	const notifyCreateError = (error) => {
+		if (error?.response?.status === 429) {
+			notifySubmissionError(
+				"alert.argument_rate_limited",
+				"Too many comments. Please try again in a few moments.",
+				error,
+			);
+			return;
+		}
+		notifySubmissionError(
+			"alert.argument_create_error",
+			"Your contribution could not be sent. Please try again.",
+			error,
+		);
+	};
 
-	const notifyModifyError = () =>
-		notifySubmissionError("alert.argument_modify_error", "Your contribution could not be saved. Please try again.");
+	const notifyModifyError = (error) =>
+		notifySubmissionError(
+			"alert.argument_modify_error",
+			"Your contribution could not be saved. Please try again.",
+			error,
+		);
 
 	const sendRequest = async (request) => {
 		submittingRef.current = true;
 		setSubmitting(true);
+		const controller = new AbortController();
 		let timer;
 		try {
 			const timeout = new Promise((_, reject) => {
-				timer = setTimeout(
-					() => reject(new Error("Submission timed out")),
-					SUBMISSION_TIMEOUT_MS,
-				);
+				timer = setTimeout(() => {
+					controller.abort();
+					reject(new Error("Submission timed out"));
+				}, SUBMISSION_TIMEOUT_MS);
 			});
-			return await Promise.race([request(), timeout]);
-		} catch (error) {
-			console.error("[ArgumentInput] submission failed", error);
-			return null;
+			return await Promise.race([request(controller.signal), timeout]);
 		} finally {
 			clearTimeout(timer);
 			submittingRef.current = false;
@@ -328,7 +346,12 @@ export const ArgumentInput = ({
 				};
 				setSavedArgument(argumentToSave);
 			}
-			sendRequest(() => api.create("messages", data)).then((response) => {
+			sendRequest((signal) =>
+				api.create("messages", data, {}, true, {
+					signal,
+					timeout: SUBMISSION_TIMEOUT_MS,
+				}),
+			).then((response) => {
 				if (response?.data?.success) {
 					if (parentId) {
 						onSubmit(response.data.data.resource);
@@ -405,7 +428,12 @@ export const ArgumentInput = ({
 		};
 
 		if (validate(data, argumentValidationRules)) {
-			sendRequest(() => api.update("messages", argumentId, data)).then(
+			sendRequest((signal) =>
+				api.update("messages", argumentId, data, {}, true, {
+					signal,
+					timeout: SUBMISSION_TIMEOUT_MS,
+				}),
+			).then(
 				(response) => {
 					if (response?.data?.success) {
 						const argument = response.data.data.resource;

@@ -86,8 +86,8 @@ export const dataProvider = (
 		});
 	},
 
-	update: (resource, id, data, params = {}, withToken = true) => {
-		const config = {};
+	update: (resource, id, data, params = {}, withToken = true, options = {}) => {
+		const config = { ...options };
 		if (withToken) {
 			config["headers"] = getAuthHeader(storageKey);
 		} else {
@@ -108,8 +108,8 @@ export const dataProvider = (
 		});
 	},
 
-	create: (resource, data, params = {}, withToken = true) => {
-		const config = {};
+	create: (resource, data, params = {}, withToken = true, options = {}) => {
+		const config = { ...options };
 		if (withToken) {
 			config["headers"] = getAuthHeader(storageKey);
 		} else {

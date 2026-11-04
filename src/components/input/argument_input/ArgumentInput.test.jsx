@@ -819,6 +819,47 @@ describe("ArgumentInput", () => {
 		).toBeInTheDocument();
 	});
 
+	it("should notify the user with a dedicated message when the submission is rate limited", async () => {
+		const submissionCallback = vi.fn();
+		const errorSpy = vi.spyOn(console, "error").mockImplementation(() => {});
+		const post = vi.fn(() => Promise.reject({ response: { status: 429 } }));
+		const rateLimitedProvider = dataProvider(
+			{ ...httpClient, post },
+			"https://mock.example.api",
+		);
+
+		try {
+			render(
+				<InputWithProviders
+					provider={rateLimitedProvider}
+					onSubmit={submissionCallback}
+				>
+					<SetWrittenContent />
+				</InputWithProviders>,
+			);
+
+			await act(async () => {
+				await userEvent.click(screen.getByTestId("argument-input"));
+			});
+			await act(async () => {
+				await userEvent.click(screen.getByText("Click to set content"));
+			});
+
+			await act(async () => {
+				await userEvent.click(screen.getByTestId("submit-button"));
+			});
+
+			expect(post).toHaveBeenCalledTimes(1);
+			expect(submissionCallback).not.toHaveBeenCalled();
+			expect(screen.queryByText("I write an argument")).toBeInTheDocument();
+			expect(
+				screen.getByText("Too many comments. Please try again in a few moments."),
+			).toBeInTheDocument();
+		} finally {
+			errorSpy.mockRestore();
+		}
+	});
+
 	it("should keep the content and notify the user when the update fails", async () => {
 		Element.prototype.scrollIntoView = vi.fn();
 		Range.prototype.getBoundingClientRect = vi.fn(() => ({
@@ -1070,6 +1111,7 @@ describe("ArgumentInput", () => {
 
 	it("should release the editor when the submission never completes", async () => {
 		vi.useFakeTimers();
+		const errorSpy = vi.spyOn(console, "error").mockImplementation(() => {});
 		try {
 			const post = vi.fn(() => new Promise(() => {}));
 			const pendingProvider = dataProvider(
@@ -1100,8 +1142,12 @@ describe("ArgumentInput", () => {
 				).length,
 			).toBeGreaterThan(0);
 			expect(screen.queryByText("I write an argument")).toBeInTheDocument();
+			const config = post.mock.calls[0][2];
+			expect(config.timeout).toBe(20000);
+			expect(config.signal.aborted).toBe(true);
 		} finally {
 			vi.useRealTimers();
+			errorSpy.mockRestore();
 		}
 	});
 });
