@@ -378,6 +378,40 @@ export const VoteBoxWithVotesAndComments = (args) => {	return (
 	);
 };
 
+export const VoteBoxWithVotesAndCommentsNarrow = () => {
+	return (
+		<div style={{ width: "200px" }}>
+			<BrowserRouter>
+				<IntlProvider locale="en">
+					<DataProviderContext.Provider value={{ dataProvider: data }}>
+						<AuthContext.Provider
+							value={{ currentUser: currentUser, isLoggedIn: true }}
+						>
+							<ToastProvider>
+								<ConfigProvider config={{}} routes={{ ...routes }}>
+									<ModalProvider>
+										<VoteProvider>
+											<VoteBox
+												voteableId={debate.id}
+												numberVotes={debate.votes_count}
+												voteableType={"Group"}
+												votePositions={votePositions}
+												showTotal={false}
+												showVotesCommentsNumber={true}
+												commentsCount={12}
+											/>
+										</VoteProvider>
+									</ModalProvider>
+								</ConfigProvider>
+							</ToastProvider>
+						</AuthContext.Provider>
+					</DataProviderContext.Provider>
+				</IntlProvider>
+			</BrowserRouter>
+		</div>
+	);
+};
+
 export const VoteBoxWithExistingVote = () => {
 	return (
 		<div style={{ width: "400px" }}>
