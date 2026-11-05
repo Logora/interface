@@ -310,6 +310,7 @@ a.voteButton {
 
 .voteCommentCounts {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     gap: spacing.$spacer;
     width: 100%;
@@ -318,6 +319,7 @@ a.voteButton {
 
 .debateNumberItem {
     display: flex;
+    flex: 0 0 auto;
     align-items: center;
     gap: spacing.$spacer-xxs;
     font-size: theme.$font-size-normal;
