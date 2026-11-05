@@ -1545,4 +1545,175 @@ describe("PaginatedList", () => {
 
 		expect(screen.getByText("Updated second item")).toBeTruthy();
 	});
+
+	it("should stop pagination when loading more returns a 404", async () => {
+		mock.mockResolvedValueOnce({
+			status: 200,
+			data: {
+				success: true,
+				data: Array.from({ length: 1 }, createElement),
+			},
+		});
+		mock.mockRejectedValueOnce({ response: { status: 404 } });
+
+		const onHasMoreChange = vi.fn();
+
+		await act(async () => {
+			render(
+				<BrowserRouter>
+					<IntlProvider locale="en">
+						<ListProvider>
+							<IconProvider library={regularIcons}>
+								<ResponsiveProvider>
+									<DataProviderContext.Provider value={{ dataProvider: data }}>
+										<PaginatedList
+											currentListId={"itemList"}
+											resource={"items"}
+											sort={"-created_at"}
+											resourcePropName={"item"}
+											perPage={1}
+											numberElements={3}
+											countless={true}
+											display="column"
+											onHasMoreChange={onHasMoreChange}
+										>
+											<ListItem />
+										</PaginatedList>
+									</DataProviderContext.Provider>
+								</ResponsiveProvider>
+							</IconProvider>
+						</ListProvider>
+					</IntlProvider>
+				</BrowserRouter>,
+			);
+		});
+
+		expect(mock).toHaveBeenCalledTimes(1);
+		expect(screen.getByText("See more")).toBeTruthy();
+
+		await act(async () => {
+			await userEvent.click(screen.getByText("See more"));
+		});
+
+		expect(mock).toHaveBeenCalledTimes(2);
+		expect(screen.queryByText("See more")).toBeFalsy();
+		expect(onHasMoreChange).toHaveBeenLastCalledWith(false);
+	});
+
+	it("should rearm pagination when the list is reloaded after a 404", async () => {
+		mock.mockResolvedValueOnce({
+			status: 200,
+			data: {
+				success: true,
+				data: Array.from({ length: 1 }, createElement),
+			},
+		});
+		mock.mockRejectedValueOnce({ response: { status: 404 } });
+		mock.mockResolvedValueOnce({
+			status: 200,
+			data: {
+				success: true,
+				data: Array.from({ length: 1 }, createElement),
+			},
+		});
+
+		const renderList = (sortValue) => (
+			<BrowserRouter>
+				<IntlProvider locale="en">
+					<ListProvider>
+						<IconProvider library={regularIcons}>
+							<ResponsiveProvider>
+								<DataProviderContext.Provider value={{ dataProvider: data }}>
+									<PaginatedList
+										currentListId={"itemList"}
+										resource={"items"}
+										sort={sortValue}
+										resourcePropName={"item"}
+										perPage={1}
+										numberElements={3}
+										countless={true}
+										display="column"
+									>
+										<ListItem />
+									</PaginatedList>
+								</DataProviderContext.Provider>
+							</ResponsiveProvider>
+						</IconProvider>
+					</ListProvider>
+				</IntlProvider>
+			</BrowserRouter>
+		);
+
+		let rerender;
+		await act(async () => {
+			({ rerender } = render(renderList("-created_at")));
+		});
+
+		await act(async () => {
+			await userEvent.click(screen.getByText("See more"));
+		});
+
+		expect(mock).toHaveBeenCalledTimes(2);
+		expect(screen.queryByText("See more")).toBeFalsy();
+
+		await act(async () => {
+			rerender(renderList("-oldest"));
+		});
+
+		expect(mock).toHaveBeenLastCalledWith(
+			"https://mock.example.api/items?page=1&per_page=1&sort=-oldest&countless=true&api_key=",
+		);
+		expect(mock).toHaveBeenCalledTimes(3);
+		expect(screen.getByText("See more")).toBeTruthy();
+	});
+
+	it("should hide the button on a 404 when countless is not requested", async () => {
+		mock.mockResolvedValueOnce({
+			status: 200,
+			data: {
+				success: true,
+				data: Array.from({ length: 1 }, createElement),
+			},
+		});
+		mock.mockRejectedValueOnce({ response: { status: 404 } });
+
+		await act(async () => {
+			render(
+				<BrowserRouter>
+					<IntlProvider locale="en">
+						<ListProvider>
+							<IconProvider library={regularIcons}>
+								<ResponsiveProvider>
+									<DataProviderContext.Provider value={{ dataProvider: data }}>
+										<PaginatedList
+											currentListId={"itemList"}
+											resource={"items"}
+											sort={"-created_at"}
+											resourcePropName={"item"}
+											perPage={1}
+											numberElements={10}
+											display="column"
+										>
+											<ListItem />
+										</PaginatedList>
+									</DataProviderContext.Provider>
+								</ResponsiveProvider>
+							</IconProvider>
+						</ListProvider>
+					</IntlProvider>
+				</BrowserRouter>,
+			);
+		});
+
+		expect(mock).toHaveBeenCalledTimes(1);
+		expect(screen.getByText("See more")).toBeTruthy();
+
+		await act(async () => {
+			await userEvent.click(screen.getByText("See more"));
+		});
+
+		expect(mock).toHaveBeenCalledTimes(2);
+		expect(screen.queryByText("See more")).toBeFalsy();
+	});
 });
+
