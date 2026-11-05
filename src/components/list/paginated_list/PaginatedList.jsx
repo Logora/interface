@@ -53,6 +53,7 @@ export const PaginatedList = ({
 	onElementClick,
 	withUrlParams = false,
 	onLoadNewPage,
+	onHasMoreChange,
 }) => {
 	const intl = useIntl();
 	const list = useList();
@@ -150,6 +151,7 @@ export const PaginatedList = ({
 		if (resource) {
 			setPage(1);
 			setCurrentResources([]);
+			setHasMore(true);
 			setIsLoading(true);
 			loadResources(1);
 		} else {
@@ -163,6 +165,12 @@ export const PaginatedList = ({
 		activeTagId,
 		perPage,
 	]);
+
+	useEffect(() => {
+		if (typeof onHasMoreChange === "function") {
+			onHasMoreChange(hasMore);
+		}
+	}, [hasMore]);
 
 	useEffect(() => {
 		if (page > 1) {
@@ -293,7 +301,9 @@ export const PaginatedList = ({
 				})
 				.catch((error) => {
 					console.error(error);
-					if (!(error?.response?.status === 404)) {
+					if (error?.response?.status === 404) {
+						setHasMore(false);
+					} else {
 						setLoadError(true);
 					}
 					setIsLoading(false);
@@ -444,7 +454,7 @@ export const PaginatedList = ({
 							currentPage={page}
 							perPage={perPage}
 							totalElements={numberElements || totalElements}
-							hasMore={countless === true ? hasMore : undefined}
+							hasMore={countless === true || !hasMore ? hasMore : undefined}
 							onLoad={handleLoadNewPage}
 							isLoading={isLoading}
 							hideLoader={true}
