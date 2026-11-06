@@ -1,6 +1,15 @@
 @use 'styles/theme' as theme;
 @use 'styles/spacing' as spacing;
 
+.pageBox {
+    background-color: theme.$background-color-primary;
+    box-shadow: theme.$box-shadow-main-container;
+    border: theme.$box-border-main-container;
+    border-radius: theme.$box-border-radius;
+    @include spacing.p(4, sm);
+    @include spacing.p(3, xs);
+}
+
 .pageSkeleton {
     display: flex;
     flex-direction: column;
