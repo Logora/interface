@@ -1,6 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import React from "react";
 import { PageSkeleton } from "./PageSkeleton";
+import styles from "./PageSkeleton.module.scss";
 
 describe("PageSkeleton", () => {
 	it("should render skeleton with correct test id", () => {
@@ -11,6 +12,18 @@ describe("PageSkeleton", () => {
 	it("applies custom className when passed", () => {
 		render(<PageSkeleton className="custom-class" />);
 		expect(screen.getByTestId("page-skeleton")).toHaveClass("custom-class");
+	});
+
+	it("renders the container in the page box by default", () => {
+		render(<PageSkeleton />);
+		expect(screen.getByTestId("page-skeleton")).toHaveClass(styles.pageBox);
+	});
+
+	it("merges the page box with a custom className", () => {
+		render(<PageSkeleton className="custom-class" />);
+		const container = screen.getByTestId("page-skeleton");
+		expect(container).toHaveClass(styles.pageBox);
+		expect(container).toHaveClass("custom-class");
 	});
 
 	it("renders photo on the right by default", () => {

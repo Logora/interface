@@ -17,7 +17,7 @@ const meta = {
 		enableAnimation: { control: "boolean" },
 	},
 	render: (args) => (
-		<div style={{ width: "900px" }}>
+		<div style={{ width: "900px", containerType: "inline-size" }}>
 			<PageSkeleton {...args} />
 		</div>
 	),

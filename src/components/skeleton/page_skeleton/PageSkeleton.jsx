@@ -1,3 +1,4 @@
+import cx from "classnames";
 import React from "react";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
@@ -32,7 +33,10 @@ export const PageSkeleton = ({
 		);
 
 	return (
-		<div data-testid={"page-skeleton"} className={className}>
+		<div
+			data-testid={"page-skeleton"}
+			className={cx(styles.pageBox, className)}
+		>
 			<div className={styles.pageSkeleton}>
 				<div className={styles.header}>
 					{photo === "left" && photoBlock}
