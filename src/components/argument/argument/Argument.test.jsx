@@ -1,4 +1,4 @@
-import React, { act } from "react";
+import React, { act, useEffect, useRef } from "react";
 vi.mock("@lexical/react/LexicalErrorBoundary", () => ({
 	// remplace le composant ESM par un wrapper neutre pour Jest (CJS)
 	LexicalErrorBoundary: ({ children }) => children,
@@ -10,7 +10,7 @@ import {
 	DataProviderContext,
 	dataProvider,
 } from "@logora/debate/data/data_provider";
-import { ModalProvider } from "@logora/debate/dialog/modal";
+import { Modal, ModalProvider, useModal } from "@logora/debate/dialog/modal";
 import { ToastProvider } from "@logora/debate/dialog/toast_provider";
 import { ResponsiveProvider } from "@logora/debate/hooks/use_responsive";
 import { IconProvider } from "@logora/debate/icons/icon_provider";
@@ -250,8 +250,60 @@ const renderArgument = (props, { isLoggedIn = true } = {}) =>
 		</Providers>,
 	);
 
+const CloseOnboardingButton = () => {
+	const { hideModal } = useModal();
+
+	return (
+		<button type="button" data-testid="close-onboarding" onClick={hideModal}>
+			accept terms
+		</button>
+	);
+};
+
+const PendingOnboarding = () => {
+	const { showModal } = useModal();
+	const openedRef = useRef(false);
+
+	useEffect(() => {
+		if (openedRef.current) {
+			return;
+		}
+		openedRef.current = true;
+		showModal(
+			<IntlProvider locale="en">
+				<Modal title="Onboarding">
+					<CloseOnboardingButton />
+				</Modal>
+			</IntlProvider>,
+		);
+	}, []);
+
+	return null;
+};
+
+const renderArgumentWithOnboarding = (props) =>
+	render(
+		<Providers>
+			<PendingOnboarding />
+			<Argument {...props} />
+		</Providers>,
+	);
+
 describe("Argument", () => {
 	beforeAll(() => {
+		if (typeof HTMLDialogElement !== "undefined") {
+			if (!HTMLDialogElement.prototype.showModal) {
+				HTMLDialogElement.prototype.showModal = function () {
+					this.setAttribute("open", "");
+				};
+			}
+			if (!HTMLDialogElement.prototype.close) {
+				HTMLDialogElement.prototype.close = function () {
+					this.removeAttribute("open");
+					this.dispatchEvent(new Event("close"));
+				};
+			}
+		}
 		Object.defineProperty(window, "matchMedia", {
 			writable: true,
 			value: vi.fn().mockImplementation((query) => ({
@@ -426,6 +478,39 @@ describe("Argument", () => {
 			});
 
 			expect(await findByTestId("argument-input")).toBeInTheDocument();
+			await waitFor(() =>
+				expect(scrollIntoView).toHaveBeenCalledWith({
+					behavior: "smooth",
+					block: "center",
+				}),
+			);
+			expect(readPendingReply()).toBeNull();
+		});
+
+		it("should scroll to the reopened reply editor once the onboarding modal is closed", async () => {
+			storePendingReply({
+				groupId: argument.group_id,
+				parentId: argument.id,
+			});
+			const { findByTestId, getByTestId } = renderArgumentWithOnboarding({
+				argument,
+				positions,
+				groupName,
+				nestingLevel: 0,
+			});
+
+			expect(await findByTestId("argument-input")).toBeInTheDocument();
+			expect(getByTestId("close-onboarding")).toBeInTheDocument();
+
+			await act(async () => {
+				await new Promise((resolve) => setTimeout(resolve, 60));
+			});
+			expect(scrollIntoView).not.toHaveBeenCalled();
+
+			await act(async () => {
+				await userEvent.click(getByTestId("close-onboarding"));
+			});
+
 			await waitFor(() =>
 				expect(scrollIntoView).toHaveBeenCalledWith({
 					behavior: "smooth",
