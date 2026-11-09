@@ -140,4 +140,35 @@ describe("DebateBox", () => {
 		);
 		expect(getByText(/75/)).toBeTruthy();
 	});
+	it("renders a debate whose positions are empty", () => {
+		const debateWithoutPositions = {
+			...debate,
+			votes_count: {},
+			group_context: {
+				...debate.group_context,
+				positions: [],
+			},
+		};
+		const { getByText, container } = render(
+			<DefaultDebateBox debate={debateWithoutPositions} />,
+		);
+		expect(getByText(debateWithoutPositions.name)).toBeInTheDocument();
+		expect(container.textContent).not.toContain("%");
+	});
+
+	it("renders a debate without positions nor votes_count", () => {
+		const debateWithoutContextData = {
+			...debate,
+			votes_count: undefined,
+			group_context: {
+				...debate.group_context,
+				positions: undefined,
+			},
+		};
+		const { getByText, container } = render(
+			<DefaultDebateBox debate={debateWithoutContextData} />,
+		);
+		expect(getByText(debateWithoutContextData.name)).toBeInTheDocument();
+		expect(container.textContent).not.toContain("%");
+	});
 });
