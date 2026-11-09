@@ -15,19 +15,22 @@ export const DebateBox = ({ debate }) => {
 	const routes = useRoutes();
 	const intl = useIntl();
 	const { isMobile } = useResponsive();
+	const votesCount = debate.votes_count ?? {};
 	const totalVotes =
-		debate.votes_count?.total ||
-		Object.values(debate.votes_count).reduce(
+		votesCount.total ||
+		Object.values(votesCount).reduce(
 			(sum, value) => sum + Number.parseFloat(value),
 			0,
 		) ||
 		0;
-	const winningPosition = debate.group_context?.positions.reduce((a, b) =>
-		Number.parseInt(debate.votes_count[b.id]) >
-		Number.parseInt(debate.votes_count[a.id])
-			? b
-			: a,
-	);
+	const positions = debate.group_context?.positions ?? [];
+	const winningPosition = positions.length
+		? positions.reduce((a, b) =>
+				Number.parseInt(votesCount[b.id]) > Number.parseInt(votesCount[a.id])
+					? b
+					: a,
+			)
+		: undefined;
 	const name = useTranslatedContent(
 		debate.name,
 		debate.language,
@@ -35,10 +38,10 @@ export const DebateBox = ({ debate }) => {
 		debate.translation_entries,
 	);
 	const winningPositionName = useTranslatedContent(
-		winningPosition.name,
-		winningPosition.language,
+		winningPosition?.name,
+		winningPosition?.language,
 		"name",
-		winningPosition.translation_entries,
+		winningPosition?.translation_entries,
 	);
 
 	const getPercentageValue = (voteCount, totalVotes) => {
@@ -205,7 +208,7 @@ export const DebateBox = ({ debate }) => {
 								className={styles.debateBoxNumbersText}
 								title={
 									winningPosition
-										? `${getPercentageValue(debate.votes_count[winningPosition.id] || 0, totalVotes)} % ${winningPositionName.translatedContent}`
+										? `${getPercentageValue(votesCount[winningPosition.id] || 0, totalVotes)} % ${winningPositionName.translatedContent}`
 										: undefined
 								}
 							>
@@ -213,7 +216,7 @@ export const DebateBox = ({ debate }) => {
 									<>
 										<span className={styles.debateBoxPercentage}>
 											{getPercentageValue(
-												debate.votes_count[winningPosition.id] || 0,
+												votesCount[winningPosition.id] || 0,
 												totalVotes,
 											)}
 											{"\u00A0"}%
