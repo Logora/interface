@@ -1,6 +1,7 @@
 import { Button } from "@logora/debate/action/button";
 import {
 	EMAIL_CONSENT_STORAGE_KEY,
+	isEmailUnavailableError,
 	utf8ToBase64url,
 } from "@logora/debate/auth/use_auth";
 import { Icon } from "@logora/debate/icons/icon";
@@ -200,11 +201,17 @@ export const SSOForm = ({
 							) : null}
 							{error ? (
 								<div className={styles.error}>
-									{intl.formatMessage({
-										id: "auth.sso_form.error",
-										defaultMessage:
-											"An error occurred during sign in. Please try again in a few moments.",
-									})}
+									{isEmailUnavailableError(error)
+										? intl.formatMessage({
+												id: "auth.email_unavailable_error",
+												defaultMessage:
+													"This email address cannot be used to create an account.",
+											})
+										: intl.formatMessage({
+												id: "auth.sso_form.error",
+												defaultMessage:
+													"An error occurred during sign in. Please try again in a few moments.",
+											})}
 								</div>
 							) : null}
 							{showTerms && (

@@ -1,5 +1,8 @@
 import { Button } from "@logora/debate/action/button";
-import { EMAIL_CONSENT_STORAGE_KEY } from "@logora/debate/auth/use_auth";
+import {
+	EMAIL_CONSENT_STORAGE_KEY,
+	isEmailUnavailableError,
+} from "@logora/debate/auth/use_auth";
 import { TextInput } from "@logora/debate/input/text_input";
 import { Toggle } from "@logora/debate/input/toggle";
 import { useSessionStorageState } from "@logora/debate/hooks/use_session_storage_state";
@@ -140,7 +143,13 @@ export const SignupForm = ({ onSubmit, providerName, error = false }) => {
 						error={error || passwordError}
 						required
 						message={
-							error
+							isEmailUnavailableError(error)
+								? intl.formatMessage({
+										id: "auth.email_unavailable_error",
+										defaultMessage:
+											"This email address cannot be used to create an account.",
+									})
+								: error
 								? intl.formatMessage({
 										id: "auth_signup_form_error",
 										defaultMessage:

@@ -6,3 +6,8 @@ export { authTokenHandler } from "./authTokenHandler";
 export { useAuthActions, EMAIL_CONSENT_STORAGE_KEY } from "./useAuthActions";
 export { useAuthInterceptor } from "./useAuthInterceptor";
 export { AuthContext } from "./AuthContext";
+export {
+	EMAIL_UNAVAILABLE_ERROR,
+	getAuthErrorCode,
+	isEmailUnavailableError,
+} from "./authErrors";
