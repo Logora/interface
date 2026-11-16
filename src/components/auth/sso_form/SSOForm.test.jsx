@@ -98,6 +98,23 @@ describe("SSOForm", () => {
 		).toBeTruthy();
 	});
 
+	it("should render a dedicated message when the email is unavailable", () => {
+		render(
+			<SSOFormWithError
+				error={{ response: { data: { error_description: "email_unavailable" } } }}
+			/>,
+		);
+
+		expect(
+			screen.getByText("This email address cannot be used to create an account."),
+		).toBeTruthy();
+		expect(
+			screen.queryByText(
+				"An error occurred during sign in. Please try again in a few moments.",
+			),
+		).toBeNull();
+	});
+
 	it("should render without actions if prop passed", () => {
 		render(<SSOFormWithoutActions />);
 

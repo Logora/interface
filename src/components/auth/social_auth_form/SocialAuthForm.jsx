@@ -2,7 +2,10 @@ import { FacebookLoginButton } from "@logora/debate/auth/facebook_login_button";
 import { GoogleLoginButton } from "@logora/debate/auth/google_login_button";
 import { LoginForm } from "@logora/debate/auth/login_form";
 import { SignupForm } from "@logora/debate/auth/signup_form";
-import { EMAIL_CONSENT_STORAGE_KEY } from "@logora/debate/auth/use_auth";
+import {
+	EMAIL_CONSENT_STORAGE_KEY,
+	isEmailUnavailableError,
+} from "@logora/debate/auth/use_auth";
 import { Icon } from "@logora/debate/icons/icon";
 import { Toggle } from "@logora/debate/input/toggle";
 import { useSessionStorageState } from "@logora/debate/hooks/use_session_storage_state";
@@ -208,11 +211,17 @@ export const SocialAuthForm = ({
 					)}
 					{error && lastStep === "SOCIAL" ? (
 						<div className={styles.errorGroup}>
-							{intl.formatMessage({
-								id: "auth.social_auth_form.error",
-								defaultMessage:
-									"An error occurred during sign in. Please try again in a few moments.",
-							})}
+							{isEmailUnavailableError(error)
+								? intl.formatMessage({
+										id: "auth.email_unavailable_error",
+										defaultMessage:
+											"This email address cannot be used to create an account.",
+									})
+								: intl.formatMessage({
+										id: "auth.social_auth_form.error",
+										defaultMessage:
+											"An error occurred during sign in. Please try again in a few moments.",
+									})}
 						</div>
 					) : null}
 					{displayFooter()}
@@ -257,7 +266,7 @@ export const SocialAuthForm = ({
 							<SignupForm
 								onSubmit={handleSignUp}
 								providerName={providerName}
-								error={error && lastStep === "SIGNUP"}
+								error={lastStep === "SIGNUP" ? error : false}
 							/>
 						</>
 					) : (
