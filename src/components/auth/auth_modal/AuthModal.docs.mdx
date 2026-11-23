@@ -10,6 +10,18 @@ import { ConfigProvider } from '@logora/debate.data.config_provider';
 
 An authentication modal to login through OAuth2 or by form.
 
+### Props
+
+| Prop | Description | Default |
+|---|---|---|
+| `onHideModal` | Called when the modal is closed | none |
+| `title` | Replaces the SSO form title | `auth.sso_form.title` translation |
+| `text` | Replaces the SSO form subtitle | `auth.sso_form.subtitle` translation |
+| `buttonLabel` | Replaces the SSO form signup button label | `auth.sso_form.signup` translation |
+| `url` | Replaces the SSO form signup link | `config.auth.registration_url` then `config.auth.login_url` |
+
+`title`, `text`, `buttonLabel` and `url` only apply when `config.auth.type` is an SSO type; the `form` and `social` branches render `SocialAuthForm`, which ignores them.
+
 ### Component usage
 ```js
 import AuthModal from '@logora/debate.auth.auth_modal';
