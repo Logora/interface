@@ -20,3 +20,8 @@ const Component = () => {
     )
 }
 ```
+### Subscribers-only modules
+
+Inside a `ModuleContext.Provider` (for example `value="comments"`), when `config[module].subscribersOnly` is `true` and the logged-in user's `is_subscriber` is not `true`, `requireAuthentication` shows `SubscriptionModal` with `config[module].subscriptionModal` instead of the login flow. `useSubscriptionRequired()` returns that condition.
+
+Administrators are exempted by the API but not by this hook, since the current user payload does not expose an admin flag: a non-subscriber administrator sees the subscription modal.

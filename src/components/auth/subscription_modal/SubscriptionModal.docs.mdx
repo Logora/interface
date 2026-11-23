@@ -1,0 +1,35 @@
+---
+description: A modal asking a logged-in non-subscriber to subscribe before participating.
+labels: ['auth', 'subscription']
+---
+
+A modal asking a logged-in non-subscriber to subscribe before participating in a subscribers-only module.
+
+### Component usage
+```js
+import { SubscriptionModal } from '@logora/debate.auth.subscription_modal';
+
+<ModalProvider>
+    <IntlProvider locale="en">
+        <SubscriptionModal
+            title="Subscribe to comment"
+            text="Commenting is reserved to subscribers."
+            buttonLabel="Subscribe"
+            url="https://example.com/subscribe"
+        />
+    </IntlProvider>
+</ModalProvider>
+```
+
+### Props
+
+| Prop | Description | Default |
+|---|---|---|
+| `title` | Modal title | `auth.subscription_modal.title` translation |
+| `text` | Body text | `auth.subscription_modal.text` translation |
+| `buttonLabel` | Subscribe button label | `auth.subscription_modal.button` translation |
+| `url` | Subscription page URL, opened in a new tab | none |
+
+Without `url`, no button is displayed.
+
+`useAuthRequired` shows this modal with `config[module].subscriptionModal` when the module sets `subscribersOnly: true` and the current user is not a subscriber.

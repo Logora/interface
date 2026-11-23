@@ -1,11 +1,16 @@
 import { ConfigContext } from "@logora/debate/data/config_provider";
-import { useModal } from "@logora/debate/dialog/modal";
-import { fireEvent, render } from "@testing-library/react";
+import { ModalProvider, useModal } from "@logora/debate/dialog/modal";
+import { IconProvider } from "@logora/debate/icons/icon_provider";
+import * as regularIcons from "@logora/debate/icons/regular_icons";
+import { fireEvent, render, screen } from "@testing-library/react";
+import { IntlProvider } from "react-intl";
+import { MemoryRouter } from "react-router";
 import React from "react";
 import { AuthContext } from "@logora/debate/auth/use_auth";
 import { ModuleContext, useAuthRequired } from "./useAuthRequired";
 
-vi.mock("@logora/debate/dialog/modal", () => ({
+vi.mock("@logora/debate/dialog/modal", async (importOriginal) => ({
+	...(await importOriginal()),
 	useModal: vi.fn(),
 }));
 
@@ -22,6 +27,15 @@ const TestComponent = () => {
 };
 
 describe("useAuthRequired", () => {
+	beforeAll(() => {
+		HTMLDialogElement.prototype.showModal ||= function () {
+			this.setAttribute("open", "");
+		};
+		HTMLDialogElement.prototype.close ||= function () {
+			this.removeAttribute("open");
+		};
+	});
+
 	const showModal = vi.fn();
 	const hideModal = vi.fn();
 
@@ -110,6 +124,64 @@ describe("useAuthRequired", () => {
 
 		expect(showModal).toHaveBeenCalledTimes(1);
 		expect(window.dispatchEvent).not.toHaveBeenCalled();
+	});
+
+	it("passes the module subscription texts and link to the subscription modal", async () => {
+		window.dispatchEvent = vi.fn();
+		const subscriptionModal = {
+			title: "Abonnez-vous",
+			text: "Réservé aux abonnés",
+			buttonLabel: "Je m'abonne",
+			url: "https://example.com/abonnement",
+		};
+		const { getByText } = renderInComments(
+			{ isLoggedIn: true, currentUser: { is_subscriber: false } },
+			{ subscribersOnly: true, subscriptionModal },
+		);
+
+		fireEvent.click(getByText("Authenticate"));
+
+		render(
+			<MemoryRouter>
+				<IntlProvider locale="en">
+					<IconProvider library={regularIcons}>
+						<ModalProvider>{showModal.mock.calls[0][0]}</ModalProvider>
+					</IconProvider>
+				</IntlProvider>
+			</MemoryRouter>,
+		);
+
+		expect(await screen.findByText("Abonnez-vous")).toBeInTheDocument();
+		expect(screen.getByText("Réservé aux abonnés")).toBeInTheDocument();
+		expect(screen.getByText("Je m'abonne").closest("a")).toHaveAttribute(
+			"href",
+			subscriptionModal.url,
+		);
+	});
+
+	it("treats a user without the subscriber attribute as a non-subscriber", () => {
+		window.dispatchEvent = vi.fn();
+		const { getByText } = renderInComments({
+			isLoggedIn: true,
+			currentUser: {},
+		});
+
+		fireEvent.click(getByText("Authenticate"));
+
+		expect(showModal).toHaveBeenCalledTimes(1);
+		expect(window.dispatchEvent).not.toHaveBeenCalled();
+	});
+
+	it("does not restrict a module whose subscribersOnly is false", () => {
+		window.dispatchEvent = vi.fn();
+		const { getByText } = renderInComments(
+			{ isLoggedIn: true, currentUser: { is_subscriber: false } },
+			{ subscribersOnly: false },
+		);
+
+		fireEvent.click(getByText("Authenticate"));
+
+		expect(window.dispatchEvent).toHaveBeenCalled();
 	});
 
 	it("shows the login modal to a visitor with the module texts", () => {

@@ -11,6 +11,11 @@ import { VoteProvider } from "@logora/debate/vote/vote_provider";
 import { act, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import React, { useState } from "react";
+import { ModuleContext } from "@logora/debate/hooks/use_auth_required";
+import { IconProvider } from "@logora/debate/icons/icon_provider";
+import * as regularIcons from "@logora/debate/icons/regular_icons";
+import { IntlProvider } from "react-intl";
+import { MemoryRouter } from "react-router";
 import { useVote } from "./useVote";
 
 const httpClient = {
@@ -558,6 +563,91 @@ describe("useVote", () => {
 			resolveCreate({
 				data: { success: true, data: { resource: { id: 1 } } },
 			});
+		});
+	});
+
+	describe("in a subscribers-only module", () => {
+		beforeAll(() => {
+			HTMLDialogElement.prototype.showModal ||= function () {
+				this.setAttribute("open", "");
+			};
+			HTMLDialogElement.prototype.close ||= function () {
+				this.removeAttribute("open");
+			};
+		});
+
+		const UpvoteButton = () => {
+			const { totalUpvotes, handleVote } = useVote("Message", vote.voteable_id, 10, 5);
+			return (
+				<>
+					<button onClick={() => handleVote(true)} data-testid="upvote" />
+					<span>Upvotes : {totalUpvotes}</span>
+				</>
+			);
+		};
+
+		const renderRestricted = (post, isSubscriber) =>
+			render(
+				<MemoryRouter>
+					<IntlProvider locale="en">
+						<IconProvider library={regularIcons}>
+							<ConfigProvider
+								config={{
+									comments: {
+										subscribersOnly: true,
+										subscriptionModal: { title: "Abonnez-vous" },
+									},
+								}}
+							>
+								<DataProviderContext.Provider
+									value={{
+										dataProvider: dataProvider(
+											{ ...httpClient, post },
+											"https://mock.example.api",
+										),
+									}}
+								>
+									<AuthContext.Provider
+										value={{
+											currentUser: { ...currentUser, is_subscriber: isSubscriber },
+											isLoggedIn: true,
+										}}
+									>
+										<ModalProvider>
+											<VoteProvider>
+												<ModuleContext.Provider value="comments">
+													<UpvoteButton />
+												</ModuleContext.Provider>
+											</VoteProvider>
+										</ModalProvider>
+									</AuthContext.Provider>
+								</DataProviderContext.Provider>
+							</ConfigProvider>
+						</IconProvider>
+					</IntlProvider>
+				</MemoryRouter>,
+			);
+
+		it("opens the subscription modal without voting for a non-subscriber", async () => {
+			const post = vi.fn(httpClient.post);
+			renderRestricted(post, false);
+
+			await userEvent.click(screen.getByTestId("upvote"));
+
+			expect(await screen.findByText("Abonnez-vous")).toBeInTheDocument();
+			expect(post).not.toHaveBeenCalled();
+			expect(screen.getByText("Upvotes : 10"));
+		});
+
+		it("lets a subscriber vote", async () => {
+			const post = vi.fn(httpClient.post);
+			renderRestricted(post, true);
+
+			await userEvent.click(screen.getByTestId("upvote"));
+
+			expect(post).toHaveBeenCalledTimes(1);
+			expect(screen.getByText("Upvotes : 11"));
+			expect(screen.queryByText("Abonnez-vous")).not.toBeInTheDocument();
 		});
 	});
 });
