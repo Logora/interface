@@ -105,6 +105,36 @@ describe("SSOForm", () => {
 		expect(screen.queryByTestId("signin-link")).toBeNull();
 	});
 
+	it("renders the configured title, subtitle, signup label and link", () => {
+		render(
+			<DefaultSSOForm
+				title="Connectez-vous pour participer"
+				subtitle="Réservé aux abonnés et aux inscrits"
+				signupLabel="Je m'abonne"
+				signupUrl="https://example.com/subscribe"
+			/>,
+		);
+
+		expect(screen.getByText("Connectez-vous pour participer")).toBeTruthy();
+		expect(
+			screen.getByText("Réservé aux abonnés et aux inscrits"),
+		).toBeTruthy();
+		expect(screen.getByText("Je m'abonne")).toBeTruthy();
+		expect(
+			screen.getByTestId("signup-button").getAttribute("href"),
+		).toContain("https://example.com/subscribe");
+	});
+
+	it("falls back to the default texts when no override is passed", () => {
+		render(<DefaultSSOForm />);
+
+		expect(screen.getByText("Debate now !")).toBeTruthy();
+		expect(
+			screen.getByText("Sign up right now and receive alerts by email."),
+		).toBeTruthy();
+		expect(screen.getByTestId("signup-button").textContent).toBe("Sign up");
+	});
+
 	it("should encode metadata as base64url with a single URL encoding", () => {
 		const component = render(<SSOFormWithMetadata />);
 

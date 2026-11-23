@@ -19,6 +19,7 @@ import {
 	clearPendingReply,
 	readPendingReply,
 } from "@logora/debate/util/pending_reply";
+import { ModuleContext } from "@logora/debate/hooks/use_auth_required";
 import { ArgumentInput } from "./ArgumentInput";
 
 vi.mock("@lexical/react/LexicalErrorBoundary", () => ({
@@ -1209,5 +1210,93 @@ describe("ArgumentInput", () => {
 			vi.useRealTimers();
 			errorSpy.mockRestore();
 		}
+	});
+
+	const renderInRestrictedComments = (provider, isSubscriber) =>
+		render(
+			<BrowserRouter>
+				<ConfigProvider
+					config={{
+						comments: {
+							subscribersOnly: true,
+							subscriptionModal: { title: "Abonnez-vous" },
+						},
+					}}
+				>
+					<IconProvider library={regularIcons}>
+						<IntlProvider locale="en">
+							<DataProviderContext.Provider value={{ dataProvider: provider }}>
+								<AuthContext.Provider
+									value={{
+										currentUser: { ...currentUser, is_subscriber: isSubscriber },
+										isLoggedIn: true,
+									}}
+								>
+									<ToastProvider>
+										<ModalProvider>
+											<ListProvider>
+												<InputProvider>
+													<ModuleContext.Provider value="comments">
+														<SetWrittenContent />
+														<ArgumentInput
+															onSubmit={callback}
+															groupId={debate.id}
+															groupName={debate.name}
+															positions={[]}
+															disabledPositions={[]}
+															listId={"argumentList"}
+															positionId={null}
+															hideSourceAction
+															avatarSize={48}
+															placeholder={"Add an argument..."}
+														/>
+													</ModuleContext.Provider>
+												</InputProvider>
+											</ListProvider>
+										</ModalProvider>
+									</ToastProvider>
+								</AuthContext.Provider>
+							</DataProviderContext.Provider>
+						</IntlProvider>
+					</IconProvider>
+				</ConfigProvider>
+			</BrowserRouter>,
+		);
+
+	it("should open the subscription modal instead of submitting for a non-subscriber", async () => {
+		const post = vi.fn(httpClient.post);
+		renderInRestrictedComments(
+			dataProvider({ ...httpClient, post }, "https://mock.example.api"),
+			false,
+		);
+
+		expect(screen.queryByTestId("submit-button")).not.toBeInTheDocument();
+		await act(async () => {
+			await userEvent.click(screen.getByTestId("argument-input"));
+		});
+
+		expect(await screen.findByText("Abonnez-vous")).toBeInTheDocument();
+		expect(post).not.toHaveBeenCalled();
+	});
+
+	it("should let a subscriber submit in a restricted module", async () => {
+		const post = vi.fn(httpClient.post);
+		renderInRestrictedComments(
+			dataProvider({ ...httpClient, post }, "https://mock.example.api"),
+			true,
+		);
+
+		await act(async () => {
+			await userEvent.click(screen.getByTestId("argument-input"));
+		});
+		await act(async () => {
+			await userEvent.click(screen.getByText("Click to set content"));
+		});
+		await act(async () => {
+			await userEvent.click(screen.getByTestId("submit-button"));
+		});
+
+		expect(post).toHaveBeenCalledTimes(1);
+		expect(screen.queryByText("Abonnez-vous")).not.toBeInTheDocument();
 	});
 });
