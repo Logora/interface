@@ -11,6 +11,7 @@ export * from "./components/argument/argument";
 export * from "./components/argument/top_arguments";
 export * from "./components/auth/auth_initializer";
 export * from "./components/auth/auth_modal";
+export * from "./components/auth/subscription_modal";
 export * from "./components/auth/facebook_login_button";
 export * from "./components/auth/google_login_button";
 export * from "./components/auth/login_form";

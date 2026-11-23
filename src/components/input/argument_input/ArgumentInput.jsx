@@ -4,7 +4,10 @@ import { useDataProvider } from "@logora/debate/data/data_provider";
 import { useModal } from "@logora/debate/dialog/modal";
 import { useToast } from "@logora/debate/dialog/toast_provider";
 import { useFormValidation } from "@logora/debate/forms/use_form_validation";
-import { useAuthRequired } from "@logora/debate/hooks/use_auth_required";
+import {
+	useAuthRequired,
+	useSubscriptionRequired,
+} from "@logora/debate/hooks/use_auth_required";
 import { useResponsive } from "@logora/debate/hooks/use_responsive";
 import { Icon } from "@logora/debate/icons/icon";
 import { useInput } from "@logora/debate/input/input_provider";
@@ -84,8 +87,10 @@ export const ArgumentInput = ({
 		"userSide",
 		{},
 	);
+	const subscriptionRequired = useSubscriptionRequired();
 	const [inputDisabledForVisitors, setInputDisabledForVisitors] = useState(
-		!isLoggedIn && config?.actions?.disableInputForVisitor,
+		(!isLoggedIn && config?.actions?.disableInputForVisitor) ||
+			subscriptionRequired,
 	);
 	const requireAuthentication = useAuthRequired();
 	const { showModal } = useModal();
@@ -96,9 +101,10 @@ export const ArgumentInput = ({
 
 	useEffect(() => {
 		setInputDisabledForVisitors(
-			!isLoggedIn && config?.actions?.disableInputForVisitor,
+			(!isLoggedIn && config?.actions?.disableInputForVisitor) ||
+				subscriptionRequired,
 		);
-	}, [isLoggedIn, config]);
+	}, [isLoggedIn, config, subscriptionRequired]);
 	// Checks if the user has the role of editor or moderator
 	const isEditorOrModerator =
 		currentUser?.role === "editor" || currentUser?.role === "moderator";
@@ -258,7 +264,7 @@ export const ArgumentInput = ({
 	};
 
 	const handleFormSubmit = () => {
-		if (isLoggedIn) {
+		if (isLoggedIn && !subscriptionRequired) {
 			if (argumentId) {
 				updateArgument();
 			} else {
@@ -275,7 +281,7 @@ export const ArgumentInput = ({
 				}
 			}
 		} else {
-			if (parentId) {
+			if (parentId && !isLoggedIn) {
 				storePendingReply({ groupId, parentId, ancestorIds });
 			}
 			requireAuthentication({ loginAction: "argument" });

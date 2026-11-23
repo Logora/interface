@@ -1,6 +1,9 @@
 import { useAuth } from "@logora/debate/auth/use_auth";
 import { useDataProvider } from "@logora/debate/data/data_provider";
-import { useAuthRequired } from "@logora/debate/hooks/use_auth_required";
+import {
+	useAuthRequired,
+	useSubscriptionRequired,
+} from "@logora/debate/hooks/use_auth_required";
 import { VoteContext } from "@logora/debate/vote/vote_provider";
 import { useContext, useEffect, useState } from "react";
 
@@ -29,6 +32,7 @@ export const useVote = (
 	const [voteDisabled, setVoteDisabled] = useState(false);
 	const [hasVoted, setHasVoted] = useState(false);
 	const requireAuthentication = useAuthRequired();
+	const subscriptionRequired = useSubscriptionRequired();
 
 	useEffect(() => {
 		if (!hasVoted && isLoggedIn) {
@@ -140,7 +144,7 @@ export const useVote = (
 
 	const handleVote = (isUpvote) => {
 		if (!voteDisabled && !voteLoading) {
-			if (isLoggedIn) {
+			if (isLoggedIn && !subscriptionRequired) {
 				voteAction(isUpvote);
 			} else {
 				requireAuthentication({ loginAction: "vote" });

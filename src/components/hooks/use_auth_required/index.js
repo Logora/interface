@@ -1,1 +1,5 @@
-export { useAuthRequired } from "./useAuthRequired";
+export {
+	ModuleContext,
+	useAuthRequired,
+	useSubscriptionRequired,
+} from "./useAuthRequired";

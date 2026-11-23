@@ -9,7 +9,13 @@ import { Loader } from "@logora/debate/progress/loader";
 import React, { useState, useEffect } from "react";
 import styles from "./AuthModal.module.scss";
 
-export const AuthModal = ({ onHideModal = null }) => {
+export const AuthModal = ({
+	onHideModal = null,
+	title,
+	text,
+	buttonLabel,
+	url,
+}) => {
 	const config = useConfig();
 	const { hideModal } = useModal();
 	const { isLoggedIn, authError } = useAuth();
@@ -95,8 +101,11 @@ export const AuthModal = ({ onHideModal = null }) => {
 								logoUrl={config.logo_url}
 								loginUrl={config.auth.login_url}
 								signupUrl={
-									config.auth.registration_url || config.auth.login_url
+									url || config.auth.registration_url || config.auth.login_url
 								}
+								title={title}
+								subtitle={text}
+								signupLabel={buttonLabel}
 								termsUrl={
 									config.provider?.cguUrl ||
 									"https://www.logora.com/blog-posts/cgu"

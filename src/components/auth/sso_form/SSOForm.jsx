@@ -30,6 +30,9 @@ export const SSOForm = ({
 	showTerms = false,
 	hideBelowButton = false,
 	error = false,
+	title,
+	subtitle,
+	signupLabel,
 }) => {
 	const [emailConsent, setEmailConsent] = showEmailConsent
 		? useSessionStorageState(EMAIL_CONSENT_STORAGE_KEY, false)
@@ -127,19 +130,21 @@ export const SSOForm = ({
 			</div>
 			<div className={styles.mainText}>
 				<div className={styles.title}>
-					{intl.formatMessage({
-						id: "auth.sso_form.title",
-						defaultMessage: "Debate now !",
-					})}
+					{title ||
+						intl.formatMessage({
+							id: "auth.sso_form.title",
+							defaultMessage: "Debate now !",
+						})}
 					<br />
 				</div>
-				{intl.formatMessage(
-					{
-						id: "auth.sso_form.subtitle",
-						defaultMessage: "Sign up right now and receive alerts by email.",
-					},
-					{ provider: providerName },
-				)}
+				{subtitle ||
+					intl.formatMessage(
+						{
+							id: "auth.sso_form.subtitle",
+							defaultMessage: "Sign up right now and receive alerts by email.",
+						},
+						{ provider: providerName },
+					)}
 			</div>
 			{hideActions ? null : (
 				<>
@@ -151,10 +156,11 @@ export const SSOForm = ({
 						external
 						border={false}
 					>
-						{intl.formatMessage({
-							id: "auth.sso_form.signup",
-							defaultMessage: "Sign up",
-						})}
+						{signupLabel ||
+							intl.formatMessage({
+								id: "auth.sso_form.signup",
+								defaultMessage: "Sign up",
+							})}
 					</Button>
 					{hideBelowButton ? null : (
 						<>
