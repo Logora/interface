@@ -1,7 +1,11 @@
 import { AuthProviderFactory } from "@logora/debate/auth/providers";
 import { SocialAuthForm } from "@logora/debate/auth/social_auth_form";
 import { SSOForm } from "@logora/debate/auth/sso_form";
-import { useAuth, useAuthActions } from "@logora/debate/auth/use_auth";
+import {
+	isEmailUnavailableError,
+	useAuth,
+	useAuthActions,
+} from "@logora/debate/auth/use_auth";
 import { httpClient } from "@logora/debate/data/http_client";
 import { useConfig } from "@logora/debate/data/config_provider";
 import { Modal, useModal } from "@logora/debate/dialog/modal";
@@ -94,7 +98,12 @@ export const AuthModal = ({
 						) : (
 							<SSOForm
 								authType={config.auth.type}
-								error={authError && method === "OAUTH2"}
+								error={
+									authError &&
+									(method === "OAUTH2" || isEmailUnavailableError(authError))
+										? authError
+										: false
+								}
 								oAuthRedirectUri={process.env.OAUTH_REDIRECT_URI}
 								clientId={config.auth.clientId}
 								scope={config.auth.scope}

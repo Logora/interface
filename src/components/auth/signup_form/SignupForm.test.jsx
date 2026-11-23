@@ -176,4 +176,20 @@ describe("SignupForm", () => {
 			screen.getAllByText("Password and confirmation are not matching."),
 		).toBeTruthy();
 	});
+
+	it("should render a dedicated message when the email is unavailable", () => {
+		render(
+			<IntlProvider locale="en">
+				<SignupForm
+					onSubmit={() => false}
+					providerName={"my company"}
+					error={{ response: { data: { error_description: "email_unavailable" } } }}
+				/>
+			</IntlProvider>,
+		);
+
+		expect(
+			screen.getByText("This email address cannot be used to create an account."),
+		).toBeTruthy();
+	});
 });
