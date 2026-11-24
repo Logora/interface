@@ -184,7 +184,7 @@ describe("useAuthRequired", () => {
 		expect(window.dispatchEvent).toHaveBeenCalled();
 	});
 
-	it("shows the login modal to a visitor with the module texts", () => {
+	it("does not pass module settings to the login modal", () => {
 		window.dispatchEvent = vi.fn();
 		const { getByText } = renderInComments(
 			{ isLoggedIn: false, currentUser: {} },
@@ -194,9 +194,10 @@ describe("useAuthRequired", () => {
 		fireEvent.click(getByText("Authenticate"));
 
 		expect(window.dispatchEvent).toHaveBeenCalled();
-		expect(showModal.mock.calls[0][0].props.children.props.title).toBe(
-			"Connectez-vous",
-		);
+		expect(showModal).toHaveBeenCalledTimes(1);
+		expect(showModal.mock.calls[0][0].props.children.props).toEqual({
+			foo: "bar",
+		});
 	});
 
 	it("does not ask a subscriber to subscribe", () => {

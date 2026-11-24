@@ -21,7 +21,6 @@ const meta = {
 		showTerms: false,
 		hideActions: false,
 		hideBelowButton: false,
-		subtitle: null,
 		logoUrl: null,
 		providerName: null,
 		error: false,
@@ -40,7 +39,6 @@ const meta = {
 		showTerms: { control: "boolean" },
 		hideActions: { control: "boolean" },
 		hideBelowButton: { control: "boolean" },
-		subtitle: { control: "text" },
 		logoUrl: { control: "text" },
 		providerName: { control: "text" },
 		error: { control: "boolean" },
@@ -118,7 +116,6 @@ export const SSOFormWithError = (props) =>
 
 export const SSOFormWithoutActions = (props) =>
 	renderStory({
-		subtitle: "My awesome subtitle to give more info",
 		showEmailConsent: true,
 		providerName: "FSociety Inc.",
 		hideActions: true,
@@ -127,7 +124,6 @@ export const SSOFormWithoutActions = (props) =>
 
 export const SSOFormHideBelowButton = (props) =>
 	renderStory({
-		subtitle: "My awesome subtitle to give more info",
 		showEmailConsent: true,
 		providerName: "FSociety Inc.",
 		hideBelowButton: true,

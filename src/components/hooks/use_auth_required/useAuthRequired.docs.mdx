@@ -24,6 +24,6 @@ const Component = () => {
 
 Inside a `ModuleContext.Provider` (for example `value="comments"`), when `config[module].subscribersOnly` is `true` and the logged-in user's `is_subscriber` is not `true`, `requireAuthentication` shows `SubscriptionModal` with `config[module].subscriptionModal` instead of the login flow. `useSubscriptionRequired()` returns that condition.
 
-A visitor always gets the login flow, with `config[module].loginModal` (`title`, `text`, `buttonLabel`, `url`) passed to `AuthModal`. These overrides only apply when the client authenticates through SSO (`config.auth.type` neither `form` nor `social`): the form/social modal builds its own screens and ignores them.
+A visitor always gets the usual login flow (events, then `AuthModal` unless `config.auth.disableLoginModal`).
 
 Administrators are exempted by the API but not by this hook, since the current user payload does not expose an admin flag: a non-subscriber administrator sees the subscription modal.
