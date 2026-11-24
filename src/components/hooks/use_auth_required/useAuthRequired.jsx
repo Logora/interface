@@ -53,7 +53,7 @@ export const useAuthRequired = () => {
 		}
 		showModal(
 			<Suspense fallback={null}>
-				<AuthModal {...moduleConfig?.loginModal} {...modalParams} />
+				<AuthModal {...modalParams} />
 			</Suspense>,
 		);
 	};
