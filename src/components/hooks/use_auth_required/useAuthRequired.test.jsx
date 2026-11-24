@@ -184,12 +184,12 @@ describe("useAuthRequired", () => {
 		expect(window.dispatchEvent).toHaveBeenCalled();
 	});
 
-	it("shows the login modal to a visitor in a restricted module", () => {
+	it("does not pass module settings to the login modal", () => {
 		window.dispatchEvent = vi.fn();
-		const { getByText } = renderInComments({
-			isLoggedIn: false,
-			currentUser: {},
-		});
+		const { getByText } = renderInComments(
+			{ isLoggedIn: false, currentUser: {} },
+			{ subscribersOnly: true, loginModal: { title: "Connectez-vous" } },
+		);
 
 		fireEvent.click(getByText("Authenticate"));
 

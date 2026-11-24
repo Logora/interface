@@ -105,7 +105,7 @@ describe("SSOForm", () => {
 		expect(screen.queryByTestId("signin-link")).toBeNull();
 	});
 
-	it("falls back to the default texts when no override is passed", () => {
+	it("renders the default title, subtitle and signup label", () => {
 		render(<DefaultSSOForm />);
 
 		expect(screen.getByText("Debate now !")).toBeTruthy();
