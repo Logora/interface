@@ -29,6 +29,16 @@ export const useAuthRequired = () => {
 
 	const requireAuthentication = (modalParams = {}) => {
 		if (subscriptionRequired) {
+			if (typeof window !== "undefined") {
+				window.dispatchEvent(
+					new CustomEvent("logora:subscription:requested", {
+						detail: { module, redirectUrl: window.location.href },
+					}),
+				);
+			}
+			if (config?.auth?.disableSubscriptionModal === true) {
+				return;
+			}
 			showModal(
 				<Suspense fallback={null}>
 					<SubscriptionModal {...moduleConfig?.subscriptionModal} />

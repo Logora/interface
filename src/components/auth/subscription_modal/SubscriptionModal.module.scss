@@ -1,16 +1,59 @@
+@use 'styles/theme' as theme;
 @use 'styles/spacing' as spacing;
+@use 'styles/display' as display;
 
 .body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
-  gap: 1em;
   @include spacing.py(1, xs);
   @include spacing.px(1, xs);
 }
 
+.logo {
+  align-self: center;
+  @include spacing.mt(0, sm);
+  @include spacing.mb(3, xs);
+}
+
+.logoImage {
+  object-fit: contain;
+  width: 100px !important;
+  max-height: 100px !important;
+}
+
+.icon {
+  width: 120px;
+  height: 120px;
+  fill-rule: evenodd;
+  fill: theme.$call-primary !important;
+
+  @include display.media-breakpoint-down(sm) {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+.mainText {
+  font-size: theme.$font-size-normal;
+  font-weight: theme.$font-weight-normal;
+  font-variation-settings: theme.$font-variation-normal;
+  color: theme.$text-primary;
+  text-align: center;
+  @include spacing.mx(2, xs);
+  @include spacing.mx(4, sm);
+
+  @include display.media-breakpoint-down(sm) {
+    font-size: theme.$font-size-small;
+  }
+}
+
 .title {
-  font-weight: bold;
-  font-size: 1.2em;
+  font-weight: theme.$font-weight-bold;
+  font-variation-settings: theme.$font-variation-bold;
+  @include spacing.mb(2, xs);
+}
+
+.button {
+  @include spacing.my(3, xs);
 }

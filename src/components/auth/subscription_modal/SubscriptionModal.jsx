@@ -1,23 +1,46 @@
 import { Button } from "@logora/debate/action/button";
+import { useConfig } from "@logora/debate/data/config_provider";
 import { Modal } from "@logora/debate/dialog/modal";
+import { Icon } from "@logora/debate/icons/icon";
 import React from "react";
 import { useIntl } from "react-intl";
 import styles from "./SubscriptionModal.module.scss";
 
 export const SubscriptionModal = ({ title, text, buttonLabel, url }) => {
 	const intl = useIntl();
+	const config = useConfig();
+	const providerName = config?.provider?.companyName;
 
 	return (
-		<Modal data-vid={"subscription_modal"} showCloseButton>
+		<Modal data-vid={"subscription_modal"}>
 			<div className={styles.body}>
-				<div className={styles.title}>
-					{title ||
-						intl.formatMessage({
-							id: "auth.subscription_modal.title",
-							defaultMessage: "Subscribe to comment",
-						})}
+				<div className={styles.logo}>
+					{config?.logo_url ? (
+						<img
+							height={100}
+							width={100}
+							className={styles.logoImage}
+							src={config.logo_url}
+							alt={`Logo ${providerName || ""}`}
+						/>
+					) : (
+						<Icon
+							name="next"
+							aria-hidden="true"
+							height={50}
+							width={50}
+							className={styles.icon}
+						/>
+					)}
 				</div>
-				<div>
+				<div className={styles.mainText}>
+					<div className={styles.title}>
+						{title ||
+							intl.formatMessage({
+								id: "auth.subscription_modal.title",
+								defaultMessage: "Subscribe to comment",
+							})}
+					</div>
 					{text ||
 						intl.formatMessage({
 							id: "auth.subscription_modal.text",
@@ -25,7 +48,13 @@ export const SubscriptionModal = ({ title, text, buttonLabel, url }) => {
 						})}
 				</div>
 				{url && (
-					<Button data-tid={"link_subscribe"} to={url} external border={false}>
+					<Button
+						data-tid={"link_subscribe"}
+						className={styles.button}
+						to={url}
+						external
+						border={false}
+					>
 						{buttonLabel ||
 							intl.formatMessage({
 								id: "auth.subscription_modal.button",
