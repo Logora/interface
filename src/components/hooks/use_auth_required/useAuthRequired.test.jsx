@@ -102,9 +102,13 @@ describe("useAuthRequired", () => {
 		expect(showModal).not.toHaveBeenCalled();
 	});
 
-	const renderInComments = (auth, comments = { subscribersOnly: true }) =>
+	const renderInComments = (
+		auth,
+		comments = { subscribersOnly: true },
+		extraConfig = {},
+	) =>
 		render(
-			<ConfigContext.Provider value={{ config: { comments } }}>
+			<ConfigContext.Provider value={{ config: { comments, ...extraConfig } }}>
 				<AuthContext.Provider value={auth}>
 					<ModuleContext.Provider value="comments">
 						<TestComponent />
@@ -123,7 +127,29 @@ describe("useAuthRequired", () => {
 		fireEvent.click(getByText("Authenticate"));
 
 		expect(showModal).toHaveBeenCalledTimes(1);
-		expect(window.dispatchEvent).not.toHaveBeenCalled();
+		expect(window.dispatchEvent).toHaveBeenCalledTimes(1);
+		expect(window.dispatchEvent).toHaveBeenCalledWith(
+			new CustomEvent("logora:subscription:requested", {
+				detail: { module: "comments", redirectUrl: window.location.href },
+			}),
+		);
+	});
+
+	it("only dispatches the subscription event when the subscription modal is disabled", () => {
+		window.dispatchEvent = vi.fn();
+		const { getByText } = renderInComments(
+			{ isLoggedIn: true, currentUser: { is_subscriber: false } },
+			{ subscribersOnly: true },
+			{ auth: { disableSubscriptionModal: true } },
+		);
+
+		fireEvent.click(getByText("Authenticate"));
+
+		expect(window.dispatchEvent).toHaveBeenCalledTimes(1);
+		expect(window.dispatchEvent.mock.calls[0][0].type).toBe(
+			"logora:subscription:requested",
+		);
+		expect(showModal).not.toHaveBeenCalled();
 	});
 
 	it("passes the module subscription texts and link to the subscription modal", async () => {
@@ -143,11 +169,13 @@ describe("useAuthRequired", () => {
 
 		render(
 			<MemoryRouter>
-				<IntlProvider locale="en">
-					<IconProvider library={regularIcons}>
-						<ModalProvider>{showModal.mock.calls[0][0]}</ModalProvider>
-					</IconProvider>
-				</IntlProvider>
+				<ConfigContext.Provider value={{ config: {} }}>
+					<IntlProvider locale="en">
+						<IconProvider library={regularIcons}>
+							<ModalProvider>{showModal.mock.calls[0][0]}</ModalProvider>
+						</IconProvider>
+					</IntlProvider>
+				</ConfigContext.Provider>
 			</MemoryRouter>,
 		);
 
@@ -169,7 +197,12 @@ describe("useAuthRequired", () => {
 		fireEvent.click(getByText("Authenticate"));
 
 		expect(showModal).toHaveBeenCalledTimes(1);
-		expect(window.dispatchEvent).not.toHaveBeenCalled();
+		expect(window.dispatchEvent).toHaveBeenCalledTimes(1);
+		expect(window.dispatchEvent).toHaveBeenCalledWith(
+			new CustomEvent("logora:subscription:requested", {
+				detail: { module: "comments", redirectUrl: window.location.href },
+			}),
+		);
 	});
 
 	it("does not restrict a module whose subscribersOnly is false", () => {

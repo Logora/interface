@@ -1,3 +1,4 @@
+import { ConfigProvider } from "@logora/debate/data/config_provider";
 import { ModalProvider } from "@logora/debate/dialog/modal";
 import { IconProvider } from "@logora/debate/icons/icon_provider";
 import * as regularIcons from "@logora/debate/icons/regular_icons";
@@ -16,16 +17,18 @@ beforeAll(() => {
 	};
 });
 
-const renderModal = (props) =>
+const renderModal = (props, config = {}) =>
 	render(
 		<MemoryRouter>
-			<IntlProvider locale="en">
-				<IconProvider library={regularIcons}>
-					<ModalProvider>
-						<SubscriptionModal {...props} />
-					</ModalProvider>
-				</IconProvider>
-			</IntlProvider>
+			<ConfigProvider config={config}>
+				<IntlProvider locale="en">
+					<IconProvider library={regularIcons}>
+						<ModalProvider>
+							<SubscriptionModal {...props} />
+						</ModalProvider>
+					</IconProvider>
+				</IntlProvider>
+			</ConfigProvider>
 		</MemoryRouter>,
 	);
 
@@ -50,5 +53,25 @@ describe("SubscriptionModal", () => {
 
 		expect(screen.getByText("Subscribe to comment")).toBeTruthy();
 		expect(screen.getByText("Subscribe")).toBeTruthy();
+	});
+
+	it("shows the client logo like the login modal", () => {
+		renderModal(
+			{},
+			{
+				logo_url: "https://example.com/logo.png",
+				provider: { companyName: "Example" },
+			},
+		);
+
+		expect(screen.getByAltText("Logo Example").getAttribute("src")).toBe(
+			"https://example.com/logo.png",
+		);
+	});
+
+	it("hides the button without a link", () => {
+		renderModal({});
+
+		expect(screen.queryByText("Subscribe")).toBeNull();
 	});
 });
