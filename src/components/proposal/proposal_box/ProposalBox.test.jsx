@@ -170,4 +170,51 @@ describe("ProposalBox", () => {
 		expect(upvoteButton).toHaveClass("disabled");
 		expect(downvoteButton).toHaveClass("disabled");
 	});
+
+	describe("replies", () => {
+		it("should not render the reply action by default", () => {
+			renderProposal({ proposal });
+
+			expect(
+				screen.queryByTestId("action-reply-button"),
+			).not.toBeInTheDocument();
+		});
+
+		it("should render the reply action when enableReplies is set", () => {
+			renderProposal({ proposal, enableReplies: true });
+
+			expect(screen.getByTestId("action-reply-button")).toBeInTheDocument();
+		});
+
+		it("should open the reply form when the reply action is clicked", async () => {
+			renderProposal({ proposal, enableReplies: true });
+
+			await userEvent.click(screen.getByTestId("action-reply-button"));
+
+			expect(await screen.findByTestId("argument-input")).toBeInTheDocument();
+		});
+
+		it("should show the number of replies under the proposal", () => {
+			const repliedProposal = generateProposal({
+				number_replies: 2,
+				replies_authors: [],
+			});
+			renderProposal({ proposal: repliedProposal, enableReplies: true });
+
+			expect(screen.getByText(/View answers/)).toBeInTheDocument();
+		});
+
+		it("should hide existing replies while enableReplies is off", () => {
+			const repliedProposal = generateProposal({
+				number_replies: 2,
+				replies_authors: [],
+			});
+			renderProposal({ proposal: repliedProposal });
+
+			expect(screen.queryByText(/View answers/)).not.toBeInTheDocument();
+			expect(
+				screen.queryByTestId("action-reply-button"),
+			).not.toBeInTheDocument();
+		});
+	});
 });

@@ -27,6 +27,16 @@
     }
 }
 
+.proposalReplies {
+    display: flex;
+    flex-direction: column;
+    @include spacing.mt(2, xs);
+}
+
+.repliesList {
+    @include spacing.mt(2, xs);
+}
+
 .edited {
     font-size: theme.$font-size-extra-small;
     color: theme.$text-secondary;

@@ -1,7 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { Suspense, lazy, useState, useEffect } from "react";
+import { Argument, ReplyFooter } from "@logora/debate/argument/argument";
 import { useAuth } from "@logora/debate/auth/use_auth";
 import { useConfig } from "@logora/debate/data/config_provider";
 import { lexicalToHtml } from "@logora/debate/input/text_editor";
+import { VotePaginatedList } from "@logora/debate/list/paginated_list";
+import { UserContentSkeleton } from "@logora/debate/skeleton/user_content_skeleton";
 import { ReadMore } from "@logora/debate/text/read_more";
 import { HashScroll } from "@logora/debate/tools/hash_scroll";
 import { buildShareUrl } from "@logora/debate/tools/share_url";
@@ -15,22 +18,32 @@ import cx from "classnames";
 import { useIntl } from "react-intl";
 import styles from "./ProposalBox.module.scss";
 
+const ArgumentInput = lazy(() =>
+	import("@logora/debate/input/argument_input").then((m) => ({ default: m.ArgumentInput })),
+);
+
 export const ProposalBox = ({
 	proposal,
 	disabled = false,
 	fixedContentHeight,
 	fitContent = false,
 	enableEdition = true,
+	enableReplies = false,
 	hideFooter = false,
 	showModerationFeedback,
 }) => {
 	const [richContent, setRichContent] = useState(null);
 	const [flash, setFlash] = useState(false);
+	const [showReplyInput, setShowReplyInput] = useState(false);
+	const [expandReplies, setExpandReplies] = useState(false);
 	const intl = useIntl();
 	const config = useConfig();
 	const { currentUser } = useAuth();
 	const userIsBanned = currentUser?.moderation_status === "banned";
 	const proposalId = `proposal_${proposal.id}`;
+	const repliesListId = `proposal_${proposal.id}_reply_list`;
+	const maxNestingLevel = config?.actions?.maxNestingLevel ?? 3;
+	const repliesDisabled = disabled || userIsBanned;
 	const title = useTranslatedContent(
 		proposal.title,
 		proposal.language,
@@ -159,6 +172,8 @@ export const ProposalBox = ({
 						showShareCode={config?.actions?.hideCodeShare !== true}
 						showActions={!proposal.author.consultation_id}
 						enableEdition={enableEdition}
+						enableReply={enableReplies && !hideFooter}
+						handleReplyTo={() => setShowReplyInput((previous) => !previous)}
 					>
 						<UpDownVoteBox
 							voteableType={"Proposal"}
@@ -175,6 +190,75 @@ export const ProposalBox = ({
 					</ContentFooter>
 				)}
 			</div>
+			{enableReplies && !hideFooter && (
+				<div className={styles.proposalReplies}>
+					{showReplyInput && (
+						<Suspense fallback={null}>
+							<ArgumentInput
+								key={`ReplyProposal${proposal.id}`}
+								argumentListId={repliesListId}
+								groupId={proposal.id}
+								groupType={"Proposal"}
+								groupName={title.translatedContent}
+								positions={[]}
+								disabled={repliesDisabled}
+								hideSourceAction={config?.actions?.disableUserSources || false}
+								onSubmit={() => {
+									setShowReplyInput(false);
+									setExpandReplies(true);
+								}}
+								isReply
+								autoFocus
+								placeholder={intl.formatMessage({
+									id: "input.reply_input.your_answer",
+									defaultMessage: "Your answer",
+								})}
+								userGuideUrl={config?.provider?.userGuideUrl}
+								hideUserGuideLink={config?.provider?.hideUserGuideLink}
+							/>
+						</Suspense>
+					)}
+					{proposal.number_replies > 0 && (
+						<ReplyFooter
+							numberReplies={proposal.number_replies}
+							repliesAuthors={proposal.replies_authors}
+							expandReplies={expandReplies}
+							onToggleReplies={() => setExpandReplies((previous) => !previous)}
+						/>
+					)}
+					{expandReplies && (
+						<div className={styles.repliesList}>
+							<VotePaginatedList
+								voteableType={"Message"}
+								currentListId={repliesListId}
+								loadingComponent={<UserContentSkeleton />}
+								resource={"messages"}
+								sort={"+created_at"}
+								filters={{
+									group_id: proposal.id,
+									group_type: "Proposal",
+									is_reply: false,
+									status: "accepted",
+								}}
+								perPage={5}
+								display={"column"}
+								resourcePropName={"argument"}
+								emptyListComponent={<></>}
+							>
+								<Argument
+									groupType={"Proposal"}
+									groupName={title.translatedContent}
+									positions={[]}
+									maxNestingLevel={maxNestingLevel}
+									disabled={repliesDisabled}
+									deleteListId={repliesListId}
+									enableEdition={enableEdition}
+								/>
+							</VotePaginatedList>
+						</div>
+					)}
+				</div>
+			)}
 		</HashScroll>
 	);
 };
