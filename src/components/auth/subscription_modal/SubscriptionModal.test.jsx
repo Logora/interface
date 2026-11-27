@@ -73,7 +73,7 @@ describe("SubscriptionModal", () => {
 		const onLogin = vi.fn();
 		renderModal({ onLogin });
 
-		expect(screen.getByText("Already have an account ?")).toBeTruthy();
+		expect(screen.getByText("Already a subscriber ?")).toBeTruthy();
 		fireEvent.click(screen.getByText("Sign in"));
 		expect(onLogin).toHaveBeenCalledTimes(1);
 	});

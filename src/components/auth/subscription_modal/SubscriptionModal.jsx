@@ -65,8 +65,8 @@ export const SubscriptionModal = ({ title, text, buttonLabel, url, onLogin }) =>
 				{onLogin && (
 					<div className={styles.loginText}>
 						{intl.formatMessage({
-							id: "auth.sso_form.already_account",
-							defaultMessage: "Already have an account ?",
+							id: "auth.sso_form.already_subscriber",
+							defaultMessage: "Already a subscriber ?",
 						})}
 						<button
 							type="button"
