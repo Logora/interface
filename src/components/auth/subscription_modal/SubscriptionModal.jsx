@@ -1,4 +1,5 @@
 import { Button } from "@logora/debate/action/button";
+import { useAuthLink } from "@logora/debate/auth/sso_form";
 import { useConfig } from "@logora/debate/data/config_provider";
 import { Modal } from "@logora/debate/dialog/modal";
 import { Icon } from "@logora/debate/icons/icon";
@@ -10,6 +11,27 @@ export const SubscriptionModal = ({ title, text, buttonLabel, url, onLogin }) =>
 	const intl = useIntl();
 	const config = useConfig();
 	const providerName = config?.provider?.companyName;
+	const auth = config?.auth || {};
+	const getAuthLink = useAuthLink({
+		authType: auth.type,
+		clientId: auth.clientId,
+		oAuthRedirectUri: process.env.OAUTH_REDIRECT_URI,
+		scope: auth.scope,
+		redirectParameter: auth.redirectParameter,
+		trackingParameters: auth.trackingParameters,
+	});
+	// SSO clients go straight to their login page: the SSO login modal looks the same as this one.
+	const ssoLoginUrl =
+		auth.login_url &&
+		auth.type !== "form" &&
+		auth.type !== "social" &&
+		auth.disableLoginModal !== true
+			? getAuthLink(auth.login_url)
+			: null;
+	const signinLabel = intl.formatMessage({
+		id: "auth.sso_form.signin",
+		defaultMessage: "Sign in",
+	});
 
 	return (
 		<Modal data-vid={"subscription_modal"}>
@@ -68,17 +90,25 @@ export const SubscriptionModal = ({ title, text, buttonLabel, url, onLogin }) =>
 							id: "auth.sso_form.already_subscriber",
 							defaultMessage: "Already a subscriber ?",
 						})}
-						<button
-							type="button"
-							className={styles.loginLink}
-							data-tid={"link_login"}
-							onClick={onLogin}
-						>
-							{intl.formatMessage({
-								id: "auth.sso_form.signin",
-								defaultMessage: "Sign in",
-							})}
-						</button>
+						{ssoLoginUrl ? (
+							<a
+								className={styles.loginLink}
+								data-tid={"link_login"}
+								rel="nofollow"
+								href={ssoLoginUrl}
+							>
+								{signinLabel}
+							</a>
+						) : (
+							<button
+								type="button"
+								className={styles.loginLink}
+								data-tid={"link_login"}
+								onClick={onLogin}
+							>
+								{signinLabel}
+							</button>
+						)}
 					</div>
 				)}
 			</div>

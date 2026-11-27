@@ -78,6 +78,38 @@ describe("SubscriptionModal", () => {
 		expect(onLogin).toHaveBeenCalledTimes(1);
 	});
 
+	it("links SSO clients straight to their login page", () => {
+		const onLogin = vi.fn();
+		renderModal(
+			{ onLogin },
+			{ auth: { type: "jwt", login_url: "https://example.com/login" } },
+		);
+
+		const link = screen.getByText("Sign in").closest("a");
+		const href = new URL(link.getAttribute("href"));
+		expect(href.origin + href.pathname).toBe("https://example.com/login");
+		expect(href.searchParams.get("logora_redirect")).toBe(window.location.href);
+		fireEvent.click(link);
+		expect(onLogin).not.toHaveBeenCalled();
+	});
+
+	it("keeps the login modal when the client handles login itself", () => {
+		const onLogin = vi.fn();
+		renderModal(
+			{ onLogin },
+			{
+				auth: {
+					type: "jwt",
+					login_url: "https://example.com/login",
+					disableLoginModal: true,
+				},
+			},
+		);
+
+		fireEvent.click(screen.getByText("Sign in"));
+		expect(onLogin).toHaveBeenCalledTimes(1);
+	});
+
 	it("has no login link without onLogin", () => {
 		renderModal({});
 
