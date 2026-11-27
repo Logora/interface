@@ -24,6 +24,8 @@ const Component = () => {
 
 Inside a `ModuleContext.Provider` (for example `value="comments"`), when `config[module].subscribersOnly` is `true` and the logged-in user's `is_subscriber` is not `true`, `requireAuthentication` shows `SubscriptionModal` with `config[module].subscriptionModal` instead of the login flow. `useSubscriptionRequired()` returns that condition.
 
+Visitors (not logged in) on such a module also get `SubscriptionModal` first, with an « Already have an account ? Sign in » link that switches to the usual login flow (login events, then `AuthModal` unless `disableLoginModal`). `useSubscriptionRequired()` only covers logged-in users.
+
 In that case the hook dispatches a `logora:subscription:requested` window event (`detail`: `{ module, redirectUrl }`) before showing the modal. With `config.auth.disableSubscriptionModal: true`, only the event is dispatched, so the client can open its own subscription page, as `config.auth.disableLoginModal` does for login.
 
 A visitor always gets the usual login flow (events, then `AuthModal` unless `config.auth.disableLoginModal`).

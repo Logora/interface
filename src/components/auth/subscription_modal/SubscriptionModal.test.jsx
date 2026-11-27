@@ -2,7 +2,7 @@ import { ConfigProvider } from "@logora/debate/data/config_provider";
 import { ModalProvider } from "@logora/debate/dialog/modal";
 import { IconProvider } from "@logora/debate/icons/icon_provider";
 import * as regularIcons from "@logora/debate/icons/regular_icons";
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import React from "react";
 import { IntlProvider } from "react-intl";
 import { MemoryRouter } from "react-router";
@@ -67,6 +67,21 @@ describe("SubscriptionModal", () => {
 		expect(screen.getByAltText("Logo Example").getAttribute("src")).toBe(
 			"https://example.com/logo.png",
 		);
+	});
+
+	it("offers a login link when onLogin is given", () => {
+		const onLogin = vi.fn();
+		renderModal({ onLogin });
+
+		expect(screen.getByText("Already have an account ?")).toBeTruthy();
+		fireEvent.click(screen.getByText("Sign in"));
+		expect(onLogin).toHaveBeenCalledTimes(1);
+	});
+
+	it("has no login link without onLogin", () => {
+		renderModal({});
+
+		expect(screen.queryByText("Sign in")).toBeNull();
 	});
 
 	it("hides the button without a link", () => {
