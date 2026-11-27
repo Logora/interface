@@ -217,7 +217,7 @@ describe("useAuthRequired", () => {
 		expect(window.dispatchEvent).toHaveBeenCalled();
 	});
 
-	it("does not pass module settings to the login modal", () => {
+	it("shows the subscription modal to a visitor, with a link to the login modal", () => {
 		window.dispatchEvent = vi.fn();
 		const { getByText } = renderInComments(
 			{ isLoggedIn: false, currentUser: {} },
@@ -226,8 +226,51 @@ describe("useAuthRequired", () => {
 
 		fireEvent.click(getByText("Authenticate"));
 
-		expect(window.dispatchEvent).toHaveBeenCalled();
-		expect(showModal).toHaveBeenCalledTimes(1);
+		expect(window.dispatchEvent).toHaveBeenCalledTimes(1);
+		expect(window.dispatchEvent.mock.calls[0][0].type).toBe(
+			"logora:subscription:requested",
+		);
+		const subscriptionModal = showModal.mock.calls[0][0].props.children;
+		expect(subscriptionModal.props.onLogin).toBeTypeOf("function");
+
+		subscriptionModal.props.onLogin();
+
+		expect(window.dispatchEvent.mock.calls.map(([e]) => e.type)).toContain(
+			"logora:authentication:requested",
+		);
+		expect(showModal).toHaveBeenCalledTimes(2);
+		// Module settings are not passed to the login modal.
+		expect(showModal.mock.calls[1][0].props.children.props).toEqual({
+			foo: "bar",
+		});
+	});
+
+	it("does not offer the login link to a logged-in non-subscriber", () => {
+		window.dispatchEvent = vi.fn();
+		const { getByText } = renderInComments({
+			isLoggedIn: true,
+			currentUser: { is_subscriber: false },
+		});
+
+		fireEvent.click(getByText("Authenticate"));
+
+		expect(
+			showModal.mock.calls[0][0].props.children.props.onLogin,
+		).toBeUndefined();
+	});
+
+	it("shows the login modal to a visitor on a module that is not restricted", () => {
+		window.dispatchEvent = vi.fn();
+		const { getByText } = renderInComments(
+			{ isLoggedIn: false, currentUser: {} },
+			{ subscribersOnly: false },
+		);
+
+		fireEvent.click(getByText("Authenticate"));
+
+		expect(window.dispatchEvent.mock.calls.map(([e]) => e.type)).toContain(
+			"logora:authentication:requested",
+		);
 		expect(showModal.mock.calls[0][0].props.children.props).toEqual({
 			foo: "bar",
 		});

@@ -153,8 +153,14 @@ export const ProposalBox = ({
 						deleteListId={"proposalsList"}
 						shareModalTitle={intl.formatMessage({ id: "share.proposal" })}
 						shareUrl={buildShareUrl(config, "p", proposal.id)}
-						shareTitle={intl.formatMessage({ id: "share.proposal.title" })}
-						shareText={intl.formatMessage({ id: "share.proposal.text" })}
+						shareTitle={intl.formatMessage({
+							id: "share.proposal_title",
+							defaultMessage: "Share a proposal",
+						})}
+						shareText={intl.formatMessage({
+							id: "share.proposal_text",
+							defaultMessage: "A proposal that may interest you",
+						})}
 						shareCode={`<iframe src="https://cdn.logora.com/embed.html?shortname=${config.shortname}&id=${proposal.id}&resource=proposal" frameborder="0" width="100%" height="335px" scrolling="no"></iframe>`}
 						showShareCode={config?.actions?.hideCodeShare !== true}
 						showActions={!proposal.author.consultation_id}

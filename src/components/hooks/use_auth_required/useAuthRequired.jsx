@@ -23,12 +23,16 @@ export const useSubscriptionRequired = () => {
 export const useAuthRequired = () => {
 	const { config } = useContext(ConfigContext);
 	const module = useContext(ModuleContext);
+	const { isLoggedIn } = useAuth() || {};
 	const subscriptionRequired = useSubscriptionRequired();
 	const { showModal } = useModal();
 	const moduleConfig = module ? config?.[module] : null;
+	// Visitors on a subscribers-only module are asked to subscribe first, with a link to log in.
+	const visitorOnRestrictedModule =
+		!isLoggedIn && moduleConfig?.subscribersOnly === true;
 
 	const requireAuthentication = (modalParams = {}) => {
-		if (subscriptionRequired) {
+		if (subscriptionRequired || visitorOnRestrictedModule) {
 			if (typeof window !== "undefined") {
 				window.dispatchEvent(
 					new CustomEvent("logora:subscription:requested", {
@@ -41,11 +45,22 @@ export const useAuthRequired = () => {
 			}
 			showModal(
 				<Suspense fallback={null}>
-					<SubscriptionModal {...moduleConfig?.subscriptionModal} />
+					<SubscriptionModal
+						{...moduleConfig?.subscriptionModal}
+						onLogin={
+							visitorOnRestrictedModule
+								? () => requireLogin(modalParams)
+								: undefined
+						}
+					/>
 				</Suspense>,
 			);
 			return;
 		}
+		requireLogin(modalParams);
+	};
+
+	const requireLogin = (modalParams = {}) => {
 		if (typeof window !== "undefined") {
 			window.dispatchEvent(
 				new CustomEvent("LOGORA::authenticationRequired", {

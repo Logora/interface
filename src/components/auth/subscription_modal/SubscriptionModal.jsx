@@ -6,7 +6,7 @@ import React from "react";
 import { useIntl } from "react-intl";
 import styles from "./SubscriptionModal.module.scss";
 
-export const SubscriptionModal = ({ title, text, buttonLabel, url }) => {
+export const SubscriptionModal = ({ title, text, buttonLabel, url, onLogin }) => {
 	const intl = useIntl();
 	const config = useConfig();
 	const providerName = config?.provider?.companyName;
@@ -61,6 +61,25 @@ export const SubscriptionModal = ({ title, text, buttonLabel, url }) => {
 								defaultMessage: "Subscribe",
 							})}
 					</Button>
+				)}
+				{onLogin && (
+					<div className={styles.loginText}>
+						{intl.formatMessage({
+							id: "auth.sso_form.already_subscriber",
+							defaultMessage: "Already a subscriber ?",
+						})}
+						<button
+							type="button"
+							className={styles.loginLink}
+							data-tid={"link_login"}
+							onClick={onLogin}
+						>
+							{intl.formatMessage({
+								id: "auth.sso_form.signin",
+								defaultMessage: "Sign in",
+							})}
+						</button>
+					</div>
 				)}
 			</div>
 		</Modal>
